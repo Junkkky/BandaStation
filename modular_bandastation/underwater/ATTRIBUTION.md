@@ -47,3 +47,5 @@
 Логика насосов написана для BandaStation, использует её floodwater API и штатное питание TG. Система жидкостей доноров не переносилась. Идея разборки подводного металлолома основана на `ocean_flora.dm` Nodalec; реализация адаптирована к современному `welder_act` TG и не использует рекурсивное обслуживание сваркой. Код распространяется по лицензии проекта AGPL-3.0.
 
 Водяная арматура использует существующие TG-ресурсы `icons/obj/machines/atmospherics/binary_devices.dmi`, `unary_devices.dmi`, `icons/obj/pipes_n_cables/manifold.dmi`, `layer_manifold_underlays.dmi` и штатные иконки RPD/настенного корпуса APC. Иконки не скопированы в новые DMI; применяется цвет `#37C7B7` во время исполнения. Авторство и лицензия соответствуют ресурсам текущей базы BandaStation/TG; эта запись дополняет общий учёт источников проекта.
+
+Для сравнения поведения затопления просмотрен [Barotrauma Gap.cs](https://github.com/FakeFishGames/Barotrauma/blob/master/Barotrauma/BarotraumaShared/SharedSource/Map/Gap.cs). Код и ассеты Barotrauma не переносились; вода StationTrauma сохраняет собственную соседнюю модель и согласованные игровые тайминги.

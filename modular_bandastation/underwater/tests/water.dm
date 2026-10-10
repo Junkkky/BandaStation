@@ -263,6 +263,8 @@
 		set_turf_to_area(sample, dark_area)
 		sample.lighting_build_overlay()
 	var/obj/effect/overlay/spotlight/underwater/projector = allocate(/obj/effect/overlay/spotlight/underwater, dark_ocean)
+	projector.beam_width = 6
+	projector.update_beam()
 	SSlighting.fire(FALSE, TRUE)
 	var/near_lumcount = near_tile.get_static_lumcount()
 	var/far_lumcount = far_tile.get_static_lumcount()

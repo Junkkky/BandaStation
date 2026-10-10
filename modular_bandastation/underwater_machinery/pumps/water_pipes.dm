@@ -41,8 +41,11 @@
 		var/back_pressure = recipient.required_pressure()
 		if(pressure < back_pressure || (pressure == back_pressure && (istype(target.parent, /obj/machinery/stationtrauma_water_device/valve/passive_gate) || istype(target.parent, /obj/machinery/stationtrauma_water_device/outlet/universal))))
 			return 0
-	var/existing_volume = target.recipient_reagents_holder().get_reagent_amount(/datum/reagent/water)
-	var/transferred = transfer_stationtrauma_water(reagents, target.recipient_reagents_holder(), amount)
+	var/datum/reagents/target_holder = target.recipient_reagents_holder()
+	if(QDELETED(target_holder))
+		return 0
+	var/existing_volume = target_holder.get_reagent_amount(/datum/reagent/water)
+	var/transferred = transfer_stationtrauma_water(reagents, target_holder, amount)
 	if(transferred && istype(target.parent, /obj/machinery/stationtrauma_water_device))
 		var/obj/machinery/stationtrauma_water_device/machine = target.parent
 		machine.water_pressure = existing_volume ? max(machine.water_pressure, pressure) : pressure
@@ -118,6 +121,7 @@
 	density = TRUE
 	use_power = NO_POWER_USE
 	processing_flags = NONE
+	var/control_group = "water"
 	var/capacity = 1000
 	/// Mapper charge for test fixtures; normal reservoirs start empty.
 	var/initial_water = 0
@@ -198,7 +202,6 @@
 	idle_power_usage = 5
 	var/on = FALSE
 	var/flow_rate = 1800
-	var/control_group = "water"
 	var/discharged_volume = 0
 
 /obj/machinery/stationtrauma_water_device/outlet/attack_hand(mob/living/user, list/modifiers)

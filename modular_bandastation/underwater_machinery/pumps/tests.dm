@@ -1,8 +1,17 @@
 #define PUMP_TEST(assertion, reason) if(!(assertion)) { return Fail(reason, __FILE__, __LINE__) }
 
+/datum/unit_test/bilge_pump/Destroy()
+	for(var/obj/machinery/machine in allocated)
+		machine.reagents?.clear_reagents()
+	for(var/turf/open/tile in block(run_loc_floor_bottom_left, run_loc_floor_top_right))
+		tile.set_water_depth(0)
+	return ..()
+
 /datum/unit_test/bilge_pump/Run()
 	var/turf/open/intake = run_loc_floor_bottom_left
 	var/turf/open/neighbour = get_step(intake, EAST)
+	for(var/turf/open/tile in block(run_loc_floor_bottom_left, run_loc_floor_top_right))
+		tile.set_water_depth(0)
 	var/obj/machinery/bilge_pump/pump = allocate(/obj/machinery/bilge_pump, intake)
 	pump.drain_rate = 20
 	intake.set_water_depth(100)
@@ -14,7 +23,7 @@
 	PUMP_TEST(intake.get_water_depth() == 100, "An unpowered stationary pump must not drain water")
 	pump.set_machine_stat(pump.machine_stat & ~NOPOWER)
 	pump.process(1)
-	PUMP_TEST(intake.get_water_depth() == 80, "A powered pump must drain its intake at the configured rate")
+	PUMP_TEST(intake.get_water_depth() == 80, "A powered pump must drain its intake at the configured rate (depth=[intake.get_water_depth()], neighbour=[neighbour.get_water_depth()], buffered=[pump.reagents.total_volume], operational=[pump.is_operational])")
 	PUMP_TEST(pump.reagents.total_volume == 200, "Every stationary pump must retain the collected water")
 	neighbour.set_water_depth(100)
 	pump.process(1)

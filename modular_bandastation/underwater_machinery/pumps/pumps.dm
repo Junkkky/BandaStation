@@ -1,7 +1,7 @@
 /// Water reaches the intake through the existing floodwater flow, never through sealed walls.
 /obj/machinery/bilge_pump
 	name = "трюмная помпа"
-	desc = "Собирает воду в трубный буфер. Включается контроллером помп; ЛКМ открывает ближайший контроллер своей группы. Требует АПЦ; осушает связанный отсек до нуля. Выход водяной трубы — на юге."
+	desc = "Собирает воду в трубный буфер. Включается контроллером помп; ЛКМ открывает контроллер своей зоны и группы. Требует АПЦ; осушает связанный отсек до нуля. Выход водяной трубы — на юге."
 	icon = 'modular_bandastation/underwater_machinery/pumps/icons/drains.dmi'
 	icon_state = "active_input"
 	density = FALSE
@@ -39,7 +39,7 @@
 	control_pump(user)
 
 /obj/machinery/bilge_pump/proc/control_pump(mob/living/user)
-	for(var/obj/machinery/stationtrauma_pump_controller/controller in range(7, src))
+	for(var/obj/machinery/stationtrauma_pump_controller/controller as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/stationtrauma_pump_controller))
 		if(get_area(controller) == get_area(src) && controller.control_group == control_group)
 			controller.ui_interact(user)
 			return

@@ -14,8 +14,33 @@ SUBSYSTEM_DEF(floodwater)
 	var/snapshot_ready = FALSE
 	var/list/pumps = list()
 	var/list/suction_heads = list()
+	var/last_update
+	var/pending_time = 0
+	var/step_seconds = 0.1
+	var/steps_completed = 0
+	var/step_running = FALSE
+	var/list/debug_viewers = list()
+	var/next_debug_update = 0
 
 /datum/controller/subsystem/floodwater/fire(resumed = FALSE)
+	if(world.time >= next_debug_update)
+		update_debug_viewers()
+		next_debug_update = world.time + 0.5 SECONDS
+	if(!resumed)
+		// Accumulate real elapsed time; MC pauses must not slow the hydraulic clock.
+		pending_time += isnull(last_update) ? wait / (1 SECONDS) : max(0, (world.time - last_update) / (1 SECONDS))
+		last_update = world.time
+	while(pending_time + FLOOD_WATER_FLOW_EPSILON >= step_seconds)
+		if(!simulate_step(step_running))
+			return
+		pending_time = max(0, pending_time - step_seconds)
+		steps_completed++
+		resumed = FALSE
+		if(MC_TICK_CHECK)
+			return
+
+/datum/controller/subsystem/floodwater/proc/simulate_step(resumed = FALSE)
+	step_running = TRUE
 	if(!resumed)
 		currentrun = active.Copy()
 		active = list()
@@ -83,12 +108,26 @@ SUBSYSTEM_DEF(floodwater)
 		if(MC_TICK_CHECK && length(currentrun))
 			return
 	edge_speeds = next_speeds
+	step_running = FALSE
+	return TRUE
 
 /datum/controller/subsystem/floodwater/stat_entry(msg)
-	return ..("Active:[length(active)]")
+	return ..("Active:[length(active)] Steps:[steps_completed] Behind:[round(pending_time, 0.1)]s")
 
 /datum/component/floodwater/proc/wake(datum/source)
 	SIGNAL_HANDLER
+	if(infinite_source)
+		var/turf/open/tile = parent
+		var/feeds_floor = FALSE
+		for(var/direction in GLOB.cardinals)
+			var/turf/open/neighbor = get_step(tile, direction)
+			if(!isopenturf(neighbor) || isspaceturf(neighbor) || istype(neighbor, /turf/open/water) || neighbor.get_water_depth() >= depth)
+				continue
+			if(tile.can_pass_stationtrauma_water(neighbor))
+				feeds_floor = TRUE
+				break
+		if(!feeds_floor)
+			return
 	SSfloodwater.active[src] = TRUE
 
 /datum/component/floodwater/proc/wake_neighbours()
@@ -129,7 +168,7 @@ SUBSYSTEM_DEF(floodwater)
 /datum/component/floodwater/proc/spread(list/depths, list/speeds, list/next_speeds, list/processed, list/suction)
 	var/turf/open/tile = parent
 	var/source_depth = isnull(depths?[tile]) ? depth : depths[tile]
-	var/dt = SSfloodwater.wait / (1 SECONDS)
+	var/dt = SSfloodwater.step_seconds
 	if(!speeds)
 		speeds = SSfloodwater.edge_speeds
 	if(!next_speeds)
@@ -167,7 +206,7 @@ SUBSYSTEM_DEF(floodwater)
 		var/turf/open/downstream_tile = velocity > 0 ? next_tile : tile
 		var/datum/component/floodwater/from_water = upstream_tile.GetComponent(/datum/component/floodwater)
 		var/upstream_depth = velocity > 0 ? source_depth : next_depth
-		var/flow = min(from_water?.depth || 0, abs(velocity) * upstream_depth * dt)
+		var/flow = min(from_water?.depth || 0, abs(velocity) * max(upstream_depth, 20) * dt)
 		var/accepted = downstream_tile.add_water(flow * FLOOD_WATER_LITRES_PER_CM, from_water?.temperature || temperature)
 		if(accepted)
 			from_water.remove_water(accepted)
@@ -223,3 +262,31 @@ SUBSYSTEM_DEF(floodwater)
 				tile.MakeSlippery(TURF_WET_WATER, 1 MINUTES, 0, 1 MINUTES)
 		water.set_depth(max(residual_depth, water.depth - (water.depth - residual_depth) * fraction))
 	return accepted
+
+ADMIN_VERB(stationtrauma_water_debug, R_DEBUG, "Water Depth Debug", "Toggle live water depths in centimetres on nearby turfs.", ADMIN_CATEGORY_DEBUG)
+	if(SSfloodwater.debug_viewers[user])
+		user.images -= SSfloodwater.debug_viewers[user]
+		SSfloodwater.debug_viewers -= user
+		to_chat(user, span_notice("Отображение глубины воды выключено."))
+	else
+		SSfloodwater.debug_viewers[user] = list()
+		SSfloodwater.update_debug_viewers()
+		to_chat(user, span_notice("Отображение глубины воды включено: см; ∞ — океан. Обновление дважды в секунду."))
+	BLACKBOX_LOG_ADMIN_VERB("Water Depth Debug")
+
+/datum/controller/subsystem/floodwater/proc/update_debug_viewers()
+	for(var/client/viewer as anything in debug_viewers)
+		if(QDELETED(viewer) || !viewer.mob)
+			debug_viewers -= viewer
+			continue
+		viewer.images -= debug_viewers[viewer]
+		var/list/images = list()
+		for(var/turf/open/tile in range(12, viewer.mob))
+			var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
+			var/image/label = image(loc = tile)
+			SET_PLANE_EXPLICIT(label, BALLOON_CHAT_PLANE, tile)
+			label.maptext = MAPTEXT("<span style='color:[water?.infinite_source ? "#37c7b7" : water?.depth ? "#ffffff" : "#aaaaaa"];text-align:center'>[water?.infinite_source ? "∞" : round(water?.depth || 0, 0.1)]</span>")
+			label.maptext_y = 8
+			images += label
+		debug_viewers[viewer] = images
+		viewer.images += images

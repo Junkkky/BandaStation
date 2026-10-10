@@ -8,7 +8,7 @@
 
 /obj/machinery/stationtrauma_pump_controller
 	name = "контроллер трюмных помп"
-	desc = "ЛКМ — питание и расход в л/с. Управляет помпами своей группы в пределах семи клеток этого отсека. Доступы не требуются."
+	desc = "ЛКМ — список помп и выпусков обслуживаемой зоны, отдельное включение и расход в л/с. Доступы не требуются."
 	icon = 'modular_bandastation/underwater_machinery/pumps/icons/water_controller.dmi'
 	icon_state = "controller"
 	density = FALSE
@@ -23,6 +23,7 @@
 
 /obj/machinery/stationtrauma_pump_controller/Initialize(mapload)
 	. = ..()
+	transform = matrix(0.55, 0, 0, 0, 0.4, 0)
 	if(build_stage >= 2)
 		chip = new(src)
 	if(mapload)
@@ -49,56 +50,164 @@
 		return
 	ui_interact(user)
 
+/obj/machinery/stationtrauma_pump_controller/proc/controlled_devices()
+	var/list/devices = list()
+	var/area/zone = get_area(src)
+	for(var/obj/machinery/bilge_pump/pump as anything in SSfloodwater.pumps)
+		if(pump.z == z && get_area(pump) == zone && pump.control_group == control_group && !istype(pump, /obj/machinery/bilge_pump/portable))
+			devices += pump
+	for(var/obj/machinery/stationtrauma_water_device/device as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/stationtrauma_water_device))
+		if(device.z == z && get_area(device) == zone && device.control_group == control_group && (istype(device, /obj/machinery/stationtrauma_water_device/outlet) || istype(device, /obj/machinery/stationtrauma_water_device/inline_pump/pressure)))
+			devices += device
+	// Exterior releases belong to the zone whose real pipe circuit reaches them.
+	var/list/frontier = devices.Copy()
+	var/list/visited_nets = list()
+	var/index = 1
+	while(index <= length(frontier))
+		var/obj/machinery/device = frontier[index++]
+		var/datum/component/plumbing/stationtrauma_water/connection = device.GetComponent(/datum/component/plumbing/stationtrauma_water)
+		for(var/direction in connection?.ducts)
+			var/datum/ductnet/net = connection.ducts[direction]
+			if(QDELETED(net) || visited_nets[net])
+				continue
+			visited_nets[net] = TRUE
+			for(var/datum/component/plumbing/stationtrauma_water/other as anything in net.suppliers | net.demanders)
+				if(!istype(other))
+					continue
+				var/obj/machinery/neighbor = other.parent
+				frontier |= neighbor
+				if(istype(neighbor, /obj/machinery/stationtrauma_water_device/outlet/universal))
+					var/obj/machinery/stationtrauma_water_device/outlet/universal/release = neighbor
+					var/turf/open/tile = get_turf(release)
+					var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
+					if(release.control_group == control_group && water?.infinite_source)
+						devices |= release
+	return devices
+
+/obj/machinery/stationtrauma_pump_controller/proc/set_device(obj/machinery/device, enabled, rate)
+	if(istype(device, /obj/machinery/bilge_pump))
+		var/obj/machinery/bilge_pump/pump = device
+		pump.on = enabled
+		pump.drain_rate = rate / FLOOD_WATER_LITRES_PER_CM
+	else if(istype(device, /obj/machinery/stationtrauma_water_device/outlet))
+		var/obj/machinery/stationtrauma_water_device/outlet/release = device
+		release.on = enabled
+		release.flow_rate = rate
+	else
+		var/obj/machinery/stationtrauma_water_device/inline_pump/pressure/pump = device
+		pump.on = enabled
+		pump.flow_rate = rate
+	if(enabled)
+		device.begin_processing()
+	else
+		device.end_processing()
+	device.update_appearance(UPDATE_ICON)
+
 /obj/machinery/stationtrauma_pump_controller/proc/apply_settings()
 	if(build_stage != 3)
 		on = FALSE
-	for(var/obj/machinery/bilge_pump/pump in range(7, src))
-		if(get_area(pump) != get_area(src) || pump.control_group != control_group || istype(pump, /obj/machinery/bilge_pump/portable))
-			continue
-		pump.drain_rate = flow_rate / FLOOD_WATER_LITRES_PER_CM
-		pump.on = on
-		if(on)
-			pump.begin_processing()
-		else
-			pump.end_processing()
-		pump.update_appearance()
-	for(var/obj/machinery/stationtrauma_water_device/outlet/outlet in range(7, src))
-		if(outlet.control_group != control_group)
-			continue
-		outlet.flow_rate = flow_rate
-		outlet.on = on
-		if(on)
-			outlet.begin_processing()
-		else
-			outlet.end_processing()
+	for(var/obj/machinery/device as anything in controlled_devices())
+		set_device(device, on, flow_rate)
 	icon_state = on ? "controller_on" : "controller"
 
-/obj/machinery/stationtrauma_pump_controller/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "AtmosPump", name)
-		ui.open()
-
 /obj/machinery/stationtrauma_pump_controller/ui_data(mob/user)
-	return list("on" = on, "rate" = flow_rate, "max_rate" = STATIONTRAUMA_WATER_MAX_FLOW)
+	var/list/data = list("on" = on, "rate" = flow_rate, "max_rate" = STATIONTRAUMA_WATER_MAX_FLOW, "devices" = list())
+	for(var/obj/machinery/device as anything in controlled_devices())
+		var/enabled
+		var/rate
+		var/pressure
+		if(istype(device, /obj/machinery/bilge_pump))
+			var/obj/machinery/bilge_pump/pump = device
+			enabled = pump.on
+			rate = pump.drain_rate * FLOOD_WATER_LITRES_PER_CM
+			pressure = pump.water_pressure
+		else if(istype(device, /obj/machinery/stationtrauma_water_device/outlet))
+			var/obj/machinery/stationtrauma_water_device/outlet/release = device
+			enabled = release.on
+			rate = release.flow_rate
+		else
+			var/obj/machinery/stationtrauma_water_device/inline_pump/pressure/pump = device
+			enabled = pump.on
+			rate = pump.flow_rate
+			pressure = pump.target_pressure
+		var/datum/component/plumbing/stationtrauma_water/connection = device.GetComponent(/datum/component/plumbing/stationtrauma_water)
+		var/status = !device.anchored ? "не закреплена" : !device.is_operational ? "нет питания / неисправна" : !enabled ? "выключена" : !length(connection?.ducts) ? "нет трубы" : device.reagents.holder_full() ? "буфер полон" : "включена"
+		if(enabled && device.anchored && device.is_operational && length(connection?.ducts) && istype(device, /obj/machinery/stationtrauma_water_device/outlet/universal))
+			var/obj/machinery/stationtrauma_water_device/outlet/universal/release = device
+			if(release.water_pressure <= connection.required_pressure())
+				status = "недостаточный напор"
+		data["devices"] += list(list("ref" = REF(device), "name" = "[device.name] ([device.x], [device.y])", "on" = enabled, "rate" = rate, "pressure" = pressure, "status" = status, "volume" = round(device.reagents.total_volume, 0.1), "capacity" = device.reagents.maximum_volume))
+	return data
 
-/obj/machinery/stationtrauma_pump_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	if(..())
-		return
+/obj/machinery/stationtrauma_pump_controller/ui_interact(mob/user, datum/tgui/ui)
+	var/list/data = ui_data(user)
+	var/area/zone = get_area(src)
+	var/list/html = list("<h2>[html_encode(zone.name)]</h2>", "<a href='byond://?src=[REF(src)];power=1'>[on ? "Выключить все" : "Включить все"]</a> <a href='byond://?src=[REF(src)];rate=1'>Общий расход: [flow_rate] л/с</a> <a href='byond://?src=[REF(src)];refresh=1'>Обновить</a>")
+	for(var/list/device as anything in data["devices"])
+		var/device_ref = device["ref"]
+		html += "<h3>[html_encode(device["name"])] <a href='byond://?src=[REF(src)];device=[device_ref];toggle=1'>[device["on"] ? "Выкл" : "Вкл"]</a></h3><p>Состояние: [device["status"]]<br>Буфер: [device["volume"]] / [device["capacity"]] л<br><a href='byond://?src=[REF(src)];device=[device_ref];rate=1'>Расход: [device["rate"]] л/с</a>"
+		if(!isnull(device["pressure"]))
+			html += "<br><a href='byond://?src=[REF(src)];device=[device_ref];pressure=1'>Давление: [device["pressure"]] бар</a>"
+		html += "</p><hr>"
+	if(!length(data["devices"]))
+		html += "<p>В этой зоне нет водяных устройств.</p>"
+	var/datum/browser/popup = new(user, "stationtrauma_pumps", name, 600, 650)
+	popup.set_content(html.Join())
+	popup.open()
+
+/obj/machinery/stationtrauma_pump_controller/proc/control_device(device_ref, action, value)
 	if(build_stage != 3)
 		return FALSE
-	switch(action)
-		if("power")
-			on = !on
-		if("rate")
-			var/rate = stationtrauma_parse_flow(params["rate"])
-			if(isnull(rate))
+	var/obj/machinery/device = locate(device_ref)
+	if(!(device in controlled_devices()))
+		return FALSE
+	var/list/data = ui_data(null)
+	for(var/list/entry as anything in data["devices"])
+		if(entry["ref"] != device_ref)
+			continue
+		switch(action)
+			if("power")
+				set_device(device, !entry["on"], entry["rate"])
+			if("rate")
+				var/rate = stationtrauma_parse_flow(value)
+				if(isnull(rate))
+					return FALSE
+				set_device(device, entry["on"], rate)
+			if("pressure")
+				var/pressure = stationtrauma_parse_pressure(value)
+				if(isnull(pressure) || isnull(entry["pressure"]))
+					return FALSE
+				if(istype(device, /obj/machinery/bilge_pump))
+					var/obj/machinery/bilge_pump/pump = device
+					pump.water_pressure = pressure
+				else
+					var/obj/machinery/stationtrauma_water_device/inline_pump/pressure/pump = device
+					pump.target_pressure = pressure
+			else
 				return FALSE
-			flow_rate = rate
-		else
-			return FALSE
-	apply_settings()
-	return TRUE
+		return TRUE
+	return FALSE
+
+/obj/machinery/stationtrauma_pump_controller/Topic(href, list/href_list)
+	if(..() || build_stage != 3)
+		return
+	var/device_ref = href_list["device"]
+	if(href_list["toggle"])
+		control_device(device_ref, "power")
+	else if(href_list["power"])
+		on = !on
+		apply_settings()
+	else if(href_list["rate"] || href_list["pressure"])
+		var/is_pressure = !!href_list["pressure"]
+		var/value = tgui_input_number(usr, is_pressure ? "Выходное давление, бар" : "Предел расхода, л/с", name, is_pressure ? 80 : flow_rate, is_pressure ? 100 : STATIONTRAUMA_WATER_MAX_FLOW, 0)
+		if(QDELETED(src) || isnull(value) || !usr.can_perform_action(src, ALLOW_SILICON_REACH) || build_stage != 3)
+			return
+		if(device_ref)
+			control_device(device_ref, is_pressure ? "pressure" : "rate", is_pressure ? value * 100 : value)
+		else if(!is_pressure)
+			flow_rate = stationtrauma_parse_flow(value)
+			apply_settings()
+	ui_interact(usr)
 
 /obj/machinery/stationtrauma_pump_controller/item_interaction(mob/living/user, obj/item/item, list/modifiers)
 	if(build_stage == 0 && istype(item, /obj/item/stack/cable_coil))
@@ -413,8 +522,8 @@
 		discharged_volume += tile.receive_water(reagents, flow_rate * seconds_per_tick)
 
 /obj/machinery/stationtrauma_water_device/outlet/universal/control_outlet(mob/living/user)
-	for(var/obj/machinery/stationtrauma_pump_controller/controller in range(7, src))
-		if(controller.control_group == control_group)
+	for(var/obj/machinery/stationtrauma_pump_controller/controller as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/stationtrauma_pump_controller))
+		if(src in controller.controlled_devices())
 			controller.ui_interact(user)
 			return
 	balloon_alert(user, "нужен контроллер")

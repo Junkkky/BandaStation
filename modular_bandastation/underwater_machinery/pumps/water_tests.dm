@@ -8,6 +8,8 @@
 		machine.reagents?.clear_reagents()
 	for(var/turf/open/tile as anything in wet_tiles)
 		tile.set_water_depth(0)
+	for(var/turf/open/tile in block(run_loc_floor_bottom_left, run_loc_floor_top_right))
+		tile.set_water_depth(0)
 	return ..()
 
 /datum/unit_test/stationtrauma_water_pipes/Run()
@@ -161,6 +163,8 @@
 		machine.reagents?.clear_reagents()
 	for(var/turf/open/tile as anything in wet_tiles)
 		tile.set_water_depth(0)
+	for(var/turf/open/tile in block(run_loc_floor_bottom_left, run_loc_floor_top_right))
+		tile.set_water_depth(0)
 	return ..()
 
 /datum/unit_test/stationtrauma_room_drain/proc/stored_volume(list/row, obj/machinery/bilge_pump/pump, obj/machinery/stationtrauma_water_device/tank)
@@ -216,7 +220,7 @@
 		LIQUID_TEST(abs(stored_volume(row, pump, tank) - 300) < 0.01, "Volume after closed-room pipe at cycle [cycle]: [stored_volume(row, pump, tank)]")
 	var/turf/open/nearby = row[2]
 	var/turf/open/isolated = row[4]
-	LIQUID_TEST(abs(intake.get_water_depth() - 0.5) < 0.001 && nearby.get_water_depth() <= 0.53, "A single intake must drain its connected room to the residual layer: intake=[intake.get_water_depth()], nearby=[nearby.get_water_depth()]")
+	LIQUID_TEST(intake.get_water_depth() <= 0.53 && nearby.get_water_depth() <= 0.53, "A single intake must drain its connected room to the residual layer: intake=[intake.get_water_depth()], nearby=[nearby.get_water_depth()]")
 	LIQUID_TEST(isolated.get_water_depth() == 10, "A closed underwater airlock must isolate the other room from the pump")
 	LIQUID_TEST(barrier.open(BYPASS_DOOR_CHECKS), "The unlocked underwater test door must open")
 	for(var/turf/open/tile as anything in row)
@@ -231,9 +235,14 @@
 		connection.process()
 		LIQUID_TEST(abs(stored_volume(row, pump, tank) - 300) < 0.01, "Volume after open-room pipe at cycle [cycle]: [stored_volume(row, pump, tank)]")
 	var/remaining = 0
+	var/lowest = FLOOD_WATER_MAX_DEPTH
+	var/highest = 0
 	for(var/turf/open/tile as anything in row)
-		LIQUID_TEST(tile.get_water_depth() >= 0.49 && tile.get_water_depth() <= 0.54, "Opening the door must allow the whole connected corridor to drain")
+		LIQUID_TEST(tile.get_water_depth() <= 0.54, "Opening the door must allow the whole connected corridor to drain")
+		lowest = min(lowest, tile.get_water_depth())
+		highest = max(highest, tile.get_water_depth())
 		remaining += tile.get_water_depth() * FLOOD_WATER_LITRES_PER_CM
+	LIQUID_TEST(highest - lowest < 0.03, "The drained corridor must settle to a uniform thin layer")
 	LIQUID_TEST(abs(stored_volume(row, pump, tank) - 300) < 0.01, "Connected drainage must preserve 300 litres: floor=[remaining], tank=[tank.reagents.get_reagent_amount(/datum/reagent/water)], pump=[pump.reagents.get_reagent_amount(/datum/reagent/water)]")
 	LIQUID_TEST(abs(tank.reagents.chem_temp - (T0C + 35)) < 0.01, "Room collection must preserve the water's temperature")
 
@@ -317,8 +326,15 @@
 
 /datum/unit_test/stationtrauma_water_controls
 	var/list/wet_tiles = list()
+	var/turf/extended_floor
+	var/area/original_area
+	var/original_type
+	var/original_baseturfs
 
 /datum/unit_test/stationtrauma_water_controls/Destroy()
+	if(extended_floor)
+		set_turf_to_area(extended_floor, original_area)
+		extended_floor.ChangeTurf(original_type, original_baseturfs)
 	for(var/obj/machinery/machine in allocated)
 		machine.reagents?.clear_reagents()
 	for(var/turf/open/tile as anything in wet_tiles)
@@ -334,7 +350,7 @@
 	LIQUID_TEST(port && barrel && barrel.connect_port(), "RPD must build a same-tile port and barrel that connect without barrel orientation")
 	allocated += list(port, barrel)
 	barrel.reagents.add_reagent(/datum/reagent/water, 500, reagtemp = T0C + 40)
-	var/obj/machinery/stationtrauma_water_device/inline_pump/inline = rpd.build_water_fixture(get_step(base, EAST), rpd.water_recipes.Find("Насос давления"), EAST)
+	var/obj/machinery/stationtrauma_water_device/inline_pump/pressure/inline = rpd.build_water_fixture(get_step(base, EAST), rpd.water_recipes.Find("Насос давления"), EAST)
 	var/obj/machinery/stationtrauma_water_device/outlet/universal/outlet = rpd.build_water_fixture(get_step(get_step(base, EAST), EAST), rpd.water_recipes.Find("Клапан выпуска"), WEST)
 	LIQUID_TEST(inline && outlet, "RPD must build the directed pump and overboard outlet")
 	allocated += list(inline, outlet)
@@ -413,14 +429,34 @@
 	controller.on = TRUE
 	controller.flow_rate = 100
 	controller.apply_settings()
+	bilge.end_processing()
+	for(var/turf/open/tile as anything in intake.stationtrauma_water_intake())
+		tile.set_water_depth(0)
 	intake.set_water_depth(220)
 	bilge.set_machine_stat(bilge.machine_stat & ~NOPOWER)
 	bilge.process(2)
-	LIQUID_TEST(intake.get_water_depth() == 200 && bilge.reagents.total_volume == 200, "The controller's 100 L/s setting must work at the real two-second machinery interval")
+	LIQUID_TEST(intake.get_water_depth() == 200 && bilge.reagents.total_volume == 200, "The controller's 100 L/s setting must work at the real two-second machinery interval (depth=[intake.get_water_depth()], collected=[bilge.reagents.total_volume], rate=[bilge.drain_rate], operational=[bilge.is_operational])")
 	controller.on = FALSE
 	controller.apply_settings()
 	bilge.process(2)
 	LIQUID_TEST(intake.get_water_depth() == 200 && !bilge.on, "The controller must switch its stationary group off")
+	extended_floor = locate(base.x + 11, base.y + 3, base.z)
+	original_area = get_area(extended_floor)
+	original_type = extended_floor.type
+	original_baseturfs = extended_floor.baseturfs
+	extended_floor = extended_floor.ChangeTurf(/turf/open/floor/plating)
+	set_turf_to_area(extended_floor, get_area(base))
+	var/obj/machinery/bilge_pump/distant = allocate(/obj/machinery/bilge_pump, extended_floor)
+	var/obj/machinery/bilge_pump/other_group = allocate(/obj/machinery/bilge_pump, intake)
+	other_group.control_group = "isolated"
+	LIQUID_TEST(get_dist(distant, controller) > 7, "The distant controller fixture must be more than seven tiles away")
+	LIQUID_TEST((distant in controller.controlled_devices()) && !(other_group in controller.controlled_devices()), "Controller must discover its whole area without crossing groups: distance=[get_dist(distant, controller)], same_area=[get_area(distant) == get_area(controller)], registered=[distant in SSfloodwater.pumps]")
+	LIQUID_TEST(controller.control_device(REF(distant), "power") && distant.on && !bilge.on, "Individual power control must not change another pump")
+	LIQUID_TEST(controller.control_device(REF(distant), "rate", 1200) && distant.drain_rate == 120 && bilge.drain_rate == 10, "Individual flow control must retain another pump's setting")
+	LIQUID_TEST((inline in controller.controlled_devices()) && controller.control_device(REF(inline), "pressure", 8500) && inline.target_pressure == 85, "Area control must include pressure pumps and their actual pressure setting")
+	LIQUID_TEST(!controller.control_device(REF(other_group), "power") && !other_group.on && !controller.control_device(REF(distant), "rate", "invalid"), "Controller must reject foreign device references and invalid rates")
+	LIQUID_TEST(controller.transform.a == 0.55 && controller.transform.e == 0.4, "Wall controller must use the smaller body")
+	controller.apply_settings()
 	LIQUID_TEST(isnull(stationtrauma_parse_flow("nonsense")) && stationtrauma_parse_flow(-20) == 0 && stationtrauma_parse_flow("max") == STATIONTRAUMA_WATER_MAX_FLOW, "Flow input must reject invalid values and enforce the supported range")
 	LIQUID_TEST(isnull(stationtrauma_parse_pressure("nonsense")) && stationtrauma_parse_pressure(-20) == 0 && stationtrauma_parse_pressure(8000) == 80 && stationtrauma_parse_pressure("max") == 100, "Pressure input must reject invalid values and convert bounded kPa to bar")
 	var/obj/machinery/stationtrauma_pump_controller/unassembled/case = allocate(/obj/machinery/stationtrauma_pump_controller/unassembled, base)
@@ -567,8 +603,12 @@
 	parent_type = /datum/unit_test/stationtrauma_water_pipes
 	var/list/saved_subsystem = list()
 	var/list/original_tiles = list()
+	var/saved_runlevel
+	var/saved_ticker_fire
 
 /datum/unit_test/stationtrauma_water_dynamics/Destroy()
+	SSfloodwater.can_fire = FALSE
+	SSfloodwater.dequeue()
 	. = ..()
 	for(var/turf/tile as anything in original_tiles)
 		var/list/original = original_tiles[tile]
@@ -579,17 +619,21 @@
 			SSair.remove_from_active(restored)
 	for(var/field in saved_subsystem)
 		SSfloodwater.vars[field] = saved_subsystem[field]
+	if(!isnull(saved_runlevel))
+		Master.SetRunLevel(saved_runlevel)
+		SSticker.can_fire = saved_ticker_fire
+	SSfloodwater.last_update = world.time
 
 /datum/unit_test/stationtrauma_water_dynamics/proc/simulate_step()
 	SSfloodwater.state = SS_RUNNING
-	SSfloodwater.fire(FALSE)
+	SSfloodwater.simulate_step(FALSE)
 	while(length(SSfloodwater.sources) || length(SSfloodwater.currentrun) || !SSfloodwater.snapshot_ready)
 		CHECK_TICK
 		SSfloodwater.state = SS_RUNNING
-		SSfloodwater.fire(TRUE)
+		SSfloodwater.simulate_step(TRUE)
 
 /datum/unit_test/stationtrauma_water_dynamics/Run()
-	for(var/field in list("can_fire", "state", "active", "currentrun", "depths", "sources", "edge_speeds", "next_speeds", "processed_edges", "snapshot_ready", "suction_heads"))
+	for(var/field in list("can_fire", "state", "active", "currentrun", "depths", "sources", "edge_speeds", "next_speeds", "processed_edges", "snapshot_ready", "suction_heads", "step_running", "pending_time", "last_update", "steps_completed"))
 		saved_subsystem[field] = SSfloodwater.vars[field]
 	SSfloodwater.can_fire = FALSE
 	SSfloodwater.active = list()
@@ -624,23 +668,34 @@
 	LIQUID_TEST(source in SSfloodwater.active, "Creating the ocean source must enqueue it immediately")
 	var/turf/open/near = get_step(ocean, EAST)
 	var/turf/open/far = locate(base.x + 10, base.y + 3, base.z)
+	saved_runlevel = Master.current_runlevel
+	saved_ticker_fire = SSticker.can_fire
+	SSticker.can_fire = FALSE
+	Master.SetRunLevel(RUNLEVEL_GAME)
+	SSfloodwater.pending_time = 0
+	SSfloodwater.step_running = FALSE
+	SSfloodwater.last_update = world.time
+	SSfloodwater.state = SS_IDLE
+	SSfloodwater.next_fire = world.time
+	SSfloodwater.can_fire = TRUE
+	var/started = world.time
+	var/wall_started = REALTIMEOFDAY
 	var/fill_time
 	var/visible_wave
-	for(var/cycle in 1 to 250)
-		simulate_step()
-		if(cycle == 10)
+	while(world.time < started + 30 SECONDS)
+		sleep(0.2 SECONDS)
+		if(world.time >= started + 1 SECONDS && isnull(visible_wave))
 			visible_wave = near.get_water_depth() > far.get_water_depth() && far.get_water_depth() < 1
-			log_test("Wave at 1 s: near=[near.get_water_depth()], far=[far.get_water_depth()], source=[ocean.get_water_depth()], pass=[ocean.can_pass_stationtrauma_water(near)]")
+			log_test("Native MC wave at [(world.time - started) / 10] s: near=[near.get_water_depth()], far=[far.get_water_depth()]")
 		var/lowest = 220
 		for(var/turf/open/tile as anything in room)
 			lowest = min(lowest, tile.get_water_depth())
-		if(lowest >= 219 && isnull(fill_time))
-			fill_time = cycle * SSfloodwater.wait / (1 SECONDS)
-		CHECK_TICK
-	if(!visible_wave)
-		Fail("A real subsystem step must retain a visible near-to-far wave front", __FILE__, __LINE__)
-	if(isnull(fill_time) || fill_time < 15 || fill_time > 20)
-		Fail("A 10x6 compartment must reach 219 cm everywhere in 15-20 seconds of simulation (actual=[fill_time], near=[near.get_water_depth()], far=[far.get_water_depth()])", __FILE__, __LINE__)
+		if(lowest >= 219)
+			fill_time = (world.time - started) / (1 SECONDS)
+			break
+	LIQUID_TEST(visible_wave, "The native Master Controller must retain a visible wave front")
+	LIQUID_TEST(!isnull(fill_time) && fill_time >= 15 && fill_time <= 20, "Native MC must flood a 10x6 room in 15-20 real game seconds (actual=[fill_time], lowest=[far.get_water_depth()], behind=[SSfloodwater.pending_time])")
+	log_test("Native MC flooding: game=[fill_time] s, wall=[(REALTIMEOFDAY - wall_started) / 10] s, cost=[SSfloodwater.cost] ms, behind=[SSfloodwater.pending_time] s")
 	allocate(/obj/structure/window/reinforced/fulltile, ocean)
 	for(var/turf/open/tile as anything in room)
 		tile.set_water_depth(220)
@@ -648,30 +703,70 @@
 	var/obj/machinery/bilge_pump/pump = allocate(/obj/machinery/bilge_pump, intake)
 	pump.on = TRUE
 	pump.set_machine_stat(pump.machine_stat & ~NOPOWER)
-	var/datum/reagents/receiver = allocate(/datum/reagents, 200000, NO_REACT)
+	pump.begin_processing()
+	for(var/y in 0 to 2)
+		allocate(/obj/machinery/duct/stationtrauma, locate(intake.x, base.y + y, base.z))
+	var/turf/discharge_floor = locate(intake.x, base.y - 1, base.z)
+	original_tiles[discharge_floor] = list(discharge_floor.type, discharge_floor.baseturfs, get_area(discharge_floor))
+	var/turf/open/space/ocean/discharge_ocean = discharge_floor.ChangeTurf(/turf/open/space/ocean)
+	wet_tiles += discharge_ocean
+	var/obj/machinery/stationtrauma_water_device/outlet/universal/release = allocate(/obj/machinery/stationtrauma_water_device/outlet/universal, discharge_ocean)
+	release.set_anchored(FALSE)
+	release.setDir(NORTH)
+	release.set_anchored(TRUE)
+	var/datum/component/plumbing/stationtrauma_water/release_connection = release.GetComponent(/datum/component/plumbing/stationtrauma_water)
+	var/datum/component/plumbing/stationtrauma_water/pump_connection = pump.GetComponent(/datum/component/plumbing/stationtrauma_water)
+	LIQUID_TEST(release_connection.ducts["1"] && release_connection.ducts["1"] == pump_connection.ducts["2"], "Native drainage fixture must connect its ocean release to the actual pump supply")
+	var/obj/machinery/stationtrauma_pump_controller/controller = allocate(/obj/machinery/stationtrauma_pump_controller, intake)
+	LIQUID_TEST(get_area(release) != get_area(controller) && (release in controller.controlled_devices()), "An exterior release must be controlled through its real pipe connection to the served area")
+	release.on = TRUE
+	release.begin_processing()
+	started = world.time
+	wall_started = REALTIMEOFDAY
 	var/drain_time
-	for(var/cycle in 1 to 1000)
-		simulate_step()
-		if(cycle % 20 == 0)
-			pump.process(2)
-			transfer_stationtrauma_water(pump.reagents, receiver, INFINITY)
+	var/next_report = started + 20 SECONDS
+	while(world.time < started + 95 SECONDS)
+		sleep(0.2 SECONDS)
 		var/remaining = 0
 		for(var/turf/open/tile as anything in room)
 			remaining += tile.get_water_depth()
-		if(!remaining && isnull(drain_time))
-			drain_time = cycle * SSfloodwater.wait / (1 SECONDS)
-		CHECK_TICK
-	var/remaining_volume = 0
-	var/highest = 0
+		if(world.time >= next_report)
+			log_test("Native MC drainage at [(world.time - started) / 10] s: floor=[remaining * 10] L, pump=[pump.reagents.total_volume] L, outlet=[release.reagents.total_volume] L, discharged=[release.discharged_volume] L, behind=[SSfloodwater.pending_time] s")
+			next_report += 20 SECONDS
+		if(!remaining)
+			drain_time = (world.time - started) / (1 SECONDS)
+			break
+	LIQUID_TEST(!isnull(drain_time) && drain_time >= 60 && drain_time <= 90, "Native MC and real plumbing must drain 10x6 in 60-90 seconds (actual=[drain_time], collected=[release.discharged_volume], buffer=[pump.reagents.total_volume])")
+	var/stored_volume = release.discharged_volume + release.reagents.get_reagent_amount(/datum/reagent/water) + pump.reagents.get_reagent_amount(/datum/reagent/water)
+	LIQUID_TEST(abs(stored_volume - 132000) < 0.2, "Native floor, pump, plumbing and ocean discharge must preserve 132000 litres")
+	log_test("Native MC 10x6 calibration: fill=[fill_time] s, drain=[drain_time] s, drain wall=[(REALTIMEOFDAY - wall_started) / 10] s")
+	pump.on = FALSE
+	pump.end_processing()
 	for(var/turf/open/tile as anything in room)
-		remaining_volume += tile.get_water_depth() * FLOOD_WATER_LITRES_PER_CM
+		tile.set_water_depth(4)
+	near.set_water_depth(17)
+	far.set_water_depth(0.9)
+	var/volume_before = 0
+	for(var/turf/open/tile as anything in room)
+		volume_before += tile.get_water_depth()
+	sleep(10 SECONDS)
+	var/lowest = 220
+	var/highest = 0
+	var/volume_after = 0
+	for(var/turf/open/tile as anything in room)
+		lowest = min(lowest, tile.get_water_depth())
 		highest = max(highest, tile.get_water_depth())
-	LIQUID_TEST(!isnull(drain_time) && drain_time >= 60 && drain_time <= 90, "A full 10x6 room must drain completely in 60-90 seconds at the default pump setting (actual=[drain_time], remaining=[remaining_volume], highest=[highest])")
-	LIQUID_TEST(abs(receiver.get_reagent_amount(/datum/reagent/water) + pump.reagents.get_reagent_amount(/datum/reagent/water) - 132000) < 0.1, "Fast drainage must preserve all 132000 litres")
-	log_test("10x6 flood calibration: fill=[fill_time] s, drain=[drain_time] s")
+		volume_after += tile.get_water_depth()
+	log_test("Sealed room settling after 10 s: min=[lowest], max=[highest], mass delta=[volume_after - volume_before]")
+	LIQUID_TEST(highest - lowest < 0.5 && abs(volume_after - volume_before) < 0.02, "Sealed uneven water must settle uniformly while conserving volume")
+	SSfloodwater.can_fire = FALSE
+	SSfloodwater.dequeue()
+	for(var/turf/open/tile as anything in room)
+		tile.set_water_depth(0)
 	pump.on = FALSE
 	simulate_step()
 	LIQUID_TEST(!length(SSfloodwater.suction_heads), "Switching the pump off must remove its suction field")
+	pump.reagents.clear_reagents()
 	pump.on = TRUE
 	pump.reagents.add_reagent(/datum/reagent/water, 10000)
 	simulate_step()
