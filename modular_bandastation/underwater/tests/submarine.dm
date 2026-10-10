@@ -38,8 +38,10 @@
 	SUBMARINE_TEST(vessel && base && wreck && console, "Both fixed points and the vessel's console must exist")
 	console.prepare_vessel()
 	SUBMARINE_TEST(vessel.registered && SSshuttle.getShuttle(console.shuttleId) == vessel, "Manual template loading must register and link the mobile port")
-	SUBMARINE_TEST(vessel.width == 16 && vessel.height == 10, "The rebuilt interior and its western airlock must belong to the mobile port")
+	SUBMARINE_TEST(vessel.width == 17 && vessel.height == 11, "The rebuilt interior and its western airlock must belong to the mobile port")
 	SUBMARINE_TEST(vessel.get_docked() == base, "The vessel must start docked at the base")
+	var/obj/machinery/stationtrauma_water_device/outlet/universal/external_outlet = locate() in locate(base.x + 4, base.y + 10, base.z)
+	SUBMARINE_TEST(external_outlet && istype(get_area(external_outlet), /area/shuttle/stationtrauma), "The exterior release valve must be part of the moving vessel")
 	SUBMARINE_TEST(reactor && reactor.powernet, "The vessel must carry a reactor connected to its real cable network")
 	var/obj/machinery/stationtrauma_water_device/barrel/water_tank = locate() in locate(base.x + 2, base.y + 1, base.z)
 	var/obj/machinery/stationtrauma_water_device/barrel/receiving_tank = locate() in locate(base.x + 6, base.y + 1, base.z)
@@ -80,6 +82,7 @@
 	vessel.timer = world.time
 	vessel.check()
 	SUBMARINE_TEST(vessel.get_docked() == wreck && vessel.mode == SHUTTLE_IDLE, "The timed route must arrive at the wreck")
+	SUBMARINE_TEST(external_outlet.x == wreck.x + 4 && external_outlet.y == wreck.y + 10 && istype(get_turf(external_outlet), /turf/open/space/ocean), "The exterior valve must move to an ocean tile at the destination")
 	var/turf/open/arrived_wet = get_turf(cargo)
 	SUBMARINE_TEST(arrived_wet.get_water_depth() == 80, "Finite water must travel with its cell without becoming an ocean source")
 	var/datum/component/floodwater/arrived_water = arrived_wet.GetComponent(/datum/component/floodwater)
@@ -102,6 +105,7 @@
 	vessel.timer = world.time
 	vessel.check()
 	SUBMARINE_TEST(vessel.get_docked() == base && crew.x == base.x + 4, "Crew must return with the same interior")
+	SUBMARINE_TEST(external_outlet.x == base.x + 4 && external_outlet.y == base.y + 10, "The exterior valve must survive the return trip")
 	var/turf/open/returned_wet = get_turf(cargo)
 	SUBMARINE_TEST(returned_wet.get_water_depth() == 80, "Water must survive the return trip too")
 	var/datum/component/floodwater/returned_water = returned_wet.GetComponent(/datum/component/floodwater)

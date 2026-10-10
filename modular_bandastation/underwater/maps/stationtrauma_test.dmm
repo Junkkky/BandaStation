@@ -49,6 +49,17 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"dm" = (
+/obj/machinery/stationtrauma_water_device/connector,
+/obj/machinery/stationtrauma_water_device/barrel{
+	initial_water = 1000;
+	start_connected = 1;
+	valve_open = 1
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "dq" = (
 /obj/item/stationtrauma_control_rod,
 /turf/open/floor/plating{
@@ -122,6 +133,14 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"is" = (
+/obj/machinery/stationtrauma_water_device/inline_pump/pressure{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "iE" = (
 /obj/machinery/atmospherics/pipe/smart/simple{
 	dir = 1
@@ -156,6 +175,12 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"nQ" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 8
+	},
+/turf/open/space/ocean,
+/area/space/ocean)
 "oF" = (
 /obj/machinery/atmospherics/pipe/smart/simple{
 	dir = 4
@@ -170,8 +195,23 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"oX" = (
+/obj/machinery/stationtrauma_water_device/valve/manual{
+	dir = 4
+	},
+/obj/item/stack/tile/iron,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "pD" = (
 /obj/structure/cable,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
+"qp" = (
+/obj/item/electronics/stationtrauma_pump_controller,
 /turf/open/floor/plating{
 	baseturfs = /turf/open/space/ocean
 	},
@@ -193,6 +233,12 @@
 "sd" = (
 /obj/machinery/bilge_pump/plumbed,
 /turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
+"tk" = (
+/obj/machinery/duct/stationtrauma,
+/turf/closed/wall{
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
@@ -286,6 +332,14 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"zz" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 8
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "zA" = (
 /obj/machinery/stationtrauma_water_device/valve,
 /obj/item/stack/tile/iron,
@@ -319,6 +373,21 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"CU" = (
+/obj/item/paper{
+	name = "Осушение отсека";
+	default_raw_text = "Закройте восточную течь. Контроллер помпы — (25,9), расход 100 л/с. Бочка 50 000 л на порту — (26,8), клапан открыт. Откройте трубный вентиль (28,8), включите забортный выпуск (29,8) для сброса в океан. Помпа забирает воду рядом с собой, дальней воде нужно время дойти потоком. Осушение до нуля оставляет случайные визуальные лужи. Аварийный насос с баком 200 л работает без крепления и направления; ЛКМ включает сбор и слив рядом. Двери должны быть закрыты, иначе океан продолжит поступать. Водяной RPD находится в насосной. Все трубы и кабели открыты на plating."
+	},
+/obj/machinery/stationtrauma_water_device/barrel{
+	name = "испытательный приёмник 50 000 л";
+	capacity = 50000;
+	start_connected = 1;
+	valve_open = 1
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "DC" = (
 /obj/item/weldingtool,
 /turf/open/floor/plating{
@@ -338,6 +407,12 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"EU" = (
+/obj/machinery/stationtrauma_water_device/connector,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "Fy" = (
 /obj/machinery/atmospherics/pipe/smart/simple{
 	dir = 1
@@ -350,6 +425,14 @@
 /obj/structure/flora/underwater/glowing,
 /turf/open/space/ocean,
 /area/space/ocean)
+"Gw" = (
+/obj/item/stack/cable_coil{
+	amount = 30
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "Hp" = (
 /obj/machinery/bilge_pump{
 	dir = 4
@@ -362,6 +445,12 @@
 /obj/structure/flora/underwater/coral,
 /turf/open/space/ocean,
 /area/space/ocean)
+"If" = (
+/obj/item/wallframe/stationtrauma_pump_controller,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "Ig" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w,
 /obj/machinery/duct/stationtrauma{
@@ -382,6 +471,22 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"JP" = (
+/obj/item/paper{
+	name = "Осушение отсека";
+	default_raw_text = "Закройте восточную течь. Контроллер помпы — (25,9), расход 100 л/с. Бочка 50 000 л на порту — (26,8), клапан открыт. Откройте трубный вентиль (28,8), включите забортный выпуск (29,8) для сброса в океан. Помпа забирает воду рядом с собой, дальней воде нужно время дойти потоком. Осушение до нуля оставляет случайные визуальные лужи. Аварийный насос с баком 200 л работает без крепления и направления; ЛКМ включает сбор и слив рядом. Двери должны быть закрыты, иначе океан продолжит поступать. Водяной RPD находится в насосной. Все трубы и кабели открыты на plating."
+	},
+/obj/machinery/stationtrauma_water_device/barrel{
+	name = "испытательный приёмник 50 000 л";
+	capacity = 50000;
+	start_connected = 1;
+	valve_open = 1
+	},
+/obj/machinery/stationtrauma_water_device/connector,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "KT" = (
 /obj/machinery/bilge_pump{
 	dir = 8;
@@ -391,6 +496,13 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"KU" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 4;
+	control_group = "airlock"
+	},
+/turf/open/space/ocean,
+/area/space/ocean)
 "LO" = (
 /obj/machinery/atmospherics/pipe/smart/simple{
 	dir = 6
@@ -409,6 +521,22 @@
 /area/stationtrauma_test)
 "MZ" = (
 /obj/machinery/bilge_pump/portable/plumbed{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
+"NG" = (
+/obj/machinery/stationtrauma_pump_controller{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
+"Ot" = (
+/obj/machinery/stationtrauma_water_device/valve/pressure_gate{
 	dir = 4
 	},
 /turf/open/floor/plating{
@@ -437,6 +565,15 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"Qm" = (
+/obj/machinery/stationtrauma_pump_controller{
+	dir = 4;
+	control_group = "airlock"
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "QE" = (
 /obj/item/stationtrauma_water_pipe_fitting{
 	bridges_levels = 1
@@ -459,6 +596,13 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"SE" = (
+/obj/item/pipe_dispenser/stationtrauma,
+/obj/machinery/stationtrauma_water_device/connector,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "TD" = (
 /obj/machinery/atmospherics/pipe/smart/simple{
 	dir = 4
@@ -468,8 +612,31 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"TF" = (
+/obj/item/screwdriver,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
 "TX" = (
 /obj/item/wrench,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
+"UZ" = (
+/obj/machinery/stationtrauma_water_device/valve/passive_gate{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
+"Vc" = (
+/obj/machinery/stationtrauma_water_device/valve/manual{
+	dir = 4;
+	valve_open = 1
+	},
 /turf/open/floor/plating{
 	baseturfs = /turf/open/space/ocean
 	},
@@ -481,6 +648,14 @@
 	capacity = 50000;
 	start_connected = 1;
 	valve_open = 1
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
+"WR" = (
+/obj/machinery/stationtrauma_pump_controller{
+	dir = 8
 	},
 /turf/open/floor/plating{
 	baseturfs = /turf/open/space/ocean
@@ -514,6 +689,14 @@
 	affected_by_parts = 0
 	},
 /obj/structure/cable,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
+"ZQ" = (
+/obj/machinery/stationtrauma_water_device/valve/manual{
+	dir = 4
+	},
 /turf/open/floor/plating{
 	baseturfs = /turf/open/space/ocean
 	},
@@ -587,7 +770,7 @@ uR
 uR
 uR
 uR
-uR
+KU
 uR
 uR
 uR
@@ -613,7 +796,7 @@ lR
 lR
 lR
 vK
-qr
+tk
 lR
 lR
 lR
@@ -663,7 +846,7 @@ oU
 wA
 lR
 wA
-dK
+Qm
 wA
 wA
 wA
@@ -717,7 +900,7 @@ lR
 wA
 wA
 wA
-wA
+WR
 wA
 wA
 wA
@@ -767,9 +950,9 @@ wA
 wA
 vK
 wA
-wA
-AM
-YU
+If
+SE
+TF
 wA
 DY
 yL
@@ -793,7 +976,7 @@ wA
 wA
 lR
 wA
-wA
+qp
 wA
 ik
 MZ
@@ -819,7 +1002,7 @@ wA
 wA
 lR
 wA
-wA
+Gw
 wA
 DC
 CL
@@ -849,7 +1032,7 @@ wA
 wA
 Ro
 Ab
-zA
+oX
 wA
 lR
 uR
@@ -901,7 +1084,7 @@ wA
 wA
 wA
 wA
-qu
+zz
 wA
 lR
 uR
@@ -998,7 +1181,7 @@ wA
 dq
 wA
 wA
-wA
+dm
 lR
 wA
 wA
@@ -1024,7 +1207,7 @@ wA
 uV
 wA
 wA
-wA
+dR
 lR
 wA
 wA
@@ -1050,7 +1233,7 @@ wA
 wA
 ae
 wA
-wA
+dR
 lR
 wA
 wA
@@ -1076,7 +1259,7 @@ LO
 Fy
 eM
 Mm
-wA
+is
 lR
 wA
 wA
@@ -1102,7 +1285,7 @@ oF
 wA
 pD
 oF
-wA
+dR
 vK
 wA
 wA
@@ -1128,7 +1311,7 @@ oF
 al
 pD
 oF
-wA
+UZ
 lR
 wA
 wA
@@ -1154,12 +1337,12 @@ TD
 yv
 pD
 oF
-wA
+dR
 lR
 wA
 wA
 wA
-DI
+wA
 dR
 wA
 yL
@@ -1180,13 +1363,13 @@ oF
 OL
 pD
 oF
-wA
+Ot
 lR
 wA
 wA
 wA
-lZ
-Vn
+JP
+dR
 wA
 wA
 lR
@@ -1206,7 +1389,7 @@ xj
 eB
 Zy
 oF
-wA
+dR
 lR
 wA
 wA
@@ -1232,13 +1415,13 @@ oF
 OL
 wA
 oF
-wA
+dR
 lR
 wA
 wA
 wA
-wA
-kf
+NG
+Vc
 wA
 wA
 lR
@@ -1258,13 +1441,13 @@ Xp
 Ig
 iE
 zx
-lR
+tk
 lR
 lR
 lR
 vK
 lR
-kv
+tk
 lR
 lR
 lR
@@ -1284,13 +1467,13 @@ uR
 bR
 uR
 uR
+nQ
 uR
 uR
 uR
 uR
 uR
-uR
-uR
+nQ
 uR
 uR
 uR

@@ -15,8 +15,10 @@
 		if(!valve.valve_open)
 			return
 	var/rate = 5000
-	if(istype(machine, /obj/machinery/stationtrauma_water_device/outlet/overboard))
-		var/obj/machinery/stationtrauma_water_device/outlet/overboard/outlet = machine
+	if(istype(machine, /obj/machinery/stationtrauma_water_device/outlet/universal))
+		var/obj/machinery/stationtrauma_water_device/outlet/universal/outlet = machine
+		if(!outlet.on)
+			return
 		rate = outlet.flow_rate
 	process_request(rate * SSFLUIDS_DT, /datum/reagent/water, dir)
 
@@ -31,7 +33,71 @@
 	return ..(amount, /datum/reagent/water, net)
 
 /datum/component/plumbing/stationtrauma_water/transfer_to(datum/component/plumbing/target, amount, reagent, datum/ductnet/net, round_robin = TRUE)
-	return transfer_stationtrauma_water(reagents, target.recipient_reagents_holder(), amount)
+	if(target == src)
+		return 0
+	var/datum/component/plumbing/stationtrauma_water/recipient = target
+	var/pressure = output_pressure()
+	if(istype(recipient))
+		var/back_pressure = recipient.required_pressure()
+		if(pressure < back_pressure || (pressure == back_pressure && (istype(target.parent, /obj/machinery/stationtrauma_water_device/valve/passive_gate) || istype(target.parent, /obj/machinery/stationtrauma_water_device/outlet/universal))))
+			return 0
+	var/existing_volume = target.recipient_reagents_holder().get_reagent_amount(/datum/reagent/water)
+	var/transferred = transfer_stationtrauma_water(reagents, target.recipient_reagents_holder(), amount)
+	if(transferred && istype(target.parent, /obj/machinery/stationtrauma_water_device))
+		var/obj/machinery/stationtrauma_water_device/machine = target.parent
+		machine.water_pressure = existing_volume ? max(machine.water_pressure, pressure) : pressure
+	return transferred
+
+/datum/component/plumbing/stationtrauma_water/proc/output_pressure()
+	if(!reagents.get_reagent_amount(/datum/reagent/water))
+		return 0
+	if(istype(parent, /obj/machinery/bilge_pump))
+		var/obj/machinery/bilge_pump/pump = parent
+		return pump.on ? pump.water_pressure : STATIONTRAUMA_WATER_ATMOSPHERE
+	var/obj/machinery/stationtrauma_water_device/machine = parent
+	if(istype(machine, /obj/machinery/stationtrauma_water_device/connector))
+		var/obj/machinery/stationtrauma_water_device/connector/port = machine
+		if(istype(port.attached, /obj/machinery/bilge_pump/portable))
+			var/obj/machinery/bilge_pump/portable/pump = port.attached
+			return pump.discharging ? pump.water_pressure : 0
+		if(istype(port.attached, /obj/machinery/stationtrauma_water_device/barrel))
+			var/obj/machinery/stationtrauma_water_device/barrel/barrel = port.attached
+			return STATIONTRAUMA_WATER_ATMOSPHERE + 0.2 * barrel.reagents.get_reagent_amount(/datum/reagent/water) / barrel.capacity
+	if(istype(machine, /obj/machinery/stationtrauma_water_device/inline_pump/pressure))
+		var/obj/machinery/stationtrauma_water_device/inline_pump/pressure/pump = machine
+		return pump.on && pump.is_operational ? pump.target_pressure : STATIONTRAUMA_WATER_ATMOSPHERE
+	if(istype(machine, /obj/machinery/stationtrauma_water_device/valve/pressure_gate))
+		var/obj/machinery/stationtrauma_water_device/valve/pressure_gate/gate = machine
+		return min(machine.water_pressure, gate.target_pressure)
+	return machine.water_pressure
+
+/datum/component/plumbing/stationtrauma_water/proc/required_pressure()
+	if(istype(parent, /obj/machinery/stationtrauma_water_device/outlet/universal))
+		var/turf/open/tile = get_turf(parent)
+		var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
+		return water?.infinite_source ? STATIONTRAUMA_WATER_OCEAN_PRESSURE : STATIONTRAUMA_WATER_ATMOSPHERE + tile.get_water_depth() * 0.001
+	if(istype(parent, /obj/machinery/stationtrauma_water_device/valve/passive_gate))
+		var/pressure = 0
+		for(var/direction in GLOB.cardinals)
+			if(!(supply_connects & direction))
+				continue
+			var/datum/ductnet/output = ducts["[direction]"]
+			for(var/datum/component/plumbing/stationtrauma_water/supplier as anything in output?.suppliers)
+				if(supplier != src)
+					pressure = max(pressure, supplier.output_pressure())
+		return pressure
+	if(istype(parent, /obj/machinery/stationtrauma_water_device) && !istype(parent, /obj/machinery/stationtrauma_water_device/inline_pump) && !istype(parent, /obj/machinery/stationtrauma_water_device/connector))
+		var/obj/machinery/stationtrauma_water_device/machine = parent
+		return reagents.get_reagent_amount(/datum/reagent/water) ? machine.water_pressure : 0
+	return 0
+
+/datum/component/plumbing/stationtrauma_water/manual_valve
+	demand_connects = NORTH | SOUTH
+	supply_connects = NORTH | SOUTH
+
+/datum/component/plumbing/stationtrauma_water/directional
+	demand_connects = NORTH
+	supply_connects = SOUTH
 
 /datum/component/plumbing/stationtrauma_water/supply
 	demand_connects = NONE
@@ -58,6 +124,7 @@
 	var/initial_temperature = T0C + 4
 	var/water_level = 3
 	var/plumbing_type = /datum/component/plumbing/stationtrauma_water
+	var/water_pressure = STATIONTRAUMA_WATER_ATMOSPHERE + 0.2
 
 /obj/machinery/stationtrauma_water_device/Initialize(mapload, new_level)
 	if(new_level in 1 to 5)
@@ -74,6 +141,13 @@
 /obj/machinery/stationtrauma_water_device/Destroy()
 	release_stationtrauma_water(src)
 	return ..()
+
+/obj/machinery/stationtrauma_water_device/update_icon_state()
+	. = ..()
+	if(icon == 'icons/obj/machines/atmospherics/binary_devices.dmi')
+		pixel_x = 0
+		pixel_y = 0
+		PIPING_LAYER_SHIFT(src, water_level)
 
 /obj/machinery/stationtrauma_water_device/examine(mob/user)
 	. = ..()
@@ -101,6 +175,18 @@
 	. = ..()
 	. += span_notice("Клапан [valve_open ? "открыт" : "закрыт"].")
 
+/obj/machinery/stationtrauma_water_device/valve/manual
+	name = "ручной водяной вентиль"
+	desc = "ЛКМ — открыть или закрыть. Пропускает воду в обе стороны между двумя концами. Ключ — снять; Alt+ЛКМ — повернуть после снятия."
+	icon = 'icons/obj/machines/atmospherics/binary_devices.dmi'
+	icon_state = "mvalve_map-3"
+	color = STATIONTRAUMA_WATER_COLOR
+	plumbing_type = /datum/component/plumbing/stationtrauma_water/manual_valve
+
+/obj/machinery/stationtrauma_water_device/valve/manual/update_icon_state()
+	. = ..()
+	icon_state = "mvalve_[valve_open ? "on" : "off"]-[water_level in list(2, 4) ? 2 : 1]"
+
 /obj/machinery/stationtrauma_water_device/outlet
 	name = "выпуск водяного контура"
 	desc = "ЛКМ — включить или выключить. Выпускает до 100 л/с на пол под собой; требует питания АПЦ. Вход трубы — с запада."
@@ -111,6 +197,9 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 5
 	var/on = FALSE
+	var/flow_rate = 1800
+	var/control_group = "water"
+	var/discharged_volume = 0
 
 /obj/machinery/stationtrauma_water_device/outlet/attack_hand(mob/living/user, list/modifiers)
 	if(..())

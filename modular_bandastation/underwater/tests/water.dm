@@ -80,7 +80,7 @@
 	second.set_water_depth(0)
 	third.set_water_depth(0)
 	first.set_water_depth(100)
-	for(var/cycle in 1 to 80)
+	for(var/cycle in 1 to 800)
 		for(var/turf/open/tile as anything in row)
 			var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
 			water?.spread()
@@ -233,8 +233,9 @@
 	WATER_TEST(space_plane.get_relay_to(MUTATE_PLANE(RENDER_PLANE_UNLIT_GAME, first)) && space_plane.get_relay_to(MUTATE_PLANE(RENDER_PLANE_LIGHT_MASK, first)), "Darkening the ocean must preserve the parallax backdrop and visibility mask")
 	var/turf/normal_level
 	for(var/level in 1 to world.maxz)
-		if(!GLOB.ocean_parallax_levels["[level]"])
-			normal_level = locate(1, 1, level)
+		var/turf/candidate = locate(round(world.maxx / 2), round(world.maxy / 2), level)
+		if(!GLOB.ocean_parallax_levels["[level]"] && !istype(candidate, /turf/open/space/transit))
+			normal_level = candidate
 			break
 	WATER_TEST(normal_level, "The render check needs an ordinary level outside the ocean")
 	diver.forceMove(normal_level)

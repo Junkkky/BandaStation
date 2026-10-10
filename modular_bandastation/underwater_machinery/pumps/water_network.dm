@@ -12,9 +12,31 @@
 	var/bridges_levels = FALSE
 
 /obj/machinery/duct/stationtrauma/manifold
-	name = "межуровневый водяной коллектор"
+	name = "водяной адаптер уровней"
 	desc = "Объединяет соседние водяные линии всех пяти уровней. Занимает все уровни на своей клетке. Ключ — снять."
 	bridges_levels = TRUE
+	pipe_shape = "straight"
+	icon = 'icons/obj/pipes_n_cables/manifold.dmi'
+	icon_state = "manifoldlayer_center"
+	color = STATIONTRAUMA_WATER_COLOR
+
+/obj/machinery/duct/stationtrauma/manifold/update_icon_state()
+	. = ..()
+	icon_state = "manifoldlayer_center"
+
+/obj/machinery/duct/stationtrauma/manifold/update_overlays()
+	. = ..()
+	for(var/atom/movable/neighbor as anything in neighbours)
+		var/level
+		if(istype(neighbor, /obj/machinery/duct/stationtrauma))
+			var/obj/machinery/duct/stationtrauma/pipe = neighbor
+			level = pipe.water_level
+		else
+			var/datum/component/plumbing/stationtrauma_water/component = neighbor.GetComponent(/datum/component/plumbing/stationtrauma_water)
+			level = stationtrauma_water_level(component?.ducting_layer)
+		var/mutable_appearance/branch = mutable_appearance('icons/obj/pipes_n_cables/layer_manifold_underlays.dmi', "intact_[get_dir(src, neighbor)]_[level]", FLOAT_LAYER)
+		branch.color = STATIONTRAUMA_WATER_COLOR
+		. += branch
 
 /obj/machinery/duct/stationtrauma/straight
 	pipe_shape = "straight"
@@ -152,7 +174,8 @@
 
 /obj/item/stationtrauma_water_pipe_fitting/update_icon_state()
 	. = ..()
-	icon_state = "48_[water_level]"
+	icon = bridges_levels ? 'icons/obj/pipes_n_cables/pipe_item.dmi' : 'icons/obj/pipes_n_cables/!pipes_bitmask.dmi'
+	icon_state = bridges_levels ? "manifoldlayer" : "48_[water_level]"
 
 /obj/item/stationtrauma_water_pipe_fitting/examine(mob/user)
 	. = ..()
@@ -160,7 +183,7 @@
 
 /obj/item/stationtrauma_water_pipe_fitting/wrench_act(mob/living/user, obj/item/tool)
 	var/turf/tile = get_turf(src)
-	if(!isopenturf(tile) || ducting_layer_check(tile, bridges_levels ? (31 << 5) : STATIONTRAUMA_WATER_LAYER_BIT(water_level)))
+	if((!isopenturf(tile) && !isclosedturf(tile)) || ducting_layer_check(tile, bridges_levels ? (31 << 5) : STATIONTRAUMA_WATER_LAYER_BIT(water_level)))
 		balloon_alert(user, "место занято")
 		return ITEM_INTERACT_BLOCKING
 	var/path = bridges_levels ? /obj/machinery/duct/stationtrauma/manifold : /obj/machinery/duct/stationtrauma

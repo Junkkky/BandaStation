@@ -47,7 +47,7 @@
 				reservoir = found
 			else if(istype(found, /obj/machinery/stationtrauma_water_device/valve) && tile.x == origin.x + 12 && tile.y == origin.y + 6)
 				valve = found
-			else if(found.type == /obj/machinery/stationtrauma_water_device/outlet)
+			else if(found.type == /obj/machinery/stationtrauma_water_device/outlet/universal && tile.x == origin.x + 14 && tile.y == origin.y + 6)
 				outlet = found
 	MAP_TEST(pumps == 4, "The test map must provide three stationary pumps and one portable pump")
 	MAP_TEST(drain_receiver && drain_receiver.reagents.maximum_volume == 50000, "The drainage room must have its mapped receiver capacity")
@@ -55,7 +55,7 @@
 	var/list/drain_connections = drain_port.GetComponents(/datum/component/plumbing/stationtrauma_water)
 	MAP_TEST(length(drain_connections) == 1, "The drainage receiver must have one plumbing component")
 	var/datum/component/plumbing/stationtrauma_water/drain_connection = drain_connections[1]
-	MAP_TEST(drain_connection.ducts["8"], "The room pump must connect to its receiver through a real duct")
+	MAP_TEST(drain_connection.ducts["2"], "The room pump must connect to its receiver through a real duct")
 	MAP_TEST(doors == 6, "The test map must provide compartment doors, a two-door exit, and a controlled breach")
 	MAP_TEST(ocean_tiles > 200, "The test template must include an external ocean")
 	MAP_TEST(reactor && cooling && exchanger, "The rig must contain a reactor and a real gas cooling loop")
@@ -79,6 +79,30 @@
 	var/turf/open/discharge_floor = outlet.loc
 	var/datum/component/floodwater/discharged_water = discharge_floor.GetComponent(/datum/component/floodwater)
 	MAP_TEST(discharged_water && discharged_water.depth == 50 && discharged_water.temperature == T0C + 40, "The loaded rig must release the complete 500-litre charge at its original temperature")
+	var/obj/machinery/stationtrauma_water_device/barrel/bench_tank = locate() in locate(origin.x + 18, origin.y + 13, origin.z)
+	var/obj/machinery/stationtrauma_water_device/inline_pump/pressure/bench_pump = locate() in locate(origin.x + 21, origin.y + 13, origin.z)
+	var/obj/machinery/stationtrauma_water_device/valve/passive_gate/bench_check = locate() in locate(origin.x + 23, origin.y + 13, origin.z)
+	var/obj/machinery/stationtrauma_water_device/valve/pressure_gate/bench_gate = locate() in locate(origin.x + 25, origin.y + 13, origin.z)
+	var/obj/machinery/stationtrauma_water_device/outlet/universal/bench_outlet = locate() in locate(origin.x + 29, origin.y + 13, origin.z)
+	MAP_TEST(bench_tank?.port && bench_pump && bench_check && bench_gate && bench_outlet, "The template must provide the complete pressure test circuit")
+	bench_pump.on = TRUE
+	bench_pump.set_machine_stat(bench_pump.machine_stat & ~NOPOWER)
+	bench_gate.target_pressure = 50
+	bench_outlet.on = TRUE
+	var/list/bench_connections = list()
+	for(var/obj/machinery/stationtrauma_water_device/device in list(bench_pump, bench_check, bench_gate, bench_outlet))
+		bench_connections += device.GetComponent(/datum/component/plumbing/stationtrauma_water)
+	for(var/cycle in 1 to 5)
+		for(var/datum/component/plumbing/stationtrauma_water/connection as anything in bench_connections)
+			connection.process()
+		bench_outlet.process(1)
+	MAP_TEST(!bench_outlet.discharged_volume && bench_gate.reagents.total_volume == 1000, "The connected pressure circuit must retain all water behind a 50-bar gate against the 60-bar sea")
+	bench_gate.target_pressure = 70
+	for(var/cycle in 1 to 3)
+		for(var/datum/component/plumbing/stationtrauma_water/connection as anything in bench_connections)
+			connection.process()
+		bench_outlet.process(1)
+	MAP_TEST(bench_outlet.discharged_volume == 1000 && !bench_gate.reagents.total_volume && !bench_tank.reagents.total_volume, "The native pipe circuit must discharge its complete charge after raising the gate to 70 bar")
 	var/obj/machinery/stationtrauma_water_device/barrel/loop_tank = locate() in locate(origin.x + 24, origin.y + 16, origin.z)
 	var/obj/machinery/stationtrauma_water_device/inline_pump/loop_pump = locate() in locate(origin.x + 26, origin.y + 16, origin.z)
 	var/obj/machinery/stationtrauma_water_device/ocean_exchanger/water_cooler = locate() in locate(origin.x + 28, origin.y + 17, origin.z)

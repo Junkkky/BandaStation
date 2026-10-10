@@ -1,23 +1,37 @@
 /// A local RPD catalogue keeps the ordinary station dispenser and gas recipes unchanged.
 /obj/item/pipe_dispenser/stationtrauma
 	name = "RPD водяных систем"
-	desc = "Обычный RPD с каталогом «Вода»: секции водяных труб, порт, бочка, насос, вентиль, теплообменник, выпуск и контроллер. Водяная сеть отделена от газовых труб и химических duct."
+	desc = "Обычный RPD с каталогом «Вода»: мультитруба, адаптер уровней, универсальный порт, насос давления, вентили, выпуск и трюмная помпа. Водяная сеть отделена от газовых труб и химических duct."
 	var/water_recipe = 1
 	mode = (1<<0) | (1<<1)
 	var/static/list/water_recipes = list(
 		"Водяная мультитруба" = /obj/machinery/duct/stationtrauma,
-		"Межуровневый коллектор" = /obj/machinery/duct/stationtrauma/manifold,
-		"Порт бочки" = /obj/machinery/stationtrauma_water_device/connector,
-		"Бочка 1000 л" = /obj/machinery/stationtrauma_water_device/barrel,
-		"Трубный насос" = /obj/machinery/stationtrauma_water_device/inline_pump,
-		"Вентиль" = /obj/machinery/stationtrauma_water_device/valve,
-		"Забортный выпуск" = /obj/machinery/stationtrauma_water_device/outlet/overboard,
-		"Выпуск на пол" = /obj/machinery/stationtrauma_water_device/outlet,
+		"Адаптер уровней" = /obj/machinery/duct/stationtrauma/manifold,
+		"Водяной порт" = /obj/machinery/stationtrauma_water_device/connector,
+		"Насос давления" = /obj/machinery/stationtrauma_water_device/inline_pump/pressure,
+		"Ручной вентиль" = /obj/machinery/stationtrauma_water_device/valve/manual,
+		"Пассивный клапан" = /obj/machinery/stationtrauma_water_device/valve/passive_gate,
+		"Клапан давления" = /obj/machinery/stationtrauma_water_device/valve/pressure_gate,
+		"Клапан выпуска" = /obj/machinery/stationtrauma_water_device/outlet/universal,
 		"Трюмная помпа" = /obj/machinery/bilge_pump,
-		"Контроллер помп" = /obj/machinery/stationtrauma_pump_controller,
-		"Переносной насос" = /obj/machinery/bilge_pump/portable,
-		"Водяной теплообменник" = /obj/machinery/stationtrauma_water_device/ocean_exchanger,
 	)
+	var/static/list/water_recipe_info
+
+/obj/item/pipe_dispenser/stationtrauma/Initialize(mapload)
+	. = ..()
+	if(water_recipe_info)
+		return
+	water_recipe_info = list()
+	var/list/states = list("manifold4w", "manifoldlayer", "connector", "pump", "mvalve", "passivegate", "pvalve", "pvent", "scrubber")
+	var/list/directions = list(PIPE_ONEDIR, PIPE_STRAIGHT, PIPE_ONEDIR, PIPE_UNARY, PIPE_STRAIGHT, PIPE_UNARY, PIPE_UNARY, PIPE_UNARY, PIPE_UNARY)
+	for(var/index in 1 to length(water_recipes))
+		var/datum/pipe_info/info = new
+		info.name = water_recipes[index]
+		info.id = water_recipes[info.name]
+		info.icon_state = states[index]
+		info.dirtype = directions[index]
+		info.desc = info.id::desc
+		water_recipe_info += info
 
 /obj/item/pipe_dispenser/stationtrauma/ui_data(mob/user)
 	. = ..()
@@ -25,14 +39,12 @@
 		return
 	var/list/choices = list()
 	for(var/index in 1 to length(water_recipes))
-		var/list/previews = list()
-		for(var/direction in GLOB.cardinals)
-			previews += list(list("selected" = water_recipe == index && p_dir == direction, "dir" = dir2text(direction), "dir_name" = dir2text(direction), "icon_state" = index <= 2 ? "manifold4w" : "connector", "flipped" = FALSE))
+		var/datum/pipe_info/info = water_recipe_info[index]
 		choices += list(list(
-			"pipe_name" = water_recipes[index],
-			"pipe_desc" = "Водяное устройство. Мультитрубы автоматически соединяются на выбранных уровнях. Коллектор объединяет уровни. South: насос/вентиль — вход West, выход East. Бочки и порты не требуют ориентации.",
+			"pipe_name" = info.name,
+			"pipe_desc" = info.desc,
 			"pipe_index" = index,
-			"previews" = previews,
+			"previews" = info.get_preview(p_dir, water_recipe == index),
 		))
 	.["categories"] += list(list("cat_name" = "Вода", "recipes" = choices))
 	if(water_recipe)
@@ -55,17 +67,11 @@
 	if(!isnum(index) || index != round(index) || index < 1 || index > length(water_recipes) || !(direction in GLOB.cardinals) || !isnum(water_level) || water_level != round(water_level) || !(water_level in 1 to 5))
 		return null
 	var/path = water_recipes[water_recipes[index]]
-	if(!isopenturf(target) && !(isclosedturf(target) && path == /obj/machinery/stationtrauma_water_device/outlet/overboard))
+	if(!isopenturf(target) && !(isclosedturf(target) && ispath(path, /obj/machinery/duct/stationtrauma)))
 		return null
 	var/layer_bit = path == /obj/machinery/duct/stationtrauma/manifold ? (31 << 5) : STATIONTRAUMA_WATER_LAYER_BIT(water_level)
-	if(path != /obj/machinery/stationtrauma_water_device/barrel && path != /obj/machinery/stationtrauma_pump_controller && ducting_layer_check(target, layer_bit))
+	if(ducting_layer_check(target, layer_bit))
 		return null
-	if(path == /obj/machinery/stationtrauma_water_device/barrel)
-		if(locate(/obj/machinery/stationtrauma_water_device/barrel) in target)
-			return null
-	if(path == /obj/machinery/stationtrauma_pump_controller)
-		if(locate(/obj/machinery/stationtrauma_pump_controller) in target)
-			return null
 	var/obj/machinery/built
 	if(ispath(path, /obj/machinery/duct/stationtrauma))
 		built = new path(target, null, direction, water_level)
@@ -77,10 +83,11 @@
 	if(istype(built, /obj/machinery/duct/stationtrauma))
 		var/obj/machinery/duct/stationtrauma/pipe = built
 		pipe.rebuild_water_connections()
-	else if(!istype(built, /obj/machinery/stationtrauma_water_device/barrel) && !istype(built, /obj/machinery/stationtrauma_pump_controller) && !istype(built, /obj/machinery/bilge_pump/portable))
+	else
 		// Native plumbing scans its surroundings when anchored after rotation.
 		built.set_anchored(FALSE)
 		built.set_anchored(TRUE)
+		built.update_appearance(UPDATE_ICON)
 	return built
 
 /obj/item/pipe_dispenser/stationtrauma/proc/dispense_water_selection(turf/tile, index, direction, list/levels)
@@ -92,6 +99,9 @@
 			var/obj/item/stationtrauma_water_pipe_fitting/fitting = new(tile)
 			fitting.water_level = water_level
 			fitting.bridges_levels = index == 2
+			if(fitting.bridges_levels)
+				fitting.pipe_shape = "straight"
+			fitting.setDir(direction)
 			fitting.update_appearance(UPDATE_ICON)
 			built += fitting
 			continue
@@ -113,7 +123,7 @@
 		return ITEM_INTERACT_SUCCESS
 	if(!water_recipe || category != 0)
 		return ..()
-	if((mode & (1<<2)) && (istype(target, /obj/machinery/duct/stationtrauma) || istype(target, /obj/machinery/stationtrauma_water_device) || istype(target, /obj/machinery/bilge_pump) || istype(target, /obj/machinery/stationtrauma_pump_controller)))
+	if((mode & (1<<2)) && (istype(target, /obj/machinery/duct/stationtrauma) || (istype(target, /obj/machinery/stationtrauma_water_device) && !istype(target, /obj/machinery/stationtrauma_water_device/barrel)) || (istype(target, /obj/machinery/bilge_pump) && !istype(target, /obj/machinery/bilge_pump/portable))))
 		qdel(target)
 		return ITEM_INTERACT_SUCCESS
 	if(!(mode & (1<<0)))

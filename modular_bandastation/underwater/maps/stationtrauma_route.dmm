@@ -3,6 +3,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w,
 /turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"cS" = (
+/obj/machinery/stationtrauma_pump_controller{
+	dir = 1
+	},
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma)
 "dF" = (
 /obj/machinery/light{
 	dir = 1
@@ -22,6 +28,10 @@
 	},
 /turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"fH" = (
+/obj/machinery/stationtrauma_water_device/connector,
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma)
 "fI" = (
 /obj/machinery/atmospherics/components/binary/stationtrauma_coolant_pump/precharged{
 	dir = 1;
@@ -39,6 +49,13 @@
 	},
 /turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"iN" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 4;
+	control_group = "airlock"
+	},
+/turf/open/space/ocean,
+/area/space/ocean)
 "lt" = (
 /obj/machinery/stationtrauma_water_device/connector,
 /obj/machinery/stationtrauma_water_device/barrel{
@@ -49,10 +66,6 @@
 	},
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
-"nd" = (
-/obj/machinery/duct/stationtrauma,
-/turf/open/floor/plating/stationtrauma_hull,
-/area/shuttle/stationtrauma)
 "nU" = (
 /obj/structure/table,
 /obj/item/stationtrauma_fuel_rod,
@@ -61,6 +74,12 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"ob" = (
+/obj/machinery/stationtrauma_water_device/valve/manual{
+	dir = 4
+	},
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma)
 "od" = (
 /obj/item/stationtrauma_fuel_rod,
 /obj/structure/cable,
@@ -154,9 +173,45 @@
 /obj/structure/flora/underwater,
 /turf/open/space/ocean,
 /area/space/ocean)
+"zY" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 4;
+	control_group = "airlock"
+	},
+/turf/open/space/ocean,
+/area/shuttle/stationtrauma)
+"Ab" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 2
+	},
+/turf/open/space/ocean,
+/area/space/ocean)
+"Ac" = (
+/obj/machinery/duct/stationtrauma,
+/turf/closed/wall/stationtrauma_hull,
+/area/shuttle/stationtrauma)
+"As" = (
+/obj/docking_port/mobile/stationtrauma,
+/obj/docking_port/stationary/stationtrauma/base{
+	width = 17;
+	dwidth = 3;
+	height = 11
+	},
+/turf/closed/wall/stationtrauma_hull,
+/area/shuttle/stationtrauma)
 "Bi" = (
 /obj/machinery/power/stationtrauma_reactor,
 /obj/structure/cable,
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma)
+"Da" = (
+/obj/machinery/bilge_pump{
+	dir = 1
+	},
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma)
+"Du" = (
+/obj/item/wallframe/stationtrauma_pump_controller,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
 "Dw" = (
@@ -207,6 +262,23 @@
 	},
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"Jc" = (
+/obj/machinery/power/rtg{
+	power_gen = 5000;
+	affected_by_parts = 0
+	},
+/obj/structure/cable,
+/obj/item/stack/cable_coil{
+	amount = 30
+	},
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma)
+"JF" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 2
+	},
+/turf/open/space/ocean,
+/area/shuttle/stationtrauma)
 "JQ" = (
 /turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma)
@@ -240,10 +312,24 @@
 /obj/structure/cable,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"Mk" = (
+/obj/item/electronics/stationtrauma_pump_controller,
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma)
 "NX" = (
 /obj/item/stack/sheet/iron,
 /obj/item/stack/rods,
 /obj/item/stack/tile/iron,
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma)
+"Os" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/stationtrauma_pump_controller{
+	dir = 8;
+	control_group = "airlock"
+	},
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
 "OR" = (
@@ -259,6 +345,14 @@
 /obj/structure/cable,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"Qx" = (
+/obj/docking_port/stationary/stationtrauma/wreck{
+	width = 17;
+	dwidth = 3;
+	height = 11
+	},
+/turf/open/space/ocean,
+/area/space/ocean)
 "Sg" = (
 /obj/structure/table,
 /obj/item/stack/sheet/iron,
@@ -325,7 +419,7 @@ ss
 ss
 ss
 ss
-ss
+zY
 ss
 ss
 ss
@@ -355,7 +449,7 @@ JQ
 JQ
 FR
 JQ
-JQ
+Ac
 ss
 ss
 ss
@@ -382,10 +476,10 @@ ss
 ss
 ss
 JQ
-dF
+Os
 pq
-nd
-eX
+dK
+Ac
 ss
 ss
 ss
@@ -417,7 +511,7 @@ FR
 JQ
 JQ
 JQ
-tA
+As
 ss
 ss
 ss
@@ -527,16 +621,16 @@ OR
 VK
 ss
 ss
-ss
-JQ
-YS
-YS
-LP
+JF
+Ac
+dK
+dK
+Da
 Ft
 YS
 YS
 YS
-JT
+ob
 JQ
 ss
 ss
@@ -559,9 +653,9 @@ ss
 ss
 ss
 JQ
+cS
+fH
 YS
-YS
-Lw
 Dz
 YS
 YS
@@ -590,7 +684,7 @@ ss
 ss
 JQ
 YS
-YS
+Du
 YS
 YS
 YS
@@ -620,7 +714,7 @@ ss
 ss
 JQ
 YS
-YS
+Mk
 YS
 YS
 YS
@@ -650,7 +744,7 @@ ss
 ss
 JQ
 Mg
-Qq
+Jc
 qW
 od
 Bi
@@ -1497,7 +1591,7 @@ ss
 ss
 ss
 ss
-Dw
+Qx
 ss
 ss
 ss

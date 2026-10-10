@@ -1,18 +1,70 @@
 SUBSYSTEM_DEF(floodwater)
 	name = "Floodwater"
-	wait = 1 SECONDS
+	wait = 0.1 SECONDS
 	priority = FIRE_PRIORITY_DEFAULT
-	ss_flags = SS_NO_INIT | SS_BACKGROUND
+	ss_flags = SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/list/active = list()
 	var/list/currentrun = list()
 	var/list/depths = list()
+	var/list/sources = list()
+	var/list/edge_speeds = list()
+	var/list/next_speeds = list()
+	var/list/processed_edges = list()
+	var/snapshot_ready = FALSE
+	var/list/pumps = list()
+	var/list/suction_heads = list()
 
 /datum/controller/subsystem/floodwater/fire(resumed = FALSE)
 	if(!resumed)
 		currentrun = active.Copy()
 		active = list()
+		sources = currentrun.Copy()
 		depths = list()
+		next_speeds = list()
+		processed_edges = list()
+		snapshot_ready = FALSE
+		suction_heads = list()
+		for(var/obj/machinery/bilge_pump/pump as anything in pumps)
+			if(!pump.on || !pump.is_operational || pump.drain_rate <= 0 || pump.reagents.holder_full() || !isopenturf(pump.loc))
+				continue
+			var/datum/component/floodwater/intake_water = pump.loc.GetComponent(/datum/component/floodwater)
+			if(intake_water?.infinite_source)
+				continue
+			if(istype(pump, /obj/machinery/bilge_pump/portable))
+				var/obj/machinery/bilge_pump/portable/portable = pump
+				if(portable.port || portable.panel_open || !portable.cell?.charge)
+					continue
+			else if(!pump.anchored)
+				continue
+			var/list/frontier = list(pump.loc)
+			var/list/distances = list()
+			distances[pump.loc] = 0
+			var/index = 1
+			while(index <= length(frontier))
+				var/turf/open/tile = frontier[index++]
+				var/distance = distances[tile]
+				suction_heads[tile] = max(suction_heads[tile] || 0, (8 - distance) * 10 * min(1, pump.drain_rate / 180))
+				if(distance == 7)
+					continue
+				for(var/direction in GLOB.cardinals)
+					var/turf/open/neighbor = get_step(tile, direction)
+					if(!isopenturf(neighbor) || !isnull(distances[neighbor]) || !tile.can_pass_stationtrauma_water(neighbor))
+						continue
+					var/datum/component/floodwater/water = neighbor.GetComponent(/datum/component/floodwater)
+					if(water?.infinite_source || istype(neighbor, /turf/open/water) || (isspaceturf(neighbor) && !water))
+						continue
+					distances[neighbor] = distance + 1
+					frontier += neighbor
+	while(length(sources))
+		var/datum/component/floodwater/source = sources[length(sources)]
+		sources.len--
+		if(!QDELETED(source) && source.infinite_source)
+			source.spread()
+		if(MC_TICK_CHECK)
+			return
+	if(!snapshot_ready)
+		currentrun |= active
 		for(var/datum/component/floodwater/water as anything in currentrun)
 			if(QDELETED(water))
 				continue
@@ -22,13 +74,15 @@ SUBSYSTEM_DEF(floodwater)
 				var/turf/open/neighbor = get_step(tile, direction)
 				if(isopenturf(neighbor))
 					depths[neighbor] = neighbor.get_water_depth()
+		snapshot_ready = TRUE
 	while(length(currentrun))
 		var/datum/component/floodwater/water = currentrun[length(currentrun)]
 		currentrun.len--
-		if(!QDELETED(water))
-			water.spread(depths)
-		if(MC_TICK_CHECK)
+		if(!QDELETED(water) && !water.infinite_source)
+			water.spread(depths, edge_speeds, next_speeds, processed_edges, suction_heads)
+		if(MC_TICK_CHECK && length(currentrun))
 			return
+	edge_speeds = next_speeds
 
 /datum/controller/subsystem/floodwater/stat_entry(msg)
 	return ..("Active:[length(active)]")
@@ -72,30 +126,55 @@ SUBSYSTEM_DEF(floodwater)
 			room += neighbor
 	return room
 
-/datum/component/floodwater/proc/spread(list/depths)
+/datum/component/floodwater/proc/spread(list/depths, list/speeds, list/next_speeds, list/processed, list/suction)
 	var/turf/open/tile = parent
 	var/source_depth = isnull(depths?[tile]) ? depth : depths[tile]
+	var/dt = SSfloodwater.wait / (1 SECONDS)
+	if(!speeds)
+		speeds = SSfloodwater.edge_speeds
+	if(!next_speeds)
+		next_speeds = speeds
 	for(var/direction in GLOB.cardinals)
 		var/turf/open/next_tile = get_step(tile, direction)
-		if(!isopenturf(next_tile) || istype(next_tile, /turf/open/water) || !tile.can_pass_stationtrauma_water(next_tile))
+		if(!isopenturf(next_tile) || istype(next_tile, /turf/open/water))
 			continue
 		var/datum/component/floodwater/next_water = next_tile.GetComponent(/datum/component/floodwater)
-		if(next_water?.infinite_source)
+		if(next_water?.infinite_source || !tile.can_pass_stationtrauma_water(next_tile))
 			continue
 		var/next_depth = isnull(depths?[next_tile]) ? (next_water?.depth || 0) : depths[next_tile]
 		var/difference = source_depth - next_depth
-		if(difference <= (infinite_source ? FLOOD_WATER_FLOW_EPSILON : 0))
-			continue
-		// A snapshot prevents newly arrived water crossing another tile in this same tick.
-		var/flow = infinite_source ? min(FLOOD_WATER_OCEAN_FLOW, difference) : min(25, difference / 4, depth)
-		var/accepted = next_tile.add_water(flow * FLOOD_WATER_LITRES_PER_CM, temperature)
-		if(accepted)
-			if(infinite_source)
+		if(infinite_source)
+			if(difference > FLOOD_WATER_FLOW_EPSILON && next_tile.add_water(min(FLOOD_WATER_OCEAN_FLOW * dt, difference) * FLOOD_WATER_LITRES_PER_CM, temperature))
 				wake()
-			else
-				remove_water(accepted)
-				if(QDELETED(src))
-					return
+			continue
+		difference += (suction?[next_tile] || 0) - (suction?[tile] || 0)
+		// Store one signed velocity per edge; the snapshot limits a wave to one new tile per step.
+		var/forward = direction == NORTH || direction == EAST
+		var/turf/open/edge_origin = forward ? tile : next_tile
+		var/edge_direction = forward ? direction : REVERSE_DIR(direction)
+		var/key = "[edge_origin.x],[edge_origin.y],[edge_origin.z]:[edge_direction]"
+		if(processed?[key])
+			continue
+		if(processed)
+			processed[key] = TRUE
+		var/velocity = (speeds[key] || 0) * (forward ? 1 : -1)
+		velocity = (velocity + 9.81 * difference / 100 * dt) / (1 + dt)
+		if(abs(velocity) < FLOOD_WATER_FLOW_EPSILON || (source_depth == FLOOD_WATER_MAX_DEPTH && next_depth == FLOOD_WATER_MAX_DEPTH))
+			next_speeds[key] = 0
+			continue
+		next_speeds[key] = velocity * (forward ? 1 : -1)
+		var/turf/open/upstream_tile = velocity > 0 ? tile : next_tile
+		var/turf/open/downstream_tile = velocity > 0 ? next_tile : tile
+		var/datum/component/floodwater/from_water = upstream_tile.GetComponent(/datum/component/floodwater)
+		var/upstream_depth = velocity > 0 ? source_depth : next_depth
+		var/flow = min(from_water?.depth || 0, abs(velocity) * upstream_depth * dt)
+		var/accepted = downstream_tile.add_water(flow * FLOOD_WATER_LITRES_PER_CM, from_water?.temperature || temperature)
+		if(accepted)
+			from_water.remove_water(accepted)
+		if(!QDELETED(src))
+			wake()
+		else
+			return
 
 /turf/open/proc/stationtrauma_water_intake()
 	var/list/intake = list(src)
@@ -130,17 +209,8 @@ SUBSYSTEM_DEF(floodwater)
 	var/amount = min(available, volume, max(0, free_space))
 	if(amount <= 0)
 		return 0
-	var/stored_before = receiver.get_reagent_amount(/datum/reagent/water)
-	var/heat_before = receiver.heat_capacity()
-	var/temperature_before = receiver.chem_temp
 	var/mixed_temperature = thermal_total / available
-	var/accepted = receiver.add_reagent(/datum/reagent/water, amount, reagtemp = mixed_temperature, no_react = TRUE)
-	var/datum/reagent/water/collected = receiver.has_reagent(/datum/reagent/water)
-	if(collected && (accepted > 0 || amount < CHEMICAL_QUANTISATION_LEVEL))
-		// Keep the real floor volume when TG rounds the addition, including a final tiny tail.
-		collected.volume = stored_before + amount
-		receiver.set_temperature((heat_before * temperature_before + collected.specific_heat * amount * mixed_temperature) / receiver.heat_capacity())
-		accepted = amount
+	var/accepted = store_stationtrauma_water(receiver, amount, mixed_temperature)
 	if(accepted <= 0)
 		return 0
 	var/fraction = min(1, accepted / available)

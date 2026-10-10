@@ -160,10 +160,26 @@
 	var/amount = stationtrauma_water_transfer_amount(source, volume, free_space)
 	if(amount <= 0)
 		return 0
-	var/accepted = receiver.add_reagent(/datum/reagent/water, amount, reagtemp = source.chem_temp, no_react = TRUE)
+	var/accepted = store_stationtrauma_water(receiver, amount, source.chem_temp)
 	if(accepted)
 		source.remove_reagent(/datum/reagent/water, accepted)
 	return accepted
+
+/// Preserve fractional hydraulic volumes that native chemistry would quantise away.
+/proc/store_stationtrauma_water(datum/reagents/receiver, amount, water_temperature)
+	var/stored_before = receiver.get_reagent_amount(/datum/reagent/water)
+	var/heat_before = receiver.heat_capacity()
+	var/temperature_before = receiver.chem_temp
+	var/accepted = receiver.add_reagent(/datum/reagent/water, max(amount, CHEMICAL_VOLUME_ROUNDING), reagtemp = water_temperature, no_react = TRUE)
+	var/datum/reagent/water/collected = receiver.has_reagent(/datum/reagent/water)
+	if(!collected || (!accepted && amount >= CHEMICAL_QUANTISATION_LEVEL))
+		return 0
+	collected.volume = stored_before + amount
+	receiver.set_temperature((heat_before * temperature_before + collected.specific_heat * amount * water_temperature) / receiver.heat_capacity())
+	receiver.total_volume = 0
+	for(var/datum/reagent/reagent as anything in receiver.reagent_list)
+		receiver.total_volume += reagent.volume
+	return amount
 
 /// One component per wet turf; only unequal, connected neighbours enter SSfloodwater's work queue.
 /datum/component/floodwater
