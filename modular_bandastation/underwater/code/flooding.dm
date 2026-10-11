@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(floodwater)
 	name = "Floodwater"
 	wait = 0.1 SECONDS
 	priority = FIRE_PRIORITY_DEFAULT
-	ss_flags = SS_NO_INIT
+	ss_flags = SS_NO_INIT | SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/list/active = list()
 	var/list/currentrun = list()
@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(floodwater)
 	var/list/suction_heads = list()
 	var/last_update
 	var/pending_time = 0
-	var/step_seconds = 0.1
+	var/step_seconds = 0.02
 	var/steps_completed = 0
 	var/step_running = FALSE
 	var/list/debug_viewers = list()
@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(floodwater)
 			while(index <= length(frontier))
 				var/turf/open/tile = frontier[index++]
 				var/distance = distances[tile]
-				suction_heads[tile] = max(suction_heads[tile] || 0, (8 - distance) * 10 * min(1, pump.drain_rate / 180))
+				suction_heads[tile] = max(suction_heads[tile] || 0, (8 - distance) * min(1, pump.drain_rate / 180))
 				if(distance == 7)
 					continue
 				for(var/direction in GLOB.cardinals)
@@ -100,16 +100,42 @@ SUBSYSTEM_DEF(floodwater)
 				if(isopenturf(neighbor))
 					depths[neighbor] = neighbor.get_water_depth()
 		snapshot_ready = TRUE
+	var/list/changes = list()
+	var/list/flows = list()
 	while(length(currentrun))
 		var/datum/component/floodwater/water = currentrun[length(currentrun)]
 		currentrun.len--
 		if(!QDELETED(water) && !water.infinite_source)
-			water.spread(depths, edge_speeds, next_speeds, processed_edges, suction_heads)
-		if(MC_TICK_CHECK && length(currentrun))
-			return
+			water.spread(depths, edge_speeds, next_speeds, processed_edges, suction_heads, changes, flows)
+	apply_water_flows(flows, changes, depths)
 	edge_speeds = next_speeds
+	for(var/obj/machinery/bilge_pump/pump as anything in pumps)
+		pump.collect_water(step_seconds)
 	step_running = FALSE
 	return TRUE
+
+/datum/controller/subsystem/floodwater/proc/apply_water_flows(list/flows, list/changes, list/depths)
+	for(var/list/flow as anything in flows)
+		var/turf/open/upstream = flow[1]
+		var/turf/open/downstream = flow[2]
+		var/list/outgoing = changes[upstream]
+		var/list/incoming = changes[downstream]
+		// Share each cell's budget among its actual currents, including a one-cell breach throat.
+		var/amount = flow[3] * min(1, 0.9 * depths[upstream] / outgoing[3], 0.9 * (FLOOD_WATER_MAX_DEPTH - depths[downstream]) / incoming[4])
+		outgoing[1] -= amount
+		outgoing[2] -= amount * flow[4]
+		incoming[1] += amount
+		incoming[2] += amount * flow[4]
+	// Commit one conservative update per cell before yielding to doors, plumbing or another subsystem.
+	for(var/turf/open/tile as anything in changes)
+		var/list/change = changes[tile]
+		var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
+		var/new_depth = tile.get_water_depth() + change[1]
+		var/heat = tile.get_water_depth() * (water?.temperature || 0) + change[2]
+		var/new_temperature = new_depth > 0 ? heat / new_depth : FLOOD_WATER_TEMPERATURE
+		if(water && new_depth == water.depth && new_temperature == water.temperature)
+			continue
+		tile.set_water_depth(new_depth, FALSE, new_temperature)
 
 /datum/controller/subsystem/floodwater/stat_entry(msg)
 	return ..("Active:[length(active)] Steps:[steps_completed] Behind:[round(pending_time, 0.1)]s")
@@ -165,9 +191,14 @@ SUBSYSTEM_DEF(floodwater)
 			room += neighbor
 	return room
 
-/datum/component/floodwater/proc/spread(list/depths, list/speeds, list/next_speeds, list/processed, list/suction)
+/datum/component/floodwater/proc/spread(list/depths, list/speeds, list/next_speeds, list/processed, list/suction, list/changes, list/flows)
+	var/standalone = !flows
+	flows ||= list()
+	changes ||= list()
+	depths ||= list()
 	var/turf/open/tile = parent
 	var/source_depth = isnull(depths?[tile]) ? depth : depths[tile]
+	depths[tile] = source_depth
 	var/dt = SSfloodwater.step_seconds
 	if(!speeds)
 		speeds = SSfloodwater.edge_speeds
@@ -181,6 +212,7 @@ SUBSYSTEM_DEF(floodwater)
 		if(next_water?.infinite_source || !tile.can_pass_stationtrauma_water(next_tile))
 			continue
 		var/next_depth = isnull(depths?[next_tile]) ? (next_water?.depth || 0) : depths[next_tile]
+		depths[next_tile] = next_depth
 		var/difference = source_depth - next_depth
 		if(infinite_source)
 			if(difference > FLOOD_WATER_FLOW_EPSILON && next_tile.add_water(min(FLOOD_WATER_OCEAN_FLOW * dt, difference) * FLOOD_WATER_LITRES_PER_CM, temperature))
@@ -197,8 +229,9 @@ SUBSYSTEM_DEF(floodwater)
 		if(processed)
 			processed[key] = TRUE
 		var/velocity = (speeds[key] || 0) * (forward ? 1 : -1)
-		velocity = (velocity + 9.81 * difference / 100 * dt) / (1 + dt)
-		if(abs(velocity) < FLOOD_WATER_FLOW_EPSILON || (source_depth == FLOOD_WATER_MAX_DEPTH && next_depth == FLOOD_WATER_MAX_DEPTH))
+		velocity = (velocity + difference * dt) / (1 + 3 * dt)
+		// Single-precision ripples below a micrometre must settle instead of keeping an entire deck awake.
+		if((abs(velocity) < 0.0001 && abs(difference) < 0.0001) || (source_depth == FLOOD_WATER_MAX_DEPTH && next_depth == FLOOD_WATER_MAX_DEPTH))
 			next_speeds[key] = 0
 			continue
 		next_speeds[key] = velocity * (forward ? 1 : -1)
@@ -206,14 +239,18 @@ SUBSYSTEM_DEF(floodwater)
 		var/turf/open/downstream_tile = velocity > 0 ? next_tile : tile
 		var/datum/component/floodwater/from_water = upstream_tile.GetComponent(/datum/component/floodwater)
 		var/upstream_depth = velocity > 0 ? source_depth : next_depth
-		var/flow = min(from_water?.depth || 0, abs(velocity) * max(upstream_depth, 20) * dt)
-		var/accepted = downstream_tile.add_water(flow * FLOOD_WATER_LITRES_PER_CM, from_water?.temperature || temperature)
-		if(accepted)
-			from_water.remove_water(accepted)
-		if(!QDELETED(src))
-			wake()
-		else
-			return
+		if(upstream_depth <= 0 || !from_water)
+			continue
+		var/flow = abs(velocity) * max(upstream_depth, 20) * dt
+		changes[upstream_tile] ||= list(0, 0, 0, 0)
+		changes[downstream_tile] ||= list(0, 0, 0, 0)
+		var/list/outgoing = changes[upstream_tile]
+		var/list/incoming = changes[downstream_tile]
+		outgoing[3] += flow
+		incoming[4] += flow
+		flows += list(list(upstream_tile, downstream_tile, flow, from_water.temperature))
+	if(standalone)
+		SSfloodwater.apply_water_flows(flows, changes, depths)
 
 /turf/open/proc/stationtrauma_water_intake()
 	var/list/intake = list(src)

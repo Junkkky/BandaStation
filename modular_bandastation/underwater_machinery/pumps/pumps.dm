@@ -66,8 +66,12 @@
 	return use_energy(required_energy, force = FALSE) >= required_energy
 
 /obj/machinery/bilge_pump/process(seconds_per_tick)
+	return PROCESS_KILL
+
+/// The water subsystem meters intake alongside flow, avoiding multi-second machinery bursts.
+/obj/machinery/bilge_pump/proc/collect_water(seconds_per_tick)
 	if(!on)
-		return PROCESS_KILL
+		return
 	if((!anchored && !istype(src, /obj/machinery/bilge_pump/portable)) || !isopenturf(loc))
 		return
 	var/turf/open/intake = loc
@@ -156,6 +160,11 @@
 			set_mode(FALSE, FALSE)
 		return
 	if(port)
+		return
+	return ..()
+
+/obj/machinery/bilge_pump/portable/collect_water(seconds_per_tick)
+	if(port || discharging)
 		return
 	return ..()
 

@@ -5,7 +5,7 @@
 #define FLOOD_WATER_DEEP 100
 #define FLOOD_WATER_SUBMERGED 200
 #define FLOOD_WATER_MAX_DEPTH 220
-#define FLOOD_WATER_OCEAN_FLOW 1000
+#define FLOOD_WATER_OCEAN_FLOW 2000
 #define FLOOD_WATER_FLOW_EPSILON 0.000001
 #define FLOOD_WATER_TEMPERATURE (T0C + 4)
 // One-square-metre water footprint: a centimetre is ten litres.
