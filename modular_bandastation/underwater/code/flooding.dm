@@ -206,7 +206,7 @@ SUBSYSTEM_DEF(floodwater)
 		next_speeds = speeds
 	for(var/direction in GLOB.cardinals)
 		var/turf/open/next_tile = get_step(tile, direction)
-		if(!isopenturf(next_tile) || istype(next_tile, /turf/open/water))
+		if(!isopenturf(next_tile) || isspaceturf(next_tile) || istype(next_tile, /turf/open/water))
 			continue
 		var/datum/component/floodwater/next_water = next_tile.GetComponent(/datum/component/floodwater)
 		if(next_water?.infinite_source || !tile.can_pass_stationtrauma_water(next_tile))
