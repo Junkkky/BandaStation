@@ -15,10 +15,8 @@
 		if(!valve.valve_open)
 			return
 	var/rate = 5000
-	if(istype(machine, /obj/machinery/stationtrauma_water_device/outlet/universal))
-		var/obj/machinery/stationtrauma_water_device/outlet/universal/outlet = machine
-		if(!outlet.on)
-			return
+	if(istype(machine, /obj/machinery/stationtrauma_water_device/outlet))
+		var/obj/machinery/stationtrauma_water_device/outlet/outlet = machine
 		rate = outlet.flow_rate
 	process_request(rate * SSFLUIDS_DT, /datum/reagent/water, dir)
 
@@ -78,7 +76,7 @@
 	if(istype(parent, /obj/machinery/stationtrauma_water_device/outlet/universal))
 		var/turf/open/tile = get_turf(parent)
 		var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
-		return water?.infinite_source ? STATIONTRAUMA_WATER_OCEAN_PRESSURE : STATIONTRAUMA_WATER_ATMOSPHERE + tile.get_water_depth() * 0.001
+		return tile.stationtrauma_water_pressure(water) / 100
 	if(istype(parent, /obj/machinery/stationtrauma_water_device/valve/passive_gate))
 		var/pressure = 0
 		for(var/direction in GLOB.cardinals)
@@ -193,47 +191,28 @@
 
 /obj/machinery/stationtrauma_water_device/outlet
 	name = "выпуск водяного контура"
-	desc = "ЛКМ — включить или выключить. Выпускает до 100 л/с на пол под собой; требует питания АПЦ. Вход трубы — с запада."
+	desc = "Постоянно открытый выпуск до 100 л/с на пол под собой. Перекрывается вентилем на трубе. Вход трубы — с запада."
 	icon_state = "pipe_output"
 	density = FALSE
 	capacity = 200
 	plumbing_type = /datum/component/plumbing/stationtrauma_water/outlet
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 5
-	var/on = FALSE
+	use_power = NO_POWER_USE
+	processing_flags = START_PROCESSING_ON_INIT
 	var/flow_rate = 1800
 	var/discharged_volume = 0
 
-/obj/machinery/stationtrauma_water_device/outlet/attack_hand(mob/living/user, list/modifiers)
-	if(..())
-		return
-	control_outlet(user)
-
-/obj/machinery/stationtrauma_water_device/outlet/proc/control_outlet(mob/living/user)
-	on = !on
-	if(on)
-		begin_processing()
-	else
-		end_processing()
-	balloon_alert(user, on ? "включён" : "выключен")
-
 /obj/machinery/stationtrauma_water_device/outlet/process(seconds_per_tick)
-	if(!on)
-		return PROCESS_KILL
-	if(!anchored || !is_operational || !isopenturf(loc) || !reagents.get_reagent_amount(/datum/reagent/water))
+	if(!anchored || (machine_stat & BROKEN) || !isopenturf(loc) || !reagents.get_reagent_amount(/datum/reagent/water))
 		return
 	var/turf/open/tile = loc
 	var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
 	if(water?.infinite_source || tile.get_water_depth() >= FLOOD_WATER_MAX_DEPTH)
 		return
-	var/required_energy = 750 * seconds_per_tick
-	if(use_energy(required_energy, force = FALSE) < required_energy)
-		return
 	tile.receive_water(reagents, 100 * seconds_per_tick)
 
 /obj/machinery/stationtrauma_water_device/outlet/examine(mob/user)
 	. = ..()
-	. += span_notice("Выпуск [on ? "включён" : "выключен"].")
+	. += span_notice("Выпуск постоянно открыт; перекрывается вентилем на трубе.")
 
 /proc/drain_stationtrauma_water(atom/movable/source, turf/open/target)
 	if(!source)

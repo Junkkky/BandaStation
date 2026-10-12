@@ -29,8 +29,13 @@
 	if(!water)
 		qdel(src)
 		return
+	update_slowdown(water)
+
+/datum/status_effect/floodwater/proc/update_slowdown(datum/component/floodwater/water)
 	var/slowdown = water.affects(owner) && !HAS_TRAIT(owner, TRAIT_SWIMMER) ? water.stage * 0.75 : 0
-	owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/floodwater, multiplicative_slowdown = slowdown)
+	var/datum/movespeed_modifier/modifier = owner.has_movespeed_modifier(/datum/movespeed_modifier/floodwater)
+	if(!modifier || modifier.multiplicative_slowdown != slowdown)
+		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/floodwater, multiplicative_slowdown = slowdown)
 
 /// Keep the normal lungs/species/tank checks, including empty tanks and invalid masks.
 /datum/status_effect/floodwater/proc/before_breath(mob/living/carbon/swimmer)
@@ -49,7 +54,7 @@
 	if(!water)
 		qdel(src)
 		return
-	update_water()
+	update_slowdown(water)
 	if(owner.stat == DEAD || !water.affects(owner))
 		return
 	// Exterior cooling is already handled by TG; flooded room air remains independent of water.

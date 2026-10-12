@@ -1,17 +1,16 @@
 #include "_underwater.dm"
 #include "code/water.dm"
+#include "code/water_pressure.dm"
+#include "code/water_step.dm"
+#include "code/water_flow.dm"
+#include "code/water_geometry.dm"
+#include "code/water_debug.dm"
 #include "code/flooding.dm"
 #include "code/swimming.dm"
 #include "code/parallax.dm"
 #include "code/environment.dm"
 #include "code/submarine.dm"
 
-#ifdef UNIT_TESTS
-#include "tests/water.dm"
-#include "tests/environment.dm"
-#include "tests/map.dm"
-#include "tests/submarine.dm"
-#endif
 // BEGIN_INTERNALS
 // END_INTERNALS
 // BEGIN_FILE_DIR

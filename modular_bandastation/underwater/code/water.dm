@@ -33,6 +33,7 @@
 	initial_gas_mix = GAS_O2 + "=22;" + GAS_N2 + "=82;TEMP=277.15"
 	/// The reservoir maintains this depth. Shallower subtypes represent a surface shoreline.
 	var/water_depth = FLOOD_WATER_MAX_DEPTH
+	var/water_pressure = STATIONTRAUMA_WATER_OCEAN_PRESSURE * 100
 
 /turf/open/space/ocean/Initialize(mapload)
 	. = ..()
@@ -49,7 +50,8 @@
 		environment.parse_string_immutable(initial_gas_mix)
 		SSair.planetary[initial_gas_mix] = environment
 	air = SSair.planetary[initial_gas_mix]
-	set_water_depth(water_depth, TRUE)
+	var/datum/component/floodwater/water = set_water_depth(water_depth, TRUE)
+	water.reservoir_pressure = water_pressure
 
 /turf/open/space/ocean/remove_air(amount)
 	// Space normally returns no breath at all; surface water must supply its environment.
@@ -76,17 +78,20 @@
 /turf/open/space/ocean/shallow
 	desc = "Мелкая вода."
 	water_depth = 30
+	water_pressure = ONE_ATMOSPHERE + 30 * FLOOD_WATER_KPA_PER_CM
 
 /turf/open/space/ocean/waist
 	desc = "Вода по пояс."
 	water_depth = 80
+	water_pressure = ONE_ATMOSPHERE + 80 * FLOOD_WATER_KPA_PER_CM
 
 /turf/open/space/ocean/deep
 	desc = "Глубокая вода. Здесь приходится плыть."
 	water_depth = 150
+	water_pressure = ONE_ATMOSPHERE + 150 * FLOOD_WATER_KPA_PER_CM
 
 /// Add water without replacing the floor, its contents, area, or atmosphere. Zero drains it.
-/turf/open/proc/set_water_depth(new_depth, infinite_source = null, water_temperature = null)
+/turf/open/proc/set_water_depth(new_depth, infinite_source = null, water_temperature = null, notify_neighbors = TRUE)
 	if(!isnum(new_depth) || !IS_FINITE(new_depth) || istype(src, /turf/open/water))
 		return null
 	if(!isnull(water_temperature) && (!isnum(water_temperature) || !IS_FINITE(water_temperature) || water_temperature < 0))
@@ -99,11 +104,19 @@
 		return null
 	if(!water)
 		return AddComponent(/datum/component/floodwater, new_depth, !!infinite_source, isnull(water_temperature) ? FLOOD_WATER_TEMPERATURE : water_temperature)
-	if(!isnull(infinite_source))
+	if(!isnull(infinite_source) && water.infinite_source != infinite_source)
 		water.infinite_source = infinite_source
+		SSfloodwater.pressure.cells -= water
+		SSfloodwater.pressure.wet_air -= water
+		SSfloodwater.pressure.dirty = TRUE
+		water.ocean_pressure = 0
+		if(!infinite_source)
+			SSfloodwater.pressure.wet_air[water] = TRUE
+		water.update_pressure_connection()
+		SEND_SIGNAL(src, COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED)
 	if(!isnull(water_temperature))
 		water.temperature = water_temperature
-	water.set_depth(new_depth)
+	water.set_depth(new_depth, notify_neighbors)
 	return water
 
 /turf/open/proc/get_water_depth()
@@ -191,6 +204,11 @@
 	var/mask_state
 	var/mutable_appearance/water_overlay
 	var/show_puddle
+	/// Cardinal direction bits are bounded positional indices (N=1, S=2, E=4, W=8).
+	var/list/flow_edge_keys
+	/// Cardinal masks; only edges between two live water components can reuse a geometry result.
+	var/flow_geometry_known = NONE
+	var/flow_geometry_open = NONE
 
 /datum/component/floodwater/Initialize(initial_depth, is_source = FALSE, initial_temperature = FLOOD_WATER_TEMPERATURE)
 	// Existing static water already owns immersion/wetness elements.
@@ -202,26 +220,42 @@
 	show_puddle = prob(30)
 
 /datum/component/floodwater/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, PROC_REF(wake))
+	flow_edge_keys = new/list(8)
+	RegisterSignal(parent, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, PROC_REF(on_atmos_update))
 	RegisterSignal(parent, COMSIG_TURF_CHANGE, PROC_REF(on_turf_change))
 	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(add_water_overlay))
 	RegisterSignal(parent, COMSIG_TURF_PREPARE_STEP_SOUND, PROC_REF(water_steps))
 	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(examine_depth))
 	RegisterSignals(parent, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(on_entered))
+	RegisterSignal(parent, COMSIG_ATOM_EXITED, PROC_REF(on_exited))
 	var/turf/open/tile = parent
-	for(var/obj/door in tile)
-		if(istype(door, /obj/machinery/door) || istype(door, /obj/structure/fluff/airlock_filler))
-			RegisterSignal(door, COMSIG_ATOM_DENSITY_CHANGED, PROC_REF(on_door_density))
+	for(var/obj/obstacle in tile)
+		watch_pressure_obstacle(obstacle)
 	tile.AddElement(/datum/element/watery_tile)
 	if(isspaceturf(tile))
 		tile.AddElement(/datum/element/forced_gravity, STANDARD_GRAVITY, TRUE)
+	last_air_pressure = tile.air?.return_pressure() || 0
+	if(!infinite_source)
+		SSfloodwater.pressure.wet_air[src] = TRUE
+	on_atmos_update()
 	update_depth()
 	wake()
+	SEND_SIGNAL(parent, COMSIG_STATIONTRAUMA_WATER_PRESENCE_CHANGED, src, TRUE)
+	if(infinite_source || isspaceturf(parent))
+		SEND_SIGNAL(parent, COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED)
 
 /datum/component/floodwater/UnregisterFromParent()
+	SEND_SIGNAL(parent, COMSIG_STATIONTRAUMA_WATER_PRESENCE_CHANGED, src, FALSE)
+	if(infinite_source || isspaceturf(parent))
+		SEND_SIGNAL(parent, COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED)
 	SSfloodwater.active -= src
-	UnregisterSignal(parent, list(COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_TURF_CHANGE, COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_TURF_PREPARE_STEP_SOUND, COMSIG_ATOM_EXAMINE, COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON))
+	UnregisterSignal(parent, list(COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_TURF_CHANGE, COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_TURF_PREPARE_STEP_SOUND, COMSIG_ATOM_EXAMINE, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON))
 	var/turf/open/tile = parent
+	SSfloodwater.pressure.wet_air -= src
+	if((infinite_source && pressure_boundary) || SSfloodwater.pressure.cells[src])
+		SSfloodwater.pressure.dirty = TRUE
+	SSfloodwater.pressure.cells -= src
+	SSfloodwater.pressure.pending -= src
 	tile.RemoveElement(/datum/element/immerse/floodwater, mask_state, 140)
 	tile.RemoveElement(/datum/element/watery_tile)
 	if(isspaceturf(tile))
@@ -232,14 +266,15 @@
 		occupant.refresh_gravity()
 	wake_neighbours()
 
-/datum/component/floodwater/proc/set_depth(new_depth)
+/datum/component/floodwater/proc/set_depth(new_depth, notify_neighbors = TRUE)
 	depth = clamp(new_depth, 0, FLOOD_WATER_MAX_DEPTH)
 	if(!depth)
 		qdel(src)
 		return
 	update_depth()
 	wake()
-	wake_neighbours()
+	if(notify_neighbors)
+		wake_neighbours()
 
 /// Remove only an accepted transfer; a null receiver is used for floor-to-floor flow. Pumps cannot drain an ocean.
 /datum/component/floodwater/proc/remove_water(volume, datum/reagents/receiver = null, allow_ocean = FALSE)
@@ -266,6 +301,7 @@
 	var/new_stage = depth <= 0.6 && !infinite_source ? 0 : depth >= FLOOD_WATER_SUBMERGED ? 4 : depth >= FLOOD_WATER_DEEP ? 3 : depth >= FLOOD_WATER_WAIST ? 2 : 1
 	if(stage == new_stage)
 		return
+	update_pressure_connection()
 	var/turf/open/tile = parent
 	if(mask_state)
 		tile.RemoveElement(/datum/element/immerse/floodwater, mask_state, 140)
@@ -292,8 +328,9 @@
 
 /datum/component/floodwater/proc/on_entered(turf/source, atom/movable/arrived)
 	SIGNAL_HANDLER
-	if(istype(arrived, /obj/machinery/door) || istype(arrived, /obj/structure/fluff/airlock_filler))
-		RegisterSignal(arrived, COMSIG_ATOM_DENSITY_CHANGED, PROC_REF(on_door_density), override = TRUE)
+	if(isobj(arrived) && arrived.can_atmos_pass != ATMOS_PASS_YES)
+		watch_pressure_obstacle(arrived)
+		on_atmos_update()
 	if(!isliving(arrived) || !(arrived.flags_1 & INITIALIZED_1))
 		return
 	var/mob/living/swimmer = arrived
@@ -302,8 +339,22 @@
 	effect?.update_water()
 	swimmer.refresh_gravity()
 
+/datum/component/floodwater/proc/watch_pressure_obstacle(obj/obstacle)
+	if(obstacle.can_atmos_pass == ATMOS_PASS_YES)
+		return
+	RegisterSignals(obstacle, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_QDELETING), PROC_REF(on_atmos_update), override = TRUE)
+	RegisterSignal(obstacle, COMSIG_ATOM_DENSITY_CHANGED, (istype(obstacle, /obj/machinery/door) || istype(obstacle, /obj/structure/fluff/airlock_filler)) ? PROC_REF(on_door_density) : PROC_REF(on_atmos_update), override = TRUE)
+
+/datum/component/floodwater/proc/on_exited(turf/source, atom/movable/departed)
+	SIGNAL_HANDLER
+	if(!isobj(departed) || departed.can_atmos_pass == ATMOS_PASS_YES)
+		return
+	UnregisterSignal(departed, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_QDELETING))
+	on_atmos_update()
+
 /datum/component/floodwater/proc/on_door_density(obj/door)
 	SIGNAL_HANDLER
+	on_atmos_update()
 	if(!door.density || (door.flags_1 & ON_BORDER_1) || infinite_source || door.loc != parent)
 		return
 	var/turf/open/tile = parent

@@ -16,6 +16,14 @@
 	var/control_group = "water"
 	var/water_level = 3
 	var/plumbing_type = /datum/component/plumbing/stationtrauma_water/supply
+	var/turf/water_geometry_location
+	var/list/suction_geometry
+	var/list/drain_geometry
+	var/list/drain_building
+	var/list/drain_queue
+	var/drain_cursor = 1
+	var/list/drain_water = list()
+	var/list/water_geometry_watchers = list()
 
 /obj/machinery/bilge_pump/Initialize(mapload, new_level)
 	if(new_level in 1 to 5)
@@ -29,6 +37,7 @@
 		AddElement(/datum/element/simple_rotation)
 
 /obj/machinery/bilge_pump/Destroy()
+	invalidate_water_geometry()
 	SSfloodwater.pumps -= src
 	release_stationtrauma_water(src)
 	return ..()
@@ -70,35 +79,107 @@
 
 /// The water subsystem meters intake alongside flow, avoiding multi-second machinery bursts.
 /obj/machinery/bilge_pump/proc/collect_water(seconds_per_tick)
-	if(!on)
-		return
-	if((!anchored && !istype(src, /obj/machinery/bilge_pump/portable)) || !isopenturf(loc))
+	if(!can_collect_water())
 		return
 	var/turf/open/intake = loc
-	var/datum/component/floodwater/water = intake.GetComponent(/datum/component/floodwater)
-	if(water?.infinite_source || reagents.holder_full())
-		return
 	var/list/room = intake.stationtrauma_water_intake()
 	var/has_water = FALSE
 	var/deepest = 0
 	for(var/turf/open/tile as anything in room)
-		if(tile.get_water_depth() > residual_depth)
+		var/depth = tile.get_water_depth()
+		if(depth > residual_depth)
 			has_water = TRUE
-		deepest = max(deepest, tile.get_water_depth())
+		deepest = max(deepest, depth)
 	if(!residual_depth && deepest < 1)
-		var/list/compartment = intake.stationtrauma_water_room()
+		if(!get_water_geometry())
+			return
 		var/only_tail = TRUE
-		for(var/turf/open/tile as anything in compartment)
-			if(tile.get_water_depth() >= 1)
+		for(var/turf/open/tile as anything in drain_water)
+			var/datum/component/floodwater/water = drain_water[tile]
+			if(!QDELETED(water) && water.depth >= 1)
 				only_tail = FALSE
 				break
 		if(only_tail)
-			// Collect the final film at the selected rate instead of waiting for asymptotic flow.
-			room = compartment
+			// Bound component updates too: deleting a whole wet compartment in one call stalls the MC.
+			room = drain_water.Copy(1, min(length(drain_water) + 1, 65))
+			if(!length(room) || !draw_pump_energy(seconds_per_tick))
+				return
+			var/remaining = drain_rate * seconds_per_tick * FLOOD_WATER_LITRES_PER_CM
+			// Empty complete films first; proportional withdrawal keeps recreating the same thin components.
 			for(var/turf/open/tile as anything in room)
-				has_water ||= tile.get_water_depth() > 0
+				remaining -= drain_stationtrauma_water_room(intake, remaining, reagents, 0, list(tile))
+				if(remaining <= 0 || reagents.holder_full())
+					break
+			return
 	if(has_water && draw_pump_energy(seconds_per_tick))
 		drain_stationtrauma_water_room(intake, drain_rate * seconds_per_tick * FLOOD_WATER_LITRES_PER_CM, reagents, residual_depth, room)
+
+/obj/machinery/bilge_pump/proc/can_collect_water()
+	if(!on || !is_operational || drain_rate <= 0 || !isopenturf(loc) || reagents.holder_full())
+		return FALSE
+	var/datum/component/floodwater/water = loc.GetComponent(/datum/component/floodwater)
+	if(water?.infinite_source)
+		return FALSE
+	if(istype(src, /obj/machinery/bilge_pump/portable))
+		var/obj/machinery/bilge_pump/portable/portable = src
+		return !portable.port && !portable.discharging && !portable.panel_open && portable.cell?.charge > 0
+	return anchored
+
+/// Cache only connectivity and distances; depths are read anew for every collection.
+/obj/machinery/bilge_pump/proc/get_water_geometry(max_distance = null)
+	if(water_geometry_location != loc)
+		invalidate_water_geometry()
+		water_geometry_location = loc
+	if(isnull(max_distance))
+		if(!drain_geometry)
+			var/turf/open/intake = loc
+			drain_geometry = intake.stationtrauma_water_room(null, src)
+		return drain_geometry
+	if(!suction_geometry)
+		var/turf/open/intake = loc
+		suction_geometry = intake.stationtrauma_water_room(max_distance, src)
+	return suction_geometry
+
+/obj/machinery/bilge_pump/proc/watch_water_geometry(turf/tile)
+	if(!tile || water_geometry_watchers[tile])
+		return
+	water_geometry_watchers[tile] = TRUE
+	RegisterSignals(tile, list(COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_TURF_CHANGE, COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED, COMSIG_ATOM_DENSITY_CHANGED), PROC_REF(invalidate_water_geometry))
+	RegisterSignals(tile, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(on_water_geometry_obstacle))
+	RegisterSignal(tile, COMSIG_STATIONTRAUMA_WATER_PRESENCE_CHANGED, PROC_REF(on_water_presence))
+	for(var/obj/obstacle in tile)
+		if(obstacle.can_atmos_pass == ATMOS_PASS_YES || water_geometry_watchers[obstacle])
+			continue
+		water_geometry_watchers[obstacle] = TRUE
+		RegisterSignals(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_QDELETING), PROC_REF(invalidate_water_geometry))
+
+/obj/machinery/bilge_pump/proc/on_water_geometry_obstacle(datum/source, atom/movable/obstacle)
+	SIGNAL_HANDLER
+	if(isobj(obstacle) && obstacle.can_atmos_pass != ATMOS_PASS_YES)
+		invalidate_water_geometry()
+
+/obj/machinery/bilge_pump/proc/on_water_presence(turf/tile, datum/component/floodwater/water, present)
+	SIGNAL_HANDLER
+	var/list/geometry = drain_geometry || drain_building
+	if(!geometry || isnull(geometry[tile]))
+		return
+	if(present && !water.infinite_source)
+		drain_water[tile] = water
+	else
+		drain_water -= tile
+
+/obj/machinery/bilge_pump/proc/invalidate_water_geometry(datum/source)
+	SIGNAL_HANDLER
+	suction_geometry = null
+	drain_geometry = null
+	drain_building = null
+	drain_queue = null
+	drain_cursor = 1
+	drain_water.Cut()
+	water_geometry_location = null
+	for(var/datum/watched as anything in water_geometry_watchers)
+		UnregisterSignal(watched, list(COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_TURF_CHANGE, COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED, COMSIG_STATIONTRAUMA_WATER_PRESENCE_CHANGED, COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, COMSIG_QDELETING))
+	water_geometry_watchers.Cut()
 
 /obj/machinery/bilge_pump/plumbed
 	name = "трюмная помпа с трубным выходом"

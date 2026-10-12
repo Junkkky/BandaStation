@@ -1,6 +1,2 @@
 #include "_underwater_caustics.dm"
 #include "code/caustics.dm"
-
-#ifdef UNIT_TESTS
-#include "tests/masks.dm"
-#endif

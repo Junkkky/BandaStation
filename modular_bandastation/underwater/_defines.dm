@@ -5,8 +5,18 @@
 #define FLOOD_WATER_DEEP 100
 #define FLOOD_WATER_SUBMERGED 200
 #define FLOOD_WATER_MAX_DEPTH 220
-#define FLOOD_WATER_OCEAN_FLOW 2000
 #define FLOOD_WATER_FLOW_EPSILON 0.000001
+#define FLOOD_WATER_MAX_BACKLOG 0.5
+#define FLOOD_WATER_STEP_PREPARE 0
+#define FLOOD_WATER_STEP_CAPTURE 1
+#define FLOOD_WATER_STEP_SPREAD 2
+#define FLOOD_WATER_STEP_COMMIT 4
+#define FLOOD_WATER_STEP_PUMPS 5
+// Fresh water, kPa per centimetre; custom pipe displays use bar (100 kPa).
+#define FLOOD_WATER_KPA_PER_CM 0.0980665
+#define FLOOD_WATER_PRESSURE_EPSILON 0.0001
+#define COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED "stationtrauma_water_boundary_changed"
+#define COMSIG_STATIONTRAUMA_WATER_PRESENCE_CHANGED "stationtrauma_water_presence_changed"
 #define FLOOD_WATER_TEMPERATURE (T0C + 4)
 // One-square-metre water footprint: a centimetre is ten litres.
 #define FLOOD_WATER_LITRES_PER_CM 10
