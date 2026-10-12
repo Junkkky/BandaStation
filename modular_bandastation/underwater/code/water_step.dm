@@ -14,15 +14,19 @@
 	var/list/changes = list()
 	var/list/heat = list()
 	var/list/flows = list()
+	/// Cardinal edge masks indexed by captured cell, avoiding a second string-keyed edge table.
 	var/list/processed = list()
-	var/list/speeds = list()
-	var/list/next_speeds = list()
+	/// North/east edge maps (indices 1/2), keyed by their origin turf without coordinate strings.
+	var/list/speeds = list(list(), list())
+	var/list/next_speeds = list(list(), list())
 	var/list/suction = list()
 	/// Resumable planning and application cursors.
 	var/phase = FLOOD_WATER_STEP_PREPARE
 	var/cursor = 0
 	var/flow_cursor = 1
 	var/list/changed = list()
+	/// Deduplicated visual refreshes; physical depths and paired transfers remain live in every batch.
+	var/list/effects = list()
 	var/list/pumps = list()
 	var/list/air_run = list()
 	var/list/pressure_reset = list()
@@ -42,12 +46,14 @@
 	flows.Cut()
 	processed.Cut()
 	changed.Cut()
+	effects.Cut()
 	pumps.Cut()
 	air_run.Cut()
 	pressure_reset.Cut()
 	pressure_run.Cut()
 	recheck_geometry = TRUE
-	next_speeds.Cut()
+	for(var/list/buffer as anything in next_speeds)
+		buffer.Cut()
 	suction.Cut()
 	phase = FLOOD_WATER_STEP_PREPARE
 	cursor = 0
@@ -64,14 +70,16 @@
 	waters += water
 	depths += water?.depth || 0
 	// Keep the head separate from depth to avoid cancellation at ocean pressures.
-	pressures += max(tile.stationtrauma_air_pressure(water), (water?.ocean_pressure || 0) - FLOOD_WATER_MAX_DEPTH * FLOOD_WATER_KPA_PER_CM)
+	pressures += max(water ? water.last_air_pressure : tile.stationtrauma_air_pressure(), (water?.ocean_pressure || 0) - FLOOD_WATER_MAX_DEPTH * FLOOD_WATER_KPA_PER_CM)
 	outgoing += 0
 	incoming += 0
 	changes += 0
 	heat += 0
+	processed += 0
 	return index
 
 /datum/floodwater_step/proc/capture_neighbours(turf/open/tile)
+	var/list/indices = src.indices
 	if(!indices[tile])
 		capture(tile)
 	for(var/direction in GLOB.cardinals)
@@ -80,8 +88,20 @@
 			capture(neighbor)
 
 /// Complete transfers stay paired inside a bounded commit; a paused step never exposes half a transfer.
-/datum/floodwater_step/proc/commit_batch()
+/datum/floodwater_step/proc/commit_batch(defer_effects = FALSE)
 	var/datum/floodwater_debug/debug = SSfloodwater.debug
+	if(debug.enabled)
+		debug.measure_phase("CommitFlows")
+	var/list/flows = src.flows
+	var/list/depths = src.depths
+	var/list/outgoing = src.outgoing
+	var/list/incoming = src.incoming
+	var/list/tiles = src.tiles
+	var/list/waters = src.waters
+	var/list/changes = src.changes
+	var/list/heat = src.heat
+	var/list/changed = src.changed
+	var/list/indices = src.indices
 	var/end = min(length(flows), flow_cursor + 3 * 32 - 1)
 	while(flow_cursor <= end)
 		var/from = flows[flow_cursor]
@@ -92,7 +112,7 @@
 		var/turf/open/destination = tiles[receiver_index]
 		flow_cursor += 3
 		// Doors and plumbing may change while planning is paused.
-		if(!isopenturf(source) || !isopenturf(destination) || (recheck_geometry && !source.can_pass_stationtrauma_water(destination)))
+		if(!isopenturf(source) || !isopenturf(destination))
 			continue
 		var/datum/component/floodwater/from_water = waters[from]
 		var/datum/component/floodwater/to_water = waters[receiver_index]
@@ -102,6 +122,18 @@
 			to_water = destination.GetComponent(/datum/component/floodwater)
 		if(!from_water || from_water.infinite_source || to_water?.infinite_source)
 			continue
+		if(recheck_geometry)
+			var/direction = get_dir(source, destination)
+			var/reverse = REVERSE_DIR(direction)
+			// Both live wet cells invalidate these masks when a barrier changes; dry fronts still need direct checks.
+			if(to_water && (from_water.flow_geometry_known & direction) && (to_water.flow_geometry_known & reverse) && (direction in GLOB.cardinals) && get_step(source, direction) == destination && !source.blocks_air && !destination.blocks_air)
+				if(!(from_water.flow_geometry_open & direction) || !(to_water.flow_geometry_open & reverse))
+					continue
+			else
+				if(debug.enabled)
+					debug.barrier_checks++
+				if(!source.can_pass_stationtrauma_water(destination))
+					continue
 		amount = min(amount, max(0, from_water.depth + changes[from]), max(0, FLOOD_WATER_MAX_DEPTH - (to_water?.depth || 0) - changes[receiver_index]))
 		if(amount <= 0)
 			continue
@@ -116,7 +148,11 @@
 		heat[receiver_index] += amount * temperature
 		if(debug.enabled)
 			debug.transfers++
+	if(debug.enabled)
+		debug.measure_phase("CommitCells")
 	for(var/index in changed)
+		if(debug.enabled)
+			debug.cell_updates++
 		var/turf/open/tile = tiles[index]
 		var/datum/component/floodwater/water = waters[index]
 		if(!water || QDELETED(water))
@@ -125,10 +161,13 @@
 		var/new_heat = (water?.depth || 0) * (water?.temperature || 0) + heat[index]
 		var/new_temperature = new_depth > 0 ? new_heat / new_depth : FLOOD_WATER_TEMPERATURE
 		if(water && new_depth == water.depth && new_temperature == water.temperature)
-			water.wake()
+			if(water.infinite_source || !SSfloodwater.active[water])
+				water.wake()
 		else if(water && new_depth > 0)
 			water.temperature = new_temperature
-			water.set_depth(new_depth, FALSE)
+			water.set_depth(new_depth, FALSE, defer_effects)
+			if(defer_effects && water.visual_stage != water.stage)
+				effects[water] = TRUE
 		else
 			water = tile.set_water_depth(new_depth, FALSE, new_temperature, FALSE)
 		waters[index] = new_depth > 0 ? water : null
@@ -141,6 +180,8 @@
 		changes[index] = 0
 		heat[index] = 0
 	changed.Cut()
+	if(debug.enabled)
+		debug.measure_phase("Commit")
 
 /// Direct component calls in fixtures use the same conservative planner without MC scheduling.
 /datum/floodwater_step/proc/commit()
@@ -148,6 +189,8 @@
 		commit_batch()
 
 /datum/controller/subsystem/floodwater/proc/simulate_step(resumed = FALSE)
+	if(debug.enabled)
+		debug.measure_phase("Prepare")
 	step_running = TRUE
 	if(resumed)
 		step.recheck_geometry = TRUE
@@ -168,6 +211,8 @@
 			for(var/turf/open/tile as anything in distances)
 				var/distance = distances[tile]
 				step.suction[tile] = max(step.suction[tile] || 0, (8 - distance) * min(1, pump.drain_rate / 180))
+	if(debug.enabled)
+		debug.measure_phase("Air")
 	while(length(step.air_run))
 		var/datum/component/floodwater/water = step.air_run[length(step.air_run)]
 		step.air_run.len--
@@ -175,6 +220,8 @@
 			water.process_air()
 		if(MC_TICK_CHECK)
 			return
+	if(debug.enabled)
+		debug.measure_phase("Pressure")
 	while(length(step.pressure_reset))
 		var/datum/component/floodwater/water = step.pressure_reset[length(step.pressure_reset)]
 		step.pressure_reset.len--
@@ -184,6 +231,8 @@
 			water.wake_neighbours()
 		if(MC_TICK_CHECK)
 			return
+	if(debug.enabled)
+		debug.measure_phase("Ocean")
 	while(length(step.sources))
 		var/datum/component/floodwater/source = step.sources[length(step.sources)]
 		step.sources.len--
@@ -192,6 +241,8 @@
 		if(MC_TICK_CHECK)
 			return
 	// Inflow can fill the throat this very step; compute its head from the same state we snapshot.
+	if(debug.enabled)
+		debug.measure_phase("Pressure")
 	if(step.phase == FLOOD_WATER_STEP_PREPARE && length(pressure.pending))
 		step.pressure_run |= pressure.pending
 		pressure.pending.Cut()
@@ -207,6 +258,8 @@
 		step.cursor = length(step.currentrun)
 		step.phase = FLOOD_WATER_STEP_CAPTURE
 	if(step.phase == FLOOD_WATER_STEP_CAPTURE)
+		if(debug.enabled)
+			debug.measure_phase("Capture")
 		while(step.cursor)
 			var/datum/component/floodwater/water = step.currentrun[step.cursor--]
 			if(!QDELETED(water))
@@ -216,6 +269,8 @@
 		step.cursor = length(step.currentrun)
 		step.phase = FLOOD_WATER_STEP_SPREAD
 	if(step.phase == FLOOD_WATER_STEP_SPREAD)
+		if(debug.enabled)
+			debug.measure_phase("Spread")
 		while(step.cursor)
 			var/datum/component/floodwater/water = step.currentrun[step.cursor--]
 			if(!QDELETED(water) && !water.infinite_source)
@@ -226,8 +281,19 @@
 				return
 		step.phase = FLOOD_WATER_STEP_COMMIT
 	if(step.phase == FLOOD_WATER_STEP_COMMIT)
+		if(debug.enabled)
+			debug.measure_phase("Commit")
 		while(step.flow_cursor <= length(step.flows))
-			step.commit_batch()
+			step.commit_batch(TRUE)
+			if(MC_TICK_CHECK)
+				return
+		if(debug.enabled)
+			debug.measure_phase("Effects")
+		while(length(step.effects))
+			var/datum/component/floodwater/water = step.effects[length(step.effects)]
+			step.effects.len--
+			if(!QDELETED(water))
+				water.update_depth_effects()
 			if(MC_TICK_CHECK)
 				return
 		var/list/old_speeds = step.speeds
@@ -237,6 +303,8 @@
 		step.pumps = pumps.Copy()
 		step.cursor = length(step.pumps)
 		step.phase = FLOOD_WATER_STEP_PUMPS
+	if(debug.enabled)
+		debug.measure_phase("Pumps")
 	while(step.cursor)
 		var/obj/machinery/bilge_pump/pump = step.pumps[step.cursor--]
 		if(!QDELETED(pump))

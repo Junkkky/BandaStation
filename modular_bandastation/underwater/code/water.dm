@@ -201,11 +201,11 @@
 	var/infinite_source = FALSE
 	var/temperature = FLOOD_WATER_TEMPERATURE
 	var/stage = -1
+	/// Last rendered stage; flow batches may change the physical stage before effects are flushed.
+	var/visual_stage = -1
 	var/mask_state
 	var/mutable_appearance/water_overlay
 	var/show_puddle
-	/// Cardinal direction bits are bounded positional indices (N=1, S=2, E=4, W=8).
-	var/list/flow_edge_keys
 	/// Cardinal masks; only edges between two live water components can reuse a geometry result.
 	var/flow_geometry_known = NONE
 	var/flow_geometry_open = NONE
@@ -220,7 +220,6 @@
 	show_puddle = prob(30)
 
 /datum/component/floodwater/RegisterWithParent()
-	flow_edge_keys = new/list(8)
 	RegisterSignal(parent, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, PROC_REF(on_atmos_update))
 	RegisterSignal(parent, COMSIG_TURF_CHANGE, PROC_REF(on_turf_change))
 	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(add_water_overlay))
@@ -266,13 +265,15 @@
 		occupant.refresh_gravity()
 	wake_neighbours()
 
-/datum/component/floodwater/proc/set_depth(new_depth, notify_neighbors = TRUE)
+/// Set bounded depth and refresh depth-dependent behavior; reservoirs must still recheck their boundary.
+/datum/component/floodwater/proc/set_depth(new_depth, notify_neighbors = TRUE, defer_effects = FALSE)
 	depth = clamp(new_depth, 0, FLOOD_WATER_MAX_DEPTH)
 	if(!depth)
 		qdel(src)
 		return
-	update_depth()
-	wake()
+	update_depth(defer_effects)
+	if(infinite_source || !SSfloodwater.active[src])
+		wake()
 	if(notify_neighbors)
 		wake_neighbours()
 
@@ -296,35 +297,74 @@
 		set_depth(remaining_depth)
 	return removed
 
-/// Visual/behaviour changes only happen when crossing a depth threshold.
-/datum/component/floodwater/proc/update_depth()
+/// Physics and occupant state stay immediate; repeated wet-stage visual changes can be coalesced.
+/datum/component/floodwater/proc/update_depth(defer_effects = FALSE)
 	var/new_stage = depth <= 0.6 && !infinite_source ? 0 : depth >= FLOOD_WATER_SUBMERGED ? 4 : depth >= FLOOD_WATER_DEEP ? 3 : depth >= FLOOD_WATER_WAIST ? 2 : 1
 	if(stage == new_stage)
+		if(!defer_effects && visual_stage != stage)
+			update_depth_effects()
 		return
+	var/datum/floodwater_debug/debug = SSfloodwater.debug
+	var/previous_phase
+	if(debug.enabled)
+		debug.stage_updates++
+		previous_phase = debug.phase_name
+		debug.measure_phase("DepthPressure")
 	update_pressure_connection()
-	var/turf/open/tile = parent
-	if(mask_state)
-		tile.RemoveElement(/datum/element/immerse/floodwater, mask_state, 140)
+	// Puddle transitions attach/remove immersion traits and wetness, so keep them immediate.
+	defer_effects = defer_effects && stage > 0 && new_stage > 0
 	stage = new_stage
-	mask_state = !stage ? null : stage == 4 ? "submerged" : stage >= 2 ? "immerse_deep" : "immerse"
+	if(!defer_effects)
+		update_depth_effects()
+	var/turf/open/tile = parent
 	if(stage)
-		tile.AddElement(/datum/element/immerse/floodwater, mask_state, 140)
+		if(debug.enabled)
+			debug.measure_phase("Occupants")
+		for(var/mob/living/occupant in tile)
+			if(occupant.flags_1 & INITIALIZED_1)
+				on_entered(tile, occupant)
+	if(debug.enabled)
+		debug.measure_phase(previous_phase)
+
+/// Apply only the final wet-stage appearance after conservative transfers have finished.
+/datum/component/floodwater/proc/update_depth_effects()
+	if(visual_stage == stage)
+		return
+	var/datum/floodwater_debug/debug = SSfloodwater.debug
+	var/previous_phase
+	if(debug.enabled)
+		previous_phase = debug.phase_name
+	var/turf/open/tile = parent
+	if(debug.enabled)
+		debug.measure_phase("Immersion")
+	var/new_mask_state = !stage ? null : stage == 4 ? "submerged" : stage >= 2 ? "immerse_deep" : "immerse"
+	if(mask_state && mask_state != new_mask_state)
+		tile.RemoveElement(/datum/element/immerse/floodwater, mask_state, 140)
+	// Waist and deep water share a mask; keep the existing filters and signals when it does not change.
+	if(mask_state != new_mask_state)
+		mask_state = new_mask_state
+		if(mask_state)
+			tile.AddElement(/datum/element/immerse/floodwater, mask_state, 140)
+	if(debug.enabled)
+		debug.measure_phase("WaterOverlay")
 	tile.cut_overlay(water_overlay)
 	water_overlay = null
+	visual_stage = stage
 	if(!stage)
 		if(show_puddle)
 			water_overlay = mutable_appearance('icons/effects/water.dmi', "wet_floor_static")
 			water_overlay.plane = MUTATE_PLANE(FLOOR_PLANE, tile)
 			tile.add_overlay(water_overlay)
+		if(debug.enabled)
+			debug.measure_phase(previous_phase)
 		return
 	// Flooded floors need a stronger water column; the exterior must keep the seabed visible.
 	var/water_alpha = isspaceturf(tile) ? 16 + stage * 8 : 32 + stage * 24
 	water_overlay = mutable_appearance('modular_bandastation/underwater/icons/water.dmi', "volume", TOPDOWN_WATER_LEVEL_LAYER, alpha = water_alpha)
 	water_overlay.plane = MUTATE_PLANE(FLOOR_PLANE, tile)
 	tile.add_overlay(water_overlay)
-	for(var/mob/living/occupant in tile)
-		if(occupant.flags_1 & INITIALIZED_1)
-			on_entered(tile, occupant)
+	if(debug.enabled)
+		debug.measure_phase(previous_phase)
 
 /datum/component/floodwater/proc/on_entered(turf/source, atom/movable/arrived)
 	SIGNAL_HANDLER

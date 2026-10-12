@@ -83,33 +83,30 @@
 	var/list/processed = step.processed
 	var/dt = SSfloodwater.step_seconds
 	for(var/direction in GLOB.cardinals)
+		if(processed[source] & direction)
+			continue
 		var/turf/open/next_tile = get_step(tile, direction)
 		var/next = indices[next_tile]
 		if(!next || isspaceturf(next_tile) || istype(next_tile, /turf/open/water))
-			continue
-		var/key = flow_edge_keys[direction]
-		if(key && processed[key])
 			continue
 		var/datum/component/floodwater/next_water = waters[next]
 		var/next_depth = depths[next]
 		if(next_water?.infinite_source || (source_depth == FLOOD_WATER_MAX_DEPTH && next_depth == FLOOD_WATER_MAX_DEPTH))
 			continue
-		var/pressure_difference = pressures[source] - pressures[next]
-		var/difference = source_depth - next_depth + pressure_difference / FLOOD_WATER_KPA_PER_CM + (suction[next_tile] || 0) - (suction[tile] || 0)
-		var/forward = direction == NORTH || direction == EAST
-		if(!key)
-			var/turf/open/edge_origin = forward ? tile : next_tile
-			var/edge_direction = forward ? direction : REVERSE_DIR(direction)
-			key = "[edge_origin.x],[edge_origin.y],[edge_origin.z]:[edge_direction]"
-			flow_edge_keys[direction] = key
-			if(debug.enabled)
-				debug.keys++
-		if(processed[key])
-			continue
-		processed[key] = TRUE
+		var/reverse = REVERSE_DIR(direction)
+		processed[source] |= direction
+		processed[next] |= reverse
 		if(debug.enabled)
 			debug.edges++
-		var/momentum = (speeds[key] || 0) * (forward ? 1 : -1) + difference * dt
+		if(next_water && (flow_geometry_known & direction) && !(flow_geometry_open & direction))
+			continue
+		var/forward = direction == NORTH || direction == EAST
+		var/turf/open/edge_origin = forward ? tile : next_tile
+		var/axis = direction & (NORTH|SOUTH) ? 1 : 2
+		var/list/edge_speeds = speeds[axis]
+		var/pressure_difference = pressures[source] - pressures[next]
+		var/difference = source_depth - next_depth + pressure_difference / FLOOD_WATER_KPA_PER_CM + (suction[next_tile] || 0) - (suction[tile] || 0)
+		var/momentum = (edge_speeds[edge_origin] || 0) * (forward ? 1 : -1) + difference * dt
 		var/velocity = momentum / (1 + 3 * dt)
 		if(abs(velocity) < 0.0001 && abs(difference) < 0.0001)
 			continue
@@ -118,7 +115,6 @@
 			var/passable = tile.can_pass_stationtrauma_water(next_tile)
 			if(next_water)
 				flow_geometry_known |= direction
-				var/reverse = REVERSE_DIR(direction)
 				next_water.flow_geometry_known |= reverse
 				if(passable)
 					flow_geometry_open |= direction
@@ -128,8 +124,6 @@
 					next_water.flow_geometry_open &= ~reverse
 			if(!passable)
 				continue
-		else if(!(flow_geometry_open & direction))
-			continue
 		var/from = velocity > 0 ? source : next
 		var/receiver_index = velocity > 0 ? next : source
 		var/upstream_depth = depths[from]
@@ -142,7 +136,8 @@
 		var/amount = abs(velocity) * max(upstream_depth, 20) * dt
 		if(amount <= 0)
 			continue
-		next_speeds[key] = velocity * (forward ? 1 : -1)
+		var/list/next_edge_speeds = next_speeds[axis]
+		next_edge_speeds[edge_origin] = velocity * (forward ? 1 : -1)
 		outgoing[from] += amount
 		incoming[receiver_index] += amount
 		flows.Add(from, receiver_index, amount)

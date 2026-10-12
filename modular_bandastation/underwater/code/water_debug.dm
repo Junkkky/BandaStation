@@ -5,13 +5,18 @@
 	var/enabled = FALSE
 	var/cpu_ms = 0
 	var/max_slice_ms = 0
+	var/list/phase_ms = list()
+	var/phase_name
+	var/phase_started = 0
 	var/steps = 0
 	var/tiles = 0
 	var/edges = 0
 	var/transfers = 0
+	var/barrier_checks = 0
+	var/cell_updates = 0
+	var/stage_updates = 0
 	var/bfs = 0
 	var/bfs_tiles = 0
-	var/keys = 0
 	var/wakes = 0
 	var/wake_requests = 0
 	var/area/area
@@ -20,19 +25,35 @@
 /datum/floodwater_debug/proc/reset()
 	cpu_ms = 0
 	max_slice_ms = 0
+	phase_ms.Cut()
+	phase_name = null
+	phase_started = 0
 	steps = 0
 	tiles = 0
 	edges = 0
 	transfers = 0
+	barrier_checks = 0
+	cell_updates = 0
+	stage_updates = 0
 	bfs = 0
 	bfs_tiles = 0
-	keys = 0
 	wakes = 0
 	wake_requests = 0
 
 
+/// Close each slice before yielding so time spent paused is never charged to a phase.
+/datum/floodwater_debug/proc/measure_phase(name)
+	var/now = TICK_USAGE_REAL
+	if(phase_name)
+		phase_ms[phase_name] += TICK_DELTA_TO_MS(now - phase_started)
+	phase_name = name
+	phase_started = now
+
 /datum/floodwater_debug/proc/statistics()
-	return " CPU:[round(cpu_ms, 0.01)]ms MaxSlice:[round(max_slice_ms, 0.01)]ms Microsteps:[steps] Tiles:[tiles] Edges:[edges] Transfers:[transfers] BFS:[bfs]/[bfs_tiles] Keys:[keys] Wakes:[wakes]/[wake_requests] Volume:[round(litres, 0.01)]L"
+	var/result = " CPU:[round(cpu_ms, 0.01)]ms MaxSlice:[round(max_slice_ms, 0.01)]ms Microsteps:[steps] Tiles:[tiles] Edges:[edges] Transfers:[transfers] Checks:[barrier_checks] Cells:[cell_updates] Stages:[stage_updates] BFS:[bfs]/[bfs_tiles] Wakes:[wakes]/[wake_requests] Volume:[round(litres, 0.01)]L"
+	for(var/name as anything in phase_ms)
+		result += " [name]:[round(phase_ms[name], 0.01)]ms"
+	return result
 
 ADMIN_VERB(stationtrauma_water_debug, R_DEBUG, "Water Depth Debug", "Toggle live water depths in centimetres on nearby turfs.", ADMIN_CATEGORY_DEBUG)
 	if(SSfloodwater.debug.viewers[user])
@@ -46,10 +67,12 @@ ADMIN_VERB(stationtrauma_water_debug, R_DEBUG, "Water Depth Debug", "Toggle live
 	BLACKBOX_LOG_ADMIN_VERB("Water Depth Debug")
 
 ADMIN_VERB(stationtrauma_water_statistics, R_DEBUG, "Water Performance Debug", "Toggle Floodwater counters and finite volume in your current area.", ADMIN_CATEGORY_DEBUG)
+	if(SSfloodwater.debug.enabled)
+		to_chat(user, span_notice(SSfloodwater.debug.statistics()))
 	SSfloodwater.debug.enabled = !SSfloodwater.debug.enabled
 	SSfloodwater.debug.area = SSfloodwater.debug.enabled ? get_area(user.mob) : null
 	SSfloodwater.debug.reset()
-	to_chat(user, span_notice("Floodwater counters [SSfloodwater.debug.enabled ? "enabled" : "disabled"]. See Controller Overview → Floodwater; volume excludes ocean reservoirs."))
+	to_chat(user, span_notice("Floodwater counters [SSfloodwater.debug.enabled ? "enabled" : "disabled"]. See the MC stat tab; disabling prints the latest snapshot here. Volume excludes ocean reservoirs."))
 	BLACKBOX_LOG_ADMIN_VERB("Water Performance Debug")
 
 /datum/floodwater_debug/proc/update_viewers()

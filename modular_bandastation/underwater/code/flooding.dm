@@ -23,15 +23,21 @@ SUBSYSTEM_DEF(floodwater)
 	if(!resumed)
 		debug.reset()
 	var/started = TICK_USAGE_REAL
+	debug.measure_phase("Prepare")
 	advance_water(resumed)
+	debug.measure_phase(null)
 	var/elapsed = TICK_DELTA_TO_MS(TICK_USAGE_REAL - started)
 	debug.cpu_ms += elapsed
 	debug.max_slice_ms = max(debug.max_slice_ms, elapsed)
 
 /datum/controller/subsystem/floodwater/proc/advance_water(resumed = FALSE)
 	if(world.time >= debug.next_update)
+		if(debug.enabled)
+			debug.measure_phase("Debug")
 		debug.update_viewers()
 		debug.next_update = world.time + 0.5 SECONDS
+		if(debug.enabled)
+			debug.measure_phase("Prepare")
 	if(!resumed)
 		fire_steps = 0
 		// Preserve ordinary elapsed time, but never repay a long server stall in one fire.

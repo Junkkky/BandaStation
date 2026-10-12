@@ -79,7 +79,8 @@
 
 /// Propagate a cached reservoir head through filled water, without creating any reservoir volume.
 /datum/component/floodwater/proc/update_ocean_pressure(list/queue)
-	if(!SSfloodwater.pressure.cells[src])
+	var/list/cells = SSfloodwater.pressure.cells
+	if(!cells[src])
 		return
 	var/turf/open/tile = parent
 	var/pressure = ocean_pressure
@@ -89,7 +90,12 @@
 		if(!isopenturf(neighbor))
 			continue
 		var/datum/component/floodwater/water = neighbor.GetComponent(/datum/component/floodwater)
-		if(!water || (!water.infinite_source && !SSfloodwater.pressure.cells[water]) || !tile.can_pass_stationtrauma_water(neighbor))
+		if(!water || (!water.infinite_source && !cells[water]))
+			continue
+		if(flow_geometry_known & direction)
+			if(!(flow_geometry_open & direction))
+				continue
+		else if(!tile.can_pass_stationtrauma_water(neighbor))
 			continue
 		pressure = max(pressure, water.infinite_source ? water.reservoir_pressure : water.ocean_pressure)
 		if(!water.infinite_source)
