@@ -1,5 +1,7 @@
 /datum/floodwater_debug
 	var/list/viewers = list()
+	/// Administrators waiting for a single click report; no per-tick processing.
+	var/list/click_viewers = list()
 	var/next_update = 0
 	/// Optional counters; disabled during normal play.
 	var/enabled = FALSE
@@ -53,7 +55,7 @@
 
 ADMIN_VERB(stationtrauma_water_debug, R_DEBUG, "Water Depth Debug", "Toggle live water depths in centimetres on nearby turfs.", ADMIN_CATEGORY_DEBUG)
 	if(SSfloodwater.debug.viewers[user])
-		user.images -= SSfloodwater.debug.viewers[user]
+		SSfloodwater.debug.clear_viewer(user)
 		SSfloodwater.debug.viewers -= user
 		to_chat(user, span_notice("Отображение глубины воды выключено."))
 	else
@@ -71,6 +73,60 @@ ADMIN_VERB(stationtrauma_water_statistics, R_DEBUG, "Water Performance Debug", "
 	to_chat(user, span_notice("Floodwater counters [SSfloodwater.debug.enabled ? "enabled" : "disabled"]. See the MC stat tab; disabling prints the latest snapshot here. Volume excludes ocean reservoirs."))
 	BLACKBOX_LOG_ADMIN_VERB("Water Performance Debug")
 
+ADMIN_VERB(stationtrauma_water_click_debug, R_DEBUG, "Water Click Debug", "Report the next map click and nearby physical objects without changing them.", ADMIN_CATEGORY_DEBUG)
+	var/datum/floodwater_debug/debug = SSfloodwater.debug
+	if(user in debug.click_viewers)
+		debug.clear_click_viewer(user)
+		to_chat(user, span_notice("Water click diagnostic cancelled."))
+		return
+	debug.click_viewers += user
+	debug.RegisterSignal(user, COMSIG_CLIENT_CLICK, TYPE_PROC_REF(/datum/floodwater_debug, report_click))
+	debug.RegisterSignal(user, COMSIG_QDELETING, TYPE_PROC_REF(/datum/floodwater_debug, clear_click_viewer))
+	to_chat(user, span_notice("Water click diagnostic armed: click the affected tile once. The report appears here and in the game log."))
+	BLACKBOX_LOG_ADMIN_VERB("Water Click Debug")
+
+/// Unsubscribe after one report, cancellation or disconnection.
+/datum/floodwater_debug/proc/clear_click_viewer(client/viewer)
+	SIGNAL_HANDLER
+	UnregisterSignal(viewer, list(COMSIG_CLIENT_CLICK, COMSIG_QDELETING))
+	click_viewers -= viewer
+
+/// Observe the client target before normal click handling, without intercepting it.
+/datum/floodwater_debug/proc/report_click(client/source, atom/target, atom/location, control, params, mob/user)
+	SIGNAL_HANDLER
+	if(istype(target, /atom/movable/screen))
+		return
+	clear_click_viewer(source)
+	if(!check_rights_for(source, R_DEBUG))
+		return
+	var/turf/tile = get_turf(target)
+	if(!tile)
+		tile = get_turf(location)
+	var/list/report = list("WaterClick target=[target?.type] ref=[REF(target)] loc=[target?.loc] tile=[COORD(tile)] control=[control] params=[params]")
+	if(tile)
+		var/turf/open/open_tile = isopenturf(tile) ? tile : null
+		report += "Tile depth=[open_tile?.get_water_depth()] obscured=[tile.IsObscured()] contents=[length(tile.contents)] user=[COORD(user)] see_invisible=[user?.see_invisible]"
+		for(var/turf/nearby as anything in RANGE_TURFS(1, tile))
+			for(var/atom/movable/thing as anything in nearby)
+				if(nearby != tile && !isitem(thing) && !(thing.flags_1 & PREVENT_CLICK_UNDER_1))
+					continue
+				var/turf/pixel_tile = get_turf_pixel(thing)
+				report += "[thing.type] ref=[REF(thing)] loc=[COORD(nearby)] pixel_tile=[COORD(pixel_tile)] mouse=[thing.mouse_opacity] invisible=[thing.invisibility] obscured=[thing.IsObscured()] density=[thing.density] blocks_click=[!!(thing.flags_1 & PREVENT_CLICK_UNDER_1)] layer=[thing.layer] plane=[thing.plane] filters=[length(thing.filters)] vis=[length(thing.vis_contents)]"
+				for(var/atom/movable/immerse_mask/mask in thing.vis_contents)
+					report += "Immersion relay owner=[REF(thing)] mouse=[mask.mouse_opacity] alpha=[mask.alpha] target=[mask.render_target] vis_flags=[mask.vis_flags] appearance_flags=[mask.appearance_flags]"
+	for(var/line in report)
+		log_game(line)
+		to_chat(source, span_notice(html_encode(line)))
+
+/// Remove private label visuals as well as their images when refreshing or disabling the display.
+/datum/floodwater_debug/proc/clear_viewer(client/viewer)
+	if(!QDELETED(viewer))
+		viewer.images -= viewers[viewer]
+	for(var/image/label as anything in viewers[viewer])
+		for(var/obj/effect/overlay/vis/text as anything in label.vis_contents)
+			qdel(text)
+	viewers[viewer] = list()
+
 /datum/floodwater_debug/proc/update_viewers()
 	if(enabled && area)
 		litres = 0
@@ -80,16 +136,35 @@ ADMIN_VERB(stationtrauma_water_statistics, R_DEBUG, "Water Performance Debug", "
 				litres += tile.get_water_depth() * FLOOD_WATER_LITRES_PER_CM
 	for(var/client/viewer as anything in viewers)
 		if(QDELETED(viewer) || !viewer.mob)
+			clear_viewer(viewer)
 			viewers -= viewer
 			continue
-		viewer.images -= viewers[viewer]
+		var/list/labels_by_turf = list()
+		for(var/image/label as anything in viewers[viewer])
+			labels_by_turf[label.loc] = label
 		var/list/images = list()
 		for(var/turf/open/tile in range(12, viewer.mob))
 			var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
-			var/image/label = image(loc = tile)
-			SET_PLANE_EXPLICIT(label, BALLOON_CHAT_PLANE, tile)
-			label.maptext = MAPTEXT("<span style='color:[water?.infinite_source ? "#37c7b7" : tile.get_water_depth() ? "#ffffff" : "#aaaaaa"];text-align:center'>[water?.infinite_source ? "∞" : round(tile.get_water_depth(), 0.1)]</span>")
-			label.maptext_y = 8
+			var/image/label = labels_by_turf[tile]
+			var/obj/effect/overlay/vis/text
+			if(!label)
+				label = image(loc = tile)
+				text = new
+				label.vis_contents += text
+			else
+				text = label.vis_contents[1]
+			labels_by_turf -= tile
+			// Image overlays inherit turf clicks; a separate visual lets clicks pass through the digits.
+			SET_PLANE_EXPLICIT(text, BALLOON_CHAT_PLANE, tile)
+			text.layer = label.layer
+			text.maptext = MAPTEXT("<span style='color:[water?.infinite_source ? "#37c7b7" : tile.get_water_depth() ? "#ffffff" : "#aaaaaa"];text-align:center'>[water?.infinite_source ? "∞" : round(tile.get_water_depth(), 0.1)]</span>")
+			text.maptext_y = 8
 			images += label
+		viewer.images -= viewers[viewer]
+		// Only labels that left the visible range are retired; stationary labels reuse their visuals.
+		for(var/turf/tile as anything in labels_by_turf)
+			var/image/label = labels_by_turf[tile]
+			for(var/obj/effect/overlay/vis/text as anything in label.vis_contents)
+				qdel(text)
 		viewers[viewer] = images
 		viewer.images += images

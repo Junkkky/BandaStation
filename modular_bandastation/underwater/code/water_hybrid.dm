@@ -124,10 +124,12 @@
 /datum/floodwater_hybrid/withdraw(datum/floodwater_front_cell/cell, requested)
 	. = ..()
 	if(.)
-		wake_ocean_contacts(cell.root())
+		wake_ocean_contacts(cell.root(), cell)
 
 /// Aggregate withdrawal frees every member's capacity, including a source far from the active front.
-/datum/floodwater_hybrid/proc/wake_ocean_contacts(datum/floodwater_front_group/owner = null)
+/datum/floodwater_hybrid/proc/wake_ocean_contacts(datum/floodwater_front_group/owner = null, datum/floodwater_front_cell/withdrawn_cell = null)
+	for(var/datum/component/floodwater_leak/leak as anything in SSfloodwater.leaks)
+		leak.wake(owner, withdrawn_cell)
 	for(var/datum/floodwater_front_cell/contact as anything in ocean_contacts)
 		if(owner && contact.root() != owner)
 			continue

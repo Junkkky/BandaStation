@@ -21,9 +21,14 @@
 		return ELEMENT_INCOMPATIBLE
 	RegisterSignal(target, COMSIG_TURF_ON_SHUTTLE_MOVE, PROC_REF(move_water), override = TRUE)
 	RegisterSignal(target, COMSIG_TURF_CHANGE, PROC_REF(hull_changed), override = TRUE)
+	RegisterSignals(target, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(watch_window), override = TRUE)
+	if(iswallturf(target))
+		target.AddComponent(/datum/component/floodwater_leak)
+	for(var/obj/structure/window/window in target)
+		window.AddComponent(/datum/component/floodwater_leak)
 
 /datum/element/stationtrauma_hull/Detach(turf/source)
-	UnregisterSignal(source, list(COMSIG_TURF_ON_SHUTTLE_MOVE, COMSIG_TURF_CHANGE))
+	UnregisterSignal(source, list(COMSIG_TURF_ON_SHUTTLE_MOVE, COMSIG_TURF_CHANGE, COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON))
 	return ..()
 
 /datum/element/stationtrauma_hull/proc/move_water(turf/source, turf/destination)

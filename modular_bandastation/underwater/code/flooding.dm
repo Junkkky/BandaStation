@@ -5,6 +5,8 @@ SUBSYSTEM_DEF(floodwater)
 	ss_flags = SS_NO_INIT | SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/list/active = list()
+	/// Damaged ocean contacts, including parked full-room leaks; intact barriers never enter this list.
+	var/list/leaks = list()
 	var/list/pumps = list()
 	/// C is the only finite-water solver; domains are admitted when water appears.
 	var/datum/floodwater_hybrid/hybrid = new
@@ -83,9 +85,19 @@ SUBSYSTEM_DEF(floodwater)
 		if(debug.enabled)
 			debug.measure_phase("Ocean")
 		while(work_cursor)
-			var/datum/component/floodwater/source = source_run[work_cursor--]
-			if(!QDELETED(source) && source.infinite_source)
-				source.feed_ocean()
+			var/datum/component/source = source_run[work_cursor--]
+			if(!QDELETED(source))
+				if(istype(source, /datum/component/floodwater_leak))
+					var/datum/component/floodwater_leak/leak = source
+					if(debug.enabled)
+						debug.measure_phase("Leaks")
+					leak.feed_ocean()
+					if(debug.enabled)
+						debug.measure_phase("Ocean")
+				else
+					var/datum/component/floodwater/ocean = source
+					if(ocean.infinite_source)
+						ocean.feed_ocean()
 			if(MC_TICK_CHECK)
 				return FALSE
 		source_run.Cut()

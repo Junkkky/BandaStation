@@ -70,7 +70,7 @@
 	SET_PLANE(underlay_appearance, PLANE_SPACE, asking_turf)
 	var/datum/component/floodwater/water = GetComponent(/datum/component/floodwater)
 	if(water?.water_overlay)
-		var/mutable_appearance/volume = new(water.water_overlay)
+		var/mutable_appearance/volume = new(water.water_overlay.appearance)
 		SET_PLANE(volume, FLOOR_PLANE, asking_turf)
 		underlay_appearance.overlays += volume
 	return TRUE
@@ -220,7 +220,8 @@
 	/// Last rendered stage; flow batches may change the physical stage before effects are flushed.
 	var/visual_stage = -1
 	var/mask_state
-	var/mutable_appearance/water_overlay
+	/// Cached mouse-transparent visual; ordinary turf overlays intercept clicks on submerged contents.
+	var/obj/effect/overlay/vis/water_overlay
 	var/show_puddle
 
 /datum/component/floodwater/Initialize(initial_depth, is_source = FALSE, initial_temperature = FLOOD_WATER_TEMPERATURE)
@@ -236,7 +237,6 @@
 	RegisterSignal(parent, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, PROC_REF(on_atmos_update))
 	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(add_water_overlay))
 	RegisterSignal(parent, COMSIG_TURF_PREPARE_STEP_SOUND, PROC_REF(water_steps))
-	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(examine_depth))
 	RegisterSignals(parent, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(on_entered))
 	RegisterSignal(parent, COMSIG_ATOM_EXITED, PROC_REF(on_exited))
 	var/turf/open/tile = parent
@@ -260,14 +260,15 @@
 	if(infinite_source || isspaceturf(parent))
 		SEND_SIGNAL(parent, COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED)
 	SSfloodwater.active -= src
-	UnregisterSignal(parent, list(COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_TURF_CHANGE, COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_TURF_PREPARE_STEP_SOUND, COMSIG_ATOM_EXAMINE, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON))
+	UnregisterSignal(parent, list(COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_TURF_CHANGE, COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_TURF_PREPARE_STEP_SOUND, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON))
 	var/turf/open/tile = parent
 	if(mask_state)
 		tile.RemoveElement(/datum/element/immerse/floodwater, "immerse", 140)
 	tile.RemoveElement(/datum/element/watery_tile)
 	if(isspaceturf(tile))
 		tile.RemoveElement(/datum/element/forced_gravity, STANDARD_GRAVITY, TRUE)
-	tile.cut_overlay(water_overlay)
+	if(water_overlay)
+		SSvis_overlays.remove_vis_overlay(tile, list(water_overlay))
 	for(var/mob/living/occupant in tile)
 		occupant.remove_status_effect(/datum/status_effect/floodwater)
 		occupant.refresh_gravity()
@@ -371,22 +372,19 @@
 				tile.AddElement(/datum/element/immerse/floodwater, "immerse", 140)
 	if(debug.enabled)
 		debug.measure_phase("WaterOverlay")
-	tile.cut_overlay(water_overlay)
+	if(water_overlay)
+		SSvis_overlays.remove_vis_overlay(tile, list(water_overlay))
 	water_overlay = null
 	visual_stage = stage
 	if(!stage)
 		if(show_puddle)
-			water_overlay = mutable_appearance('icons/effects/water.dmi', "wet_floor_static")
-			water_overlay.plane = MUTATE_PLANE(FLOOR_PLANE, tile)
-			tile.add_overlay(water_overlay)
+			water_overlay = SSvis_overlays.add_vis_overlay(tile, 'icons/effects/water.dmi', "wet_floor_static", FLOAT_LAYER, MUTATE_PLANE(FLOOR_PLANE, tile), tile.dir)
 		if(debug.enabled)
 			debug.measure_phase(previous_phase)
 		return
 	// Flooded floors need a stronger water column; the exterior must keep the seabed visible.
 	var/water_alpha = isspaceturf(tile) ? 16 + stage * 8 : 32 + stage * 24
-	water_overlay = mutable_appearance('modular_bandastation/underwater/icons/water.dmi', "volume", TOPDOWN_WATER_LEVEL_LAYER, alpha = water_alpha)
-	water_overlay.plane = MUTATE_PLANE(FLOOR_PLANE, tile)
-	tile.add_overlay(water_overlay)
+	water_overlay = SSvis_overlays.add_vis_overlay(tile, 'modular_bandastation/underwater/icons/water.dmi', "volume", TOPDOWN_WATER_LEVEL_LAYER, MUTATE_PLANE(FLOOR_PLANE, tile), tile.dir, water_alpha)
 	if(debug.enabled)
 		debug.measure_phase(previous_phase)
 
@@ -419,7 +417,9 @@
 /datum/component/floodwater/proc/add_water_overlay(atom/source, list/overlays)
 	SIGNAL_HANDLER
 	if(water_overlay)
-		overlays += water_overlay
+		// update_overlays() removes managed visuals before this signal.
+		var/turf/open/tile = source
+		water_overlay = SSvis_overlays.add_vis_overlay(tile, water_overlay.icon, water_overlay.icon_state, water_overlay.layer, water_overlay.plane, tile.dir, water_overlay.alpha)
 
 /datum/component/floodwater/proc/water_steps(turf/source, list/steps)
 	SIGNAL_HANDLER
@@ -428,10 +428,6 @@
 	steps[FOOTSTEP_MOB_CLAW] = FOOTSTEP_WATER
 	steps[FOOTSTEP_MOB_HEAVY] = FOOTSTEP_WATER
 	return FOOTSTEP_OVERRIDEN
-
-/datum/component/floodwater/proc/examine_depth(atom/source, mob/user, list/examine_list)
-	SIGNAL_HANDLER
-	examine_list += span_notice("Глубина воды: [round(get_depth(), 0.1)] см[ infinite_source ? " (океан)" : ""]. Температура: [round(get_temperature() - T0C, 0.1)] °C.")
 
 /datum/component/floodwater/proc/affects(mob/living/swimmer)
 	return get_depth() >= FLOOD_WATER_SUBMERGED || (!(swimmer.movement_type & MOVETYPES_NOT_TOUCHING_GROUND) && !HAS_TRAIT(swimmer, TRAIT_MOB_ELEVATED))
@@ -442,6 +438,10 @@
 /// One attached element watches all positive water stages; only its rendered masks change.
 /datum/element/immerse/floodwater
 	var/list/masks_by_state = list()
+	/// Pixel hit testing cannot select sprites cut out by the full immersion alpha mask.
+	var/list/submerged_mouse_overrides = list()
+	/// Unfiltered mouse surfaces, retained while an object remains fully submerged.
+	var/list/submerged_click_surfaces = list()
 
 /datum/element/immerse/floodwater/Attach(turf/target, mask_icon = "immerse", alpha = 140)
 	. = ..()
@@ -491,6 +491,51 @@
 	. = ..(movable)
 	mask_icon = previous_mask
 	immersion_masks = previous_masks
+	var/atom/movable/immerse_mask/relay = generated_visual_overlays[movable]
+	if(relay)
+		// Native appearance assignment resets mouse opacity; the mask is only a render source.
+		relay.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+		// Blend towards the flooded floor colour without exposing objects behind the sprite.
+		movable.add_filter("immerse_mask", INFINITY, layering_filter(
+			render_source = relay.render_target,
+			y = -floor((movable.get_cached_height() - ICON_SIZE_Y) / 2) - movable.pixel_z,
+			color = FLOOD_WATER_IMMERSION_COLOR,
+			blend_mode = BLEND_INSET_OVERLAY,
+		))
+	if(new_mask_state != "submerged")
+		restore_mouse_opacity(movable)
+	else if(isobj(movable) && generated_visual_overlays[movable] && movable.mouse_opacity == MOUSE_OPACITY_ICON)
+		submerged_mouse_overrides[movable] = movable.mouse_opacity
+		movable.mouse_opacity = MOUSE_OPACITY_OPAQUE
+	if(new_mask_state == "submerged" && isobj(movable) && relay && movable.mouse_opacity != MOUSE_OPACITY_TRANSPARENT && !submerged_click_surfaces[movable])
+		var/obj/effect/floodwater_click_surface/surface = new(movable)
+		submerged_click_surfaces[movable] = surface
+		movable.vis_contents += surface
+
+/datum/element/immerse/floodwater/remove_immerse_overlay(atom/movable/movable, deleting = TRUE)
+	restore_mouse_opacity(movable)
+	return ..()
+
+/// Restore only our own override; intentionally mouse-transparent objects stay transparent.
+/datum/element/immerse/floodwater/proc/restore_mouse_opacity(atom/movable/movable)
+	var/obj/effect/floodwater_click_surface/surface = submerged_click_surfaces[movable]
+	if(surface)
+		movable.vis_contents -= surface
+		submerged_click_surfaces -= movable
+		qdel(surface)
+	if(!submerged_mouse_overrides[movable])
+		return
+	if(movable.mouse_opacity == MOUSE_OPACITY_OPAQUE)
+		movable.mouse_opacity = submerged_mouse_overrides[movable]
+	submerged_mouse_overrides -= movable
+
+/// Invisible unfiltered appearance; BYOND sends every mouse operation to the owning object.
+/obj/effect/floodwater_click_surface
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
+	blocks_emissive = EMISSIVE_BLOCK_NONE
+	appearance_flags = KEEP_APART|RESET_ALPHA|RESET_COLOR
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_ICON|VIS_INHERIT_ICON_STATE|VIS_INHERIT_DIR|VIS_INHERIT_LAYER|VIS_INHERIT_PLANE
 
 /// Extend the native immersion element only for completely submerged sprites.
 /datum/element/immerse/floodwater/generate_immerse_mask(width, height, is_below_water)

@@ -12,6 +12,7 @@
 #include "code/parallax.dm"
 #include "code/environment.dm"
 #include "code/submarine.dm"
+#include "code/water_leaks.dm"
 
 // BEGIN_INTERNALS
 // END_INTERNALS
