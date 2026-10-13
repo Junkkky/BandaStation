@@ -11,8 +11,6 @@
 	var/steps = 0
 	var/tiles = 0
 	var/edges = 0
-	var/transfers = 0
-	var/barrier_checks = 0
 	var/cell_updates = 0
 	var/stage_updates = 0
 	var/bfs = 0
@@ -31,8 +29,6 @@
 	steps = 0
 	tiles = 0
 	edges = 0
-	transfers = 0
-	barrier_checks = 0
 	cell_updates = 0
 	stage_updates = 0
 	bfs = 0
@@ -50,7 +46,7 @@
 	phase_started = now
 
 /datum/floodwater_debug/proc/statistics()
-	var/result = " CPU:[round(cpu_ms, 0.01)]ms MaxSlice:[round(max_slice_ms, 0.01)]ms Microsteps:[steps] Tiles:[tiles] Edges:[edges] Transfers:[transfers] Checks:[barrier_checks] Cells:[cell_updates] Stages:[stage_updates] BFS:[bfs]/[bfs_tiles] Wakes:[wakes]/[wake_requests] Volume:[round(litres, 0.01)]L"
+	var/result = " CPU:[round(cpu_ms, 0.01)]ms MaxSlice:[round(max_slice_ms, 0.01)]ms Microsteps:[steps] Tiles:[tiles] Edges:[edges] Cells:[cell_updates] Stages:[stage_updates] BFS:[bfs]/[bfs_tiles] Wakes:[wakes]/[wake_requests] Volume:[round(litres, 0.01)]L"
 	for(var/name as anything in phase_ms)
 		result += " [name]:[round(phase_ms[name], 0.01)]ms"
 	return result
@@ -81,7 +77,7 @@ ADMIN_VERB(stationtrauma_water_statistics, R_DEBUG, "Water Performance Debug", "
 		for(var/turf/open/tile in area)
 			var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
 			if(water && !water.infinite_source)
-				litres += water.depth * FLOOD_WATER_LITRES_PER_CM
+				litres += tile.get_water_depth() * FLOOD_WATER_LITRES_PER_CM
 	for(var/client/viewer as anything in viewers)
 		if(QDELETED(viewer) || !viewer.mob)
 			viewers -= viewer
@@ -92,7 +88,7 @@ ADMIN_VERB(stationtrauma_water_statistics, R_DEBUG, "Water Performance Debug", "
 			var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
 			var/image/label = image(loc = tile)
 			SET_PLANE_EXPLICIT(label, BALLOON_CHAT_PLANE, tile)
-			label.maptext = MAPTEXT("<span style='color:[water?.infinite_source ? "#37c7b7" : water?.depth ? "#ffffff" : "#aaaaaa"];text-align:center'>[water?.infinite_source ? "∞" : round(water?.depth || 0, 0.1)]</span>")
+			label.maptext = MAPTEXT("<span style='color:[water?.infinite_source ? "#37c7b7" : tile.get_water_depth() ? "#ffffff" : "#aaaaaa"];text-align:center'>[water?.infinite_source ? "∞" : round(tile.get_water_depth(), 0.1)]</span>")
 			label.maptext_y = 8
 			images += label
 		viewers[viewer] = images

@@ -6,8 +6,13 @@ SUBSYSTEM_DEF(floodwater)
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/list/active = list()
 	var/list/pumps = list()
-	var/datum/floodwater_step/step = new
-	var/datum/floodwater_pressure/pressure = new
+	/// C is the only finite-water solver; domains are admitted when water appears.
+	var/datum/floodwater_hybrid/hybrid = new
+	/// Snapshots and cursors survive MC pauses without repeating inflow or pump work.
+	var/list/source_run = list()
+	var/list/pump_run = list()
+	var/work_phase = FLOOD_WORK_SOURCES
+	var/work_cursor = 0
 	var/datum/floodwater_debug/debug = new
 	var/last_update
 	var/pending_time = 0
@@ -49,19 +54,59 @@ SUBSYSTEM_DEF(floodwater)
 	// One normal interval plus one catch-up interval repays bounded debt without an unbounded fire.
 	var/step_budget = 2 * max(1, CEILING(wait / (1 SECONDS) / step_seconds, 1))
 	while(pending_time + FLOOD_WATER_FLOW_EPSILON >= step_seconds && fire_steps < step_budget)
-		if(!simulate_step(step_running))
+		if(!simulate_step())
 			return
 		pending_time = max(0, pending_time - step_seconds)
 		steps_completed++
 		fire_steps++
 		if(debug.enabled)
 			debug.steps++
-		resumed = FALSE
 		if(MC_TICK_CHECK)
 			return
 
 /datum/controller/subsystem/floodwater/stat_entry(msg)
-	msg = "Active:[length(active)] Steps:[steps_completed] Behind:[round(pending_time, 0.1)]s Dropped:[round(discarded_time, 0.1)]s"
+	msg = "Sources:[length(active)] Steps:[steps_completed] Behind:[round(pending_time, 0.1)]s Dropped:[round(discarded_time, 0.1)]s"
+	msg += " C:Groups[hybrid.groups.len] Front[hybrid.pending.len] Geometry[hybrid.dirty_groups.len] Effects[hybrid.changed.len + hybrid.paint_groups.len]"
 	if(debug.enabled)
 		msg += debug.statistics()
 	return ..(msg)
+
+/** Complete one physical step in order: ocean input, C ownership/effects, then pumps. */
+/datum/controller/subsystem/floodwater/proc/simulate_step()
+	if(!step_running)
+		step_running = TRUE
+		source_run = active
+		active = list()
+		work_cursor = source_run.len
+		work_phase = FLOOD_WORK_SOURCES
+	if(work_phase == FLOOD_WORK_SOURCES)
+		if(debug.enabled)
+			debug.measure_phase("Ocean")
+		while(work_cursor)
+			var/datum/component/floodwater/source = source_run[work_cursor--]
+			if(!QDELETED(source) && source.infinite_source)
+				source.feed_ocean()
+			if(MC_TICK_CHECK)
+				return FALSE
+		source_run.Cut()
+		work_phase = FLOOD_WORK_FRONT
+	if(work_phase == FLOOD_WORK_FRONT)
+		if(!hybrid.advance_native(step_seconds))
+			return FALSE
+		pump_run = pumps.Copy()
+		work_cursor = pump_run.len
+		work_phase = FLOOD_WORK_PUMPS
+	if(debug.enabled)
+		debug.measure_phase("Pumps")
+	while(work_cursor)
+		var/obj/machinery/bilge_pump/pump = pump_run[work_cursor--]
+		if(!QDELETED(pump))
+			pump.collect_water(step_seconds)
+			// A cold geometry traversal has not collected yet; finish it before advancing time.
+			if(state == SS_PAUSED && pump.drain_building)
+				work_cursor++
+		if(MC_TICK_CHECK)
+			return FALSE
+	pump_run.Cut()
+	step_running = FALSE
+	return TRUE

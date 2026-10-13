@@ -1,4 +1,4 @@
-/// Collect the local intake proportionally without losing fractional water to holder rounding.
+/** Snapshot local packets and selected bulk shares; withdraw once per aggregate to preserve full drainage. */
 /proc/drain_stationtrauma_water_room(turf/open/intake, volume, datum/reagents/receiver, residual_depth = 0, list/room)
 	if(!isopenturf(intake) || QDELETED(receiver) || !isnum(volume) || !IS_FINITE(volume) || volume <= 0)
 		return 0
@@ -6,32 +6,49 @@
 	if(source_water?.infinite_source)
 		return 0
 	room ||= intake.stationtrauma_water_intake()
-	var/available = 0
-	var/thermal_total = 0
+	var/list/contributions = list()
+	var/list/bulk_cells = list()
+	var/list/bulk_counts = list()
 	for(var/turf/open/tile as anything in room)
-		var/datum/component/floodwater/water = istype(room[tile], /datum/component/floodwater) ? room[tile] : tile.GetComponent(/datum/component/floodwater)
-		var/litres = max(0, (water?.depth || 0) - residual_depth) * FLOOD_WATER_LITRES_PER_CM
-		available += litres
-		thermal_total += litres * (water?.temperature || 0)
-	if(available <= 0 || volume <= 0)
+		var/datum/floodwater_front_cell/cell = SSfloodwater.hybrid.by_turf[tile]
+		var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
+		if(!cell || cell.blocked || cell.root()?.dirty || water?.infinite_source)
+			continue
+		var/amount = max(0, cell.amount() - residual_depth * FLOOD_WATER_LITRES_PER_CM)
+		if(amount <= 0)
+			continue
+		if(cell.local)
+			contributions[cell] = amount
+		else
+			var/datum/floodwater_front_group/owner = cell.root()
+			var/datum/floodwater_front_cell/representative = bulk_cells[owner]
+			if(!representative)
+				representative = cell
+				bulk_cells[owner] = representative
+			bulk_counts[owner]++
+			contributions[representative] += amount
+	for(var/datum/floodwater_front_group/owner as anything in bulk_cells)
+		if(!residual_depth && bulk_counts[owner] == owner.members.len)
+			// The saved total is authoritative; adding rounded per-cell means can leave a permanent tail.
+			contributions[bulk_cells[owner]] = owner.volume
+	var/available = 0
+	var/heat = 0
+	for(var/datum/floodwater_front_cell/cell as anything in contributions)
+		var/amount = contributions[cell]
+		available += amount
+		heat += amount * cell.temperature()
+	if(available <= 0)
 		return 0
-	var/free_space = receiver.maximum_volume
-	for(var/datum/reagent/reagent as anything in receiver.reagent_list)
-		free_space -= reagent.volume
+	var/free_space = receiver.maximum_volume - receiver.total_volume
 	var/amount = min(available, volume, max(0, free_space))
 	if(amount <= 0)
 		return 0
-	var/mixed_temperature = thermal_total / available
-	var/accepted = store_stationtrauma_water(receiver, amount, mixed_temperature)
+	var/accepted = store_stationtrauma_water(receiver, amount, heat / available)
 	if(accepted <= 0)
 		return 0
-	var/fraction = min(1, accepted / available)
-	for(var/turf/open/tile as anything in room)
-		var/datum/component/floodwater/water = istype(room[tile], /datum/component/floodwater) ? room[tile] : tile.GetComponent(/datum/component/floodwater)
-		if(!water || water.depth <= residual_depth)
-			continue
-		if(fraction == 1 && residual_depth == 0)
-			if(water.show_puddle && !isspaceturf(tile))
-				tile.MakeSlippery(TURF_WET_WATER, 1 MINUTES, 0, 1 MINUTES)
-		water.set_depth(max(residual_depth, water.depth - (water.depth - residual_depth) * fraction))
+	var/fraction = accepted / available
+	// No yield or callback may separate the holder deposit from its paired finite withdrawals.
+	for(var/datum/floodwater_front_cell/cell as anything in contributions)
+		var/removed = contributions[cell] * fraction
+		SSfloodwater.hybrid.withdraw(cell, removed)
 	return accepted

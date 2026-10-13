@@ -33,9 +33,9 @@
 		destination.insert_baseturf(destination.count_baseturfs() + 1, /turf/open/space/ocean)
 	if(isopenturf(destination))
 		var/datum/component/floodwater/water = source.GetComponent(/datum/component/floodwater)
-		var/depth = water?.depth || 0
+		var/depth = water?.get_depth() || 0
 		var/infinite = water?.infinite_source || FALSE
-		var/water_temperature = water?.temperature
+		var/water_temperature = water?.get_temperature()
 		var/turf/open/intake = destination
 		// CopyOnTop may retain destination-ocean water; replace it with the vessel's exact state.
 		intake.set_water_depth(0)
@@ -63,6 +63,8 @@
 	if(mode != SHUTTLE_IDLE || !istype(target, /obj/docking_port/stationary/stationtrauma) || target.dir != dir || !check_dock(target, silent = TRUE) || !canMove())
 		return DOCKING_BLOCKED
 	var/list/current_turfs = return_turfs()
+	if(has_floodwater())
+		return DOCKING_BLOCKED
 	for(var/turf/tile as anything in return_ordered_turfs(target.x, target.y, target.z, target.dir))
 		if(tile in current_turfs)
 			return DOCKING_BLOCKED
@@ -75,11 +77,19 @@
 /obj/docking_port/mobile/stationtrauma/check()
 	if(mode != SHUTTLE_CALL || timeLeft(1) > 0)
 		return
-	if(QDELETED(destination) || initiate_docking(destination) != DOCKING_SUCCESS)
+	if(QDELETED(destination) || has_floodwater() || initiate_docking(destination) != DOCKING_SUCCESS)
 		visible_message(span_warning("[src]: стыковка невозможна, переход отменён."))
 	mode = SHUTTLE_IDLE
 	timer = 0
 	destination = null
+
+/** Wet ownership does not migrate yet; recheck on arrival because the call timer allows new flooding. */
+/obj/docking_port/mobile/stationtrauma/proc/has_floodwater()
+	for(var/turf/tile as anything in return_turfs())
+		var/datum/floodwater_front_cell/cell = SSfloodwater.hybrid.by_turf[tile]
+		if(cell && (cell.root()?.dirty || cell.amount() > 0 || cell.displaced_volume > 0))
+			return TRUE
+	return FALSE
 
 /obj/docking_port/stationary/stationtrauma
 	area_type = /area/space/ocean

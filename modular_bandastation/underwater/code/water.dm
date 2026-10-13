@@ -98,6 +98,12 @@
 		return null
 	var/datum/component/floodwater/water = GetComponent(/datum/component/floodwater)
 	new_depth = clamp(new_depth, 0, FLOOD_WATER_MAX_DEPTH)
+	var/is_finite_water = isnull(infinite_source) ? !water?.infinite_source : !infinite_source
+	if(is_finite_water && !isspaceturf(src) && !SSfloodwater.hybrid.publishing)
+		if(water?.infinite_source)
+			qdel(water)
+		SSfloodwater.ensure_water_domain(src)
+		return SSfloodwater.hybrid.set_depth_at(src, new_depth, water_temperature)
 	if(!new_depth)
 		if(water)
 			qdel(water)
@@ -106,13 +112,6 @@
 		return AddComponent(/datum/component/floodwater, new_depth, !!infinite_source, isnull(water_temperature) ? FLOOD_WATER_TEMPERATURE : water_temperature)
 	if(!isnull(infinite_source) && water.infinite_source != infinite_source)
 		water.infinite_source = infinite_source
-		SSfloodwater.pressure.cells -= water
-		SSfloodwater.pressure.wet_air -= water
-		SSfloodwater.pressure.dirty = TRUE
-		water.ocean_pressure = 0
-		if(!infinite_source)
-			SSfloodwater.pressure.wet_air[water] = TRUE
-		water.update_pressure_connection()
 		SEND_SIGNAL(src, COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED)
 	if(!isnull(water_temperature))
 		water.temperature = water_temperature
@@ -120,8 +119,22 @@
 	return water
 
 /turf/open/proc/get_water_depth()
+	if(SSfloodwater.hybrid?.by_turf[src] && !isspaceturf(src))
+		return SSfloodwater.hybrid.depth_at(src)
 	var/datum/component/floodwater/water = GetComponent(/datum/component/floodwater)
 	return water?.depth || 0
+
+/// Gameplay callers read live aggregate values; native component fields cache the last rendered state.
+/datum/component/floodwater/proc/get_depth()
+	return !infinite_source && SSfloodwater.hybrid?.by_turf[parent] ? SSfloodwater.hybrid.depth_at(parent) : depth
+
+/datum/component/floodwater/proc/get_temperature()
+	var/datum/floodwater_front_cell/cell = SSfloodwater.hybrid?.by_turf[parent]
+	return cell && !infinite_source ? cell.temperature() : temperature
+
+/// Preserve the original source and puddle rendering thresholds.
+/datum/component/floodwater/proc/get_stage()
+	return !infinite_source && SSfloodwater.hybrid?.by_turf[parent] ? stationtrauma_water_stage(get_depth()) : stage
 
 /// Returns litres actually accepted; floor water and TG plumbing use the same volume conversion.
 /turf/open/proc/add_water(volume, water_temperature)
@@ -130,6 +143,9 @@
 	var/datum/component/floodwater/water = GetComponent(/datum/component/floodwater)
 	if(water?.infinite_source)
 		return 0
+	var/datum/floodwater_front_cell/cell = !isspaceturf(src) ? SSfloodwater.ensure_water_domain(src) : null
+	if(cell && !SSfloodwater.hybrid.publishing)
+		return SSfloodwater.hybrid.receive(cell, volume, water_temperature)
 	var/old_volume = get_water_depth() * FLOOD_WATER_LITRES_PER_CM
 	var/accepted = min(volume, FLOOD_WATER_MAX_DEPTH * FLOOD_WATER_LITRES_PER_CM - old_volume)
 	if(accepted <= 0)
@@ -194,7 +210,7 @@
 		receiver.total_volume += reagent.volume
 	return amount
 
-/// One component per wet turf; only unequal, connected neighbours enter SSfloodwater's work queue.
+/** One component per wet turf, publishing the native appearance while C owns finite water. */
 /datum/component/floodwater
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/depth = 0
@@ -206,9 +222,6 @@
 	var/mask_state
 	var/mutable_appearance/water_overlay
 	var/show_puddle
-	/// Cardinal masks; only edges between two live water components can reuse a geometry result.
-	var/flow_geometry_known = NONE
-	var/flow_geometry_open = NONE
 
 /datum/component/floodwater/Initialize(initial_depth, is_source = FALSE, initial_temperature = FLOOD_WATER_TEMPERATURE)
 	// Existing static water already owns immersion/wetness elements.
@@ -221,21 +234,20 @@
 
 /datum/component/floodwater/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, PROC_REF(on_atmos_update))
-	RegisterSignal(parent, COMSIG_TURF_CHANGE, PROC_REF(on_turf_change))
 	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(add_water_overlay))
 	RegisterSignal(parent, COMSIG_TURF_PREPARE_STEP_SOUND, PROC_REF(water_steps))
 	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(examine_depth))
 	RegisterSignals(parent, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(on_entered))
 	RegisterSignal(parent, COMSIG_ATOM_EXITED, PROC_REF(on_exited))
 	var/turf/open/tile = parent
-	for(var/obj/obstacle in tile)
-		watch_pressure_obstacle(obstacle)
+	if(infinite_source)
+		for(var/obj/obstacle in tile)
+			watch_pressure_obstacle(obstacle)
+	else
+		SSfloodwater.ensure_water_domain(tile)
 	tile.AddElement(/datum/element/watery_tile)
 	if(isspaceturf(tile))
 		tile.AddElement(/datum/element/forced_gravity, STANDARD_GRAVITY, TRUE)
-	last_air_pressure = tile.air?.return_pressure() || 0
-	if(!infinite_source)
-		SSfloodwater.pressure.wet_air[src] = TRUE
 	on_atmos_update()
 	update_depth()
 	wake()
@@ -250,12 +262,8 @@
 	SSfloodwater.active -= src
 	UnregisterSignal(parent, list(COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_TURF_CHANGE, COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_TURF_PREPARE_STEP_SOUND, COMSIG_ATOM_EXAMINE, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON))
 	var/turf/open/tile = parent
-	SSfloodwater.pressure.wet_air -= src
-	if((infinite_source && pressure_boundary) || SSfloodwater.pressure.cells[src])
-		SSfloodwater.pressure.dirty = TRUE
-	SSfloodwater.pressure.cells -= src
-	SSfloodwater.pressure.pending -= src
-	tile.RemoveElement(/datum/element/immerse/floodwater, mask_state, 140)
+	if(mask_state)
+		tile.RemoveElement(/datum/element/immerse/floodwater, "immerse", 140)
 	tile.RemoveElement(/datum/element/watery_tile)
 	if(isspaceturf(tile))
 		tile.RemoveElement(/datum/element/forced_gravity, STANDARD_GRAVITY, TRUE)
@@ -267,13 +275,14 @@
 
 /// Set bounded depth and refresh depth-dependent behavior; reservoirs must still recheck their boundary.
 /datum/component/floodwater/proc/set_depth(new_depth, notify_neighbors = TRUE, defer_effects = FALSE)
+	if(!infinite_source && SSfloodwater.hybrid?.by_turf[parent] && !SSfloodwater.hybrid.publishing)
+		return SSfloodwater.hybrid.set_depth_at(parent, clamp(new_depth, 0, FLOOD_WATER_MAX_DEPTH))
 	depth = clamp(new_depth, 0, FLOOD_WATER_MAX_DEPTH)
 	if(!depth)
 		qdel(src)
 		return
 	update_depth(defer_effects)
-	if(infinite_source || !SSfloodwater.active[src])
-		wake()
+	wake()
 	if(notify_neighbors)
 		wake_neighbours()
 
@@ -281,6 +290,19 @@
 /datum/component/floodwater/proc/remove_water(volume, datum/reagents/receiver = null, allow_ocean = FALSE)
 	if(!isnum(volume) || !IS_FINITE(volume) || volume <= 0 || (infinite_source && !allow_ocean))
 		return 0
+	var/datum/floodwater_front_cell/cell = !infinite_source ? SSfloodwater.hybrid?.by_turf[parent] : null
+	if(cell)
+		if(cell.root()?.dirty)
+			return 0
+		var/amount = min(volume, cell.amount())
+		if(receiver)
+			if(QDELETED(receiver))
+				return 0
+			amount = min(amount, max(0, receiver.maximum_volume - receiver.total_volume))
+			if(amount <= 0)
+				return 0
+			amount = store_stationtrauma_water(receiver, amount, cell.temperature())
+		return SSfloodwater.hybrid.withdraw(cell, amount)
 	var/removed = min(volume, depth * FLOOD_WATER_LITRES_PER_CM)
 	if(receiver)
 		if(QDELETED(receiver))
@@ -310,7 +332,6 @@
 		debug.stage_updates++
 		previous_phase = debug.phase_name
 		debug.measure_phase("DepthPressure")
-	update_pressure_connection()
 	// Puddle transitions attach/remove immersion traits and wetness, so keep them immediate.
 	defer_effects = defer_effects && stage > 0 && new_stage > 0
 	stage = new_stage
@@ -338,13 +359,16 @@
 	if(debug.enabled)
 		debug.measure_phase("Immersion")
 	var/new_mask_state = !stage ? null : stage == 4 ? "submerged" : stage >= 2 ? "immerse_deep" : "immerse"
-	if(mask_state && mask_state != new_mask_state)
-		tile.RemoveElement(/datum/element/immerse/floodwater, mask_state, 140)
-	// Waist and deep water share a mask; keep the existing filters and signals when it does not change.
+	if(mask_state && !new_mask_state)
+		tile.RemoveElement(/datum/element/immerse/floodwater, "immerse", 140)
 	if(mask_state != new_mask_state)
+		var/was_immersed = !!mask_state
 		mask_state = new_mask_state
 		if(mask_state)
-			tile.AddElement(/datum/element/immerse/floodwater, mask_state, 140)
+			if(was_immersed)
+				SEND_SIGNAL(tile, COMSIG_STATIONTRAUMA_WATER_MASK_CHANGED, mask_state)
+			else
+				tile.AddElement(/datum/element/immerse/floodwater, "immerse", 140)
 	if(debug.enabled)
 		debug.measure_phase("WaterOverlay")
 	tile.cut_overlay(water_overlay)
@@ -368,7 +392,7 @@
 
 /datum/component/floodwater/proc/on_entered(turf/source, atom/movable/arrived)
 	SIGNAL_HANDLER
-	if(isobj(arrived) && arrived.can_atmos_pass != ATMOS_PASS_YES)
+	if(infinite_source && isobj(arrived) && arrived.can_atmos_pass != ATMOS_PASS_YES)
 		watch_pressure_obstacle(arrived)
 		on_atmos_update()
 	if(!isliving(arrived) || !(arrived.flags_1 & INITIALIZED_1))
@@ -383,57 +407,14 @@
 	if(obstacle.can_atmos_pass == ATMOS_PASS_YES)
 		return
 	RegisterSignals(obstacle, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_QDELETING), PROC_REF(on_atmos_update), override = TRUE)
-	RegisterSignal(obstacle, COMSIG_ATOM_DENSITY_CHANGED, (istype(obstacle, /obj/machinery/door) || istype(obstacle, /obj/structure/fluff/airlock_filler)) ? PROC_REF(on_door_density) : PROC_REF(on_atmos_update), override = TRUE)
+	RegisterSignal(obstacle, COMSIG_ATOM_DENSITY_CHANGED, PROC_REF(on_atmos_update), override = TRUE)
 
 /datum/component/floodwater/proc/on_exited(turf/source, atom/movable/departed)
 	SIGNAL_HANDLER
-	if(!isobj(departed) || departed.can_atmos_pass == ATMOS_PASS_YES)
+	if(!infinite_source || !isobj(departed) || departed.can_atmos_pass == ATMOS_PASS_YES)
 		return
 	UnregisterSignal(departed, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_QDELETING))
 	on_atmos_update()
-
-/datum/component/floodwater/proc/on_door_density(obj/door)
-	SIGNAL_HANDLER
-	on_atmos_update()
-	if(!door.density || (door.flags_1 & ON_BORDER_1) || infinite_source || door.loc != parent)
-		return
-	var/turf/open/tile = parent
-	var/volume = depth * FLOOD_WATER_LITRES_PER_CM
-	var/water_temperature = temperature
-	var/obj/machinery/door/filled_door
-	if(istype(door, /obj/structure/fluff/airlock_filler))
-		var/obj/structure/fluff/airlock_filler/filler = door
-		filled_door = filler.filled_airlock
-	var/list/destinations = list()
-	for(var/direction in GLOB.cardinals)
-		var/turf/open/neighbor = get_step(tile, direction)
-		if(!isopenturf(neighbor) || neighbor.blocks_air || istype(neighbor, /turf/open/water))
-			continue
-		var/passable = TRUE
-		for(var/obj/obstacle in tile.contents + neighbor.contents)
-			if(obstacle == door || obstacle == filled_door)
-				if(obstacle.loc != neighbor)
-					continue
-			if(!CANATMOSPASS(obstacle, obstacle.loc == tile ? neighbor : tile, FALSE))
-				passable = FALSE
-				break
-		if(!passable)
-			continue
-		var/datum/component/floodwater/water = neighbor.GetComponent(/datum/component/floodwater)
-		if(water?.infinite_source)
-			volume = 0
-			break
-		destinations |= neighbor.stationtrauma_water_room()
-	for(var/turf/open/destination as anything in destinations)
-		if(volume <= 0)
-			break
-		volume -= destination.add_water(volume, water_temperature)
-	if(volume > 0)
-		// A completely full sealed compartment still needs a recoverable displaced volume.
-		var/obj/item/stationtrauma_water_canister/remainder = new(tile)
-		remainder.create_reagents(volume, NO_REACT)
-		remainder.reagents.add_reagent(/datum/reagent/water, volume, reagtemp = water_temperature, no_react = TRUE)
-	tile.set_water_depth(0)
 
 /datum/component/floodwater/proc/add_water_overlay(atom/source, list/overlays)
 	SIGNAL_HANDLER
@@ -450,24 +431,66 @@
 
 /datum/component/floodwater/proc/examine_depth(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_notice("Глубина воды: [round(depth, 0.1)] см[ infinite_source ? " (океан)" : ""]. Температура: [round(temperature - T0C, 0.1)] °C.")
+	examine_list += span_notice("Глубина воды: [round(get_depth(), 0.1)] см[ infinite_source ? " (океан)" : ""]. Температура: [round(get_temperature() - T0C, 0.1)] °C.")
 
 /datum/component/floodwater/proc/affects(mob/living/swimmer)
-	return depth >= FLOOD_WATER_SUBMERGED || (!(swimmer.movement_type & MOVETYPES_NOT_TOUCHING_GROUND) && !HAS_TRAIT(swimmer, TRAIT_MOB_ELEVATED))
+	return get_depth() >= FLOOD_WATER_SUBMERGED || (!(swimmer.movement_type & MOVETYPES_NOT_TOUCHING_GROUND) && !HAS_TRAIT(swimmer, TRAIT_MOB_ELEVATED))
 
 /datum/component/floodwater/proc/head_underwater(mob/living/swimmer)
-	return affects(swimmer) && (depth >= FLOOD_WATER_SUBMERGED || (depth >= FLOOD_WATER_WAIST && (swimmer.body_position == LYING_DOWN || swimmer.mob_size < MOB_SIZE_HUMAN)))
+	return affects(swimmer) && (get_depth() >= FLOOD_WATER_SUBMERGED || (get_depth() >= FLOOD_WATER_WAIST && (swimmer.body_position == LYING_DOWN || swimmer.mob_size < MOB_SIZE_HUMAN)))
 
-/datum/component/floodwater/proc/on_turf_change(turf/source, path, list/new_baseturfs, flags, list/post_change_callbacks)
+/// One attached element watches all positive water stages; only its rendered masks change.
+/datum/element/immerse/floodwater
+	var/list/masks_by_state = list()
+
+/datum/element/immerse/floodwater/Attach(turf/target, mask_icon = "immerse", alpha = 140)
+	. = ..()
+	if(. == ELEMENT_INCOMPATIBLE)
+		return
+	RegisterSignal(target, COMSIG_STATIONTRAUMA_WATER_MASK_CHANGED, PROC_REF(refresh_water_mask))
+
+/datum/element/immerse/floodwater/Detach(turf/source)
+	UnregisterSignal(source, COMSIG_STATIONTRAUMA_WATER_MASK_CHANGED)
+	return ..()
+
+/datum/element/immerse/floodwater/on_atom_exited(turf/source, atom/movable/exited, direction)
+	var/turf/open/destination = exited.loc
+	// An attached empty tile has a null contents list; membership still keeps immersion active.
+	if(!(destination in attached_turf_contents))
+		return ..()
+	LAZYREMOVE(attached_turf_contents[source], exited)
+	LAZYADD(attached_turf_contents[destination], exited)
+	if(!generated_visual_overlays[exited])
+		return
+	var/datum/component/floodwater/old_water = source.GetComponent(/datum/component/floodwater)
+	var/datum/component/floodwater/new_water = destination.GetComponent(/datum/component/floodwater)
+	// Native movement keeps an element shared by both tiles; refresh only when their masks differ.
+	if(old_water?.mask_state != new_water?.mask_state)
+		add_immerse_overlay(exited)
+
+/datum/element/immerse/floodwater/proc/refresh_water_mask(turf/source, new_mask_state)
 	SIGNAL_HANDLER
-	post_change_callbacks += CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(restore_floodwater), depth, temperature)
+	for(var/atom/movable/movable as anything in attached_turf_contents[source])
+		if(generated_visual_overlays[movable])
+			add_immerse_overlay(movable, new_mask_state)
 
-/// The old component is deleted with its turf, so the callback must not depend on its fields.
-/proc/restore_floodwater(old_depth, old_temperature, turf/new_tile)
-	if(isopenturf(new_tile) && !istype(new_tile, /turf/open/water))
-		var/turf/open/open_tile = new_tile
-		if(!open_tile.GetComponent(/datum/component/floodwater))
-			open_tile.set_water_depth(old_depth, FALSE, old_temperature)
+/datum/element/immerse/floodwater/add_immerse_overlay(atom/movable/movable, new_mask_state)
+	if(!new_mask_state)
+		var/turf/open/tile = get_turf(movable)
+		var/datum/component/floodwater/water = isopenturf(tile) ? tile.GetComponent(/datum/component/floodwater) : null
+		new_mask_state = water?.mask_state || "immerse"
+	var/list/masks = masks_by_state[new_mask_state]
+	if(!masks)
+		masks = list()
+		masks_by_state[new_mask_state] = masks
+	// Native generation keys only by dimensions; keep separate caches for each mask style.
+	var/previous_mask = mask_icon
+	var/list/previous_masks = immersion_masks
+	mask_icon = new_mask_state
+	immersion_masks = masks
+	. = ..(movable)
+	mask_icon = previous_mask
+	immersion_masks = previous_masks
 
 /// Extend the native immersion element only for completely submerged sprites.
 /datum/element/immerse/floodwater/generate_immerse_mask(width, height, is_below_water)

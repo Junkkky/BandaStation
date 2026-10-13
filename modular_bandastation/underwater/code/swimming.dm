@@ -32,7 +32,7 @@
 	update_slowdown(water)
 
 /datum/status_effect/floodwater/proc/update_slowdown(datum/component/floodwater/water)
-	var/slowdown = water.affects(owner) && !HAS_TRAIT(owner, TRAIT_SWIMMER) ? water.stage * 0.75 : 0
+	var/slowdown = water.affects(owner) && !HAS_TRAIT(owner, TRAIT_SWIMMER) ? water.get_stage() * 0.75 : 0
 	var/datum/movespeed_modifier/modifier = owner.has_movespeed_modifier(/datum/movespeed_modifier/floodwater)
 	if(!modifier || modifier.multiplicative_slowdown != slowdown)
 		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/floodwater, multiplicative_slowdown = slowdown)
@@ -60,9 +60,9 @@
 	// Exterior cooling is already handled by TG; flooded room air remains independent of water.
 	if(iscarbon(owner) && !isspaceturf(owner.loc))
 		var/mob/living/carbon/swimmer = owner
-		var/cooling = get_temp_change_amount(water.temperature - swimmer.bodytemperature, 0.1 * seconds_between_ticks * water.depth / FLOOD_WATER_MAX_DEPTH)
+		var/cooling = get_temp_change_amount(water.get_temperature() - swimmer.bodytemperature, 0.1 * seconds_between_ticks * water.get_depth() / FLOOD_WATER_MAX_DEPTH)
 		swimmer.adjust_bodytemperature(cooling, use_insulation = TRUE)
-	if(water.depth >= FLOOD_WATER_DEEP && !HAS_TRAIT(owner, TRAIT_SWIMMER))
+	if(water.get_depth() >= FLOOD_WATER_DEEP && !HAS_TRAIT(owner, TRAIT_SWIMMER))
 		var/skill = owner.mind?.get_skill_level(/datum/skill/athletics) || 0
 		var/cost = max(0.5, 2 - skill * 0.25) * seconds_between_ticks
 		owner.apply_damage(HAS_TRAIT(owner, TRAIT_STRENGTH) ? cost / 2 : cost, STAMINA)

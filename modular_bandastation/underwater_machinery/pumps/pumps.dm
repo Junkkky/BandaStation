@@ -96,7 +96,7 @@
 		var/only_tail = TRUE
 		for(var/turf/open/tile as anything in drain_water)
 			var/datum/component/floodwater/water = drain_water[tile]
-			if(!QDELETED(water) && water.depth >= 1)
+			if(!QDELETED(water) && water.get_depth() >= 1)
 				only_tail = FALSE
 				break
 		if(only_tail)
