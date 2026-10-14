@@ -53,10 +53,31 @@
 		return
 	queue_refresh()
 
+/** Expose the same damage-based severity used by the local leak marker. */
 /datum/component/floodwater_leak/proc/examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	if(opening && ports.len)
-		examine_list += span_warning("Через повреждения сочится морская вода. Заварите повреждения сварочным аппаратом.")
+	if(!opening || !ports.len)
+		return
+	var/leak_description
+	switch(leak_severity())
+		if(1)
+			leak_description = "Небольшая течь: через повреждения сочится морская вода."
+		if(2)
+			leak_description = "Средняя течь: через повреждения струится морская вода."
+		if(3)
+			leak_description = "Сильная течь: через повреждения хлещет морская вода."
+	examine_list += span_warning("[leak_description] Заварите повреждения сварочным аппаратом.")
+
+/** Classify existing openings; rounding only stabilizes the visual breakpoints, never the hydraulic flow. */
+/datum/component/floodwater_leak/proc/leak_severity()
+	if(opening <= 0)
+		return 0
+	var/units = round(opening / FLOOD_WATER_LEAK_OPENING, 0.001)
+	if(units <= 1)
+		return 1
+	if(units <= 2)
+		return 2
+	return 3
 
 /** Existing dents and window integrity are the damage model; no second hull health pool. */
 /datum/component/floodwater_leak/proc/damaged_opening()
@@ -71,7 +92,9 @@
 	var/damage = max(0, FLOOD_WATER_LEAK_WINDOW_INTEGRITY - window.get_integrity() / window.max_integrity)
 	return damage / FLOOD_WATER_LEAK_WINDOW_INTEGRITY * FLOOD_WATER_LEAK_MAX_DENTS * FLOOD_WATER_LEAK_OPENING
 
+/** Drop local subscriptions and the visible marker together when damage or geometry changes. */
 /datum/component/floodwater_leak/proc/clear_ports()
+	QDEL_NULL(leak_visual)
 	for(var/obj/obstacle as anything in obstacles)
 		UnregisterSignal(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_QDELETING))
 	obstacles.Cut()
@@ -156,7 +179,7 @@
 				return FALSE
 	return TRUE
 
-/** A parked full-room inlet is woken by aggregate withdrawals, not by polling wet floors. */
+/** Parked inlets wake on withdrawals or external head changes, without polling wet interiors. */
 /datum/component/floodwater_leak/proc/wake(datum/floodwater_front_group/owner = null, datum/floodwater_front_cell/withdrawn_cell = null)
 	for(var/turf/outside as anything in ports)
 		var/datum/floodwater_front_cell/contact = SSfloodwater.hybrid.by_turf[ports[outside]]
@@ -164,8 +187,11 @@
 			continue
 		if(!owner && withdrawn_cell && contact != withdrawn_cell)
 			continue
-		// Geometry callbacks must not reactivate an inlet with no room to receive water.
-		if(!contact || contact.capacity() > 0 || contact.root()?.dirty)
+		// A full stock needs a new exchange only while its hydraulic head can still increase.
+		var/turf/open/intake = ports[outside]
+		var/datum/component/floodwater/source = outside.GetComponent(/datum/component/floodwater)
+		var/head_difference = source ? source.reservoir_pressure - intake.stationtrauma_water_pressure(intake.GetComponent(/datum/component/floodwater)) : 0
+		if(!contact || contact.capacity() > 0 || contact.root()?.dirty || head_difference > FLOOD_WATER_HEAD_EPSILON)
 			SSfloodwater.active[src] = TRUE
 			return
 
@@ -188,11 +214,18 @@
 		if(difference <= FLOOD_WATER_PRESSURE_EPSILON)
 			continue
 		var/volume = 600 * opening / ports.len * sqrt(2 * difference) * SSfloodwater.step_seconds
+		var/datum/floodwater_front_cell/contact = SSfloodwater.hybrid.by_turf[intake]
+		if(SSfloodwater.hybrid.exchange_ocean_head(source, contact, opening / ports.len, SSfloodwater.step_seconds, TRUE))
+			show_leak_visual(outside, intake)
+			wake()
+			continue
 		volume = limit_stationtrauma_boundary_flow(intake, water, source.reservoir_pressure, volume)
 		if(!volume)
 			continue
 		var/transferred = intake.add_water(volume, source.temperature)
-		var/datum/floodwater_front_cell/contact = SSfloodwater.hybrid.by_turf[intake]
+		if(transferred)
+			show_leak_visual(outside, intake)
+			SEND_SIGNAL(SSfloodwater, COMSIG_STATIONTRAUMA_WATER_TRANSFER, outside, intake, transferred, difference, opening / ports.len, TRUE)
 		if(transferred || contact?.root()?.dirty)
 			wake()
 

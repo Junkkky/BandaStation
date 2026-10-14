@@ -199,6 +199,11 @@
 		if(!owner.volume)
 			owner.heat = 0
 	if(amount)
+		// Free capacity vents this simplified model; a withdrawal releases full-room head.
+		if(owner)
+			owner.pressure_head = 0
+			owner.pressure_remainder = 0
+		cell.pressure_head = 0
 		changed[cell] = TRUE
 	return amount
 
@@ -299,17 +304,29 @@
 	var/rate = 3000
 	/// Door-local revision for cancellation of stale transfer plans.
 	var/revision = 0
+	/// Effective opening area, independent of the ordinary front transfer rate.
+	var/opening = FLOOD_WATER_BREACH_OPENING
+	/// Temporary full/full connection held apart until a confirmed head exchange.
+	var/pressure_link = FALSE
+	/// Each prepared transfer can be committed only once, including after MC resume.
+	var/serial = 0
+	/// Last consumed plan identity.
+	var/committed_serial = 0
 
 /datum/floodwater_front_portal/proc/prepare(dt = 0.1)
 	if(!open || left.blocked || right.blocked || left.root()?.dirty || right.root()?.dirty)
 		return null
+	if(left.root()?.is_full() && right.root()?.is_full())
+		return prepare_head(dt)
 	var/datum/floodwater_front_cell/source = left.amount() > right.amount() ? left : right
 	var/datum/floodwater_front_cell/destination = source == left ? right : left
-	return list(source, destination, rate * dt, revision, solver.geometry_version)
+	return list(source, destination, rate * dt, revision, solver.geometry_version, ++serial)
 
 /datum/floodwater_front_portal/proc/commit(list/plan)
-	if(!open || !plan || revision != plan[4] || solver.geometry_version != plan[5] || left.blocked || right.blocked || left.root()?.dirty || right.root()?.dirty)
+	if(!open || !plan || revision != plan[4] || solver.geometry_version != plan[5] || plan[6] <= committed_serial || left.blocked || right.blocked || left.root()?.dirty || right.root()?.dirty)
 		return 0
+	if(plan.len > 6)
+		return commit_head(plan)
 	var/datum/floodwater_front_cell/source = plan[1]
 	var/datum/floodwater_front_cell/destination = plan[2]
 	var/datum/floodwater_front_group/from_group = source.root()
@@ -322,7 +339,10 @@
 	if(amount <= 0)
 		return 0
 	var/temperature = source.temperature()
+	var/difference = source.head_pressure() - destination.head_pressure()
 	// Paired changes complete before returning or yielding.
 	solver.withdraw(source, amount)
 	solver.receive(destination, amount, temperature)
+	committed_serial = plan[6]
+	solver.confirm_flow(source, destination, amount, difference, opening)
 	return amount

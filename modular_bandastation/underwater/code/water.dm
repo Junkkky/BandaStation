@@ -51,7 +51,7 @@
 		SSair.planetary[initial_gas_mix] = environment
 	air = SSair.planetary[initial_gas_mix]
 	var/datum/component/floodwater/water = set_water_depth(water_depth, TRUE)
-	water.reservoir_pressure = water_pressure
+	water.set_reservoir_pressure(water_pressure)
 
 /turf/open/space/ocean/remove_air(amount)
 	// Space normally returns no breath at all; surface water must supply its environment.

@@ -15,6 +15,41 @@
 // Fresh water, kPa per centimetre; custom pipe displays use bar (100 kPa).
 #define FLOOD_WATER_KPA_PER_CM 0.0980665
 #define FLOOD_WATER_PRESSURE_EPSILON 0.0001
+// Conditional liquid stiffness: short pressure pulses without storing extra litres above capacity.
+#define FLOOD_WATER_HEAD_STIFFNESS 2000000
+#define FLOOD_WATER_HEAD_EPSILON 1
+#define FLOOD_WATER_FULL_TOLERANCE 0.01
+#define FLOOD_WATER_BREACH_OPENING 0.3
+// SSfloodwater: confirmed source turf, destination turf, passed litres, pre-transfer kPa, opening m2, weak leak.
+#define COMSIG_STATIONTRAUMA_WATER_TRANSFER "stationtrauma_water_transfer"
+// Local impulse strength: sqrt(kPa) * sqrt(opening / reference opening), not room filling speed.
+#define FLOOD_WATER_IMPULSE_KNOCKDOWN 3
+#define FLOOD_WATER_IMPULSE_THROW 4
+#define FLOOD_WATER_IMPULSE_HURT 12
+#define FLOOD_WATER_IMPULSE_REACH 2
+#define FLOOD_WATER_IMPULSE_RANGE 6
+#define FLOOD_WATER_IMPULSE_SPEED 3
+#define FLOOD_WATER_IMPULSE_INTERVAL (0.25 SECONDS)
+#define FLOOD_WATER_IMPULSE_RESET (0.75 SECONDS)
+#define FLOOD_WATER_IMPULSE_REPEAT_CHANCE 2
+#define FLOOD_WATER_CURRENT_DURATION (0.5 SECONDS)
+#define FLOOD_WATER_DRIFT_STEPS 2
+#define FLOOD_WATER_DRIFT_INTERVAL (0.2 SECONDS)
+#define FLOOD_WATER_DRIFT_DURATION (1 SECONDS)
+#define FLOOD_WATER_DRIFT_DAMPING 0.75
+#define FLOOD_WATER_DRIFT_OBJECT_LIMIT 8
+#define FLOOD_WATER_VISUAL_INTERVAL (0.75 SECONDS)
+#define FLOOD_WATER_VISUAL_DURATION (0.6 SECONDS)
+#define FLOOD_WATER_VISUAL_LIMIT 32
+#define FLOOD_WATER_SWIM_STROKES 3
+#define FLOOD_WATER_SWIM_SLOWDOWN 0.5
+#define FLOOD_WATER_SWIM_CRUISE_SLOWDOWN 0.15
+#define FLOOD_WATER_SWIM_CHAIN (0.75 SECONDS)
+#define FLOOD_WATER_SWIM_RELEASE_DELAY (0.3 SECONDS)
+#define FLOOD_WATER_SWIM_COAST_INTERVAL (0.2 SECONDS)
+#define FLOOD_WATER_SWIM_COAST_DECAY (0.15 SECONDS)
+#define FLOOD_WATER_IMPULSE_COOLDOWN (2.5 SECONDS)
+#define FLOOD_WATER_IMPULSE_KNOCKDOWN_MAX (2 SECONDS)
 // Existing wall dents/window damage create small inlets, never a second hull health pool.
 #define FLOOD_WATER_LEAK_OPENING 0.0001
 #define FLOOD_WATER_LEAK_MIN_DENTS 2

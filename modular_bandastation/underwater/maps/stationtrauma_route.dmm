@@ -66,6 +66,14 @@
 	},
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"lX" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	name = "Вход в испытательный коридор"
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test/flow)
 "nU" = (
 /obj/structure/table,
 /obj/item/stationtrauma_fuel_rod,
@@ -136,6 +144,14 @@
 "ss" = (
 /turf/open/space/ocean,
 /area/space/ocean)
+"st" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	name = "Коридор: внутренний шлюз"
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test/flow)
 "tA" = (
 /obj/docking_port/mobile/stationtrauma,
 /obj/docking_port/stationary/stationtrauma/base{
@@ -160,6 +176,10 @@
 	},
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"xN" = (
+/obj/effect/landmark/ocean_parallax/route,
+/turf/open/space/ocean,
+/area/space/ocean)
 "yL" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/plating/stationtrauma_hull,
@@ -256,6 +276,11 @@
 /obj/machinery/door/airlock/highsecurity/underwater,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"Hi" = (
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test/flow)
 "HL" = (
 /obj/machinery/light{
 	dir = 1
@@ -286,6 +311,14 @@
 /obj/machinery/stationtrauma_water_device/valve,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"KZ" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	name = "Коридор: восточный океанский шлюз"
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test/flow)
 "Lw" = (
 /obj/machinery/stationtrauma_pump_controller,
 /turf/open/floor/plating/stationtrauma_hull,
@@ -316,6 +349,14 @@
 /obj/item/electronics/stationtrauma_pump_controller,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"Nj" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test/flow)
 "NX" = (
 /obj/item/stack/sheet/iron,
 /obj/item/stack/rods,
@@ -353,6 +394,19 @@
 	},
 /turf/open/space/ocean,
 /area/space/ocean)
+"Rp" = (
+/turf/closed/wall{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test/flow)
+"Rt" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	name = "Коридор: западный океанский шлюз"
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test/flow)
 "Sg" = (
 /obj/structure/table,
 /obj/item/stack/sheet/iron,
@@ -419,6 +473,18 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 zY
 ss
 ss
@@ -445,6 +511,18 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 JQ
 JQ
 FR
@@ -453,10 +531,22 @@ Ac
 ss
 ss
 ss
-ss
+xN
 ss
 "}
 (3,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -491,6 +581,18 @@ ss
 ss
 ss
 ss
+ss
+Rp
+Rp
+Rt
+Rp
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
 FI
 FI
 FI
@@ -517,6 +619,18 @@ ss
 ss
 "}
 (5,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -551,6 +665,18 @@ ss
 ss
 ss
 ss
+ss
+Rp
+Nj
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
 FI
 OR
 OR
@@ -577,6 +703,18 @@ ss
 ss
 "}
 (7,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -611,6 +749,18 @@ ss
 ss
 ss
 ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+Rp
+Rp
+Rp
+Rp
+Rp
+Rp
 FI
 OR
 OR
@@ -641,7 +791,19 @@ ss
 ss
 ss
 ss
-FI
+ss
+Rp
+Hi
+Hi
+Hi
+st
+Nj
+Hi
+Hi
+Hi
+Hi
+Hi
+lX
 OR
 OR
 OR
@@ -671,6 +833,18 @@ ss
 ss
 ss
 ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+Rp
+Rp
+Rp
+Rp
+Rp
+Rp
 FI
 OR
 OR
@@ -697,6 +871,18 @@ ss
 ss
 "}
 (11,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -731,6 +917,18 @@ ss
 ss
 ss
 ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
 FI
 OR
 OR
@@ -761,6 +959,18 @@ ss
 ss
 ss
 ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
 FI
 OR
 OR
@@ -787,6 +997,18 @@ ss
 ss
 "}
 (14,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Nj
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -822,6 +1044,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -847,6 +1081,18 @@ ss
 ss
 "}
 (16,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -882,6 +1128,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -907,6 +1165,18 @@ ss
 ss
 "}
 (18,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -942,6 +1212,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -967,6 +1249,18 @@ ss
 ss
 "}
 (20,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1002,6 +1296,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1027,6 +1333,18 @@ ss
 ss
 "}
 (22,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Nj
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1062,6 +1380,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1087,6 +1417,18 @@ ss
 ss
 "}
 (24,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1122,6 +1464,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1147,6 +1501,18 @@ ss
 ss
 "}
 (26,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1182,6 +1548,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1207,6 +1585,18 @@ ss
 ss
 "}
 (28,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1242,6 +1632,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1267,6 +1669,18 @@ ss
 ss
 "}
 (30,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Nj
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1302,6 +1716,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1327,6 +1753,18 @@ ss
 ss
 "}
 (32,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1362,6 +1800,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1387,6 +1837,18 @@ ss
 ss
 "}
 (34,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1422,6 +1884,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1447,6 +1921,18 @@ ss
 ss
 "}
 (36,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1482,6 +1968,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1507,6 +2005,18 @@ ss
 ss
 "}
 (38,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Nj
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1542,6 +2052,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1567,6 +2089,18 @@ ss
 ss
 "}
 (40,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1601,6 +2135,18 @@ ss
 ss
 ss
 ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
 FI
 OR
 OR
@@ -1627,6 +2173,18 @@ ss
 ss
 "}
 (42,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1661,6 +2219,18 @@ ss
 ss
 ss
 ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
 FI
 OR
 OR
@@ -1687,6 +2257,18 @@ ss
 ss
 "}
 (44,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1721,6 +2303,18 @@ ss
 ss
 ss
 ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
 FI
 OR
 OR
@@ -1747,6 +2341,18 @@ ss
 ss
 "}
 (46,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Nj
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1781,6 +2387,18 @@ ss
 ss
 ss
 ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
 FI
 OR
 OR
@@ -1807,6 +2425,18 @@ ss
 ss
 "}
 (48,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1841,6 +2471,18 @@ ss
 ss
 ss
 ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
 FI
 OR
 OR
@@ -1867,6 +2509,18 @@ ss
 ss
 "}
 (50,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1902,6 +2556,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1927,6 +2593,18 @@ ss
 ss
 "}
 (52,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -1962,6 +2640,18 @@ ss
 ss
 ss
 ss
+Rp
+Nj
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -1992,6 +2682,18 @@ ss
 ss
 ss
 ss
+Rp
+Hi
+Hi
+Hi
+Rp
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss
@@ -2017,6 +2719,18 @@ ss
 ss
 "}
 (55,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+Rp
+Rp
+KZ
+Rp
+Rp
+ss
+ss
 ss
 ss
 ss
@@ -2075,6 +2789,18 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 "}
 (57,1,1) = {"
 ss
@@ -2105,8 +2831,32 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 "}
 (58,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
 ss
 ss
 ss

@@ -49,9 +49,12 @@
 	destination.AddElement(/datum/element/stationtrauma_hull)
 	source.RemoveElement(/datum/element/stationtrauma_hull)
 
+/** Preserve hull hooks across replacement and distinguish repairing an ocean breach from opening one. */
 /datum/element/stationtrauma_hull/proc/hull_changed(turf/source, path, list/new_baseturfs, flags, list/post_change_callbacks)
 	SIGNAL_HANDLER
 	post_change_callbacks += CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(restore_stationtrauma_hull))
+	if(istype(source, /turf/open/space/ocean) && ispath(path, /turf/open/floor))
+		post_change_callbacks += CALLBACK(SSfloodwater, TYPE_PROC_REF(/datum/controller/subsystem/floodwater, mark_repaired_inlet))
 
 /proc/restore_stationtrauma_hull(turf/tile)
 	if(istype(get_area(tile), /area/shuttle/stationtrauma))

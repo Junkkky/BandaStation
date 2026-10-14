@@ -77,18 +77,22 @@
 		if(restore.len)
 			var/datum/floodwater_front_cell/cell = restore[restore.len]
 			restore -= cell
-			if(cell.blocked || !cell.displaced_volume)
-				continue
-			var/temperature = cell.displaced_heat / cell.displaced_volume
-			var/accepted = receive(cell, cell.displaced_volume, temperature)
-			cell.displaced_volume -= accepted
-			cell.displaced_heat -= accepted * temperature
-			if(!cell.displaced_volume)
-				cell.displaced_heat = 0
-			// shortcut: an over-capacity packet needs a later capacity event; integrate with draining before gameplay.
+			restore_displaced(cell)
 			continue
 		return TRUE
 	return !rebuild && !dirty_groups.len && !restore.len
+
+/** Restore displaced finite stocks once capacity is available; blocked walls keep their packet. */
+/datum/floodwater_front_solver/proc/restore_displaced(datum/floodwater_front_cell/cell)
+	if(cell.blocked || !cell.displaced_volume)
+		return
+	var/temperature = cell.displaced_heat / cell.displaced_volume
+	var/accepted = receive(cell, cell.displaced_volume, temperature)
+	cell.displaced_volume -= accepted
+	cell.displaced_heat -= accepted * temperature
+	if(!cell.displaced_volume)
+		cell.displaced_heat = 0
+	// shortcut: wall overflow still needs a later geometry event; closed-door overflow observes withdrawals.
 
 /** Temporary per-cell packets exist only during geometry changes, not normal simulation. */
 /datum/floodwater_front_rebuild
@@ -171,6 +175,7 @@
 			if(cell.root() != owner)
 				return FALSE
 			if(!cell.local)
+				cell.pressure_head = owner.pressure_head
 				cell.volume = owner.bulk_count == 1 ? owner.volume : min(owner.volume, owner.frozen_volume)
 				cell.heat = owner.bulk_count == 1 ? owner.heat : min(owner.heat, owner.frozen_heat)
 				owner.volume -= cell.volume
@@ -230,6 +235,7 @@
 					removed -= cell
 					cell.displaced_volume += cell.volume
 					cell.displaced_heat += cell.heat
+					solver.restore[cell] = TRUE
 					cell.volume = 0
 					cell.heat = 0
 					cell.local = FALSE
@@ -280,6 +286,7 @@
 			if(cell.transient)
 				owner.members += cell
 				owner.bulk_count++
+				owner.pressure_head = (owner.pressure_head * owner.volume + cell.pressure_head * cell.volume) / (owner.volume + cell.volume)
 				owner.volume += cell.volume
 				owner.heat += cell.heat
 				cell.volume = 0

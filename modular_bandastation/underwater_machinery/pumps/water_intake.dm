@@ -43,12 +43,22 @@
 	var/amount = min(available, volume, max(0, free_space))
 	if(amount <= 0)
 		return 0
+	var/datum/floodwater_debug/debug = SSfloodwater.debug
+	var/previous_phase = debug.phase_name
+	if(debug.enabled)
+		debug.measure_phase("PumpDeposit")
 	var/accepted = store_stationtrauma_water(receiver, amount, heat / available)
+	if(debug.enabled)
+		debug.measure_phase(previous_phase)
 	if(accepted <= 0)
 		return 0
 	var/fraction = accepted / available
+	if(debug.enabled)
+		debug.measure_phase("PumpWithdraw")
 	// No yield or callback may separate the holder deposit from its paired finite withdrawals.
 	for(var/datum/floodwater_front_cell/cell as anything in contributions)
 		var/removed = contributions[cell] * fraction
 		SSfloodwater.hybrid.withdraw(cell, removed)
+	if(debug.enabled)
+		debug.measure_phase(previous_phase)
 	return accepted

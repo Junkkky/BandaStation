@@ -17,6 +17,8 @@
 	var/list/ocean_contacts = list()
 	/// Owners whose native stage has crossed a rendering threshold.
 	var/list/paint_groups = list()
+	/// Only closed doorways with displaced litres; retries follow capacity/geometry events, not a timer.
+	var/list/closed_packets = list()
 	/// Elapsed front time; the A microsteps do not scan C interiors.
 	var/elapsed = 0
 	/// Current resumable front phase, or zero between front intervals.
@@ -90,6 +92,7 @@
 	ocean_contacts.Cut()
 	changed.Cut()
 	paint_groups.Cut()
+	closed_packets.Cut()
 	return ..()
 
 /// Native queries use live ownership even while connectivity is materialized in packets.
@@ -119,12 +122,44 @@
 	return tile.GetComponent(/datum/component/floodwater)
 
 /datum/floodwater_hybrid/receive(datum/floodwater_front_cell/cell, requested, temperature)
+	var/datum/floodwater_front_group/owner = cell.root()
+	if(owner && !owner.is_full() && !owner.dirty)
+		owner.pressure_head = 0
+		owner.pressure_remainder = 0
+		cell.pressure_head = 0
 	. = ..()
 
 /datum/floodwater_hybrid/withdraw(datum/floodwater_front_cell/cell, requested)
 	. = ..()
 	if(.)
 		wake_ocean_contacts(cell.root(), cell)
+		for(var/datum/floodwater_front_cell/door_cell as anything in closed_packets)
+			for(var/direction in GLOB.cardinals)
+				var/datum/floodwater_front_cell/neighbor = by_turf[get_step(door_cell.tile, direction)]
+				if(neighbor && neighbor.root() == cell.root())
+					restore[door_cell] = TRUE
+					break
+
+/** A closing door pushes its own packet to adjacent finite capacity, respecting every other barrier. */
+/datum/floodwater_hybrid/restore_displaced(datum/floodwater_front_cell/cell)
+	var/turf/open/tile = cell.tile
+	var/obj/machinery/door/door = isopenturf(tile) ? tile.closed_stationtrauma_water_door() : null
+	if(!cell.blocked || !door || !cell.displaced_volume)
+		closed_packets -= cell
+		return ..()
+	closed_packets[cell] = TRUE
+	var/temperature = cell.displaced_heat / cell.displaced_volume
+	for(var/direction in GLOB.cardinals)
+		var/datum/floodwater_front_cell/neighbor = by_turf[get_step(tile, direction)]
+		if(!neighbor || neighbor.blocked || !tile.can_pass_stationtrauma_water(neighbor.tile, door))
+			continue
+		var/accepted = receive(neighbor, cell.displaced_volume, temperature)
+		cell.displaced_volume -= accepted
+		cell.displaced_heat -= accepted * temperature
+		if(!cell.displaced_volume)
+			cell.displaced_heat = 0
+			closed_packets -= cell
+			break
 
 /// Aggregate withdrawal frees every member's capacity, including a source far from the active front.
 /datum/floodwater_hybrid/proc/wake_ocean_contacts(datum/floodwater_front_group/owner = null, datum/floodwater_front_cell/withdrawn_cell = null)
@@ -142,7 +177,11 @@
 /// Cache passable edges only on geometry events; live door checks also precede paired portal commits.
 /datum/floodwater_hybrid/proc/refresh_cell(datum/floodwater_front_cell/cell)
 	var/turf/open/tile = cell.tile
-	set_blocked(cell, !isopenturf(tile) || isspaceturf(tile) || istype(tile, /turf/open/water) || tile.blocks_air)
+	set_blocked(cell, !isopenturf(tile) || isspaceturf(tile) || istype(tile, /turf/open/water) || tile.blocks_air || tile.closed_stationtrauma_water_door())
+	if(cell.blocked && isopenturf(tile) && tile.GetComponent(/datum/component/floodwater))
+		paint(cell)
+	if(cell.displaced_volume)
+		restore[cell] = TRUE
 	var/new_region = locate(/obj/machinery/door) in tile
 	new_region = new_region ? cell.id + 1 : 1
 	if(cell.region != new_region)
@@ -163,8 +202,8 @@
 				geometry_events[cell] = TRUE
 			continue
 		var/opened = !cell.blocked && !neighbor.blocked && tile.can_pass_stationtrauma_water(neighbor.tile)
-		set_link(cell, neighbor, opened && cell.region == neighbor.region)
-		if(cell.region != neighbor.region && cell.id < neighbor.id)
+		var/pressure_link = set_link(cell, neighbor, opened && cell.region == neighbor.region)
+		if((cell.region != neighbor.region || pressure_link) && cell.id < neighbor.id)
 			var/list/edges = portals[cell]
 			if(!edges)
 				edges = list()
@@ -176,6 +215,7 @@
 				portal.left = cell
 				portal.right = neighbor
 				edges[neighbor] = portal
+			portal.pressure_link = pressure_link
 			portal.set_open(opened)
 	cell.watch_obstacles()
 	if(cell.root() && !cell.root().dirty)
@@ -183,7 +223,7 @@
 
 /// One original mask/overlay update; the aggregate remains the authoritative physical state.
 /datum/floodwater_hybrid/proc/paint(datum/floodwater_front_cell/cell)
-	if(!isopenturf(cell.tile) || cell.root()?.dirty)
+	if(!isopenturf(cell.tile) || (!cell.blocked && cell.root()?.dirty))
 		return
 	var/turf/open/tile = cell.tile
 	var/depth = cell.blocked ? 0 : cell.amount() / FLOOD_WATER_LITRES_PER_CM
@@ -248,8 +288,12 @@
 					for(var/datum/floodwater_front_cell/neighbor as anything in edges)
 						var/datum/floodwater_front_portal/portal = edges[neighbor]
 						var/turf/open/left_tile = portal.left.tile
-						portal.set_open(!portal.left.blocked && !portal.right.blocked && portal.left.region != portal.right.region && left_tile.can_pass_stationtrauma_water(portal.right.tile))
+						portal.set_open(!portal.left.blocked && !portal.right.blocked && (portal.left.region != portal.right.region || portal.pressure_link) && left_tile.can_pass_stationtrauma_water(portal.right.tile))
 						portal.commit(portal.prepare(run_dt))
+						if(portal.pressure_link && portal.open && !portal.left.root()?.dirty && !portal.right.root()?.dirty && abs(portal.left.head_pressure() - portal.right.head_pressure()) <= FLOOD_WATER_HEAD_EPSILON)
+							portal.pressure_link = FALSE
+							portal.set_open(FALSE)
+							set_link(portal.left, portal.right, TRUE)
 			if(FLOOD_NATIVE_LEVELS)
 				if(SSfloodwater.debug.enabled)
 					SSfloodwater.debug.measure_phase("LevelsC")
@@ -347,6 +391,8 @@
 	SIGNAL_HANDLER
 	if(!native)
 		return
+	if(!ispath(path, /turf/open/floor))
+		impulse_floor_repair = FALSE
 	native.geometry_version++
 	native.invalidate(root())
 	for(var/datum/floodwater_front_cell/neighbor as anything in neighbors)

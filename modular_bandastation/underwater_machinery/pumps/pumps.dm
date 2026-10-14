@@ -82,7 +82,12 @@
 	if(!can_collect_water())
 		return
 	var/turf/open/intake = loc
+	var/datum/floodwater_debug/debug = SSfloodwater.debug
+	if(debug.enabled)
+		debug.measure_phase("PumpIntake")
 	var/list/room = intake.stationtrauma_water_intake()
+	if(debug.enabled)
+		debug.measure_phase("Pumps")
 	var/has_water = FALSE
 	var/deepest = 0
 	for(var/turf/open/tile as anything in room)
@@ -91,7 +96,12 @@
 			has_water = TRUE
 		deepest = max(deepest, depth)
 	if(!residual_depth && deepest < 1)
-		if(!get_water_geometry())
+		if(debug.enabled)
+			debug.measure_phase("PumpGeometry")
+		var/list/geometry = get_water_geometry()
+		if(debug.enabled)
+			debug.measure_phase("Pumps")
+		if(!geometry)
 			return
 		var/only_tail = TRUE
 		for(var/turf/open/tile as anything in drain_water)
@@ -102,16 +112,26 @@
 		if(only_tail)
 			// Bound component updates too: deleting a whole wet compartment in one call stalls the MC.
 			room = drain_water.Copy(1, min(length(drain_water) + 1, 65))
-			if(!length(room) || !draw_pump_energy(seconds_per_tick))
+			if(!length(room))
 				return
-			var/remaining = drain_rate * seconds_per_tick * FLOOD_WATER_LITRES_PER_CM
-			// Empty complete films first; proportional withdrawal keeps recreating the same thin components.
-			for(var/turf/open/tile as anything in room)
-				remaining -= drain_stationtrauma_water_room(intake, remaining, reagents, 0, list(tile))
-				if(remaining <= 0 || reagents.holder_full())
-					break
+			if(debug.enabled)
+				debug.measure_phase("PumpPower")
+			var/powered = draw_pump_energy(seconds_per_tick)
+			if(debug.enabled)
+				debug.measure_phase("Pumps")
+			if(!powered)
+				return
+			// C shares a group's stock: separate cell withdrawals keep shrinking the same remainder.
+			drain_stationtrauma_water_room(intake, drain_rate * seconds_per_tick * FLOOD_WATER_LITRES_PER_CM, reagents, 0, room)
 			return
-	if(has_water && draw_pump_energy(seconds_per_tick))
+	if(!has_water)
+		return
+	if(debug.enabled)
+		debug.measure_phase("PumpPower")
+	var/powered = draw_pump_energy(seconds_per_tick)
+	if(debug.enabled)
+		debug.measure_phase("Pumps")
+	if(powered)
 		drain_stationtrauma_water_room(intake, drain_rate * seconds_per_tick * FLOOD_WATER_LITRES_PER_CM, reagents, residual_depth, room)
 
 /obj/machinery/bilge_pump/proc/can_collect_water()
