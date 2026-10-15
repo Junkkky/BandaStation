@@ -1,0 +1,5 @@
+underwater_ambience.ogg
+"Underwater Ambience" by Fission9 (2020), provided by the user.
+Source: https://freesound.org/people/Fission9/sounds/504641/
+License: CC0 1.0, https://creativecommons.org/publicdomain/zero/1.0/
+Changes: 48 kHz stereo Ogg Vorbis; 1.5-second equal-power loop crossfade.

@@ -3,6 +3,7 @@
 	name = "StationTrauma: испытательный полигон"
 	requires_power = TRUE
 	static_lighting = TRUE
+	default_gravity = STANDARD_GRAVITY
 
 /// Powered test fixtures without a separate electrical setup for the flow corridor.
 /area/stationtrauma_test/flow

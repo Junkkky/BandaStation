@@ -6,12 +6,21 @@
 	base_lighting_alpha = 0
 	requires_power = FALSE
 	always_unpowered = FALSE
+	// A null choice suppresses inherited space tracks; the occupant owns the underwater loop.
+	ambientsounds = list(null)
 
 /area/space/ocean/Initialize(mapload)
 	. = ..()
 	for(var/turf/open/space/tile in src)
 		tile.space_lit = FALSE
 		tile.update_appearance(UPDATE_OVERLAYS)
+
+/** Stop an old area's ambient track as well as preventing new space tracks in the ocean. */
+/area/space/ocean/Entered(atom/movable/arrived, area/old_area)
+	. = ..()
+	if(ismob(arrived))
+		var/mob/listener = arrived
+		listener.stop_sound_channel(CHANNEL_AMBIENCE)
 
 /turf/open/space/enable_starlight()
 	if(!space_lit)

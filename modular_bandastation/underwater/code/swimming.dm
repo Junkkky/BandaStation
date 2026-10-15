@@ -11,19 +11,25 @@
 	var/bobbing = FALSE
 
 /datum/status_effect/floodwater/on_apply()
+	RegisterSignals(owner, list(COMSIG_MOB_LOGIN, COMSIG_MOB_HUD_CREATED, COMSIG_MOB_HUD_REFRESHED, COMSIG_MOB_RESET_PERSPECTIVE, COMSIG_MOB_EQUIPPED_ITEM, COMSIG_MOB_UNEQUIPPED_ITEM, SIGNAL_ADDTRAIT(TRAIT_DEAF), SIGNAL_REMOVETRAIT(TRAIT_DEAF), SIGNAL_ADDTRAIT(TRAIT_SIGHT_BYPASS), SIGNAL_REMOVETRAIT(TRAIT_SIGHT_BYPASS)), PROC_REF(queue_presentation_refresh))
+	RegisterSignal(owner, COMSIG_MOB_LOGOUT, PROC_REF(clear_presentation))
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(update_water))
 	RegisterSignal(owner, COMSIG_CARBON_PRE_BREATHE, PROC_REF(before_breath))
 	RegisterSignal(owner, COMSIG_MOB_CLIENT_MOVED, PROC_REF(on_swim_step))
+	RegisterSignal(owner, COMSIG_MOVABLE_HEAR, PROC_REF(muffle_water_speech))
 	RegisterSignals(owner, list(COMSIG_LIVING_SET_BUCKLED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_STATCHANGE, COMSIG_MOVETYPE_FLAG_ENABLED, COMSIG_MOVETYPE_FLAG_DISABLED, SIGNAL_ADDTRAIT(TRAIT_NO_FLOATING_ANIM), SIGNAL_REMOVETRAIT(TRAIT_NO_FLOATING_ANIM)), PROC_REF(update_water))
 	RegisterSignals(owner, list(COMSIG_LIVING_POST_UPDATE_TRANSFORM, COMSIG_LIVING_UPDATE_OFFSETS), PROC_REF(queue_bob_refresh))
 	return TRUE
 
 /datum/status_effect/floodwater/on_remove()
-	UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_CARBON_PRE_BREATHE, COMSIG_MOB_CLIENT_MOVED, COMSIG_LIVING_SET_BUCKLED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_STATCHANGE, COMSIG_MOVETYPE_FLAG_ENABLED, COMSIG_MOVETYPE_FLAG_DISABLED, SIGNAL_ADDTRAIT(TRAIT_NO_FLOATING_ANIM), SIGNAL_REMOVETRAIT(TRAIT_NO_FLOATING_ANIM), COMSIG_LIVING_POST_UPDATE_TRANSFORM, COMSIG_LIVING_UPDATE_OFFSETS))
+	UnregisterSignal(owner, list(COMSIG_MOB_LOGIN, COMSIG_MOB_HUD_CREATED, COMSIG_MOB_HUD_REFRESHED, COMSIG_MOB_RESET_PERSPECTIVE, COMSIG_MOB_EQUIPPED_ITEM, COMSIG_MOB_UNEQUIPPED_ITEM, COMSIG_MOB_LOGOUT, SIGNAL_ADDTRAIT(TRAIT_DEAF), SIGNAL_REMOVETRAIT(TRAIT_DEAF), SIGNAL_ADDTRAIT(TRAIT_SIGHT_BYPASS), SIGNAL_REMOVETRAIT(TRAIT_SIGHT_BYPASS)))
+	clear_presentation()
+	UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_CARBON_PRE_BREATHE, COMSIG_MOB_CLIENT_MOVED, COMSIG_MOVABLE_HEAR, COMSIG_LIVING_SET_BUCKLED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_STATCHANGE, COMSIG_MOVETYPE_FLAG_ENABLED, COMSIG_MOVETYPE_FLAG_DISABLED, SIGNAL_ADDTRAIT(TRAIT_NO_FLOATING_ANIM), SIGNAL_REMOVETRAIT(TRAIT_NO_FLOATING_ANIM), COMSIG_LIVING_POST_UPDATE_TRANSFORM, COMSIG_LIVING_UPDATE_OFFSETS))
 	var/datum/component/floodwater_swimming/motion = owner.GetComponent(/datum/component/floodwater_swimming)
 	if(motion)
 		qdel(motion)
 	stop_bob()
+	REMOVE_TRAIT(owner, TRAIT_SILENT_FOOTSTEPS, REF(src))
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/floodwater)
 	owner.refresh_gravity()
 
@@ -40,8 +46,13 @@
 		return
 	update_slowdown(water)
 	update_bob(water)
+	update_presentation(water)
 
 /datum/status_effect/floodwater/proc/update_slowdown(datum/component/floodwater/water)
+	if(water.get_depth() >= FLOOD_WATER_DEEP && water.affects(owner))
+		ADD_TRAIT(owner, TRAIT_SILENT_FOOTSTEPS, REF(src))
+	else
+		REMOVE_TRAIT(owner, TRAIT_SILENT_FOOTSTEPS, REF(src))
 	var/slowdown = 0
 	if(water.affects(owner) && !HAS_TRAIT(owner, TRAIT_SWIMMER))
 		slowdown = min(FLOOD_WATER_SWIM_SLOWDOWN, water.get_stage() * 0.15)
@@ -63,6 +74,7 @@
 	if(!motion)
 		motion = owner.AddComponent(/datum/component/floodwater_swimming)
 	motion?.stroke(get_dir(old_loc, owner.loc))
+	show_swim_bubbles(old_loc, get_dir(old_loc, owner.loc))
 	if(!HAS_TRAIT(owner, TRAIT_SWIMMER))
 		var/skill = owner.mind?.get_skill_level(/datum/skill/athletics) || 0
 		var/cost = max(0.15, 0.5 - skill * 0.05)
@@ -117,6 +129,7 @@
 		return
 	update_slowdown(water)
 	update_bob(water)
+	update_presentation(water)
 	if(owner.stat == DEAD || !water.affects(owner))
 		return
 	// Exterior cooling is already handled by TG; flooded room air remains independent of water.

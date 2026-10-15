@@ -86,8 +86,13 @@
 /datum/floodwater_front_solver/proc/restore_displaced(datum/floodwater_front_cell/cell)
 	if(cell.blocked || !cell.displaced_volume)
 		return
+	var/restored_head = cell.pressure_head
 	var/temperature = cell.displaced_heat / cell.displaced_volume
 	var/accepted = receive(cell, cell.displaced_volume, temperature)
+	var/datum/floodwater_front_group/owner = cell.root()
+	if(accepted && owner?.is_full())
+		// Reopening a full packet must retain its head, rather than invent another decompression.
+		owner.pressure_head = max(owner.pressure_head, restored_head)
 	cell.displaced_volume -= accepted
 	cell.displaced_heat -= accepted * temperature
 	if(!cell.displaced_volume)

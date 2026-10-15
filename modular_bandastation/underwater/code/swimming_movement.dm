@@ -148,4 +148,6 @@
 		qdel(src)
 		return
 	steps_left--
+	var/datum/status_effect/floodwater/water = swimmer.has_status_effect(/datum/status_effect/floodwater)
+	water?.show_swim_bubbles(tile, direction)
 	next_move = world.time + delay

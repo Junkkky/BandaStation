@@ -14,6 +14,8 @@
 #include "code/water_visuals.dm"
 #include "code/swimming.dm"
 #include "code/swimming_movement.dm"
+#include "code/swimming_effects.dm"
+#include "code/water_sound.dm"
 #include "code/parallax.dm"
 #include "code/environment.dm"
 #include "code/submarine.dm"
