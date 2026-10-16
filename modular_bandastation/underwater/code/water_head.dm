@@ -19,6 +19,7 @@
 	var/previous = pressure_head
 	pressure_head += change
 	pressure_remainder = change - (pressure_head - previous)
+	wake_portals()
 
 /** Vented native air plus the current free water column, in kPa. */
 /datum/floodwater_front_cell/proc/free_pressure()
@@ -32,18 +33,18 @@
 		return free_head
 	return max(free_head, local ? pressure_head : root()?.pressure_head || 0)
 
-/** Full sides exchange equal real portions: finite stocks stay bounded, heat and head change. */
+/** Full sides exchange equal real portions: finite stocks stay bounded while head changes. */
 /datum/floodwater_front_portal/proc/prepare_head(dt)
 	if(left.root() == right.root() || opening <= 0 || dt <= 0)
 		return null
-	var/difference = left.head_pressure() - right.head_pressure()
+	var/difference = left.head_pressure() - right.head_pressure() + elevation * FLOOD_WATER_KPA_PER_CM
 	if(abs(difference) <= FLOOD_WATER_HEAD_EPSILON)
 		return null
 	var/datum/floodwater_front_cell/source = difference > 0 ? left : right
 	var/datum/floodwater_front_cell/destination = source == left ? right : left
 	return list(source, destination, 600 * opening * sqrt(2 * abs(difference)) * dt, revision, solver.geometry_version, ++serial, dt)
 
-/** A stale plan cannot exchange heat or create a confirmed event after closure or withdrawal. */
+/** A stale plan cannot change head or create a confirmed event after closure or withdrawal. */
 /datum/floodwater_front_portal/proc/commit_head(list/plan)
 	var/datum/floodwater_front_cell/source = plan[1]
 	var/datum/floodwater_front_cell/destination = plan[2]
@@ -53,7 +54,7 @@
 		return 0
 	var/from_head = source.head_pressure()
 	var/to_head = destination.head_pressure()
-	var/difference = from_head - to_head
+	var/difference = from_head - to_head + (source == left ? elevation : -elevation) * FLOOD_WATER_KPA_PER_CM
 	if(difference <= FLOOD_WATER_HEAD_EPSILON)
 		return 0
 	var/from_weight = 1 / from_group.volume
@@ -62,9 +63,6 @@
 	var/amount = min(plan[3], live_flow, difference / (FLOOD_WATER_HEAD_STIFFNESS * (from_weight + to_weight)), from_group.volume, to_group.volume)
 	if(amount <= 0)
 		return 0
-	var/heat_change = amount * (destination.temperature() - source.temperature())
-	from_group.heat += heat_change
-	to_group.heat -= heat_change
 	from_group.pressure_head = from_head
 	to_group.pressure_head = to_head
 	from_group.shift_head(-FLOOD_WATER_HEAD_STIFFNESS * amount * from_weight)
@@ -79,6 +77,7 @@
 
 /** No queue or speculative impulse: observers receive only a completed, live paired transfer. */
 /datum/floodwater_hybrid/confirm_flow(datum/floodwater_front_cell/source, datum/floodwater_front_cell/destination, amount, difference, opening)
+	ocean_wakeup = TRUE
 	SEND_SIGNAL(SSfloodwater, COMSIG_STATIONTRAUMA_WATER_TRANSFER, source.tile, destination.tile, amount, difference, opening, FALSE)
 
 /** Hold a new full/full edge apart even if a geometry callback has already frozen its owners. */
@@ -109,7 +108,6 @@
 	var/amount = min(600 * opening * sqrt(2 * abs(difference)) * dt, abs(balance) * owner.volume / FLOOD_WATER_HEAD_STIFFNESS, owner.volume)
 	if(amount <= 0)
 		return 0
-	owner.heat += amount * (source.temperature - contact.temperature())
 	owner.pressure_head = contact.head_pressure()
 	owner.shift_head(FLOOD_WATER_HEAD_STIFFNESS * amount / owner.volume * (difference > 0 ? 1 : -1))
 	var/turf/outside = source.parent

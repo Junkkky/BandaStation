@@ -22,6 +22,7 @@
 	return TRUE
 
 /datum/status_effect/floodwater/on_remove()
+	update_submersion_sound(current_water())
 	UnregisterSignal(owner, list(COMSIG_MOB_LOGIN, COMSIG_MOB_HUD_CREATED, COMSIG_MOB_HUD_REFRESHED, COMSIG_MOB_RESET_PERSPECTIVE, COMSIG_MOB_EQUIPPED_ITEM, COMSIG_MOB_UNEQUIPPED_ITEM, COMSIG_MOB_LOGOUT, SIGNAL_ADDTRAIT(TRAIT_DEAF), SIGNAL_REMOVETRAIT(TRAIT_DEAF), SIGNAL_ADDTRAIT(TRAIT_SIGHT_BYPASS), SIGNAL_REMOVETRAIT(TRAIT_SIGHT_BYPASS)))
 	clear_presentation()
 	UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_CARBON_PRE_BREATHE, COMSIG_MOB_CLIENT_MOVED, COMSIG_MOVABLE_HEAR, COMSIG_LIVING_SET_BUCKLED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_STATCHANGE, COMSIG_MOVETYPE_FLAG_ENABLED, COMSIG_MOVETYPE_FLAG_DISABLED, SIGNAL_ADDTRAIT(TRAIT_NO_FLOATING_ANIM), SIGNAL_REMOVETRAIT(TRAIT_NO_FLOATING_ANIM), COMSIG_LIVING_POST_UPDATE_TRANSFORM, COMSIG_LIVING_UPDATE_OFFSETS))
@@ -132,11 +133,6 @@
 	update_presentation(water)
 	if(owner.stat == DEAD || !water.affects(owner))
 		return
-	// Exterior cooling is already handled by TG; flooded room air remains independent of water.
-	if(iscarbon(owner) && !isspaceturf(owner.loc))
-		var/mob/living/carbon/swimmer = owner
-		var/cooling = get_temp_change_amount(water.get_temperature() - swimmer.bodytemperature, 0.1 * seconds_between_ticks * water.get_depth() / FLOOD_WATER_MAX_DEPTH)
-		swimmer.adjust_bodytemperature(cooling, use_insulation = TRUE)
 	if(isbasicmob(owner) && water.head_underwater(owner) && !HAS_TRAIT(owner, TRAIT_NODROWN) && !HAS_TRAIT(owner, TRAIT_NOBREATH))
 		var/mob/living/basic/swimmer = owner
 		if(swimmer.unsuitable_atmos_damage)

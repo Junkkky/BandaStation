@@ -13,12 +13,10 @@
 	var/list/neighbors = list()
 	/// Owner of this reached wet footprint.
 	var/datum/floodwater_front_group/group
-	/// TRUE while volume and heat are held in a local front packet.
+	/// TRUE while volume is held in a local front packet.
 	var/local = FALSE
 	/// Finite litres, either local or aggregated over bulk_count cells.
 	var/volume = 0
-	/// Conserved litre-kelvin paired with volume.
-	var/heat = 0
 	/// First front clock that reached this cell.
 	var/arrival = -1
 	/// The live turf cannot hold finite interior water.
@@ -27,8 +25,6 @@
 	var/transient = FALSE
 	/// Finite water retained while its floor is replaced or blocked.
 	var/displaced_volume = 0
-	/// Heat paired with displaced_volume.
-	var/displaced_heat = 0
 
 /// Internal state for conservative fronts and resumable connectivity.
 /datum/floodwater_front_group
@@ -50,14 +46,10 @@
 	var/registered = FALSE
 	/// Per-cell bulk share fixed during a paused rebuild.
 	var/frozen_volume = 0
-	/// Per-cell heat share fixed during a paused rebuild.
-	var/frozen_heat = 0
 	/// Only local fronts and cells bordering unreached floors.
 	var/list/boundary = list()
 	/// Finite litres, either local or aggregated over bulk_count cells.
 	var/volume = 0
-	/// Conserved litre-kelvin paired with volume.
-	var/heat = 0
 
 /datum/floodwater_front_group/proc/root()
 	RETURN_TYPE(/datum/floodwater_front_group)
@@ -79,12 +71,6 @@
 		return volume
 	var/datum/floodwater_front_group/owner = root()
 	return owner ? (owner.dirty ? owner.frozen_volume : owner.volume / owner.members.len) : 0
-
-/datum/floodwater_front_cell/proc/temperature()
-	if(local)
-		return volume ? heat / volume : FLOOD_WATER_TEMPERATURE
-	var/datum/floodwater_front_group/owner = root()
-	return owner?.dirty ? (owner.frozen_volume ? owner.frozen_heat / owner.frozen_volume : FLOOD_WATER_TEMPERATURE) : (owner?.volume ? owner.heat / owner.volume : FLOOD_WATER_TEMPERATURE)
 
 /datum/floodwater_front_cell/proc/level()
 	var/litres = amount()
@@ -163,7 +149,7 @@
 	cell.arrival = clock
 	return owner
 
-/datum/floodwater_front_solver/proc/receive(datum/floodwater_front_cell/cell, requested, temperature)
+/datum/floodwater_front_solver/proc/receive(datum/floodwater_front_cell/cell, requested)
 	if(cell.blocked || cell.root()?.dirty)
 		return 0
 	if(requested <= 0)
@@ -174,10 +160,8 @@
 	var/datum/floodwater_front_group/owner = cell.root() || start(cell)
 	if(cell.local)
 		cell.volume += amount
-		cell.heat += amount * temperature
 	else
 		owner.volume += amount
-		owner.heat += amount * temperature
 	wake(owner)
 	changed[cell] = TRUE
 	return amount
@@ -186,18 +170,11 @@
 	if(cell.blocked || cell.root()?.dirty)
 		return 0
 	var/amount = min(max(0, requested), cell.available())
-	var/temperature = cell.temperature()
 	var/datum/floodwater_front_group/owner = cell.root()
 	if(cell.local)
 		cell.volume -= amount
-		cell.heat -= amount * temperature
-		if(!cell.volume)
-			cell.heat = 0
 	else if(owner)
 		owner.volume -= amount
-		owner.heat -= amount * temperature
-		if(!owner.volume)
-			owner.heat = 0
 	if(amount)
 		// Free capacity vents this simplified model; a withdrawal releases full-room head.
 		if(owner)
@@ -240,23 +217,17 @@
 		var/difference = owner.volume / owner.members.len - cell.volume
 		var/amount = min(FLOOD_FRONT_RATE * dt, abs(difference) / (1 + 1 / owner.members.len))
 		if(difference > 0)
-			var/temperature = owner.volume ? owner.heat / owner.volume : FLOOD_WATER_TEMPERATURE
 			amount = withdraw(owner.members[1], amount)
 			cell.volume += amount
-			cell.heat += amount * temperature
 		else if(difference < 0)
-			var/temperature = cell.temperature()
 			amount = withdraw(cell, amount)
 			owner.volume += amount
-			owner.heat += amount * temperature
 		if(abs(owner.volume / owner.members.len - cell.volume) < 0.01)
 			owner.volume += cell.volume
-			owner.heat += cell.heat
 			owner.members += cell
 			owner.bulk_count++
 			owner.wet[cell] = TRUE
 			cell.volume = 0
-			cell.heat = 0
 			cell.local = FALSE
 	/// Has dry neighbor.
 	var/has_dry_neighbor = FALSE
@@ -273,14 +244,12 @@
 		has_dry_neighbor = TRUE
 		if(cell.amount() < 2 * FLOOD_FRONT_SEED)
 			continue
-		var/temperature = cell.temperature()
 		var/seed = withdraw(cell, FLOOD_FRONT_SEED)
 		neighbor.group = owner
 		owner.wet[neighbor] = TRUE
 		owner.owned_count++
 		neighbor.local = TRUE
 		neighbor.volume = seed
-		neighbor.heat = seed * temperature
 		neighbor.arrival = clock
 		owner.boundary[neighbor] = TRUE
 		enqueue(neighbor)
@@ -300,8 +269,14 @@
 	var/datum/floodwater_front_cell/right
 	/// Whether the native boundary currently permits passage.
 	var/open = FALSE
+	/// Native open-edge index, or null for a standalone mathematical portal.
+	var/list/open_index
+	/// Registry order keeps transfers in the same sequence after an edge reopens.
+	var/open_order = 0
 	/// Maximum conservative portal transfer in litres per second.
 	var/rate = 3000
+	/// Left floor elevation above the right floor in centimetres; zero for ordinary door portals.
+	var/elevation = 0
 	/// Door-local revision for cancellation of stale transfer plans.
 	var/revision = 0
 	/// Effective opening area, independent of the ordinary front transfer rate.
@@ -313,12 +288,20 @@
 	/// Last consumed plan identity.
 	var/committed_serial = 0
 
+/datum/floodwater_front_portal/Destroy()
+	set_open(FALSE)
+	open_index = null
+	return ..()
+
 /datum/floodwater_front_portal/proc/prepare(dt = 0.1)
 	if(!open || left.blocked || right.blocked || left.root()?.dirty || right.root()?.dirty)
 		return null
 	if(left.root()?.is_full() && right.root()?.is_full())
 		return prepare_head(dt)
-	var/datum/floodwater_front_cell/source = left.amount() > right.amount() ? left : right
+	var/difference = left.amount() + elevation * FLOOD_WATER_LITRES_PER_CM - right.amount()
+	if(!difference)
+		return null
+	var/datum/floodwater_front_cell/source = difference > 0 ? left : right
 	var/datum/floodwater_front_cell/destination = source == left ? right : left
 	return list(source, destination, rate * dt, revision, solver.geometry_version, ++serial)
 
@@ -334,15 +317,15 @@
 	var/source_count = source.local ? 1 : from_group?.members.len || 1
 	var/destination_count = destination.local ? 1 : to_group?.members.len || 1
 	/// Equalizing.
-	var/equalizing = max(0, source.amount() - destination.amount()) / (1 / source_count + 1 / destination_count)
+	var/height = source == left ? elevation : -elevation
+	var/equalizing = max(0, source.amount() - destination.amount() + height * FLOOD_WATER_LITRES_PER_CM) / (1 / source_count + 1 / destination_count)
 	var/amount = min(plan[3], equalizing, source.available(), destination.capacity())
 	if(amount <= 0)
 		return 0
-	var/temperature = source.temperature()
-	var/difference = source.head_pressure() - destination.head_pressure()
+	var/difference = source.head_pressure() - destination.head_pressure() + height * FLOOD_WATER_KPA_PER_CM
 	// Paired changes complete before returning or yielding.
 	solver.withdraw(source, amount)
-	solver.receive(destination, amount, temperature)
+	solver.receive(destination, amount)
 	committed_serial = plan[6]
 	solver.confirm_flow(source, destination, amount, difference, opening)
 	return amount

@@ -230,31 +230,6 @@
 			branch.pixel_y = -source.pixel_y
 			overlays += branch
 
-/// A water-only exchanger for a closed loop; heat goes into the infinite ocean, not into room air.
-/datum/component/plumbing/stationtrauma_water/ocean_exchanger/process()
-	. = ..()
-	var/obj/machinery/stationtrauma_water_device/ocean_exchanger/exchanger = parent
-	exchanger.process(SSFLUIDS_DT)
-
-/obj/machinery/stationtrauma_water_device/ocean_exchanger
-	name = "водяной теплообменник"
-	desc = "Охлаждает проходящую воду соседним океаном до 4 °C. Вход с запада, выход с востока. Замкните контур водяным насосом."
-	capacity = 10000
-	plumbing_type = /datum/component/plumbing/stationtrauma_water/ocean_exchanger
-	icon_state = "filter"
-
-/obj/machinery/stationtrauma_water_device/ocean_exchanger/process(seconds_per_tick)
-	if(!anchored || !reagents.get_reagent_amount(/datum/reagent/water))
-		return
-	for(var/direction in GLOB.cardinals)
-		var/turf/open/tile = get_step(src, direction)
-		var/datum/component/floodwater/ocean = tile?.GetComponent(/datum/component/floodwater)
-		if(ocean?.infinite_source)
-			var/heat_capacity = reagents.get_reagent_amount(/datum/reagent/water) * 4184
-			if(heat_capacity && reagents.chem_temp > ocean.temperature)
-				reagents.set_temperature(max(ocean.temperature, reagents.chem_temp - 150000 * seconds_per_tick / heat_capacity))
-			return
-
 /proc/stationtrauma_water_level(layer_bit)
 	for(var/level in 1 to 5)
 		if(layer_bit == STATIONTRAUMA_WATER_LAYER_BIT(level))

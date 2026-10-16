@@ -118,7 +118,6 @@
 /obj/machinery/stationtrauma_water_device/connector,
 /obj/machinery/stationtrauma_water_device/barrel{
 	initial_water = 500;
-	initial_temperature = 313.15;
 	start_connected = 1;
 	valve_open = 1
 	},
@@ -308,7 +307,6 @@
 /obj/machinery/stationtrauma_water_device/barrel{
 	name = "стенд охлаждения 500 л";
 	initial_water = 500;
-	initial_temperature = 353.15;
 	start_connected = 1;
 	valve_open = 1
 	},
@@ -350,7 +348,7 @@
 "Ab" = (
 /obj/item/paper{
 	name = "Водяной контур";
-	default_raw_text = "Бочка (11,7) содержит 500 л воды при 40 C. Откройте вентиль (13,7) и включите выпуск (15,7): вода появится на полу. Бочки прикручиваются ключом к напольному порту, клапан и подключение проверяются ЛКМ. RPD (10,10), Atmospherics → Вода строит мятные водяные трубы, насосы, вентили и выпуски. Газовые трубы и химические duct не подключаются. Для замкнутого охлаждения включите насос (27,17): 500 л при 80 C из бочки (25,17) проходят теплообменник (29,18) и возвращаются холоднее. Осмотр показывает литры и температуру. 1 см глубины соответствует 10 л на клетке. Газовое охлаждение реактора — отдельный контур."
+	default_raw_text = "Бочка (11,7) содержит 500 л воды. Откройте вентиль (13,7): вода поступит через выпуск (15,7) на пол. Бочки прикручиваются ключом к напольному порту, клапан и подключение проверяются ЛКМ. RPD (10,10), Atmospherics → Вода строит мятные водяные трубы, насосы, вентили и выпуски. Газовые трубы и химические duct не подключаются. Насос (27,17) прокачивает воду через резервуар (29,18) в замкнутом контуре. Осмотр показывает литры. 1 см глубины соответствует 10 л на клетке. Газовое охлаждение реактора — отдельный контур."
 	},
 /turf/open/floor/plating{
 	baseturfs = /turf/open/space/ocean
@@ -665,7 +663,8 @@
 /obj/machinery/atmospherics/pipe/smart/simple{
 	dir = 10
 	},
-/obj/machinery/stationtrauma_water_device/ocean_exchanger{
+/obj/machinery/stationtrauma_water_device{
+	capacity = 10000;
 	dir = 4
 	},
 /turf/closed/wall{

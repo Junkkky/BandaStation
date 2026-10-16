@@ -17,7 +17,6 @@
 	var/water_level = 3
 	var/plumbing_type = /datum/component/plumbing/stationtrauma_water/supply
 	var/turf/water_geometry_location
-	var/list/suction_geometry
 	var/list/drain_geometry
 	var/list/drain_building
 	var/list/drain_queue
@@ -54,19 +53,10 @@
 			return
 	balloon_alert(user, "нужен контроллер")
 
-/obj/machinery/bilge_pump/proc/toggle_pump(mob/living/user)
-	on = !on
-	if(on)
-		begin_processing()
-	else
-		end_processing()
-	balloon_alert(user, on ? "включена" : "выключена")
-	update_appearance()
-
 /obj/machinery/bilge_pump/examine(mob/user)
 	. = ..()
 	. += span_notice("Помпа [on ? "включена" : "выключена"]. Расход: [drain_rate * FLOOD_WATER_LITRES_PER_CM] л/с; уровень труб [water_level].")
-	. += span_notice("Буфер: [round(reagents.total_volume, 0.1)] / [reagents.maximum_volume] л; [round(reagents.chem_temp - T0C, 0.1)] °C. Выход подключается к водяным трубам.")
+	. += span_notice("Буфер: [round(reagents.total_volume, 0.1)] / [reagents.maximum_volume] л. Выход подключается к водяным трубам.")
 
 /obj/machinery/bilge_pump/proc/draw_pump_energy(seconds_per_tick)
 	if(!is_operational)
@@ -103,12 +93,17 @@
 			debug.measure_phase("Pumps")
 		if(!geometry)
 			return
-		var/only_tail = TRUE
-		for(var/turf/open/tile as anything in drain_water)
-			var/datum/component/floodwater/water = drain_water[tile]
-			if(!QDELETED(water) && water.get_depth() >= 1)
-				only_tail = FALSE
-				break
+		var/datum/floodwater_front_cell/cell = SSfloodwater.hybrid.by_turf[intake]
+		var/datum/floodwater_front_group/owner = cell?.root()
+		// A clean, entirely aggregated footprint has the same shallow depth as the intake.
+		var/only_tail = owner && !owner.dirty && owner.bulk_count == owner.owned_count && owner.owned_count == geometry.len
+		if(!only_tail)
+			only_tail = TRUE
+			for(var/turf/open/tile as anything in drain_water)
+				var/datum/component/floodwater/water = drain_water[tile]
+				if(!QDELETED(water) && water.get_depth() >= 1)
+					only_tail = FALSE
+					break
 		if(only_tail)
 			// Bound component updates too: deleting a whole wet compartment in one call stalls the MC.
 			room = drain_water.Copy(1, min(length(drain_water) + 1, 65))
@@ -145,20 +140,15 @@
 		return !portable.port && !portable.discharging && !portable.panel_open && portable.cell?.charge > 0
 	return anchored
 
-/// Cache only connectivity and distances; depths are read anew for every collection.
-/obj/machinery/bilge_pump/proc/get_water_geometry(max_distance = null)
+/// Cache only connectivity; depths are read anew for every collection.
+/obj/machinery/bilge_pump/proc/get_water_geometry()
 	if(water_geometry_location != loc)
 		invalidate_water_geometry()
 		water_geometry_location = loc
-	if(isnull(max_distance))
-		if(!drain_geometry)
-			var/turf/open/intake = loc
-			drain_geometry = intake.stationtrauma_water_room(null, src)
-		return drain_geometry
-	if(!suction_geometry)
+	if(!drain_geometry)
 		var/turf/open/intake = loc
-		suction_geometry = intake.stationtrauma_water_room(max_distance, src)
-	return suction_geometry
+		drain_geometry = intake.stationtrauma_water_room(src)
+	return drain_geometry
 
 /obj/machinery/bilge_pump/proc/watch_water_geometry(turf/tile)
 	if(!tile || water_geometry_watchers[tile])
@@ -190,7 +180,6 @@
 
 /obj/machinery/bilge_pump/proc/invalidate_water_geometry(datum/source)
 	SIGNAL_HANDLER
-	suction_geometry = null
 	drain_geometry = null
 	drain_building = null
 	drain_queue = null
@@ -203,6 +192,24 @@
 
 /obj/machinery/bilge_pump/plumbed
 	name = "трюмная помпа с трубным выходом"
+
+/** An explicit seawater intake reuses the powered bilge buffer and native water-only pipe circuit. */
+/obj/machinery/bilge_pump/ocean_intake
+	name = "забортная водозаборная помпа"
+	desc = "Закачивает морскую воду в водяные трубы. Установите в океане, подведите питание; выход трубы по стрелке."
+	plumbing_type = /datum/component/plumbing/stationtrauma_water/supply/ocean_intake
+
+/obj/machinery/bilge_pump/ocean_intake/collect_water(seconds_per_tick)
+	if(!on || !anchored || !is_operational || drain_rate <= 0 || reagents.holder_full())
+		return
+	var/datum/component/floodwater/ocean = loc.GetComponent(/datum/component/floodwater)
+	if(ocean?.infinite_source && draw_pump_energy(seconds_per_tick))
+		ocean.remove_water(drain_rate * FLOOD_WATER_LITRES_PER_CM * seconds_per_tick, reagents, allow_ocean = TRUE)
+
+/** Switching the seawater intake off isolates its finite buffer from the filling line. */
+/datum/component/plumbing/stationtrauma_water/supply/ocean_intake/can_give(amount, reagent, datum/ductnet/net)
+	var/obj/machinery/bilge_pump/ocean_intake/pump = parent
+	return pump.on && pump.is_operational && ..()
 
 /obj/machinery/bilge_pump/wrench_act(mob/living/user, obj/item/tool)
 	return default_unfasten_wrench(user, tool)
@@ -238,7 +245,7 @@
 
 /obj/machinery/bilge_pump/portable/control_pump(mob/living/user)
 	var/status = discharging ? "сброс в порт" : !on ? "выключен" : reagents.holder_full() ? "бак заполнен" : panel_open ? "отсек батареи открыт" : !is_operational ? "неисправен" : !cell?.charge ? "нет заряда" : "сбор"
-	var/choice = tgui_input_list(user, "Режим: [status]. Бак: [round(reagents.total_volume, 0.1)] / 200 л, [round(reagents.chem_temp - T0C, 0.1)] °C. Заряд: [cell ? round(cell.percent()) : 0]%. Порт: [port ? "подключён" : "нет"].", name, list("Сбор воды", "Сброс в порт", "Выключить", "Слить рядом"))
+	var/choice = tgui_input_list(user, "Режим: [status]. Бак: [round(reagents.total_volume, 0.1)] / 200 л. Заряд: [cell ? round(cell.percent()) : 0]%. Порт: [port ? "подключён" : "нет"].", name, list("Сбор воды", "Сброс в порт", "Выключить", "Слить рядом"))
 	if(QDELETED(src) || !choice || !user.can_perform_action(src, NEED_DEXTERITY | NEED_HANDS | FORBID_TELEKINESIS_REACH))
 		return
 	if(choice == "Слить рядом")

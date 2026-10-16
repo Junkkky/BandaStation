@@ -11,7 +11,6 @@
 		return
 	owner.dirty = TRUE
 	owner.frozen_volume = owner.bulk_count ? owner.volume / owner.bulk_count : 0
-	owner.frozen_heat = owner.bulk_count ? owner.heat / owner.bulk_count : 0
 	dirty_groups[owner] = TRUE
 
 /** The live graph is authoritative even when a queued traversal describes an old wall. */
@@ -40,19 +39,21 @@
 	invalidate(cell.root())
 	for(var/datum/floodwater_front_cell/neighbor as anything in cell.neighbors)
 		invalidate(neighbor.root())
-	if(!blocked && cell.displaced_volume)
+	if(!blocked)
 		restore[cell] = TRUE
 
+/** Geometry events maintain the native processing index; transfer plans retain their closure revision. */
 /datum/floodwater_front_portal/proc/set_open(opened)
 	if(open == opened)
 		return
 	open = opened
 	revision++
+	set_active(opened)
 
 /datum/floodwater_front_solver/proc/retire_empty(datum/floodwater_front_group/owner)
 	if(owner.owned_count)
 		return
-	if(owner.volume || owner.heat || owner.bulk_count)
+	if(owner.volume || owner.bulk_count)
 		CRASH("Retired water owner still contains finite water")
 	owner.retired = TRUE
 	groups -= owner
@@ -87,16 +88,12 @@
 	if(cell.blocked || !cell.displaced_volume)
 		return
 	var/restored_head = cell.pressure_head
-	var/temperature = cell.displaced_heat / cell.displaced_volume
-	var/accepted = receive(cell, cell.displaced_volume, temperature)
+	var/accepted = receive(cell, cell.displaced_volume)
 	var/datum/floodwater_front_group/owner = cell.root()
 	if(accepted && owner?.is_full())
 		// Reopening a full packet must retain its head, rather than invent another decompression.
 		owner.pressure_head = max(owner.pressure_head, restored_head)
 	cell.displaced_volume -= accepted
-	cell.displaced_heat -= accepted * temperature
-	if(!cell.displaced_volume)
-		cell.displaced_heat = 0
 	// shortcut: wall overflow still needs a later geometry event; closed-door overflow observes withdrawals.
 
 /** Temporary per-cell packets exist only during geometry changes, not normal simulation. */
@@ -151,7 +148,6 @@
 		live_sources |= owner
 		owner.dirty = TRUE
 		owner.frozen_volume = owner.bulk_count ? owner.volume / owner.bulk_count : 0
-		owner.frozen_heat = owner.bulk_count ? owner.heat / owner.bulk_count : 0
 	sources = live_sources
 	candidates = list()
 	footprints = list()
@@ -182,9 +178,7 @@
 			if(!cell.local)
 				cell.pressure_head = owner.pressure_head
 				cell.volume = owner.bulk_count == 1 ? owner.volume : min(owner.volume, owner.frozen_volume)
-				cell.heat = owner.bulk_count == 1 ? owner.heat : min(owner.heat, owner.frozen_heat)
 				owner.volume -= cell.volume
-				owner.heat -= cell.heat
 				owner.bulk_count--
 				cell.local = TRUE
 				cell.transient = TRUE
@@ -239,10 +233,8 @@
 					var/datum/floodwater_front_cell/cell = removed[removed.len]
 					removed -= cell
 					cell.displaced_volume += cell.volume
-					cell.displaced_heat += cell.heat
 					solver.restore[cell] = TRUE
 					cell.volume = 0
-					cell.heat = 0
 					cell.local = FALSE
 					cell.transient = FALSE
 					var/datum/floodwater_front_group/old_owner = cell.root()
@@ -293,13 +285,10 @@
 				owner.bulk_count++
 				owner.pressure_head = (owner.pressure_head * owner.volume + cell.pressure_head * cell.volume) / (owner.volume + cell.volume)
 				owner.volume += cell.volume
-				owner.heat += cell.heat
 				cell.volume = 0
-				cell.heat = 0
 				cell.local = FALSE
 				cell.transient = FALSE
 				owner.frozen_volume = owner.volume / owner.bulk_count
-				owner.frozen_heat = owner.heat / owner.bulk_count
 			return FALSE
 
 		if(FLOOD_FRONT_REBUILD_RETIRE)

@@ -143,6 +143,7 @@ ADMIN_VERB(stationtrauma_water_click_debug, R_DEBUG, "Water Click Debug", "Repor
 		for(var/image/label as anything in viewers[viewer])
 			labels_by_turf[label.loc] = label
 		var/list/images = list()
+		var/list/added_images = list()
 		for(var/turf/open/tile in range(12, viewer.mob))
 			var/datum/component/floodwater/water = tile.GetComponent(/datum/component/floodwater)
 			var/image/label = labels_by_turf[tile]
@@ -151,20 +152,28 @@ ADMIN_VERB(stationtrauma_water_click_debug, R_DEBUG, "Water Click Debug", "Repor
 				label = image(loc = tile)
 				text = new
 				label.vis_contents += text
+				added_images += label
 			else
 				text = label.vis_contents[1]
 			labels_by_turf -= tile
 			// Image overlays inherit turf clicks; a separate visual lets clicks pass through the digits.
 			SET_PLANE_EXPLICIT(text, BALLOON_CHAT_PLANE, tile)
 			text.layer = label.layer
-			text.maptext = MAPTEXT("<span style='color:[water?.infinite_source ? "#37c7b7" : tile.get_water_depth() ? "#ffffff" : "#aaaaaa"];text-align:center'>[water?.infinite_source ? "∞" : round(tile.get_water_depth(), 0.1)]</span>")
+			var/depth = water?.infinite_source ? null : tile.get_water_depth()
+			var/maptext = MAPTEXT("<span style='color:[water?.infinite_source ? "#37c7b7" : depth ? "#ffffff" : "#aaaaaa"];text-align:center'>[water?.infinite_source ? "∞" : round(depth, 0.1)]</span>")
+			if(text.maptext != maptext)
+				text.maptext = maptext
 			text.maptext_y = 8
 			images += label
-		viewer.images -= viewers[viewer]
 		// Only labels that left the visible range are retired; stationary labels reuse their visuals.
+		var/list/removed_images = list()
 		for(var/turf/tile as anything in labels_by_turf)
 			var/image/label = labels_by_turf[tile]
+			removed_images += label
 			for(var/obj/effect/overlay/vis/text as anything in label.vis_contents)
 				qdel(text)
 		viewers[viewer] = images
-		viewer.images += images
+		if(length(removed_images))
+			viewer.images -= removed_images
+		if(length(added_images))
+			viewer.images += added_images

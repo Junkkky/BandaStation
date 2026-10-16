@@ -1,6 +1,7 @@
 #include "../underwater/_defines.dm"
 #include "_underwater_machinery.dm"
 #include "airlocks/airlocks.dm"
+#include "airlocks/water_airlock.dm"
 #include "pumps/pumps.dm"
 #include "pumps/water_intake.dm"
 #include "pumps/water_pipes.dm"

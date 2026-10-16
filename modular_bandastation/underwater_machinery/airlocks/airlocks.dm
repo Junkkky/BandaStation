@@ -14,6 +14,8 @@
 	/// Mechanical dogs are independent of the powered airlock bolts.
 	var/handwheel_locked = FALSE
 	var/handwheel_turning = FALSE
+	/// Only a linked water chamber controls these mechanical dogs automatically.
+	var/obj/machinery/button/stationtrauma_water_airlock/water_airlock
 
 /obj/machinery/door/airlock/highsecurity/underwater/Initialize(mapload)
 	setDir(dir)
@@ -49,13 +51,39 @@
 		return CLICK_ACTION_BLOCKING
 	handwheel_turning = FALSE
 	if(completed && density && !operating)
-		handwheel_locked = !handwheel_locked
-		playsound(src, handwheel_locked ? boltDown : boltUp, 30, FALSE, 3)
+		water_airlock?.stop_cycle("Ручное управление вентилем")
+		set_handwheel(!handwheel_locked)
+		if(water_airlock && !handwheel_locked)
+			open(BYPASS_DOOR_CHECKS, user)
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
 
+/** Manual and automatic wheel operations finish with the same mechanical sound and appearance. */
+/obj/machinery/door/airlock/highsecurity/underwater/proc/set_handwheel(locked)
+	handwheel_locked = locked
+	playsound(src, handwheel_locked ? boltDown : boltUp, 30, FALSE, 3)
+	update_appearance()
+
+/** An automatic turn uses the existing wheel animation; cancelled cycles cannot release a door later. */
+/obj/machinery/door/airlock/highsecurity/underwater/proc/turn_handwheel(locked, obj/machinery/button/stationtrauma_water_airlock/controller, revision)
+	if(QDELETED(controller) || !controller.cycling || revision != controller.cycle_revision || !density || operating || handwheel_turning)
+		return FALSE
+	if(handwheel_locked == locked)
+		return TRUE
+	handwheel_turning = TRUE
+	update_appearance()
+	sleep(1 SECONDS)
+	if(QDELETED(src))
+		return FALSE
+	handwheel_turning = FALSE
+	if(QDELETED(controller) || !controller.cycling || revision != controller.cycle_revision || !controller.is_operational || !is_operational || !density || operating)
+		update_appearance()
+		return FALSE
+	set_handwheel(locked)
+	return TRUE
+
 /obj/machinery/door/airlock/highsecurity/underwater/open(forced = DEFAULT_DOOR_CHECKS, mob/living/opener)
-	if(handwheel_locked || handwheel_turning)
+	if(handwheel_locked || handwheel_turning || water_airlock?.cycling)
 		return FALSE
 	return ..()
 

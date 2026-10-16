@@ -8,6 +8,8 @@
 	var/ambience_channel
 	var/client/ambience_client
 	var/ambience_volume = 0
+	/// Track physical immersion independently of HUD refreshes and sound-loop cleanup.
+	var/sound_submerged = FALSE
 	/// Visor and MOD sealing events need no per-frame equipment checks.
 	var/list/presentation_gear = list()
 	COOLDOWN_DECLARE(swim_bubbles_cooldown)
@@ -43,6 +45,7 @@
 
 /** Preserve blindness, FOV and HUD readability by filtering only the native game render plates. */
 /datum/status_effect/floodwater/proc/update_presentation(datum/component/floodwater/water)
+	update_submersion_sound(water)
 	if(!owner.client || owner.stat == DEAD || !water?.head_underwater(owner))
 		clear_presentation()
 		return
@@ -52,6 +55,16 @@
 		controller = owner.hud_used?.plane_master_controllers[PLANE_MASTERS_GAME]
 	set_water_filters(controller, owner.has_stationtrauma_water_visor() ? 1 : 2)
 	update_water_ambience()
+
+/** Play once per surface crossing, including leaving water when the status is removed. */
+/datum/status_effect/floodwater/proc/update_submersion_sound(datum/component/floodwater/water)
+	var/submerged = !!water?.head_underwater(owner)
+	if(submerged == sound_submerged)
+		return
+	sound_submerged = submerged
+	if(!owner.client || owner.stat == DEAD)
+		return
+	owner.playsound_local(get_turf(owner), submerged ? 'sound/effects/submerge.ogg' : 'sound/effects/splash.ogg', 40, vary = TRUE, pressure_affected = FALSE)
 
 /** Reuse unchanged filters; their refraction animation runs entirely on the client. */
 /datum/status_effect/floodwater/proc/set_water_filters(atom/movable/plane_master_controller/controller, mode)

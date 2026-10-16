@@ -1,5 +1,6 @@
 #include "_underwater.dm"
 #include "code/water.dm"
+#include "code/ocean_openspace.dm"
 #include "code/water_pressure.dm"
 #include "code/water_flow.dm"
 #include "code/water_geometry.dm"
@@ -9,6 +10,8 @@
 #include "code/water_front_geometry.dm"
 #include "code/water_hybrid.dm"
 #include "code/water_head.dm"
+#include "code/water_portals.dm"
+#include "code/water_vertical.dm"
 #include "code/water_impulse.dm"
 #include "code/water_drift.dm"
 #include "code/water_visuals.dm"
@@ -18,6 +21,7 @@
 #include "code/water_sound.dm"
 #include "code/parallax.dm"
 #include "code/environment.dm"
+#include "code/route_template.dm"
 #include "code/submarine.dm"
 #include "code/water_leaks.dm"
 

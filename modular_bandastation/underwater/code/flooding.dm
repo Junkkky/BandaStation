@@ -8,6 +8,8 @@ SUBSYSTEM_DEF(floodwater)
 	/// Damaged ocean contacts, including parked full-room leaks; intact barriers never enter this list.
 	var/list/leaks = list()
 	var/list/pumps = list()
+	/// Finite pipe buffers discharge on water time, rather than in two-second machinery bursts.
+	var/list/outlets = list()
 	/// C is the only finite-water solver; domains are admitted when water appears.
 	var/datum/floodwater_hybrid/hybrid = new
 	/// Snapshots and cursors survive MC pauses without repeating inflow or pump work.
@@ -105,18 +107,21 @@ SUBSYSTEM_DEF(floodwater)
 	if(work_phase == FLOOD_WORK_FRONT)
 		if(!hybrid.advance_native(step_seconds))
 			return FALSE
-		pump_run = pumps.Copy()
+		pump_run = pumps + outlets
 		work_cursor = pump_run.len
 		work_phase = FLOOD_WORK_PUMPS
 	if(debug.enabled)
 		debug.measure_phase("Pumps")
 	while(work_cursor)
-		var/obj/machinery/bilge_pump/pump = pump_run[work_cursor--]
-		if(!QDELETED(pump))
+		var/obj/machinery/device = pump_run[work_cursor--]
+		if(!QDELETED(device) && istype(device, /obj/machinery/bilge_pump))
+			var/obj/machinery/bilge_pump/pump = device
 			pump.collect_water(step_seconds)
 			// A cold geometry traversal has not collected yet; finish it before advancing time.
 			if(state == SS_PAUSED && pump.drain_building)
 				work_cursor++
+		else if(!QDELETED(device))
+			device.process(step_seconds)
 		if(MC_TICK_CHECK)
 			return FALSE
 	pump_run.Cut()

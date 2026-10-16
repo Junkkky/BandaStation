@@ -3,26 +3,40 @@
 #define FLOOD_NATIVE_PORTALS 3
 #define FLOOD_NATIVE_LEVELS 4
 #define FLOOD_NATIVE_EFFECTS 5
+#define FLOOD_NATIVE_VERTICAL 6
+#define FLOOD_NATIVE_HEADS 7
 
-/** C owns finite volume and heat; components publish the existing appearance and gameplay effects. */
+/** C owns finite volume; components publish the existing appearance and gameplay effects. */
 /datum/floodwater_hybrid
 	parent_type = /datum/floodwater_front_solver
 	/// Finite cells keyed by current turf; external ocean is never included.
 	var/list/by_turf = list()
 	/// Door throats exchange water without merging the rooms on either side.
 	var/list/portals = list()
+	/// Only observed holes between connected decks; their finite owners always remain separate.
+	var/list/vertical_portals = list()
+	/// Awake open edges; geometry and stock events restore parked registry entries.
+	var/list/open_portals = list()
+	/// Vertical edges retain their separate processing order and elevation.
+	var/list/open_vertical_portals = list()
+	/// Unique full endpoints whose native air can change without a water event.
+	var/list/pressure_watch = list()
+	/// A phase snapshot of head endpoints or portals survives removals during an MC pause.
+	var/list/portal_run
 	/// Deduplicated native geometry events, including changes on dry floors.
 	var/list/geometry_events = list()
 	/// Only finite floor contacts with the external ocean, independent of the size of the wet interior.
 	var/list/ocean_contacts = list()
 	/// Owners whose native stage has crossed a rendering threshold.
 	var/list/paint_groups = list()
-	/// Only closed doorways with displaced litres; retries follow capacity/geometry events, not a timer.
+	/// Sealed door/window floors with displaced litres; retries follow capacity/geometry events, not a timer.
 	var/list/closed_packets = list()
 	/// Elapsed front time; the A microsteps do not scan C interiors.
 	var/elapsed = 0
 	/// Current resumable front phase, or zero between front intervals.
 	var/native_phase = 0
+	/// Front, head and geometry work wake ocean contacts once at the next completed geometry boundary.
+	var/ocean_wakeup = FALSE
 	/// Cursor shared by portal and owner-stage scans.
 	var/native_cursor = 1
 	/// Native setters publish appearances without feeding the same litres back into the solver.
@@ -48,10 +62,9 @@
 		if(water && !water.infinite_source)
 			if(cell.blocked)
 				cell.displaced_volume = water.depth * FLOOD_WATER_LITRES_PER_CM
-				cell.displaced_heat = cell.displaced_volume * water.temperature
 				changed[cell] = TRUE
 			else
-				receive(cell, water.depth * FLOOD_WATER_LITRES_PER_CM, water.temperature)
+				receive(cell, water.depth * FLOOD_WATER_LITRES_PER_CM)
 	// Both endpoints need their door region before links are finalized.
 	for(var/datum/floodwater_front_cell/cell as anything in added)
 		refresh_cell(cell)
@@ -76,10 +89,23 @@
 		var/list/edges = portals[cell]
 		for(var/datum/floodwater_front_cell/neighbor as anything in edges)
 			var/datum/floodwater_front_portal/portal = edges[neighbor]
+			portal.set_open(FALSE)
 			portal.solver = null
 			portal.left = null
 			portal.right = null
 			qdel(portal)
+	for(var/datum/floodwater_front_cell/cell as anything in vertical_portals)
+		var/datum/floodwater_front_portal/portal = vertical_portals[cell]
+		portal.set_open(FALSE)
+		portal.solver = null
+		portal.left = null
+		portal.right = null
+		qdel(portal)
+	vertical_portals.Cut()
+	open_portals.Cut()
+	open_vertical_portals.Cut()
+	pressure_watch.Cut()
+	portal_run = null
 	cells.Cut()
 	groups.Cut()
 	run.Cut()
@@ -101,37 +127,34 @@
 	return cell ? cell.amount() / FLOOD_WATER_LITRES_PER_CM : 0
 
 /// Component callers may change one cell's share, never multiply a room-wide volume by its footprint.
-/datum/floodwater_hybrid/proc/set_depth_at(turf/tile, new_depth, water_temperature = null)
+/datum/floodwater_hybrid/proc/set_depth_at(turf/tile, new_depth)
 	var/datum/floodwater_front_cell/cell = by_turf[tile]
 	if(!cell || cell.blocked || cell.root()?.dirty)
 		return tile.GetComponent(/datum/component/floodwater)
 	var/old_volume = cell.amount()
-	var/old_temperature = cell.temperature()
 	var/new_volume = new_depth * FLOOD_WATER_LITRES_PER_CM
 	if(new_volume > old_volume)
-		receive(cell, new_volume - old_volume, isnull(water_temperature) ? cell.temperature() : water_temperature)
+		receive(cell, new_volume - old_volume)
 	else if(new_volume < old_volume)
 		withdraw(cell, old_volume - new_volume)
-	if(!isnull(water_temperature) && cell.root())
-		if(cell.local)
-			cell.heat = cell.volume * water_temperature
-		else
-			var/datum/floodwater_front_group/owner = cell.root()
-			owner.heat += min(old_volume, new_volume) * (water_temperature - old_temperature)
 	changed[cell] = TRUE
 	return tile.GetComponent(/datum/component/floodwater)
 
-/datum/floodwater_hybrid/receive(datum/floodwater_front_cell/cell, requested, temperature)
+/datum/floodwater_hybrid/receive(datum/floodwater_front_cell/cell, requested)
 	var/datum/floodwater_front_group/owner = cell.root()
 	if(owner && !owner.is_full() && !owner.dirty)
 		owner.pressure_head = 0
 		owner.pressure_remainder = 0
 		cell.pressure_head = 0
 	. = ..()
+	if(.)
+		cell.wake_portals()
 
 /datum/floodwater_hybrid/withdraw(datum/floodwater_front_cell/cell, requested)
 	. = ..()
 	if(.)
+		cell.wake_portals()
+		cell.root()?.wake_portals()
 		wake_ocean_contacts(cell.root(), cell)
 		for(var/datum/floodwater_front_cell/door_cell as anything in closed_packets)
 			for(var/direction in GLOB.cardinals)
@@ -140,26 +163,54 @@
 					restore[door_cell] = TRUE
 					break
 
-/** A closing door pushes its own packet to adjacent finite capacity, respecting every other barrier. */
+/** Sealed floor obstacles push their packet to adjacent finite capacity, respecting every other barrier. */
 /datum/floodwater_hybrid/restore_displaced(datum/floodwater_front_cell/cell)
 	var/turf/open/tile = cell.tile
-	var/obj/machinery/door/door = isopenturf(tile) ? tile.closed_stationtrauma_water_door() : null
-	if(!cell.blocked || !door || !cell.displaced_volume)
+	if(!cell.blocked && !cell.displaced_volume && !cell.available())
+		fill_equalized_ocean_opening(cell)
+	var/obj/barrier = isopenturf(tile) ? (tile.closed_stationtrauma_water_door() || tile.sealed_stationtrauma_water_window()) : null
+	if(!cell.blocked || !barrier || !cell.displaced_volume)
 		closed_packets -= cell
 		return ..()
 	closed_packets[cell] = TRUE
-	var/temperature = cell.displaced_heat / cell.displaced_volume
 	for(var/direction in GLOB.cardinals)
 		var/datum/floodwater_front_cell/neighbor = by_turf[get_step(tile, direction)]
-		if(!neighbor || neighbor.blocked || !tile.can_pass_stationtrauma_water(neighbor.tile, door))
+		if(!neighbor || neighbor.blocked || neighbor.root()?.is_full() || !tile.can_pass_stationtrauma_water(neighbor.tile, barrier))
 			continue
-		var/accepted = receive(neighbor, cell.displaced_volume, temperature)
+		var/accepted = receive(neighbor, cell.displaced_volume)
 		cell.displaced_volume -= accepted
-		cell.displaced_heat -= accepted * temperature
 		if(!cell.displaced_volume)
-			cell.displaced_heat = 0
 			closed_packets -= cell
 			break
+
+/** A new opening between equalized full stocks fills from the ocean without venting the whole room. */
+/datum/floodwater_hybrid/proc/fill_equalized_ocean_opening(datum/floodwater_front_cell/cell)
+	var/turf/open/tile = cell.tile
+	var/datum/component/floodwater/ocean
+	var/full_room = FALSE
+	var/min_head = INFINITY
+	var/max_head = 0
+	for(var/direction in GLOB.cardinals)
+		var/turf/open/adjacent = get_step(tile, direction)
+		if(!tile.can_pass_stationtrauma_water(adjacent))
+			continue
+		var/datum/component/floodwater/water = adjacent.GetComponent(/datum/component/floodwater)
+		var/head
+		if(water?.infinite_source)
+			ocean = water
+			head = water.reservoir_pressure
+		else
+			var/datum/floodwater_front_cell/neighbor = by_turf[adjacent]
+			if(!neighbor?.root()?.is_full())
+				return
+			full_room = TRUE
+			head = neighbor.head_pressure()
+		min_head = min(min_head, head)
+		max_head = max(max_head, head)
+	if(!ocean || !full_room || max_head - min_head > FLOOD_WATER_HEAD_EPSILON)
+		return
+	if(receive(cell, FLOOD_FRONT_CAPACITY))
+		cell.root().pressure_head = ocean.reservoir_pressure
 
 /// Aggregate withdrawal frees every member's capacity, including a source far from the active front.
 /datum/floodwater_hybrid/proc/wake_ocean_contacts(datum/floodwater_front_group/owner = null, datum/floodwater_front_cell/withdrawn_cell = null)
@@ -176,8 +227,9 @@
 
 /// Cache passable edges only on geometry events; live door checks also precede paired portal commits.
 /datum/floodwater_hybrid/proc/refresh_cell(datum/floodwater_front_cell/cell)
+	cell.wake_portals()
 	var/turf/open/tile = cell.tile
-	set_blocked(cell, !isopenturf(tile) || isspaceturf(tile) || istype(tile, /turf/open/water) || tile.blocks_air || tile.closed_stationtrauma_water_door())
+	set_blocked(cell, !isopenturf(tile) || isspaceturf(tile) || istype(tile, /turf/open/water) || tile.blocks_air || tile.closed_stationtrauma_water_door() || tile.sealed_stationtrauma_water_window())
 	if(cell.blocked && isopenturf(tile) && tile.GetComponent(/datum/component/floodwater))
 		paint(cell)
 	if(cell.displaced_volume)
@@ -214,9 +266,12 @@
 				portal.solver = src
 				portal.left = cell
 				portal.right = neighbor
+				portal.open_index = open_portals
+				portal.open_order = (portals.Find(cell) - 1) * GLOB.cardinals.len + edges.len
 				edges[neighbor] = portal
 			portal.pressure_link = pressure_link
 			portal.set_open(opened)
+	refresh_vertical_links(cell)
 	cell.watch_obstacles()
 	if(cell.root() && !cell.root().dirty)
 		wake(cell.root())
@@ -234,10 +289,9 @@
 	if(depth > 0)
 		if(water)
 			water.depth = depth
-			water.temperature = cell.temperature()
 			water.update_depth()
 		else
-			tile.set_water_depth(depth, FALSE, cell.temperature(), FALSE)
+			tile.set_water_depth(depth, FALSE, FALSE)
 	else if(water && !water.infinite_source)
 		qdel(water)
 	publishing = FALSE
@@ -257,15 +311,31 @@
 			if(FLOOD_NATIVE_GEOMETRY)
 				if(SSfloodwater.debug.enabled)
 					SSfloodwater.debug.measure_phase("GeometryC")
+				if(geometry_events.len || rebuild || dirty_groups.len || restore.len)
+					ocean_wakeup = TRUE
 				if(geometry_events.len)
 					var/datum/floodwater_front_cell/cell = geometry_events[geometry_events.len]
 					geometry_events -= cell
 					refresh_cell(cell)
 				else if(resume_geometry(1))
-					wake_ocean_contacts()
+					if(ocean_wakeup)
+						wake_ocean_contacts()
+						ocean_wakeup = FALSE
 					begin(elapsed)
 					elapsed = 0
+					native_phase = FLOOD_NATIVE_HEADS
+					native_cursor = 1
+					portal_run = pressure_watch.Copy()
+			if(FLOOD_NATIVE_HEADS)
+				if(SSfloodwater.debug.enabled)
+					SSfloodwater.debug.measure_phase("HeadsC")
+				if(native_cursor > portal_run.len)
 					native_phase = FLOOD_NATIVE_FRONT
+					portal_run = null
+				else
+					var/datum/floodwater_front_cell/cell = portal_run[native_cursor++]
+					if((cell in pressure_watch) && cell.head_pressure() != pressure_watch[cell])
+						cell.wake_portals()
 			if(FLOOD_NATIVE_FRONT)
 				if(SSfloodwater.debug.enabled)
 					SSfloodwater.debug.measure_phase("FrontC")
@@ -274,26 +344,42 @@
 				if(resume(1))
 					native_phase = FLOOD_NATIVE_PORTALS
 					native_cursor = 1
+					portal_run = open_portals.Copy()
+				if(jobs != old_jobs)
+					ocean_wakeup = TRUE
 				if(SSfloodwater.debug.enabled)
 					SSfloodwater.debug.tiles += jobs - old_jobs
 					SSfloodwater.debug.edges += neighbor_visits - old_edges
 			if(FLOOD_NATIVE_PORTALS)
 				if(SSfloodwater.debug.enabled)
 					SSfloodwater.debug.measure_phase("PortalsC")
-				if(native_cursor > portals.len)
+				if(native_cursor > portal_run.len)
+					native_phase = FLOOD_NATIVE_VERTICAL
+					native_cursor = 1
+					portal_run = open_vertical_portals.Copy()
+				else
+					var/datum/floodwater_front_portal/portal = portal_run[native_cursor++]
+					var/turf/open/left_tile = portal.left.tile
+					portal.set_open(!portal.left.blocked && !portal.right.blocked && (portal.left.region != portal.right.region || portal.pressure_link) && left_tile.can_pass_stationtrauma_water(portal.right.tile))
+					if(!portal.commit(portal.prepare(run_dt)))
+						portal.sleep_until_changed()
+					if(portal.pressure_link && portal.open && !portal.left.root()?.dirty && !portal.right.root()?.dirty && abs(portal.left.head_pressure() - portal.right.head_pressure()) <= FLOOD_WATER_HEAD_EPSILON)
+						portal.pressure_link = FALSE
+						portal.set_open(FALSE)
+						set_link(portal.left, portal.right, TRUE)
+			if(FLOOD_NATIVE_VERTICAL)
+				if(SSfloodwater.debug.enabled)
+					SSfloodwater.debug.measure_phase("VerticalC")
+				if(native_cursor > portal_run.len)
 					native_phase = FLOOD_NATIVE_LEVELS
 					native_cursor = 1
+					portal_run = null
 				else
-					var/list/edges = portals[portals[native_cursor++]]
-					for(var/datum/floodwater_front_cell/neighbor as anything in edges)
-						var/datum/floodwater_front_portal/portal = edges[neighbor]
-						var/turf/open/left_tile = portal.left.tile
-						portal.set_open(!portal.left.blocked && !portal.right.blocked && (portal.left.region != portal.right.region || portal.pressure_link) && left_tile.can_pass_stationtrauma_water(portal.right.tile))
-						portal.commit(portal.prepare(run_dt))
-						if(portal.pressure_link && portal.open && !portal.left.root()?.dirty && !portal.right.root()?.dirty && abs(portal.left.head_pressure() - portal.right.head_pressure()) <= FLOOD_WATER_HEAD_EPSILON)
-							portal.pressure_link = FALSE
-							portal.set_open(FALSE)
-							set_link(portal.left, portal.right, TRUE)
+					var/datum/floodwater_front_portal/portal = portal_run[native_cursor++]
+					var/turf/open/upper = portal.left.tile
+					portal.set_open(!portal.left.blocked && !portal.right.blocked && upper.can_pass_stationtrauma_water_down(portal.right.tile))
+					if(!portal.commit(portal.prepare(run_dt)))
+						portal.sleep_until_changed()
 			if(FLOOD_NATIVE_LEVELS)
 				if(SSfloodwater.debug.enabled)
 					SSfloodwater.debug.measure_phase("LevelsC")
@@ -351,26 +437,27 @@
 
 /// Dry cells must observe doors and walls before water reaches them.
 /datum/floodwater_front_cell/proc/watch_turf()
+	restore_stationtrauma_hull(tile)
 	RegisterSignal(tile, COMSIG_TURF_CHANGE, PROC_REF(turf_changed))
-	RegisterSignals(tile, list(COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED), PROC_REF(native_changed))
+	RegisterSignals(tile, list(COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(native_changed))
 	watch_obstacles()
 
 /datum/floodwater_front_cell/proc/unwatch_turf()
-	UnregisterSignal(tile, list(COMSIG_TURF_CHANGE, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED))
+	UnregisterSignal(tile, list(COMSIG_TURF_CHANGE, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON))
 	for(var/obj/obstacle as anything in obstacles)
-		UnregisterSignal(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_QDELETING))
+		UnregisterSignal(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_QDELETING))
 	obstacles.Cut()
 
 /datum/floodwater_front_cell/proc/watch_obstacles()
 	for(var/obj/obstacle as anything in obstacles.Copy())
 		if(QDELETED(obstacle) || obstacle.loc != tile)
-			UnregisterSignal(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_QDELETING))
+			UnregisterSignal(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_QDELETING))
 			obstacles -= obstacle
 	for(var/obj/obstacle in tile)
 		if(obstacle.can_atmos_pass == ATMOS_PASS_YES || (obstacle in obstacles))
 			continue
 		obstacles |= obstacle
-		RegisterSignals(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_QDELETING), PROC_REF(native_changed))
+		RegisterSignals(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_QDELETING), PROC_REF(native_changed))
 
 /datum/floodwater_front_cell/proc/native_changed(datum/source, atom/movable/moved)
 	SIGNAL_HANDLER

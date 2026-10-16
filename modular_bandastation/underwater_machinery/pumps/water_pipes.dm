@@ -123,7 +123,6 @@
 	var/capacity = 1000
 	/// Mapper charge for test fixtures; normal reservoirs start empty.
 	var/initial_water = 0
-	var/initial_temperature = T0C + 4
 	var/water_level = 3
 	var/plumbing_type = /datum/component/plumbing/stationtrauma_water
 	var/water_pressure = STATIONTRAUMA_WATER_ATMOSPHERE + 0.2
@@ -133,9 +132,8 @@
 		water_level = new_level
 	. = ..()
 	create_reagents(capacity, NO_REACT)
-	reagents.set_temperature(initial_temperature)
 	if(initial_water > 0)
-		reagents.add_reagent(/datum/reagent/water, initial_water, reagtemp = initial_temperature, no_react = TRUE)
+		reagents.add_reagent(/datum/reagent/water, initial_water, no_react = TRUE)
 	if(plumbing_type)
 		AddComponent(plumbing_type, STATIONTRAUMA_WATER_LAYER_BIT(water_level))
 		AddElement(/datum/element/simple_rotation)
@@ -153,7 +151,7 @@
 
 /obj/machinery/stationtrauma_water_device/examine(mob/user)
 	. = ..()
-	. += span_notice("Вода: [round(reagents.get_reagent_amount(/datum/reagent/water), 0.1)] / [reagents.maximum_volume] л. Температура: [round(reagents.chem_temp - T0C, 0.1)] °C. Уровень труб: [water_level].")
+	. += span_notice("Вода: [round(reagents.get_reagent_amount(/datum/reagent/water), 0.1)] / [reagents.maximum_volume] л. Уровень труб: [water_level].")
 
 /obj/machinery/stationtrauma_water_device/wrench_act(mob/living/user, obj/item/tool)
 	return default_unfasten_wrench(user, tool)
@@ -197,9 +195,17 @@
 	capacity = 200
 	plumbing_type = /datum/component/plumbing/stationtrauma_water/outlet
 	use_power = NO_POWER_USE
-	processing_flags = START_PROCESSING_ON_INIT
+	processing_flags = NONE
 	var/flow_rate = 1800
 	var/discharged_volume = 0
+
+/obj/machinery/stationtrauma_water_device/outlet/Initialize(mapload, new_level)
+	. = ..()
+	SSfloodwater.outlets += src
+
+/obj/machinery/stationtrauma_water_device/outlet/Destroy()
+	SSfloodwater.outlets -= src
+	return ..()
 
 /obj/machinery/stationtrauma_water_device/outlet/process(seconds_per_tick)
 	if(!anchored || (machine_stat & BROKEN) || !isopenturf(loc) || !reagents.get_reagent_amount(/datum/reagent/water))
@@ -258,7 +264,7 @@
 
 /obj/item/stationtrauma_water_canister/examine(mob/user)
 	. = ..()
-	. += span_notice("Вода: [round(reagents?.total_volume, 0.1)] л; [round((reagents?.chem_temp || FLOOD_WATER_TEMPERATURE) - T0C, 0.1)] °C.")
+	. += span_notice("Вода: [round(reagents?.total_volume, 0.1)] л.")
 
 /obj/item/stationtrauma_water_canister/attack_self(mob/user)
 	if(isliving(user))

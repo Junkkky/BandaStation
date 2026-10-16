@@ -14,6 +14,7 @@
 		"Клапан давления" = /obj/machinery/stationtrauma_water_device/valve/pressure_gate,
 		"Клапан выпуска" = /obj/machinery/stationtrauma_water_device/outlet/universal,
 		"Трюмная помпа" = /obj/machinery/bilge_pump,
+		"Забортная водозаборная помпа" = /obj/machinery/bilge_pump/ocean_intake,
 	)
 	var/static/list/water_recipe_info
 
@@ -22,8 +23,8 @@
 	if(water_recipe_info)
 		return
 	water_recipe_info = list()
-	var/list/states = list("manifold4w", "manifoldlayer", "connector", "pump", "mvalve", "passivegate", "pvalve", "pvent", "scrubber")
-	var/list/directions = list(PIPE_ONEDIR, PIPE_STRAIGHT, PIPE_ONEDIR, PIPE_UNARY, PIPE_STRAIGHT, PIPE_UNARY, PIPE_UNARY, PIPE_UNARY, PIPE_UNARY)
+	var/list/states = list("manifold4w", "manifoldlayer", "connector", "pump", "mvalve", "passivegate", "pvalve", "pvent", "scrubber", "scrubber")
+	var/list/directions = list(PIPE_ONEDIR, PIPE_STRAIGHT, PIPE_ONEDIR, PIPE_UNARY, PIPE_STRAIGHT, PIPE_UNARY, PIPE_UNARY, PIPE_UNARY, PIPE_UNARY, PIPE_UNARY)
 	for(var/index in 1 to length(water_recipes))
 		var/datum/pipe_info/info = new
 		info.name = water_recipes[index]

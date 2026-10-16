@@ -32,11 +32,9 @@
 			// The saved total is authoritative; adding rounded per-cell means can leave a permanent tail.
 			contributions[bulk_cells[owner]] = owner.volume
 	var/available = 0
-	var/heat = 0
 	for(var/datum/floodwater_front_cell/cell as anything in contributions)
 		var/amount = contributions[cell]
 		available += amount
-		heat += amount * cell.temperature()
 	if(available <= 0)
 		return 0
 	var/free_space = receiver.maximum_volume - receiver.total_volume
@@ -47,7 +45,7 @@
 	var/previous_phase = debug.phase_name
 	if(debug.enabled)
 		debug.measure_phase("PumpDeposit")
-	var/accepted = store_stationtrauma_water(receiver, amount, heat / available)
+	var/accepted = store_stationtrauma_water(receiver, amount)
 	if(debug.enabled)
 		debug.measure_phase(previous_phase)
 	if(accepted <= 0)

@@ -58,7 +58,6 @@
 #define COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED "stationtrauma_water_boundary_changed"
 #define COMSIG_STATIONTRAUMA_WATER_PRESENCE_CHANGED "stationtrauma_water_presence_changed"
 #define COMSIG_STATIONTRAUMA_WATER_MASK_CHANGED "stationtrauma_water_mask_changed"
-#define FLOOD_WATER_TEMPERATURE (T0C + 4)
 // One-square-metre water footprint: a centimetre is ten litres.
 #define FLOOD_WATER_LITRES_PER_CM 10
 #define STATIONTRAUMA_WATER_LAYER_BIT(level) (1 << (4 + (level)))

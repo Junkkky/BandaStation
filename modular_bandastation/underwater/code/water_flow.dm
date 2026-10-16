@@ -50,6 +50,10 @@
 		var/difference = reservoir_pressure - next_tile.stationtrauma_water_pressure(next_water)
 		if(next_water?.infinite_source || abs(difference) <= FLOOD_WATER_PRESSURE_EPSILON || !tile.can_pass_stationtrauma_water(next_tile))
 			continue
+		// Restore new openings before the ocean can mistake their dry cavity for a depressurized room.
+		if(contact && SSfloodwater.hybrid.restore[contact])
+			wake()
+			continue
 		if(SSfloodwater.hybrid.exchange_ocean_head(src, contact, FLOOD_WATER_BREACH_OPENING, SSfloodwater.step_seconds))
 			wake()
 			continue
@@ -58,7 +62,7 @@
 		volume = limit_stationtrauma_boundary_flow(next_tile, next_water, reservoir_pressure, difference > 0 ? volume : -volume)
 		if(!volume)
 			continue
-		var/transferred = difference > 0 ? next_tile.add_water(volume, temperature) : next_water?.remove_water(volume)
+		var/transferred = difference > 0 ? next_tile.add_water(volume) : next_water?.remove_water(volume)
 		if(transferred)
 			SEND_SIGNAL(SSfloodwater, COMSIG_STATIONTRAUMA_WATER_TRANSFER, difference > 0 ? tile : next_tile, difference > 0 ? next_tile : tile, transferred, abs(difference), FLOOD_WATER_BREACH_OPENING, FALSE)
 			wake()

@@ -17,9 +17,11 @@
 
 /** Hull repair can admit a floor that did not exist when the wet domain was first discovered. */
 /datum/controller/subsystem/floodwater/proc/mark_repaired_inlet(turf/tile)
-	if(!isfloorturf(tile) || !istype(get_area(tile), /area/shuttle/stationtrauma))
+	if(!isfloorturf(tile))
 		return
-	var/datum/floodwater_front_cell/contact = ensure_water_domain(tile)
+	if(!hybrid.by_turf[tile])
+		hybrid.add_domain(list(tile))
+	var/datum/floodwater_front_cell/contact = hybrid.by_turf[tile]
 	contact.impulse_floor_repair = TRUE
 
 /** A short straight jet follows the committed direction and stops at live barriers. */
@@ -28,6 +30,9 @@
 	if(weak_leak || litres <= 0 || head <= 0 || opening <= 0)
 		return
 	if(!isopenturf(from_tile) || !isopenturf(to_tile))
+		return
+	// The current jet renderer and throws follow a horizontal line; vertical jets need separate presentation.
+	if(from_tile.z != to_tile.z)
 		return
 	var/datum/floodwater_front_cell/contact = hybrid.by_turf[to_tile] || hybrid.by_turf[from_tile]
 	if(!contact)
@@ -39,7 +44,8 @@
 		return
 	if(!from_tile.can_pass_stationtrauma_water(to_tile))
 		return
-	var/repaired_inlet = contact.impulse_floor_repair && istype(from_tile, /turf/open/space/ocean)
+	var/datum/component/floodwater/source_water = from_tile.GetComponent(/datum/component/floodwater)
+	var/repaired_inlet = contact.impulse_floor_repair && source_water?.infinite_source
 	if(repaired_inlet)
 		contact.impulse_floor_repair = FALSE
 	var/burst = !repaired_inlet && (isnull(contact.impulse_last_transfer) || world.time - contact.impulse_last_transfer > FLOOD_WATER_IMPULSE_RESET)

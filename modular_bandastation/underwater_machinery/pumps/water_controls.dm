@@ -340,7 +340,7 @@
 
 /obj/machinery/stationtrauma_water_device/barrel
 	name = "водяная бочка"
-	desc = "Переносной резервуар. Поставьте на водяной порт и прикрутите ключом. ЛКМ — клапан, объём, температура и статус подключения. Направление бочки не имеет значения."
+	desc = "Переносной резервуар. Поставьте на водяной порт и прикрутите ключом. ЛКМ — клапан, объём и статус подключения. Направление бочки не имеет значения."
 	anchored = FALSE
 	plumbing_type = null
 	var/valve_open = FALSE
@@ -384,7 +384,7 @@
 	var/list/options = list(valve_open ? "Закрыть клапан" : "Открыть клапан", "Слить рядом")
 	var/list/connections = port?.GetComponents(/datum/component/plumbing/stationtrauma_water/connector)
 	var/datum/component/plumbing/stationtrauma_water/connector/connection = length(connections) ? connections[1] : null
-	var/choice = tgui_input_list(user, "[round(reagents.get_reagent_amount(/datum/reagent/water), 0.1)] / [capacity] л, [round(reagents.chem_temp - T0C, 0.1)] °C. Порт: [port ? "подключена" : "нет"]. Труба: [length(connection?.ducts) ? "подключена" : "нет"]. Клапан: [valve_open ? "открыт" : "закрыт"].", name, options)
+	var/choice = tgui_input_list(user, "[round(reagents.get_reagent_amount(/datum/reagent/water), 0.1)] / [capacity] л. Порт: [port ? "подключена" : "нет"]. Труба: [length(connection?.ducts) ? "подключена" : "нет"]. Клапан: [valve_open ? "открыт" : "закрыт"].", name, options)
 	if(QDELETED(src) || !choice || !user.can_perform_action(src, NEED_DEXTERITY | NEED_HANDS | FORBID_TELEKINESIS_REACH))
 		return
 	if(choice == "Слить рядом")
@@ -469,7 +469,7 @@
 	plumbing_type = /datum/component/plumbing/stationtrauma_water/universal_outlet
 
 /obj/machinery/stationtrauma_water_device/outlet/universal/process(seconds_per_tick)
-	if(!anchored || (machine_stat & BROKEN) || !isopenturf(loc))
+	if(!anchored || (machine_stat & BROKEN) || !isopenturf(loc) || !reagents.total_volume)
 		return
 	var/datum/component/plumbing/stationtrauma_water/connection = GetComponent(/datum/component/plumbing/stationtrauma_water)
 	if(water_pressure <= connection.required_pressure())

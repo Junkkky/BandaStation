@@ -20,6 +20,14 @@ GLOBAL_LIST_EMPTY(ocean_parallax_levels)
 				break
 	var/atom/movable/render_plane_relay/emissive_relay = get_relay_to(GET_NEW_PLANE(RENDER_PLANE_EMISSIVE, offset))
 	emissive_relay.color = ocean_level ? GLOB.em_block_color : null
+	// Blur only the native copy of the deck below, preserving actors and HUD on the current deck.
+	var/atom/movable/screen/plane_master/rendering_plate/transparent/below = home.get_plane(GET_NEW_PLANE(RENDER_PLANE_TRANSPARENT, offset))
+	if(below)
+		// Observers expose both decks at once; keep native depth shading without an extra full-screen blur pass.
+		if(ocean_level && !isobserver(home.get_perspective()))
+			below.add_filter("ocean_depth_haze", 1, gauss_blur_filter(size = 0.7))
+		else
+			below.remove_filter("ocean_depth_haze")
 
 /obj/effect/landmark/ocean_parallax
 	name = "ocean parallax (entire z-level)"

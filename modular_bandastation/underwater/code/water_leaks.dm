@@ -19,14 +19,14 @@
 	. = ..()
 	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(examine))
 	if(iswallturf(parent))
-		RegisterSignals(parent, list(COMSIG_ATOM_BULLET_ACT, COMSIG_ATOM_HULK_ATTACK, COMSIG_ATOM_ATTACK_MECH, COMSIG_ATOM_EX_ACT, COMSIG_ATOM_ITEM_INTERACTION, COMSIG_ATOM_TOOL_ACT(TOOL_WELDER)), PROC_REF(queue_refresh))
+		RegisterSignals(parent, list(COMSIG_ATOM_BULLET_ACT, COMSIG_ATOM_HULK_ATTACK, COMSIG_ATOM_ATTACK_MECH, COMSIG_ATOM_EX_ACT, COMSIG_ATOM_ITEM_INTERACTION, COMSIG_ATOM_TOOL_ACT(TOOL_WELDER), COMSIG_ATOM_UPDATE_OVERLAYS), PROC_REF(queue_refresh))
 		RegisterSignal(parent, COMSIG_TURF_CHANGE, PROC_REF(turf_changed))
 	else
 		RegisterSignals(parent, list(COMSIG_ATOM_INTEGRITY_CHANGED, COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE), PROC_REF(queue_refresh))
 	refresh()
 
 /datum/component/floodwater_leak/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ATOM_EXAMINE, COMSIG_ATOM_BULLET_ACT, COMSIG_ATOM_HULK_ATTACK, COMSIG_ATOM_ATTACK_MECH, COMSIG_ATOM_EX_ACT, COMSIG_ATOM_ITEM_INTERACTION, COMSIG_ATOM_TOOL_ACT(TOOL_WELDER), COMSIG_TURF_CHANGE, COMSIG_ATOM_INTEGRITY_CHANGED, COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE))
+	UnregisterSignal(parent, list(COMSIG_ATOM_EXAMINE, COMSIG_ATOM_BULLET_ACT, COMSIG_ATOM_HULK_ATTACK, COMSIG_ATOM_ATTACK_MECH, COMSIG_ATOM_EX_ACT, COMSIG_ATOM_ITEM_INTERACTION, COMSIG_ATOM_TOOL_ACT(TOOL_WELDER), COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_TURF_CHANGE, COMSIG_ATOM_INTEGRITY_CHANGED, COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE))
 	return ..()
 
 /datum/component/floodwater_leak/Destroy(force)
@@ -79,13 +79,15 @@
 		return 2
 	return 3
 
-/** Existing dents and window integrity are the damage model; no second hull health pool. */
+/** Existing shot marks, structural tears and window integrity remain the only damage state. */
 /datum/component/floodwater_leak/proc/damaged_opening()
 	if(iswallturf(parent))
-		// shortcut: scripted add_dent without an attack signal needs refresh; add a native dent signal if gameplay starts doing this.
 		var/turf/closed/wall/wall = parent
 		var/leaking_dents = max(0, min(length(wall.dent_decals), FLOOD_WATER_LEAK_MAX_DENTS) - FLOOD_WATER_LEAK_MIN_DENTS + 1)
-		return leaking_dents * FLOOD_WATER_LEAK_OPENING
+		var/datum/component/torn_wall/torn = wall.GetComponent(/datum/component/torn_wall)
+		// The first tear is minor; the second is the native "badly damaged" stage.
+		var/structural_units = torn ? max(0, torn.current_stage) * 2 : 0
+		return max(leaking_dents, structural_units) * FLOOD_WATER_LEAK_OPENING
 	var/obj/structure/window/window = parent
 	if(!window.anchored || !window.density || !window.max_integrity)
 		return 0
@@ -121,9 +123,6 @@
 	SSfloodwater.leaks -= src
 	clear_ports()
 	var/turf/location = get_turf(parent)
-	if(!istype(get_area(location), /area/shuttle/stationtrauma))
-		qdel(src)
-		return
 	opening = damaged_opening()
 	if(!opening)
 		return
@@ -149,7 +148,7 @@
 
 /** Only this damaged barrier is bypassed; other windows, doors and walls still isolate. */
 /datum/component/floodwater_leak/proc/can_leak(turf/open/outside, turf/open/intake)
-	if(!istype(outside, /turf/open/space/ocean) || !isopenturf(intake) || isspaceturf(intake) || istype(intake, /turf/open/water) || intake.blocks_air || !istype(get_area(intake), /area/shuttle/stationtrauma))
+	if(!isopenturf(outside) || !isopenturf(intake) || isspaceturf(intake) || istype(intake, /turf/open/water) || intake.blocks_air)
 		return FALSE
 	var/datum/component/floodwater/source = outside.GetComponent(/datum/component/floodwater)
 	if(!source?.infinite_source)
@@ -197,9 +196,6 @@
 
 /** Feed accepted litres into C; keep the original large-breach flow untouched. */
 /datum/component/floodwater_leak/proc/feed_ocean()
-	if(!istype(get_area(parent), /area/shuttle/stationtrauma))
-		qdel(src)
-		return
 	if(opening != damaged_opening())
 		refresh()
 	if(!ports.len || !opening)
@@ -222,7 +218,7 @@
 		volume = limit_stationtrauma_boundary_flow(intake, water, source.reservoir_pressure, volume)
 		if(!volume)
 			continue
-		var/transferred = intake.add_water(volume, source.temperature)
+		var/transferred = intake.add_water(volume)
 		if(transferred)
 			show_leak_visual(outside, intake)
 			SEND_SIGNAL(SSfloodwater, COMSIG_STATIONTRAUMA_WATER_TRANSFER, outside, intake, transferred, difference, opening / ports.len, TRUE)
@@ -233,4 +229,4 @@
 /datum/element/stationtrauma_hull/proc/watch_window(turf/source, atom/movable/arrived)
 	SIGNAL_HANDLER
 	if(istype(arrived, /obj/structure/window) && arrived.flags_1 & INITIALIZED_1)
-		arrived.AddComponent(/datum/component/floodwater_leak)
+		arrived.LoadComponent(/datum/component/floodwater_leak)

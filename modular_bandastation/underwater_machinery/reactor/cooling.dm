@@ -52,16 +52,20 @@
 /obj/machinery/atmospherics/components/unary/stationtrauma_ocean_exchanger/process_atmos(seconds_per_tick)
 	if(!is_operational || !nodes[1] || !parents[1])
 		return
-	var/turf/open/space/ocean/ocean
-	for(var/turf/open/space/ocean/nearby in orange(1, src))
-		ocean = nearby
+	var/has_ocean = FALSE
+	for(var/turf/open/nearby in orange(1, src))
+		var/datum/component/floodwater/water = nearby.GetComponent(/datum/component/floodwater)
+		if(!water?.infinite_source)
+			continue
+		has_ocean = TRUE
 		break
-	if(!ocean)
+	if(!has_ocean)
 		return
 	var/datum/gas_mixture/coolant = airs[1]
 	var/capacity = coolant.heat_capacity()
-	if(capacity <= MINIMUM_HEAT_CAPACITY || coolant.temperature <= ocean.temperature)
+	// Gas cooling retains a fixed ambient sink; floodwater has no temperature state.
+	if(capacity <= MINIMUM_HEAT_CAPACITY || coolant.temperature <= T20C)
 		return
-	var/energy = min(150000 * seconds_per_tick, (coolant.temperature - ocean.temperature) * capacity)
+	var/energy = min(150000 * seconds_per_tick, (coolant.temperature - T20C) * capacity)
 	coolant.temperature -= energy / capacity
 	update_parents()

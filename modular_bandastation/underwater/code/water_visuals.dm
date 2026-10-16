@@ -109,12 +109,16 @@
 	alpha = 180
 	/// Only strong-flow visuals belong to a contact; mild pulses still use the native expiry/fade.
 	var/datum/floodwater_front_cell/flow_contact
+	/// One native repeating sound shares the strong jet's lifetime and cosmetic cap.
+	var/datum/sound_token/flow_sound
 
 /obj/effect/temp_visual/stationtrauma_water/stream/Initialize(mapload, direction, datum/floodwater_front_cell/flow_contact)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
 		return
 	src.flow_contact = flow_contact
+	if(flow_contact)
+		flow_sound = new(src, 'modular_bandastation/underwater/sound/breach_flow.ogg', 7, 65, _repeating = TRUE)
 	var/turf/open/tile = loc
 	if(!tile.can_pass_stationtrauma_water(get_step(tile, direction)))
 		icon_state = "jet_short"
@@ -134,6 +138,7 @@
 		icon_state = state
 
 /obj/effect/temp_visual/stationtrauma_water/stream/Destroy()
+	QDEL_NULL(flow_sound)
 	if(!QDELETED(flow_contact) && flow_contact.stream_visual == src)
 		flow_contact.stream_visual = null
 	flow_contact = null

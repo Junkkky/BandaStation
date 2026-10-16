@@ -13,8 +13,16 @@
 /proc/limit_stationtrauma_boundary_flow(turf/open/tile, datum/component/floodwater/water, pressure, signed_volume)
 	var/depth = tile.get_water_depth()
 	var/balance = clamp((pressure - tile.stationtrauma_air_pressure(water)) / FLOOD_WATER_KPA_PER_CM, 0, FLOOD_WATER_MAX_DEPTH)
-	var/available = signed_volume > 0 ? max(0, balance - depth) : max(0, depth - balance)
-	return min(abs(signed_volume), available * FLOOD_WATER_LITRES_PER_CM)
+	var/volume = depth * FLOOD_WATER_LITRES_PER_CM
+	var/target = balance * FLOOD_WATER_LITRES_PER_CM
+	var/datum/floodwater_front_cell/cell = SSfloodwater.hybrid?.by_turf[tile]
+	var/datum/floodwater_front_group/owner = cell?.root()
+	if(owner && !owner.dirty && !cell.local)
+		// A bulk cell changes the shared stock; its final per-cell deficit can be smaller than that stock's precision.
+		volume = owner.volume
+		target *= owner.members.len
+	var/available = signed_volume > 0 ? max(0, target - volume) : max(0, volume - target)
+	return min(abs(signed_volume), available)
 
 /datum/component/floodwater
 	/// The configured ocean pressure is in bar; hydraulic calculations use kPa.
