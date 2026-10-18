@@ -1,0 +1,60 @@
+<style>
+body { background: #102027; color: #d8e7e9; font-family: Segoe UI, sans-serif; }
+.nav-panel { padding: 16px; border: 1px solid #335861; margin: 12px 0; background: #162d34; }
+.nav-label { color: #9ebec5; font-size: 13px; margin-bottom: 8px; }
+#nav-status { font-size: 19px; margin-bottom: 15px; }
+.nav-track { height: 25px; background: #08171c; border: 1px solid #467982; position: relative; }
+#nav-fill { height: 100%; width: 0; background: #246d77; transition: width .45s linear; }
+#nav-percent { position: absolute; top: 2px; left: 0; width: 100%; text-align: center; color: white; }
+.nav-distance { margin-top: 12px; font-size: 16px; }
+.nav-route { display: block; padding: 12px; margin: 8px 0; border: 1px solid #47747d; background: #23434c; color: #e1f8fa; text-decoration: none; }
+.nav-route:hover, .nav-route:focus { background: #345d67; outline: 1px solid #8ad7dc; }
+.nav-disabled { opacity: .55; cursor: default; }
+</style>
+<div class="nav-panel">
+  <div class="nav-label">НАВИГАЦИЯ / НЫРОК</div>
+  <div id="nav-status" aria-live="polite"></div>
+  <div id="nav-track" class="nav-track" role="progressbar" aria-label="Пройденный путь" aria-valuemin="0" aria-valuemax="100">
+    <div id="nav-fill"></div><div id="nav-percent">0%</div>
+  </div>
+  <div class="nav-distance" id="nav-distance"></div>
+  <div class="nav-label" id="nav-remaining"></div>
+  <div class="nav-label" id="nav-passage"></div>
+</div>
+<div class="nav-label">ТОЧКА НАЗНАЧЕНИЯ</div>
+<div id="nav-routes"></div>
+<script>
+(function () {
+  var source = '@CONSOLE@';
+  var state = @STATE@;
+  var routesKey = '';
+  function text(id, value) { document.getElementById(id).textContent = value; }
+  function metres(value) { return Math.round(value).toLocaleString() + ' м'; }
+  function render() {
+    var percent = Math.floor((state.progress || 0) * 100);
+    text('nav-status', state.status || 'Нет связи');
+    text('nav-percent', percent + '%');
+    text('nav-passage', state.passage || '');
+    document.getElementById('nav-fill').style.width = percent + '%';
+    document.getElementById('nav-track').setAttribute('aria-valuenow', percent);
+    text('nav-distance', 'Пройдено ' + metres(state.travelled || 0) + ' / ' + metres(state.distance || 0));
+    text('nav-remaining', 'Осталось ' + metres(Math.max(0, (state.distance || 0) - (state.travelled || 0))));
+    var key = JSON.stringify(state.routes) + state.travelling;
+    if (key === routesKey) return;
+    routesKey = key;
+    var container = document.getElementById('nav-routes');
+    while (container.firstChild) container.removeChild(container.firstChild);
+    (state.routes || []).forEach(function (route) {
+      var link = document.createElement('a');
+      link.className = 'nav-route' + (state.travelling ? ' nav-disabled' : '');
+      link.textContent = route.name + ' — ' + metres(route.distance);
+      link.setAttribute('aria-disabled', !!state.travelling);
+      if (!state.travelling) link.href = 'byond://?src=' + source + ';travel=' + encodeURIComponent(route.name);
+      container.appendChild(link);
+    });
+  }
+  window.updateVoyage = function (raw) { state = JSON.parse(decodeURIComponent(raw)); render(); };
+  render();
+  window.setInterval(function () { window.location.href = 'byond://?src=' + source + ';refresh=1'; }, 500);
+}());
+</script>

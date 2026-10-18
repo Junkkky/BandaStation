@@ -19,7 +19,7 @@
 	var/list/open_portals = list()
 	/// Vertical edges retain their separate processing order and elevation.
 	var/list/open_vertical_portals = list()
-	/// Unique full endpoints whose native air can change without a water event.
+	/// Unique head-sensitive endpoints whose native air can change without a water event.
 	var/list/pressure_watch = list()
 	/// A phase snapshot of head endpoints or portals survives removals during an MC pause.
 	var/list/portal_run
@@ -227,6 +227,8 @@
 
 /// Cache passable edges only on geometry events; live door checks also precede paired portal commits.
 /datum/floodwater_hybrid/proc/refresh_cell(datum/floodwater_front_cell/cell)
+	if(SSfloodwater.relocating_turfs[cell.tile] || SSfloodwater.loading_ocean_levels["[cell.tile?.z]"])
+		return
 	cell.wake_portals()
 	var/turf/open/tile = cell.tile
 	set_blocked(cell, !isopenturf(tile) || isspaceturf(tile) || istype(tile, /turf/open/water) || tile.blocks_air || tile.closed_stationtrauma_water_door() || tile.sealed_stationtrauma_water_window())
@@ -500,13 +502,16 @@
 /** Admit the requested finite floor and its area once; ordinary maps without floodwater remain untouched. */
 /datum/controller/subsystem/floodwater/proc/ensure_water_domain(turf/tile)
 	RETURN_TYPE(/datum/floodwater_front_cell)
+	// New map geometry joins only after initialization; other levels keep simulating during the load.
+	if(relocating_turfs[tile] || loading_ocean_levels["[tile?.z]"])
+		return hybrid.by_turf[tile]
 	if(!isturf(tile) || isspaceturf(tile) || istype(tile, /turf/open/water))
 		return null
 	if(!hybrid.by_turf[tile])
 		var/area/domain = get_area(tile)
 		var/list/tiles = list()
 		for(var/turf/member in domain)
-			if(!isspaceturf(member) && !istype(member, /turf/open/water))
+			if(!isspaceturf(member) && !istype(member, /turf/open/water) && !loading_ocean_levels["[member.z]"])
 				tiles += member
 		hybrid.add_domain(tiles)
 	return hybrid.by_turf[tile]

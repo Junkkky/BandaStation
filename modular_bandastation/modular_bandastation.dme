@@ -98,6 +98,7 @@
 #include "underwater_projectors/_underwater_projectors.dme"
 #include "underwater_machinery/_underwater_machinery.dme"
 #include "underwater/_underwater.dme"
+#include "underwater_submarine/_underwater_submarine.dme"
 #include "uplink_items/_uplink_items.dme"
 #include "vampire/_vampire.dme"
 #include "weapon/_weapon.dme"

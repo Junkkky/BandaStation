@@ -33,6 +33,9 @@
 	if(!infinite_source || !isnum(pressure) || !IS_FINITE(pressure) || pressure < 0 || pressure == reservoir_pressure)
 		return FALSE
 	reservoir_pressure = pressure
+	var/turf/tile = parent
+	if(SSfloodwater.loading_ocean_levels["[tile.z]"])
+		return TRUE
 	wake()
 	for(var/datum/component/floodwater_leak/leak as anything in SSfloodwater.leaks)
 		if(leak.ports[parent])
@@ -42,5 +45,8 @@
 /** Finite geometry belongs to C; source components only wake their local boundaries. */
 /datum/component/floodwater/proc/on_atmos_update()
 	SIGNAL_HANDLER
+	var/turf/tile = parent
+	if(SSfloodwater.loading_ocean_levels["[tile.z]"])
+		return
 	wake()
 	wake_neighbours()

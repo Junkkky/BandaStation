@@ -47,3 +47,36 @@
 		portal.set_open(FALSE)
 		portal.right = lower
 	portal.set_open(!upper.blocked && !lower.blocked && upper_tile.can_pass_stationtrauma_water_down(lower_tile))
+
+/** A saturated lower stock can lift finite water into the existing upper front. */
+/datum/floodwater_front_portal/proc/prepare_lift(dt)
+	if(left.root() == right.root() || opening <= 0 || dt <= 0)
+		return null
+	var/difference = right.head_pressure() - left.head_pressure() - elevation * FLOOD_WATER_KPA_PER_CM
+	if(difference <= FLOOD_WATER_HEAD_EPSILON)
+		return null
+	return list(right, left, min(rate, 600 * opening * sqrt(2 * difference)) * dt, revision, solver.geometry_version, ++serial, dt, TRUE)
+
+/** A lift spends lower head and real litres; ordinary withdrawal wakes the replenishing ocean. */
+/datum/floodwater_front_portal/proc/commit_lift(list/plan)
+	var/datum/floodwater_front_cell/source = plan[1]
+	var/datum/floodwater_front_cell/destination = plan[2]
+	var/datum/floodwater_front_group/from_group = source.root()
+	var/datum/floodwater_front_group/to_group = destination.root()
+	if(source != right || destination != left || elevation <= 0 || from_group == to_group || !from_group?.is_full() || to_group?.is_full() || opening <= 0)
+		return 0
+	var/difference = source.head_pressure() - destination.head_pressure() - elevation * FLOOD_WATER_KPA_PER_CM
+	if(difference <= FLOOD_WATER_HEAD_EPSILON)
+		return 0
+	var/destination_count = destination.local ? 1 : to_group?.members.len || 1
+	var/live_flow = min(rate, 600 * opening * sqrt(2 * difference)) * plan[7]
+	var/head_limit = difference / (FLOOD_WATER_HEAD_STIFFNESS / from_group.volume + FLOOD_WATER_KPA_PER_CM / FLOOD_WATER_LITRES_PER_CM / destination_count)
+	var/amount = min(plan[3], live_flow, head_limit, source.available(), destination.capacity())
+	if(amount <= 0)
+		return 0
+	// Withdrawal vents a partial stock; another lift needs replenishment and renewed head.
+	solver.withdraw(source, amount)
+	solver.receive(destination, amount)
+	committed_serial = plan[6]
+	solver.confirm_flow(source, destination, amount, difference, opening)
+	return amount

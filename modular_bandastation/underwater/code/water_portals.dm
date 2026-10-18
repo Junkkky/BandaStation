@@ -66,10 +66,10 @@
 	if(sleep_right)
 		LAZYOR(sleep_right.sleeping_portals, src)
 	var/datum/floodwater_hybrid/native = solver
-	if(!istype(native) || !sleep_left?.is_full() || !sleep_right?.is_full())
+	if(!istype(native) || !sleep_right?.is_full() || (!sleep_left?.is_full() && elevation <= 0))
 		return
 	for(var/datum/floodwater_front_cell/cell as anything in list(left, right))
-		// LINDA gas sharing has no general pressure-change signal; sample only sleeping full endpoints.
+		// LINDA has no general pressure signal; a full lower stock can also feed a dry upper endpoint.
 		if(!(cell in native.pressure_watch))
 			native.pressure_watch[cell] = cell.head_pressure()
 

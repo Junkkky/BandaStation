@@ -99,6 +99,9 @@ GLOBAL_LIST_EMPTY(ocean_parallax_levels)
 	absolute = TRUE
 	// Distant terrain receives much less light than the nearby water and suspended sediment.
 	color = "#303E46"
+	/// Keep this client's seabed aligned across distant ocean passages, including view changes.
+	var/passage_offset_x = 0
+	var/passage_offset_y = 0
 
 /atom/movable/screen/parallax_layer/ocean/seafloor/update_overlays()
 	SHOULD_CALL_PARENT(FALSE)
@@ -115,8 +118,19 @@ GLOBAL_LIST_EMPTY(ocean_parallax_levels)
 		background.Scale(size, size)
 	icon = background
 	// The native home is centred around a 480px cell; centre our larger image on that cell.
-	pixel_x = round((480 - size) / 2)
-	pixel_y = pixel_x
+	var/centre = round((480 - size) / 2)
+	pixel_x = centre + round(passage_offset_x, 1)
+	pixel_y = centre + round(passage_offset_y, 1)
+
+/** Native absolute layers follow map coordinates; a distant ocean passage must preserve their screen position. */
+/atom/movable/screen/parallax_layer/ocean/seafloor/proc/preserve_ocean_position(position_x, position_y)
+	var/new_offset_x = position_x - offset_x
+	var/new_offset_y = position_y - offset_y
+	// Keep the unrounded origin so repeated crossings cannot accumulate pixel rounding errors.
+	pixel_x += round(new_offset_x, 1) - round(passage_offset_x, 1)
+	pixel_y += round(new_offset_y, 1) - round(passage_offset_y, 1)
+	passage_offset_x = new_offset_x
+	passage_offset_y = new_offset_y
 
 /// Raised stone shares the seabed's registration, but receives more of the available light.
 /atom/movable/screen/parallax_layer/ocean/seafloor/crests

@@ -298,6 +298,8 @@
 		return null
 	if(left.root()?.is_full() && right.root()?.is_full())
 		return prepare_head(dt)
+	if(elevation > 0 && right.root()?.is_full())
+		return prepare_lift(dt)
 	var/difference = left.amount() + elevation * FLOOD_WATER_LITRES_PER_CM - right.amount()
 	if(!difference)
 		return null
@@ -308,6 +310,8 @@
 /datum/floodwater_front_portal/proc/commit(list/plan)
 	if(!open || !plan || revision != plan[4] || solver.geometry_version != plan[5] || plan[6] <= committed_serial || left.blocked || right.blocked || left.root()?.dirty || right.root()?.dirty)
 		return 0
+	if(plan.len > 7)
+		return commit_lift(plan)
 	if(plan.len > 6)
 		return commit_head(plan)
 	var/datum/floodwater_front_cell/source = plan[1]

@@ -18,6 +18,8 @@
 /area/space/ocean/Initialize(mapload)
 	. = ..()
 	for(var/turf/open/space/tile in src)
+		if(!tile.space_lit)
+			continue
 		tile.space_lit = FALSE
 		tile.update_appearance(UPDATE_OVERLAYS)
 
@@ -121,7 +123,7 @@
 	var/datum/component/floodwater/water = GetComponent(/datum/component/floodwater)
 	new_depth = clamp(new_depth, 0, FLOOD_WATER_MAX_DEPTH)
 	var/is_finite_water = isnull(infinite_source) ? !water?.infinite_source : !infinite_source
-	if(is_finite_water && !isspaceturf(src) && !SSfloodwater.hybrid.publishing)
+	if(is_finite_water && !isspaceturf(src) && !SSfloodwater.hybrid.publishing && !SSfloodwater.loading_ocean_levels["[z]"])
 		if(water?.infinite_source)
 			qdel(water)
 		SSfloodwater.ensure_water_domain(src)
@@ -235,6 +237,8 @@
 	/// Cached mouse-transparent visual; ordinary turf overlays intercept clicks on submerged contents.
 	var/obj/effect/overlay/vis/water_overlay
 	var/show_puddle
+	/// Empty ocean does not need per-occupant signal subscriptions until something enters it.
+	var/occupant_effects = FALSE
 
 /datum/component/floodwater/Initialize(initial_depth, is_source = FALSE)
 	// Existing static water already owns immersion/wetness elements.
@@ -247,27 +251,61 @@
 /datum/component/floodwater/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, PROC_REF(on_atmos_update))
 	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(add_water_overlay))
-	RegisterSignal(parent, COMSIG_TURF_PREPARE_STEP_SOUND, PROC_REF(water_steps))
-	RegisterSignals(parent, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(on_entered))
-	RegisterSignal(parent, COMSIG_ATOM_EXITED, PROC_REF(on_exited))
 	var/turf/open/tile = parent
 	if(infinite_source)
 		RegisterSignal(parent, COMSIG_TURF_CHANGE, PROC_REF(ocean_replaced))
-		for(var/direction in GLOB.cardinals)
-			restore_stationtrauma_hull(get_step(tile, direction))
-		for(var/obj/obstacle in tile)
-			watch_pressure_obstacle(obstacle)
+		if(!SSfloodwater.loading_ocean_levels["[tile.z]"])
+			for(var/direction in GLOB.cardinals)
+				restore_stationtrauma_hull(get_step(tile, direction))
 	else
 		SSfloodwater.ensure_water_domain(tile)
-	tile.AddElement(/datum/element/watery_tile/floodwater)
 	if(isspaceturf(tile))
-		tile.AddElement(/datum/element/forced_gravity, STANDARD_GRAVITY, TRUE)
+		RegisterSignals(tile, list(COMSIG_ATOM_HAS_GRAVITY, COMSIG_TURF_HAS_GRAVITY), PROC_REF(water_gravity))
+		ADD_TRAIT(tile, TRAIT_FORCED_GRAVITY, "floodwater")
+	if(!istype(tile, /turf/open/space/ocean) && !istype(tile, /turf/open/space/openspace/ocean))
+		enable_occupant_effects()
+	else
+		RegisterSignals(tile, list(COMSIG_ATOM_ABSTRACT_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(activate_occupant_effects))
+		for(var/atom/movable/occupant as anything in tile)
+			activate_occupant_effects(tile, occupant)
 	on_atmos_update()
 	update_depth()
 	wake()
 	SEND_SIGNAL(parent, COMSIG_STATIONTRAUMA_WATER_PRESENCE_CHANGED, src, TRUE)
 	if(infinite_source || isspaceturf(parent))
 		SEND_SIGNAL(parent, COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED)
+
+/** Keep the native forced-gravity signal/trait contract without a second element on every ocean tile. */
+/datum/component/floodwater/proc/water_gravity(datum/source, atom/other, list/gravities)
+	SIGNAL_HANDLER
+	gravities += STANDARD_GRAVITY
+	return TRUE
+
+/** Lighting, relays and observers never need immersion or wetness subscriptions. */
+/datum/component/floodwater/proc/activate_occupant_effects(turf/source, atom/movable/arrived)
+	SIGNAL_HANDLER
+	if(occupant_effects || istype(arrived, /atom/movable/lighting_object) || is_type_in_typecache(arrived, GLOB.immerse_ignored_movable))
+		return
+	enable_occupant_effects()
+	// A replacement subscriber does not receive the initialization signal already being dispatched.
+	on_entered(source, arrived)
+
+/** Activate once, including objects already present when a template or a shuttle places this turf. */
+/datum/component/floodwater/proc/enable_occupant_effects()
+	if(occupant_effects)
+		return
+	occupant_effects = TRUE
+	var/turf/open/tile = parent
+	UnregisterSignal(tile, list(COMSIG_ATOM_ABSTRACT_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON))
+	RegisterSignal(tile, COMSIG_TURF_PREPARE_STEP_SOUND, PROC_REF(water_steps))
+	RegisterSignals(tile, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(on_entered))
+	RegisterSignal(tile, COMSIG_ATOM_EXITED, PROC_REF(on_exited))
+	if(infinite_source)
+		for(var/obj/obstacle in tile)
+			watch_pressure_obstacle(obstacle)
+	tile.AddElement(/datum/element/watery_tile/floodwater)
+	if(mask_state)
+		tile.AddElement(/datum/element/immerse/floodwater, "immerse", 140)
 
 /** Construction in the ocean keeps local barrier hooks, independently of area names. */
 /datum/component/floodwater/proc/ocean_replaced(turf/source, path, list/new_baseturfs, flags, list/post_change_callbacks)
@@ -281,13 +319,13 @@
 	if(infinite_source || isspaceturf(parent))
 		SEND_SIGNAL(parent, COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED)
 	SSfloodwater.active -= src
-	UnregisterSignal(parent, list(COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_TURF_CHANGE, COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_TURF_PREPARE_STEP_SOUND, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON))
+	UnregisterSignal(parent, list(COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_TURF_CHANGE, COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_TURF_PREPARE_STEP_SOUND, COMSIG_ATOM_ENTERED, COMSIG_ATOM_ABSTRACT_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, COMSIG_ATOM_HAS_GRAVITY, COMSIG_TURF_HAS_GRAVITY))
 	var/turf/open/tile = parent
 	if(mask_state)
 		tile.RemoveElement(/datum/element/immerse/floodwater, "immerse", 140)
 	tile.RemoveElement(/datum/element/watery_tile/floodwater)
 	if(isspaceturf(tile))
-		tile.RemoveElement(/datum/element/forced_gravity, STANDARD_GRAVITY, TRUE)
+		REMOVE_TRAIT(tile, TRAIT_FORCED_GRAVITY, "floodwater")
 	if(water_overlay)
 		SSvis_overlays.remove_vis_overlay(tile, list(water_overlay))
 	for(var/mob/living/occupant in tile)
@@ -374,12 +412,12 @@
 	if(debug.enabled)
 		debug.measure_phase("Immersion")
 	var/new_mask_state = !stage ? null : stage == 4 ? "submerged" : stage >= 2 ? "immerse_deep" : "immerse"
-	if(mask_state && !new_mask_state)
+	if(occupant_effects && mask_state && !new_mask_state)
 		tile.RemoveElement(/datum/element/immerse/floodwater, "immerse", 140)
 	if(mask_state != new_mask_state)
 		var/was_immersed = !!mask_state
 		mask_state = new_mask_state
-		if(mask_state)
+		if(occupant_effects && mask_state)
 			if(was_immersed)
 				SEND_SIGNAL(tile, COMSIG_STATIONTRAUMA_WATER_MASK_CHANGED, mask_state)
 			else
@@ -474,6 +512,7 @@
 	// Empty wet tiles have null contents; inspect their local component instead of scanning every ocean turf.
 	if(!new_water?.mask_state || HAS_TRAIT(destination, TRAIT_IMMERSE_STOPPED))
 		return ..()
+	new_water.enable_occupant_effects()
 	LAZYREMOVE(attached_turf_contents[source], exited)
 	LAZYADD(attached_turf_contents[destination], exited)
 	if(!generated_visual_overlays[exited])

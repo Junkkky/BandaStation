@@ -1,0 +1,260 @@
+/** Powered prototype decks; power generation is outside this movement test. */
+/area/shuttle/stationtrauma/prototype
+	name = "Нырок: нижняя палуба"
+	requires_power = FALSE
+	default_gravity = STANDARD_GRAVITY
+	ambientsounds = list(null)
+
+/area/shuttle/stationtrauma/prototype/middle
+	name = "Нырок: шлюзовая палуба"
+
+/area/shuttle/stationtrauma/prototype/upper
+	name = "Нырок: мостик"
+
+/area/shuttle/stationtrauma/prototype/chamber
+	name = "Нырок: шлюзовая камера"
+
+/** Small fixtures outside the berth remain at their own destination. */
+/area/stationtrauma_voyage_site
+	requires_power = FALSE
+	default_gravity = STANDARD_GRAVITY
+	ambientsounds = list(null)
+
+/area/stationtrauma_voyage_site/harbor
+	name = "Гавань: причальная станция"
+
+/area/stationtrauma_voyage_site/outpost
+	name = "Исследовательский пост"
+
+/area/stationtrauma_voyage_site/ruins
+	name = "Затопленные руины"
+
+/** Mapped reservation, including water cells around exterior hull-mounted machinery. */
+/area/space/ocean/stationtrauma_berth
+	name = "Стоянка подлодки"
+
+/** Empty three-deck ocean used only while the vessel travels between locations. */
+/area/space/ocean/stationtrauma_berth/transit
+	name = "Океан в пути"
+	parallax_movedir = EAST
+
+/** Three connected levels at each destination share the same clearance envelope. */
+/obj/docking_port/stationary/stationtrauma
+	name = "Гавань"
+	shuttle_id = "stationtrauma_harbor"
+	area_type = /area/space/ocean/stationtrauma_berth
+	width = 17
+	height = 11
+	/// Position along the prototype route, in metres; unrelated to its storage z-level.
+	var/route_position = 0
+
+/obj/docking_port/stationary/stationtrauma/outpost
+	name = "Исследовательский пост"
+	shuttle_id = "stationtrauma_outpost"
+	route_position = 1500
+
+/obj/docking_port/stationary/stationtrauma/ruins
+	name = "Затопленные руины"
+	shuttle_id = "stationtrauma_ruins"
+	route_position = 3500
+
+/** Private transit berth; it is never offered as a navigation destination. */
+/obj/docking_port/stationary/stationtrauma/transit
+	name = "В пути"
+	shuttle_id = "stationtrauma_transit"
+	area_type = /area/space/ocean/stationtrauma_berth/transit
+
+/** Reservation membership and connected height are checked before any native move callback. */
+/obj/docking_port/stationary/stationtrauma/proc/contains_berth_tile(turf/tile)
+	if(!tile || tile.z < z || tile.z >= z + 3 || !istype(get_area(tile), /area/space/ocean/stationtrauma_berth))
+		return FALSE
+	if(tile.x < x || tile.x >= x + width || tile.y < y || tile.y >= y + height)
+		return FALSE
+	return (tile.z == z || GET_TURF_BELOW(tile)) && (tile.z == z + 2 || GET_TURF_ABOVE(tile))
+
+/** A module-owned navigation console with a live route display. */
+/obj/machinery/computer/stationtrauma_navigation
+	name = "навигация «Нырка»"
+	desc = "Выбор размеченной стоянки для трёхпалубной подлодки."
+	icon_screen = "shuttle"
+	use_power = NO_POWER_USE
+	/// The loader links the console to this particular vessel, never a global shuttle ID lookup.
+	var/obj/docking_port/mobile/stationtrauma/vessel
+
+/** Load each location once; the same command lock covers its preparation and prevents duplicate levels. */
+/obj/docking_port/mobile/stationtrauma/proc/load_destination(destination)
+	if(!travelling || SSfloodwater.loading_ocean_levels.len || SSfloodwater.relocating_turfs.len)
+		return null
+	for(var/obj/docking_port/stationary/stationtrauma/berth as anything in berths)
+		if(berth.name == destination)
+			return berth
+	var/template_path = unloaded_destinations[destination]
+	if(!template_path)
+		return null
+	// A failed native load can leave allocated levels; do not duplicate them on another click.
+	unloaded_destinations -= destination
+	voyage_status = "В пути: [destination]"
+	var/datum/map_template/stationtrauma_route/template
+	var/obj/docking_port/stationary/stationtrauma/loaded_berth
+	var/exception/load_error
+	try
+		template = new template_path
+		template.loading_progress = CALLBACK(src, PROC_REF(update_loading_progress))
+		var/datum/space_level/bottom = template.load_new_z()
+		if(bottom)
+			for(var/obj/docking_port/stationary/stationtrauma/berth as anything in SSshuttle.stationary_docking_ports)
+				if(berth.z == bottom.z_value && istype(berth, template.destination_berth_type))
+					loaded_berth = berth
+					break
+	catch(var/exception/failure)
+		load_error = failure
+	qdel(template)
+	if(load_error)
+		stack_trace("StationTrauma destination failed: [load_error]")
+	if(!loaded_berth)
+		voyage_status = "Ошибка загрузки: [destination]. Требуется перезапуск прототипа."
+		return null
+	berths += loaded_berth
+	voyage_status = "В пути: [destination]"
+	return loaded_berth
+
+/** Reuse the connected-stack ocean loader; each TGM remains an ordinary editable three-deck map. */
+/datum/map_template/stationtrauma_route
+	/// The mapped berth subtype owns route metadata for destinations that have not loaded yet.
+	var/destination_berth_type = /obj/docking_port/stationary/stationtrauma
+
+/datum/map_template/stationtrauma_route/voyage_harbor
+	name = "StationTrauma harbor"
+	mappath = 'modular_bandastation/underwater_submarine/maps/voyage_harbor.dmm'
+
+/datum/map_template/stationtrauma_route/voyage_transit
+	name = "StationTrauma transit ocean"
+	mappath = 'modular_bandastation/underwater_submarine/maps/voyage_transit.dmm'
+	destination_berth_type = /obj/docking_port/stationary/stationtrauma/transit
+	exterior_ocean_area = /area/space/ocean/stationtrauma_berth/transit
+
+/** Allocate once before departure; a failed partial native load must not allocate another stack. */
+/obj/docking_port/mobile/stationtrauma/proc/prepare_transit()
+	if(transit_berth)
+		return TRUE
+	if(transit_attempted)
+		return FALSE
+	transit_attempted = TRUE
+	var/datum/map_template/stationtrauma_route/voyage_transit/template = new
+	var/datum/space_level/bottom = template.load_new_z()
+	qdel(template)
+	if(!bottom)
+		return FALSE
+	for(var/obj/docking_port/stationary/stationtrauma/transit/berth as anything in SSshuttle.stationary_docking_ports)
+		if(berth.z == bottom.z_value)
+			transit_berth = berth
+			return TRUE
+	return FALSE
+
+/datum/map_template/stationtrauma_route/voyage_outpost
+	name = "StationTrauma research outpost"
+	mappath = 'modular_bandastation/underwater_submarine/maps/voyage_outpost.dmm'
+	destination_berth_type = /obj/docking_port/stationary/stationtrauma/outpost
+
+/datum/map_template/stationtrauma_route/voyage_ruins
+	name = "StationTrauma flooded ruins"
+	mappath = 'modular_bandastation/underwater_submarine/maps/voyage_ruins.dmm'
+	destination_berth_type = /obj/docking_port/stationary/stationtrauma/ruins
+
+/datum/map_template/stationtrauma_vessel
+	name = "StationTrauma three-deck submarine"
+	mappath = 'modular_bandastation/underwater_submarine/maps/voyage_submarine.dmm'
+	should_place_on_top = FALSE
+
+/** Generic templates deliberately skip mobile ports; initialize ours after all three decks exist. */
+/datum/map_template/stationtrauma_vessel/load(turf/origin, centered = FALSE)
+	if(!origin || SSfloodwater.relocating_turfs.len || SSfloodwater.loading_ocean_levels.len)
+		return FALSE
+	var/deadline = world.time + 10 SECONDS
+	while(SSfloodwater.step_running && world.time < deadline)
+		sleep(world.tick_lag)
+	if(SSfloodwater.step_running || SSfloodwater.relocating_turfs.len || SSfloodwater.loading_ocean_levels.len)
+		return FALSE
+	var/turf/anchor = centered ? locate(origin.x - round(width / 2), origin.y - round(height / 2), origin.z) : origin
+	if(!anchor || anchor.x + width - 1 > world.maxx || anchor.y + height - 1 > world.maxy || anchor.z + 2 > world.maxz)
+		return FALSE
+	for(var/turf/tile as anything in block(anchor, locate(anchor.x + width - 1, anchor.y + height - 1, anchor.z + 2)))
+		SSfloodwater.relocating_turfs[tile] = TRUE
+	var/exception/load_error
+	try
+		. = ..()
+		var/obj/docking_port/mobile/stationtrauma/port = locate() in anchor
+		if(. && port)
+			SSatoms.InitializeAtoms(list(port))
+	catch(var/exception/failure)
+		load_error = failure
+		. = FALSE
+	SSfloodwater.relocating_turfs.Cut()
+	if(load_error)
+		stack_trace("StationTrauma vessel template failed: [load_error]")
+
+GLOBAL_VAR_INIT(stationtrauma_voyage_loaded, FALSE)
+
+/** Start with one three-deck harbor and vessel; other destinations load on their first selection. */
+ADMIN_VERB(stationtrauma_load_voyage, R_DEBUG, "StationTrauma - Load Voyage Prototype", "Load the three-deck harbor and submarine; other destinations load on first travel.", ADMIN_CATEGORY_DEBUG)
+	load_stationtrauma_voyage(user)
+
+ADMIN_VERB(stationtrauma_load_fixed_voyage, R_DEBUG, "StationTrauma - Load Fixed Voyage Prototype", "Load a permanent submarine with distant ocean passages; no vessel transfers during travel.", ADMIN_CATEGORY_DEBUG)
+	load_stationtrauma_voyage(user, fixed = TRUE)
+
+/** Both experiments use the same maps and equipment, with only one prototype admitted per round. */
+/proc/load_stationtrauma_voyage(user, fixed = FALSE)
+	if(GLOB.stationtrauma_voyage_loaded)
+		to_chat(user, span_warning("Прототип уже загружается или загружен."), confidential = TRUE)
+		return
+	GLOB.stationtrauma_voyage_loaded = TRUE
+	to_chat(user, span_notice("Загружаются гавань и подлодка. Дождись сообщения о готовности."), confidential = TRUE)
+	var/list/berths = list()
+	var/datum/map_template/stationtrauma_route/voyage_harbor/template = new
+	var/datum/space_level/bottom = template.load_new_z()
+	qdel(template)
+	if(!bottom)
+		to_chat(user, span_warning("Не удалось загрузить гавань. Повторная загрузка отключена до перезапуска."), confidential = TRUE)
+		return
+	for(var/obj/docking_port/stationary/stationtrauma/berth as anything in SSshuttle.stationary_docking_ports)
+		if(berth.z == bottom.z_value)
+			berths += berth
+	if(berths.len != 1)
+		to_chat(user, span_warning("На карте гавани не найдена единственная стоянка."), confidential = TRUE)
+		return
+	var/obj/docking_port/stationary/stationtrauma/start = berths[1]
+	if(fixed)
+		var/datum/map_template/stationtrauma_route/voyage_transit/ocean = new
+		var/datum/space_level/home_stack = ocean.load_new_z()
+		qdel(ocean)
+		if(!home_stack)
+			to_chat(user, span_warning("Не удалось подготовить постоянный океан лодки."), confidential = TRUE)
+			return
+		start = null
+		for(var/obj/docking_port/stationary/stationtrauma/transit/anchor as anything in SSshuttle.stationary_docking_ports)
+			if(anchor.z == home_stack.z_value)
+				start = anchor
+				break
+		if(!start)
+			to_chat(user, span_warning("В постоянном океане не найдена разметка лодки."), confidential = TRUE)
+			return
+	var/datum/map_template/stationtrauma_vessel/boat = new
+	var/loaded = boat.load(get_turf(start), centered = FALSE)
+	qdel(boat)
+	var/obj/docking_port/mobile/stationtrauma/vessel = locate() in get_turf(start)
+	if(!loaded || !vessel)
+		to_chat(user, span_warning("Не удалось загрузить подлодку."), confidential = TRUE)
+		return
+	if(!vessel.configure_berths(berths))
+		to_chat(user, span_warning("Разметка подлодки не соответствует её габаритам."), confidential = TRUE)
+		return
+	if(fixed)
+		vessel.fixed_location = berths[1]
+		vessel.set_fixed_parallax(NONE)
+		if(!vessel.connect_ocean_location(vessel.fixed_location))
+			to_chat(user, span_warning("Не удалось открыть проход к гавани: проверьте свободный океанский коридор."), confidential = TRUE)
+			return
+	else if(!vessel.prepare_transit())
+		to_chat(user, span_warning("Не удалось подготовить транзитный океан. Требуется перезапуск прототипа."), confidential = TRUE)
+		return
+	to_chat(user, span_notice("Прототип готов. Подлодка «Нырок»: ([vessel.x], [vessel.y], [vessel.z]); мостик на z=[vessel.z + 2]."), confidential = TRUE)

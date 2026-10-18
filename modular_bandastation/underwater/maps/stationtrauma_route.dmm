@@ -183,9 +183,6 @@
 /obj/item/flashlight,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
-"rR" = (
-/turf/open/floor/plating/stationtrauma_hull,
-/area/shuttle/stationtrauma)
 "sa" = (
 /obj/machinery/atmospherics/pipe/smart/simple{
 	dir = 10
@@ -247,6 +244,65 @@
 /area/shuttle/stationtrauma)
 "As" = (
 /turf/closed/wall/stationtrauma_hull,
+/area/shuttle/stationtrauma)
+"AA" = (
+/turf/open/floor/plating{
+	baseturfs = /turf/open/openspace
+	},
+/area/stationtrauma_test/flow)
+"AB" = (
+/turf/open/floor/plating{
+	baseturfs = /turf/open/openspace
+	},
+/area/stationtrauma_test)
+"AC" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/openspace
+	},
+/area/stationtrauma_test/flow)
+"AD" = (
+/obj/structure/ladder,
+/turf/open/openspace,
+/area/stationtrauma_test)
+"AE" = (
+/obj/structure/table,
+/obj/item/stationtrauma_fuel_rod,
+/obj/item/stock_parts/power_store/cell/high,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/openspace
+	},
+/area/stationtrauma_test)
+"AF" = (
+/turf/open/floor/plating/stationtrauma_hull{
+	baseturfs = /turf/open/openspace
+	},
+/area/shuttle/stationtrauma)
+"AG" = (
+/obj/structure/table,
+/obj/item/stack/sheet/iron,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/openspace
+	},
+/area/stationtrauma_test)
+"AH" = (
+/obj/machinery/door/airlock/highsecurity/underwater,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/openspace
+	},
+/area/stationtrauma_test)
+"AI" = (
+/obj/structure/underwater_scrap,
+/turf/open/floor/plating{
+	baseturfs = /turf/open/openspace
+	},
+/area/stationtrauma_test)
+"AJ" = (
+/turf/closed/wall/stationtrauma_hull{
+	baseturfs = list(/turf/open/openspace, /turf/open/floor/plating)
+	},
 /area/shuttle/stationtrauma)
 "Bi" = (
 /obj/machinery/power/stationtrauma_reactor,
@@ -322,9 +378,6 @@
 	},
 /turf/open/space/ocean,
 /area/shuttle/stationtrauma)
-"JQ" = (
-/turf/closed/wall/stationtrauma_hull,
-/area/shuttle/stationtrauma)
 "KZ" = (
 /obj/machinery/door/airlock/highsecurity/underwater{
 	name = "Коридор: восточный океанский шлюз"
@@ -374,9 +427,6 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
-"Qx" = (
-/turf/open/space/ocean,
-/area/space/ocean)
 "Rp" = (
 /turf/closed/wall{
 	baseturfs = /turf/open/space/ocean
@@ -433,65 +483,6 @@
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
 
-"AA" = (
-/turf/open/floor/plating{
-	baseturfs = /turf/open/openspace
-	},
-/area/stationtrauma_test/flow)
-"AB" = (
-/turf/open/floor/plating{
-	baseturfs = /turf/open/openspace
-	},
-/area/stationtrauma_test)
-"AC" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plating{
-	baseturfs = /turf/open/openspace
-	},
-/area/stationtrauma_test/flow)
-"AD" = (
-/obj/structure/ladder,
-/turf/open/openspace,
-/area/stationtrauma_test)
-"AE" = (
-/obj/structure/table,
-/obj/item/stationtrauma_fuel_rod,
-/obj/item/stock_parts/power_store/cell/high,
-/turf/open/floor/plating{
-	baseturfs = /turf/open/openspace
-	},
-/area/stationtrauma_test)
-"AF" = (
-/turf/open/floor/plating/stationtrauma_hull{
-	baseturfs = /turf/open/openspace
-	},
-/area/shuttle/stationtrauma)
-"AG" = (
-/obj/structure/table,
-/obj/item/stack/sheet/iron,
-/turf/open/floor/plating{
-	baseturfs = /turf/open/openspace
-	},
-/area/stationtrauma_test)
-"AH" = (
-/obj/machinery/door/airlock/highsecurity/underwater,
-/turf/open/floor/plating{
-	baseturfs = /turf/open/openspace
-	},
-/area/stationtrauma_test)
-"AI" = (
-/obj/structure/underwater_scrap,
-/turf/open/floor/plating{
-	baseturfs = /turf/open/openspace
-	},
-/area/stationtrauma_test)
-"AJ" = (
-/turf/closed/wall/stationtrauma_hull{
-	baseturfs = list(/turf/open/openspace, /turf/open/floor/plating)
-	},
-/area/shuttle/stationtrauma)
 (1,1,1) = {"
 ss
 ss
@@ -986,9 +977,9 @@ ss
 ss
 ss
 Ac
-JQ
+As
 ad
-JQ
+As
 Ac
 ss
 ss
@@ -1066,15 +1057,15 @@ FI
 ss
 ss
 ss
-JQ
-JQ
-JQ
-JQ
-JQ
+As
+As
+As
+As
+As
 ae
-JQ
-JQ
-JQ
+As
+As
+As
 As
 ss
 ss
@@ -1108,7 +1099,7 @@ ss
 ss
 ss
 ss
-JQ
+As
 YS
 YS
 YS
@@ -1117,7 +1108,7 @@ YS
 YS
 YS
 YS
-JQ
+As
 ss
 ss
 ss
@@ -1150,16 +1141,16 @@ ss
 ss
 ss
 ss
-JQ
+As
 YS
 YS
-rR
+YS
 qK
 YS
 rJ
 Xx
 lt
-JQ
+As
 ss
 ss
 ss
@@ -1192,7 +1183,7 @@ ss
 ss
 ss
 ss
-JQ
+As
 HL
 YS
 Ma
@@ -1201,7 +1192,7 @@ YS
 YS
 NX
 dK
-JQ
+As
 ss
 ss
 ss
@@ -1243,7 +1234,7 @@ YS
 YS
 YS
 ob
-JQ
+As
 ss
 ss
 ss
@@ -1276,7 +1267,7 @@ ss
 ss
 ss
 ss
-JQ
+As
 cS
 fH
 YS
@@ -1285,7 +1276,7 @@ YS
 YS
 SQ
 dK
-JQ
+As
 ss
 ss
 ss
@@ -1318,7 +1309,7 @@ ss
 ss
 ss
 ss
-JQ
+As
 YS
 Du
 YS
@@ -1327,7 +1318,7 @@ YS
 YS
 YS
 uy
-JQ
+As
 ss
 ss
 ss
@@ -1360,7 +1351,7 @@ ss
 ss
 ss
 ss
-JQ
+As
 YS
 Mk
 YS
@@ -1369,7 +1360,7 @@ YS
 YS
 YS
 YS
-JQ
+As
 ss
 ss
 ss
@@ -1402,7 +1393,7 @@ ss
 ss
 ss
 ss
-JQ
+As
 Mg
 Jc
 qW
@@ -1411,7 +1402,7 @@ Bi
 YS
 YS
 yL
-JQ
+As
 ss
 ss
 ss
@@ -1444,7 +1435,7 @@ ss
 ss
 ss
 ss
-JQ
+As
 YS
 YS
 wC
@@ -1453,7 +1444,7 @@ fI
 si
 YS
 YS
-JQ
+As
 ss
 ss
 ss
@@ -1486,7 +1477,7 @@ ss
 ss
 ss
 ss
-JQ
+As
 YS
 YS
 Fr
@@ -1495,7 +1486,7 @@ YS
 Fr
 YS
 YS
-JQ
+As
 ss
 ss
 ss
@@ -1528,16 +1519,16 @@ ss
 ss
 ss
 ss
-JQ
-JQ
-JQ
+As
+As
+As
 sa
 bA
 os
 gI
-JQ
-JQ
-JQ
+As
+As
+As
 ss
 ss
 ss
@@ -2167,7 +2158,7 @@ ss
 ss
 ss
 ss
-Qx
+ss
 ss
 ss
 ss

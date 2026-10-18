@@ -40,6 +40,8 @@ SUBSYSTEM_DEF(floodwater)
 	debug.max_slice_ms = max(debug.max_slice_ms, elapsed)
 
 /datum/controller/subsystem/floodwater/proc/advance_water(resumed = FALSE)
+	if(relocating_turfs.len)
+		return
 	if(world.time >= debug.next_update)
 		if(debug.enabled)
 			debug.measure_phase("Debug")
@@ -89,6 +91,10 @@ SUBSYSTEM_DEF(floodwater)
 		while(work_cursor)
 			var/datum/component/source = source_run[work_cursor--]
 			if(!QDELETED(source))
+				var/turf/source_tile = get_turf(source.parent)
+				if(loading_ocean_levels["[source_tile?.z]"])
+					active[source] = TRUE
+					continue
 				if(istype(source, /datum/component/floodwater_leak))
 					var/datum/component/floodwater_leak/leak = source
 					if(debug.enabled)
@@ -114,6 +120,8 @@ SUBSYSTEM_DEF(floodwater)
 		debug.measure_phase("Pumps")
 	while(work_cursor)
 		var/obj/machinery/device = pump_run[work_cursor--]
+		if(loading_ocean_levels["[device?.z]"])
+			continue
 		if(!QDELETED(device) && istype(device, /obj/machinery/bilge_pump))
 			var/obj/machinery/bilge_pump/pump = device
 			pump.collect_water(step_seconds)

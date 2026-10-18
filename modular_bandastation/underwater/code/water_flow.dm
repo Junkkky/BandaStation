@@ -2,10 +2,12 @@
 	SIGNAL_HANDLER
 	if(!infinite_source)
 		return
+	var/turf/open/tile = parent
+	if(SSfloodwater.loading_ocean_levels["[tile.z]"])
+		return
 	var/datum/floodwater_debug/debug = SSfloodwater.debug
 	if(debug.enabled)
 		debug.wake_requests++
-	var/turf/open/tile = parent
 	var/feeds_floor = FALSE
 	for(var/direction in GLOB.cardinals)
 		var/turf/open/neighbor = get_step(tile, direction)
