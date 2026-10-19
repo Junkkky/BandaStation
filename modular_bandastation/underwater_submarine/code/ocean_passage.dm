@@ -5,12 +5,15 @@
 	var/turf/open/landing
 	/// Cardinal direction towards the destination.
 	var/direction
+	/// Null for standalone seams; a travelling vessel opens all its prepared links together.
+	var/obj/docking_port/mobile/stationtrauma/vessel
 
-/datum/component/stationtrauma_ocean_passage/Initialize(turf/open/destination, facing)
+/datum/component/stationtrauma_ocean_passage/Initialize(turf/open/destination, facing, obj/docking_port/mobile/stationtrauma/owner)
 	if(!isspaceturf(parent) || !isspaceturf(destination) || !(facing in GLOB.cardinals))
 		return COMPONENT_INCOMPATIBLE
 	landing = destination
 	direction = facing
+	vessel = owner
 
 /datum/component/stationtrauma_ocean_passage/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_ENTERED, PROC_REF(on_entered))
@@ -21,6 +24,8 @@
 
 /datum/component/stationtrauma_ocean_passage/proc/remove_passage()
 	SIGNAL_HANDLER
+	if(vessel)
+		vessel.ocean_connection_revision++
 	qdel(src)
 
 /datum/component/stationtrauma_ocean_passage/proc/on_entered(datum/source, atom/movable/arrived)
@@ -32,7 +37,7 @@
 
 /** Recheck the live exit instead of using space transit's search for another landing inside the map. */
 /datum/component/stationtrauma_ocean_passage/proc/cross(atom/movable/arrived)
-	if(QDELETED(src) || QDELETED(arrived) || arrived.loc != parent || arrived.anchored || arrived.currently_z_moving || arrived.pulledby)
+	if((vessel && (QDELETED(vessel) || !vessel.ocean_connection_active)) || QDELETED(src) || QDELETED(arrived) || arrived.loc != parent || arrived.anchored || arrived.currently_z_moving || arrived.pulledby)
 		return FALSE
 	if(istype(arrived, /atom/movable/mirage_holder) || istype(arrived, /obj/effect/overlay) || istype(arrived, /atom/movable/lighting_object) || istype(arrived, /obj/effect/abstract/z_holder))
 		return FALSE
