@@ -62,6 +62,7 @@
 
 /** Both ocean turfs use one immutable atmosphere without modifying a room's shared air. */
 /turf/open/proc/initialize_stationtrauma_ocean(depth, pressure)
+	GLOB.ocean_parallax_levels["[z]"] = TRUE
 	if(!SSair.planetary[initial_gas_mix])
 		var/datum/gas_mixture/immutable/planetary/environment = new
 		environment.parse_string_immutable(initial_gas_mix)
@@ -315,6 +316,9 @@
 		post_change_callbacks += CALLBACK(SSfloodwater, TYPE_PROC_REF(/datum/controller/subsystem/floodwater, mark_repaired_inlet))
 
 /datum/component/floodwater/UnregisterFromParent()
+	if(!infinite_source)
+		var/area/alarm_area = get_area(parent)
+		SEND_SIGNAL(alarm_area, COMSIG_STATIONTRAUMA_WATER_STAGE_CHANGED, src, 0)
 	SEND_SIGNAL(parent, COMSIG_STATIONTRAUMA_WATER_PRESENCE_CHANGED, src, FALSE)
 	if(infinite_source || isspaceturf(parent))
 		SEND_SIGNAL(parent, COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED)
@@ -391,6 +395,9 @@
 		previous_phase = debug.phase_name
 		debug.measure_phase("DepthPressure")
 	stage = new_stage
+	if(!infinite_source)
+		var/area/alarm_area = get_area(parent)
+		SEND_SIGNAL(alarm_area, COMSIG_STATIONTRAUMA_WATER_STAGE_CHANGED, src, stage)
 	update_depth_effects()
 	var/turf/open/tile = parent
 	if(stage)
@@ -441,6 +448,7 @@
 
 /datum/component/floodwater/proc/on_entered(turf/source, atom/movable/arrived)
 	SIGNAL_HANDLER
+	arrived.start_stationtrauma_ocean_drift()
 	if(infinite_source && isobj(arrived) && arrived.can_atmos_pass != ATMOS_PASS_YES)
 		watch_pressure_obstacle(arrived)
 		on_atmos_update()

@@ -17,7 +17,7 @@
 
 /** Hull repair can admit a floor that did not exist when the wet domain was first discovered. */
 /datum/controller/subsystem/floodwater/proc/mark_repaired_inlet(turf/tile)
-	if(!isfloorturf(tile) || relocating_turfs[tile])
+	if(!isfloorturf(tile) || loading_structure_turfs[tile])
 		return
 	if(!hybrid.by_turf[tile])
 		hybrid.add_domain(list(tile))

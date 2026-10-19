@@ -105,7 +105,7 @@
 		qdel(src)
 		return
 	var/delay = FLOOD_WATER_DRIFT_INTERVAL * (1 + FLOOD_WATER_DRIFT_STEPS - steps_left)
-	last_glide = DELAY_TO_GLIDE_SIZE(delay / (1 SECONDS))
+	last_glide = DELAY_TO_GLIDE_SIZE(delay)
 	moving = TRUE
 	var/moved = movable.Move(next_tile, direction, last_glide, FALSE)
 	moving = FALSE
@@ -115,3 +115,121 @@
 	steps_left--
 	force *= FLOOD_WATER_DRIFT_DAMPING
 	next_move = world.time + delay * 2
+
+/** Catch the native entry before a throw can finish, including the first visitor to a lazy ocean tile. */
+/atom/movable/proc/start_stationtrauma_ocean_drift()
+	if(!isitem(src) || !throwing || GetComponent(/datum/component/floodwater_thrown_drift))
+		return
+	var/datum/component/floodwater/water = loc.GetComponent(/datum/component/floodwater)
+	if(water?.infinite_source && water.get_depth() >= FLOOD_WATER_DEEP)
+		AddComponent(/datum/component/floodwater_thrown_drift)
+
+/turf/open/space/ocean/Entered(atom/movable/arrived)
+	. = ..()
+	arrived.start_stationtrauma_ocean_drift()
+
+/turf/open/space/openspace/ocean/Entered(atom/movable/arrived)
+	. = ..()
+	arrived.start_stationtrauma_ocean_drift()
+
+/** A throw that reaches open ocean keeps drifting on the native movement loop, at water speed. */
+/datum/component/floodwater_thrown_drift
+	dupe_mode = COMPONENT_DUPE_UNIQUE
+	/// Native smooth movement preserves the throw's angle, including shallow diagonals.
+	var/datum/move_loop/smooth_move/drifting_loop
+	/// Only movement made by our loop may retain the drift after landing.
+	var/moving = FALSE
+
+/datum/component/floodwater_thrown_drift/Initialize()
+	if(!isitem(parent))
+		return COMPONENT_INCOMPATIBLE
+	var/obj/item/item = parent
+	if(!item.throwing)
+		return COMPONENT_INCOMPATIBLE
+
+/datum/component/floodwater_thrown_drift/RegisterWithParent()
+	RegisterSignal(parent, COMSIG_MOVABLE_IMPACT, PROC_REF(on_impact))
+	RegisterSignal(parent, COMSIG_MOVABLE_THROW_LANDED, PROC_REF(on_landed))
+
+/datum/component/floodwater_thrown_drift/UnregisterFromParent()
+	UnregisterSignal(parent, list(COMSIG_MOVABLE_IMPACT, COMSIG_MOVABLE_THROW_LANDED, COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_POST_THROW))
+
+/datum/component/floodwater_thrown_drift/Destroy(force)
+	if(drifting_loop)
+		UnregisterSignal(drifting_loop, list(COMSIG_MOVELOOP_PREPROCESS_CHECK, COMSIG_MOVELOOP_POSTPROCESS, COMSIG_MOVELOOP_STOP, COMSIG_QDELETING))
+		QDEL_NULL(drifting_loop)
+	return ..()
+
+/datum/component/floodwater_thrown_drift/proc/on_impact(obj/item/source, atom/hit, datum/thrownthing/throwing, caught)
+	SIGNAL_HANDLER
+	if(caught || !isopenturf(hit))
+		qdel(src)
+
+/datum/component/floodwater_thrown_drift/proc/can_float()
+	var/obj/item/item = parent
+	if(!isopenturf(item.loc) || item.anchored || item.move_resist == INFINITY || item.throwing || item.pulledby || item.GetComponent(/datum/component/floodwater_drift))
+		return FALSE
+	var/datum/component/floodwater/water = item.loc.GetComponent(/datum/component/floodwater)
+	return water?.infinite_source && water.get_depth() >= FLOOD_WATER_DEEP
+
+/datum/component/floodwater_thrown_drift/proc/on_landed(obj/item/source, datum/thrownthing/throwing)
+	SIGNAL_HANDLER
+	if(throwing.blocked || !throwing.dist_travelled || !can_float())
+		qdel(src)
+		return
+	UnregisterSignal(parent, list(COMSIG_MOVABLE_IMPACT, COMSIG_MOVABLE_THROW_LANDED))
+	drifting_loop = GLOB.move_manager.smooth_move(
+		moving = parent,
+		angle = get_angle(throwing.starting_turf, throwing.target_turf),
+		delay = 0.6 SECONDS,
+		subsystem = SSnewtonian_movement,
+		priority = MOVEMENT_SPACE_PRIORITY,
+		flags = MOVEMENT_LOOP_OUTSIDE_CONTROL|MOVEMENT_LOOP_NO_DIR_UPDATE,
+	)
+	if(!drifting_loop)
+		qdel(src)
+		return
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
+	RegisterSignal(parent, COMSIG_MOVABLE_POST_THROW, PROC_REF(stop_drift))
+	RegisterSignal(drifting_loop, COMSIG_MOVELOOP_PREPROCESS_CHECK, PROC_REF(before_move))
+	RegisterSignal(drifting_loop, COMSIG_MOVELOOP_POSTPROCESS, PROC_REF(after_move))
+	RegisterSignal(drifting_loop, COMSIG_MOVELOOP_STOP, PROC_REF(stop_drift))
+	RegisterSignal(drifting_loop, COMSIG_QDELETING, PROC_REF(loop_deleted))
+
+/datum/component/floodwater_thrown_drift/proc/before_move()
+	SIGNAL_HANDLER
+	if(!can_float())
+		qdel(src)
+		return MOVELOOP_SKIP_STEP
+	moving = TRUE
+
+/datum/component/floodwater_thrown_drift/proc/after_move(datum/source, result)
+	SIGNAL_HANDLER
+	moving = FALSE
+	if(result != MOVELOOP_SUCCESS)
+		qdel(src)
+
+/datum/component/floodwater_thrown_drift/proc/on_moved(obj/item/source, atom/old_loc, direction, forced)
+	SIGNAL_HANDLER
+	if(!moving || forced)
+		qdel(src)
+
+/datum/component/floodwater_thrown_drift/proc/stop_drift()
+	SIGNAL_HANDLER
+	qdel(src)
+
+/datum/component/floodwater_thrown_drift/proc/loop_deleted()
+	SIGNAL_HANDLER
+	drifting_loop = null
+	qdel(src)
+
+/** A floating throw must not fall to the next ocean deck when native throwing finalizes. */
+/turf/open/space/ocean/zFall(atom/movable/falling, levels = 1, force = FALSE, falling_from_move = FALSE)
+	if(!force && falling.GetComponent(/datum/component/floodwater_thrown_drift))
+		return FALSE
+	return ..()
+
+/turf/open/space/openspace/ocean/zFall(atom/movable/falling, levels = 1, force = FALSE, falling_from_move = FALSE)
+	if(!force && falling.GetComponent(/datum/component/floodwater_thrown_drift))
+		return FALSE
+	return ..()

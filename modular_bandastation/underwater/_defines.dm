@@ -58,12 +58,18 @@
 #define COMSIG_STATIONTRAUMA_WATER_BOUNDARY_CHANGED "stationtrauma_water_boundary_changed"
 #define COMSIG_STATIONTRAUMA_WATER_PRESENCE_CHANGED "stationtrauma_water_presence_changed"
 #define COMSIG_STATIONTRAUMA_WATER_MASK_CHANGED "stationtrauma_water_mask_changed"
+// Area: finite water component, new native depth stage (zero on removal).
+#define COMSIG_STATIONTRAUMA_WATER_STAGE_CHANGED "stationtrauma_water_stage_changed"
+#define COMSIG_STATIONTRAUMA_FLOOD_ALARM_CHANGED "stationtrauma_flood_alarm_changed"
 // One-square-metre water footprint: a centimetre is ten litres.
 #define FLOOD_WATER_LITRES_PER_CM 10
 #define STATIONTRAUMA_WATER_LAYER_BIT(level) (1 << (4 + (level)))
 #define STATIONTRAUMA_WATER_LAYER STATIONTRAUMA_WATER_LAYER_BIT(3)
 #define STATIONTRAUMA_WATER_COLOR "#37C7B7"
 #define STATIONTRAUMA_WATER_MAX_FLOW 5000
+#define STATIONTRAUMA_PUMP_MIN_FLOW 1800
+#define STATIONTRAUMA_PUMP_MIN_PRESSURE 80
+#define STATIONTRAUMA_PUMP_MAX_PRESSURE 100
 #define STATIONTRAUMA_WATER_ATMOSPHERE 1
 #define STATIONTRAUMA_WATER_OCEAN_PRESSURE 60
 

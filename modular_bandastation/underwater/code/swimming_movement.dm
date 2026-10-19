@@ -5,6 +5,35 @@
 	water = water || loc.GetComponent(/datum/component/floodwater)
 	return water && water.get_depth() >= FLOOD_WATER_DEEP && water.affects(src)
 
+/** Handle the existing movement keybinds only while swimming; ladders and remote controls keep native priority. */
+/datum/status_effect/floodwater/proc/swim_up()
+	SIGNAL_HANDLER
+	return begin_vertical_swim(UP)
+
+/datum/status_effect/floodwater/proc/swim_down()
+	SIGNAL_HANDLER
+	return begin_vertical_swim(DOWN)
+
+/datum/status_effect/floodwater/proc/begin_vertical_swim(direction)
+	if(!owner.can_stationtrauma_swim() || owner.remote_control || (locate(/obj/structure/ladder) in owner.loc))
+		return NONE
+	if(!vertical_swim_pending)
+		vertical_swim_pending = TRUE
+		INVOKE_ASYNC(src, PROC_REF(swim_vertical), direction)
+	return COMSIG_KB_ACTIVATED
+
+/** Keep native geometry, incapacitation and pulling checks, omitting only the requirement to fly against gravity. */
+/datum/status_effect/floodwater/proc/swim_vertical(direction)
+	var/mob/living/swimmer = owner
+	var/flags = (ZMOVE_FLIGHT_FLAGS & ~ZMOVE_CAN_FLY_CHECKS)|ZMOVE_FEEDBACK
+	var/moved = FALSE
+	if(swimmer.can_z_move(direction, get_turf(swimmer), null, flags) && do_after(swimmer, 1 SECONDS, cog_icon = null))
+		if(!QDELETED(src) && !QDELETED(swimmer) && swimmer.can_stationtrauma_swim() && !swimmer.remote_control)
+			moved = swimmer.zMove(direction, z_move_flags = flags)
+	if(!QDELETED(src))
+		vertical_swim_pending = FALSE
+	return moved
+
 /** Nearby solid walls and anchored glass/closed doors provide the same local support as zero gravity. */
 /mob/living/proc/stationtrauma_swim_grip()
 	if(!isturf(loc))
@@ -56,7 +85,7 @@
 	if(!swimmer.can_stationtrauma_swim())
 		return COMPONENT_INCOMPATIBLE
 	original_glide = swimmer.glide_size
-	START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSnewtonian_movement, src)
 
 /datum/component/floodwater_swimming/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOB_CLIENT_PRE_MOVE, PROC_REF(prepare_step))
@@ -67,7 +96,7 @@
 	UnregisterSignal(parent, list(COMSIG_MOB_CLIENT_PRE_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_MOB_LOGOUT))
 
 /datum/component/floodwater_swimming/Destroy(force)
-	STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSnewtonian_movement, src)
 	var/mob/living/swimmer = parent
 	if(!QDELETED(swimmer) && swimmer.glide_size == last_glide)
 		swimmer.set_glide_size(original_glide)
@@ -85,7 +114,7 @@
 	strokes = direction == new_direction && world.time - last_stroke <= chain ? min(strokes + 1, FLOOD_WATER_SWIM_STROKES) : 1
 	direction = new_direction
 	last_stroke = world.time
-	steps_left = strokes
+	steps_left = strokes >= FLOOD_WATER_SWIM_STROKES ? strokes : 0
 	next_move = world.time + max(FLOOD_WATER_SWIM_RELEASE_DELAY, swimmer.cached_multiplicative_slowdown * 1.5)
 	expires = next_move + 3 SECONDS
 
@@ -140,7 +169,10 @@
 		qdel(src)
 		return
 	var/delay = FLOOD_WATER_SWIM_COAST_INTERVAL + (strokes - steps_left) * FLOOD_WATER_SWIM_COAST_DECAY
-	last_glide = DELAY_TO_GLIDE_SIZE(delay)
+	if(!(direction in GLOB.cardinals))
+		delay *= 1.4
+	last_glide = MOVEMENT_ADJUSTED_GLIDE_SIZE(delay, SSnewtonian_movement.visual_delay)
+	swimmer.client?.visual_delay = last_glide
 	moving = TRUE
 	var/moved = swimmer.Move(next_tile, direction, last_glide, FALSE)
 	moving = FALSE

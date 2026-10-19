@@ -9,7 +9,7 @@
 	var/datum/stationtrauma_work_budget/loading_budget
 	var/loading_first_z
 	var/loading_decks
-	/// Transit uses its moving ocean area outside the mapped berth as well.
+	/// Optional exterior area shared by every deck outside the mapped structure.
 	var/exterior_ocean_area
 
 /** Bound our own uninterrupted work; do not change global maploading or MC scheduling limits. */
@@ -43,7 +43,7 @@
 	var/list/loading_ocean_levels = list()
 
 /datum/map_template/stationtrauma_route/load_new_z(secret = FALSE)
-	if(SSfloodwater.loading_ocean_levels.len || SSfloodwater.relocating_turfs.len)
+	if(SSfloodwater.loading_ocean_levels.len || SSfloodwater.loading_structure_turfs.len)
 		return FALSE
 	var/datum/parsed_map/parsed = new(file(mappath))
 	if(!parsed.bounds)
@@ -56,7 +56,7 @@
 	var/deadline = world.time + 10 SECONDS
 	while(SSfloodwater.step_running && world.time < deadline)
 		sleep(world.tick_lag)
-	if(SSfloodwater.step_running || SSfloodwater.loading_ocean_levels.len || SSfloodwater.relocating_turfs.len)
+	if(SSfloodwater.step_running || SSfloodwater.loading_ocean_levels.len || SSfloodwater.loading_structure_turfs.len)
 		return FALSE
 	var/datum/space_level/first_level
 	var/list/levels = list()
@@ -68,6 +68,7 @@
 		for(var/deck in 1 to deck_count)
 			loading_budget.yield()
 			var/list/traits = secret ? ZTRAITS_AWAY_SECRET : ZTRAITS_AWAY
+			traits[ZTRAIT_BASETURF] = deck > 1 ? /turf/open/openspace : /turf/open/space/ocean
 			if(deck > 1)
 				traits[ZTRAIT_DOWN] = TRUE
 			if(deck < deck_count)

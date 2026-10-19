@@ -1,14 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/docking_port/stationary/stationtrauma/transit,
+/obj/docking_port/stationary/stationtrauma/home,
 /turf/open/space/ocean,
-/area/space/ocean/stationtrauma_berth/transit)
+/area/space/ocean/stationtrauma_berth/home)
 "ab" = (
 /turf/open/space/ocean,
-/area/space/ocean/stationtrauma_berth/transit)
+/area/space/ocean/stationtrauma_berth/home)
 "ac" = (
 /turf/open/space/openspace/ocean,
-/area/space/ocean/stationtrauma_berth/transit)
+/area/space/ocean/stationtrauma_berth/home)
 
 (1,1,1) = {"
 ab

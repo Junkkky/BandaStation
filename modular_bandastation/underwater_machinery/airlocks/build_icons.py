@@ -83,7 +83,7 @@ def wheel(size, engagement, angle=0):
     d = ImageDraw.Draw(image)
     cx, cy = (size-4)//2, 16
     r = 4 if size == 32 else 5
-    # Four radial dogs retract before the leaf starts moving.
+    # Four radial dogs move only with the separate handwheel animation.
     for a in (0, pi/2, pi, 3*pi/2):
         start = r+2
         reach = (size-16)//2 if a in (0, pi) else 8
@@ -159,10 +159,10 @@ def make_states(size):
         add(name, base)
     opening = []
     fills = []
-    for i, shift in enumerate((0, 0, size//7, size//3, size*2//3, size)):
+    for shift in (0, 0, size//7, size//3, size*2//3, size):
         opening.append(base)
         moving_plate = plate.copy()
-        moving_plate.alpha_composite(wheel(size, 1 - min(i/2, 1), i*pi/4))
+        moving_plate.alpha_composite(wheel(size, 0))
         fills.append(moved(moving_plate, shift))
     add('opening', opening, False)
     add('closing', list(reversed(opening)), False)
@@ -218,11 +218,13 @@ def directions(image):
         return (image,)
     # Square DMI cells hold 64x32 / 32x64 art without any tile overhang.
     size = image.width
-    horizontal = Image.new('RGBA', (size, size))
-    horizontal.paste(image, (0, size-32))
-    vertical = Image.new('RGBA', (size, size))
-    vertical.paste(image.transpose(Image.Transpose.ROTATE_90), (0, 0))
-    return (horizontal, horizontal, vertical, vertical)
+    result = []
+    for rotation in (None, Image.Transpose.ROTATE_180, Image.Transpose.ROTATE_90, Image.Transpose.ROTATE_270):
+        art = image if rotation is None else image.transpose(rotation)
+        canvas = Image.new('RGBA', (size, size))
+        canvas.paste(art, (0, size-32 if art.height == 32 else 0))
+        result.append(canvas)
+    return tuple(result)
 
 
 def write_dmi(size, states, path):
@@ -252,6 +254,10 @@ def write_dmi(size, states, path):
     assert states['fill_opening'][0][-1].getbbox() is None
     assert states['fill_closing'][0][0].tobytes() == states['fill_opening'][0][-1].tobytes()
     assert states['wheel_locked'][0][0].tobytes() != states['wheel_unlocked'][0][0].tobytes()
+    unlocked_plate = states['fill_closed'][0][0].copy()
+    unlocked_plate.alpha_composite(states['wheel_unlocked'][0][0])
+    assert states['fill_opening'][0][0].tobytes() == unlocked_plate.tobytes(), 'Opening must start with the handwheel unlocked'
+    assert states['fill_closing'][0][-1].tobytes() == unlocked_plate.tobytes(), 'Closing must leave the handwheel unlocked'
     closed = states['closed'][0][0].copy()
     closed.alpha_composite(states['fill_closed'][0][0])
     assert closed.getchannel('A').getextrema() == (255, 255), 'Closed door must fill every pixel, including corners'
@@ -259,9 +265,12 @@ def write_dmi(size, states, path):
         for frame in frames:
             if size > 32:
                 south, north, east, west = directions(frame)
-                assert south.tobytes() == north.tobytes() and east.tobytes() == west.tobytes()
                 assert south.crop((0, 0, size, size-32)).getbbox() is None
+                assert north.crop((0, 0, size, size-32)).getbbox() is None
                 assert east.crop((32, 0, size, size)).getbbox() is None
+                assert west.crop((32, 0, size, size)).getbbox() is None
+                assert north.crop((0, size-32, size, size)).tobytes() == frame.transpose(Image.Transpose.ROTATE_180).tobytes()
+                assert west.crop((0, 0, 32, size)).tobytes() == frame.transpose(Image.Transpose.ROTATE_270).tobytes()
             else:
                 assert directions(frame) == (frame,)
     for frame in states['fill_opening'][0] + states['wheel_locking'][0]:

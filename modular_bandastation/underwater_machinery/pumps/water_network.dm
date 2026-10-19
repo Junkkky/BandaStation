@@ -127,8 +127,16 @@
 					continue
 				if(component.ducts["[opposite]"] != net)
 					net.add_plumber(component, opposite)
+					neighbor.update_appearance(UPDATE_OVERLAYS)
 				neighbours[neighbor] = direction
 	update_appearance(UPDATE_ICON)
+
+/obj/machinery/duct/stationtrauma/Destroy()
+	var/list/old_neighbors = neighbours?.Copy()
+	. = ..()
+	for(var/atom/movable/neighbor as anything in old_neighbors)
+		if(!QDELETED(neighbor))
+			neighbor.update_appearance(UPDATE_OVERLAYS)
 
 /obj/machinery/duct/stationtrauma/update_icon_state()
 	. = ..()
@@ -217,7 +225,24 @@
 					var/datum/ductnet/network = new
 					network.add_plumber(src, direction)
 					network.add_plumber(other, opposite)
+					neighbor.update_appearance(UPDATE_OVERLAYS)
+	var/atom/movable/device = parent
+	device.update_appearance(UPDATE_ICON)
 
+/datum/component/plumbing/stationtrauma_water/disable()
+	// Native plumbing disconnects both ends without refreshing the devices' pipe branches.
+	var/list/atom/movable/changed = list(parent)
+	for(var/key in ducts)
+		var/datum/ductnet/network = ducts[key]
+		if(!length(network.ducts))
+			for(var/datum/component/plumbing/component as anything in network.suppliers + network.demanders)
+				changed |= component.parent
+	. = ..()
+	for(var/atom/movable/device as anything in changed)
+		if(!QDELETED(device))
+			device.update_appearance(UPDATE_OVERLAYS)
+
+/// Pipe branches reach the fitting's actual connected edge.
 /datum/component/plumbing/stationtrauma_water/create_overlays(atom/movable/source, list/overlays)
 	if(tile_covered || !active())
 		return

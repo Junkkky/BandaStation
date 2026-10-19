@@ -59,7 +59,7 @@
 	var/step_y = direction == NORTH ? 1 : -1
 	for(var/column in 0 to width - 1)
 		// Include the reverse gate, so its last visible step coincides with the physical landing.
-		for(var/distance in -1 to maxviewdist())
+		for(var/distance in -1 to CEILING(maxviewdist() / 2, 1))
 			var/turf/local_tile = locate(local_origin[1] + column, local_origin[2] + step_y * distance, local_origin[3])
 			var/turf/remote_tile = locate(remote_origin[1] + column, remote_origin[2] + step_y * distance, remote_origin[3])
 			for(var/turf/tile as anything in list(local_tile, remote_tile))

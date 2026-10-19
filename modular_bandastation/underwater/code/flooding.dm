@@ -4,6 +4,8 @@ SUBSYSTEM_DEF(floodwater)
 	priority = FIRE_PRIORITY_DEFAULT
 	ss_flags = SS_NO_INIT | SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+	/// Initial structure loading fences only the footprint being replaced.
+	var/list/loading_structure_turfs = list()
 	var/list/active = list()
 	/// Damaged ocean contacts, including parked full-room leaks; intact barriers never enter this list.
 	var/list/leaks = list()
@@ -40,7 +42,7 @@ SUBSYSTEM_DEF(floodwater)
 	debug.max_slice_ms = max(debug.max_slice_ms, elapsed)
 
 /datum/controller/subsystem/floodwater/proc/advance_water(resumed = FALSE)
-	if(relocating_turfs.len)
+	if(loading_structure_turfs.len)
 		return
 	if(world.time >= debug.next_update)
 		if(debug.enabled)

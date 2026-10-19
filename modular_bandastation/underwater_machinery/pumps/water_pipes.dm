@@ -185,7 +185,7 @@
 
 /obj/machinery/stationtrauma_water_device/valve/manual/update_icon_state()
 	. = ..()
-	icon_state = "mvalve_[valve_open ? "on" : "off"]-[water_level in list(2, 4) ? 2 : 1]"
+	icon_state = "mvalve_[valve_open ? "on" : "off"]-[(water_level in list(2, 4)) ? 2 : 1]"
 
 /obj/machinery/stationtrauma_water_device/outlet
 	name = "выпуск водяного контура"

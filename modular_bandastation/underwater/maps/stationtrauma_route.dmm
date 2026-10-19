@@ -82,9 +82,7 @@
 /turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma)
 "cS" = (
-/obj/machinery/stationtrauma_pump_controller{
-	dir = 1
-	},
+/obj/machinery/stationtrauma_pump_controller/directional/north,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
 "dK" = (
@@ -480,6 +478,11 @@
 	},
 /area/shuttle/stationtrauma)
 "YS" = (
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma)
+
+"ZZ" = (
+/obj/machinery/stationtrauma_flood_alarm/directional/north,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
 
@@ -1310,7 +1313,7 @@ ss
 ss
 ss
 As
-YS
+ZZ
 Du
 YS
 YS

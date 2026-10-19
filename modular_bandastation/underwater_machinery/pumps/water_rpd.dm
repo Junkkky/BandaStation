@@ -80,13 +80,13 @@
 		built = new path(target, water_level)
 	if(QDELETED(built))
 		return null
-	built.setDir(direction)
 	if(istype(built, /obj/machinery/duct/stationtrauma))
 		var/obj/machinery/duct/stationtrauma/pipe = built
 		pipe.rebuild_water_connections()
 	else
 		// Native plumbing scans its surroundings when anchored after rotation.
 		built.set_anchored(FALSE)
+		built.setDir(direction)
 		built.set_anchored(TRUE)
 		built.update_appearance(UPDATE_ICON)
 	return built

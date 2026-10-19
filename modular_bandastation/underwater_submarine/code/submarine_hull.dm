@@ -2,22 +2,13 @@
 	name = "StationTrauma: подлодка"
 	requires_power = TRUE
 
-/turf/open/floor/iron/stationtrauma_hull
-	baseturfs = /turf/open/space/ocean
-
 /turf/open/floor/iron/stationtrauma_hull/Initialize(mapload)
 	. = ..()
 	restore_stationtrauma_hull(src)
 
-/turf/open/floor/plating/stationtrauma_hull
-	baseturfs = /turf/open/space/ocean
-
 /turf/open/floor/plating/stationtrauma_hull/Initialize(mapload)
 	. = ..()
 	restore_stationtrauma_hull(src)
-
-/turf/closed/wall/stationtrauma_hull
-	baseturfs = /turf/open/space/ocean
 
 /turf/closed/wall/stationtrauma_hull/Initialize(mapload)
 	. = ..()

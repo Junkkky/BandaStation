@@ -2,6 +2,8 @@
 #include "_underwater_machinery.dm"
 #include "airlocks/airlocks.dm"
 #include "airlocks/water_airlock.dm"
+#include "airlocks/ladder_hatch.dm"
+#include "alarms/flood_alarm.dm"
 #include "pumps/pumps.dm"
 #include "pumps/water_intake.dm"
 #include "pumps/water_pipes.dm"

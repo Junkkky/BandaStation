@@ -17,38 +17,38 @@
 /area/shuttle/stationtrauma/prototype)
 "ae" = (
 /obj/machinery/duct/stationtrauma,
-/turf/closed/wall/stationtrauma_hull,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
 "af" = (
-/turf/open/floor/plating,
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
 "ag" = (
 /obj/machinery/light{
 	dir = 2
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
 "ah" = (
-/obj/machinery/stationtrauma_pump_controller{
-	dir = 2
-	},
+/obj/machinery/duct/stationtrauma,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/shuttle/stationtrauma/prototype)
+/area/shuttle/stationtrauma/prototype/middle)
 "ai" = (
 /obj/machinery/bilge_pump{
 	dir = 2
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
 "aj" = (
-/obj/structure/window/reinforced/fulltile,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
 "ak" = (
 /obj/item/crowbar,
 /obj/item/wrench,
 /obj/item/weldingtool,
-/turf/open/floor/plating,
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
 "al" = (
 /obj/machinery/button/stationtrauma_water_airlock{
@@ -61,23 +61,21 @@
 	drain_tag = "voyage_drain";
 	discharge_tag = "voyage_discharge"
 	},
-/turf/closed/wall/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/middle)
 "am" = (
 /obj/structure/bed,
-/turf/open/floor/plating,
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
 "an" = (
 /obj/structure/closet/emcloset,
-/turf/open/floor/plating,
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
 "ao" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
 "ap" = (
 /turf/open/space/openspace/ocean,
@@ -96,15 +94,11 @@
 /turf/open/space/openspace/ocean,
 /area/shuttle/stationtrauma/prototype/middle)
 "as" = (
-/turf/closed/wall/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/middle)
 "at" = (
 /obj/machinery/duct/stationtrauma,
-/turf/closed/wall/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/middle)
 "au" = (
 /obj/structure/ladder,
@@ -121,9 +115,7 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma/prototype/middle)
 "ax" = (
-/obj/machinery/stationtrauma_pump_controller{
-	dir = 2
-	},
+/obj/machinery/stationtrauma_pump_controller/directional/south,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma/prototype/middle)
 "ay" = (
@@ -133,10 +125,8 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma/prototype/middle)
 "az" = (
-/obj/structure/window/reinforced/fulltile,
-/turf/open/floor/plating/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/shuttle/stationtrauma/prototype/middle)
 "ba" = (
 /obj/item/crowbar,
@@ -146,7 +136,7 @@
 /area/shuttle/stationtrauma/prototype/middle)
 "bb" = (
 /obj/structure/ladder,
-/turf/open/floor/plating,
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
 "bc" = (
 /obj/machinery/door/airlock/highsecurity/underwater{
@@ -154,23 +144,17 @@
 	handwheel_locked = 1
 	},
 /obj/machinery/duct/stationtrauma,
-/turf/open/floor/plating/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/middle)
 "bd" = (
 /obj/machinery/stationtrauma_water_device/outlet/universal{
 	dir = 8;
 	id_tag = "voyage_inlet"
 	},
-/turf/open/floor/plating/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/chamber)
 "be" = (
-/turf/open/floor/plating/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/chamber)
 "bf" = (
 /obj/machinery/bilge_pump{
@@ -178,17 +162,13 @@
 	id_tag = "voyage_drain";
 	control_group = "chamber"
 	},
-/turf/open/floor/plating/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/chamber)
 "bg" = (
 /obj/machinery/door/airlock/highsecurity/underwater{
 	id_tag = "voyage_inner"
 	},
-/turf/open/floor/plating/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/middle)
 "bh" = (
 /turf/open/floor/plating,
@@ -225,15 +205,12 @@
 /turf/open/space/openspace/ocean,
 /area/shuttle/stationtrauma/prototype/upper)
 "bo" = (
-/turf/closed/wall/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/upper)
 "bp" = (
 /obj/machinery/duct/stationtrauma,
-/turf/closed/wall/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/shuttle/stationtrauma/prototype/upper)
 "bq" = (
 /turf/open/floor/plating,
@@ -245,9 +222,7 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma/prototype/upper)
 "bs" = (
-/obj/machinery/stationtrauma_pump_controller{
-	dir = 2
-	},
+/obj/machinery/stationtrauma_pump_controller/directional/south,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma/prototype/upper)
 "bt" = (
@@ -258,9 +233,7 @@
 /area/shuttle/stationtrauma/prototype/upper)
 "bu" = (
 /obj/structure/window/reinforced/fulltile,
-/turf/open/floor/plating/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/upper)
 "bv" = (
 /obj/item/crowbar,
@@ -273,16 +246,14 @@
 	dir = 8;
 	controller_tag = "voyage_airlock"
 	},
-/turf/closed/wall/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/middle)
 "bx" = (
 /obj/structure/chair/comfy,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma/prototype/upper)
 "by" = (
-/obj/machinery/computer/stationtrauma_navigation,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma/prototype/upper)
 "bz" = (
@@ -291,14 +262,39 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma/prototype/upper)
+"ca" = (
+/obj/machinery/stationtrauma_flood_alarm/directional/south,
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma/prototype)
+"cb" = (
+/obj/machinery/stationtrauma_flood_alarm/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma/prototype/middle)
+"cc" = (
+/obj/machinery/stationtrauma_flood_alarm/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma/prototype/upper)
+"cw" = (
+/obj/machinery/stationtrauma_pump_controller/directional/south,
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma/prototype)
+"Ox" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma/prototype)
+"WV" = (
+/obj/machinery/computer/stationtrauma_navigation/directional/east{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma/prototype/upper)
 "Yb" = (
 /obj/machinery/button/stationtrauma_water_airlock_remote/fill{
 	dir = 4;
 	controller_tag = "voyage_airlock"
 	},
-/turf/closed/wall/stationtrauma_hull{
-	baseturfs = /turf/open/space/openspace/ocean
-	},
+/turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype/middle)
 
 (1,1,1) = {"
@@ -355,6 +351,19 @@ ab
 "}
 (5,1,1) = {"
 ab
+Ox
+af
+af
+af
+af
+af
+af
+af
+aj
+ab
+"}
+(6,1,1) = {"
+ab
 aj
 af
 af
@@ -363,20 +372,7 @@ af
 af
 af
 af
-ad
-ab
-"}
-(6,1,1) = {"
-ab
-ad
-af
-af
-af
-af
-af
-af
-af
-ad
+aj
 ab
 "}
 (7,1,1) = {"
@@ -415,7 +411,7 @@ af
 af
 af
 af
-ad
+aj
 ab
 "}
 (10,1,1) = {"
@@ -427,7 +423,7 @@ af
 bb
 af
 af
-af
+ca
 ad
 ab
 "}
@@ -440,21 +436,21 @@ af
 af
 af
 af
-af
+cw
 ad
 ab
 "}
 (12,1,1) = {"
 ab
-ad
+aj
 af
 af
 af
 af
 af
 af
-ah
-ad
+af
+aj
 ab
 "}
 (13,1,1) = {"
@@ -501,9 +497,9 @@ ab
 ad
 ad
 aj
-ad
-ad
-ad
+aj
+aj
+aj
 aj
 ad
 ad
@@ -585,12 +581,12 @@ bf
 at
 av
 av
-at
+ah
 aq
 "}
 (6,1,2) = {"
 ap
-as
+az
 bh
 bh
 as
@@ -598,7 +594,7 @@ bg
 bw
 bh
 bh
-as
+az
 ap
 "}
 (7,1,2) = {"
@@ -637,7 +633,7 @@ bh
 bh
 bh
 bh
-as
+az
 ap
 "}
 (10,1,2) = {"
@@ -649,7 +645,7 @@ bh
 bi
 bh
 bh
-bh
+cb
 as
 ap
 "}
@@ -662,21 +658,21 @@ bh
 bh
 bh
 bh
-bh
+ax
 as
 ap
 "}
 (12,1,2) = {"
 ap
-as
+az
 bh
 bh
 bh
 bh
 bh
 bh
-ax
-as
+bh
+az
 ap
 "}
 (13,1,2) = {"
@@ -689,7 +685,7 @@ bh
 bh
 bh
 ay
-at
+ah
 ar
 "}
 (14,1,2) = {"
@@ -723,9 +719,9 @@ ap
 as
 as
 az
-as
-as
-as
+az
+az
+az
 az
 as
 as
@@ -762,11 +758,11 @@ bm
 bm
 bo
 bo
-bu
+by
 bo
 bo
 bo
-bu
+by
 bo
 bo
 bm
@@ -807,7 +803,7 @@ bq
 bq
 bq
 bq
-bo
+by
 bm
 "}
 (6,1,3) = {"
@@ -859,7 +855,7 @@ bq
 bq
 bq
 bq
-bo
+by
 bm
 "}
 (10,1,3) = {"
@@ -871,7 +867,7 @@ bq
 au
 bq
 bq
-bq
+cc
 bo
 bm
 "}
@@ -919,9 +915,9 @@ bm
 bo
 bz
 bq
-by
 bq
 bq
+WV
 bv
 bq
 bo
@@ -944,11 +940,11 @@ bm
 bm
 bo
 bo
-bu
-bo
-bo
-bo
-bu
+by
+by
+by
+by
+by
 bo
 bo
 bm

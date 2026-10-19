@@ -1,6 +1,6 @@
-/** Experimental travel leaves the whole submarine and its surrounding ocean at permanent coordinates. */
+/** Travel leaves the whole submarine and its surrounding ocean at permanent coordinates. */
 /obj/docking_port/mobile/stationtrauma
-	/// Non-null only in the fixed-vessel prototype; also the route origin during a trip.
+	/// Current destination and route origin; the physical vessel always stays at home.
 	var/obj/docking_port/stationary/stationtrauma/fixed_location
 	/// Only our explicitly installed ocean seams are removed on departure.
 	var/list/ocean_passages = list()
@@ -34,15 +34,13 @@
 	var/clearance = max(30, maxviewdist())
 	var/ship_edge = y + height + clearance
 	var/site_edge = berth.y - clearance
-	var/ship_middle = x + round(width / 2)
-	var/site_middle = berth.x + round(berth.width / 2)
-	if(ship_edge >= world.maxy - TRANSITIONEDGE || site_edge <= TRANSITIONEDGE + 1 || min(ship_middle, site_middle) - 20 <= TRANSITIONEDGE || max(ship_middle, site_middle) + 20 >= world.maxx - TRANSITIONEDGE)
+	if(ship_edge >= world.maxy - TRANSITIONEDGE || site_edge <= TRANSITIONEDGE + 1)
 		return FALSE
 	var/list/endpoints = list()
 	for(var/deck in 0 to decks - 1)
-		for(var/column in -20 to 20)
-			var/turf/open/ship_gate = locate(ship_middle + column, ship_edge, z + deck)
-			var/turf/open/site_gate = locate(site_middle + column, site_edge, berth.z + deck)
+		for(var/column in 1 to world.maxx)
+			var/turf/open/ship_gate = locate(column, ship_edge, z + deck)
+			var/turf/open/site_gate = locate(column, site_edge, berth.z + deck)
 			var/turf/open/ship_landing = get_step(ship_gate, SOUTH)
 			var/turf/open/site_landing = get_step(site_gate, NORTH)
 			for(var/turf/open/tile as anything in list(ship_gate, site_gate, ship_landing, site_landing))
@@ -60,15 +58,15 @@
 		ocean_passages += ship_gate.AddComponent(/datum/component/stationtrauma_ocean_passage, pair[4], NORTH)
 		ocean_passages += site_gate.AddComponent(/datum/component/stationtrauma_ocean_passage, pair[3], SOUTH)
 	for(var/deck in 0 to decks - 1)
-		var/turf/ship_gate = locate(ship_middle - 20, ship_edge, z + deck)
-		var/turf/site_gate = locate(site_middle - 20, site_edge, berth.z + deck)
-		ocean_previews += new /datum/stationtrauma_ocean_preview(ship_gate.GetComponent(/datum/component/stationtrauma_ocean_passage), 41)
-		ocean_previews += new /datum/stationtrauma_ocean_preview(site_gate.GetComponent(/datum/component/stationtrauma_ocean_passage), 41)
+		var/turf/ship_gate = locate(1, ship_edge, z + deck)
+		var/turf/site_gate = locate(1, site_edge, berth.z + deck)
+		ocean_previews += new /datum/stationtrauma_ocean_preview(ship_gate.GetComponent(/datum/component/stationtrauma_ocean_passage), world.maxx)
+		ocean_previews += new /datum/stationtrauma_ocean_preview(site_gate.GetComponent(/datum/component/stationtrauma_ocean_passage), world.maxx)
 	return TRUE
 
 /** Load destinations while the unchanged boat keeps its active water, equipment and passengers. */
-/obj/docking_port/mobile/stationtrauma/proc/travel_fixed(destination, animate_trip = TRUE)
-	if(travelling || !fixed_location || SSfloodwater.loading_ocean_levels.len || SSfloodwater.relocating_turfs.len)
+/obj/docking_port/mobile/stationtrauma/proc/travel_to(destination, animate_trip = TRUE)
+	if(travelling || !fixed_location || SSfloodwater.loading_ocean_levels.len || SSfloodwater.loading_structure_turfs.len)
 		return FALSE
 	if(istext(destination))
 		for(var/obj/docking_port/stationary/stationtrauma/berth as anything in berths)

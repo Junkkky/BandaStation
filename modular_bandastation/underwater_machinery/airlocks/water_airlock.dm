@@ -9,7 +9,10 @@
 /** A wall button sequences two mechanical doors and existing piped pumps in a dedicated chamber area. */
 /obj/machinery/button/stationtrauma_water_airlock
 	name = "контроллер водяного шлюза"
-	desc = "ЛКМ — заполнить сухую камеру или осушить затопленную. Вентиль на гермодвери отменяет автоматику и позволяет открыть её вручную."
+	desc = "Управляет заполнением и осушением шлюзовой камеры. Вентиль на гермодвери отменяет автоматику и позволяет открыть её вручную."
+	icon = 'icons/obj/machines/wallmounts.dmi'
+	icon_state = "button-warning"
+	skin = "-warning"
 	processing_flags = NONE
 	can_alter_skin = FALSE
 	/// Object tags, rather than an area-wide pump group, isolate this one circuit.
@@ -107,6 +110,13 @@
 /obj/machinery/button/stationtrauma_water_airlock/examine(mob/user)
 	. = ..()
 	. += span_notice("[status].")
+
+/// The parent button already registers native hover context and retains its maintenance hints.
+/obj/machinery/button/stationtrauma_water_airlock/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+	if(!held_item && !panel_open)
+		context[SCREENTIP_CONTEXT_LMB] = cycling ? "Идёт шлюзование" : "Заполнить / осушить камеру"
+		return CONTEXTUAL_SCREENTIP_SET
 
 /** Reject partial chambers and busy cycles before accepting button feedback or a remote command. */
 /obj/machinery/button/stationtrauma_water_airlock/proc/cycle_available(mob/user)
@@ -303,6 +313,9 @@
 /obj/machinery/button/stationtrauma_water_airlock_remote
 	name = "кнопка осушения шлюза"
 	desc = "Закрывает обе гермодвери и осушает камеру для входа из лодки."
+	icon = 'icons/obj/machines/wallmounts.dmi'
+	icon_state = "button-warning"
+	skin = "-warning"
 	can_alter_skin = FALSE
 	/// Tag of the chamber's main wall button.
 	var/controller_tag
@@ -318,7 +331,28 @@
 		return FALSE
 	return controller.request_cycle(fill, user)
 
+/// Name the remote button's fixed action in the same hover HUD as the chamber controller.
+/obj/machinery/button/stationtrauma_water_airlock_remote/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+	if(!held_item && !panel_open)
+		context[SCREENTIP_CONTEXT_LMB] = fill ? "Заполнить шлюз" : "Осушить шлюз"
+		return CONTEXTUAL_SCREENTIP_SET
+
 /obj/machinery/button/stationtrauma_water_airlock_remote/fill
 	name = "кнопка заполнения шлюза"
 	desc = "Закрывает обе гермодвери и заполняет камеру для входа из океана."
 	fill = TRUE
+
+/** A flasher-style button uses the native airlock ID controller without overriding mechanical locks. */
+/obj/machinery/button/door/stationtrauma
+	name = "кнопка гермодвери"
+	desc = "Открывает или закрывает гермодверь с соответствующим ID. Механический запор открывается вентилем на самой двери."
+	icon_state = "button-warning"
+	skin = "-warning"
+	can_alter_skin = FALSE
+	normaldoorcontrol = TRUE
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/door/stationtrauma, 24)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/stationtrauma_water_airlock, 24)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/stationtrauma_water_airlock_remote, 24)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/stationtrauma_water_airlock_remote/fill, 24)

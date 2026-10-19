@@ -1,8 +1,17 @@
+/** Only a reciprocal ladder at the real lower coordinate opens an otherwise solid floor. */
+/turf/open/proc/has_stationtrauma_ladder_down(turf/lower)
+	for(var/obj/structure/ladder/ladder in src)
+		if(!QDELETED(ladder) && !QDELETED(ladder.down) && ladder.down.up == ladder && ladder.down.loc == lower)
+			return TRUE
+	return FALSE
+
 /** A real opening in the upper deck joins finite water only; ordinary space is never a drain. */
 /turf/open/proc/can_pass_stationtrauma_water_down(turf/open/lower)
-	if(!isopenspaceturf(src) || isspaceturf(src) || !isopenturf(lower) || isspaceturf(lower) || istype(lower, /turf/open/water) || blocks_air || lower.blocks_air)
+	if(isspaceturf(src) || !isopenturf(lower) || isspaceturf(lower) || istype(lower, /turf/open/water) || blocks_air || lower.blocks_air)
 		return FALSE
-	if(GET_TURF_BELOW(src) != lower || GET_TURF_ABOVE(lower) != src || !zAirOut(DOWN, lower) || !lower.zAirIn(DOWN, src))
+	if(GET_TURF_BELOW(src) != lower || GET_TURF_ABOVE(lower) != src || !lower.zAirIn(DOWN, src))
+		return FALSE
+	if(isopenspaceturf(src) ? !zAirOut(DOWN, lower) : !has_stationtrauma_ladder_down(lower))
 		return FALSE
 	for(var/obj/barrier in contents)
 		if(!CANATMOSPASS(barrier, lower, FALSE))
@@ -15,9 +24,9 @@
 /** Inspect the two local vertical edges only when their geometry changes. */
 /datum/floodwater_hybrid/proc/refresh_vertical_links(datum/floodwater_front_cell/cell)
 	refresh_vertical_portal(cell)
-	var/turf/above = GET_TURF_ABOVE(cell.tile)
+	var/turf/open/above = GET_TURF_ABOVE(cell.tile)
 	var/datum/floodwater_front_cell/upper = by_turf[above]
-	if(!upper && isopenspaceturf(above) && !isspaceturf(above))
+	if(!upper && isopenturf(above) && !isspaceturf(above) && (isopenspaceturf(above) || above.has_stationtrauma_ladder_down(cell.tile)))
 		upper = SSfloodwater.ensure_water_domain(above)
 	if(upper)
 		refresh_vertical_portal(upper)
@@ -27,7 +36,7 @@
 	var/datum/floodwater_front_portal/portal = vertical_portals[upper]
 	var/turf/open/upper_tile = upper.tile
 	var/turf/open/lower_tile = GET_TURF_BELOW(upper_tile)
-	if(!isopenspaceturf(upper_tile) || isspaceturf(upper_tile) || !isopenturf(lower_tile) || isspaceturf(lower_tile) || istype(lower_tile, /turf/open/water))
+	if(!isopenturf(upper_tile) || isspaceturf(upper_tile) || !isopenturf(lower_tile) || isspaceturf(lower_tile) || istype(lower_tile, /turf/open/water) || (!isopenspaceturf(upper_tile) && !upper_tile.has_stationtrauma_ladder_down(lower_tile)))
 		portal?.set_open(FALSE)
 		return
 	var/datum/floodwater_front_cell/lower = by_turf[lower_tile] || SSfloodwater.ensure_water_domain(lower_tile)

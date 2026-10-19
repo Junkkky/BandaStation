@@ -46,18 +46,36 @@ GLOBAL_LIST_EMPTY(ocean_parallax_levels)
 /atom/movable/screen/parallax_home/set_perspective_area(area/new_area)
 	var/turf/viewing_from = get_turf(perspective)
 	var/is_ocean = !!GLOB.ocean_parallax_levels["[viewing_from?.z]"]
-	if(ocean_parallax != is_ocean)
+	var/theme_changed = ocean_parallax != is_ocean
+	if(theme_changed)
 		ocean_parallax = is_ocean
 		blend_mode = is_ocean ? BLEND_OVERLAY : initial(blend_mode)
 		// Large screen backgrounds must not create HUD borders and rescale the viewport.
 		appearance_flags = is_ocean ? (initial(appearance_flags) | TILE_BOUND) : initial(appearance_flags)
 		regenerate_layers()
-	if(perspective_area == new_area)
+	if(perspective_area == new_area && !theme_changed)
 		return
 	if(perspective_area)
 		UnregisterSignal(perspective_area, COMSIG_AREA_PARALLAX_DIR_CHANGED)
 	perspective_area = new_area
-	RegisterSignal(perspective_area, COMSIG_AREA_PARALLAX_DIR_CHANGED, PROC_REF(area_parallax_dir_changed))
+	RegisterSignal(perspective_area, COMSIG_AREA_PARALLAX_DIR_CHANGED, is_ocean ? PROC_REF(ocean_area_motion_changed) : PROC_REF(area_parallax_dir_changed))
+	if(is_ocean)
+		addtimer(CALLBACK(src, PROC_REF(refresh_ocean_motion)), 0, TIMER_UNIQUE)
+
+/** Let native perspective updates finish, then use each ocean texture's actual repeat distance. */
+/atom/movable/screen/parallax_home/proc/ocean_area_motion_changed()
+	SIGNAL_HANDLER
+	update_parallax()
+	refresh_ocean_motion()
+
+/atom/movable/screen/parallax_home/proc/refresh_ocean_motion()
+	if(!ocean_parallax || !perspective_area)
+		return
+	for(var/key in parallax_animate_timers)
+		deltimer(parallax_animate_timers[key])
+	parallax_animate_timers?.Cut()
+	for(var/atom/movable/screen/parallax_layer/ocean/layer in parallax_layers)
+		layer.set_ocean_motion(perspective_area.parallax_movedir)
 
 /// Keep native preference/layer lifetime handling, replacing only the underwater layer palette.
 /atom/movable/screen/parallax_home/regenerate_layers()
@@ -85,13 +103,57 @@ GLOBAL_LIST_EMPTY(ocean_parallax_levels)
 		if(draw_old_space)
 			parallax_layers_cached += new /atom/movable/screen/parallax_layer/old(null, null, src)
 	display_layers()
+	if(ocean_parallax)
+		addtimer(CALLBACK(src, PROC_REF(refresh_ocean_motion)), 0, TIMER_UNIQUE)
 
 /atom/movable/screen/parallax_layer/ocean
 	blend_mode = BLEND_OVERLAY
 	icon_state = ""
 	appearance_flags = APPEARANCE_UI | KEEP_TOGETHER | TILE_BOUND
+	/// Native sediment tiles repeat at 480 pixels; mirrored terrain repeats every two tiles.
+	var/draw_period = 480
+	/// Last animation's repeat distance, direction, origin and server start time.
+	var/motion_period = 480
+	var/motion_direction = NONE
+	var/motion_x = 0
+	var/motion_y = 0
+	var/motion_started = 0
 
-/// A single distant seabed, never tiled. Its margins cover camera movement and larger views.
+/** Sample our linear loop before stopping or changing direction, without snapping back to its origin. */
+/atom/movable/screen/parallax_layer/ocean/proc/motion_position()
+	var/distance = (world.time - motion_started) * 480 * speed * 2 / PARALLAX_LOOP_TIME
+	var/dx = motion_direction & EAST ? -1 : motion_direction & WEST ? 1 : 0
+	var/dy = motion_direction & NORTH ? -1 : motion_direction & SOUTH ? 1 : 0
+	return list(
+		WRAP(motion_x + dx * distance, 0, draw_period),
+		WRAP(motion_y + dy * distance, 0, draw_period),
+	)
+
+/** Client-side looping only; no recurring server processing or image regeneration during a voyage. */
+/atom/movable/screen/parallax_layer/ocean/proc/set_ocean_motion(direction)
+	if(motion_direction == direction && motion_period == draw_period)
+		return
+	var/list/position = motion_position()
+	motion_x = position[1]
+	motion_y = position[2]
+	// Equivalent periodic positions keep the whole loop inside the repeated texture's margins.
+	if(direction & WEST)
+		motion_x -= draw_period
+	if(direction & SOUTH)
+		motion_y -= draw_period
+	motion_direction = direction
+	motion_period = draw_period
+	motion_started = world.time
+	var/matrix/start = matrix(1, 0, motion_x, 0, 1, motion_y)
+	if(direction == NONE)
+		animate(src, transform = start, time = 0, flags = ANIMATION_END_NOW)
+		return
+	var/dx = direction & EAST ? -draw_period : direction & WEST ? draw_period : 0
+	var/dy = direction & NORTH ? -draw_period : direction & SOUTH ? draw_period : 0
+	animate(src, transform = start, time = 0, loop = -1, flags = ANIMATION_END_NOW)
+	animate(transform = matrix(1, 0, motion_x + dx, 0, 1, motion_y + dy), time = draw_period * PARALLAX_LOOP_TIME / (480 * speed * 2))
+
+/// Mirrored copies share their edge pixels, so long voyages never expose an image border.
 /atom/movable/screen/parallax_layer/ocean/seafloor
 	icon = 'modular_bandastation/underwater/icons/seafloor.png'
 	layer = 1
@@ -105,7 +167,19 @@ GLOBAL_LIST_EMPTY(ocean_parallax_levels)
 
 /atom/movable/screen/parallax_layer/ocean/seafloor/update_overlays()
 	SHOULD_CALL_PARENT(FALSE)
-	return list()
+	var/list/copies = list()
+	var/icon/background = icon(icon)
+	var/size = background.Width()
+	for(var/column in -2 to 2)
+		for(var/row in -2 to 2)
+			if(!column && !row)
+				continue
+			var/mutable_appearance/copy = mutable_appearance(icon, icon_state)
+			copy.pixel_w = column * size
+			copy.pixel_z = row * size
+			copy.transform = matrix(column % 2 ? -1 : 1, 0, 0, 0, row % 2 ? -1 : 1, 0)
+			copies += copy
+	return copies
 
 /atom/movable/screen/parallax_layer/ocean/seafloor/update_o(new_view)
 	if(working_view == new_view)
@@ -117,10 +191,14 @@ GLOBAL_LIST_EMPTY(ocean_parallax_levels)
 	if(size != background.Width())
 		background.Scale(size, size)
 	icon = background
+	draw_period = size * 2
+	update_appearance(UPDATE_OVERLAYS)
 	// The native home is centred around a 480px cell; centre our larger image on that cell.
 	var/centre = round((480 - size) / 2)
 	pixel_x = centre + round(passage_offset_x, 1)
 	pixel_y = centre + round(passage_offset_y, 1)
+	if(home)
+		addtimer(CALLBACK(home, TYPE_PROC_REF(/atom/movable/screen/parallax_home, refresh_ocean_motion)), 0, TIMER_UNIQUE)
 
 /** Native absolute layers follow map coordinates; a distant ocean passage must preserve their screen position. */
 /atom/movable/screen/parallax_layer/ocean/seafloor/proc/preserve_ocean_position(position_x, position_y)

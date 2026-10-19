@@ -227,7 +227,7 @@
 
 /// Cache passable edges only on geometry events; live door checks also precede paired portal commits.
 /datum/floodwater_hybrid/proc/refresh_cell(datum/floodwater_front_cell/cell)
-	if(SSfloodwater.relocating_turfs[cell.tile] || SSfloodwater.loading_ocean_levels["[cell.tile?.z]"])
+	if(SSfloodwater.loading_structure_turfs[cell.tile] || SSfloodwater.loading_ocean_levels["[cell.tile?.z]"])
 		return
 	cell.wake_portals()
 	var/turf/open/tile = cell.tile
@@ -447,25 +447,27 @@
 /datum/floodwater_front_cell/proc/unwatch_turf()
 	UnregisterSignal(tile, list(COMSIG_TURF_CHANGE, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON))
 	for(var/obj/obstacle as anything in obstacles)
-		UnregisterSignal(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_QDELETING))
+		UnregisterSignal(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_QDELETING, COMSIG_ATOM_UPDATED_ICON))
 	obstacles.Cut()
 
 /datum/floodwater_front_cell/proc/watch_obstacles()
 	for(var/obj/obstacle as anything in obstacles.Copy())
 		if(QDELETED(obstacle) || obstacle.loc != tile)
-			UnregisterSignal(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_QDELETING))
+			UnregisterSignal(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_QDELETING, COMSIG_ATOM_UPDATED_ICON))
 			obstacles -= obstacle
 	for(var/obj/obstacle in tile)
-		if(obstacle.can_atmos_pass == ATMOS_PASS_YES || (obstacle in obstacles))
+		if((obstacle.can_atmos_pass == ATMOS_PASS_YES && !istype(obstacle, /obj/structure/ladder)) || (obstacle in obstacles))
 			continue
 		obstacles |= obstacle
 		RegisterSignals(obstacle, list(COMSIG_ATOM_DENSITY_CHANGED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_SET_ANCHORED, COMSIG_QDELETING), PROC_REF(native_changed))
+		if(istype(obstacle, /obj/structure/ladder))
+			RegisterSignal(obstacle, COMSIG_ATOM_UPDATED_ICON, PROC_REF(native_changed))
 
 /datum/floodwater_front_cell/proc/native_changed(datum/source, atom/movable/moved)
 	SIGNAL_HANDLER
 	if(!native || native.publishing)
 		return
-	if(source == tile && moved && (!isobj(moved) || moved.can_atmos_pass == ATMOS_PASS_YES))
+	if(source == tile && moved && (!isobj(moved) || (moved.can_atmos_pass == ATMOS_PASS_YES && !istype(moved, /obj/structure/ladder))))
 		return
 	// Compare live edges now; deletion also gets a second check after the object leaves.
 	native.refresh_cell(src)
@@ -503,7 +505,7 @@
 /datum/controller/subsystem/floodwater/proc/ensure_water_domain(turf/tile)
 	RETURN_TYPE(/datum/floodwater_front_cell)
 	// New map geometry joins only after initialization; other levels keep simulating during the load.
-	if(relocating_turfs[tile] || loading_ocean_levels["[tile?.z]"])
+	if(loading_structure_turfs[tile] || loading_ocean_levels["[tile?.z]"])
 		return hybrid.by_turf[tile]
 	if(!isturf(tile) || isspaceturf(tile) || istype(tile, /turf/open/water))
 		return null

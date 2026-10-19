@@ -10,7 +10,6 @@
 
 /turf/open/space/openspace/ocean/Initialize(mapload)
 	. = ..()
-	GLOB.ocean_parallax_levels["[z]"] = TRUE
 	initialize_stationtrauma_ocean(FLOOD_WATER_MAX_DEPTH, STATIONTRAUMA_WATER_OCEAN_PRESSURE * 100)
 
 /turf/open/space/openspace/ocean/ChangeTurf(path, list/new_baseturfs, flags)
