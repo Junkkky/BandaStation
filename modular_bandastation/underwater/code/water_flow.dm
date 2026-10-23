@@ -18,7 +18,7 @@
 			continue
 		var/difference = reservoir_pressure - neighbor.stationtrauma_water_pressure(water)
 		var/full = neighbor.get_water_depth() * FLOOD_WATER_LITRES_PER_CM >= FLOOD_WATER_MAX_DEPTH * FLOOD_WATER_LITRES_PER_CM - FLOOD_WATER_FULL_TOLERANCE
-		var/free_head = neighbor.stationtrauma_air_pressure(water) + neighbor.get_water_depth() * FLOOD_WATER_KPA_PER_CM
+		var/free_head = neighbor.stationtrauma_air_pressure() + neighbor.get_water_depth() * FLOOD_WATER_KPA_PER_CM
 		var/tolerance = full && reservoir_pressure >= free_head ? FLOOD_WATER_HEAD_EPSILON : FLOOD_WATER_PRESSURE_EPSILON
 		if(abs(difference) <= tolerance || (difference < 0 && !water))
 			continue
@@ -61,7 +61,7 @@
 			continue
 		// Cd=0.6, effective opening=0.3 m²; Q=Cd*A*sqrt(2*deltaP/rho), converted to litres.
 		var/volume = 180 * sqrt(2 * abs(difference)) * SSfloodwater.step_seconds
-		volume = limit_stationtrauma_boundary_flow(next_tile, next_water, reservoir_pressure, difference > 0 ? volume : -volume)
+		volume = limit_stationtrauma_boundary_flow(next_tile, reservoir_pressure, difference > 0 ? volume : -volume)
 		if(!volume)
 			continue
 		var/transferred = difference > 0 ? next_tile.add_water(volume) : next_water?.remove_water(volume)

@@ -1,3 +1,11 @@
+// BEGIN_INTERNALS
+// END_INTERNALS
+// BEGIN_FILE_DIR
+#define FILE_DIR .
+// END_FILE_DIR
+// BEGIN_PREFERENCES
+// END_PREFERENCES
+// BEGIN_INCLUDE
 #include "_underwater.dm"
 #include "code/water.dm"
 #include "code/ocean_openspace.dm"
@@ -23,38 +31,4 @@
 #include "code/environment.dm"
 #include "code/route_template.dm"
 #include "code/water_leaks.dm"
-
-// BEGIN_INTERNALS
-// END_INTERNALS
-// BEGIN_FILE_DIR
-#define FILE_DIR .
-// END_FILE_DIR
-// BEGIN_PREFERENCES
-// END_PREFERENCES
-// BEGIN_INCLUDE
-#include "_underwater.dm"
-#include "code\environment.dm"
-#include "code\flooding.dm"
-#include "code\ocean_openspace.dm"
-#include "code\parallax.dm"
-#include "code\route_template.dm"
-#include "code\swimming.dm"
-#include "code\swimming_effects.dm"
-#include "code\swimming_movement.dm"
-#include "code\water.dm"
-#include "code\water_debug.dm"
-#include "code\water_drift.dm"
-#include "code\water_flow.dm"
-#include "code\water_front.dm"
-#include "code\water_front_geometry.dm"
-#include "code\water_geometry.dm"
-#include "code\water_head.dm"
-#include "code\water_hybrid.dm"
-#include "code\water_impulse.dm"
-#include "code\water_leaks.dm"
-#include "code\water_portals.dm"
-#include "code\water_pressure.dm"
-#include "code\water_sound.dm"
-#include "code\water_vertical.dm"
-#include "code\water_visuals.dm"
 // END_INCLUDE

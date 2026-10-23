@@ -1,0 +1,21079 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/washrooms)
+"ab" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/corridors)
+"ac" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/supply_office)
+"ad" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_equipment)
+"ae" = (
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/engineering_security)
+"ag" = (
+/obj/structure/rack,
+/obj/item/geiger_counter,
+/obj/item/geiger_counter{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 1
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"ah" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_half{
+	dir = 1
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"ai" = (
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_half{
+	dir = 1
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"aj" = (
+/obj/structure/cable/layer1,
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"ak" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/engineering)
+"al" = (
+/obj/structure/ladder,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"an" = (
+/obj/structure/sign/warning/no_smoking/circle/directional/north,
+/obj/machinery/light/cold/dim/directional/east,
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 8
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"ao" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"ap" = (
+/obj/machinery/door/airlock/engineering{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/cable/layer1,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/textured{
+	color = "#c5b58d"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"aq" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"ar" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/coldroom)
+"as" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"at" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"au" = (
+/obj/structure/cable/layer1,
+/obj/machinery/power/stationtrauma_plant_machine/turbine{
+	plant_id = "eurydice";
+	pixel_y = 9
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"aw" = (
+/obj/effect/caustics/source,
+/turf/open/space/openspace/ocean,
+/area/space/ocean/stationtrauma_berth/home)
+"ax" = (
+/obj/machinery/power/stationtrauma_plant_machine/condenser{
+	plant_id = "eurydice";
+	pixel_y = 8
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"aF" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_02)
+"bn" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/structure/sign/warning/radiation/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"bo" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_aft)
+"bq" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"bE" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 4
+	},
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"bI" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/emergency_equipment)
+"bN" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_04)
+"ce" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/maintenance)
+"ci" = (
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/cell_2)
+"ck" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 4
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng"
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"cu" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_port_aft)
+"cv" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_aft)
+"cM" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"cR" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"cS" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/sleepers)
+"cY" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"dg" = (
+/obj/machinery/door/airlock/medical{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/virology)
+"dl" = (
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/laboratory)
+"dm" = (
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/instruments)
+"do" = (
+/obj/machinery/door/airlock/command{
+	dir = 1
+	},
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/legal)
+"dt" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/tools)
+"dv" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/ammunition_port)
+"dx" = (
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"dE" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_04)
+"dG" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"dH" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_hangar)
+"dK" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_03)
+"dP" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_hangar)
+"dR" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/emergency_equipment)
+"dV" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"ep" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/ammunition_port)
+"er" = (
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_hangar)
+"eS" = (
+/obj/machinery/power/shuttle_engine/huge{
+	dir = 8
+	},
+/turf/open/space/ocean,
+/area/space/ocean/stationtrauma_berth/home)
+"fa" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 3;
+	dir = 4
+	},
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"fl" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_port_aft)
+"fO" = (
+/obj/machinery/modular_computer/preset/engineering{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"fQ" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/botany)
+"fX" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/obj/machinery/door/airlock/engineering{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/textured{
+	color = "#c5b58d"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"fZ" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/ammunition_starboard)
+"ga" = (
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/science_archive)
+"gb" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/rd)
+"gc" = (
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/maintenance)
+"gf" = (
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"gg" = (
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/captain)
+"gh" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/maintenance)
+"gi" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/showers)
+"gj" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/expedition_storage)
+"gk" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"gl" = (
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/interrogation)
+"gp" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/emergency_equipment)
+"gt" = (
+/obj/machinery/door/airlock/science{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/biology)
+"gy" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/washrooms)
+"gA" = (
+/obj/effect/turf_decal/stripes{
+	dir = 5
+	},
+/obj/machinery/light/cold/dim/directional/north,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"gC" = (
+/obj/machinery/door/airlock/command{
+	dir = 1
+	},
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/sonar)
+"gG" = (
+/obj/machinery/door/airlock/security{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/brig)
+"gI" = (
+/obj/structure/sign/warning/no_smoking/circle,
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"gJ" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/engineering)
+"gK" = (
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/maintenance)
+"gM" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"gS" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/maintenance)
+"gV" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/tools)
+"gX" = (
+/obj/machinery/stationtrauma_reactor_pipe/pump{
+	plant_id = "eurydice";
+	line = 4;
+	connections = 3;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/structure/sign/warning/radiation/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"ha" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/security)
+"hb" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"hg" = (
+/turf/open/floor/iron/white{
+	color = "#b4cfd5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/cmo)
+"ht" = (
+/turf/open/floor/iron/white{
+	color = "#b4cfd5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/isolation)
+"hv" = (
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/supplies)
+"hw" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/life_support)
+"hy" = (
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/sample_preparation)
+"hA" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"hE" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/first_officer)
+"hI" = (
+/obj/structure/light_fake/small/directional/south,
+/obj/machinery/power/apc/auto_name/directional/south{
+	pixel_y = -30
+	},
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"hL" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng"
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"hO" = (
+/obj/effect/turf_decal/stripes{
+	dir = 9
+	},
+/obj/machinery/light/cold/dim/directional/north,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"hP" = (
+/obj/machinery/door/airlock/science{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/rd)
+"hW" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"hX" = (
+/obj/structure/cable/layer1,
+/obj/machinery/light/floor,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
+"ii" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 5
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"im" = (
+/obj/machinery/door/airlock/science{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/sample_preparation)
+"in" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"ip" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/cell_2)
+"is" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"it" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng"
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"iw" = (
+/obj/machinery/vending/cigarette,
+/obj/machinery/newscaster/directional/north,
+/turf/open/floor/iron/dark/smooth_corner,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"iJ" = (
+/obj/machinery/stationtrauma_flood_alarm/directional/north{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"iL" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"iT" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 4
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"iV" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 8
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"jb" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_forward)
+"jc" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"jh" = (
+/obj/structure/sign/nanotrasen/directional/south,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"jj" = (
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/showers)
+"jm" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/upper/utility_store)
+"jo" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"jw" = (
+/obj/effect/overlay/spotlight/underwater{
+	dir = 6
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"jx" = (
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"jz" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"jF" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"jK" = (
+/obj/structure/ladder,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"jM" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/science_archive)
+"jZ" = (
+/obj/structure/closet/emcloset/anchored,
+/turf/open/floor/iron/textured{
+	color = "#c5b58d"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"kg" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"ki" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"kk" = (
+/obj/machinery/stationtrauma_reactor_pipe/valve{
+	plant_id = "eurydice";
+	line = 1;
+	connections = 3;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"km" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"kp" = (
+/obj/structure/reagent_dispensers/plumbed/fuel,
+/turf/open/floor/iron/textured{
+	color = "#c5b58d"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
+"kq" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2
+	},
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"kA" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"kJ" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"kK" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/interrogation)
+"kL" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_04)
+"kN" = (
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"kO" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/library)
+"kS" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/ammunition_port)
+"la" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"lb" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/virology)
+"le" = (
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/maintenance)
+"lf" = (
+/obj/machinery/light/directional/north,
+/obj/structure/sign/nanotrasen/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"lg" = (
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/rd)
+"lh" = (
+/obj/effect/turf_decal/stripes{
+	dir = 6
+	},
+/obj/machinery/light/cold/dim/directional/south,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"lk" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
+"ll" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/ammunition_port)
+"lp" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"lx" = (
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"lQ" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron{
+	color = "#bbc2ad"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/quiet_lounge)
+"mb" = (
+/obj/structure/ladder,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"mc" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"me" = (
+/obj/machinery/door/airlock/command{
+	dir = 1
+	},
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/archive)
+"mf" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/commons)
+"mh" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/armory)
+"ml" = (
+/obj/machinery/door/airlock/security{
+	dir = 1
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/cell_1)
+"mm" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/iron/textured{
+	color = "#c5b58d"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"mo" = (
+/obj/machinery/door/airlock/security{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/security)
+"ms" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
+"mv" = (
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/nt_office)
+"mw" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/bar)
+"mC" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_port_forward)
+"mE" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/washrooms)
+"mJ" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/library)
+"mP" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 10
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng"
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"mU" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/diving)
+"mV" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/obj/machinery/computer/stationtrauma_reactor{
+	plant_id = "eurydice"
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"na" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"nf" = (
+/obj/machinery/newscaster/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"nj" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"ny" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/sample_preparation)
+"nz" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/laboratory)
+"nD" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/records)
+"nN" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/life_support)
+"nP" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/captain)
+"nR" = (
+/obj/machinery/door/airlock/security{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/armory)
+"oh" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"ok" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/torpedoes)
+"oq" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron{
+	color = "#bbc2ad"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/lounge)
+"oz" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/supply_office)
+"oB" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"oF" = (
+/turf/open/space/openspace/ocean,
+/area/space/ocean/stationtrauma_berth/home)
+"oJ" = (
+/obj/structure/closet/firecloset{
+	pixel_x = 1
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/trimline/brown/line,
+/turf/open/floor/iron/dark/textured_half,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"oK" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_06)
+"oX" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/expedition_storage)
+"pa" = (
+/obj/machinery/stationtrauma_reactor_pipe/pump{
+	plant_id = "eurydice";
+	line = 1;
+	connections = 3;
+	dir = 8
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"po" = (
+/obj/structure/table/reinforced,
+/obj/item/clipboard,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"pu" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 6
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"pw" = (
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"pz" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/supplies)
+"pF" = (
+/obj/machinery/light/cold/dim/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"pG" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/lounge)
+"pI" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/maintenance)
+"pK" = (
+/obj/machinery/portable_atmospherics/canister/nitrogen,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
+"pL" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/operating)
+"pP" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 6
+	},
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"pQ" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 4
+	},
+/obj/machinery/door/airlock/engineering{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"pS" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/kitchen)
+"qf" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/chemistry)
+"qh" = (
+/obj/machinery/modular_computer/preset/id{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"qi" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_forward)
+"ql" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/expedition_storage)
+"qq" = (
+/obj/machinery/light/floor,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"qr" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"qu" = (
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"qv" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/isolation)
+"qy" = (
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/obj/structure/sign/warning/radiation/directional/east,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"qD" = (
+/obj/machinery/stationtrauma_reactor_pipe/valve{
+	plant_id = "eurydice";
+	line = 2;
+	connections = 3;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/structure/sign/warning/radiation/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"qG" = (
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/utility_store)
+"qH" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/evacuation_hangar)
+"qJ" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"qN" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/machinery/power/terminal{
+	cable_layer = 1;
+	dir = 1
+	},
+/obj/structure/cable/layer1,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"qP" = (
+/obj/machinery/firealarm/directional/west{
+	pixel_x = -28;
+	pixel_y = 0
+	},
+/obj/structure/rack,
+/obj/item/storage/toolbox/emergency,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"qQ" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/personal_equipment)
+"qR" = (
+/obj/effect/turf_decal/trimline/blue/end{
+	dir = 1
+	},
+/obj/machinery/shower/directional/north,
+/obj/structure/fluff/shower_drain,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
+"qS" = (
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"rd" = (
+/obj/machinery/door/airlock/medical{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#b4cfd5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/operating)
+"re" = (
+/obj/effect/spawner/structure/window/reinforced/diagonal,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"rf" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_02)
+"ro" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/evacuation_hangar)
+"rs" = (
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_hangar)
+"rt" = (
+/obj/structure/cable/layer1,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"ry" = (
+/obj/structure/chair/comfy/shuttle/tactical{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"rB" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_02)
+"rG" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/pantry)
+"rI" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/torpedoes)
+"rM" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 5
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 8
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"rN" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_03)
+"rR" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/torpedoes)
+"rX" = (
+/obj/effect/landmark/latejoin,
+/obj/effect/landmark/start/assistant/override,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"rZ" = (
+/obj/machinery/power/stationtrauma_reactor{
+	plant_id = "eurydice";
+	start_with_fuel = 1
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"sb" = (
+/turf/open/floor/iron/textured{
+	color = "#c5b58d"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"si" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/washrooms)
+"sk" = (
+/obj/machinery/firealarm/directional/west,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"sl" = (
+/obj/item/radio/intercom/directional/north,
+/obj/structure/light_fake/small/directional/north,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"sn" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/evidence)
+"sq" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/structure/sign/warning/radiation/directional/north,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"sr" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"st" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"sy" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"sF" = (
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"sI" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/science_storage)
+"sJ" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_hangar)
+"sL" = (
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/diving)
+"sO" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"sT" = (
+/obj/machinery/door/airlock/command{
+	dir = 1
+	},
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/records)
+"sW" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"sY" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/washrooms)
+"ta" = (
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/decontamination)
+"td" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"tf" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/emergency_supplies)
+"tg" = (
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"th" = (
+/obj/machinery/newscaster/directional/north,
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured_corner,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"tl" = (
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"ts" = (
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/cell_3)
+"tt" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/upper/equipment_reserve)
+"tv" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 3;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"tw" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"tA" = (
+/obj/effect/turf_decal/stripes{
+	dir = 10
+	},
+/obj/machinery/light/cold/dim/directional/south,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"tC" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/kitchen)
+"tD" = (
+/turf/open/floor/iron{
+	color = "#bbc2ad"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/lounge)
+"tE" = (
+/obj/machinery/power/stationtrauma_plant_machine/reservoir{
+	plant_id = "eurydice"
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"tG" = (
+/obj/machinery/computer/records/medical{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"tJ" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"tK" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"tN" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"tP" = (
+/obj/machinery/door/airlock/science{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/science_storage)
+"tU" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/supply_office)
+"tV" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_forward)
+"ua" = (
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"ub" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/quiet_lounge)
+"uh" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/cmo)
+"uk" = (
+/obj/machinery/door/airlock/highsecurity/underwater/multi_tile/directional/east,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"up" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"uq" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_03)
+"ur" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_03)
+"uv" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_04)
+"uD" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"uH" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_half{
+	dir = 1
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"uI" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/maintenance)
+"uJ" = (
+/obj/structure/table/reinforced,
+/obj/machinery/keycard_auth{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/machinery/recharger{
+	pixel_y = 2;
+	pixel_x = -8
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"uM" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 9
+	},
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"uQ" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/emergency_supplies)
+"uV" = (
+/obj/structure/table/reinforced,
+/obj/item/radio/intercom/directional{
+	pixel_x = 0;
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"uX" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/emergency_supplies)
+"vc" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/wardroom)
+"vd" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/machinery/light/cold/dim/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"vg" = (
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"vi" = (
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"vm" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/navigation)
+"vo" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/robotics)
+"vr" = (
+/obj/machinery/light/cold/dim/directional/north,
+/obj/machinery/stationtrauma_flood_alarm/directional/north{
+	pixel_y = 32
+	},
+/obj/machinery/stationtrauma_pump_controller/directional/east{
+	pixel_x = 30
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"vv" = (
+/turf/open/space/ocean,
+/area/space/ocean/stationtrauma_berth/home)
+"vw" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/diving)
+"vD" = (
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/middle/virology)
+"vK" = (
+/obj/machinery/door/airlock/science{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/instruments)
+"vM" = (
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
+"vO" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 8
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"vP" = (
+/obj/machinery/door/airlock/security{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/interrogation)
+"vS" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/cell_1)
+"vV" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/structure/cable,
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"wa" = (
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/lower/corridors)
+"we" = (
+/turf/open/floor/iron/kitchen,
+/area/station/stationtrauma/eurydice/rooms/middle/dining)
+"wg" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/cell_1)
+"wl" = (
+/obj/machinery/light/cold/dim/directional/east,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"wn" = (
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"wo" = (
+/obj/structure/sign/nanotrasen/directional/east,
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/sonar)
+"ws" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng_room";
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"wt" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/evacuation_hangar)
+"wB" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/evacuation_hangar)
+"wI" = (
+/obj/machinery/modular_computer/preset/command,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"wJ" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/cell_2)
+"wK" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"wO" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"wP" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/upper/laundry)
+"xb" = (
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/cell_1)
+"xe" = (
+/obj/machinery/door/airlock/command{
+	dir = 4
+	},
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/sonar)
+"xg" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/pantry)
+"xl" = (
+/obj/effect/turf_decal/tile/yellow/half/contrasted,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"xu" = (
+/obj/machinery/door/airlock/command{
+	dir = 4
+	},
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/navigation)
+"xw" = (
+/obj/effect/spawner/structure/window/reinforced/indestructible,
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"xA" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/kitchen)
+"xC" = (
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"xI" = (
+/turf/open/floor/iron/kitchen,
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"xP" = (
+/obj/effect/turf_decal/stripes,
+/obj/structure/sign/warning/radiation/directional/south,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"xQ" = (
+/turf/open/floor/wood,
+/area/station/stationtrauma/eurydice/rooms/upper/wardroom)
+"xR" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/botany)
+"xU" = (
+/obj/machinery/door/airlock/command{
+	dir = 1
+	},
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/first_officer)
+"xV" = (
+/obj/structure/closet/firecloset,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"xY" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/archive)
+"yb" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/evacuation_hangar)
+"yk" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"yn" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/receiving)
+"yx" = (
+/obj/machinery/stationtrauma_pump_controller/directional/west{
+	pixel_x = -30;
+	pixel_y = -1
+	},
+/obj/structure/rack,
+/obj/item/storage/briefcase/secure,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"yz" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/cell_3)
+"yB" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"yH" = (
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 4;
+	pixel_x = 6
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_half{
+	dir = 1
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"yK" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"yL" = (
+/turf/open/floor/iron/textured{
+	color = "#c5b58d"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
+"yO" = (
+/obj/machinery/door/airlock/science{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/science_archive)
+"yS" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"yV" = (
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"yW" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"za" = (
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/emergency_supplies)
+"zc" = (
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"zd" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/washrooms)
+"ze" = (
+/obj/structure/ladder,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"zf" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/commons)
+"zg" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/structure/cable/layer1,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"zm" = (
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"zn" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/engineering_security)
+"zp" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/coldroom)
+"zq" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 6
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"zr" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"zt" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/sleepers)
+"zy" = (
+/obj/machinery/light/cold/dim/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"zz" = (
+/obj/machinery/computer/atmos_alert/station_only{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"zA" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 5
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"zE" = (
+/obj/effect/overlay/spotlight/underwater{
+	dir = 6
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"zN" = (
+/turf/open/floor/iron/white,
+/area/station/stationtrauma/eurydice/rooms/middle/washrooms)
+"zO" = (
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/evidence)
+"zV" = (
+/obj/structure/closet/radiation,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Aa" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_hangar)
+"Ac" = (
+/turf/open/floor/iron/white,
+/area/station/stationtrauma/eurydice/rooms/middle/coldroom)
+"An" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/sleepers)
+"Ay" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"AH" = (
+/obj/machinery/door/airlock/command{
+	dir = 1
+	},
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/communications)
+"AI" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/medical_security)
+"AL" = (
+/obj/machinery/computer/monitor{
+	dir = 8
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow/anticorner/contrasted,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"AM" = (
+/obj/machinery/door/airlock/medical{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#b4cfd5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/isolation)
+"AP" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/botany)
+"AQ" = (
+/obj/machinery/door/airlock/security{
+	dir = 1
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/cell_3)
+"Ba" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/evacuation_hangar)
+"Bd" = (
+/obj/structure/ladder,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"Be" = (
+/obj/item/radio/intercom/directional/east{
+	pixel_y = 3;
+	pixel_x = 29
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"Bm" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"Bo" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/tools)
+"Br" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 3;
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Bt" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/upper/personal_equipment)
+"BC" = (
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/science_storage)
+"BE" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"BN" = (
+/obj/structure/sign/warning/secure_area,
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"BQ" = (
+/obj/effect/spawner/random/vending/snackvend,
+/obj/machinery/digital_clock/directional/south,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"BR" = (
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/sonar)
+"BS" = (
+/obj/effect/turf_decal/stripes/end{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"BY" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/morgue)
+"Ca" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 9
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"Cd" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
+"Ce" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_airlock)
+"Cr" = (
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/communications)
+"Ct" = (
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_equipment)
+"Cv" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/specimens)
+"Cz" = (
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/security)
+"CG" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"CH" = (
+/obj/machinery/door/airlock/medical{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#b4cfd5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/cmo)
+"CI" = (
+/obj/machinery/door/airlock/command{
+	dir = 1
+	},
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/captain)
+"CO" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/isolation)
+"CQ" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/supply_office)
+"Da" = (
+/obj/effect/turf_decal/stripes{
+	dir = 6
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Dd" = (
+/obj/structure/ladder,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/corridors)
+"Dh" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Dl" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Dm" = (
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/lower/diving)
+"Dr" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"Ds" = (
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/navigation)
+"Du" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_05)
+"Dv" = (
+/obj/machinery/door/airlock/security{
+	dir = 1
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/cell_2)
+"Dz" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"DB" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 6
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"DD" = (
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/specimens)
+"DF" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/machinery/newscaster/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"DH" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/sample_preparation)
+"DJ" = (
+/obj/machinery/door/airlock/medical{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#b4cfd5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/medbay)
+"DL" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	connections = 7
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"DN" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/structure/sign/warning/radiation/directional/west,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"DP" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"DR" = (
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/washrooms)
+"DW" = (
+/obj/structure/light_fake/small/directional/north,
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"Ea" = (
+/obj/machinery/light/cold/dim/directional/south,
+/obj/structure/closet/firecloset{
+	pixel_x = 1
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/trimline/brown/line,
+/turf/open/floor/iron/dark/textured_half,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Eh" = (
+/obj/machinery/button/door/directional/east{
+	pixel_x = 32;
+	pixel_y = -5;
+	id = "nuke_eng";
+	name = "Шторы Реактора"
+	},
+/obj/structure/closet/firecloset,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Ei" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/upper/sleepers)
+"Ej" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_01)
+"Es" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Et" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_airlock)
+"Ev" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/pantry)
+"EC" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_port_forward)
+"ED" = (
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"EE" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"EI" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_port_forward)
+"Fk" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Fo" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"Fp" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 4
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Fq" = (
+/obj/effect/overlay/spotlight/underwater{
+	dir = 5
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"FD" = (
+/obj/structure/rack,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"FE" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_port_aft)
+"FG" = (
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
+"FR" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/maintenance)
+"Ge" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/equipment_reserve)
+"Gf" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	connections = 11
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"Gg" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/ammunition_port)
+"Gi" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/receiving)
+"Gj" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/equipment_reserve)
+"Gm" = (
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"Gt" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/cmo)
+"Gu" = (
+/obj/machinery/door/airlock/security{
+	dir = 1
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/security)
+"Gw" = (
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_airlock)
+"Gx" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"GM" = (
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/corridors)
+"GS" = (
+/obj/machinery/airalarm/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"GX" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 10
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Hd" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/gun_port_forward)
+"Hj" = (
+/obj/machinery/computer/communications{
+	dir = 8;
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"Hm" = (
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/brig)
+"Ho" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Hq" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"Ht" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
+"Hv" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	connections = 7
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Hz" = (
+/obj/structure/table/reinforced,
+/obj/item/assembly/flash/handheld,
+/obj/item/restraints/handcuffs,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"HG" = (
+/obj/machinery/light/cold/dim/directional/south,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"HH" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_01)
+"HM" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/personal_equipment)
+"HW" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"Ib" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/personal_equipment)
+"Iq" = (
+/obj/machinery/computer/monitor{
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"Ir" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_port_forward)
+"Iz" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 9
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"IB" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/space/ocean/openspace)
+"IC" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"ID" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"IF" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes,
+/obj/structure/sign/warning/radiation/directional/south,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"IG" = (
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/obj/structure/table,
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"IH" = (
+/obj/structure/cable,
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/tile/yellow/half/contrasted,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"IJ" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/stripes,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"IP" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"Ja" = (
+/obj/structure/closet/radiation,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/iron/dark/textured_half,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Ji" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/science_archive)
+"Jl" = (
+/obj/structure/light_fake/small/directional/south,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"Jm" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/obj/structure/ladder,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Jq" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/utility_store)
+"Jt" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/communications)
+"Jv" = (
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"Jw" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_hangar)
+"JA" = (
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"JB" = (
+/obj/structure/table/reinforced,
+/obj/item/folder/blue,
+/obj/item/pen,
+/obj/effect/light_emitter/podbay,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"JE" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_02)
+"JM" = (
+/obj/machinery/computer/records/security{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"JN" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow/half/contrasted,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"JP" = (
+/obj/machinery/door/airlock/command{
+	dir = 1
+	},
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/nt_office)
+"JS" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/evidence)
+"JV" = (
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"Kb" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/isolation)
+"Kc" = (
+/obj/machinery/door/airlock/science{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/robotics)
+"Ke" = (
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Kf" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_port_forward)
+"Kg" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_05)
+"Kh" = (
+/obj/structure/sign/warning/secure_area,
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"Kk" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/laundry)
+"Kq" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_forward)
+"Kw" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/cell_3)
+"KB" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/medkit/regular,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"KC" = (
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"KE" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/brig)
+"KF" = (
+/obj/machinery/computer/crew{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"KP" = (
+/obj/docking_port/mobile/stationtrauma/eurydice,
+/turf/open/space/ocean,
+/area/space/ocean/stationtrauma_berth/home)
+"KY" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"Lb" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/utility_store)
+"Ld" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"Lr" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Ly" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Lz" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/library)
+"LC" = (
+/obj/machinery/firealarm/directional/west{
+	pixel_y = -8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"LJ" = (
+/obj/structure/light_fake/small/directional/north,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"LK" = (
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"LO" = (
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_equipment)
+"LS" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/dining)
+"LT" = (
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 4
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/space/ocean/openspace)
+"LU" = (
+/obj/machinery/door/airlock/security{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/evidence)
+"LY" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/diving)
+"Me" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/brig)
+"Mg" = (
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/robotics)
+"Mj" = (
+/obj/machinery/computer/stationtrauma_navigation/directional/west,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"Ml" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/bar)
+"Mm" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_aft)
+"Mo" = (
+/obj/effect/turf_decal/trimline/blue/end,
+/obj/machinery/shower/directional/south,
+/obj/structure/fluff/shower_drain,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
+"Mu" = (
+/obj/machinery/light/cold/dim/directional/east,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"Mv" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Mw" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/pantry)
+"Mx" = (
+/obj/effect/turf_decal/stripes,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"MN" = (
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"MQ" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/expedition_storage)
+"MU" = (
+/obj/machinery/stationtrauma_reactor_pipe/valve{
+	plant_id = "eurydice";
+	line = 5;
+	connections = 3;
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Na" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 9
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Ne" = (
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Ni" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/personal_equipment)
+"Nj" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"Np" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"Ns" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/instruments)
+"Nv" = (
+/obj/machinery/stationtrauma_pump_controller/directional/north{
+	pixel_y = 28
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Nw" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_04)
+"Ny" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_01)
+"NE" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/corridors)
+"NF" = (
+/obj/structure/ladder/stationtrauma,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"NN" = (
+/obj/machinery/door/airlock/engineering{
+	dir = 1
+	},
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng_room";
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"NQ" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/cargo)
+"NR" = (
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/receiving)
+"NS" = (
+/obj/machinery/light/cold/dim/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"NW" = (
+/obj/machinery/computer/security,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"NY" = (
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"Oe" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/tools)
+"Of" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"Ok" = (
+/obj/machinery/door/airlock/medical{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#b4cfd5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/chemistry)
+"Ol" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/legal)
+"Om" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Oo" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
+"Op" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_06)
+"Ou" = (
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"OD" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/botany)
+"OH" = (
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/biology)
+"OI" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"OL" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_03)
+"OT" = (
+/obj/structure/ladder,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice/rooms/lower/corridors)
+"OV" = (
+/obj/machinery/door/airlock/security{
+	dir = 1
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/brig)
+"Pa" = (
+/obj/effect/turf_decal/stripes/end{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"Pe" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/diving)
+"Ph" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/laundry)
+"Po" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/structure/cable/layer1,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"Pp" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/engineering)
+"Pr" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_01)
+"Pu" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"Pv" = (
+/obj/machinery/power/shuttle_engine/huge{
+	dir = 8
+	},
+/turf/open/space/openspace/ocean,
+/area/space/ocean/stationtrauma_berth/home)
+"Pw" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"Py" = (
+/obj/machinery/stationtrauma_flood_alarm/directional/west{
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/obj/structure/table/reinforced,
+/obj/structure/secure_safe/caps_spare{
+	pixel_x = 0;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"PH" = (
+/turf/open/floor/iron/white{
+	color = "#b4cfd5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/chemistry)
+"PK" = (
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/cargo)
+"PM" = (
+/turf/open/floor/wood,
+/area/station/stationtrauma/eurydice/rooms/middle/bar)
+"PN" = (
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
+"PQ" = (
+/obj/structure/sign/warning/no_smoking/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"PR" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_equipment)
+"Qc" = (
+/obj/item/radio/intercom/directional/east{
+	pixel_x = 33
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Qg" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_airlock)
+"Qr" = (
+/obj/machinery/door/airlock/command{
+	dir = 1
+	},
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/navigation)
+"Qw" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/cargo)
+"Qy" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/rd)
+"Qz" = (
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/first_officer)
+"QB" = (
+/turf/open/floor/iron/white{
+	color = "#b4cfd5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/operating)
+"QC" = (
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"QD" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/medical_security)
+"QG" = (
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/archive)
+"QM" = (
+/obj/effect/turf_decal/trimline/brown/line,
+/turf/open/floor/iron/dark/textured_half,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"QN" = (
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
+"QT" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/diving)
+"QU" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"Rc" = (
+/obj/machinery/vending/coffee,
+/obj/machinery/wall_healer/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"Rf" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/obj/structure/extinguisher_cabinet/directional/south,
+/obj/effect/turf_decal/trimline/brown/line,
+/turf/open/floor/iron/dark/textured_half,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Rg" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Rh" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/corridors)
+"Rm" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/commons)
+"Rn" = (
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/expedition_storage)
+"Rr" = (
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/equipment_reserve)
+"Rs" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_01)
+"Rt" = (
+/turf/open/floor/iron{
+	color = "#bbc2ad"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/quiet_lounge)
+"Rv" = (
+/obj/effect/turf_decal/stripes{
+	dir = 5
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Rw" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Rx" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/nt_office)
+"Ry" = (
+/obj/machinery/light/cold/dim/directional/south,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"RD" = (
+/obj/machinery/light/directional/west,
+/obj/machinery/portable_atmospherics/canister/nitrogen,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
+"RG" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"RO" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"RU" = (
+/obj/machinery/door/airlock/security{
+	dir = 1
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/interrogation)
+"Sa" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"Sc" = (
+/obj/structure/light_fake/small/directional/south,
+/obj/machinery/power/apc/auto_name/directional/south{
+	pixel_y = -30
+	},
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"Sh" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/engineering_security)
+"Sk" = (
+/obj/item/radio/intercom/directional/east{
+	pixel_y = 3;
+	pixel_x = 29
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"Sm" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 4
+	},
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"Sn" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/obj/structure/closet/radiation,
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/trimline/brown/line,
+/turf/open/floor/iron/dark/textured_half,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Su" = (
+/obj/effect/overlay/spotlight/underwater{
+	dir = 5
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"Sv" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/upper/showers)
+"Sz" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/upper/washrooms)
+"SA" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 3;
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"SG" = (
+/turf/open/floor/iron/kitchen,
+/area/station/stationtrauma/eurydice/rooms/middle/kitchen)
+"SH" = (
+/obj/machinery/light/directional/north,
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"SJ" = (
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"SL" = (
+/obj/machinery/firealarm/directional/east,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"SM" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/morgue)
+"SN" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"SP" = (
+/obj/machinery/power/stationtrauma_plant_machine/cooler{
+	plant_id = "eurydice"
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"SU" = (
+/turf/open/floor/iron/textured{
+	color = "#c5b48c"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/tools)
+"SW" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_aft)
+"Td" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 8
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Th" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/specimens)
+"Tj" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/receiving)
+"Tl" = (
+/obj/structure/sign/warning/secure_area/directional/north{
+	pixel_y = 40
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Tm" = (
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"Tn" = (
+/obj/structure/reagent_dispensers/plumbed,
+/turf/open/floor/iron/textured{
+	color = "#c5b58d"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
+"Tu" = (
+/turf/open/floor/iron/white{
+	color = "#a2beb6"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/laundry)
+"Tv" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/emergency_equipment)
+"Tw" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/supplies)
+"Ty" = (
+/obj/structure/cable,
+/obj/structure/cable/layer1,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/engineering)
+"TC" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/library)
+"TE" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 3;
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"TF" = (
+/obj/machinery/door/airlock/security{
+	dir = 1
+	},
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/armory)
+"TJ" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/sleepers)
+"TN" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/medbay)
+"TQ" = (
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"TU" = (
+/obj/structure/sign/warning/no_smoking/circle,
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"TV" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/receiving)
+"TW" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_02)
+"TZ" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
+"Ug" = (
+/turf/open/floor/iron/white{
+	color = "#b4cfd5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/medbay)
+"Ui" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Ul" = (
+/obj/effect/turf_decal/stripes,
+/obj/machinery/light/cold/dim/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"Un" = (
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"Uo" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"Uq" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/supplies)
+"Ur" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/coldroom)
+"Us" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_01)
+"Uy" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/first_officer)
+"UG" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 4
+	},
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/stripes,
+/obj/structure/sign/warning/radiation/directional/south,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"UK" = (
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"UL" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_02)
+"UP" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/structure/sign/warning/radiation/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"UQ" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"UR" = (
+/obj/effect/overlay/spotlight/underwater{
+	dir = 4
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"UU" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/item/storage/toolbox/electrical,
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"UX" = (
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"Vd" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/sonar)
+"Ve" = (
+/obj/machinery/door/airlock/science{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/specimens)
+"Vl" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/medical_security)
+"Vn" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Vo" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"Vp" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/life_support)
+"Vs" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/wardroom)
+"Vu" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_06)
+"Vv" = (
+/obj/machinery/stationtrauma_reactor_pipe/sea_outlet{
+	plant_id = "eurydice";
+	line = 5;
+	connections = 2;
+	dir = 2
+	},
+/turf/open/space/ocean,
+/area/space/ocean/stationtrauma_berth/home)
+"VA" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_03)
+"VB" = (
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"VE" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/minisub_equipment)
+"VH" = (
+/obj/structure/sign/nanotrasen/directional/east,
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"VN" = (
+/obj/effect/spawner/structure/window/reinforced/indestructible,
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"VQ" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/upper/crew_05)
+"VS" = (
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/corridors)
+"VU" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/science_storage)
+"Wa" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/virology)
+"Wd" = (
+/obj/machinery/light/cold/dim/directional/north,
+/obj/machinery/stationtrauma_flood_alarm/directional/north{
+	pixel_y = 32
+	},
+/obj/machinery/stationtrauma_pump_controller/directional/east{
+	pixel_x = 30
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"Wh" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"Wm" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/security)
+"Wn" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/corridors)
+"Wo" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_port_aft)
+"Wp" = (
+/turf/open/floor/iron{
+	color = "#c0a0a0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/armory)
+"WF" = (
+/obj/effect/spawner/random/vending/colavend,
+/obj/machinery/newscaster/directional/south,
+/turf/open/floor/iron/dark/smooth_corner,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"WH" = (
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/legal)
+"WN" = (
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"WQ" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/library)
+"WT" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/coldroom)
+"WV" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/textured{
+	color = "#c5b58d"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"Xe" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/biology)
+"Xh" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/upper/officer_04)
+"Xl" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Xo" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/kitchen)
+"Xq" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Xs" = (
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"Xv" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/virology)
+"Xw" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/middle/robotics)
+"Xz" = (
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/engineering)
+"XA" = (
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/torpedoes)
+"XG" = (
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"XH" = (
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"XN" = (
+/obj/structure/rack,
+/obj/item/clothing/glasses/meson/engine{
+	pixel_y = -3;
+	pixel_x = 0
+	},
+/obj/item/clothing/glasses/meson/engine{
+	pixel_x = 2;
+	pixel_y = 0
+	},
+/obj/item/clothing/glasses/meson/engine{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/clothing/glasses/meson/engine{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"XQ" = (
+/obj/machinery/stationtrauma_reactor_pipe/pump/sea_inlet{
+	plant_id = "eurydice";
+	line = 5;
+	connections = 2;
+	dir = 2
+	},
+/turf/open/space/ocean,
+/area/space/ocean/stationtrauma_berth/home)
+"XT" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_port_aft)
+"XV" = (
+/obj/effect/turf_decal/stripes,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"XY" = (
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/decontamination)
+"XZ" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/morgue)
+"Ye" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
+"Yf" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/upper/showers)
+"Yh" = (
+/turf/open/floor/wood,
+/area/station/stationtrauma/eurydice/rooms/middle/library)
+"Yi" = (
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"Yk" = (
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/obj/structure/sign/warning/radiation/directional/east,
+/turf/open/floor/iron/dark{
+	color = "#c8ced0"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"Yp" = (
+/obj/machinery/light/cold/dim/directional/east,
+/obj/machinery/firealarm/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Yq" = (
+/obj/machinery/door/airlock/security{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/middle/medical_security)
+"YC" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"YE" = (
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"Zc" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/effect/mapping_helpers/apc/cell_10k,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Zf" = (
+/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2
+	},
+/obj/item/pipe_dispenser/stationtrauma{
+	plant_id = "eurydice"
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"Zh" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/corridors)
+"Zj" = (
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"Zo" = (
+/turf/open/floor/iron/dark{
+	color = "#b9c9de"
+	},
+/area/station/stationtrauma/eurydice/rooms/upper/records)
+"Zs" = (
+/obj/machinery/computer/station_alert{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"Zw" = (
+/turf/open/floor/iron/dark,
+/area/station/stationtrauma/eurydice/rooms/middle/commons)
+"Zx" = (
+/turf/closed/wall,
+/area/station/stationtrauma/eurydice/rooms/middle/interrogation)
+"ZC" = (
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"ZE" = (
+/obj/machinery/door/airlock/science{
+	dir = 1
+	},
+/turf/open/floor/iron/white{
+	color = "#bdb0ce"
+	},
+/area/station/stationtrauma/eurydice/rooms/middle/laboratory)
+"ZG" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_airlock)
+"ZK" = (
+/turf/open/floor/iron,
+/area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_aft)
+"ZR" = (
+/obj/machinery/door/airlock/highsecurity/underwater{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+
+(1,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+KP
+"}
+(2,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(3,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+eS
+vv
+vv
+vv
+vv
+vv
+eS
+vv
+vv
+vv
+vv
+vv
+eS
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(4,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(5,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(6,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pu
+Pu
+Pu
+Pu
+Pu
+vv
+Pu
+Pu
+Pu
+Pu
+Pu
+vv
+Pu
+Pu
+Pu
+Pu
+Pu
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(7,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pu
+LJ
+Uo
+ua
+Pu
+Pu
+Pu
+ua
+Uo
+ua
+Pu
+Pu
+Pu
+ua
+XV
+Jl
+Pu
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(8,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pu
+ua
+Uo
+ua
+ua
+xw
+ua
+ua
+Uo
+ua
+ua
+xw
+ua
+ua
+XV
+ua
+Pu
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(9,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pu
+Un
+Pa
+ua
+ua
+xw
+ua
+ua
+Pa
+ua
+ua
+xw
+ua
+ua
+Pa
+QC
+Pu
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(10,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pu
+sl
+ua
+ua
+ua
+xw
+ua
+ua
+ua
+ua
+ua
+xw
+ua
+ua
+qS
+hI
+Pu
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(11,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pu
+Pu
+jo
+jo
+jo
+jo
+jo
+jo
+jo
+jo
+jo
+jo
+jo
+jo
+jo
+EE
+jo
+Pu
+Pu
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(12,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pu
+vr
+Bd
+Tm
+tg
+tg
+tg
+tg
+wl
+tg
+tg
+tg
+tg
+Be
+tg
+SL
+Tm
+HG
+Pu
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(13,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pu
+yk
+QU
+yk
+vV
+yk
+QU
+QU
+BN
+ZR
+TU
+QU
+QU
+yk
+QU
+yk
+QU
+yk
+Pu
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(14,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+xV
+jx
+nf
+Xq
+PQ
+jx
+jx
+jx
+jx
+NS
+jx
+jx
+LC
+jx
+jx
+jx
+jx
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(15,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+zy
+jx
+jx
+Xq
+jx
+qy
+dx
+dx
+dx
+dx
+dx
+qy
+jx
+jx
+jx
+jx
+pF
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(16,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+WN
+jx
+jx
+SN
+Mv
+DP
+vO
+vO
+rM
+Td
+Td
+Vo
+Ui
+jx
+jx
+jx
+qu
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(17,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+xC
+jx
+jx
+IF
+DB
+Na
+hW
+hW
+sr
+hW
+hW
+GX
+Vn
+gX
+dG
+zA
+wn
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(18,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+RG
+jx
+jx
+jx
+kk
+ck
+hA
+Ke
+Ke
+is
+Ke
+Ke
+MN
+it
+Dl
+jx
+zr
+jx
+RG
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(19,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+zc
+JV
+zq
+bq
+Dh
+ck
+hA
+Ke
+Ne
+Ne
+Ne
+Ke
+MN
+it
+Dl
+SJ
+kA
+JA
+gk
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(20,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+Ul
+UX
+UX
+IP
+Dh
+mP
+jz
+Es
+Ne
+rZ
+Ne
+ii
+MN
+it
+Dl
+Yi
+qr
+pu
+vd
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(21,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+LK
+UX
+UX
+IP
+Dh
+it
+hA
+Ke
+Ne
+Ne
+Ne
+Lr
+MN
+it
+Dl
+Yi
+kN
+kN
+IC
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(22,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+LK
+UX
+au
+kg
+IJ
+it
+hA
+Ke
+Ke
+uD
+Ke
+Lr
+MN
+it
+Dl
+Yi
+kN
+SP
+DF
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(23,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+RG
+LK
+UX
+UX
+IP
+UG
+Vo
+Rv
+UK
+UK
+st
+UK
+tK
+Da
+Vo
+bn
+Yi
+kN
+kN
+IC
+RG
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(24,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+RG
+jx
+LK
+UX
+UX
+IP
+cM
+Ui
+Vo
+Om
+Om
+pQ
+Om
+Fp
+Vo
+Ui
+jx
+pP
+Iz
+qJ
+IC
+jx
+RG
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(25,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+jx
+jx
+jc
+Of
+tv
+Gx
+kq
+Xl
+qD
+sO
+sO
+uM
+gM
+tw
+UP
+dG
+dG
+Sm
+CG
+bE
+nj
+jx
+jx
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(26,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+XQ
+cR
+Ly
+Hv
+Ly
+Jm
+SA
+Ly
+Rw
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+UQ
+jx
+Fk
+jx
+jx
+jx
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(27,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+jx
+MU
+tE
+TE
+Br
+jx
+pa
+rt
+rt
+rt
+rt
+rt
+jx
+jx
+jx
+jx
+jx
+jx
+jx
+Fk
+jx
+jx
+jx
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(28,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+jx
+Fk
+sW
+fa
+DL
+Dr
+Ho
+Xq
+Qc
+Yp
+Xq
+ZC
+jx
+zV
+Eh
+jx
+jx
+jx
+jx
+Fk
+jx
+jx
+wn
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(29,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+WN
+Fk
+Ou
+tl
+tl
+tJ
+Xq
+XN
+hb
+hb
+ws
+NN
+ws
+hb
+hb
+Tl
+jx
+jx
+jx
+Fk
+jx
+jx
+qu
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(30,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+zy
+Fk
+Ou
+tl
+ax
+tJ
+Xq
+FD
+hb
+th
+uH
+yH
+uH
+iT
+hb
+WN
+jx
+jx
+jx
+Fk
+jx
+jx
+pF
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(31,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+jx
+Fk
+Ou
+tl
+tl
+tJ
+Xq
+GS
+hb
+Ja
+jx
+ZC
+jx
+QM
+hb
+Nv
+jx
+jx
+jx
+Fk
+jx
+jx
+jx
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(32,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+jx
+Rg
+cY
+lp
+wK
+iL
+Xq
+Zc
+hb
+Ja
+jx
+ZC
+jx
+oJ
+hb
+iJ
+jx
+jx
+jx
+Fk
+jx
+jx
+jx
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(33,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+jx
+jx
+jx
+jx
+Fk
+jx
+jx
+jx
+hb
+Ja
+jx
+ZC
+jx
+Ea
+hb
+jx
+jx
+jx
+jx
+Fk
+jx
+jx
+jx
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(34,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+Vv
+cR
+Pw
+Pw
+Pw
+Pw
+Gf
+Pw
+Pw
+Pw
+OI
+Sn
+mV
+Zf
+Ly
+Rf
+OI
+Pw
+Pw
+fX
+Pw
+Ca
+oB
+oB
+hb
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(35,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+RG
+hb
+oB
+mm
+sb
+sb
+sb
+sb
+sb
+sb
+hb
+an
+ah
+ai
+ah
+ag
+hb
+sb
+sb
+sb
+sb
+sb
+sb
+mm
+hb
+hb
+RG
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(36,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+RG
+RG
+vg
+oB
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+hb
+hb
+hb
+aj
+hb
+hb
+hb
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+Et
+Gw
+Ce
+Ce
+vv
+vv
+vv
+vv
+vv
+"}
+(37,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+RG
+vg
+vg
+oB
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+ms
+ms
+Mo
+vM
+qR
+ms
+ms
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+Et
+Gw
+ZG
+Ce
+vv
+vv
+vv
+vv
+vv
+"}
+(38,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+RG
+vg
+vg
+ki
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+yL
+ms
+Mo
+hX
+qR
+ms
+kp
+sb
+sb
+sb
+sb
+sb
+sb
+sb
+Qg
+Gw
+Gw
+Qg
+vv
+vv
+vv
+vv
+vv
+"}
+(39,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+RG
+Dz
+vg
+oB
+jZ
+sb
+sb
+sb
+sb
+sb
+sb
+yL
+ms
+Mo
+vM
+qR
+ms
+Tn
+sb
+sb
+sb
+sb
+sb
+sb
+WV
+Et
+Gw
+Gw
+Ce
+vv
+vv
+vv
+vv
+vv
+"}
+(40,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+RG
+hb
+hb
+oB
+oB
+oB
+oB
+oB
+oB
+oB
+oB
+ms
+ms
+Cd
+Ht
+Cd
+ms
+ms
+oB
+oB
+oB
+oB
+oB
+oB
+oB
+Et
+Et
+Et
+Ce
+vv
+vv
+vv
+vv
+vv
+"}
+(41,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Pp
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Ay
+IG
+up
+Iq
+Ay
+XY
+ta
+XY
+XY
+PN
+PN
+PN
+PN
+PN
+PN
+TZ
+Oo
+RD
+QN
+FG
+lk
+vv
+vv
+vv
+vv
+vv
+"}
+(42,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Pp
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Ay
+Xs
+qN
+xl
+ao
+XY
+ta
+XY
+XY
+PN
+PN
+PN
+PN
+PN
+PN
+TZ
+Oo
+pK
+QN
+FG
+lk
+vv
+vv
+vv
+vv
+vv
+"}
+(43,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Pp
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Ay
+Xs
+qN
+xl
+ao
+XY
+ta
+XY
+XY
+PN
+PN
+PN
+PN
+PN
+PN
+TZ
+Oo
+pK
+QN
+FG
+lk
+vv
+vv
+vv
+vv
+vv
+"}
+(44,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Pp
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Ay
+Xs
+qN
+xl
+Ay
+XY
+ta
+XY
+XY
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+lk
+vv
+vv
+vv
+vv
+vv
+"}
+(45,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Pp
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Ay
+yK
+Po
+IH
+ap
+Ty
+Ty
+Xz
+Xz
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+lk
+vv
+vv
+vv
+vv
+vv
+"}
+(46,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Pp
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Ay
+Xs
+qN
+JN
+Ay
+Xz
+Xz
+Xz
+Xz
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+lk
+vv
+vv
+vv
+vv
+vv
+"}
+(47,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Pp
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Ay
+Xs
+qN
+JN
+ao
+Xz
+Xz
+Xz
+Xz
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+lk
+vv
+vv
+vv
+vv
+vv
+"}
+(48,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Pp
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Ay
+Xs
+qN
+JN
+ao
+Xz
+Xz
+Xz
+Xz
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+lk
+vv
+vv
+vv
+vv
+vv
+"}
+(49,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Pp
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Ay
+UU
+zg
+AL
+Ay
+Xz
+Xz
+Xz
+Xz
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+lk
+vv
+vv
+vv
+vv
+vv
+"}
+(50,1,1) = {"
+vv
+vv
+vv
+vv
+Pp
+Pp
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Ay
+Ay
+Ay
+Ay
+Ay
+Xz
+Xz
+Xz
+Xz
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+PN
+lk
+lk
+vv
+vv
+vv
+vv
+"}
+(51,1,1) = {"
+vv
+vv
+vv
+fl
+FE
+FE
+gJ
+gJ
+gJ
+gJ
+gJ
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Ye
+Ye
+Ye
+Ye
+Ye
+cv
+cv
+Mm
+vv
+vv
+vv
+"}
+(52,1,1) = {"
+vv
+vv
+vv
+fl
+XT
+XT
+XT
+XT
+XT
+XT
+gJ
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+SW
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+Mm
+vv
+vv
+vv
+"}
+(53,1,1) = {"
+vv
+vv
+vv
+fl
+XT
+XT
+XT
+XT
+XT
+XT
+gJ
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+SW
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+Mm
+vv
+vv
+vv
+"}
+(54,1,1) = {"
+vv
+vv
+vv
+fl
+XT
+XT
+XT
+XT
+XT
+XT
+gJ
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+SW
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+Mm
+vv
+vv
+vv
+"}
+(55,1,1) = {"
+vv
+vv
+fl
+fl
+XT
+XT
+XT
+XT
+XT
+XT
+gJ
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+SW
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+Mm
+Mm
+vv
+vv
+"}
+(56,1,1) = {"
+vv
+vv
+fl
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+gJ
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+SW
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+Mm
+vv
+vv
+"}
+(57,1,1) = {"
+vv
+vv
+fl
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+cu
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+gJ
+Sh
+Sh
+Sh
+Sh
+ae
+Xz
+Xz
+Xz
+Xz
+Xz
+bo
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+Mm
+vv
+vv
+"}
+(58,1,1) = {"
+vv
+vv
+fl
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+Wo
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+gJ
+zn
+zn
+zn
+Sh
+ae
+Xz
+Xz
+Xz
+Xz
+Xz
+SW
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+Mm
+vv
+vv
+"}
+(59,1,1) = {"
+vv
+vv
+fl
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+gJ
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+gJ
+zn
+zn
+zn
+Sh
+ae
+Xz
+Xz
+Xz
+Xz
+Xz
+SW
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+Mm
+vv
+vv
+"}
+(60,1,1) = {"
+vv
+vv
+fl
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+gJ
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+gJ
+zn
+zn
+zn
+Sh
+ae
+Xz
+Xz
+Xz
+Xz
+Xz
+SW
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+Mm
+vv
+vv
+"}
+(61,1,1) = {"
+vv
+vv
+fl
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+gJ
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+gJ
+zn
+zn
+zn
+Sh
+ae
+Xz
+Xz
+Xz
+Xz
+Xz
+SW
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+Mm
+vv
+vv
+"}
+(62,1,1) = {"
+vv
+vv
+fl
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+gJ
+Xz
+Xz
+Xz
+Xz
+Xz
+Xz
+gJ
+ak
+zn
+zn
+Sh
+ae
+Xz
+Xz
+Xz
+Xz
+Xz
+SW
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+ZK
+Mm
+vv
+vv
+"}
+(63,1,1) = {"
+vv
+vv
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Pp
+Mm
+Mm
+Mm
+Mm
+Mm
+Mm
+Mm
+Mm
+vv
+vv
+"}
+(64,1,1) = {"
+vv
+vv
+Zh
+GM
+GM
+Rh
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+Zh
+GM
+GM
+Zh
+vv
+vv
+"}
+(65,1,1) = {"
+vv
+vv
+ab
+GM
+GM
+ab
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+Dd
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+ab
+GM
+GM
+ab
+vv
+vv
+"}
+(66,1,1) = {"
+vv
+vv
+Zh
+GM
+GM
+Rh
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+Zh
+GM
+GM
+Zh
+vv
+vv
+"}
+(67,1,1) = {"
+vv
+vv
+Rh
+Rh
+Rh
+Rh
+Wn
+Wn
+Wn
+ep
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+GM
+GM
+GM
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+fZ
+Wn
+Wn
+Wn
+Rh
+Rh
+Rh
+Zh
+vv
+vv
+"}
+(68,1,1) = {"
+vv
+vv
+kS
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Tj
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+oz
+ac
+vv
+vv
+"}
+(69,1,1) = {"
+vv
+vv
+kS
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Tj
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+oz
+ac
+vv
+vv
+"}
+(70,1,1) = {"
+vv
+vv
+kS
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Tj
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+oz
+ac
+vv
+vv
+"}
+(71,1,1) = {"
+vv
+vv
+kS
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+dv
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+tU
+oz
+oz
+oz
+oz
+oz
+oz
+oz
+ac
+vv
+vv
+"}
+(72,1,1) = {"
+vv
+vv
+kS
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+ll
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+oz
+ac
+vv
+vv
+"}
+(73,1,1) = {"
+vv
+vv
+kS
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Tj
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+oz
+ac
+vv
+vv
+"}
+(74,1,1) = {"
+vv
+vv
+kS
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Gg
+Tj
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+oz
+ac
+vv
+vv
+"}
+(75,1,1) = {"
+vv
+vv
+kS
+ll
+ll
+ll
+ll
+ll
+ll
+ll
+ll
+Tj
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+CQ
+CQ
+CQ
+CQ
+CQ
+CQ
+CQ
+CQ
+ac
+vv
+vv
+"}
+(76,1,1) = {"
+vv
+vv
+mC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+Tj
+yn
+yn
+yn
+yn
+yn
+TV
+wa
+wa
+wa
+tU
+oz
+oz
+oz
+oz
+oz
+oz
+Kq
+tV
+tV
+tV
+tV
+tV
+tV
+tV
+qi
+vv
+vv
+"}
+(77,1,1) = {"
+vv
+vv
+mC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+Tj
+yn
+yn
+yn
+yn
+yn
+Tj
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+Kq
+tV
+tV
+tV
+tV
+tV
+tV
+tV
+qi
+vv
+vv
+"}
+(78,1,1) = {"
+vv
+vv
+mC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+Tj
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+Kq
+tV
+tV
+tV
+tV
+tV
+tV
+tV
+qi
+vv
+vv
+"}
+(79,1,1) = {"
+vv
+vv
+mC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+Tj
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+jb
+tV
+tV
+tV
+tV
+tV
+tV
+tV
+qi
+vv
+vv
+"}
+(80,1,1) = {"
+vv
+vv
+mC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+EI
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+Kq
+tV
+tV
+tV
+tV
+tV
+tV
+tV
+qi
+vv
+vv
+"}
+(81,1,1) = {"
+vv
+vv
+mC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+Ir
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+Kq
+tV
+tV
+tV
+tV
+tV
+tV
+tV
+qi
+vv
+vv
+"}
+(82,1,1) = {"
+vv
+vv
+mC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+Tj
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+CQ
+oz
+oz
+oz
+oz
+oz
+oz
+Kq
+tV
+tV
+tV
+tV
+tV
+tV
+tV
+qi
+vv
+vv
+"}
+(83,1,1) = {"
+vv
+vv
+mC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+Tj
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+Wn
+CQ
+CQ
+CQ
+CQ
+CQ
+CQ
+Wn
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+qi
+vv
+vv
+"}
+(84,1,1) = {"
+vv
+vv
+mC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+EC
+Tj
+yn
+yn
+yn
+yn
+yn
+Wn
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+wa
+Zh
+vv
+vv
+"}
+(85,1,1) = {"
+vv
+vv
+mC
+Kf
+Ir
+Ir
+Ir
+Ir
+Ir
+Hd
+Ir
+Qw
+Tj
+Tj
+Tj
+Tj
+Tj
+Wn
+Wn
+NE
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+NE
+Wn
+Wn
+Wn
+Wn
+Wn
+Rh
+Zh
+vv
+vv
+"}
+(86,1,1) = {"
+vv
+vv
+ql
+gj
+Rn
+Rn
+Rn
+Rn
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+Tj
+NR
+NR
+NR
+NR
+NR
+NR
+Wn
+GM
+Bo
+SU
+SU
+SU
+SU
+dt
+gV
+vv
+vv
+"}
+(87,1,1) = {"
+vv
+vv
+vv
+ql
+Rn
+Rn
+Rn
+Rn
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+Tj
+NR
+NR
+NR
+NR
+NR
+NR
+Wn
+GM
+Bo
+SU
+SU
+SU
+SU
+gV
+vv
+vv
+vv
+"}
+(88,1,1) = {"
+vv
+vv
+vv
+ql
+Rn
+Rn
+Rn
+Rn
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+Tj
+NR
+NR
+NR
+NR
+NR
+NR
+Wn
+GM
+Bo
+SU
+SU
+SU
+SU
+gV
+vv
+vv
+vv
+"}
+(89,1,1) = {"
+vv
+vv
+vv
+ql
+Rn
+Rn
+Rn
+Rn
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+Tj
+NR
+NR
+NR
+NR
+NR
+NR
+Wn
+GM
+Bo
+SU
+SU
+SU
+SU
+gV
+vv
+vv
+vv
+"}
+(90,1,1) = {"
+vv
+vv
+vv
+ql
+ql
+Rn
+Rn
+Rn
+oX
+GM
+NQ
+PK
+PK
+PK
+PK
+PK
+PK
+NQ
+GM
+GM
+GM
+Gi
+NR
+NR
+NR
+NR
+NR
+NR
+Gi
+GM
+Oe
+SU
+SU
+SU
+gV
+gV
+vv
+vv
+vv
+"}
+(91,1,1) = {"
+vv
+vv
+vv
+vv
+ql
+ql
+Rn
+Rn
+MQ
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Qw
+GM
+GM
+GM
+Tj
+NR
+NR
+NR
+NR
+NR
+NR
+Tj
+GM
+Bo
+SU
+SU
+gV
+gV
+vv
+vv
+vv
+vv
+"}
+(92,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+ql
+Rn
+Rn
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+Tj
+NR
+NR
+NR
+NR
+NR
+NR
+Wn
+GM
+Bo
+SU
+SU
+gV
+vv
+vv
+vv
+vv
+vv
+"}
+(93,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+ql
+Rn
+Rn
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+Tj
+NR
+NR
+NR
+NR
+NR
+NR
+Wn
+GM
+Bo
+SU
+SU
+gV
+vv
+vv
+vv
+vv
+vv
+"}
+(94,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+ql
+Rn
+Rn
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+Tj
+NR
+NR
+NR
+NR
+NR
+NR
+Wn
+GM
+Bo
+SU
+SU
+gV
+vv
+vv
+vv
+vv
+vv
+"}
+(95,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+ql
+Rn
+Rn
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+Wn
+Tj
+Tj
+Tj
+Tj
+Tj
+Tj
+Wn
+GM
+Bo
+SU
+SU
+gV
+vv
+vv
+vv
+vv
+vv
+"}
+(96,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+ql
+MQ
+MQ
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+Wn
+Bo
+Bo
+gV
+vv
+vv
+vv
+vv
+vv
+"}
+(97,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Tw
+hv
+hv
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+GM
+tf
+za
+za
+uQ
+vv
+vv
+vv
+vv
+vv
+"}
+(98,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Tw
+hv
+hv
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+VE
+LO
+LO
+LO
+LO
+LO
+LO
+Wn
+GM
+tf
+za
+za
+uQ
+vv
+vv
+vv
+vv
+vv
+"}
+(99,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Tw
+hv
+hv
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+VE
+LO
+LO
+LO
+LO
+LO
+LO
+Wn
+GM
+tf
+za
+za
+uQ
+vv
+vv
+vv
+vv
+vv
+"}
+(100,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Tw
+hv
+hv
+pz
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+VE
+LO
+LO
+LO
+LO
+LO
+LO
+Wn
+GM
+uX
+za
+za
+uQ
+vv
+vv
+vv
+vv
+vv
+"}
+(101,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Tw
+hv
+hv
+Uq
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+VE
+LO
+LO
+LO
+LO
+LO
+LO
+Wn
+GM
+tf
+za
+za
+uQ
+vv
+vv
+vv
+vv
+vv
+"}
+(102,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Tw
+hv
+hv
+Wn
+GM
+NQ
+PK
+PK
+PK
+PK
+PK
+PK
+NQ
+GM
+GM
+GM
+PR
+LO
+LO
+LO
+LO
+LO
+LO
+PR
+GM
+tf
+za
+za
+uQ
+vv
+vv
+vv
+vv
+vv
+"}
+(103,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+Tw
+hv
+hv
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Qw
+GM
+GM
+GM
+VE
+LO
+LO
+LO
+LO
+LO
+LO
+VE
+GM
+tf
+za
+za
+uQ
+vv
+vv
+vv
+vv
+vv
+"}
+(104,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+pI
+le
+le
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+VE
+LO
+LO
+LO
+LO
+LO
+LO
+Wn
+GM
+uI
+le
+le
+pI
+vv
+vv
+vv
+vv
+vv
+"}
+(105,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+pI
+le
+le
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+VE
+LO
+LO
+LO
+LO
+LO
+LO
+Wn
+GM
+uI
+le
+le
+pI
+vv
+vv
+vv
+vv
+vv
+"}
+(106,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+pI
+pI
+le
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+VE
+LO
+LO
+LO
+LO
+LO
+LO
+Wn
+GM
+uI
+le
+pI
+pI
+vv
+vv
+vv
+vv
+vv
+"}
+(107,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+pI
+ce
+Wn
+GM
+Qw
+PK
+PK
+PK
+PK
+PK
+PK
+Wn
+GM
+GM
+GM
+VE
+LO
+LO
+LO
+LO
+LO
+LO
+Wn
+GM
+Wn
+ce
+pI
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(108,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+pI
+Zh
+Zh
+Rh
+Qw
+Qw
+Qw
+Qw
+Qw
+Qw
+Wn
+Wn
+NE
+Wn
+Wn
+VE
+VE
+VE
+VE
+VE
+VE
+Rh
+Rh
+Rh
+ce
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(109,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Zh
+GM
+GM
+Zh
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+Ct
+GM
+GM
+GM
+Rh
+GM
+GM
+Zh
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(110,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+ab
+GM
+GM
+ab
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+ad
+GM
+GM
+GM
+ab
+GM
+GM
+ab
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(111,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Zh
+Zh
+Zh
+Rh
+Wn
+Wn
+Wn
+LY
+Wn
+Wn
+Wn
+GM
+GM
+GM
+Wn
+Wn
+Wn
+sJ
+Wn
+Wn
+Wn
+Rh
+Rh
+Rh
+Zh
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(112,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+mU
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+Wn
+GM
+OT
+GM
+dP
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+Jw
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(113,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+Wn
+GM
+GM
+GM
+dP
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(114,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+Wn
+GM
+GM
+GM
+dP
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(115,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+vw
+GM
+GM
+GM
+dH
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(116,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+QT
+GM
+GM
+GM
+dP
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(117,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+mU
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+Wn
+GM
+GM
+GM
+dP
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+Jw
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(118,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+Wn
+GM
+GM
+GM
+dP
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(119,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+sL
+sL
+sL
+sL
+sL
+sL
+sL
+Wn
+GM
+GM
+GM
+dP
+rs
+rs
+rs
+rs
+rs
+rs
+rs
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(120,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+mU
+Dm
+Dm
+Dm
+Dm
+Dm
+Dm
+Wn
+GM
+GM
+GM
+Wn
+er
+er
+er
+er
+er
+er
+Jw
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(121,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+mU
+sL
+sL
+sL
+sL
+sL
+sL
+Wn
+GM
+GM
+GM
+dP
+rs
+rs
+rs
+rs
+rs
+rs
+Jw
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(122,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+mU
+sL
+sL
+sL
+sL
+sL
+sL
+rR
+rR
+rI
+rR
+rR
+rs
+rs
+rs
+rs
+rs
+rs
+Jw
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(123,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+sL
+sL
+sL
+sL
+sL
+sL
+rR
+XA
+XA
+XA
+rR
+rs
+rs
+rs
+rs
+rs
+rs
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(124,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+Pe
+sL
+sL
+sL
+sL
+sL
+rR
+XA
+XA
+XA
+rR
+rs
+rs
+rs
+rs
+rs
+Aa
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(125,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+sL
+sL
+sL
+sL
+sL
+rR
+XA
+XA
+XA
+rR
+rs
+rs
+rs
+rs
+rs
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(126,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+sL
+sL
+sL
+sL
+sL
+rR
+XA
+XA
+XA
+rR
+rs
+rs
+rs
+rs
+rs
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(127,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+Pe
+sL
+sL
+sL
+sL
+rR
+XA
+XA
+XA
+rR
+rs
+rs
+rs
+rs
+Aa
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(128,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+Pe
+sL
+sL
+sL
+rR
+XA
+XA
+XA
+rR
+rs
+rs
+rs
+Aa
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(129,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+sL
+sL
+sL
+rR
+XA
+XA
+XA
+rR
+rs
+rs
+rs
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(130,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+Pe
+sL
+sL
+rR
+XA
+XA
+XA
+rR
+rs
+rs
+Aa
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(131,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+Pe
+Pe
+Pe
+ok
+ok
+ok
+ok
+ok
+Aa
+Aa
+Aa
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(132,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(133,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(134,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(135,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(136,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+(137,1,1) = {"
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+vv
+"}
+
+(1,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(2,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(3,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Pv
+oF
+oF
+oF
+oF
+oF
+Pv
+oF
+oF
+oF
+oF
+oF
+Pv
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(4,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(5,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(6,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+BE
+BE
+BE
+BE
+BE
+oF
+BE
+BE
+BE
+BE
+BE
+oF
+BE
+BE
+BE
+BE
+BE
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(7,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+BE
+VB
+oh
+VB
+BE
+BE
+BE
+VB
+oh
+VB
+BE
+BE
+BE
+VB
+Mx
+VB
+BE
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(8,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+BE
+VB
+oh
+VB
+VB
+VN
+VB
+VB
+oh
+VB
+VB
+VN
+VB
+VB
+Mx
+VB
+BE
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(9,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+BE
+sF
+BS
+VB
+VB
+VN
+VB
+VB
+BS
+VB
+VB
+VN
+VB
+VB
+BS
+pw
+BE
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(10,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+BE
+DW
+VB
+VB
+VB
+VN
+VB
+VB
+VB
+VB
+VB
+VN
+VB
+VB
+VB
+Sc
+BE
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(11,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+BE
+BE
+jF
+jF
+jF
+jF
+jF
+jF
+jF
+jF
+jF
+jF
+jF
+jF
+jF
+jF
+jF
+BE
+BE
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(12,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+BE
+Wd
+NF
+YE
+YE
+YE
+YE
+YE
+Mu
+YE
+YE
+YE
+YE
+Sk
+YE
+Zj
+YE
+Ry
+BE
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(13,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+BE
+sy
+BE
+sy
+Ld
+sy
+Ld
+Ld
+Kh
+in
+gI
+Ld
+Ld
+sy
+Ld
+sy
+BE
+sy
+BE
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(14,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+Sa
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+Sa
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(15,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+Sa
+ED
+ED
+ED
+Yk
+Gm
+Gm
+Gm
+Gm
+Gm
+Yk
+ED
+ED
+ED
+Sa
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(16,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+Sa
+ED
+ED
+Sa
+yS
+iV
+iV
+iV
+iV
+iV
+yS
+Sa
+ED
+ED
+Sa
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(17,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+Sa
+ED
+xP
+yS
+hO
+kJ
+kJ
+kJ
+kJ
+kJ
+tA
+yS
+sq
+ED
+Sa
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(18,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+Sa
+ED
+Sa
+ED
+yV
+hL
+yB
+zm
+zm
+zm
+zm
+zm
+XH
+hL
+km
+ED
+Sa
+ED
+Sa
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(19,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+ED
+Sa
+ED
+yV
+hL
+yB
+zm
+Jv
+Jv
+Jv
+zm
+XH
+hL
+km
+ED
+Sa
+ED
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(20,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+ED
+Sa
+ED
+yV
+hL
+yB
+zm
+Jv
+Jv
+Jv
+zm
+XH
+hL
+km
+ED
+Sa
+ED
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(21,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+ED
+Sa
+ED
+yV
+hL
+yB
+zm
+Jv
+Jv
+Jv
+zm
+XH
+hL
+km
+ED
+Sa
+ED
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(22,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+ED
+Sa
+ED
+yV
+hL
+yB
+zm
+zm
+zm
+zm
+zm
+XH
+hL
+km
+ED
+Sa
+ED
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(23,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+yS
+Sa
+Sa
+Sa
+ED
+xP
+yS
+gA
+lx
+lx
+lx
+lx
+lx
+lh
+yS
+sq
+ED
+Sa
+Sa
+Sa
+yS
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(24,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+Sa
+ED
+ED
+ED
+ED
+ED
+ED
+Sa
+yS
+KY
+IB
+LT
+IB
+KY
+yS
+Sa
+ED
+ED
+ED
+ED
+ED
+ED
+Sa
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(25,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+DN
+Bm
+Bm
+Bm
+Bm
+Bm
+DN
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(26,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+ED
+ED
+ze
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(27,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(28,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Sa
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+ED
+Sa
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(29,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+zf
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+zf
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(30,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+zf
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+zf
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(31,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+zf
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+zf
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(32,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+zf
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+zf
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(33,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+zf
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+zf
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(34,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+zf
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+zf
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(35,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+zf
+Rm
+zf
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+si
+sY
+si
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(36,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+zf
+zf
+Zw
+Rm
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+sY
+zN
+si
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(37,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+zf
+Zw
+Zw
+Rm
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+mf
+mf
+mf
+mf
+mf
+mf
+mf
+mf
+mf
+sY
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(38,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+zf
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+mf
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+gy
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(39,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+zf
+Zw
+Zw
+Rm
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+mf
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+sY
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(40,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+zf
+Rm
+Rm
+Rm
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+mf
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+mw
+sY
+sY
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(41,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+zf
+mf
+mf
+mf
+mf
+mf
+mf
+mf
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+mf
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+mf
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(42,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+fQ
+xR
+xR
+xR
+xR
+xR
+xR
+mf
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+Ml
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+mf
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(43,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+fQ
+xR
+xR
+xR
+xR
+xR
+xR
+mf
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+mf
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+gy
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(44,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+fQ
+xR
+xR
+xR
+xR
+xR
+xR
+mf
+Zw
+Zw
+Zw
+Zw
+Zw
+NY
+NY
+NY
+mf
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+aa
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(45,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+fQ
+xR
+xR
+xR
+xR
+xR
+xR
+mf
+Zw
+we
+we
+we
+we
+xI
+xI
+xI
+LS
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+PM
+aa
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(46,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+fQ
+xR
+xR
+xR
+xR
+xR
+xR
+AP
+Zw
+we
+we
+we
+we
+xI
+xI
+xI
+LS
+mf
+mf
+mf
+mf
+PM
+PM
+PM
+PM
+aa
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(47,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+fQ
+xR
+xR
+xR
+xR
+xR
+xR
+mf
+Zw
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+mf
+PM
+PM
+PM
+PM
+aa
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(48,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+fQ
+xR
+xR
+xR
+xR
+xR
+xR
+mf
+Zw
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+mf
+PM
+PM
+PM
+PM
+aa
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(49,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+fQ
+xR
+xR
+xR
+xR
+xR
+xR
+mf
+Zw
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+mf
+mf
+mf
+mf
+mf
+aa
+zN
+zN
+si
+oF
+oF
+oF
+oF
+oF
+"}
+(50,1,2) = {"
+oF
+oF
+oF
+oF
+fQ
+fQ
+xR
+xR
+xR
+xR
+xR
+xR
+mf
+Zw
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+Zw
+aa
+zN
+zN
+si
+si
+oF
+oF
+oF
+oF
+"}
+(51,1,2) = {"
+oF
+oF
+oF
+Mw
+Ev
+Ev
+mf
+mf
+mf
+mf
+OD
+mf
+mf
+mf
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mf
+mf
+mf
+mf
+aa
+aa
+aa
+WQ
+WQ
+TC
+oF
+oF
+oF
+"}
+(52,1,2) = {"
+oF
+oF
+oF
+Mw
+xg
+xg
+xg
+Xo
+SG
+SG
+SG
+SG
+SG
+mf
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mf
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+TC
+oF
+oF
+oF
+"}
+(53,1,2) = {"
+oF
+oF
+oF
+Mw
+xg
+xg
+xg
+Xo
+SG
+SG
+SG
+SG
+SG
+mf
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mf
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+TC
+oF
+oF
+oF
+"}
+(54,1,2) = {"
+oF
+oF
+oF
+Mw
+xg
+xg
+xg
+rG
+SG
+SG
+SG
+SG
+SG
+mf
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mf
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+TC
+oF
+oF
+oF
+"}
+(55,1,2) = {"
+oF
+oF
+Mw
+Mw
+xg
+xg
+xg
+Xo
+SG
+SG
+SG
+SG
+SG
+mf
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mf
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+TC
+TC
+oF
+oF
+"}
+(56,1,2) = {"
+oF
+oF
+Mw
+xg
+xg
+xg
+xg
+Xo
+SG
+SG
+SG
+SG
+SG
+pS
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mf
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+TC
+oF
+oF
+"}
+(57,1,2) = {"
+oF
+oF
+xA
+Xo
+Xo
+Xo
+Xo
+Xo
+Xo
+SG
+SG
+SG
+SG
+mf
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mf
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+TC
+oF
+oF
+"}
+(58,1,2) = {"
+oF
+oF
+zp
+Ac
+Ac
+Ac
+Ac
+Ac
+Xo
+SG
+SG
+SG
+SG
+mf
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mJ
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+TC
+oF
+oF
+"}
+(59,1,2) = {"
+oF
+oF
+zp
+Ac
+Ac
+Ac
+Ac
+Ac
+WT
+SG
+SG
+SG
+SG
+mf
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mf
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+TC
+oF
+oF
+"}
+(60,1,2) = {"
+oF
+oF
+zp
+Ac
+Ac
+Ac
+Ac
+Ac
+Xo
+SG
+SG
+SG
+SG
+mf
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mf
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+TC
+oF
+oF
+"}
+(61,1,2) = {"
+oF
+oF
+zp
+Ac
+Ac
+Ac
+Ac
+Ac
+Xo
+SG
+SG
+SG
+SG
+mf
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mf
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+TC
+oF
+oF
+"}
+(62,1,2) = {"
+oF
+oF
+zp
+Ac
+Ac
+Ac
+Ac
+Ac
+Xo
+tC
+SG
+SG
+SG
+mf
+we
+we
+we
+we
+xI
+xI
+xI
+we
+Zw
+Zw
+Zw
+Zw
+mf
+Yh
+Yh
+kO
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+TC
+oF
+oF
+"}
+(63,1,2) = {"
+oF
+oF
+zp
+ar
+ar
+ar
+Ur
+Ur
+yW
+VS
+Xo
+Xo
+Xo
+yW
+LS
+LS
+LS
+LS
+VS
+VS
+VS
+LS
+mf
+mf
+mf
+mf
+yW
+Lz
+Lz
+VS
+Lz
+Lz
+Lz
+WQ
+WQ
+WQ
+TC
+oF
+oF
+"}
+(64,1,2) = {"
+oF
+oF
+HW
+VS
+VS
+td
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+td
+VS
+VS
+HW
+oF
+oF
+"}
+(65,1,2) = {"
+oF
+oF
+at
+VS
+VS
+as
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+mb
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+aq
+VS
+VS
+aq
+oF
+oF
+"}
+(66,1,2) = {"
+oF
+oF
+HW
+VS
+VS
+td
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+td
+VS
+VS
+HW
+oF
+oF
+"}
+(67,1,2) = {"
+oF
+oF
+HW
+td
+td
+td
+yW
+yW
+yW
+VS
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VS
+VS
+VS
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VS
+yW
+yW
+yW
+td
+td
+td
+HW
+oF
+oF
+"}
+(68,1,2) = {"
+oF
+oF
+Gt
+hg
+hg
+hg
+hg
+hg
+yW
+VS
+pL
+QB
+QB
+QB
+QB
+QB
+QB
+yW
+VS
+VS
+VS
+BY
+SM
+SM
+SM
+SM
+SM
+SM
+yW
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(69,1,2) = {"
+oF
+oF
+Gt
+hg
+hg
+hg
+hg
+hg
+yW
+VS
+pL
+QB
+QB
+QB
+QB
+QB
+QB
+yW
+VS
+VS
+VS
+BY
+SM
+SM
+SM
+SM
+SM
+SM
+yW
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(70,1,2) = {"
+oF
+oF
+Gt
+hg
+hg
+hg
+hg
+hg
+yW
+VS
+pL
+QB
+QB
+QB
+QB
+QB
+QB
+yW
+VS
+VS
+VS
+BY
+SM
+SM
+SM
+SM
+SM
+SM
+yW
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(71,1,2) = {"
+oF
+oF
+Gt
+hg
+hg
+hg
+hg
+hg
+CH
+VS
+pL
+QB
+QB
+QB
+QB
+QB
+QB
+rd
+VS
+VS
+VS
+BY
+SM
+SM
+SM
+SM
+SM
+SM
+XZ
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(72,1,2) = {"
+oF
+oF
+Gt
+uh
+uh
+uh
+uh
+uh
+uh
+VS
+pL
+QB
+QB
+QB
+QB
+QB
+QB
+pL
+VS
+VS
+VS
+BY
+SM
+SM
+SM
+SM
+SM
+SM
+BY
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(73,1,2) = {"
+oF
+oF
+QD
+Vl
+Vl
+Vl
+Vl
+Vl
+yW
+VS
+pL
+QB
+QB
+QB
+QB
+QB
+QB
+yW
+VS
+VS
+VS
+yW
+BY
+BY
+BY
+BY
+BY
+BY
+yW
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(74,1,2) = {"
+oF
+oF
+QD
+Vl
+Vl
+Vl
+Vl
+Vl
+Yq
+VS
+pL
+QB
+QB
+QB
+QB
+QB
+QB
+yW
+VS
+VS
+VS
+TN
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+yW
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(75,1,2) = {"
+oF
+oF
+QD
+Vl
+Vl
+Vl
+Vl
+Vl
+AI
+VS
+pL
+QB
+QB
+QB
+QB
+QB
+QB
+yW
+VS
+VS
+VS
+TN
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+yW
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(76,1,2) = {"
+oF
+oF
+QD
+AI
+AI
+AI
+AI
+AI
+yW
+VS
+yW
+pL
+pL
+pL
+pL
+pL
+pL
+yW
+VS
+VS
+VS
+DJ
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+DJ
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(77,1,2) = {"
+oF
+oF
+Kb
+ht
+ht
+ht
+ht
+ht
+yW
+VS
+qf
+PH
+PH
+PH
+PH
+PH
+PH
+yW
+VS
+VS
+VS
+TN
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+TN
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(78,1,2) = {"
+oF
+oF
+Kb
+ht
+ht
+ht
+ht
+ht
+yW
+VS
+qf
+PH
+PH
+PH
+PH
+PH
+PH
+yW
+VS
+VS
+VS
+TN
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+yW
+VS
+yW
+lb
+lb
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(79,1,2) = {"
+oF
+oF
+Kb
+ht
+ht
+ht
+ht
+ht
+yW
+VS
+qf
+PH
+PH
+PH
+PH
+PH
+PH
+yW
+VS
+VS
+VS
+TN
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+yW
+VS
+lb
+vD
+lb
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(80,1,2) = {"
+oF
+oF
+Kb
+ht
+ht
+ht
+ht
+ht
+AM
+VS
+Ok
+PH
+PH
+PH
+PH
+PH
+PH
+Ok
+VS
+VS
+VS
+TN
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+yW
+VS
+dg
+vD
+dg
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(81,1,2) = {"
+oF
+oF
+Kb
+ht
+ht
+ht
+ht
+ht
+CO
+VS
+qf
+PH
+PH
+PH
+PH
+PH
+PH
+qf
+VS
+VS
+VS
+TN
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+yW
+VS
+lb
+vD
+lb
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(82,1,2) = {"
+oF
+oF
+Kb
+ht
+ht
+ht
+ht
+ht
+yW
+VS
+qf
+PH
+PH
+PH
+PH
+PH
+PH
+yW
+VS
+VS
+VS
+TN
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+yW
+VS
+yW
+lb
+lb
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(83,1,2) = {"
+oF
+oF
+Kb
+ht
+ht
+ht
+ht
+ht
+yW
+VS
+qf
+PH
+PH
+PH
+PH
+PH
+PH
+yW
+VS
+VS
+VS
+TN
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+yW
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(84,1,2) = {"
+oF
+oF
+Kb
+ht
+ht
+ht
+ht
+ht
+yW
+VS
+qf
+PH
+PH
+PH
+PH
+PH
+PH
+yW
+VS
+VS
+VS
+TN
+Ug
+Ug
+Ug
+Ug
+Ug
+Ug
+yW
+VS
+lb
+vD
+vD
+vD
+vD
+vD
+Wa
+oF
+oF
+"}
+(85,1,2) = {"
+oF
+oF
+Kb
+qv
+CO
+CO
+CO
+CO
+yW
+RO
+yW
+qf
+qf
+qf
+qf
+qf
+qf
+yW
+yW
+RO
+yW
+TN
+TN
+TN
+TN
+TN
+TN
+TN
+yW
+RO
+yW
+lb
+lb
+lb
+lb
+Xv
+Wa
+oF
+oF
+"}
+(86,1,2) = {"
+oF
+oF
+gb
+gb
+lg
+lg
+lg
+lg
+yW
+VS
+nz
+dl
+dl
+dl
+dl
+dl
+dl
+yW
+VS
+VS
+VS
+Xe
+OH
+OH
+OH
+OH
+OH
+OH
+yW
+VS
+VU
+BC
+BC
+BC
+BC
+sI
+sI
+oF
+oF
+"}
+(87,1,2) = {"
+oF
+oF
+oF
+gb
+lg
+lg
+lg
+lg
+yW
+VS
+nz
+dl
+dl
+dl
+dl
+dl
+dl
+yW
+VS
+VS
+VS
+Xe
+OH
+OH
+OH
+OH
+OH
+OH
+yW
+VS
+VU
+BC
+BC
+BC
+BC
+sI
+oF
+oF
+oF
+"}
+(88,1,2) = {"
+oF
+oF
+oF
+gb
+lg
+lg
+lg
+lg
+yW
+VS
+nz
+dl
+dl
+dl
+dl
+dl
+dl
+yW
+VS
+VS
+VS
+Xe
+OH
+OH
+OH
+OH
+OH
+OH
+yW
+VS
+VU
+BC
+BC
+BC
+BC
+sI
+oF
+oF
+oF
+"}
+(89,1,2) = {"
+oF
+oF
+oF
+gb
+lg
+lg
+lg
+lg
+yW
+VS
+nz
+dl
+dl
+dl
+dl
+dl
+dl
+yW
+VS
+VS
+VS
+Xe
+OH
+OH
+OH
+OH
+OH
+OH
+yW
+VS
+VU
+BC
+BC
+BC
+BC
+sI
+oF
+oF
+oF
+"}
+(90,1,2) = {"
+oF
+oF
+oF
+gb
+gb
+lg
+lg
+lg
+hP
+VS
+nz
+dl
+dl
+dl
+dl
+dl
+dl
+ZE
+VS
+VS
+VS
+Xe
+OH
+OH
+OH
+OH
+OH
+OH
+yW
+VS
+tP
+BC
+BC
+BC
+sI
+sI
+oF
+oF
+oF
+"}
+(91,1,2) = {"
+oF
+oF
+oF
+oF
+gb
+gb
+lg
+lg
+Qy
+VS
+nz
+dl
+dl
+dl
+dl
+dl
+dl
+nz
+VS
+VS
+VS
+gt
+OH
+OH
+OH
+OH
+OH
+OH
+yW
+VS
+VU
+BC
+BC
+sI
+sI
+oF
+oF
+oF
+oF
+"}
+(92,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+gb
+lg
+lg
+yW
+VS
+nz
+dl
+dl
+dl
+dl
+dl
+dl
+yW
+VS
+VS
+VS
+Xe
+OH
+OH
+OH
+OH
+OH
+OH
+yW
+VS
+VU
+BC
+BC
+sI
+oF
+oF
+oF
+oF
+oF
+"}
+(93,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+gb
+lg
+lg
+yW
+VS
+nz
+dl
+dl
+dl
+dl
+dl
+dl
+yW
+VS
+VS
+VS
+Xe
+OH
+OH
+OH
+OH
+OH
+OH
+yW
+VS
+VU
+BC
+BC
+sI
+oF
+oF
+oF
+oF
+oF
+"}
+(94,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+gb
+lg
+lg
+yW
+VS
+nz
+dl
+dl
+dl
+dl
+dl
+dl
+yW
+VS
+VS
+VS
+Xe
+OH
+OH
+OH
+OH
+OH
+OH
+yW
+VS
+VU
+BC
+BC
+sI
+oF
+oF
+oF
+oF
+oF
+"}
+(95,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+gb
+lg
+lg
+yW
+VS
+yW
+nz
+nz
+nz
+nz
+nz
+nz
+yW
+VS
+VS
+VS
+yW
+Xe
+Xe
+Xe
+Xe
+Xe
+Xe
+yW
+VS
+VU
+BC
+BC
+sI
+oF
+oF
+oF
+oF
+oF
+"}
+(96,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+gb
+Qy
+Qy
+yW
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+yW
+VU
+VU
+sI
+oF
+oF
+oF
+oF
+oF
+"}
+(97,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+Ji
+ga
+ga
+yW
+VS
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VS
+VS
+VS
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VS
+Cv
+DD
+DD
+Th
+oF
+oF
+oF
+oF
+oF
+"}
+(98,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+Ji
+ga
+ga
+yW
+VS
+Ns
+dm
+dm
+dm
+dm
+dm
+dm
+yW
+VS
+VS
+VS
+vo
+Mg
+Mg
+Mg
+Mg
+Mg
+Mg
+yW
+VS
+Cv
+DD
+DD
+Th
+oF
+oF
+oF
+oF
+oF
+"}
+(99,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+Ji
+ga
+ga
+yW
+VS
+Ns
+dm
+dm
+dm
+dm
+dm
+dm
+vK
+VS
+VS
+VS
+Kc
+Mg
+Mg
+Mg
+Mg
+Mg
+Mg
+yW
+VS
+Cv
+DD
+DD
+Th
+oF
+oF
+oF
+oF
+oF
+"}
+(100,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+Ji
+ga
+ga
+yO
+VS
+Ns
+dm
+dm
+dm
+dm
+dm
+dm
+Ns
+VS
+VS
+VS
+vo
+Mg
+Mg
+Mg
+Mg
+Mg
+Mg
+yW
+VS
+Ve
+DD
+DD
+Th
+oF
+oF
+oF
+oF
+oF
+"}
+(101,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+Ji
+ga
+ga
+jM
+VS
+Ns
+dm
+dm
+dm
+dm
+dm
+dm
+yW
+VS
+VS
+VS
+vo
+Mg
+Mg
+Mg
+Mg
+Mg
+Mg
+yW
+VS
+Cv
+DD
+DD
+Th
+oF
+oF
+oF
+oF
+oF
+"}
+(102,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+Ji
+ga
+ga
+yW
+VS
+yW
+Ns
+Ns
+Ns
+Ns
+Ns
+Ns
+yW
+VS
+VS
+VS
+vo
+Mg
+Mg
+Mg
+Mg
+Mg
+Mg
+yW
+VS
+Cv
+DD
+DD
+Th
+oF
+oF
+oF
+oF
+oF
+"}
+(103,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+Ji
+ga
+ga
+yW
+VS
+ny
+hy
+hy
+hy
+hy
+hy
+hy
+yW
+VS
+VS
+VS
+vo
+Mg
+Mg
+Mg
+Mg
+Mg
+Mg
+yW
+VS
+Cv
+DD
+DD
+Th
+oF
+oF
+oF
+oF
+oF
+"}
+(104,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+gS
+gc
+gc
+yW
+VS
+ny
+hy
+hy
+hy
+hy
+hy
+hy
+yW
+VS
+VS
+VS
+vo
+Mg
+Mg
+Mg
+Mg
+Mg
+Mg
+yW
+VS
+FR
+gc
+gc
+gS
+oF
+oF
+oF
+oF
+oF
+"}
+(105,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+gS
+gc
+gc
+yW
+VS
+ny
+hy
+hy
+hy
+hy
+hy
+hy
+im
+VS
+VS
+VS
+Kc
+Mg
+Mg
+Mg
+Mg
+Mg
+Mg
+yW
+VS
+FR
+gc
+gc
+gS
+oF
+oF
+oF
+oF
+oF
+"}
+(106,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+gS
+gS
+gc
+yW
+VS
+ny
+hy
+hy
+hy
+hy
+hy
+hy
+ny
+VS
+VS
+VS
+vo
+Mg
+Mg
+Mg
+Mg
+Mg
+Mg
+yW
+VS
+FR
+gc
+gS
+gS
+oF
+oF
+oF
+oF
+oF
+"}
+(107,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+gS
+gS
+yW
+VS
+ny
+hy
+hy
+hy
+hy
+hy
+hy
+yW
+VS
+VS
+VS
+vo
+Mg
+Mg
+Mg
+Mg
+Mg
+Mg
+yW
+VS
+yW
+gS
+gS
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(108,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+gS
+td
+td
+td
+DH
+DH
+DH
+DH
+DH
+DH
+td
+td
+RO
+td
+td
+Xw
+Xw
+Xw
+Xw
+Xw
+Xw
+td
+td
+td
+gS
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(109,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+HW
+VS
+VS
+td
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+td
+VS
+VS
+HW
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(110,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+aq
+VS
+VS
+aq
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+aq
+VS
+VS
+aq
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(111,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+HW
+VS
+VS
+td
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+VS
+td
+VS
+VS
+HW
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(112,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+HW
+td
+td
+td
+yW
+yW
+yW
+mo
+yW
+yW
+yW
+VS
+jK
+VS
+yW
+yW
+yW
+nR
+yW
+yW
+yW
+td
+td
+td
+HW
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(113,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Wm
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+yW
+VS
+VS
+VS
+mh
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Cz
+Cz
+Wm
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(114,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Wm
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+yW
+VS
+VS
+VS
+mh
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Cz
+Cz
+Wm
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(115,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Wm
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Gu
+VS
+VS
+VS
+TF
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Cz
+Cz
+Wm
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(116,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Wm
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+ha
+VS
+VS
+VS
+mh
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Cz
+Cz
+Wm
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(117,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Wm
+Wm
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+yW
+VS
+VS
+VS
+mh
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Cz
+Wm
+Wm
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(118,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Wm
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+yW
+VS
+VS
+VS
+mh
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Cz
+Wm
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(119,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Wm
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+Cz
+yW
+VS
+VS
+VS
+mh
+Wp
+Wp
+Wp
+Wp
+Wp
+Wp
+Cz
+Wm
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(120,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Wm
+ha
+ha
+ha
+ha
+ha
+ha
+gG
+yW
+VS
+VS
+VS
+yW
+mh
+mh
+vP
+mh
+mh
+mh
+ha
+Wm
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(121,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+vS
+xb
+xb
+xb
+xb
+xb
+KE
+Hm
+yW
+VS
+VS
+VS
+Zx
+gl
+gl
+gl
+gl
+gl
+gl
+Hm
+Me
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(122,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+vS
+vS
+xb
+xb
+xb
+xb
+ml
+Hm
+yW
+VS
+VS
+VS
+Zx
+gl
+gl
+gl
+gl
+gl
+gl
+Me
+Me
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(123,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+vS
+wg
+wg
+wg
+wg
+wg
+Hm
+yW
+VS
+VS
+VS
+Zx
+gl
+gl
+gl
+gl
+gl
+gl
+kK
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(124,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wJ
+wJ
+ci
+ci
+ci
+KE
+Hm
+yW
+VS
+VS
+VS
+Zx
+gl
+gl
+gl
+gl
+gl
+kK
+kK
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(125,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wJ
+ci
+ci
+ci
+Dv
+Hm
+OV
+VS
+VS
+VS
+RU
+gl
+gl
+gl
+gl
+gl
+kK
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(126,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wJ
+ip
+ip
+ip
+ip
+Hm
+KE
+VS
+VS
+VS
+Zx
+Zx
+LU
+Zx
+Zx
+Zx
+kK
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(127,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+yz
+yz
+ts
+ts
+KE
+Hm
+yW
+VS
+VS
+VS
+sn
+zO
+zO
+zO
+zO
+JS
+JS
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(128,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+yz
+yz
+ts
+AQ
+Hm
+yW
+VS
+VS
+VS
+sn
+zO
+zO
+zO
+JS
+JS
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(129,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+yz
+ts
+Kw
+Hm
+yW
+VS
+VS
+VS
+sn
+zO
+zO
+zO
+JS
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(130,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+yz
+yz
+KE
+Hm
+yW
+VS
+VS
+VS
+sn
+zO
+zO
+JS
+JS
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(131,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+yz
+Me
+Me
+HW
+HW
+HW
+HW
+JS
+JS
+JS
+JS
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(132,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(133,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(134,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(135,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(136,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(137,1,2) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+
+(1,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(2,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(3,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(4,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(5,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(6,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+mE
+mE
+mE
+mE
+mE
+oF
+wO
+wO
+wO
+wO
+wO
+oF
+Ph
+Ph
+Ph
+Ph
+Ph
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(7,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+mE
+DR
+DR
+DR
+mE
+mE
+wO
+vi
+vi
+vi
+wO
+Ph
+Ph
+Tu
+Tu
+Tu
+Ph
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(8,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+mE
+DR
+DR
+DR
+DR
+DR
+wO
+vi
+vi
+vi
+Ph
+Tu
+Tu
+Tu
+Tu
+Tu
+Ph
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(9,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+mE
+DR
+DR
+DR
+DR
+DR
+Hq
+vi
+vi
+vi
+wP
+Tu
+Tu
+Tu
+Tu
+Tu
+Ph
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(10,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+mE
+DR
+DR
+DR
+DR
+DR
+zd
+vi
+vi
+vi
+Kk
+Tu
+Tu
+Tu
+Tu
+Tu
+Ph
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(11,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+mE
+mE
+DR
+DR
+DR
+DR
+DR
+Sz
+vi
+vi
+vi
+wP
+Tu
+Tu
+Tu
+Tu
+Tu
+Ph
+Ph
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(12,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+mE
+DR
+DR
+DR
+DR
+DR
+DR
+Hq
+vi
+vi
+vi
+wP
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Ph
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(13,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+mE
+DR
+DR
+DR
+DR
+DR
+DR
+Hq
+vi
+vi
+vi
+wP
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Ph
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(14,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+mE
+DR
+DR
+DR
+DR
+DR
+DR
+Hq
+vi
+vi
+vi
+wP
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Ph
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(15,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+mE
+Sz
+Sz
+Sz
+Sz
+Sz
+Sz
+Hq
+vi
+vi
+vi
+Hq
+wP
+wP
+wP
+wP
+wP
+wP
+Ph
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(16,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Yf
+jj
+jj
+jj
+jj
+jj
+jj
+Hq
+vi
+vi
+vi
+jm
+qG
+qG
+qG
+qG
+qG
+qG
+Jq
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(17,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Yf
+jj
+jj
+jj
+jj
+jj
+jj
+Hq
+vi
+vi
+vi
+jm
+qG
+qG
+qG
+qG
+qG
+qG
+Jq
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(18,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Yf
+Yf
+jj
+jj
+jj
+jj
+jj
+jj
+Hq
+vi
+vi
+vi
+jm
+qG
+qG
+qG
+qG
+qG
+qG
+Jq
+Jq
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(19,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Yf
+Yf
+jj
+jj
+jj
+jj
+jj
+jj
+gi
+vi
+vi
+vi
+Lb
+qG
+qG
+qG
+qG
+qG
+qG
+Jq
+Jq
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(20,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Yf
+Yf
+jj
+jj
+jj
+jj
+jj
+jj
+Sv
+vi
+vi
+vi
+jm
+qG
+qG
+qG
+qG
+qG
+qG
+Jq
+Jq
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(21,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Yf
+Yf
+jj
+jj
+jj
+jj
+jj
+jj
+Hq
+vi
+vi
+vi
+jm
+qG
+qG
+qG
+qG
+qG
+qG
+Jq
+Jq
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(22,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Yf
+Yf
+jj
+jj
+jj
+jj
+jj
+jj
+Hq
+vi
+vi
+vi
+jm
+qG
+qG
+qG
+qG
+qG
+qG
+Jq
+Jq
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(23,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+wO
+Hq
+Sv
+Sv
+Sv
+Sv
+Sv
+Sv
+Hq
+Hq
+mc
+Hq
+Hq
+jm
+jm
+jm
+jm
+jm
+jm
+Hq
+wO
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(24,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+wO
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(25,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(26,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(27,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+vi
+vi
+na
+na
+na
+na
+na
+na
+na
+na
+vi
+vi
+vi
+na
+na
+na
+na
+na
+na
+na
+na
+vi
+vi
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(28,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+na
+XG
+XG
+XG
+hw
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(29,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+na
+XG
+XG
+XG
+hw
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(30,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+na
+XG
+XG
+XG
+hw
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(31,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+na
+XG
+XG
+XG
+hw
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(32,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+na
+XG
+XG
+XG
+hw
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(33,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+na
+XG
+XG
+XG
+hw
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(34,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+Vs
+XG
+XG
+XG
+nN
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(35,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+Ge
+Ge
+tt
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+vc
+XG
+XG
+XG
+hw
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+tt
+Ge
+Ge
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(36,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Ge
+Rr
+wO
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+na
+XG
+XG
+XG
+hw
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+Ge
+Rr
+Ge
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(37,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+wO
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+na
+XG
+XG
+XG
+hw
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+Ge
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(38,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+Rr
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+na
+XG
+XG
+XG
+hw
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+Rr
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(39,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+Ge
+XG
+vc
+xQ
+xQ
+xQ
+xQ
+xQ
+xQ
+na
+XG
+XG
+XG
+hw
+Vp
+Vp
+Vp
+Vp
+Vp
+Vp
+na
+XG
+Ge
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(40,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Ge
+Ge
+wO
+XG
+na
+vc
+vc
+vc
+vc
+vc
+vc
+Gj
+XG
+XG
+XG
+Gj
+hw
+hw
+hw
+hw
+hw
+hw
+na
+XG
+wO
+Ge
+Ge
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(41,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+Rr
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+Rr
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(42,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+Rr
+XG
+XG
+Rr
+Gj
+Gj
+Gj
+Gj
+Gj
+Gj
+XG
+XG
+XG
+Gj
+Gj
+Gj
+Gj
+Gj
+Gj
+Rr
+XG
+XG
+Rr
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(43,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+Rr
+XG
+XG
+Rr
+HH
+Pr
+Pr
+Pr
+Pr
+na
+XG
+XG
+XG
+Nw
+uv
+uv
+uv
+uv
+Gj
+Rr
+XG
+XG
+Rr
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(44,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+Rr
+XG
+XG
+Rr
+HH
+Pr
+Pr
+Pr
+Pr
+na
+XG
+XG
+XG
+Nw
+uv
+uv
+uv
+uv
+Gj
+Rr
+XG
+XG
+Rr
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(45,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+Rr
+XG
+XG
+Rr
+HH
+Pr
+Pr
+Pr
+Pr
+Rs
+XG
+XG
+XG
+dE
+uv
+uv
+uv
+uv
+Gj
+Rr
+XG
+XG
+Rr
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(46,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+Rr
+XG
+XG
+Rr
+HH
+Pr
+Pr
+Pr
+Pr
+HH
+XG
+XG
+XG
+Nw
+uv
+uv
+uv
+uv
+Gj
+Rr
+XG
+XG
+Rr
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(47,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+Rr
+XG
+XG
+Rr
+HH
+Pr
+Pr
+Pr
+Pr
+na
+XG
+XG
+XG
+Nw
+uv
+uv
+uv
+uv
+Gj
+Rr
+XG
+XG
+Rr
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(48,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+Rr
+XG
+XG
+Rr
+Gj
+HH
+HH
+HH
+HH
+na
+XG
+XG
+XG
+na
+Nw
+Nw
+Nw
+Nw
+Gj
+Rr
+XG
+XG
+Rr
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(49,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+Ge
+Rr
+Rr
+Rr
+XG
+XG
+Rr
+JE
+aF
+aF
+aF
+aF
+na
+XG
+XG
+XG
+VQ
+Kg
+Kg
+Kg
+Kg
+Gj
+Rr
+XG
+XG
+Rr
+Rr
+Rr
+Ge
+oF
+oF
+oF
+oF
+oF
+"}
+(50,1,3) = {"
+oF
+oF
+oF
+oF
+Ge
+Ge
+Rr
+Rr
+Rr
+XG
+XG
+Rr
+JE
+aF
+aF
+aF
+aF
+na
+XG
+XG
+XG
+VQ
+Kg
+Kg
+Kg
+Kg
+Gj
+Rr
+XG
+XG
+Rr
+Rr
+Rr
+Ge
+Ge
+oF
+oF
+oF
+oF
+"}
+(51,1,3) = {"
+oF
+oF
+oF
+TJ
+TJ
+Ei
+Gj
+Gj
+Gj
+XG
+XG
+Rr
+JE
+aF
+aF
+aF
+aF
+TW
+XG
+XG
+XG
+Du
+Kg
+Kg
+Kg
+Kg
+Gj
+Rr
+XG
+XG
+Gj
+Gj
+Gj
+Bt
+Ni
+Ni
+oF
+oF
+oF
+"}
+(52,1,3) = {"
+oF
+oF
+oF
+TJ
+zt
+zt
+zt
+zt
+na
+XG
+XG
+Rr
+JE
+aF
+aF
+aF
+aF
+JE
+XG
+XG
+XG
+VQ
+Kg
+Kg
+Kg
+Kg
+Gj
+Rr
+XG
+XG
+HM
+qQ
+qQ
+qQ
+qQ
+Ni
+oF
+oF
+oF
+"}
+(53,1,3) = {"
+oF
+oF
+oF
+TJ
+zt
+zt
+zt
+zt
+na
+XG
+XG
+Rr
+JE
+aF
+aF
+aF
+aF
+na
+XG
+XG
+XG
+VQ
+Kg
+Kg
+Kg
+Kg
+Gj
+Rr
+XG
+XG
+HM
+qQ
+qQ
+qQ
+qQ
+Ni
+oF
+oF
+oF
+"}
+(54,1,3) = {"
+oF
+oF
+oF
+TJ
+zt
+zt
+zt
+zt
+na
+XG
+XG
+Rr
+Gj
+JE
+JE
+JE
+JE
+na
+XG
+XG
+XG
+na
+VQ
+VQ
+VQ
+VQ
+Gj
+Rr
+XG
+XG
+HM
+qQ
+qQ
+qQ
+qQ
+Ni
+oF
+oF
+oF
+"}
+(55,1,3) = {"
+oF
+oF
+TJ
+TJ
+zt
+zt
+zt
+zt
+na
+XG
+XG
+Rr
+rN
+ur
+ur
+ur
+ur
+na
+XG
+XG
+XG
+Vu
+oK
+oK
+oK
+oK
+Gj
+Rr
+XG
+XG
+HM
+qQ
+qQ
+qQ
+qQ
+Ni
+Ni
+oF
+oF
+"}
+(56,1,3) = {"
+oF
+oF
+TJ
+zt
+zt
+zt
+zt
+zt
+na
+XG
+XG
+Rr
+rN
+ur
+ur
+ur
+ur
+na
+XG
+XG
+XG
+Vu
+oK
+oK
+oK
+oK
+Gj
+Rr
+XG
+XG
+HM
+qQ
+qQ
+qQ
+qQ
+qQ
+Ni
+oF
+oF
+"}
+(57,1,3) = {"
+oF
+oF
+TJ
+zt
+zt
+zt
+zt
+zt
+cS
+XG
+XG
+Rr
+rN
+ur
+ur
+ur
+ur
+OL
+XG
+XG
+XG
+Op
+oK
+oK
+oK
+oK
+Gj
+Rr
+XG
+XG
+Ib
+qQ
+qQ
+qQ
+qQ
+qQ
+Ni
+oF
+oF
+"}
+(58,1,3) = {"
+oF
+oF
+TJ
+zt
+zt
+zt
+zt
+zt
+An
+XG
+XG
+Rr
+rN
+ur
+ur
+ur
+ur
+rN
+XG
+XG
+XG
+Vu
+oK
+oK
+oK
+oK
+Gj
+Rr
+XG
+XG
+HM
+qQ
+qQ
+qQ
+qQ
+qQ
+Ni
+oF
+oF
+"}
+(59,1,3) = {"
+oF
+oF
+TJ
+zt
+zt
+zt
+zt
+zt
+na
+XG
+XG
+Rr
+rN
+ur
+ur
+ur
+ur
+na
+XG
+XG
+XG
+Vu
+oK
+oK
+oK
+oK
+Gj
+Rr
+XG
+XG
+HM
+qQ
+qQ
+qQ
+qQ
+qQ
+Ni
+oF
+oF
+"}
+(60,1,3) = {"
+oF
+oF
+TJ
+zt
+zt
+zt
+zt
+zt
+na
+XG
+XG
+Rr
+Gj
+rN
+rN
+rN
+rN
+na
+XG
+XG
+XG
+na
+Vu
+Vu
+Vu
+Vu
+Gj
+Rr
+XG
+XG
+HM
+qQ
+qQ
+qQ
+qQ
+qQ
+Ni
+oF
+oF
+"}
+(61,1,3) = {"
+oF
+oF
+TJ
+zt
+zt
+zt
+zt
+zt
+na
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+HM
+qQ
+qQ
+qQ
+qQ
+qQ
+Ni
+oF
+oF
+"}
+(62,1,3) = {"
+oF
+oF
+TJ
+zt
+zt
+zt
+zt
+zt
+na
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+HM
+qQ
+qQ
+qQ
+qQ
+qQ
+Ni
+oF
+oF
+"}
+(63,1,3) = {"
+oF
+oF
+TJ
+An
+An
+An
+An
+An
+na
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+na
+HM
+HM
+HM
+HM
+HM
+Ni
+oF
+oF
+"}
+(64,1,3) = {"
+oF
+oF
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+wO
+oF
+oF
+"}
+(65,1,3) = {"
+oF
+oF
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+al
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+wO
+oF
+oF
+"}
+(66,1,3) = {"
+oF
+oF
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+wO
+oF
+oF
+"}
+(67,1,3) = {"
+oF
+oF
+wO
+na
+na
+na
+na
+na
+na
+wB
+na
+na
+na
+na
+na
+na
+na
+na
+XG
+XG
+XG
+na
+na
+na
+na
+na
+Rr
+Rr
+XG
+XG
+na
+na
+na
+na
+na
+na
+wO
+oF
+oF
+"}
+(68,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Ba
+Us
+Ej
+Ej
+Ej
+na
+XG
+XG
+XG
+dK
+uq
+uq
+uq
+Gj
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(69,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Ba
+Us
+Ej
+Ej
+Ej
+Ny
+XG
+XG
+XG
+VA
+uq
+uq
+uq
+Gj
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(70,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Ba
+Us
+Ej
+Ej
+Ej
+Us
+XG
+XG
+XG
+dK
+uq
+uq
+uq
+Gj
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(71,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Ba
+Us
+Ej
+Ej
+Ej
+na
+XG
+XG
+XG
+dK
+uq
+uq
+uq
+Gj
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(72,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Ba
+Us
+Us
+Us
+Us
+na
+XG
+XG
+XG
+na
+dK
+dK
+dK
+Gj
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(73,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Ba
+rB
+UL
+UL
+UL
+na
+XG
+XG
+XG
+kL
+Xh
+Xh
+Xh
+Gj
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(74,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Ba
+rB
+UL
+UL
+UL
+rf
+XG
+XG
+XG
+bN
+Xh
+Xh
+Xh
+Gj
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(75,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Ba
+rB
+UL
+UL
+UL
+rB
+XG
+XG
+XG
+kL
+Xh
+Xh
+Xh
+Gj
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(76,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Ba
+rB
+UL
+UL
+UL
+na
+XG
+XG
+XG
+kL
+Xh
+Xh
+Xh
+Gj
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(77,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Ba
+Gj
+rB
+rB
+rB
+na
+XG
+XG
+XG
+na
+kL
+kL
+kL
+Gj
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(78,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Gj
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(79,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Gj
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(80,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+ro
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+Tv
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(81,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Ba
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(82,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Gj
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(83,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Gj
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(84,1,3) = {"
+oF
+oF
+wt
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+qH
+Gj
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+XG
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+Rr
+XG
+XG
+dR
+gp
+gp
+gp
+gp
+gp
+bI
+oF
+oF
+"}
+(85,1,3) = {"
+oF
+oF
+wt
+wt
+wt
+wt
+wt
+wt
+wt
+yb
+wt
+wt
+Uy
+Ge
+Ge
+Ge
+Ge
+Ge
+wO
+dV
+Hq
+Ge
+Ge
+Ge
+Ge
+Ge
+Ge
+Ge
+wO
+dV
+wO
+bI
+bI
+bI
+bI
+bI
+bI
+oF
+oF
+"}
+(86,1,3) = {"
+oF
+oF
+pG
+pG
+tD
+tD
+tD
+tD
+wO
+vi
+hE
+Qz
+Qz
+Qz
+Qz
+Qz
+Qz
+na
+vi
+vi
+vi
+Jt
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+na
+vi
+xY
+QG
+QG
+QG
+QG
+xY
+xY
+oF
+oF
+"}
+(87,1,3) = {"
+oF
+oF
+oF
+pG
+tD
+tD
+tD
+tD
+wO
+vi
+hE
+Qz
+Qz
+Qz
+Qz
+Qz
+Qz
+na
+vi
+vi
+vi
+Jt
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+na
+vi
+xY
+QG
+QG
+QG
+QG
+xY
+oF
+oF
+oF
+"}
+(88,1,3) = {"
+oF
+oF
+oF
+pG
+tD
+tD
+tD
+tD
+wO
+vi
+hE
+Qz
+Qz
+Qz
+Qz
+Qz
+Qz
+na
+vi
+vi
+vi
+Jt
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+na
+vi
+xY
+QG
+QG
+QG
+QG
+xY
+oF
+oF
+oF
+"}
+(89,1,3) = {"
+oF
+oF
+oF
+pG
+tD
+tD
+tD
+tD
+wO
+vi
+hE
+Qz
+Qz
+Qz
+Qz
+Qz
+Qz
+na
+vi
+vi
+vi
+Jt
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+na
+vi
+xY
+QG
+QG
+QG
+QG
+xY
+oF
+oF
+oF
+"}
+(90,1,3) = {"
+oF
+oF
+oF
+pG
+pG
+tD
+tD
+tD
+oq
+vi
+hE
+Qz
+Qz
+Qz
+Qz
+Qz
+Qz
+xU
+vi
+vi
+vi
+AH
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+na
+vi
+me
+QG
+QG
+QG
+xY
+xY
+oF
+oF
+oF
+"}
+(91,1,3) = {"
+oF
+oF
+oF
+oF
+pG
+pG
+tD
+tD
+pG
+vi
+hE
+Qz
+Qz
+Qz
+Qz
+Qz
+Qz
+hE
+vi
+vi
+vi
+Jt
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+na
+vi
+xY
+QG
+QG
+xY
+xY
+oF
+oF
+oF
+oF
+"}
+(92,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+pG
+tD
+tD
+wO
+vi
+hE
+Qz
+Qz
+Qz
+Qz
+Qz
+Qz
+na
+vi
+vi
+vi
+Jt
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+na
+vi
+xY
+QG
+QG
+xY
+oF
+oF
+oF
+oF
+oF
+"}
+(93,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+pG
+tD
+tD
+wO
+vi
+hE
+Qz
+Qz
+Qz
+Qz
+Qz
+Qz
+na
+vi
+vi
+vi
+Jt
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+na
+vi
+xY
+QG
+QG
+xY
+oF
+oF
+oF
+oF
+oF
+"}
+(94,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+pG
+tD
+tD
+wO
+vi
+hE
+Qz
+Qz
+Qz
+Qz
+Qz
+Qz
+na
+vi
+vi
+vi
+Jt
+Cr
+Cr
+Cr
+Cr
+Cr
+Cr
+na
+vi
+xY
+QG
+QG
+xY
+oF
+oF
+oF
+oF
+oF
+"}
+(95,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+pG
+tD
+tD
+wO
+vi
+na
+hE
+hE
+hE
+hE
+hE
+hE
+na
+vi
+vi
+vi
+na
+Jt
+Jt
+Jt
+Jt
+Jt
+Jt
+na
+vi
+xY
+QG
+QG
+xY
+oF
+oF
+oF
+oF
+oF
+"}
+(96,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+pG
+pG
+pG
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+wO
+xY
+xY
+xY
+oF
+oF
+oF
+oF
+oF
+"}
+(97,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+ub
+Rt
+Rt
+wO
+vi
+na
+na
+na
+na
+na
+na
+na
+na
+vi
+vi
+vi
+na
+na
+na
+na
+na
+na
+na
+na
+vi
+nD
+Zo
+Zo
+nD
+oF
+oF
+oF
+oF
+oF
+"}
+(98,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+ub
+Rt
+Rt
+wO
+vi
+nP
+gg
+gg
+gg
+gg
+gg
+gg
+na
+vi
+vi
+vi
+Rx
+mv
+mv
+mv
+mv
+mv
+mv
+na
+vi
+nD
+Zo
+Zo
+nD
+oF
+oF
+oF
+oF
+oF
+"}
+(99,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+ub
+Rt
+Rt
+wO
+vi
+nP
+gg
+gg
+gg
+gg
+gg
+gg
+na
+vi
+vi
+vi
+JP
+mv
+mv
+mv
+mv
+mv
+mv
+na
+vi
+nD
+Zo
+Zo
+nD
+oF
+oF
+oF
+oF
+oF
+"}
+(100,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+ub
+Rt
+Rt
+lQ
+vi
+nP
+gg
+gg
+gg
+gg
+gg
+gg
+na
+vi
+vi
+vi
+Rx
+mv
+mv
+mv
+mv
+mv
+mv
+na
+vi
+sT
+Zo
+Zo
+nD
+oF
+oF
+oF
+oF
+oF
+"}
+(101,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+ub
+Rt
+Rt
+ub
+vi
+nP
+gg
+gg
+gg
+gg
+gg
+gg
+na
+vi
+vi
+vi
+Rx
+mv
+mv
+mv
+mv
+mv
+mv
+na
+vi
+nD
+Zo
+Zo
+nD
+oF
+oF
+oF
+oF
+oF
+"}
+(102,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+ub
+Rt
+Rt
+wO
+vi
+nP
+gg
+gg
+gg
+gg
+gg
+gg
+CI
+vi
+vi
+vi
+na
+Rx
+Rx
+Rx
+Rx
+Rx
+Rx
+na
+vi
+nD
+Zo
+Zo
+nD
+oF
+oF
+oF
+oF
+oF
+"}
+(103,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+ub
+Rt
+Rt
+wO
+vi
+nP
+gg
+gg
+gg
+gg
+gg
+gg
+nP
+vi
+vi
+vi
+Ol
+WH
+WH
+WH
+WH
+WH
+WH
+na
+vi
+nD
+Zo
+Zo
+nD
+oF
+oF
+oF
+oF
+oF
+"}
+(104,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+gh
+gK
+gK
+wO
+vi
+nP
+gg
+gg
+gg
+gg
+gg
+gg
+na
+vi
+vi
+vi
+Ol
+WH
+WH
+WH
+WH
+WH
+WH
+na
+vi
+gh
+gK
+gK
+gh
+oF
+oF
+oF
+oF
+oF
+"}
+(105,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+gh
+gK
+gK
+wO
+vi
+nP
+gg
+gg
+gg
+gg
+gg
+gg
+na
+vi
+vi
+vi
+do
+WH
+WH
+WH
+WH
+WH
+WH
+na
+vi
+gh
+gK
+gK
+gh
+oF
+oF
+oF
+oF
+oF
+"}
+(106,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+gh
+gh
+gK
+wO
+vi
+nP
+gg
+gg
+gg
+gg
+gg
+gg
+na
+vi
+vi
+vi
+Ol
+WH
+WH
+WH
+WH
+WH
+WH
+na
+vi
+gh
+gK
+gh
+gh
+oF
+oF
+oF
+oF
+oF
+"}
+(107,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+gh
+gh
+wO
+vi
+nP
+gg
+gg
+gg
+gg
+gg
+gg
+na
+vi
+vi
+vi
+Ol
+WH
+WH
+WH
+WH
+WH
+WH
+na
+vi
+wO
+gh
+gh
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(108,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+gh
+wO
+dV
+na
+nP
+nP
+nP
+nP
+nP
+nP
+na
+na
+TQ
+na
+na
+Ol
+Ol
+Ol
+Ol
+Ol
+Ol
+na
+dV
+wO
+gh
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(109,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(110,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(111,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+vi
+vi
+Hq
+wO
+wO
+xu
+wO
+Hq
+Wh
+Wh
+Wh
+mc
+Wh
+Wh
+Wh
+Hq
+wO
+xe
+wO
+wO
+Hq
+vi
+vi
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(112,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+wO
+vi
+vm
+Ds
+Ds
+Ds
+Ds
+wO
+vi
+vi
+vi
+al
+vi
+vi
+vi
+Vd
+BR
+BR
+BR
+BR
+wO
+vi
+wO
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(113,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+vi
+vm
+Ds
+Ds
+Ds
+Ds
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+Vd
+BR
+BR
+BR
+BR
+wO
+vi
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(114,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+vi
+vm
+Ds
+Ds
+Ds
+Ds
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+Vd
+BR
+BR
+BR
+BR
+wO
+vi
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(115,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+vi
+vm
+Ds
+Ds
+Ds
+Ds
+wO
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+Vd
+BR
+BR
+BR
+BR
+wO
+vi
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(116,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+vi
+vm
+Ds
+Ds
+Ds
+Ds
+Qr
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+gC
+BR
+BR
+BR
+BR
+wO
+vi
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(117,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+wO
+vm
+Ds
+Ds
+Ds
+Ds
+vm
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+Vd
+BR
+BR
+BR
+BR
+Vd
+wO
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(118,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+wO
+vm
+Ds
+Ds
+Ds
+Ds
+VH
+vi
+vi
+vi
+vi
+vi
+vi
+vi
+wo
+BR
+BR
+BR
+BR
+Vd
+wO
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(119,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Np
+YC
+YC
+tN
+tN
+YC
+YC
+gf
+uk
+YC
+YC
+YC
+gf
+uk
+YC
+YC
+tN
+tN
+YC
+YC
+Np
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(120,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Np
+iw
+sk
+KC
+KC
+KC
+KC
+KC
+KC
+yx
+qP
+Py
+KC
+KC
+KC
+Fo
+KC
+KC
+sk
+WF
+Np
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(121,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Np
+Rc
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+BQ
+Np
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(122,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Np
+Np
+KC
+KC
+qq
+KC
+KC
+KC
+KC
+KC
+ry
+KC
+KC
+KC
+KC
+KC
+qq
+KC
+KC
+Np
+Np
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(123,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Su
+SH
+KC
+wI
+KC
+KC
+KC
+KC
+uV
+JB
+uJ
+KC
+KC
+KC
+KC
+qh
+KC
+la
+jw
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(124,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+re
+re
+KC
+NW
+KC
+Nj
+KC
+KC
+KC
+rX
+KC
+KC
+KC
+Nj
+KC
+JM
+KC
+re
+re
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(125,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+aw
+oF
+tN
+KC
+po
+fO
+Zs
+zz
+KC
+KC
+KC
+KC
+KC
+Hj
+KF
+tG
+Hz
+KC
+tN
+oF
+aw
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(126,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+Fq
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+zE
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(127,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+re
+re
+KC
+KC
+KC
+KC
+qq
+KC
+Nj
+KC
+qq
+KC
+KC
+KC
+KC
+re
+re
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(128,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+re
+re
+KC
+KC
+KC
+ID
+KC
+KC
+Mj
+KB
+KC
+KC
+KC
+re
+re
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(129,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+aw
+oF
+Np
+lf
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+jh
+Np
+oF
+aw
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(130,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+re
+re
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+KC
+re
+re
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(131,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+aw
+oF
+re
+UR
+tN
+tN
+tN
+tN
+tN
+tN
+tN
+UR
+re
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(132,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+aw
+oF
+oF
+oF
+oF
+aw
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(133,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(134,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(135,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(136,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}
+(137,1,3) = {"
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+oF
+"}

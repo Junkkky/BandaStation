@@ -45,6 +45,8 @@
 /datum/map_template/stationtrauma_route/load_new_z(secret = FALSE)
 	if(SSfloodwater.loading_ocean_levels.len || SSfloodwater.loading_structure_turfs.len)
 		return FALSE
+	var/load_started = REALTIMEOFDAY
+	log_mapping("StationTrauma [name]: loading [mappath]")
 	var/datum/parsed_map/parsed = new(file(mappath))
 	if(!parsed.bounds)
 		return FALSE
@@ -65,6 +67,7 @@
 	loading_budget = new
 	SSfloodwater.loading_ocean_levels["pending"] = TRUE
 	try
+		var/phase_started = REALTIMEOFDAY
 		for(var/deck in 1 to deck_count)
 			loading_budget.yield()
 			var/list/traits = secret ? ZTRAITS_AWAY_SECRET : ZTRAITS_AWAY
@@ -86,6 +89,7 @@
 					placeholder.air = placeholder.space_gas
 				loading_budget.yield()
 			report_loading(0.05 * deck / deck_count)
+		log_mapping("StationTrauma [name]: allocated [deck_count] decks in [(REALTIMEOFDAY - phase_started) / 10]s")
 		// The old space area cached its lighting before this stack introduced another plane offset.
 		var/area/space/placeholders = GLOB.areas_by_type[/area/space]
 		if(placeholders?.lighting_effects)
@@ -96,18 +100,24 @@
 		var/x_start = round((world.maxx - width) * 0.5) + 1
 		var/y_start = round((world.maxy - height) * 0.5) + 1
 		// Both passes use fresh, uninitialized turfs; the native loader owns batching and mapload state.
+		phase_started = REALTIMEOFDAY
 		loaded = parsed.load(x_start, y_start, first_level.z_value, no_changeturf = TRUE, place_on_top = should_place_on_top, new_z = TRUE)
+		log_mapping("StationTrauma [name]: placed structure in [(REALTIMEOFDAY - phase_started) / 10]s")
 		report_loading(0.1)
 		if(loaded)
 			for(var/level in levels)
+				phase_started = REALTIMEOFDAY
 				if(!fill_ocean(level))
 					loaded = FALSE
 					break
+				log_mapping("StationTrauma [name]: filled ocean z=[level] in [(REALTIMEOFDAY - phase_started) / 10]s")
 		if(loaded)
 			require_area_resort()
 			initTemplateBounds(parsed.bounds)
 			for(var/level in levels)
+				phase_started = REALTIMEOFDAY
 				initialize_ocean(level)
+				log_mapping("StationTrauma [name]: initialized atoms and lighting z=[level] in [(REALTIMEOFDAY - phase_started) / 10]s")
 	catch(var/exception/failure)
 		load_error = failure
 		loaded = FALSE
@@ -119,6 +129,7 @@
 	if(!loaded)
 		return FALSE
 	finish_ocean(parsed.bounds)
+	log_mapping("StationTrauma [name]: load complete in [(REALTIMEOFDAY - load_started) / 10]s")
 	report_loading(1)
 	return first_level
 

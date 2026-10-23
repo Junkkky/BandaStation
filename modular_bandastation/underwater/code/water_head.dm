@@ -24,7 +24,7 @@
 /** Vented native air plus the current free water column, in kPa. */
 /datum/floodwater_front_cell/proc/free_pressure()
 	var/turf/open/floor = tile
-	return (isopenturf(floor) ? floor.stationtrauma_air_pressure(null) : 0) + amount() / FLOOD_WATER_LITRES_PER_CM * FLOOD_WATER_KPA_PER_CM
+	return (isopenturf(floor) ? floor.stationtrauma_air_pressure() : 0) + amount() / FLOOD_WATER_LITRES_PER_CM * FLOOD_WATER_KPA_PER_CM
 
 /** Partial water remains a free column; a full packet can retain independent hydraulic head. */
 /datum/floodwater_front_cell/proc/head_pressure()

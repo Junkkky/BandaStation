@@ -1,8 +1,10 @@
 /// A local RPD catalogue keeps the ordinary station dispenser and gas recipes unchanged.
 /obj/item/pipe_dispenser/stationtrauma
-	name = "RPD водяных систем"
-	desc = "Обычный RPD с каталогом «Вода»: мультитруба, адаптер уровней, универсальный порт, насос давления, вентили, выпуск и трюмная помпа. Водяная сеть отделена от газовых труб и химических duct."
+	name = "RPD судовых систем"
+	desc = "RPD с каталогами «Вода» и «Реакторный контур». ПКМ по реакторному агрегату или трубе — выбрать его установку. Реакторные линии отделены от трюмной воды, газовых труб и химических duct."
 	var/water_recipe = 1
+	/// Selected entry in the isolated plant catalogue; zero preserves the ordinary recipes.
+	var/plant_recipe = 0
 	mode = (1<<0) | (1<<1)
 	var/static/list/water_recipes = list(
 		"Водяная мультитруба" = /obj/machinery/duct/stationtrauma,
@@ -20,6 +22,7 @@
 
 /obj/item/pipe_dispenser/stationtrauma/Initialize(mapload)
 	. = ..()
+	initialize_plant_catalogue()
 	if(water_recipe_info)
 		return
 	water_recipe_info = list()
@@ -36,6 +39,7 @@
 
 /obj/item/pipe_dispenser/stationtrauma/ui_data(mob/user)
 	. = ..()
+	plant_catalogue_data(.)
 	if(category != 0)
 		return
 	var/list/choices = list()
@@ -48,11 +52,22 @@
 			"previews" = info.get_preview(p_dir, water_recipe == index),
 		))
 	.["categories"] += list(list("cat_name" = "Вода", "recipes" = choices))
-	if(water_recipe)
+	if(water_recipe && !plant_recipe)
 		.["selected_category"] = "Вода"
 		.["selected_recipe"] = water_recipes[water_recipe]
 
 /obj/item/pipe_dispenser/stationtrauma/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(action == "pipe_type" && (params["category"] in plant_catalogues))
+		var/index = text2num(params["pipe_type"])
+		if(!isnum(index) || !IS_FINITE(index) || index != round(index) || index < 1 || index > length(plant_recipes))
+			return FALSE
+		plant_recipe = index
+		plant_line = plant_catalogues.Find(params["category"])
+		water_recipe = 0
+		p_dir = index == 3 ? NORTHEAST : SOUTH
+		return TRUE
+	if(action == "pipe_type" || action == "category")
+		plant_recipe = 0
 	if(action == "pipe_type" && params["category"] == "Вода")
 		var/index = text2num(params["pipe_type"])
 		if(!isnum(index) || !IS_FINITE(index) || index != round(index) || index < 1 || index > length(water_recipes))
@@ -122,6 +137,8 @@
 		return ITEM_INTERACT_BLOCKING
 	if(collect_water_fitting(target))
 		return ITEM_INTERACT_SUCCESS
+	if(plant_recipe && category == 0)
+		return dispense_plant_selection(target, user)
 	if(!water_recipe || category != 0)
 		return ..()
 	if((mode & (1<<2)) && (istype(target, /obj/machinery/duct/stationtrauma) || (istype(target, /obj/machinery/stationtrauma_water_device) && !istype(target, /obj/machinery/stationtrauma_water_device/barrel)) || (istype(target, /obj/machinery/bilge_pump) && !istype(target, /obj/machinery/bilge_pump/portable))))
@@ -145,6 +162,21 @@
 	return length(built) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
 
 /obj/item/pipe_dispenser/stationtrauma/interact_with_atom_secondary(atom/target, mob/living/user, list/modifiers)
+	if(user.Adjacent(target) && user.can_perform_action(target, NEED_DEXTERITY | NEED_HANDS))
+		var/obj/machinery/stationtrauma_reactor_pipe/plant_pipe = target
+		var/obj/machinery/power/stationtrauma_plant_machine/plant_machine = target
+		if(istype(plant_pipe) || istype(plant_machine))
+			plant_id = istype(plant_pipe) ? plant_pipe.plant_id : plant_machine.plant_id
+			if(istype(plant_pipe))
+				pipe_layers = (1 << (plant_pipe.piping_layer - 1))
+				plant_line = plant_pipe.line
+			else
+				pipe_layers = (1 << (plant_machine.piping_layer - 1))
+			category = 0
+			plant_recipe = 1
+			water_recipe = 0
+			balloon_alert(user, "контур [plant_id]")
+			return ITEM_INTERACT_SUCCESS
 	var/obj/machinery/duct/stationtrauma/pipe = target
 	if(istype(pipe) && user.can_perform_action(target, NEED_DEXTERITY | NEED_HANDS))
 		pipe_layers = (1 << (pipe.water_level - 1))

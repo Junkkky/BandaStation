@@ -278,11 +278,51 @@
 /obj/machinery/stationtrauma_pump_controller/directional/south,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
+"fE" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 2
+	},
+/turf/open/space/openspace/ocean,
+/area/shuttle/stationtrauma/prototype/upper)
+"hu" = (
+/obj/machinery/bilge_pump/ocean_intake{
+	dir = 1;
+	id_tag = "voyage_source";
+	control_group = "chamber"
+	},
+/turf/open/space/openspace/ocean,
+/area/shuttle/stationtrauma/prototype/middle)
+"pc" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 2
+	},
+/turf/open/space/ocean,
+/area/shuttle/stationtrauma/prototype)
+"IJ" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 4;
+	id_tag = "voyage_inlet"
+	},
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma/prototype/chamber)
+"Js" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 2
+	},
+/turf/open/space/openspace/ocean,
+/area/shuttle/stationtrauma/prototype/middle)
 "Ox" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma/prototype)
+"PH" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 2;
+	id_tag = "voyage_discharge"
+	},
+/turf/open/space/openspace/ocean,
+/area/shuttle/stationtrauma/prototype/middle)
 "WV" = (
 /obj/machinery/computer/stationtrauma_navigation/directional/east{
 	dir = 8

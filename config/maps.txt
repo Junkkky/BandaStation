@@ -62,6 +62,10 @@ endmap
 
 # Debug-only maps.
 
+map eventmap_0
+	default
+endmap
+
 map gateway_test
 endmap
 

@@ -1,5 +1,5 @@
 /** Read current native air pressure; stable interiors need no polling queue. */
-/turf/open/proc/stationtrauma_air_pressure(datum/component/floodwater/water)
+/turf/open/proc/stationtrauma_air_pressure()
 	return air?.return_pressure() || 0
 
 /** External reservoirs supply their configured head; free interior water adds its own column. */
@@ -7,12 +7,12 @@
 	if(water?.infinite_source)
 		return water.reservoir_pressure
 	var/datum/floodwater_front_cell/cell = SSfloodwater.hybrid?.by_turf[src]
-	return cell ? cell.head_pressure() : stationtrauma_air_pressure(water) + get_water_depth() * FLOOD_WATER_KPA_PER_CM
+	return cell ? cell.head_pressure() : stationtrauma_air_pressure() + get_water_depth() * FLOOD_WATER_KPA_PER_CM
 
 /** The simplified model vents displaced air; the water column limits reservoir inflow. */
-/proc/limit_stationtrauma_boundary_flow(turf/open/tile, datum/component/floodwater/water, pressure, signed_volume)
+/proc/limit_stationtrauma_boundary_flow(turf/open/tile, pressure, signed_volume)
 	var/depth = tile.get_water_depth()
-	var/balance = clamp((pressure - tile.stationtrauma_air_pressure(water)) / FLOOD_WATER_KPA_PER_CM, 0, FLOOD_WATER_MAX_DEPTH)
+	var/balance = clamp((pressure - tile.stationtrauma_air_pressure()) / FLOOD_WATER_KPA_PER_CM, 0, FLOOD_WATER_MAX_DEPTH)
 	var/volume = depth * FLOOD_WATER_LITRES_PER_CM
 	var/target = balance * FLOOD_WATER_LITRES_PER_CM
 	var/datum/floodwater_front_cell/cell = SSfloodwater.hybrid?.by_turf[tile]

@@ -92,6 +92,10 @@
 
 /// Diagonal corners need the same water column, without space's starlight overlays.
 /turf/open/space/ocean/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
+	return get_stationtrauma_ocean_underlay(underlay_appearance, asking_turf)
+
+/// Shared by solid-bottom and openspace ocean corners; ordinary space keeps its native underlay.
+/turf/open/proc/get_stationtrauma_ocean_underlay(mutable_appearance/underlay_appearance, turf/asking_turf)
 	underlay_appearance.icon = 'modular_bandastation/underwater/icons/water.dmi'
 	underlay_appearance.icon_state = "ocean_mask"
 	SET_PLANE(underlay_appearance, PLANE_SPACE, asking_turf)

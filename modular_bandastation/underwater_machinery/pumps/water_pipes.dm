@@ -181,10 +181,16 @@
 	icon = 'icons/obj/machines/atmospherics/binary_devices.dmi'
 	icon_state = "mvalve_map-3"
 	color = STATIONTRAUMA_WATER_COLOR
+	layer = GAS_PUMP_LAYER
 	plumbing_type = /datum/component/plumbing/stationtrauma_water/manual_valve
 
 /obj/machinery/stationtrauma_water_device/valve/manual/update_icon_state()
 	. = ..()
+	dir = (dir in list(NORTH, SOUTH)) ? NORTH : EAST
+	color = null
+	pixel_x = 0
+	pixel_y = 0
+	PIPING_LAYER_SHIFT(src, water_level)
 	icon_state = "mvalve_[valve_open ? "on" : "off"]-[(water_level in list(2, 4)) ? 2 : 1]"
 
 /obj/machinery/stationtrauma_water_device/outlet

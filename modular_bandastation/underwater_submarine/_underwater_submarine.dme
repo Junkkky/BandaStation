@@ -7,3 +7,5 @@
 #include "code/ocean_passage.dm"
 #include "code/ocean_preview.dm"
 #include "code/fixed_voyage.dm"
+#include "code/eurydice.dm"
+#include "code/eurydice_areas.dm"

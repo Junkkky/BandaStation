@@ -5,22 +5,27 @@
 	water = water || loc.GetComponent(/datum/component/floodwater)
 	return water && water.get_depth() >= FLOOD_WATER_DEEP && water.affects(src)
 
-/** Handle the existing movement keybinds only while swimming; ladders and remote controls keep native priority. */
-/datum/status_effect/floodwater/proc/swim_up()
-	SIGNAL_HANDLER
-	return begin_vertical_swim(UP)
+/** HUD and keyboard share the same swimming command; dry movement retains the native path. */
+/mob/living/up()
+	var/datum/status_effect/floodwater/water = has_status_effect(/datum/status_effect/floodwater)
+	if(water?.begin_vertical_swim(UP))
+		return
+	return ..()
 
-/datum/status_effect/floodwater/proc/swim_down()
-	SIGNAL_HANDLER
-	return begin_vertical_swim(DOWN)
+/mob/living/down()
+	var/datum/status_effect/floodwater/water = has_status_effect(/datum/status_effect/floodwater)
+	if(water?.begin_vertical_swim(DOWN))
+		return
+	return ..()
 
+/** Ladders and remote controls keep native priority; a held key cannot overlap strokes. */
 /datum/status_effect/floodwater/proc/begin_vertical_swim(direction)
 	if(!owner.can_stationtrauma_swim() || owner.remote_control || (locate(/obj/structure/ladder) in owner.loc))
-		return NONE
+		return FALSE
 	if(!vertical_swim_pending)
 		vertical_swim_pending = TRUE
 		INVOKE_ASYNC(src, PROC_REF(swim_vertical), direction)
-	return COMSIG_KB_ACTIVATED
+	return TRUE
 
 /** Keep native geometry, incapacitation and pulling checks, omitting only the requirement to fly against gravity. */
 /datum/status_effect/floodwater/proc/swim_vertical(direction)

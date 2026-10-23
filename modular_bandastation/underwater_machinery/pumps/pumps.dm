@@ -197,7 +197,7 @@
 /obj/machinery/bilge_pump/ocean_intake
 	name = "забортная водозаборная помпа"
 	icon_state = "hull_intake"
-	desc = "Закачивает морскую воду в водяные трубы. Установите в океане, подведите питание; выход трубы по стрелке."
+	desc = "Закачивает морскую воду в водяные трубы. Установите в океане, подведите питание; труба подключается со стороны решётки."
 	plumbing_type = /datum/component/plumbing/stationtrauma_water/supply/ocean_intake
 
 /obj/machinery/bilge_pump/ocean_intake/collect_water(seconds_per_tick)

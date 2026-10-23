@@ -174,6 +174,12 @@
 	baseturfs = /turf/open/space/ocean
 	},
 /area/stationtrauma_test)
+"mj" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 4
+	},
+/turf/open/space/ocean,
+/area/space/ocean)
 "nQ" = (
 /obj/machinery/stationtrauma_water_device/outlet/universal{
 	dir = 8
@@ -252,6 +258,13 @@
 	},
 /area/stationtrauma_test)
 "uR" = (
+/turf/open/space/ocean,
+/area/space/ocean)
+"uU" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 8;
+	control_group = "airlock"
+	},
 /turf/open/space/ocean,
 /area/space/ocean)
 "uV" = (
@@ -426,6 +439,14 @@
 "Gw" = (
 /obj/item/stack/cable_coil{
 	amount = 30
+	},
+/turf/open/floor/plating{
+	baseturfs = /turf/open/space/ocean
+	},
+/area/stationtrauma_test)
+"GC" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 4
 	},
 /turf/open/floor/plating{
 	baseturfs = /turf/open/space/ocean

@@ -73,11 +73,11 @@
 		water_planes = controller
 	if(water_planes && presentation_mode != mode)
 		presentation_mode = mode
-		var/red = mode == 1 ? 0.91 : 0.84
+		var/red = mode == 1 ? 0.89 : 0.84
 		water_planes.add_filter("floodwater_tint", 20, color_matrix_filter(list(red,0,0,0, 0,0.99,0,0, 0,0,1.03,0, 0,0,0,1, 0,0,0,0)))
 		// Radial blur grows with distance from the view centre; the character and nearby tools stay readable.
-		water_planes.add_filter("floodwater_blur", 21, radial_blur_filter(mode == 1 ? 0.008 : 0.028))
-		water_planes.add_filter("floodwater_refraction", 22, wave_filter(x = 96, y = 64, size = mode == 1 ? 0.35 : 1.5, offset = 0))
+		water_planes.add_filter("floodwater_blur", 21, radial_blur_filter(mode == 1 ? 0.01 : 0.028))
+		water_planes.add_filter("floodwater_refraction", 22, wave_filter(x = 96, y = 64, size = mode == 1 ? 0.45 : 1.5, offset = 0))
 		for(var/refraction as anything in water_planes.get_filters("floodwater_refraction"))
 			animate(refraction, offset = 1, time = 10 SECONDS, loop = -1, flags = ANIMATION_PARALLEL)
 

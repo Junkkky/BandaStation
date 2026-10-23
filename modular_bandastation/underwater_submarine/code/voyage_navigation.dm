@@ -23,6 +23,7 @@
 		navigation_windows[user] = popup
 		RegisterSignals(user, list(COMSIG_QDELETING, COMSIG_MOB_LOGOUT), PROC_REF(close_navigation))
 	var/html = file2text('modular_bandastation/underwater_submarine/html/navigation.html')
+	html = replacetext(html, "@VESSEL@", html_encode(vessel.name))
 	html = replacetext(html, "@CONSOLE@", REF(src))
 	html = replacetext(html, "@STATE@", replacetext(json_encode(ui_data(user)), "<", "\\u003c"))
 	popup.add_script("stationtrauma_navigation", 'modular_bandastation/underwater_submarine/html/navigation.js')

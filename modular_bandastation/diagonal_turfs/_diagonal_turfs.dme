@@ -2,6 +2,8 @@
 #include "turf_decal_diagonal/_turf_decal_diagonal.dm"
 
 #include "code/opsglass.dm"
+#include "code/reinforced_hull.dm"
+#include "code/window_floor.dm"
 #include "turf_decal_diagonal/siding.dm"
 #include "turf_decal_diagonal/thinplating.dm"
 #include "turf_decal_diagonal/trimline.dm"

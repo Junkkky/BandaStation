@@ -160,7 +160,7 @@ GLOBAL_LIST_EMPTY(ocean_parallax_levels)
 	speed = 0.25
 	absolute = TRUE
 	// Distant terrain receives much less light than the nearby water and suspended sediment.
-	color = "#303E46"
+	color = "#35444C"
 	/// Keep this client's seabed aligned across distant ocean passages, including view changes.
 	var/passage_offset_x = 0
 	var/passage_offset_y = 0

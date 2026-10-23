@@ -165,8 +165,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/stationtrauma_pump_controller/unassem
 	for(var/obj/machinery/bilge_pump/pump as anything in SSfloodwater.pumps)
 		if(pump.z == z && get_area(pump) == zone && pump.control_group == control_group && pump.reagents && !istype(pump, /obj/machinery/bilge_pump/portable))
 			devices += pump
-	for(var/obj/machinery/stationtrauma_water_device/device as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/stationtrauma_water_device))
-		if(device.z == z && get_area(device) == zone && device.control_group == control_group && device.reagents && istype(device, /obj/machinery/stationtrauma_water_device/inline_pump/pressure))
+	for(var/obj/machinery/stationtrauma_water_device/inline_pump/pressure/device as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/stationtrauma_water_device/inline_pump/pressure))
+		if(device.z == z && get_area(device) == zone && device.control_group == control_group && device.reagents)
 			devices += device
 	return devices
 
@@ -535,8 +535,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/stationtrauma_pump_controller/unassem
 	if(..())
 		return
 	var/list/options = list(valve_open ? "Закрыть клапан" : "Открыть клапан", "Слить рядом")
-	var/list/connections = port?.GetComponents(/datum/component/plumbing/stationtrauma_water/connector)
-	var/datum/component/plumbing/stationtrauma_water/connector/connection = length(connections) ? connections[1] : null
+	var/datum/component/plumbing/stationtrauma_water/connector/connection = port?.GetComponent(/datum/component/plumbing/stationtrauma_water/connector)
 	var/choice = tgui_input_list(user, "[round(reagents.get_reagent_amount(/datum/reagent/water), 0.1)] / [capacity] л. Порт: [port ? "подключена" : "нет"]. Труба: [length(connection?.ducts) ? "подключена" : "нет"]. Клапан: [valve_open ? "открыт" : "закрыт"].", name, options)
 	if(QDELETED(src) || !choice || !user.can_perform_action(src, NEED_DEXTERITY | NEED_HANDS | FORBID_TELEKINESIS_REACH))
 		return
@@ -663,12 +662,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/stationtrauma_pump_controller/unassem
 	icon = 'icons/obj/machines/atmospherics/binary_devices.dmi'
 	icon_state = "pump_map-3"
 	color = STATIONTRAUMA_WATER_COLOR
+	layer = GAS_PUMP_LAYER
 	plumbing_type = /datum/component/plumbing/stationtrauma_water/inline_pump/pressure
 	flow_rate = 1800
 	var/target_pressure = 80
 
 /obj/machinery/stationtrauma_water_device/inline_pump/pressure/update_icon_state()
 	. = ..()
+	color = null
 	icon_state = "pump_[on && is_operational ? "on" : "off"]-[(water_level in list(2, 4)) ? 2 : 1]"
 
 /obj/machinery/stationtrauma_water_device/inline_pump/pressure/ui_data(mob/user)
@@ -703,11 +704,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/stationtrauma_pump_controller/unassem
 	icon = 'icons/obj/machines/atmospherics/binary_devices.dmi'
 	icon_state = "passgate_map-3"
 	color = STATIONTRAUMA_WATER_COLOR
+	layer = GAS_PUMP_LAYER
 	plumbing_type = /datum/component/plumbing/stationtrauma_water/directional
 	valve_open = TRUE
 
 /obj/machinery/stationtrauma_water_device/valve/passive_gate/update_icon_state()
 	. = ..()
+	color = null
 	icon_state = "passgate_[valve_open ? "on" : "off"]-[(water_level in list(2, 4)) ? 2 : 1]"
 
 /obj/machinery/stationtrauma_water_device/valve/pressure_gate

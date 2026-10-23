@@ -215,7 +215,7 @@
 			show_leak_visual(outside, intake)
 			wake()
 			continue
-		volume = limit_stationtrauma_boundary_flow(intake, water, source.reservoir_pressure, volume)
+		volume = limit_stationtrauma_boundary_flow(intake, source.reservoir_pressure, volume)
 		if(!volume)
 			continue
 		var/transferred = intake.add_water(volume)

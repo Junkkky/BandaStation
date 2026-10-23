@@ -22,6 +22,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/stationtrauma_navigation, 0)
 		UnregisterSignal(vessel, list(COMSIG_STATIONTRAUMA_NAVIGATION_CHANGED, COMSIG_QDELETING))
 	vessel = boat
 	if(vessel)
+		name = "навигация: [vessel.name]"
+		for(var/obj/machinery/stationtrauma_navigation_section/section as anything in sections)
+			section.name = name
 		RegisterSignal(vessel, COMSIG_STATIONTRAUMA_NAVIGATION_CHANGED, PROC_REF(refresh_hardware))
 		RegisterSignal(vessel, COMSIG_QDELETING, PROC_REF(vessel_deleted))
 	refresh_hardware()
@@ -72,11 +75,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/stationtrauma_navigation, 0)
 
 /obj/machinery/computer/stationtrauma_navigation/power_change()
 	. = ..()
-	if(machine_stat & (NOPOWER|BROKEN))
-		active_sonar = FALSE
-		sonar_loop?.stop()
-		set_light(0)
-	else
+	if(!(machine_stat & (NOPOWER|BROKEN)))
 		set_light(brightness_on, 0.45, light_color)
 	refresh_hardware()
 

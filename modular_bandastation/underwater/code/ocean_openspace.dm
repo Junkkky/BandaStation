@@ -27,3 +27,6 @@
 /** Match the lower ocean: only finite neighboring air needs simulation. */
 /turf/open/space/openspace/ocean/process_cell(fire_count)
 	SSair.sleep_active_turf(src)
+
+/turf/open/space/openspace/ocean/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
+	return get_stationtrauma_ocean_underlay(underlay_appearance, asking_turf)

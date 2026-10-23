@@ -2,14 +2,17 @@
 /obj/machinery/duct/stationtrauma
 	name = "водяная труба"
 	desc = "Труба водяного контура. Ключ — снять, водяной RPD — проложить. Не соединяется с газовыми трубами или химическими duct."
-	icon = 'icons/obj/pipes_n_cables/!pipes_bitmask.dmi'
-	icon_state = "48_3"
+	icon = 'icons/obj/pipes_n_cables/simple.dmi'
+	icon_state = "manifold4w-3"
+	layer = GAS_PIPE_HIDDEN_LAYER
+	color = STATIONTRAUMA_WATER_COLOR
 	duct_color = STATIONTRAUMA_WATER_COLOR
 	duct_layer = STATIONTRAUMA_WATER_LAYER
 	var/pipe_shape = "smart"
 	var/connection_mask = ALL_CARDINALS
 	var/water_level = 3
 	var/bridges_levels = FALSE
+	var/hide = TRUE
 
 /obj/machinery/duct/stationtrauma/manifold
 	name = "водяной адаптер уровней"
@@ -17,7 +20,7 @@
 	bridges_levels = TRUE
 	pipe_shape = "straight"
 	icon = 'icons/obj/pipes_n_cables/manifold.dmi'
-	icon_state = "manifoldlayer_center"
+	icon_state = MAP_SWITCH("manifoldlayer_center", "manifoldlayer")
 	color = STATIONTRAUMA_WATER_COLOR
 
 /obj/machinery/duct/stationtrauma/manifold/update_icon_state()
@@ -40,24 +43,57 @@
 
 /obj/machinery/duct/stationtrauma/straight
 	pipe_shape = "straight"
+	icon_state = "pipe11-3"
+
+/obj/machinery/duct/stationtrauma/simple
+	pipe_shape = "simple"
+	icon_state = "pipe11-3"
 
 /obj/machinery/duct/stationtrauma/elbow
 	pipe_shape = "elbow"
+	icon_state = "pipe11-3"
 
 /obj/machinery/duct/stationtrauma/tee
 	pipe_shape = "tee"
+	icon_state = "manifold-3"
 
 /obj/machinery/duct/stationtrauma/cross
 	pipe_shape = "cross"
+	icon_state = "manifold4w-3"
+
+// Match the native atmos mapper helpers: each layer has its own directional preview.
+#define WATER_PIPE_MAPPING_LAYERS(path, shape) \
+	##path/layer1 { water_level = 1; icon = 'modular_bandastation/underwater_machinery/pumps/icons/water_pipe_mapping.dmi'; icon_state = MAP_SWITCH("48_1", shape + "-1"); } \
+	##path/layer2 { water_level = 2; icon = 'modular_bandastation/underwater_machinery/pumps/icons/water_pipe_mapping.dmi'; icon_state = MAP_SWITCH("48_2", shape + "-2"); } \
+	##path/layer4 { water_level = 4; icon = 'modular_bandastation/underwater_machinery/pumps/icons/water_pipe_mapping.dmi'; icon_state = MAP_SWITCH("48_4", shape + "-4"); } \
+	##path/layer5 { water_level = 5; icon = 'modular_bandastation/underwater_machinery/pumps/icons/water_pipe_mapping.dmi'; icon_state = MAP_SWITCH("48_5", shape + "-5"); }
+
+WATER_PIPE_MAPPING_LAYERS(/obj/machinery/duct/stationtrauma, "smart")
+WATER_PIPE_MAPPING_LAYERS(/obj/machinery/duct/stationtrauma/straight, "straight")
+WATER_PIPE_MAPPING_LAYERS(/obj/machinery/duct/stationtrauma/elbow, "elbow")
+WATER_PIPE_MAPPING_LAYERS(/obj/machinery/duct/stationtrauma/tee, "tee")
+WATER_PIPE_MAPPING_LAYERS(/obj/machinery/duct/stationtrauma/cross, "cross")
+
+#undef WATER_PIPE_MAPPING_LAYERS
 
 /obj/machinery/duct/stationtrauma/Initialize(mapload, new_shape, new_direction, new_level)
 	if(new_level in 1 to 5)
 		water_level = new_level
-	duct_layer = bridges_levels ? (31 << 5) : STATIONTRAUMA_WATER_LAYER_BIT(water_level)
 	if(new_shape)
 		pipe_shape = new_shape
 	if(new_direction)
 		dir = new_direction
+	configure_water_pipe()
+	. = ..(mapload)
+	if(!hide)
+		RemoveElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
+
+/** Shared geometry setup for gameplay and the editor's prepare pass. */
+/obj/machinery/duct/stationtrauma/proc/configure_water_pipe()
+	duct_layer = bridges_levels ? (31 << 5) : STATIONTRAUMA_WATER_LAYER_BIT(water_level)
+	if(pipe_shape == "simple")
+		connection_mask = ISDIAGONALDIR(dir) ? dir : ((dir in list(NORTH, SOUTH)) ? NORTH|SOUTH : EAST|WEST)
+		return
 	switch(pipe_shape)
 		if("straight")
 			connection_mask = NORTH | SOUTH
@@ -72,7 +108,6 @@
 		if(connection_mask & direction)
 			rotated_mask |= turn(direction, 180 - dir2angle(dir))
 	connection_mask = rotated_mask
-	return ..(mapload)
 
 /obj/machinery/duct/stationtrauma/proc/accepts(direction)
 	return !!(connection_mask & direction)
@@ -140,20 +175,11 @@
 
 /obj/machinery/duct/stationtrauma/update_icon_state()
 	. = ..()
+	icon = bridges_levels ? 'icons/obj/pipes_n_cables/manifold.dmi' : 'icons/obj/pipes_n_cables/!pipes_bitmask.dmi'
 	var/connections = NONE
 	for(var/neighbor in neighbours)
 		connections |= neighbours[neighbor]
-	var/bitfield = CARDINAL_TO_FULLPIPES(connections)
-	if(ISSTUB(connections))
-		var/short_ends = connections ? REVERSE_DIR(connections) & connection_mask : NONE
-		var/shift = 0
-		while(ISSTUB(connections | short_ends) && (connection_mask >> shift))
-			var/candidate = connection_mask & (1 << shift)
-			if(!(candidate & connections))
-				short_ends |= candidate
-			shift++
-		bitfield |= CARDINAL_TO_SHORTPIPES(short_ends)
-	icon_state = "[bitfield]_[water_level]"
+	icon_state = "[stationtrauma_pipe_bitfield(connections, connection_mask)]_[water_level]"
 
 /obj/machinery/duct/stationtrauma/examine(mob/user)
 	. = list(desc, span_notice("Секция: [pipe_shape], уровень [water_level]. Сеть водяная; газ и химические duct не подключаются."))
@@ -249,11 +275,19 @@
 	for(var/direction in GLOB.cardinals)
 		if(direction & (supply_connects | demand_connects))
 			var/state = ducts["[direction]"] ? "intact" : "exposed"
-			var/mutable_appearance/branch = mutable_appearance('icons/obj/pipes_n_cables/pipe_underlays.dmi', "[state]_[direction]_[stationtrauma_water_level(ducting_layer)]", PLUMBING_PIPE_VISIBILE_LAYER)
+			var/mutable_appearance/branch = mutable_appearance('icons/obj/pipes_n_cables/pipe_underlays.dmi', "[state]_[direction]_[stationtrauma_water_level(ducting_layer)]", FLOAT_LAYER - 0.01, appearance_flags = RESET_COLOR|KEEP_APART)
 			branch.color = STATIONTRAUMA_WATER_COLOR
-			branch.pixel_x = -source.pixel_x
-			branch.pixel_y = -source.pixel_y
+			source.stationtrauma_position_water_branch(branch, direction)
 			overlays += branch
+
+/** Edge-mounted grilles cover the inner pipe end; the visible tail projects outwards. */
+/atom/movable/proc/stationtrauma_position_water_branch(mutable_appearance/branch, direction)
+	branch.pixel_x = -pixel_x
+	branch.pixel_y = -pixel_y
+	if(!istype(src, /obj/machinery/bilge_pump/ocean_intake) && !istype(src, /obj/machinery/stationtrauma_water_device/outlet/universal) && !istype(src, /obj/machinery/stationtrauma_reactor_pipe/pump/sea_inlet) && !istype(src, /obj/machinery/stationtrauma_reactor_pipe/sea_outlet))
+		return
+	branch.pixel_x += direction == EAST ? 8 : direction == WEST ? -8 : 0
+	branch.pixel_y += direction == NORTH ? 8 : direction == SOUTH ? -8 : 0
 
 /proc/stationtrauma_water_level(layer_bit)
 	for(var/level in 1 to 5)

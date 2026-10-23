@@ -113,6 +113,12 @@
 	},
 /turf/closed/wall/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"ie" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 1
+	},
+/turf/open/space/ocean,
+/area/shuttle/stationtrauma)
 "iN" = (
 /obj/structure/ladder,
 /turf/open/floor/plating{
@@ -213,6 +219,14 @@
 	},
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
+"vJ" = (
+/obj/machinery/bilge_pump/ocean_intake{
+	dir = 8;
+	id_tag = "route_airlock_source";
+	control_group = "chamber"
+	},
+/turf/open/space/ocean,
+/area/shuttle/stationtrauma)
 "wC" = (
 /obj/machinery/atmospherics/pipe/smart/simple{
 	dir = 6
@@ -312,6 +326,14 @@
 	dir = 1
 	},
 /turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma)
+"Dd" = (
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 8;
+	control_group = "chamber";
+	id_tag = "route_airlock_discharge"
+	},
+/turf/open/space/ocean,
 /area/shuttle/stationtrauma)
 "Du" = (
 /obj/item/wallframe/stationtrauma_pump_controller,
@@ -456,6 +478,28 @@
 /obj/structure/flora/underwater/glowing,
 /turf/open/space/ocean,
 /area/space/ocean)
+"UF" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/button/stationtrauma_water_airlock{
+	dir = 8;
+	pixel_x = -24;
+	id_tag = "route_airlock";
+	inner_tag = "route_airlock_inner";
+	outer_tag = "route_airlock_outer";
+	source_tag = "route_airlock_source";
+	inlet_tag = "route_airlock_inlet";
+	drain_tag = "route_airlock_drain";
+	discharge_tag = "route_airlock_discharge"
+	},
+/obj/machinery/stationtrauma_water_device/outlet/universal{
+	dir = 2;
+	id_tag = "route_airlock_inlet";
+	control_group = "chamber"
+	},
+/turf/open/floor/plating/stationtrauma_hull,
+/area/shuttle/stationtrauma/water_airlock/test)
 "VK" = (
 /obj/machinery/door/airlock/highsecurity/underwater,
 /turf/open/floor/plating{
@@ -480,7 +524,6 @@
 "YS" = (
 /turf/open/floor/plating/stationtrauma_hull,
 /area/shuttle/stationtrauma)
-
 "ZZ" = (
 /obj/machinery/stationtrauma_flood_alarm/directional/north,
 /turf/open/floor/plating/stationtrauma_hull,

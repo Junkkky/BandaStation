@@ -1,0 +1,50 @@
+{
+	"version": 1,
+	"map_name": "eventmap_0",
+	"fluff_name": "НИС «Эвридика»",
+	"map_path": "../modular_bandastation/underwater_submarine/maps",
+	"map_file": [
+		"Eurydice.dmm",
+		"eurydice_dock.dmm"
+	],
+	"height_autosetup": false,
+	"traits": [
+		{
+			"Up": true,
+			"Baseturf": "/turf/open/space/ocean",
+			"Station": true
+		},
+		{
+			"Up": true,
+			"Down": true,
+			"Baseturf": "/turf/open/openspace",
+			"Station": true
+		},
+		{
+			"Down": true,
+			"Baseturf": "/turf/open/openspace",
+			"Station": true
+		},
+		{
+			"Up": true,
+			"Baseturf": "/turf/open/space/ocean",
+			"Station": true
+		},
+		{
+			"Up": true,
+			"Down": true,
+			"Baseturf": "/turf/open/openspace",
+			"Station": true
+		},
+		{
+			"Down": true,
+			"Baseturf": "/turf/open/openspace",
+			"Station": true
+		}
+	],
+	"space_ruin_levels": 0,
+	"space_empty_levels": 0,
+	"wilderness_levels": 0,
+	"minetype": "none",
+	"load_all_away_missions": false
+}

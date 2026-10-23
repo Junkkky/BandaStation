@@ -76,13 +76,16 @@
 	for(var/turf/tile as anything in tiles)
 		var/area/ship_area = get_area(tile)
 		if(!istype(ship_area, area_type))
+			if(isspaceturf(tile))
+				continue
 			return FALSE
 		shuttle_areas[ship_area] = TRUE
 		for(var/obj/machinery/computer/stationtrauma_navigation/console in tile)
 			console.link_vessel(src)
 	for(var/turf/tile as anything in tiles)
-		SSfloodwater.ensure_water_domain(tile)
-	return TRUE
+		if(shuttle_areas[get_area(tile)])
+			SSfloodwater.ensure_water_domain(tile)
+	return !!shuttle_areas.len
 
 /** Enumerate every deck when binding the permanent vessel's areas and equipment. */
 /obj/docking_port/mobile/stationtrauma/return_ordered_turfs(_x, _y, _z, _dir)
