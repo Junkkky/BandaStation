@@ -17,13 +17,11 @@
 	var/hide = TRUE
 	/// Native binary bodies stay unpainted; only their pipe branches are coloured.
 	var/tint_body = TRUE
-	/// Native straight/bend poses used by the mapper's node tool.
-	var/simple_pipe = FALSE
 	var/connections = ALL_CARDINALS
 	var/open = TRUE
 	var/pumping = FALSE
 	var/on = FALSE
-	var/flow_rate = 20
+	var/flow_rate = 20 * ST_PLANT_CAPACITY_SCALE
 
 /obj/machinery/stationtrauma_reactor_pipe/Initialize(mapload)
 	. = ..()
@@ -31,6 +29,7 @@
 	color = tint_body ? stationtrauma_plant_line_color(line) : null
 	if(hide)
 		AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
+	RegisterSignal(src, hide ? COMSIG_UNDERTILE_UPDATED : COMSIG_OBJ_HIDE, PROC_REF(stationtrauma_pipe_floor_layer))
 	if(pumping)
 		update_use_power(on ? ACTIVE_POWER_USE : IDLE_POWER_USE)
 	AddElement(/datum/element/simple_rotation)
@@ -46,7 +45,7 @@
 	refresh_connections()
 
 /obj/machinery/stationtrauma_reactor_pipe/setDir(newdir)
-	. = ..(newdir in (simple_pipe ? GLOB.alldirs : GLOB.cardinals) ? newdir : SOUTH)
+	. = ..(newdir in GLOB.cardinals ? newdir : SOUTH)
 	refresh_connections()
 
 /obj/machinery/stationtrauma_reactor_pipe/on_set_is_operational(old_value)
@@ -57,7 +56,6 @@
 /** Topology changes invalidate scalar path capacities, never start per-pipe processing. */
 /obj/machinery/stationtrauma_reactor_pipe/proc/refresh_connections()
 	stationtrauma_plant_changed()
-	layer = initial(layer) + piping_layer / 1000
 	update_appearance()
 	for(var/direction in GLOB.cardinals)
 		for(var/obj/machinery/stationtrauma_reactor_pipe/neighbor in get_step(src, direction))
@@ -68,9 +66,6 @@
 				machine.update_appearance(UPDATE_OVERLAYS)
 
 /obj/machinery/stationtrauma_reactor_pipe/proc/accepts(direction)
-	if(simple_pipe)
-		var/openings = ISDIAGONALDIR(dir) ? dir : ((dir in list(NORTH, SOUTH)) ? NORTH|SOUTH : EAST|WEST)
-		return !!(openings & direction)
 	for(var/base_direction in GLOB.cardinals)
 		if((connections & base_direction) && turn(base_direction, 180 - dir2angle(dir)) == direction)
 			return TRUE
@@ -84,6 +79,7 @@
 	icon = 'icons/obj/pipes_n_cables/!pipes_bitmask.dmi'
 	color = tint_body ? stationtrauma_plant_line_color(line) : null
 	icon_state = "[stationtrauma_pipe_bitfield(connected_directions(), allowed_directions())]_[piping_layer]"
+	stationtrauma_pipe_floor_layer()
 
 /** Use the same short end caps as native smart pipes. */
 /proc/stationtrauma_pipe_bitfield(connected, allowed)
@@ -155,21 +151,6 @@
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
-/obj/machinery/stationtrauma_reactor_pipe/straight
-	connections = NORTH | SOUTH
-	icon_state = "pipe11-3"
-
-/obj/machinery/stationtrauma_reactor_pipe/simple
-	simple_pipe = TRUE
-	icon_state = "pipe11-3"
-
-/obj/machinery/stationtrauma_reactor_pipe/elbow
-	connections = NORTH | EAST
-
-/obj/machinery/stationtrauma_reactor_pipe/tee
-	connections = NORTH | EAST | WEST
-	icon_state = "manifold-3"
-
 /obj/machinery/stationtrauma_reactor_pipe/valve
 	name = "вентиль реакторной установки"
 	icon = 'icons/obj/machines/atmospherics/binary_devices.dmi'
@@ -239,7 +220,7 @@
 	icon = 'modular_bandastation/underwater_machinery/pumps/icons/drains.dmi'
 	icon_state = "hull_intake"
 	line = ST_PLANT_SEA
-	flow_rate = 200
+	flow_rate = 200 * ST_PLANT_CAPACITY_SCALE
 	connections = SOUTH
 
 /obj/machinery/stationtrauma_reactor_pipe/pump/sea_inlet/update_icon_state()

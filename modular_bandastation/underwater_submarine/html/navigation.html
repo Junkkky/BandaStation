@@ -5,11 +5,11 @@
       <div class="crt-screen">
         <div class="crt-label">ГИДРОАКУСТИЧЕСКИЙ ОБЗОР</div>
         <div class="sonar-wrap">
-          <canvas id="nav-sonar" width="600" height="600" aria-label="Демонстрационный экран сонара"></canvas>
+          <canvas id="nav-sonar" width="600" height="600" aria-label="Живой гидроакустический обзор; север сверху"></canvas>
           <div class="sonar-mode" id="sonar-mode"></div>
           <div class="sonar-scale" id="sonar-range"></div>
         </div>
-        <div class="sonar-footer"><span>КАНАЛ 01 / УЧЕБНЫЕ КОНТАКТЫ</span><span>ГАК // НК-05</span></div>
+        <div class="sonar-footer"><span>КАНАЛ 01 / СЕВЕР СВЕРХУ</span><span>ГАК // НК-05</span></div>
       </div>
     </div>
     <div class="nav-sidebar">
@@ -18,8 +18,8 @@
         <div id="nav-routes"></div>
       </div>
       <div class="crt-screen">
-        <div class="crt-label">СХЕМА МАРШРУТА</div>
-        <canvas id="nav-map" width="300" height="160" aria-label="Схема с точками маршрута"></canvas>
+        <div class="crt-label">КАРТА ОКЕАНА / OVERMAP</div>
+        <canvas id="nav-map" width="300" height="210" aria-label="Карта океана с текущим положением подлодки"></canvas>
         <div id="nav-selected" aria-live="polite"></div>
       </div>
       <div class="crt-screen">
@@ -29,8 +29,21 @@
           <div id="nav-fill"></div><div id="nav-percent">0%</div>
         </div>
         <div class="nav-distance" id="nav-distance"></div>
+        <div class="nav-distance" id="nav-drive-summary"></div>
+        <div class="nav-distance" id="nav-arrival"></div>
       </div>
     </div>
+  </div>
+  <div class="crt-screen helm-bar">
+    <div id="nav-position" aria-live="polite"></div>
+    <div class="helm-controls" role="group" aria-label="Ручное управление курсом">
+      <button type="button" id="nav-port" aria-label="Курс на 15 градусов влево">◀ −15°</button>
+      <label>КУРС <input id="nav-course" type="number" min="0" max="359" step="1" aria-label="Заданный курс в градусах"></label>
+      <button type="button" id="nav-set-course">ЗАДАТЬ</button>
+      <button type="button" id="nav-starboard" aria-label="Курс на 15 градусов вправо">+15° ▶</button>
+      <button type="button" id="nav-auto">АВТОПИЛОТ</button>
+    </div>
+    <div class="nav-distance">Стрелки ← → — ручной курс. Пробел — стоп-машина. Автопилот обходит рельеф; ручное управление отключает его.</div>
   </div>
   <div class="nav-hardware">
     <div class="hardware-row">
@@ -45,11 +58,22 @@
         <div class="switch-caption">ПАССИВНЫЙ</div>
       </div>
       <div class="hardware-control">
-        <div class="hardware-label">ВЫПОЛНЕНИЕ МАРШРУТА</div>
-        <button type="button" class="depart-switch" id="nav-depart" disabled>НАЧАТЬ РЕЙС</button>
+        <div class="hardware-label">РУЧНОЕ УПРАВЛЕНИЕ</div>
+        <button type="button" class="depart-switch" id="nav-depart" disabled>ДАТЬ ХОД</button>
         <div class="switch-caption">ПУСК</div>
       </div>
+      <div class="hardware-control">
+        <div class="hardware-label">НЕМЕДЛЕННАЯ ОСТАНОВКА</div>
+        <button type="button" class="depart-switch stop-switch" id="nav-stop">СТОП-МАШИНА</button>
+        <div class="switch-caption">ДОСТУПНА ВО ВРЕМЯ ЗАГРУЗКИ</div>
+      </div>
     </div>
+  </div>
+  <div class="crt-screen" id="nav-drives-panel" hidden>
+    <div class="crt-label">ПЛАЗМОГИДРОДИНАМИЧЕСКАЯ УСТАНОВКА / ПГД-I</div>
+    <div id="nav-drive-modes" role="group" aria-label="Режим двигателей"></div>
+    <div id="nav-drives"></div>
+    <div class="nav-distance">Форсаж расходует запас SMES и перегревает камеры. Защита сбрасывается после охлаждения до 80 °C.</div>
   </div>
 </div>
 <script>window.initNavigation('@CONSOLE@', @STATE@);</script>

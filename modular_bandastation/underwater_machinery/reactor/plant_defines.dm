@@ -1,4 +1,9 @@
 // Water-equivalent litres and joules are local to the plant, never reagents or floodwater.
+/// Electrical nameplate; scale inventories and flows together to retain warm-up and protection timing.
+#define ST_PLANT_NOMINAL_POWER (200 MEGA WATTS)
+#define ST_PLANT_TURBINE_EFFICIENCY 0.3
+#define ST_PLANT_CAPACITY_SCALE (ST_PLANT_NOMINAL_POWER / (8000000 * ST_PLANT_TURBINE_EFFICIENCY))
+
 #define ST_PLANT_WATER 1
 #define ST_PLANT_STEAM 2
 #define ST_PLANT_EXHAUST 3
@@ -39,12 +44,12 @@ GLOBAL_LIST_EMPTY(stationtrauma_plant_pipes)
 /proc/stationtrauma_plant_line_color(line)
 	switch(line)
 		if(ST_PLANT_WATER)
-			return "#5188b5"
+			return "#3c9dff"
 		if(ST_PLANT_STEAM)
-			return "#c9c9c9"
+			return "#f07842"
 		if(ST_PLANT_EXHAUST)
-			return "#b68b64"
+			return "#d0d7df"
 		if(ST_PLANT_COOLANT)
-			return "#945f9f"
+			return "#bd72e8"
 		if(ST_PLANT_SEA)
-			return "#458d87"
+			return "#35cbb7"

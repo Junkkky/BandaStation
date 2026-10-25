@@ -1,0 +1,396 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bxg" = (
+/obj/item/stack/sheet/iron,
+/turf/open/space,
+/area/stationtrauma_space_site/sierra)
+"bAh" = (
+/obj/structure/closet/crate/freezer,
+/turf/open/space,
+/area/stationtrauma_space_site/sierra)
+"drN" = (
+/obj/structure/bed,
+/obj/item/bedsheet/mime,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"dxj" = (
+/turf/open/space,
+/area/stationtrauma_space_site/sierra)
+"dKY" = (
+/obj/machinery/door/airlock/external{
+	req_access = list();
+	req_one_access = list()
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"fWm" = (
+/obj/structure/table{
+	name = "plastic table frame"
+	},
+/obj/item/stack/sheet/iron,
+/obj/item/stack/sheet/iron,
+/turf/open/floor/iron/white,
+/area/stationtrauma_space_site/sierra)
+"gsq" = (
+/obj/item/stack/sheet/iron,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"gPl" = (
+/obj/structure/table{
+	name = "plastic table frame"
+	},
+/turf/open/floor/iron/white,
+/area/stationtrauma_space_site/sierra)
+"hPH" = (
+/obj/structure/bed,
+/obj/item/bedsheet/purple,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"hUU" = (
+/obj/machinery/door/airlock/vault{
+	name = "Door";
+	req_access = list();
+	req_one_access = list()
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"jav" = (
+/obj/item/stack/sheet/iron,
+/turf/open/floor/iron/white,
+/area/stationtrauma_space_site/sierra)
+"kmL" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -32
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"kMa" = (
+/obj/effect/decal/cleanable/vomit,
+/obj/item/toy/crayon/spraycan,
+/obj/structure/closet{
+	pixel_y = 32
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"kZK" = (
+/obj/machinery/light/floor,
+/turf/open/space,
+/area/stationtrauma_space_site/sierra)
+"lsy" = (
+/obj/structure/bookcase/manuals,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"lRb" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"lRW" = (
+/obj/item/stack/sheet/iron,
+/obj/item/stack/sheet/iron,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"mcm" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"mVB" = (
+/obj/structure/table,
+/obj/item/stack/sheet/iron,
+/obj/item/stack/sheet/iron,
+/obj/item/stack/sheet/iron,
+/turf/open/floor/iron/white,
+/area/stationtrauma_space_site/sierra)
+"nmI" = (
+/obj/item/stack/sheet/iron,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"omP" = (
+/obj/structure/sign/warning/secure_area{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/white,
+/area/stationtrauma_space_site/sierra)
+"ooR" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron/white,
+/area/stationtrauma_space_site/sierra)
+"oHn" = (
+/obj/structure/railing,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"roL" = (
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"rMd" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/white,
+/area/stationtrauma_space_site/sierra)
+"saQ" = (
+/turf/closed/wall/r_wall,
+/area/stationtrauma_space_site/sierra)
+"sGb" = (
+/obj/item/stack/sheet/iron,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"sQK" = (
+/turf/open/floor/iron/white,
+/area/stationtrauma_space_site/sierra)
+"tyv" = (
+/obj/item/stack/sheet/iron,
+/obj/structure/filingcabinet{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron/white,
+/area/stationtrauma_space_site/sierra)
+"udu" = (
+/obj/item/clothing/head/bio_hood,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"vBv" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"wcs" = (
+/obj/structure/table,
+/obj/item/stack/sheet/iron,
+/obj/item/stack/sheet/iron,
+/obj/item/stack/sheet/iron,
+/obj/item/stack/sheet/iron,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"wfC" = (
+/obj/structure/closet/cabinet,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"wBg" = (
+/obj/item/stack/sheet/iron,
+/obj/structure/bed,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"wGJ" = (
+/obj/structure/closet/crate,
+/turf/open/space,
+/area/stationtrauma_space_site/sierra)
+"wOs" = (
+/obj/structure/closet/crate/trashcart,
+/turf/open/space,
+/area/stationtrauma_space_site/sierra)
+"xzz" = (
+/obj/structure/bed,
+/obj/structure/closet,
+/turf/open/floor/iron/white,
+/area/stationtrauma_space_site/sierra)
+"yge" = (
+/obj/structure/table{
+	name = "plastic table frame"
+	},
+/obj/machinery/reagentgrinder,
+/obj/item/reagent_containers/cup/beaker/large,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/sierra)
+"ylN" = (
+/obj/item/stack/sheet/iron,
+/obj/item/stack/sheet/iron,
+/turf/open/space,
+/area/stationtrauma_space_site/sierra)
+
+(1,1,1) = {"
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+"}
+(2,1,1) = {"
+bxg
+saQ
+saQ
+saQ
+saQ
+saQ
+saQ
+saQ
+saQ
+saQ
+dKY
+saQ
+dxj
+"}
+(3,1,1) = {"
+dxj
+saQ
+sGb
+roL
+hUU
+sQK
+rMd
+mVB
+saQ
+udu
+roL
+saQ
+bxg
+"}
+(4,1,1) = {"
+dxj
+saQ
+nmI
+gsq
+roL
+rMd
+jav
+sQK
+dKY
+roL
+roL
+saQ
+dxj
+"}
+(5,1,1) = {"
+dxj
+saQ
+saQ
+saQ
+saQ
+omP
+sQK
+saQ
+saQ
+saQ
+saQ
+saQ
+ylN
+"}
+(6,1,1) = {"
+dxj
+saQ
+vBv
+lRb
+hUU
+sQK
+rMd
+saQ
+oHn
+kmL
+nmI
+saQ
+dxj
+"}
+(7,1,1) = {"
+dxj
+saQ
+roL
+lRW
+roL
+sQK
+tyv
+saQ
+lsy
+wBg
+yge
+roL
+dxj
+"}
+(8,1,1) = {"
+dxj
+saQ
+saQ
+saQ
+saQ
+sQK
+ooR
+mcm
+nmI
+nmI
+wcs
+roL
+dxj
+"}
+(9,1,1) = {"
+dxj
+saQ
+nmI
+roL
+hUU
+ooR
+fWm
+saQ
+kMa
+roL
+roL
+roL
+dxj
+"}
+(10,1,1) = {"
+dxj
+saQ
+roL
+nmI
+roL
+xzz
+gPl
+saQ
+wfC
+hPH
+drN
+saQ
+dxj
+"}
+(11,1,1) = {"
+dxj
+saQ
+saQ
+saQ
+saQ
+saQ
+saQ
+saQ
+saQ
+saQ
+saQ
+saQ
+dxj
+"}
+(12,1,1) = {"
+dxj
+saQ
+dxj
+wGJ
+saQ
+kZK
+kZK
+saQ
+wGJ
+wOs
+bAh
+saQ
+dxj
+"}
+(13,1,1) = {"
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+dxj
+"}

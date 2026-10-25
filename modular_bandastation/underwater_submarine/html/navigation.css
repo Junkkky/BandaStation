@@ -31,7 +31,7 @@
 .nav-hardware:before, .nav-hardware:after { content: "+"; position: absolute; top: 3px; color: #1a2126; background: #78828a; border: 2px solid #232c33; border-radius: 50%; font: bold 10px Arial; width: 11px; height: 11px; line-height: 8px; text-align: center; }
 .nav-hardware:before { left: 4px; } .nav-hardware:after { right: 4px; }
 .hardware-row { display: table; width: 100%; }
-.hardware-control { display: table-cell; vertical-align: middle; text-align: center; width: 33%; border-right: 1px solid #26303a; }
+.hardware-control { display: table-cell; vertical-align: middle; text-align: center; width: 25%; border-right: 1px solid #26303a; }
 .hardware-control:last-child { border: 0; }
 .hardware-label { color: #b9c2bd; font: 10px Arial, sans-serif; letter-spacing: 1px; margin: 0 0 9px; }
 .nav-console button.engine-switch { width: 40px; height: 57px; padding: 0; border: 4px solid #151c22; border-radius: 4px; color: #d7aaa0; background: linear-gradient(#591e1b 47%, #be4b3e 49%, #85332a 92%); box-shadow: 0 1px 0 #81909a, inset 0 -4px #53231e; font: 13px Arial; }
@@ -46,3 +46,17 @@
 .nav-console button.depart-switch:disabled { color: #6e7775; background: #303a3e; box-shadow: 0 0 0 3px #5b563f, inset 0 2px 3px #1c252b; }
 .nav-console button:focus { outline: 2px solid #e5d792; outline-offset: 2px; }
 @media (max-width: 760px) { .nav-main { width: 60%; } .nav-layout { border-spacing: 4px 0; } .nav-console .crt-screen { padding: 7px; } .nav-console .nav-heading { font-size: 11px; } }
+#nav-drives-panel { margin-top: 12px; }
+#nav-drive-modes button { margin: 0 5px 8px 0; }
+#nav-drives-panel button { padding: 4px 7px; border: 1px solid #426d39; color: #a1da87; background: #102719; }
+#nav-drive-modes button.selected { border-color: #c8e7a5; color: #e6ffc5; background: #356b33; }
+#nav-drives-panel button:disabled { opacity: .5; }
+.nav-drive { padding: 5px 0; border-bottom: 1px solid #244f2e; }
+.nav-drive.warning { color: #ffb36d; }
+.nav-drive button { float: right; }
+.helm-bar { margin-top: 8px !important; }
+.helm-controls { margin-top: 10px; }
+.helm-controls button { color: #bceca7; background: #152c1c; border: 1px solid #567d4e; padding: 6px 9px; }
+.helm-controls input { width: 70px; padding: 5px; color: #d5ffc4; background: #07120a; border: 1px solid #426d39; font: inherit; }
+.nav-console button.stop-switch { color: #ffdfcb; background: linear-gradient(#934637, #542c25); box-shadow: 0 0 0 3px #ba7350, 0 4px 3px #192028; }
+#nav-position { color: #c2efa3; }

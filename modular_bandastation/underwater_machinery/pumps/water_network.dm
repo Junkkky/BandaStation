@@ -1,3 +1,25 @@
+/// Keep pipe sections below grates; fixtures retain their normal operating height.
+/obj/machinery/proc/stationtrauma_pipe_floor_layer(datum/source)
+	SIGNAL_HANDLER
+	if(!isturf(loc))
+		return
+	var/physical_layer
+	var/surface_layer
+	if(istype(src, /obj/machinery/stationtrauma_reactor_pipe))
+		var/obj/machinery/stationtrauma_reactor_pipe/pipe = src
+		physical_layer = pipe.piping_layer
+		surface_layer = (!pipe.hide && isclosedturf(loc) ? ABOVE_OBJ_LAYER : initial(layer)) + physical_layer / 1000
+		if(!pipe.tint_body)
+			layer = surface_layer
+			return
+	else
+		var/obj/machinery/duct/stationtrauma/pipe = src
+		physical_layer = pipe.water_level
+		surface_layer = initial(layer) + pipe.duct_layer * 0.0003
+	var/under_floor = istype(loc, /turf/open/floor/catwalk_floor) || HAS_TRAIT(src, TRAIT_UNDERFLOOR) || HAS_TRAIT(loc, TRAIT_UNCOVERED_TURF)
+	SET_PLANE_IMPLICIT(src, under_floor ? FLOOR_PLANE : initial(plane))
+	layer = under_floor ? BELOW_CATWALK_LAYER + physical_layer / 1000 : surface_layer
+
 /// Separate water geometry and layer; reuse TG's liquid network splitting instead of mixing water into gas mixtures.
 /obj/machinery/duct/stationtrauma
 	name = "водяная труба"
@@ -87,6 +109,12 @@ WATER_PIPE_MAPPING_LAYERS(/obj/machinery/duct/stationtrauma/cross, "cross")
 	. = ..(mapload)
 	if(!hide)
 		RemoveElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
+	RegisterSignal(src, hide ? COMSIG_UNDERTILE_UPDATED : COMSIG_OBJ_HIDE, PROC_REF(stationtrauma_pipe_floor_layer))
+	stationtrauma_pipe_floor_layer()
+
+/obj/machinery/duct/stationtrauma/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	stationtrauma_pipe_floor_layer()
 
 /** Shared geometry setup for gameplay and the editor's prepare pass. */
 /obj/machinery/duct/stationtrauma/proc/configure_water_pipe()
@@ -180,6 +208,7 @@ WATER_PIPE_MAPPING_LAYERS(/obj/machinery/duct/stationtrauma/cross, "cross")
 	for(var/neighbor in neighbours)
 		connections |= neighbours[neighbor]
 	icon_state = "[stationtrauma_pipe_bitfield(connections, connection_mask)]_[water_level]"
+	stationtrauma_pipe_floor_layer()
 
 /obj/machinery/duct/stationtrauma/examine(mob/user)
 	. = list(desc, span_notice("Секция: [pipe_shape], уровень [water_level]. Сеть водяная; газ и химические duct не подключаются."))

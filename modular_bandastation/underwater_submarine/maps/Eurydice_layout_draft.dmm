@@ -140,9 +140,32 @@
 	},
 /turf/open/floor/engine,
 /area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"aB" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/end{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "aF" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/crew_02)
+"bd" = (
+/obj/structure/cable,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"bg" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2;
+	connections = 6
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
 "bn" = (
 /obj/effect/turf_decal/stripes{
 	dir = 1
@@ -156,33 +179,18 @@
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_aft)
-"bq" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"bu" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
 	line = 2;
-	dir = 5
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/turbine)
-"bE" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 4
-	},
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 2
+	dir = 2;
+	connections = 12
 	},
 /obj/effect/turf_decal/stripes{
-	dir = 8
+	dir = 4
 	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "bI" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/upper/emergency_equipment)
@@ -192,6 +200,18 @@
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/officer_04)
+"bU" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
 "ce" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/lower/maintenance)
@@ -200,20 +220,6 @@
 	color = "#c0a0a0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/cell_2)
-"ck" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 4
-	},
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = "nuke_eng"
-	},
-/turf/open/floor/plating{
-	color = "#acb4b5"
-	},
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "cu" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 1
@@ -223,41 +229,27 @@
 "cv" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_aft)
-"cM" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 4
-	},
-/obj/structure/cable/layer1,
+"cA" = (
 /obj/structure/cable,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"cR" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 2
-	},
 /turf/closed/wall/mineral/plastitanium,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
+"cE" = (
+/obj/structure/cable,
+/obj/machinery/stationtrauma_pgd_control{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "cS" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 1
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/sleepers)
-"cY" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 2
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/condenser)
 "dg" = (
 /obj/machinery/door/airlock/medical{
 	dir = 1
@@ -297,20 +289,21 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"dA" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 12
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "dE" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 1
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/crew_04)
-"dG" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 2
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "dH" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 1
@@ -319,6 +312,15 @@
 	color = "#a2beb6"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/minisub_hangar)
+"dJ" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "dK" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/upper/officer_03)
@@ -336,6 +338,15 @@
 	color = "#acb4b5"
 	},
 /area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"dZ" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 5
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "ep" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
@@ -345,31 +356,80 @@
 "er" = (
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/lower/minisub_hangar)
-"eS" = (
-/obj/machinery/power/shuttle_engine/huge{
-	dir = 8
+"eM" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
 	},
-/turf/open/space/ocean,
-/area/space/ocean/stationtrauma_berth/home)
-"fa" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+/obj/item/pipe_dispenser/stationtrauma{
+	plant_id = "eurydice"
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"fe" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
 	line = 3;
-	dir = 4
+	dir = 2;
+	connections = 12
 	},
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
 	line = 1;
-	dir = 2
+	dir = 2;
+	connections = 3
 	},
 /obj/effect/turf_decal/stripes{
 	dir = 4
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"fg" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 3;
+	dir = 2;
+	connections = 12
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"fj" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 12
+	},
+/obj/effect/turf_decal/stripes,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "fl" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/lower/gun_port_aft)
+"fH" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 5
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 8
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "fO" = (
 /obj/machinery/modular_computer/preset/engineering{
 	dir = 8
@@ -379,20 +439,6 @@
 "fQ" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/middle/botany)
-"fX" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 2
-	},
-/obj/machinery/door/airlock/engineering{
-	dir = 1
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/iron/textured{
-	color = "#c5b58d"
-	},
-/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
 "fZ" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
@@ -471,6 +517,15 @@
 /obj/machinery/light/cold/dim/directional/north,
 /turf/open/floor/engine,
 /area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"gB" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 3
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "gC" = (
 /obj/machinery/door/airlock/command{
 	dir = 1
@@ -505,6 +560,15 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"gP" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 3
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "gS" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/middle/maintenance)
@@ -535,6 +599,25 @@
 	color = "#b4cfd5"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/cmo)
+"hh" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 12
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"hn" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "ht" = (
 /turf/open/floor/iron/white{
 	color = "#b4cfd5"
@@ -568,7 +651,7 @@
 	pixel_y = -30
 	},
 /obj/structure/cable,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/engines)
 "hL" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
@@ -579,6 +662,13 @@
 	color = "#acb4b5"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"hN" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/end{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
 "hO" = (
 /obj/effect/turf_decal/stripes{
 	dir = 9
@@ -594,31 +684,34 @@
 	color = "#bdb0ce"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/rd)
-"hW" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"hR" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
 	line = 4;
-	dir = 2
+	dir = 2;
+	connections = 5
 	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "hX" = (
 /obj/structure/cable/layer1,
 /obj/machinery/light/floor,
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
-"ii" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"ie" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
 	line = 4;
-	dir = 5
+	dir = 2;
+	connections = 12
 	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/machinery/newscaster/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "im" = (
 /obj/machinery/door/airlock/science{
 	dir = 1
@@ -636,14 +729,6 @@
 "ip" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/cell_2)
-"is" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "it" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
@@ -670,6 +755,12 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"iO" = (
+/obj/structure/cable/multilayer/multiz{
+	cable_layer = 2
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "iT" = (
 /obj/effect/turf_decal/trimline/brown/line{
 	dir = 10
@@ -700,6 +791,22 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"jd" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 8
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "jh" = (
 /obj/structure/sign/nanotrasen/directional/south,
 /obj/machinery/light/directional/south,
@@ -728,17 +835,6 @@
 "jx" = (
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"jz" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 2
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "jF" = (
 /obj/effect/turf_decal/stripes{
 	dir = 8
@@ -752,24 +848,40 @@
 "jM" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/science_archive)
+"jS" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"jT" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 10
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "jZ" = (
 /obj/structure/closet/emcloset/anchored,
 /turf/open/floor/iron/textured{
 	color = "#c5b58d"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
-"kg" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 2;
-	dir = 4
-	},
-/obj/structure/cable/layer1,
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"kb" = (
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "ki" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 1
@@ -789,6 +901,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"kl" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 9
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
 "km" = (
 /obj/effect/turf_decal/stripes{
 	dir = 1
@@ -803,29 +924,15 @@
 	color = "#c5b58d"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
-"kq" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 2;
-	dir = 2
-	},
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 4
-	},
-/obj/structure/cable/layer1,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"kA" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"kI" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
 	line = 4;
-	dir = 4
+	dir = 2;
+	connections = 12
 	},
 /obj/effect/turf_decal/stripes{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/cooling)
@@ -888,17 +995,6 @@
 "ll" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/lower/ammunition_port)
-"lp" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 9
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/condenser)
 "lx" = (
 /obj/effect/turf_decal/stripes{
 	dir = 4
@@ -963,6 +1059,15 @@
 	color = "#c0a0a0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/security)
+"mr" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "ms" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
@@ -986,34 +1091,9 @@
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/middle/library)
-"mP" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 10
-	},
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = "nuke_eng"
-	},
-/turf/open/floor/plating{
-	color = "#acb4b5"
-	},
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "mU" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/lower/diving)
-"mV" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 2
-	},
-/obj/machinery/computer/stationtrauma_reactor{
-	plant_id = "eurydice"
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "na" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/upper/corridors)
@@ -1021,11 +1101,12 @@
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"nj" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"nq" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
 	line = 4;
-	dir = 9
+	dir = 2;
+	connections = 9
 	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -1038,6 +1119,19 @@
 "nz" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/laboratory)
+"nB" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 10
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "nD" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/upper/records)
@@ -1058,13 +1152,15 @@
 	color = "#c0a0a0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/armory)
-"oh" = (
-/obj/effect/turf_decal/stripes{
-	dir = 1
+"oi" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
 	},
-/obj/effect/turf_decal/stripes,
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/middle/engines)
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "ok" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/lower/torpedoes)
@@ -1076,6 +1172,17 @@
 	color = "#bbc2ad"
 	},
 /area/station/stationtrauma/eurydice/rooms/upper/lounge)
+"ou" = (
+/obj/structure/cable,
+/obj/machinery/stationtrauma_pgd_control{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
 "oz" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/lower/supply_office)
@@ -1120,17 +1227,9 @@
 /obj/item/clipboard,
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/upper/bridge)
-"pu" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 6
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "pw" = (
 /obj/structure/extinguisher_cabinet/directional/south,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/middle/engines)
 "pz" = (
 /obj/machinery/door/airlock/maintenance{
@@ -1140,6 +1239,19 @@
 	color = "#c5b48c"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/supplies)
+"pC" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 5
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/machinery/light/cold/dim/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "pF" = (
 /obj/machinery/light/cold/dim/directional/south,
 /turf/open/floor/iron/dark/textured,
@@ -1152,37 +1264,32 @@
 /area/station/stationtrauma/eurydice/rooms/lower/maintenance)
 "pK" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
 "pL" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/operating)
-"pP" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 6
-	},
-/obj/effect/turf_decal/stripes,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/cooling)
-"pQ" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 2;
-	dir = 4
-	},
-/obj/machinery/door/airlock/engineering{
-	dir = 1
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "pS" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 1
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/middle/kitchen)
+"qa" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 10
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng"
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "qf" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/chemistry)
@@ -1202,14 +1309,6 @@
 /obj/machinery/light/floor,
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/upper/bridge)
-"qr" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "qu" = (
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/dark/textured,
@@ -1245,14 +1344,6 @@
 "qH" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/evacuation_hangar)
-"qJ" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "qN" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/stripes{
@@ -1288,7 +1379,7 @@
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
 "qS" = (
 /obj/structure/cable,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/engines)
 "rd" = (
 /obj/machinery/door/airlock/medical{
@@ -1308,12 +1399,43 @@
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/officer_02)
+"rg" = (
+/obj/structure/cable,
+/obj/item/radio/intercom/directional/east{
+	pixel_y = 3;
+	pixel_x = 29
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"rm" = (
+/obj/structure/cable,
+/obj/machinery/stationtrauma_pgd_control{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
 "ro" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 1
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/evacuation_hangar)
+"rp" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "rs" = (
 /turf/open/floor/iron/white{
 	color = "#a2beb6"
@@ -1344,21 +1466,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/lower/torpedoes)
-"rM" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 5
-	},
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = "nuke_eng";
-	dir = 8
-	},
-/turf/open/floor/plating{
-	color = "#acb4b5"
-	},
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "rN" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/upper/crew_03)
@@ -1383,6 +1490,16 @@
 	color = "#c5b58d"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"sc" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "si" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/middle/washrooms)
@@ -1393,7 +1510,7 @@
 "sl" = (
 /obj/item/radio/intercom/directional/north,
 /obj/structure/light_fake/small/directional/north,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/engines)
 "sn" = (
 /turf/closed/wall,
@@ -1407,39 +1524,12 @@
 	color = "#c8ced0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
-"sr" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 2
-	},
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
-"st" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 2;
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "sy" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/middle/engines)
 "sF" = (
 /obj/structure/extinguisher_cabinet/directional/north,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/middle/engines)
 "sI" = (
 /turf/closed/wall/mineral/plastitanium,
@@ -1457,17 +1547,6 @@
 	color = "#a2beb6"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/diving)
-"sO" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 2;
-	dir = 2
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "sT" = (
 /obj/machinery/door/airlock/command{
 	dir = 1
@@ -1476,15 +1555,6 @@
 	color = "#b9c9de"
 	},
 /area/station/stationtrauma/eurydice/rooms/upper/records)
-"sW" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 10
-	},
-/obj/effect/turf_decal/stripes/corner,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/condenser)
 "sY" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/middle/washrooms)
@@ -1515,6 +1585,18 @@
 "tl" = (
 /turf/open/floor/engine,
 /area/station/stationtrauma/eurydice/rooms/lower/condenser)
+"tq" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
 "ts" = (
 /turf/open/floor/iron{
 	color = "#c0a0a0"
@@ -1523,26 +1605,14 @@
 "tt" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/upper/equipment_reserve)
-"tv" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"tu" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
-	line = 3;
-	dir = 4
+	line = 1;
+	dir = 2;
+	connections = 9
 	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/turbine)
-"tw" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 10
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "tA" = (
@@ -1569,6 +1639,14 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"tF" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "tG" = (
 /obj/machinery/computer/records/medical{
 	dir = 8
@@ -1581,17 +1659,6 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/condenser)
-"tK" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "tN" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -1614,14 +1681,34 @@
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_forward)
 "ua" = (
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/engines)
 "ub" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/upper/quiet_lounge)
+"uf" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 12
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng"
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "uh" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/cmo)
+"ui" = (
+/obj/structure/cable,
+/obj/machinery/light/cold/dim/directional/east,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "uk" = (
 /obj/machinery/door/airlock/highsecurity/underwater/multi_tile/directional/east,
 /turf/open/floor/iron/dark{
@@ -1647,14 +1734,6 @@
 "uv" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/crew_04)
-"uD" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 2;
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "uH" = (
 /obj/effect/turf_decal/trimline/brown/line{
 	dir = 8
@@ -1678,20 +1757,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/upper/bridge)
-"uM" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 2;
-	dir = 9
-	},
-/obj/effect/turf_decal/caution/stand_clear{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "uQ" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/lower/emergency_supplies)
@@ -1714,23 +1779,24 @@
 "vc" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/upper/wardroom)
-"vd" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 5
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/obj/machinery/light/cold/dim/directional/south,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "vg" = (
 /turf/open/floor/plating{
 	color = "#acb4b5"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"vh" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 9
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "vi" = (
 /turf/open/floor/iron/dark{
 	color = "#c8ced0"
@@ -1766,6 +1832,10 @@
 "vD" = (
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/middle/virology)
+"vG" = (
+/obj/structure/cable,
+/turf/open/space/ocean,
+/area/space/ocean/stationtrauma_berth/home)
 "vK" = (
 /obj/machinery/door/airlock/science{
 	dir = 1
@@ -1779,21 +1849,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
-"vO" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 2
-	},
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = "nuke_eng";
-	dir = 8
-	},
-/turf/open/floor/plating{
-	color = "#acb4b5"
-	},
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "vP" = (
 /obj/machinery/door/airlock/security{
 	dir = 4
@@ -1812,6 +1867,10 @@
 	color = "#acb4b5"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/engines)
+"vX" = (
+/obj/structure/cable,
+/turf/open/space/openspace/ocean,
+/area/space/ocean/stationtrauma_berth/home)
 "wa" = (
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/lower/corridors)
@@ -1847,6 +1906,24 @@
 "wt" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/upper/evacuation_hangar)
+"wu" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 12
+	},
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "wB" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
@@ -1860,23 +1937,36 @@
 "wJ" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/middle/cell_2)
-"wK" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/condenser)
 "wO" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/upper/corridors)
 "wP" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/upper/laundry)
+"wQ" = (
+/obj/structure/cable,
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"wR" = (
+/obj/machinery/power/smes/stationtrauma_pgd,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
+"wS" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 12
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "xb" = (
 /turf/open/floor/iron{
 	color = "#c0a0a0"
@@ -1914,6 +2004,15 @@
 "xA" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/middle/kitchen)
+"xB" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 12
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "xC" = (
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron/dark/textured,
@@ -1934,6 +2033,19 @@
 "xR" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/middle/botany)
+"xS" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/structure/sign/warning/radiation/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "xU" = (
 /obj/machinery/door/airlock/command{
 	dir = 1
@@ -1964,6 +2076,14 @@
 "yn" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/lower/receiving)
+"yo" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
 "yx" = (
 /obj/machinery/stationtrauma_pump_controller/directional/west{
 	pixel_x = -30;
@@ -1982,6 +2102,15 @@
 	},
 /turf/open/floor/engine,
 /area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
+"yD" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 9
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "yH" = (
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 4;
@@ -2079,28 +2208,19 @@
 "zp" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/middle/coldroom)
-"zq" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 2;
-	dir = 6
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/turbine)
-"zr" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 4
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "zt" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/sleepers)
+"zv" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 10
+	},
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
 "zy" = (
 /obj/machinery/light/cold/dim/directional/north,
 /turf/open/floor/iron/dark/textured,
@@ -2111,20 +2231,20 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/upper/bridge)
-"zA" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 5
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "zE" = (
 /obj/effect/overlay/spotlight/underwater{
 	dir = 6
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"zG" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "zN" = (
 /turf/open/floor/iron/white,
 /area/station/stationtrauma/eurydice/rooms/middle/washrooms)
@@ -2133,6 +2253,22 @@
 	color = "#c0a0a0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/evidence)
+"zS" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 12
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "nuke_eng";
+	dir = 4
+	},
+/turf/open/floor/plating{
+	color = "#acb4b5"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "zV" = (
 /obj/structure/closet/radiation,
 /obj/effect/turf_decal/delivery,
@@ -2150,6 +2286,18 @@
 "Ay" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/lower/smes)
+"AC" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/obj/machinery/computer/stationtrauma_reactor{
+	plant_id = "eurydice"
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "AH" = (
 /obj/machinery/door/airlock/command{
 	dir = 1
@@ -2218,17 +2366,21 @@
 "Bo" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/lower/tools)
-"Br" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 3;
-	dir = 9
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Bt" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/upper/personal_equipment)
+"Bv" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2;
+	connections = 12
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
 "BC" = (
 /turf/open/floor/iron/white{
 	color = "#bdb0ce"
@@ -2251,23 +2403,9 @@
 	color = "#b9c9de"
 	},
 /area/station/stationtrauma/eurydice/rooms/upper/sonar)
-"BS" = (
-/obj/effect/turf_decal/stripes/end{
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "BY" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/morgue)
-"Ca" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 9
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
 "Cd" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating{
@@ -2295,17 +2433,6 @@
 	color = "#c0a0a0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/security)
-"CG" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 2
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "CH" = (
 /obj/machinery/door/airlock/medical{
 	dir = 1
@@ -2322,6 +2449,27 @@
 	color = "#b9c9de"
 	},
 /area/station/stationtrauma/eurydice/rooms/upper/captain)
+"CJ" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2;
+	connections = 12
+	},
+/obj/machinery/door/airlock/engineering{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
+"CN" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 6
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "CO" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/isolation)
@@ -2341,16 +2489,6 @@
 	color = "#c8ced0"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/corridors)
-"Dh" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Dl" = (
 /obj/effect/turf_decal/stripes{
 	dir = 1
@@ -2360,17 +2498,15 @@
 "Dm" = (
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/lower/diving)
-"Dr" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"Dq" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
 	line = 1;
-	dir = 2
+	dir = 2;
+	connections = 3
 	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/condenser)
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "Ds" = (
 /turf/open/floor/iron/dark{
 	color = "#b9c9de"
@@ -2396,31 +2532,11 @@
 	color = "#acb4b5"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"DB" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 6
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "DD" = (
 /turf/open/floor/iron/white{
 	color = "#bdb0ce"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/specimens)
-"DF" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/obj/machinery/newscaster/directional/south,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "DH" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/middle/sample_preparation)
@@ -2452,14 +2568,6 @@
 	color = "#c8ced0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
-"DP" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 2
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "DR" = (
 /turf/open/floor/iron/white{
 	color = "#a2beb6"
@@ -2468,7 +2576,7 @@
 "DW" = (
 /obj/structure/light_fake/small/directional/north,
 /obj/item/radio/intercom/directional/north,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/middle/engines)
 "Ea" = (
 /obj/machinery/light/cold/dim/directional/south,
@@ -2496,11 +2604,15 @@
 "Ej" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/officer_01)
-"Es" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"Em" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
 	line = 4;
-	dir = 2
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor)
@@ -2531,39 +2643,40 @@
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/lower/gun_port_forward)
-"Fk" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"EY" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
-	line = 5;
+	line = 4;
+	dir = 2;
+	connections = 12
+	},
+/obj/effect/turf_decal/stripes{
 	dir = 4
 	},
 /turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "Fo" = (
 /obj/machinery/power/apc/auto_name/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/upper/bridge)
-"Fp" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 4
-	},
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = "nuke_eng";
-	dir = 4
-	},
-/turf/open/floor/plating{
-	color = "#acb4b5"
-	},
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "Fq" = (
 /obj/effect/overlay/spotlight/underwater{
 	dir = 5
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"FB" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/obj/structure/closet/radiation,
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/trimline/brown/line,
+/turf/open/floor/iron/dark/textured_half,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "FD" = (
 /obj/structure/rack,
 /turf/open/floor/iron/dark/textured,
@@ -2573,11 +2686,20 @@
 /area/station/stationtrauma/eurydice/rooms/lower/gun_port_aft)
 "FG" = (
 /obj/machinery/portable_atmospherics/canister,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
 "FR" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/maintenance)
+"FZ" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 3
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "Ge" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/upper/equipment_reserve)
@@ -2627,38 +2749,41 @@
 	color = "#acb4b5"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_airlock)
-"Gx" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"GK" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
-	line = 2;
-	dir = 10
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
+	line = 5;
+	dir = 2;
+	connections = 9
 	},
 /turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/turbine)
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "GM" = (
 /turf/open/floor/iron/dark{
 	color = "#c8ced0"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/corridors)
+"GQ" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 12
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "GS" = (
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"GX" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 2
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 10
-	},
-/obj/machinery/light/floor,
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "Hd" = (
 /obj/machinery/door/airlock/highsecurity/underwater{
 	dir = 4
@@ -2680,15 +2805,6 @@
 	color = "#c0a0a0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/brig)
-"Ho" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 9
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Hq" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/upper/corridors)
@@ -2722,6 +2838,18 @@
 "HH" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/upper/crew_01)
+"HL" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 12
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "HM" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/upper/personal_equipment)
@@ -2734,6 +2862,18 @@
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/personal_equipment)
+"If" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2;
+	connections = 5
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
 "Iq" = (
 /obj/machinery/computer/monitor{
 	dir = 4
@@ -2747,14 +2887,6 @@
 "Ir" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/lower/gun_port_forward)
-"Iz" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 9
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "IB" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
@@ -2765,70 +2897,16 @@
 	color = "#acb4b5"
 	},
 /area/space/ocean/openspace)
-"IC" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "ID" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/upper/bridge)
-"IF" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes,
-/obj/structure/sign/warning/radiation/directional/south,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"IG" = (
-/obj/effect/turf_decal/stripes{
-	dir = 4
-	},
-/obj/structure/table,
-/obj/effect/turf_decal/tile/yellow/half/contrasted{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/smes)
 "IH" = (
 /obj/structure/cable,
 /obj/structure/cable/layer1,
 /obj/effect/turf_decal/tile/yellow/half/contrasted,
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/smes)
-"IJ" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 4
-	},
-/obj/structure/cable/layer1,
-/obj/effect/turf_decal/stripes,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"IP" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 2;
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/turbine)
 "Ja" = (
 /obj/structure/closet/radiation,
 /obj/effect/turf_decal/bot,
@@ -2839,15 +2917,15 @@
 /area/station/stationtrauma/eurydice/rooms/middle/science_archive)
 "Jl" = (
 /obj/structure/light_fake/small/directional/south,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/engines)
-"Jm" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"Jo" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
-	line = 5;
-	dir = 2
+	line = 3;
+	dir = 2;
+	connections = 6
 	},
-/obj/structure/ladder,
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Jq" = (
@@ -2879,6 +2957,15 @@
 "JE" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/upper/crew_02)
+"JK" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 6
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "JM" = (
 /obj/machinery/computer/records/security{
 	dir = 1
@@ -2939,6 +3026,24 @@
 	color = "#a2beb6"
 	},
 /area/station/stationtrauma/eurydice/rooms/upper/laundry)
+"Km" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
+"Kp" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2;
+	connections = 12
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "Kq" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/lower/gun_starboard_forward)
@@ -2966,6 +3071,19 @@
 /obj/docking_port/mobile/stationtrauma/eurydice,
 /turf/open/space/ocean,
 /area/space/ocean/stationtrauma_berth/home)
+"KS" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2;
+	connections = 12
+	},
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
 "KY" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
@@ -2990,19 +3108,12 @@
 	color = "#acb4b5"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/engines)
-"Lr" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
-"Ly" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"Lf" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
 	line = 5;
-	dir = 2
+	dir = 2;
+	connections = 12
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
@@ -3017,7 +3128,7 @@
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "LJ" = (
 /obj/structure/light_fake/small/directional/north,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/engines)
 "LK" = (
 /obj/effect/turf_decal/stripes,
@@ -3028,6 +3139,15 @@
 	color = "#c5b48c"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/minisub_equipment)
+"LR" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 12
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "LS" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/dining)
@@ -3049,6 +3169,15 @@
 	color = "#c0a0a0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/evidence)
+"LW" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 12
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "LY" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
@@ -3084,28 +3213,32 @@
 /obj/structure/fluff/shower_drain,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
-"Mu" = (
-/obj/machinery/light/cold/dim/directional/east,
+"Mt" = (
+/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/stationtrauma/eurydice/rooms/middle/engines)
-"Mv" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 2
-	},
-/turf/closed/wall/mineral/plastitanium,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "Mw" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/middle/pantry)
-"Mx" = (
-/obj/effect/turf_decal/stripes,
-/obj/effect/turf_decal/stripes{
-	dir = 1
+"MD" = (
+/obj/structure/cable,
+/obj/machinery/power/stationtrauma_pgd{
+	dir = 8
 	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/middle/engines)
+/turf/open/space/ocean,
+/area/space/ocean/stationtrauma_berth/home)
+"MK" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 12
+	},
+/obj/effect/turf_decal/stripes,
+/obj/structure/sign/warning/radiation/directional/south,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "MN" = (
 /obj/effect/turf_decal/stripes,
 /turf/open/floor/engine,
@@ -3122,18 +3255,6 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"Na" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 2
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 9
-	},
-/obj/machinery/light/floor,
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "Ne" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/engine,
@@ -3168,6 +3289,17 @@
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/officer_01)
+"ND" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/obj/structure/table,
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/smes)
 "NE" = (
 /obj/machinery/door/airlock/highsecurity/underwater{
 	dir = 4
@@ -3180,6 +3312,21 @@
 /obj/structure/ladder/stationtrauma,
 /turf/open/floor/engine,
 /area/station/stationtrauma/eurydice/rooms/middle/engines)
+"NJ" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2;
+	connections = 9
+	},
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "NN" = (
 /obj/machinery/door/airlock/engineering{
 	dir = 1
@@ -3254,7 +3401,7 @@
 /area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "Oo" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
 "Op" = (
 /obj/machinery/door/airlock/maintenance{
@@ -3277,14 +3424,6 @@
 	color = "#bdb0ce"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/biology)
-"OI" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 2
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "OL" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 1
@@ -3303,12 +3442,15 @@
 	color = "#c0a0a0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/brig)
-"Pa" = (
-/obj/effect/turf_decal/stripes/end{
-	dir = 4
+"OW" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 3
 	},
 /turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/engines)
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "Pe" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/lower/diving)
@@ -3335,20 +3477,6 @@
 "Pu" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/lower/engines)
-"Pv" = (
-/obj/machinery/power/shuttle_engine/huge{
-	dir = 8
-	},
-/turf/open/space/openspace/ocean,
-/area/space/ocean/stationtrauma_berth/home)
-"Pw" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 2
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
 "Py" = (
 /obj/machinery/stationtrauma_flood_alarm/directional/west{
 	pixel_x = -32;
@@ -3366,6 +3494,21 @@
 	color = "#b4cfd5"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/chemistry)
+"PJ" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/obj/machinery/door/airlock/engineering{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/textured{
+	color = "#c5b58d"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
 "PK" = (
 /turf/open/floor/iron/textured{
 	color = "#c5b48c"
@@ -3391,6 +3534,32 @@
 	color = "#c5b48c"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/minisub_equipment)
+"PV" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 3;
+	dir = 2;
+	connections = 12
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+"PZ" = (
+/obj/structure/cable,
+/obj/machinery/stationtrauma_pgd_control{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "Qc" = (
 /obj/item/radio/intercom/directional/east{
 	pixel_x = 33
@@ -3432,7 +3601,7 @@
 /area/station/stationtrauma/eurydice/rooms/middle/operating)
 "QC" = (
 /obj/structure/extinguisher_cabinet/directional/south,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/engines)
 "QD" = (
 /turf/closed/wall/mineral/plastitanium,
@@ -3448,7 +3617,7 @@
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "QN" = (
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
 "QT" = (
 /turf/closed/wall,
@@ -3464,24 +3633,6 @@
 /obj/machinery/wall_healer/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/upper/bridge)
-"Rf" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 2
-	},
-/obj/structure/extinguisher_cabinet/directional/south,
-/obj/effect/turf_decal/trimline/brown/line,
-/turf/open/floor/iron/dark/textured_half,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"Rg" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 10
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Rh" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/lower/corridors)
@@ -3514,21 +3665,6 @@
 /obj/machinery/light/floor,
 /turf/open/floor/engine,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor)
-"Rw" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 2
-	},
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 4
-	},
-/obj/structure/cable/layer1,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Rx" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/upper/nt_office)
@@ -3539,7 +3675,7 @@
 "RD" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
 "RG" = (
 /turf/closed/wall/mineral/plastitanium,
@@ -3560,6 +3696,13 @@
 	color = "#c0a0a0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/interrogation)
+"RV" = (
+/obj/structure/cable,
+/obj/machinery/power/stationtrauma_pgd{
+	dir = 8
+	},
+/turf/open/space/openspace/ocean,
+/area/space/ocean/stationtrauma_berth/home)
 "Sa" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/middle/reactor_gallery)
@@ -3568,45 +3711,29 @@
 /obj/machinery/power/apc/auto_name/directional/south{
 	pixel_y = -30
 	},
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/middle/engines)
+"Sd" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 3
+	},
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 12
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "Sh" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/lower/engineering_security)
-"Sk" = (
-/obj/item/radio/intercom/directional/east{
-	pixel_y = 3;
-	pixel_x = 29
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/middle/engines)
-"Sm" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 4
-	},
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 2
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/cooling)
-"Sn" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 2
-	},
-/obj/structure/closet/radiation,
-/obj/effect/turf_decal/bot,
-/obj/effect/turf_decal/trimline/brown/line,
-/turf/open/floor/iron/dark/textured_half,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Su" = (
 /obj/effect/overlay/spotlight/underwater{
 	dir = 5
@@ -3619,19 +3746,6 @@
 "Sz" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/upper/washrooms)
-"SA" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 2
-	},
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 3;
-	dir = 4
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "SG" = (
 /turf/open/floor/iron/kitchen,
 /area/station/stationtrauma/eurydice/rooms/middle/kitchen)
@@ -3652,21 +3766,24 @@
 "SM" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/middle/morgue)
-"SN" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 6
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "SP" = (
 /obj/machinery/power/stationtrauma_plant_machine/cooler{
 	plant_id = "eurydice"
 	},
 /turf/open/floor/engine,
 /area/station/stationtrauma/eurydice/rooms/lower/cooling)
+"SS" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "SU" = (
 /turf/open/floor/iron/textured{
 	color = "#c5b48c"
@@ -3688,6 +3805,17 @@
 "Th" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/middle/specimens)
+"Ti" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/obj/structure/extinguisher_cabinet/directional/south,
+/obj/effect/turf_decal/trimline/brown/line,
+/turf/open/floor/iron/dark/textured_half,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Tj" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/lower/receiving)
@@ -3697,15 +3825,23 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"Tm" = (
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/engines)
 "Tn" = (
 /obj/structure/reagent_dispensers/plumbed,
 /turf/open/floor/iron/textured{
 	color = "#c5b58d"
 	},
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_control)
+"Tp" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 12
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Tu" = (
 /turf/open/floor/iron/white{
 	color = "#a2beb6"
@@ -3730,14 +3866,6 @@
 "TC" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/middle/library)
-"TE" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 3;
-	dir = 6
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "TF" = (
 /obj/machinery/door/airlock/security{
 	dir = 1
@@ -3746,6 +3874,18 @@
 	color = "#c0a0a0"
 	},
 /area/station/stationtrauma/eurydice/rooms/middle/armory)
+"TG" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 9
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/condenser)
 "TJ" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/upper/sleepers)
@@ -3757,6 +3897,15 @@
 	color = "#acb4b5"
 	},
 /area/station/stationtrauma/eurydice/rooms/upper/corridors)
+"TR" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 10
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "TU" = (
 /obj/structure/sign/warning/no_smoking/circle,
 /turf/closed/wall/mineral/plastitanium,
@@ -3775,7 +3924,7 @@
 /area/station/stationtrauma/eurydice/rooms/upper/crew_02)
 "TZ" = (
 /obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
 "Ug" = (
 /turf/open/floor/iron/white{
@@ -3790,16 +3939,15 @@
 /obj/machinery/light/cold/dim/directional/north,
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"Um" = (
+/obj/structure/cable/multilayer/multiz{
+	cable_layer = 2
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
 "Un" = (
 /obj/structure/extinguisher_cabinet/directional/north,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/station/stationtrauma/eurydice/rooms/lower/engines)
-"Uo" = (
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes,
-/turf/open/floor/engine,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/lower/engines)
 "Uq" = (
 /turf/closed/wall,
@@ -3813,18 +3961,6 @@
 "Uy" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/upper/first_officer)
-"UG" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 1;
-	dir = 4
-	},
-/obj/structure/cable/layer1,
-/obj/effect/turf_decal/stripes,
-/obj/structure/sign/warning/radiation/directional/south,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "UK" = (
 /obj/effect/turf_decal/stripes{
 	dir = 4
@@ -3834,26 +3970,6 @@
 "UL" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/officer_02)
-"UP" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 2
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/obj/structure/sign/warning/radiation/directional/west,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"UQ" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 9
-	},
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "UR" = (
 /obj/effect/overlay/spotlight/underwater{
 	dir = 4
@@ -3874,6 +3990,23 @@
 "UX" = (
 /turf/open/floor/engine,
 /area/station/stationtrauma/eurydice/rooms/lower/turbine)
+"Vc" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2;
+	connections = 3
+	},
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 12
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Vd" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/upper/sonar)
@@ -3888,14 +4021,6 @@
 "Vl" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/middle/medical_security)
-"Vn" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 4;
-	dir = 2
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor)
 "Vo" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor)
@@ -3920,6 +4045,15 @@
 	},
 /turf/open/space/ocean,
 /area/space/ocean/stationtrauma_berth/home)
+"Vz" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2;
+	connections = 3
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "VA" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 1
@@ -3927,7 +4061,7 @@
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/officer_03)
 "VB" = (
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma,
 /area/station/stationtrauma/eurydice/rooms/middle/engines)
 "VE" = (
 /turf/closed/wall,
@@ -3953,9 +4087,26 @@
 "VU" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/science_storage)
+"VX" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 2;
+	dir = 2;
+	connections = 10
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/turbine)
 "Wa" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/middle/virology)
+"Wc" = (
+/obj/structure/cable,
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "Wd" = (
 /obj/machinery/light/cold/dim/directional/north,
 /obj/machinery/stationtrauma_flood_alarm/directional/north{
@@ -3994,6 +4145,16 @@
 	color = "#b9c9de"
 	},
 /area/station/stationtrauma/eurydice/rooms/upper/legal)
+"WJ" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 3
+	},
+/obj/structure/ladder,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "WN" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron/dark/textured,
@@ -4019,14 +4180,24 @@
 "Xh" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/upper/officer_04)
-"Xl" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
+"Xi" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
 	plant_id = "eurydice";
-	line = 2;
-	dir = 2
+	line = 5;
+	dir = 2;
+	connections = 12
+	},
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 4;
+	dir = 2;
+	connections = 3
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
 	},
 /turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "Xo" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/kitchen)
@@ -4034,11 +4205,18 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"Xs" = (
-/obj/machinery/power/smes/engineering,
+"Xt" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 12
+	},
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/stripes,
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/smes)
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Xv" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/middle/virology)
@@ -4091,16 +4269,15 @@
 	},
 /turf/open/space/ocean,
 /area/space/ocean/stationtrauma_berth/home)
+"XR" = (
+/obj/structure/cable,
+/turf/open/floor/iron/textured{
+	color = "#c5b58d"
+	},
+/area/station/stationtrauma/eurydice/rooms/lower/radiation_suits)
 "XT" = (
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/lower/gun_port_aft)
-"XV" = (
-/obj/effect/turf_decal/stripes,
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/lower/engines)
 "XY" = (
 /turf/open/floor/iron/dark{
 	color = "#c8ced0"
@@ -4112,6 +4289,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/middle/morgue)
+"Ya" = (
+/obj/structure/cable,
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/rooms/middle/engines)
 "Ye" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/lower/gas_storage)
@@ -4146,38 +4327,46 @@
 	},
 /turf/open/floor/iron,
 /area/station/stationtrauma/eurydice/rooms/middle/medical_security)
+"YB" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
 "YC" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/station/stationtrauma/eurydice/rooms/upper/bridge)
-"YE" = (
+"YS" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
 /turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/middle/engines)
+/area/station/stationtrauma/eurydice/rooms/lower/engines)
 "Zc" = (
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/effect/mapping_helpers/apc/cell_10k,
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured,
 /area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
-"Zf" = (
-/obj/machinery/stationtrauma_reactor_pipe/simple/visible{
-	plant_id = "eurydice";
-	line = 5;
-	dir = 2
-	},
-/obj/item/pipe_dispenser/stationtrauma{
-	plant_id = "eurydice"
-	},
-/obj/structure/cable/layer1,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/textured,
-/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Zh" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/rooms/lower/corridors)
-"Zj" = (
-/obj/machinery/firealarm/directional/east,
-/turf/open/floor/engine,
-/area/station/stationtrauma/eurydice/rooms/middle/engines)
+"Zm" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 1;
+	dir = 2;
+	connections = 12
+	},
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/stripes,
+/obj/structure/sign/warning/radiation/directional/south,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "Zo" = (
 /turf/open/floor/iron/dark{
 	color = "#b9c9de"
@@ -4189,12 +4378,31 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/upper/bridge)
+"Zt" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 5;
+	dir = 2;
+	connections = 6
+	},
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/cooling)
 "Zw" = (
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/rooms/middle/commons)
 "Zx" = (
 /turf/closed/wall,
 /area/station/stationtrauma/eurydice/rooms/middle/interrogation)
+"Zz" = (
+/obj/machinery/stationtrauma_reactor_pipe/visible{
+	plant_id = "eurydice";
+	line = 3;
+	dir = 2;
+	connections = 9
+	},
+/turf/open/floor/iron/dark/textured,
+/area/station/stationtrauma/eurydice/rooms/lower/reactor_hall)
 "ZC" = (
 /obj/structure/cable/layer1,
 /obj/structure/cable,
@@ -4320,20 +4528,20 @@ vv
 vv
 vv
 vv
-vv
-eS
-vv
-vv
-vv
-vv
-vv
-eS
+vG
+MD
 vv
 vv
 vv
 vv
+vG
+MD
 vv
-eS
+vv
+vv
+vv
+vG
+MD
 vv
 vv
 vv
@@ -4361,19 +4569,19 @@ vv
 vv
 vv
 vv
+vG
 vv
 vv
 vv
 vv
 vv
+vG
 vv
 vv
 vv
 vv
 vv
-vv
-vv
-vv
+vG
 vv
 vv
 vv
@@ -4402,19 +4610,19 @@ vv
 vv
 vv
 vv
+vG
 vv
 vv
 vv
 vv
 vv
+vG
 vv
 vv
 vv
 vv
 vv
-vv
-vv
-vv
+vG
 vv
 vv
 vv
@@ -4443,19 +4651,19 @@ vv
 vv
 Pu
 Pu
-Pu
-Pu
-Pu
-vv
-Pu
-Pu
-Pu
+cA
 Pu
 Pu
 vv
 Pu
 Pu
+cA
 Pu
+Pu
+vv
+Pu
+Pu
+cA
 Pu
 Pu
 vv
@@ -4484,19 +4692,19 @@ vv
 vv
 Pu
 LJ
-Uo
+ou
 ua
 Pu
 Pu
 Pu
 ua
-Uo
+ou
 ua
 Pu
 Pu
 Pu
 ua
-XV
+rm
 Jl
 Pu
 vv
@@ -4525,19 +4733,19 @@ vv
 vv
 Pu
 ua
-Uo
+yo
 ua
 ua
 xw
 ua
 ua
-Uo
+yo
 ua
 ua
 xw
 ua
 ua
-XV
+YB
 ua
 Pu
 vv
@@ -4566,19 +4774,19 @@ vv
 vv
 Pu
 Un
-Pa
+hN
 ua
 ua
 xw
 ua
 ua
-Pa
+hN
 ua
 ua
 xw
 ua
 ua
-Pa
+hN
 QC
 Pu
 vv
@@ -4607,13 +4815,13 @@ vv
 vv
 Pu
 sl
-ua
+qS
 ua
 ua
 xw
 ua
 ua
-ua
+qS
 ua
 ua
 xw
@@ -4648,13 +4856,13 @@ vv
 Pu
 Pu
 jo
+YS
 jo
 jo
 jo
 jo
 jo
-jo
-jo
+YS
 jo
 jo
 jo
@@ -4689,8 +4897,8 @@ vv
 Pu
 vr
 Bd
-Tm
 tg
+Um
 tg
 tg
 tg
@@ -4702,7 +4910,7 @@ tg
 Be
 tg
 SL
-Tm
+tg
 HG
 Pu
 vv
@@ -4854,12 +5062,12 @@ RG
 WN
 jx
 jx
-SN
-Mv
-DP
-vO
-vO
-rM
+sc
+gP
+Dq
+jd
+jd
+fH
 Td
 Td
 Vo
@@ -4895,19 +5103,19 @@ RG
 xC
 jx
 jx
-IF
-DB
-Na
-hW
-hW
-sr
-hW
-hW
-GX
-Vn
+MK
+CN
+vh
+Em
+Em
+Sd
+Em
+Em
+nB
+FZ
 gX
-dG
-zA
+gB
+hR
 wn
 RG
 vv
@@ -4937,18 +5145,18 @@ jx
 jx
 jx
 kk
-ck
+uf
 hA
 Ke
 Ke
-is
+dA
 Ke
 Ke
 MN
 it
 Dl
 jx
-zr
+xB
 jx
 RG
 RG
@@ -4975,10 +5183,10 @@ vv
 RG
 zc
 JV
-zq
-bq
-Dh
-ck
+bg
+If
+fj
+uf
 hA
 Ke
 Ne
@@ -4989,7 +5197,7 @@ MN
 it
 Dl
 SJ
-kA
+EY
 JA
 gk
 RG
@@ -5017,22 +5225,22 @@ RG
 Ul
 UX
 UX
-IP
-Dh
-mP
-jz
-Es
+Bv
+fj
+qa
+rp
+OW
 Ne
 rZ
 Ne
-ii
+dZ
 MN
 it
 Dl
 Yi
-qr
-pu
-vd
+LW
+JK
+pC
 RG
 vv
 vv
@@ -5058,22 +5266,22 @@ RG
 LK
 UX
 UX
-IP
-Dh
+Bv
+fj
 it
 hA
 Ke
 Ne
 Ne
 Ne
-Lr
+wS
 MN
 it
 Dl
 Yi
 kN
 kN
-IC
+kI
 RG
 vv
 vv
@@ -5099,22 +5307,22 @@ RG
 LK
 UX
 au
-kg
-IJ
+KS
+Xt
 it
 hA
 Ke
 Ke
-uD
+Kp
 Ke
-Lr
+wS
 MN
 it
 Dl
 Yi
 kN
 SP
-DF
+ie
 RG
 vv
 vv
@@ -5140,22 +5348,22 @@ RG
 LK
 UX
 UX
-IP
-UG
+Bv
+Zm
 Vo
 Rv
 UK
 UK
-st
+bu
 UK
-tK
+HL
 Da
 Vo
 bn
 Yi
 kN
 kN
-IC
+kI
 RG
 RG
 vv
@@ -5181,22 +5389,22 @@ jx
 LK
 UX
 UX
-IP
-cM
+Bv
+Tp
 Ui
 Vo
 Om
 Om
-pQ
+CJ
 Om
-Fp
+zS
 Vo
 Ui
 jx
-pP
-Iz
-qJ
-IC
+Zt
+yD
+LR
+kI
 jx
 RG
 RG
@@ -5221,23 +5429,23 @@ jx
 jx
 jc
 Of
-tv
-Gx
-kq
-Xl
+fg
+VX
+Vc
+Vz
 qD
-sO
-sO
-uM
+SS
+SS
+NJ
 gM
-tw
-UP
-dG
-dG
-Sm
-CG
-bE
-nj
+jT
+xS
+gB
+gB
+wu
+jS
+Xi
+nq
 jx
 jx
 RG
@@ -5257,27 +5465,27 @@ vv
 vv
 vv
 XQ
-cR
-Ly
+dJ
+oi
 Hv
-Ly
-Jm
-SA
-Ly
-Rw
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-UQ
+oi
+WJ
+PV
+oi
+GQ
+oi
+oi
+oi
+oi
+oi
+oi
+oi
+oi
+oi
+oi
+GK
 jx
-Fk
+Lf
 jx
 jx
 jx
@@ -5302,8 +5510,8 @@ RG
 jx
 MU
 tE
-TE
-Br
+Jo
+Zz
 jx
 pa
 rt
@@ -5318,7 +5526,7 @@ jx
 jx
 jx
 jx
-Fk
+Lf
 jx
 jx
 jx
@@ -5341,12 +5549,12 @@ vv
 vv
 RG
 jx
-Fk
-sW
-fa
+Lf
+zv
+fe
 DL
-Dr
-Ho
+bU
+tu
 Xq
 Qc
 Yp
@@ -5359,7 +5567,7 @@ jx
 jx
 jx
 jx
-Fk
+Lf
 jx
 jx
 wn
@@ -5382,7 +5590,7 @@ vv
 vv
 RG
 WN
-Fk
+Lf
 Ou
 tl
 tl
@@ -5400,7 +5608,7 @@ Tl
 jx
 jx
 jx
-Fk
+Lf
 jx
 jx
 qu
@@ -5423,7 +5631,7 @@ vv
 vv
 RG
 zy
-Fk
+Lf
 Ou
 tl
 ax
@@ -5441,7 +5649,7 @@ WN
 jx
 jx
 jx
-Fk
+Lf
 jx
 jx
 pF
@@ -5464,7 +5672,7 @@ vv
 vv
 RG
 jx
-Fk
+Lf
 Ou
 tl
 tl
@@ -5482,7 +5690,7 @@ Nv
 jx
 jx
 jx
-Fk
+Lf
 jx
 jx
 jx
@@ -5505,10 +5713,10 @@ vv
 vv
 RG
 jx
-Rg
-cY
-lp
-wK
+TR
+tq
+TG
+hh
 iL
 Xq
 Zc
@@ -5523,7 +5731,7 @@ iJ
 jx
 jx
 jx
-Fk
+Lf
 jx
 jx
 jx
@@ -5549,9 +5757,9 @@ jx
 jx
 jx
 jx
-Fk
+Lf
 jx
-jx
+Xq
 jx
 hb
 Ja
@@ -5564,7 +5772,7 @@ jx
 jx
 jx
 jx
-Fk
+Lf
 jx
 jx
 jx
@@ -5585,27 +5793,27 @@ vv
 vv
 vv
 Vv
-cR
-Pw
-Pw
-Pw
-Pw
+dJ
+Km
+Km
+Km
+Km
 Gf
-Pw
-Pw
-Pw
-OI
-Sn
-mV
-Zf
-Ly
-Rf
-OI
-Pw
-Pw
-fX
-Pw
-Ca
+Km
+wQ
+Km
+mr
+FB
+AC
+eM
+oi
+Ti
+mr
+Km
+Km
+PJ
+Km
+kl
 oB
 oB
 hb
@@ -5633,7 +5841,7 @@ sb
 sb
 sb
 sb
-sb
+XR
 sb
 hb
 an
@@ -5674,7 +5882,7 @@ sb
 sb
 sb
 sb
-sb
+XR
 sb
 hb
 hb
@@ -5715,7 +5923,7 @@ sb
 sb
 sb
 sb
-sb
+XR
 sb
 ms
 ms
@@ -5756,7 +5964,7 @@ sb
 sb
 sb
 sb
-sb
+XR
 sb
 yL
 ms
@@ -5797,7 +6005,7 @@ sb
 sb
 sb
 sb
-sb
+XR
 sb
 yL
 ms
@@ -5838,7 +6046,7 @@ oB
 oB
 oB
 oB
-oB
+bd
 oB
 ms
 ms
@@ -5879,7 +6087,7 @@ Xz
 Xz
 Xz
 Ay
-IG
+ND
 up
 Iq
 Ay
@@ -5920,7 +6128,7 @@ Xz
 Xz
 Xz
 Ay
-Xs
+wR
 qN
 xl
 ao
@@ -5961,7 +6169,7 @@ Xz
 Xz
 Xz
 Ay
-Xs
+wR
 qN
 xl
 ao
@@ -6002,7 +6210,7 @@ Xz
 Xz
 Xz
 Ay
-Xs
+wR
 qN
 xl
 Ay
@@ -6084,7 +6292,7 @@ Xz
 Xz
 Xz
 Ay
-Xs
+wR
 qN
 JN
 Ay
@@ -6125,7 +6333,7 @@ Xz
 Xz
 Xz
 Ay
-Xs
+wR
 qN
 JN
 ao
@@ -6166,7 +6374,7 @@ Xz
 Xz
 Xz
 Ay
-Xs
+wR
 qN
 JN
 ao
@@ -9938,20 +10146,20 @@ oF
 oF
 oF
 oF
-oF
-Pv
-oF
-oF
-oF
-oF
-oF
-Pv
+vX
+RV
 oF
 oF
 oF
 oF
+vX
+RV
 oF
-Pv
+oF
+oF
+oF
+vX
+RV
 oF
 oF
 oF
@@ -9979,19 +10187,19 @@ oF
 oF
 oF
 oF
+vX
 oF
 oF
 oF
 oF
 oF
+vX
 oF
 oF
 oF
 oF
 oF
-oF
-oF
-oF
+vX
 oF
 oF
 oF
@@ -10020,19 +10228,19 @@ oF
 oF
 oF
 oF
+vX
 oF
 oF
 oF
 oF
 oF
+vX
 oF
 oF
 oF
 oF
 oF
-oF
-oF
-oF
+vX
 oF
 oF
 oF
@@ -10061,19 +10269,19 @@ oF
 oF
 BE
 BE
-BE
-BE
-BE
-oF
-BE
-BE
-BE
+Ya
 BE
 BE
 oF
 BE
 BE
+Ya
 BE
+BE
+oF
+BE
+BE
+Ya
 BE
 BE
 oF
@@ -10102,19 +10310,19 @@ oF
 oF
 BE
 VB
-oh
+PZ
 VB
 BE
 BE
 BE
 VB
-oh
+PZ
 VB
 BE
 BE
 BE
 VB
-Mx
+cE
 VB
 BE
 oF
@@ -10143,19 +10351,19 @@ oF
 oF
 BE
 VB
-oh
+tF
 VB
 VB
 VN
 VB
 VB
-oh
+tF
 VB
 VB
 VN
 VB
 VB
-Mx
+zG
 VB
 BE
 oF
@@ -10184,19 +10392,19 @@ oF
 oF
 BE
 sF
-BS
+aB
 VB
 VB
 VN
 VB
 VB
-BS
+aB
 VB
 VB
 VN
 VB
 VB
-BS
+aB
 pw
 BE
 oF
@@ -10225,19 +10433,19 @@ oF
 oF
 BE
 DW
-VB
-VB
-VB
-VN
-VB
-VB
-VB
+kb
 VB
 VB
 VN
 VB
 VB
+kb
 VB
+VB
+VN
+VB
+VB
+kb
 Sc
 BE
 oF
@@ -10266,19 +10474,19 @@ oF
 BE
 BE
 jF
+hn
 jF
 jF
 jF
 jF
 jF
+hn
 jF
 jF
 jF
 jF
 jF
-jF
-jF
-jF
+hn
 jF
 BE
 BE
@@ -10307,20 +10515,20 @@ oF
 BE
 Wd
 NF
-YE
-YE
-YE
-YE
-YE
-Mu
-YE
-YE
-YE
-YE
-Sk
-YE
-Zj
-YE
+Mt
+iO
+Mt
+Mt
+Mt
+ui
+Mt
+Mt
+Mt
+Mt
+rg
+Mt
+Wc
+Mt
 Ry
 BE
 oF

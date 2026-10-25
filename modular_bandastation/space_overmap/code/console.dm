@@ -1,0 +1,112 @@
+/// Ordinary shuttle-computer appearance, with no emergency-shuttle controller or sonar.
+/obj/machinery/computer/stationtrauma_space_navigation
+	name = "навигационная консоль"
+	desc = "Орбитальная карта, управление тягой и стыковкой Raven."
+	icon_screen = "shuttle"
+	icon_keyboard = "tech_key"
+	use_power = NO_POWER_USE
+	var/obj/docking_port/mobile/stationtrauma_space/vessel
+	var/list/navigation_windows = list()
+
+/obj/machinery/computer/stationtrauma_space_navigation/Destroy()
+	for(var/mob/viewer as anything in navigation_windows.Copy())
+		close_navigation(viewer)
+	vessel = null
+	return ..()
+
+/obj/machinery/computer/stationtrauma_space_navigation/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+	if(!vessel?.overmap || !can_interact(user))
+		return
+	var/datum/browser/popup = navigation_windows[user]
+	if(!popup)
+		popup = new(user, "stationtrauma_space_[REF(src)]", name, 1080, 780, src)
+		popup.add_stylesheet("stationtrauma_space", 'modular_bandastation/space_overmap/html/navigation.css')
+		popup.add_script("stationtrauma_space", 'modular_bandastation/space_overmap/html/navigation.js')
+		navigation_windows[user] = popup
+		RegisterSignals(user, list(COMSIG_QDELETING, COMSIG_MOB_LOGOUT), PROC_REF(close_navigation))
+	var/html = file2text('modular_bandastation/space_overmap/html/navigation.html')
+	html = replacetext(html, "@CONSOLE@", REF(src))
+	html = replacetext(html, "@STATE@", replacetext(json_encode(ui_data(user)), "<", "\\u003c"))
+	popup.set_head_content("")
+	popup.set_content(html)
+	popup.open()
+
+/obj/machinery/computer/stationtrauma_space_navigation/ui_data(mob/user)
+	var/datum/stationtrauma_overmap/space/map = vessel?.overmap
+	if(!map)
+		return list()
+	var/datum/stationtrauma_overmap_site/space/target = map.sites[map.selected_destination]
+	var/distance = target ? map.distance_to(target) : 0
+	var/relative_speed = distance ? ((target.pos_x - map.pos_x) * map.velocity_x + (target.pos_y - map.pos_y) * map.velocity_y) / distance : 0
+	return list(
+		"status" = map.status,
+		"x" = map.pos_x, "y" = map.pos_y,
+		"vx" = map.velocity_x, "vy" = map.velocity_y,
+		"course" = map.course, "ordered_course" = map.ordered_course,
+		"speed" = map.speed, "throttle" = map.throttle,
+		"engines" = round(map.engine_fraction() * 100),
+		"helm" = map.helm_engaged, "autopilot" = map.autopilot,
+		"preparing" = map.preparing, "planning" = map.planning,
+		"selected" = map.selected_destination, "docked" = map.docked?.id,
+		"landing" = target?.landing, "distance" = distance,
+		"closing_speed" = relative_speed,
+		"can_dock" = !map.preparing && !map.docked && !map.helm_engaged && map.speed <= 0.05 && map.can_dock(target, map.control_revision),
+		"routes" = map.known_sites(), "path" = map.autopilot_path,
+	)
+
+/** Validate every control server-side, including stale windows and hand-written hrefs. */
+/obj/machinery/computer/stationtrauma_space_navigation/proc/navigation_command(action, value)
+	var/datum/stationtrauma_overmap/space/map = vessel?.overmap
+	if(!map || panel_open || (machine_stat & (NOPOWER|BROKEN)))
+		return FALSE
+	map.advance()
+	switch(action)
+		if("stop")
+			map.stop("Стоп: маневровые двигатели погасили скорость")
+		if("select")
+			return map.select_site(value)
+		if("course", "throttle")
+			var/number = text2num(value)
+			if(!IS_FINITE(number) || number < 0 || (action == "course" ? number >= 360 : number > 100))
+				return FALSE
+			if(action == "course")
+				map.command_course(number)
+			else
+				map.command_course(map.ordered_course)
+				map.throttle = number
+		if("depart")
+			map.command_course(map.ordered_course)
+			return map.sail()
+		if("autopilot")
+			if(map.preparing || map.planning || map.throttle <= 0 || map.docked?.id == map.selected_destination)
+				return FALSE
+			INVOKE_ASYNC(map, TYPE_PROC_REF(/datum/stationtrauma_overmap, engage_autopilot))
+		if("dock")
+			INVOKE_ASYNC(map, TYPE_PROC_REF(/datum/stationtrauma_overmap/space, dock))
+		else
+			return FALSE
+	return TRUE
+
+/obj/machinery/computer/stationtrauma_space_navigation/proc/close_navigation(mob/user)
+	SIGNAL_HANDLER
+	var/datum/browser/popup = navigation_windows[user]
+	navigation_windows -= user
+	UnregisterSignal(user, list(COMSIG_QDELETING, COMSIG_MOB_LOGOUT))
+	if(popup)
+		popup.close()
+		qdel(popup)
+
+/obj/machinery/computer/stationtrauma_space_navigation/Topic(href, list/href_list)
+	if(href_list["close"])
+		close_navigation(usr)
+		return
+	var/datum/browser/popup = navigation_windows[usr]
+	if(..() || !can_interact(usr))
+		close_navigation(usr)
+		return
+	if(!popup || !vessel?.overmap)
+		return
+	if(href_list["action"])
+		navigation_command(href_list["action"], href_list["value"])
+	usr << output(url_encode(json_encode(ui_data(usr))), "[popup.window_id].browser:updateSpace")

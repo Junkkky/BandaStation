@@ -1,54 +1,11 @@
-/** A local ocean seam; native zMove retains occupants, pulling and immersion without moving the vessel. */
+/** Ocean seams add hydraulic readiness and background continuity to the shared map transfer. */
 /datum/component/stationtrauma_ocean_passage
-	dupe_mode = COMPONENT_DUPE_UNIQUE
-	/// A real ocean tile just beyond the reverse seam, preventing immediate bounce-back.
-	var/turf/open/landing
-	/// Cardinal direction towards the destination.
-	var/direction
-	/// Null for standalone seams; a travelling vessel opens all its prepared links together.
-	var/obj/docking_port/mobile/stationtrauma/vessel
+	parent_type = /datum/component/stationtrauma_map_passage
 
-/datum/component/stationtrauma_ocean_passage/Initialize(turf/open/destination, facing, obj/docking_port/mobile/stationtrauma/owner)
-	if(!isspaceturf(parent) || !isspaceturf(destination) || !(facing in GLOB.cardinals))
-		return COMPONENT_INCOMPATIBLE
-	landing = destination
-	direction = facing
-	vessel = owner
+/datum/component/stationtrauma_ocean_passage/landing_available()
+	return ..() && landing.GetComponent(/datum/component/floodwater)?.infinite_source
 
-/datum/component/stationtrauma_ocean_passage/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ATOM_ENTERED, PROC_REF(on_entered))
-	RegisterSignal(parent, COMSIG_TURF_CHANGE, PROC_REF(remove_passage))
-
-/datum/component/stationtrauma_ocean_passage/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ATOM_ENTERED, COMSIG_TURF_CHANGE))
-
-/datum/component/stationtrauma_ocean_passage/proc/remove_passage()
-	SIGNAL_HANDLER
-	if(vessel)
-		vessel.ocean_connection_revision++
-	qdel(src)
-
-/datum/component/stationtrauma_ocean_passage/proc/on_entered(datum/source, atom/movable/arrived)
-	SIGNAL_HANDLER
-	if(istype(arrived, /obj/effect/abstract/stationtrauma_ocean_projection))
-		return
-	// Finish the original area's Entered/Moved signals before entering another area.
-	addtimer(CALLBACK(src, PROC_REF(cross), arrived), 0, TIMER_UNIQUE)
-
-/** Recheck the live exit instead of using space transit's search for another landing inside the map. */
-/datum/component/stationtrauma_ocean_passage/proc/cross(atom/movable/arrived)
-	if((vessel && (QDELETED(vessel) || !vessel.ocean_connection_active)) || QDELETED(src) || QDELETED(arrived) || arrived.loc != parent || arrived.anchored || arrived.currently_z_moving || arrived.pulledby)
-		return FALSE
-	if(istype(arrived, /atom/movable/mirage_holder) || istype(arrived, /obj/effect/overlay) || istype(arrived, /atom/movable/lighting_object) || istype(arrived, /obj/effect/abstract/z_holder))
-		return FALSE
-	if(SSatoms.initialized == INITIALIZATION_INNEW_MAPLOAD || QDELETED(landing) || !isspaceturf(landing) || landing.density)
-		return FALSE
-	var/datum/component/floodwater/water = landing.GetComponent(/datum/component/floodwater)
-	if(!water?.infinite_source)
-		return FALSE
-	for(var/atom/movable/obstacle as anything in landing)
-		if(obstacle.density)
-			return FALSE
+/datum/component/stationtrauma_ocean_passage/move_actor(atom/movable/arrived)
 	var/list/backgrounds = list()
 	for(var/atom/movable/moving as anything in arrived.get_z_move_affected(ZMOVE_INCLUDE_PULLED))
 		for(var/mob/viewer as anything in moving.important_recursive_contents?[RECURSIVE_CONTENTS_CLIENT_MOBS])
@@ -57,7 +14,7 @@
 					continue
 				for(var/atom/movable/screen/parallax_layer/ocean/seafloor/background in home.parallax_layers)
 					backgrounds[background] = list(background.passage_offset_x + background.offset_x, background.passage_offset_y + background.offset_y)
-	if(!arrived.zMove(null, landing, ZMOVE_ALLOW_BUCKLED|ZMOVE_INCLUDE_PULLED))
+	if(!..())
 		return FALSE
 	for(var/atom/movable/screen/parallax_layer/ocean/seafloor/background as anything in backgrounds)
 		if(QDELETED(background) || get_turf(background.home?.perspective) != landing)

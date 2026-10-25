@@ -2,10 +2,7 @@
 /obj/item/pipe_dispenser/stationtrauma
 	/// One recipe list, shared with previews and server-side construction validation.
 	var/static/list/plant_recipes = list(
-		"Реакторная мультитруба" = /obj/machinery/stationtrauma_reactor_pipe,
-		"Прямая труба" = /obj/machinery/stationtrauma_reactor_pipe/straight,
-		"Угол трубы" = /obj/machinery/stationtrauma_reactor_pipe/elbow,
-		"Тройник" = /obj/machinery/stationtrauma_reactor_pipe/tee,
+		"Труба реакторного контура" = /obj/machinery/stationtrauma_reactor_pipe/visible,
 		"Вентиль" = /obj/machinery/stationtrauma_reactor_pipe/valve,
 		"Направленный насос" = /obj/machinery/stationtrauma_reactor_pipe/pump,
 		"Забортный насос" = /obj/machinery/stationtrauma_reactor_pipe/pump/sea_inlet,
@@ -23,8 +20,8 @@
 	if(plant_recipe_info)
 		return
 	plant_recipe_info = list()
-	var/list/states = list("manifold4w", "simple", "simple", "manifold", "mvalve", "pump", "scrubber", "pvent")
-	var/list/directions = list(PIPE_ONEDIR, PIPE_STRAIGHT, PIPE_BENDABLE, PIPE_TRINARY, PIPE_STRAIGHT, PIPE_UNARY, PIPE_UNARY, PIPE_UNARY)
+	var/list/states = list("manifold4w", "mvalve", "pump", "scrubber", "pvent")
+	var/list/directions = list(PIPE_ONEDIR, PIPE_STRAIGHT, PIPE_UNARY, PIPE_UNARY, PIPE_UNARY)
 	for(var/index in 1 to length(plant_recipes))
 		var/datum/pipe_info/info = new
 		info.name = plant_recipes[index]
@@ -43,8 +40,6 @@
 		for(var/index in 1 to length(plant_recipes))
 			var/datum/pipe_info/info = plant_recipe_info[index]
 			var/list/previews = info.get_preview(p_dir, plant_recipe == index && plant_line == medium)
-			if(index == 3)
-				previews.Cut(1, 3)
 			choices += list(list("pipe_name" = info.name, "pipe_desc" = info.desc, "pipe_index" = index, "previews" = previews))
 		data["categories"] += list(list("cat_name" = plant_catalogues[medium], "recipes" = choices))
 	if(plant_recipe)
@@ -52,20 +47,17 @@
 		data["selected_recipe"] = plant_recipes[plant_recipe]
 
 /** Validate the recipe and channel, then invalidate the topology after configuration. */
-/obj/item/pipe_dispenser/stationtrauma/proc/build_plant_fixture(turf/tile, index, direction, line, connection_mask = ALL_CARDINALS, pipe_layer = PIPING_LAYER_DEFAULT)
+/obj/item/pipe_dispenser/stationtrauma/proc/build_plant_fixture(turf/tile, index, direction, line, pipe_layer = PIPING_LAYER_DEFAULT)
 	if(!isnum(index) || index != round(index) || index < 1 || index > length(plant_recipes) || !isnum(line) || line != round(line) || !(line in 1 to 5))
 		return null
-	direction = plant_fixture_direction(index, direction)
 	if(!(direction in GLOB.cardinals))
 		return null
 	if(!isnum(pipe_layer) || pipe_layer != round(pipe_layer) || !(pipe_layer in 1 to 5))
 		return null
-	if(index == 1 && (!isnum(connection_mask) || connection_mask != round(connection_mask) || connection_mask < 1 || connection_mask > ALL_CARDINALS || ISSTUB(connection_mask)))
-		return null
 	var/path = plant_recipes[plant_recipes[index]]
-	if(!isopenturf(tile) && !(isclosedturf(tile) && index <= 4))
+	if(!isopenturf(tile) && !(isclosedturf(tile) && index == 1))
 		return null
-	if(index >= 7)
+	if(index >= 4)
 		line = ST_PLANT_SEA
 	for(var/obj/machinery/stationtrauma_reactor_pipe/existing in tile)
 		if(existing.line == line && existing.piping_layer == pipe_layer)
@@ -74,26 +66,9 @@
 	pipe.line = line
 	pipe.plant_id = plant_id
 	pipe.piping_layer = pipe_layer
-	if(index == 1)
-		pipe.connections = connection_mask
 	pipe.setDir(direction)
 	pipe.refresh_connections()
 	return pipe
-
-/** Native elbow previews use diagonal poses; the fixed elbow housing uses cardinals. */
-/obj/item/pipe_dispenser/stationtrauma/proc/plant_fixture_direction(index, direction)
-	if(index != 3)
-		return direction
-	switch(direction)
-		if(NORTHEAST)
-			return SOUTH
-		if(SOUTHWEST)
-			return NORTH
-		if(NORTHWEST)
-			return EAST
-		if(SOUTHEAST)
-			return WEST
-	return NONE
 
 /** Respect native placement/removal modes and revalidate after the placement delay. */
 /obj/item/pipe_dispenser/stationtrauma/proc/dispense_plant_selection(atom/target, mob/living/user)
@@ -109,9 +84,8 @@
 	var/index = plant_recipe
 	var/direction = p_dir
 	var/channels = pipe_layers
-	var/connection_mask = p_init_dir
 	var/medium = plant_line
-	if(!(plant_fixture_direction(index, direction) in GLOB.cardinals))
+	if(!(direction in GLOB.cardinals))
 		return ITEM_INTERACT_BLOCKING
 	if(!tile || !user.Adjacent(tile) || !do_after(user, 0.4 SECONDS, target = tile))
 		return ITEM_INTERACT_BLOCKING
@@ -124,13 +98,12 @@
 		if(!(mode & (1<<1)))
 			var/obj/item/stationtrauma_reactor_fitting/fitting = new(tile)
 			fitting.fixture_type = plant_recipes[plant_recipes[index]]
-			fitting.line = index >= 7 ? ST_PLANT_SEA : medium
+			fitting.line = index >= 4 ? ST_PLANT_SEA : medium
 			fitting.piping_layer = pipe_layer
 			fitting.plant_id = plant_id
-			fitting.connection_mask = index == 1 ? connection_mask : null
-			fitting.setDir(plant_fixture_direction(index, direction))
+			fitting.setDir(direction)
 			built++
-		else if(build_plant_fixture(tile, index, direction, medium, connection_mask, pipe_layer))
+		else if(build_plant_fixture(tile, index, direction, medium, pipe_layer))
 			built++
 	balloon_alert(user, built ? "установлено: [built]" : "место занято")
 	return built ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
@@ -142,7 +115,7 @@
 	icon = 'icons/obj/pipes_n_cables/!pipes_bitmask.dmi'
 	icon_state = "12_3"
 	/// Validated machinery subtype to restore.
-	var/fixture_type = /obj/machinery/stationtrauma_reactor_pipe
+	var/fixture_type = /obj/machinery/stationtrauma_reactor_pipe/visible
 	var/line = ST_PLANT_WATER
 	var/plant_id = "main"
 	/// Preserve mapper-defined branch masks when a section is dismantled.

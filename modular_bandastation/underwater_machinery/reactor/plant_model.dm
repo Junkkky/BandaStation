@@ -1,9 +1,9 @@
 /** Finite local inventory; steam is measured as the liquid volume it will condense into. */
 /datum/stationtrauma_plant_inventory
 	var/water = 0
-	var/water_capacity = 1200
+	var/water_capacity = 1200 * ST_PLANT_CAPACITY_SCALE
 	var/steam = 0
-	var/steam_capacity = 80
+	var/steam_capacity = 80 * ST_PLANT_CAPACITY_SCALE
 	/// Enthalpy above the reference liquid state, not an environmental temperature.
 	var/steam_energy = 0
 
@@ -33,9 +33,9 @@
 	var/datum/stationtrauma_plant_inventory/condenser
 	var/datum/stationtrauma_plant_inventory/reserve
 	var/core_temperature = ST_PLANT_AMBIENT
-	var/core_heat_capacity = 2000000
-	/// Starting tuning: 8 MW thermal; validate against the vessel load before balancing fuel.
-	var/rated_heat = 8000000
+	var/core_heat_capacity = 2000000 * ST_PLANT_CAPACITY_SCALE
+	/// Thermal rating supplies the turbine nameplate at its conversion efficiency.
+	var/rated_heat = ST_PLANT_NOMINAL_POWER / ST_PLANT_TURBINE_EFFICIENCY
 	var/decay_heat = 0
 	var/running = FALSE
 	var/demand = 0
@@ -43,8 +43,8 @@
 	var/thermal_damage = 0
 	var/condenser_heat = 0
 	var/cooler_heat = 0
-	var/condenser_buffer = 500 * ST_PLANT_WATER_HEAT
-	var/cooler_buffer = 1000 * ST_PLANT_WATER_HEAT
+	var/condenser_buffer = 500 * ST_PLANT_WATER_HEAT * ST_PLANT_CAPACITY_SCALE
+	var/cooler_buffer = 1000 * ST_PLANT_WATER_HEAT * ST_PLANT_CAPACITY_SCALE
 	var/power = 0
 	var/steam_flow = 0
 	var/condensed_flow = 0
@@ -56,16 +56,16 @@
 
 /datum/stationtrauma_plant_state/New()
 	core = new
-	core.water = 600
-	core.steam_capacity = 40
+	core.water = 600 * ST_PLANT_CAPACITY_SCALE
+	core.steam_capacity = 40 * ST_PLANT_CAPACITY_SCALE
 	turbine = new
 	turbine.water_capacity = 0
 	condenser = new
-	condenser.water = 600
-	condenser.steam_capacity = 120
+	condenser.water = 600 * ST_PLANT_CAPACITY_SCALE
+	condenser.steam_capacity = 120 * ST_PLANT_CAPACITY_SCALE
 	reserve = new
-	reserve.water = 1000
-	reserve.water_capacity = 3000
+	reserve.water = 1000 * ST_PLANT_CAPACITY_SCALE
+	reserve.water_capacity = 3000 * ST_PLANT_CAPACITY_SCALE
 	reserve.steam_capacity = 0
 
 /datum/stationtrauma_plant_state/Destroy()
@@ -102,7 +102,7 @@
 	thermal_damage = 0
 	if(seconds <= 0)
 		return 0
-	if(running && (core_temperature >= ST_PLANT_SCRAM || pressure(core) >= 16 || core.water < 1 || fuel_seconds <= 0))
+	if(running && (core_temperature >= ST_PLANT_SCRAM || pressure(core) >= 16 || core.water < ST_PLANT_CAPACITY_SCALE || fuel_seconds <= 0))
 		scram(TRUE)
 	var/fuel_used = running ? min(fuel_seconds, demand * seconds) : 0
 	var/heat = rated_heat * fuel_used
@@ -114,20 +114,23 @@
 	core_temperature += heat / core_heat_capacity
 
 	// Liquid is reference-temperature condensate; boiling accounts for its heating and vaporisation.
-	var/boiling_energy = min(max(0, (core_temperature - ST_PLANT_BOILING) * core_heat_capacity), max(0, core_temperature - ST_PLANT_BOILING) * 80000 * seconds)
+	var/boiling_energy = min(max(0, (core_temperature - ST_PLANT_BOILING) * core_heat_capacity), max(0, core_temperature - ST_PLANT_BOILING) * 80000 * ST_PLANT_CAPACITY_SCALE * seconds)
 	var/boiled = max(0, min(core.water, core.steam_capacity - core.steam, boiling_energy / ST_PLANT_VAPOR_ENERGY))
 	core.water -= boiled
 	core.steam += boiled
 	core.steam_energy += boiled * ST_PLANT_VAPOR_ENERGY
 	core_temperature -= boiled * ST_PLANT_VAPOR_ENERGY / core_heat_capacity
 
-	var/turbine_flow = min(steam_rate * seconds, max(0, pressure(core) - pressure(turbine)) * seconds * 2)
+	var/turbine_flow = min(steam_rate * seconds, max(0, pressure(core) - pressure(turbine)) * seconds * 2 * ST_PLANT_CAPACITY_SCALE)
 	var/old_steam = core.steam
-	var/generated = core.move_steam(turbine, turbine_flow, 0.3)
+	var/generated = core.move_steam(turbine, turbine_flow, ST_PLANT_TURBINE_EFFICIENCY)
+	var/exported = min(generated, ST_PLANT_NOMINAL_POWER * seconds)
+	// Energy above the generator rating stays in the exhaust for the condenser to reject.
+	turbine.steam_energy += generated - exported
 	steam_flow = (old_steam - core.steam) / seconds
-	power = generated / seconds
-	electrical_energy += generated
-	turbine.move_steam(condenser, min(exhaust_rate * seconds, max(0, pressure(turbine) - pressure(condenser)) * seconds * 4))
+	power = exported / seconds
+	electrical_energy += exported
+	turbine.move_steam(condenser, min(exhaust_rate * seconds, max(0, pressure(turbine) - pressure(condenser)) * seconds * 4 * ST_PLANT_CAPACITY_SCALE))
 
 	if(condenser.steam > 0)
 		var/per_litre = condenser.steam_energy / condenser.steam
@@ -143,7 +146,7 @@
 	rejected_heat += condenser_rejection
 
 	var/returned = condenser.move_water(core, feed_rate * seconds)
-	reserve.move_water(core, min(reserve_rate * seconds, max(0, 600 - core.water), max(0, max(feed_rate, reserve_rate) * seconds - returned)))
+	reserve.move_water(core, min(reserve_rate * seconds, max(0, 600 * ST_PLANT_CAPACITY_SCALE - core.water), max(0, max(feed_rate, reserve_rate) * seconds - returned)))
 	var/coolant_temperature = ST_PLANT_AMBIENT + cooler_heat / cooler_buffer
 	var/cooling_energy = min(max(0, (core_temperature - coolant_temperature) / (1 / core_heat_capacity + 1 / cooler_buffer)), max(0, core_temperature - coolant_temperature) * cooler_rate * ST_PLANT_WATER_HEAT * seconds, max(0, cooler_buffer * 120 - cooler_heat))
 	core_temperature -= cooling_energy / core_heat_capacity
@@ -152,7 +155,7 @@
 	var/cooler_rejection = min(cooler_heat, cooler_sea_rate * ST_PLANT_WATER_HEAT * 20 * seconds)
 	cooler_heat -= cooler_rejection
 	rejected_heat += cooler_rejection
-	if(core_temperature >= ST_PLANT_SCRAM || pressure(core) >= 16 || core.water < 1)
+	if(core_temperature >= ST_PLANT_SCRAM || pressure(core) >= 16 || core.water < ST_PLANT_CAPACITY_SCALE)
 		scram(TRUE)
 	if(core_temperature >= ST_PLANT_DAMAGE)
 		thermal_damage = 5 * seconds

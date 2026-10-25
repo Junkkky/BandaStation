@@ -1,4 +1,59 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice,
+/obj/structure/cable/multilayer/multiz{
+	cable_layer = 2
+	})
+"ac" = (
+/obj/structure/cable,
+/obj/machinery/power/stationtrauma_pgd{
+	dir = 8
+	},
+/turf/open/space/ocean,
+/area/station/stationtrauma/eurydice)
+"ad" = (
+/turf/open/space/ocean,
+/area/station/stationtrauma/eurydice)
+"ae" = (
+/obj/structure/cable,
+/turf/open/space/ocean,
+/area/station/stationtrauma/eurydice)
+"ag" = (
+/obj/effect/mapping_helpers/apc/full_charge,
+/obj/effect/mapping_helpers/apc/unlocked,
+/obj/machinery/power/apc/auto_name/directional/north,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice)
+"ah" = (
+/obj/machinery/power/terminal{
+	cable_layer = 1;
+	dir = 1
+	},
+/obj/structure/cable/layer1,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice)
+"ai" = (
+/obj/structure/cable/layer1,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice)
+"aj" = (
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice/middle,
+/obj/structure/cable/multilayer/multiz{
+	cable_layer = 2
+	})
+"ak" = (
+/obj/structure/cable/layer1,
+/obj/machinery/computer/monitor,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice)
+"al" = (
+/obj/structure/cable,
+/obj/machinery/power/smes/super/full,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice)
 "ax" = (
 /obj/structure/ladder,
 /turf/open/floor/plating,
@@ -31,12 +86,13 @@
 /obj/machinery/newscaster/directional/south,
 /turf/open/floor/iron/dark/smooth_corner,
 /area/station/stationtrauma/eurydice/bridge)
-"eS" = (
-/obj/machinery/power/shuttle_engine/huge{
+"fg" = (
+/obj/structure/cable,
+/obj/machinery/stationtrauma_pgd_control{
 	dir = 8
 	},
-/turf/open/space/ocean,
-/area/space/ocean/stationtrauma_berth/home)
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice)
 "gL" = (
 /obj/machinery/computer/records/medical{
 	dir = 8
@@ -95,6 +151,21 @@
 /obj/effect/spawner/structure/window/reinforced/diagonal/southeast,
 /turf/open/floor/plating,
 /area/station/stationtrauma/eurydice/bridge)
+"rA" = (
+/obj/structure/cable,
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice/middle)
+"sF" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice)
+"sM" = (
+/obj/structure/cable,
+/obj/machinery/stationtrauma_pgd_control{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice/middle)
 "tb" = (
 /obj/machinery/light/floor,
 /turf/open/floor/iron/dark,
@@ -126,6 +197,10 @@
 /obj/effect/spawner/structure/window/reinforced/diagonal/northeast,
 /turf/open/floor/plating,
 /area/station/stationtrauma/eurydice/bridge)
+"yL" = (
+/obj/structure/cable,
+/turf/closed/wall/mineral/plastitanium,
+/area/station/stationtrauma/eurydice)
 "yM" = (
 /obj/machinery/computer/station_alert{
 	dir = 8
@@ -136,6 +211,10 @@
 /obj/structure/ladder,
 /turf/open/floor/plating,
 /area/station/stationtrauma/eurydice/middle)
+"AI" = (
+/obj/structure/cable,
+/turf/open/space/openspace/ocean,
+/area/space/ocean/stationtrauma_berth/home)
 "Cb" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/stationtrauma/eurydice/upper)
@@ -194,6 +273,17 @@
 /obj/docking_port/mobile/stationtrauma/eurydice,
 /turf/open/space/ocean,
 /area/space/ocean/stationtrauma_berth/home)
+"Lx" = (
+/obj/structure/cable,
+/obj/machinery/power/stationtrauma_pgd{
+	dir = 8
+	},
+/turf/open/space/openspace/ocean,
+/area/space/ocean/stationtrauma_berth/home)
+"LH" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/stationtrauma/eurydice/middle)
 "ME" = (
 /obj/structure/table/reinforced,
 /obj/item/clipboard,
@@ -212,12 +302,6 @@
 /obj/item/pen,
 /turf/open/floor/iron/dark,
 /area/station/stationtrauma/eurydice/bridge)
-"Pv" = (
-/obj/machinery/power/shuttle_engine/huge{
-	dir = 8
-	},
-/turf/open/space/openspace/ocean,
-/area/space/ocean/stationtrauma_berth/home)
 "Qk" = (
 /obj/effect/landmark/latejoin,
 /obj/effect/landmark/start/assistant/override,
@@ -385,21 +469,21 @@ vv
 vv
 vv
 vv
-vv
-vv
-eS
-vv
-vv
-vv
-vv
-vv
-eS
+ad
+ae
+ac
 vv
 vv
 vv
+ad
+ae
+ac
 vv
 vv
-eS
+vv
+ad
+ae
+ac
 vv
 vv
 vv
@@ -426,21 +510,21 @@ vv
 vv
 vv
 vv
+ad
+ae
+ad
 vv
 vv
 vv
+ad
+ae
+ad
 vv
 vv
 vv
-vv
-vv
-vv
-vv
-vv
-vv
-vv
-vv
-vv
+ad
+ae
+ad
 vv
 vv
 vv
@@ -467,21 +551,21 @@ vv
 vv
 vv
 vv
+ad
+ae
+ad
 vv
 vv
 vv
+ad
+ae
+ad
 vv
 vv
 vv
-vv
-vv
-vv
-vv
-vv
-vv
-vv
-vv
-vv
+ad
+ae
+ad
 vv
 vv
 vv
@@ -509,19 +593,19 @@ vv
 vv
 hD
 hD
-hD
-hD
-hD
-vv
-hD
-hD
-hD
+yL
 hD
 hD
 vv
 hD
 hD
+yL
 hD
+hD
+vv
+hD
+hD
+yL
 hD
 hD
 vv
@@ -550,19 +634,19 @@ vv
 vv
 hD
 Su
-Su
-Su
-hD
-hD
-hD
-Su
-Su
+fg
 Su
 hD
 hD
 hD
 Su
+fg
 Su
+hD
+hD
+hD
+Su
+fg
 Su
 hD
 vv
@@ -591,19 +675,19 @@ vv
 vv
 hD
 Su
+sF
 Su
 Su
 Su
 Su
 Su
+sF
 Su
 Su
 Su
 Su
 Su
-Su
-Su
-Su
+sF
 Su
 hD
 vv
@@ -632,19 +716,19 @@ vv
 vv
 hD
 Su
+sF
 Su
 Su
 Su
 Su
 Su
+sF
 Su
 Su
 Su
 Su
 Su
-Su
-Su
-Su
+sF
 Su
 hD
 vv
@@ -672,20 +756,20 @@ vv
 vv
 vv
 hD
+ag
+sF
 Su
 Su
 Su
 Su
 Su
+sF
 Su
 Su
 Su
 Su
 Su
-Su
-Su
-Su
-Su
+sF
 Su
 hD
 vv
@@ -714,19 +798,19 @@ vv
 hD
 hD
 Su
+sF
 Su
 Su
 Su
 Su
 Su
+sF
 Su
 Su
 Su
 Su
 Su
-Su
-Su
-Su
+sF
 Su
 hD
 hD
@@ -755,20 +839,20 @@ vv
 hD
 Su
 Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
+sF
+sF
+sF
+sF
+sF
+sF
+sF
+sF
+sF
+sF
+sF
+sF
+sF
+aa
 Su
 hD
 vv
@@ -797,7 +881,7 @@ hD
 Su
 Su
 Su
-Su
+sF
 Su
 Su
 Su
@@ -838,7 +922,7 @@ hD
 Su
 Su
 Su
-Su
+sF
 Su
 Su
 Su
@@ -879,7 +963,7 @@ hD
 Su
 Su
 Su
-Su
+sF
 Su
 Su
 Su
@@ -920,7 +1004,7 @@ hD
 Su
 Su
 Su
-Su
+sF
 Su
 Su
 Su
@@ -961,7 +1045,7 @@ hD
 Su
 Su
 Su
-Su
+sF
 Su
 Su
 Su
@@ -1002,7 +1086,7 @@ hD
 Su
 Su
 Su
-Su
+sF
 Su
 Su
 Su
@@ -1043,8 +1127,8 @@ Su
 Su
 Su
 Su
-Su
-Su
+al
+ah
 Su
 Su
 Su
@@ -1084,8 +1168,8 @@ Su
 Su
 Su
 Su
-Su
-Su
+al
+ah
 Su
 Su
 Su
@@ -1125,8 +1209,8 @@ Su
 Su
 Su
 Su
-Su
-Su
+al
+ah
 Su
 Su
 Su
@@ -1166,8 +1250,8 @@ Su
 Su
 Su
 Su
-Su
-Su
+sF
+ai
 Su
 Su
 Su
@@ -1207,8 +1291,8 @@ Su
 Su
 Su
 Su
-Su
-Su
+al
+ah
 Su
 Su
 Su
@@ -1248,8 +1332,8 @@ Su
 Su
 Su
 Su
-Su
-Su
+al
+ah
 Su
 Su
 Su
@@ -1289,8 +1373,8 @@ Su
 Su
 Su
 Su
-Su
-Su
+al
+ah
 Su
 Su
 Su
@@ -1331,7 +1415,7 @@ Su
 Su
 Su
 Su
-Su
+ai
 Su
 Su
 Su
@@ -1372,7 +1456,7 @@ Su
 Su
 Su
 Su
-Su
+ai
 Su
 Su
 Su
@@ -1413,7 +1497,7 @@ Su
 Su
 Su
 Su
-Su
+ak
 Su
 Su
 Su
@@ -5840,20 +5924,20 @@ oF
 oF
 oF
 oF
-oF
-Pv
-oF
-oF
-oF
-oF
-oF
-Pv
+AI
+Lx
 oF
 oF
 oF
 oF
+AI
+Lx
 oF
-Pv
+oF
+oF
+oF
+AI
+Lx
 oF
 oF
 oF
@@ -5881,19 +5965,19 @@ oF
 oF
 oF
 oF
+AI
 oF
 oF
 oF
 oF
 oF
+AI
 oF
 oF
 oF
 oF
 oF
-oF
-oF
-oF
+AI
 oF
 oF
 oF
@@ -5922,19 +6006,19 @@ oF
 oF
 oF
 oF
+AI
 oF
 oF
 oF
 oF
 oF
+AI
 oF
 oF
 oF
 oF
 oF
-oF
-oF
-oF
+AI
 oF
 oF
 oF
@@ -5963,19 +6047,19 @@ oF
 oF
 YZ
 YZ
-YZ
-YZ
-YZ
-oF
-YZ
-YZ
-YZ
+rA
 YZ
 YZ
 oF
 YZ
 YZ
+rA
 YZ
+YZ
+oF
+YZ
+YZ
+rA
 YZ
 YZ
 oF
@@ -6004,19 +6088,19 @@ oF
 oF
 YZ
 OT
-OT
-OT
-YZ
-YZ
-YZ
-OT
-OT
+sM
 OT
 YZ
 YZ
 YZ
 OT
+sM
 OT
+YZ
+YZ
+YZ
+OT
+sM
 OT
 YZ
 oF
@@ -6045,19 +6129,19 @@ oF
 oF
 YZ
 OT
+LH
 OT
 OT
 OT
 OT
 OT
+LH
 OT
 OT
 OT
 OT
 OT
-OT
-OT
-OT
+LH
 OT
 YZ
 oF
@@ -6086,19 +6170,19 @@ oF
 oF
 YZ
 OT
+LH
 OT
 OT
 OT
 OT
 OT
+LH
 OT
 OT
 OT
 OT
 OT
-OT
-OT
-OT
+LH
 OT
 YZ
 oF
@@ -6127,19 +6211,19 @@ oF
 oF
 YZ
 OT
+LH
 OT
 OT
 OT
 OT
 OT
+LH
 OT
 OT
 OT
 OT
 OT
-OT
-OT
-OT
+LH
 OT
 YZ
 oF
@@ -6168,19 +6252,19 @@ oF
 YZ
 YZ
 OT
+LH
 OT
 OT
 OT
 OT
 OT
+LH
 OT
 OT
 OT
 OT
 OT
-OT
-OT
-OT
+LH
 OT
 YZ
 YZ
@@ -6209,20 +6293,20 @@ oF
 YZ
 OT
 OT
-OT
-OT
-OT
-OT
-OT
-OT
-OT
-OT
-OT
-OT
-OT
-OT
-OT
-OT
+LH
+LH
+LH
+LH
+LH
+LH
+LH
+LH
+LH
+LH
+LH
+LH
+LH
+aj
 OT
 YZ
 oF
@@ -11295,19 +11379,19 @@ oF
 oF
 oF
 oF
-Pv
 oF
 oF
 oF
 oF
 oF
-Pv
 oF
 oF
 oF
 oF
 oF
-Pv
+oF
+oF
+oF
 oF
 oF
 oF

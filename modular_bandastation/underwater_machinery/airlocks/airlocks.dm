@@ -5,8 +5,6 @@
 	overlays_file = 'modular_bandastation/underwater_machinery/airlocks/icons/airlock.dmi'
 	note_overlay_file = 'modular_bandastation/underwater_machinery/airlocks/icons/airlock.dmi'
 	assemblytype = /obj/structure/door_assembly/underwater
-	normal_integrity = 400
-	security_level = 6
 	air_tight = TRUE
 	has_open_lights = TRUE
 	doorOpen = 'sound/machines/airlock/airlockopen.ogg'
@@ -223,3 +221,28 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/door/airlock/highsecurity/underwater/
 	custom_materials = list(/datum/material/alloy/plasteel = SHEET_MATERIAL_AMOUNT * 8)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/door_assembly/multi_tile/underwater, 0)
+
+// Native fill overlays share the frame, lights, wheel and protected service panel.
+#define ST_UNDERWATER_DOOR_SKIN(Department, Skin) \
+	/obj/machinery/door/airlock/highsecurity/underwater/Department { airlock_material = Skin; assemblytype = /obj/structure/door_assembly/underwater/Department; } \
+	/obj/machinery/door/airlock/highsecurity/underwater/multi_tile/Department { airlock_material = Skin; assemblytype = /obj/structure/door_assembly/multi_tile/underwater/Department; } \
+	/obj/structure/door_assembly/underwater/Department { airlock_type = /obj/machinery/door/airlock/highsecurity/underwater/Department; } \
+	/obj/structure/door_assembly/multi_tile/underwater/Department { airlock_type = /obj/machinery/door/airlock/highsecurity/underwater/multi_tile/Department; } \
+	MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/door/airlock/highsecurity/underwater/multi_tile/Department, 0) \
+	MAPPING_DIRECTIONAL_HELPERS(/obj/structure/door_assembly/multi_tile/underwater/Department, 0)
+
+ST_UNDERWATER_DOOR_SKIN(command, "command")
+ST_UNDERWATER_DOOR_SKIN(security, "security")
+ST_UNDERWATER_DOOR_SKIN(engineering, "engineering")
+ST_UNDERWATER_DOOR_SKIN(atmos, "atmos")
+ST_UNDERWATER_DOOR_SKIN(medical, "medical")
+ST_UNDERWATER_DOOR_SKIN(virology, "virology")
+ST_UNDERWATER_DOOR_SKIN(science, "science")
+ST_UNDERWATER_DOOR_SKIN(service, "service")
+ST_UNDERWATER_DOOR_SKIN(hydroponics, "hydroponics")
+ST_UNDERWATER_DOOR_SKIN(cargo, "cargo")
+ST_UNDERWATER_DOOR_SKIN(mining, "mining")
+ST_UNDERWATER_DOOR_SKIN(diving, "diving")
+ST_UNDERWATER_DOOR_SKIN(maintenance, "maintenance")
+
+#undef ST_UNDERWATER_DOOR_SKIN

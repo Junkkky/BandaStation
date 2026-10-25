@@ -11,26 +11,14 @@
 	var/loading_decks
 	/// Optional exterior area shared by every deck outside the mapped structure.
 	var/exterior_ocean_area
-
-/** Bound our own uninterrupted work; do not change global maploading or MC scheduling limits. */
-/datum/stationtrauma_work_budget
-	var/slice_tick = -1
-	var/slice_start = 0
-	var/peak_usage = 0
-	/// Ten percent of a normal server tick, plus at most one native batch.
-	var/allowance = 10
-
-/datum/stationtrauma_work_budget/proc/yield()
-	if(slice_tick != world.time)
-		slice_tick = world.time
-		slice_start = TICK_USAGE
-	var/used = max(0, TICK_USAGE - slice_start)
-	peak_usage = max(peak_usage, used)
-	if(used < allowance && TICK_USAGE < TICK_LIMIT_MC)
-		return
-	sleep(world.tick_lag)
-	slice_tick = world.time
-	slice_start = TICK_USAGE
+	/// Destination oceans retain full-width passages but need no empty water beyond their view margin.
+	var/compact_ocean = FALSE
+	/// Optional compact-site padding; zero retains the distant transition corridor's margin.
+	var/ocean_margin = 0
+	/// Inclusive Y bounds, shared by native placement and initialization; X always spans the level.
+	var/loading_min_y = 1
+	/// Null outside load_new_z() preserves the primary-map ocean fill.
+	var/loading_max_y
 
 /** Callbacks report completed work only; the console does not poll the loaded world. */
 /datum/map_template/stationtrauma_route/proc/report_loading(fraction)
@@ -105,6 +93,11 @@
 		log_mapping("StationTrauma [name]: placed structure in [(REALTIMEOFDAY - phase_started) / 10]s")
 		report_loading(0.1)
 		if(loaded)
+			var/view_margin = CEILING(maxviewdist() / 2, 1) + 2
+			var/margin = max(view_margin, ocean_margin || (max(30, maxviewdist()) + view_margin))
+			loading_min_y = compact_ocean ? max(1, parsed.bounds[MAP_MINY] - margin) : 1
+			loading_max_y = compact_ocean ? min(world.maxy, parsed.bounds[MAP_MAXY] + margin) : world.maxy
+			log_mapping("StationTrauma [name]: ocean [world.maxx]x[loading_max_y - loading_min_y + 1] per deck, full-width passage")
 			for(var/level in levels)
 				phase_started = REALTIMEOFDAY
 				if(!fill_ocean(level))
@@ -141,25 +134,30 @@
 	var/area_path = exterior_ocean_area || (upper_deck ? /area/space/ocean/openspace : /area/space/ocean)
 	// A small reusable native map bounds each call instead of filling an entire level in one call.
 	var/chunk_side = 8
-	var/column = repeat_string(chunk_side, "a\n")
-	var/list/map_text = list("\"a\" = (\n[ocean_path],\n[area_path])\n")
-	for(var/column_x in 1 to chunk_side)
-		map_text += "([column_x],1,1) = {\"\n[column]\"}\n"
-	var/datum/parsed_map/ocean = new(map_text.Join())
-	ocean.turf_blacklist = list()
+	var/max_y = loading_max_y || world.maxy
 	// The template pass already registered area membership for this level.
 	var/deck_index = level - loading_first_z
-	for(var/start_x = 1; start_x <= world.maxx; start_x += chunk_side)
-		for(var/start_y = 1; start_y <= world.maxy; start_y += chunk_side)
+	for(var/start_y = loading_min_y; start_y <= max_y; start_y += chunk_side)
+		var/list/rows = list()
+		for(var/row_y = min(max_y, start_y + chunk_side - 1); row_y >= start_y; row_y--)
+			// Solid canyon edges keep the unused part of the Z-level inaccessible, without a vacuum boundary.
+			rows += compact_ocean && (row_y == loading_min_y || row_y == max_y) ? "b\n" : "a\n"
+		var/column = rows.Join()
+		var/list/map_text = list("\"a\" = (\n[ocean_path],\n[area_path])\n\"b\" = (\n/turf/closed/indestructible/rock,\n[area_path])\n")
+		for(var/column_x in 1 to chunk_side)
+			map_text += "([column_x],1,1) = {\"\n[column]\"}\n"
+		var/datum/parsed_map/ocean = new(map_text.Join())
+		ocean.turf_blacklist = list()
+		for(var/start_x = 1; start_x <= world.maxx; start_x += chunk_side)
 			loading_budget.yield()
 			ocean.turf_blacklist.Cut()
 			// Recheck the live small block; a later chunk must not overwrite construction made during a yield.
-			for(var/turf/tile as anything in block(start_x, start_y, level, min(world.maxx, start_x + chunk_side - 1), min(world.maxy, start_y + chunk_side - 1), level))
+			for(var/turf/tile as anything in block(start_x, start_y, level, min(world.maxx, start_x + chunk_side - 1), min(max_y, start_y + chunk_side - 1), level))
 				if((tile.type != /turf/open/space/basic && tile.type != /turf/open/space && tile.type != /turf/open/space/openspace) || tile.loc.type != /area/space)
 					ocean.turf_blacklist[tile] = TRUE
 			if(!ocean.load(start_x, start_y, level, crop_map = TRUE, no_changeturf = TRUE))
 				return FALSE
-		report_loading(0.1 + 0.2 * (deck_index + min(1, (start_x + chunk_side - 1) / world.maxx)) / loading_decks)
+		report_loading(0.1 + 0.2 * (deck_index + min(1, (start_y + chunk_side - loading_min_y) / (max_y - loading_min_y + 1))) / loading_decks)
 	return TRUE
 
 /** Empty exterior needs native atom/lighting initialization, without template machinery or air activation. */
@@ -168,17 +166,24 @@
 		return
 	var/list/areas = list()
 	var/list/turfs = list()
+	var/list/edges = list()
 	var/list/movables = list()
-	for(var/turf/tile as anything in Z_TURFS(level))
-		if((tile.flags_1 & INITIALIZED_1) || (!istype(tile, /turf/open/space/ocean) && !istype(tile, /turf/open/space/openspace/ocean)))
+	for(var/turf/tile as anything in block(1, loading_min_y, level, world.maxx, loading_max_y || world.maxy, level))
+		if((tile.flags_1 & INITIALIZED_1) || (!istype(tile, /turf/open/space/ocean) && !istype(tile, /turf/open/space/openspace/ocean) && !istype(tile, /turf/closed/indestructible/rock)))
 			continue
 		areas |= get_area(tile)
-		turfs += tile
+		if(istype(tile, /turf/closed/indestructible/rock))
+			edges += tile
+		else
+			turfs += tile
 		for(var/atom/movable/occupant as anything in tile)
 			movables += occupant
 		loading_budget.yield()
 	SSmapping.reg_in_areas_in_z(areas)
 	SSatoms.InitializeAtoms(areas)
+	// Native initialization holds smoothing until every adjacent rock has parsed its groups.
+	SSatoms.InitializeAtoms(edges)
+	SSlighting.setup_static_lighting_if_needed(edges)
 	var/deck_index = level - loading_first_z
 	for(var/start = 1; start <= turfs.len; start += 32)
 		loading_budget.yield()

@@ -1,0 +1,2393 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"abI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"aiw" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/obj/structure/chair/comfy/shuttle,
+/obj/machinery/status_display/evac/directional/north,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"ajb" = (
+/obj/machinery/power/shuttle_engine/large,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space)
+"aju" = (
+/obj/machinery/iv_drip,
+/obj/structure/bed/medical/emergency,
+/turf/open/floor/iron/white/side{
+	dir = 10
+	},
+/area/shuttle/stationtrauma_space)
+"amd" = (
+/obj/effect/turf_decal/stripes/white/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"aon" = (
+/turf/open/floor/iron/white/corner{
+	dir = 8
+	},
+/area/shuttle/stationtrauma_space)
+"ayg" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"aEu" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/rack,
+/obj/item/storage/toolbox/emergency,
+/obj/item/radio,
+/obj/item/clothing/mask/gas,
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"aKd" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"bsF" = (
+/obj/structure/rack,
+/obj/item/defibrillator/loaded,
+/turf/open/floor/iron/white/side{
+	dir = 10
+	},
+/area/shuttle/stationtrauma_space)
+"bvo" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "spaceproto_raven_escape_cargo_shutters";
+	name = "Cargo Bay Shutters"
+	},
+/obj/machinery/button/door{
+	id = "spaceproto_raven_escape_cargo_shutters";
+	name = "Cargo Bay Shutters";
+	pixel_x = -26
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"bxv" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"bzm" = (
+/obj/effect/turf_decal/bot_white,
+/obj/structure/rack,
+/obj/item/clothing/head/utility/welding{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/storage/toolbox/mechanical,
+/obj/item/multitool{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"bBR" = (
+/obj/machinery/porta_turret/syndicate/energy/raven{
+	dir = 4
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space)
+"bBU" = (
+/obj/structure/rack,
+/obj/item/storage/toolbox/emergency,
+/obj/item/wrench,
+/obj/item/radio/intercom/directional/south,
+/obj/item/restraints/handcuffs,
+/obj/item/food/chocolatebar,
+/obj/item/assembly/flash,
+/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"bFI" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/effect/turf_decal/bot,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"bMP" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/effect/turf_decal/bot,
+/obj/item/stack/sheet/plastitaniumglass{
+	amount = 20;
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/glass{
+	amount = 20;
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"bRt" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"bSZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/secure_closet/engineering_personal,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"bVX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"cas" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"ccN" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"ccR" = (
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"ckI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
+/obj/item/storage/medkit/regular{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/storage/medkit/fire,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"coP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom/directional/east,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"ctY" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/bot,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/structure/table/reinforced,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"cAz" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Holding Area";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/brig)
+"cHv" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"cMt" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/poddoor/preopen{
+	id = "spaceproto_raven_escape_cockpit_blast";
+	name = "Cockpit Blast Door"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"dda" = (
+/turf/open/floor/iron/white/side{
+	dir = 8
+	},
+/area/shuttle/stationtrauma_space)
+"dfV" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/poddoor/preopen{
+	id = "spaceproto_raven_escape_cockpit_blast";
+	name = "Cockpit Blast Door"
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"dkU" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/rack,
+/obj/item/storage/toolbox/emergency,
+/obj/item/radio,
+/obj/item/clothing/mask/gas,
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"duE" = (
+/obj/machinery/light/directional/south,
+/obj/machinery/status_display/evac/directional/south,
+/obj/effect/turf_decal/tile/blue/anticorner/contrasted,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"dxk" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/effect/turf_decal/bot,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"dGW" = (
+/obj/machinery/status_display/evac/directional/north,
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"dLL" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"dXm" = (
+/obj/machinery/computer{
+	name = "Вспомогательная консоль";
+	icon_screen = "comm";
+	icon_keyboard = "tech_key"
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"dYE" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/rack,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/radio,
+/obj/item/clothing/mask/gas,
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"efv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/turf/open/floor/iron/dark/side,
+/area/shuttle/stationtrauma_space)
+"egM" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Emergency Shuttle Seating";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"esx" = (
+/obj/effect/turf_decal/stripes/white/line,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"evC" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"evT" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"eDi" = (
+/obj/effect/turf_decal/bot_white,
+/obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"eFS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/public/glass{
+	name = "Emergency Shuttle Seating";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"eJS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"faA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 4
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"ffk" = (
+/obj/effect/turf_decal/raven/three,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"fpA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"frg" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/computer{
+	name = "Вспомогательная консоль";
+	icon_screen = "comm";
+	icon_keyboard = "tech_key"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"fsV" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/rack,
+/obj/effect/turf_decal/bot,
+/obj/item/storage/box/lights/tubes,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"ftR" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Cockpit";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"fCb" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"fDm" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"fHI" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space)
+"fIM" = (
+/obj/effect/turf_decal/raven/six,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"fLg" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"fWo" = (
+/obj/effect/turf_decal/raven/one,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"gcU" = (
+/obj/machinery/porta_turret/syndicate/energy/raven{
+	dir = 8
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space)
+"gsX" = (
+/obj/machinery/button/door{
+	id = "spaceproto_raven_escape_cockpit_blast";
+	name = "Cockpit Airlock Blast Doors";
+	pixel_y = -26;
+	req_access = list("command")
+	},
+/obj/effect/turf_decal/raven/two,
+/obj/machinery/light/floor,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"gtJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"guj" = (
+/obj/effect/turf_decal/bot_white,
+/obj/machinery/computer/stationtrauma_space_navigation,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"gHo" = (
+/obj/effect/turf_decal/bot_white,
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/medical/wrap/gauze,
+/obj/item/stack/medical/bruise_pack,
+/obj/item/stack/medical/ointment{
+	pixel_x = 5
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"gHv" = (
+/obj/effect/turf_decal/stripes/white/end{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"gHN" = (
+/obj/structure/sign/departments/security,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space)
+"gKn" = (
+/obj/machinery/porta_turret/syndicate/energy/raven{
+	dir = 10
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space)
+"gMr" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"gOJ" = (
+/obj/machinery/recharge_station,
+/obj/effect/turf_decal/bot,
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"gQq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"gSQ" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"hqy" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/restraints/handcuffs{
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/west,
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"hva" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"hvV" = (
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door{
+	id = "spaceproto_raven_escape_cockpit_windows";
+	name = "Cockpit Window Blast Doors";
+	pixel_x = -7;
+	req_access = list("command")
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"hxw" = (
+/obj/machinery/door/airlock/medical/glass{
+	name = "Escape Shuttle Infirmary";
+	req_access = list();
+	req_one_access = list()
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space)
+"hyb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/storage/lockbox/loyalty,
+/obj/item/radio/intercom/directional/west,
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"hAj" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Cockpit";
+	req_access = list();
+	req_one_access = list()
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"hBa" = (
+/obj/effect/turf_decal/stripes/white/line,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"hIc" = (
+/obj/structure/rack,
+/obj/item/tank/internals/oxygen/red,
+/obj/item/clothing/suit/utility/fire/firefighter,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/head/utility/hardhat/red,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/extinguisher,
+/obj/effect/turf_decal/tile/blue/anticorner/contrasted,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"hKd" = (
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space)
+"hRT" = (
+/obj/effect/turf_decal/raven/eight,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"hRZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"hSj" = (
+/turf/open/floor/iron/white/corner,
+/area/shuttle/stationtrauma_space)
+"hSS" = (
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"hTZ" = (
+/obj/structure/closet/crate/stationtrauma_space_eva,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"hVb" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"iuI" = (
+/obj/effect/turf_decal/box/white/corners,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"iAI" = (
+/obj/effect/turf_decal/raven/five,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"iQh" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"jcC" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"jiC" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"jrU" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"jzf" = (
+/obj/machinery/holopad,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"jBZ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"jDb" = (
+/obj/structure/closet/crate/medical,
+/obj/item/storage/medkit/regular,
+/obj/item/storage/medkit/o2{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/medkit/toxin{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/healthanalyzer{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/lazarus_injector,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"jGV" = (
+/obj/effect/turf_decal/bot_white,
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/belt/utility,
+/obj/item/radio/off{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/radio/off,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"jMI" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/emcloset,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"kcl" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"keC" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"krt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"kwr" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"kDF" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/shieldgen{
+	anchored = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"kGN" = (
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"kJs" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"lbg" = (
+/obj/machinery/door/airlock/external/ruin{
+	name = "Emergency Shuttle External Airlock";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/docking_port/mobile/stationtrauma_space,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"lbm" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"lDv" = (
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"lKA" = (
+/obj/machinery/porta_turret/syndicate/energy/raven{
+	dir = 9
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space)
+"lMR" = (
+/obj/effect/turf_decal/bot_white,
+/obj/machinery/computer{
+	name = "Вспомогательная консоль";
+	icon_screen = "comm";
+	icon_keyboard = "tech_key"
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"lRU" = (
+/obj/effect/turf_decal/box/white/corners{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = -1
+	},
+/obj/item/storage/toolbox/emergency{
+	pixel_x = 3;
+	pixel_y = -5
+	},
+/obj/item/multitool,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"lSj" = (
+/obj/item/reagent_containers/cup/bottle/epinephrine{
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/cup/bottle/multiver{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/cup/bottle/epinephrine{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/cup/bottle/multiver{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/syringe/epinephrine{
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/obj/item/reagent_containers/syringe/epinephrine{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/syringe/epinephrine{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/syringe/epinephrine{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/white/side{
+	dir = 6
+	},
+/area/shuttle/stationtrauma_space)
+"lTF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"lTV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/light/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"lXi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/recharge_station,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"lZj" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/rack,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/radio,
+/obj/item/clothing/mask/gas,
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"msl" = (
+/obj/machinery/status_display/evac/directional/east,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"mzn" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/port_gen/pacman,
+/obj/effect/turf_decal/bot,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"mBv" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"mGv" = (
+/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"mOX" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"mOY" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/light/floor,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"mQc" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"nrn" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/button/door{
+	id = "spaceproto_raven_escape_cargo_shutters";
+	name = "Cargo Bay Shutters";
+	pixel_x = 26
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "spaceproto_raven_escape_cargo_shutters";
+	name = "Cargo Bay Shutters"
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"nMI" = (
+/obj/structure/sign/departments/engineering,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space)
+"nXe" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal/bot_white,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"ohD" = (
+/obj/machinery/power/shuttle_engine/heater,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space)
+"oiJ" = (
+/obj/effect/turf_decal/bot_white,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/shieldgen{
+	anchored = 1
+	},
+/turf/open/floor/mineral/plastitanium/red{
+	icon_state = "darkfull"
+	},
+/area/shuttle/stationtrauma_space/brig)
+"oiV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"old" = (
+/obj/machinery/porta_turret/syndicate/energy/raven{
+	dir = 5
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space)
+"olv" = (
+/obj/machinery/light/directional/south,
+/obj/machinery/status_display/ai/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"onm" = (
+/obj/effect/turf_decal/raven/seven,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"opU" = (
+/obj/effect/turf_decal/bot_white,
+/obj/machinery/shieldgen{
+	anchored = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"ouG" = (
+/obj/effect/turf_decal/box/white/corners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"oxp" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/sign/departments/cargo/directional/south,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"oAc" = (
+/obj/effect/turf_decal/box/white/corners{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"oAV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"oCl" = (
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"oRd" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"oRV" = (
+/obj/effect/turf_decal/raven/nine,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"oWT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/stasis,
+/obj/machinery/vitals_reader/directional/east,
+/turf/open/floor/iron/white/side{
+	dir = 4
+	},
+/area/shuttle/stationtrauma_space)
+"peP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"pnm" = (
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space)
+"prz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"ptj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/smes/engineering,
+/obj/effect/turf_decal/bot,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"puW" = (
+/obj/machinery/computer{
+	name = "Вспомогательная консоль";
+	icon_screen = "comm";
+	icon_keyboard = "tech_key"
+	},
+/obj/effect/turf_decal/bot_white,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"pMb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"pQZ" = (
+/obj/effect/turf_decal/box/white/corners{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"pRk" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Emergency Shutle Engineering";
+	req_access = list();
+	req_one_access = list()
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"pYs" = (
+/obj/machinery/porta_turret/syndicate/energy/raven{
+	dir = 6
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space)
+"qai" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "spaceproto_raven_escape_cargo_shutters";
+	name = "Cargo Bay Shutters"
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"qfb" = (
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"qsx" = (
+/obj/item/scalpel{
+	pixel_y = 12
+	},
+/obj/item/circular_saw,
+/obj/item/retractor{
+	pixel_x = 4
+	},
+/obj/item/hemostat{
+	pixel_x = -4
+	},
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/mask/surgical,
+/obj/structure/table/reinforced,
+/obj/item/surgicaldrill,
+/obj/item/cautery,
+/turf/open/floor/iron/white/side{
+	dir = 5
+	},
+/area/shuttle/stationtrauma_space)
+"qFC" = (
+/obj/machinery/recharger{
+	active_power_usage = 0;
+	idle_power_usage = 0;
+	use_power = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/brig)
+"qXB" = (
+/obj/effect/turf_decal/stripes/white/corner{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet/directional/west,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"qZS" = (
+/turf/open/floor/iron/white/side,
+/area/shuttle/stationtrauma_space)
+"rds" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom/directional/west,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"rhN" = (
+/obj/machinery/door/airlock/external/ruin{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"rkL" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"rrF" = (
+/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"ruG" = (
+/obj/machinery/status_display/evac/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"rwN" = (
+/obj/effect/turf_decal/raven/four,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"rxR" = (
+/obj/machinery/door/airlock/external/ruin{
+	name = "Emergency Shuttle External Airlock";
+	req_access = list();
+	req_one_access = list()
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"rxT" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"ryi" = (
+/obj/structure/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white/corner{
+	dir = 1
+	},
+/area/shuttle/stationtrauma_space)
+"rCT" = (
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"rKP" = (
+/obj/item/cigbutt,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"sdK" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"sge" = (
+/turf/open/space,
+/area/space/stationtrauma_space_home)
+"sgZ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"srv" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/sign/warning/vacuum/external/directional/east,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"ssH" = (
+/obj/machinery/door/airlock/external/ruin{
+	req_access = list();
+	req_one_access = list()
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"stA" = (
+/obj/structure/sign/warning/electric_shock/directional/north,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"svf" = (
+/obj/machinery/light/directional/north,
+/obj/structure/table/optable,
+/obj/item/surgical_drapes,
+/obj/machinery/vitals_reader/directional/north,
+/turf/open/floor/iron/white/side{
+	dir = 1
+	},
+/area/shuttle/stationtrauma_space)
+"sAY" = (
+/turf/open/floor/iron/white/corner{
+	dir = 4
+	},
+/area/shuttle/stationtrauma_space)
+"sBd" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space)
+"sFo" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Emergency Shuttle Cargo Bay";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"sFN" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/sign/warning/vacuum/external/directional/west,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"sJn" = (
+/obj/effect/turf_decal/stripes/white/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/sign/warning/vacuum/external/directional/west,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"sZe" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"thT" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"trC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer{
+	name = "Вспомогательная консоль";
+	icon_screen = "comm";
+	icon_keyboard = "tech_key"
+	},
+/turf/open/floor/iron/white/side{
+	dir = 9
+	},
+/area/shuttle/stationtrauma_space)
+"tBT" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/turf/open/floor/iron/dark/side,
+/area/shuttle/stationtrauma_space)
+"tEE" = (
+/obj/effect/turf_decal/box/white/corners{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/space_heater,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"tRM" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/bot,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/storage/toolbox/mechanical,
+/obj/structure/table/reinforced,
+/obj/item/multitool,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"tUM" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"tUS" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"usF" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/rack,
+/obj/effect/turf_decal/bot,
+/obj/item/storage/box/metalfoam,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"uCg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/stasis,
+/obj/machinery/vitals_reader/directional/north,
+/obj/item/radio/intercom/directional/east,
+/turf/open/floor/iron/white/side{
+	dir = 5
+	},
+/area/shuttle/stationtrauma_space)
+"uNq" = (
+/obj/effect/turf_decal/stripes/white/end{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"uTv" = (
+/obj/effect/turf_decal/bot_white,
+/obj/structure/rack,
+/obj/item/crowbar,
+/obj/item/wrench,
+/obj/item/flashlight,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"uWh" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/bot,
+/obj/item/stack/sheet/mineral/plastitanium{
+	amount = 50;
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/iron/fifty{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"viT" = (
+/obj/effect/turf_decal/stripes/white/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"vju" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"voo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/medical/glass{
+	name = "Escape Shuttle Infirmary";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"vvy" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/brig)
+"vAT" = (
+/obj/machinery/power/shuttle_engine/propulsion,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space)
+"vEe" = (
+/obj/machinery/computer{
+	name = "Вспомогательная консоль";
+	icon_screen = "comm";
+	icon_keyboard = "tech_key"
+	},
+/turf/open/floor/iron/white/side{
+	dir = 9
+	},
+/area/shuttle/stationtrauma_space)
+"vEw" = (
+/obj/item/radio/intercom/directional/north,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"vMu" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/shieldgen{
+	anchored = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"vQQ" = (
+/obj/effect/turf_decal/bot_white,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/shieldgen{
+	anchored = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"vTk" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"wcv" = (
+/obj/effect/turf_decal/stripes/white/corner,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/sign/warning/vacuum/external/directional/east,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"wgc" = (
+/obj/effect/turf_decal/bot_white,
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"whp" = (
+/obj/machinery/light/directional/south,
+/obj/item/radio/intercom/directional/south,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"wic" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/machinery/door/poddoor/preopen{
+	id = "spaceproto_raven_escape_cockpit_windows";
+	name = "Cockpit Blast Door"
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"wtt" = (
+/turf/open/floor/iron/white/side{
+	dir = 6
+	},
+/area/shuttle/stationtrauma_space)
+"wyY" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"wCV" = (
+/obj/structure/sign/departments/medbay/alt,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space)
+"wEh" = (
+/obj/effect/turf_decal/bot_white,
+/obj/structure/closet/firecloset,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"wFm" = (
+/obj/effect/turf_decal/stripes/white/corner,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"wKJ" = (
+/obj/effect/turf_decal/box/white/corners{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"wNt" = (
+/obj/effect/turf_decal/stripes/white/corner{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"xpk" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/effect/turf_decal/bot,
+/obj/machinery/space_heater,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space)
+"xAn" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"xHm" = (
+/obj/effect/turf_decal/box/white/corners{
+	dir = 4
+	},
+/obj/structure/rack,
+/obj/item/tank/internals/oxygen/red,
+/obj/item/clothing/suit/utility/fire/firefighter,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/head/utility/hardhat/red,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"xMc" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"xWt" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"xYw" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot_white,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+"yjG" = (
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/structure/closet/crate{
+	name = "lifejackets"
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
+
+(1,1,1) = {"
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sBd
+fHI
+rxR
+gcU
+lbg
+fHI
+sBd
+sge
+sBd
+fHI
+rxR
+gcU
+rxR
+fHI
+sBd
+sge
+sge
+sge
+sge
+sge
+sge
+"}
+(2,1,1) = {"
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+lKA
+rxT
+fHI
+fHI
+jMI
+fpA
+fLg
+kcl
+hVb
+fHI
+rxT
+fHI
+rkL
+fpA
+lTV
+kcl
+jMI
+fHI
+fHI
+rxT
+gKn
+sge
+sge
+sge
+"}
+(3,1,1) = {"
+sge
+sge
+sge
+sge
+sge
+sge
+sBd
+fHI
+fHI
+oiJ
+fHI
+fHI
+aEu
+jrU
+iQh
+eJS
+fHI
+fHI
+opU
+fHI
+fHI
+jrU
+iQh
+jBZ
+dYE
+fHI
+fHI
+vMu
+fHI
+sBd
+sge
+sge
+"}
+(4,1,1) = {"
+sge
+sge
+sge
+sge
+sge
+lKA
+fHI
+hqy
+hyb
+mOX
+qFC
+fHI
+fHI
+fHI
+rxR
+fHI
+fHI
+rds
+bxv
+faA
+fHI
+fHI
+rxR
+fHI
+fHI
+fHI
+bSZ
+qfb
+uWh
+fHI
+gKn
+sge
+"}
+(5,1,1) = {"
+sge
+sge
+sge
+sge
+sge
+fHI
+sgZ
+cas
+hSS
+sdK
+prz
+rxT
+hRZ
+sJn
+fCb
+qXB
+ruG
+ayg
+ayg
+ayg
+yjG
+rxT
+evC
+sFN
+uTv
+fHI
+ccN
+qfb
+bMP
+fHI
+hKd
+ajb
+"}
+(6,1,1) = {"
+sge
+wic
+wic
+wic
+fHI
+fHI
+aiw
+hSS
+hTZ
+hSS
+vvy
+cAz
+aKd
+evT
+evT
+evT
+evT
+evT
+ayg
+ayg
+ayg
+egM
+mQc
+mOY
+ayg
+pRk
+qfb
+qfb
+usF
+ohD
+hKd
+hKd
+"}
+(7,1,1) = {"
+wic
+wic
+opU
+dXm
+puW
+fHI
+kwr
+gMr
+hSS
+lDv
+lTF
+rxT
+aKd
+oRd
+oRd
+xYw
+oRd
+oRd
+ayg
+ayg
+wgc
+rxT
+jcC
+xMc
+jGV
+nMI
+tUS
+qfb
+bFI
+ohD
+vAT
+sge
+"}
+(8,1,1) = {"
+wic
+puW
+mGv
+xWt
+olv
+fHI
+fHI
+oAV
+mBv
+lbm
+fHI
+gHN
+ccR
+ayg
+ayg
+ayg
+ayg
+ayg
+oxp
+fHI
+fHI
+fHI
+fHI
+sFo
+fHI
+fHI
+stA
+pMb
+jiC
+ohD
+vAT
+sge
+"}
+(9,1,1) = {"
+wic
+dXm
+hva
+kGN
+tUM
+bBU
+fHI
+fHI
+cAz
+fHI
+fHI
+wEh
+ayg
+evT
+evT
+evT
+evT
+evT
+wFm
+fHI
+lRU
+jDb
+tEE
+ayg
+fHI
+ptj
+thT
+sZe
+mzn
+ohD
+hKd
+ajb
+"}
+(10,1,1) = {"
+wic
+fDm
+oCl
+onm
+rwN
+fWo
+hAj
+cMt
+gHv
+ftR
+vTk
+ayg
+ayg
+oRd
+oRd
+oRd
+xYw
+oRd
+viT
+bvo
+pQZ
+bVX
+ouG
+ayg
+fHI
+sZe
+rKP
+qfb
+fHI
+fHI
+hKd
+hKd
+"}
+(11,1,1) = {"
+wic
+guj
+hva
+hRT
+iAI
+gsX
+fHI
+dfV
+hBa
+fHI
+dGW
+mOY
+ayg
+ayg
+abI
+jzf
+ayg
+ayg
+esx
+qai
+ayg
+ayg
+ayg
+whp
+fHI
+vEw
+sZe
+sZe
+frg
+fHI
+fHI
+sge
+"}
+(12,1,1) = {"
+wic
+hvV
+oCl
+oRV
+fIM
+ffk
+hAj
+dfV
+uNq
+ftR
+gQq
+abI
+ayg
+nXe
+evT
+evT
+evT
+evT
+esx
+nrn
+oAc
+kGN
+wKJ
+ayg
+fHI
+oiV
+qfb
+qfb
+fHI
+fHI
+hKd
+ajb
+"}
+(13,1,1) = {"
+wic
+dXm
+hva
+kGN
+rCT
+hIc
+fHI
+fHI
+voo
+fHI
+fHI
+eDi
+ayg
+oRd
+oRd
+oRd
+oRd
+oRd
+amd
+fHI
+xHm
+kJs
+iuI
+abI
+fHI
+ptj
+krt
+sZe
+mzn
+ohD
+hKd
+hKd
+"}
+(14,1,1) = {"
+wic
+lMR
+rrF
+wyY
+duE
+fHI
+fHI
+trC
+dda
+aju
+fHI
+wCV
+ccR
+ayg
+ayg
+ayg
+ayg
+ayg
+oxp
+fHI
+fHI
+fHI
+fHI
+sFo
+fHI
+fHI
+stA
+qfb
+xpk
+ohD
+vAT
+sge
+"}
+(15,1,1) = {"
+wic
+wic
+vQQ
+dXm
+dXm
+fHI
+vEe
+ryi
+pnm
+aon
+bsF
+rxT
+tBT
+evT
+evT
+evT
+evT
+nXe
+ayg
+ayg
+wEh
+rxT
+evC
+fCb
+gHo
+nMI
+tUS
+qfb
+dxk
+ohD
+vAT
+sge
+"}
+(16,1,1) = {"
+sge
+wic
+wic
+wic
+fHI
+fHI
+svf
+pnm
+pnm
+pnm
+qZS
+hxw
+efv
+oRd
+oRd
+oRd
+oRd
+oRd
+ayg
+ayg
+ayg
+eFS
+bRt
+mOY
+ayg
+pRk
+qfb
+qfb
+fsV
+ohD
+hKd
+ajb
+"}
+(17,1,1) = {"
+sge
+sge
+sge
+sge
+sge
+fHI
+qsx
+sAY
+pnm
+hSj
+lSj
+rxT
+efv
+wcv
+xAn
+wNt
+msl
+ayg
+ayg
+ayg
+yjG
+rxT
+vju
+srv
+bzm
+fHI
+gOJ
+pMb
+ctY
+fHI
+hKd
+hKd
+"}
+(18,1,1) = {"
+sge
+sge
+sge
+sge
+sge
+old
+fHI
+uCg
+oWT
+wtt
+ckI
+fHI
+fHI
+fHI
+rhN
+fHI
+fHI
+coP
+keC
+gSQ
+fHI
+fHI
+rxR
+fHI
+fHI
+fHI
+lXi
+qfb
+tRM
+fHI
+pYs
+sge
+"}
+(19,1,1) = {"
+sge
+sge
+sge
+sge
+sge
+sge
+sBd
+fHI
+fHI
+opU
+fHI
+fHI
+lZj
+dLL
+peP
+kcl
+fHI
+fHI
+vQQ
+fHI
+fHI
+fpA
+peP
+kcl
+dkU
+fHI
+fHI
+kDF
+fHI
+sBd
+sge
+sge
+"}
+(20,1,1) = {"
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+old
+rxT
+fHI
+fHI
+cHv
+jrU
+gtJ
+jBZ
+hVb
+fHI
+rxT
+fHI
+hVb
+jrU
+gtJ
+eJS
+cHv
+fHI
+fHI
+rxT
+pYs
+sge
+sge
+sge
+"}
+(21,1,1) = {"
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sge
+sBd
+fHI
+ssH
+bBR
+ssH
+fHI
+sBd
+sge
+sBd
+fHI
+rxR
+bBR
+rxR
+fHI
+sBd
+sge
+sge
+sge
+sge
+sge
+sge
+"}

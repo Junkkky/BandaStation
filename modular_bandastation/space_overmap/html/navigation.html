@@ -1,0 +1,13 @@
+<main class="flight">
+  <header><strong>RAVEN / FLIGHT MANAGEMENT</strong><span id="mode">STANDBY</span></header>
+  <section class="body">
+    <aside class="destinations"><h2>НАВИГАЦИОННЫЕ ОБЪЕКТЫ</h2><div id="routes"></div><p>Все локации загружены заранее.<br>Выход: шлюзы левого борта.</p></aside>
+    <section class="plot"><div class="plot-head">LOCAL FRAME · NORTH UP <label>Масштаб <select id="zoom"><option value="0.5">½×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select></label></div><canvas id="chart" width="620" height="540" aria-label="Карта маршрута и вектор скорости"></canvas><div class="legend"><span class="own">▲ Raven</span><span class="target">◇ Цель</span><span class="vector">↗ Скорость × 5 с</span></div></section>
+    <aside class="telemetry"><h2>ПОЛЁТНЫЕ ДАННЫЕ</h2><dl><dt>Координаты, м</dt><dd id="position"></dd><dt>Скорость, м/с</dt><dd id="speed"></dd><dt>Вектор X / Y, м/с</dt><dd id="velocity"></dd><dt>Курс / заданный</dt><dd id="heading"></dd><dt>До цели, м</dt><dd id="distance"></dd><dt>Сближение, м/с</dt><dd id="closing"></dd><dt>Исправная тяга</dt><dd id="engines"></dd></dl>
+    <label>Курс, ° <input id="course" type="number" min="0" max="359" value="90"></label><button id="set-course">ЗАДАТЬ КУРС</button>
+    <label>Тяга, % <input id="throttle" type="number" min="0" max="100" value="100"></label><button id="set-throttle">ЗАДАТЬ ТЯГУ</button>
+    <button id="depart">РУЧНОЙ ПОЛЁТ / ОТХОД</button><button id="autopilot">АВТОПИЛОТ К ЦЕЛИ</button><button id="dock">СТЫКОВКА</button><button id="stop" class="stop">СТОП / RCS</button></aside>
+  </section>
+  <footer id="status" role="status"></footer><p class="help">Нулевая тяга сохраняет инерцию. СТОП гасит скорость. После подхода нажми «Стыковка» или «Посадка», затем выходи через левый шлюз.</p>
+</main>
+<script>window.initSpaceNavigation('@CONSOLE@', @STATE@);</script>

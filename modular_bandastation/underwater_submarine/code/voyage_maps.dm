@@ -47,16 +47,36 @@
 	height = 11
 	/// Position along the prototype route, in metres; unrelated to its storage z-level.
 	var/route_position = 0
+	/// Northing on the virtual ocean chart; physical Z is not a world coordinate.
+	var/route_y = 0
+	/// Known charted destinations are listed immediately; other sites require an active sensor return.
+	var/route_known = TRUE
+	/// Zero keeps the distant ocean corridor; positive tile counts allow a near-hull seam on this map.
+	var/ship_ocean_clearance = 0
+	/// Distance from this site's berth to its own seam; independent of the vessel-side distance.
+	var/site_ocean_clearance = 0
 
 /obj/docking_port/stationary/stationtrauma/outpost
 	name = "Исследовательский пост"
 	shuttle_id = "stationtrauma_outpost"
 	route_position = 1500
+	route_y = 600
 
 /obj/docking_port/stationary/stationtrauma/ruins
 	name = "Затопленные руины"
 	shuttle_id = "stationtrauma_ruins"
 	route_position = 3500
+	route_y = -450
+
+/** Small close-range exploration site, using the same persistent loader as charted destinations. */
+/obj/docking_port/stationary/stationtrauma/rock
+	name = "Скальный выход"
+	shuttle_id = "stationtrauma_rock"
+	route_position = -650
+	route_y = 120
+	route_known = FALSE
+	ship_ocean_clearance = 1
+	site_ocean_clearance = 1
 
 /** Permanent placement anchor; it is never offered as a navigation destination. */
 /obj/docking_port/stationary/stationtrauma/home
@@ -83,8 +103,8 @@
 	var/obj/docking_port/mobile/stationtrauma/vessel
 
 /** Load each location once; the same command lock covers its preparation and prevents duplicate levels. */
-/obj/docking_port/mobile/stationtrauma/proc/load_destination(destination)
-	if(!travelling || SSfloodwater.loading_ocean_levels.len || SSfloodwater.loading_structure_turfs.len)
+/obj/docking_port/mobile/stationtrauma/proc/load_destination(destination, preload = FALSE)
+	if((!travelling && !preload) || SSfloodwater.loading_ocean_levels.len || SSfloodwater.loading_structure_turfs.len)
 		return null
 	for(var/obj/docking_port/stationary/stationtrauma/berth as anything in berths)
 		if(berth.name == destination)
@@ -94,7 +114,7 @@
 		return null
 	// A failed native load can leave allocated levels; do not duplicate them on another click.
 	unloaded_destinations -= destination
-	voyage_status = "В пути: [destination]"
+	overmap.status = "В пути: [destination]"
 	var/datum/map_template/stationtrauma_route/template
 	var/obj/docking_port/stationary/stationtrauma/loaded_berth
 	var/exception/load_error
@@ -113,10 +133,10 @@
 	if(load_error)
 		stack_trace("StationTrauma destination failed: [load_error]")
 	if(!loaded_berth)
-		voyage_status = "Ошибка загрузки: [destination]. Требуется перезапуск прототипа."
+		overmap.status = "Ошибка загрузки: [destination]. Требуется перезапуск прототипа."
 		return null
 	berths += loaded_berth
-	voyage_status = "В пути: [destination]"
+	overmap.status = "В пути: [destination]"
 	return loaded_berth
 
 /** Reuse the connected-stack ocean loader; each TGM remains an ordinary editable three-deck map. */
@@ -127,6 +147,7 @@
 /datum/map_template/stationtrauma_route/voyage_harbor
 	name = "StationTrauma harbor"
 	mappath = 'modular_bandastation/underwater_submarine/maps/voyage_harbor.dmm'
+	compact_ocean = TRUE
 
 /datum/map_template/stationtrauma_route/voyage_home
 	name = "StationTrauma permanent ocean"
@@ -137,12 +158,22 @@
 /datum/map_template/stationtrauma_route/voyage_outpost
 	name = "StationTrauma research outpost"
 	mappath = 'modular_bandastation/underwater_submarine/maps/voyage_outpost.dmm'
+	compact_ocean = TRUE
 	destination_berth_type = /obj/docking_port/stationary/stationtrauma/outpost
 
 /datum/map_template/stationtrauma_route/voyage_ruins
 	name = "StationTrauma flooded ruins"
 	mappath = 'modular_bandastation/underwater_submarine/maps/voyage_ruins.dmm'
+	compact_ocean = TRUE
 	destination_berth_type = /obj/docking_port/stationary/stationtrauma/ruins
+
+/** A small persistent resource scene with close transitions and only the necessary ocean view margin. */
+/datum/map_template/stationtrauma_route/voyage_rock
+	name = "StationTrauma rock outcrop"
+	mappath = 'modular_bandastation/underwater_submarine/maps/voyage_rock.dmm'
+	compact_ocean = TRUE
+	ocean_margin = 1
+	destination_berth_type = /obj/docking_port/stationary/stationtrauma/rock
 
 /datum/map_template/stationtrauma_vessel
 	name = "StationTrauma three-deck submarine"
@@ -178,7 +209,7 @@
 
 GLOBAL_VAR_INIT(stationtrauma_voyage_loaded, FALSE)
 
-/** Load the permanent vessel and its first destination; later locations load on demand. */
+/** Load the permanent vessel and every small destination before admitting departures. */
 ADMIN_VERB(stationtrauma_load_fixed_voyage, R_DEBUG, "StationTrauma - Load Fixed Voyage Prototype", "Load a permanent submarine with distant ocean passages; no vessel transfers during travel.", ADMIN_CATEGORY_DEBUG)
 	load_stationtrauma_voyage(user)
 
@@ -227,6 +258,8 @@ ADMIN_VERB(stationtrauma_load_fixed_voyage, R_DEBUG, "StationTrauma - Load Fixed
 		to_chat(user, span_warning("Разметка подлодки не соответствует её габаритам."), confidential = TRUE)
 		return
 	vessel.fixed_location = berths[1]
+	vessel.overmap = new(vessel)
+	vessel.overmap.preload_destinations()
 	vessel.set_fixed_parallax(NONE)
 	if(!vessel.connect_ocean_location(vessel.fixed_location))
 		to_chat(user, span_warning("Не удалось открыть проход к гавани: проверьте свободный океанский коридор."), confidential = TRUE)

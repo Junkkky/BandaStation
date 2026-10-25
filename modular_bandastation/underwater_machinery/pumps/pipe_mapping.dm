@@ -17,30 +17,13 @@ ST_PIPE_MAP_VISIBILITY(/obj/machinery/duct/stationtrauma/straight, water_level, 
 ST_PIPE_MAP_VISIBILITY(/obj/machinery/duct/stationtrauma/tee, water_level, "manifold")
 ST_PIPE_MAP_VISIBILITY(/obj/machinery/duct/stationtrauma/cross, water_level, "manifold4w")
 ST_PIPE_MAP_VISIBILITY(/obj/machinery/stationtrauma_reactor_pipe, piping_layer, "manifold4w")
-ST_PIPE_MAP_VISIBILITY(/obj/machinery/stationtrauma_reactor_pipe/simple, piping_layer, "pipe11")
-ST_PIPE_MAP_VISIBILITY(/obj/machinery/stationtrauma_reactor_pipe/straight, piping_layer, "pipe11")
-ST_PIPE_MAP_VISIBILITY(/obj/machinery/stationtrauma_reactor_pipe/tee, piping_layer, "manifold")
 ST_PIPE_MAP_VISIBILITY(/obj/machinery/stationtrauma_reactor_pipe/valve, piping_layer, "mvalve_map")
 ST_PIPE_MAP_VISIBILITY(/obj/machinery/stationtrauma_reactor_pipe/pump, piping_layer, "pump_map")
-
-// Each medium offers the same visible/hidden physical layers as ordinary coloured pipes.
-#define ST_PLANT_MEDIUM(Path, Medium, Tint) \
-	##Path { line = Medium; color = Tint; } \
-	ST_PIPE_MAP_VISIBILITY(Path, piping_layer, "manifold4w") \
-	##Path/simple { parent_type = /obj/machinery/stationtrauma_reactor_pipe/simple; line = Medium; color = Tint; } \
-	ST_PIPE_MAP_VISIBILITY(Path/simple, piping_layer, "pipe11")
-
-ST_PLANT_MEDIUM(/obj/machinery/stationtrauma_reactor_pipe/water, ST_PLANT_WATER, "#5188b5")
-ST_PLANT_MEDIUM(/obj/machinery/stationtrauma_reactor_pipe/steam, ST_PLANT_STEAM, "#c9c9c9")
-ST_PLANT_MEDIUM(/obj/machinery/stationtrauma_reactor_pipe/exhaust, ST_PLANT_EXHAUST, "#b68b64")
-ST_PLANT_MEDIUM(/obj/machinery/stationtrauma_reactor_pipe/coolant, ST_PLANT_COOLANT, "#945f9f")
-ST_PLANT_MEDIUM(/obj/machinery/stationtrauma_reactor_pipe/seawater, ST_PLANT_SEA, "#458d87")
 
 ST_PIPE_MAP_LEVELS(/obj/machinery/stationtrauma_water_device/valve/manual, water_level, "mvalve_map")
 ST_PIPE_MAP_LEVELS(/obj/machinery/stationtrauma_water_device/inline_pump/pressure, water_level, "pump_map")
 ST_PIPE_MAP_LEVELS(/obj/machinery/stationtrauma_water_device/valve/passive_gate, water_level, "passgate_map")
 ST_PIPE_MAP_LEVELS(/obj/machinery/stationtrauma_water_device/valve/pressure_gate, water_level, "pvalve_map")
 
-#undef ST_PLANT_MEDIUM
 #undef ST_PIPE_MAP_VISIBILITY
 #undef ST_PIPE_MAP_LEVELS

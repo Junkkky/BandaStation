@@ -29,6 +29,7 @@
 
 /** Editable primary-map hull; navigation never copies its turfs. */
 /obj/docking_port/mobile/stationtrauma/eurydice
+	requires_pgd = TRUE
 	name = "НИС «Эвридика»"
 	shuttle_id = "stationtrauma_eurydice"
 	area_type = /area/station/stationtrauma/eurydice
@@ -112,7 +113,9 @@ SUBSYSTEM_DEF(stationtrauma_voyage)
 		stack_trace("Eurydice primary vessel or dock has invalid bounds/areas")
 		return SS_INIT_FAILURE
 	vessel.fixed_location = dock
-	vessel.voyage_status = "Стоянка: [dock.name]"
+	vessel.overmap = new(vessel)
+	vessel.overmap.preload_destinations()
+	vessel.overmap.status = "Стоянка: [dock.name]"
 	vessel.set_fixed_parallax(NONE)
 	if(!vessel.connect_ocean_location(dock))
 		stack_trace("Eurydice could not open the initial dock connection")

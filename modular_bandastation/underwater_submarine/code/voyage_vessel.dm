@@ -13,58 +13,83 @@
 	var/list/unloaded_destinations = list(
 		"Исследовательский пост" = /datum/map_template/stationtrauma_route/voyage_outpost,
 		"Затопленные руины" = /datum/map_template/stationtrauma_route/voyage_ruins,
+		"Скальный выход" = /datum/map_template/stationtrauma_route/voyage_rock,
 	)
-	/// Departure animation and destination loading share one command lock.
+	/// True at sea, including stopped navigation and asynchronous location preparation.
 	var/travelling = FALSE
 	/// Shared by the navigation stations; starting engines never starts a voyage.
 	var/engines_running = FALSE
-	var/selected_destination
-	/// Visible state on the navigation console.
-	var/voyage_status = "На стоянке"
 	/// Prototype route distances are metres; speed is metres per second.
 	var/cruise_speed = 50
-	var/voyage_distance = 0
+	/// Mapped displacement in kg; movement never scans floodwater or cargo to calculate mass.
+	var/navigation_mass = 10000000
+	/// Nominal thrust in newtons per full-power PGD; initial gameplay calibration.
+	var/nominal_drive_thrust = 10000000
 	var/voyage_target
-	var/voyage_started = 0
-	var/voyage_duration = 0
 	var/voyage_progress = 0
 	var/loading_fraction = 0
+	/// Eurydice requires actual powered drives; the small mapping prototype retains its demonstration motor.
+	var/requires_pgd = FALSE
+	var/list/drive_engines = list()
+	/// Quiet, cruise, full and boost, in that order.
+	var/drive_mode = 2
+	/// Virtual movement owns no physical water, turfs or power networks.
+	var/datum/stationtrauma_overmap/submarine/overmap
+	/// Cached navigation stations share one sonar mode and pulse cooldown.
+	var/list/navigation_consoles = list()
 
-/** Distance is route metadata, independent of the z coordinates used to store a location. */
+/obj/docking_port/mobile/stationtrauma/proc/drive_power_fraction()
+	var/static/list/fractions = list(0.1, 0.4, 1, 2)
+	return fractions[drive_mode]
+
+/obj/docking_port/mobile/stationtrauma/proc/drive_thrust_fraction()
+	var/static/list/fractions = list(0.15, 0.5, 1, 1.4)
+	return fractions[drive_mode]
+
+/obj/docking_port/mobile/stationtrauma/proc/available_voyage_speed()
+	if(!engines_running)
+		return 0
+	if(!requires_pgd)
+		return cruise_speed
+	var/thrust = 0
+	for(var/obj/machinery/power/stationtrauma_pgd/engine as anything in drive_engines)
+		thrust += engine.available_thrust()
+	return cruise_speed * min(thrust, 6 * 1.4) / 6
+
+/** Existing drive callers integrate old thrust before changing their output. */
+/obj/docking_port/mobile/stationtrauma/proc/update_voyage_distance()
+	overmap?.advance()
+
+/obj/docking_port/mobile/stationtrauma/proc/stop_drive_output()
+	for(var/obj/machinery/power/stationtrauma_pgd/engine as anything in drive_engines)
+		engine.actual_power = 0
+		engine.actual_thrust = 0
+		engine.acoustic_signature = 0
+		engine.update_drive_effects()
+
+/obj/docking_port/mobile/stationtrauma/proc/refresh_drive_motion()
+	overmap?.update_parallax()
+
+/** Resolve only this vessel's stable site IDs. */
 /obj/docking_port/mobile/stationtrauma/proc/distance_to(destination)
-	if(!istext(destination) && !istype(destination, /obj/docking_port/stationary/stationtrauma))
-		return null
-	var/obj/docking_port/stationary/stationtrauma/origin = fixed_location
-	if(!origin)
-		return null
-	var/position
-	if(istype(destination, /obj/docking_port/stationary/stationtrauma))
-		var/obj/docking_port/stationary/stationtrauma/berth = destination
-		position = berth.route_position
-	else
-		for(var/obj/docking_port/stationary/stationtrauma/berth as anything in berths)
-			if(berth.name == destination)
-				return abs(berth.route_position - origin.route_position)
-		var/datum/map_template/stationtrauma_route/template_type = unloaded_destinations[destination]
-		if(!template_type)
-			return null
-		var/obj/docking_port/stationary/stationtrauma/berth_type = initial(template_type.destination_berth_type)
-		position = initial(berth_type.route_position)
-	return abs(position - origin.route_position)
+	var/datum/stationtrauma_overmap_site/site = overmap?.sites[destination]
+	return site ? overmap.distance_to(site) : null
 
-/** Arrival readiness bounds the approach; reaching the timer alone never reports a completed trip. */
+/** Physical travel and destination preparation advance independently. */
 /obj/docking_port/mobile/stationtrauma/proc/path_progress()
 	if(travelling)
-		var/time_fraction = voyage_duration ? (world.time - voyage_started) / voyage_duration : 1
-		voyage_progress = max(voyage_progress, min(0.98, time_fraction, 0.1 + 0.88 * loading_fraction))
+		var/remaining = distance_to(overmap.selected_destination)
+		voyage_progress = overmap.trip_distance && !isnull(remaining) ? clamp(1 - remaining / overmap.trip_distance, 0, 0.99) : 0
 	return voyage_progress
 
 /obj/docking_port/mobile/stationtrauma/proc/update_loading_progress(fraction)
-	loading_fraction = max(loading_fraction, fraction)
+	// Native loading ends before corridor preparation; reserve the final five percent for it.
+	loading_fraction = max(loading_fraction, fraction * 0.95)
 
 /obj/docking_port/mobile/stationtrauma/Initialize(mapload, list/areas)
 	. = ..()
 	register()
+	map_connection = new(src, decks)
 
 /** Finish ownership after the entire multi-z TGM has loaded, including areas created after the port. */
 /obj/docking_port/mobile/stationtrauma/proc/configure_berths(list/ports)
@@ -74,6 +99,9 @@
 	shuttle_areas.Cut()
 	var/list/tiles = return_ordered_turfs(x, y, z, dir)
 	for(var/turf/tile as anything in tiles)
+		for(var/obj/machinery/power/stationtrauma_pgd/engine in tile)
+			engine.vessel = src
+			drive_engines |= engine
 		var/area/ship_area = get_area(tile)
 		if(!istype(ship_area, area_type))
 			if(isspaceturf(tile))

@@ -1,23 +1,17 @@
-/** Module-owned browser and controls; the sonar is a display mockup, not a world scanner. */
+/** Module-owned CRT navigation, with shared server-authoritative movement and sonar. */
 /obj/machinery/computer/stationtrauma_navigation
 	var/list/navigation_windows = list()
+	/// Cached only for the physical console's existing illuminated sprite.
 	var/active_sonar = FALSE
-	var/datum/looping_sound/stationtrauma_sonar/sonar_loop
-
-/datum/looping_sound/stationtrauma_sonar
-	mid_sounds = 'modular_bandastation/underwater_submarine/sounds/sonar.wav'
-	volume = 35
-	use_sound_tokens = TRUE
-	pressure_affected = FALSE
 
 /obj/machinery/computer/stationtrauma_navigation/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
 	update_use_power(NO_POWER_USE)
-	if(!vessel || !can_interact(user))
+	if(!vessel?.overmap || !can_interact(user))
 		return
 	var/datum/browser/popup = navigation_windows[user]
 	if(!popup)
-		popup = new(user, "stationtrauma_nav_[REF(src)]", name, 1060, 790, src)
+		popup = new(user, "stationtrauma_nav_[REF(src)]", name, 1060, 860, src)
 		popup.add_stylesheet("stationtrauma_console", 'modular_bandastation/underwater_machinery/html/console.css')
 		popup.add_stylesheet("stationtrauma_navigation", 'modular_bandastation/underwater_submarine/html/navigation.css')
 		navigation_windows[user] = popup
@@ -32,72 +26,117 @@
 	popup.open()
 
 /obj/machinery/computer/stationtrauma_navigation/ui_data(mob/user)
-	if(!vessel)
+	var/datum/stationtrauma_overmap/map = vessel?.overmap
+	if(!map)
 		return list()
-	var/obj/docking_port/stationary/stationtrauma/origin = vessel.fixed_location
-	var/list/routes = list()
-	for(var/obj/docking_port/stationary/stationtrauma/berth as anything in vessel.berths)
-		if(berth != origin)
-			routes += list(list("name" = berth.name, "distance" = vessel.distance_to(berth), "position" = berth.route_position))
-	for(var/destination in vessel.unloaded_destinations)
-		var/datum/map_template/stationtrauma_route/template_type = vessel.unloaded_destinations[destination]
-		var/obj/docking_port/stationary/stationtrauma/berth_type = initial(template_type.destination_berth_type)
-		routes += list(list("name" = destination, "distance" = vessel.distance_to(destination), "position" = initial(berth_type.route_position)))
-	var/progress = vessel.path_progress()
-	var/duration = SSsounds.get_sound_length('modular_bandastation/underwater_submarine/sounds/sonar.wav')
-	var/elapsed = sonar_loop?.sound_token_instance ? max(0, REALTIMEOFDAY - sonar_loop.sound_token_instance.start_time) : 0
+	var/list/routes = map.known_sites()
+	var/list/drives = list()
+	var/list/chart = list()
+	for(var/contact in map.charted_terrain)
+		chart += list(map.charted_terrain[contact])
+	var/drive_power = 0
+	for(var/obj/machinery/power/stationtrauma_pgd/engine as anything in vessel.drive_engines)
+		drives += list(list("enabled" = engine.enabled, "tripped" = engine.thermal_trip, "status" = engine.drive_status(), "temperature" = round(engine.temperature, 0.1), "coils" = round(engine.coil_condition), "power" = round(engine.actual_power / (1 MEGA WATTS), 0.1), "thrust" = round(engine.available_thrust() * 100)))
+		drive_power += engine.actual_power
 	return list(
-		"status" = vessel.voyage_status,
+		"status" = map.status,
 		"travelling" = vessel.travelling,
 		"engines" = vessel.engines_running,
-		"selected" = vessel.selected_destination,
-		"target" = vessel.voyage_target,
-		"progress" = progress,
-		"distance" = vessel.voyage_distance,
-		"travelled" = round(vessel.voyage_distance * progress, 1),
+		"physical_drives" = vessel.requires_pgd,
+		"drive_mode" = vessel.drive_mode,
+		"drives" = drives,
+		"power" = round(drive_power / (1 MEGA WATTS), 0.1),
+		"noise" = round(map.acoustic_noise()),
+		"speed" = round(map.speed, 0.1),
+		"loading" = min(map.prepared_site ? 100 : 99, round(vessel.loading_fraction * 100)),
+		"preparing" = map.preparing,
+		"helm" = map.helm_engaged,
+		"autopilot" = map.autopilot,
+		"planning" = map.planning,
+		"path" = map.autopilot_path,
+		"chart" = chart,
+		"arrival_pending" = map.arrival_pending,
+		"x" = map.pos_x,
+		"y" = map.pos_y,
+		"course" = map.course,
+		"drift" = map.speed > 0.05 ? delta_to_angle(map.velocity_x, map.velocity_y) : map.course,
+		"ordered_course" = map.ordered_course,
+		"length" = vessel.width,
+		"beam" = vessel.height,
+		"radius" = map.radius,
+		"selected" = map.selected_destination,
+		"progress" = vessel.path_progress(),
+		"distance" = map.trip_distance,
+		"travelled" = round(map.travelled),
+		"remaining" = vessel.distance_to(map.selected_destination),
 		"routes" = routes,
-		"origin" = origin?.name,
-		"position" = origin?.route_position,
-		"sonar" = active_sonar,
-		"sonar_period" = duration / 10,
-		"sonar_phase" = duration ? (elapsed % duration) / duration : 0,
+		"origin" = vessel.fixed_location?.shuttle_id,
+		"sonar" = map.active_sonar,
+		"sonar_range" = map.active_sonar ? ST_NAV_ACTIVE_RANGE : ST_NAV_PASSIVE_RANGE,
+		"sonar_period" = ST_NAV_PING_INTERVAL / (1 SECONDS),
+		"sonar_age" = map.last_ping ? (world.time - map.last_ping) / (1 SECONDS) : -1,
+		"contacts" = map.echoes,
 	)
 
-/** The server validates every switch and departure, including forged browser hrefs. */
+/** Validate every forged href; a map-loading hold never blocks stop or helm controls. */
 /obj/machinery/computer/stationtrauma_navigation/proc/navigation_command(action, value)
-	if(!vessel || (machine_stat & (NOPOWER|BROKEN)))
+	var/datum/stationtrauma_overmap/map = vessel?.overmap
+	if(!map || panel_open || (machine_stat & (NOPOWER|BROKEN)))
 		return FALSE
-	if(action == "sonar")
-		if(value != "active" && value != "passive")
-			return FALSE
-		active_sonar = (value == "active")
-		if(active_sonar)
-			sonar_loop.start()
-		else
-			sonar_loop.stop()
-		refresh_hardware()
-		return TRUE
-	if(vessel.travelling)
-		return FALSE
+	vessel.update_voyage_distance()
 	switch(action)
-		if("select")
-			var/distance = vessel.distance_to(value)
-			if(isnull(distance) || distance <= 0)
+		if("stop")
+			map.stop()
+		if("sonar")
+			if(value != "active" && value != "passive")
 				return FALSE
-			vessel.selected_destination = value
+			map.active_sonar = value == "active"
+			map.echoes = list()
+			if(map.active_sonar)
+				map.ping()
+			else
+				map.listen()
+		if("course", "turn")
+			var/number = text2num(value)
+			if(!IS_FINITE(number) || (action == "course" && (number < 0 || number >= 360)) || (action == "turn" && !(number in list(-15, 15))))
+				return FALSE
+			map.command_course(action == "course" ? number : map.ordered_course + number)
 		if("engine")
-			vessel.engines_running = !vessel.engines_running
-		if("depart")
-			var/distance = vessel.distance_to(vessel.selected_destination)
-			if(!vessel.engines_running || isnull(distance) || distance <= 0)
+			if(vessel.engines_running)
+				map.stop()
+			else
+				vessel.engines_running = TRUE
+		if("drive_mode")
+			var/mode = text2num(value)
+			if(!vessel.requires_pgd || !(mode in list(1, 2, 3, 4)))
 				return FALSE
-			INVOKE_ASYNC(vessel, TYPE_PROC_REF(/obj/docking_port/mobile/stationtrauma, travel_to), vessel.selected_destination)
+			vessel.drive_mode = mode
+			vessel.stop_drive_output()
+		if("drive")
+			var/index = text2num(value)
+			if(!vessel.requires_pgd || !ISINTEGER(index) || index < 1 || index > length(vessel.drive_engines))
+				return FALSE
+			var/obj/machinery/power/stationtrauma_pgd/engine = vessel.drive_engines[index]
+			if(!engine.toggle_drive())
+				return FALSE
+		if("select")
+			if(!map.select_site(value))
+				return FALSE
+		if("depart")
+			map.command_course(map.ordered_course)
+			if(!map.sail())
+				return FALSE
+		if("autopilot")
+			if(map.planning || !map.sites[map.selected_destination] || !vessel.engines_running)
+				return FALSE
+			INVOKE_ASYNC(map, TYPE_PROC_REF(/datum/stationtrauma_overmap, engage_autopilot))
 		else
 			return FALSE
+	vessel.refresh_drive_motion()
 	SEND_SIGNAL(vessel, COMSIG_STATIONTRAUMA_NAVIGATION_CHANGED)
 	return TRUE
 
-/** Closing or disconnecting releases the browser, but does not stop the physical sonar. */
+/** Closing the display releases only the viewer; movement and sonar belong to the vessel. */
 /obj/machinery/computer/stationtrauma_navigation/proc/close_navigation(mob/user)
 	SIGNAL_HANDLER
 	var/datum/browser/popup = navigation_windows[user]
@@ -112,10 +151,10 @@
 		close_navigation(usr)
 		return
 	var/datum/browser/popup = navigation_windows[usr]
-	if(..())
+	if(..() || !can_interact(usr))
 		close_navigation(usr)
 		return
-	if(!popup || !vessel)
+	if(!popup || !vessel?.overmap)
 		return
 	if(href_list["action"])
 		navigation_command(href_list["action"], href_list["value"])

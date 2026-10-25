@@ -1,0 +1,277 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"boQ" = (
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"bPb" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"chf" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"cNe" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"dnz" = (
+/obj/structure/closet/crate/secure{
+	name = "emergency supplies crate"
+	},
+/obj/item/gun/medbeam,
+/obj/item/gun/ballistic/automatic/pistol,
+/obj/item/grenade/flashbang,
+/obj/item/storage/medkit/regular,
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"dId" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"eBU" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"ieW" = (
+/obj/machinery/computer{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"iib" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"kzl" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"mbu" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"pbT" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"ppp" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"qLB" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"sTv" = (
+/obj/machinery/door/airlock/external{
+	name = "Shuttle Hatch";
+	dir = 4;
+	req_access = list();
+	req_one_access = list()
+	},
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"sXL" = (
+/obj/machinery/computer,
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"tjU" = (
+/turf/closed/wall,
+/area/stationtrauma_space_site/paradise)
+"tBD" = (
+/turf/open/space,
+/area/stationtrauma_space_site/paradise)
+"tRZ" = (
+/obj/machinery/door/airlock/external{
+	name = "Shuttle Hatch";
+	req_access = list();
+	req_one_access = list()
+	},
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"uxv" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+"vlR" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/plating/airless,
+/area/stationtrauma_space_site/paradise)
+
+(1,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+tBD
+tBD
+tBD
+tBD
+tBD
+tBD
+"}
+(2,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+eBU
+eBU
+eBU
+eBU
+eBU
+tBD
+"}
+(3,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+tjU
+chf
+chf
+chf
+tjU
+tBD
+"}
+(4,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+tjU
+sXL
+iib
+ieW
+tjU
+tBD
+"}
+(5,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+tjU
+boQ
+boQ
+ieW
+tjU
+tBD
+"}
+(6,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+tjU
+pbT
+boQ
+kzl
+tjU
+tBD
+"}
+(7,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+sTv
+boQ
+boQ
+kzl
+tjU
+tBD
+"}
+(8,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+tRZ
+qLB
+vlR
+cNe
+tjU
+tBD
+"}
+(9,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+uxv
+bPb
+vlR
+kzl
+tjU
+tBD
+"}
+(10,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+mbu
+dId
+ppp
+dnz
+tjU
+tBD
+"}
+(11,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+tjU
+tjU
+boQ
+tjU
+tjU
+tBD
+"}
+(12,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+tBD
+tjU
+tRZ
+tjU
+tBD
+tBD
+"}
+(13,1,1) = {"
+tBD
+tBD
+tBD
+tBD
+tBD
+tBD
+tBD
+tBD
+tBD
+tBD
+"}

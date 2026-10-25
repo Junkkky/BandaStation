@@ -10,6 +10,7 @@ import { JobsPage } from './JobsPage';
 import { LoadoutPage } from './loadout';
 import { MainPage } from './MainPage';
 import { QuirkPersonalityPage } from './QuirksPage';
+import { SkillsPage } from './SkillsPage';
 import { SpeciesPage } from './SpeciesPage';
 import { VoicePage } from './VoicePage';
 
@@ -21,6 +22,7 @@ enum Page {
   Quirks,
   Loadout,
   Voice,
+  Skills,
 }
 
 type ProfileProps = {
@@ -91,6 +93,10 @@ export function CharacterPreferenceWindow(props) {
 
     case Page.Voice:
       pageContents = <VoicePage />;
+      break;
+
+    case Page.Skills:
+      pageContents = <SkillsPage />;
       break;
 
     default:
@@ -169,6 +175,14 @@ export function CharacterPreferenceWindow(props) {
               setPage={setCurrentPage}
             >
               Черты и характер
+            </PageButton>
+            <PageButton
+              icon="graduation-cap"
+              currentPage={currentPage}
+              page={Page.Skills}
+              setPage={setCurrentPage}
+            >
+              Навыки
             </PageButton>
             {!!data.tts_enabled && (
               <PageButton

@@ -6,7 +6,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/stationtrauma_navigation, 0)
 
 /obj/machinery/computer/stationtrauma_navigation/Initialize(mapload)
 	. = ..()
-	sonar_loop = new(src)
 	for(var/index in 1 to 3)
 		var/obj/machinery/stationtrauma_navigation_section/section = new(loc)
 		section.console = src
@@ -19,9 +18,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/stationtrauma_navigation, 0)
 
 /obj/machinery/computer/stationtrauma_navigation/proc/link_vessel(obj/docking_port/mobile/stationtrauma/boat)
 	if(vessel)
+		vessel.navigation_consoles -= src
 		UnregisterSignal(vessel, list(COMSIG_STATIONTRAUMA_NAVIGATION_CHANGED, COMSIG_QDELETING))
 	vessel = boat
 	if(vessel)
+		vessel.navigation_consoles |= src
 		name = "навигация: [vessel.name]"
 		for(var/obj/machinery/stationtrauma_navigation_section/section as anything in sections)
 			section.name = name
@@ -33,15 +34,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/stationtrauma_navigation, 0)
 	SIGNAL_HANDLER
 	link_vessel(null)
 	active_sonar = FALSE
-	sonar_loop?.stop()
 	refresh_hardware()
 
 /obj/machinery/computer/stationtrauma_navigation/proc/refresh_hardware()
 	SIGNAL_HANDLER
 	if(machine_stat & (NOPOWER|BROKEN))
 		active_sonar = FALSE
-		sonar_loop?.stop()
 		set_light(0)
+	else
+		active_sonar = !!vessel?.overmap?.active_sonar
 	for(var/obj/machinery/stationtrauma_navigation_section/section as anything in sections)
 		section.update_appearance()
 
@@ -105,7 +106,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/stationtrauma_navigation, 0)
 	for(var/mob/viewer as anything in navigation_windows.Copy())
 		close_navigation(viewer)
 	link_vessel(null)
-	QDEL_NULL(sonar_loop)
 	QDEL_LIST(sections)
 	return ..()
 

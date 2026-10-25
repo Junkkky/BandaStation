@@ -230,7 +230,7 @@
 			balloon_alert(user, part.enabled ? "включено" : "выключено")
 		return
 	var/list/outputs = list("Мощность 25%" = 0.25, "Мощность 50%" = 0.5, "Мощность 75%" = 0.75, "Мощность 100%" = 1)
-	if(!outputs[choice] || !is_operational || plant.tripped || QDELETED(fuel_rod) || fuel_rod.fuel_remaining <= 0 || QDELETED(control_rod) || plant.core.water < 10 || plant.core_temperature >= ST_PLANT_SCRAM || topology_error)
+	if(!outputs[choice] || !is_operational || plant.tripped || QDELETED(fuel_rod) || fuel_rod.fuel_remaining <= 0 || QDELETED(control_rod) || plant.core.water < 10 * ST_PLANT_CAPACITY_SCALE || plant.core_temperature >= ST_PLANT_SCRAM || topology_error)
 		balloon_alert(user, "запуск запрещён")
 		return
 	plant.demand = outputs[choice]

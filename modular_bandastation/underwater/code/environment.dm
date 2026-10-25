@@ -1,3 +1,22 @@
+/// A solid black service recess, without opening the hull to space or another deck.
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma
+	floor_tile = /obj/item/stack/tile/catwalk_tile/iron_dark/stationtrauma
+
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma/Initialize(mapload)
+	. = ..()
+	blacken_recess()
+
+/turf/open/floor/catwalk_floor/iron_dark/stationtrauma/proc/blacken_recess()
+	var/mutable_appearance/recess = mutable_appearance(icon, "[catwalk_type]_below", LOW_FLOOR_LAYER, src, FLOOR_PLANE)
+	underlays -= recess
+	recess.color = COLOR_BLACK
+	underlays -= recess
+	underlays += recess
+
+/obj/item/stack/tile/catwalk_tile/iron_dark/stationtrauma
+	turf_type = /turf/open/floor/catwalk_floor/iron_dark/stationtrauma
+	merge_type = /obj/item/stack/tile/catwalk_tile/iron_dark/stationtrauma
+
 // Flora artwork and salvage concept: CeladonSS13/Nodalec; see ATTRIBUTION.md.
 /area/stationtrauma_test
 	name = "StationTrauma: испытательный полигон"

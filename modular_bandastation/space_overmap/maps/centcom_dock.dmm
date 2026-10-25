@@ -1,0 +1,5321 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"abX" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/effect/spawner/random/food_or_drink/salad,
+/turf/open/floor/carpet,
+/area/stationtrauma_space_site/centcom)
+"aqW" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/structure/flora/bush/jungle/c/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"aEo" = (
+/obj/structure/flora/tree/jungle/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"aHk" = (
+/turf/closed/indestructible/rock,
+/area/stationtrauma_space_site/centcom)
+"aHs" = (
+/turf/closed/wall/r_wall,
+/area/stationtrauma_space_site/centcom)
+"aJU" = (
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"aKR" = (
+/obj/structure/chair/sofa/right/brown{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"aOx" = (
+/obj/effect/turf_decal/tile/dark_blue/half,
+/obj/machinery/computer{
+	name = "Вспомогательная консоль";
+	icon_screen = "comm";
+	icon_keyboard = "tech_key"
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"boo" = (
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/light/directional/west,
+/obj/item/folder/white{
+	pixel_y = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"boY" = (
+/obj/machinery/scanner_gate/preset_guns,
+/turf/open/floor/iron/stairs/right,
+/area/stationtrauma_space_site/centcom)
+"car" = (
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/scanner_gate/preset_guns,
+/turf/open/floor/iron/stairs/right{
+	dir = 1
+	},
+/area/stationtrauma_space_site/centcom)
+"cdB" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"cgb" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"cge" = (
+/obj/effect/turf_decal/trimline/green/filled/corner,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"cgv" = (
+/obj/structure/chair/stool/bar/directional/north,
+/turf/open/floor/wood/large,
+/area/stationtrauma_space_site/centcom)
+"ciK" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/effect/spawner/random/food_or_drink/three_course_meal,
+/turf/open/floor/carpet,
+/area/stationtrauma_space_site/centcom)
+"cmT" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/left/directional/west{
+	req_access = list("cent_captain")
+	},
+/obj/item/banhammer,
+/turf/open/floor/plating,
+/area/stationtrauma_space_site/centcom)
+"cod" = (
+/obj/effect/turf_decal/trimline/yellow/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"crU" = (
+/obj/effect/turf_decal/tile/dark_blue/anticorner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"cvt" = (
+/obj/effect/turf_decal/tile/dark_blue/anticorner{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/item/folder/red{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"cEf" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 8
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"cOk" = (
+/obj/structure/chair/sofa/middle/brown{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"cOP" = (
+/obj/effect/decal/nt_logo{
+	color = "#f4cd82"
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"cRt" = (
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"dnl" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/machinery/microwave{
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/turf/open/floor/wood/large,
+/area/stationtrauma_space_site/centcom)
+"dsy" = (
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/light/directional/west,
+/obj/item/folder/blue,
+/obj/item/folder/red{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"duy" = (
+/obj/effect/turf_decal/trimline/green/filled/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/green/filled/arrow_ccw,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"duU" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/obj/structure/window/reinforced/tinted/spawner/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"dJW" = (
+/obj/machinery/scanner_gate/preset_guns,
+/turf/open/floor/iron/stairs/left{
+	dir = 1
+	},
+/area/stationtrauma_space_site/centcom)
+"dWt" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"dXO" = (
+/obj/machinery/stasis{
+	dir = 4
+	},
+/obj/structure/curtain,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"enD" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 9
+	},
+/obj/effect/spawner/random/special_lighter,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"eSe" = (
+/obj/effect/turf_decal/trimline/green/filled/arrow_ccw{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"eSr" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/yellow/filled/shrink_ccw,
+/obj/effect/turf_decal/trimline/yellow/filled/shrink_cw{
+	dir = 1
+	},
+/obj/structure/sign/poster/official/moth_delam/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"eST" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/green/filled/shrink_cw{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/green/filled/shrink_ccw,
+/obj/structure/sign/poster/official/moth_hardhat/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"fkC" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/wood/large,
+/area/stationtrauma_space_site/centcom)
+"fmq" = (
+/obj/structure/closet/crate/freezer/surplus_limbs,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"frB" = (
+/obj/effect/decal/nt_logo{
+	dir = 8;
+	color = "#f4cd82"
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"fwZ" = (
+/obj/effect/turf_decal/tile/dark_blue/anticorner{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/item/clipboard,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"fyx" = (
+/obj/effect/turf_decal/tile/red/half{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/light/directional/east,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"fAw" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/item/storage/medkit/advanced,
+/obj/item/storage/medkit/advanced{
+	pixel_y = 6
+	},
+/obj/item/storage/medkit/advanced{
+	pixel_y = 12
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"fBa" = (
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/scanner_gate/preset_guns,
+/turf/open/floor/iron/stairs/left,
+/area/stationtrauma_space_site/centcom)
+"fJx" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/structure/sink/directional/south,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"fKh" = (
+/obj/effect/spawner/structure/window/reinforced/indestructible,
+/turf/open/floor/plating,
+/area/stationtrauma_space_site/centcom)
+"fLS" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/yellow/filled/shrink_ccw,
+/obj/effect/turf_decal/trimline/yellow/filled/shrink_cw{
+	dir = 1
+	},
+/obj/structure/sign/poster/official/moth_epi/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"fNi" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"fOV" = (
+/obj/effect/turf_decal/trimline/green/filled/corner,
+/obj/effect/turf_decal/trimline/green/filled/arrow_cw{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"fTF" = (
+/obj/effect/turf_decal/trimline/yellow/filled/arrow_ccw{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"fVu" = (
+/obj/effect/turf_decal/tile/red/half{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"fZN" = (
+/obj/effect/turf_decal/tile/red/half{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"gaf" = (
+/obj/structure/chair/sofa/bench{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"gaj" = (
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"gcn" = (
+/obj/effect/turf_decal/tile/red/half{
+	dir = 8
+	},
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"gdd" = (
+/obj/structure/flora/bush/ferny/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"gkf" = (
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	dir = 4;
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/stone,
+/area/stationtrauma_space_site/centcom)
+"goA" = (
+/obj/machinery/vending/cola/red,
+/turf/open/floor/wood/large,
+/area/stationtrauma_space_site/centcom)
+"gww" = (
+/obj/structure/chair/sofa/left/brown{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"gwF" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"gwP" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"gQD" = (
+/obj/machinery/stasis,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
+/obj/structure/curtain,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"gSg" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"gSV" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 8
+	},
+/obj/machinery/light/directional/west,
+/obj/structure/closet/secure_closet/freezer/kitchen/all_access,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"hci" = (
+/obj/effect/turf_decal/trimline/yellow/filled/arrow_cw{
+	dir = 8
+	},
+/obj/machinery/light/directional/west,
+/obj/structure/sign/warning/no_smoking/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"hcw" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 1
+	},
+/obj/item/storage/fancy/cigarettes/cigars{
+	pixel_y = 9
+	},
+/obj/structure/sign/warning/yes_smoking/circle/directional/north,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"hro" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/item/surgery_tray/full/advanced,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
+/obj/structure/window/reinforced/tinted/spawner/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"hzC" = (
+/obj/machinery/medical_kiosk,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"hAK" = (
+/turf/open/floor/stone,
+/area/stationtrauma_space_site/centcom)
+"hCc" = (
+/obj/effect/baseturf_helper,
+/turf/closed/wall/r_wall,
+/area/stationtrauma_space_site/centcom)
+"hIT" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 5
+	},
+/obj/effect/spawner/random/special_lighter,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"hLw" = (
+/obj/effect/turf_decal/trimline/brown/filled/line,
+/obj/effect/spawner/random/trash/bin,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"hSo" = (
+/obj/structure/window/fulltile,
+/obj/structure/flora/bush/flowers_pp/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"hWu" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/corner,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"igu" = (
+/obj/effect/light_emitter/podbay,
+/turf/open/floor/stone,
+/area/stationtrauma_space_site/centcom)
+"iqk" = (
+/obj/effect/turf_decal/siding/wideplating/dark,
+/obj/structure/flora/bush/pointy/style_random{
+	pixel_y = 6
+	},
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"iqL" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/effect/spawner/random/food_or_drink/donkpockets{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/turf/open/floor/wood/large,
+/area/stationtrauma_space_site/centcom)
+"iwl" = (
+/obj/machinery/light/floor,
+/turf/open/floor/stone,
+/area/stationtrauma_space_site/centcom)
+"iAJ" = (
+/obj/machinery/stasis,
+/obj/structure/curtain,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"iDM" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"iEV" = (
+/obj/effect/turf_decal/trimline/yellow/filled/arrow_cw{
+	dir = 9
+	},
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/north,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"iGc" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 9
+	},
+/obj/structure/table/reinforced/titaniumglass,
+/obj/item/storage/box/drinkingglasses{
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/obj/item/storage/box/drinkingglasses{
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"iHQ" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"iJN" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/stone,
+/area/stationtrauma_space_site/centcom)
+"iOD" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"iPD" = (
+/obj/structure/flora/bush/jungle/c/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"iPK" = (
+/obj/effect/turf_decal/trimline/green/filled/arrow_ccw,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"iVw" = (
+/obj/effect/turf_decal/tile/dark_blue/half,
+/obj/machinery/papershredder,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"iXe" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"jbI" = (
+/obj/effect/turf_decal/trimline/green/filled/arrow_cw{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"jii" = (
+/obj/effect/turf_decal/trimline/green/filled/arrow_cw{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"jiU" = (
+/obj/structure/chair/sofa/bench/left{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"jjh" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"jtS" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/right/directional/east{
+	req_access = list("cent_captain")
+	},
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/pen/fountain,
+/turf/open/floor/plating,
+/area/stationtrauma_space_site/centcom)
+"jBl" = (
+/obj/effect/turf_decal/tile/red/half{
+	dir = 4
+	},
+/obj/machinery/computer{
+	name = "Вспомогательная консоль";
+	icon_screen = "comm";
+	icon_keyboard = "tech_key"
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"jGh" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/green/filled/shrink_cw,
+/obj/effect/turf_decal/trimline/green/filled/shrink_ccw{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"jIY" = (
+/obj/structure/flora/tree/jungle/small/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"jMi" = (
+/obj/effect/turf_decal/tile/dark_blue/anticorner,
+/obj/machinery/photocopier/gratis/prebuilt,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kdv" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kdY" = (
+/obj/effect/turf_decal/tile/dark_blue/anticorner{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/obj/item/clipboard,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kjE" = (
+/obj/machinery/door/airlock/highsecurity{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kjJ" = (
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kmP" = (
+/obj/structure/window/fulltile,
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"knW" = (
+/obj/machinery/door/airlock/highsecurity{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/baseturf_helper,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kqd" = (
+/obj/effect/turf_decal/trimline/yellow/filled/arrow_cw{
+	dir = 8
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kBo" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kFM" = (
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"kKS" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/effect/turf_decal/trimline/yellow/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kVi" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 1
+	},
+/obj/machinery/icecream_vat,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kXb" = (
+/obj/effect/turf_decal/tile/red/anticorner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kYf" = (
+/obj/effect/turf_decal/trimline/green/filled/warning,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"kZx" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/yellow/filled/shrink_cw,
+/obj/effect/turf_decal/trimline/yellow/filled/shrink_ccw{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"liv" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/item/storage/box/gloves{
+	pixel_y = 14;
+	pixel_x = -7
+	},
+/obj/item/storage/box/masks{
+	pixel_y = 14;
+	pixel_x = 8
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"liS" = (
+/obj/effect/turf_decal/trimline/yellow/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"lmo" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"lmv" = (
+/obj/machinery/door/airlock/service/glass{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"lmU" = (
+/obj/machinery/vending/snack,
+/turf/open/floor/wood/large,
+/area/stationtrauma_space_site/centcom)
+"lqd" = (
+/obj/structure/closet/crate/freezer/blood,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"lqY" = (
+/obj/item/kirbyplants/random,
+/obj/structure/sign/poster/official/enlist/directional/east,
+/turf/open/floor/stone,
+/area/stationtrauma_space_site/centcom)
+"lzJ" = (
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 1
+	},
+/obj/machinery/computer{
+	name = "Вспомогательная консоль";
+	icon_screen = "comm";
+	icon_keyboard = "tech_key"
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"lFw" = (
+/obj/machinery/light/directional/west,
+/obj/structure/chair/stool/bar/directional/north,
+/turf/open/floor/wood/large,
+/area/stationtrauma_space_site/centcom)
+"lRh" = (
+/obj/structure/fans/tiny,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/poddoor/shuttledock,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"mbN" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"meE" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"mpX" = (
+/obj/machinery/stasis{
+	dir = 4
+	},
+/obj/structure/curtain,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"mqG" = (
+/turf/open/space/basic,
+/area/space)
+"msh" = (
+/obj/effect/turf_decal/tile/red/anticorner{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_y = 6;
+	pixel_x = 6
+	},
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_y = 10;
+	pixel_x = 6
+	},
+/obj/item/folder/yellow{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"mvw" = (
+/turf/open/floor/asphalt,
+/area/stationtrauma_space_site/centcom)
+"mwX" = (
+/obj/effect/turf_decal/trimline/green/filled/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/green/filled/arrow_cw{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"mKS" = (
+/obj/structure/flora/bush/jungle/a/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"mPI" = (
+/obj/effect/turf_decal/trimline/green/filled/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/green/filled/arrow_ccw,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"mSZ" = (
+/obj/effect/turf_decal/trimline/green/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"mYT" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"ngx" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"nhT" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/item/surgery_tray/full/advanced,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"nyL" = (
+/obj/effect/decal/nt_logo{
+	dir = 1;
+	color = "#f4cd82"
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"nEu" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"nJY" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/right/directional/west{
+	req_access = list("cent_captain")
+	},
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/pen/fountain,
+/turf/open/floor/plating,
+/area/stationtrauma_space_site/centcom)
+"nZV" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"ofx" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/machinery/iv_drip,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"ogn" = (
+/turf/closed/wall,
+/area/stationtrauma_space_site/centcom)
+"oow" = (
+/obj/effect/turf_decal/trimline/green/filled/line,
+/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/trimline/green/filled/arrow_cw{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"oxM" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"oCK" = (
+/obj/machinery/defibrillator_mount/loaded{
+	pixel_x = -28;
+	pixel_y = -2
+	},
+/obj/structure/table/reinforced/titaniumglass,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"oGR" = (
+/obj/structure/flora/bush/sparsegrass/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"oKA" = (
+/obj/effect/turf_decal/tile/red/half{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/light/directional/east,
+/obj/item/folder/red{
+	pixel_y = 3
+	},
+/obj/item/folder/red{
+	pixel_x = -7
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"poe" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/effect/turf_decal/trimline/yellow/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"prB" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"pui" = (
+/obj/effect/turf_decal/trimline/green/filled/line,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"pJT" = (
+/obj/effect/light_emitter/podbay,
+/turf/open/floor/asphalt,
+/area/stationtrauma_space_site/centcom)
+"pMg" = (
+/obj/machinery/door/airlock/medical/glass{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"pQO" = (
+/obj/effect/turf_decal/trimline/yellow/filled/corner,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"pWD" = (
+/obj/effect/turf_decal/tile/red/half,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"qeP" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"qgY" = (
+/obj/effect/turf_decal/trimline/yellow/filled/arrow_ccw{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"qlc" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/yellow/filled/shrink_ccw,
+/obj/effect/turf_decal/trimline/yellow/filled/shrink_cw{
+	dir = 1
+	},
+/obj/structure/sign/poster/official/moth_hardhat/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"qww" = (
+/obj/structure/flora/bush/ferny/style_random,
+/obj/structure/flora/bush/fullgrass/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"qCy" = (
+/obj/structure/chair/sofa/bench/left{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"qGL" = (
+/obj/structure/flora/bush/grassy/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"qMu" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"qMB" = (
+/obj/effect/turf_decal/trimline/yellow/filled/arrow_cw{
+	dir = 8
+	},
+/obj/structure/sign/warning/no_smoking/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"qOK" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted/spawner/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"qXd" = (
+/obj/structure/chair/comfy/beige{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/stationtrauma_space_site/centcom)
+"qZR" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"rdU" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
+/obj/item/storage/medkit/tactical_lite{
+	pixel_y = -7
+	},
+/obj/item/storage/medkit/tactical_lite{
+	pixel_y = -5;
+	pixel_x = 2
+	},
+/obj/item/storage/medkit/tactical_lite{
+	pixel_y = -3;
+	pixel_x = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"rij" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"riF" = (
+/obj/item/kirbyplants/random,
+/obj/structure/sign/poster/official/here_for_your_safety/directional/east,
+/turf/open/floor/stone,
+/area/stationtrauma_space_site/centcom)
+"rlM" = (
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 1
+	},
+/obj/machinery/papershredder,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"rnp" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 8
+	},
+/obj/structure/table/reinforced/titaniumglass,
+/obj/machinery/reagentgrinder{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/obj/item/reagent_containers/cup/beaker/large,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"rnC" = (
+/obj/structure/flora/bush/fullgrass/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"rEx" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/effect/spawner/random/food_or_drink/donuts,
+/obj/effect/spawner/random/food_or_drink/jelly_donuts,
+/obj/effect/spawner/random/food_or_drink/any_snack_or_beverage,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"rER" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/effect/spawner/random/food_or_drink/cake_ingredients,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"rFZ" = (
+/obj/structure/window/fulltile,
+/obj/structure/flora/bush/flowers_yw/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"rIK" = (
+/obj/effect/turf_decal/trimline/yellow/filled/arrow_ccw{
+	dir = 1
+	},
+/obj/structure/sign/departments/security/directional/north,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"rTj" = (
+/obj/effect/decal/nt_logo{
+	dir = 4;
+	color = "#f4cd82"
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"rXg" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"sff" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/trimline/green/filled/arrow_ccw,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"snA" = (
+/obj/effect/baseturf_helper{
+	baseturf = /turf/open/floor/grass
+	},
+/turf/open/floor/stone,
+/area/stationtrauma_space_site/centcom)
+"sLB" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"sOM" = (
+/obj/effect/turf_decal/trimline/green/filled/warning{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"tdT" = (
+/obj/item/banner/command,
+/turf/open/floor/stone,
+/area/stationtrauma_space_site/centcom)
+"tgP" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/structure/sink/directional/north,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"trw" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"tsg" = (
+/obj/machinery/door/airlock/external{
+	req_access = list();
+	req_one_access = list();
+	name = "Испытательный док ЦК"
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"tFP" = (
+/obj/structure/flora/rock/pile/jungle/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"tSC" = (
+/obj/effect/turf_decal/trimline/green/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"tTJ" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/structure/sign/departments/med_alt/directional/south,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"ujN" = (
+/obj/effect/turf_decal/tile/red/anticorner,
+/obj/structure/table/reinforced,
+/obj/item/clipboard,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"upF" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"utr" = (
+/obj/structure/sign/poster/official/corporate_perks_vacation/directional/west,
+/turf/open/floor/stone,
+/area/stationtrauma_space_site/centcom)
+"uJF" = (
+/obj/effect/turf_decal/tile/red/half{
+	dir = 8
+	},
+/obj/item/banner/security,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"uKe" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 1
+	},
+/obj/structure/table/reinforced/titaniumglass,
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	pixel_y = 7
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"uMh" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 5
+	},
+/obj/structure/table/reinforced/titaniumglass,
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
+	pixel_y = 7
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"uSN" = (
+/obj/structure/flora/bush/jungle/b/style_random,
+/turf/open/floor/grass,
+/area/stationtrauma_space_site/centcom)
+"vhU" = (
+/obj/effect/turf_decal/trimline/brown/filled/warning,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"vqO" = (
+/obj/effect/turf_decal/trimline/green/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"vrx" = (
+/obj/structure/chair/sofa/bench{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"vuh" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"vuO" = (
+/obj/effect/turf_decal/trimline/yellow/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"vDj" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/poddoor/shuttledock,
+/obj/structure/fans/tiny,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"vVX" = (
+/obj/effect/turf_decal/trimline/green/filled/arrow_ccw,
+/obj/structure/sign/departments/security/directional/south,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"wiH" = (
+/obj/machinery/light/directional/west,
+/obj/machinery/vending/coffee,
+/turf/open/floor/wood/large,
+/area/stationtrauma_space_site/centcom)
+"wqT" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/green/filled/shrink_cw{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/green/filled/shrink_ccw,
+/obj/structure/sign/poster/official/moth_epi/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"wsc" = (
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"wvm" = (
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 4
+	},
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"wwt" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"wzf" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood/large,
+/area/stationtrauma_space_site/centcom)
+"wHJ" = (
+/obj/effect/turf_decal/tile/dark_blue/anticorner{
+	dir = 4
+	},
+/obj/machinery/photocopier/gratis/prebuilt,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"wLh" = (
+/turf/open/floor/wood/large,
+/area/stationtrauma_space_site/centcom)
+"wRy" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"wUS" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 10
+	},
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/south,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"wVJ" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"wWz" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"wXl" = (
+/obj/effect/turf_decal/tile/dark_blue/half,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"wXG" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"xgc" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/green/filled/shrink_cw{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/green/filled/shrink_ccw,
+/obj/structure/sign/poster/official/moth_delam/directional/west,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"xsl" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"xvI" = (
+/obj/effect/turf_decal/tile/red/anticorner{
+	dir = 1
+	},
+/obj/structure/filingcabinet/medical{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/security{
+	pixel_x = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"xyw" = (
+/obj/effect/turf_decal/tile/dark_blue/anticorner,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"xEO" = (
+/obj/effect/turf_decal/tile/dark_blue/anticorner{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"xPJ" = (
+/obj/effect/turf_decal/trimline/yellow/filled/arrow_cw{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"yim" = (
+/obj/effect/turf_decal/trimline/green/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+"ykz" = (
+/obj/structure/chair/comfy/beige{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/stationtrauma_space_site/centcom)
+"yll" = (
+/obj/machinery/door/airlock/public/glass{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/iron,
+/area/stationtrauma_space_site/centcom)
+
+(1,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+rnC
+gdd
+gdd
+qGL
+mKS
+uSN
+kFM
+kFM
+gdd
+tFP
+rnC
+kFM
+gdd
+qGL
+iPD
+rnC
+iqk
+igu
+igu
+igu
+igu
+aqW
+rnC
+oGR
+kFM
+jIY
+rnC
+gdd
+kFM
+kFM
+aEo
+uSN
+gdd
+mKS
+kFM
+rnC
+rnC
+qww
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(2,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHk
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+fKh
+fKh
+fKh
+fKh
+fKh
+fKh
+fKh
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+hAK
+gkf
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+fKh
+fKh
+aHs
+aHs
+aHs
+fKh
+fKh
+fKh
+fKh
+aHs
+aHs
+dXO
+oCK
+fmq
+oCK
+mpX
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(3,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHk
+aHk
+aHs
+iGc
+kBo
+rnp
+gSV
+oxM
+rEx
+lFw
+wLh
+qXd
+qXd
+wLh
+qXd
+qXd
+wLh
+wiH
+aHs
+kdY
+boo
+cvt
+fKh
+iJN
+utr
+hAK
+hAK
+utr
+iJN
+fKh
+xEO
+dsy
+fwZ
+aHs
+enD
+wVJ
+wVJ
+xsl
+fKh
+gwF
+iOD
+iOD
+iOD
+iOD
+wXG
+aHs
+fJx
+aJU
+aJU
+aJU
+tgP
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(4,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHs
+kVi
+aJU
+rER
+aJU
+pui
+rEx
+cgv
+wLh
+ciK
+ciK
+wLh
+abX
+abX
+wLh
+goA
+aHs
+rlM
+wsc
+wXl
+fKh
+hAK
+hAK
+hAK
+hAK
+hAK
+hAK
+fKh
+gaj
+wsc
+iVw
+aHs
+hcw
+aJU
+aJU
+hLw
+aHs
+qeP
+aKR
+cOk
+cOk
+gww
+iXe
+aHs
+gQD
+ofx
+cRt
+ofx
+iAJ
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(5,1,1) = {"
+mqG
+mqG
+mqG
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHs
+uKe
+aJU
+aJU
+aJU
+pui
+rEx
+cgv
+wLh
+ykz
+ykz
+wLh
+ykz
+ykz
+wLh
+lmU
+aHs
+lzJ
+aJU
+wXl
+kjE
+hAK
+iwl
+hAK
+hAK
+iwl
+hAK
+kjE
+gaj
+aJU
+aOx
+aHs
+prB
+aJU
+aJU
+vhU
+yll
+qMu
+gSg
+dWt
+dWt
+mYT
+tTJ
+aHs
+duU
+qOK
+kjJ
+qOK
+hro
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(6,1,1) = {"
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHs
+uMh
+lmo
+lmo
+lmo
+iDM
+rEx
+cgv
+wLh
+qXd
+qXd
+wLh
+qXd
+qXd
+wLh
+iqL
+aHs
+lzJ
+aJU
+wXl
+fKh
+hAK
+hAK
+hAK
+hAK
+snA
+hAK
+fKh
+gaj
+aJU
+aOx
+aHs
+hcw
+aJU
+aJU
+hLw
+aHs
+iHQ
+rij
+nyL
+cOP
+sLB
+cgb
+pMg
+rXg
+aJU
+aJU
+aJU
+nhT
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(7,1,1) = {"
+aHk
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+lmv
+aHs
+aHs
+aHs
+wzf
+wLh
+ciK
+ciK
+wLh
+abX
+abX
+wLh
+dnl
+aHs
+wHJ
+wvm
+xyw
+fKh
+hAK
+hAK
+hAK
+hAK
+hAK
+hAK
+fKh
+crU
+wvm
+jMi
+aHs
+hIT
+gwP
+gwP
+vuh
+fKh
+iHQ
+rij
+frB
+rTj
+sLB
+tTJ
+aHs
+hzC
+lqd
+fAw
+liv
+rdU
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(8,1,1) = {"
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+aHs
+cdB
+kBo
+cEf
+kBo
+kBo
+kBo
+kBo
+oxM
+wLh
+ykz
+ykz
+wLh
+ykz
+ykz
+wLh
+fkC
+aHs
+fKh
+jtS
+fKh
+aHs
+tdT
+iwl
+hAK
+hAK
+iwl
+tdT
+aHs
+fKh
+jtS
+fKh
+aHs
+aHs
+fKh
+fKh
+aHs
+aHs
+iHQ
+meE
+ngx
+ngx
+qZR
+wwt
+aHs
+fKh
+fKh
+fKh
+aHs
+aHs
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(9,1,1) = {"
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+aHs
+jii
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+vqO
+kBo
+kBo
+kBo
+kBo
+kBo
+kBo
+kBo
+kBo
+cEf
+kBo
+kBo
+wUS
+aHs
+hAK
+hAK
+hAK
+hAK
+hAK
+hAK
+aHs
+iEV
+xPJ
+xPJ
+xPJ
+kqd
+xPJ
+xPJ
+xPJ
+qMB
+vuO
+aJU
+aJU
+aJU
+aJU
+cod
+hci
+xPJ
+xPJ
+xPJ
+nEu
+aHs
+aHk
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(10,1,1) = {"
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+lRh
+mSZ
+aJU
+cge
+lmo
+lmo
+lmo
+lmo
+lmo
+tSC
+aJU
+cge
+lmo
+lmo
+lmo
+lmo
+lmo
+tSC
+aJU
+aJU
+kYf
+fBa
+hAK
+hAK
+hAK
+hAK
+hAK
+hAK
+car
+qMu
+aJU
+aJU
+pQO
+qgY
+qgY
+qgY
+qgY
+qgY
+liS
+aJU
+pQO
+qgY
+qgY
+qgY
+qgY
+qgY
+liS
+aJU
+wwt
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(11,1,1) = {"
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+aHs
+fOV
+jGh
+duy
+mbN
+gaf
+gaf
+gaf
+qCy
+fOV
+jGh
+duy
+mbN
+gaf
+gaf
+gaf
+qCy
+fOV
+jGh
+tSC
+kYf
+boY
+hAK
+iwl
+hAK
+hAK
+iwl
+hAK
+dJW
+qMu
+pQO
+kZx
+poe
+mbN
+gaf
+gaf
+gaf
+qCy
+hWu
+kZx
+poe
+mbN
+gaf
+gaf
+gaf
+qCy
+hWu
+kZx
+poe
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(12,1,1) = {"
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+aHs
+oow
+aHs
+sff
+hSo
+kmP
+hSo
+rFZ
+kmP
+oow
+aHs
+sff
+hSo
+kmP
+hSo
+rFZ
+kmP
+oow
+aHs
+fNi
+iPK
+aHs
+lqY
+hAK
+hAK
+hAK
+hAK
+riF
+aHs
+fTF
+iXe
+aHs
+wRy
+hSo
+kmP
+hSo
+rFZ
+kmP
+upF
+aHs
+wRy
+hSo
+kmP
+hSo
+rFZ
+kmP
+upF
+aHs
+wRy
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(13,1,1) = {"
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+aHs
+mwX
+wqT
+mPI
+jiU
+vrx
+vrx
+vrx
+nZV
+mwX
+xgc
+mPI
+jiU
+vrx
+vrx
+vrx
+nZV
+mwX
+eST
+yim
+iPK
+aHs
+aHs
+fKh
+cmT
+nJY
+fKh
+aHs
+aHs
+fTF
+cod
+fLS
+kKS
+jiU
+vrx
+vrx
+vrx
+nZV
+kdv
+eSr
+kKS
+jiU
+vrx
+vrx
+vrx
+nZV
+iHQ
+qlc
+kKS
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(14,1,1) = {"
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+aHs
+jii
+aJU
+vqO
+kBo
+kBo
+kBo
+kBo
+kBo
+yim
+aJU
+vqO
+kBo
+kBo
+kBo
+kBo
+kBo
+yim
+aJU
+aJU
+vVX
+aHs
+xvI
+uJF
+fVu
+gcn
+uJF
+kXb
+hCc
+rIK
+aJU
+aJU
+cod
+xPJ
+xPJ
+xPJ
+xPJ
+xPJ
+vuO
+aJU
+cod
+xPJ
+xPJ
+xPJ
+xPJ
+xPJ
+vuO
+aJU
+wwt
+aHs
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(15,1,1) = {"
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+aHs
+jii
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+iPK
+kjE
+fZN
+aJU
+aJU
+aJU
+aJU
+pWD
+knW
+qMu
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+aJU
+wwt
+aHs
+aHk
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(16,1,1) = {"
+aHk
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+jbI
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+sOM
+eSe
+aHs
+msh
+fyx
+jBl
+jBl
+oKA
+ujN
+aHs
+wWz
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+jjh
+trw
+aHs
+aHk
+aHk
+aHk
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
+(17,1,1) = {"
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHs
+aHs
+aHs
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+vDj
+aHs
+aHs
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+"}
+(18,1,1) = {"
+mqG
+mqG
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(19,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHk
+aHk
+aHs
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+"}
+(20,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(21,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(22,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(23,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(24,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+"}
+(25,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(26,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(27,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(28,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(29,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(30,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+"}
+(31,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(32,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(33,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(34,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(35,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+"}
+(36,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(37,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(38,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(39,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(40,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(41,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+"}
+(42,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(43,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(44,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(45,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(46,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+mvw
+mvw
+pJT
+mvw
+"}
+(47,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+ogn
+aJU
+ogn
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(48,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+ogn
+aJU
+ogn
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+mvw
+"}
+(49,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+ogn
+aJU
+ogn
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+"}
+(50,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+ogn
+aJU
+ogn
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+aHk
+"}
+(51,1,1) = {"
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+ogn
+tsg
+ogn
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+mqG
+"}
