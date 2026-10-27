@@ -1,9 +1,10 @@
 /** Find the first real hull barrier on the impact ray; this runs only on contact, not every helm tick. */
-/proc/stationtrauma_navigation_hull_target(obj/docking_port/mobile/vessel, heading, decks, dx, dy)
+/proc/stationtrauma_navigation_hull_target(obj/docking_port/mobile/vessel, heading, decks, dx, dy, bow_direction = EAST)
 	if(QDELETED(vessel))
 		return null
-	var/local_x = dx * sin(heading) + dy * cos(heading)
-	var/local_y = -dx * cos(heading) + dy * sin(heading)
+	var/rotation = heading - dir2angle(bow_direction)
+	var/local_x = dx * cos(rotation) - dy * sin(rotation)
+	var/local_y = dx * sin(rotation) + dy * cos(rotation)
 	var/list/bounds = vessel.return_coords()
 	var/hull_width = abs(bounds[3] - bounds[1]) + 1
 	var/hull_height = abs(bounds[4] - bounds[2]) + 1

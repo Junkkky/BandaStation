@@ -457,6 +457,9 @@
 "guj" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/computer/stationtrauma_space_navigation,
+/obj/effect/landmark/stationtrauma_space_sector{
+	ship_templates = list("modular_bandastation/space_overmap/maps/pocketrocket.dmm")
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space)
 "gHo" = (
@@ -759,7 +762,14 @@
 	req_access = list();
 	req_one_access = list()
 	},
-/obj/docking_port/mobile/stationtrauma_space,
+/obj/docking_port/mobile/stationtrauma_space{
+	name = "Raven";
+	shuttle_id = "stationtrauma_space_raven";
+	width = 21;
+	height = 32;
+	dheight = 16;
+	starting_dock = "centcom_dock"
+	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space)
 "lbm" = (
@@ -1677,6 +1687,15 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space)
 
+"zzZ" = (
+/obj/effect/landmark/latejoin,
+/obj/effect/landmark/start/assistant/override,
+/obj/effect/landmark/observer_start,
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
 (1,1,1) = {"
 sge
 sge
@@ -1986,7 +2005,7 @@ ajb
 (10,1,1) = {"
 wic
 fDm
-oCl
+zzZ
 onm
 rwN
 fWo

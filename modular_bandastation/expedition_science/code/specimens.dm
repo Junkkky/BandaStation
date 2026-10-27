@@ -18,8 +18,6 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 	var/coordinates
 	/// Original source name and authored observations, not random scanner flavour.
 	var/source_name
-	/// The second discipline required for laboratory work.
-	var/specialty
 	/// Information available to a field survey.
 	var/field_notes
 	/// Information revealed by laboratory analysis.
@@ -30,7 +28,6 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 /datum/stationtrauma_research_record/New(obj/structure/stationtrauma_research_source/source)
 	id = "F-[++GLOB.stationtrauma_research_serial]"
 	source_name = source.name
-	specialty = source.specialty
 	field_notes = source.field_notes
 	laboratory_notes = source.laboratory_notes
 	var/turf/origin = get_turf(source)
@@ -66,8 +63,6 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 	anchored = TRUE
 	/// Starting balance: a finite number of samples, committed only after successful collection.
 	var/remaining_samples = 3
-	/// Authored laboratory specialty; science is also always required.
-	var/specialty = "botany"
 	/// Mappers author stable observations, rather than inventing readings on each scan.
 	var/field_notes = "Волокнистая колония, закреплённая на грунте. Различимы отдельные ветвящиеся побеги."
 	/// These are scenario observations, not a simulation of chemicals or radiation.
@@ -90,7 +85,6 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 	desc = "Кристаллические отложения на морском дне. Полевой сканер и контейнер позволят доставить пробу в лабораторию."
 	icon = 'icons/obj/ore.dmi'
 	icon_state = "iron"
-	specialty = "chemistry"
 	field_notes = "Плотный минеральный нарост с заметными кристаллическими включениями."
 	laboratory_notes = "Образец неоднороден: кристаллические включения окружены мелкозернистой матрицей. Химические свойства требуют отдельных испытаний."
 
@@ -99,6 +93,5 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 	desc = "Фрагмент местного организма. После полевого обследования можно отобрать ткань для лаборатории."
 	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "meat"
-	specialty = "anatomy"
 	field_notes = "Различимы плотные внешние ткани и более мягкая внутренняя структура."
 	laboratory_notes = "Обнаружены несколько типов тканей и сеть полостей. По одному фрагменту нельзя восстановить физиологию целого организма."

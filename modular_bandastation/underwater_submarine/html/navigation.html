@@ -43,10 +43,11 @@
       <button type="button" id="nav-starboard" aria-label="Курс на 15 градусов вправо">+15° ▶</button>
       <button type="button" id="nav-auto">АВТОПИЛОТ</button>
     </div>
-    <div class="nav-distance">Стрелки ← → — ручной курс. Пробел — стоп-машина. Автопилот обходит рельеф; ручное управление отключает его.</div>
+    <div class="nav-distance">← → — поворот; ↑ ↓ — тяга; пробел — торможение. Нулевая тяга оставляет движение с сопротивлением воды. Ручное управление отключает автопилот.</div>
   </div>
   <div class="nav-hardware">
     <div class="hardware-row">
+      <div class="hardware-control"><div class="hardware-label">ЗАДАННАЯ ТЯГА</div><div class="helm-throttle"><div class="throttle-scale" aria-hidden="true"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div><input id="nav-throttle" type="range" min="0" max="100" step="5" value="100" aria-label="Рычаг тяги, проценты"><output id="nav-throttle-value" for="nav-throttle">100%</output></div></div>
       <div class="hardware-control">
         <div class="hardware-label"><span class="lamp" id="engine-lamp"></span>ДВИГАТЕЛИ</div>
         <button type="button" class="engine-switch" id="nav-engine" aria-label="Включить или выключить двигатели" aria-pressed="false">I<br>O</button>
@@ -63,8 +64,9 @@
         <div class="switch-caption">ПУСК</div>
       </div>
       <div class="hardware-control">
-        <div class="hardware-label">НЕМЕДЛЕННАЯ ОСТАНОВКА</div>
-        <button type="button" class="depart-switch stop-switch" id="nav-stop">СТОП-МАШИНА</button>
+        <div class="hardware-label">ТОРМОЖЕНИЕ</div>
+        <button type="button" class="depart-switch stop-switch" id="nav-stop">ТОРМОЗИТЬ</button>
+        <div class="switch-caption" id="nav-braking-distance"></div>
         <div class="switch-caption">ДОСТУПНА ВО ВРЕМЯ ЗАГРУЗКИ</div>
       </div>
     </div>

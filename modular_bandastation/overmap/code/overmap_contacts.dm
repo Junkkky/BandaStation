@@ -30,6 +30,8 @@
 	name = "скальный массив"
 	var/end_x
 	var/end_y
+	/// Destroyed physical obstacles remain chart records, but no longer block movement or planning.
+	var/blocking = TRUE
 
 /datum/stationtrauma_overmap_terrain/New(ax, ay, bx, by)
 	pos_x = ax
@@ -83,7 +85,7 @@
 		var/datum/stationtrauma_overmap_site/site = sites[id]
 		if((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2 > ST_NAV_ACTIVE_RANGE ** 2)
 			continue
-		site.discovered = TRUE
+		discover_site(site)
 		echoes += list(list("kind" = "site", "x" = site.pos_x, "y" = site.pos_y))
 	return TRUE
 
@@ -92,11 +94,58 @@
 	var/list/known = list()
 	for(var/id in sites)
 		var/datum/stationtrauma_overmap_site/site = sites[id]
-		if(!site.discovered)
+		if(!knows_site(site))
 			continue
-		known += list(list("id" = id, "name" = site.name, "x" = site.pos_x, "y" = site.pos_y, "distance" = round(distance_to(site)), "failed" = site.failed, "visited" = site.visited))
+		known += list(list("id" = id, "name" = site.name, "x" = site.pos_x, "y" = site.pos_y, "distance" = round(distance_to(site)), "failed" = site.failed, "visited" = (site.visited || visited_sites[site.id])))
 	return known
 
 /** Environment-specific interference; the common model has no machinery dependency. */
 /datum/stationtrauma_overmap/proc/acoustic_noise()
 	return 0
+
+/** Emissions remain noticeable briefly after a pulse, including one at world time zero. */
+/datum/stationtrauma_overmap/proc/detection_signature()
+	return !isnull(last_ping) && world.time < last_ping + 5 SECONDS ? 2 : 0
+
+/datum/stationtrauma_overmap/proc/transponder_identity()
+	return null
+
+/** Measurements store positions, never live references or transponder identity. */
+/datum/stationtrauma_overmap/proc/observe_ships(reach, passive = FALSE)
+	if(!sector)
+		return 0
+	var/found = 0
+	for(var/id in sector.ships)
+		var/datum/stationtrauma_overmap/other = sector.ships[id]
+		if(other == src || !other.is_operational() || other.preparing)
+			continue
+		var/detection_range = passive ? reach * other.detection_signature() : reach
+		if(detection_range <= 0 || (other.pos_x - pos_x) ** 2 + (other.pos_y - pos_y) ** 2 > detection_range ** 2)
+			continue
+		var/list/previous = ship_observations[id]
+		var/number = previous ? previous["id"] : ++next_contact_number
+		if(!previous)
+			found++
+		var/list/observation = list("id" = number, "x" = other.pos_x, "y" = other.pos_y, "seen" = world.time, "mode" = passive ? "passive" : "active")
+		var/list/identity = other.transponder_identity()
+		if(identity)
+			observation["identity"] = identity
+		ship_observations[id] = observation
+	return found
+
+/** Expired measurements disappear without consulting a target's current position or existence. */
+/datum/stationtrauma_overmap/proc/ship_echo_data()
+	var/list/observations = list()
+	for(var/index = length(ship_observations), index >= 1, index--)
+		var/id = ship_observations[index]
+		var/list/record = ship_observations[id]
+		var/age = world.time - record["seen"]
+		if(age >= ST_NAV_SHIP_MEMORY)
+			ship_observations -= id
+			continue
+		var/list/echo = list("id" = record["id"], "x" = record["x"], "y" = record["y"], "age" = age / (1 SECONDS), "mode" = record["mode"])
+		var/list/identity = record["identity"]
+		if(identity)
+			echo["identity"] = identity.Copy()
+		observations += list(echo)
+	return observations

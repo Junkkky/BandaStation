@@ -1,7 +1,7 @@
 /// Ordinary shuttle-computer appearance, with no emergency-shuttle controller or sonar.
 /obj/machinery/computer/stationtrauma_space_navigation
 	name = "навигационная консоль"
-	desc = "Орбитальная карта, управление тягой и стыковкой Raven."
+	desc = "Орбитальная карта, управление тягой и стыковкой корабля."
 	icon_screen = "shuttle"
 	icon_keyboard = "tech_key"
 	use_power = NO_POWER_USE
@@ -22,6 +22,8 @@
 	if(!popup)
 		popup = new(user, "stationtrauma_space_[REF(src)]", name, 1080, 780, src)
 		popup.add_stylesheet("stationtrauma_space", 'modular_bandastation/space_overmap/html/navigation.css')
+		popup.add_stylesheet("stationtrauma_helm", 'modular_bandastation/overmap/html/helm_controls.css')
+		popup.add_script("stationtrauma_helm", 'modular_bandastation/overmap/html/helm_controls.js')
 		popup.add_script("stationtrauma_space", 'modular_bandastation/space_overmap/html/navigation.js')
 		navigation_windows[user] = popup
 		RegisterSignals(user, list(COMSIG_QDELETING, COMSIG_MOB_LOGOUT), PROC_REF(close_navigation))
@@ -39,42 +41,63 @@
 	var/datum/stationtrauma_overmap_site/space/target = map.sites[map.selected_destination]
 	var/distance = target ? map.distance_to(target) : 0
 	var/relative_speed = distance ? ((target.pos_x - map.pos_x) * map.velocity_x + (target.pos_y - map.pos_y) * map.velocity_y) / distance : 0
-	return list(
+	var/list/data = list(
 		"status" = map.status,
 		"x" = map.pos_x, "y" = map.pos_y,
 		"vx" = map.velocity_x, "vy" = map.velocity_y,
 		"course" = map.course, "ordered_course" = map.ordered_course,
 		"speed" = map.speed, "throttle" = map.throttle,
+		"braking" = map.braking, "braking_distance" = map.get_braking_distance(),
 		"engines" = round(map.engine_fraction() * 100),
 		"helm" = map.helm_engaged, "autopilot" = map.autopilot,
 		"preparing" = map.preparing, "planning" = map.planning,
+		"relocating" = map.relocating, "landed" = !!map.docked?.landing,
 		"selected" = map.selected_destination, "docked" = map.docked?.id,
 		"landing" = target?.landing, "distance" = distance,
+		"eta" = target && map.get_target_speed() > 0 ? max(0, distance - map.radius - target.radius) / map.get_target_speed() : null,
+		"scan_wait" = CEILING(max(0, map.next_scan - world.time) / (1 SECONDS), 1),
 		"closing_speed" = relative_speed,
 		"can_dock" = !map.preparing && !map.docked && !map.helm_engaged && map.speed <= 0.05 && map.can_dock(target, map.control_revision),
 		"routes" = map.known_sites(), "path" = map.autopilot_path,
+		"zones" = map.encounter_data(), "terrain" = map.terrain_data(),
+		"ship_contacts" = map.ship_echo_data(),
+		"encounter" = map.encounter_status, "sensor_range" = map.sensor_range,
 	)
+	if(istype(target, /datum/stationtrauma_overmap_site/space/planet) && map.knows_site(target))
+		var/datum/stationtrauma_overmap_site/space/planet/planet = target
+		data["planet"] = planet.survey_data()
+	return data
 
 /** Validate every control server-side, including stale windows and hand-written hrefs. */
 /obj/machinery/computer/stationtrauma_space_navigation/proc/navigation_command(action, value)
 	var/datum/stationtrauma_overmap/space/map = vessel?.overmap
-	if(!map || panel_open || (machine_stat & (NOPOWER|BROKEN)))
+	if(!map || map.relocating || panel_open || (machine_stat & (NOPOWER|BROKEN)))
 		return FALSE
 	map.advance()
 	switch(action)
+		if("maneuver")
+			var/direction = text2num(value)
+			return IS_FINITE(direction) && map.command_maneuver(direction)
+		if("scan")
+			return map.scan_sector()
 		if("stop")
-			map.stop("Стоп: маневровые двигатели погасили скорость")
+			map.request_brake()
 		if("select")
 			return map.select_site(value)
-		if("course", "throttle")
+		if("course", "turn", "throttle")
 			var/number = text2num(value)
-			if(!IS_FINITE(number) || number < 0 || (action == "course" ? number >= 360 : number > 100))
+			if(!IS_FINITE(number))
 				return FALSE
 			if(action == "course")
+				if(number < 0 || number >= 360)
+					return FALSE
 				map.command_course(number)
+			else if(action == "turn")
+				if(!(number in list(-15, 15)))
+					return FALSE
+				map.command_course(map.course + number)
 			else
-				map.command_course(map.ordered_course)
-				map.throttle = number
+				return map.command_throttle(number)
 		if("depart")
 			map.command_course(map.ordered_course)
 			return map.sail()
@@ -102,6 +125,9 @@
 		close_navigation(usr)
 		return
 	var/datum/browser/popup = navigation_windows[usr]
+	// Native movement relocates console and pilot at different points within the same manoeuvre.
+	if(vessel?.overmap?.relocating)
+		return
 	if(..() || !can_interact(usr))
 		close_navigation(usr)
 		return

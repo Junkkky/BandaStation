@@ -1,7 +1,7 @@
 /** A manually operated field instrument; no periodic scanning and no techweb connection. */
 /obj/item/stationtrauma_field_scanner
 	name = "полевой исследовательский сканер"
-	desc = "Обследует экспедиционные находки перед отбором проб. Требуется базовый уровень научной методики."
+	desc = "Обследует экспедиционные находки перед отбором проб."
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "manual_mining"
 	inhand_icon_state = "analyzer"
@@ -15,22 +15,22 @@
 /obj/item/stationtrauma_field_scanner/pre_attack(atom/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(!istype(target, /obj/structure/stationtrauma_research_source))
 		return ..()
-	if(!busy && user.is_holding(src) && stationtrauma_check_training(user, "science", ST_TRAINING_BASIC))
+	if(!busy && user.is_holding(src))
 		INVOKE_ASYNC(src, PROC_REF(survey), target, user)
 	return TRUE
 
 /** Survey manually and recheck the operator after the interruptible action. */
 /obj/item/stationtrauma_field_scanner/proc/survey(obj/structure/stationtrauma_research_source/source, mob/living/user)
-	if(busy || QDELETED(source) || !user?.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH) || !stationtrauma_check_training(user, "science", ST_TRAINING_BASIC))
+	if(busy || QDELETED(source) || !user?.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH))
 		return
 	busy = TRUE
 	var/datum/mind/operator = user.mind
 	to_chat(user, span_notice("Вы начинаете полевое обследование [source]."))
-	var/completed = do_after(user, stationtrauma_training_delay(user, "science", 6 SECONDS), source)
+	var/completed = do_after(user, 6 SECONDS, source)
 	if(QDELETED(src))
 		return
 	busy = FALSE
-	if(!completed || QDELETED(source) || QDELETED(user) || user.mind != operator || !user.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH) || !stationtrauma_check_training(user, "science", ST_TRAINING_BASIC))
+	if(!completed || QDELETED(source) || QDELETED(user) || user.mind != operator || !user.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH))
 		return
 	var/datum/stationtrauma_research_record/record = source.research_record()
 	record.surveyed = TRUE
@@ -40,7 +40,7 @@
 /** A sealed physical specimen; its discovery record is independent of this particular container. */
 /obj/item/stationtrauma_sample
 	name = "контейнер для экспедиционной пробы"
-	desc = "Используйте пустой контейнер на обследованной находке. Запечатанную пробу нужно доставить к лабораторному анализатору. Требуется базовый уровень научной методики."
+	desc = "Используйте пустой контейнер на обследованной находке. Запечатанную пробу нужно доставить к лабораторному анализатору."
 	icon = 'icons/obj/science/vatgrowing.dmi'
 	icon_state = "petri_dish"
 	w_class = WEIGHT_CLASS_SMALL
@@ -82,23 +82,23 @@
 		to_chat(user, span_warning("Сначала обследуйте находку полевым сканером."))
 	else if(source.remaining_samples <= 0)
 		to_chat(user, span_warning("Пригодных для отбора проб больше нет."))
-	else if(stationtrauma_check_training(user, "science", ST_TRAINING_BASIC))
+	else
 		INVOKE_ASYNC(src, PROC_REF(collect), source, user)
 	return TRUE
 
 /** Commit one finite sample only after success; simultaneous collectors recheck the stock. */
 /obj/item/stationtrauma_sample/proc/collect(obj/structure/stationtrauma_research_source/source, mob/living/user)
-	if(busy || record || QDELETED(source) || !source.record?.surveyed || source.remaining_samples <= 0 || !user?.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH) || !stationtrauma_check_training(user, "science", ST_TRAINING_BASIC))
+	if(busy || record || QDELETED(source) || !source.record?.surveyed || source.remaining_samples <= 0 || !user?.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH))
 		return
 	busy = TRUE
 	var/datum/mind/operator = user.mind
 	var/datum/stationtrauma_research_record/original_record = source.record
 	to_chat(user, span_notice("Вы начинаете отбор пробы [source]."))
-	var/completed = do_after(user, stationtrauma_training_delay(user, "science", 6 SECONDS), source)
+	var/completed = do_after(user, 6 SECONDS, source)
 	if(QDELETED(src))
 		return
 	busy = FALSE
-	if(!completed || QDELETED(source) || QDELETED(user) || record || source.record != original_record || !original_record?.surveyed || source.remaining_samples <= 0 || user.mind != operator || !user.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH) || !stationtrauma_check_training(user, "science", ST_TRAINING_BASIC))
+	if(!completed || QDELETED(source) || QDELETED(user) || record || source.record != original_record || !original_record?.surveyed || source.remaining_samples <= 0 || user.mind != operator || !user.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH))
 		return
 	source.remaining_samples--
 	record = original_record
@@ -112,7 +112,7 @@
 /** A powered laboratory endpoint; specimens must be physically brought here and held throughout. */
 /obj/machinery/stationtrauma_sample_analyzer
 	name = "анализатор экспедиционных проб"
-	desc = "Приложите запечатанную экспедиционную пробу для анализа и печати отчёта. Нужны обученный уровень научной методики и базовый уровень профильной дисциплины."
+	desc = "Приложите запечатанную экспедиционную пробу для анализа и печати отчёта."
 	icon = 'icons/obj/science/vatgrowing.dmi'
 	icon_state = "microscope"
 	density = TRUE
@@ -138,8 +138,6 @@
 	if(busy || !is_operational || !sample.record || sample.analyzed || !user.is_holding(sample))
 		balloon_alert(user, "проверьте прибор и пробу")
 		return ITEM_INTERACT_BLOCKING
-	if(!stationtrauma_check_training(user, "science", ST_TRAINING_TRAINED) || !stationtrauma_check_training(user, sample.record.specialty, ST_TRAINING_BASIC))
-		return ITEM_INTERACT_BLOCKING
 	INVOKE_ASYNC(src, PROC_REF(analyze), sample, user)
 	return ITEM_INTERACT_SUCCESS
 
@@ -147,22 +145,18 @@
 /obj/machinery/stationtrauma_sample_analyzer/proc/analyze(obj/item/stationtrauma_sample/sample, mob/living/user)
 	if(busy || !is_operational || QDELETED(sample) || !sample.record || sample.analyzed || !user?.is_holding(sample) || !user.can_perform_action(src, NEED_HANDS|FORBID_TELEKINESIS_REACH))
 		return
-	if(!stationtrauma_check_training(user, "science", ST_TRAINING_TRAINED) || !stationtrauma_check_training(user, sample.record.specialty, ST_TRAINING_BASIC))
-		return
 	busy = TRUE
 	operation_interrupted = FALSE
 	update_use_power(ACTIVE_POWER_USE)
 	var/datum/mind/operator = user.mind
 	var/datum/stationtrauma_research_record/original_record = sample.record
 	to_chat(user, span_notice("Вы начинаете лабораторный анализ [sample]."))
-	var/completed = do_after(user, stationtrauma_training_delay(user, "science", 20 SECONDS), src)
+	var/completed = do_after(user, 20 SECONDS, src)
 	if(QDELETED(src))
 		return
 	busy = FALSE
 	update_use_power(IDLE_POWER_USE)
 	if(!completed || operation_interrupted || !is_operational || QDELETED(sample) || QDELETED(user) || sample.record != original_record || sample.analyzed || user.mind != operator || !user.is_holding(sample) || !user.can_perform_action(src, NEED_HANDS|FORBID_TELEKINESIS_REACH))
-		return
-	if(!stationtrauma_check_training(user, "science", ST_TRAINING_TRAINED) || !stationtrauma_check_training(user, original_record.specialty, ST_TRAINING_BASIC))
 		return
 	sample.analyzed = TRUE
 	var/obj/item/paper/report = new /obj/item/paper/stationtrauma_research_report(drop_location())

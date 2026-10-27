@@ -14,6 +14,8 @@
 		popup = new(user, "stationtrauma_nav_[REF(src)]", name, 1060, 860, src)
 		popup.add_stylesheet("stationtrauma_console", 'modular_bandastation/underwater_machinery/html/console.css')
 		popup.add_stylesheet("stationtrauma_navigation", 'modular_bandastation/underwater_submarine/html/navigation.css')
+		popup.add_stylesheet("stationtrauma_helm", 'modular_bandastation/overmap/html/helm_controls.css')
+		popup.add_script("stationtrauma_helm", 'modular_bandastation/overmap/html/helm_controls.js')
 		navigation_windows[user] = popup
 		RegisterSignals(user, list(COMSIG_QDELETING, COMSIG_MOB_LOGOUT), PROC_REF(close_navigation))
 	var/html = file2text('modular_bandastation/underwater_submarine/html/navigation.html')
@@ -48,6 +50,8 @@
 		"power" = round(drive_power / (1 MEGA WATTS), 0.1),
 		"noise" = round(map.acoustic_noise()),
 		"speed" = round(map.speed, 0.1),
+		"throttle" = map.throttle, "braking" = map.braking,
+		"braking_distance" = round(map.get_braking_distance()),
 		"loading" = min(map.prepared_site ? 100 : 99, round(vessel.loading_fraction * 100)),
 		"preparing" = map.preparing,
 		"helm" = map.helm_engaged,
@@ -86,7 +90,10 @@
 	vessel.update_voyage_distance()
 	switch(action)
 		if("stop")
-			map.stop()
+			map.request_brake()
+		if("throttle")
+			if(!map.command_throttle(text2num(value)))
+				return FALSE
 		if("sonar")
 			if(value != "active" && value != "passive")
 				return FALSE
@@ -100,10 +107,11 @@
 			var/number = text2num(value)
 			if(!IS_FINITE(number) || (action == "course" && (number < 0 || number >= 360)) || (action == "turn" && !(number in list(-15, 15))))
 				return FALSE
-			map.command_course(action == "course" ? number : map.ordered_course + number)
+			map.command_course(action == "course" ? number : map.course + number)
 		if("engine")
 			if(vessel.engines_running)
-				map.stop()
+				map.command_throttle(0)
+				vessel.engines_running = FALSE
 			else
 				vessel.engines_running = TRUE
 		if("drive_mode")
@@ -127,7 +135,7 @@
 			if(!map.sail())
 				return FALSE
 		if("autopilot")
-			if(map.planning || !map.sites[map.selected_destination] || !vessel.engines_running)
+			if(map.planning || !map.sites[map.selected_destination] || !vessel.engines_running || map.throttle <= 0)
 				return FALSE
 			INVOKE_ASYNC(map, TYPE_PROC_REF(/datum/stationtrauma_overmap, engage_autopilot))
 		else

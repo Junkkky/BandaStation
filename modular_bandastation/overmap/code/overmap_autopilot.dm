@@ -11,6 +11,8 @@
 /** The same terrain geometry gates both planning and actual movement. */
 /datum/stationtrauma_overmap/proc/path_clear(ax, ay, bx, by)
 	for(var/datum/stationtrauma_overmap_terrain/terrain in contacts)
+		if(!terrain.blocking)
+			continue
 		if(!isnull(stationtrauma_terrain_hit(ax, ay, bx - ax, by - ay, terrain.pos_x, terrain.pos_y, terrain.end_x, terrain.end_y, radius + ST_NAV_PATH_MARGIN)))
 			return FALSE
 	return TRUE
@@ -121,7 +123,7 @@
 /** A yielded plan cannot revive a manually stopped or retargeted vessel. */
 /datum/stationtrauma_overmap/proc/engage_autopilot()
 	var/datum/stationtrauma_overmap_site/site = sites[selected_destination]
-	if(!site || !site.discovered || site.failed || planning || arrival_pending || !propulsion_available())
+	if(!site || !knows_site(site) || site.failed || planning || arrival_pending || throttle <= 0 || !propulsion_available())
 		return FALSE
 	planning = TRUE
 	var/revision = control_revision
@@ -134,6 +136,7 @@
 		return FALSE
 	autopilot_path = path
 	autopilot = TRUE
+	braking = speed > 0.05
 	return sail()
 
 /** Manual steering always takes control back from the autopilot. */
@@ -147,14 +150,17 @@
 /datum/stationtrauma_overmap/proc/steer_autopilot()
 	if(!length(autopilot_path))
 		return
+	if(braking && speed > 0.05)
+		return
+	braking = FALSE
 	var/list/node = autopilot_path[1]
-	if((node[1] - pos_x) ** 2 + (node[2] - pos_y) ** 2 <= 20 ** 2 && length(autopilot_path) > 1)
-		velocity_x = 0
-		velocity_y = 0
-		speed = 0
+	if((node[1] - pos_x) ** 2 + (node[2] - pos_y) ** 2 <= 20 ** 2 && length(autopilot_path) > 1 && speed <= 0.05)
 		autopilot_path.Cut(1, 2)
 		node = autopilot_path[1]
 	if(!path_clear(pos_x, pos_y, node[1], node[2]))
-		stop("Автопилот: путь перекрыт")
+		request_brake()
+		status = "Автопилот: путь перекрыт, торможение"
 		return
 	ordered_course = delta_to_angle(node[1] - pos_x, node[2] - pos_y)
+	if(abs(WRAP(ordered_course - course + 180, 0, 360) - 180) > 5 && speed > 0.05)
+		braking = TRUE

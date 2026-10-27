@@ -40,17 +40,21 @@
 
 /obj/docking_port/mobile/stationtrauma/proc/drive_power_fraction()
 	var/static/list/fractions = list(0.1, 0.4, 1, 2)
-	return fractions[drive_mode]
+	return fractions[drive_mode] * drive_command_fraction()
 
 /obj/docking_port/mobile/stationtrauma/proc/drive_thrust_fraction()
 	var/static/list/fractions = list(0.15, 0.5, 1, 1.4)
-	return fractions[drive_mode]
+	return fractions[drive_mode] * drive_command_fraction()
+
+/** Braking commands reverse thrust; an idle lever does not silently keep consuming full power. */
+/obj/docking_port/mobile/stationtrauma/proc/drive_command_fraction()
+	return overmap?.braking ? 1 : (overmap?.throttle || 0) / 100
 
 /obj/docking_port/mobile/stationtrauma/proc/available_voyage_speed()
 	if(!engines_running)
 		return 0
 	if(!requires_pgd)
-		return cruise_speed
+		return cruise_speed * drive_command_fraction()
 	var/thrust = 0
 	for(var/obj/machinery/power/stationtrauma_pgd/engine as anything in drive_engines)
 		thrust += engine.available_thrust()

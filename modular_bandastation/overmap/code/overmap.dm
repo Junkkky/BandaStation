@@ -4,6 +4,7 @@
 #define ST_NAV_ACTIVE_RANGE 1200
 #define ST_NAV_PASSIVE_RANGE 700
 #define ST_NAV_PING_INTERVAL (3 SECONDS)
+#define ST_NAV_SHIP_MEMORY (1 MINUTES)
 
 /** First contact of a moving point with a circle; null means a clear segment. */
 /proc/stationtrauma_circle_hit(px, py, dx, dy, cx, cy, radius)
@@ -54,6 +55,9 @@
 
 /** One virtual vessel; movement never scans or relocates physical map contents. */
 /datum/stationtrauma_overmap
+	var/datum/stationtrauma_overmap_sector/sector
+	var/list/discovered_sites = list()
+	var/list/visited_sites = list()
 	/// Stable selected location ID, independent of its physical map.
 	var/selected_destination
 	/// Navigation status shared by attached displays.
@@ -72,8 +76,12 @@
 	/// Current and ordered compass course, degrees clockwise from north.
 	var/course = 90
 	var/ordered_course = 90
-	/// Actual speed, including acceleration; the emergency stop sets it to zero immediately.
+	/// Actual speed, including acceleration and braking.
 	var/speed = 0
+	/// Persistent manual thrust order; zero thrust does not erase velocity.
+	var/throttle = 100
+	/// Active braking may also be requested by the autopilot before a turn.
+	var/braking = FALSE
 	/// Velocity components retain inertia when the hull turns or powered thrust changes.
 	var/velocity_x = 0
 	var/velocity_y = 0
@@ -97,11 +105,14 @@
 	/// Shared sonar settings, observations and cooldown for every linked console.
 	var/active_sonar = FALSE
 	var/next_ping = 0
-	var/last_ping = 0
+	var/last_ping
 	var/next_listen = 0
 	var/list/echoes = list()
 	/// Static terrain discovered by active pulses; moving contacts are never stored here.
 	var/list/charted_terrain = list()
+	/// Sector IDs remain server-side; each crew numbers its own position snapshots.
+	var/list/ship_observations = list()
+	var/next_contact_number = 0
 
 /datum/stationtrauma_overmap/New()
 	last_update = world.time
@@ -109,9 +120,21 @@
 
 /datum/stationtrauma_overmap/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
+	sector?.unregister(src)
 	QDEL_LIST_ASSOC_VAL(sites)
 	QDEL_LIST(contacts)
+	discovered_sites.Cut()
+	visited_sites.Cut()
+	charted_terrain.Cut()
+	ship_observations.Cut()
+	prepared_site = null
 	return ..()
+
+/datum/stationtrauma_overmap/proc/knows_site(datum/stationtrauma_overmap_site/site)
+	return !QDELETED(site) && sites[site.id] == site && (site.discovered || discovered_sites[site.id])
+
+/datum/stationtrauma_overmap/proc/discover_site(datum/stationtrauma_overmap_site/site)
+	discovered_sites[site.id] = TRUE
 
 /datum/stationtrauma_overmap/process(seconds_per_tick)
 	if(!is_operational())
@@ -139,13 +162,20 @@
 			return
 		turn = WRAP(ordered_course - course + 180, 0, 360) - 180
 	course = WRAP(course + clamp(turn, -ST_NAV_TURN_RATE * seconds, ST_NAV_TURN_RATE * seconds), 0, 360)
+	var/datum/stationtrauma_overmap_site/site = sites[selected_destination]
 	var/available = get_target_speed()
 	if(autopilot && length(autopilot_path))
 		var/list/node = autopilot_path[1]
 		var/distance = sqrt((node[1] - pos_x) ** 2 + (node[2] - pos_y) ** 2)
-		available = min(available, max(1, distance / 3))
-		if(abs(turn) > 5 && speed < 1)
+		var/margin = length(autopilot_path) == 1 ? max(0, radius + site.radius - 2) : 10
+		if(length(autopilot_path) == 1 && (prepared_site != sites[selected_destination] || preparing))
+			margin += ST_NAV_APPROACH + 4
+		var/remaining = max(0, distance - margin)
+		available = min(available, 0.7 * sqrt(2 * get_braking_acceleration() * remaining), remaining / max(1, get_response_time()))
+		if(abs(turn) > 5 || remaining == 0)
 			available = 0
+	if(braking)
+		available = 0
 	var/list/displacement = integrate_velocity(seconds, available)
 	var/dx = displacement[1]
 	var/dy = displacement[2]
@@ -153,19 +183,12 @@
 	var/fraction = 1
 	var/datum/stationtrauma_overmap_terrain/obstacle
 	for(var/datum/stationtrauma_overmap_terrain/terrain in contacts)
+		if(!terrain.blocking)
+			continue
 		var/hit = stationtrauma_terrain_hit(pos_x, pos_y, dx, dy, terrain.pos_x, terrain.pos_y, terrain.end_x, terrain.end_y, radius)
 		if(!isnull(hit) && hit <= fraction)
 			fraction = hit
 			obstacle = terrain
-	var/datum/stationtrauma_overmap_site/site = sites[selected_destination]
-	var/reached = FALSE
-	if(site)
-		var/ready = prepared_site == site && !preparing
-		var/hit = stationtrauma_circle_hit(pos_x, pos_y, dx, dy, site.pos_x, site.pos_y, radius + site.radius + (ready ? 0 : ST_NAV_APPROACH))
-		if(!isnull(hit) && hit <= fraction)
-			fraction = hit
-			obstacle = null
-			reached = TRUE
 	// Stop just outside a contact, avoiding repeated impacts from float rounding.
 	var/step_length = sqrt(dx * dx + dy * dy)
 	var/travel_fraction = fraction < 1 ? max(0, fraction - 1 / max(1, step_length)) : 1
@@ -176,24 +199,22 @@
 		var/impact_speed = speed
 		stop("Столкновение: [obstacle.name]")
 		on_collision(obstacle, impact_speed)
-	else if(reached)
-		speed = 0
-		velocity_x = 0
-		velocity_y = 0
-		if(prepared_site == site && !preparing)
+	else
+		if(site && speed <= 0.05 && (!braking || autopilot) && prepared_site == site && !preparing && distance_to(site) <= radius + site.radius + 2)
 			arrival_pending = TRUE
 			INVOKE_ASYNC(src, PROC_REF(arrive), site)
+		else if(braking && !autopilot && speed <= 0.05)
+			stop("Ход остановлен")
 		else
-			status = "Ожидание готовности локации: [site.name]"
-	else
-		status = speed > 0.05 ? "В пути: курс [round(course)]°" : "Ход остановлен: нет тяги"
+			status = braking ? "Торможение: [round(speed, 0.1)] м/с" : "В пути: [round(speed, 0.1)] м/с; курс [round(course)]°"
 	update_parallax()
 
-/** A stop is immediate, including during map loading, and never discards physical map contents. */
+/** Technical stop for collisions, completed manoeuvres and failed preparation; pilot controls request braking. */
 /datum/stationtrauma_overmap/proc/stop(reason = "Стоп-машина")
 	control_revision++
 	autopilot = FALSE
 	autopilot_path = null
+	braking = FALSE
 	helm_engaged = FALSE
 	speed = 0
 	velocity_x = 0
@@ -209,7 +230,7 @@
 	if(arrival_pending || !is_operational() || !propulsion_available())
 		return FALSE
 	var/datum/stationtrauma_overmap_site/site = sites[selected_destination]
-	if(site && (!site.discovered || site.failed))
+	if(site && (!knows_site(site) || site.failed))
 		return FALSE
 	helm_engaged = TRUE
 	last_update = world.time
@@ -218,7 +239,7 @@
 /** Select registered IDs only; never retarget an in-flight preparation or arrival. */
 /datum/stationtrauma_overmap/proc/select_site(id)
 	var/datum/stationtrauma_overmap_site/site = sites[id]
-	if(!site || !site.discovered || preparing || arrival_pending || site.failed)
+	if(!site || !knows_site(site) || preparing || arrival_pending || site.failed)
 		return FALSE
 	control_revision++
 	autopilot = FALSE
@@ -231,14 +252,14 @@
 
 /** Recheck after any yielded preparation; a stop invalidates pending arrival. */
 /datum/stationtrauma_overmap/proc/can_arrive(datum/stationtrauma_overmap_site/site)
-	return site?.discovered && is_operational() && helm_engaged && arrival_pending && !preparing && prepared_site == site && sites[selected_destination] == site && distance_to(site) <= radius + site.radius + 2
+	return knows_site(site) && is_operational() && helm_engaged && arrival_pending && (!braking || autopilot) && speed <= 0.05 && !preparing && prepared_site == site && sites[selected_destination] == site && distance_to(site) <= radius + site.radius + 2
 
 /** Environment adapters must validate and activate their physical connection before calling the parent. */
 /datum/stationtrauma_overmap/proc/arrive(datum/stationtrauma_overmap_site/site)
 	if(can_arrive(site))
 		pos_x = site.pos_x
 		pos_y = site.pos_y
-		site.visited = TRUE
+		visited_sites[site.id] = TRUE
 		selected_destination = null
 		stop("Стоянка: [site.name]")
 	arrival_pending = FALSE
@@ -269,6 +290,8 @@
 
 /** Default first-order response; vacuum adapters can integrate thrust without environmental drag. */
 /datum/stationtrauma_overmap/proc/integrate_velocity(seconds, available)
+	if(braking || (autopilot && !available))
+		return integrate_braking(seconds)
 	var/response_time = get_response_time()
 	var/response = 1 - NUM_E ** (-seconds / response_time)
 	var/target_x = sin(course) * available

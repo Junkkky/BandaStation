@@ -12,6 +12,7 @@ window.initNavigation = function (source, initial) {
   function command(action, value) {
     window.location.href = 'byond://?src=' + source + ';action=' + action + ';value=' + encodeURIComponent(value === undefined ? '' : value);
   }
+  var updateHelm = window.bindStationTraumaHelm(document.getElementById('nav-throttle'), document.getElementById('nav-throttle-value'), command);
   function circle(context, x, y, r) { context.beginPath(); context.arc(x, y, r, 0, Math.PI * 2); }
   function ship(context, x, y, heading, length, beam) {
     context.save(); context.translate(x, y); context.rotate(heading * Math.PI / 180);
@@ -71,6 +72,9 @@ window.initNavigation = function (source, initial) {
     ship(mapCtx, x(pose.x), y(pose.y), pose.course, 12, 5);
   }
   function render() {
+    updateHelm(state.throttle, false);
+    text('nav-stop', state.braking ? 'ТОРМОЖЕНИЕ…' : 'ТОРМОЗИТЬ');
+    text('nav-braking-distance', 'До остановки ≲ ' + Math.ceil(state.braking_distance || 0) + ' м');
     var progress = Math.floor((state.progress || 0) * 100), selected = null, i;
     text('nav-status', state.status || 'Нет связи'); text('nav-percent', progress + '%');
     document.getElementById('nav-fill').style.width = progress + '%';
@@ -88,7 +92,7 @@ window.initNavigation = function (source, initial) {
     document.getElementById('engine-lamp').className = 'lamp' + (state.engines ? ' on' : '');
     mode.className = 'sonar-switch' + (state.sonar ? ' active' : ''); mode.setAttribute('aria-pressed', !!state.sonar);
     document.getElementById('nav-depart').disabled = !state.engines || state.helm || state.arrival_pending || (state.preparing && !state.travelling);
-    document.getElementById('nav-auto').disabled = !state.engines || !state.selected || state.planning || state.arrival_pending || state.autopilot;
+    document.getElementById('nav-auto').disabled = !state.engines || !state.selected || state.planning || state.arrival_pending || state.autopilot || state.throttle <= 0;
     text('nav-auto', state.planning ? 'РАСЧЁТ КУРСА…' : state.autopilot ? 'АВТОПИЛОТ ВКЛ.' : 'АВТОПИЛОТ');
     var panel = document.getElementById('nav-drives-panel');
     panel.hidden = !state.physical_drives; panel.style.display = state.physical_drives ? '' : 'none';
@@ -98,7 +102,7 @@ window.initNavigation = function (source, initial) {
       var modes = document.getElementById('nav-drive-modes'), drives = document.getElementById('nav-drives');
       while (modes.firstChild) modes.removeChild(modes.firstChild);
       while (drives.firstChild) drives.removeChild(drives.firstChild);
-      ['Тихий / 15% / 18 МВт', 'Крейсерский / 50% / 72 МВт', 'Полный / 100% / 180 МВт', 'Форсаж / 140% / 360 МВт'].forEach(function (label, index) {
+      ['Тихий · до 15% / 18 МВт', 'Крейсерский · до 50% / 72 МВт', 'Полный · до 100% / 180 МВт', 'Форсаж · до 140% / 360 МВт'].forEach(function (label, index) {
         var button = document.createElement('button'); button.type = 'button'; button.textContent = label;
         button.setAttribute('aria-pressed', state.drive_mode === index + 1); button.className = state.drive_mode === index + 1 ? 'selected' : '';
         button.onclick = function () { command('drive_mode', index + 1); }; modes.appendChild(button);
@@ -171,11 +175,6 @@ window.initNavigation = function (source, initial) {
   document.getElementById('nav-port').onclick = function () { command('turn', -15); };
   document.getElementById('nav-starboard').onclick = function () { command('turn', 15); };
   document.getElementById('nav-set-course').onclick = function () { command('course', document.getElementById('nav-course').value); };
-  document.addEventListener('keydown', function (event) {
-    if (/INPUT|TEXTAREA|SELECT/.test(event.target.tagName)) return;
-    var code = event.keyCode;
-    if (code === 32 || code === 37 || code === 39) { event.preventDefault(); command(code === 32 ? 'stop' : 'turn', code === 37 ? -15 : 15); }
-  });
   window.updateVoyage = function (raw) {
     previous = { x: pose.x, y: pose.y, course: pose.course }; state = JSON.parse(decodeURIComponent(raw)); received = Date.now(); render();
     if (!state.helm) { pose = { x: state.x, y: state.y, course: state.course }; previous = pose; }

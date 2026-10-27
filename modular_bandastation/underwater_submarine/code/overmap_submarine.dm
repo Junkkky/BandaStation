@@ -177,6 +177,21 @@
 	var/drag = 6 * vessel.nominal_drive_thrust / max(1, vessel.cruise_speed)
 	return max(1, vessel.navigation_mass) / drag
 
+/datum/stationtrauma_overmap/submarine/get_braking_acceleration()
+	if(!vessel.engines_running)
+		return 0
+	if(!vessel.requires_pgd)
+		return vessel.cruise_speed / get_response_time()
+	var/thrust = 0
+	for(var/obj/machinery/power/stationtrauma_pgd/engine as anything in vessel.drive_engines)
+		thrust += engine.available_thrust() * vessel.nominal_drive_thrust
+	return thrust / max(1, vessel.navigation_mass)
+
+/datum/stationtrauma_overmap/submarine/command_throttle(value)
+	. = ..()
+	if(. && !value)
+		vessel.stop_drive_output()
+
 /datum/stationtrauma_overmap/submarine/stop(reason = "Стоп-машина")
 	. = ..()
 	if(QDELETED(vessel))

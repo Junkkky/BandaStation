@@ -94,6 +94,8 @@
 		return "Нет забортной воды"
 	if(coil_condition <= 0)
 		return "Повреждены катушки"
+	if(!vessel.drive_command_fraction())
+		return "Нулевая тяга"
 	if(!actual_power)
 		return "Нет питания"
 	if(temperature >= 120)
@@ -106,14 +108,15 @@
 	actual_thrust = 0
 	if(enabled && vessel?.engines_running && !thermal_trip && !(machine_stat & BROKEN) && control && !(control.machine_stat & BROKEN) && has_seawater() && coil_condition > 0)
 		var/demand = rated_power * vessel.drive_power_fraction()
-		var/energy = demand * seconds_per_tick
-		// Test power belongs to the interior room, never to the ocean around the nozzle.
-		var/area/engine_room = get_area(control)
-		if(!engine_room || engine_room.requires_power)
-			energy = min(energy, surplus())
-			add_load(energy)
-		actual_power = energy / seconds_per_tick
-		actual_thrust = vessel.drive_thrust_fraction() * actual_power / demand * min(coil_condition / 100, get_integrity_percentage())
+		if(demand > 0)
+			var/energy = demand * seconds_per_tick
+			// Test power belongs to the interior room, never to the ocean around the nozzle.
+			var/area/engine_room = get_area(control)
+			if(!engine_room || engine_room.requires_power)
+				energy = min(energy, surplus())
+				add_load(energy)
+			actual_power = energy / seconds_per_tick
+			actual_thrust = vessel.drive_thrust_fraction() * actual_power / demand * min(coil_condition / 100, get_integrity_percentage())
 	// At full power the equilibrium is 95 C; boost deliberately exceeds the 145 C trip point.
 	var/cooling = NUM_E ** (-0.04 * seconds_per_tick)
 	var/previous_temperature = temperature
