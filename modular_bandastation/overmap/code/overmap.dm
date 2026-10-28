@@ -1,4 +1,4 @@
-/// Navigation metres are independent of physical turf coordinates.
+// Navigation distances are independent of turf coordinates.
 #define ST_NAV_TURN_RATE 15
 #define ST_NAV_APPROACH 40
 #define ST_NAV_ACTIVE_RANGE 1200
@@ -6,7 +6,7 @@
 #define ST_NAV_PING_INTERVAL (3 SECONDS)
 #define ST_NAV_SHIP_MEMORY (1 MINUTES)
 
-/** First contact of a moving point with a circle; null means a clear segment. */
+/** First swept point-circle contact, or null for a clear path. */
 /proc/stationtrauma_circle_hit(px, py, dx, dy, cx, cy, radius)
 	var/length_squared = dx * dx + dy * dy
 	if(!length_squared)
@@ -23,7 +23,7 @@
 	var/contact = (-projection - sqrt(discriminant)) / length_squared
 	return contact >= 0 && contact <= 1 ? contact : null
 
-/** Swept circle against a terrain segment, including its rounded ends; no tunnelling between ticks. */
+/** Swept circle-segment contact, including rounded ends. */
 /proc/stationtrauma_terrain_hit(px, py, dx, dy, ax, ay, bx, by, radius)
 	var/length = sqrt((bx - ax) ** 2 + (by - ay) ** 2)
 	if(!length)
@@ -53,7 +53,7 @@
 			contact = fraction
 	return contact
 
-/** One virtual vessel; movement never scans or relocates physical map contents. */
+/** Virtual vessel motion and observations. */
 /datum/stationtrauma_overmap
 	var/datum/stationtrauma_overmap_sector/sector
 	var/list/discovered_sites = list()
@@ -76,7 +76,7 @@
 	/// Current and ordered compass course, degrees clockwise from north.
 	var/course = 90
 	var/ordered_course = 90
-	/// Actual speed, including acceleration and braking.
+	/// Speed in navigation metres per second.
 	var/speed = 0
 	/// Persistent manual thrust order; zero thrust does not erase velocity.
 	var/throttle = 100
@@ -149,7 +149,7 @@
 	else if(!active_sonar && world.time >= next_listen)
 		listen()
 
-/** Integrate only the marker, testing the swept path before committing any position. */
+/** Integrate motion with swept collision detection. */
 /datum/stationtrauma_overmap/proc/advance()
 	var/seconds = max(0, world.time - last_update) / (1 SECONDS)
 	last_update = world.time
@@ -209,7 +209,7 @@
 			status = braking ? "Торможение" : "В пути"
 	update_parallax()
 
-/** Technical stop for collisions, completed manoeuvres and failed preparation; pilot controls request braking. */
+/** Immediate stop; pilot controls use request_brake() for gradual braking. */
 /datum/stationtrauma_overmap/proc/stop(reason = "Стоп-машина")
 	control_revision++
 	autopilot = FALSE
@@ -264,19 +264,19 @@
 		stop("Стоянка: [site.name]")
 	arrival_pending = FALSE
 
-/** Euclidean distance uses world metadata, never physical Z-levels. */
+/** Distance to a virtual destination. */
 /datum/stationtrauma_overmap/proc/distance_to(datum/stationtrauma_overmap_site/site)
 	return sqrt((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2)
 
-/** Physical ownership may stop processing without imposing a concrete vessel type. */
+/** Whether the owning vessel can still be processed. */
 /datum/stationtrauma_overmap/proc/is_operational()
 	return TRUE
 
-/** Sensor adapters decide whether a powered detector is available. */
+/** Whether a powered detector is available. */
 /datum/stationtrauma_overmap/proc/has_sensors()
 	return TRUE
 
-/** Propulsion adapters validate engine availability before engaging the helm. */
+/** Whether propulsion can engage. */
 /datum/stationtrauma_overmap/proc/propulsion_available()
 	return TRUE
 
@@ -302,7 +302,7 @@
 	velocity_y += (target_y - velocity_y) * response
 	return list(dx, dy)
 
-/** Environment-specific visual motion; no world turfs are moved by the shared model. */
+/** Update visual motion for the environment. */
 /datum/stationtrauma_overmap/proc/update_parallax()
 	return
 

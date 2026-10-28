@@ -1,4 +1,3 @@
-/// Native hull relocation is available only to ships permitted to land.
 /datum/stationtrauma_overmap/space
 	/// The original physical berth retained while the ship visits a planetary surface.
 	var/obj/docking_port/stationary/stationtrauma_space_flight/flight_berth
@@ -31,7 +30,7 @@
 			tile.insert_baseturf(2, /turf/open/space)
 			tile.insert_baseturf(3, /turf/baseturf_skipover/shuttle)
 
-/** Native preflight crushes occupants before its final check: Raven must only use the checked, non-destructive path. */
+/** Skip native trampling; expedition docking checks occupancy again after preflight. */
 /turf/toShuttleMove(turf/oldT, move_mode, obj/docking_port/mobile/shuttle)
 	if(istype(shuttle, /obj/docking_port/mobile/stationtrauma_space))
 		return move_mode
@@ -57,7 +56,7 @@
 				return FALSE
 	return TRUE
 
-/** Move once through the native machinery; maps and objects outside the hull remain resident. */
+/** Relocate the hull and its latejoin turfs through native shuttle movement. */
 /datum/stationtrauma_overmap/space/proc/relocate(obj/docking_port/stationary/target)
 	if(relocating || ship_docking || QDELETED(target) || QDELETED(vessel) || !vessel.check_dock(target, TRUE))
 		status = "Манёвр отменён: посадочная площадка занята или перекрыта"
@@ -68,9 +67,12 @@
 	preparing = TRUE
 	relocating = TRUE
 	var/list/crew_spawns = list()
-	for(var/turf/spawn_tile as anything in SSjob.latejoin_trackers)
-		if(vessel.is_in_shuttle_bounds(spawn_tile) && vessel.shuttle_areas[get_area(spawn_tile)])
-			crew_spawns[spawn_tile] = list(spawn_tile.x - vessel.x, spawn_tile.y - vessel.y)
+	var/list/old_turfs = vessel.return_ordered_turfs(vessel.x, vessel.y, vessel.z, vessel.dir)
+	var/list/new_turfs = vessel.return_ordered_turfs(target.x, target.y, target.z, target.dir)
+	for(var/index in 1 to length(old_turfs))
+		var/turf/spawn_tile = old_turfs[index]
+		if((spawn_tile in SSjob.latejoin_trackers) && vessel.shuttle_areas[get_area(spawn_tile)])
+			crew_spawns[spawn_tile] = new_turfs[index]
 	var/result
 	try
 		result = vessel.initiate_docking(target)
@@ -85,7 +87,6 @@
 		return FALSE
 	vessel.preferred_direction = turn(vessel.preferred_direction, dir2angle(original_direction) - dir2angle(vessel.dir))
 	for(var/turf/original as anything in crew_spawns)
-		var/list/offset = crew_spawns[original]
 		SSjob.latejoin_trackers -= original
-		SSjob.latejoin_trackers |= locate(vessel.x + offset[1], vessel.y + offset[2], vessel.z)
+		SSjob.latejoin_trackers |= crew_spawns[original]
 	return TRUE

@@ -53,7 +53,7 @@
 	interior_audio = new(vessel, 'modular_bandastation/space_overmap/sound/ship_interior_ambience.ogg', radius * 2 + 2, 22, _repeating = TRUE)
 	refresh_engine_audio()
 
-/** Main propulsion can be cut without destroying the existing inertial velocity or the bluespace drive. */
+/** Switch main propulsion without erasing drift. */
 /datum/stationtrauma_overmap/space/proc/set_engines_running(enabled)
 	if(!(enabled in list(FALSE, TRUE)) || !is_operational() || preparing || relocating || (enabled && engine_fraction() <= 0))
 		return FALSE

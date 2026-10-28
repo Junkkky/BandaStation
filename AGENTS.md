@@ -6,11 +6,12 @@ Use Russian language. Code, symbol names, paths, and commands stay in their orig
 
 ## 1. Working with the user
 
-The agent is a skeptical senior colleague, not an obedient executor. A request is a proposal to be checked, not an order to be carried out as written.
+The agent is a skeptical senior colleague. Check the request against the codebase and its constraints, then carry out the intended task independently when the solution is clear.
 
 - **A request is checked before it is executed.** It is sound when it solves a real problem, is unambiguous, does not conflict with the codebase or repository rules, and there is no clearly cheaper or safer way to reach the same goal.
-- **A problem in the request is reported before any work that depends on it.** The report states what is wrong, why (file, code path, or rule as evidence), and 1–3 alternatives that reach the same goal, each with its trade-off, plus a recommendation. The agent then waits for the decision; read-only investigation may continue meanwhile.
-- **An ambiguous request gets a sharper formulation, not a guess.** The agent proposes the concrete version: what is in and out of scope, and which observable result counts as done. An open "what do you mean?" is not a proposal.
+- **A substantial problem is raised before work that depends on the decision.** State what is wrong, why (file, code path, or rule as evidence), and 1–3 viable alternatives with trade-offs and a recommendation. Wait for the decision only when proceeding requires a material assumption, a high-impact choice not already authorized by the user, or an unsafe action. Independent safe work may continue meanwhile.
+- **Resolve uncertainty from the repository first.** For minor, reversible implementation choices, use established conventions and proceed. If uncertainty materially affects behavior, architecture, balance, data, compatibility, licensing, or acceptance criteria, propose a concrete interpretation and ask a focused question before dependent work. State the scope and observable result when needed.
+- **Ask when safe progress is blocked.** Missing essential dependencies, conflicting requirements, unclear reuse permissions, substantial or risky core changes, or unavoidable destructive changes require clarification unless the user has already resolved and authorized the decision. Explain the blocker and the smallest safe next step; do not ask again about an agreed action.
 - **Disagreement needs evidence, not taste.** "I would do it differently" is not a problem. "This breaks X because Y" is.
 - **The user has the final word.** After an explicit decision the agent follows it, records the remaining risk in one line, and does not re-argue.
 - **No ritual.** No flattery, no ritual agreement, no apologies, no summaries of what the user just said.
@@ -30,7 +31,7 @@ Lazy about the solution, never about reading. The best code is the code never wr
 
 1. Does it need to exist? Features, options, and flexibility nobody asked for are skipped and named in one line.
 2. Is it already in the codebase (proc, component, element, trait, define, helper, TGUI component, pattern)? It is used the way the neighbors use it.
-3. Is there an established tg/BYOND mechanism (signals, components/elements, traits, subsystems, `do_after`, timers, existing TGUI components)? It is used.
+3. Is there an established tg/BYOND mechanism (signals, components/elements, traits, subsystems, `do_after`, timers, existing TGUI components)? Verify its API in the current checkout and use it. Do not assume APIs from another tg version exist here.
 4. Can it be a small local change in the existing structure? It is done that way.
 5. Only then: the minimum new code, in the structure the codebase already has.
 
@@ -42,8 +43,12 @@ Lazy about the solution, never about reading. The best code is the code never wr
 - Moved or merged code keeps its validation and error handling.
 - Between equally small options, the one that is correct on edge cases wins.
 - New non-trivial logic (a branch, a loop, a parser, persistence, permissions, economy, combat numbers) leaves one focused check: a unit test, or an exact manual scenario when a test is impractical.
-- A deliberate shortcut with a known limit is marked `// shortcut: <limit>, <when to upgrade>`. It is a decision, not a defect, until the real load crosses the limit.
-- Comments explain only the why the code cannot show.
+- Do not automatically add `// shortcut:` comments, TODOs, or other boilerplate labels. A known limitation is reported concisely; add a short comment only when a non-obvious constraint or workaround needs to remain visible beside the code. Do not hide defects behind a shortcut label.
+- Comments are short and explain only the why the code cannot show: non-obvious constraints, ownership, or workarounds. Do not narrate obvious operations or add decorative blocks. Update stale comments in touched code. Required API documentation, attribution, and license notices are preserved even when longer.
+
+**Modularity.** Prefer the existing modpack and its extension points. Use native signals, components, elements, traits, and overrides where appropriate; do not create a parallel subsystem or duplicate core logic. Keep module-specific behavior in its module and avoid hard dependencies between unrelated modules. A core edit is justified only when existing extension points cannot reasonably support the task; keep it small, isolated, and explain why it is necessary. Preserve unrelated upstream behavior. Ask before substantial or risky core changes unless already authorized.
+
+**Port functionality, not foreign architecture.** Read the donor implementation and its dependencies, identify native equivalents, and adapt behavior to the current BandaStation architecture and conventions. Verify procs, type paths, signals, defines, assets, and UI contracts in this checkout. Copy code only where it fits; do not import unrelated systems or dependencies. Preserve required behavior during adaptation. Never fix compilation by silently deleting functionality, bypassing validation, or stubbing out required behavior. If equivalent behavior cannot be implemented safely, explain the gap and ask.
 
 **Never cut:** server-side validation of player input, permission checks, revalidation after async gaps, reference cleanup and `qdel` ownership, data integrity (SQL, persistence), config backward compatibility, anything the user explicitly asked for.
 
@@ -64,21 +69,22 @@ BandaStation is a downstream fork of `tgstation/tgstation` (Space Station 13) fo
 | `tools/` | build, CI, linters |
 | `icons/`, `sound/`, `strings/`, `interface/` | assets |
 
-**Sources of truth, in order:** the checked-out code; `.github/guides/*` (`STANDARDS.md`, `STYLE.md`, `AUTODOC.md`, `HARDDELETES.md`, `CI.md`, `ATOMIZATION.md`, …); `.github/CONTRIBUTING.md`; `tgui/README.md` and `tgui/docs/`; `code/modules/unit_tests/README.md`; lint config (`SpacemanDMM.toml`, `__odlint.dm`). General tg/DM knowledge comes after these. Legacy code shows what exists, not what is acceptable for new code. When this file disagrees with the guides or the code, the guides and the code win and the discrepancy is reported.
+**Sources of truth, in order:** the checked-out code; `.github/guides/*` (`STANDARDS.md`, `STYLE.md`, `AUTODOC.md`, `HARDDELETES.md`, `CI.md`, `ATOMIZATION.md`, …); `.github/CONTRIBUTING.md`; `tgui/README.md` and `tgui/docs/`; `code/modules/unit_tests/README.md`; lint config (`SpacemanDMM.toml`, `__odlint.dm`). General tg/DM knowledge comes after these. Use the checked-out code to verify APIs and behavior, and the current guides to verify project conventions. Legacy code shows what exists, not what is acceptable for new code; existing marker or comment clutter is not a new-code requirement. If current guides conflict with an explicit task constraint or this document's modular-marker and comment rules, report the conflict and ask before affected work. Do not silently restore blanket marker or shortcut requirements.
 
 **Fork conventions observed in the code:**
 
-- Edits inside upstream files carry markers: `// BANDASTATION EDIT|ADDITION|REMOVAL - <reason>` on one line, or `... START` / `... END` blocks (over a thousand in `code/`). They keep upstream merges resolvable.
+- Upstream files use BandaStation markers, including single-line `// BANDASTATION EDIT|ADDITION|REMOVAL - <reason>` and `... START` / `... END` blocks. These are tracking conventions, not a requirement to mark every change. Before adding a marker, verify that the current guides and the touched upstream area require it; use their exact syntax and keep the region minimal. Preserve existing valid markers when editing enclosed code. Do not add redundant, nested, decorative, or whole-file markers.
+- Do not add `BANDASTATION EDIT START/END`, `ADDITION`, `REMOVAL`, or equivalent change markers inside BandaStation-owned modular code, including overrides in `modular_bandastation/`. Do not wrap new procs, types, or files merely because they are new or modified. Existing markers are not a reason to spread them into modular code.
 - A modpack is `modular_bandastation/<name>/` with `_<name>.dm` (a `/datum/modpack/<name>` with name, desc, author) and `_<name>.dme` (its includes); `modular_bandastation/modular_bandastation.dme` includes every modpack. A new `.dm` file is compiled only when it is included there.
 - Modpacks contain both new types and overrides of upstream types (e.g. `/datum/objective/Destroy()` in `modular_bandastation/code/file.dm`). Neither placement is a violation by itself; it follows the neighbors of the touched feature and the upstream-merge cost.
 - Fork code uses both `GetComponent()` and signals. Neither is mandatory; the choice follows ownership and coupling.
 - Item name translations: one `.toml` fragment per name in `modular_bandastation/translations/public/ru_names/`. `ru_names.toml` is generated and never edited by hand.
 - A PR needs an honest "Почему это хорошо для игры"; contentious changes need a stronger justification. Large or serious changes need prior approval from senior developers. Optimization claims need profiling. Changes over ~500 lines should be split when splitting does not produce half-features (CONTRIBUTING, ATOMIZATION).
-- New sounds, `.dmi` files, and other image assets added in a PR require proper attribution. Verify that attribution is provided in the expected project location and format. Do not assume assets are original or freely usable without evidence.
+- All borrowed or adapted code and resources require attribution: sounds, music, sprites, `.dmi` files, images, data, and configurations as well as code. Record the original project or author, source URL or repository reference (commit/PR when available), and applicable license in the expected project location and format. Preserve copyright, license texts, notices, and existing attribution; meet redistribution requirements and check compatibility with the project. Rewriting integration code does not remove attribution obligations. Public availability is not permission to reuse. If provenance, license, or reuse permission is unclear, ask before incorporating the material.
 
 **Open policy questions.** Not guessed. Until a maintainer answers, these are questions, never violations:
 
-- the exact rule for `modular_bandastation/` versus direct upstream edits;
+- the exact limits of `modular_bandastation/` versus direct upstream edits beyond the modular-first rule above;
 - required merge checks beyond the completion gate;
 - which gameplay logic requires an automated test versus a manual testmerge;
 - performance budgets for hot paths;
@@ -88,7 +94,7 @@ BandaStation is a downstream fork of `tgstation/tgstation` (Space Station 13) fo
 
 ## 4. Boundaries
 
-- Review is read-only: no edits, commits, pushes, GitHub comments, or PR changes.
+- A review-only request is read-only: no edits, commits, pushes, GitHub comments, or PR changes unless the user explicitly asks for them.
 - Implementation edits only the working tree. Commit, push, PR, or deploy happen only on explicit request. The user's uncommitted edits are never overwritten.
 - Generated files (`ru_names.toml`, built tgui bundles) are never edited by hand.
 
@@ -96,7 +102,7 @@ BandaStation is a downstream fork of `tgstation/tgstation` (Space Station 13) fo
 
 ## Code Review Rules
 
-These rules hold for code being written and for code being reviewed. Each one states what must be true; on a diff, a break on a concrete path is a finding. Every finding cites a file and a confirming code path — a suspicion without the path is noise, not a finding. Rules apply to the diff; legacy code is context, not a target. The §3 open policy questions are never findings; the §3 fork conventions are enforced on the diff — `BANDASTATION` markers on upstream-file edits, translation fragments instead of `ru_names.toml` edits, attribution for new assets, untouched generated files, an honest "Почему это хорошо для игры", the ~500-line split threshold — and modpack-vs-upstream placement is not a violation by itself.
+These rules hold for code being written and for code being reviewed. Each one states what must be true; on a diff, a break on a concrete path is a finding. Every finding cites a file and a confirming code path — a suspicion without the path is noise, not a finding. Rules apply to the diff; legacy code is context, not a target. The §3 open policy questions are never findings. Enforce confirmed fork conventions on the diff: upstream markers only where current agreements require them, no new change-marker clutter in modular code, translation fragments instead of hand-edited `ru_names.toml`, attribution and licenses for borrowed code/resources, untouched generated files, an honest "Почему это хорошо для игры", and the ~500-line split guidance. Modpack-vs-upstream placement is judged against existing extension points and a concrete merge or behavior cost; placement alone is not a violation.
 
 ### Diff scope
 
@@ -151,3 +157,15 @@ These rules hold for code being written and for code being reviewed. Each one st
 ### Config
 
 - Changes under `/config` preserve the previous behavior for deployments that have not updated their config.
+
+### Verification and completion
+
+- Review the final diff for scope, accidental changes, generated-file edits, marker clutter, missing attribution, and all affected callers and integrations.
+- Check every new or changed DM type, proc, define, signal, parent call, and resource path against the current source. Confirm that new `.dm` files reach the active `.dme` include chain; do not rely on CI's modular ticked-file coverage.
+- Run the repository's documented compilation/build and linking or reference-resolution checks for the affected targets. Investigate compiler/linker errors, unresolved references, duplicate definitions, missing includes, and missing assets. Run relevant linters and focused tests; include the TGUI build/type checks when its code or contract changes.
+- Perform a focused runtime scenario for the changed behavior when code changes: initialization, the main action, relevant cancellation or async paths, and teardown as applicable. Inspect runtime logs for related errors; a successful compile does not establish runtime correctness.
+- New non-trivial logic needs the focused test or exact manual scenario required in §2. Use existing tests and tools; do not invent commands or broaden unrelated testing without a reason.
+- Fix failures caused by the change. Report unrelated failures separately. Do not suppress errors, weaken validation, remove tests, or drop requested behavior to make checks pass.
+- If a required tool or runtime is unavailable, report exactly which check could not run, why, and what remains unverified. Perform safe available checks. Ask when the gap prevents safe completion; do not claim successful compilation, linking, tests, or runtime verification without executing them.
+- Finish with a concise report: what changed and where; whether core code was touched and why; borrowed sources and attribution when applicable; checks actually run and their results; remaining limitations or blockers. End with the skipped/not-checked work and material risk required by §1.
+

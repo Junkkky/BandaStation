@@ -48,7 +48,7 @@
 		placements += list(list(template, x, y))
 	return placements
 
-/** Native loading initializes the real inhabitants, loot and machines, once before the round. */
+/** Load reserved ruins and retain their IDs. */
 /datum/stationtrauma_overmap_site/space/planet/proc/load_ruins(list/placements, turf/origin)
 	for(var/list/placement as anything in placements)
 		var/datum/map_template/ruin/expedition/template = placement[1]

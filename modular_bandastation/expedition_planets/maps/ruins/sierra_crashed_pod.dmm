@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/crashed_pod/crashed_pod.dmm
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "af" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/blue,
@@ -476,7 +476,7 @@
 "yl" = (
 /obj/item/paper{
 	name = "полевой журнал: Аварийная капсула";
-	 default_raw_text = "Объект: Аварийная капсула. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	default_raw_text = "Объект: Аварийная капсула. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
 /obj/machinery/power/apc/auto_name/directional/south{
 	name = "south bump"
@@ -942,10 +942,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
-"Zg" = (
-/obj/machinery/atmospherics/components/unary/portables_connector,
-/turf/closed/wall/r_wall,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
 "Zw" = (
 /obj/structure/closet,
 /obj/effect/spawner/random/clothing/costume,
@@ -1100,7 +1096,7 @@ rl
 "}
 (8,1,1) = {"
 tJ
-Zg
+tJ
 UX
 vF
 EZ

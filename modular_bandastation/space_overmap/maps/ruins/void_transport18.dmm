@@ -356,13 +356,6 @@
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
-"mJ" = (
-/obj/structure/lattice,
-/obj/effect/decal/cleanable/dirt{
-	dir = 8
-	},
-/turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
 "mQ" = (
 /obj/item/stack/cable_coil,
 /obj/effect/decal/cleanable/dirt,
@@ -620,12 +613,6 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
-"uf" = (
-/obj/effect/decal/cleanable/dirt{
-	dir = 2
-	},
-/turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
 "ul" = (
 /obj/item/trash/can{
 	pixel_y = -4
@@ -805,7 +792,7 @@
 "yB" = (
 /obj/item/paper{
 	name = "полевой журнал: Потерянный транспорт";
-	 default_raw_text = "Объект: Потерянный транспорт. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	default_raw_text = "Объект: Потерянный транспорт. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
 /obj/structure/door_assembly/door_assembly_hatch,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1263,12 +1250,6 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
-"Nk" = (
-/obj/effect/decal/cleanable/dirt{
-	dir = 4
-	},
-/turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
 "NO" = (
 /obj/structure/reagent_dispensers/keg/beer,
 /obj/effect/turf_decal/tile/yellow,
@@ -1278,13 +1259,6 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
-"Od" = (
-/obj/effect/decal/cleanable/dirt{
-	dir = 2
-	},
-/obj/structure/lattice,
-/turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
 "Oq" = (
 /obj/effect/mob_spawn/corpse/human/cargo_tech,
 /obj/effect/decal/cleanable/dirt,
@@ -1531,6 +1505,9 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Sn" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
 "Ss" = (
 /obj/structure/table/reinforced,
 /obj/item/radio/intercom,
@@ -1621,13 +1598,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
-"WB" = (
-/obj/effect/decal/cleanable/dirt{
-	dir = 1
-	},
-/obj/structure/lattice,
-/turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
 "WE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -1705,13 +1675,6 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
-"XG" = (
-/obj/structure/lattice,
-/obj/effect/decal/cleanable/dirt{
-	dir = 4
-	},
-/turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
 "XM" = (
 /obj/machinery/light/dim{
 	dir = 8
@@ -1782,7 +1745,7 @@ eg
 eg
 so
 eg
-Nk
+Sn
 eg
 eg
 eg
@@ -2030,7 +1993,7 @@ eg
 eg
 eg
 eg
-Nk
+Sn
 eg
 eg
 eg
@@ -2135,13 +2098,13 @@ xv
 nn
 eg
 nn
-XG
+nn
 nn
 VP
 mQ
-mJ
+nn
 eg
-Nk
+Sn
 eg
 eg
 eg
@@ -2191,7 +2154,7 @@ GY
 so
 eg
 eO
-Od
+nn
 nn
 nc
 eg
@@ -2227,7 +2190,7 @@ nR
 SJ
 nn
 eg
-XG
+nn
 so
 eg
 fG
@@ -2258,13 +2221,13 @@ so
 tj
 Je
 nn
-WB
+nn
 tP
 KF
 so
 so
 VP
-uf
+Sn
 eg
 nn
 eg
@@ -2326,7 +2289,7 @@ Fk
 jM
 so
 eg
-Nk
+Sn
 RX
 jM
 eg

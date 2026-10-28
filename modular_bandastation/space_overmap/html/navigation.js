@@ -209,5 +209,5 @@ window.initSpaceNavigation = function (source, initial) {
     if (next.sector !== state.sector) focusedContact = null;
     state = next; render();
   };
-  render(); window.setInterval(function () { command('refresh'); }, 500);
+  render(); window.setInterval(function () { if (!document.hidden) command('refresh'); }, 500);
 };

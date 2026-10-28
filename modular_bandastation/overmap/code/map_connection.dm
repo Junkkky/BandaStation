@@ -1,10 +1,10 @@
-/** Own a full-width, multi-deck connection without moving either physical vessel or destination. */
+/** Own passages and previews across a full-width, multi-deck seam. */
 /datum/stationtrauma_map_connection
-	/// Native physical footprint; no submarine or water dependency.
+	/// Vessel supplying the physical footprint.
 	var/obj/docking_port/mobile/vessel
 	/// Number of contiguous physical decks connected together.
 	var/decks
-	/// Vessel-facing side of the connection; ocean vessels retain the northward default.
+	/// Vessel-facing side of the seam.
 	var/direction = NORTH
 	/// One publication flag controls every prepared passage.
 	var/active = FALSE
@@ -37,16 +37,28 @@
 	SIGNAL_HANDLER
 	qdel(src)
 
+/datum/stationtrauma_map_connection/proc/member_deleted(datum/source)
+	SIGNAL_HANDLER
+	UnregisterSignal(source, COMSIG_QDELETING)
+	if((source in passages) || (source in previews))
+		revision++
+	passages -= source
+	previews -= source
+
 /** A physical map cannot be connected until its atom initialization has finished. */
 /datum/stationtrauma_map_connection/proc/is_loading()
 	return SSatoms.initialized == INITIALIZATION_INNEW_MAPLOAD
 
-/** A voyage never deletes actors or construction at either endpoint. */
+/** Delete owned passages and previews. */
 /datum/stationtrauma_map_connection/proc/disconnect()
 	active = FALSE
 	revision++
-	QDEL_LIST(previews)
-	QDEL_LIST(passages)
+	var/list/old_previews = previews
+	var/list/old_passages = passages
+	previews = list()
+	passages = list()
+	QDEL_LIST(old_previews)
+	QDEL_LIST(old_passages)
 
 /** Close every gate immediately, then spread subscription destruction over server ticks. */
 /datum/stationtrauma_map_connection/proc/disconnect_cooperatively(datum/stationtrauma_work_budget/budget)
@@ -95,7 +107,7 @@
 		disconnect_cooperatively(budget)
 	return ready
 
-/** Native components remain disabled while yields permit the rest of the game to run. */
+/** Build inactive passages and previews cooperatively. */
 /datum/stationtrauma_map_connection/proc/prepare(obj/docking_port/stationary/berth, datum/stationtrauma_work_budget/budget, ship_clearance, site_clearance)
 	var/clearance = max(30, maxviewdist())
 	ship_clearance ||= clearance
@@ -125,14 +137,16 @@
 			for(var/turf/open/tile as anything in list(ship_gate, site_gate, ship_landing, site_landing))
 				if(!gate_available(tile))
 					return FALSE
-			passages += ship_gate.AddComponent(passage_type, site_landing, direction, src)
-			passages += site_gate.AddComponent(passage_type, ship_landing, REVERSE_DIR(direction), src)
+			for(var/datum/component/stationtrauma_map_passage/passage as anything in list(ship_gate.AddComponent(passage_type, site_landing, direction, src), site_gate.AddComponent(passage_type, ship_landing, REVERSE_DIR(direction), src)))
+				passages += passage
+				RegisterSignal(passage, COMSIG_QDELETING, PROC_REF(member_deleted))
 	for(var/deck in 0 to decks - 1)
 		var/turf/ship_gate = locate(horizontal ? ship_edge : 1, horizontal ? 1 : ship_edge, vessel.z + deck)
 		var/turf/site_gate = locate(horizontal ? site_edge : 1, horizontal ? 1 : site_edge, berth.z + deck)
 		for(var/turf/gate as anything in list(ship_gate, site_gate))
 			var/datum/stationtrauma_map_preview/preview = new preview_type(gate.GetComponent(/datum/component/stationtrauma_map_passage), extent, TRUE)
 			previews += preview
+			RegisterSignal(preview, COMSIG_QDELETING, PROC_REF(member_deleted))
 			if(!preview.rebuild(budget) || QDELETED(src) || QDELETED(vessel) || prepared_revision != revision)
 				return FALSE
 	return TRUE

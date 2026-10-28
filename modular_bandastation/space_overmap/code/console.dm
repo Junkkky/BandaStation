@@ -1,4 +1,4 @@
-/// Ordinary shuttle-computer appearance, with no emergency-shuttle controller or sonar.
+/** Navigation and helm console. */
 /obj/machinery/computer/stationtrauma_space_navigation
 	name = "навигационная консоль"
 	desc = "Орбитальная карта, управление тягой и стыковкой корабля."
@@ -75,7 +75,7 @@
 		data["planet"] = planet.survey_data()
 	return data
 
-/** Validate every control server-side, including stale windows and hand-written hrefs. */
+/** Validate and dispatch a helm command. */
 /obj/machinery/computer/stationtrauma_space_navigation/proc/navigation_command(action, value)
 	var/datum/stationtrauma_overmap/space/map = vessel?.overmap
 	if(!map || map.relocating || panel_open || (machine_stat & (NOPOWER|BROKEN)))

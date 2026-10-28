@@ -1,4 +1,4 @@
-/// Vacuum adapter; shared routes, swept collisions, passages and previews also serve submarines.
+/** Vacuum propulsion and physical vessel navigation. */
 /datum/stationtrauma_overmap/space
 	throttle = 0
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
@@ -75,7 +75,7 @@
 /datum/stationtrauma_overmap/space/is_operational()
 	return !QDELETED(vessel)
 
-/** Native engine membership is maintained by shuttle construction/destruction, not world scans. */
+/** Available fraction of the native engine registry's nominal power. */
 /datum/stationtrauma_overmap/space/proc/engine_fraction()
 	var/power = 0
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
@@ -221,7 +221,7 @@
 			prepared_site = null
 	return ..()
 
-/** Only the autopilot stops at its destination; manual flight never triggers an automatic stop. */
+/** Stop the autopilot at its destination; manual flight remains unrestricted. */
 /datum/stationtrauma_overmap/space/arrive(datum/stationtrauma_overmap_site/site)
 	if(autopilot && can_arrive(site))
 		stop("Точка назначения достигнута: [site.name]")

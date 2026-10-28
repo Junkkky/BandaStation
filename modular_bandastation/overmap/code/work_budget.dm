@@ -1,9 +1,8 @@
-/** Bound our own uninterrupted work; do not change global maploading or MC scheduling limits. */
+/** Bound module work within native MC scheduling limits. */
 /datum/stationtrauma_work_budget
 	var/slice_tick = -1
 	var/slice_start = 0
-	var/peak_usage = 0
-	/// Ten percent of a normal server tick, plus at most one native batch.
+	/// Runtime work gets ten percent of a tick; initialization uses the native MC limit.
 	var/allowance = 10
 
 /datum/stationtrauma_work_budget/proc/yield()
@@ -11,8 +10,7 @@
 		slice_tick = world.time
 		slice_start = TICK_USAGE
 	var/used = max(0, TICK_USAGE - slice_start)
-	peak_usage = max(peak_usage, used)
-	if(used < allowance && TICK_USAGE < TICK_LIMIT_MC)
+	if(TICK_USAGE < TICK_LIMIT_MC && (Master.current_initializing_subsystem || used < allowance))
 		return
 	sleep(world.tick_lag)
 	slice_tick = world.time

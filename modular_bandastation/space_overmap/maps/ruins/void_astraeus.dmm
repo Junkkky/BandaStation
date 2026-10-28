@@ -28,7 +28,7 @@
 "aA" = (
 /obj/item/paper{
 	name = "полевой журнал: Аварийный корабль Astraeus";
-	 default_raw_text = "Объект: Аварийный корабль Astraeus. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	default_raw_text = "Объект: Аварийный корабль Astraeus. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
 /obj/item/chair,
 /obj/effect/turf_decal/tile/blue,
@@ -733,6 +733,9 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"qp" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
 "qK" = (
 /obj/structure/table_frame,
 /obj/effect/turf_decal/tile/blue,
@@ -1173,12 +1176,6 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
-"AV" = (
-/obj/effect/decal/cleanable/dirt{
-	dir = 4
-	},
-/turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
 "AX" = (
 /obj/machinery/conveyor{
 	dir = 6
@@ -2082,12 +2079,6 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
-"UW" = (
-/obj/effect/decal/cleanable/dirt{
-	dir = 4
-	},
-/turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
 "Vf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small,
@@ -2300,6 +2291,9 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"ZE" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
 "ZR" = (
 /obj/structure/chair{
 	dir = 1
@@ -2428,7 +2422,7 @@ ac
 ac
 ac
 ac
-AV
+ZE
 tk
 OV
 tk
@@ -3408,7 +3402,7 @@ ac
 ac
 ac
 ac
-AV
+ZE
 ac
 ac
 ac
@@ -3441,7 +3435,7 @@ ac
 ac
 ac
 jP
-AV
+ZE
 ac
 ac
 ac
@@ -3502,7 +3496,7 @@ ac
 ac
 ac
 ac
-UW
+qp
 aQ
 jm
 Rq

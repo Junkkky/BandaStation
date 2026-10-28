@@ -1,4 +1,4 @@
-/** A manually operated field instrument; no periodic scanning and no techweb connection. */
+/** Field instrument for surveying research sources. */
 /obj/item/stationtrauma_field_scanner
 	name = "полевой исследовательский сканер"
 	desc = "Обследует экспедиционные находки перед отбором проб."
@@ -19,7 +19,7 @@
 		INVOKE_ASYNC(src, PROC_REF(survey), target, user)
 	return TRUE
 
-/** Survey manually and recheck the operator after the interruptible action. */
+/** Survey a source while the operator holds the scanner. */
 /obj/item/stationtrauma_field_scanner/proc/survey(obj/structure/stationtrauma_research_source/source, mob/living/user)
 	if(busy || QDELETED(source) || !user?.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH))
 		return
@@ -109,7 +109,7 @@
 	balloon_alert(user, "проба запечатана")
 	playsound(src, 'sound/machines/ping.ogg', 25, TRUE)
 
-/** A powered laboratory endpoint; specimens must be physically brought here and held throughout. */
+/** Laboratory analyzer requiring a held specimen throughout the analysis. */
 /obj/machinery/stationtrauma_sample_analyzer
 	name = "анализатор экспедиционных проб"
 	desc = "Приложите запечатанную экспедиционную пробу для анализа и печати отчёта."
@@ -169,13 +169,13 @@
 /obj/item/paper/stationtrauma_research_report
 	can_become_message_in_bottle = FALSE
 
-/** Native machine-frame construction, with no science unlock or changes to the existing techweb. */
+/** Construction board for the sample analyzer. */
 /obj/item/circuitboard/machine/stationtrauma_sample_analyzer
 	name = "Анализатор экспедиционных проб"
 	build_path = /obj/machinery/stationtrauma_sample_analyzer
 	req_components = list(/datum/stock_part/scanning_module = 1, /datum/stock_part/servo = 1)
 
-/** A map/admin-spawnable starting kit, without altering ordinary station supply packs. */
+/** Field scanner and sample-container kit. */
 /obj/item/storage/box/stationtrauma_research
 	name = "комплект полевого исследователя"
 	desc = "Полевой сканер и четыре стерильных контейнера для экспедиционных проб."

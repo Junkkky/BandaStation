@@ -7,7 +7,7 @@
 	throttle = value
 	return TRUE
 
-/** Cancel automation immediately, then shed velocity using available machinery and environmental drag. */
+/** Cancel automation and brake with available propulsion and drag. */
 /datum/stationtrauma_overmap/proc/request_brake()
 	control_revision++
 	autopilot = FALSE
@@ -28,7 +28,7 @@
 /datum/stationtrauma_overmap/proc/get_braking_distance()
 	return speed * get_response_time()
 
-/** Exact radial deceleration with linear drag; no velocity reversal or motion after stopping mid-step. */
+/** Integrate radial braking with linear drag, stopping within the step. */
 /datum/stationtrauma_overmap/proc/integrate_braking(seconds)
 	var/magnitude = sqrt(velocity_x ** 2 + velocity_y ** 2)
 	if(!magnitude)

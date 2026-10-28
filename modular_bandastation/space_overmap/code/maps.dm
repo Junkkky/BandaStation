@@ -34,7 +34,7 @@
 	new /obj/item/stack/sheet/glass(src, 5)
 	new /obj/item/stack/cable_coil(src, 20)
 
-/// Native engines and hull ownership, without the emergency shuttle's evacuation controller.
+/** Native shuttle hull participating in the overmap. */
 /obj/docking_port/mobile/stationtrauma_space
 	name = "Корабль"
 	shuttle_id = "overmap_ship"
@@ -92,7 +92,7 @@
 
 /datum/stationtrauma_overmap_site/space
 	var/datum/stationtrauma_overmap/space/docking_owner
-	/// Landing and docking share transitions, but remain explicit navigation orders.
+	/// Whether this destination requires a surface landing.
 	var/landing = FALSE
 	var/physical_docking = FALSE
 	var/needs_scan = FALSE
@@ -108,14 +108,14 @@
 			stationtrauma_space_vacuum(z_level)
 	return ..()
 
-/** Native ruins and authored destinations need the same traversable vacuum outside their footprint. */
+/** Initialize vacuum outside a loaded template's footprint. */
 /proc/stationtrauma_space_vacuum(z_level)
 	var/datum/stationtrauma_work_budget/budget = new
 	for(var/turf/open/space/tile in block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level)))
 		tile.air ||= tile.space_gas
 		budget.yield()
 
-/// Native equipment for actually leaving the prototype and collecting asteroid ore.
+/** Starting EVA and mining equipment. */
 /obj/structure/closet/crate/stationtrauma_space_eva
 	name = "экспедиционное снаряжение"
 

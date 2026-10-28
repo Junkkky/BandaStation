@@ -69,7 +69,6 @@
 	site.docking_owner = src
 	dispatch_target = site
 	preparing = TRUE
-	// shortcut: fixed ten-second dispatch; replace with travel time when station routes are balanced.
 	dispatch_timer = addtimer(CALLBACK(src, PROC_REF(finish_dispatch), control_revision), 10 SECONDS, TIMER_STOPPABLE)
 	return TRUE
 

@@ -1,4 +1,4 @@
-/** Local continuation of actors and terrain; the physical scene stays on its original map. */
+/** Local visual continuation of remote actors, terrain and lighting. */
 /datum/stationtrauma_map_preview
 	/// Stable coordinates survive turf replacement while the strip is being rebuilt.
 	var/list/local_origin
@@ -205,7 +205,7 @@
 	// Timer hashes stringify arguments; equally named actors still need separate refreshes.
 	addtimer(CALLBACK(src, PROC_REF(refresh), actor, REF(actor)), 0, TIMER_UNIQUE)
 
-/** Translate only the carrier's position; the real atom remains on its original map. */
+/** Synchronize a local carrier with its remote actor. */
 /datum/stationtrauma_map_preview/proc/refresh(atom/actor)
 	SIGNAL_HANDLER
 	if(closing || !enabled || QDELETED(src) || !(actor in projections))
@@ -235,7 +235,7 @@
 	UnregisterSignal(actor, list(COMSIG_MOVABLE_MOVED, COMSIG_QDELETING, COMSIG_ATOM_SET_OPACITY, COMSIG_ATOM_UPDATED_ICON, COMSIG_ATOM_POST_DIR_CHANGE, COMSIG_ATOM_COLOR_UPDATED, COMSIG_CARBON_APPLY_OVERLAY, COMSIG_CARBON_REMOVE_OVERLAY, COMSIG_LIVING_POST_UPDATE_TRANSFORM))
 	qdel(carrier)
 
-/** A visual-only carrier; live vis_contents preserve outfits, alpha, direction and swimming animation. */
+/** Visual carrier retaining the remote atom's live appearance. */
 /obj/effect/abstract/stationtrauma_map_projection
 	name = "map passage preview"
 	icon = null
@@ -275,7 +275,6 @@
 		opacity = old_opacity
 		vis_contents.Cut()
 	else
-		// Live vis_contents retain immersion, outfits and animations.
 		vis_contents = list(actor)
 		if(!isprojectile(actor))
 			var/datum/component/stationtrauma_map_click/clicks = actor.LoadComponent(/datum/component/stationtrauma_map_click)
@@ -327,11 +326,11 @@
 	if(!projections.len)
 		qdel(src)
 
-/** Space exteriors are valid without requiring a water component. */
+/** Whether the local tile can display a remote scene. */
 /datum/stationtrauma_map_preview/proc/local_tile_available(turf/tile)
 	return isspaceturf(tile)
 
-/** Track real actor and terrain changes; environment-specific visual subscriptions may extend this. */
+/** Subscribe to remote actor and terrain changes. */
 /datum/stationtrauma_map_preview/proc/watch_remote(turf/tile)
 	RegisterSignals(tile, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(actor_entered))
 	RegisterSignal(tile, COMSIG_ATOM_UPDATED_ICON, PROC_REF(queue_refresh))

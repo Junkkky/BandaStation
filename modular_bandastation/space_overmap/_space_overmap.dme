@@ -18,6 +18,3 @@
 #include "code/admin.dm"
 #include "code/startup.dm"
 #include "code/parallax.dm"
-#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
-#include "code/bluespace_test.dm"
-#endif

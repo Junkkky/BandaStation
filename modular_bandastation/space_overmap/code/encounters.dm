@@ -1,4 +1,4 @@
-/** Space effects stay local to the owner; no global round event or station-Z selection. */
+/** Vessel-local encounter state. */
 /datum/stationtrauma_overmap/space
 	var/list/zones = list()
 	var/list/zone_timers = list()
@@ -11,7 +11,7 @@
 	var/sensor_range = 600
 	var/encounter_status = "Маршрут свободен"
 
-/** Fixed regions with round-local variation; small location maps are still preloaded once. */
+/** Create round-local encounter regions and persistent obstacles. */
 /datum/stationtrauma_overmap_sector/space/proc/build_encounters()
 	zones += new /datum/stationtrauma_overmap_zone("Астероидный пояс / обломки", "asteroids", 1250, -450, 360)
 	// A central full-speed crossing must outlast the warning instead of making every storm harmless.
@@ -65,7 +65,7 @@
 			discover_site(site)
 			navigation_notice("Обнаружен контакт — [site.name].")
 
-/** Rare entry/discovery notifications reach crew throughout the hull, not only near its port marker. */
+/** Notify everyone aboard the vessel. */
 /datum/stationtrauma_overmap/space/proc/navigation_notice(message)
 	for(var/mob/crew as anything in GLOB.player_list)
 		if(vessel.is_in_shuttle_bounds(crew))

@@ -61,7 +61,7 @@
 
 /** The reservation and open cross keep landing, the laboratory and the field connected. */
 /datum/map_generator/expedition_barren/proc/terrain_at(x, y)
-	// shortcut: a bounded landing region; replace the opaque rim when larger surfaces are introduced.
+	// The opaque rim bounds this surface within its otherwise empty z-level.
 	if(x <= 2 || y <= 2 || x > width - 2 || y > width - 2)
 		return /turf/closed/indestructible/rock
 	if(is_reserved(x, y))
@@ -173,13 +173,12 @@
 		qdel(generator)
 		qdel(site)
 		return null
-	site.id = planet_id
 	site.name = planet_name
 	site.pos_x = -100
 	site.pos_y = -1250
 	site.seed = seed
 	site.surface_width = generator.width
-	for(var/obj/docking_port/stationary/stationtrauma_space_surface/pad as anything in SSshuttle.stationary_docking_ports)
+	for(var/obj/docking_port/stationary/stationtrauma_space_surface/pad in SSshuttle.stationary_docking_ports)
 		if(pad.z == level.z_value)
 			site.berth = pad
 			pad.name = "Посадочная площадка экспедиции"

@@ -1,4 +1,4 @@
-/** Persistent location metadata; loading a site does not replace its world identity. */
+/** Persistent virtual destination and its physical berth. */
 /datum/stationtrauma_overmap_site
 	/// Stable mapped docking ID, independent of display name and storage z.
 	var/id
@@ -57,7 +57,7 @@
 		if(distance <= ST_NAV_PASSIVE_RANGE * min(1, contact.noise / 50) / masking)
 			echoes += list(list("kind" = "noise", "x" = contact.pos_x, "y" = contact.pos_y))
 
-/** A shared pulse reveals actual terrain and targets. */
+/** Detect terrain and destinations within active sensor range. */
 /datum/stationtrauma_overmap/proc/ping()
 	if(!active_sonar || world.time < next_ping)
 		return FALSE
@@ -99,7 +99,7 @@
 		known += list(list("id" = id, "name" = site.name, "x" = site.pos_x, "y" = site.pos_y, "distance" = round(distance_to(site)), "failed" = site.failed, "visited" = (site.visited || visited_sites[site.id])))
 	return known
 
-/** Environment-specific interference; the common model has no machinery dependency. */
+/** Own-vessel noise masking passive sensors. */
 /datum/stationtrauma_overmap/proc/acoustic_noise()
 	return 0
 
@@ -125,7 +125,7 @@
 		found += record_ship_observation(id, other, passive ? "passive" : "active")
 	return found
 
-/** A radio reply reveals its sender alone, using the same crew-local numbering as sensors. */
+/** Record a sensor or radio observation under its crew-local contact number. */
 /datum/stationtrauma_overmap/proc/record_ship_observation(id, datum/stationtrauma_overmap/other, mode)
 	if(QDELETED(other) || !sector || other == src || sector.ships[id] != other)
 		return 0

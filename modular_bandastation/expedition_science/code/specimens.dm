@@ -35,7 +35,7 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 	site_name = "неразмеченный район"
 	if(!origin)
 		return
-	for(var/obj/effect/landmark/stationtrauma_research_site/site as anything in GLOB.landmarks_list)
+	for(var/obj/effect/landmark/stationtrauma_research_site/site in GLOB.landmarks_list)
 		if(site.z != origin.z || !istext(site.site_id) || !length(site.site_id))
 			continue
 		site_id = site.site_id
@@ -54,18 +54,18 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 		lines += "Лабораторные наблюдения: [html_encode(laboratory_notes)]"
 	return lines.Join("<br>")
 
-/** Explicit expedition sources; ordinary flora, mining, cytology and R&D are untouched. */
+/** Surveyable source with a finite specimen supply. */
 /obj/structure/stationtrauma_research_source
 	name = "колония морской растительности"
 	desc = "Неизученный образец местной флоры. Сначала обследуйте его полевым сканером, затем используйте пустой контейнер для проб."
 	icon = 'modular_bandastation/underwater/icons/ocean_flora.dmi'
 	icon_state = "seaweed1"
 	anchored = TRUE
-	/// Starting balance: a finite number of samples, committed only after successful collection.
+	/// Samples remaining after completed collections.
 	var/remaining_samples = 3
-	/// Mappers author stable observations, rather than inventing readings on each scan.
+	/// Authored field observations.
 	var/field_notes = "Волокнистая колония, закреплённая на грунте. Различимы отдельные ветвящиеся побеги."
-	/// These are scenario observations, not a simulation of chemicals or radiation.
+	/// Authored laboratory observations.
 	var/laboratory_notes = "Обнаружены клетки с плотной оболочкой и внутриклеточными пигментными включениями. Нужны дальнейшие испытания для определения их свойств."
 	/// Lazily allocated once; sampled observations survive removal of their source.
 	var/datum/stationtrauma_research_record/record

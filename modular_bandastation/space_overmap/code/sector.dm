@@ -64,7 +64,7 @@
 	qdel(template)
 	return null
 
-/** Attach a hull without copying sector geography or another crew's observations. */
+/** Register a hull and prepare its flight level and consoles. */
 /datum/stationtrauma_overmap_sector/space/proc/attach(obj/docking_port/mobile/stationtrauma_space/vessel)
 	if(QDELETED(vessel) || vessel.width < 1 || vessel.height < 1 || !length(vessel.shuttle_areas))
 		return FALSE
@@ -134,7 +134,6 @@
 		ready = length(sites) > 0
 		return ready
 	var/datum/map_template/stationtrauma_space/template
-	// Coordinates belong to this sector, never to physical turfs.
 	var/list/locations = list(
 		list("asteroid_field", "Астероидное поле", 1250, -450, 'modular_bandastation/space_overmap/maps/asteroid_field.dmm', /atom/movable/screen/parallax_layer/random/asteroids),
 		list("drift_cargo", "Дрейфующий груз", rand(700, 900), rand(-160, -40), 'modular_bandastation/space_overmap/maps/drift_cargo.dmm', /atom/movable/screen/parallax_layer/layer_3),
@@ -143,7 +142,7 @@
 		template = new(location[5], location[2])
 		var/datum/space_level/level = template.load_new_z()
 		if(!level)
-			qdel(template)
+			QDEL_NULL(template)
 			return null
 		level.space_parallax_background = location[6]
 		var/right_edge = round((world.maxx - template.width) / 2) + template.width
@@ -156,7 +155,7 @@
 		site.needs_scan = TRUE
 		site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(right_edge + 2, round(world.maxy / 2), level.z_value))
 		sites[site.id] = site
-		qdel(template)
+		QDEL_NULL(template)
 	var/list/positions = list(list(800, 350), list(-100, -1250), list(-1500, 800), list(1800, 1100))
 	var/list/profiles = list(/datum/stationtrauma_overmap_site/space/planet, /datum/stationtrauma_overmap_site/space/planet/frozen, /datum/stationtrauma_overmap_site/space/planet/arid, /datum/stationtrauma_overmap_site/space/planet/lush)
 	var/first_seed = rand(1, 1000001 - length(positions))

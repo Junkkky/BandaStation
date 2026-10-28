@@ -1,4 +1,4 @@
-/** A local map seam; native zMove retains occupants and pulling without moving the vessel. */
+/** Map seam using native zMove for occupants and pulled objects. */
 /datum/component/stationtrauma_map_passage
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	/// A real exterior tile just beyond the reverse seam, preventing immediate bounce-back.
@@ -32,6 +32,7 @@
 	SIGNAL_HANDLER
 	if(isprojectile(arrived))
 		var/obj/projectile/shot = arrived
+		// Initialization and entry can notify the same passage before the next projectile step.
 		RegisterSignal(shot, shot.fired ? COMSIG_PROJECTILE_MOVE_PROCESS_STEP : COMSIG_PROJECTILE_FIRE, PROC_REF(cross_projectile), override = TRUE)
 		return
 	if(istype(arrived, /obj/effect/abstract/stationtrauma_map_projection))
@@ -68,7 +69,7 @@
 	var/turf/origin = parent
 	var/delta_x = landing.x - origin.x
 	var/delta_y = landing.y - origin.y
-	// shortcut: accuracy origins clamp at world edges; use travelled distance if encounters need longer off-map shots.
+	// Accuracy origins must stay inside the world after the coordinate shift.
 	if(shot.starting)
 		shot.starting = locate(clamp(shot.starting.x + delta_x, 1, world.maxx), clamp(shot.starting.y + delta_y, 1, world.maxy), landing.z)
 	if(istype(shot.original, /obj/effect/abstract/stationtrauma_map_projection))
@@ -103,6 +104,6 @@
 /datum/component/stationtrauma_map_passage/proc/landing_available()
 	return !QDELETED(landing) && isspaceturf(landing)
 
-/** The common transfer is native movement; environment adapters retain their own background continuity. */
+/** Transfer an actor and its buckled or pulled occupants. */
 /datum/component/stationtrauma_map_passage/proc/move_actor(atom/movable/arrived)
 	return arrived.zMove(null, landing, ZMOVE_ALLOW_BUCKLED|ZMOVE_INCLUDE_PULLED)
