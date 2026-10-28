@@ -1,0 +1,465 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/lodge/lodge.dmm
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"bK" = (
+/obj/structure/table/wood,
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"bX" = (
+/obj/machinery/portable_atmospherics/scrubber,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"ed" = (
+/obj/effect/turf_decal/trimline/brown/line,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"fO" = (
+/obj/structure/table/wood,
+/obj/item/book,
+/obj/item/reagent_containers/cup/beaker,
+/obj/item/toy/cards/deck,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"gw" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"iI" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"kd" = (
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"kf" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"kq" = (
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"lB" = (
+/obj/machinery/portable_atmospherics/scrubber,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"lM" = (
+/obj/structure/rack,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/ammo_box/c12ga,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"lO" = (
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"oy" = (
+/obj/machinery/rnd/server{
+	desc = "A jury-rigged server setup.";
+	name = "low-tech server"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"pI" = (
+/obj/item/paper{
+	name = "полевой журнал: Охотничье зимовье";
+	 default_raw_text = "Объект: Охотничье зимовье. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"pK" = (
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"pZ" = (
+/obj/structure/table/wood,
+/obj/item/knife/kitchen,
+/obj/item/knife/kitchen,
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"qs" = (
+/obj/structure/table/wood,
+/obj/item/cigarette/pipe/cobpipe,
+/obj/item/storage/fancy/cigarettes/cigpack_robust,
+/obj/item/reagent_containers/cup/beaker,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"qA" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"sV" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/wheat,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"tQ" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"vT" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp,
+/obj/effect/turf_decal/trimline/brown/line,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"yf" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"zT" = (
+/obj/structure/closet,
+/obj/item/stack/sheet/iron{
+	amount = 10
+	},
+/obj/item/stack/sheet/mineral/wood{
+	amount = 50
+	},
+/obj/item/stack/tile/carpet/green{
+	amount = 50
+	},
+/obj/item/stack/sheet/rglass{
+	amount = 10
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"Bu" = (
+/obj/structure/table/wood,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/knife/kitchen,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"BH" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"Cz" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/random,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"Ex" = (
+/obj/machinery/oven,
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"HA" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"Kc" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"Lp" = (
+/obj/item/flashlight/lamp/green,
+/obj/structure/table/wood,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"MN" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"Os" = (
+/obj/structure/closet/crate/freezer,
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"Ph" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"Qc" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/potato,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"QC" = (
+/obj/effect/turf_decal/trimline/brown/line,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"RK" = (
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/knife/butcher,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"WA" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/mask/breath,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"WD" = (
+/obj/structure/bed,
+/obj/item/bedsheet,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"WX" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"Xj" = (
+/obj/structure/table/wood,
+/obj/machinery/computer/atmos_alert{
+	desc = "A cheap, beat-up old laptop.";
+	name = "old laptop"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+"Zf" = (
+/obj/machinery/hydroponics/soil,
+/obj/item/seeds/tower,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+
+(1,1,1) = {"
+aa
+aa
+aa
+tQ
+tQ
+tQ
+tQ
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+tQ
+oy
+Xj
+tQ
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+tQ
+tQ
+tQ
+tQ
+WX
+BH
+tQ
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+tQ
+WA
+Lp
+Ph
+qA
+kd
+tQ
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+tQ
+pK
+pK
+Ph
+qA
+ed
+kq
+Zf
+Zf
+aa
+aa
+"}
+(6,1,1) = {"
+tQ
+pK
+pK
+Ph
+qA
+ed
+kq
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+tQ
+WD
+qs
+Ph
+qA
+gw
+tQ
+Zf
+Qc
+aa
+aa
+"}
+(8,1,1) = {"
+tQ
+tQ
+tQ
+tQ
+tQ
+pI
+tQ
+aa
+aa
+aa
+aa
+"}
+(9,1,1) = {"
+aa
+tQ
+Bu
+RK
+vT
+kd
+tQ
+Qc
+sV
+aa
+aa
+"}
+(10,1,1) = {"
+aa
+kq
+pZ
+yf
+QC
+ed
+kq
+aa
+aa
+aa
+aa
+"}
+(11,1,1) = {"
+aa
+kq
+Os
+yf
+QC
+gw
+tQ
+Qc
+Cz
+aa
+aa
+"}
+(12,1,1) = {"
+aa
+tQ
+Ex
+WX
+HA
+qA
+tQ
+tQ
+tQ
+tQ
+tQ
+"}
+(13,1,1) = {"
+aa
+tQ
+qA
+qA
+qA
+qA
+qA
+qA
+bX
+lB
+tQ
+"}
+(14,1,1) = {"
+aa
+tQ
+qA
+qA
+bK
+fO
+qA
+qA
+qA
+ed
+iI
+"}
+(15,1,1) = {"
+aa
+tQ
+lO
+qA
+MN
+Kc
+Kc
+kf
+lM
+zT
+tQ
+"}
+(16,1,1) = {"
+aa
+tQ
+tQ
+tQ
+tQ
+kq
+kq
+tQ
+tQ
+tQ
+tQ
+"}

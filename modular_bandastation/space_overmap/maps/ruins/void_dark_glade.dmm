@@ -1,0 +1,700 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: Void-Crew/Voidcrew-LRP contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/dark_glade.dmm
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"k" = (
+/obj/structure/flora/tree/stump,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"l" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/item/instrument/violin{
+	pixel_x = -16;
+	pixel_y = -12
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"p" = (
+/obj/structure/flora/tree/jungle{
+	icon_state = "tree9"
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"q" = (
+/obj/item/trash/can/food/beans,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"s" = (
+/obj/item/grown/log/tree,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"t" = (
+/turf/closed/mineral/random,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"w" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/item/instrument/harmonica{
+	pixel_x = -17;
+	pixel_y = 9
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"x" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"z" = (
+/obj/structure/flora/tree/jungle{
+	icon_state = "tree7"
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"E" = (
+/obj/structure/fans/tiny/invisible,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"H" = (
+/obj/structure/chair/wood,
+/obj/item/instrument/banjo{
+	pixel_y = -22
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"I" = (
+/obj/item/melee/roastingstick,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"N" = (
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"O" = (
+/obj/structure/flora/tree/jungle{
+	icon_state = "tree8"
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"V" = (
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"W" = (
+/obj/structure/bonfire/prelit,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"X" = (
+/obj/item/toy/plush/carpplushie,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+"Y" = (
+/obj/item/paper{
+	name = "полевой журнал: Заросший обломок";
+	 default_raw_text = "Объект: Заросший обломок. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/item/instrument/piano_synth{
+	pixel_x = 18
+	},
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_void_dark_glade/ruin/space/has_grav/glade)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+t
+t
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+t
+t
+t
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+t
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+t
+t
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+t
+t
+t
+t
+t
+t
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+t
+t
+t
+t
+t
+t
+t
+E
+E
+E
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+a
+t
+t
+t
+t
+t
+t
+t
+t
+V
+V
+z
+V
+E
+E
+E
+a
+a
+a
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+t
+a
+t
+t
+t
+t
+t
+t
+t
+t
+V
+V
+V
+V
+V
+V
+V
+V
+E
+E
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+V
+V
+V
+V
+V
+V
+V
+V
+V
+E
+a
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+t
+t
+t
+t
+t
+t
+t
+t
+t
+V
+V
+p
+V
+V
+Y
+N
+V
+V
+O
+V
+E
+a
+a
+"}
+(12,1,1) = {"
+a
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+V
+V
+V
+V
+q
+N
+N
+N
+V
+V
+V
+E
+a
+a
+"}
+(13,1,1) = {"
+t
+t
+t
+t
+t
+t
+t
+t
+t
+V
+V
+V
+V
+V
+H
+N
+W
+I
+x
+V
+V
+V
+E
+a
+t
+"}
+(14,1,1) = {"
+a
+t
+t
+t
+t
+t
+t
+t
+X
+V
+O
+V
+k
+V
+V
+N
+N
+N
+V
+V
+V
+V
+t
+t
+t
+"}
+(15,1,1) = {"
+a
+a
+t
+t
+t
+t
+t
+t
+t
+E
+V
+V
+s
+V
+V
+w
+N
+l
+V
+V
+t
+t
+t
+t
+a
+"}
+(16,1,1) = {"
+a
+a
+t
+t
+t
+t
+t
+t
+t
+a
+E
+V
+V
+V
+V
+V
+V
+V
+V
+t
+t
+t
+t
+t
+a
+"}
+(17,1,1) = {"
+a
+a
+t
+t
+a
+a
+t
+t
+t
+a
+a
+E
+E
+E
+V
+V
+V
+z
+V
+t
+t
+t
+t
+t
+a
+"}
+(18,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+t
+a
+a
+a
+a
+a
+a
+E
+E
+E
+V
+V
+V
+t
+t
+t
+t
+t
+"}
+(19,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+E
+E
+E
+t
+t
+t
+t
+t
+"}
+(20,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+t
+t
+t
+t
+"}
+(21,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+t
+t
+a
+"}
+(22,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+t
+t
+"}

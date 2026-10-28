@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/machinery/firealarm/directional/south,
+/obj/machinery/computer/stationtrauma_dispatch{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/command/bridge)
 "aae" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -194884,7 +194892,7 @@ pvq
 mpC
 ghC
 fQC
-cDs
+aaa
 kzO
 kzO
 kzO

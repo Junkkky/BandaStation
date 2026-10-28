@@ -1,15 +1,61 @@
-html,body{margin:0;background:#111716;color:#b5c5b5;font:12px Consolas,monospace}*{box-sizing:border-box}header{padding:14px 16px;border-bottom:2px solid #7a8f76;letter-spacing:2px;background:#222d27}header span{float:right;color:#e6c78b}.body{display:flex;min-height:560px}aside{padding:12px;width:210px;flex-shrink:0;border-right:1px solid #3d4b40}h2{font-size:12px;font-weight:normal;color:#8b9b84;letter-spacing:1px;margin:0 0 14px}button,input,select{background:#25312b;color:#cbdac1;border:1px solid #5c705b;font:inherit;padding:7px}button{cursor:pointer;display:block;width:100%;margin:7px 0;text-align:left}button:hover,button:focus{border-color:#d4e4be;background:#334336}button:disabled{opacity:.35;cursor:default}button.selected{border-left:4px solid #efc782;background:#364437}button small{display:block;color:#81957e;margin-top:5px}input{width:75px;float:right;padding:3px}label{display:block;min-height:25px;margin-top:8px}p,.help{color:#7e907c;font-size:11px;line-height:1.6}dl{margin:0 0 18px}dt{color:#879881;margin-top:10px}dd{margin:3px 0;color:#e2e6c4;font-size:15px}aside.telemetry{width:230px;border-left:1px solid #3d4b40;border-right:0}.plot{flex:1;min-width:380px;background:#080e0d}.plot-head{padding:9px;color:#718870}.plot-head label{display:inline;float:right;margin:0}.plot-head select{padding:0}canvas{display:block;width:100%;height:520px}.legend{display:flex;justify-content:space-around;padding:9px;border-top:1px solid #2b3c30}.own{color:#d6edc0}.target{color:#edc587}.vector{color:#7ba7a3}.stop{color:#f2b3a2;border-color:#b66e57}footer{padding:11px 16px;background:#27322a;border-top:1px solid #66755e;color:#dfdcb3}.help{margin:7px 16px}
-.thrust-controls { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
-.thrust-buttons { flex: 1; min-width: 0; }
-.thrust-controls h2 { text-align: center; margin-bottom: 6px; }
-.encounter-heading { margin-top: 24px; }
-.telemetry dl { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
-.telemetry dt, .telemetry dd { margin: 0; font-size: 11px; }
-.telemetry dd { text-align: right; }
-.course-control { display: flex; align-items: center; gap: 6px; }
-.course-control label { margin: 0; min-height: 0; }
-.course-control input { width: 58px; float: none; }
-.course-control button { width: auto; margin: 0; padding: 3px 9px; }
-canvas { cursor: crosshair; }
-.maneuver-controls { display: grid; grid-template-columns: repeat(3, 34px); gap: 5px; justify-content: center; margin: 8px 0; }
-.maneuver-controls button { width: 34px; height: 32px; margin: 0; padding: 0; text-align: center; font-size: 22px; line-height: 1; }
+html, body { margin: 0; background: #111716; color: #b5c5b5; font: 11px Consolas, monospace; }
+* { box-sizing: border-box; }
+.flight { margin: 0 auto; max-width: 1120px; }
+header { padding: 8px 12px; border-bottom: 1px solid #7a8f76; letter-spacing: 2px; background: #222d27; }
+header span { float: right; color: #e6c78b; }
+.body { display: flex; }
+.plot { flex: 1; min-width: 300px; background: #080e0d; }
+.plot-head { padding: 5px 8px; color: #718870; height: 27px; }
+.plot-head label { float: right; }
+button, input, select { background: #25312b; color: #cbdac1; border: 1px solid #5c705b; font: inherit; }
+button { cursor: pointer; padding: 6px; }
+button:hover, button:focus { border-color: #d4e4be; background: #334336; }
+button:disabled { opacity: .35; cursor: default; }
+button.selected { border-left: 3px solid #efc782; background: #364437; }
+canvas { display: block; width: 100%; height: auto; cursor: crosshair; }
+.legend { display: flex; justify-content: space-around; padding: 5px; border-top: 1px solid #2b3c30; font-size: 10px; }
+.own { color: #d6edc0; } .target { color: #edc587; } .vector { color: #91d7d0; }
+.destination-list { padding: 5px 8px; border-top: 1px solid #2b3c30; }
+#routes { max-height: 66px; overflow-y: auto; }
+#routes button { display: flex; justify-content: space-between; gap: 8px; width: 100%; height: 20px; padding: 1px 5px; margin: 2px 0; text-align: left; }
+#routes button span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#routes button span:last-child { flex-shrink: 0; color: #8b9b84; }
+.telemetry { flex: 0 0 270px; padding: 9px; border-left: 1px solid #3d4b40; }
+.instruments { display: flex; align-items: center; gap: 10px; }
+.sensor-speed { width: 100px; flex-shrink: 0; text-align: center; }
+#scan { display: block; position: relative; width: 38px; height: 38px; padding: 3px; margin: 0 auto; }
+#scan svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1; }
+#scan:disabled { opacity: 1; cursor: default; }
+.lamp { position: absolute; right: 2px; bottom: 2px; width: 7px; height: 7px; border-radius: 50%; background: #e45d51; box-shadow: 0 0 4px #ad2821; }
+.lamp.ready { background: #82de89; box-shadow: 0 0 5px #62c77d; }
+.speedometer { width: 100px; margin-top: 5px; color: #d6edc0; }
+.speedometer svg { display: block; width: 100px; height: 53px; fill: #91d7d0; }
+.speedometer .gauge { fill: none; stroke: #526d60; stroke-width: 3; }
+#speed-needle { stroke: #91d7d0; stroke-width: 2; }
+.speedometer output { display: block; font-size: 13px; font-weight: bold; }
+dl { flex: 1; min-width: 0; margin: 0; font-size: 10px; }
+dt { color: #879881; margin-top: 7px; } dd { color: #e2e6c4; margin: 2px 0; }
+.helm { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; }
+.helm-buttons { flex: 1; min-width: 0; }
+.engine-control { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; font-size: 9px; }
+.engine-control .lamp { position: static; display: inline-block; margin-right: 5px; vertical-align: middle; }
+.engine-switch { flex-shrink: 0; width: 40px; height: 57px; padding: 0; border: 4px solid #151c22; border-radius: 4px; color: #d7aaa0; background: linear-gradient(#591e1b 47%, #be4b3e 49%, #85332a 92%); box-shadow: 0 1px 0 #81909a, inset 0 -4px #53231e; font: 13px Arial; }
+.engine-switch.on { background: linear-gradient(#b84c3e, #92352b 47%, #54251e 50%); box-shadow: 0 1px 0 #81909a, inset 0 4px #e7684e; }
+.helm-buttons > button { display: block; width: 100%; margin-top: 7px; }
+.maneuver-controls { display: grid; grid-template-columns: repeat(3, 32px); gap: 4px; justify-content: center; margin-bottom: 10px; }
+.maneuver-controls button { width: 32px; height: 29px; padding: 0; font-size: 21px; line-height: 1; }
+.telemetry .helm-throttle { width: 90px; height: 190px; }
+.telemetry .helm-throttle input[type=range] { width: 145px; height: 50px; left: -23px; top: 57px; }
+.telemetry .throttle-scale { top: 10px; bottom: 33px; font-size: 9px; }
+.telemetry .helm-throttle:before { left: 32px; top: 15px; bottom: 32px; }
+.telemetry .helm-throttle output { left: 18px; right: 5px; font-size: 11px; }
+.stop { color: #f2b3a2; border-color: #b66e57; }
+#braking-distance { color: #7e907c; font-size: 10px; margin: 6px 0 0; }
+.docking-controls { display: flex; gap: 7px; margin-top: 9px; padding-top: 9px; border-top: 1px solid #3d4b40; }
+.docking-controls button { flex: 1; }
+.dock-request { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; font-size: 10px; }
+.dock-request span { width: 100%; }
+.dock-request button { flex: 1; padding: 4px; }
+.help { color: #7e907c; font-size: 10px; line-height: 1.4; margin: 6px 8px; }
+footer { padding: 6px 10px; background: #27322a; border-top: 1px solid #66755e; color: #dfdcb3; }
+[hidden] { display: none !important; }

@@ -4,27 +4,27 @@
 	desc = "Регистрационная плата судового ответчика. Позывной и принадлежность записаны в её памяти."
 	build_path = /obj/machinery/computer/stationtrauma_transponder
 	var/callsign
-	var/faction
+	var/registration_faction
 
 /obj/item/circuitboard/computer/stationtrauma_transponder/nt
-	faction = "НТ"
+	registration_faction = "НТ"
 	callsign = "Борт НТ"
 
 /obj/item/circuitboard/computer/stationtrauma_transponder/nt/raven
 	callsign = "Raven"
 
 /obj/item/circuitboard/computer/stationtrauma_transponder/scg
-	faction = "КССП"
+	registration_faction = "КССП"
 	callsign = "Борт КССП"
 
 /obj/item/circuitboard/computer/stationtrauma_transponder/pocketrocket
-	faction = "Независимые"
+	registration_faction = "Независимые"
 	callsign = "Pocket Rocket"
 
 /obj/item/circuitboard/computer/stationtrauma_transponder/examine(mob/user)
 	. = ..()
-	if(callsign && faction)
-		. += span_info("Позывной: [html_encode(callsign)]. Принадлежность: [html_encode(faction)].")
+	if(callsign && registration_faction)
+		. += span_info("Позывной: [html_encode(callsign)]. Принадлежность: [html_encode(registration_faction)].")
 	else
 		. += span_notice("Регистрационная запись отсутствует.")
 
@@ -36,6 +36,7 @@
 	circuit = /obj/item/circuitboard/computer/stationtrauma_transponder
 	idle_power_usage = 50
 	active_power_usage = 100
+	processing_flags = NONE
 	var/enabled = TRUE
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
 
@@ -68,9 +69,9 @@
 	if(!enabled || !anchored || (machine_stat & (NOPOWER|BROKEN|MAINT)) || QDELETED(vessel) || !vessel.is_in_shuttle_bounds(src))
 		return null
 	var/obj/item/circuitboard/computer/stationtrauma_transponder/board = circuit
-	if(!istype(board) || board.loc != src || !istext(board.callsign) || !length(board.callsign) || !istext(board.faction) || !length(board.faction))
+	if(!istype(board) || board.loc != src || !istext(board.callsign) || !length(board.callsign) || !istext(board.registration_faction) || !length(board.registration_faction))
 		return null
-	return list("callsign" = board.callsign, "faction" = board.faction)
+	return list("callsign" = board.callsign, "faction" = board.registration_faction)
 
 /obj/machinery/computer/stationtrauma_transponder/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
@@ -85,7 +86,7 @@
 		"enabled" = enabled,
 		"transmitting" = !!identification(),
 		"callsign" = istype(board) ? board.callsign : null,
-		"faction" = istype(board) ? board.faction : null,
+		"faction" = istype(board) ? board.registration_faction : null,
 	)
 
 /obj/machinery/computer/stationtrauma_transponder/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

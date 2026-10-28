@@ -1,0 +1,2195 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/skrell_biodome/skrell_biodome.dmm
+"ae" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"ah" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"aO" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"bj" = (
+/obj/machinery/chem_master,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"bu" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"bG" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"bL" = (
+/obj/structure/table/glass,
+/obj/item/reagent_containers/cup/beaker/large{
+	pixel_x = -6;
+	pixel_y = 11
+	},
+/obj/item/reagent_containers/cup/beaker/large{
+	pixel_x = -6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"bM" = (
+/obj/structure/cable,
+/obj/machinery/power/solar,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"bQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/light_switch{
+	pixel_x = 6;
+	pixel_y = 24
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"bT" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/preopen{
+	name = "Biodome Protective Shutters";
+	dir = 4;
+	id = "exp_sierra_skrell_biodome_main"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"cb" = (
+/obj/structure/table/glass,
+/obj/structure/closet/body_bag,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"ck" = (
+/obj/machinery/space_heater,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"dX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/airalarm{
+	pixel_y = 14
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"em" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"eF" = (
+/obj/machinery/door/airlock/glass{
+	dir = 8;
+	name = "Medbay"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"eX" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"fj" = (
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_containers/cup/glass/bottle/vodka,
+/obj/item/reagent_containers/cup/glass/bottle/vodka,
+/obj/item/reagent_containers/cup/glass/bottle/vodka,
+/obj/machinery/power/apc/auto_name/directional/south{
+	name = "south bump"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"fE" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 8
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"gp" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/obj/machinery/door/airlock/external{
+	locked = 1
+	},
+/obj/machinery/button{
+	pixel_x = -25;
+	id = "exp_sierra_skrell_biodome_main";
+	name = "отключённая панель шлюза";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"gJ" = (
+/obj/structure/reagent_dispensers/water_cooler{
+	dir = 4
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"ht" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"hz" = (
+/obj/structure/sink,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"ig" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"ik" = (
+/obj/machinery/power/tracker,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"iu" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/table/glass,
+/obj/item/storage/medkit/advanced{
+	pixel_x = -9;
+	pixel_y = -2
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"iz" = (
+/obj/structure/chair/comfy/red{
+	dir = 8
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"iA" = (
+/obj/machinery/button/door{
+	dir = 1;
+	pixel_y = -26;
+	id = "exp_sierra_skrell_biodome_main"
+	},
+/obj/structure/table/glass,
+/obj/item/storage/medkit/surgery,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"iO" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"je" = (
+/obj/machinery/computer/crew{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"jt" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4/expedition,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	initialize_directions = 13
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"jy" = (
+/obj/machinery/door/airlock/atmos/glass{
+	dir = 8;
+	name = "Atmospherics Storage"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"kl" = (
+/obj/structure/bed,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"kY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"lE" = (
+/obj/machinery/space_heater,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"lG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/machinery/door/airlock/external{
+	locked = 1
+	},
+/obj/machinery/door/poddoor/preopen{
+	name = "Biodome Protective Shutters";
+	dir = 2;
+	id = "exp_sierra_skrell_biodome_main"
+	},
+/obj/machinery/button{
+	pixel_x = -25;
+	id = "exp_sierra_skrell_biodome_main";
+	name = "отключённая панель шлюза";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"lO" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"mj" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"mU" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"nN" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"nS" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"of" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"oY" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"pf" = (
+/obj/structure/bed,
+/obj/item/bedsheet/ce,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"ph" = (
+/obj/structure/closet/cabinet,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/gun/energy/e_gun,
+/obj/item/gps,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"pN" = (
+/obj/machinery/dna_scannernew{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"pQ" = (
+/obj/structure/table/wood,
+/obj/item/stack/medical/wrap/sticky_tape,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"pZ" = (
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"qp" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	initialize_directions = 13
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"qQ" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/preopen{
+	name = "Biodome Protective Shutters";
+	id = "exp_sierra_skrell_biodome_main"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"ri" = (
+/obj/machinery/door/airlock{
+	name = "Head"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"rQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"rT" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"sy" = (
+/obj/machinery/door/airlock{
+	name = "Dormintories"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"sL" = (
+/obj/structure/sink,
+/obj/machinery/light,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"sX" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"tk" = (
+/obj/machinery/button/door{
+	dir = 4;
+	pixel_x = -26;
+	id = "exp_sierra_skrell_biodome_main"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"tG" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"tK" = (
+/obj/structure/chair/comfy/red{
+	dir = 4
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"ut" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"uv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"ux" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"uL" = (
+/obj/structure/table/wood,
+/obj/item/toy/plush/carpplushie,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"uQ" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"uW" = (
+/obj/machinery/power/solar_control{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"vz" = (
+/turf/template_noop,
+/area/template_noop)
+"wb" = (
+/obj/structure/table/glass,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -5
+	},
+/obj/item/reagent_containers/spray/cleaner,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"wY" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"xi" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"xy" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"xB" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/exterior)
+"xI" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"xO" = (
+/obj/machinery/door/airlock/glass{
+	dir = 8;
+	name = "Hydration Area"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"yn" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/machinery/door/airlock/external{
+	locked = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"yC" = (
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"yU" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = 16
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"yZ" = (
+/obj/machinery/airalarm{
+	pixel_y = 14
+	},
+/obj/machinery/light_switch{
+	pixel_x = -22;
+	pixel_y = 24
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"zF" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"zO" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Ai" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south{
+	name = "south bump"
+	},
+/obj/machinery/light_switch{
+	pixel_x = -22;
+	pixel_y = -22
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"AF" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"AJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Bk" = (
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"BA" = (
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"BJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"CF" = (
+/obj/structure/table/optable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"CX" = (
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"DC" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"DG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	initialize_directions = 13
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"DO" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"Ek" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"Eu" = (
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/airalarm{
+	pixel_y = 14
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Fa" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Fe" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Fg" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4/expedition,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2/expedition,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Fk" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Fo" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Fr" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Fy" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/light_switch{
+	pixel_x = -24;
+	pixel_y = -24
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Fz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/machinery/portable_atmospherics/scrubber,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Gq" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"GN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/power/apc/auto_name/directional/east{
+	name = "east bump"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Ho" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Hu" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/drinkingglass{
+	pixel_y = 8
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"HH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"HN" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"HZ" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/east{
+	name = "east bump"
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"Ik" = (
+/obj/machinery/reagentgrinder,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"Im" = (
+/obj/machinery/portable_atmospherics/canister/air{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"Iw" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Ix" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Iz" = (
+/obj/machinery/chem_dispenser,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"ID" = (
+/obj/machinery/portable_atmospherics/pump,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Jj" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"JR" = (
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"Ka" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/closet/crate/hydroponics,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Kf" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/preopen{
+	name = "Biodome Protective Shutters";
+	dir = 4;
+	id = "exp_sierra_skrell_biodome_main"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"Kh" = (
+/obj/machinery/light,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"Kr" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/table,
+/obj/item/mop/advanced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"KO" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Lm" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Mf" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"MH" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 1
+	},
+/obj/machinery/airlock_sensor{
+	pixel_x = -24;
+	pixel_y = -7
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"NM" = (
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"NN" = (
+/obj/machinery/computer/operating{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"Ok" = (
+/obj/machinery/door/airlock/engineering/glass{
+	dir = 8;
+	name = "Power Supply"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"PG" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Qt" = (
+/obj/structure/table/glass,
+/obj/item/clothing/gloves/latex/nitrile,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"QF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Rr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/obj/machinery/light_switch{
+	pixel_x = -22;
+	pixel_y = -22
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"RD" = (
+/obj/structure/table,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"RM" = (
+/obj/machinery/vending/medical,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"RS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"SK" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"SL" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"SM" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"ST" = (
+/obj/item/paper{
+	name = "полевой журнал: Покинутый биокупол";
+	 default_raw_text = "Объект: Покинутый биокупол. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"SX" = (
+/obj/machinery/button/door{
+	dir = 8;
+	pixel_x = 26;
+	id = "exp_sierra_skrell_biodome_main"
+	},
+/obj/item/kirbyplants,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"SY" = (
+/obj/machinery/airalarm{
+	pixel_y = 14
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"SZ" = (
+/obj/structure/chair/stool,
+/obj/structure/curtain/cloth,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"TZ" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4
+	},
+/obj/machinery/light,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/atmos)
+"UJ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2,
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"VJ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Wh" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/vending/engineering{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Wl" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"Xa" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"XO" = (
+/obj/machinery/portable_atmospherics/scrubber,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+"XT" = (
+/obj/machinery/hydroponics,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Ye" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"Yt" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"Yy" = (
+/obj/machinery/smartfridge/chemistry,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"YT" = (
+/obj/structure/closet/crate,
+/obj/item/seeds/cabbage,
+/obj/item/seeds/cabbage,
+/obj/item/seeds/cabbage,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"Za" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"ZS" = (
+/obj/machinery/shower{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/living)
+"ZU" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/obj/structure/bed,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/medbay)
+"ZV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/machinery/door/airlock/external{
+	locked = 1
+	},
+/obj/machinery/door/poddoor/preopen{
+	name = "Biodome Protective Shutters";
+	dir = 2;
+	id = "exp_sierra_skrell_biodome_main"
+	},
+/obj/machinery/button/door{
+	pixel_x = 26;
+	id = "exp_sierra_skrell_biodome_main"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_skrell_biodome/biodome/engineering)
+
+(1,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(2,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(3,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(4,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(5,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+bM
+xI
+xI
+ik
+xB
+xB
+xB
+xB
+xB
+xB
+xB
+xB
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(6,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+bM
+xI
+xI
+bM
+uQ
+xB
+xy
+Kf
+Kf
+Kf
+Kf
+Kf
+Kf
+xy
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(7,1,1) = {"
+vz
+vz
+vz
+vz
+bM
+xI
+xI
+bM
+uQ
+uQ
+nN
+xy
+Yy
+DO
+Qt
+wb
+bL
+Iz
+xy
+mU
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(8,1,1) = {"
+vz
+vz
+vz
+bM
+xI
+xI
+bM
+uQ
+uQ
+nN
+nN
+xy
+RM
+DO
+DO
+DO
+DO
+Kh
+xy
+mU
+mU
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(9,1,1) = {"
+vz
+vz
+bM
+xI
+xI
+bM
+uQ
+uQ
+nN
+nN
+Im
+xy
+cb
+DO
+DO
+iu
+Ik
+bj
+xy
+pf
+mU
+mU
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(10,1,1) = {"
+vz
+bM
+xI
+xI
+bM
+uQ
+uQ
+nN
+nN
+iO
+qp
+xy
+je
+DO
+DO
+NN
+CF
+iA
+xy
+wY
+pf
+mU
+mU
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+"}
+(11,1,1) = {"
+vz
+uQ
+xI
+bM
+uQ
+uQ
+nN
+nN
+JR
+NM
+qp
+xy
+pN
+DO
+DO
+DO
+DO
+Kh
+xy
+Jj
+AF
+pf
+mU
+mU
+xB
+xB
+vz
+vz
+vz
+vz
+"}
+(12,1,1) = {"
+vz
+uQ
+xI
+uQ
+uQ
+Fa
+nN
+pZ
+DC
+BJ
+Rr
+xy
+yZ
+Za
+Mf
+Yt
+ZU
+kl
+xy
+sy
+mU
+mU
+mU
+mU
+mU
+xB
+vz
+vz
+vz
+vz
+"}
+(13,1,1) = {"
+vz
+uQ
+xI
+uQ
+uQ
+Wl
+nN
+sX
+HZ
+SK
+TZ
+xy
+Ek
+Ek
+DO
+Gq
+YT
+fj
+xy
+dX
+Bk
+ph
+Bk
+gJ
+qQ
+xB
+vz
+vz
+vz
+vz
+"}
+(14,1,1) = {"
+vz
+uQ
+xI
+uQ
+uQ
+uv
+nN
+nN
+nN
+kY
+jy
+xy
+ht
+ht
+CX
+eF
+ht
+ht
+xy
+SM
+zF
+tK
+tK
+Bk
+qQ
+xB
+vz
+vz
+vz
+vz
+"}
+(15,1,1) = {"
+vz
+uQ
+xI
+uQ
+uQ
+lG
+MH
+UJ
+gp
+bG
+Xa
+aO
+Lm
+nS
+Lm
+ST
+eX
+Lm
+aO
+xi
+of
+Hu
+uL
+Bk
+qQ
+xB
+vz
+vz
+vz
+vz
+"}
+(16,1,1) = {"
+vz
+uQ
+xI
+xI
+xI
+ZV
+SL
+mj
+yn
+DG
+Ho
+rT
+Fr
+ux
+Fr
+Fg
+AJ
+GN
+PG
+jt
+rQ
+ut
+pQ
+Bk
+qQ
+xB
+vz
+vz
+vz
+vz
+"}
+(17,1,1) = {"
+vz
+uQ
+xI
+uQ
+uQ
+uv
+Fa
+Fa
+Fa
+Ix
+Ok
+mU
+mU
+mU
+BA
+xO
+mU
+mU
+mU
+bQ
+fE
+iz
+iz
+Bk
+qQ
+xB
+vz
+vz
+vz
+vz
+"}
+(18,1,1) = {"
+vz
+uQ
+xI
+uQ
+uQ
+VJ
+Fa
+Fk
+Fz
+tG
+QF
+lE
+ck
+mU
+yU
+RS
+Fy
+XT
+mU
+SM
+Bk
+ah
+Bk
+SX
+qQ
+xB
+vz
+vz
+vz
+vz
+"}
+(19,1,1) = {"
+vz
+uQ
+xI
+uQ
+uQ
+Fa
+Fa
+Eu
+ig
+zO
+bu
+XO
+ID
+mU
+SY
+HH
+AF
+XT
+mU
+ri
+mU
+mU
+mU
+mU
+mU
+xB
+vz
+vz
+vz
+vz
+"}
+(20,1,1) = {"
+vz
+uQ
+xI
+bM
+uQ
+uQ
+Fa
+Fa
+uW
+oY
+KO
+mU
+mU
+mU
+Lm
+Fo
+em
+XT
+mU
+Iw
+Fe
+ZS
+mU
+mU
+xB
+xB
+vz
+vz
+vz
+vz
+"}
+(21,1,1) = {"
+vz
+bM
+xI
+xI
+bM
+uQ
+uQ
+Fa
+Fa
+HN
+Ai
+mU
+yC
+tk
+Lm
+Lm
+Ka
+Kr
+mU
+ae
+lO
+mU
+mU
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+"}
+(22,1,1) = {"
+vz
+vz
+bM
+xI
+xI
+bM
+uQ
+uQ
+Fa
+Fa
+Wh
+mU
+SZ
+Lm
+Lm
+Lm
+Lm
+Lm
+mU
+Ye
+mU
+mU
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(23,1,1) = {"
+vz
+vz
+vz
+bM
+xI
+xI
+bM
+uQ
+uQ
+Fa
+Fa
+mU
+RD
+Lm
+hz
+Lm
+Lm
+sL
+mU
+mU
+mU
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(24,1,1) = {"
+vz
+vz
+vz
+vz
+bM
+xI
+xI
+bM
+uQ
+uQ
+Fa
+mU
+SZ
+Lm
+Lm
+Lm
+Lm
+Lm
+mU
+mU
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(25,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+bM
+xI
+xI
+bM
+uQ
+xB
+mU
+bT
+bT
+bT
+bT
+bT
+bT
+mU
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(26,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+bM
+xI
+xI
+bM
+xB
+xB
+xB
+xB
+xB
+xB
+xB
+xB
+xB
+xB
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(27,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(28,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(29,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(30,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}

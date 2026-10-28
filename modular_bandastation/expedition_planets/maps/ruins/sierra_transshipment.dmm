@@ -1,0 +1,3661 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/transshipment/transshipment.dmm
+"ab" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/control_crate)
+"af" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing/a75,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"ak" = (
+/obj/machinery/vending/engineering{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"au" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	dir = 4;
+	name = "Snz Blast Shutters";
+	id = "exp_sierra_transshipment_main"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"aE" = (
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"aS" = (
+/obj/structure/cable,
+/obj/machinery/light/small,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/smes_crate)
+"aY" = (
+/turf/template_noop,
+/area/template_noop)
+"bx" = (
+/obj/structure/handrail{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"bE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/cable,
+/obj/item/stack/rods,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"bO" = (
+/obj/machinery/power/apc/auto_name/directional/north{
+	name = "north bump"
+	},
+/obj/structure/closet/crate/secure/plasma,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/smes_crate)
+"cb" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"ce" = (
+/obj/item/food/egg,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/cabin_crate)
+"cg" = (
+/obj/structure/rack,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"ch" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	initialize_directions = 13
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"ci" = (
+/obj/machinery/portable_atmospherics/canister,
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"cE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/item/stack/rods,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"cF" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"cZ" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"dk" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"dr" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"dD" = (
+/mob/living/basic/mining/gutlunch,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/smes_crate)
+"dG" = (
+/obj/structure/grille/broken,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"dJ" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"ej" = (
+/obj/machinery/door/poddoor/preopen{
+	dir = 4;
+	name = "Container Flaps";
+	id = "exp_sierra_transshipment_main"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/control_crate)
+"ek" = (
+/obj/structure/table{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"eD" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"eQ" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"fj" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"fy" = (
+/mob/living/basic/mining/gutlunch,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north{
+	name = "north bump"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/control_crate)
+"fL" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/white/line,
+/obj/item/gun/energy/e_gun,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"fS" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/machinery/door/airlock/external,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"fU" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/button/door{
+	name = "Hangar Shutters Control";
+	pixel_x = -24;
+	pixel_y = -28;
+	id = "exp_sierra_transshipment_main"
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"gn" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"gC" = (
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"gI" = (
+/obj/structure/frame/computer{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"gJ" = (
+/obj/structure/girder,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"hq" = (
+/mob/living/basic/mining/gutlunch,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"hw" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/engineering/tool_advanced,
+/obj/effect/spawner/random/engineering/tool_advanced,
+/obj/effect/spawner/random/engineering/toolbox,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"hC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"hQ" = (
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"ic" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/contraband,
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 10
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"id" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"ij" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/airalarm{
+	pixel_y = 24
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"iw" = (
+/obj/structure/chair/comfy/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"iA" = (
+/mob/living/basic/mining/gutlunch,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"iE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/item/stack/rods,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"iH" = (
+/obj/machinery/atmospherics/components/binary/pressure_valve{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"iK" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/cabin_crate)
+"iL" = (
+/obj/item/paper{
+	name = "полевой журнал: Перевалочный склад экспедиции";
+	 default_raw_text = "Объект: Перевалочный склад экспедиции. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"iP" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"iZ" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"jn" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/machinery/door/airlock/external,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"jo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/button{
+	pixel_x = 25;
+	pixel_y = 30;
+	id = "exp_sierra_transshipment_main";
+	name = "отключённая панель шлюза";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"jJ" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"jO" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"jR" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"jU" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"jX" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/control_crate)
+"kb" = (
+/obj/structure/rack,
+/obj/item/clothing/glasses/regular,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"kc" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"kq" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"kz" = (
+/obj/machinery/computer/crew{
+	dir = 4
+	},
+/obj/structure/closet/emcloset{
+	pixel_y = -22
+	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -15
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/medical/medkit,
+/obj/effect/spawner/random/medical/medkit,
+/obj/effect/spawner/random/medical/supplies,
+/obj/effect/spawner/random/medical/supplies,
+/obj/effect/spawner/random/medical/supplies,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"kB" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/mob/living/basic/mining/gutlunch,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/control_crate)
+"kF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"kG" = (
+/obj/effect/turf_decal/tile/yellow,
+/mob/living/basic/mining/gutlunch,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"kQ" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"kZ" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"lg" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"lj" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"lC" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"lR" = (
+/obj/machinery/door/poddoor/preopen{
+	dir = 4;
+	name = "Container Flaps";
+	id = "exp_sierra_transshipment_main"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"lV" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/machinery/button{
+	pixel_x = 25;
+	pixel_y = 30;
+	id = "exp_sierra_transshipment_main";
+	name = "отключённая панель шлюза";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"mq" = (
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"mF" = (
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"mG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"mW" = (
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister,
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"ne" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"nf" = (
+/obj/machinery/portable_atmospherics/pump,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"nv" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/smes_crate)
+"nA" = (
+/obj/machinery/holopad,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"nB" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"nG" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"nJ" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 8
+	},
+/obj/machinery/airlock_sensor{
+	pixel_y = 22
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"nL" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/cup/jerrycan/oil,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"nY" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/engineering/material,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"og" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"ol" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"oq" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"oC" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/item/clothing/suit/caution,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"oD" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"pb" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/machinery/door/airlock/external,
+/obj/machinery/button{
+	pixel_x = -27;
+	pixel_y = 7;
+	id = "exp_sierra_transshipment_main";
+	name = "отключённая панель шлюза";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"pn" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"po" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/item/stack/rods,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"pp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/machinery/door/airlock/external,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"pF" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/frame/machine,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"pJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"pV" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"qa" = (
+/obj/structure/railing,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"qd" = (
+/obj/structure/chair/comfy/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"qe" = (
+/obj/machinery/door/poddoor{
+	name = "Transshipment Hangar Shutters";
+	id = "exp_sierra_transshipment_main"
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"qj" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"qp" = (
+/obj/effect/spawner/random/engineering/tool,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"qu" = (
+/obj/structure/chair/comfy/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/button/door{
+	pixel_y = 28;
+	pixel_x = -32;
+	name = "Protective Window Shutters";
+	id = "exp_sierra_transshipment_main"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"qH" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"qM" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/pipedispenser,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"qN" = (
+/obj/structure/closet/crate/large,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"qV" = (
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/obj/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"rb" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"rz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"rS" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"sz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"sK" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/weapon/full_gun,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"sL" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	initialize_directions = 13
+	},
+/obj/machinery/door/airlock/external,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"sR" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"tk" = (
+/obj/machinery/atmospherics/components/unary/vent_pump,
+/obj/machinery/airlock_sensor{
+	pixel_x = -24;
+	pixel_y = -7
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -25;
+	pixel_y = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"tl" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"tM" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"tY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"uc" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	initialize_directions = 13
+	},
+/obj/machinery/meter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"uj" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/spawner/random/engineering/toolbox,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"uk" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"up" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"ut" = (
+/obj/machinery/power/floodlight,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"uw" = (
+/obj/structure/rack,
+/obj/item/gun/energy/plasmacutter,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"vd" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/white/line,
+/obj/item/storage/briefcase,
+/obj/item/gps,
+/obj/item/gps,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"vG" = (
+/obj/machinery/sleeper{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"vL" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/spawner/random/entertainment/cigarette,
+/obj/effect/spawner/random/entertainment/cigarette,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"wb" = (
+/obj/machinery/door/poddoor/preopen{
+	dir = 4;
+	name = "Container Flaps";
+	id = "exp_sierra_transshipment_main"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/smes_crate)
+"wl" = (
+/obj/machinery/door/poddoor/preopen{
+	dir = 4;
+	name = "Container Flaps";
+	id = "exp_sierra_transshipment_main"
+	},
+/obj/item/food/egg,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/cabin_crate)
+"wB" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"wH" = (
+/obj/machinery/portable_atmospherics/canister/air{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"wU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"wX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/mod/maint,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"wY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door{
+	name = "Hangar Shutters Control";
+	pixel_x = -24;
+	pixel_y = 26;
+	id = "exp_sierra_transshipment_main"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"xe" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"xk" = (
+/obj/structure/frame/computer,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/cabin_crate)
+"xs" = (
+/obj/structure/frame/computer{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/control_crate)
+"xw" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 10
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"xE" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"xY" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"yi" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"yE" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/smes_crate)
+"yQ" = (
+/obj/structure/table,
+/obj/item/toy/figure,
+/obj/item/paper{
+	default_raw_text = "ntt<p>Ted, please don't make a scene about the fact that you're being forced to fly out to the edge of nowhere again.</p>ntt<p>The place is just a warehouse - a mountain of containers piled in one place, ready for the taking. It's even got a spot to land!</p>ntt<p>I didn't buy this decommissioned piece of titanium crap through the black market to just leave it in the hanger, so quit whining and get us our haul.</p>ntt"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/cabin_crate)
+"yX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"ze" = (
+/obj/machinery/door/poddoor{
+	name = "Transshipment Hangar Shutters";
+	id = "exp_sierra_transshipment_main"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"zl" = (
+/obj/structure/closet/firecloset{
+	pixel_x = 24
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"zm" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"zQ" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Ac" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/cable,
+/obj/machinery/button{
+	pixel_x = -25;
+	pixel_y = 30;
+	id = "exp_sierra_transshipment_main";
+	name = "отключённая панель шлюза";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Ad" = (
+/obj/structure/cable,
+/obj/structure/railing,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Ai" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/clothing/backpack,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Aj" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"At" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/space_heater,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Ay" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"AH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Bc" = (
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Bj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Bm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Bo" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/white/line,
+/obj/structure/closet/crate/large,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Bs" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"BB" = (
+/obj/machinery/power/apc/auto_name/directional/north{
+	name = "north bump"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"BL" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"BN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/machinery/door/airlock/external,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"BT" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 4
+	},
+/mob/living/basic/mining/gutlunch,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Cd" = (
+/obj/effect/spawner/random/exotic/technology,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/cabin_crate)
+"Ck" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Cy" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/effect/turf_decal/trimline/white/line,
+/obj/structure/closet/crate/large,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"CA" = (
+/obj/item/ammo_casing/c9mm,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"CU" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/machinery/meter,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Dt" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/frame/computer{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"DT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"DU" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Eh" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/effect/turf_decal/trimline/white/line,
+/obj/structure/closet/crate/large,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Ej" = (
+/obj/structure/frame/computer,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Es" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/c9mm,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Ew" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/east{
+	name = "east bump"
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Ez" = (
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"EA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"EX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Fe" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Fq" = (
+/mob/living/basic/mining/gutlunch,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Fv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/pipe/directional/connector,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Fx" = (
+/obj/effect/decal/remains/human,
+/obj/effect/gibspawner/human,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"FI" = (
+/obj/structure/cable,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"FS" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/item/stack/rods,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Gd" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Gv" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/item/clothing/suit/caution,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"GD" = (
+/obj/machinery/door/poddoor/preopen{
+	dir = 4;
+	name = "Container Flaps";
+	id = "exp_sierra_transshipment_main"
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/control_crate)
+"GU" = (
+/obj/machinery/navbeacon,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"GW" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/smes_crate)
+"Hf" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/paper{
+	default_raw_text = "ntt<p>Nicky, I'm gonna keep this short. Some sort of overgrown space parrots are on our tail. Me and the guys are taking apart the grilles around the landing pad and fashioning barricades to hold them off.</p>ntt<p>You better hope we make it out of here, or you're not seeing a single god-damn thaler!!</p>ntt<p>Ugh, now what - they just dropped eggs on us, it looks like? I don't know, I'm going to head out and see what the hell they are.</p>ntt"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Hg" = (
+/obj/effect/decal/cleanable/molten_object,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Hj" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"HB" = (
+/obj/machinery/atmospherics/components/binary/pressure_valve,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"HC" = (
+/obj/machinery/power/floodlight,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Ig" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"It" = (
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/smes_crate)
+"Jc" = (
+/mob/living/basic/mining/gutlunch,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/cabin_crate)
+"Jf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Jq" = (
+/obj/structure/cable,
+/obj/machinery/power/smes,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Ju" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/frame/computer,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Kv" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Ky" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"KH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"KI" = (
+/obj/structure/handrail{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Lr" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/item/stack/rods,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"LA" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/obj/machinery/door/airlock/external,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"LW" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/obj/machinery/airlock_sensor{
+	pixel_x = 24;
+	pixel_y = -8
+	},
+/obj/machinery/light,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Ma" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/item/clothing/suit/caution,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Md" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/item/pipe/directional/connector,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Mh" = (
+/obj/structure/table,
+/obj/effect/spawner/random/weapon/full_gun,
+/obj/item/paper{
+	default_raw_text = "ntt<p>Nicky, this is fucked up! I hope you don't have to read this, cause if you do then that means I'm DEAD!!</p>ntt<p>While we were flying this hunk of scrap to the target, something hit us as we were entering orbit.</p>ntt<p>Engines are dying, the hull is torn open, and we're not gonna be able to leave until we patch damn thing up.</p>ntt<p>If something happens to me, my father is gonna tear you a new one!!!</p>ntt"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/control_crate)
+"Mv" = (
+/obj/machinery/door/poddoor/preopen{
+	dir = 4;
+	name = "Container Flaps";
+	id = "exp_sierra_transshipment_main"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/cabin_crate)
+"MA" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"MB" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/engineering/tank,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"MF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"MZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/table{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Nd" = (
+/obj/structure/grille,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Ng" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paint/paint_remover,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"No" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/obj/machinery/airalarm{
+	pixel_y = 22
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Oc" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Of" = (
+/obj/item/clothing/suit/caution,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Oo" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"OH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"OL" = (
+/obj/structure/frame/machine,
+/obj/item/circuitboard/machine/engine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"OP" = (
+/obj/structure/chair/comfy/blue,
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/airalarm{
+	pixel_y = 24
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Pi" = (
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Pp" = (
+/obj/structure/chair/comfy/blue,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"PG" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Ql" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Qp" = (
+/obj/machinery/dna_scannernew{
+	dir = 4
+	},
+/obj/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Qq" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Qw" = (
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Qy" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"QK" = (
+/obj/structure/table,
+/obj/item/ammo_box/c12ga,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/control_crate)
+"QT" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Rh" = (
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Rw" = (
+/obj/structure/ore_box,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Sb" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/food_or_drink/dinner,
+/obj/effect/spawner/random/food_or_drink/dinner,
+/obj/effect/spawner/random/food_or_drink/dinner,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Sc" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Sp" = (
+/obj/machinery/door/poddoor/preopen{
+	dir = 4;
+	name = "Container Flaps";
+	id = "exp_sierra_transshipment_main"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/smes_crate)
+"Sy" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/table,
+/obj/item/storage/medkit/surgery,
+/obj/item/stack/medical/ointment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"SA" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"SC" = (
+/obj/machinery/mech_bay_recharge_port,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"SL" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"SO" = (
+/obj/item/food/egg,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"ST" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"SU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"SZ" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"TD" = (
+/obj/item/gun/energy/disabler,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"TP" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Ua" = (
+/obj/machinery/portable_atmospherics/canister/hydrogen,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Uf" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Ut" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/cable_coil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Uv" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Uy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/portable_atmospherics/scrubber,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"UJ" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"US" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/machinery/door/airlock/external,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Vv" = (
+/obj/machinery/atmospherics/components/binary/pressure_valve{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"VA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"VB" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"VI" = (
+/obj/effect/decal/remains/human,
+/obj/effect/gibspawner/human,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/control_crate)
+"VP" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Wa" = (
+/obj/machinery/vending/tool{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Wj" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/power/apc/auto_name/directional/north{
+	name = "north bump"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/cabin_crate)
+"WE" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"WF" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"WR" = (
+/obj/structure/cable,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"WZ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Xa" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"Xc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Xh" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/cabin_crate)
+"Xq" = (
+/obj/item/ammo_casing/a75,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Xz" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"XF" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/white/line,
+/obj/structure/closet/crate/large,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"Yb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/gun/energy/disabler,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Ye" = (
+/obj/item/food/egg,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Yl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/control_crate)
+"YP" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"YQ" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/food_or_drink/booze,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/cabin_crate)
+"Zm" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Zq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/obj/structure/table{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"Zt" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/smes_crate)
+"ZA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/mask/gas,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+"ZD" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/portable_atmospherics/canister/hydrogen,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/warehouse)
+"ZM" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
+"ZX" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/airstrip)
+
+(1,1,1) = {"
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+"}
+(2,1,1) = {"
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+"}
+(3,1,1) = {"
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+"}
+(4,1,1) = {"
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+"}
+(5,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+ST
+ST
+ST
+DT
+DT
+DT
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+aY
+aY
+aY
+aY
+"}
+(6,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+Nd
+dG
+Nd
+Nd
+Bc
+Bc
+Nd
+Nd
+Nd
+Nd
+dG
+Nd
+Nd
+Nd
+dG
+ST
+gC
+nG
+nG
+nG
+nG
+dr
+nG
+nG
+nG
+nG
+nG
+eQ
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(7,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+ST
+ST
+ST
+ST
+DT
+DT
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+DT
+ST
+gC
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(8,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+OH
+ST
+ST
+ST
+DT
+DT
+ST
+ST
+ST
+DT
+ST
+ST
+ST
+ST
+ST
+ST
+gC
+ST
+ST
+ST
+ST
+ST
+lC
+ST
+ST
+DT
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(9,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+iK
+iK
+iK
+iK
+Jf
+Jf
+Uv
+Uv
+Uv
+Uv
+ST
+ST
+jX
+jX
+jX
+jX
+Zm
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(10,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+iK
+yQ
+Xh
+iK
+Ig
+DT
+Uv
+cg
+UJ
+Uv
+ST
+ek
+jX
+QK
+xs
+jX
+gC
+Rw
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+gC
+ST
+dG
+aY
+aY
+aY
+aY
+"}
+(11,1,1) = {"
+aY
+aY
+aY
+aY
+Nd
+ST
+iK
+Wj
+Cd
+iK
+DT
+DT
+Uv
+Ez
+cb
+Uv
+ST
+ST
+jX
+Mh
+kB
+jX
+gC
+ST
+ST
+DT
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(12,1,1) = {"
+aY
+aY
+aY
+aY
+Nd
+ST
+iK
+YQ
+Jc
+iK
+DT
+up
+Uv
+UJ
+QT
+Uv
+ek
+ST
+jX
+VI
+ab
+jX
+gC
+ST
+jJ
+ST
+lC
+ST
+ST
+ST
+ST
+ST
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(13,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+iK
+xk
+ce
+iK
+DT
+Ay
+Uv
+QT
+Ez
+Uv
+ST
+CA
+jX
+fy
+Yl
+jX
+gC
+ST
+jJ
+ST
+ST
+ST
+DT
+ST
+ST
+lC
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(14,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+iK
+wl
+Mv
+iK
+DT
+DT
+Uv
+lR
+lR
+Uv
+ST
+ST
+jX
+GD
+ej
+jX
+gC
+ST
+jJ
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(15,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+gJ
+ZA
+hC
+DT
+rz
+DT
+DT
+DT
+Es
+DT
+Xc
+DT
+DT
+hC
+Ig
+mG
+FS
+ST
+jJ
+dJ
+ST
+Of
+ST
+ST
+ST
+ST
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(16,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+gJ
+DT
+hC
+hC
+hC
+hC
+sz
+hC
+sz
+hC
+hC
+hC
+bE
+hC
+iE
+Bj
+tM
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+oC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(17,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+GW
+Sp
+wb
+GW
+DT
+hC
+Uv
+lR
+lR
+Uv
+ST
+ST
+Uv
+lR
+lR
+Uv
+jU
+qH
+ST
+ST
+kq
+au
+au
+kq
+ST
+ST
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(18,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+GW
+bO
+dD
+GW
+DT
+hC
+Uv
+mq
+cb
+Uv
+ST
+ST
+Uv
+Ez
+cb
+Uv
+Ma
+ST
+ST
+kq
+kq
+gI
+Dt
+kq
+kq
+ST
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(19,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+GW
+nv
+yE
+GW
+DT
+hC
+Uv
+ZX
+cb
+Uv
+ST
+ST
+Uv
+cb
+mq
+Uv
+tM
+ST
+ST
+kq
+Ej
+qu
+iw
+qV
+kq
+ST
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(20,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+GW
+It
+aS
+GW
+DT
+hC
+Uv
+qp
+mq
+Uv
+ST
+ST
+Uv
+Rh
+iL
+Uv
+tM
+dJ
+ST
+kq
+Hf
+wX
+nA
+GU
+kq
+ST
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(21,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+GW
+It
+Zt
+GW
+up
+hC
+Uv
+mq
+mq
+Uv
+ST
+ST
+Uv
+cb
+mq
+Uv
+tM
+ST
+LW
+kq
+Pp
+YP
+SL
+qd
+kq
+Ju
+DT
+gC
+ST
+dG
+aY
+aY
+aY
+aY
+"}
+(22,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+GW
+GW
+GW
+GW
+Yb
+hC
+Uv
+Uv
+Uv
+Uv
+Ye
+gJ
+Uv
+Uv
+Uv
+Uv
+jU
+ST
+pV
+kq
+OP
+YP
+SL
+qd
+kq
+dk
+DT
+iP
+ST
+ST
+aY
+aY
+aY
+aY
+"}
+(23,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+ST
+gJ
+af
+DT
+MZ
+qj
+DT
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+gJ
+ST
+tM
+SU
+EX
+kq
+kq
+DU
+sK
+pF
+vG
+kq
+kq
+gC
+ST
+ST
+aY
+aY
+aY
+aY
+"}
+(24,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+pn
+Xq
+ST
+ST
+Zq
+jo
+DT
+aE
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+Xq
+tM
+pb
+WE
+tk
+US
+VA
+uk
+yX
+SA
+kz
+kq
+gC
+ST
+ST
+aY
+aY
+aY
+aY
+"}
+(25,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+ST
+Fe
+Fe
+Fe
+kF
+LA
+pp
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+ST
+tM
+BN
+bx
+KI
+jn
+lV
+Sc
+nB
+Kv
+Qp
+kq
+gC
+ST
+ST
+aY
+aY
+aY
+aY
+"}
+(26,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+ST
+Fe
+Wa
+ak
+Fe
+nJ
+rS
+Fe
+TP
+PG
+wB
+nL
+uw
+kb
+Fe
+ST
+gC
+kq
+kq
+kq
+kq
+jR
+zQ
+Sy
+sR
+kq
+kq
+gC
+ST
+ST
+aY
+aY
+aY
+aY
+"}
+(27,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+pn
+ST
+Fe
+cF
+mF
+Fe
+No
+id
+Fe
+ij
+Hg
+mF
+mF
+kQ
+fU
+qe
+wY
+iP
+DT
+dk
+Jq
+lj
+lg
+jO
+Qq
+wH
+dk
+DT
+gC
+ST
+ST
+aY
+aY
+aY
+aY
+"}
+(28,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+ST
+Fe
+SO
+mF
+Fe
+fS
+sL
+Fe
+Xa
+mF
+SO
+iA
+mF
+kG
+qe
+DT
+Ng
+DT
+kq
+BB
+yi
+gn
+WR
+EA
+ch
+dk
+DT
+gC
+ut
+ST
+aY
+aY
+aY
+aY
+"}
+(29,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+ST
+Fe
+mF
+iA
+mF
+Ac
+AH
+MF
+po
+TD
+qN
+qN
+At
+Qw
+qe
+DT
+iP
+DT
+kq
+FI
+Ad
+Eh
+XF
+iH
+SZ
+dk
+DT
+iP
+ST
+ST
+aY
+aY
+aY
+aY
+"}
+(30,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+ST
+Fe
+mF
+mF
+kc
+Qy
+mF
+kc
+BT
+eD
+qN
+ZD
+At
+xE
+qe
+DT
+iP
+kq
+kq
+hQ
+qa
+Cy
+Bo
+wU
+Pi
+dk
+dk
+iP
+ST
+dG
+aY
+aY
+aY
+aY
+"}
+(31,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+ST
+Fe
+Ai
+vL
+Lr
+Ql
+KH
+hq
+Xz
+Fx
+cE
+cZ
+HB
+xY
+ze
+Ky
+fj
+dk
+ci
+og
+WF
+vd
+fL
+ol
+og
+ZM
+dk
+iP
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(32,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+ST
+Fe
+cF
+mF
+WZ
+oD
+oq
+Oo
+zm
+zm
+Fq
+VB
+Vv
+xY
+ze
+Bm
+Oc
+kq
+Ua
+CU
+zl
+Md
+Fv
+Aj
+uc
+SC
+dk
+iP
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(33,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+ST
+Fe
+MB
+xw
+HC
+Ew
+ne
+hw
+ic
+nY
+tl
+Sb
+nY
+nY
+Fe
+Ck
+MA
+kq
+kq
+Hj
+Hj
+kq
+kq
+Hj
+Hj
+kq
+kq
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(34,1,1) = {"
+aY
+aY
+aY
+aY
+dG
+ST
+ST
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+Fe
+Ck
+MA
+pn
+kq
+iZ
+OL
+VP
+ST
+OL
+iZ
+kq
+ST
+gC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(35,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+DT
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+Uy
+nf
+mW
+xe
+tY
+kZ
+Gv
+Bs
+ST
+Bs
+BL
+BL
+Ut
+BL
+ST
+ST
+ST
+oC
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(36,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+ST
+ST
+ST
+ST
+ST
+DT
+ST
+ST
+ST
+ST
+ST
+ST
+pJ
+tY
+tY
+tY
+Uf
+rb
+nG
+uj
+nG
+qM
+Gd
+Gd
+nG
+nG
+nG
+nG
+ST
+Nd
+aY
+aY
+aY
+aY
+"}
+(37,1,1) = {"
+aY
+aY
+aY
+aY
+ST
+ST
+dG
+dG
+Nd
+Nd
+Nd
+Nd
+dG
+Nd
+dG
+Nd
+Nd
+Nd
+dG
+Nd
+dG
+ST
+ST
+ST
+dG
+Nd
+Nd
+Nd
+Nd
+Nd
+Nd
+Nd
+Nd
+Nd
+Nd
+Nd
+aY
+aY
+aY
+aY
+"}
+(38,1,1) = {"
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+"}
+(39,1,1) = {"
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+"}
+(40,1,1) = {"
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+"}

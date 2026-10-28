@@ -1,0 +1,113 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/drill_site/drill_site.dmm
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"i" = (
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+"m" = (
+/obj/machinery/power/floodlight,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+"o" = (
+/obj/structure/girder,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+"r" = (
+/obj/effect/spawner/random/food_or_drink/booze,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+"w" = (
+/obj/effect/spawner/random/engineering/tool_advanced,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+"z" = (
+/obj/effect/spawner/random/engineering/tool,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+"B" = (
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/spawner/random/maintenance,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+"J" = (
+/obj/effect/spawner/random/engineering/toolbox,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+"T" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+"X" = (
+/obj/effect/spawner/random/exotic/technology,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+"Y" = (
+/obj/structure/ore_box,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+
+(1,1,1) = {"
+a
+T
+a
+a
+z
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+o
+a
+T
+r
+a
+"}
+(3,1,1) = {"
+T
+B
+Y
+a
+Y
+a
+J
+"}
+(4,1,1) = {"
+a
+a
+a
+X
+Y
+a
+a
+"}
+(5,1,1) = {"
+a
+m
+T
+a
+a
+T
+a
+"}
+(6,1,1) = {"
+a
+w
+T
+a
+z
+T
+i
+"}
+(7,1,1) = {"
+a
+a
+a
+T
+a
+a
+a
+"}

@@ -1,0 +1,3811 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oldlab/oldlab.dmm
+"ab" = (
+/obj/structure/table,
+/obj/effect/spawner/random/medical/supplies,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"ay" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4,
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -32
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"aF" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"aN" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/machinery/power/apc/auto_name/directional/east{
+	name = "east bump"
+	},
+/obj/item/bedsheet/blue,
+/obj/structure/bed,
+/obj/effect/spawner/random/entertainment/plushie,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"bh" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"bu" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"bv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"bK" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = 22
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"bM" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"bO" = (
+/obj/structure/frame/computer{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"cn" = (
+/obj/machinery/chem_master,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"co" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"cx" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/structure/chair/office,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"cy" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = -22
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"cL" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/mecha_part_fabricator,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"cM" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"cP" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/machinery/iv_drip,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"cR" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"cZ" = (
+/obj/machinery/door/airlock{
+	name = "Shower"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"df" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"dh" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor{
+	id = "exp_sierra_oldlab_main"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"di" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"dk" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2/expedition,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4/expedition,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"dl" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"dr" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/obj/effect/spawner/random/engineering/toolbox,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"ds" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"dP" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"dQ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"ec" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = 16
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"eo" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"et" = (
+/obj/structure/table,
+/obj/item/stack/medical/ointment,
+/obj/effect/spawner/random/medical/supplies,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"ez" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"eC" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/structure/closet/toolcloset,
+/obj/item/storage/box/lights/mixed,
+/obj/effect/spawner/random/weapon/full_gun,
+/obj/effect/spawner/random/clothing/costume,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"eE" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/item/bedsheet/brown,
+/obj/structure/bed,
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"fC" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"fD" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"fF" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"fI" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2,
+/obj/item/radio/intercom{
+	pixel_y = 24
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"fP" = (
+/obj/structure/reagent_dispensers/water_cooler{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"fS" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"gg" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"gv" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"gQ" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"gS" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"gY" = (
+/obj/machinery/computer/crew{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"hj" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"hs" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"ht" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = -22
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"hH" = (
+/obj/machinery/button{
+	name = "отключённая панель шлюза";
+	pixel_x = 24;
+	pixel_y = 24;
+	id = "exp_sierra_oldlab_main";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/obj/machinery/airlock_sensor{
+	pixel_x = -24;
+	pixel_y = 24
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"hL" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"hM" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"ie" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/engineering/tool,
+/obj/effect/spawner/random/engineering/tool,
+/obj/item/storage/belt/utility/full,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/spawner/random/engineering/tool,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"in" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/beaker{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/cup/beaker{
+	pixel_x = 9;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/cup/beaker,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"iC" = (
+/obj/structure/table,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4,
+/obj/item/flashlight/lamp,
+/obj/machinery/light_switch{
+	pixel_x = -6;
+	pixel_y = 24
+	},
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"iH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"je" = (
+/obj/machinery/power/solar,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"jv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"jD" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"jU" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"jY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"kg" = (
+/obj/structure/grille,
+/obj/machinery/computer/monitor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"kj" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	initialize_directions = 13
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"kp" = (
+/obj/structure/closet/crate/freezer,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"kr" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/obj/structure/table,
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/obj/item/reagent_containers/spray/cleaner,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"kz" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"kJ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"kO" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"kV" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"la" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/machinery/power/apc/auto_name/directional/north{
+	name = "north bump"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"le" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"ls" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"lz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"lF" = (
+/obj/machinery/light_switch{
+	pixel_x = 24;
+	pixel_y = -6
+	},
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"lI" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"mr" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"mu" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"mC" = (
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"mH" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/door/airlock,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"mI" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 4
+	},
+/mob/living/basic/spider/giant/nurse,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"mS" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/machinery/power/apc/auto_name/directional/east{
+	name = "east bump"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"mU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/button/door{
+	name = "Lab Shutters Control";
+	pixel_x = -32;
+	id = "exp_sierra_oldlab_main"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"nm" = (
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"no" = (
+/obj/structure/closet/firecloset,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"nt" = (
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"nF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"oa" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"oj" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"oD" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/machinery/power/apc/auto_name/directional/east{
+	name = "east bump"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"oE" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/engineering/material_cheap,
+/obj/item/crowbar,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"oJ" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"oR" = (
+/obj/structure/table,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"pe" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"pv" = (
+/obj/structure/closet/wardrobe/science_white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"py" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/button/door{
+	name = "Lab Shutters Control";
+	pixel_x = -32;
+	id = "exp_sierra_oldlab_main"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"pC" = (
+/obj/machinery/light_switch{
+	pixel_x = -6;
+	pixel_y = -24
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"pS" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"qb" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/mob/living/basic/spider/giant/guard,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"qh" = (
+/obj/structure/table,
+/obj/effect/spawner/random/medical/supplies,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"qm" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"rj" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"rr" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"rL" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4/expedition,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"rX" = (
+/obj/structure/table,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"sa" = (
+/obj/structure/table,
+/obj/item/storage/medkit/surgery,
+/obj/item/radio/intercom{
+	pixel_y = 24
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"sc" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 32
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"sh" = (
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"sq" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"sE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/machinery/button/door{
+	name = "Lab Shutters Control";
+	pixel_x = 32;
+	id = "exp_sierra_oldlab_main"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"ti" = (
+/obj/structure/table,
+/obj/effect/spawner/random/food_or_drink/dinner,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"tu" = (
+/obj/machinery/computer/crew,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"tw" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"tB" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/table/optable{
+	name = "Robotics Operating Table"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"tJ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"tR" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"uH" = (
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"uK" = (
+/obj/machinery/vending/medical,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"uO" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"uS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"vq" = (
+/obj/machinery/light,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"vv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"vC" = (
+/obj/structure/closet/wardrobe/black,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"vI" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"vN" = (
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/door/airlock,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"wa" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/item/radio/intercom{
+	pixel_y = 24
+	},
+/mob/living/basic/spider/giant/guard,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"wo" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"wv" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/structure/table,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"ww" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_sierra_oldlab_main"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"wx" = (
+/obj/item/radio/intercom{
+	pixel_y = 24
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"wJ" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"wQ" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"wT" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/east{
+	name = "east bump"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"wU" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/machinery/light,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"wX" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/structure/closet/firecloset{
+	pixel_x = -32
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"xd" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"xm" = (
+/obj/structure/chair/comfy/red{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"xv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"yd" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 13
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"ye" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"yi" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"yp" = (
+/obj/machinery/light_switch{
+	pixel_x = 24;
+	pixel_y = -6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"yr" = (
+/obj/structure/rack,
+/obj/item/crowbar,
+/obj/item/shovel,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"yu" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"yE" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"yG" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/obj/machinery/portable_atmospherics/pump,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"yX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"zc" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/vending/tool{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"zz" = (
+/obj/structure/table,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"zC" = (
+/obj/machinery/computer/crew,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"zF" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"zI" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"zU" = (
+/obj/structure/table,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/spawner/random/medical/supplies,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"zY" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"Ab" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"Ag" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"AD" = (
+/obj/machinery/door/airlock,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"AO" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/table,
+/obj/machinery/light/small,
+/obj/item/toy/cards/deck,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Bb" = (
+/obj/structure/spider/eggcluster,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"Bh" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/suit_storage_unit/engine,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Bk" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Bs" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = -22
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"BH" = (
+/obj/structure/table,
+/obj/machinery/space_heater,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"BM" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/structure/reagent_dispensers/fueltank{
+	density = 0;
+	pixel_x = 32
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"BN" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"BT" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"BV" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/airlock,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"Cm" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/machinery/autolathe,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"Co" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/table,
+/obj/item/modular_computer/laptop,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"CE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"CU" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"Dh" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"DJ" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"DQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"DZ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 32
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Ec" = (
+/obj/machinery/griddle,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"Ek" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/obj/machinery/vending/robotics{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"Ev" = (
+/obj/machinery/computer/crew,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"EA" = (
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/structure/curtain/cloth,
+/obj/item/soap,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"EQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"EZ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"Ff" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/mob/living/basic/spider/giant/hunter,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"Fh" = (
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/medical/glass{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Fo" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"FD" = (
+/obj/machinery/button{
+	name = "отключённая панель шлюза";
+	pixel_x = 24;
+	pixel_y = -24;
+	id = "exp_sierra_oldlab_main";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"FE" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"FI" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 32
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"FK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/light_switch{
+	pixel_x = -6;
+	pixel_y = -24
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"FQ" = (
+/obj/structure/cable,
+/mob/living/basic/spider/giant/nurse,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"FU" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/machinery/power/smes,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Ga" = (
+/obj/structure/table,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"Gr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"Gu" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"GC" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"GE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"GF" = (
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"GI" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"GP" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"Hm" = (
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/door/airlock,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"Hq" = (
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"Hs" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/computer/rdconsole{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"Hv" = (
+/obj/machinery/airlock_sensor{
+	pixel_x = 25;
+	pixel_y = -6
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 25;
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"HI" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"HL" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"HR" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"HT" = (
+/obj/structure/grille,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Ib" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Il" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen{
+	pixel_x = -32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Iy" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2/expedition,
+/obj/effect/spawner/random/exotic/technology,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 13
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"IB" = (
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"II" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"IW" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/airlock{
+	name = "Shower"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"IZ" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"Ju" = (
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"JA" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/obj/machinery/recharge_station,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"JN" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"JP" = (
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"JQ" = (
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"JR" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"JW" = (
+/obj/machinery/power/solar_control,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"JY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Ka" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/structure/closet/firecloset{
+	pixel_y = 32
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"Kp" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Ks" = (
+/obj/machinery/reagentgrinder,
+/obj/item/reagent_containers/cup/beaker/large,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"KJ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/machinery/recharge_station,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"KR" = (
+/obj/structure/table/optable{
+	name = "Xenobiology Operating Table"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"LI" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"LV" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/structure/fireaxecabinet{
+	pixel_y = -32
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Ma" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/scrubber,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"Mb" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 13
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"Me" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Mp" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/power/apc/auto_name/directional/north{
+	name = "north bump"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Mq" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Mw" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"MF" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"MI" = (
+/obj/structure/chair/comfy/red{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"Nk" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/door/airlock/external{
+	name = "South Lab Airlock"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Nv" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = -22
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"NK" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"NN" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_sierra_oldlab_main"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"NS" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"Oc" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/computer/monitor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Oo" = (
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"Ov" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"OD" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"OG" = (
+/obj/machinery/washing_machine,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"ON" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor{
+	id = "exp_sierra_oldlab_main"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"Pc" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Pf" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/button/door{
+	name = "Lab Shutters Control";
+	pixel_x = 32;
+	id = "exp_sierra_oldlab_main"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"Pk" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/mob/living/basic/spider/giant/hunter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"PI" = (
+/obj/structure/table,
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = 22
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"PK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"PN" = (
+/obj/machinery/door/airlock,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"Qg" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/obj/structure/table,
+/obj/effect/spawner/random/engineering/toolbox,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"QT" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"QX" = (
+/obj/machinery/power/tracker,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Re" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"Ro" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Ry" = (
+/obj/machinery/dna_scannernew{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"RI" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"RM" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/computer/atmos_alert{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Sg" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/chair/comfy/red{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"Sq" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/spawner/random/exotic/technology,
+/obj/structure/closet/firecloset{
+	pixel_x = -32
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Sv" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"SE" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"SJ" = (
+/obj/structure/table,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4,
+/obj/machinery/light_switch{
+	pixel_y = 25
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"SX" = (
+/obj/structure/bed,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"SY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"To" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/structure/closet/firecloset{
+	pixel_x = -32
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"Tx" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/machinery/power/apc/auto_name/directional/west{
+	name = "west bump"
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"Ty" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4,
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"TA" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"TC" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"TD" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"TH" = (
+/obj/machinery/atmospherics/components/binary/pump,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"TK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"TU" = (
+/obj/machinery/door/airlock{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Uf" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"Ug" = (
+/obj/vehicle/ridden/wheelchair,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"Ui" = (
+/obj/structure/closet/firecloset,
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"Uk" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2/expedition,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"UD" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/airalarm{
+	pixel_y = 24
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"UI" = (
+/obj/item/paper{
+	name = "полевой журнал: Лаборатория с нарушенным карантином";
+	 default_raw_text = "Объект: Лаборатория с нарушенным карантином. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Vd" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"VI" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"VU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"Wa" = (
+/obj/structure/cable,
+/obj/structure/chair/stool,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Wc" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/table,
+/obj/item/healthanalyzer,
+/obj/machinery/recharger,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+"We" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Wn" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"Ws" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
+"Wy" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"WD" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"Xg" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"Xt" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"Xu" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Xw" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"XE" = (
+/obj/structure/cable,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"XG" = (
+/obj/machinery/oven,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"XH" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/beaker,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"XJ" = (
+/obj/machinery/door/airlock/external{
+	name = "South Lab Airlock"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"XM" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/effect/spawner/random/contraband,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"Yg" = (
+/obj/machinery/smartfridge/chemistry,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"Yk" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/computer/monitor{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Yn" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"Yo" = (
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
+"YC" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	initialize_directions = 13
+	},
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 13
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"YL" = (
+/obj/structure/closet/crate/freezer,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"YR" = (
+/obj/structure/reagent_dispensers/fueltank{
+	density = 0;
+	pixel_x = 32
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"YU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/light,
+/obj/machinery/button/door{
+	name = "Exterior Lab Shutters Control";
+	pixel_x = 32;
+	id = "exp_sierra_oldlab_main"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"ZA" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
+"ZF" = (
+/obj/machinery/chem_dispenser,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
+"ZQ" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/machinery/power/terminal,
+/obj/machinery/power/apc/auto_name/directional/south{
+	name = "south bump"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
+
+(1,1,1) = {"
+kg
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+"}
+(2,1,1) = {"
+HT
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+QX
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+HT
+"}
+(3,1,1) = {"
+HT
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+HT
+"}
+(4,1,1) = {"
+HT
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+HT
+"}
+(5,1,1) = {"
+HT
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+HT
+"}
+(6,1,1) = {"
+HT
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+HT
+"}
+(7,1,1) = {"
+HT
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+HT
+"}
+(8,1,1) = {"
+HT
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+je
+dl
+HT
+"}
+(9,1,1) = {"
+HT
+dl
+je
+dl
+je
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+dl
+je
+dl
+je
+dl
+HT
+"}
+(10,1,1) = {"
+HT
+dl
+je
+dl
+je
+dl
+yE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+CE
+yE
+dl
+je
+dl
+je
+dl
+HT
+"}
+(11,1,1) = {"
+HT
+dl
+je
+dl
+je
+dl
+yE
+CE
+hL
+tJ
+RM
+hj
+hj
+hj
+Yk
+dr
+dQ
+CE
+yE
+dl
+je
+dl
+je
+dl
+HT
+"}
+(12,1,1) = {"
+HT
+dl
+je
+dl
+je
+dl
+yE
+CE
+Oc
+cx
+Fo
+Fo
+Pk
+Ro
+Ro
+Wa
+Co
+CE
+yE
+dl
+je
+dl
+je
+dl
+HT
+"}
+(13,1,1) = {"
+HT
+dl
+je
+dl
+je
+dl
+dl
+co
+JW
+DZ
+hs
+zc
+Bk
+dl
+oD
+bK
+FU
+CE
+yE
+dl
+je
+dl
+je
+dl
+HT
+"}
+(14,1,1) = {"
+HT
+dl
+je
+dl
+dl
+XE
+yE
+di
+di
+di
+di
+di
+yi
+TU
+di
+di
+di
+di
+yE
+XE
+dl
+dl
+je
+dl
+HT
+"}
+(15,1,1) = {"
+HT
+dl
+je
+dl
+gQ
+gQ
+gQ
+gQ
+yu
+tB
+Qg
+gQ
+FE
+Xu
+pS
+pS
+pS
+pS
+pS
+pS
+pS
+dl
+je
+dl
+HT
+"}
+(16,1,1) = {"
+HT
+dl
+je
+dl
+gQ
+KJ
+Nv
+SE
+uS
+wQ
+Wc
+gQ
+MF
+wU
+pS
+pS
+eC
+cy
+We
+kr
+pS
+dl
+je
+dl
+HT
+"}
+(17,1,1) = {"
+HT
+dl
+XE
+dl
+gQ
+JA
+gv
+gg
+pe
+cR
+RI
+gQ
+Kp
+yd
+pS
+pS
+eE
+XM
+cM
+AO
+pS
+dl
+XE
+dl
+HT
+"}
+(18,1,1) = {"
+wJ
+gQ
+gQ
+gQ
+DJ
+gQ
+gQ
+mH
+gQ
+gQ
+gQ
+gQ
+UD
+oa
+pS
+pS
+pS
+pS
+AD
+pS
+pS
+pS
+pS
+rr
+Mq
+"}
+(19,1,1) = {"
+vq
+gQ
+uO
+bv
+DJ
+Cm
+JN
+VU
+SE
+SE
+SE
+gS
+jv
+Ib
+le
+Sq
+fC
+BT
+Ag
+fD
+pS
+Pc
+Il
+rr
+Sv
+"}
+(20,1,1) = {"
+wJ
+gQ
+kJ
+kj
+DJ
+Ka
+PK
+ls
+fS
+QT
+tR
+mC
+dk
+UI
+Ju
+ds
+Iy
+JY
+TH
+FD
+Nk
+LI
+Hv
+XJ
+hH
+"}
+(21,1,1) = {"
+wJ
+gQ
+kJ
+xv
+PN
+lz
+Mw
+ie
+VU
+ZQ
+gQ
+gQ
+wa
+Xu
+pS
+pS
+Mp
+oE
+yr
+Yo
+pS
+pS
+pS
+rr
+Mq
+"}
+(22,1,1) = {"
+wJ
+gQ
+Ma
+sh
+DJ
+kz
+wJ
+wJ
+DQ
+GC
+gQ
+gQ
+aF
+df
+pS
+pS
+TD
+TK
+TK
+vI
+pS
+pS
+pS
+Sv
+Mq
+"}
+(23,1,1) = {"
+vq
+gQ
+yG
+zF
+DJ
+Ek
+cL
+Hs
+JR
+BM
+gQ
+gQ
+FE
+LV
+pS
+pS
+HL
+Bh
+Bh
+Me
+pS
+pS
+pS
+Mq
+Mq
+"}
+(24,1,1) = {"
+wJ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+GF
+Fh
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Wn
+Mq
+Mq
+"}
+(25,1,1) = {"
+wJ
+wJ
+Wn
+JQ
+ay
+ht
+yX
+To
+mU
+eo
+Uf
+vv
+rL
+oj
+vv
+Uf
+ht
+To
+yX
+Uf
+oJ
+JQ
+Wn
+Mq
+Mq
+"}
+(26,1,1) = {"
+wJ
+vq
+Wn
+no
+fF
+xd
+Ov
+xd
+xd
+xd
+xd
+xd
+Uk
+xd
+xd
+xd
+jY
+xd
+Ov
+xd
+hM
+Ui
+Wn
+Sv
+Mq
+"}
+(27,1,1) = {"
+wJ
+wJ
+HR
+ww
+ww
+ww
+BV
+ww
+ww
+ww
+HR
+TC
+OD
+TC
+Vd
+Vd
+Vd
+Vd
+ZA
+Vd
+Vd
+Vd
+Vd
+Mq
+Mq
+"}
+(28,1,1) = {"
+wJ
+wJ
+HR
+Ev
+IZ
+VI
+mr
+cP
+SX
+et
+dh
+GI
+CU
+nt
+Vd
+Xt
+wX
+Tx
+FK
+Vd
+YL
+mu
+Vd
+Mq
+Mq
+"}
+(29,1,1) = {"
+wJ
+wJ
+HR
+sa
+IZ
+EQ
+zY
+GE
+IZ
+qh
+dh
+GI
+CU
+pC
+Vd
+SJ
+nF
+bM
+YC
+Vd
+kp
+lI
+Vd
+Mq
+Mq
+"}
+(30,1,1) = {"
+wJ
+vq
+HR
+KR
+Bb
+EQ
+Ry
+gY
+Hq
+Hq
+Oo
+JP
+CU
+JP
+IB
+sq
+sq
+Ff
+Ab
+Vd
+Vd
+IW
+Vd
+Sv
+Mq
+"}
+(31,1,1) = {"
+wJ
+wJ
+HR
+Ev
+IZ
+EQ
+mI
+GE
+Hq
+xm
+dh
+GI
+CU
+wo
+zC
+XG
+Re
+Re
+SY
+HI
+HI
+Gr
+Vd
+Mq
+Mq
+"}
+(32,1,1) = {"
+wJ
+wJ
+HR
+uK
+rj
+sE
+Mb
+Ws
+wT
+lF
+dh
+GI
+CU
+wo
+Vd
+Ec
+Dh
+fP
+PI
+ti
+Dh
+sc
+Vd
+Mq
+Mq
+"}
+(33,1,1) = {"
+wJ
+wJ
+HR
+HR
+HR
+HR
+BV
+HR
+HR
+HR
+HR
+la
+Xw
+tw
+Vd
+Vd
+Vd
+Vd
+Vd
+Vd
+Vd
+Vd
+Vd
+Mq
+Mq
+"}
+(34,1,1) = {"
+wJ
+wJ
+ez
+Ks
+zU
+XH
+bu
+py
+wv
+bO
+ON
+qb
+CU
+nm
+Xg
+OG
+Bs
+pv
+vC
+qm
+NK
+qm
+Xg
+Mq
+Mq
+"}
+(35,1,1) = {"
+wJ
+vq
+ez
+wx
+Yn
+Yn
+EZ
+Yn
+iH
+MI
+ON
+GI
+CU
+pC
+Xg
+fI
+Wy
+qm
+qm
+qm
+qm
+qm
+Xg
+Sv
+Mq
+"}
+(36,1,1) = {"
+wJ
+wJ
+ez
+cn
+Yn
+BH
+XH
+ab
+II
+BN
+Hm
+NS
+bh
+kV
+vN
+Gu
+jU
+FQ
+qm
+Xg
+Xg
+cZ
+Xg
+Mq
+Mq
+"}
+(37,1,1) = {"
+wJ
+wJ
+ez
+ZF
+Yn
+Ga
+in
+XH
+jD
+Yn
+ON
+Pf
+WD
+YU
+Xg
+iC
+ye
+TA
+uH
+Xg
+ec
+qm
+Xg
+Mq
+Mq
+"}
+(38,1,1) = {"
+wJ
+wJ
+ez
+Yg
+GP
+YR
+Ty
+FI
+mS
+yp
+ON
+zz
+oR
+rX
+Xg
+tu
+Sg
+aN
+Ug
+Xg
+dP
+EA
+Xg
+Mq
+Mq
+"}
+(39,1,1) = {"
+wJ
+wJ
+ez
+ez
+ez
+ez
+ez
+ez
+ez
+ez
+ez
+NN
+NN
+NN
+Xg
+Xg
+Xg
+Xg
+Xg
+Xg
+Xg
+Xg
+Xg
+Mq
+Mq
+"}
+(40,1,1) = {"
+wJ
+wJ
+wJ
+wJ
+wJ
+zI
+wJ
+wJ
+wJ
+wJ
+zI
+wJ
+Mq
+Mq
+kO
+Mq
+Mq
+Mq
+Mq
+kO
+Mq
+Mq
+Mq
+Mq
+Mq
+"}

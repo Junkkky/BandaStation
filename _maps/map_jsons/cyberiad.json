@@ -45,5 +45,24 @@
 		"Explorer": {
 			"spawn_positions": 4
 		}
+	},
+	"space_overmap": {
+		"station_name": "Кибериада",
+		"station_id": "cyberiad",
+		"port": "emergency_home",
+		"dock_width": 21,
+		"dock_height": 32,
+		"dock_dwidth": 0,
+		"dock_dheight": 16,
+		"dock_direction": 1,
+		"ships": [
+			{
+				"template": "modular_bandastation/space_overmap/maps/raven.dmm",
+				"dispatchable": true
+			},
+			{
+				"template": "modular_bandastation/space_overmap/maps/pocketrocket.dmm"
+			}
+		]
 	}
 }

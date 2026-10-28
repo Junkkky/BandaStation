@@ -184,7 +184,7 @@
 
 /** Keep native actor visuals and non-space terrain; no effects or ghosts become physical targets. */
 /datum/stationtrauma_map_preview/proc/track(atom/actor)
-	if(closing || QDELETED(actor) || (!(isturf(actor) && !isspaceturf(actor)) && !isliving(actor) && (!isobj(actor) || iseffect(actor))) || !tiles[isturf(actor) ? actor : actor.loc])
+	if(closing || QDELETED(actor) || (!(isturf(actor) && !isspaceturf(actor)) && !isliving(actor) && (!isobj(actor) || (iseffect(actor) && !istype(actor, /obj/effect/decal)))) || !tiles[isturf(actor) ? actor : actor.loc])
 		return
 	if(!enabled)
 		pending_actors[actor] = TRUE
@@ -194,6 +194,7 @@
 		if(ismovable(actor))
 			RegisterSignal(actor, COMSIG_MOVABLE_MOVED, PROC_REF(refresh))
 		RegisterSignal(actor, COMSIG_QDELETING, PROC_REF(remove_actor))
+		RegisterSignal(actor, COMSIG_ATOM_SET_OPACITY, PROC_REF(queue_refresh))
 		if(!isturf(actor))
 			RegisterSignals(actor, list(COMSIG_ATOM_UPDATED_ICON, COMSIG_ATOM_POST_DIR_CHANGE, COMSIG_ATOM_COLOR_UPDATED, COMSIG_CARBON_APPLY_OVERLAY, COMSIG_CARBON_REMOVE_OVERLAY, COMSIG_LIVING_POST_UPDATE_TRANSFORM), PROC_REF(queue_refresh))
 	// Finish initialization and immersion before capturing its mask.
@@ -231,7 +232,7 @@
 		return
 	var/obj/effect/abstract/stationtrauma_map_projection/carrier = projections[actor]
 	projections -= actor
-	UnregisterSignal(actor, list(COMSIG_MOVABLE_MOVED, COMSIG_QDELETING, COMSIG_ATOM_UPDATED_ICON, COMSIG_ATOM_POST_DIR_CHANGE, COMSIG_ATOM_COLOR_UPDATED, COMSIG_CARBON_APPLY_OVERLAY, COMSIG_CARBON_REMOVE_OVERLAY, COMSIG_LIVING_POST_UPDATE_TRANSFORM))
+	UnregisterSignal(actor, list(COMSIG_MOVABLE_MOVED, COMSIG_QDELETING, COMSIG_ATOM_SET_OPACITY, COMSIG_ATOM_UPDATED_ICON, COMSIG_ATOM_POST_DIR_CHANGE, COMSIG_ATOM_COLOR_UPDATED, COMSIG_CARBON_APPLY_OVERLAY, COMSIG_CARBON_REMOVE_OVERLAY, COMSIG_LIVING_POST_UPDATE_TRANSFORM))
 	qdel(carrier)
 
 /** A visual-only carrier; live vis_contents preserve outfits, alpha, direction and swimming animation. */
@@ -268,7 +269,10 @@
 	visual_source = actor
 	name = actor.name
 	if(isturf(actor))
+		var/old_opacity = opacity
 		appearance = actor.appearance
+		// Apply opacity through its setter so copying a wall also registers its light blocker.
+		opacity = old_opacity
 		vis_contents.Cut()
 	else
 		// Live vis_contents retain immersion, outfits and animations.
@@ -278,8 +282,10 @@
 			clicks.add_projection(src)
 	invisibility = actor.invisibility
 	plane = actor.plane
+	layer = actor.layer
+	dir = actor.dir
 	set_opacity(actor.opacity)
-	mouse_opacity = isprojectile(actor) ? MOUSE_OPACITY_TRANSPARENT : MOUSE_OPACITY_OPAQUE
+	mouse_opacity = isprojectile(actor) || iseffect(actor) ? MOUSE_OPACITY_TRANSPARENT : MOUSE_OPACITY_OPAQUE
 
 /** Shared click ownership preserves a live actor's visuals while aiming at the image's local coordinates. */
 /datum/component/stationtrauma_map_click

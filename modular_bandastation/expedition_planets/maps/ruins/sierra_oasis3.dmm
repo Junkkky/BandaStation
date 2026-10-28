@@ -1,0 +1,121 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oasis/oasis3.dmm
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"z" = (
+/obj/structure/flora/grass/jungle/a,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis3/exterior)
+"U" = (
+/obj/structure/sink,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis3/exterior)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+z
+z
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+z
+a
+z
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+U
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+z
+z
+a
+a
+z
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+z
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+z
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}

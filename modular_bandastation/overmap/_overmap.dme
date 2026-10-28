@@ -2,6 +2,7 @@
 #include "code/overmap.dm"
 #include "code/sector.dm"
 #include "code/helm.dm"
+#include "code/parallax.dm"
 #include "code/overmap_autopilot.dm"
 #include "code/overmap_contacts.dm"
 #include "code/zones.dm"
@@ -14,5 +15,7 @@
 #include "code/map_connection.dm"
 #if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
 #include "code/sector_test.dm"
+#include "code/identity_test.dm"
+#include "code/map_preview_test.dm"
 #include "code/lighting_deferred_test.dm"
 #endif

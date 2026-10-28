@@ -1,0 +1,1782 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: Void-Crew/Voidcrew-LRP contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/power_puzzle.dmm
+"aa" = (
+/turf/open/space/basic,
+/area/space)
+"bF" = (
+/obj/machinery/door/airlock/highsecurity,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4;
+	icon_state = "tracks"
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"bI" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/construction/rcd,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"bN" = (
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"bY" = (
+/obj/structure/table/wood/fancy/royalblue,
+/obj/item/reagent_containers/hypospray{
+	pixel_y = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"db" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"dl" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"dJ" = (
+/obj/item/flashlight/glowstick,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"dW" = (
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"ei" = (
+/obj/structure/closet/syndicate/resources{
+	name = "Resource storage"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"ew" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"eN" = (
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"eX" = (
+/obj/item/flashlight/glowstick,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"eZ" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/effect/decal/cleanable/vomit,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"fy" = (
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"gb" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"gf" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"gn" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4;
+	icon_state = "blood1"
+	},
+/obj/item/storage/pill_bottle,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"gs" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"gO" = (
+/obj/machinery/door/airlock/highsecurity,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"gT" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/obj/item/weldingtool/mini,
+/obj/structure/cable,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"hr" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"hv" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"hM" = (
+/obj/structure/closet/crate/engineering/electrical,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"in" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"iM" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1;
+	icon_state = "blood1"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"iV" = (
+/obj/structure/closet/crate/secure/loot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power3)
+"ja" = (
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"jx" = (
+/obj/structure/cable,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"kN" = (
+/obj/structure/cable,
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"lt" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"lx" = (
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"lV" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1;
+	icon_state = "blood1"
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/highsecurity,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"lW" = (
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"mB" = (
+/obj/item/inducer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"mP" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"ng" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"nm" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/gun/ballistic/automatic/pistol/m1911{
+	pixel_y = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"no" = (
+/obj/structure/table,
+/obj/item/flashlight/lamp,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"nY" = (
+/obj/structure/closet/crate/secure/loot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"ol" = (
+/obj/item/storage/pill_bottle,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"pl" = (
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"pA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"pX" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8;
+	icon_state = "blood1"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"qG" = (
+/obj/structure/closet/syndicate/resources{
+	name = "Resource storage"
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"qH" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"rg" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4;
+	icon_state = "blood1"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"ry" = (
+/obj/structure/falsewall/reinforced,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"rG" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"rK" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"rZ" = (
+/obj/machinery/door/airlock/external,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"sb" = (
+/obj/vehicle/ridden/bicycle,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"sc" = (
+/obj/structure/closet/crate/internals,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"sP" = (
+/obj/structure/table/wood/fancy/cyan,
+/obj/item/storage/lockbox/dueling,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"tj" = (
+/obj/structure/falsewall/reinforced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"tB" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8;
+	icon_state = "blood1"
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Engineering"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"tL" = (
+/obj/structure/closet/syndicate/resources{
+	name = "Resource storage"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"ui" = (
+/obj/machinery/door/airlock/highsecurity,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"uz" = (
+/obj/item/bear_armor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"vs" = (
+/obj/structure/closet/crate/medical,
+/obj/item/storage/pill_bottle/lsd,
+/obj/item/storage/pill_bottle/happy,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"vC" = (
+/obj/item/stack/tile/carpet,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"vH" = (
+/obj/structure/cable,
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"vV" = (
+/obj/structure/chair/sofa{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"wE" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1;
+	icon_state = "blood1"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"wX" = (
+/obj/machinery/computer/security/wooden_tv,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"xg" = (
+/obj/item/crowbar/red,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"xA" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/spawner/random/clothing/kittyears_or_rabbitears,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"xC" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6;
+	icon_state = "tracks"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"xQ" = (
+/obj/effect/decal/cleanable/ash,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"yi" = (
+/obj/structure/falsewall/reinforced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"yl" = (
+/mob/living/basic/carp/mega{
+	desc = "A ferocious, fang bearing creature that resembles a shark. You get the feeling his name would be George."
+	},
+/turf/open/space/basic,
+/area/space)
+"yD" = (
+/obj/structure/closet/toolcloset,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"yP" = (
+/obj/structure/chair/sofa/left{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"zk" = (
+/obj/item/paper{
+	name = "полевой журнал: Обесточенное хранилище";
+	 default_raw_text = "Объект: Обесточенное хранилище. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"zO" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4;
+	icon_state = "tracks"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"AO" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"AZ" = (
+/obj/item/market_uplink,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Co" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1;
+	icon_state = "blood1"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"CL" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"CO" = (
+/obj/structure/table,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"CP" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"CV" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/vault/derelict,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"Ds" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"Ev" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Ey" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"Fl" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"Fw" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"FC" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"FP" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power3)
+"FX" = (
+/obj/structure/cable,
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"Gf" = (
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"Gx" = (
+/obj/structure/filingcabinet,
+/obj/item/keycard{
+	name = "service keycard"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Gy" = (
+/obj/structure/falsewall/reinforced,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1;
+	icon_state = "blood1"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"GD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Hr" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav)
+"Hs" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/construction/rld,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"Hv" = (
+/obj/item/paper{
+	default_raw_text = "Damien, the room is sick, but we need more supplies to fix it up. I'll give you a key to the lower part of the outpost. Give it back when you're done. It's in my filing cabinet."
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"HF" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8;
+	icon_state = "tracks"
+	},
+/obj/effect/decal/cleanable/vomit,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"IO" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"Jg" = (
+/obj/item/storage/pill_bottle,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"JE" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"JK" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4;
+	icon_state = "blood1"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"JZ" = (
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"Kz" = (
+/obj/structure/table/wood/fancy/purple,
+/obj/item/assembly/signaler/anomaly{
+	pixel_y = 7
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"KA" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"KG" = (
+/obj/effect/decal/cleanable/glass,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Lq" = (
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/effect/decal/cleanable/ash,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"Lt" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/structure/cable,
+/obj/machinery/door/airlock/glass{
+	name = "Lounge"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power3)
+"Ml" = (
+/obj/machinery/door/airlock/highsecurity,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"MT" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/item/paper_bin,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Nf" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4;
+	icon_state = "tracks"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"Nj" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8;
+	icon_state = "blood1"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"NY" = (
+/obj/machinery/door/airlock/highsecurity,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"Ou" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"OA" = (
+/obj/structure/cable,
+/obj/structure/table,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"OC" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1;
+	icon_state = "blood1"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"OP" = (
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Pf" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power3)
+"Pn" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Po" = (
+/obj/machinery/vending/engivend,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"PO" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Qk" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Qp" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"Qr" = (
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power3)
+"Qv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"Qw" = (
+/obj/item/crowbar/red,
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"QD" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
+"Rn" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"RH" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"RL" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4;
+	icon_state = "blood1"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"So" = (
+/obj/structure/table/reinforced/titaniumglass,
+/obj/item/paper{
+	default_raw_text = "Josh. I know this job is boring and all, but I know a place we can all hang out. I broke a wall on accident while on the late shift a few days ago. It's in the northern wall. Just keep tapping walls until one opens. See you in that sick party bro. - Damien"
+	},
+/obj/item/pen,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"SH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Ta" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9;
+	icon_state = "tracks"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"Tk" = (
+/obj/structure/falsewall/reinforced,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"TC" = (
+/obj/machinery/jukebox,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"TN" = (
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"UD" = (
+/obj/structure/closet/crate,
+/obj/item/bedsheet/ian,
+/obj/item/bedsheet,
+/obj/item/bedsheet/nanotrasen,
+/obj/item/bedsheet/centcom,
+/obj/item/bedsheet/syndie,
+/obj/item/toy/plush/moth,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"UF" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8;
+	icon_state = "blood1"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"UR" = (
+/obj/machinery/door/airlock/external,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Va" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"Vj" = (
+/obj/structure/table/reinforced/titaniumglass,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Vn" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power3)
+"VC" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/obj/structure/table/reinforced/titaniumglass,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"We" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Ww" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/obj/structure/chair/sofa/right{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"WC" = (
+/obj/structure/chair/office/light,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"WK" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"XI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"XP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials2)
+"Yc" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 10;
+	icon_state = "tracks"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Ye" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"Yi" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
+"YB" = (
+/obj/structure/closet/crate/solarpanel_small,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power2)
+"YH" = (
+/obj/structure/table,
+/obj/item/storage/pill_bottle/lsd,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
+"YV" = (
+/obj/structure/closet/cardboard/metal,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/emergency,
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"Ze" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+"ZH" = (
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials1)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Hr
+Hr
+OP
+UR
+OP
+Hr
+Hr
+Hr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Hr
+Hr
+Hr
+OP
+FC
+OP
+Hr
+Hr
+Hr
+Hr
+Hr
+aa
+aa
+yl
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Hr
+OP
+OP
+OP
+OP
+rZ
+OP
+OP
+OP
+OP
+Hr
+Hr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+Hr
+Hr
+aa
+aa
+Hr
+Hr
+Hr
+OP
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+OP
+Hr
+Hr
+Hr
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+aa
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+OP
+Yi
+Yi
+Yi
+mB
+SH
+Yi
+sc
+OP
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+aa
+aa
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+OP
+qH
+Yi
+eX
+Ev
+SH
+sc
+Yi
+OP
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+aa
+aa
+"}
+(7,1,1) = {"
+aa
+aa
+aa
+Hr
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+OP
+qH
+Yi
+Ye
+GD
+SH
+RH
+Yi
+OP
+Qr
+Qr
+Qr
+Qr
+Qr
+Qr
+Hr
+Hr
+aa
+"}
+(8,1,1) = {"
+aa
+aa
+aa
+Hr
+fy
+ja
+vC
+no
+yP
+vV
+Ww
+YH
+OP
+OP
+OP
+OP
+Ml
+OP
+OP
+OP
+OP
+Pf
+iV
+Vn
+Vn
+Vn
+Qr
+Hr
+Hr
+aa
+"}
+(9,1,1) = {"
+aa
+aa
+Hr
+Hr
+fy
+vC
+ja
+ja
+lx
+ja
+jx
+vC
+OP
+xA
+Yi
+Yi
+mP
+Yi
+Yi
+hM
+OP
+Vn
+Vn
+Vn
+Vn
+iV
+Qr
+Hr
+Hr
+aa
+"}
+(10,1,1) = {"
+aa
+Hr
+Hr
+Hr
+fy
+Hv
+TC
+vC
+CO
+wX
+OA
+jx
+OP
+Qk
+Yi
+Yi
+mP
+dl
+dl
+MT
+OP
+Vn
+Vn
+Vn
+Vn
+Vn
+Qr
+Hr
+Hr
+aa
+"}
+(11,1,1) = {"
+aa
+aa
+Hr
+Hr
+ZH
+ZH
+ZH
+ZH
+ZH
+ZH
+ZH
+gT
+Tk
+Yc
+ng
+We
+AZ
+Yi
+WC
+So
+OP
+Qr
+Qr
+Lt
+Qr
+Qr
+Qr
+Hr
+aa
+aa
+"}
+(12,1,1) = {"
+aa
+aa
+Hr
+Hr
+ZH
+JE
+in
+gs
+in
+in
+ZH
+ZH
+ZH
+HF
+Yi
+Yi
+xQ
+Yi
+eX
+VC
+Gf
+Ey
+FP
+gb
+UD
+IO
+Gf
+Hr
+Hr
+aa
+"}
+(13,1,1) = {"
+aa
+aa
+Hr
+Hr
+ZH
+in
+CL
+Ta
+db
+db
+gO
+db
+NY
+xC
+KG
+Pn
+mP
+Pn
+mP
+wE
+lV
+OC
+OC
+Co
+rK
+IO
+Gf
+Hr
+Hr
+Hr
+"}
+(14,1,1) = {"
+aa
+aa
+Hr
+Hr
+ZH
+in
+CL
+zO
+Ze
+dJ
+ZH
+in
+ZH
+Lq
+pl
+zk
+TN
+dl
+Rn
+Vj
+kN
+gb
+gb
+UF
+IO
+IO
+Gf
+Hr
+Hr
+Hr
+"}
+(15,1,1) = {"
+aa
+aa
+Hr
+Hr
+ZH
+in
+eZ
+Nf
+in
+in
+ZH
+Ds
+OP
+RH
+Yi
+ng
+Yi
+xg
+bN
+Vj
+kN
+gb
+ew
+pX
+IO
+YV
+Gf
+Hr
+Hr
+aa
+"}
+(16,1,1) = {"
+aa
+Hr
+Hr
+eN
+eN
+eN
+eN
+bF
+eN
+eN
+eN
+eN
+OP
+Yi
+Qk
+Yi
+Rn
+Yi
+nY
+PO
+kN
+dW
+dW
+tB
+dW
+dW
+dW
+Hr
+Hr
+aa
+"}
+(17,1,1) = {"
+aa
+Hr
+Hr
+eN
+RL
+iM
+Gy
+pA
+eN
+hr
+AO
+Jg
+OP
+KA
+Yi
+Yi
+Yi
+nY
+Yi
+Gx
+kN
+yD
+gf
+Nj
+gf
+gf
+dW
+Hr
+aa
+aa
+"}
+(18,1,1) = {"
+aa
+Hr
+Hr
+eN
+JK
+AO
+eN
+AO
+eN
+AO
+AO
+Jg
+lW
+lW
+lW
+lW
+CV
+lW
+lW
+lW
+FX
+hv
+gf
+Nj
+Qv
+YB
+dW
+Hr
+Hr
+aa
+"}
+(19,1,1) = {"
+aa
+Hr
+Hr
+eN
+RL
+eN
+eN
+ui
+eN
+ry
+eN
+XI
+lW
+lW
+lW
+lW
+QD
+lW
+lW
+lW
+FX
+gf
+JZ
+Nj
+gf
+YB
+dW
+Hr
+aa
+aa
+"}
+(20,1,1) = {"
+aa
+Hr
+Hr
+eN
+RL
+eN
+qG
+Fl
+ei
+tj
+eN
+XP
+lW
+lW
+lW
+lW
+CV
+lW
+lW
+lW
+FX
+gf
+Qv
+Qw
+ol
+YB
+dW
+Hr
+Hr
+aa
+"}
+(21,1,1) = {"
+aa
+Hr
+Hr
+eN
+rg
+eN
+AO
+AO
+tL
+eN
+eN
+lt
+lW
+lW
+sb
+QD
+QD
+QD
+bI
+lW
+FX
+Po
+gf
+vs
+Ou
+gf
+dW
+Hr
+Hr
+aa
+"}
+(22,1,1) = {"
+Hr
+Hr
+Hr
+eN
+RL
+eN
+tL
+AO
+AO
+eN
+eN
+AO
+lW
+lW
+QD
+QD
+QD
+QD
+QD
+lW
+FX
+FX
+dW
+dW
+dW
+yi
+dW
+Hr
+Hr
+aa
+"}
+(23,1,1) = {"
+aa
+Hr
+Hr
+eN
+RL
+eN
+eN
+eN
+eN
+eN
+eN
+AO
+lW
+lW
+sP
+QD
+QD
+QD
+Hs
+lW
+FX
+WK
+gf
+Qv
+Qv
+Qv
+dW
+Hr
+Hr
+aa
+"}
+(24,1,1) = {"
+aa
+Hr
+Hr
+eN
+gn
+eN
+AO
+uz
+AO
+AO
+tj
+AO
+lW
+lW
+QD
+QD
+QD
+QD
+QD
+lW
+FX
+Fw
+CP
+rG
+Qv
+Qv
+dW
+Hr
+Hr
+aa
+"}
+(25,1,1) = {"
+aa
+Hr
+Hr
+eN
+Va
+eN
+AO
+AO
+XI
+XI
+eN
+Qp
+lW
+lW
+bY
+QD
+nm
+QD
+Kz
+lW
+FX
+dW
+dW
+dW
+dW
+dW
+dW
+Hr
+Hr
+aa
+"}
+(26,1,1) = {"
+aa
+Hr
+Hr
+eN
+eN
+eN
+eN
+eN
+eN
+eN
+eN
+vH
+vH
+vH
+vH
+vH
+vH
+vH
+vH
+vH
+FX
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+aa
+"}
+(27,1,1) = {"
+aa
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+lW
+lW
+lW
+lW
+lW
+lW
+lW
+lW
+dW
+Hr
+Hr
+aa
+Hr
+Hr
+Hr
+aa
+aa
+aa
+"}
+(28,1,1) = {"
+aa
+aa
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(29,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(30,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Hr
+Hr
+Hr
+Hr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

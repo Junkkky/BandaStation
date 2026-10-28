@@ -1,0 +1,4054 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: Void-Crew/Voidcrew-LRP contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/astraeus.dmm
+"ac" = (
+/turf/template_noop,
+/area/template_noop)
+"ah" = (
+/obj/item/shard,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"ao" = (
+/obj/machinery/light/small/broken,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"av" = (
+/obj/structure/door_assembly/door_assembly_public{
+	anchored = 1
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"az" = (
+/obj/structure/lattice,
+/obj/item/shard,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"aA" = (
+/obj/item/paper{
+	name = "полевой журнал: Аварийный корабль Astraeus";
+	 default_raw_text = "Объект: Аварийный корабль Astraeus. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/item/chair,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"aC" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"aF" = (
+/obj/structure/cable,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"aL" = (
+/obj/item/gun/ballistic/automatic/wt550,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"aQ" = (
+/obj/item/stack/sheet/iron{
+	amount = 5
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"bc" = (
+/obj/item/chair,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/unpowered)
+"bh" = (
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"bj" = (
+/obj/structure/plasticflaps/opaque,
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"bl" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"bm" = (
+/obj/structure/grille,
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_void_astraeus_main"
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"bn" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"bt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"bB" = (
+/obj/item/stack/cable_coil,
+/obj/structure/disposalpipe/broken{
+	dir = 8
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"bI" = (
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"bJ" = (
+/obj/effect/decal/remains/human,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"bN" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"bO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/medical/wrap/gauze/improvised,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"bU" = (
+/obj/structure/ore_box,
+/turf/open/misc/asteroid/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/unpowered)
+"cn" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"cs" = (
+/obj/structure/lattice,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"cx" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"cB" = (
+/obj/structure/table,
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 4;
+	pixel_y = 19
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"cC" = (
+/obj/structure/lattice,
+/obj/item/clothing/neck/stethoscope,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"cI" = (
+/obj/structure/rack,
+/obj/item/multitool,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"cY" = (
+/obj/machinery/light/small/broken,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"dO" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"dW" = (
+/obj/structure/chair/office,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"ec" = (
+/obj/structure/lattice,
+/obj/item/stack/sheet/plasteel,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"el" = (
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"en" = (
+/obj/structure/lattice/catwalk,
+/obj/item/stack/cable_coil,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"eu" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"eD" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"eH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"eK" = (
+/obj/structure/frame/computer,
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"eL" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"eW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"fb" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"fj" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/item/circuitboard/computer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"fR" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"ga" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/item/rack_parts,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"gd" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/emergency,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"gi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/item/defibrillator/compact,
+/obj/structure/cable,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"gm" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/button{
+	name = "broken button"
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"gp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"gq" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/item/stack/conveyor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"gt" = (
+/obj/structure/frame/computer,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"gE" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"gK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"gQ" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"gS" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"gZ" = (
+/obj/item/stack/cable_coil,
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"hu" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_void_astraeus_main"
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"hy" = (
+/obj/structure/chair/comfy/brown{
+	dir = 4
+	},
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"il" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/door_assembly/door_assembly_com{
+	anchored = 1
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"in" = (
+/obj/structure/closet/bombcloset,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"iq" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"ix" = (
+/obj/item/stack/cable_coil,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"iy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"iD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"iE" = (
+/obj/item/stack/tile/wood,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"iR" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"iW" = (
+/obj/structure/door_assembly/door_assembly_com{
+	anchored = 1
+	},
+/turf/open/space/basic,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"iX" = (
+/obj/item/stack/sheet/plasteel/twenty{
+	amount = 20
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"jb" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"jm" = (
+/obj/item/rack_parts,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"jv" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/recharger,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"jB" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/blue,
+/obj/item/paper_bin,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"jL" = (
+/obj/item/pai_card,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"jN" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"jP" = (
+/obj/item/stack/rods,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"ka" = (
+/obj/structure/lattice,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"kb" = (
+/obj/machinery/door/airlock/command{
+	name = "Conference Room"
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"ky" = (
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"kT" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"ln" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"lr" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"lO" = (
+/obj/structure/lattice,
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"lX" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"mj" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/unpowered)
+"ml" = (
+/obj/structure/frame/computer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"mn" = (
+/obj/item/mop,
+/obj/item/storage/bag/trash{
+	pixel_x = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"mC" = (
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"mD" = (
+/turf/open/misc/asteroid/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/unpowered)
+"mO" = (
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"mZ" = (
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"nk" = (
+/obj/effect/decal/cleanable/vomit/old,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"ns" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/medkit/regular,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"nD" = (
+/obj/item/circuitboard/machine/protolathe,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"nO" = (
+/obj/structure/grille,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"ov" = (
+/obj/structure/closet,
+/obj/item/clothing/neck/cloak/hop,
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/storage/box/ids,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"pn" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/table_frame,
+/obj/item/shard,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"pA" = (
+/obj/machinery/mineral/stacking_machine,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"pH" = (
+/obj/structure/mop_bucket/janitorialcart,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"pV" = (
+/mob/living/basic/mining/basilisk,
+/turf/open/misc/asteroid/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/unpowered)
+"qc" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"qg" = (
+/obj/structure/grille/broken,
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"qj" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/blue,
+/obj/item/radio/intercom,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"ql" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/conveyor_switch,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"qn" = (
+/obj/machinery/conveyor{
+	dir = 10
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"qK" = (
+/obj/structure/table_frame,
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"qM" = (
+/obj/structure/disposalpipe/broken{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"qS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/command{
+	name = "Munitions"
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"qZ" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/machinery/cell_charger,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"rb" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_void_astraeus_main"
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"rd" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"rm" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"ru" = (
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"ry" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"rC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/scrubber,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"rI" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/table_frame,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"rJ" = (
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"rK" = (
+/mob/living/basic/carp,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"rT" = (
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"se" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/blue,
+/obj/item/aicard,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"sj" = (
+/obj/machinery/conveyor{
+	dir = 8
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"sy" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"sE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"sJ" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"te" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"tk" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"tw" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"tA" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"tQ" = (
+/obj/structure/girder,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"tS" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_void_astraeus_main"
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"tT" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"tU" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"uh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"uA" = (
+/obj/structure/closet,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 20
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"uF" = (
+/obj/item/clothing/gloves/color/yellow,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"uM" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/closet/crate/internals,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"vv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"vy" = (
+/obj/machinery/conveyor,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"vO" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"vP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"vU" = (
+/obj/structure/table,
+/obj/item/circuitboard/machine/circuit_imprinter{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"vZ" = (
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"wb" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"wd" = (
+/obj/structure/frame/computer,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"wg" = (
+/obj/structure/rack,
+/obj/item/circuitboard/machine/space_heater,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"wG" = (
+/turf/closed/mineral/random/high_chance,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/unpowered)
+"wY" = (
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/unpowered)
+"xi" = (
+/obj/structure/table,
+/obj/item/clothing/ears/earmuffs,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"xo" = (
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard,
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_void_astraeus_main"
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"xL" = (
+/obj/structure/table_frame/wood,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"xY" = (
+/obj/item/stack/sheet/iron,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"yi" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/frame/computer{
+	dir = 1;
+	anchored = 1
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"yk" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"yO" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/backpack/duffelbag/mining_conscript,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"zk" = (
+/obj/machinery/holopad,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"zp" = (
+/obj/item/stack/sheet/plasteel,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"zK" = (
+/obj/machinery/conveyor{
+	dir = 6
+	},
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"zL" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"zN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"zS" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/item/crowbar,
+/obj/item/weldingtool,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"zU" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"zV" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/closet,
+/obj/item/mod/control/pre_equipped/mining,
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe,
+/obj/item/mining_scanner,
+/obj/item/gun/energy/recharge/kinetic_accelerator,
+/obj/item/clothing/head/utility/hardhat,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"AK" = (
+/obj/machinery/door/airlock/command{
+	name = "Conference Room"
+	},
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"AM" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"AV" = (
+/obj/effect/decal/cleanable/dirt{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"AX" = (
+/obj/machinery/conveyor{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"AZ" = (
+/obj/structure/cable,
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/obj/structure/disposalpipe/broken,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Bl" = (
+/obj/structure/door_assembly/door_assembly_com{
+	anchored = 1
+	},
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Bm" = (
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"BF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"BI" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper{
+	name = "paper - Munitions Inventory";
+	pixel_x = 7;
+	default_raw_text = "<b><center><u><large>NSV Astraeus Ammunition Inventory</large></b></center></u><br><br><b>Current Time:</b>18:30<br><b>Shipment Number:</b>04<br><br><b>Equipment in this shipment:</b><br><small>Leave blank or write 0 if none</small><br><br>Shells: HE - x15,<br>Shells: Shield Piercing - x8,<br>Shells: Smart Homing - x5, <br><br><li><del>Clown: Hilarious -  x1</li></del><br><br><b>Master At Arms' signature:</b>"
+	},
+/obj/item/book/manual/wiki/engineering_hacking{
+	pixel_x = -6
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Cp" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"Cv" = (
+/obj/structure/grille/broken,
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"CC" = (
+/obj/structure/bed,
+/obj/item/scalpel,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"CL" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"CT" = (
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Dm" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"DT" = (
+/obj/item/stack/sheet/iron,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"DY" = (
+/obj/item/shard,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Ec" = (
+/obj/structure/grille,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Er" = (
+/turf/closed/mineral/random,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/unpowered)
+"EF" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"EK" = (
+/obj/machinery/conveyor/inverted{
+	dir = 9
+	},
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"EM" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/plasticflaps/opaque,
+/obj/machinery/conveyor,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"EP" = (
+/obj/item/stack/conveyor,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"ER" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"EU" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"EY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/iv_drip,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"Fa" = (
+/obj/item/reagent_containers/cup/bucket,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"Fl" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"FA" = (
+/obj/effect/decal/remains/human,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"FD" = (
+/obj/item/stack/rods,
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_void_astraeus_main"
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"FJ" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Gc" = (
+/obj/structure/grille/broken,
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Gl" = (
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"Gs" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Gt" = (
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Gz" = (
+/obj/structure/lattice,
+/obj/item/stack/rods,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"GM" = (
+/obj/item/grenade/chem_grenade/cleaner,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"GO" = (
+/obj/structure/lattice,
+/obj/machinery/airalarm/directional/east,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"GP" = (
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"GU" = (
+/obj/structure/lattice,
+/mob/living/basic/carp,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"HA" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/glass,
+/obj/structure/grille/broken,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"HK" = (
+/obj/structure/lattice,
+/obj/structure/filingcabinet,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"HX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken,
+/obj/structure/cable,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"HY" = (
+/obj/structure/table/wood,
+/obj/item/stack/spacecash/c1000,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Ia" = (
+/obj/item/pushbroom,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"Ie" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"Ih" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/stool,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Ij" = (
+/obj/structure/chair,
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Il" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/wallframe/firealarm{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"IK" = (
+/obj/structure/closet/emcloset,
+/obj/item/circuitboard/computer/rdconsole,
+/obj/item/clothing/suit/toggle/labcoat,
+/obj/item/paper,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"IM" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"IY" = (
+/obj/machinery/door/airlock/command{
+	name = "Munitions"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"Jf" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Ji" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Jm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Jn" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"JD" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"JG" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"JV" = (
+/obj/structure/table_frame/wood,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"JW" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/item/reagent_containers/blood,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"JZ" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Kc" = (
+/obj/structure/cable,
+/obj/item/reagent_containers/blood,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"Kl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_box/magazine/wt550m9,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Km" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Kp" = (
+/obj/item/shard,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"KM" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/item/shard,
+/obj/item/stack/rods,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"KT" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Lb" = (
+/obj/item/chair,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"LU" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25;
+	pixel_y = -5
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"LX" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/computer/crew{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Mj" = (
+/obj/structure/sign/warning/biohazard,
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Mt" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/closet,
+/obj/effect/spawner/random/maintenance{
+	name = "2maintenance loot spawner"
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"ML" = (
+/obj/structure/lattice,
+/obj/item/stack/cable_coil,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"Nb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"Nf" = (
+/obj/structure/grille/broken,
+/obj/item/stack/rods,
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_void_astraeus_main"
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Nv" = (
+/obj/item/t_scanner/adv_mining_scanner,
+/turf/open/misc/asteroid/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/unpowered)
+"NG" = (
+/obj/structure/cable,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"NR" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"Ob" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"Oe" = (
+/obj/item/pickaxe/silver,
+/turf/open/misc/asteroid/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/unpowered)
+"Op" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"Ox" = (
+/obj/structure/door_assembly/door_assembly_com{
+	anchored = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"OF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/healthanalyzer,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"OS" = (
+/obj/item/mod/control/pre_equipped/mining,
+/turf/open/misc/asteroid/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/unpowered)
+"OV" = (
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"Pw" = (
+/obj/machinery/vending/cola/blue,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"PQ" = (
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"PX" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/conveyor_switch,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Qk" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/conveyor,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Qo" = (
+/obj/structure/rack,
+/obj/item/assembly/flash/handheld,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"QC" = (
+/obj/item/stack/sheet/glass/fifty{
+	amount = 50
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"QM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Ri" = (
+/obj/item/stack/tile/carpet,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"Rj" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Rm" = (
+/obj/item/wrench,
+/obj/effect/turf_decal/tile/yellow,
+/obj/item/screwdriver/nuke,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Rq" = (
+/obj/structure/girder,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"Rr" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Ry" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"RO" = (
+/obj/structure/table_frame/wood,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Sg" = (
+/obj/machinery/door/airlock/command{
+	name = "Conference Room"
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Sh" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"Si" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Sk" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Sw" = (
+/obj/structure/table_frame/wood,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Sx" = (
+/obj/structure/chair/comfy/black{
+	dir = 4;
+	name = "Helm"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"SP" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/blue,
+/obj/item/pen,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"SS" = (
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"SX" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"SY" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Tk" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Tr" = (
+/obj/structure/cable,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"TB" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"TG" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"TL" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"Ue" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Uj" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Us" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/item/storage/medkit/ancient,
+/obj/item/stack/medical/suture,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"UA" = (
+/obj/structure/disposaloutlet{
+	dir = 4
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"UH" = (
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_void_astraeus_main"
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"UW" = (
+/obj/effect/decal/cleanable/dirt{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"Vf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small,
+/obj/item/stack/rods,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"Vr" = (
+/obj/structure/door_assembly/door_assembly_com{
+	anchored = 1
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Vu" = (
+/obj/structure/rack,
+/obj/item/circuitboard/machine/thermomachine,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"VJ" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"VK" = (
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"VQ" = (
+/obj/machinery/door/airlock/command{
+	name = "Conference Room"
+	},
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"We" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"WC" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"WV" = (
+/obj/effect/decal/cleanable/glass,
+/obj/structure/grille/broken,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"WW" = (
+/obj/structure/cable,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"Xz" = (
+/obj/structure/lattice,
+/obj/item/stack/cable_coil,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/space/nearstation)
+"XF" = (
+/obj/structure/frame/machine,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"XG" = (
+/obj/item/stack/sheet/iron,
+/obj/item/stack/cable_coil,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/exterior)
+"XJ" = (
+/obj/structure/closet/l3closet/janitor,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/custodial)
+"XN" = (
+/obj/structure/table_frame,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"XS" = (
+/obj/structure/sign/warning/biohazard,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"XU" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/mob/living/basic/carp,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Ya" = (
+/obj/structure/frame/machine,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Ye" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"Yh" = (
+/obj/item/clothing/shoes/clown_shoes{
+	pixel_x = -3;
+	pixel_y = 12
+	},
+/obj/machinery/airalarm/directional/south,
+/obj/item/storage/crayons{
+	pixel_y = -6
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/munitions)
+"Yr" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"Yw" = (
+/obj/machinery/computer/communications{
+	dir = 8
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"YA" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/cigbutt/cigarbutt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"YB" = (
+/obj/structure/chair/comfy/black{
+	dir = 4;
+	name = "Captain"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+"YZ" = (
+/obj/item/stack/conveyor,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/disposals)
+"Zj" = (
+/obj/structure/bed/dogbed/ian,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"Zp" = (
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/hallway)
+"Zs" = (
+/obj/structure/disposalpipe/broken,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/dorms_med)
+"ZR" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/machinery/power/apc/auto_name/directional/west,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_astraeus/ruin/space/has_grav/astraeus/bridge)
+
+(1,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+jP
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ix
+ac
+ac
+ac
+ix
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(2,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+bI
+bI
+ac
+tk
+tk
+rK
+qM
+ac
+zp
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(3,1,1) = {"
+ac
+ac
+ac
+ac
+ix
+ac
+ac
+jP
+Ie
+Ie
+tk
+tk
+tk
+ru
+tk
+tk
+Xz
+zN
+eL
+wb
+yO
+tk
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(4,1,1) = {"
+ac
+ac
+ac
+AV
+tk
+OV
+tk
+tk
+rm
+tQ
+Fl
+uA
+tk
+tk
+bI
+Zp
+eW
+cY
+wb
+wd
+dW
+Rj
+lO
+XG
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(5,1,1) = {"
+ac
+ac
+ix
+ac
+OV
+GM
+uh
+Fa
+Ia
+Ie
+zN
+gK
+sE
+Zp
+av
+tk
+ka
+mC
+wb
+ga
+Zs
+SS
+cC
+Gz
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+mD
+mD
+ac
+ac
+"}
+(6,1,1) = {"
+ac
+ac
+ac
+aF
+iR
+Op
+pH
+mn
+XJ
+lX
+dO
+uM
+Mt
+zV
+zU
+jb
+vZ
+jb
+wb
+ov
+Zj
+DT
+GO
+tk
+iE
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+mD
+ac
+"}
+(7,1,1) = {"
+ac
+ac
+bI
+Sh
+Sh
+AM
+Sh
+Sh
+Sh
+Sh
+Yr
+Yr
+Yr
+Yr
+Yr
+el
+Cp
+el
+wb
+wb
+wb
+Bl
+wb
+wb
+ac
+ac
+iE
+ac
+ac
+ac
+wG
+Er
+Er
+mD
+ac
+"}
+(8,1,1) = {"
+ac
+ix
+tk
+kT
+gS
+XF
+VJ
+Uj
+ml
+tw
+Kl
+in
+Uj
+ac
+Yr
+XS
+Gl
+XS
+Yr
+Kp
+te
+rT
+Pw
+tk
+xY
+ac
+ac
+ac
+ac
+Er
+wG
+wG
+wG
+Er
+ac
+"}
+(9,1,1) = {"
+ac
+bI
+tk
+kT
+gS
+qc
+eu
+Uj
+xi
+aL
+Ue
+rC
+Uj
+ac
+jb
+zN
+eW
+bJ
+qg
+ac
+te
+Rr
+mO
+tk
+tk
+jP
+Lb
+iE
+ac
+Er
+wG
+wG
+wG
+Er
+ac
+"}
+(10,1,1) = {"
+bI
+bI
+ML
+Uj
+gS
+Ya
+gS
+Uj
+Uj
+Ec
+iW
+Uj
+Tk
+zU
+zU
+Il
+eW
+gi
+zU
+zU
+EF
+bB
+hy
+tk
+tk
+ac
+ac
+ac
+ac
+Er
+wG
+wG
+Er
+mD
+ac
+"}
+(11,1,1) = {"
+bI
+tk
+tk
+Uj
+gS
+Uj
+tT
+Uj
+IM
+tk
+tk
+ac
+il
+NR
+qS
+bO
+eW
+Nb
+kb
+ln
+Sg
+yk
+HY
+xL
+ky
+Ri
+jP
+ac
+ac
+wG
+wG
+wG
+Er
+mD
+ac
+"}
+(12,1,1) = {"
+bI
+GU
+tk
+Uj
+gS
+Ue
+tT
+Uj
+EU
+eH
+iq
+FA
+ac
+ry
+IY
+iy
+JW
+vP
+VQ
+mZ
+AK
+AZ
+RO
+JV
+BF
+tk
+ac
+ac
+ac
+mD
+wG
+wG
+Er
+ac
+ac
+"}
+(13,1,1) = {"
+bI
+tk
+mC
+Uj
+gS
+Ue
+gS
+Uj
+cx
+ql
+bh
+KM
+Tk
+zU
+zU
+bt
+Us
+HX
+zU
+zU
+IK
+QM
+DY
+JZ
+Gs
+tk
+ac
+ac
+ac
+mD
+wG
+wG
+Er
+ac
+ac
+"}
+(14,1,1) = {"
+bI
+tk
+bI
+Uj
+ns
+lr
+AX
+EM
+Qk
+gq
+gq
+Rm
+Cv
+ac
+jb
+CC
+OF
+Kc
+jb
+jP
+Gc
+mO
+nk
+jL
+mO
+tk
+ac
+ac
+ac
+wY
+bc
+wG
+mD
+ac
+ac
+"}
+(15,1,1) = {"
+bI
+tk
+Zp
+Uj
+gS
+Ue
+Uj
+Uj
+Dm
+PX
+Ih
+zL
+Uj
+ac
+jb
+Zp
+EY
+WW
+jb
+ac
+te
+CL
+Sw
+cs
+HK
+tk
+ac
+ac
+ac
+mj
+wY
+wG
+mD
+ac
+ac
+"}
+(16,1,1) = {"
+bI
+tk
+bI
+Uj
+gS
+Ue
+iW
+Dm
+EU
+Yh
+Tk
+We
+JG
+JG
+JG
+PQ
+SY
+Ox
+JG
+fb
+JG
+JG
+JG
+tk
+jP
+rK
+iE
+jP
+ac
+ac
+wY
+wG
+Er
+ac
+ac
+"}
+(17,1,1) = {"
+tk
+tk
+Zp
+kT
+gS
+Ue
+Uj
+BI
+Ue
+ao
+Tk
+tU
+tS
+eK
+ZR
+Jn
+Km
+Ry
+Ij
+LX
+tS
+JG
+fb
+tk
+tk
+ac
+ac
+ac
+ac
+ac
+mD
+Er
+Er
+ac
+ac
+"}
+(18,1,1) = {"
+ML
+bI
+Zp
+kT
+bj
+Uj
+Uj
+zS
+Ue
+Ue
+Uj
+We
+tS
+eK
+bl
+iD
+iD
+TG
+bn
+Ye
+rb
+SX
+ec
+tk
+tk
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+mD
+ac
+ac
+"}
+(19,1,1) = {"
+tk
+bI
+zN
+kT
+gS
+vU
+cB
+qZ
+Ue
+eD
+Uj
+We
+tS
+gd
+FJ
+gm
+YB
+XN
+Sk
+se
+tS
+en
+ac
+tk
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(20,1,1) = {"
+Zp
+mC
+Vf
+kT
+Jm
+cn
+KT
+gE
+Ue
+gQ
+Uj
+We
+tS
+tA
+Ji
+YA
+Yw
+qj
+TB
+qK
+tS
+vO
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+ac
+ac
+ac
+ac
+ac
+"}
+(21,1,1) = {"
+Zp
+bI
+Zp
+Vr
+LU
+Jf
+eH
+Ue
+GP
+fR
+Uj
+We
+tS
+gt
+aC
+CT
+zk
+CT
+Si
+qK
+tS
+gZ
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+ac
+"}
+(22,1,1) = {"
+bI
+bI
+Zp
+bN
+bN
+bN
+bN
+bN
+sy
+bN
+kT
+We
+tS
+gt
+WC
+XU
+Sx
+fj
+aA
+yi
+Nf
+gZ
+Kp
+jP
+ac
+ac
+ac
+Er
+ac
+Er
+ac
+ac
+Er
+ac
+ac
+"}
+(23,1,1) = {"
+Zp
+bI
+tk
+Rq
+UA
+YZ
+EP
+vy
+EK
+bN
+kT
+We
+tS
+jv
+qK
+SP
+sJ
+jB
+pn
+rI
+xo
+gZ
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(24,1,1) = {"
+tk
+tk
+tk
+bN
+Bm
+YZ
+jN
+Ob
+rJ
+bN
+kT
+tU
+tS
+tS
+bm
+tS
+tS
+tS
+tS
+UH
+FD
+vO
+vO
+gZ
+vO
+vO
+ac
+ac
+ac
+mD
+Er
+ac
+ac
+ac
+ac
+"}
+(25,1,1) = {"
+ac
+ac
+tk
+Rq
+YZ
+EP
+UA
+nO
+JD
+bN
+kT
+hu
+kT
+ac
+Kp
+tk
+ac
+ac
+tk
+ac
+Mj
+NG
+VK
+VK
+VK
+VK
+ac
+ac
+mD
+mD
+Er
+Er
+ac
+ac
+ac
+"}
+(26,1,1) = {"
+ac
+tk
+tk
+Rq
+YZ
+sj
+ER
+WV
+jP
+ac
+Gt
+tk
+Gt
+ac
+ac
+tk
+tk
+tk
+az
+ac
+VK
+ah
+VK
+ac
+ac
+ac
+ac
+mD
+mD
+Er
+Er
+Er
+Er
+ac
+ac
+"}
+(27,1,1) = {"
+ac
+tk
+ix
+bN
+zK
+qn
+pA
+Ob
+tk
+tk
+Gt
+ac
+Gt
+ac
+ac
+tk
+ac
+jP
+tk
+ac
+VK
+ac
+VK
+ac
+ac
+ac
+ac
+mD
+Er
+Er
+wG
+wG
+Er
+Er
+ac
+"}
+(28,1,1) = {"
+ac
+tk
+ac
+bN
+JD
+nD
+gp
+HA
+TL
+ac
+ac
+ac
+ac
+ac
+ac
+tk
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+wG
+wG
+wG
+Er
+Er
+ac
+"}
+(29,1,1) = {"
+ac
+ML
+ac
+Tr
+vv
+iX
+rd
+Ob
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+jP
+ac
+ac
+jP
+ac
+ac
+ac
+ac
+Er
+Er
+wG
+wG
+wG
+Er
+mD
+ac
+"}
+(30,1,1) = {"
+ac
+tk
+tk
+bN
+bN
+bN
+Rq
+bN
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+AV
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+wG
+Er
+Er
+mD
+ac
+"}
+(31,1,1) = {"
+ac
+ac
+ac
+jN
+Vu
+rJ
+cI
+QC
+xY
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+jP
+AV
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+wG
+Er
+mD
+ac
+ac
+"}
+(32,1,1) = {"
+ac
+ac
+ac
+xY
+wg
+uF
+Qo
+JD
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+mD
+Er
+ac
+ac
+ac
+jP
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+mD
+ac
+ac
+"}
+(33,1,1) = {"
+ac
+ac
+ac
+ac
+UW
+aQ
+jm
+Rq
+ac
+ac
+ac
+ac
+Er
+Er
+mD
+mD
+mD
+Er
+Er
+wG
+Er
+Er
+ac
+ac
+ac
+jP
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(34,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+jP
+Er
+Er
+Er
+mD
+Er
+Er
+Er
+wG
+wG
+wG
+Er
+Er
+Er
+mD
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(35,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+mD
+mD
+Er
+Er
+Er
+mD
+mD
+mD
+Er
+Er
+mD
+mD
+mD
+Er
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(36,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+mD
+Oe
+mD
+Er
+Er
+wG
+mD
+wG
+mD
+mD
+mD
+mD
+mD
+mD
+Er
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(37,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+xY
+Er
+Er
+bU
+mD
+mD
+wG
+wG
+wG
+mD
+wG
+wG
+wG
+Er
+Er
+Er
+mD
+Er
+Er
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(38,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+rK
+ac
+ac
+Er
+Er
+Er
+Er
+Er
+mD
+Er
+Er
+mD
+mD
+wG
+wG
+wG
+wG
+Er
+Er
+Er
+Er
+Er
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(39,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+Er
+wG
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+wG
+wG
+Er
+Er
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(40,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+wG
+wG
+wG
+wG
+wG
+Er
+mD
+pV
+wG
+wG
+wG
+Er
+Er
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(41,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+wG
+wG
+wG
+wG
+wG
+mD
+mD
+wG
+Er
+Er
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(42,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+Er
+OS
+mD
+Er
+mD
+mD
+mD
+Er
+Er
+Er
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(43,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+Nv
+mD
+mD
+mD
+mD
+Er
+Er
+Er
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(44,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+Er
+mD
+Er
+mD
+Er
+Er
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(45,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+wG
+wG
+wG
+mD
+Er
+Er
+ac
+ac
+ac
+ac
+rK
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(46,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+Er
+Er
+Er
+Er
+ac
+xY
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(47,1,1) = {"
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Er
+Er
+Er
+Er
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}

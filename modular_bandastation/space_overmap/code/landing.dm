@@ -38,10 +38,10 @@
 	return ..()
 
 /obj/docking_port/mobile/stationtrauma_space/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force = FALSE)
-	if(!can_land || !overmap?.relocating)
+	if(!overmap?.relocating)
 		return DOCKING_BLOCKED
 	var/datum/stationtrauma_overmap_site/space/site = overmap.sites[overmap.selected_destination]
-	if(new_dock != overmap.flight_berth && (!site?.landing || site.berth != new_dock))
+	if(new_dock != overmap.flight_berth && ((!site?.landing && !site?.physical_docking) || site.berth != new_dock || !permits_docking(site)))
 		return DOCKING_BLOCKED
 	return ..(new_dock, movement_direction, FALSE)
 
@@ -59,7 +59,7 @@
 
 /** Move once through the native machinery; maps and objects outside the hull remain resident. */
 /datum/stationtrauma_overmap/space/proc/relocate(obj/docking_port/stationary/target)
-	if(relocating || QDELETED(target) || QDELETED(vessel) || !vessel.check_dock(target, TRUE))
+	if(relocating || ship_docking || QDELETED(target) || QDELETED(vessel) || !vessel.check_dock(target, TRUE))
 		status = "Манёвр отменён: посадочная площадка занята или перекрыта"
 		return FALSE
 	var/was_preparing = preparing

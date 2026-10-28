@@ -1,0 +1,201 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/excavation_site/excavation_site.dmm
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"c" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"i" = (
+/obj/structure/table,
+/obj/item/gps,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"q" = (
+/obj/effect/spawner/random/engineering/toolbox,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"r" = (
+/obj/machinery/power/floodlight{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"v" = (
+/obj/structure/table,
+/obj/effect/spawner/random/engineering/tool,
+/obj/item/stack/medical/wrap/sticky_tape,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"w" = (
+/obj/structure/stationtrauma_research_source/mineral/expedition_shell,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"x" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"z" = (
+/obj/structure/closet/crate/stationtrauma_icarus_tools{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"B" = (
+/obj/effect/spawner/random/engineering/tool_advanced,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"E" = (
+/obj/structure/ore_box,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"L" = (
+/obj/item/stationtrauma_field_scanner,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"N" = (
+/obj/item/pickaxe,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"Q" = (
+/obj/structure/closet/crate/secure/science,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"T" = (
+/obj/structure/closet/crate,
+/obj/structure/stationtrauma_research_source/mineral/expedition_shell,
+/obj/structure/stationtrauma_research_source/mineral/expedition_fossil,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/spawner/random/exotic/technology,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"V" = (
+/obj/structure/table,
+/obj/effect/spawner/random/medical/supplies,
+/obj/effect/spawner/random/medical/supplies,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+"X" = (
+/obj/effect/spawner/random/maintenance,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+x
+a
+i
+V
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+X
+a
+a
+L
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+B
+z
+a
+N
+T
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+x
+x
+w
+q
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+X
+a
+x
+x
+a
+a
+v
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+a
+a
+E
+r
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+a
+c
+a
+x
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+Q
+a
+a
+a
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

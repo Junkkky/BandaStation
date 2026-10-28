@@ -1,14 +1,34 @@
 <main class="flight">
-  <header><strong>НАВИГАЦИЯ</strong><span id="mode">ОЖИДАНИЕ</span></header>
-  <section class="body">
-    <section class="plot"><div class="plot-head">СЕВЕР ↑ <label>Масштаб <select id="zoom"><option value="0.5">½×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select></label></div><canvas id="chart" width="620" height="540" tabindex="0" aria-label="Карта контактов. Нажмите на маркер, чтобы выбрать цель."></canvas><div class="legend"><span class="own">▲ Судно</span><span class="target">◇ Цель</span><span class="vector">↗ Вектор скорости</span></div><p id="contact" class="help" role="status" hidden></p></section>
-    <aside class="telemetry"><h2 id="target" role="status">ЦЕЛЬ НЕ ВЫБРАНА</h2><button id="scan">СКАНИРОВАНИЕ</button><p id="encounter" role="status"></p><dl><dt>Координаты</dt><dd id="position"></dd><dt>Скорость, м/с</dt><dd id="speed"></dd><dt>Вектор X / Y</dt><dd id="velocity"></dd><dt>Курс / заданный</dt><dd id="heading"></dd><dt>Дистанция / время</dt><dd id="distance"></dd><dt>Сближение, м/с</dt><dd id="closing"></dd><dt>Тяга</dt><dd id="engines"></dd></dl>
-    <div class="course-control"><label for="course">Курс, °</label><input id="course" type="number" min="0" max="359" value="90"><button id="set-course" aria-label="Задать курс">↵</button></div>
-    <div class="maneuver-controls" role="group" aria-label="Управление кораблём"><button id="turn-left" title="Поворот влево на 15°" aria-label="Поворот влево">↶</button><button id="throttle-more" title="Увеличить тягу" aria-label="Увеличить тягу">↑</button><button id="turn-right" title="Поворот вправо на 15°" aria-label="Поворот вправо">↷</button><button id="strafe-left" title="Стрейф влево: удерживать" aria-label="Стрейф влево">←</button><button id="throttle-less" title="Уменьшить тягу" aria-label="Уменьшить тягу">↓</button><button id="strafe-right" title="Стрейф вправо: удерживать" aria-label="Стрейф вправо">→</button></div>
-    <div class="thrust-controls"><div><h2>ТЯГА</h2><div class="helm-throttle"><div class="throttle-scale" aria-hidden="true"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div><input id="throttle" type="range" min="0" max="100" step="5" value="100" aria-label="Рычаг тяги, проценты"><output id="throttle-value" for="throttle">100%</output></div></div>
-    <div class="thrust-buttons"><button id="depart">ОТХОД</button><button id="autopilot">АВТОПИЛОТ</button><button id="dock">СТЫКОВКА</button><button id="stop" class="stop">ТОРМОЖЕНИЕ</button><p id="braking-distance"></p></div></div></aside>
+<header><strong>НАВИГАЦИЯ</strong><span id="mode">СТОП</span></header>
+<section class="body">
+  <section class="plot">
+    <div class="plot-head"><span id="sector-name"></span><label>Масштаб <select id="zoom"><option value="0.5">½×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select></label></div>
+    <canvas id="chart" width="620" height="300" tabindex="0" aria-label="Карта контактов. Нажмите на маркер, чтобы выбрать цель."></canvas>
+    <div class="legend"><span class="own">▲ Судно</span><span class="target">◇ Цель</span><span class="vector">↗ Вектор движения</span></div>
+    <div class="destination-list"><div id="routes"></div></div>
+    <p id="contact" class="help" role="status" hidden></p>
   </section>
-  <p id="planet" class="help" role="status" hidden></p>
-  <footer id="status" role="status"></footer>
+  <aside class="telemetry">
+    <div class="instruments">
+      <div class="sensor-speed">
+        <button id="scan" title="Сканирование" aria-label="Сканирование"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="6"/><path d="M16 3v13l9-9M3 16h26M16 16v13"/></svg><span id="scan-lamp" class="lamp" role="status" aria-label="Сканирование недоступно"></span></button>
+        <div class="speedometer" role="meter" aria-label="Скорость корабля" aria-valuemin="0" aria-valuemax="100" id="speedometer"><svg viewBox="0 0 100 58" aria-hidden="true"><path class="gauge" d="M10 50a40 40 0 0 1 80 0"/><path id="speed-needle" d="M50 50L14 50"/><circle cx="50" cy="50" r="3"/></svg><output id="speed">0 км/с</output></div>
+      </div>
+      <dl><dt>Координаты</dt><dd id="position"></dd><dt>Курс</dt><dd id="heading"></dd><dt>Дистанция / время</dt><dd id="distance"></dd></dl>
+    </div>
+    <div class="helm">
+      <div class="helm-throttle"><div class="throttle-scale" aria-hidden="true"><span>+100</span><span>+50</span><span>0</span><span>−50</span><span>−100</span></div><input id="throttle" type="range" min="-100" max="100" step="5" value="0" aria-label="Рычаг тяги, проценты"><output id="throttle-value" for="throttle">0%</output></div>
+      <div class="helm-buttons">
+        <div class="engine-control"><button id="engine" class="engine-switch" aria-label="Включить или выключить двигатели" aria-pressed="false">I<br>O</button><div><span id="engine-lamp" class="lamp" aria-hidden="true"></span><span id="engine-state">ДВИГАТЕЛИ ВЫКЛ</span></div></div>
+        <div class="maneuver-controls" role="group" aria-label="Управление кораблём"><button id="turn-left" title="Рыскание влево на 15°" aria-label="Рыскание влево">↶</button><button id="throttle-more" title="Увеличить тягу" aria-label="Увеличить тягу">↑</button><button id="turn-right" title="Рыскание вправо на 15°" aria-label="Рыскание вправо">↷</button><button id="strafe-left" title="Боковая тяга влево: удерживать" aria-label="Боковая тяга влево">←</button><button id="throttle-less" title="Уменьшить тягу" aria-label="Уменьшить тягу">↓</button><button id="strafe-right" title="Боковая тяга вправо: удерживать" aria-label="Боковая тяга вправо">→</button></div>
+        <button id="autopilot">АВТОПИЛОТ</button><button id="stop" class="stop">ТОРМОЖЕНИЕ</button><p id="braking-distance"></p>
+      </div>
+    </div>
+    <section class="docking-controls" aria-label="Стыковка"><button id="dock">СТЫКОВКА</button><button id="depart" hidden>ОТСТЫКОВКА</button></section>
+    <div id="docking-request" class="dock-request" hidden><span id="docking-request-label"></span><button id="accept-ship-dock">ПРИНЯТЬ</button><button id="decline-ship-dock">ОТКЛОНИТЬ</button></div>
+    <p id="planet" class="help" role="status" hidden></p>
+  </aside>
+</section>
+<footer id="status" role="status"></footer>
 </main>
 <script>window.initSpaceNavigation('@CONSOLE@', @STATE@);</script>

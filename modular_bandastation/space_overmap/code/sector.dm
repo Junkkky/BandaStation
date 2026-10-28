@@ -4,11 +4,47 @@
 	var/list/ship_templates = list()
 
 /datum/stationtrauma_overmap_sector/space
+	var/id = "frontier"
+	var/name = "ST 220 AB-C d1-1"
+	var/entry_x = 200
+	var/entry_y = -400
+	var/list/jump_routes = list("epsilon_eridani")
+	var/ready = FALSE
+	var/list/ship_charts = list()
 	var/list/zones = list()
 
 /datum/stationtrauma_overmap_sector/space/Destroy()
 	. = ..()
+	ship_charts.Cut()
 	QDEL_LIST(zones)
+
+/datum/stationtrauma_overmap_sector/space/home
+	id = "epsilon_eridani"
+	name = "Эпсилон Эридана"
+	jump_routes = list("frontier")
+
+/** The sector retains each hull's static chart between visits, without retaining the hull itself. */
+/datum/stationtrauma_overmap_sector/space/register(id, datum/stationtrauma_overmap/space/navigation)
+	if(!istype(navigation) || !..())
+		return FALSE
+	var/list/chart = ship_charts[id]
+	if(!chart)
+		chart = list(list(), list(), list())
+		ship_charts[id] = chart
+	navigation.discovered_sites = chart[1]
+	navigation.visited_sites = chart[2]
+	navigation.charted_zones = chart[3]
+	navigation.zones = zones
+	return TRUE
+
+/datum/stationtrauma_overmap_sector/space/unregister(datum/stationtrauma_overmap/space/navigation)
+	if(!..())
+		return FALSE
+	navigation.discovered_sites = list()
+	navigation.visited_sites = list()
+	navigation.charted_zones = list()
+	navigation.zones = list()
+	return TRUE
 
 /** The native template loader supplies unique areas and shuttle IDs for each physical hull. */
 /proc/load_stationtrauma_space_ship(map_path)
@@ -31,6 +67,9 @@
 /** Attach a hull without copying sector geography or another crew's observations. */
 /datum/stationtrauma_overmap_sector/space/proc/attach(obj/docking_port/mobile/stationtrauma_space/vessel)
 	if(QDELETED(vessel) || vessel.width < 1 || vessel.height < 1 || !length(vessel.shuttle_areas))
+		return FALSE
+	if(!(vessel.ship_class in list(ST_SHIP_SMALL, ST_SHIP_MEDIUM, ST_SHIP_CAPITAL)))
+		stack_trace("Overmap hull [vessel.shuttle_id] has an invalid ship_class: [vessel.ship_class]")
 		return FALSE
 	if(vessel.overmap)
 		return vessel.overmap.sector == src
@@ -70,20 +109,35 @@
 	navigation.encounter_x = navigation.pos_x
 	navigation.encounter_y = navigation.pos_y
 	navigation.preparing = FALSE
+	navigation.initialize_ship_audio()
 	if(vessel.starting_dock)
 		if(!navigation.select_site(vessel.starting_dock) || !navigation.dock())
 			qdel(navigation)
 			return FALSE
+	navigation.update_parallax()
 	return TRUE
 
 /** Physical destinations belong to the sector and are loaded exactly once. */
 /datum/stationtrauma_overmap_sector/space/proc/load_locations()
+	if(ready || length(sites))
+		return ready
+	if(istype(src, /datum/stationtrauma_overmap_sector/space/home))
+		for(var/obj/docking_port/stationary/stationtrauma_space_station/port in SSshuttle.stationary_docking_ports)
+			var/datum/stationtrauma_overmap_site/space/site = new
+			site.id = port.site_id
+			site.name = port.station_name
+			site.pos_x = 1000
+			site.pos_y = 0
+			site.physical_docking = TRUE
+			site.berth = port
+			sites[site.id] = site
+		ready = length(sites) > 0
+		return ready
 	var/datum/map_template/stationtrauma_space/template
-	// The first entry is the copied CC. Coordinates are navigation metres, never turf coordinates.
+	// Coordinates belong to this sector, never to physical turfs.
 	var/list/locations = list(
-		list("centcom_dock", "Центральное командование", 0, 0, 'modular_bandastation/space_overmap/maps/centcom_dock.dmm'),
-		list("asteroid_field", "Астероидное поле", 1250, -450, 'modular_bandastation/space_overmap/maps/asteroid_field.dmm'),
-		list("drift_cargo", "Дрейфующий груз", rand(700, 900), rand(-160, -40), 'modular_bandastation/space_overmap/maps/drift_cargo.dmm'),
+		list("asteroid_field", "Астероидное поле", 1250, -450, 'modular_bandastation/space_overmap/maps/asteroid_field.dmm', /atom/movable/screen/parallax_layer/random/asteroids),
+		list("drift_cargo", "Дрейфующий груз", rand(700, 900), rand(-160, -40), 'modular_bandastation/space_overmap/maps/drift_cargo.dmm', /atom/movable/screen/parallax_layer/layer_3),
 	)
 	for(var/list/location as anything in locations)
 		template = new(location[5], location[2])
@@ -91,22 +145,31 @@
 		if(!level)
 			qdel(template)
 			return null
+		level.space_parallax_background = location[6]
 		var/right_edge = round((world.maxx - template.width) / 2) + template.width
 		var/datum/stationtrauma_overmap_site/space/site = new
 		site.id = location[1]
 		site.name = location[2]
 		site.pos_x = location[3]
 		site.pos_y = location[4]
-		site.discovered = site.id == "centcom_dock"
-		site.needs_scan = site.id != "centcom_dock" && site.id != "drift_cargo"
+		site.discovered = FALSE
+		site.needs_scan = TRUE
 		site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(right_edge + 2, round(world.maxy / 2), level.z_value))
 		sites[site.id] = site
 		qdel(template)
-	var/datum/stationtrauma_overmap_site/space/planet/planet = load_stationtrauma_rocky_planet()
-	if(!planet)
-		return null
-	sites[planet.id] = planet
+	var/list/positions = list(list(800, 350), list(-100, -1250), list(-1500, 800), list(1800, 1100))
+	var/list/profiles = list(/datum/stationtrauma_overmap_site/space/planet, /datum/stationtrauma_overmap_site/space/planet/frozen, /datum/stationtrauma_overmap_site/space/planet/arid, /datum/stationtrauma_overmap_site/space/planet/lush)
+	var/first_seed = rand(1, 1000001 - length(positions))
+	for(var/index in 1 to length(positions))
+		var/profile = profiles[index]
+		var/datum/stationtrauma_overmap_site/space/planet/planet = load_stationtrauma_planet(seed = first_seed + index - 1, planet_id = "planet_[index]", planet_name = "[name] [index]", planet_type = profile)
+		if(!planet)
+			return FALSE
+		planet.pos_x = positions[index][1]
+		planet.pos_y = positions[index][2]
+		sites[planet.id] = planet
 	if(!load_ruin_sector())
 		return null
 	build_encounters()
+	ready = TRUE
 	return TRUE

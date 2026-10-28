@@ -1,0 +1,1236 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/crashed_pod/crashed_pod.dmm
+"af" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/portable_atmospherics/pump,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"aB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_containers/cup/soda_cans/beer,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"aD" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/machinery/button{
+	pixel_x = -22;
+	pixel_y = 22;
+	id = "exp_sierra_crashed_pod_main";
+	name = "отключённая панель шлюза";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"aN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"bA" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light,
+/obj/structure/cable,
+/obj/machinery/power/smes,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"bU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/closet/firecloset{
+	pixel_x = -27
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"cn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/power/port_gen/pacman/super,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"eL" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/obj/item/reagent_containers/cup/glass/mug,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"gm" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"gB" = (
+/obj/structure/table/reinforced,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
+/obj/effect/spawner/random/entertainment/plushie,
+/obj/item/paper_bin,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"iU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/navbeacon,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"kg" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/autolathe/hacked,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"lQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"mR" = (
+/obj/item/storage/backpack/duffelbag/engineering,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"mV" = (
+/obj/machinery/airalarm{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"nr" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"nv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	initialize_directions = 13
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"oh" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"os" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/pipedispenser,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/machinery/power/terminal,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"ot" = (
+/obj/item/multitool,
+/obj/item/screwdriver,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/item/stock_parts/power_store/cell/crap,
+/obj/item/storage/box/lights,
+/obj/item/analyzer,
+/obj/item/reagent_containers/cup/soda_cans/beer,
+/obj/item/reagent_containers/cup/soda_cans/beer,
+/obj/item/reagent_containers/cup/soda_cans/beer,
+/obj/item/storage/box/monkeycubes,
+/obj/item/reagent_containers/cup/glass/bottle/vodka,
+/obj/item/reagent_containers/cup/glass/bottle/whiskey,
+/obj/item/electronics/airalarm,
+/obj/item/pen/blue,
+/obj/item/pen,
+/obj/item/pen/red,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/spawner/random/engineering/material_cheap,
+/obj/effect/spawner/random/engineering/material_cheap,
+/obj/structure/closet/crate,
+/obj/item/lighter,
+/obj/item/storage/box/lights/tubes,
+/obj/effect/spawner/random/engineering/tool_advanced,
+/obj/effect/spawner/random/engineering/tool_advanced,
+/obj/effect/spawner/random/engineering/tool_advanced,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/item/stack/medical/wrap/sticky_tape,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"oQ" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/portable_atmospherics/scrubber,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"pm" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/door/airlock,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"qo" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"qD" = (
+/obj/machinery/atmospherics/components/unary/vent_pump,
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"rl" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"rq" = (
+/obj/structure/closet/crate/freezer/surplus_limbs,
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"rz" = (
+/obj/structure/closet,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/gloves,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/under/color/black,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"sa" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"se" = (
+/obj/structure/closet/crate/medical,
+/obj/effect/spawner/random/medical/medkit,
+/obj/effect/spawner/random/medical/medkit,
+/obj/effect/spawner/random/medical/medkit,
+/obj/effect/spawner/random/medical/medkit,
+/obj/effect/spawner/random/medical/medkit,
+/obj/item/storage/medkit/surgery,
+/obj/item/storage/medkit/brute,
+/obj/item/storage/pill_bottle/psicodine,
+/obj/item/storage/pill_bottle/psicodine,
+/obj/item/storage/medkit/toxin,
+/obj/item/storage/medkit/toxin,
+/obj/item/storage/medkit/toxin,
+/obj/item/storage/medkit/toxin,
+/obj/item/storage/pill_bottle,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/railing{
+	dir = 1
+	},
+/mob/living/basic/mouse,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"ss" = (
+/turf/template_noop,
+/area/template_noop)
+"sv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/door/airlock/external,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"sD" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/obj/machinery/airalarm{
+	pixel_y = 26
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"tn" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"tJ" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"uJ" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/weapon/full_gun,
+/obj/effect/spawner/random/weapon/full_gun,
+/obj/effect/spawner/random/weapon/full_gun,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 50
+	},
+/obj/item/stack/sheet/plastic{
+	amount = 50
+	},
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/glowstick,
+/obj/item/flashlight/glowstick,
+/obj/item/flashlight/glowstick,
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/effect/spawner/random/engineering/toolbox,
+/obj/effect/spawner/random/engineering/toolbox,
+/obj/effect/spawner/random/engineering/toolbox,
+/obj/effect/spawner/random/engineering/toolbox,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/item/circuitboard/computer,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"uN" = (
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"vE" = (
+/obj/structure/sign/warning/biohazard{
+	desc = "A plaque with information regarding this particular lifepod. It reads: 'Armalev Industries Skyfin-E, Exoplanetary Suvival Pod' there's a registry number, and an assigned mothership, but they've both been scratched to illegiblity.";
+	name = "improper Lifepod Plaque";
+	pixel_y = 30
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"vF" = (
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"vN" = (
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"vU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/closet/crate,
+/obj/item/storage/briefcase,
+/obj/item/storage/briefcase,
+/obj/item/storage/briefcase,
+/obj/item/storage/briefcase,
+/obj/item/storage/briefcase,
+/obj/item/geiger_counter,
+/obj/item/geiger_counter,
+/obj/effect/spawner/random/engineering/tool_advanced,
+/obj/effect/spawner/random/engineering/tool_advanced,
+/obj/effect/spawner/random/engineering/tool_advanced,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"wh" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	pixel_y = 26
+	},
+/obj/machinery/airlock_sensor{
+	pixel_x = -22
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"xO" = (
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"yd" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	initialize_directions = 13
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/space_heater,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"yg" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/item/pen,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"yl" = (
+/obj/item/paper{
+	name = "полевой журнал: Аварийная капсула";
+	 default_raw_text = "Объект: Аварийная капсула. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/machinery/power/apc/auto_name/directional/south{
+	name = "south bump"
+	},
+/obj/structure/cable,
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"yn" = (
+/obj/machinery/atmospherics/components/unary/vent_pump,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"yu" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"yw" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/item/wrench,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"yT" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"za" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"zz" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"zC" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"zJ" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Bp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"BI" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/light,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"CG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/obj/structure/closet/firecloset{
+	pixel_x = -27
+	},
+/obj/item/screwdriver,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Dv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/obj/machinery/meter,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"DO" = (
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/tile/blue,
+/obj/item/clothing/suit/space,
+/obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/clothing/head/helmet/space,
+/obj/item/storage/briefcase,
+/obj/item/tank/internals/emergency_oxygen,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Et" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -25
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"EQ" = (
+/obj/item/trash/can/food,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"EZ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Fd" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/machinery/meter,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Fp" = (
+/obj/machinery/portable_atmospherics/canister,
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"FI" = (
+/obj/machinery/air_sensor,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"GH" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"HE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"HU" = (
+/obj/structure/closet/crate,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/item/stock_parts/micro_laser/ultra,
+/obj/item/stock_parts/matter_bin/adv,
+/obj/item/circuitboard/machine/biogenerator,
+/obj/item/stock_parts/matter_bin/super,
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 10
+	},
+/obj/item/circuitboard/computer,
+/obj/item/circuitboard/computer,
+/obj/item/circuitboard/computer,
+/obj/item/analyzer,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"IC" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	initialize_directions = 13
+	},
+/obj/machinery/meter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"IK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/toy/figure/engineer,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"JQ" = (
+/obj/machinery/airlock_sensor{
+	pixel_y = 32
+	},
+/obj/machinery/button{
+	pixel_y = 20;
+	id = "exp_sierra_crashed_pod_main";
+	name = "отключённая панель шлюза";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"JR" = (
+/obj/machinery/atmospherics/components/trinary/filter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"LE" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Mb" = (
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Mz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"MF" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible/expedition,
+/obj/machinery/meter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"MG" = (
+/obj/machinery/door/airlock/external,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"OE" = (
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"OL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Pb" = (
+/obj/machinery/door/airlock,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"PD" = (
+/obj/machinery/airlock_sensor{
+	pixel_x = 22
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"PG" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Rr" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"SI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/emcloset,
+/obj/item/crowbar,
+/obj/item/crowbar,
+/obj/effect/turf_decal/tile/blue,
+/obj/item/clothing/suit/space,
+/obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/clothing/head/helmet/space,
+/obj/item/tank/internals/emergency_oxygen,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Tq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/portable_atmospherics/scrubber,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"TY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Uc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/binoculars,
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -25
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Ul" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Ur" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Uz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/sign/warning/no_smoking{
+	dir = 1;
+	pixel_x = -32
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"UP" = (
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/structure/closet/crate,
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/paint/paint_remover,
+/obj/effect/spawner/random/engineering/tool_advanced,
+/obj/effect/spawner/random/engineering/tool_advanced,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/item/book,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"UX" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Vg" = (
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/vomit,
+/obj/effect/mob_spawn/corpse/human/assistant,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Vj" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Vn" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	initialize_directions = 13
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Wj" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Wm" = (
+/obj/machinery/button{
+	pixel_x = 22;
+	pixel_y = 22;
+	id = "exp_sierra_crashed_pod_main";
+	name = "отключённая панель шлюза";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"XR" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"XX" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Yd" = (
+/obj/structure/closet,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/gloves,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/under/color/black,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Zg" = (
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Zw" = (
+/obj/structure/closet,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/costume,
+/obj/effect/spawner/random/clothing/gloves,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/orange,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/under/color/black,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"Zx" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+
+(1,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+"}
+(2,1,1) = {"
+tJ
+JQ
+vN
+vN
+FI
+GH
+vN
+vN
+vN
+vN
+vN
+vN
+vN
+vN
+vN
+"}
+(3,1,1) = {"
+tJ
+MG
+tJ
+tJ
+rl
+zJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+"}
+(4,1,1) = {"
+tJ
+sD
+Mb
+tJ
+mV
+EZ
+CG
+Et
+Uz
+pm
+bU
+Uc
+qo
+eL
+tJ
+"}
+(5,1,1) = {"
+tJ
+PD
+yn
+xO
+aD
+za
+nr
+os
+bA
+sa
+zz
+XR
+zC
+gB
+tJ
+"}
+(6,1,1) = {"
+tJ
+TY
+Zx
+Zx
+PG
+nv
+ot
+cn
+yl
+sa
+sa
+sa
+aB
+SI
+tJ
+"}
+(7,1,1) = {"
+tJ
+Fp
+Dv
+Wj
+PG
+MF
+LE
+vU
+HU
+Yd
+Yd
+sa
+mR
+DO
+rl
+"}
+(8,1,1) = {"
+tJ
+Zg
+UX
+vF
+EZ
+JR
+nv
+OL
+Vj
+OL
+Ul
+Pb
+OL
+OE
+rl
+"}
+(9,1,1) = {"
+XX
+Fd
+Mz
+IC
+EZ
+JR
+yd
+UP
+gm
+Zw
+rz
+sa
+vE
+iU
+rl
+"}
+(10,1,1) = {"
+XX
+yu
+tn
+Ur
+Vn
+EZ
+se
+rq
+oh
+sa
+sa
+sa
+EQ
+af
+tJ
+"}
+(11,1,1) = {"
+tJ
+lQ
+Zx
+Zx
+yw
+nv
+kg
+uJ
+BI
+sa
+uN
+Vg
+Rr
+Tq
+tJ
+"}
+(12,1,1) = {"
+tJ
+wh
+qD
+sv
+Wm
+yg
+Ur
+HE
+Bp
+pm
+HE
+IK
+aN
+oQ
+tJ
+"}
+(13,1,1) = {"
+tJ
+MG
+tJ
+tJ
+rl
+zJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+"}
+(14,1,1) = {"
+tJ
+JQ
+vN
+vN
+vN
+yT
+vN
+vN
+vN
+vN
+vN
+vN
+vN
+vN
+vN
+"}
+(15,1,1) = {"
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+ss
+"}

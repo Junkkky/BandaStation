@@ -124,12 +124,6 @@
 "gK" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/stationtrauma_space/pocketrocket/crew)
-"hL" = (
-/obj/machinery/airalarm/directional/west,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/holopad,
-/turf/open/floor/carpet/black,
-/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "hS" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
@@ -471,9 +465,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/grimy,
 /area/shuttle/stationtrauma_space/pocketrocket/crew)
-"Fe" = (
-/turf/open/floor/carpet/black,
-/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "Ft" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/structure/cable{
@@ -606,6 +597,12 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/carpet/green,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
+"Nw" = (
+/obj/machinery/airalarm/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer/stationtrauma_bluespace,
+/turf/open/floor/carpet/black,
+/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "ND" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/closet/crate,
@@ -748,10 +745,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"ZT" = (
+/obj/machinery/computer/stationtrauma_transponder/pocketrocket{
+	dir = 8
+	},
+/turf/open/floor/carpet/black,
+/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "ZZ" = (
 /obj/docking_port/mobile/stationtrauma_space{
 	name = "Pocket Rocket";
 	shuttle_id = "pocketrocket";
+	ship_class = "small";
 	width = 16;
 	height = 10;
 	dwidth = 0;
@@ -905,7 +909,7 @@ xI
 (12,1,1) = {"
 JW
 Re
-hL
+Nw
 Df
 JW
 BZ
@@ -941,7 +945,7 @@ xI
 (15,1,1) = {"
 xI
 JW
-Fe
+ZT
 fr
 JW
 xI

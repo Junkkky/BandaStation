@@ -204,9 +204,9 @@
 			arrival_pending = TRUE
 			INVOKE_ASYNC(src, PROC_REF(arrive), site)
 		else if(braking && !autopilot && speed <= 0.05)
-			stop("Ход остановлен")
+			stop("Движение остановлено")
 		else
-			status = braking ? "Торможение: [round(speed, 0.1)] м/с" : "В пути: [round(speed, 0.1)] м/с; курс [round(course)]°"
+			status = braking ? "Торможение" : "В пути"
 	update_parallax()
 
 /** Technical stop for collisions, completed manoeuvres and failed preparation; pilot controls request braking. */

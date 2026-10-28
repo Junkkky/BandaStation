@@ -2,6 +2,7 @@
 window.bindStationTraumaHelm = function (lever, readout, command, maneuvers) {
   var dragging = false, pending = null, timer = null, sent = null, sentAt = 0, keys = {};
   var held = {}, maneuverTimer = null, mouseKey = null, maneuverBlocked = false;
+  var minimum = Number(lever.min) || 0;
   function sendManeuver() {
     command('maneuver', held[37] && !held[39] ? 8 : held[39] && !held[37] ? 4 : 0);
   }
@@ -34,12 +35,11 @@ window.bindStationTraumaHelm = function (lever, readout, command, maneuvers) {
     timer = null;
     if (pending === null) return;
     var value = pending; pending = null;
-    if (value === sent) return;
     sent = value; sentAt = Date.now(); command('throttle', value);
   }
   function input() {
     if (lever.disabled) return;
-    pending = Math.max(0, Math.min(100, Number(lever.value)));
+    pending = Math.max(minimum, Math.min(100, Number(lever.value)));
     readout.textContent = pending + '%';
     if (Date.now() - sentAt >= 150) flush();
     else if (timer === null) timer = window.setTimeout(flush, 150 - (Date.now() - sentAt));
@@ -68,7 +68,7 @@ window.bindStationTraumaHelm = function (lever, readout, command, maneuvers) {
     keys[code] = Date.now();
     if (code === 32) { cancel(); command('stop'); }
     else if (code === 37 || code === 39) command('turn', code === 37 ? -15 : 15);
-    else { lever.value = Math.max(0, Math.min(100, Number(lever.value) + (code === 38 ? 5 : -5))); input(); }
+    else { lever.value = Math.max(minimum, Math.min(100, Number(lever.value) + (code === 38 ? 5 : -5))); input(); }
   });
   document.addEventListener('keyup', function (event) {
     release(event.keyCode);
@@ -79,12 +79,12 @@ window.bindStationTraumaHelm = function (lever, readout, command, maneuvers) {
   window.addEventListener('blur', cancel);
   window.addEventListener('unload', cancel);
   document.addEventListener('visibilitychange', function () { if (document.hidden) cancel(); });
-  return function (value, disabled, maneuverDisabled) {
+  return function (value, disabled, maneuverDisabled, stopped) {
     maneuverBlocked = !!maneuverDisabled;
     lever.disabled = !!disabled;
     if (disabled) cancel();
     else if (maneuverDisabled) releaseManeuver();
-    if (!dragging && (sent === null || Number(value) === sent || Date.now() - sentAt > 1000)) {
+    if (!dragging && (stopped || sent === null || Number(value) === sent || Date.now() - sentAt > 1000)) {
       lever.value = value; readout.textContent = value + '%'; sent = Number(value);
     }
   };

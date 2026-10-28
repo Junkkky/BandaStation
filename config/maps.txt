@@ -47,6 +47,7 @@ endmap
 
 map cyberiad
 	minplayers 50
+	default
 	votable
 endmap
 
@@ -66,7 +67,6 @@ map eventmap_0
 endmap
 
 map space_overmap
-	default
 endmap
 
 map gateway_test

@@ -26,7 +26,7 @@
 
 /** Leaving the region cancels future emissions; already launched objects retain their bounded flight. */
 /datum/stationtrauma_overmap/space/proc/process_encounters()
-	if(docked || relocating || preparing)
+	if(docked || ship_docking || relocating || preparing)
 		clear_encounters()
 		return
 	sensor_range = 600

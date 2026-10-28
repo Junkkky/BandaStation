@@ -1,0 +1,1288 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: ParadiseSS13/Paradise contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/_maps/map_files/RandomRuins/SpaceRuins/freighter.dmm
+"ao" = (
+/obj/structure/table/reinforced,
+/obj/item/tank/internals/oxygen,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"bf" = (
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"bL" = (
+/obj/machinery/button/door{
+	name = "exterior warehouse blastdoors";
+	id = "exp_paradise_freighter_freighterblastdoor1"
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"bP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"ca" = (
+/obj/machinery/oven,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"cu" = (
+/obj/item/mecha_parts/mecha_equipment/drill,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"cN" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"cP" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"dt" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"dK" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/folder,
+/obj/item/pen/fountain,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"ey" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"eO" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"fb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"fc" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"fn" = (
+/obj/structure/rack,
+/obj/item/clothing/head/costume/kitty,
+/obj/item/bikehorn{
+	pixel_y = 10;
+	pixel_x = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"fI" = (
+/obj/structure/frame/machine{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/turf/open/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"gq" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/machinery/light/small,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"hr" = (
+/obj/structure/table,
+/obj/item/storage/medkit/regular,
+/obj/item/storage/medkit/fire{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/cup/bottle{
+	pixel_x = -9;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/cup/bottle{
+	pixel_x = -9
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"hs" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"iC" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"iH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/flashlight/spotlight,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"jm" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"jI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"jL" = (
+/obj/structure/bed,
+/obj/item/bedsheet/black,
+/obj/item/toy/plush/moth,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"kx" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"kC" = (
+/obj/structure/table/reinforced,
+/obj/effect/spawner/random/entertainment/cigarette_pack,
+/obj/item/lighter{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"lo" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"lK" = (
+/obj/item/paper{
+	name = "полевой журнал: Затерянный грузовой корабль";
+	 default_raw_text = "Объект: Затерянный грузовой корабль. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"nJ" = (
+/obj/structure/table,
+/obj/item/stamp/granted{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/stamp/denied{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/toy/figure/cargotech{
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"nX" = (
+/obj/structure/bed,
+/obj/item/bedsheet/black,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"oH" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"oI" = (
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"pe" = (
+/obj/machinery/vending/snack,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"pt" = (
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"pL" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"qe" = (
+/obj/structure/railing,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"qD" = (
+/obj/structure/table,
+/obj/item/paper,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"qJ" = (
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"qS" = (
+/obj/structure/safe,
+/obj/item/card/id/advanced/gold,
+/obj/item/stack/spacecash/c200,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"rE" = (
+/obj/structure/table/wood,
+/obj/structure/bookcase{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"ti" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"ve" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"vB" = (
+/obj/structure/table/wood,
+/obj/item/book,
+/obj/item/book,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"vT" = (
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"vX" = (
+/obj/machinery/door/airlock/medical{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"xo" = (
+/obj/structure/closet/crate/large,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"xI" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/item/sign/flag/mothic,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"xY" = (
+/obj/machinery/door/airlock/external,
+/obj/structure/fans/tiny,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"yr" = (
+/obj/machinery/light/small,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"yM" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"yY" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"zz" = (
+/obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"zM" = (
+/obj/machinery/sleeper{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"AE" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"AQ" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"AY" = (
+/obj/machinery/door/poddoor{
+	id = "exp_paradise_freighter_main"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"BF" = (
+/obj/structure/sign/warning/biohazard,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Ca" = (
+/obj/structure/bookcase/random,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Cf" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"CB" = (
+/obj/structure/table,
+/obj/item/clipboard,
+/obj/item/pen/fountain,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Dy" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"ET" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"EY" = (
+/obj/structure/fans/tiny,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Fq" = (
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Gj" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"GE" = (
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"GL" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light/small,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Hm" = (
+/obj/machinery/rnd/production/protolathe,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"HR" = (
+/obj/machinery/light,
+/mob/living/basic/trooper/russian,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"IY" = (
+/obj/structure/bookcase/random,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Jj" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Kb" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Kh" = (
+/turf/template_noop,
+/area/template_noop)
+"Km" = (
+/obj/structure/closet/crate,
+/obj/item/mop/advanced,
+/obj/item/soap/syndie,
+/obj/item/reagent_containers/spray/cleaner,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Ks" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"LF" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"LK" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"LR" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"LV" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"MH" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Na" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"NT" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Ot" = (
+/obj/structure/dresser,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"OM" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"OO" = (
+/obj/structure/rack,
+/obj/item/mecha_parts/mecha_equipment/drill/diamonddrill,
+/obj/item/mecha_parts/mecha_equipment/mining_scanner,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"PQ" = (
+/obj/structure/railing,
+/mob/living/basic/trooper/russian,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"PT" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Rw" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"RY" = (
+/mob/living/basic/trooper/russian,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Sn" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/costume/soviet,
+/obj/item/stack/sheet/iron,
+/obj/item/clothing/suit/costume/soviet,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Vj" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/iron{
+	pixel_x = 3;
+	pixel_y = 3;
+	amount = 50
+	},
+/obj/item/stack/sheet/plasmarglass/fifty{
+	amount = 50
+	},
+/obj/item/stack/sheet/mineral/uranium/fifty{
+	amount = 50
+	},
+/obj/item/stack/sheet/plastitaniumglass{
+	pixel_x = -2;
+	pixel_y = 2;
+	amount = 20
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Wm" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Wq" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/railing{
+	pixel_x = -21
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"WH" = (
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Xi" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Xq" = (
+/obj/item/reagent_containers/cup/glass/bottle/vodka,
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
+	pixel_x = 10
+	},
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Yv" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"YD" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"YT" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"Zb" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"ZD" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+"ZE" = (
+/obj/structure/railing,
+/obj/item/sign/flag/ussp,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_freighter/ruin/space/powered)
+
+(1,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+"}
+(2,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+LF
+LF
+LF
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+"}
+(3,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+fI
+fI
+fI
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+"}
+(4,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+eO
+eO
+eO
+eO
+eO
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+"}
+(5,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+eO
+qJ
+ET
+qJ
+oI
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+"}
+(6,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+Kh
+eO
+eO
+NT
+qJ
+ao
+BF
+eO
+Kh
+Kh
+Kh
+Kh
+Kh
+"}
+(7,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+eO
+eO
+eO
+BF
+xY
+eO
+eO
+eO
+eO
+Kh
+Kh
+Kh
+Kh
+"}
+(8,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+eO
+kx
+fb
+Xi
+Xi
+Xi
+cP
+yr
+eO
+Kh
+Kh
+Kh
+Kh
+"}
+(9,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+AY
+cP
+Kb
+fn
+cP
+Vj
+pt
+fb
+eO
+Kh
+Kh
+Kh
+Kh
+"}
+(10,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+EY
+cP
+Kb
+cP
+RY
+zz
+pt
+fb
+eO
+Kh
+Kh
+Kh
+Kh
+"}
+(11,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+EY
+fb
+Xi
+ve
+cN
+yY
+Xi
+cP
+Na
+Kh
+Kh
+Kh
+Kh
+"}
+(12,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+bL
+YD
+OO
+cu
+Zb
+iH
+Km
+pt
+Na
+Kh
+Kh
+Kh
+Kh
+"}
+(13,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+eO
+Kb
+cP
+xo
+Zb
+Hm
+cP
+pt
+Na
+Kh
+Kh
+Kh
+Kh
+"}
+(14,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+eO
+Kb
+LR
+cP
+YT
+PT
+cP
+GL
+eO
+Kh
+Kh
+Kh
+Kh
+"}
+(15,1,1) = {"
+Kh
+Kh
+LF
+LF
+eO
+cP
+cN
+cN
+cP
+lK
+cN
+cP
+eO
+LF
+LF
+Kh
+Kh
+"}
+(16,1,1) = {"
+Kh
+Kh
+fI
+fI
+eO
+nJ
+oH
+fb
+cP
+cP
+cP
+cP
+eO
+fI
+fI
+Kh
+Kh
+"}
+(17,1,1) = {"
+Kh
+eO
+eO
+eO
+eO
+CB
+qD
+cP
+cP
+fc
+LV
+gq
+eO
+eO
+eO
+eO
+Kh
+"}
+(18,1,1) = {"
+Kh
+eO
+zM
+hr
+eO
+eO
+eO
+qJ
+GE
+eO
+eO
+eO
+eO
+Wm
+Ot
+eO
+Kh
+"}
+(19,1,1) = {"
+Kh
+eO
+Jj
+Gj
+vX
+Fq
+Fq
+bP
+qJ
+WH
+Cf
+cP
+Ks
+ZD
+jL
+Na
+Kh
+"}
+(20,1,1) = {"
+Kh
+eO
+eO
+eO
+eO
+Fq
+Fq
+qJ
+qJ
+WH
+Cf
+HR
+eO
+eO
+eO
+eO
+Kh
+"}
+(21,1,1) = {"
+Kh
+Kh
+Kh
+Na
+bf
+Fq
+dt
+qJ
+qJ
+AE
+Cf
+fb
+Ks
+ZD
+vB
+eO
+Kh
+"}
+(22,1,1) = {"
+Kh
+Kh
+Kh
+Na
+ca
+Fq
+Xq
+qJ
+Wq
+Yv
+LK
+cP
+eO
+Sn
+nX
+Na
+Kh
+"}
+(23,1,1) = {"
+Kh
+Kh
+Kh
+Na
+jm
+Fq
+Rw
+qJ
+ey
+lo
+OM
+pe
+eO
+eO
+eO
+eO
+Kh
+"}
+(24,1,1) = {"
+Kh
+Kh
+Kh
+eO
+eO
+eO
+eO
+qJ
+GE
+eO
+eO
+eO
+eO
+eO
+Kh
+Kh
+Kh
+"}
+(25,1,1) = {"
+Kh
+Kh
+Kh
+eO
+jI
+MH
+ti
+pL
+pL
+ti
+MH
+IY
+eO
+Kh
+Kh
+Kh
+Kh
+"}
+(26,1,1) = {"
+Kh
+Kh
+Kh
+eO
+iC
+qe
+bP
+vT
+vT
+qJ
+Dy
+rE
+eO
+Kh
+Kh
+Kh
+Kh
+"}
+(27,1,1) = {"
+Kh
+Kh
+Kh
+eO
+qS
+PQ
+qJ
+hs
+yM
+qJ
+Cf
+Ca
+eO
+Kh
+Kh
+Kh
+Kh
+"}
+(28,1,1) = {"
+Kh
+Kh
+Kh
+eO
+eO
+ZE
+kC
+AQ
+AQ
+dK
+xI
+eO
+eO
+Kh
+Kh
+Kh
+Kh
+"}
+(29,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+eO
+eO
+Na
+Na
+Na
+Na
+eO
+eO
+Kh
+Kh
+Kh
+Kh
+Kh
+"}
+(30,1,1) = {"
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+Kh
+"}

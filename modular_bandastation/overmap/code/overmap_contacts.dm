@@ -110,7 +110,7 @@
 /datum/stationtrauma_overmap/proc/transponder_identity()
 	return null
 
-/** Measurements store positions, never live references or transponder identity. */
+/** Measurements retain sampled motion and copied registration, never live target references. */
 /datum/stationtrauma_overmap/proc/observe_ships(reach, passive = FALSE)
 	if(!sector)
 		return 0
@@ -122,16 +122,32 @@
 		var/detection_range = passive ? reach * other.detection_signature() : reach
 		if(detection_range <= 0 || (other.pos_x - pos_x) ** 2 + (other.pos_y - pos_y) ** 2 > detection_range ** 2)
 			continue
-		var/list/previous = ship_observations[id]
-		var/number = previous ? previous["id"] : ++next_contact_number
-		if(!previous)
-			found++
-		var/list/observation = list("id" = number, "x" = other.pos_x, "y" = other.pos_y, "seen" = world.time, "mode" = passive ? "passive" : "active")
-		var/list/identity = other.transponder_identity()
-		if(identity)
-			observation["identity"] = identity
-		ship_observations[id] = observation
+		found += record_ship_observation(id, other, passive ? "passive" : "active")
 	return found
+
+/** A radio reply reveals its sender alone, using the same crew-local numbering as sensors. */
+/datum/stationtrauma_overmap/proc/record_ship_observation(id, datum/stationtrauma_overmap/other, mode)
+	if(QDELETED(other) || !sector || other == src || sector.ships[id] != other)
+		return 0
+	var/list/previous = ship_observations[id]
+	if(previous && world.time - previous["seen"] >= ST_NAV_SHIP_MEMORY)
+		previous = null
+	var/number = previous ? previous["id"] : ++next_contact_number
+	var/list/observation = list("id" = number, "x" = other.pos_x, "y" = other.pos_y, "seen" = world.time, "mode" = mode)
+	if(previous)
+		var/seconds = (world.time - previous["seen"]) / (1 SECONDS)
+		if(seconds > 0)
+			observation["vx"] = (other.pos_x - previous["x"]) / seconds
+			observation["vy"] = (other.pos_y - previous["y"]) / seconds
+		else if(!isnull(previous["vx"]))
+			// Active, passive and radio samples may arrive in the same tick.
+			observation["vx"] = previous["vx"]
+			observation["vy"] = previous["vy"]
+	var/list/identity = other.transponder_identity()
+	if(identity)
+		observation["identity"] = identity.Copy()
+	ship_observations[id] = observation
+	return !previous
 
 /** Expired measurements disappear without consulting a target's current position or existence. */
 /datum/stationtrauma_overmap/proc/ship_echo_data()
@@ -144,6 +160,9 @@
 			ship_observations -= id
 			continue
 		var/list/echo = list("id" = record["id"], "x" = record["x"], "y" = record["y"], "age" = age / (1 SECONDS), "mode" = record["mode"])
+		if(!isnull(record["vx"]))
+			echo["vx"] = record["vx"]
+			echo["vy"] = record["vy"]
 		var/list/identity = record["identity"]
 		if(identity)
 			echo["identity"] = identity.Copy()

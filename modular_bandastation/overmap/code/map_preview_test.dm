@@ -1,0 +1,62 @@
+/// Preview carriers must preserve native sorting and live occlusion without turning effects into targets.
+/datum/unit_test/stationtrauma_preview_visuals
+	normal_floor_required = TRUE
+
+/datum/unit_test/stationtrauma_preview_visuals/Run()
+	var/turf/base = run_loc_floor_bottom_left
+	var/turf/local_gate = locate(base.x + 1, base.y + 1, base.z)
+	var/turf/remote_gate = locate(base.x + 2, base.y + 3, base.z)
+	local_gate = local_gate.ChangeTurf(/turf/open/space)
+	remote_gate = remote_gate.ChangeTurf(/turf/open/space)
+	var/turf/reverse_gate = get_step(remote_gate, WEST)
+	reverse_gate = reverse_gate.ChangeTurf(/turf/open/space)
+	var/turf/local_landing = get_step(local_gate, WEST)
+	local_landing = local_landing.ChangeTurf(/turf/open/space)
+	var/datum/component/stationtrauma_map_passage/passage = local_gate.AddComponent(/datum/component/stationtrauma_map_passage, remote_gate, EAST)
+	var/datum/component/stationtrauma_map_passage/reverse = reverse_gate.AddComponent(/datum/component/stationtrauma_map_passage, local_landing, WEST)
+	var/datum/stationtrauma_map_preview/preview = allocate(/datum/stationtrauma_map_preview, passage, 1, TRUE)
+	var/turf/source_tile = get_step(remote_gate, EAST)
+	var/turf/local_tile = get_step(local_gate, EAST)
+	preview.tiles[source_tile] = local_tile
+	preview.enabled = TRUE
+	var/obj/structure/cable/cable = allocate(/obj/structure/cable, source_tile)
+	cable.setDir(NORTH)
+	preview.track(cable)
+	preview.refresh(cable)
+	var/obj/effect/abstract/stationtrauma_map_projection/image = preview.projections[cable]
+	if(!image || image.plane != cable.plane || image.layer != cable.layer || image.dir != cable.dir || !(cable in image.vis_contents))
+		Fail("Projected floor objects must retain their topdown plane, layer, direction and live visuals", __FILE__, __LINE__)
+	var/obj/machinery/door/airlock/door = allocate(/obj/machinery/door/airlock, source_tile)
+	door.set_opacity(TRUE)
+	preview.track(door)
+	preview.refresh(door)
+	image = preview.projections[door]
+	door.set_opacity(FALSE)
+	sleep(1)
+	if(image.opacity || (image in local_tile.opacity_sources))
+		Fail("Opening a remote occluder without an icon change must release its preview's opacity", __FILE__, __LINE__)
+	door.set_opacity(TRUE)
+	sleep(1)
+	if(!image.opacity || !(image in local_tile.opacity_sources))
+		Fail("Closing a remote occluder must restore its preview's opacity", __FILE__, __LINE__)
+	source_tile.set_opacity(TRUE)
+	preview.track(source_tile)
+	preview.refresh(source_tile)
+	image = preview.projections[source_tile]
+	if(!image.opacity || !(image in local_tile.opacity_sources))
+		Fail("Copying opaque terrain must register the native lighting blocker", __FILE__, __LINE__)
+	source_tile.set_opacity(FALSE)
+	sleep(1)
+	if(image.opacity || (image in local_tile.opacity_sources))
+		Fail("A terrain appearance refresh must release its old lighting blocker", __FILE__, __LINE__)
+	var/obj/effect/decal/cleanable/dirt/decal = allocate(/obj/effect/decal/cleanable/dirt, source_tile)
+	preview.track(decal)
+	preview.refresh(decal)
+	image = preview.projections[decal]
+	if(!image || image.layer != decal.layer || image.mouse_opacity != MOUSE_OPACITY_TRANSPARENT || !(decal.vis_flags & VIS_INHERIT_ID))
+		Fail("Floor decals must be visible without becoming physical aiming targets", __FILE__, __LINE__)
+	qdel(preview)
+	if(length(local_tile.opacity_sources))
+		Fail("Destroying a preview must release all local lighting blockers", __FILE__, __LINE__)
+	qdel(passage)
+	qdel(reverse)

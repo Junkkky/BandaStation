@@ -67,6 +67,91 @@
 			Fail("Active and passive measurements must refer to the same local contact", __FILE__, __LINE__)
 	qdel(sector)
 
+/// A directed radio request must not become a free sensor sweep or leak native vessel IDs.
+/datum/unit_test/stationtrauma_radio_contact/Run()
+	var/datum/stationtrauma_overmap_sector/sector = new
+	var/datum/stationtrauma_overmap/observer = new
+	var/datum/stationtrauma_overmap/sender = new
+	var/datum/stationtrauma_overmap/hidden = new
+	sector.register("observer", observer)
+	sector.register("secret_sender", sender)
+	sector.register("hidden", hidden)
+	sender.pos_x = 20
+	if(observer.record_ship_observation("secret_sender", sender, "signal") != 1 || length(observer.ship_observations) != 1 || length(sender.ship_observations) || length(hidden.ship_observations))
+		Fail("Radio contact performed a sweep or changed another crew's observations", __FILE__, __LINE__)
+	var/list/echoes = observer.ship_echo_data()
+	var/list/echo = echoes[1]
+	if(echo["mode"] != "signal" || echo["x"] != 20 || !isnum(echo["id"]) || findtext(json_encode(echo), "secret_sender"))
+		Fail("Radio contact lost its sampled mode/position or exposed a native ID", __FILE__, __LINE__)
+	if(observer.record_ship_observation("hidden", sender, "signal") || observer.record_ship_observation("absent", sender, "signal") || length(observer.ship_observations) != 1)
+		Fail("Radio contact accepted a mismatched sector registration", __FILE__, __LINE__)
+	qdel(sector)
+
+/// Motion comes from separated observations; reacquisition must not depend on an open UI.
+/datum/unit_test/stationtrauma_contact_motion/Run()
+	var/datum/stationtrauma_overmap_sector/sector = new
+	var/datum/stationtrauma_overmap/observer = new
+	var/datum/stationtrauma_overmap/target = new
+	sector.register("observer", observer)
+	sector.register("target", target)
+	target.pos_x = 100
+	target.pos_y = 20
+	target.velocity_x = 999
+	target.velocity_y = -999
+	observer.observe_ships(600)
+	var/list/echoes = observer.ship_echo_data()
+	var/list/echo = echoes[1]
+	var/number = echo["id"]
+	if(!isnull(echo["vx"]) || !isnull(echo["vy"]))
+		Fail("A single measurement cannot reveal the target's real velocity", __FILE__, __LINE__)
+	var/list/record = observer.ship_observations["target"]
+	record["seen"] = world.time - 2 SECONDS
+	target.pos_x = 106
+	target.pos_y = 28
+	target.last_ping = world.time
+	observer.observe_ships(600, passive = TRUE)
+	echoes = observer.ship_echo_data()
+	echo = echoes[1]
+	if(echo["vx"] != 3 || echo["vy"] != 4 || echo["id"] != number || echo["mode"] != "passive")
+		Fail("Active and passive samples must measure motion from positions and elapsed time", __FILE__, __LINE__)
+	observer.observe_ships(600)
+	echoes = observer.ship_echo_data()
+	echo = echoes[1]
+	if(echo["vx"] != 3 || echo["vy"] != 4)
+		Fail("Same-tick observations must preserve the last motion estimate", __FILE__, __LINE__)
+	record = observer.ship_observations["target"]
+	record["seen"] = world.time - 2 SECONDS
+	observer.pos_x = 100
+	observer.observe_ships(600)
+	echoes = observer.ship_echo_data()
+	echo = echoes[1]
+	if(isnull(echo["vx"]) || isnull(echo["vy"]) || echo["vx"] || echo["vy"])
+		Fail("Observer movement must not turn a stationary contact into a moving target", __FILE__, __LINE__)
+	target.pos_x = 10000
+	observer.observe_ships(600)
+	echoes = observer.ship_echo_data()
+	echo = echoes[1]
+	if(echo["x"] != 106 || echo["y"] != 28 || echo["vx"] || echo["vy"])
+		Fail("An unseen target must not update its measured position or motion", __FILE__, __LINE__)
+	echo["vx"] = 123
+	echoes = observer.ship_echo_data()
+	echo = echoes[1]
+	if(echo["vx"] != 0)
+		Fail("UI data must not expose mutable motion records", __FILE__, __LINE__)
+	target.pos_x = 106
+	record = observer.ship_observations["target"]
+	record["seen"] = world.time - ST_NAV_SHIP_MEMORY + 1
+	if(observer.observe_ships(600))
+		Fail("A measurement inside the memory lifetime must preserve its contact number", __FILE__, __LINE__)
+	record = observer.ship_observations["target"]
+	record["seen"] = world.time - ST_NAV_SHIP_MEMORY
+	var/found = observer.observe_ships(600)
+	echoes = observer.ship_echo_data()
+	echo = echoes[1]
+	if(found != 1 || echo["id"] == number || !isnull(echo["vx"]) || !isnull(echo["vy"]))
+		Fail("Reacquiring an expired contact must create a fresh measurement even without a UI refresh", __FILE__, __LINE__)
+	qdel(sector)
+
 /// Measurements must not turn into remote tracking, identity disclosure or shared crew knowledge.
 /datum/unit_test/stationtrauma_ship_scan/Run()
 	var/datum/stationtrauma_overmap_sector/sector = new
