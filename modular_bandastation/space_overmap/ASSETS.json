@@ -1,0 +1,666 @@
+{
+	"version": 1,
+	"scope": "Non-audio maps, imported icons and generated previews introduced or modified by space-overmap modules. Embedded code and existing referenced assets retain their original notices.",
+	"assets": [
+		{
+			"path": "modular_bandastation/space_overmap/icons/icarus.dmi",
+			"sha256": "6d8f85e4b0cca873652361d40f4523146aaafe934047aea888196e67fc6b6377",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/icarus/icarus.dmi",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/icarus/icarus.dmi",
+				"sha256": "6d8f85e4b0cca873652361d40f4523146aaafe934047aea888196e67fc6b6377",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Unmodified copy.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/icons/icarus_scglogo.dmi",
+			"sha256": "e393852831770ee0c50c2b29229f30898dcdc81e28a9eea84fb44ec45aae5aff",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/icarus/icarus_scglogo.dmi",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/icarus/icarus_scglogo.dmi",
+				"sha256": "e393852831770ee0c50c2b29229f30898dcdc81e28a9eea84fb44ec45aae5aff",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Unmodified copy.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/asteroid_field.dmm",
+			"sha256": "5ffa8575ec2ef605831a2f8e025e53d77f2990f3739ec65342be3c4e8dfc2067",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["StationTrauma / BandaStation contributors"],
+			"source": null,
+			"changes": "Original layout using existing repository assets."
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/drift_cargo.dmm",
+			"sha256": "50971615a79da4f348246c08c6e808709c09f7dcb925eec9122f11bc8d1a6e9f",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["StationTrauma / BandaStation contributors"],
+			"source": null,
+			"changes": "Original layout using existing repository assets."
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/moon.dmm",
+			"sha256": "e2a437ef1274e8e0b627f84a9fcfff33a4f4cbe84b61731025d047a098003011",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/deserted_lab/deserted_lab.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/deserted_lab/deserted_lab.dmm",
+				"sha256": "0ca326c38162eb59afe5144fbb100c0ecda3b0bdf4e748efa531dea1eeacd224",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/pocketrocket.dmm",
+			"sha256": "9b54a99d21d3f50c7a0768873cb5ef87c556108dad232f7f663354c640dcd876",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "_maps/shuttles/shiptest/voidcrew/pocketrocket.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/_maps/shuttles/shiptest/voidcrew/pocketrocket.dmm",
+				"sha256": "ae47dacb12e728844a303b5e3eb56687c21bf47152bb8fc8823a3c644f120b8a",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/raven.dmm",
+			"sha256": "03d16a1fdbaeb13986e2520bcbecb1d6f25fb562dfe64c7a806b508d80bec9d2",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["TG, BandaStation and Primera contributors"],
+			"source": {
+				"repository": "SpaceStation220/Primera",
+				"commit": "65a9bd040b816783f0b6c24ba1e84ee7aab48456",
+				"path": "_maps/shuttles/emergency/emergency_raven.dmm",
+				"url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/_maps/shuttles/emergency/emergency_raven.dmm",
+				"sha256": "92cea4ce13f09b84782d96f7339fc6738e5ef18d6a9e7b58771a0ff2277f599b",
+				"license_policy_url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/ruins/icarus.dmm",
+			"sha256": "ca80b5e81ce06a8aa931a81325c8d4411b37bc1237243f67a9a4063fe23b7019",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/icarus/icarus.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/icarus/icarus.dmm",
+				"sha256": "b9094bf21a46efa1699cf2dd1aa27e4b744c423d66343a726fe30a1320233775",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/ruins/paradise_abandoned_engi_sat.dmm",
+			"sha256": "0691ae8b84cfb4601ff58cf33a9dc9692d4aa08efe3c7884490830f36f1bb683",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["ParadiseSS13/Paradise contributors"],
+			"source": {
+				"repository": "ParadiseSS13/Paradise",
+				"commit": "8e4ad940e497f64443c3fc635a09840a8fa7a1d2",
+				"path": "_maps/map_files/RandomRuins/SpaceRuins/abandoned_engi_sat.dmm",
+				"url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/_maps/map_files/RandomRuins/SpaceRuins/abandoned_engi_sat.dmm",
+				"retrieval": "Original cached during the pinned source import.",
+				"sha256": "67c2d0bb9cb478b4263eb49551588c45080c7e2c0986c383cd69973d4cecd977",
+				"license_policy_url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/ruins/paradise_alien_cache_site.dmm",
+			"sha256": "0ff9c5bf50373ad0400ffee07ee54bfaf590d0a6e50a0f25f7354191cf3ffe73",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["ParadiseSS13/Paradise contributors"],
+			"source": {
+				"repository": "ParadiseSS13/Paradise",
+				"commit": "8e4ad940e497f64443c3fc635a09840a8fa7a1d2",
+				"path": "_maps/map_files/RandomRuins/SpaceRuins/alien_cache_site.dmm",
+				"url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/_maps/map_files/RandomRuins/SpaceRuins/alien_cache_site.dmm",
+				"retrieval": "Original cached during the pinned source import.",
+				"sha256": "9ea4a4ce8b6eeabbaf56eee11fcf83c1678f1ae93bdd81e2bef48690db5c6ed5",
+				"license_policy_url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/ruins/paradise_freighter.dmm",
+			"sha256": "0cea6daa07622f26ce7893405a6bda2b27fa7bd05acfd3da583b3f55d21da62a",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["ParadiseSS13/Paradise contributors"],
+			"source": {
+				"repository": "ParadiseSS13/Paradise",
+				"commit": "8e4ad940e497f64443c3fc635a09840a8fa7a1d2",
+				"path": "_maps/map_files/RandomRuins/SpaceRuins/freighter.dmm",
+				"url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/_maps/map_files/RandomRuins/SpaceRuins/freighter.dmm",
+				"retrieval": "Original cached during the pinned source import.",
+				"sha256": "2cae0c1bab3446b30a24d1bfbb326d50ccb5bb4984c9089bb3f476e738f39b17",
+				"license_policy_url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/ruins/paradise_wreckedcargoship.dmm",
+			"sha256": "4c4e2d36a57033e9f2fe8eaf9f9f9418e88b3073792b19ab9948e00c2f2cad94",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["ParadiseSS13/Paradise contributors"],
+			"source": {
+				"repository": "ParadiseSS13/Paradise",
+				"commit": "8e4ad940e497f64443c3fc635a09840a8fa7a1d2",
+				"path": "_maps/map_files/RandomRuins/SpaceRuins/wreckedcargoship.dmm",
+				"url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/_maps/map_files/RandomRuins/SpaceRuins/wreckedcargoship.dmm",
+				"retrieval": "Original cached during the pinned source import.",
+				"sha256": "142718855b534a28382a26304709b0b80058d393238dab6976cf668377790d2b",
+				"license_policy_url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/ruins/scav_mining.dmm",
+			"sha256": "ba73503f3f96e438cdebc473eaf6bf7e8f131f769d828ee7aaed4ae923a6b2f2",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/scav_mining.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/scav_mining.dmm",
+				"sha256": "f60c915838721e04a596a7b8e2ba17d9f4e77f4f258558b5e07b1a3bb2524af0",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/ruins/void_astraeus.dmm",
+			"sha256": "c1d5deca02763028cfbea06d46a488f97485ede8a851fde90c83c85e20280133",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/astraeus.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/astraeus.dmm",
+				"sha256": "736608deeff93ebcc4c1a15fab8312dbfbca4a9744f10e39fea5fa185672fd81",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/ruins/void_dark_glade.dmm",
+			"sha256": "68c9372a197ea0788c488b24ce2c940457babae9689f412867098e71f0c53f77",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/dark_glade.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/dark_glade.dmm",
+				"sha256": "660c54a1770f9c6d8a2e7073c982ad49e8120755533da5ab79f1d24448bbad3c",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/ruins/void_nuclear_dump.dmm",
+			"sha256": "90100091cb92ef5d6179e408f9ef1a1aca9d1d1d3522bbffa302513dfe981876",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/nuclear_dump.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/nuclear_dump.dmm",
+				"sha256": "c41ad12f46a23f03664316c030578bb985ef106247a8b372f485df943f07c102",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/ruins/void_power_puzzle.dmm",
+			"sha256": "a753412558c8588bc633f4bcca7e579f5fa71ebec638b94d3fe5cb066024fd21",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/power_puzzle.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/power_puzzle.dmm",
+				"sha256": "0a4113a1d4f5fea5aaa111f2b8e09db5fc6d6d9fa4bed08fac715bde2d780c75",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/ruins/void_transport18.dmm",
+			"sha256": "e4f9304a58aeb5c99554daabfbe8128f2c9c3964d19f381a40cff5d86394215c",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/transport18.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/transport18.dmm",
+				"sha256": "0aeca21b49018e612788420e4d41c0caef336a7add1143851e3f6999f7330ce8",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_crashed_pod.dmm",
+			"sha256": "938865412be5778507f4e5414f0bcfbb1d087a7a17fa830362ae290b159b177c",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/crashed_pod/crashed_pod.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/crashed_pod/crashed_pod.dmm",
+				"sha256": "af02f153c14936adf0a5d7a1be8a77c640d9648eb423f6bee0b46763a91f23a1",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_crashed_probe.dmm",
+			"sha256": "cf8b86e357f57bc47a589c9cd83c163905040496b2961842b039130d9942dc83",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/crashed_probe/crashed_probe.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/crashed_probe/crashed_probe.dmm",
+				"sha256": "fb9013d38b5538c1f28b98bad47aaaf06c19dcc8c03613dfdec119efb87d70d2",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_crashed_shuttle.dmm",
+			"sha256": "0fbf94cabfc3042f2149584d42c974fed124383ff7edfc1ca1a9791f19da44e4",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/crashed_shuttle/crashed_shuttle.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/crashed_shuttle/crashed_shuttle.dmm",
+				"sha256": "0f737d7ec3853ea6bff1615b38e2172861f6759c3eb13a80b594c989869c924d",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_deserted_lab.dmm",
+			"sha256": "8d73215d0393c12955da21263f3d4f88fb344696c04b6006f7586fe842755552",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/deserted_lab/deserted_lab.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/deserted_lab/deserted_lab.dmm",
+				"sha256": "0ca326c38162eb59afe5144fbb100c0ecda3b0bdf4e748efa531dea1eeacd224",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_drill_site.dmm",
+			"sha256": "44540b4873a2f1d22089a4bf254ecff5b1fca5719b035bc162cc2f2bc3571f1b",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/drill_site/drill_site.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/drill_site/drill_site.dmm",
+				"sha256": "b12ede7de8bfe6be67e7e32827699a68e2d294b0659d7936da0c60c2d815cc48",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_ec_old_crash.dmm",
+			"sha256": "4f824ad5f78769d1d166bc2f4d7fd884575e9709a0c7af45ae1b77cacdb804db",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/ec_old_crash/ec_old_crash.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/ec_old_crash/ec_old_crash.dmm",
+				"sha256": "e96e6a3ba954d573fd8ae461cb38f8648ec0dba55c28e9c73e0cd22e4d711db7",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_excavation_site.dmm",
+			"sha256": "97777d5166669b3fb5b23c5de341ae05bea9ccd2b8ba3e08aac76d680f76ac2e",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/excavation_site/excavation_site.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/excavation_site/excavation_site.dmm",
+				"sha256": "0493321a878edcc673dbd25af2c1885b4e217c00c6aa06488056b95dc186c2b6",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_hut.dmm",
+			"sha256": "42a098c88e6a5d8c53442298348526fc4273128d1e119b77bd9730210f1b62a8",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/hut/hut.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/hut/hut.dmm",
+				"sha256": "e1eb5f9c7318a64e384b56743f631839d64b388e395fa57bd6411f8a0fa57f01",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_hydrobase.dmm",
+			"sha256": "b83ddebfdbd4342b2ab75af4091eab4597650e101eb328184aa573a476d54961",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/hydrobase/hydrobase.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/hydrobase/hydrobase.dmm",
+				"sha256": "9e8a0421664ec20ab66cbda0e1957ac20b248c67f08b7fac7a10827f3ebfa51a",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_lodge.dmm",
+			"sha256": "8b25ee2a7c9b9c7a9e91f1127994c17e61260e1d04672423a74960b269a6d936",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/lodge/lodge.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/lodge/lodge.dmm",
+				"sha256": "9670b75e8543e9ad46670b39994e0371f5ae43a43801b58ec47791ff211dfdb2",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_monoliths.dmm",
+			"sha256": "b984c3a15c3ac5078a81f0bcb5c6373343f96dbd35fb7a072bfbc70826a4da1f",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/monoliths/monoliths.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/monoliths/monoliths.dmm",
+				"sha256": "9277163f5b3bdd91e530033e3f12d37be67e057e595bbffb95454e2c89f9285e",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_oasis.dmm",
+			"sha256": "2d7bb7dbd8f988c21a9e7f5e543fb6cb3c670b7265aba79a06f700012af841e1",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oasis/oasis.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oasis/oasis.dmm",
+				"sha256": "6495aa57c9f01f1b9bbaac3d36fa03014ab94e51fa74508177c868248a8ef4fc",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_oasis2.dmm",
+			"sha256": "8fa66cc41cf0ba8538dde145e1841f8b4b0be0a23b84bfae22f9d118bdabbff0",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oasis/oasis2.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oasis/oasis2.dmm",
+				"sha256": "75020ba4521780c93e9bc9a1f1c0025213bac4e87ee9acd00d965286c2fb4bb5",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_oasis3.dmm",
+			"sha256": "a63302e2539a363b31a1b4d30cc83b999c27965ba92e93bdd36661b0b867b073",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oasis/oasis3.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oasis/oasis3.dmm",
+				"sha256": "8093bfb120806d5fc7dbaf06f48edc165e1840e64e4cfedb461532f72f5e9b82",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_oldlab.dmm",
+			"sha256": "d1e08fcc8d6093045d7b006687b3d11304ea15b1e76bc00c9926ffd9ddd5fb6d",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oldlab/oldlab.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oldlab/oldlab.dmm",
+				"sha256": "4a81fd03b5be88e3bc0761cda211967421dea45449cd5cff846248ec7cae136b",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_oldlab2.dmm",
+			"sha256": "40a58e4d15c7cf387eb678f4294e551176d3973583aed1d3a477d33812f98019",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oldlab2/oldlab2.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oldlab2/oldlab2.dmm",
+				"sha256": "3b3e819d387764bf5e30d89a2736eb3b900487c8ee4ff8858dd2462f94581a9c",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_oldpod.dmm",
+			"sha256": "de777ad65639b72a26801a27b8bad10e4e6a928bd111b31a51a028a3f970b903",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oldpod/oldpod.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oldpod/oldpod.dmm",
+				"sha256": "29f2af237899d09b1b20a7c5d043bd58e009e9b12ac2e782374229af817abf01",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_radshrine.dmm",
+			"sha256": "86fa245bf78b67b9c1608bf795b8d908cd77e442fd95a91674f04a1668f4f2f5",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/radshrine/radshrine.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/radshrine/radshrine.dmm",
+				"sha256": "73bb8199d974a24cfb6f7aae5daa64a5859fd1cc647b86374882dfbe9e84c51e",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_skrell_biodome.dmm",
+			"sha256": "8fe1aea2968b5039ef0e3ae2b588a390979bc8b9601c45f2bad483626d95b770",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/skrell_biodome/skrell_biodome.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/skrell_biodome/skrell_biodome.dmm",
+				"sha256": "d20bfef4a6f04d6018be17797cfb19b2a251356785c16430fc1b596fd94f95af",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_spider_nest.dmm",
+			"sha256": "befac3cda82c23382aee4e7b308b33a1101633c557013bc09bcdb89d56dc869c",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/spider_nest/spider_nest.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/spider_nest/spider_nest.dmm",
+				"sha256": "fcfd77aeaebc0584499765280c4064bce2bda65c213d00a66178c02ac0d0da58",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_tar_anomaly.dmm",
+			"sha256": "99bed073de6fdd7dbfb3c2dd334a5f7729ec99977f4e3ba641a9c56ec9314ab7",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/tar_anomaly/tar_anomaly.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/tar_anomaly/tar_anomaly.dmm",
+				"sha256": "eeac3657ae7f16cd0cf9cabf6a34fe8985d7c900131b2bcd142206f70f30ba23",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_transshipment.dmm",
+			"sha256": "e78f004ae07bf6c9d383f27eaa80e1153ce9395037959271bd39015ed7308878",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/transshipment/transshipment.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/transshipment/transshipment.dmm",
+				"sha256": "b283831963c087dab0d49c40a2b570208790e57b083c40d8d425a0fe6ab885ed",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_trash_heap.dmm",
+			"sha256": "fbad1eaf969b6a395ee5b04dd15a3384263b9106462683737275c052478448e4",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/trash_heap/trash_heap.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/trash_heap/trash_heap.dmm",
+				"sha256": "30114d82d82320879ebba8e1bcbe7cddc1c0b3a86789ee75d79b80f7d270bec1",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "icons/obj/fluff/map_previews.dmi",
+			"sha256": "b2861100830e6bb775b11b407bd9d73f6650aca8cdb2c579ddc627c6d2fea121",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["TG, BandaStation and Primera contributors"],
+			"source": {
+				"repository": "SpaceStation220/Primera",
+				"commit": "65a9bd040b816783f0b6c24ba1e84ee7aab48456",
+				"path": "icons/obj/fluff/map_previews.dmi",
+				"url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/icons/obj/fluff/map_previews.dmi",
+				"sha256": "884340c242ae79ac1147268b8611f4d13b8d712de38c9b271297d5ecbf5edc4f",
+				"license_policy_url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/README.md"
+			},
+			"changes": "Native auto-generated map preview sheet; includes the Cyberiad Overmap profile preview. Existing native thumbnails retained.",
+			"byte_identical": false
+		}
+	]
+}

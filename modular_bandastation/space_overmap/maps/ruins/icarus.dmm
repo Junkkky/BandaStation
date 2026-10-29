@@ -1,0 +1,4614 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/item/stack/tile/iron/dark,
+/turf/template_noop,
+/area/template_noop)
+"aj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"an" = (
+/turf/open/floor/engine{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"aI" = (
+/turf/template_noop,
+/area/template_noop)
+"aY" = (
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 1
+	},
+/obj/item/wallframe/airalarm,
+/obj/structure/filingcabinet/chestdrawer{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"bc" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"bf" = (
+/obj/item/wallframe/airalarm,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"bg" = (
+/obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"bi" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 5
+	},
+/obj/structure/light_construct,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"bo" = (
+/obj/item/wallframe/apc,
+/turf/open/floor/wood{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"bL" = (
+/obj/structure/chair/comfy/red{
+	dir = 8
+	},
+/turf/open/floor/carpet/red/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"bP" = (
+/obj/structure/sign{
+	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi';
+	icon_state = "solgovseal";
+	name = "SEV Icarus"
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"cf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"cz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/slag,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"dc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"dd" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"df" = (
+/obj/effect/turf_decal{
+	dir = 8;
+	icon_state = "top-left";
+	icon = 'modular_bandastation/space_overmap/icons/icarus_scglogo.dmi';
+	alpha = 230
+	},
+/obj/structure/frame/computer,
+/obj/item/circuitboard/computer,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"dj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"dF" = (
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/armory)
+"dJ" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 6
+	},
+/obj/structure/light_construct,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"eD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/purple/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"eQ" = (
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"eU" = (
+/obj/structure/frame/computer,
+/obj/item/circuitboard/computer,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"eV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/light_construct,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"eX" = (
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"fb" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"fw" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 1
+	},
+/obj/item/wallframe/airalarm,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"fA" = (
+/obj/structure/table,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"fI" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/folder/blue,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"fQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/frame/computer,
+/obj/item/circuitboard/computer,
+/obj/item/shard,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"fR" = (
+/obj/effect/spawner/random/structure/furniture_parts,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"gl" = (
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/machinery/photocopier,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"gr" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"gs" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"gv" = (
+/obj/machinery/computer/records/security,
+/turf/open/floor/carpet/red/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"gz" = (
+/obj/structure/frame/computer,
+/obj/item/circuitboard/computer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"gD" = (
+/obj/structure/chair/comfy/red{
+	dir = 4
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"hd" = (
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"hj" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/item/wallframe/airalarm,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"hk" = (
+/obj/structure/sign{
+	pixel_y = 26;
+	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi';
+	icon_state = "ecplaque";
+	name = "SEV Icarus";
+	desc = "SEV Icarus. Lexington class. Registry 95498. Launched 2302. Never was anything great achieved without danger."
+	},
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"hl" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"hs" = (
+/obj/structure/chair/comfy/yellow{
+	dir = 8
+	},
+/obj/effect/decal/remains/human,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"hy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"hK" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 6
+	},
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"hU" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"hW" = (
+/obj/effect/turf_decal/tile/yellow/full,
+/obj/structure/closet/crate/stationtrauma_icarus_sample,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"hX" = (
+/obj/effect/turf_decal{
+	dir = 8;
+	icon_state = "top-right";
+	icon = 'modular_bandastation/space_overmap/icons/icarus_scglogo.dmi';
+	alpha = 230
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"hZ" = (
+/obj/effect/turf_decal{
+	dir = 8;
+	icon = 'modular_bandastation/space_overmap/icons/icarus_scglogo.dmi';
+	alpha = 230;
+	icon_state = "center"
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/decal/remains/human,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"iE" = (
+/obj/item/paper_bin,
+/turf/template_noop,
+/area/template_noop)
+"jg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/slag,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"jh" = (
+/obj/structure/chair/comfy/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"jl" = (
+/obj/structure/bed,
+/obj/item/bedsheet/captain,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"jm" = (
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"jt" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"jw" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"jN" = (
+/obj/item/paper_bin,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"jP" = (
+/obj/effect/turf_decal{
+	dir = 8;
+	icon_state = "bottom-left";
+	icon = 'modular_bandastation/space_overmap/icons/icarus_scglogo.dmi';
+	alpha = 230
+	},
+/obj/structure/frame/computer,
+/obj/item/circuitboard/computer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"jR" = (
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"kn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/mixed,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"ko" = (
+/obj/item/wallframe/airalarm,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"kw" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"kA" = (
+/obj/machinery/computer/pod/old/mass_driver_controller{
+	pixel_y = 24;
+	id = "st_icarus_starboard";
+	range = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"kG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/armory)
+"kY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"ll" = (
+/obj/structure/girder,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"lD" = (
+/obj/structure/girder,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"lO" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"me" = (
+/obj/structure/table/glass,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"mv" = (
+/obj/structure/girder,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"my" = (
+/obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"mF" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"nc" = (
+/obj/item/wallframe/firealarm,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"nr" = (
+/obj/machinery/computer/records/medical,
+/turf/open/floor/carpet/purple/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"nw" = (
+/obj/item/wallframe/airalarm,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"ok" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/stationtrauma_icarus/armory)
+"os" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/carpet/red/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"oz" = (
+/obj/effect/turf_decal/trimline/white/line,
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/dark/smooth_large/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"oK" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/spawner/random/structure/furniture_parts,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"oQ" = (
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"oV" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"oZ" = (
+/obj/structure/sign{
+	pixel_x = -26;
+	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi';
+	icon_state = "ecplaque";
+	name = "SEV Icarus"
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"pc" = (
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"ph" = (
+/obj/effect/spawner/random/maintenance,
+/turf/template_noop,
+/area/template_noop)
+"pr" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/machinery/papershredder,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"pH" = (
+/obj/structure/table,
+/obj/effect/spawner/random/contraband,
+/turf/open/floor/carpet/red/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"pK" = (
+/obj/structure/sign{
+	pixel_y = 32;
+	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi';
+	icon_state = "solgovflag-left";
+	name = "SEV Icarus"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/machinery/vending/coffee,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"qa" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"qb" = (
+/obj/structure/chair/comfy/purp{
+	dir = 1
+	},
+/obj/effect/decal/remains/human,
+/turf/open/floor/carpet/purple/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"qf" = (
+/obj/item/stack/rods,
+/turf/template_noop,
+/area/template_noop)
+"qE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"qX" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"rm" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"rt" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/light_construct,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"ry" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"rD" = (
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"sC" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/wood{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"sP" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/open/floor/iron/textured{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"sV" = (
+/obj/machinery/door/airlock/command{
+	name = "Bridge Storage"
+	},
+/turf/open/floor/iron/textured{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"td" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/maintenance,
+/turf/open/floor/iron/textured{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"th" = (
+/obj/structure/light_construct,
+/turf/open/floor/wood{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"tl" = (
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"tM" = (
+/obj/item/wallframe/airalarm,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"tN" = (
+/obj/structure/chair/comfy/blue{
+	dir = 1
+	},
+/obj/effect/decal/remains/human,
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"uk" = (
+/obj/machinery/computer/pod/old/mass_driver_controller{
+	pixel_y = 24;
+	id = "st_icarus_port";
+	range = 8
+	},
+/obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"uu" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"uv" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"uy" = (
+/obj/effect/turf_decal{
+	dir = 8;
+	icon_state = "center-right";
+	icon = 'modular_bandastation/space_overmap/icons/icarus_scglogo.dmi';
+	alpha = 230
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"uz" = (
+/obj/structure/table/wood,
+/obj/item/toy{
+	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi';
+	icon_state = "model";
+	name = "SEV Icarus model";
+	desc = "A 1:278 scale model of the lost expedition ship."
+	},
+/turf/open/floor/wood{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"vs" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 1
+	},
+/obj/item/stack/ore/slag,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"vH" = (
+/obj/item/wallframe/apc,
+/turf/open/floor/carpet/red/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"wc" = (
+/obj/structure/light_construct,
+/turf/open/floor/carpet/red/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"wg" = (
+/obj/machinery/door/airlock/highsecurity{
+	locked = 1
+	},
+/turf/open/floor/iron/textured{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/armory)
+"wk" = (
+/turf/open/floor/engine{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"wI" = (
+/obj/structure/girder/displaced,
+/turf/template_noop,
+/area/template_noop)
+"wJ" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/item/wallframe/apc,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"wW" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"xL" = (
+/turf/open/floor/carpet/purple/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"xM" = (
+/obj/structure/closet/crate/freezer/organ,
+/turf/template_noop,
+/area/template_noop)
+"xU" = (
+/obj/structure/grille,
+/turf/open/floor/engine{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"yB" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/white/line,
+/obj/effect/spawner/random/exotic/antag_gear_weak,
+/turf/open/floor/iron/dark/smooth_large/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/armory)
+"yE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"yV" = (
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/item/folder/yellow,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"yY" = (
+/obj/machinery/door/airlock/command{
+	name = "Commanding Officer"
+	},
+/turf/open/floor/iron/textured{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"zk" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/item/wallframe/firealarm,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"zC" = (
+/obj/structure/chair/comfy/blue{
+	dir = 1
+	},
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"zG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"zJ" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"Aa" = (
+/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"Ak" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Am" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Ar" = (
+/obj/structure/mannequin/skeleton,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Av" = (
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Ax" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/white/line,
+/obj/effect/spawner/random/mod/maint,
+/turf/open/floor/iron/dark/smooth_large/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/armory)
+"AY" = (
+/obj/structure/frame/computer,
+/obj/item/shard,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"BE" = (
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"BM" = (
+/obj/item/wallframe/airalarm,
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/armory)
+"BT" = (
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 8
+	},
+/obj/item/wallframe/apc,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"Ch" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/item/disk/stationtrauma_icarus,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"Cm" = (
+/obj/item/wallframe/firealarm,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Cp" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/spawner/random/structure/furniture_parts,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Di" = (
+/obj/item/wallframe/apc,
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Dp" = (
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"DQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/folder/red,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"Eq" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/item/wallframe/apc,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Er" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"ED" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/slag,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"EF" = (
+/obj/effect/turf_decal/trimline/white/line,
+/obj/machinery/suit_storage_unit/security,
+/turf/open/floor/iron/dark/smooth_large/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/armory)
+"EQ" = (
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
+	},
+/turf/open/floor/iron/textured{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Fm" = (
+/obj/structure/sign{
+	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi';
+	icon_state = "solgovseal";
+	name = "SEV Icarus"
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"Fv" = (
+/obj/effect/turf_decal/tile/yellow/half,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/wallframe/firealarm,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"FH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"FJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"FU" = (
+/obj/structure/sign{
+	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi';
+	icon_state = "solgovseal";
+	name = "SEV Icarus"
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"Go" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"GH" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"GU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"GX" = (
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"Hb" = (
+/obj/structure/girder,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Hg" = (
+/obj/structure/girder,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"Ik" = (
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 8
+	},
+/obj/structure/light_construct,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"Is" = (
+/obj/structure/closet/crate/secure/science,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"IT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/slag,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"Jc" = (
+/obj/effect/turf_decal/trimline/white/line,
+/obj/structure/closet/firecloset,
+/turf/open/floor/iron/dark/smooth_large/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Je" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 6
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"Ji" = (
+/obj/item/wallframe/apc,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"Jo" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Jp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"Jz" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bookcase/manuals/research_and_development,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"JJ" = (
+/obj/structure/closet,
+/turf/open/floor/carpet/red/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"Kd" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/machinery/photocopier,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"KO" = (
+/obj/structure/grille,
+/turf/open/floor/engine{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"KP" = (
+/obj/item/stack/ore/slag,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Lc" = (
+/obj/structure/chair/comfy/blue{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Lh" = (
+/obj/structure/table/reinforced,
+/obj/machinery/photocopier,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/purple/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"Ly" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/slag,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"LB" = (
+/obj/machinery/computer/communications{
+	dir = 4
+	},
+/turf/open/floor/wood{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"LC" = (
+/obj/effect/spawner/random/contraband,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"LD" = (
+/obj/item/wallframe/apc,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"LM" = (
+/obj/structure/girder/stationtrauma_icarus_core,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"LX" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/white/line,
+/obj/effect/spawner/random/exotic/antag_gear_weak,
+/turf/open/floor/iron/dark/smooth_large/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/armory)
+"Mo" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"Mt" = (
+/obj/structure/ore_box{
+	name = "mass driver ammunition bin";
+	desc = "An empty ammunition bin from the wreck. Usable for collected ore."
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"MC" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"MP" = (
+/obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"MT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"MX" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"NI" = (
+/obj/structure/girder,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/armory)
+"Oa" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Od" = (
+/obj/effect/anomaly/grav/stationtrauma_icarus,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"Oo" = (
+/obj/structure/sign{
+	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi';
+	icon_state = "solgovseal";
+	name = "SEV Icarus"
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"Pb" = (
+/obj/machinery/mass_driver{
+	dir = 1;
+	id = "st_icarus_port"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "st_icarus_port"
+	},
+/obj/structure/ore_box{
+	name = "mass driver ammunition bin";
+	desc = "An empty ammunition bin from the wreck. Usable for collected ore."
+	},
+/turf/open/floor/engine{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"Pd" = (
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 1
+	},
+/obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"Pf" = (
+/obj/structure/table/wood,
+/obj/item/paper{
+	name = "SEV Icarus roster";
+	default_raw_text = "<center><BR><b>SEV Icarus</b><br>Crew roster</center><br><b>Command</b><br><ul><li>Commanding Officer: Cmd. Alex Peterson<li>Executive Officer: Lt. Semyon Andors <li>CMO: Lt. Toko Nashamura<li>CE: Ens. Anna Lawrence<li>COS: Lt. Rand Forbarra<li>CSO: Dr. Carl Jozziliny<li>BO: Ens. Gordon Johnson</ul><br><b>Medical dept.</b><br><ul><li>Physician: S. Expl. John Fors<li>Nurse: Expl. Antony Laffer</ul><br><b>Engineering dept.</b><br><ul><li>Engineer: Expl. Ronda Atkins<li>Engineer: Expl. Peter Napp</ul><br><b>Security dept.</b><br><ul><li>SO: S. Expl. Nuri Batyam<li>SO: Expl. Benjamin Tho<li>SO: Expl. Tetha-12-Alpha</ul><br><b>Exploration team.</b><br><ul><li>Ch. Expl. Alex Warda<li>S. Expl. William Lions<li>Expl. Hope Bafflow<li>Expl. Yuri Meadows<li>Dr. Tetha-12-Beta<ul>"
+	},
+/turf/open/floor/wood{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Pq" = (
+/obj/structure/chair/comfy/blue,
+/turf/open/floor/wood{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"PC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/slag,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"PG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"PK" = (
+/obj/item/wallframe/airalarm,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"PX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/slag,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"Qe" = (
+/obj/item/wallframe/apc,
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"QD" = (
+/obj/item/stack/rods,
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"QE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"QO" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"QT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/circuitboard/computer,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Rf" = (
+/obj/item/folder/blue,
+/turf/template_noop,
+/area/template_noop)
+"Rg" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/item/stack/ore/slag,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Rk" = (
+/obj/item/wallframe/airalarm,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"Rl" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"Rv" = (
+/obj/effect/spawner/random/engineering/toolbox,
+/turf/template_noop,
+/area/template_noop)
+"RB" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Se" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/slag,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"Si" = (
+/obj/structure/sign{
+	pixel_x = 26;
+	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi';
+	icon_state = "ecplaque";
+	name = "SEV Icarus"
+	},
+/obj/item/wallframe/firealarm,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Sl" = (
+/obj/item/stack/ore/slag,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"SK" = (
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"SN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"SR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/wallframe/apc,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"ST" = (
+/obj/structure/chair/comfy/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Tk" = (
+/obj/item/shard,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Tr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"TI" = (
+/obj/structure/girder,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"TX" = (
+/obj/effect/decal/remains/human,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"Um" = (
+/obj/structure/table/glass,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/gun/ballistic/automatic/pistol/m1911{
+	name = "rusty military pistol";
+	desc = "The name Alex is engraved into the old service pistol."
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Ux" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Uz" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"UR" = (
+/obj/structure/chair,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/template_noop)
+"UY" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"UZ" = (
+/obj/effect/turf_decal{
+	dir = 8;
+	icon_state = "top-center";
+	icon = 'modular_bandastation/space_overmap/icons/icarus_scglogo.dmi';
+	alpha = 230
+	},
+/obj/structure/table/glass,
+/obj/item/disk/stationtrauma_icarus,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Va" = (
+/obj/structure/sign{
+	pixel_y = 32;
+	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi';
+	icon_state = "solgovflag-right";
+	name = "SEV Icarus"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/machinery/vending/cigarette,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Vv" = (
+/obj/item/stack/tile/iron/dark_side,
+/turf/template_noop,
+/area/template_noop)
+"Vw" = (
+/obj/item/stack/rods,
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/structure/filingcabinet/chestdrawer,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"VA" = (
+/obj/item/stack/rods,
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"VD" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/obj/item/wallframe/apc,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"VK" = (
+/obj/structure/chair/comfy/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/anticorner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"VN" = (
+/obj/effect/turf_decal{
+	dir = 8;
+	icon_state = "bottom-right";
+	icon = 'modular_bandastation/space_overmap/icons/icarus_scglogo.dmi';
+	alpha = 230
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"VV" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/open/floor/carpet/red/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"Wd" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/item/wallframe/firealarm,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Wg" = (
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 8
+	},
+/obj/machinery/computer/monitor{
+	dir = 4
+	},
+/obj/item/paper{
+	name = "SEV Icarus log";
+	default_raw_text = "[LOG]: Orbit stabilized. Next correction burst, est.: 2 hrs 12 m<br>[LOG]: Orbit stabiliztion. Announcing...<br>[ANN]: Attention all hands, SEV Icarus is stabilizing orbit in 30 seconds. Prepare for possible gravitational spikes.<br>[LOG]: Announcing complete.<br>[LOG]: Preparing for burst: heating up impulse mass.<br>[WARN]: Minor pressure alert, Reactor Cooling Loop 3.<br>[LOG]: Burst ready. Bursting in 5 seconds.<br>[LOG]: Orbit stabilized. Next correction burst, est.: 1 hr 47 m.<br>[ADM]: Preparing shuttles for landing. Current status: required refuilling. <br>[REQ]: Request to Engineering, Please refuel Shuttle #2... Sent.<br>[WARN]: Minor pressure alert, Reactor Cooling Loop 1.<br>[RET]: Request completed.<br>[LOG]: Manual correction {Engine->Cooling->Pumps}: calculating new trend.<br>[LOG]: Calculating complete. Notify ADMIN...<br>[ERR]: Positive feedback loop in Engine Core! Prepare for emergency procedures.<br>[ERR]: Positive feedback loop in Engine Core! Prepare for emergency procedures.<br>[ERR]: Positive feedback loop in Engine Core! Prepare for emergency procedures.<br>[ERR]: Positive feedback loop in Engine Core! Prepare for emergency procedures.<br>[ERR]: Positive feedback loop in Engine Core! Prepare for emergency procedures.<br>[LOG]: This error was muted for 120 seconds.<br>[WARN]: Multiple hull breaches detected.<br>[WARN]: Unexepected orbit change, calculating corrective burst.<br>[LOG]: Preparing for burst: heating up impulse mass.<br>[ERR]: Impulse mass: not found<br>[LOG]: Orbit stabilizing: failed.<br>[WARN]: Impact imminent... Preparing blackbox backup... Ready.<br>[LOG]: Emergency shutdown!<br>[LOG]: Now you can you safely turn off your computer.<br>"
+	},
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"Wk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/structure/furniture_parts,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"Wl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/frame/computer,
+/obj/item/circuitboard/computer,
+/obj/item/shard,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"Wn" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"WK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/light_construct,
+/turf/open/floor/iron/dark/side/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"WT" = (
+/obj/effect/turf_decal{
+	dir = 8;
+	icon_state = "center-left";
+	icon = 'modular_bandastation/space_overmap/icons/icarus_scglogo.dmi';
+	alpha = 230
+	},
+/obj/structure/frame/computer,
+/obj/item/shard,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"WV" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/item/wallframe/airalarm,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Xn" = (
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"Xw" = (
+/obj/structure/girder,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"XH" = (
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"XT" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/obj/item/wallframe/airalarm,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"XV" = (
+/obj/structure/closet/crate/stationtrauma_icarus_tools,
+/turf/template_noop,
+/area/template_noop)
+"Ya" = (
+/obj/effect/turf_decal{
+	dir = 8;
+	icon_state = "bottom-center";
+	icon = 'modular_bandastation/space_overmap/icons/icarus_scglogo.dmi';
+	alpha = 230
+	},
+/obj/structure/table/glass,
+/obj/item/paper{
+	name = "SEV Icarus roster";
+	default_raw_text = "<center><BR><b>SEV Icarus</b><br>Crew roster</center><br><b>Command</b><br><ul><li>Commanding Officer: Cmd. Alex Peterson<li>Executive Officer: Lt. Semyon Andors <li>CMO: Lt. Toko Nashamura<li>CE: Ens. Anna Lawrence<li>COS: Lt. Rand Forbarra<li>CSO: Dr. Carl Jozziliny<li>BO: Ens. Gordon Johnson</ul><br><b>Medical dept.</b><br><ul><li>Physician: S. Expl. John Fors<li>Nurse: Expl. Antony Laffer</ul><br><b>Engineering dept.</b><br><ul><li>Engineer: Expl. Ronda Atkins<li>Engineer: Expl. Peter Napp</ul><br><b>Security dept.</b><br><ul><li>SO: S. Expl. Nuri Batyam<li>SO: Expl. Benjamin Tho<li>SO: Expl. Tetha-12-Alpha</ul><br><b>Exploration team.</b><br><ul><li>Ch. Expl. Alex Warda<li>S. Expl. William Lions<li>Expl. Hope Bafflow<li>Expl. Yuri Meadows<li>Dr. Tetha-12-Beta<ul>"
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Yk" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sec)
+"Yx" = (
+/obj/effect/turf_decal/tile/yellow/full,
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/eng)
+"YA" = (
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"YP" = (
+/obj/machinery/mass_driver{
+	dir = 1;
+	id = "st_icarus_starboard"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "st_icarus_starboard"
+	},
+/turf/open/floor/engine{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
+"YX" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/folder/blue,
+/turf/open/floor/carpet/purple/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/sci)
+"Zg" = (
+/obj/item/wallframe/apc,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/armory)
+"Zn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/slag,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"Zz" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "st_icarus_port"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
+"ZL" = (
+/turf/open/floor/wood{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+"ZP" = (
+/obj/structure/frame/computer,
+/obj/item/circuitboard/computer,
+/obj/item/shard,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/stationtrauma_icarus/bridge)
+
+(1,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(2,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(3,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(4,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(5,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(6,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(7,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(8,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(9,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(10,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+Er
+Er
+Er
+Hg
+Hg
+Er
+Er
+Er
+Er
+Er
+dj
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+uu
+uu
+uu
+uu
+uu
+aI
+aI
+Oo
+Mo
+Oo
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(11,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+FU
+xU
+xU
+xU
+xU
+Er
+Er
+Er
+Hg
+dj
+dj
+aI
+aI
+aI
+aI
+Mo
+uu
+uu
+uu
+uu
+LC
+TX
+uu
+uu
+uu
+uu
+Mo
+uu
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(12,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+Zz
+kY
+kY
+wk
+wk
+Pb
+hy
+WK
+tM
+PX
+Vv
+aI
+aI
+aI
+aI
+lD
+uu
+uu
+uu
+uu
+uu
+uu
+uu
+uu
+uu
+uu
+Mo
+uu
+uu
+lD
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(13,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+FU
+xU
+xU
+xU
+xU
+Er
+uk
+fQ
+hy
+dj
+Aa
+aI
+aI
+aI
+aI
+Se
+Mo
+uu
+hW
+BT
+Ik
+yV
+Wg
+Yx
+uu
+aI
+qf
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(14,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+Er
+Er
+Er
+Er
+Er
+Er
+LD
+IT
+dj
+Vv
+aI
+aI
+aI
+aI
+aI
+aI
+Mo
+uu
+Pd
+eV
+Rl
+bf
+hs
+Fv
+uu
+Mo
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(15,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+RB
+RB
+RB
+RB
+RB
+RB
+Xn
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ae
+aI
+aI
+aI
+lD
+Se
+Wk
+MT
+Mo
+Se
+Mo
+aI
+Mo
+Mo
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(16,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+RB
+Am
+tl
+zG
+eX
+eX
+pc
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+MT
+Mo
+Mo
+SK
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(17,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ry
+RB
+RB
+sP
+RB
+RB
+RB
+RB
+RB
+ry
+RB
+aI
+aI
+ae
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(18,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ry
+ry
+ry
+ll
+RB
+QO
+Jo
+hj
+gr
+zk
+Jo
+Oa
+ry
+MC
+aI
+aI
+aI
+aI
+aI
+iE
+aI
+xM
+aI
+Rv
+aI
+qf
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(19,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ll
+RB
+RB
+RB
+RB
+wW
+jR
+Rg
+Ak
+QD
+Ak
+qa
+ry
+qa
+VA
+aI
+aI
+Rf
+ae
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+wI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(20,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+RB
+Jc
+hl
+Jo
+UY
+Eq
+RB
+yY
+RB
+RB
+RB
+Tr
+RB
+td
+RB
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(21,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+RB
+oz
+oV
+Ak
+oK
+Wn
+RB
+ZL
+uz
+LB
+fw
+hd
+kn
+pc
+lO
+lO
+lO
+aI
+aI
+lO
+lO
+dc
+aI
+aI
+aI
+aI
+aI
+aI
+qf
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(22,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+RB
+RB
+QE
+EQ
+QE
+RB
+RB
+Pq
+Pf
+sC
+qX
+Ux
+Hb
+pc
+TI
+Jz
+MP
+dc
+YA
+MP
+Ch
+dc
+aI
+aI
+iE
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(23,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+QE
+gz
+zC
+Um
+XH
+Av
+oZ
+yY
+ZL
+th
+bo
+vs
+jl
+RB
+pc
+dc
+rt
+Dp
+nw
+Dp
+dc
+aI
+dc
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(24,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+eU
+rm
+rm
+rm
+Tk
+Qe
+RB
+RB
+RB
+RB
+RB
+RB
+RB
+pc
+lO
+Vw
+Dp
+fR
+Dp
+dc
+aI
+aI
+aI
+aI
+aI
+qf
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(25,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+cf
+ry
+rm
+jP
+Ya
+VN
+jw
+RB
+hk
+gr
+Di
+jh
+VK
+RB
+pc
+lO
+pr
+jN
+LM
+Dp
+qE
+eQ
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(26,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+bP
+rm
+QT
+WT
+hZ
+uy
+XH
+EQ
+wW
+Av
+XH
+fA
+fI
+RB
+pc
+lO
+YX
+xL
+xL
+BE
+Is
+dc
+aI
+dc
+aI
+aI
+ok
+NI
+NI
+ok
+ok
+ok
+ok
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(27,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+QE
+rm
+KP
+df
+UZ
+hX
+jw
+RB
+pK
+XH
+Cm
+Lc
+ST
+RB
+pc
+lO
+nr
+qb
+eD
+YA
+Dp
+my
+dc
+qE
+aI
+aI
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(28,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+QE
+AY
+Tk
+Av
+XH
+PK
+jm
+RB
+Va
+XH
+XH
+rm
+bc
+ll
+pc
+lO
+Lh
+eD
+eD
+dc
+Go
+SR
+Od
+lO
+aI
+aI
+ok
+ok
+yB
+Zg
+EF
+ok
+ok
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(29,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+QE
+ZP
+tN
+me
+XH
+XH
+Si
+RB
+aY
+Ak
+Ak
+Kd
+gl
+RB
+pc
+lO
+dc
+lO
+lO
+aI
+lO
+lO
+lO
+lO
+aI
+aI
+NI
+ok
+Ax
+dF
+dF
+wg
+kG
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(30,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+RB
+RB
+QE
+EQ
+QE
+RB
+RB
+QE
+QE
+sV
+RB
+RB
+RB
+sP
+RB
+aI
+qf
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+NI
+ok
+LX
+BM
+EF
+ok
+ok
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(31,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+RB
+Jc
+Wd
+Jo
+Jo
+wJ
+Jo
+Cp
+MC
+Uz
+Tr
+hd
+Jo
+Jo
+qf
+aI
+aI
+aI
+iE
+aI
+aI
+aI
+aI
+XV
+aI
+ok
+ok
+ok
+ok
+ok
+ok
+ok
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(32,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+RB
+oz
+oV
+WV
+kw
+ED
+qa
+GH
+ry
+Zn
+ry
+Ak
+gs
+aI
+aI
+UR
+aI
+aI
+aI
+aI
+aI
+Rf
+aI
+aI
+aI
+ok
+ok
+ok
+ok
+NI
+NI
+ok
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(33,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+RB
+RB
+RB
+RB
+RB
+sP
+RB
+RB
+RB
+RB
+RB
+RB
+RB
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+qf
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+qf
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(34,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+ll
+ll
+RB
+zG
+zG
+zG
+zG
+eX
+eX
+pc
+pc
+aI
+aI
+aI
+ae
+aI
+aI
+aI
+ae
+aI
+ph
+aI
+aI
+qf
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(35,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+RB
+Ar
+hd
+Tr
+pc
+eX
+eX
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+mF
+mF
+rD
+Yk
+Jp
+DQ
+SN
+cz
+mF
+mF
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(36,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+RB
+RB
+ll
+RB
+RB
+RB
+RB
+Vv
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+FJ
+GX
+dJ
+nc
+mF
+mF
+Je
+Je
+fb
+FJ
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(37,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+RB
+uv
+mv
+mv
+uv
+uv
+uv
+Ji
+PC
+Mt
+aI
+aI
+ae
+aI
+aI
+Sl
+VD
+dd
+dd
+mF
+MX
+MX
+dd
+zJ
+mF
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(38,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+yE
+yE
+KO
+KO
+KO
+uv
+kA
+oQ
+Rk
+Vv
+aI
+aI
+aI
+aI
+aI
+XT
+dd
+gD
+rD
+rD
+ko
+dd
+bi
+FH
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(39,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+yE
+yE
+GU
+an
+an
+YP
+bg
+aj
+PG
+Wl
+aI
+aI
+aI
+aI
+hK
+jt
+dd
+VV
+pH
+wc
+os
+dd
+hU
+Ly
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(40,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+Fm
+yE
+yE
+KO
+KO
+uv
+uv
+uv
+Xw
+aI
+aI
+aI
+ae
+aI
+dd
+dd
+dd
+gv
+bL
+vH
+JJ
+dd
+dd
+dd
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(41,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+yE
+mv
+uv
+uv
+uv
+uv
+uv
+uv
+yE
+jg
+aI
+aI
+aI
+dd
+dd
+dd
+MX
+MX
+dd
+dd
+dd
+dd
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(42,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+qf
+aI
+aI
+aI
+aI
+qf
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(43,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(44,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(45,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(46,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(47,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(48,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(49,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}
+(50,1,1) = {"
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+"}

@@ -1,0 +1,344 @@
+// AI EDIT START - Preserve the navigation console CRT palette and compact instrument layout
+.SpaceNavigation {
+  background: #111716;
+  color: #b5c5b5;
+  font:
+    11px Consolas,
+    monospace;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #7a8f76;
+    letter-spacing: 2px;
+    background: #222d27;
+
+    span {
+      color: #e6c78b;
+    }
+  }
+
+  .Button,
+  .Dropdown {
+    background: #25312b;
+    border: 1px solid #5c705b;
+    color: #cbdac1;
+    font: inherit;
+  }
+
+  .Button:hover {
+    background: #334336;
+  }
+  .Button--selected {
+    border-left: 3px solid #efc782;
+    background: #364437;
+  }
+  .Button--disabled {
+    opacity: 0.35;
+  }
+
+  &__body {
+    display: flex;
+  }
+  &__plot {
+    flex: 1;
+    min-width: 0;
+    background: #080e0d;
+  }
+  &__plot-head {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    color: #718870;
+
+    > span {
+      flex: 1;
+    }
+  }
+  &__chart {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: crosshair;
+    user-select: none;
+  }
+  &__marker {
+    cursor: pointer;
+  }
+  &__marker:focus {
+    outline: 1px solid #d4e4be;
+  }
+  &__legend {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    border-top: 1px solid #2b3c30;
+    font-size: 10px;
+
+    span:first-child {
+      color: #d6edc0;
+    }
+    span:nth-child(2) {
+      color: #edc587;
+    }
+    span:last-child {
+      color: #91d7d0;
+    }
+  }
+  &__routes {
+    max-height: 90px;
+    overflow-y: auto;
+    padding: 5px 8px;
+    border-top: 1px solid #2b3c30;
+
+    .Button {
+      height: 20px;
+      margin: 2px 0;
+    }
+    .Button__content {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    span:first-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    span:last-child {
+      flex-shrink: 0;
+      color: #8b9b84;
+    }
+  }
+  &__telemetry {
+    flex: 0 0 270px;
+    padding: 9px;
+    border-left: 1px solid #3d4b40;
+  }
+  &__instruments {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &__sensor-speed {
+    width: 100px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .SpaceNavigation__scan {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    padding: 5px;
+    font-size: 24px;
+    opacity: 1;
+  }
+  &__lamp {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e45d51;
+    box-shadow: 0 0 4px #ad2821;
+
+    &.ready {
+      background: #82de89;
+      box-shadow: 0 0 5px #62c77d;
+    }
+  }
+  &__speedometer {
+    width: 100px;
+    margin-top: 5px;
+    color: #d6edc0;
+
+    svg {
+      display: block;
+      width: 100px;
+      height: 53px;
+      fill: #91d7d0;
+    }
+    path {
+      stroke: #91d7d0;
+      stroke-width: 2;
+      fill: none;
+    }
+    .gauge {
+      stroke: #526d60;
+      stroke-width: 3;
+    }
+    output {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+    }
+  }
+  dl {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    font-size: 10px;
+  }
+  dt {
+    color: #879881;
+    margin-top: 7px;
+  }
+  dd {
+    color: #e2e6c4;
+    margin: 2px 0;
+  }
+  &__helm {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  &__helm-buttons {
+    flex: 1;
+    min-width: 0;
+
+    > .Button {
+      display: block;
+      margin-top: 7px;
+    }
+  }
+  &__engine-control {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 8px;
+    font-size: 9px;
+  }
+  &__maneuvers {
+    display: grid;
+    grid-template-columns: repeat(3, 32px);
+    gap: 4px;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    .Button {
+      width: 32px;
+      height: 29px;
+      padding: 0;
+      font-size: 21px;
+      line-height: 1;
+      text-align: center;
+    }
+  }
+  &__throttle {
+    position: relative;
+    flex-shrink: 0;
+    width: 90px;
+    height: 190px;
+    background: linear-gradient(100deg, #384149, #171d21);
+    border: 2px solid #69737a;
+    border-right-color: #11171b;
+    border-bottom-color: #11171b;
+    box-shadow: inset 0 0 12px #080c0f;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 32px;
+      right: 9px;
+      top: 15px;
+      bottom: 32px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #aab1ad 0,
+        #aab1ad 2px,
+        transparent 2px,
+        transparent 17.5px
+      );
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 53px;
+      top: 17px;
+      bottom: 33px;
+      width: 6px;
+      background: #090d10;
+      border: 1px solid #687077;
+      pointer-events: none;
+    }
+    output {
+      position: absolute;
+      bottom: 7px;
+      left: 18px;
+      right: 5px;
+      text-align: center;
+    }
+  }
+  &__scale {
+    position: absolute;
+    left: 3px;
+    top: 10px;
+    bottom: 33px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 9px;
+  }
+  &__lever {
+    position: absolute;
+    left: 29px;
+    width: 52px;
+    height: 16px;
+    z-index: 1;
+    cursor: ns-resize;
+    background: linear-gradient(
+      #12171a,
+      #929da4 18%,
+      #20292e 35%,
+      #44515a 70%,
+      #929da4 82%,
+      #1b2328
+    );
+    border: 2px solid #a4adb3;
+    border-radius: 4px;
+    box-shadow: 2px 3px 4px #060809;
+
+    &[aria-disabled='true'] {
+      opacity: 0.4;
+      cursor: default;
+    }
+  }
+  .SpaceNavigation__stop {
+    color: #f2b3a2;
+    border-color: #b66e57;
+  }
+  &__docking {
+    display: flex;
+    gap: 7px;
+    margin-top: 9px;
+    padding-top: 9px;
+    border-top: 1px solid #3d4b40;
+  }
+  &__request {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 5px;
+    font-size: 10px;
+  }
+  &__request > span {
+    width: 100%;
+  }
+  &__help {
+    color: #7e907c;
+    font-size: 10px;
+    line-height: 1.4;
+    margin: 6px 8px;
+  }
+  footer {
+    padding: 6px 10px;
+    background: #27322a;
+    border-top: 1px solid #66755e;
+    color: #dfdcb3;
+  }
+}
+// AI EDIT END

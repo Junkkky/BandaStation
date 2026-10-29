@@ -1,0 +1,3362 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: Void-Crew/Voidcrew-LRP contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/transport18.dmm
+"ap" = (
+/obj/item/stack/cable_coil,
+/obj/machinery/holopad,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"bi" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"bm" = (
+/obj/structure/tank_dispenser/oxygen,
+/obj/structure/sign/warning/vacuum{
+	pixel_x = -32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"bz" = (
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/closet/crate/large{
+	name = "damp crate"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"bC" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/plumbing/tank,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"ca" = (
+/obj/structure/door_assembly/door_assembly_hatch,
+/obj/item/stack/cable_coil,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"ci" = (
+/obj/structure/frame/computer{
+	dir = 8;
+	anchored = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"cA" = (
+/obj/machinery/light/broken,
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"cF" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"dl" = (
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"dw" = (
+/obj/structure/lattice,
+/obj/structure/grille/broken,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
+"dB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"eg" = (
+/turf/template_noop,
+/area/template_noop)
+"ep" = (
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/trash/can,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"er" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"ew" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"eC" = (
+/obj/structure/bed,
+/obj/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"eO" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"eU" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"fh" = (
+/obj/item/stack/cable_coil,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"fk" = (
+/obj/structure/lattice,
+/obj/structure/reagent_dispensers/keg/beer,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
+"fG" = (
+/obj/structure/sign/warning/biohazard,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"fN" = (
+/obj/structure/girder,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"gO" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"hu" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"hM" = (
+/obj/machinery/light/broken{
+	dir = 1
+	},
+/obj/machinery/suit_storage_unit/open,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"il" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/light/small/broken,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"im" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"iH" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"iO" = (
+/obj/item/stack/cable_coil,
+/obj/effect/decal/cleanable/dirt{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"jf" = (
+/obj/structure/closet/secure_closet/freezer/fridge/open,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"jM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"ks" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"kE" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"kX" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fluff/paper/stack{
+	dir = 1
+	},
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"lh" = (
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/closet/crate/large{
+	name = "damp crate"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"ls" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"lw" = (
+/obj/item/trash/can,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"lL" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"ml" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"mm" = (
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/item/stack/sheet/mineral/wood,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"mp" = (
+/obj/structure/cable,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"mE" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"mG" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"mQ" = (
+/obj/item/stack/cable_coil,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"mR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/trash/can{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"mV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/structure/table_frame,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"mY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"nc" = (
+/obj/item/clothing/shoes/magboots,
+/obj/effect/gibspawner/human,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"nh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"nn" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
+"no" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"nE" = (
+/obj/structure/frame/machine,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"nR" = (
+/obj/effect/decal/cleanable/dirt{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"nU" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4;
+	name = "modified thruster"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"nV" = (
+/obj/machinery/light/small,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"pm" = (
+/obj/structure/girder,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
+"qs" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "exp_void_transport18_transp19_windows"
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"qL" = (
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"qS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/trash/can{
+	pixel_x = -7;
+	pixel_y = -7
+	},
+/obj/item/trash/can{
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"qZ" = (
+/obj/item/wallframe/airalarm{
+	pixel_y = 24
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"rb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/reagent_dispensers/keg/beer,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"ro" = (
+/obj/structure/girder,
+/obj/item/stack/sheet/iron,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"ru" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "exp_void_transport18_transp19_windows"
+	},
+/obj/structure/grille,
+/obj/item/shard,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"rz" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/reagent_dispensers/keg/beer,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"rB" = (
+/obj/machinery/door/poddoor{
+	id = "exp_void_transport18_transp19"
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"rL" = (
+/obj/item/wallframe/apc,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"sj" = (
+/obj/effect/turf_decal/tile/neutral,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"sl" = (
+/obj/item/construction/plumbing,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"so" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"sp" = (
+/obj/structure/table/reinforced,
+/obj/machinery/light/dim{
+	dir = 1
+	},
+/obj/item/plate{
+	pixel_x = -5
+	},
+/obj/item/plate{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"tj" = (
+/obj/structure/cable,
+/obj/item/stack/cable_coil,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"ts" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "exp_void_transport18_transp19_windows"
+	},
+/obj/structure/grille,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"tP" = (
+/obj/item/wrench,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"ud" = (
+/obj/effect/decal/cleanable/food/flour,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"ul" = (
+/obj/item/trash/can{
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"uR" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/heater{
+	dir = 4
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"vA" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"vB" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"vL" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"wn" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"wF" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/shard,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"wI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"wQ" = (
+/obj/item/trash/can{
+	pixel_x = 9;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"wT" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"xd" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"xi" = (
+/obj/item/stack/cable_coil,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
+"xp" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "exp_void_transport18_transp19_windows"
+	},
+/obj/structure/grille/broken,
+/obj/item/shard,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"xv" = (
+/obj/item/stack/sheet/iron,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
+"xy" = (
+/obj/structure/cable,
+/obj/machinery/light/small/broken{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"xP" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"xV" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"ye" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"yf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"yr" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"yt" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/trash/can,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"yB" = (
+/obj/item/paper{
+	name = "полевой журнал: Потерянный транспорт";
+	default_raw_text = "Объект: Потерянный транспорт. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/structure/door_assembly/door_assembly_hatch,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"yR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/storage/cans/sixbeer,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"zf" = (
+/obj/item/trash/can{
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Af" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/stack/sheet/mineral/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/greenglow,
+/obj/item/trash/can{
+	pixel_y = -8
+	},
+/obj/item/trash/can{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"AG" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"AT" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Bi" = (
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Bo" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"BE" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"BR" = (
+/obj/machinery/light/broken{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"BT" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"BY" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Cd" = (
+/obj/machinery/door/poddoor{
+	id = "exp_void_transport18_transp19"
+	},
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Cn" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"CJ" = (
+/obj/item/wallframe/extinguisher_cabinet{
+	pixel_y = 32
+	},
+/obj/structure/cable,
+/obj/machinery/light/small/broken,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"CV" = (
+/obj/structure/chair,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Di" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Dz" = (
+/obj/machinery/light/small/broken,
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/plumbing/tank,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"DI" = (
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Ek" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"El" = (
+/obj/item/stack/sheet/mineral/titanium,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
+"Em" = (
+/obj/structure/girder,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Er" = (
+/obj/item/stack/rods,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
+"Fk" = (
+/obj/item/wirecutters,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Fr" = (
+/obj/structure/girder,
+/obj/item/stack/sheet/mineral/titanium,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Gc" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Gd" = (
+/obj/structure/girder,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Gf" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Gu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"GY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Hf" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"HC" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"HL" = (
+/obj/item/trash/can,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
+"Ib" = (
+/obj/item/trash/can{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"IA" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/public,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"II" = (
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/closet/crate/large{
+	name = "damp crate"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"IX" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/door_assembly/door_assembly_public,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Jd" = (
+/obj/structure/girder,
+/obj/item/stack/sheet/mineral/titanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Je" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Jp" = (
+/obj/machinery/light/dim{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"JL" = (
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/wallframe/airalarm{
+	pixel_y = 24
+	},
+/obj/machinery/button/door{
+	name = "Container Blast Door Control";
+	pixel_x = 5;
+	id = "exp_void_transport18_transp19"
+	},
+/obj/machinery/button/door{
+	name = "Window Shutter Control";
+	pixel_x = -5;
+	id = "exp_void_transport18_transp19_windows"
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Kd" = (
+/obj/effect/decal/cleanable/dirt{
+	pixel_x = 11;
+	pixel_y = 1
+	},
+/obj/item/broken_bottle,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Kj" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"KF" = (
+/obj/structure/girder,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"KN" = (
+/obj/structure/frame/computer,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"KT" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"KY" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
+"LA" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Mj" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fluff/paper/stack{
+	dir = 5
+	},
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Ms" = (
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/closet/crate/large{
+	name = "damp crate"
+	},
+/obj/machinery/light/small,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Mx" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"MI" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"MT" = (
+/obj/machinery/suit_storage_unit/open,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"MW" = (
+/obj/effect/turf_decal/tile/neutral{
+	color = "#000000"
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"MY" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"NO" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/light/small/broken,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Oq" = (
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/item/organ/stomach,
+/obj/item/trash/can{
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"OF" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"OG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/paper/crumpled/fluff{
+	default_raw_text = "Well, journal, it's just you, me, and twelve tons of beer. Haven't heard back from the engineer in about a day since he cooked up that crazy plan to fuel the thrusters with beer, so I reckon I'll go out with a bang. At least I'll die happy."
+	},
+/obj/item/trash/can{
+	pixel_x = -7;
+	pixel_y = -7
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"OH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"OI" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/obj/item/trash/can,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"OJ" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/light/small/broken{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"OT" = (
+/obj/structure/girder,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"OY" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/trash/can,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"OZ" = (
+/obj/machinery/plumbing/input,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Pa" = (
+/obj/item/stack/sheet/cardboard,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Pc" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "exp_void_transport18_transp19_windows"
+	},
+/obj/structure/grille/broken,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Pe" = (
+/obj/structure/table_frame,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Pt" = (
+/obj/machinery/light/broken,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/item/plate{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/obj/structure/table/glass,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"PB" = (
+/obj/item/clothing/gloves/color/fyellow/old,
+/obj/item/stack/cable_coil,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Qk" = (
+/obj/structure/table/reinforced,
+/obj/item/radio/intercom,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"QB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/trash/can{
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/obj/item/trash/can{
+	pixel_y = -8
+	},
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"QD" = (
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/closet/crate/large{
+	name = "damp crate"
+	},
+/obj/machinery/light/small/broken,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Rk" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4;
+	name = "modified thruster"
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Rm" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/obj/item/trash/candy,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"RD" = (
+/obj/effect/turf_decal/tile/neutral{
+	color = "#000000";
+	dir = 1
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"RR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fluff/paper/stack,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"RT" = (
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/closet/crate/large{
+	name = "damp crate"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"RX" = (
+/obj/effect/decal/cleanable/dirt{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Sm" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/trash/can{
+	pixel_x = -3
+	},
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Sn" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/exterior)
+"Ss" = (
+/obj/structure/table/reinforced,
+/obj/item/radio/intercom,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"SB" = (
+/obj/structure/chair,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"SD" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/door_assembly/door_assembly_hatch,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"SJ" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/item/stack/cable_coil,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"SO" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/heater{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"TJ" = (
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Uw" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Vp" = (
+/obj/machinery/holopad,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/blue/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"VC" = (
+/obj/structure/mirror{
+	desc = "Oh no, seven years of bad luck!";
+	pixel_y = 24;
+	icon_state = "mirror_broke"
+	},
+/obj/structure/sink{
+	pixel_y = 20
+	},
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"VP" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"WE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/reagent_dispensers/keg/beer,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"WK" = (
+/obj/structure/cable,
+/obj/machinery/light/small/broken,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"WR" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Xf" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Xq" = (
+/obj/item/trash/can,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Xu" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/plumbing/tank,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Xx" = (
+/obj/machinery/light/small/broken{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+"Xz" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"XA" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/plumbing/tank,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"XM" = (
+/obj/machinery/light/dim{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/item/shard,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"XR" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Yw" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"Zr" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"ZJ" = (
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/has_grav/transport18mid)
+"ZV" = (
+/obj/structure/door_assembly/door_assembly_hatch,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft)
+
+(1,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+Er
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+so
+eg
+Sn
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(2,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+so
+Gc
+eg
+eg
+eg
+eg
+Er
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(3,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+nn
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(4,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+AG
+nn
+eg
+eg
+eg
+eg
+eg
+HL
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(5,1,1) = {"
+eg
+eg
+Er
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+El
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(6,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+El
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(7,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+pm
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(8,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+El
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(9,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+Sn
+eg
+eg
+eg
+VP
+eg
+eg
+eg
+eg
+eg
+eg
+nU
+nU
+eg
+eg
+eg
+El
+eg
+eg
+eg
+eg
+eg
+"}
+(10,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+Gd
+eg
+nn
+eg
+eg
+eg
+AG
+eg
+eg
+SO
+SO
+so
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(11,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+so
+so
+eg
+eg
+xi
+nn
+eg
+nn
+eg
+eg
+jM
+LA
+Jd
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(12,1,1) = {"
+eg
+eg
+eg
+eg
+Rk
+Rk
+eg
+eg
+eg
+eg
+xi
+eg
+eg
+xv
+nn
+eg
+nn
+nn
+nn
+VP
+mQ
+nn
+eg
+Sn
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(13,1,1) = {"
+eg
+eg
+eg
+so
+uR
+uR
+so
+eg
+nn
+nn
+eg
+eg
+nn
+nn
+eO
+eg
+so
+VP
+eg
+AG
+nn
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(14,1,1) = {"
+eg
+eg
+eg
+so
+GY
+GY
+so
+eg
+eO
+nn
+nn
+nc
+eg
+eg
+so
+eg
+so
+nn
+nn
+nn
+nn
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(15,1,1) = {"
+eg
+eg
+eg
+so
+fh
+GY
+so
+eg
+so
+nR
+SJ
+nn
+eg
+nn
+so
+eg
+fG
+nn
+eg
+eg
+nn
+eg
+Er
+eg
+eg
+eg
+eg
+KY
+eg
+eg
+"}
+(16,1,1) = {"
+eg
+eg
+eg
+so
+Xx
+fh
+so
+so
+so
+tj
+Je
+nn
+nn
+tP
+KF
+so
+so
+VP
+Sn
+eg
+nn
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(17,1,1) = {"
+eg
+eg
+eg
+so
+qZ
+Bo
+BE
+Di
+ca
+LA
+LA
+nR
+jM
+jM
+ca
+nn
+VP
+mQ
+nR
+nn
+so
+Gc
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(18,1,1) = {"
+eg
+eg
+eg
+so
+OH
+wI
+so
+so
+eO
+LA
+iO
+ap
+Fk
+jM
+so
+eg
+Sn
+RX
+jM
+eg
+nn
+so
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(19,1,1) = {"
+eg
+eg
+eg
+so
+Bi
+wI
+so
+eg
+so
+hu
+PB
+cF
+rL
+nE
+KF
+nn
+fk
+so
+so
+eg
+eg
+so
+eg
+eg
+eg
+eg
+eg
+HL
+eg
+eg
+"}
+(20,1,1) = {"
+eg
+eg
+eg
+Gc
+so
+so
+Gc
+eg
+Gc
+eO
+fG
+ZV
+so
+so
+VP
+eg
+nn
+eg
+nn
+eg
+eg
+nn
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(21,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+bi
+Zr
+bi
+eg
+nn
+eg
+OT
+MY
+mE
+mE
+Em
+Mx
+mE
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(22,1,1) = {"
+eg
+eg
+eg
+mE
+mE
+Mx
+mE
+Em
+fN
+mE
+bi
+Zr
+bi
+eg
+eg
+eg
+OT
+eU
+Xz
+Kj
+Xz
+BY
+mE
+eg
+eg
+KY
+eg
+eg
+eg
+eg
+"}
+(23,1,1) = {"
+eg
+eg
+eg
+Mx
+XA
+dB
+XA
+ls
+Kj
+mE
+bi
+CJ
+bi
+eg
+eg
+eg
+mE
+yr
+ls
+Kj
+dB
+il
+sj
+eg
+KY
+eg
+eg
+eg
+eg
+eg
+"}
+(24,1,1) = {"
+eg
+eg
+eg
+iH
+Xu
+dB
+XA
+qL
+Dz
+Mx
+bi
+BT
+bi
+nn
+nn
+nn
+mE
+Kj
+dB
+Kj
+dB
+Kj
+Cd
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(25,1,1) = {"
+eg
+eg
+eg
+rB
+eU
+dB
+Kj
+dB
+Kj
+Mx
+bi
+BT
+bi
+eg
+nn
+eg
+yB
+ls
+dB
+dB
+wn
+ls
+xV
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(26,1,1) = {"
+eg
+eg
+eg
+HC
+dB
+OZ
+dB
+dB
+dB
+vL
+Yw
+BT
+SD
+nn
+nn
+dw
+mE
+Kj
+wn
+Kj
+dB
+AT
+OF
+KY
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(27,1,1) = {"
+eg
+eg
+eg
+HC
+eU
+sl
+Kj
+dB
+xd
+mE
+bi
+BT
+bi
+El
+eg
+eg
+mE
+OJ
+dB
+Kj
+ls
+il
+sj
+eg
+eg
+eg
+eg
+eg
+eg
+KY
+"}
+(28,1,1) = {"
+eg
+eg
+eg
+iH
+ew
+dB
+ks
+dB
+nV
+mE
+bi
+xy
+OT
+Er
+eg
+eg
+Mx
+Kj
+ls
+BY
+ls
+Ek
+mE
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(29,1,1) = {"
+eg
+eg
+eg
+mE
+bC
+ls
+TJ
+ls
+Ek
+Mx
+bi
+BT
+gO
+eg
+Er
+nn
+Mx
+mE
+Mx
+Mx
+mE
+mE
+mE
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(30,1,1) = {"
+eg
+HL
+eg
+mE
+mE
+Mx
+Mx
+Mx
+mE
+mE
+bi
+BT
+bi
+nn
+eg
+eg
+eg
+nn
+eg
+nn
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(31,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+bi
+BT
+bi
+eg
+eg
+eg
+eg
+nn
+eg
+nn
+eg
+xv
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(32,1,1) = {"
+eg
+eg
+eg
+mE
+Mx
+Mx
+mE
+mE
+Mx
+Mx
+bi
+Zr
+bi
+mE
+mE
+Mx
+Mx
+mE
+OT
+OT
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(33,1,1) = {"
+eg
+eg
+eg
+mE
+II
+im
+bz
+lw
+bz
+mE
+bi
+Zr
+bi
+mE
+BY
+rb
+BY
+dB
+Uw
+ro
+eg
+eg
+eg
+eg
+HL
+eg
+eg
+eg
+eg
+eg
+"}
+(34,1,1) = {"
+eg
+eg
+HL
+iH
+RT
+zf
+lh
+QB
+Ms
+mE
+bi
+WK
+bi
+Mx
+Ek
+dB
+BY
+ls
+NO
+mE
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(35,1,1) = {"
+HL
+eg
+eg
+rB
+RT
+Sm
+RT
+mY
+RT
+mE
+bi
+BT
+bi
+mE
+eU
+Gu
+Gf
+rz
+AT
+rB
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(36,1,1) = {"
+eg
+eg
+eg
+xV
+Sm
+yR
+wQ
+mR
+qS
+mG
+Yw
+BT
+vL
+ml
+dB
+dB
+er
+WE
+ls
+xV
+eg
+HL
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(37,1,1) = {"
+eg
+eg
+eg
+xV
+RT
+ul
+Af
+Oq
+RT
+Mx
+bi
+BT
+bi
+Mx
+Uw
+dB
+Kj
+ls
+AT
+xV
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(38,1,1) = {"
+eg
+eg
+eg
+WR
+mm
+dB
+bz
+OG
+QD
+Mx
+bi
+Zr
+bi
+Mx
+wT
+dB
+Ek
+dB
+NO
+sj
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(39,1,1) = {"
+eg
+eg
+eg
+Mx
+bz
+Xq
+RT
+Ib
+RT
+mE
+bi
+mp
+bi
+Mx
+BY
+ls
+BY
+ls
+Ek
+mE
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+HL
+eg
+"}
+(40,1,1) = {"
+eg
+eg
+eg
+Mx
+Mx
+Mx
+mE
+mE
+Mx
+mE
+bi
+Zr
+bi
+mE
+Mx
+ro
+OT
+mE
+mE
+mE
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(41,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+El
+eg
+bi
+Zr
+bi
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+HL
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(42,1,1) = {"
+eg
+eg
+eg
+eg
+bi
+bi
+ru
+OT
+bi
+bi
+bi
+no
+bi
+bi
+bi
+bi
+qs
+bi
+bi
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(43,1,1) = {"
+eg
+eg
+eg
+eg
+MW
+XR
+Kd
+SB
+mV
+bi
+MT
+yt
+bm
+bi
+VC
+ye
+ye
+Pe
+MW
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(44,1,1) = {"
+eg
+eg
+eg
+eg
+RD
+sp
+ud
+CV
+Pt
+bi
+hM
+MI
+cA
+bi
+Jp
+yf
+yf
+eC
+MW
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(45,1,1) = {"
+eg
+eg
+eg
+eg
+RD
+jf
+Pa
+Rm
+KT
+IA
+KT
+Zr
+KT
+IX
+Xf
+vA
+ye
+Cn
+MW
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(46,1,1) = {"
+eg
+eg
+eg
+eg
+kE
+bi
+bi
+bi
+bi
+bi
+bi
+IA
+bi
+bi
+bi
+bi
+bi
+Fr
+OT
+eg
+El
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(47,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+bi
+bi
+bi
+JL
+BR
+OI
+Mj
+vB
+XM
+ZJ
+bi
+bi
+OT
+eg
+Er
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(48,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+kE
+bi
+bi
+KN
+xP
+nh
+Vp
+RR
+OY
+DI
+bi
+OT
+Hf
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(49,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+kE
+bi
+dl
+Qk
+kX
+wF
+lL
+Ss
+ep
+bi
+kE
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(50,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+kE
+qs
+qs
+ci
+ci
+ci
+ru
+qs
+kE
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}
+(51,1,1) = {"
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+qs
+qs
+ts
+xp
+Pc
+Er
+eg
+eg
+El
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+eg
+"}

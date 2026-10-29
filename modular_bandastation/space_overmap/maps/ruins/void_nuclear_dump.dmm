@@ -1,0 +1,1911 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: Void-Crew/Voidcrew-LRP contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/nuclear_dump.dmm
+"aG" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/unpowered)
+"aQ" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"bi" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"bu" = (
+/obj/item/shard/plasma,
+/obj/effect/decal/cleanable/glass/plasma,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"ch" = (
+/obj/machinery/door/airlock/maintenance/external{
+	name = "Waste Storage"
+	},
+/turf/open/floor/iron/dark/smooth_half,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"ci" = (
+/mob/living/basic/hivebot/range,
+/obj/machinery/light/broken{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"cH" = (
+/obj/effect/gibspawner/human,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"dh" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"ds" = (
+/obj/machinery/door/airlock/maintenance/external{
+	name = "Storage Room"
+	},
+/turf/open/floor/iron/dark/smooth_half,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"dG" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/iron/dark/smooth_half{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"eg" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 4
+	},
+/obj/structure/table,
+/obj/item/storage/toolbox/emergency/old,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"eG" = (
+/obj/structure/closet/crate/secure/loot,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"eR" = (
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"fh" = (
+/obj/machinery/computer{
+	dir = 4
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"fI" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"fW" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"gk" = (
+/obj/effect/decal/cleanable/greenglow,
+/obj/structure/girder/stationtrauma_icarus_core,
+/turf/open/floor/engine/plasma,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"gl" = (
+/obj/item/slimecross/chilling/green,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"gR" = (
+/obj/structure/girder/stationtrauma_icarus_core,
+/turf/open/floor/engine/plasma,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"hW" = (
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"ic" = (
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"ii" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/turf/open/floor/engine/hull,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
+"ir" = (
+/turf/open/floor/engine/plasma,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"it" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/unpowered)
+"ix" = (
+/obj/structure/closet/radiation,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"jd" = (
+/obj/item/pipe{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glass/plasma,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/engine/plasma,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"kL" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/decal/cleanable/greenglow,
+/obj/structure/closet/crate/radiation,
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 20
+	},
+/obj/item/coin/uranium,
+/obj/item/paper,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"kS" = (
+/obj/structure/table,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"lg" = (
+/obj/item/shard/plasma,
+/obj/effect/decal/cleanable/glass/plasma,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"lQ" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"mt" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"mu" = (
+/obj/item/claymore,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/structure/window/reinforced/plasma/spawner/directional/west,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"mA" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"ne" = (
+/obj/item/stack/sheet/plasmaglass,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"nw" = (
+/obj/structure/girder/stationtrauma_icarus_core,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"ny" = (
+/obj/structure/closet/emcloset/anchored,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"nI" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/engine/hull,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
+"op" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/gun/ballistic/revolver/nagant,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"os" = (
+/obj/structure/frame/computer,
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"ow" = (
+/obj/item/pipe,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"ps" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4;
+	pixel_x = -32
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
+"px" = (
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"pz" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/structure/girder/stationtrauma_icarus_core,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"pQ" = (
+/obj/structure/sign/warning/biohazard{
+	pixel_y = 32
+	},
+/obj/effect/mob_spawn/corpse/human/charredskeleton,
+/turf/open/floor/engine/hull,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
+"pR" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/girder/stationtrauma_icarus_core,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"qx" = (
+/obj/structure/girder/stationtrauma_icarus_core,
+/turf/open/misc/asteroid/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/unpowered)
+"qG" = (
+/obj/structure/girder/stationtrauma_icarus_core,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"qW" = (
+/obj/effect/turf_decal/tile/neutral{
+	pixel_y = 32
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
+"rd" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	initialize_directions = 13
+	},
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"rt" = (
+/obj/structure/table,
+/obj/item/ammo_box/c38{
+	name = "speed loader (7.62x38mmR)";
+	desc = "Designed to quickly reload revolvers. Somehow the only one of it's kind."
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"rw" = (
+/obj/structure/rack,
+/obj/item/storage/box/lethalshot,
+/obj/item/gun/ballistic/shotgun/lethal,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"rx" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"rW" = (
+/obj/item/stack/ore/uranium,
+/obj/item/stack/ore/uranium,
+/obj/item/stack/ore/uranium,
+/turf/open/misc/asteroid/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/unpowered)
+"tk" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"tn" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/girder/stationtrauma_icarus_core,
+/obj/effect/turf_decal/tile/neutral{
+	color = "#B20000";
+	pixel_x = 32
+	},
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"tF" = (
+/obj/structure/girder/stationtrauma_icarus_core,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"tG" = (
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"tS" = (
+/obj/item/stack/sheet/plasmarglass,
+/turf/open/floor/engine/plasma,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"uc" = (
+/obj/effect/decal/cleanable/greenglow,
+/obj/structure/girder/stationtrauma_icarus_core,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"um" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/machinery/vending/sovietsoda,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"uQ" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/structure/girder/stationtrauma_icarus_core,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"vz" = (
+/obj/machinery/computer{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"wv" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human/russian/ranged/trooper,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"wz" = (
+/obj/effect/mob_spawn/corpse/human/russian,
+/obj/item/tank/internals/emergency_oxygen/empty,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"wK" = (
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
+"xi" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"xE" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1
+	},
+/obj/structure/closet/firecloset,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"yx" = (
+/obj/item/flashlight/flare,
+/obj/structure/sign/warning/vacuum/external{
+	pixel_x = 32
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"yM" = (
+/obj/effect/gibspawner/human,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"zm" = (
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"zu" = (
+/obj/structure/table,
+/obj/item/flashlight/lamp,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"AP" = (
+/obj/effect/decal/cleanable/glass/plasma,
+/obj/item/shard/plasma,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"AX" = (
+/obj/structure/frame/machine,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Ba" = (
+/obj/structure/grille/broken,
+/obj/item/shard/plasma,
+/obj/effect/decal/cleanable/glass/plasma,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"BF" = (
+/obj/effect/decal/cleanable/glass/plasma,
+/obj/structure/door_assembly/door_assembly_mai,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"BR" = (
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Co" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner,
+/obj/structure/table,
+/obj/item/paper/crumpled{
+	name = "Complaining";
+	default_raw_text = "God, why is it always me. Put to manage a stupid waste disposal plant. I can feel my teeth and hair falling out by just sitting in my office. RIGHT NEXT TO THE WASTE DISPOSAL ROOM. I swear, I'll die to radiation poisoning before anything else decides to wipe us out."
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Cz" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
+"CW" = (
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Dm" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/smooth_half{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Em" = (
+/obj/effect/mob_spawn/corpse/human/russian/ranged/officer,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Eu" = (
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"EN" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/storage/toolbox/mechanical/old,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Fr" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/radiation,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Gt" = (
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Ho" = (
+/obj/machinery/door/airlock{
+	name = "Facility Management"
+	},
+/turf/open/floor/iron/dark/smooth_half{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"HB" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/paper/crumpled{
+	name = "Decommissioning";
+	default_raw_text = "Due to the major radiation hazards everywhere in this facility, we are decommissioning the supermatter as everywhere else gives off enough radiation to power a whole outpost. And yes, I made sure everyone was out."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"HD" = (
+/obj/effect/decal/hammerandsickle,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"It" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Iz" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 8
+	},
+/obj/structure/closet/crate/radiation,
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 20
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"IR" = (
+/turf/closed/mineral/random,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/unpowered)
+"Jd" = (
+/obj/item/clothing/suit/utility/radiation,
+/obj/item/clothing/head/utility/radiation,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"JH" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"JI" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/girder/stationtrauma_icarus_core,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Ka" = (
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/structure/frame/machine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Kp" = (
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"KJ" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Lg" = (
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Ll" = (
+/obj/effect/decal/cleanable/vomit/old,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"LZ" = (
+/obj/item/geiger_counter,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Md" = (
+/obj/item/storage/toolbox/emergency/old,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Mf" = (
+/obj/structure/barricade/wooden,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/dark/smooth_half{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Mj" = (
+/obj/item/stack/sheet/plasmarglass,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Mr" = (
+/mob/living/basic/hivebot/mechanic,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Ng" = (
+/turf/open/misc/asteroid/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/unpowered)
+"Nv" = (
+/obj/structure/table,
+/obj/item/ammo_box/n762,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"NN" = (
+/obj/structure/sign/warning/radiation{
+	pixel_y = -32
+	},
+/obj/machinery/light,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"NO" = (
+/obj/effect/decal/cleanable/glass/plasma,
+/obj/machinery/power/emitter{
+	dir = 1
+	},
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"NQ" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"NX" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"ON" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Pf" = (
+/obj/item/geiger_counter,
+/turf/open/floor/engine/hull,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
+"Ps" = (
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"PO" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"SK" = (
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 1
+	},
+/obj/item/storage/toolbox/syndicate,
+/obj/structure/closet/syndicate{
+	name = "Facility Manager's locker"
+	},
+/obj/item/gun/ballistic/rifle/boltaction,
+/obj/item/clothing/suit/armor/vest/russian,
+/obj/item/clothing/suit/armor/vest/russian,
+/obj/item/clothing/head/helmet/rus_helmet,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"UH" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/effect/decal/cleanable/glass/plasma,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"VN" = (
+/obj/item/paper{
+	name = "полевой журнал: Хранилище радиоактивных отходов";
+	 default_raw_text = "Объект: Хранилище радиоактивных отходов. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"VO" = (
+/obj/structure/frame/machine,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Wf" = (
+/obj/effect/mob_spawn/corpse/human/charredskeleton,
+/turf/open/floor/iron/dark/smooth_half{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Wk" = (
+/obj/machinery/door/airlock/vault/derelict{
+	name = "Decommissioned Supermatter Chamber"
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark/smooth_half{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Wn" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
+"Wt" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/crowbar/red,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"WM" = (
+/obj/machinery/light/broken{
+	dir = 1
+	},
+/obj/structure/hivebot_beacon{
+	bot_amt = 3
+	},
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"WO" = (
+/obj/structure/frame/computer{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"WQ" = (
+/obj/effect/decal/cleanable/glass/plasma,
+/turf/open/floor/engine/plasma,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Xa" = (
+/turf/open/floor/engine/hull,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
+"Xr" = (
+/obj/item/stack/ore/uranium,
+/turf/open/misc/asteroid/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/unpowered)
+"Xx" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	color = "#B20000";
+	pixel_x = 32
+	},
+/obj/machinery/computer{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"XC" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"XP" = (
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/engine/hull,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
+"Yd" = (
+/mob/living/basic/hivebot/strong,
+/turf/open/floor/plating/airless{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"YT" = (
+/obj/item/storage/toolbox/mechanical/old,
+/obj/structure/rack,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Ze" = (
+/obj/machinery/light/small/broken,
+/obj/structure/closet/emcloset/anchored,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+"Zn" = (
+/turf/template_noop,
+/area/template_noop)
+"ZX" = (
+/obj/item/chair,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/ruin/space/has_grav/powered)
+
+(1,1,1) = {"
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(2,1,1) = {"
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(3,1,1) = {"
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(4,1,1) = {"
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+IR
+IR
+IR
+IR
+IR
+PO
+PO
+PO
+PO
+PO
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+Zn
+Zn
+Zn
+Zn
+"}
+(5,1,1) = {"
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+PO
+PO
+fh
+vz
+WO
+PO
+PO
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(6,1,1) = {"
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+PO
+PO
+Co
+hW
+ZX
+Eu
+eg
+PO
+PO
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(7,1,1) = {"
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+PO
+ON
+dh
+tG
+tG
+tG
+rx
+Nv
+PO
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(8,1,1) = {"
+Zn
+Zn
+Zn
+Zn
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+qx
+PO
+mu
+dh
+tG
+HD
+tG
+rx
+rt
+PO
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(9,1,1) = {"
+Zn
+Zn
+Zn
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+Ng
+Xr
+rW
+PO
+zu
+dh
+tG
+tG
+tG
+rx
+kS
+PO
+PO
+PO
+PO
+PO
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(10,1,1) = {"
+Zn
+Zn
+Zn
+IR
+IR
+IR
+IR
+IR
+Ng
+Xr
+qx
+Ng
+qx
+PO
+PO
+Iz
+Em
+op
+XC
+SK
+PO
+PO
+tF
+kL
+tF
+PO
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(11,1,1) = {"
+Zn
+Zn
+IR
+IR
+mA
+mA
+mA
+mA
+mA
+mA
+mA
+mA
+mA
+mA
+PO
+PO
+PO
+Ho
+PO
+PO
+PO
+PO
+Ps
+tF
+tF
+PO
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(12,1,1) = {"
+Zn
+Zn
+IR
+IR
+mA
+eG
+eG
+rw
+mA
+pR
+JI
+ix
+fI
+tk
+bi
+wv
+Wt
+NX
+ix
+Fr
+ix
+PO
+xi
+AX
+VO
+PO
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(13,1,1) = {"
+Zn
+Zn
+IR
+IR
+mA
+Kp
+Kp
+Kp
+ds
+NX
+NX
+NX
+NX
+fI
+NX
+fI
+NX
+zm
+NX
+ic
+NX
+ch
+px
+yM
+tF
+PO
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(14,1,1) = {"
+Zn
+Zn
+IR
+IR
+mA
+eG
+Gt
+Kp
+mA
+ci
+cH
+NX
+NX
+NX
+NX
+um
+VN
+It
+It
+NQ
+NN
+PO
+Ll
+Mr
+tF
+PO
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(15,1,1) = {"
+Zn
+Zn
+Zn
+IR
+mA
+WM
+Yd
+Kp
+mA
+NX
+EN
+ic
+mA
+mA
+mA
+mA
+mA
+mA
+mA
+xE
+aQ
+PO
+uQ
+tF
+uc
+PO
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(16,1,1) = {"
+Zn
+Zn
+Zn
+IR
+mA
+fW
+qG
+JH
+mA
+Xx
+HB
+tn
+mA
+IR
+IR
+IR
+IR
+IR
+PO
+PO
+Dm
+PO
+PO
+tF
+tF
+PO
+IR
+IR
+IR
+Zn
+Zn
+Zn
+"}
+(17,1,1) = {"
+Zn
+Zn
+IR
+IR
+mA
+mA
+mA
+mA
+mA
+mA
+Mf
+mA
+mA
+IR
+IR
+IR
+IR
+IR
+PO
+LZ
+wz
+ny
+PO
+PO
+PO
+PO
+IR
+IR
+Zn
+Zn
+Zn
+Zn
+"}
+(18,1,1) = {"
+Zn
+Zn
+IR
+IR
+IR
+PO
+PO
+PO
+PO
+PO
+Wk
+PO
+PO
+PO
+PO
+PO
+IR
+IR
+PO
+yx
+Jd
+Ze
+aG
+IR
+IR
+IR
+IR
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(19,1,1) = {"
+Zn
+IR
+IR
+IR
+IR
+PO
+PO
+PO
+PO
+PO
+Wf
+PO
+PO
+PO
+PO
+PO
+IR
+IR
+PO
+PO
+dG
+PO
+aG
+IR
+Zn
+Cz
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(20,1,1) = {"
+Zn
+IR
+IR
+IR
+IR
+PO
+PO
+os
+ow
+Lg
+Lg
+Md
+rd
+Lg
+PO
+PO
+IR
+IR
+IR
+Xa
+Xa
+XP
+wK
+Zn
+Zn
+Cz
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(21,1,1) = {"
+Zn
+IR
+IR
+IR
+IR
+PO
+PO
+Lg
+lQ
+CW
+Lg
+bu
+YT
+nw
+PO
+PO
+IR
+IR
+IR
+Pf
+Xa
+XP
+wK
+Zn
+Zn
+Wn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(22,1,1) = {"
+Zn
+Zn
+IR
+IR
+IR
+PO
+PO
+Lg
+PO
+mt
+BF
+Ba
+PO
+Lg
+PO
+PO
+IR
+IR
+it
+pQ
+Xa
+XP
+Cz
+Cz
+Cz
+Wn
+qW
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(23,1,1) = {"
+Zn
+Zn
+Zn
+IR
+IR
+PO
+PO
+nw
+BR
+ir
+tS
+jd
+AP
+Lg
+PO
+PO
+IR
+IR
+it
+Xa
+Xa
+XP
+wK
+Zn
+Zn
+Wn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(24,1,1) = {"
+Zn
+Zn
+Zn
+IR
+IR
+PO
+PO
+ne
+Ka
+ir
+gR
+ir
+UH
+Mj
+PO
+PO
+IR
+IR
+IR
+Xa
+Xa
+XP
+wK
+Zn
+Zn
+Cz
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(25,1,1) = {"
+Zn
+Zn
+Zn
+IR
+IR
+PO
+PO
+CW
+eR
+gk
+ir
+WQ
+pz
+gl
+PO
+PO
+IR
+IR
+IR
+nI
+nI
+ii
+wK
+Zn
+Zn
+Cz
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(26,1,1) = {"
+Zn
+Zn
+Zn
+IR
+IR
+PO
+PO
+Lg
+PO
+mt
+mt
+Ba
+PO
+CW
+PO
+PO
+IR
+IR
+IR
+wK
+Cz
+wK
+wK
+Zn
+Zn
+Cz
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(27,1,1) = {"
+Zn
+Zn
+IR
+IR
+IR
+PO
+PO
+Lg
+KJ
+Lg
+Lg
+NO
+lg
+Lg
+PO
+PO
+IR
+IR
+Zn
+Zn
+Cz
+Zn
+Zn
+Zn
+Zn
+Wn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(28,1,1) = {"
+Zn
+Zn
+IR
+IR
+IR
+PO
+PO
+PO
+PO
+PO
+PO
+PO
+PO
+PO
+PO
+PO
+IR
+IR
+Cz
+Wn
+Wn
+Wn
+Cz
+Cz
+Wn
+Wn
+qW
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(29,1,1) = {"
+Zn
+Zn
+IR
+IR
+IR
+PO
+PO
+PO
+PO
+PO
+PO
+PO
+PO
+PO
+PO
+PO
+IR
+IR
+Zn
+Zn
+ps
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(30,1,1) = {"
+Zn
+Zn
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(31,1,1) = {"
+Zn
+Zn
+IR
+IR
+IR
+Zn
+IR
+IR
+IR
+IR
+IR
+IR
+IR
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}
+(32,1,1) = {"
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+Zn
+"}

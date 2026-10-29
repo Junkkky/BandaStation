@@ -1,0 +1,163 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/tar_anomaly/tar_anomaly.dmm
+"b" = (
+/turf/template_noop,
+/area/template_noop)
+"r" = (
+/turf/open/misc/dirt/jungle/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_tar_anomaly/exterior)
+"w" = (
+/obj/structure/flora/grass/jungle/a,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_tar_anomaly/exterior)
+"z" = (
+/obj/effect/anomaly/grav/stationtrauma_icarus,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_tar_anomaly/exterior)
+"T" = (
+/obj/structure/stationtrauma_research_source/expedition_monolith,
+/turf/open/misc/dirt/jungle/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_tar_anomaly/exterior)
+
+(1,1,1) = {"
+r
+b
+b
+b
+b
+b
+r
+r
+r
+w
+b
+"}
+(2,1,1) = {"
+b
+b
+w
+r
+r
+T
+r
+r
+r
+r
+b
+"}
+(3,1,1) = {"
+b
+b
+r
+r
+r
+r
+r
+r
+r
+r
+r
+"}
+(4,1,1) = {"
+b
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+"}
+(5,1,1) = {"
+w
+r
+r
+r
+r
+r
+r
+r
+r
+r
+b
+"}
+(6,1,1) = {"
+r
+T
+r
+r
+r
+z
+r
+r
+r
+T
+b
+"}
+(7,1,1) = {"
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+w
+"}
+(8,1,1) = {"
+r
+r
+r
+r
+r
+r
+r
+r
+r
+r
+b
+"}
+(9,1,1) = {"
+b
+r
+r
+r
+r
+r
+r
+r
+r
+w
+b
+"}
+(10,1,1) = {"
+b
+b
+w
+r
+r
+T
+r
+r
+b
+r
+b
+"}
+(11,1,1) = {"
+b
+r
+b
+b
+b
+r
+b
+b
+b
+b
+b
+"}

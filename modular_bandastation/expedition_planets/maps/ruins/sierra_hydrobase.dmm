@@ -1,0 +1,3871 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/hydrobase/hydrobase.dmm
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"he" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"hh" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"hp" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"hr" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/structure/sign/warning{
+	name = "improper DO NOT ENTER - FOR AI USE ONLY";
+	pixel_y = 32
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"hA" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shipaccess)
+"hK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"hU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"ib" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"im" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"iC" = (
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"iD" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"iF" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/whitebeet,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"iI" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"iZ" = (
+/obj/item/cigbutt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"ja" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/button{
+	name = "отключённая панель шлюза";
+	pixel_x = -24;
+	pixel_y = 24;
+	id = "exp_sierra_hydrobase_main";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"jb" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	initialize_directions = 13
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"jk" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"jx" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	initialize_directions = 13
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"jL" = (
+/mob/living/basic/goat,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"jQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"jT" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/corn,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"jZ" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"kb" = (
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/mob/living/basic/goat,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"kp" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"ks" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"ku" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"kG" = (
+/obj/item/cigbutt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"kH" = (
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"li" = (
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -38
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"lm" = (
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"lC" = (
+/obj/structure/cable,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"lF" = (
+/obj/machinery/door/airlock/virology,
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"ma" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/button/door{
+	pixel_x = -25;
+	id = "exp_sierra_hydrobase_main"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"mg" = (
+/obj/machinery/door/airlock/virology,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"mh" = (
+/obj/machinery/power/solar_control,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"mi" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/closet/firecloset{
+	pixel_y = 32
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"ml" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"mm" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"my" = (
+/obj/machinery/mech_bay_recharge_port,
+/mob/living/basic/bot/cleanbot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"mA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"mC" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"mI" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"mV" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/solarlock)
+"mW" = (
+/obj/machinery/light,
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"nf" = (
+/obj/machinery/seed_extractor,
+/obj/machinery/vending/hydroseeds,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"nm" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/lattice/catwalk,
+/obj/machinery/autolathe,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"nn" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/machinery/button{
+	name = "отключённая панель шлюза";
+	pixel_x = 24;
+	pixel_y = -24;
+	id = "exp_sierra_hydrobase_main";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"nr" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/chanter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"nB" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -38
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"nF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"nP" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"nS" = (
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"ol" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/door/airlock/virology,
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"ou" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/berry/glow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"pg" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/hydroponics,
+/obj/item/seeds/ambrosia/deus,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"pm" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"pA" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"pJ" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/onion,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"qa" = (
+/mob/living/basic/bot/cleanbot,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"qy" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"qB" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"rd" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"rm" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"rr" = (
+/obj/machinery/portable_atmospherics/canister/air{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"rv" = (
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/structure/cable,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -38
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"rB" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light,
+/obj/machinery/hydroponics,
+/obj/item/seeds/wheat/rice,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"rI" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"rQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/power/apc/auto_name/directional/east{
+	name = "east bump"
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"rR" = (
+/obj/structure/table/reinforced,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/seeds/random,
+/obj/item/gun/energy/floragun,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"rX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden/expedition,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"si" = (
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -38
+	},
+/obj/item/clothing/accessory/armband/hydro,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"sn" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco/space,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"sp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"ss" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/angel,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"sx" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"sz" = (
+/obj/machinery/hydroponics,
+/obj/structure/lattice/catwalk,
+/obj/item/seeds/random,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"sQ" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/smartfridge/drying/rack,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"sT" = (
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -38
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"tJ" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"tV" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/apple/gold,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"tX" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"ub" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"uk" = (
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"uo" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"up" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/lemon,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"ur" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"ux" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"uO" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"uP" = (
+/obj/machinery/chem_master,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"uU" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"uZ" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/grass,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"vb" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"ve" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"vi" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"vm" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco/space,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"vu" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shipaccess)
+"vE" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"vH" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"vU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	pixel_y = -24
+	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/lattice/catwalk,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/solarlock)
+"vY" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"wj" = (
+/obj/item/clothing/under/rank/civilian/janitor,
+/obj/item/clothing/shoes/jackboots,
+/obj/structure/closet,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"wu" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"wL" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"wY" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"xb" = (
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 39;
+	pixel_y = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shipaccess)
+"xd" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/tomato/blue/bluespace,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"xr" = (
+/obj/machinery/door/airlock/external{
+	name = "Eva External Access"
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/solarlock)
+"xx" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"xz" = (
+/obj/machinery/power/apc/auto_name/directional/east{
+	name = "east bump"
+	},
+/obj/structure/cable,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"xA" = (
+/obj/structure/closet/secure_closet/hydroponics,
+/obj/item/scythe,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"xE" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/soya,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"xF" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/tower,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"xX" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"yi" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"yn" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco/space,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"yx" = (
+/obj/structure/closet/toolcloset,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"yz" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/ambrosia/deus,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"yS" = (
+/obj/structure/cable,
+/obj/structure/sign/warning/no_smoking{
+	pixel_y = 32
+	},
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"yX" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"zl" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/hydroponics,
+/obj/item/seeds/ambrosia,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"zs" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/machinery/airlock_sensor{
+	pixel_y = 25
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/solarlock)
+"zw" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/amanita,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"zB" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"zD" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shipaccess)
+"zG" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light,
+/obj/machinery/hydroponics,
+/obj/item/seeds/ambrosia/deus,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"zI" = (
+/obj/machinery/button{
+	name = "отключённая панель шлюза";
+	pixel_x = 24;
+	pixel_y = 24;
+	id = "exp_sierra_hydrobase_main";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/exterior)
+"zJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/cable,
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"zP" = (
+/obj/machinery/power/apc/auto_name/directional/west{
+	name = "west bump"
+	},
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shipaccess)
+"zS" = (
+/obj/structure/lattice/catwalk,
+/obj/item/kitchen/fork,
+/obj/structure/table/reinforced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"An" = (
+/obj/machinery/hydroponics,
+/obj/structure/lattice/catwalk,
+/obj/item/seeds/random,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"Ar" = (
+/obj/structure/closet/l3closet,
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"AO" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"BC" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/airlock/external{
+	name = "Eva Internal Access"
+	},
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/solarlock)
+"BE" = (
+/mob/living/basic/bot/cleanbot,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"BX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"Ck" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/item/cigbutt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Cm" = (
+/obj/machinery/biogenerator,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Cn" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/hydroponics,
+/obj/item/seeds/tower,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"Cv" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"CA" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/cable,
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"CK" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/reagentgrinder,
+/obj/item/reagent_containers/cup/beaker/large,
+/obj/structure/table/reinforced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"CN" = (
+/obj/machinery/portable_atmospherics/scrubber,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"Dj" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"Dq" = (
+/obj/machinery/power/apc/auto_name/directional/south{
+	name = "south bump"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"DD" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/ambrosia,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"DG" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"DH" = (
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 39;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"DK" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/hydroponics,
+/obj/item/seeds/garlic,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"DL" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"DT" = (
+/obj/structure/closet/secure_closet/hydroponics,
+/obj/item/hatchet,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Ed" = (
+/obj/structure/curtain/cloth,
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/item/bikehorn/rubberducky,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"Ei" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	initialize_directions = 13
+	},
+/mob/living/basic/bot/cleanbot{
+	name = "Steward Stewart"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"En" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"Es" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"Eu" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"EC" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"EE" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"EJ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shipaccess)
+"EQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/item/cigbutt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"ER" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	initialize_directions = 13
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"EU" = (
+/obj/machinery/door/airlock/virology,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"Fn" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/button{
+	name = "отключённая панель шлюза";
+	pixel_x = -24;
+	id = "exp_sierra_hydrobase_main";
+	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shipaccess)
+"Fy" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Fz" = (
+/obj/structure/sign/warning/biohazard,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"FM" = (
+/obj/machinery/light,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/rack,
+/obj/item/ammo_casing/shotgun,
+/obj/item/ammo_casing/shotgun,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/item/grenade/chem_grenade/antiweed,
+/obj/item/grenade/chem_grenade/incendiary,
+/obj/item/reagent_containers/spray/weedspray,
+/obj/item/shard/plasma,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"Gs" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/door/airlock/virology,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"GA" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/item/paper_bin,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"GB" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"GU" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/item/shard/plasma,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"GV" = (
+/obj/item/knife/kitchen,
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/cup/beaker,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Hb" = (
+/obj/machinery/mech_bay_recharge_port,
+/mob/living/basic/hivebot,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"Hf" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"HI" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/solarlock)
+"HN" = (
+/obj/machinery/portable_atmospherics/canister/oxygen{
+	pixel_x = -32
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"HZ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Ic" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/tomato/blue,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"Ig" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"Ik" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"Ip" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Ir" = (
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"Iv" = (
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/door/poddoor/preopen{
+	dir = 4;
+	name = "Containment Zone";
+	id = "exp_sierra_hydrobase_main"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"Iy" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 5;
+	initialize_directions = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"IN" = (
+/obj/machinery/power/tracker,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"Jm" = (
+/obj/machinery/atmospherics/components/binary/pump,
+/obj/machinery/door/poddoor/preopen{
+	dir = 4;
+	id = "exp_sierra_hydrobase_main"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shipaccess)
+"Jt" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/tomato,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"Jv" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"JB" = (
+/obj/item/paper{
+	name = "полевой журнал: Заброшенная гидропонная станция";
+	 default_raw_text = "Объект: Заброшенная гидропонная станция. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco/space,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"JL" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	pixel_x = 24
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"JM" = (
+/obj/machinery/hydroponics,
+/obj/structure/lattice/catwalk,
+/obj/item/seeds/random,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"JV" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/peanut,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"Kc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/item/cigbutt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"KA" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"KB" = (
+/obj/item/cigbutt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"KF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"KJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"LF" = (
+/obj/machinery/mech_bay_recharge_port,
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"LP" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"LR" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/banana,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"LW" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/machinery/button/door{
+	name = "containment zone control";
+	pixel_y = 25;
+	id = "exp_sierra_hydrobase_main"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"LZ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Mb" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"Mf" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"Mg" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Mi" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/sugarcane,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"Mn" = (
+/obj/machinery/seed_extractor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Mx" = (
+/obj/structure/disposaloutlet,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"MA" = (
+/obj/machinery/mech_bay_recharge_port,
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"MG" = (
+/mob/living/basic/bot/cleanbot,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"MH" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"MI" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/corn/pepper,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"MK" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/pumpkin,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"ML" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Nh" = (
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Nm" = (
+/obj/machinery/door/airlock/virology,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"Np" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"Ns" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"NC" = (
+/obj/machinery/light,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"NF" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"NH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Oa" = (
+/obj/structure/lattice/catwalk,
+/obj/item/kitchen/rollingpin,
+/obj/item/knife/kitchen,
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/cup/beaker,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"Od" = (
+/obj/item/cigbutt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Oq" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"Oy" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Oz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/machinery/light,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"OA" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"OK" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"OY" = (
+/obj/machinery/hydroponics,
+/obj/structure/lattice/catwalk,
+/obj/item/seeds/random,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"Pn" = (
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 39;
+	pixel_y = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"Po" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"Pu" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/reagent_containers/cup/beaker,
+/obj/item/reagent_containers/cup/beaker,
+/obj/item/reagent_containers/cup/beaker,
+/obj/item/reagent_containers/cup/beaker,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"PC" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"PJ" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/potato,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"PP" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/reishi,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"Qb" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"Qy" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/chili,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"QA" = (
+/obj/machinery/hydroponics,
+/obj/structure/lattice/catwalk,
+/obj/item/seeds/whitebeet,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"QD" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"QH" = (
+/obj/item/cigbutt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"QN" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"Rx" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/grape/green,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"RB" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"RE" = (
+/obj/machinery/mech_bay_recharge_port,
+/obj/machinery/light{
+	dir = 1
+	},
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"RF" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"RJ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"RP" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"RW" = (
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Se" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/machinery/disposal/delivery_chute{
+	desc = "A chute that's absolutely covered in beet and beet products.";
+	name = "beet-stained chute"
+	},
+/obj/structure/sign/warning/doors{
+	name = "improper FEEDING CHUTE";
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Sk" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"So" = (
+/obj/machinery/vending/hydronutrients,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"St" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/virology,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"Sx" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"Sy" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Sz" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"SF" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"SH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"ST" = (
+/obj/machinery/light,
+/obj/machinery/mech_bay_recharge_port,
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"SY" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Ta" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/mech_bay_recharge_port,
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"Tf" = (
+/obj/structure/cable,
+/mob/living/basic/goat,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/goatzone)
+"Tq" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco/space,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Tz" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/closet/crate,
+/obj/item/reagent_containers/applicator/pill/happy,
+/obj/item/reagent_containers/applicator/pill/happy,
+/obj/item/reagent_containers/applicator/pill/happy,
+/obj/item/reagent_containers/applicator/pill/happy,
+/obj/item/reagent_containers/applicator/pill/psicodine,
+/obj/item/reagent_containers/applicator/pill/psicodine,
+/obj/item/reagent_containers/applicator/pill/psicodine,
+/obj/effect/spawner/random/entertainment/cigarette,
+/obj/effect/spawner/random/entertainment/cigarette,
+/obj/effect/spawner/random/entertainment/cigarette,
+/obj/item/reagent_containers/applicator/pill/zoom,
+/obj/item/reagent_containers/applicator/pill/zoom,
+/obj/item/reagent_containers/applicator/pill/zoom,
+/obj/item/gun/ballistic/automatic/toy{
+	desc = "A minature crossbow that fires some sort of dart from an internal magazine.";
+	name = "mini-crossbow"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"TC" = (
+/mob/living/basic/bot/cleanbot,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"TG" = (
+/obj/structure/sign/warning/no_smoking,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"TO" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"TP" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"TT" = (
+/obj/machinery/door/airlock/external{
+	name = "Shipping Access"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"TV" = (
+/obj/structure/cable,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Ua" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"UD" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	initialize_directions = 3
+	},
+/obj/machinery/door/airlock/external{
+	name = "Shipping Internal Access"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"UE" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/eggplant,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"UF" = (
+/obj/structure/cable,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"UV" = (
+/obj/machinery/door/airlock/virology,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"Vi" = (
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"Vk" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"Vx" = (
+/obj/structure/curtain/cloth,
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"VA" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/hydroponics,
+/obj/item/seeds/amanita,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"VI" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"VQ" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shipaccess)
+"VV" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/machinery/airlock_sensor{
+	pixel_y = 25
+	},
+/obj/machinery/power/apc/auto_name/directional/west{
+	name = "west bump"
+	},
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"Wb" = (
+/obj/machinery/mech_bay_recharge_port,
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"Wc" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/button/door{
+	pixel_x = 25;
+	id = "exp_sierra_hydrobase_main"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shipaccess)
+"We" = (
+/obj/item/clothing/under/dress/tango,
+/obj/item/clothing/head/beret/science,
+/obj/item/clothing/shoes/laceup,
+/obj/structure/closet,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"Wg" = (
+/obj/machinery/door/airlock/virology,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 4;
+	initialize_directions = 12
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"Wl" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/obj/structure/mannequin{
+	name = "inactive AI"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Wr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Wt" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/mech_bay_recharge_port,
+/mob/living/basic/hivebot,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"WO" = (
+/obj/machinery/portable_atmospherics/canister/air{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"WS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"WU" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/wheat,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Xe" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"Xr" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Xv" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/lattice/catwalk,
+/obj/effect/spawner/random/engineering/toolbox,
+/obj/structure/rack,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Xw" = (
+/obj/machinery/washing_machine,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+"XI" = (
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 39;
+	pixel_y = 4
+	},
+/obj/machinery/mech_bay_recharge_port,
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"XN" = (
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 39;
+	pixel_y = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"XZ" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/hydroponics,
+/obj/item/seeds/whitebeet,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Yb" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/tobacco/space,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Yh" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/dockport)
+"Yj" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Yn" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light,
+/obj/machinery/hydroponics,
+/obj/item/seeds/chanter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growB)
+"Yo" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/door/airlock/virology,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"YR" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/hydroponics,
+/obj/item/seeds/berry/poison,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growC)
+"Zc" = (
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"Ze" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"Zn" = (
+/obj/structure/lattice/catwalk,
+/obj/item/switchblade,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/maintenance,
+/obj/structure/closet/crate/secure/weapon{
+	desc = "A heavy-duty crate with a suite of firearms safety instructions plastered on the side. The ID scanner is unlike anything you've seen before."
+	},
+/obj/effect/spawner/random/weapon/full_gun,
+/obj/item/knife/combat,
+/obj/item/stack/spacecash/c100,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/weapon/full_gun,
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 10
+	},
+/obj/item/stack/sheet/mineral/gold{
+	amount = 10
+	},
+/obj/item/stack/sheet/mineral/gold{
+	amount = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
+"Zr" = (
+/mob/living/basic/bot/cleanbot,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growX)
+"Zv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"Zw" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/obj/machinery/light,
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"ZK" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 1;
+	initialize_directions = 14
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growF)
+"ZO" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	initialize_directions = 3
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shipaccess)
+"ZX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growA)
+"ZY" = (
+/obj/machinery/power/solar,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/solars)
+"ZZ" = (
+/obj/item/clothing/suit/costume/hawaiian,
+/obj/item/clothing/under/pants/jeans,
+/obj/item/clothing/head/hats/bowler,
+/obj/item/clothing/shoes/laceup,
+/obj/structure/closet,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/shower)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ub
+ub
+ub
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ub
+ub
+uZ
+ub
+ub
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+im
+im
+Po
+Po
+Po
+im
+im
+SF
+ub
+Qy
+wu
+MI
+ub
+SF
+Ig
+Ig
+RB
+RB
+RB
+Ig
+Ig
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+im
+im
+pg
+yz
+yz
+yz
+En
+Wb
+SF
+up
+wu
+TC
+wu
+pJ
+SF
+LF
+Sx
+PP
+EE
+xF
+Cn
+Ig
+Ig
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+im
+im
+yz
+rd
+Vk
+Vk
+Vk
+Vk
+yz
+SF
+ou
+iZ
+xd
+vY
+JV
+SF
+zw
+uU
+uU
+uU
+uU
+LP
+nr
+Ig
+Ig
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+im
+zl
+rd
+rd
+Vk
+DD
+yz
+KB
+DD
+SF
+tV
+vY
+Jt
+vY
+PJ
+SF
+zw
+uU
+PP
+PP
+uU
+LP
+LP
+Yn
+Ig
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Po
+DD
+Vk
+DD
+BE
+Vk
+rd
+Vk
+zG
+SF
+DK
+vY
+Ic
+vY
+rB
+SF
+VA
+uU
+LP
+uU
+qa
+PP
+uU
+LP
+RB
+aa
+aa
+aa
+aa
+"}
+(9,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Po
+DD
+Vk
+DD
+Vk
+DD
+yz
+rd
+yz
+SF
+UE
+vY
+Rx
+vY
+Mi
+SF
+zw
+LP
+ss
+ss
+uU
+PP
+uU
+nr
+RB
+aa
+aa
+aa
+aa
+"}
+(10,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Po
+DD
+Vk
+DD
+Vk
+Vk
+rd
+Vk
+yz
+SF
+jT
+vY
+LR
+vY
+xE
+SF
+zw
+uU
+LP
+uU
+uU
+PP
+uU
+nr
+RB
+aa
+aa
+aa
+aa
+"}
+(11,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+im
+zl
+rd
+DD
+rd
+DD
+yz
+OK
+DD
+SF
+jT
+vY
+he
+vY
+YR
+SF
+zw
+TP
+ss
+ss
+LP
+PP
+LP
+Yn
+Ig
+aa
+aa
+aa
+aa
+"}
+(12,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+im
+Wb
+KB
+Vk
+QN
+DH
+rd
+Ns
+Wt
+SF
+XI
+KA
+mI
+iZ
+MA
+SF
+Ta
+Dj
+XN
+uU
+qB
+QH
+uU
+Hb
+Ig
+aa
+aa
+aa
+aa
+"}
+(13,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+im
+im
+im
+im
+im
+im
+im
+mg
+im
+SF
+SF
+SF
+Nm
+SF
+SF
+SF
+Ig
+UV
+Ig
+Ig
+Ig
+Ig
+Ig
+Ig
+Ig
+aa
+aa
+aa
+aa
+"}
+(14,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Mg
+Mg
+Ip
+Ip
+Ip
+Ip
+SY
+Fy
+Jv
+Nh
+hp
+Yb
+Tq
+RJ
+Tq
+Yb
+rv
+jk
+Jv
+Fy
+ux
+Ip
+Ip
+Ip
+Ip
+Mg
+Mg
+aa
+aa
+aa
+"}
+(15,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Mg
+Mg
+Ip
+Fy
+ML
+ML
+ML
+ML
+Fy
+Sy
+ML
+ML
+ML
+ML
+zB
+Hf
+ML
+ML
+Od
+Sy
+Fy
+ML
+ML
+ML
+Od
+Fy
+Ip
+Mg
+Mg
+aa
+aa
+"}
+(16,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Mg
+Mg
+Ip
+Fy
+ML
+ML
+ML
+ML
+GB
+ML
+ZX
+SH
+SH
+SH
+Hf
+uo
+xx
+SH
+SH
+SH
+LZ
+ML
+GB
+ML
+ML
+ML
+ML
+Fy
+Ip
+Mg
+Mg
+aa
+"}
+(17,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Mg
+PC
+Fy
+MG
+ML
+Ip
+Ip
+Zw
+Cv
+RE
+Ip
+Ip
+Ip
+Ip
+RP
+Wl
+Ei
+Ip
+Ip
+Ip
+Ip
+ST
+Cv
+uO
+Ip
+Ip
+ML
+MG
+Fy
+mW
+Mg
+aa
+"}
+(18,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Mg
+Mg
+Ip
+Fy
+ML
+ML
+ML
+Yj
+KJ
+SH
+mm
+SH
+Kc
+SH
+Zv
+RJ
+Yj
+SH
+SH
+SH
+mm
+SH
+KJ
+Zv
+ML
+ML
+ML
+Fy
+Ip
+Mg
+Mg
+aa
+"}
+(19,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Mg
+Mg
+Ip
+Fy
+Od
+ML
+ML
+ML
+Fy
+Fy
+ML
+ML
+ML
+Od
+RJ
+ML
+ML
+ML
+ML
+Fy
+Fy
+ML
+ML
+ML
+ML
+Fy
+Ip
+Mg
+Mg
+aa
+aa
+"}
+(20,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Mg
+Mg
+Ip
+Ip
+Ip
+Ip
+Ua
+Fy
+Nh
+Nh
+Oy
+JB
+vm
+zB
+sn
+yn
+Hf
+ML
+ML
+Fy
+Ua
+Ip
+Ip
+Ip
+Ip
+Mg
+Mg
+aa
+aa
+aa
+"}
+(21,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+qy
+qy
+qy
+qy
+qy
+Xr
+Xr
+lF
+Xr
+Xr
+Xr
+Xr
+Xr
+MH
+MH
+Wg
+MH
+MH
+zD
+zD
+zD
+zD
+Np
+Np
+Np
+Np
+TG
+aa
+aa
+"}
+(22,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+qy
+si
+kb
+Dq
+qy
+jZ
+AO
+nS
+li
+DT
+WO
+rr
+Xr
+CK
+Oa
+hK
+nB
+ma
+vu
+zP
+Fn
+hA
+Np
+VV
+HN
+vH
+ku
+aa
+aa
+"}
+(23,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+qy
+lm
+Ir
+Tf
+qy
+hr
+kG
+nS
+xX
+xA
+ZK
+Oz
+Xr
+mi
+mC
+BX
+EQ
+WS
+Jm
+ZO
+ZO
+EJ
+UD
+rI
+rX
+ER
+TT
+zI
+aa
+"}
+(24,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+qy
+jL
+ib
+Oq
+Iv
+EC
+Wr
+wL
+Iy
+DT
+Xv
+RW
+Xr
+zS
+OA
+hK
+Sk
+kH
+vu
+Wc
+xb
+VQ
+ku
+ml
+JL
+Yh
+Np
+aa
+aa
+"}
+(25,1,1) = {"
+aa
+aa
+aa
+wY
+sx
+sx
+sx
+wY
+aa
+aa
+qy
+Mx
+lm
+QA
+qy
+LW
+AO
+nS
+HZ
+DT
+nm
+vE
+Xr
+sQ
+BX
+hU
+Tz
+Zn
+Xe
+Xe
+Xe
+St
+Np
+Np
+Np
+Np
+Np
+aa
+aa
+"}
+(26,1,1) = {"
+aa
+aa
+wY
+wY
+An
+CN
+sz
+wY
+wY
+aa
+qy
+jQ
+Es
+qy
+qy
+UF
+nS
+nS
+Ck
+RF
+vb
+RF
+ol
+mA
+jx
+Sk
+Ar
+Ar
+Xe
+Xw
+Eu
+iD
+pm
+wj
+Xe
+aa
+aa
+aa
+aa
+"}
+(27,1,1) = {"
+aa
+wY
+wY
+sz
+Vi
+Vi
+Vi
+OY
+wY
+wY
+wY
+Xr
+Se
+uk
+nS
+nS
+hh
+Wr
+jb
+GV
+rR
+xX
+Xr
+yS
+sp
+ks
+mA
+mA
+EU
+Mf
+Qb
+vi
+pA
+ZZ
+Xe
+aa
+aa
+aa
+aa
+"}
+(28,1,1) = {"
+wY
+wY
+sz
+Vi
+Vi
+Vi
+Vi
+Vi
+sz
+wY
+Fz
+VI
+zJ
+CA
+yi
+Wr
+Wr
+Wr
+nF
+xX
+xX
+NC
+Xr
+Pu
+uP
+BX
+GA
+Sk
+Xe
+Ed
+pA
+Vx
+Pn
+We
+Xe
+aa
+aa
+aa
+aa
+"}
+(29,1,1) = {"
+wY
+sz
+Vi
+Vi
+Vi
+Vi
+Vi
+Vi
+Vi
+sT
+Yo
+NH
+AO
+WU
+MK
+XZ
+iF
+my
+nf
+Mn
+Cm
+So
+TV
+mh
+yx
+nP
+GU
+FM
+Xe
+Xe
+Xe
+Xe
+Xe
+Xe
+Xe
+aa
+aa
+aa
+aa
+"}
+(30,1,1) = {"
+wY
+sz
+Vi
+Vi
+Zr
+ve
+KF
+KF
+KF
+rQ
+Gs
+Ze
+Xr
+Xr
+Xr
+Xr
+Xr
+Sz
+Xr
+Xr
+Xr
+Xr
+TV
+ur
+kH
+iI
+QD
+NF
+MH
+tJ
+rm
+tJ
+rm
+tJ
+rm
+aa
+aa
+aa
+aa
+"}
+(31,1,1) = {"
+wY
+wY
+sz
+Vi
+Vi
+Vi
+Vi
+Vi
+sz
+wY
+wY
+Xr
+Xr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Xr
+Xr
+TV
+kp
+xz
+nn
+Ik
+yX
+MH
+tJ
+ZY
+tJ
+ZY
+tJ
+ZY
+aa
+aa
+aa
+aa
+"}
+(32,1,1) = {"
+aa
+wY
+wY
+sz
+Vi
+Vi
+Vi
+JM
+wY
+wY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+rm
+Xr
+TV
+lC
+HI
+BC
+HI
+MH
+MH
+tJ
+Mb
+tJ
+Mb
+tJ
+Mb
+aa
+aa
+aa
+aa
+"}
+(33,1,1) = {"
+aa
+aa
+wY
+wY
+An
+CN
+sz
+wY
+wY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ZY
+tJ
+ZY
+Zc
+HI
+vU
+HI
+tJ
+ZY
+tJ
+ZY
+tJ
+ZY
+tJ
+ZY
+aa
+aa
+aa
+aa
+"}
+(34,1,1) = {"
+aa
+aa
+aa
+wY
+sx
+sx
+sx
+wY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+rm
+tJ
+rm
+Zc
+HI
+zs
+mV
+tJ
+Mb
+tJ
+Mb
+tJ
+Mb
+tJ
+Mb
+aa
+aa
+aa
+aa
+"}
+(35,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ZY
+tJ
+ZY
+Zc
+HI
+xr
+HI
+tJ
+ZY
+tJ
+ZY
+tJ
+ZY
+tJ
+ZY
+aa
+aa
+aa
+aa
+"}
+(36,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Mb
+Mb
+Mb
+Mb
+Mb
+ja
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+aa
+aa
+aa
+aa
+"}
+(37,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Mb
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(38,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+iC
+TO
+tX
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(39,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+iC
+IN
+DG
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(40,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+DL
+DL
+DG
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

@@ -1,0 +1,11 @@
+// AI EDIT START - expedition planets module integration
+#include "_expedition_planets.dm"
+#include "code/barren.dm"
+#include "code/frozen.dm"
+#include "code/arid.dm"
+#include "code/lush.dm"
+#include "code/ruins.dm"
+#include "code/ruin_catalog.dm"
+#include "code/ruin_areas.dm"
+#include "code/pipes.dm"
+// AI EDIT END

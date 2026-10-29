@@ -1,0 +1,603 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oldpod/oldpod.dmm
+"bm" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"bM" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"gp" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed,
+/obj/machinery/iv_drip,
+/obj/item/bedsheet/medical,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"gw" = (
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod Airlock"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"hq" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 9
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/table{
+	name = "plastic table frame"
+	},
+/obj/item/storage/medkit/surgery,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"hO" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"hZ" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"jc" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/structure/closet/crate,
+/obj/item/tank/internals/oxygen,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"jd" = (
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"ji" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"lc" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"ld" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/table/optable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"lk" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/structure/closet/firecloset{
+	pixel_x = 24
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"nk" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"og" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"ol" = (
+/obj/effect/mob_spawn/corpse/human/scientist,
+/obj/item/melee/baton/security/cattleprod,
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"oS" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/cable,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 5
+	},
+/obj/machinery/power/smes,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"rZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"sC" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"tN" = (
+/obj/structure/cable,
+/obj/item/wallframe/apc,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stock_parts/power_store/cell/empty,
+/obj/item/circuitboard/machine/pacman,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"ui" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mob_spawn/corpse/human/engineer,
+/obj/item/gun/energy/laser/retro,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"uN" = (
+/obj/machinery/door/firedoor,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"vn" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/rack,
+/obj/item/crowbar,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"vG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/coffin,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"wH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"wU" = (
+/obj/item/paper{
+	name = "полевой журнал: Старая посадочная капсула";
+	 default_raw_text = "Объект: Старая посадочная капсула. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"xi" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"xK" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"zz" = (
+/obj/structure/table{
+	name = "plastic table frame"
+	},
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/spawner/random/exotic/technology,
+/obj/item/pickaxe,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"AX" = (
+/obj/item/wallframe/airalarm,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/electronics/airalarm,
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"BU" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/coffin,
+/turf/open/floor/iron/dark/side,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"De" = (
+/obj/effect/spawner/random/medical/medkit,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"ED" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 5
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/item/clothing/head/helmet/space,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Fd" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Fq" = (
+/obj/machinery/door/firedoor,
+/obj/structure/grille,
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/item/shard,
+/obj/item/shard,
+/obj/item/shard,
+/obj/item/shard,
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Fx" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"GQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/disk/data,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"GY" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/portable_atmospherics/canister,
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Hc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"JW" = (
+/obj/structure/frame/machine{
+	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Kf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Lr" = (
+/obj/machinery/door/firedoor,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"LD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"LR" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 5
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/closet/crate/freezer/surplus_limbs,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Mj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"NY" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Oh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/rack,
+/obj/item/clothing/suit/space,
+/obj/item/clothing/head/helmet/space,
+/obj/item/tank/internals/emergency_oxygen/double,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"PX" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Ti" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 10
+	},
+/obj/item/clothing/suit/space,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Tv" = (
+/obj/effect/mob_spawn/corpse/human/doctor,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"TE" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Un" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Ur" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 10
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/table{
+	name = "plastic table frame"
+	},
+/obj/effect/spawner/random/medical/medkit,
+/obj/effect/spawner/random/medical/medkit,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"UA" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"UY" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Va" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"VV" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+"Wp" = (
+/obj/item/clothing/head/helmet/space,
+/obj/item/clothing/suit/space,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldpod/oldpod)
+
+(1,1,1) = {"
+nk
+nk
+nk
+nk
+uN
+Lr
+nk
+nk
+nk
+nk
+"}
+(2,1,1) = {"
+xK
+JW
+Tv
+sC
+AX
+TE
+UA
+bm
+Ti
+UA
+"}
+(3,1,1) = {"
+nk
+nk
+Kf
+Kf
+NY
+Kf
+gw
+ED
+Va
+gw
+"}
+(4,1,1) = {"
+nk
+vn
+Kf
+UY
+De
+tN
+nk
+nk
+nk
+nk
+"}
+(5,1,1) = {"
+nk
+Hc
+rZ
+Fd
+hO
+wU
+oS
+jc
+hZ
+UA
+"}
+(6,1,1) = {"
+nk
+GY
+xi
+Fx
+Wp
+ui
+og
+bM
+jd
+Lr
+"}
+(7,1,1) = {"
+nk
+Oh
+Un
+Un
+zz
+bM
+hq
+ld
+Ur
+nk
+"}
+(8,1,1) = {"
+nk
+nk
+vG
+Mj
+wH
+lc
+ji
+LD
+VV
+nk
+"}
+(9,1,1) = {"
+xK
+JW
+BU
+lk
+GQ
+ol
+LR
+PX
+gp
+nk
+"}
+(10,1,1) = {"
+nk
+nk
+nk
+nk
+Lr
+Fq
+nk
+nk
+nk
+nk
+"}

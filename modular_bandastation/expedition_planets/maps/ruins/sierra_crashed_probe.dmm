@@ -1,0 +1,1578 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/crashed_probe/crashed_probe.dmm
+"bU" = (
+/obj/item/stack/rods,
+/obj/item/shard,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarsp)
+"cm" = (
+/obj/structure/sign/warning/vacuum{
+	pixel_y = 32
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"cB" = (
+/obj/effect/turf_decal/trimline/white/line,
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"ej" = (
+/obj/structure/cable,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/mannequin{
+	name = "inactive AI"
+	},
+/obj/machinery/door/window/right/directional/south{
+	name = "Processing Core 1"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"eZ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 9;
+	initialize_directions = 9
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"gL" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/ash,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+"gT" = (
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"hi" = (
+/obj/machinery/light/small/red{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"hp" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/chair/stool,
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"ht" = (
+/obj/structure/frame/machine{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"hw" = (
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"hG" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"hR" = (
+/obj/item/shard,
+/obj/item/stack/rods,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarss)
+"it" = (
+/obj/effect/decal/cleanable/ash,
+/obj/machinery/telecomms/receiver,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"ja" = (
+/obj/item/stack/cable_coil,
+/obj/item/stack/rods,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarss)
+"jk" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarss)
+"kw" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"kD" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"lb" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/mannequin{
+	name = "inactive AI"
+	},
+/obj/machinery/door/window/right/directional/west{
+	name = "Processing Core 2"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"lZ" = (
+/obj/structure/cable,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/mannequin{
+	name = "inactive AI"
+	},
+/obj/machinery/door/window/right/directional/east{
+	name = "Processing Core 1"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"mf" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"mS" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/power/solar,
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarss)
+"nS" = (
+/obj/structure/sign/warning/vacuum{
+	dir = 1
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"pO" = (
+/obj/machinery/telecomms/hub,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"pP" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/white/line,
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"qV" = (
+/obj/machinery/telecomms/broadcaster,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"rb" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarss)
+"rr" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"rJ" = (
+/obj/structure/sign/warning/electric_shock{
+	pixel_y = 32
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarss)
+"rU" = (
+/obj/structure/sign/warning/biohazard{
+	pixel_x = -32
+	},
+/obj/structure/cable,
+/obj/machinery/light/small/red{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"sA" = (
+/obj/item/shard,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarss)
+"sG" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/item/disk/data,
+/obj/item/paper{
+	default_raw_text = "ntt<b>LOG</b>: Engine spool-up confirmed. Beginning flight data recording.<br/>ntt<b>LOG</b>: Flight plan INVALIDVAR detected; automated flight in effect. Destination: INVALIDVAR; current ETA is: 2 months, 5 days, 17 hours and 21 minutes.<br/>ntt<b>LOG</b>: Repeating logs saved to disk INVALIDVAR for memory optimization.<br/>ntt<b>ADM</b>: Automated flight cancelled by operator override.<br/>ntt<b>WARN</b>: No operators registered. Resetting SysAdmin subroutines...<br/>ntt<b>ERR</b>: Modified subroutines detected. Resetting Security subrountines to base values...<br/>ntt<b>ADM</b>: System state frozen via remote administrator privileges.<br/>ntt<b>ADM</b>: System pre-established parameters updated.<br/>ntt<b>WARN</b>: Insecure remote connection to vessel subroutines detected.<br/>ntt<b>ADM</b>: Warning blocked by pre-established parameters..<br/>ntt<b>WARN</b>: Damage to primary sensor array detected.<br/>ntt<b>WARN</b>: Piloting subroutine unable to carry out automated orbit correction.<br/>ntt<b>WARN</b>: Impact registered.<br/>ntt<b>LOG</b>: Distress beacon enabled.<br/>ntt<b>ERR</b>: Power to distress beacon lost!<br/>ntt<b>WARN</b>: Vessel power status critical. Entering power-saving mode.<br/>ntt<b>ERR</b>: Unable to interface with pilot controls.<br/>ntt<b>WARN</b>: Security subroutine failure.<br/>ntt<b>WARN</b>: Power outage imminent... Preparing blackbox backup...<br/>ntt<b>LOG</b>: Now you can safely turn off your computer.<br/>ntt"
+	},
+/obj/structure/frame/computer{
+	name = "ship intelligence control console"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"sK" = (
+/obj/machinery/telecomms/processor,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"sP" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarss)
+"tf" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"tJ" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarsp)
+"uU" = (
+/obj/item/stack/rods,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarss)
+"uW" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/mob/living/basic/hivebot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"vz" = (
+/turf/template_noop,
+/area/template_noop)
+"wp" = (
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"wU" = (
+/obj/machinery/suit_storage_unit/mining/eva,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"ys" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/structure/frame/computer{
+	name = "ship robot control console"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"yv" = (
+/obj/structure/sign/warning/electric_shock{
+	dir = 1;
+	pixel_y = -32
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarsp)
+"yA" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/power/apc/auto_name/directional/south,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"yW" = (
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"zA" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"zO" = (
+/obj/item/circuitboard/machine/ntnet_relay,
+/obj/structure/frame/machine,
+/obj/item/stack/cable_coil,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Bc" = (
+/obj/structure/sign/warning/biohazard{
+	pixel_x = -32
+	},
+/obj/machinery/light/small/red{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"Bu" = (
+/obj/machinery/light/small/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/white/line,
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"BI" = (
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"BS" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"BW" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Ca" = (
+/obj/structure/cable,
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Cf" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/structure/frame/computer{
+	name = "ship intelligence control console"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"Cm" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/power/solar,
+/obj/item/stack/rods,
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarss)
+"Dd" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/mob/living/basic/hivebot/range,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarss)
+"DN" = (
+/obj/item/shard,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+"DP" = (
+/obj/effect/decal/cleanable/ash,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+"Fn" = (
+/obj/item/stack/rods,
+/obj/item/shard,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+"Fw" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/power/solar,
+/obj/structure/cable,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarsp)
+"FH" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"GL" = (
+/obj/machinery/telecomms/server,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"GM" = (
+/obj/structure/cable,
+/obj/item/shard,
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarsp)
+"GO" = (
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Hp" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/mannequin{
+	name = "inactive AI"
+	},
+/obj/machinery/door/window/right/directional/west{
+	name = "Processing Core 2"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"HA" = (
+/obj/item/stack/rods,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+"Ik" = (
+/obj/machinery/door/airlock/external,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Is" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/gibs/robot_debris{
+	pixel_x = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Iz" = (
+/mob/living/basic/hivebot/range,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"JD" = (
+/obj/item/paper{
+	name = "полевой журнал: Разбитый исследовательский зонд";
+	 default_raw_text = "Объект: Разбитый исследовательский зонд. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"JL" = (
+/obj/structure/frame/machine,
+/obj/item/stack/cable_coil,
+/obj/item/circuitboard/computer,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Kp" = (
+/obj/structure/frame/machine,
+/obj/item/stack/cable_coil,
+/obj/item/circuitboard/computer,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"KA" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"KQ" = (
+/obj/machinery/telecomms/bus,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"LL" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarsp)
+"Mx" = (
+/mob/living/basic/hivebot/range,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+"MA" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/ash,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"MQ" = (
+/obj/item/shard,
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+	dir = 8;
+	initialize_directions = 7
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"MX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Nf" = (
+/obj/effect/decal/cleanable/blood/gibs/robot_debris{
+	pixel_x = 1
+	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"No" = (
+/obj/structure/frame/computer,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"Oh" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Or" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+"PF" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"PQ" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/recharge_station{
+	name = "drone recharging station";
+	desc = "An outdated, bulky model of recharging stations, designed for drones but wildly inefficient by modern standards. You see loose wires and sparks coming out of it."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"QH" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"QM" = (
+/obj/machinery/light/small/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/white/line,
+/obj/effect/turf_decal/trimline/white/line,
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Sh" = (
+/obj/structure/frame/machine{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+"Tz" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/door/window/right/directional/west{
+	name = "Blackbox Recording Room"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"TR" = (
+/obj/structure/cable,
+/mob/living/basic/hivebot/range,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Uj" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Uu" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/rnd/server,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"UZ" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/mob/living/basic/hivebot/range,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/solarsp)
+"Vp" = (
+/obj/machinery/light/small/red,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"VC" = (
+/obj/machinery/light/small/red{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"WC" = (
+/obj/item/circuitboard/machine/smes,
+/obj/item/stock_parts/power_store/cell,
+/obj/item/stack/cable_coil,
+/obj/structure/frame/machine,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"XG" = (
+/obj/structure/frame/machine,
+/obj/item/stack/cable_coil,
+/obj/item/circuitboard/computer,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+"Zg" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/bridge)
+"Zw" = (
+/obj/structure/frame/machine,
+/obj/item/stack/cable_coil,
+/obj/item/circuitboard/computer,
+/obj/structure/window/reinforced/spawner/directional/south,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
+
+(1,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(2,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+gL
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(3,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(4,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+gL
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(5,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+Or
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(6,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+Sh
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(7,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+Oh
+Oh
+MA
+MA
+zA
+zA
+MA
+MA
+Oh
+Oh
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(8,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+Oh
+Oh
+ht
+ht
+MQ
+ht
+ht
+ht
+Oh
+Oh
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(9,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+Oh
+Oh
+wp
+Oh
+Oh
+zA
+Oh
+Oh
+Oh
+GO
+Oh
+Oh
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(10,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+Oh
+Oh
+hw
+hi
+hw
+WC
+Uj
+Is
+hi
+kw
+Oh
+Oh
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(11,1,1) = {"
+vz
+vz
+vz
+HA
+vz
+vz
+vz
+vz
+Oh
+Oh
+hw
+mf
+hw
+hw
+MX
+BW
+BI
+hw
+eZ
+hw
+Oh
+Oh
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(12,1,1) = {"
+vz
+vz
+vz
+DN
+vz
+vz
+vz
+vz
+Oh
+Oh
+hw
+Kp
+Zw
+hw
+BI
+BI
+BI
+PQ
+Iz
+hw
+Oh
+Oh
+vz
+vz
+Mx
+vz
+vz
+vz
+vz
+vz
+"}
+(13,1,1) = {"
+vz
+tJ
+bU
+tJ
+Fw
+Fw
+tJ
+Oh
+Oh
+Oh
+VC
+XG
+JL
+hw
+BI
+TR
+BI
+zO
+Nf
+Vp
+Oh
+Oh
+Oh
+rb
+mS
+sA
+rb
+rb
+sA
+vz
+"}
+(14,1,1) = {"
+vz
+tJ
+tJ
+Fw
+Fw
+Fw
+yv
+Oh
+Oh
+Oh
+cm
+hw
+hw
+hw
+lZ
+ej
+BI
+hw
+hw
+hw
+nS
+Oh
+Oh
+rJ
+mS
+Cm
+hR
+rb
+rb
+vz
+"}
+(15,1,1) = {"
+Fn
+tJ
+GM
+LL
+LL
+UZ
+LL
+Ik
+Ca
+Ik
+BI
+BI
+TR
+BI
+BI
+JD
+BI
+BI
+BI
+BI
+Ik
+Ca
+Ik
+jk
+sP
+Dd
+uU
+ja
+sA
+vz
+"}
+(16,1,1) = {"
+vz
+tJ
+Fw
+Fw
+Fw
+Fw
+tJ
+Oh
+wU
+Oh
+hw
+hw
+hw
+hw
+lb
+Hp
+TR
+BI
+BI
+tf
+Oh
+wU
+Oh
+rb
+mS
+mS
+uU
+rb
+rb
+vz
+"}
+(17,1,1) = {"
+vz
+bU
+Fw
+Fw
+Fw
+Fw
+tJ
+Oh
+Oh
+Oh
+VC
+KQ
+sK
+hw
+hw
+hw
+BI
+Uu
+Tz
+Vp
+Oh
+Oh
+Oh
+rb
+mS
+mS
+rb
+hR
+rb
+vz
+"}
+(18,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+DP
+Oh
+Oh
+hw
+pO
+GL
+hw
+hw
+hw
+BI
+sG
+hp
+hw
+Oh
+Oh
+DP
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(19,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+DP
+Oh
+Oh
+hw
+hw
+hw
+hw
+hw
+hw
+BI
+hw
+hw
+hw
+Oh
+Oh
+DP
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(20,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+DP
+DP
+Oh
+Oh
+cB
+Bu
+cB
+hw
+BI
+pP
+QM
+cB
+Oh
+Oh
+DP
+DP
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(21,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+DP
+DP
+Zg
+Zg
+Zg
+Zg
+Zg
+gT
+PF
+Zg
+Zg
+Zg
+Zg
+Zg
+DP
+DP
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(22,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+DP
+DP
+Zg
+Zg
+Cf
+Bc
+BS
+KA
+rU
+yA
+Zg
+Zg
+DP
+DP
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(23,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+DP
+Zg
+Zg
+ys
+rr
+uW
+uW
+yW
+FH
+Zg
+Zg
+DP
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(24,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+DP
+DP
+Zg
+Zg
+hG
+kD
+kD
+QH
+Zg
+Zg
+DP
+DP
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(25,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+DP
+DP
+Zg
+Zg
+Zg
+Zg
+Zg
+Zg
+Zg
+Zg
+DP
+DP
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(26,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+DP
+DP
+No
+Zg
+Zg
+Zg
+Zg
+qV
+it
+DP
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(27,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+DP
+DP
+DP
+DP
+DP
+DP
+DP
+DP
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(28,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(29,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}
+(30,1,1) = {"
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+vz
+"}

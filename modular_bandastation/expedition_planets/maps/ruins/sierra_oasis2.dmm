@@ -1,0 +1,141 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oasis/oasis2.dmm
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"u" = (
+/obj/structure/flora/grass/jungle/a,
+/obj/structure/flora/grass/jungle/a,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis2/exterior)
+"D" = (
+/obj/structure/flora/grass/jungle/a,
+/turf/open/water,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis2/exterior)
+"G" = (
+/obj/structure/flora/grass/both,
+/obj/structure/flora/grass/jungle/a,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis2/exterior)
+"L" = (
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis2/exterior)
+"Q" = (
+/obj/structure/flora/grass/jungle/a,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis2/exterior)
+"S" = (
+/obj/structure/flora/grass/both,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis2/exterior)
+"X" = (
+/turf/open/water,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis2/exterior)
+
+(1,1,1) = {"
+a
+a
+a
+L
+L
+L
+L
+"}
+(2,1,1) = {"
+a
+a
+Q
+G
+X
+D
+L
+"}
+(3,1,1) = {"
+a
+Q
+L
+L
+X
+L
+L
+"}
+(4,1,1) = {"
+Q
+L
+X
+X
+X
+Q
+a
+"}
+(5,1,1) = {"
+a
+Q
+X
+X
+X
+S
+u
+"}
+(6,1,1) = {"
+a
+Q
+X
+X
+X
+X
+L
+"}
+(7,1,1) = {"
+a
+L
+X
+X
+X
+L
+L
+"}
+(8,1,1) = {"
+a
+u
+X
+X
+X
+G
+Q
+"}
+(9,1,1) = {"
+a
+L
+X
+X
+X
+L
+a
+"}
+(10,1,1) = {"
+L
+S
+X
+X
+Q
+L
+a
+"}
+(11,1,1) = {"
+u
+X
+X
+Q
+L
+a
+a
+"}
+(12,1,1) = {"
+L
+L
+L
+L
+a
+a
+a
+"}

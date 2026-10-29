@@ -1,0 +1,2037 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: ParadiseSS13/Paradise contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/_maps/map_files/RandomRuins/SpaceRuins/wreckedcargoship.dmm
+"ap" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"aV" = (
+/obj/machinery/light/small,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"br" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door{
+	id = "exp_paradise_wreckedcargoship_main"
+	},
+/obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"by" = (
+/obj/item/toy/plush/pkplush,
+/obj/item/food/breadslice/plain,
+/obj/item/food/breadslice/plain,
+/obj/item/paper/crumpled{
+	name = "unintelligible scribbles";
+	default_raw_text = "toast... i must... the plushie..."
+	},
+/obj/structure/closet/crate,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"bH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"bJ" = (
+/obj/machinery/light/small,
+/obj/machinery/portable_atmospherics/canister/oxygen{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"bM" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"bT" = (
+/obj/structure/sign/poster/official/here_for_your_safety/directional/south,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"bX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/light/small,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"ch" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"cA" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"cC" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/grille/broken,
+/obj/machinery/button/door{
+	name = "auxiliary equipment storage shutters";
+	pixel_y = -32;
+	id = "exp_paradise_wreckedcargoship_cargoshipblastdoor3"
+	},
+/obj/machinery/rnd/server,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"cG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"cV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"do" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass/fifty{
+	pixel_x = -4;
+	pixel_y = -4;
+	amount = 50
+	},
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"dB" = (
+/obj/structure/closet/crate/large,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"dI" = (
+/obj/structure/table,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/tools/directional/north,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"dY" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"ea" = (
+/turf/template_noop,
+/area/template_noop)
+"eh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"eT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/molten_object,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"fg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper{
+	name = "shift inventory log transcription";
+	pixel_y = -5;
+	pixel_x = -4;
+	default_raw_text = "<b>Shift inventory log #071</b><br><br><b>S0-C5-P0-D0</b><br><br><b>voice transcription:</b> all containers is intact.<br><br><b>S1-C6-P3-D2</b><br><br><b>voice transcription:</b> two cargo delivered three picked up, same as usual.<br><br><b>S2-C4-P1-D3-X1</b><br><br><b>voice transcription:</b> just finished checkin' the unexpected guest, whatever this is it's hella huge. As they specifically asked us to not use forklifts to load it onboard, we had to carry it ourselves. Container seems undamaged and good to go.<br><br><b>S3-C9-P5-D0-X1</b><br><br><b>voice transcription:</b> it's an enigma what's inside this thing. I swear i heard something moving inside while we were loading the crates in last stop. I don't like this.<br><br><b>S?-C?-P?-D?-X?</b><br><br><b>voice transcription:</b> IT'# OUT+$, W@ CA#'T SPAC^ IT_. GOD HAV+ MERCY. ^# COMES HERE. S#ND H^LP, PLEAS- >$@#_"
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"fs" = (
+/obj/structure/rack,
+/obj/structure/sign/poster/contraband/smoke/directional/west,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"fy" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"fJ" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/large,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"fY" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/toy/plush/slimeplushie,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"gK" = (
+/obj/structure/railing{
+	dir = 9
+	},
+/obj/item/kirbyplants,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"gM" = (
+/turf/open/floor/iron{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"gU" = (
+/obj/machinery/light/small,
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"hl" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/rack,
+/obj/item/stack/rods/fifty{
+	amount = 50
+	},
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"hx" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"hV" = (
+/obj/machinery/door/poddoor/shutters{
+	name = "Auxiliary Equipment Storage Shutters";
+	id = "exp_paradise_wreckedcargoship_main"
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"hW" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/rack,
+/obj/item/toy/beach_ball,
+/obj/item/toy/beach_ball,
+/obj/item/toy/beach_ball,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"ib" = (
+/obj/machinery/door/poddoor{
+	id = "exp_paradise_wreckedcargoship_main"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"ip" = (
+/obj/structure/railing/corner,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"ir" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"iu" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/structure/closet/crate,
+/obj/item/clothing/under/syndicate,
+/obj/item/clothing/under/syndicate,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"iC" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"jV" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"kj" = (
+/obj/structure/frame/machine{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"kp" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron{
+	dir = 1
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"le" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"lz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/item/clothing/head/costume/kitty,
+/obj/item/clothing/head/costume/kitty,
+/obj/item/clothing/head/costume/kitty,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"lF" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"nR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/railing/corner,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"nS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet,
+/obj/item/clothing/suit/jacket,
+/obj/item/clothing/suit/jacket,
+/obj/item/clothing/suit/jacket,
+/obj/item/clothing/under/rank/cargo/tech,
+/obj/item/clothing/under/rank/cargo/tech,
+/obj/item/clothing/under/rank/cargo/tech,
+/obj/item/clothing/under/dress/tango,
+/obj/item/clothing/under/dress/tango,
+/obj/item/clothing/under/dress/tango,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"om" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"on" = (
+/obj/machinery/door/firedoor/border_only/closed{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"oo" = (
+/obj/machinery/door/firedoor/border_only/closed{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"oK" = (
+/obj/structure/grille,
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	id = "exp_paradise_wreckedcargoship_main"
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"oW" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/snake{
+	name = "Rattlesnake Hardie";
+	desc = "A relatively menacing looking snake. Despite their intimidating look, they have cute collar attached to their neck. You can't help but think that name sounds familiar from somewhere."
+	},
+/obj/effect/decal/remains/human,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"pf" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/glasses/welding{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/weldingtool/largetank{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/storage/belt/utility{
+	pixel_y = -5;
+	pixel_x = 5
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"pB" = (
+/obj/structure/fans/tiny,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/poddoor{
+	id = "exp_paradise_wreckedcargoship_main"
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"qa" = (
+/obj/structure/closet/crate/secure/loot,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"qH" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"qM" = (
+/obj/structure/fans/tiny,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"rb" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"re" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"ri" = (
+/obj/structure/table,
+/obj/machinery/recharger,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"rs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"rt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"rU" = (
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"sm" = (
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"sV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"sY" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/structure/rack,
+/obj/structure/sign/warning/biohazard{
+	pixel_x = -32
+	},
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"te" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/cobweb,
+/obj/item/kirbyplants,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"tu" = (
+/obj/structure/rack,
+/obj/item/book,
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"tI" = (
+/obj/machinery/light/small,
+/obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"tL" = (
+/obj/machinery/door/poddoor/shutters{
+	id = "exp_paradise_wreckedcargoship_main"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"up" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"uF" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/closet/crate/large,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"vh" = (
+/obj/structure/girder/displaced,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/space/nearstation)
+"wa" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"wc" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/sign/warning/vacuum,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/space/nearstation)
+"wD" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"wF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/ash,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"wG" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"wS" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"xe" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/stack/sheet/iron,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"yg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/kirbyplants,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"yH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"yP" = (
+/obj/structure/railing,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"zD" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"zM" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"AL" = (
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	id = "exp_paradise_wreckedcargoship_main"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Bc" = (
+/obj/structure/chair/comfy/corp{
+	dir = 8
+	},
+/mob/living/basic/trooper/pirate,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Cc" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Ch" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/decal/remains/human,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Ct" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	id = "exp_paradise_wreckedcargoship_main"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Cu" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 20
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"CU" = (
+/obj/structure/rack,
+/mob/living/basic/bot/secbot,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Db" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/trooper/pirate,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"DA" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"DR" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"EC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/obj/machinery/autolathe,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"EE" = (
+/obj/structure/sign/warning/biohazard{
+	pixel_x = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"EI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/molten_object/large,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Fs" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"FC" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"FF" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/mob/living/basic/trooper/pirate/ranged,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"FK" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"FW" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/poddoor/shutters{
+	id = "exp_paradise_wreckedcargoship_main"
+	},
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Gm" = (
+/obj/structure/railing,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Gn" = (
+/obj/machinery/door/airlock/hatch{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"GI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"GO" = (
+/obj/structure/barricade/wooden/crude,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"GP" = (
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"HE" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"HK" = (
+/obj/structure/table,
+/obj/machinery/button/door{
+	name = "bridge lockdown shutters";
+	id = "exp_paradise_wreckedcargoship_cargoshipblastdoor4"
+	},
+/obj/item/paper_bin{
+	pixel_x = -6
+	},
+/obj/item/pen/fountain{
+	pixel_y = 8;
+	pixel_x = 7
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"HV" = (
+/obj/effect/turf_decal/delivery,
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"ID" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"IT" = (
+/obj/structure/railing,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Ka" = (
+/obj/structure/table_frame,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"KM" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"KO" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/closet/crate/large,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Lw" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Ly" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"LI" = (
+/obj/structure/table,
+/obj/item/paper{
+	name = "management's directive";
+	default_raw_text = "Good day Captain Hardie. Your ship has been assigned to carry an extremely delicate cargo due to an unfortunate scheduling issue in behalf of our custormers. You will find the additional information on transporting procedure of this extremely delicate cargo attached to it. Management believes you will not mind this rather unconvenient last minute change after what happened last time. Make sure you and your crew doesn't mess it up this time as we hate to compensate the expenses from our esteemed already-in-debt employees. Pick the cargo from next destination and safely deliver it where it has to go."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Mm" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"MU" = (
+/obj/structure/frame/machine{
+	dir = 8
+	},
+/obj/structure/frame/machine{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Ng" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Nz" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"NE" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"OE" = (
+/obj/machinery/light/small,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/remains/human,
+/obj/structure/fireaxecabinet{
+	pixel_y = -32
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"OG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"OR" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"OU" = (
+/obj/machinery/button/door{
+	name = "interior warehouse shutters";
+	id = "exp_paradise_wreckedcargoship_cargoshipblastdoor2"
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Ps" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Pu" = (
+/obj/item/paper{
+	name = "полевой журнал: Разграбленный грузовой корабль";
+	 default_raw_text = "Объект: Разграбленный грузовой корабль. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/effect/turf_decal/delivery,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/shreds,
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/plasteel{
+	pixel_y = -4;
+	pixel_x = 3;
+	amount = 3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Px" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"PK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/safe,
+/obj/item/gun/ballistic/shotgun/doublebarrel,
+/obj/item/stack/spacecash/c500,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 15
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Qq" = (
+/obj/structure/closet/crate/large,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"QJ" = (
+/obj/machinery/light/small,
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Rg" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/cobweb,
+/obj/item/toy/figure/cargotech{
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Sk" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Sp" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Sq" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/space/nearstation)
+"SG" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/mob/living/basic/parrot,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"TL" = (
+/obj/structure/closet/crate/large,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Ur" = (
+/obj/item/chair,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Ut" = (
+/obj/effect/decal/remains/human,
+/obj/structure/grille/broken,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Uu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/poddoor/shutters{
+	name = "Auxiliary Equipment Storage Shutters";
+	id = "exp_paradise_wreckedcargoship_main"
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"UJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/stack/sheet/glass/fifty{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron{
+	pixel_y = -4;
+	pixel_x = -4;
+	amount = 50
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"UV" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/space/nearstation)
+"Vf" = (
+/obj/machinery/button/door{
+	name = "exterior warehouse blastdoors";
+	id = "exp_paradise_wreckedcargoship_cargoshipblastdoor1"
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Vj" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Vv" = (
+/obj/structure/rack,
+/obj/item/stack/cable_coil,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"VN" = (
+/obj/machinery/button/door{
+	name = "exterior blastdoor";
+	id = "exp_paradise_wreckedcargoship_cargoshipblastdoor5"
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"We" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Wp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	id = "exp_paradise_wreckedcargoship_main"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Wt" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/railing,
+/turf/open/floor/iron{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"WV" = (
+/obj/structure/closet/crate,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Xt" = (
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Xu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Xx" = (
+/obj/structure/railing{
+	dir = 10
+	},
+/obj/structure/table,
+/obj/item/paper{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"XB" = (
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"XM" = (
+/obj/machinery/light/small,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"Yx" = (
+/obj/structure/closet/crate,
+/obj/item/toy/plush/carpplushie,
+/obj/item/toy/plush/carpplushie,
+/obj/item/toy/plush/lizard_plushie,
+/obj/item/toy/plush/carpplushie,
+/obj/item/toy/plush/shark,
+/obj/item/toy/plush/carpplushie,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"YE" = (
+/obj/structure/railing,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"YP" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"YU" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/cup/bucket,
+/obj/item/mop,
+/turf/open/floor/iron{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+"ZX" = (
+/obj/structure/table_frame,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_paradise_wreckedcargoship/ruin/space/wreck_cargoship)
+
+(1,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+"}
+(2,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+UV
+UV
+UV
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+"}
+(3,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+wD
+wD
+kj
+kj
+MU
+wD
+wD
+ea
+ea
+ea
+ea
+ea
+"}
+(4,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+wD
+wD
+Fs
+PK
+bJ
+wD
+wD
+ea
+ea
+ea
+ea
+ea
+"}
+(5,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+wD
+wD
+Uu
+hV
+hV
+wD
+wD
+ea
+ea
+ea
+ea
+ea
+"}
+(6,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+wD
+dI
+OG
+cC
+wD
+ea
+ea
+ea
+ea
+ea
+ea
+"}
+(7,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+Sq
+wD
+TL
+rU
+YP
+wD
+Sq
+ea
+ea
+ea
+ea
+ea
+"}
+(8,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+wc
+wD
+GP
+sm
+bX
+wD
+wc
+ea
+ea
+ea
+ea
+ea
+"}
+(9,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+wD
+wD
+Cu
+sV
+Vv
+wD
+wD
+ea
+ea
+ea
+ea
+ea
+"}
+(10,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+wD
+wD
+wD
+wD
+NE
+wD
+wD
+wD
+wD
+ea
+ea
+ea
+ea
+"}
+(11,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+wD
+uF
+fJ
+Yx
+ID
+wD
+hl
+fY
+wD
+ea
+ea
+ea
+ea
+"}
+(12,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+pB
+We
+OR
+GI
+ch
+GO
+Xt
+bT
+wD
+ea
+ea
+ea
+ea
+"}
+(13,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+qM
+wF
+Ut
+EI
+lz
+GO
+KO
+QJ
+wD
+ea
+ea
+ea
+ea
+"}
+(14,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+qM
+cG
+eT
+GI
+xe
+HV
+lF
+Ng
+wD
+ea
+ea
+ea
+ea
+"}
+(15,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+Vf
+iu
+Ly
+OR
+FC
+GO
+YE
+dY
+wD
+ea
+ea
+ea
+ea
+"}
+(16,1,1) = {"
+ea
+ea
+ea
+ea
+UV
+UV
+wD
+hW
+yH
+HE
+br
+wD
+Gm
+cA
+wD
+UV
+UV
+ea
+ea
+"}
+(17,1,1) = {"
+ea
+ea
+ea
+wD
+kj
+kj
+wD
+wD
+FW
+Pu
+tL
+OU
+wa
+gU
+wD
+kj
+kj
+wD
+ea
+"}
+(18,1,1) = {"
+ea
+ea
+ea
+wD
+EC
+UJ
+iC
+sY
+Px
+cV
+om
+SG
+up
+Xt
+iC
+DR
+nS
+wD
+ea
+"}
+(19,1,1) = {"
+ea
+ea
+ea
+wD
+ap
+sV
+wS
+Xt
+up
+Xt
+up
+Db
+YU
+up
+wS
+fg
+OE
+wD
+ea
+"}
+(20,1,1) = {"
+ea
+ea
+ea
+wD
+wD
+Xu
+iC
+tu
+Xt
+dB
+Xt
+CU
+do
+Xt
+iC
+pf
+wD
+wD
+ea
+"}
+(21,1,1) = {"
+ea
+ea
+ea
+ea
+wD
+wD
+wD
+zD
+zM
+qa
+up
+Mm
+Xt
+aV
+wD
+wD
+wD
+ea
+ea
+"}
+(22,1,1) = {"
+ea
+ea
+ea
+ea
+Sq
+wc
+wD
+bH
+Ch
+nR
+FK
+wD
+wD
+wD
+wD
+wc
+Sq
+ea
+ea
+"}
+(23,1,1) = {"
+ea
+ea
+ea
+ea
+Sq
+ea
+on
+IT
+cA
+Wt
+gK
+iC
+Sp
+tI
+wD
+ea
+ea
+ea
+ea
+"}
+(24,1,1) = {"
+ea
+Sq
+ea
+Sq
+vh
+Sq
+on
+qH
+Vj
+DA
+rt
+Gn
+eh
+rU
+ib
+ea
+ea
+ea
+ea
+"}
+(25,1,1) = {"
+ea
+ea
+Sq
+ea
+Sq
+Sq
+oo
+eh
+jV
+eh
+by
+iC
+rb
+XM
+VN
+ea
+ea
+ea
+ea
+"}
+(26,1,1) = {"
+ea
+ea
+ea
+vh
+ea
+ea
+wD
+oK
+Wp
+Ct
+AL
+wD
+wD
+sV
+wD
+wc
+Sq
+ea
+ea
+"}
+(27,1,1) = {"
+ea
+ea
+ea
+ea
+Sq
+wD
+wD
+XB
+Lw
+Lw
+yg
+fs
+ri
+Ka
+wD
+wD
+ea
+ea
+ea
+"}
+(28,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+iC
+bM
+Ur
+oW
+Sk
+jV
+ir
+rs
+rs
+rs
+iC
+ea
+ea
+ea
+"}
+(29,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+iC
+hx
+ZX
+LI
+HK
+le
+kp
+wG
+Xx
+WV
+iC
+ea
+ea
+ea
+"}
+(30,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+iC
+EE
+eh
+Bc
+fy
+ip
+gM
+FF
+Nz
+Qq
+iC
+ea
+ea
+ea
+"}
+(31,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+wD
+wD
+te
+Cc
+re
+yP
+Rg
+Ps
+KM
+wD
+wD
+ea
+ea
+ea
+"}
+(32,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+wD
+wD
+iC
+iC
+iC
+iC
+iC
+wD
+wD
+ea
+ea
+ea
+ea
+"}
+(33,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+wc
+ea
+ea
+ea
+ea
+ea
+wc
+ea
+ea
+ea
+ea
+ea
+"}
+(34,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+Sq
+ea
+ea
+ea
+ea
+ea
+Sq
+ea
+ea
+ea
+ea
+ea
+"}
+(35,1,1) = {"
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+ea
+"}

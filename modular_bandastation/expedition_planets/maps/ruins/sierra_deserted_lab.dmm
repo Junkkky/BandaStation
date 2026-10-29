@@ -1,0 +1,486 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/deserted_lab/deserted_lab.dmm
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"bJ" = (
+/obj/machinery/door/airlock/external,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"bL" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/creature,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"dN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"eN" = (
+/obj/structure/bed,
+/obj/item/bedsheet/purple,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"fP" = (
+/obj/item/spear,
+/obj/effect/mob_spawn/corpse/human/scientist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"fZ" = (
+/obj/effect/spawner/random/trash/garbage,
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"hv" = (
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"hN" = (
+/obj/effect/spawner/random/exotic/technology,
+/mob/living/basic/mining/gutlunch,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"iy" = (
+/obj/structure/table{
+	name = "plastic table frame"
+	},
+/obj/effect/spawner/random/contraband,
+/obj/item/clothing/mask/breath,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"lC" = (
+/obj/effect/spawner/random/maintenance,
+/obj/structure/chair/office,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"lG" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"mh" = (
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"pu" = (
+/obj/effect/spawner/random/clothing/wardrobe_closet,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"qj" = (
+/obj/structure/closet/crate,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"qk" = (
+/obj/effect/anomaly/grav/stationtrauma_icarus,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"sT" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/medical/medkit,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"tX" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"va" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"wA" = (
+/obj/effect/spawner/random/food_or_drink/snack,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"xf" = (
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"xA" = (
+/obj/effect/decal/cleanable/vomit,
+/obj/item/paint/paint_remover,
+/obj/structure/closet/emcloset{
+	pixel_y = 32
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"xE" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -32
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"yy" = (
+/obj/machinery/door/airlock/vault{
+	name = "Door"
+	},
+/obj/item/restraints/legcuffs/beartrap,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Ax" = (
+/obj/effect/decal/cleanable/insectguts,
+/obj/structure/table{
+	name = "plastic table frame"
+	},
+/obj/machinery/reagentgrinder,
+/obj/item/reagent_containers/cup/beaker/large,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"AZ" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"BT" = (
+/obj/effect/spawner/random/maintenance,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"CF" = (
+/obj/structure/closet/crate/trashcart,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Ez" = (
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"FT" = (
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Gu" = (
+/obj/machinery/door/airlock/vault{
+	name = "Door"
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"GO" = (
+/obj/item/paper{
+	name = "полевой журнал: Покинутая полевая лаборатория";
+	 default_raw_text = "Объект: Покинутая полевая лаборатория. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/structure/sign/warning/biohazard{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Hj" = (
+/obj/item/clothing/head/bio_hood/scientist,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"If" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/closet/cabinet,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Ju" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Kl" = (
+/obj/structure/sign/warning/biohazard{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/insectguts,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Ko" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/engineering/tool_advanced,
+/obj/effect/spawner/random/mod/maint,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/obj/effect/spawner/random/engineering/toolbox,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Lh" = (
+/obj/structure/chair/office,
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"MJ" = (
+/obj/item/restraints/legcuffs/beartrap,
+/obj/structure/sign/warning/biohazard{
+	pixel_x = 32
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Nx" = (
+/obj/structure/bookcase,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Oa" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Of" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"OH" = (
+/obj/structure/table{
+	name = "plastic table frame"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Pb" = (
+/obj/machinery/power/floodlight,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Px" = (
+/obj/structure/closet/crate/freezer/surplus_limbs,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"QE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"QU" = (
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Tj" = (
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/creature,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"VL" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Wi" = (
+/obj/structure/bed,
+/obj/item/bedsheet/mime,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"WU" = (
+/obj/structure/railing,
+/obj/machinery/autolathe,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"XD" = (
+/obj/structure/closet/crate/secure/science,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"Yx" = (
+/obj/structure/sign/warning/secure_area{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"YM" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"ZK" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+"ZL" = (
+/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/maintenance,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_deserted_lab/exterior)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+BT
+Ju
+Ju
+Ju
+Ju
+Ju
+Ju
+Ju
+Ju
+Ju
+bJ
+Ju
+aa
+"}
+(3,1,1) = {"
+aa
+Ju
+Ez
+bL
+yy
+YM
+fP
+sT
+Ju
+Hj
+hv
+Ju
+BT
+"}
+(4,1,1) = {"
+aa
+Ju
+xf
+Tj
+QE
+ZK
+tX
+YM
+bJ
+hv
+MJ
+Ju
+aa
+"}
+(5,1,1) = {"
+aa
+Ju
+Ju
+Ju
+Ju
+Yx
+YM
+Ju
+Ju
+Ju
+Ju
+Ju
+ZL
+"}
+(6,1,1) = {"
+aa
+Ju
+VL
+lG
+Gu
+dN
+GO
+Ju
+WU
+xE
+pu
+Ju
+aa
+"}
+(7,1,1) = {"
+aa
+Ju
+qk
+QU
+QE
+YM
+fZ
+Ju
+Nx
+lC
+Ax
+QE
+aa
+"}
+(8,1,1) = {"
+aa
+Ju
+Ju
+Ju
+Ju
+Kl
+va
+Oa
+wA
+AZ
+Ko
+QE
+aa
+"}
+(9,1,1) = {"
+aa
+Ju
+hN
+hv
+Gu
+va
+iy
+Ju
+xA
+Of
+FT
+QE
+aa
+"}
+(10,1,1) = {"
+aa
+Ju
+hv
+mh
+QE
+Lh
+OH
+Ju
+If
+eN
+Wi
+Ju
+aa
+"}
+(11,1,1) = {"
+aa
+Ju
+Ju
+Ju
+Ju
+Ju
+Ju
+Ju
+Ju
+Ju
+Ju
+Ju
+aa
+"}
+(12,1,1) = {"
+aa
+Ju
+aa
+XD
+Ju
+Pb
+Pb
+Ju
+qj
+CF
+Px
+Ju
+aa
+"}
+(13,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

@@ -1,0 +1,17 @@
+// AI EDIT START - overmap module integration
+#include "_overmap.dm"
+#include "code/overmap.dm"
+#include "code/sector.dm"
+#include "code/helm.dm"
+#include "code/parallax.dm"
+#include "code/overmap_autopilot.dm"
+#include "code/overmap_contacts.dm"
+#include "code/zones.dm"
+#include "code/work_budget.dm"
+#include "code/lighting_deferred.dm"
+#include "code/hull_damage.dm"
+#include "code/map_passage.dm"
+#include "code/map_preview.dm"
+#include "code/map_lighting.dm"
+#include "code/map_connection.dm"
+// AI EDIT END

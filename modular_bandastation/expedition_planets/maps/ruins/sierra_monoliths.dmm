@@ -1,0 +1,147 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/monoliths/monoliths.dmm
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"g" = (
+/obj/item/paper{
+	name = "полевой журнал: Поле каменных монолитов";
+	 default_raw_text = "Объект: Поле каменных монолитов. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_monoliths/exterior)
+"s" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_monoliths/exterior)
+"y" = (
+/obj/effect/anomaly/grav/stationtrauma_icarus,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/south,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_monoliths/exterior)
+"R" = (
+/obj/structure/stationtrauma_research_source/expedition_monolith,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_monoliths/exterior)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+R
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+R
+a
+a
+a
+a
+a
+R
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+g
+a
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+s
+y
+s
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+s
+a
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+R
+a
+a
+a
+a
+a
+R
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+R
+a
+a
+a
+a
+a
+"}

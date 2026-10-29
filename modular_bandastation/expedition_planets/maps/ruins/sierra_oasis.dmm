@@ -1,0 +1,151 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oasis/oasis.dmm
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"n" = (
+/obj/structure/flora/grass/jungle/a,
+/turf/open/water,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+"u" = (
+/obj/structure/flora/grass/brown,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+"z" = (
+/obj/structure/flora/grass/jungle/a,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+"D" = (
+/turf/open/water,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+"H" = (
+/obj/structure/flora/bush,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+"J" = (
+/obj/structure/flora/bush,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+"M" = (
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+"T" = (
+/obj/structure/flora/grass/jungle/a,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+"W" = (
+/obj/structure/flora/grass/both,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+"Y" = (
+/obj/structure/flora/grass/green,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+z
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+J
+a
+W
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+W
+D
+Y
+M
+a
+"}
+(5,1,1) = {"
+a
+z
+Y
+D
+D
+T
+a
+"}
+(6,1,1) = {"
+a
+Y
+D
+D
+D
+D
+M
+"}
+(7,1,1) = {"
+a
+a
+Y
+D
+D
+u
+M
+"}
+(8,1,1) = {"
+a
+Y
+n
+D
+D
+u
+a
+"}
+(9,1,1) = {"
+a
+a
+Y
+D
+D
+H
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+W
+n
+M
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+H
+M
+T
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}

@@ -46,6 +46,10 @@
 @include meta.load-css('./interfaces/Safe.scss');
 @include meta.load-css('./interfaces/SlotMachine.scss');
 @include meta.load-css('./interfaces/SpacepodStatus.scss'); // BANDASTATION ADDITION: spacepod telemetry
+// AI EDIT START - Ship navigation CRT instruments
+// BANDASTATION ADDITION - Space overmap navigation
+@include meta.load-css('./interfaces/SpaceNavigation.scss');
+// AI EDIT END
 @include meta.load-css('./interfaces/SpriteAuditor.scss');
 @include meta.load-css('./interfaces/Techweb.scss');
 @include meta.load-css('./interfaces/TicketManager.scss'); // BANDASTATION

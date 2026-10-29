@@ -1,0 +1,358 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: SierraBay/SierraBay12 contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/spider_nest/spider_nest.dmm
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"bW" = (
+/obj/structure/spider/stickyweb,
+/obj/effect/spawner/random/mod/maint,
+/obj/effect/spawner/random/exotic/technology,
+/obj/effect/decal/cleanable/vomit,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -32
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"bX" = (
+/obj/structure/spider/stickyweb,
+/obj/machinery/door/airlock/external,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"dh" = (
+/obj/item/paper,
+/obj/effect/decal/cleanable/blood/drip,
+/mob/living/basic/spider/giant,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"fe" = (
+/obj/structure/bookcase/manuals/research_and_development,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"ji" = (
+/obj/effect/spawner/random/trash/garbage,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"jP" = (
+/obj/machinery/vending/hydroseeds,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"km" = (
+/obj/effect/spawner/random/entertainment/cigarette,
+/obj/effect/spawner/random/clothing/beret_or_rabbitears,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"kQ" = (
+/obj/effect/spawner/random/exotic/technology,
+/mob/living/basic/spider/giant/hunter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"li" = (
+/obj/effect/spawner/random/exotic/technology,
+/obj/structure/sign/warning/biohazard{
+	pixel_y = 32
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"lC" = (
+/obj/structure/chair/comfy/purp,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"mw" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"mB" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"nJ" = (
+/obj/effect/decal/cleanable/blood,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"ow" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"oU" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/barricade,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"qr" = (
+/obj/structure/chair/comfy/blue,
+/obj/item/pen,
+/obj/structure/spider/stickyweb,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"rP" = (
+/obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"sc" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"sL" = (
+/obj/structure/table,
+/obj/structure/spider/cocoon,
+/obj/item/stack/rods,
+/obj/effect/spawner/random/exotic/antag_gear_weak,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"yA" = (
+/obj/effect/spawner/random/maintenance,
+/obj/structure/spider/stickyweb,
+/obj/item/seeds/random,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"zN" = (
+/obj/structure/grille/broken,
+/obj/structure/spider/stickyweb,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"AK" = (
+/obj/effect/decal/cleanable/insectguts,
+/obj/effect/decal/cleanable/blood,
+/mob/living/basic/spider/giant,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"Bn" = (
+/obj/structure/spider/stickyweb,
+/obj/structure/spider/cocoon,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"BS" = (
+/obj/item/paper_bin,
+/obj/effect/spawner/random/trash/garbage,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"BZ" = (
+/obj/effect/spawner/random/exotic/technology,
+/obj/structure/spider/stickyweb,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"Ck" = (
+/obj/structure/sign/warning/biohazard,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"CZ" = (
+/obj/item/paper,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"DV" = (
+/obj/item/paper{
+	name = "полевой журнал: Гнездо в обломках станции";
+	 default_raw_text = "Объект: Гнездо в обломках станции. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	},
+/obj/structure/grille/broken,
+/obj/structure/spider/stickyweb,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/blood/drip,
+/mob/living/basic/spider/giant/nurse,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"GR" = (
+/obj/effect/decal/cleanable/insectguts,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"HI" = (
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"Is" = (
+/obj/structure/spider/stickyweb,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"Jy" = (
+/obj/machinery/door/airlock/external,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"JY" = (
+/obj/structure/grille/broken,
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"MQ" = (
+/obj/structure/spider/stickyweb,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"NW" = (
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"QS" = (
+/obj/effect/mob_spawn/corpse/human/doctor,
+/obj/effect/decal/cleanable/blood,
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"RQ" = (
+/obj/structure/table,
+/obj/item/pen,
+/obj/effect/spawner/random/maintenance,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"Tb" = (
+/obj/item/melee/baton/telescopic,
+/obj/item/seeds/random,
+/obj/effect/decal/cleanable/insectguts,
+/obj/structure/fireaxecabinet{
+	pixel_x = -32
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"TU" = (
+/obj/structure/spider/stickyweb,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"UG" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"UK" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/exotic/technology,
+/obj/item/paper,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"We" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"Xm" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/paper,
+/obj/effect/spawner/random/exotic/technology,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"Yk" = (
+/obj/structure/spider/stickyweb,
+/obj/item/paper,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+"ZC" = (
+/obj/structure/filingcabinet,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_spider_nest/exterior)
+
+(1,1,1) = {"
+aa
+sc
+sc
+sc
+sc
+sc
+sc
+sc
+ow
+"}
+(2,1,1) = {"
+sc
+sc
+jP
+Tb
+bW
+NW
+HI
+sc
+aa
+"}
+(3,1,1) = {"
+sc
+ZC
+CZ
+yA
+AK
+DV
+BZ
+sc
+aa
+"}
+(4,1,1) = {"
+oU
+sL
+qr
+km
+ji
+sc
+sc
+Ck
+nJ
+"}
+(5,1,1) = {"
+oU
+UK
+UG
+Xm
+TU
+Jy
+QS
+bX
+We
+"}
+(6,1,1) = {"
+oU
+RQ
+Yk
+Is
+lC
+sc
+sc
+sc
+li
+"}
+(7,1,1) = {"
+sc
+mw
+BS
+mB
+dh
+zN
+MQ
+sc
+GR
+"}
+(8,1,1) = {"
+sc
+sc
+fe
+kQ
+rP
+JY
+Bn
+sc
+ow
+"}
+(9,1,1) = {"
+ow
+sc
+sc
+sc
+sc
+sc
+sc
+sc
+aa
+"}

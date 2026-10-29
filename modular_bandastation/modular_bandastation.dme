@@ -45,6 +45,12 @@
 #include "emote_panel/_emote_panel.dme"
 #include "ert/_ert.dme"
 #include "examine_panel/_examine_panel.dme"
+// AI EDIT START - Shared and space expedition modules
+#include "overmap/_overmap.dme"
+#include "space_overmap/_space_overmap.dme"
+#include "expedition_science/_expedition_science.dme"
+#include "expedition_planets/_expedition_planets.dme"
+// AI EDIT END
 #include "food_and_drinks/_food_and_drinks.dme"
 #include "galactic_map/_galactic_map.dme"
 #include "gunhud/_gunhud.dme"

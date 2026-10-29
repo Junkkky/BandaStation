@@ -1,0 +1,5 @@
+// AI EDIT START - expedition science module integration
+#include "_expedition_science.dm"
+#include "code/specimens.dm"
+#include "code/equipment.dm"
+// AI EDIT END
