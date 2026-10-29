@@ -21,11 +21,11 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 1;
 	initialize_directions = 14
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -46,29 +46,29 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
 "bh" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 1;
 	initialize_directions = 14
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 11
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
 "bu" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 10;
 	initialize_directions = 10
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
 "bv" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 5;
 	initialize_directions = 5
 	},
@@ -97,11 +97,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "bM" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 6;
 	initialize_directions = 6
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/effect/turf_decal/tile/red,
@@ -130,7 +130,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "cx" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -161,18 +161,18 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "cM" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 5;
 	initialize_directions = 5
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "cP" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 5;
 	initialize_directions = 5
 	},
@@ -215,8 +215,8 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "dk" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2/expedition,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4/expedition,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "dl" = (
@@ -239,10 +239,10 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron,
@@ -271,7 +271,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
 "eo" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/machinery/airalarm{
@@ -318,11 +318,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "fC" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 6;
 	initialize_directions = 6
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 6;
 	initialize_directions = 6
 	},
@@ -366,22 +366,22 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "fS" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 8;
 	initialize_directions = 7
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	dir = 8;
 	initialize_directions = 7
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "gg" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 6;
 	initialize_directions = 6
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 6;
 	initialize_directions = 6
 	},
@@ -409,7 +409,7 @@
 /obj/machinery/computer/crew{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -435,7 +435,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "ht" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/item/radio/intercom{
@@ -509,7 +509,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
 "iH" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -522,11 +522,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "jv" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 6;
 	initialize_directions = 6
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 6;
 	initialize_directions = 6
 	},
@@ -534,7 +534,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "jD" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -542,18 +542,18 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
 "jU" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 9;
 	initialize_directions = 9
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 5;
 	initialize_directions = 5
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
 "jY" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /obj/machinery/light{
@@ -567,7 +567,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "kj" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	initialize_directions = 13
 	},
 /obj/effect/turf_decal/tile/neutral,
@@ -611,10 +611,10 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "kV" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	dir = 8;
 	initialize_directions = 7
 	},
@@ -639,18 +639,18 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "ls" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 11
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 10;
 	initialize_directions = 10
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "lz" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 9;
 	initialize_directions = 9
 	},
@@ -667,22 +667,22 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
 "lI" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 5;
 	initialize_directions = 5
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "mr" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 1;
 	initialize_directions = 14
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 9;
 	initialize_directions = 9
 	},
@@ -692,7 +692,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 5;
 	initialize_directions = 5
 	},
@@ -701,10 +701,10 @@
 "mC" = (
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/effect/turf_decal/tile/yellow,
@@ -716,11 +716,11 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/door/airlock,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -741,7 +741,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 9;
 	initialize_directions = 9
 	},
@@ -751,7 +751,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
 "mU" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/machinery/button/door{
@@ -790,7 +790,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
 "nF" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/structure/chair{
@@ -805,11 +805,11 @@
 "oa" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -817,7 +817,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "oj" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron/white,
@@ -861,10 +861,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 9;
 	initialize_directions = 9
 	},
@@ -875,7 +875,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
 "py" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/machinery/button/door{
@@ -928,11 +928,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "rL" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4/expedition,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
 "rX" = (
@@ -979,7 +979,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "sE" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -1040,10 +1040,10 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron,
@@ -1067,7 +1067,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "uS" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 6;
 	initialize_directions = 6
 	},
@@ -1078,7 +1078,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "vv" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/machinery/light{
@@ -1096,7 +1096,7 @@
 "vI" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/light,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 5;
 	initialize_directions = 5
 	},
@@ -1105,10 +1105,10 @@
 "vN" = (
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/machinery/door/airlock,
@@ -1118,11 +1118,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1142,7 +1142,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 5;
 	initialize_directions = 5
 	},
@@ -1191,11 +1191,11 @@
 "wU" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 5;
 	initialize_directions = 5
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 5;
 	initialize_directions = 5
 	},
@@ -1216,7 +1216,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "xd" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron/white,
@@ -1228,7 +1228,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
 "xv" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 11
 	},
@@ -1237,17 +1237,17 @@
 "yd" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	initialize_directions = 13
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "ye" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 9;
 	initialize_directions = 9
 	},
@@ -1255,11 +1255,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
 "yi" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1296,7 +1296,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "yX" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	dir = 8;
 	initialize_directions = 7
 	},
@@ -1364,11 +1364,11 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
 "Ab" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1379,11 +1379,11 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "Ag" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 9;
 	initialize_directions = 9
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 9;
 	initialize_directions = 9
 	},
@@ -1392,11 +1392,11 @@
 "AD" = (
 /obj/machinery/door/airlock,
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1422,11 +1422,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "Bk" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1459,16 +1459,16 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "BN" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
 "BT" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
@@ -1476,11 +1476,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "BV" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1506,11 +1506,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "CU" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1530,11 +1530,11 @@
 /turf/closed/wall,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "DQ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -1580,7 +1580,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
 "EQ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1614,7 +1614,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "Fo" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron,
@@ -1627,7 +1627,7 @@
 	id = "exp_sierra_oldlab_main";
 	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible{
 	dir = 4;
 	initialize_directions = 11
 	},
@@ -1637,18 +1637,18 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "FI" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/structure/extinguisher_cabinet{
@@ -1657,11 +1657,11 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
 "FK" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1695,11 +1695,11 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
 "Gr" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 9;
 	initialize_directions = 9
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 9;
 	initialize_directions = 9
 	},
@@ -1711,10 +1711,10 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "Gu" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron,
@@ -1728,7 +1728,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "GE" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1737,11 +1737,11 @@
 "GF" = (
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1762,7 +1762,7 @@
 "Hm" = (
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/machinery/door/airlock,
@@ -1794,17 +1794,17 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 9;
 	initialize_directions = 9
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "HI" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/effect/turf_decal/tile/red,
@@ -1832,11 +1832,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "Ib" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 9;
 	initialize_directions = 9
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 9;
 	initialize_directions = 9
 	},
@@ -1856,9 +1856,9 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "Iy" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2/expedition,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /obj/effect/spawner/random/exotic/technology,
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	initialize_directions = 13
 	},
 /turf/open/floor/iron,
@@ -1871,21 +1871,21 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "II" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	dir = 1;
 	initialize_directions = 14
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
 "IW" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
 /obj/machinery/door/airlock{
 	name = "Shower"
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1897,10 +1897,10 @@
 "Ju" = (
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/effect/turf_decal/tile/yellow,
@@ -1953,7 +1953,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "JY" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron,
@@ -1962,7 +1962,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 6;
 	initialize_directions = 6
 	},
@@ -2003,7 +2003,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible{
 	dir = 4;
 	initialize_directions = 11
 	},
@@ -2025,11 +2025,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "Mb" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 6;
 	initialize_directions = 6
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	initialize_directions = 13
 	},
 /turf/open/floor/iron/white,
@@ -2051,11 +2051,11 @@
 /obj/machinery/power/terminal{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -2081,11 +2081,11 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 10;
 	initialize_directions = 10
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -2098,7 +2098,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
 "Nk" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	initialize_directions = 3
 	},
 /obj/machinery/door/airlock/external{
@@ -2135,7 +2135,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
 "NS" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	dir = 8;
 	initialize_directions = 7
 	},
@@ -2155,11 +2155,11 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
 "Ov" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 8;
 	initialize_directions = 7
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -2167,11 +2167,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
 "OD" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -2203,7 +2203,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "Pf" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -2219,11 +2219,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
 "Pk" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 6;
 	initialize_directions = 6
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 5;
 	initialize_directions = 5
 	},
@@ -2243,14 +2243,14 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "PK" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "PN" = (
 /obj/machinery/door/airlock,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron,
@@ -2265,10 +2265,10 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "QT" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron,
@@ -2287,7 +2287,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "Ro" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron,
@@ -2362,11 +2362,11 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
 "SY" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 10;
 	initialize_directions = 10
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -2377,7 +2377,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "To" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/effect/turf_decal/tile/blue{
@@ -2426,11 +2426,11 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -2441,7 +2441,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "TK" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron,
@@ -2455,7 +2455,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "Uf" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/effect/turf_decal/tile/blue{
@@ -2475,8 +2475,8 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
 "Uk" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2/expedition,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -2497,10 +2497,10 @@
 	 default_raw_text = "Объект: Лаборатория с нарушенным карантином. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron,
@@ -2509,18 +2509,18 @@
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "VI" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 6;
 	initialize_directions = 6
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
 "VU" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -2529,7 +2529,7 @@
 "Wa" = (
 /obj/structure/cable,
 /obj/structure/chair/stool,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 9;
 	initialize_directions = 9
 	},
@@ -2555,21 +2555,21 @@
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
 "Ws" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 9;
 	initialize_directions = 9
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/xenobio)
 "Wy" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 5;
 	initialize_directions = 5
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
 "WD" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -2594,11 +2594,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
 "Xw" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 1;
 	initialize_directions = 14
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -2631,7 +2631,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "XM" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -2659,14 +2659,14 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "YC" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	initialize_directions = 13
 	},
 /obj/machinery/airalarm{
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	initialize_directions = 13
 	},
 /obj/effect/turf_decal/tile/red,
@@ -2687,7 +2687,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/chem)
 "YU" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -2705,11 +2705,11 @@
 "ZA" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},

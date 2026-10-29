@@ -28,7 +28,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
 "eZ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
 	dir = 9;
 	initialize_directions = 9
 	},
@@ -139,7 +139,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
 "mf" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -482,14 +482,14 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
 "MQ" = (
 /obj/item/shard,
-/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible{
 	dir = 8;
 	initialize_directions = 7
 	},
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
 "MX" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden{
 	dir = 4;
 	initialize_directions = 11
 	},

@@ -7,5 +7,4 @@
 #include "code/ruins.dm"
 #include "code/ruin_catalog.dm"
 #include "code/ruin_areas.dm"
-#include "code/pipes.dm"
 // AI EDIT END

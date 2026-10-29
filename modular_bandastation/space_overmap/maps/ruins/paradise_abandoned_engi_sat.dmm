@@ -365,7 +365,7 @@
 	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
 	},
 /obj/machinery/door/airlock/external/glass,
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1129,7 +1129,7 @@
 /obj/structure/sign/warning/biohazard{
 	pixel_y = -32
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
 	dir = 4;
 	initialize_directions = 12
 	},

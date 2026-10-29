@@ -272,7 +272,7 @@
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_void_nuclear_dump/space/nearstation)
 "rd" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden{
 	initialize_directions = 13
 	},
 /turf/open/floor/vault,

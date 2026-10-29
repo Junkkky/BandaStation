@@ -12,18 +12,18 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "eF" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/visible/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/visible/layer2{
 	initialize_directions = 13
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engineering)
 "eM" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 11
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	dir = 8;
 	initialize_directions = 7
 	},
@@ -36,11 +36,11 @@
 "eO" = (
 /obj/effect/turf_decal/tile/yellow,
 /obj/machinery/light/small/red,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -79,11 +79,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/crew)
 "fV" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -105,7 +105,7 @@
 "hc" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/handrail,
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -221,11 +221,11 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/cryo)
 "ka" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -233,7 +233,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/cryo)
 "kX" = (
 /obj/structure/chair,
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -241,7 +241,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engineering)
 "lt" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -250,11 +250,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "lC" = (
 /obj/machinery/door/airlock/external,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -285,17 +285,17 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "lW" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/item/circular_saw,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "mi" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /obj/structure/cable,
@@ -309,8 +309,8 @@
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/cryo)
 "mm" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4/expedition,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2/expedition,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /obj/structure/cable,
 /obj/structure/chair/stool,
 /turf/open/floor/iron,
@@ -370,11 +370,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "oR" = (
 /obj/machinery/door/airlock/external,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -417,7 +417,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "qy" = (
 /obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 9;
 	initialize_directions = 9
 	},
@@ -432,10 +432,10 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "qC" = (
 /obj/machinery/door/airlock,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /obj/structure/cable,
@@ -448,11 +448,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "qI" = (
 /obj/machinery/door/airlock,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -471,11 +471,11 @@
 "rh" = (
 /obj/effect/turf_decal/tile/yellow,
 /obj/machinery/light/small/red,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -493,7 +493,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "rt" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -509,7 +509,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 5;
 	initialize_directions = 5
 	},
@@ -536,10 +536,10 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "sS" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible/layer4{
 	initialize_directions = 13
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /obj/structure/cable,
@@ -553,11 +553,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engineering)
 "tv" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 5;
 	initialize_directions = 5
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 6;
 	initialize_directions = 6
 	},
@@ -567,7 +567,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "tx" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 6;
 	initialize_directions = 6
 	},
@@ -575,10 +575,10 @@
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "tB" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /obj/structure/cable,
@@ -589,10 +589,10 @@
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "tL" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	initialize_directions = 13
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 1;
 	initialize_directions = 14
 	},
@@ -663,13 +663,13 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/crew)
 "vv" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "vz" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	initialize_directions = 3
 	},
 /turf/template_noop,
@@ -686,11 +686,11 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -707,11 +707,11 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -719,7 +719,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "xn" = (
 /obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 5;
 	initialize_directions = 5
 	},
@@ -728,7 +728,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "xx" = (
 /obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -736,7 +736,7 @@
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "xH" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /obj/structure/cable,
@@ -767,11 +767,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "yI" = (
 /obj/machinery/door/airlock,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -808,7 +808,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "zD" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /turf/open/floor/iron/white,
@@ -833,11 +833,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -850,7 +850,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "AG" = (
 /obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	initialize_directions = 3
 	},
 /obj/effect/decal/cleanable/ash,
@@ -858,7 +858,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "AV" = (
 /obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 6;
 	initialize_directions = 6
 	},
@@ -894,10 +894,10 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "BE" = (
 /obj/machinery/door/airlock,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /obj/structure/cable,
@@ -934,10 +934,10 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/cryo)
 "De" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -959,7 +959,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/crew)
 "DN" = (
 /obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	initialize_directions = 3
 	},
 /obj/effect/decal/cleanable/ash,
@@ -1033,7 +1033,7 @@
 	name = "полевой журнал: Старый экспедиционный корабль";
 	 default_raw_text = "Объект: Старый экспедиционный корабль. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 6;
 	initialize_directions = 6
 	},
@@ -1075,7 +1075,7 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/cryo)
 "Gy" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1084,7 +1084,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/exterior)
 "GH" = (
 /obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -1093,10 +1093,10 @@
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "He" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /obj/structure/cable,
@@ -1150,7 +1150,7 @@
 "Kf" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/handrail,
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 6;
 	initialize_directions = 6
 	},
@@ -1171,11 +1171,11 @@
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
 "KR" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 11
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 8;
 	initialize_directions = 7
 	},
@@ -1184,7 +1184,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/crew)
 "KZ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1244,17 +1244,17 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "Md" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engineering)
 "Mn" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
 	},
 /obj/machinery/hydroponics{
@@ -1280,7 +1280,7 @@
 /obj/structure/sign/warning/electric_shock{
 	name = "improper OXYGEN"
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1297,11 +1297,11 @@
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/cryo)
 "PQ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1309,11 +1309,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/crew)
 "Qb" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1362,7 +1362,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/crew)
 "Rl" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1434,7 +1434,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engineering)
 "TD" = (
 /obj/machinery/door/airlock/external,
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1442,11 +1442,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engineering)
 "TM" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 9;
 	initialize_directions = 9
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 10;
 	initialize_directions = 10
 	},
@@ -1521,7 +1521,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible{
 	dir = 4;
 	initialize_directions = 11
 	},
@@ -1533,7 +1533,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engineering)
 "Vz" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1565,10 +1565,10 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/cryo)
 "VO" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	initialize_directions = 13
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 1;
 	initialize_directions = 14
 	},
@@ -1616,11 +1616,11 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1653,10 +1653,10 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "Yz" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
 	initialize_directions = 13
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
 	dir = 1;
 	initialize_directions = 14
 	},
@@ -1685,11 +1685,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "Zi" = (
 /obj/machinery/door/airlock/external,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
@@ -1698,11 +1698,11 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/science)
 "Zv" = (
 /obj/item/soap,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
 	initialize_directions = 12
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2/expedition{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 4;
 	initialize_directions = 12
 	},
