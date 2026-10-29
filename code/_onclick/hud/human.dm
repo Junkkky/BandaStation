@@ -172,13 +172,25 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	slot_id = ITEM_SLOT_EYES
 	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
 
-/datum/inventory_slot/human/ears
-	name = "ears"
+// AI EDIT START - Separate ear slots
+// BANDASTATION EDIT START - Separate ear slots
+/datum/inventory_slot/human/ear_right
+	name = "ear_right"
 	icon_state = "ears"
 	icon_full = "template"
-	screen_loc = ui_ears
-	slot_id = ITEM_SLOT_EARS
+	screen_loc = ui_ear_right
+	slot_id = ITEM_SLOT_EAR_RIGHT
 	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
+
+/datum/inventory_slot/human/ear_left
+	name = "ear_left"
+	icon_state = "ears"
+	icon_full = "template"
+	screen_loc = ui_ear_left
+	slot_id = ITEM_SLOT_EAR_LEFT
+	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
+// BANDASTATION EDIT END
+// AI EDIT END
 
 /datum/inventory_slot/human/head
 	name = "head"

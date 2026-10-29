@@ -32,8 +32,16 @@
 #define ITEM_SLOT_GLOVES (1<<2)
 /// Glasses slot
 #define ITEM_SLOT_EYES (1<<3)
-/// Ear slot (radios, earmuffs)
-#define ITEM_SLOT_EARS (1<<4)
+// AI EDIT START - Separate ear slots
+// BANDASTATION EDIT START - Separate ear slots
+/// Right ear slot (radios, earmuffs); retains the original ear slot bit.
+#define ITEM_SLOT_EAR_RIGHT (1<<4)
+/// Left ear slot.
+#define ITEM_SLOT_EAR_LEFT (1<<21)
+/// Items wearable on either ear.
+#define ITEM_SLOT_EARS (ITEM_SLOT_EAR_RIGHT|ITEM_SLOT_EAR_LEFT)
+// BANDASTATION EDIT END
+// AI EDIT END
 /// Mask slot
 #define ITEM_SLOT_MASK (1<<5)
 /// Head slot (helmets, hats, etc.)
@@ -69,7 +77,9 @@
 // BANDASTATION ADDITION END
 
 /// Total amount of slots
-#define SLOTS_AMT 22 // Keep this up to date! // BANDASTATION EDIT - Removable underclothing
+// AI EDIT START - Removable underclothing and separate ear slots
+#define SLOTS_AMT 23 // Keep this up to date! // BANDASTATION EDIT - Removable underclothing and separate ear slots
+// AI EDIT END
 
 ///Inventory slots that can be blacklisted by a species from being equipped into
 DEFINE_BITFIELD(no_equip_flags, list(

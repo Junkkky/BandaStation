@@ -16,15 +16,42 @@
 	return items
 
 /mob/living/carbon/human/can_equip(obj/item/equip_target, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE, ignore_equipped = FALSE, indirect_action = FALSE)
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_EQUIPPING_ITEM, equip_target, slot) == COMPONENT_BLOCK_EQUIP)
+	// AI EDIT START - Validate multi-slot equip candidates before equip delays
+	// BANDASTATION ADDITION START - Signal-based equip checks before and after equip delays
+	if(QDELETED(src) || QDELETED(equip_target))
 		return FALSE
+	// BANDASTATION ADDITION END
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_EQUIPPING_ITEM, equip_target, slot) & COMPONENT_BLOCK_EQUIP)
+		return FALSE
+	// BANDASTATION ADDITION START - Let the candidate validate all required slots, even when dressing another mob.
+	if(SEND_SIGNAL(equip_target, COMSIG_ITEM_EQUIP_CHECK, src, slot) & COMPONENT_BLOCK_EQUIP)
+		return FALSE
+	// BANDASTATION ADDITION END
+	// AI EDIT END
 	if(HAS_TRAIT(equip_target, TRAIT_NODROP) && is_holding(equip_target))
 		if(!disable_warning)
 			to_chat(src, span_warning("[equip_target] won't budge, it's impossible to put it on!"))
 		return FALSE
-	return dna.species.can_equip(equip_target, slot, disable_warning, src, bypass_equip_delay_self, ignore_equipped, indirect_action)
+	// AI EDIT START - Recheck equip requirements after possible delays
+	// BANDASTATION EDIT START - Revalidate generic equip signals after the species' possible do_after.
+	if(!dna.species.can_equip(equip_target, slot, disable_warning, src, bypass_equip_delay_self, ignore_equipped, indirect_action))
+		return FALSE
+	if(QDELETED(src) || QDELETED(equip_target))
+		return FALSE
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_EQUIPPING_ITEM, equip_target, slot) & COMPONENT_BLOCK_EQUIP)
+		return FALSE
+	return !(SEND_SIGNAL(equip_target, COMSIG_ITEM_EQUIP_CHECK, src, slot) & COMPONENT_BLOCK_EQUIP)
+	// BANDASTATION EDIT END
+	// AI EDIT END
 
 /mob/living/carbon/human/get_item_by_slot(slot_id)
+	// AI EDIT START - Resolve items reserving secondary clothing slots
+	// BANDASTATION ADDITION START - Clothing occupying multiple inventory slots
+	var/obj/item/reserving_item = LAZYACCESS(occupied_clothing_slots, "[slot_id]")
+	if(reserving_item)
+		return reserving_item
+	// BANDASTATION ADDITION END
+	// AI EDIT END
 	switch(slot_id)
 		// BANDASTATION ADDITION START - Removable underclothing
 		if(ITEM_SLOT_UNDERWEAR)
@@ -40,8 +67,14 @@
 			return belt
 		if(ITEM_SLOT_ID)
 			return wear_id
-		if(ITEM_SLOT_EARS)
-			return ears
+		// AI EDIT START - Resolve the item in either ear slot
+		// BANDASTATION EDIT START - Separate ear slots
+		if(ITEM_SLOT_EAR_RIGHT)
+			return ear_right
+		if(ITEM_SLOT_EAR_LEFT)
+			return ear_left
+		// BANDASTATION EDIT END
+		// AI EDIT END
 		if(ITEM_SLOT_EYES)
 			return glasses
 		if(ITEM_SLOT_GLOVES)
@@ -81,8 +114,14 @@
 	if(looking_for == wear_id)
 		return ITEM_SLOT_ID
 
-	if(looking_for == ears)
-		return ITEM_SLOT_EARS
+	// AI EDIT START - Identify the equipped ear slot
+	// BANDASTATION EDIT START - Separate ear slots
+	if(looking_for == ear_right)
+		return ITEM_SLOT_EAR_RIGHT
+	if(looking_for == ear_left)
+		return ITEM_SLOT_EAR_LEFT
+	// BANDASTATION EDIT END
+	// AI EDIT END
 
 	if(looking_for == glasses)
 		return ITEM_SLOT_EYES
@@ -162,11 +201,20 @@
 			wear_id = equipping
 			update_ID_card()
 			update_worn_id()
-		if(ITEM_SLOT_EARS)
-			if(ears)
+		// AI EDIT START - Support independent left and right ear slots
+		// BANDASTATION EDIT START - Separate ear slots
+		if(ITEM_SLOT_EAR_RIGHT)
+			if(ear_right)
 				return
-			ears = equipping
+			ear_right = equipping
 			update_worn_ears()
+		if(ITEM_SLOT_EAR_LEFT)
+			if(ear_left)
+				return
+			ear_left = equipping
+			update_worn_ears()
+		// BANDASTATION EDIT END
+		// AI EDIT END
 		if(ITEM_SLOT_EYES)
 			if(glasses)
 				return
@@ -287,10 +335,18 @@
 		glasses = null
 		if(!QDELETED(src))
 			update_worn_glasses()
-	else if(item_dropping == ears)
-		ears = null
+	// AI EDIT START - Drop each ear item independently
+	// BANDASTATION EDIT START - Separate ear slots
+	else if(item_dropping == ear_right)
+		ear_right = null
 		if(!QDELETED(src))
 			update_worn_ears()
+	else if(item_dropping == ear_left)
+		ear_left = null
+		if(!QDELETED(src))
+			update_worn_ears()
+	// BANDASTATION EDIT END
+	// AI EDIT END
 	else if(item_dropping == shoes)
 		shoes = null
 		if(!QDELETED(src))

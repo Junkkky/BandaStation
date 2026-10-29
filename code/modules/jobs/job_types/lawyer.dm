@@ -37,7 +37,9 @@
 	uniform = /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
 	suit = /obj/item/clothing/suit/toggle/lawyer
 	belt = /obj/item/modular_computer/pda/crew/lawyer
-	ears = /obj/item/radio/headset/headset_srvsec
+	// AI EDIT START - Support independent left and right ear slots
+	ear_right = /obj/item/radio/headset/headset_srvsec // BANDASTATION EDIT - Dual ear slots
+	// AI EDIT END
 	shoes = /obj/item/clothing/shoes/laceup
 	neck = /obj/item/clothing/neck/tie/red/tied
 	l_pocket = /obj/item/laser_pointer/red

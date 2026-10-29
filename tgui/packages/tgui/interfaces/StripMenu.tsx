@@ -173,11 +173,23 @@ const SLOTS: Record<string, StripSlot> = {
     image: 'inventory-collar.png',
   },
 
-  ears: {
-    displayName: 'earwear',
+  // AI EDIT START - Show the right and left ear inventory slots
+  // BANDASTATION EDIT START - Separate ear slots
+  ear_right: {
+    displayName: 'правое ухо',
     gridSpot: getGridSpotKey([0, 2]),
     image: 'inventory-ears.png',
+    additionalComponent: <CornerText align="left">R</CornerText>,
   },
+
+  ear_left: {
+    displayName: 'левое ухо',
+    gridSpot: getGridSpotKey([0, 4]),
+    image: 'inventory-ears.png',
+    additionalComponent: <CornerText align="right">L</CornerText>,
+  },
+  // BANDASTATION EDIT END
+  // AI EDIT END
 
   parrot_headset: {
     displayName: 'headset',
@@ -317,6 +329,9 @@ type StripMenuItem =
           icon: string;
           name: string;
           obscured: ObscuringLevel;
+          // AI EDIT START - Mark secondary occupied inventory slots
+          secondary_slot?: BooleanLike; // BANDASTATION ADDITION - Multi-slot clothing
+          // AI EDIT END
         } & AlternateActions)
       | ({
           obscured: ObscuringLevel;
@@ -379,6 +394,9 @@ export const StripMenu = (props) => {
                         height="64px"
                         style={{
                           verticalAlign: 'middle',
+                          // AI EDIT START - Fade secondary occupied inventory slots
+                          opacity: item.secondary_slot ? 0.5 : 1, // BANDASTATION ADDITION - Multi-slot clothing
+                          // AI EDIT END
                         }}
                       />
                     );

@@ -9,7 +9,9 @@
 	id = /obj/item/card/id/advanced/nanotrasen_official
 	id_trim = /datum/id_trim/job/blueshield
 	shoes = /obj/item/clothing/shoes/jackboots
-	ears = /obj/item/radio/headset/blueshield/alt
+	// AI EDIT START - Use the right ear slot for existing equipment
+	ear_right = /obj/item/radio/headset/blueshield/alt
+	// AI EDIT END
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	implants = list(/obj/item/implant/mindshield)
 

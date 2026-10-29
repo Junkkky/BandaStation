@@ -462,6 +462,17 @@
 
 #include "../../../modular_bandastation/bug_reports/tests/bug_reports_test.dm" // BANDASTATION ADDITION - In-game bug reports
 
+// AI EDIT START - Separate ear slots
+// BANDASTATION ADDITION START - Separate ear slots
+#include "../../../modular_bandastation/dual_ears/code/inventory_tests.dm"
+#include "../../../modular_bandastation/dual_ears/code/radio_tests.dm"
+#include "../../../modular_bandastation/dual_ears/code/appearance_tests.dm"
+#include "../../../modular_bandastation/dual_ears/code/mannequin_tests.dm"
+#include "../../../modular_bandastation/dual_ears/code/multi_slot_tests.dm"
+#include "../../../modular_bandastation/dual_ears/code/multi_slot_hud_tests.dm"
+// BANDASTATION ADDITION END
+// AI EDIT END
+
 #include "../../../modular_bandastation/weapon/code/ranged/weapon_choice_tests.dm" // BANDASTATION ADDITION - HoS and Blueshield sidearms
 
 #include "../../../modular_bandastation/underclothing/code/tests.dm" // BANDASTATION ADDITION - Removable underclothing
