@@ -113,6 +113,7 @@
 		return FALSE
 	if(direction && !helm_engaged && !sail())
 		return FALSE
+	command_course(ordered_course)
 	maneuver_direction = direction
 	return TRUE
 

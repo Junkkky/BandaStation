@@ -264,12 +264,11 @@
 	visual_source = null
 	return ..()
 
-/obj/effect/abstract/stationtrauma_map_projection/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(!istype(tool, /obj/item/gun) || QDELETED(visual_source) || !user.Adjacent(src) || !user.is_holding(tool))
-		return ..()
-	// An adjacent image is still a ranged target, rather than an object to pistol-whip.
-	var/obj/item/gun/gun = tool
-	return gun.fire_gun(src, user, FALSE, list2params(modifiers)) || ITEM_INTERACT_BLOCKING
+/** Keep native weapon checks; a nearby image still represents a remote ranged target. */
+/obj/item/gun/fire_gun(atom/target, mob/living/user, flag, params)
+	if(istype(target, /obj/effect/abstract/stationtrauma_map_projection))
+		flag = FALSE
+	return ..()
 
 /** Never change the real actor's filters or its native immersion relay. */
 /obj/effect/abstract/stationtrauma_map_projection/proc/update_visual(atom/actor)
