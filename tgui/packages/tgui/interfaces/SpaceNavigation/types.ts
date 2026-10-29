@@ -43,6 +43,9 @@ export type NavigationData = Position & {
   braking_distance: number | null;
   engines: number;
   engines_running: BooleanLike;
+  engine_phase: string | null;
+  engine_fault: BooleanLike;
+  can_start_engines: BooleanLike;
   helm: BooleanLike;
   autopilot: BooleanLike;
   preparing: BooleanLike;

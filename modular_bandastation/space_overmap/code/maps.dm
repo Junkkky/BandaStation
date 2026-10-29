@@ -68,6 +68,8 @@
 	var/dispatchable = FALSE
 	/// Crew main-engine switch; propulsion requires this and intact engines.
 	var/engines_running = FALSE
+	/// Mapped combustion controller; ordinary ships keep their existing propulsion model.
+	var/datum/weakref/combustion_controller
 	/// Mapper-declared role; physical berth compatibility still uses the actual hull dimensions.
 	var/ship_class = ST_SHIP_MEDIUM
 	/// Whether this hull may use planetary surface berths.
@@ -83,12 +85,21 @@
 		return !site.landing && !site.physical_docking
 	return (ship_class == ST_SHIP_SMALL || ship_class == ST_SHIP_MEDIUM) && (!site.landing || can_land)
 
+/** Pair receivers after the native pass has registered every nozzle, regardless of map order. */
+/obj/docking_port/mobile/stationtrauma_space/linkup(obj/docking_port/stationary/dock)
+	. = ..()
+	var/obj/machinery/computer/ship_combustion/chamber = combustion_controller?.resolve()
+	chamber?.bind_propulsion()
+
 /obj/docking_port/mobile/stationtrauma_space/Destroy(force)
 	if(!force)
 		return QDEL_HINT_LETMELIVE
 	for(var/obj/machinery/computer/stationtrauma_transponder/device as anything in transponders)
 		device.vessel = null
 	transponders.Cut()
+	var/obj/machinery/computer/ship_combustion/chamber = combustion_controller?.resolve()
+	chamber?.stop_chamber("Потеря связи с кораблём")
+	combustion_controller = null
 	QDEL_NULL(overmap)
 	return ..()
 

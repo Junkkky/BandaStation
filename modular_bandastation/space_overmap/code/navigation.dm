@@ -87,7 +87,11 @@
 	var/power = 0
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
 		if(!QDELETED(engine) && engine.anchored && engine.engine_state == initial(engine.engine_state) && !(engine.machine_stat & BROKEN) && engine.get_integrity() > 0)
-			power += engine.engine_power
+			if(engine.requires_combustion)
+				var/obj/machinery/atmospherics/components/unary/ship_engine_heater/feed = engine.combustion_feed?.resolve()
+				power += engine.engine_power * (feed?.propulsion_fraction() || 0)
+			else
+				power += engine.engine_power
 	return clamp(power / max(1, vessel.initial_engine_power), 0, 1)
 
 /datum/stationtrauma_overmap/space/propulsion_available()

@@ -4,6 +4,13 @@
 #define ST_SPACE_DOCK_SPEED 0.5
 #define ST_SPACE_DOCK_REQUEST_TIME (30 SECONDS)
 #define COMSIG_AREA_SPACE_PARALLAX_CHANGED "area_space_parallax_changed"
+#define SHIP_CHAMBER_OFF "off"
+#define SHIP_CHAMBER_STARTING "starting"
+#define SHIP_CHAMBER_RUNNING "running"
+#define SHIP_CHAMBER_PURGING "purging"
+#define SHIP_CHAMBER_LOCKED "locked"
+/// Nominal hot-gas temperature required for full nozzle power and a completed warm-up.
+#define SHIP_ENGINE_OPERATING_TEMPERATURE 1000
 
 /** Registers the space overmap module and its compile-time dependencies. */
 /datum/modpack/space_overmap

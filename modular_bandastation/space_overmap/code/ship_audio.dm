@@ -60,12 +60,20 @@
 
 /** Switch main propulsion without erasing drift. */
 /datum/stationtrauma_overmap/space/proc/set_engines_running(enabled)
-	if(!(enabled in list(FALSE, TRUE)) || !is_operational() || preparing || relocating || (enabled && engine_fraction() <= 0))
+	if(!(enabled in list(FALSE, TRUE)) || !is_operational() || (enabled && (preparing || relocating)))
 		return FALSE
 	if(vessel.engines_running == enabled)
 		return TRUE
+	var/obj/machinery/computer/ship_combustion/chamber = vessel.combustion_controller?.resolve()
+	if(enabled)
+		if(chamber)
+			if(chamber.phase != SHIP_CHAMBER_STARTING && chamber.phase != SHIP_CHAMBER_RUNNING && !chamber.start_chamber())
+				return FALSE
+		else if(engine_fraction() <= 0)
+			return FALSE
 	vessel.engines_running = enabled
 	if(!enabled)
+		chamber?.stop_chamber()
 		command_course(ordered_course)
 		throttle = 0
 		braking = FALSE
@@ -78,7 +86,8 @@
 /datum/stationtrauma_overmap/space/proc/refresh_engine_audio()
 	if(!engine_audio)
 		return
-	if(!vessel.engines_running || engine_fraction() <= 0)
+	var/obj/machinery/computer/ship_combustion/chamber = vessel.combustion_controller?.resolve()
+	if(!vessel.engines_running || (engine_fraction() <= 0 && chamber?.phase != SHIP_CHAMBER_STARTING))
 		engine_audio.stop()
 		return
 	var/new_volume = docked || speed <= 0.05 ? 10 : 25

@@ -10,6 +10,8 @@
 #include "code/sectors.dm"
 #include "code/navigation.dm"
 #include "code/ship_audio.dm"
+#include "code/combustion.dm"
+#include "code/propulsion.dm"
 #include "code/ship_docking.dm"
 #include "code/bluespace.dm"
 #include "code/encounters.dm"

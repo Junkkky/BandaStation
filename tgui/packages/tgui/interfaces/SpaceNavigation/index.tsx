@@ -1,6 +1,6 @@
 // AI EDIT START - Ship navigation console in the existing CRT instrument style
 import { useState } from 'react';
-import { Button, DraggableControl } from 'tgui-core/components';
+import { Button, DraggableControl, Icon } from 'tgui-core/components';
 
 import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
@@ -222,13 +222,25 @@ function Navigation({ data }: { data: NavigationData }) {
                   disabled={
                     data.preparing ||
                     data.relocating ||
-                    (!data.engines_running && data.engines <= 0)
+                    (!data.engines_running && !data.can_start_engines)
                   }
                   onClick={() =>
                     act('engine', { value: data.engines_running ? 0 : 1 })
                   }
                 />
-                <span>ДВИГАТЕЛИ {data.engines_running ? 'ВКЛ' : 'ВЫКЛ'}</span>
+                <Icon
+                  name="circle"
+                  color={data.engine_fault ? 'bad' : 'good'}
+                />
+                <span>
+                  {data.engine_fault
+                    ? 'НЕИСПРАВНОСТЬ'
+                    : data.engine_phase === 'starting'
+                      ? 'РОЗЖИГ'
+                      : data.engine_phase === 'purging'
+                        ? 'ПРОДУВКА'
+                        : `ДВИГАТЕЛИ ${data.engines_running ? 'ВКЛ' : 'ВЫКЛ'}`}
+                </span>
               </div>
               <div
                 className="SpaceNavigation__maneuvers"

@@ -26,6 +26,18 @@
 	var/datum/stationtrauma_overmap/space/map = vessel?.overmap
 	if(!map)
 		return list()
+	var/obj/machinery/computer/ship_combustion/chamber = vessel.combustion_controller?.resolve()
+	var/engine_fraction = map.engine_fraction()
+	var/engine_fault = chamber ? !!(chamber.fault || chamber.equipment_fault()) : engine_fraction <= 0
+	if(chamber?.phase == SHIP_CHAMBER_RUNNING && !engine_fault)
+		engine_fault = engine_fraction <= 0 || vessel.current_engine_power < vessel.initial_engine_power
+		for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
+			if(engine_fault)
+				break
+			if(!engine.requires_combustion)
+				continue
+			var/obj/machinery/atmospherics/components/unary/ship_engine_heater/feed = engine.combustion_feed?.resolve()
+			engine_fault = !feed || !!feed.unavailable_reason()
 	var/datum/stationtrauma_overmap_sector/space/sector = map.sector
 	var/datum/stationtrauma_overmap_site/space/target = map.sites[map.selected_destination]
 	var/distance = target ? map.distance_to(target) : 0
@@ -42,8 +54,11 @@
 		"speed" = map.speed, "throttle" = map.throttle,
 		"maneuver_direction" = map.maneuver_direction,
 		"braking" = map.braking, "braking_distance" = map.get_braking_distance(),
-		"engines" = round(map.engine_fraction() * 100),
+		"engines" = round(engine_fraction * 100),
 		"engines_running" = vessel.engines_running,
+		"engine_phase" = chamber?.phase,
+		"engine_fault" = engine_fault,
+		"can_start_engines" = chamber ? (chamber.phase != SHIP_CHAMBER_PURGING && chamber.phase != SHIP_CHAMBER_LOCKED && !chamber.fault && !chamber.equipment_fault()) : engine_fraction > 0,
 		"helm" = map.helm_engaged, "autopilot" = map.autopilot,
 		"preparing" = map.preparing, "planning" = map.planning,
 		"relocating" = map.relocating, "landed" = !!map.docked?.landing,
