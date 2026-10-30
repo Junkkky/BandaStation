@@ -309,6 +309,7 @@
 #include "organs.dm"
 #include "orphaned_genturf.dm"
 #include "outfit_sanity.dm"
+#include "overmap_docking.dm"
 #include "overmap_passage.dm"
 #include "overmap_preview.dm"
 #include "oxyloss_suffocation.dm"

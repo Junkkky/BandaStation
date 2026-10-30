@@ -70,10 +70,31 @@
 /** Service departure from a shared bay: no propulsion, fuel or helm order; the hull keeps its virtual position. */
 /datum/stationtrauma_overmap/space/proc/yield_station_bay()
 	var/datum/stationtrauma_overmap_site/space/site = docked
-	if(!site?.physical_docking || relocating || preparing || ship_docking || !relocate(flight_berth))
+	if(!site?.physical_docking || relocating || preparing || ship_docking || QDELETED(flight_berth) || !is_operational() || site.docking_owner != src || vessel.get_docked() != site.berth)
+		return
+	var/obj/docking_port/stationary/stationtrauma_space_flight/berth = flight_berth
+	var/turf/original_position = get_turf(berth)
+	var/moved = FALSE
+	var/exception/relocation_error
+	preparing = TRUE
+	try
+		if(position_service_berth(site))
+			moved = relocate(berth)
+	catch(var/exception/failure)
+		relocation_error = failure
+	// Searching moves only our empty marker. Restore it if the physical hull never left the bay.
+	if(!moved && !QDELETED(berth) && !QDELETED(vessel) && vessel.get_docked() == site.berth)
+		berth.forceMove(original_position)
+	if(QDELETED(src))
+		return
+	preparing = FALSE
+	if(relocation_error)
+		throw relocation_error
+	if(!moved)
+		status = "Причал не освобождён: нет безопасной орбитальной стоянки"
 		return
 	// Native relocation yields; only a hull still holding this dock state drops it.
-	if(QDELETED(src) || docked != site)
+	if(docked != site)
 		return
 	if(site.docking_owner == src)
 		site.docking_owner = null

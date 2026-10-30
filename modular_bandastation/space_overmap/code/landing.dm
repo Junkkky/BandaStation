@@ -67,6 +67,46 @@
 				return FALSE
 	return TRUE
 
+/** Reuse free vacuum on this ship's flight level when an evacuation departure finds its old footprint occupied. */
+/datum/stationtrauma_overmap/space/proc/position_service_berth(datum/stationtrauma_overmap_site/space/site)
+	var/obj/docking_port/stationary/stationtrauma_space_flight/berth = flight_berth
+	if(vessel.check_dock(berth, TRUE))
+		return TRUE
+	if(QDELETED(exterior))
+		return FALSE
+	var/flight_z = berth.z
+	var/list/candidates = exterior.get_turfs_by_zlevel(flight_z)
+	if(!length(candidates))
+		return FALSE
+	candidates = candidates.Copy()
+	var/list/hull_turfs = vessel.return_ordered_turfs(vessel.x, vessel.y, vessel.z, vessel.dir)
+	var/datum/stationtrauma_work_budget/budget = new
+	for(var/turf/candidate as anything in candidates)
+		budget.yield()
+		if(QDELETED(src) || !is_operational() || QDELETED(site) || QDELETED(berth) || QDELETED(exterior) || flight_berth != berth || docked != site || site.docking_owner != src || vessel.get_docked() != site.berth)
+			return FALSE
+		// Native ordered lists collapse off-map null turfs, so reject incomplete bounds before pairing them.
+		var/list/bounds = vessel.return_coords(candidate.x, candidate.y, berth.dir)
+		if(min(bounds[1], bounds[3]) < 1 || max(bounds[1], bounds[3]) > world.maxx || min(bounds[2], bounds[4]) < 1 || max(bounds[2], bounds[4]) > world.maxy)
+			continue
+		var/list/target_turfs = vessel.return_ordered_turfs(candidate.x, candidate.y, flight_z, berth.dir)
+		if(length(target_turfs) != length(hull_turfs))
+			return FALSE
+		var/clear = TRUE
+		for(var/index in 1 to length(hull_turfs))
+			if(!vessel.shuttle_areas[get_area(hull_turfs[index])])
+				continue
+			var/turf/tile = target_turfs[index]
+			if(!isspaceturf(tile) || get_area(tile) != exterior)
+				clear = FALSE
+				break
+		if(!clear)
+			continue
+		berth.forceMove(candidate)
+		if(vessel.check_dock(berth, TRUE))
+			return TRUE
+	return FALSE
+
 /** Relocate the hull and its latejoin turfs through native shuttle movement. */
 /datum/stationtrauma_overmap/space/proc/relocate(obj/docking_port/stationary/target)
 	if(relocating || ship_docking || QDELETED(target) || QDELETED(vessel) || !vessel.check_dock(target, TRUE))

@@ -282,8 +282,9 @@
 	preparing = TRUE
 	var/datum/stationtrauma_work_budget/budget = new
 	var/ready = FALSE
+	var/physical_docking = site.landing || site.physical_docking
 	try
-		if(site.landing || site.physical_docking)
+		if(physical_docking)
 			ready = relocate(site.berth)
 		else
 			ready = connection.connect(site.berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
@@ -291,7 +292,8 @@
 		stack_trace("Space prototype docking failed: [failure]")
 	if(QDELETED(src))
 		return FALSE
-	ready = ready && can_dock(site, revision)
+	// Native relocation has committed the hull; an engine stop cannot roll that movement back.
+	ready = ready && (physical_docking ? vessel.get_docked() == site.berth : can_dock(site, revision))
 	if(!ready)
 		connection.disconnect_cooperatively(budget)
 		if(site.docking_owner == src)
