@@ -1,4 +1,26 @@
 // AI EDIT START - Verify baked ear states through the worn renderer
+/// Appearance-only prototypes must be skipped by later atom initialization passes.
+/datum/unit_test/appearance_prototype_mapload/Run()
+	var/list/existing_headsets = list()
+	for(var/obj/item/radio/headset/headset in world)
+		existing_headsets += headset
+	copy_initial_worn_icon_states(/obj/item/radio/headset)
+	var/list/prototypes = list()
+	for(var/obj/item/radio/headset/headset in world)
+		if(headset.type == /obj/item/radio/headset && !(headset in existing_headsets))
+			prototypes += headset
+
+	var/old_init_failures = SSatoms.BadInitializeCalls[/obj/item/radio/headset]
+	SSatoms.BadInitializeCalls -= /obj/item/radio/headset
+	SSatoms.InitializeAtoms(prototypes)
+	var/new_init_failures = SSatoms.BadInitializeCalls[/obj/item/radio/headset]
+	if(isnull(old_init_failures))
+		SSatoms.BadInitializeCalls -= /obj/item/radio/headset
+	else
+		SSatoms.BadInitializeCalls[/obj/item/radio/headset] = old_init_failures
+	TEST_ASSERT_EQUAL(length(prototypes), 1, "Could not capture the disposable appearance prototype.")
+	TEST_ASSERT(!(new_init_failures & BAD_INIT_QDEL_BEFORE), "Atom initialization revisited a deleted appearance prototype.")
+
 /// A one-ear headset stays on the chosen side and disappears behind the far profile.
 /datum/unit_test/dual_ear_sprites/Run()
 	var/mob/living/carbon/human/wearer = allocate(/mob/living/carbon/human/consistent)

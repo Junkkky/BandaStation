@@ -268,6 +268,8 @@
 		throw error
 	SSatoms.map_loader_stop(source)
 	var/alist/slot_states = prototype.worn_icon_state_by_slot?.Copy()
+	// Keep the appearance-only prototype out of later atom initialization passes.
+	prototype.flags_1 |= INITIALIZED_1
 	qdel(prototype)
 	return slot_states
 // BANDASTATION ADDITION END
