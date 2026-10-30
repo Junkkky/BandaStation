@@ -112,6 +112,18 @@
 		disconnect_cooperatively(budget)
 	return ready
 
+/** Return the hull's seam coordinate, or null when its gate and landing cannot fit inside the transition border. */
+/datum/stationtrauma_map_connection/proc/get_ship_edge(list/bounds, clearance, facing)
+	var/horizontal = !!(facing & (EAST|WEST))
+	var/positive = facing == NORTH || facing == EAST
+	var/low = horizontal ? min(bounds[1], bounds[3]) : min(bounds[2], bounds[4])
+	var/high = horizontal ? max(bounds[1], bounds[3]) : max(bounds[2], bounds[4])
+	var/edge = positive ? high + 1 + clearance : low - 1 - clearance
+	var/axis_limit = horizontal ? world.maxx : world.maxy
+	if(edge <= TRANSITIONEDGE + 1 || edge >= axis_limit - TRANSITIONEDGE)
+		return null
+	return edge
+
 /** Build inactive passages and previews cooperatively. */
 /datum/stationtrauma_map_connection/proc/prepare(obj/docking_port/stationary/berth, datum/stationtrauma_work_budget/budget, ship_clearance, site_clearance)
 	var/clearance = max(30, maxviewdist())
@@ -120,15 +132,15 @@
 	if(!ISINTEGER(ship_clearance) || ship_clearance < 1 || !ISINTEGER(site_clearance) || site_clearance < 1)
 		return FALSE
 	var/list/bounds = vessel.return_coords()
+	var/ship_edge = get_ship_edge(bounds, ship_clearance, direction)
+	if(isnull(ship_edge))
+		return FALSE
 	var/horizontal = !!(direction & (EAST|WEST))
 	var/positive = direction == NORTH || direction == EAST
-	var/low = horizontal ? min(bounds[1], bounds[3]) : min(bounds[2], bounds[4])
-	var/high = horizontal ? max(bounds[1], bounds[3]) : max(bounds[2], bounds[4])
-	var/ship_edge = positive ? high + 1 + ship_clearance : low - 1 - ship_clearance
 	var/site_edge = (horizontal ? berth.x : berth.y) + (positive ? -site_clearance : site_clearance)
 	var/axis_limit = horizontal ? world.maxx : world.maxy
 	var/extent = horizontal ? world.maxy : world.maxx
-	if(min(ship_edge, site_edge) <= TRANSITIONEDGE + 1 || max(ship_edge, site_edge) >= axis_limit - TRANSITIONEDGE)
+	if(site_edge <= TRANSITIONEDGE + 1 || site_edge >= axis_limit - TRANSITIONEDGE)
 		return FALSE
 	for(var/deck in 0 to decks - 1)
 		for(var/column in 1 to extent)

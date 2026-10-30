@@ -83,11 +83,14 @@
 	var/datum/stationtrauma_work_budget/budget = new
 	for(var/turf/candidate as anything in candidates)
 		budget.yield()
-		if(QDELETED(src) || !is_operational() || QDELETED(site) || QDELETED(berth) || QDELETED(exterior) || flight_berth != berth || docked != site || site.docking_owner != src || vessel.get_docked() != site.berth)
+		if(QDELETED(src) || !is_operational() || QDELETED(site) || QDELETED(berth) || QDELETED(exterior) || QDELETED(connection) || flight_berth != berth || docked != site || site.docking_owner != src || vessel.get_docked() != site.berth)
 			return FALSE
 		// Native ordered lists collapse off-map null turfs, so reject incomplete bounds before pairing them.
 		var/list/bounds = vessel.return_coords(candidate.x, candidate.y, berth.dir)
 		if(min(bounds[1], bounds[3]) < 1 || max(bounds[1], bounds[3]) > world.maxx || min(bounds[2], bounds[4]) < 1 || max(bounds[2], bounds[4]) > world.maxy)
+			continue
+		// Keep both sides usable: this hull may be either participant in the next ship-to-ship seam.
+		if(isnull(connection.get_ship_edge(bounds, 1, connection.direction)) || isnull(connection.get_ship_edge(bounds, 1, REVERSE_DIR(connection.direction))))
 			continue
 		var/list/target_turfs = vessel.return_ordered_turfs(candidate.x, candidate.y, flight_z, berth.dir)
 		if(length(target_turfs) != length(hull_turfs))

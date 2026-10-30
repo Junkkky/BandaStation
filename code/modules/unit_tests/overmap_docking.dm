@@ -230,3 +230,83 @@
 	late_blocker = allocate(/obj/item, rejected_position)
 	SSshuttle.emergency.clear_stationtrauma_bay(home)
 	TEST_ASSERT_EQUAL(home.get_docked(), ship, "Repeated evacuation cannot start a second relocation during preflight")
+
+/// A service departure must leave the ship able to visit a virtual site through a real map seam.
+/datum/unit_test/overmap_docking/evacuation_then_virtual_dock
+	var/list/borrowed_turfs = list()
+	var/obj/docking_port/stationary/virtual_berth
+
+/datum/unit_test/overmap_docking/evacuation_then_virtual_dock/Destroy()
+	// Remove passages, previews and the moved hull before restoring their borrowed coordinates.
+	qdel(navigation)
+	qdel(ship, force = TRUE)
+	qdel(virtual_berth, force = TRUE)
+	virtual_berth = null
+	for(var/turf/tile as anything in borrowed_turfs)
+		var/list/original = borrowed_turfs[tile]
+		tile = tile.ChangeTurf(original[1], original[2])
+		tile.change_area(get_area(tile), original[3])
+		tile.turf_flags = original[4]
+		if(isopenturf(tile))
+			var/turf/open/open_tile = tile
+			open_tile.destination_x = original[5]
+			open_tile.destination_y = original[6]
+			open_tile.destination_z = original[7]
+	borrowed_turfs.Cut()
+	return ..()
+
+/datum/unit_test/overmap_docking/evacuation_then_virtual_dock/proc/borrow_space(turf/tile, add_to_exterior = FALSE)
+	var/turf/open/open_tile = isopenturf(tile) ? tile : null
+	if(!borrowed_turfs[tile])
+		borrowed_turfs[tile] = list(tile.type, islist(tile.baseturfs) ? tile.baseturfs.Copy() : tile.baseturfs, get_area(tile), tile.turf_flags, open_tile?.destination_x, open_tile?.destination_y, open_tile?.destination_z)
+	if(!isspaceturf(tile))
+		tile = tile.ChangeTurf(/turf/open/space)
+	open_tile = tile
+	open_tile.destination_x = 0
+	open_tile.destination_y = 0
+	open_tile.destination_z = 0
+	if(add_to_exterior)
+		tile.change_area(get_area(tile), exterior)
+
+/datum/unit_test/overmap_docking/evacuation_then_virtual_dock/Run()
+	TEST_ASSERT(navigation.dock(), "The expedition hull must first dock at the shared bay")
+	var/turf/original_flight = get_turf(navigation.flight_berth)
+	var/obj/item/blocker = allocate(/obj/item, original_flight)
+	// Restrict this test's exterior to two real positions, with the world-edge candidate first.
+	for(var/turf/tile as anything in space.reserved_turfs)
+		if(get_area(tile) == exterior)
+			tile.change_area(exterior, original_areas[tile])
+	var/flight_z = original_flight.z
+	var/remote_z = run_loc_floor_bottom_left.z
+	TEST_ASSERT_NOTEQUAL(flight_z, remote_z, "A virtual site must be on another physical level")
+	// x < SHUTTLE_TRANSIT_BORDER is outside every reservation, so these cells have no other owner.
+	for(var/anchor_x in list(1, 12))
+		for(var/turf/tile as anything in block(locate(anchor_x, 32, flight_z), locate(anchor_x + 1, 34, flight_z)))
+			TEST_ASSERT_NULL(SSmapping.used_turfs[tile], "Borrowed flight cells must not belong to another reservation")
+			borrow_space(tile, TRUE)
+	// Native seams span the entire level. Prepare and later restore both real gate/landing columns.
+	for(var/gate_z in list(flight_z, remote_z))
+		for(var/turf/tile as anything in block(locate(10, 1, gate_z), locate(11, world.maxy, gate_z)))
+			borrow_space(tile)
+	virtual_berth = allocate(/obj/docking_port/stationary/stationtrauma_space_site, locate(10, 32, remote_z))
+	var/datum/stationtrauma_overmap_site/space/virtual_site = allocate(/datum/stationtrauma_overmap_site/space)
+	virtual_site.id = "unit_test_virtual_dock"
+	virtual_site.name = "Unit test virtual site"
+	virtual_site.berth = virtual_berth
+	virtual_site.pos_x = navigation.pos_x
+	virtual_site.pos_y = navigation.pos_y
+	navigation.sites[virtual_site.id] = virtual_site
+	SSshuttle.emergency.clear_stationtrauma_bay(home)
+	var/deadline = world.time + 10 SECONDS
+	UNTIL((!navigation.relocating && !navigation.preparing) || world.time >= deadline)
+	TEST_ASSERT(!navigation.relocating && !navigation.preparing, "Service departure must complete")
+	TEST_ASSERT_NULL(home.get_docked(), "The shared bay must be physically vacated")
+	TEST_ASSERT(!QDELETED(blocker) && get_turf(blocker) == original_flight, "The original flight blocker must stay intact")
+	TEST_ASSERT(navigation.select_site(virtual_site.id), "The crew must be able to select a virtual destination after evacuation")
+	TEST_ASSERT(navigation.dock(), "The post-evacuation hull position must permit a real virtual-site seam")
+	TEST_ASSERT(navigation.connection.active, "The post-evacuation seam must publish its passages")
+	var/obj/item/coin/traveller = allocate(/obj/item/coin, locate(11, 32, flight_z))
+	TEST_ASSERT(traveller.Move(locate(10, 32, flight_z)), "The traveller must enter the actual ship-side passage")
+	deadline = world.time + 5 SECONDS
+	UNTIL(traveller.z == remote_z || world.time >= deadline)
+	TEST_ASSERT_EQUAL(get_turf(traveller), locate(10, 32, remote_z), "The published seam must transport the traveller to the virtual site")
