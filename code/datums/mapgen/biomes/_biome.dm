@@ -150,7 +150,9 @@
 			if (features_allowed && prob(feature_density))
 				var/can_spawn = TRUE
 				for(var/turf/spawn_turf as anything in spawn_data[CAVE_SPAWN_FEATURE])
-					if (get_dist(spawn_turf, target_turf) <= feature_exclusion_radius)
+					// AI EDIT START - exclusion radii apply within one z-level
+					if (spawn_turf.z == target_turf.z && get_dist(spawn_turf, target_turf) <= feature_exclusion_radius) // BANDASTATION EDIT - get_dist ignores z, so other levels suppressed spawns
+					// AI EDIT END
 						can_spawn = FALSE
 						break
 
@@ -176,7 +178,9 @@
 		var/can_spawn = TRUE
 		if(is_tendril)
 			for(var/turf/spawn_turf as anything in spawn_data[CAVE_SPAWN_TENDRIL])
-				if (get_dist(spawn_turf, target_turf) <= tendril_exclusion_radius)
+				// AI EDIT START - exclusion radii apply within one z-level
+				if (spawn_turf.z == target_turf.z && get_dist(spawn_turf, target_turf) <= tendril_exclusion_radius) // BANDASTATION EDIT - get_dist ignores z, so other levels suppressed spawns
+				// AI EDIT END
 					can_spawn = FALSE
 					break
 
@@ -185,19 +189,25 @@
 
 			// Also avoid spawning them next to megafauna
 			for(var/turf/spawn_turf as anything in spawn_data[CAVE_SPAWN_MEGAFAUNA])
-				if (get_dist(spawn_turf, target_turf) <= megafauna_exclusion_radius)
+				// AI EDIT START - exclusion radii apply within one z-level
+				if (spawn_turf.z == target_turf.z && get_dist(spawn_turf, target_turf) <= megafauna_exclusion_radius) // BANDASTATION EDIT - get_dist ignores z, so other levels suppressed spawns
+				// AI EDIT END
 					can_spawn = FALSE
 					break
 
 		else if (is_megafauna)
 			// Megafauna can spawn wherever it wants as long as its not next to another mega
 			for(var/turf/spawn_turf as anything in spawn_data[CAVE_SPAWN_MEGAFAUNA])
-				if (get_dist(spawn_turf, target_turf) <= megafauna_exclusion_radius)
+				// AI EDIT START - exclusion radii apply within one z-level
+				if (spawn_turf.z == target_turf.z && get_dist(spawn_turf, target_turf) <= megafauna_exclusion_radius) // BANDASTATION EDIT - get_dist ignores z, so other levels suppressed spawns
+				// AI EDIT END
 					can_spawn = FALSE
 					break
 		else
 			for(var/turf/spawn_turf as anything in spawn_data[CAVE_SPAWN_MOB])
-				if (get_dist(spawn_turf, target_turf) <= mob_exclusion_radius)
+				// AI EDIT START - exclusion radii apply within one z-level
+				if (spawn_turf.z == target_turf.z && get_dist(spawn_turf, target_turf) <= mob_exclusion_radius) // BANDASTATION EDIT - get_dist ignores z, so other levels suppressed spawns
+				// AI EDIT END
 					can_spawn = FALSE
 					break
 

@@ -1,0 +1,4381 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_abandoned_library.dmm
+"al" = (
+/obj/item/book/random{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ao" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ap" = (
+/obj/structure/fluff/paper/stack{
+	dir = 5;
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"as" = (
+/obj/structure/fluff/paper/stack{
+	dir = 6;
+	pixel_y = -1;
+	pixel_x = -1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"az" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"aA" = (
+/obj/structure/altar/of_gods,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"aE" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"aF" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"aJ" = (
+/obj/structure/flora/bush/jungle/c{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ba" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"bc" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"bq" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"bt" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/item/toy/cards/deck/cas{
+	pixel_x = -3;
+	pixel_y = 12
+	},
+/obj/item/toy/cards/deck/cas/black{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"by" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/structure/chair/comfy/beige,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"bD" = (
+/obj/effect/decal/cleanable/blood/splatter{
+	pixel_y = -7
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"bI" = (
+/obj/structure/table/wood/fancy,
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"bM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"bQ" = (
+/obj/effect/turf_decal/siding/brown,
+/obj/machinery/door/poddoor/shutters/indestructible{
+	id = "exp_celadon_library_library_shutters"
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"bU" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"bV" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/structure/chair/comfy/beige,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"bX" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/mob/living/carbon/human/species/monkey/angry,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"cc" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/carbon/human/species/monkey/angry,
+/obj/machinery/light/broken/directional/south,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"cG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/toy/plush/lizard_plushie{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/obj/item/toy/plush/snakeplushie{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"cJ" = (
+/obj/effect/mob_spawn/corpse/human/assistant{
+	name = "Curator";
+	outfit = /datum/outfit/job/curator;
+	brute_damage = 400
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor3"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"cN" = (
+/obj/structure/table/wood/fancy,
+/obj/structure/fluff/paper/stack{
+	dir = 10;
+	pixel_x = -5;
+	pixel_y = 4;
+	name = "scattered character sheets";
+	desc = "It seems like character sheets for the latest Pathfinder 13e."
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"cR" = (
+/obj/structure/bookcase/random/religion,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"cT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"cY" = (
+/obj/structure/bookcase,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"de" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"dt" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/table/wood,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"dy" = (
+/obj/item/flashlight/flare/torch{
+	pixel_x = -13;
+	pixel_y = 7
+	},
+/obj/item/flashlight/flare/torch{
+	pixel_x = -7;
+	pixel_y = -2
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"dE" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/item/storage/fancy/nugget_box{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"dM" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/item/food/grown/apple{
+	pixel_y = 12;
+	pixel_x = 4
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"dN" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/official/soft_cap_pop_art/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"dT" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"dY" = (
+/obj/structure/flora/grass/jungle{
+	pixel_x = 6;
+	pixel_y = -15
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ee" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/item/book/manual/wiki/engineering_hacking{
+	pixel_y = 7;
+	pixel_x = 5
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_y = -1;
+	pixel_x = 12;
+	dir = 10
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_y = 17;
+	pixel_x = -2;
+	dir = 1
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_y = -5;
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"eh" = (
+/obj/structure/chair/pew/right{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ej" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ev" = (
+/obj/structure/fluff/paper/stack{
+	dir = 10;
+	pixel_x = 9;
+	pixel_y = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"eJ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"eK" = (
+/turf/closed/indestructible/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"eQ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/obj/machinery/light/broken/directional/east,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"eT" = (
+/obj/structure/fluff/paper/stack{
+	dir = 8;
+	pixel_y = 4;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"eW" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"fg" = (
+/obj/structure/table/wood/fancy/black,
+/obj/item/book_of_babel{
+	pixel_y = 4
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"fu" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/obj/machinery/light/broken/directional/east,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"fx" = (
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"fH" = (
+/obj/structure/sign/painting/library,
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"fZ" = (
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ga" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"gF" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bonfire/prelit{
+	pixel_y = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"gG" = (
+/obj/effect/turf_decal/siding/brown{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"gI" = (
+/obj/item/chair/stool{
+	dir = 1
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"gJ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_y = -14;
+	dir = 5;
+	pixel_x = -4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"gO" = (
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"he" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 4;
+	pixel_y = -13;
+	pixel_x = 3
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"hg" = (
+/obj/structure/sign/poster/official/random/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"hs" = (
+/obj/structure/flora/grass/jungle{
+	pixel_x = -4;
+	pixel_y = -2
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"hu" = (
+/obj/structure/bookcase,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"hz" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"hI" = (
+/obj/item/ammo_casing/shotgun/buckshot/spent,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"hS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"hU" = (
+/obj/structure/flora/bush/jungle/b{
+	pixel_x = -13;
+	pixel_y = 3
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ip" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"iz" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/chair/wood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"iE" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/item/ammo_casing/c10mm{
+	desc = "A 10mm bullet casing. It is spent.";
+	pixel_x = 7;
+	pixel_y = -7
+	},
+/obj/item/melee/curator_whip{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/mob/living/basic/gorilla,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"iH" = (
+/obj/structure/bonfire/prelit,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"iK" = (
+/obj/structure/rack,
+/obj/item/toy/katana,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"iL" = (
+/obj/structure/sign/poster/official/foam_force_ad/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"iV" = (
+/obj/structure/table/wood/fancy,
+/obj/item/storage/photo_album/library{
+	pixel_x = -12
+	},
+/obj/item/photo/old{
+	pixel_x = 4
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ja" = (
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"jz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/shreds{
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"jA" = (
+/obj/structure/flora/grass/jungle{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"jP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/west,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"jR" = (
+/obj/structure/grille/broken,
+/obj/structure/spacevine{
+	name = "dense vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"jU" = (
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = 12;
+	pixel_y = 5
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"kh" = (
+/obj/structure/table/wood/fancy,
+/obj/item/toy/figure/curator{
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/obj/item/toy/figure/paramedic{
+	pixel_y = 1;
+	pixel_x = 6
+	},
+/obj/item/trash/candle{
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_x = -4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"kr" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/item/book/manual/wiki/medicine{
+	pixel_x = 14
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"kQ" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ld" = (
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"lH" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_y = -12;
+	pixel_x = -5;
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"mf" = (
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"mq" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = 11;
+	pixel_y = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"mC" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 1;
+	pixel_y = -13;
+	pixel_x = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"mQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/fluff/paper/stack{
+	dir = 8;
+	pixel_y = 4;
+	pixel_x = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"mY" = (
+/obj/effect/decal/cleanable/glass,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"mZ" = (
+/turf/open/floor/iron/stairs/left{
+	color = "#A47449"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"nq" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"nt" = (
+/obj/structure/table/wood/fancy,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ny" = (
+/obj/structure/fluff/paper/stack{
+	dir = 5;
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"nX" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "bloodyhands_left"
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ok" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"oo" = (
+/obj/structure/flora/rock/pile/jungle/large{
+	pixel_x = -29;
+	pixel_y = 2
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"or" = (
+/obj/structure/barricade/wooden,
+/obj/structure/spacevine{
+	name = "dense vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"oy" = (
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"oB" = (
+/obj/item/kirbyplants{
+	pixel_x = -8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"oC" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"oW" = (
+/obj/structure/fluff/paper/stack{
+	dir = 9;
+	pixel_x = -2
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"pd" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/shotgun/buckshot/spent,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"pr" = (
+/obj/structure/flora/grass/jungle{
+	pixel_x = -14;
+	pixel_y = 11
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"pt" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/vending/cola/space_up,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"pR" = (
+/obj/item/clothing/neck/stethoscope{
+	pixel_x = -8;
+	pixel_y = -6
+	},
+/obj/item/mecha_parts/mecha_equipment/drill{
+	pixel_x = 9;
+	pixel_y = 10;
+	name = "broken thermal drill";
+	desc = "The tip of this drill seems to have been dulled."
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"pT" = (
+/obj/machinery/door/puzzle/keycard/library,
+/obj/effect/turf_decal/siding/brown{
+	dir = 8
+	},
+/turf/open/floor/carpet/orange,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"pW" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"qa" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor3";
+	pixel_x = -19;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_y = 14;
+	pixel_x = 7
+	},
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"qi" = (
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_y = 5;
+	pixel_x = -5
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"qk" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/structure/chair/comfy/beige,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"qn" = (
+/obj/structure/flora/bush/jungle/b{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"qr" = (
+/obj/structure/flora/grass/jungle/b{
+	pixel_x = 12;
+	pixel_y = 2
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"qs" = (
+/obj/structure/bookcase/manuals/engineering,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"qP" = (
+/obj/structure/flora/rock/pile/jungle{
+	pixel_x = -13
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"qT" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/item/storage/fancy/candle_box{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/structure/sign/warning/no_smoking/directional/north,
+/obj/structure/sign/poster/official/random/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"qZ" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"rc" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 9;
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"rg" = (
+/obj/machinery/door/airlock/wood,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor3"
+	},
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"rh" = (
+/obj/structure/flora/grass/jungle{
+	pixel_x = 6;
+	pixel_y = -15
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"rz" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/carbon/human/species/monkey/angry,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"rD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"rO" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"sh" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"si" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"sx" = (
+/obj/structure/table/wood/fancy,
+/obj/item/reagent_containers/cup/glass/coffee{
+	pixel_x = -13;
+	pixel_y = 10
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"sB" = (
+/obj/structure/fluff/paper/stack{
+	dir = 8;
+	pixel_x = -26
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"sE" = (
+/obj/structure/fluff/paper/stack{
+	dir = 8;
+	pixel_x = 2;
+	pixel_y = -9
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"sI" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"sJ" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/item/book/manual/random{
+	pixel_x = 4;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"sM" = (
+/obj/structure/flora/bush/large{
+	pixel_y = -6
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"sV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"sX" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ta" = (
+/turf/closed/mineral/random/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"tx" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"tP" = (
+/obj/structure/flora/bush/large,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"tQ" = (
+/obj/structure/fluff/paper/stack{
+	pixel_x = 11;
+	pixel_y = -9;
+	dir = 1
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_x = 2;
+	pixel_y = -9
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"tR" = (
+/obj/structure/chair/pew/right{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"tU" = (
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"uj" = (
+/obj/structure/showcase/cyborg/old,
+/obj/effect/turf_decal/siding/brown{
+	dir = 6
+	},
+/obj/machinery/door/poddoor/shutters/indestructible{
+	id = "exp_celadon_library_library_shutters"
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ul" = (
+/obj/structure/hedge,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"uw" = (
+/obj/structure/bookcase/random/nonfiction,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"uz" = (
+/obj/structure/table/wood/fancy,
+/obj/machinery/computer/libraryconsole/bookmanagement,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"uK" = (
+/obj/structure/table/wood/fancy,
+/obj/item/pizzabox/margherita{
+	pixel_y = 10
+	},
+/obj/item/pizzabox/pineapple{
+	pixel_y = 13;
+	pixel_x = -1
+	},
+/obj/item/pizzabox/meat{
+	pixel_y = 16;
+	pixel_x = 1
+	},
+/obj/item/storage/cans/sixbeer{
+	pixel_y = 13;
+	pixel_x = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"uP" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"uZ" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"vc" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"vd" = (
+/obj/structure/flora/bush/jungle/c,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"vt" = (
+/obj/item/toy/plush/moth{
+	pixel_x = 5;
+	pixel_y = -6;
+	name = "librarian moth plushie"
+	},
+/obj/item/reagent_containers/cup/glass/mug/coco{
+	pixel_x = -9;
+	pixel_y = -8
+	},
+/obj/item/clothing/glasses/regular{
+	pixel_x = 6;
+	pixel_y = -2;
+	name = "reading glasses"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"vE" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 6;
+	pixel_y = 4;
+	pixel_x = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"vG" = (
+/obj/structure/fluff/paper/stack{
+	dir = 5;
+	pixel_y = 9;
+	pixel_x = -1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"vO" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"vT" = (
+/obj/structure/flora/grass/jungle{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"vU" = (
+/obj/structure/flora/grass/jungle/b{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"wg" = (
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"wi" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ws" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 11;
+	pixel_x = 11
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/can{
+	pixel_y = 11;
+	pixel_x = 11
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"wy" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"wz" = (
+/obj/machinery/button/door{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = -1;
+	id = "exp_celadon_library_library_shutters";
+	name = "Shutters Button"
+	},
+/obj/effect/decal/cleanable/plastic,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"wP" = (
+/obj/structure/fluff/paper/stack{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = -9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"wW" = (
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"xz" = (
+/obj/machinery/door/airlock/wood,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"xE" = (
+/obj/structure/showcase/cyborg,
+/obj/effect/turf_decal/siding/brown{
+	dir = 10
+	},
+/obj/machinery/door/poddoor/shutters/indestructible{
+	id = "exp_celadon_library_library_shutters"
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"xZ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"yc" = (
+/obj/structure/flora/tree/jungle/small,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"yF" = (
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"yI" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"yP" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/carbon/human/species/monkey/angry,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"yT" = (
+/obj/structure/barricade/wooden,
+/obj/structure/spacevine{
+	name = "dense vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"yW" = (
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"yZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"za" = (
+/obj/structure/rack,
+/obj/item/toy/gun,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"zi" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"zq" = (
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/obj/machinery/light/broken/directional/south,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"zr" = (
+/obj/structure/fluff/paper/stack{
+	dir = 9;
+	pixel_y = 9;
+	pixel_x = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"zL" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"zU" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/item/storage/box/papersack{
+	icon_state = "paperbag_Heart_closed";
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"zZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Aa" = (
+/obj/structure/grille,
+/obj/structure/spacevine{
+	name = "dense vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ao" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit/old{
+	pixel_x = 3;
+	pixel_y = -14
+	},
+/obj/item/ammo_casing/shotgun/buckshot/spent,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ap" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor2";
+	pixel_x = 3;
+	pixel_y = -9
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor3";
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/effect/mob_spawn/corpse/human/assistant{
+	name = "Curator";
+	outfit = /datum/outfit/job/curator;
+	brute_damage = 400
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"AK" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"AR" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Bd" = (
+/obj/structure/closet/wardrobe/chaplain_black,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Bg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = 11;
+	pixel_y = -9
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Bh" = (
+/obj/structure/rack,
+/obj/item/toy/plush/beeplushie{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/item/toy/windup_toolbox{
+	pixel_y = -6;
+	pixel_x = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Bq" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Bv" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"BG" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ci" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ct" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 8;
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Cz" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/structure/chair/comfy/beige,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"CC" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/item/chair/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"CH" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"CT" = (
+/obj/structure/closet/wardrobe/curator,
+/obj/item/storage/box/hero/astronaut,
+/obj/item/storage/box/hero/carphunter,
+/obj/item/storage/box,
+/obj/item/storage/box/hero/scottish,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"CX" = (
+/obj/item/kirbyplants{
+	pixel_x = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Dl" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Dq" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"DA" = (
+/obj/structure/showcase/machinery/microwave,
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/brown{
+	dir = 9
+	},
+/obj/machinery/door/poddoor/shutters/indestructible{
+	id = "exp_celadon_library_library_shutters"
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"DC" = (
+/obj/structure/sign/poster/official/pda_ad/directional/west,
+/obj/machinery/light/broken/directional/west,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"DE" = (
+/obj/structure/flora/bush/jungle/b,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"DH" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"DN" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"DP" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/item/book/manual/wiki/surgery{
+	pixel_y = 11;
+	pixel_x = -4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"DW" = (
+/obj/item/paper{
+	default_raw_text = "Those damn bastards came and shot up the place. I refused to give them my knowledge. I don't have much longer. Keep it safe, please...";
+	pixel_x = 8;
+	pixel_y = 4;
+	desc = "A hastily written note."
+	},
+/obj/effect/decal/cleanable/blood/splatter{
+	pixel_x = 4;
+	pixel_y = -8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"DX" = (
+/obj/structure/flora/grass/jungle{
+	pixel_x = -8
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"DZ" = (
+/obj/structure/door_assembly/door_assembly_wood,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Eo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/shotgun/buckshot/spent,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"EF" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/item/ammo_casing/c10mm{
+	desc = "A 10mm bullet casing. It is spent.";
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ET" = (
+/obj/effect/turf_decal/siding/brown{
+	dir = 1
+	},
+/obj/machinery/door/poddoor/shutters/indestructible{
+	id = "exp_celadon_library_library_shutters"
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Fd" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/item/food/sandwich/grilled_cheese,
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Fe" = (
+/obj/effect/mob_spawn/corpse/human/assistant{
+	oxy_damage = 200;
+	name = "Dungeon Master";
+	outfit = /datum/outfit/job/curator
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Fg" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "drip5";
+	pixel_x = 18;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "drip5";
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Fr" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Fu" = (
+/obj/structure/fluff/paper/stack{
+	dir = 6;
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"FJ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/item/book/manual/wiki/robotics_cyborgs{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 8;
+	pixel_x = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"FR" = (
+/obj/item/rack_parts,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"FW" = (
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"FX" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ga" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Gt" = (
+/obj/structure/fluff/paper/stack{
+	pixel_y = 17;
+	pixel_x = -2;
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Gu" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"GB" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"GC" = (
+/obj/machinery/photocopier/prebuilt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"GG" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/obj/item/cigarette/robust{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/lighter{
+	pixel_y = -10;
+	pixel_x = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"GH" = (
+/obj/machinery/holopad,
+/obj/effect/turf_decal/siding/wood/end,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"GM" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"GY" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/chair/comfy/beige,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Hh" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Hi" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Hu" = (
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/structure/closet/crate/bin,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Hv" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Hy" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 9;
+	pixel_x = -1;
+	pixel_y = -6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"HE" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"HG" = (
+/obj/structure/sign/departments/holy/directional/north,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"HJ" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/carbon/human/species/monkey/angry,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"HR" = (
+/obj/structure/table/wood/fancy,
+/obj/item/storage/dice{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/obj/item/dice/d20{
+	pixel_x = 12;
+	pixel_y = 2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"HV" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/item/chair/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor3";
+	pixel_x = -14;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"HW" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ia" = (
+/obj/machinery/vending/wardrobe/curator_wardrobe,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Io" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Iw" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"IA" = (
+/obj/structure/chair/pew{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"IR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/fluff/paper/stack{
+	dir = 9;
+	pixel_x = -2
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"IU" = (
+/obj/structure/bookcase,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"IY" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/table/wood,
+/obj/item/flashlight/flare/candle{
+	pixel_x = -4
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"IZ" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Jc" = (
+/obj/structure/flora/grass/jungle{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Jj" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/bonfire/prelit{
+	pixel_y = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"JK" = (
+/obj/structure/flora/rock/pile/jungle/large{
+	pixel_x = -29;
+	pixel_y = -18
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Kv" = (
+/obj/structure/chair/pew{
+	dir = 1
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"KK" = (
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/machinery/door/airlock/wood/glass,
+/obj/structure/sign/departments/restroom/directional/west,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Lb" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ll" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/obj/structure/bonfire/prelit,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Lu" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/vending/coffee,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ly" = (
+/obj/effect/decal/cleanable/plastic,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor4";
+	pixel_x = 13
+	},
+/mob/living/basic/gorilla{
+	dir = 4
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Lz" = (
+/obj/structure/flora/rock/pile/jungle{
+	pixel_x = -8;
+	pixel_y = -19
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"LU" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/item/storage/bag/books{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Mo" = (
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"My" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/mob_spawn/corpse/human/assistant{
+	name = "Security Officer";
+	outfit = /datum/outfit/job/security
+	},
+/obj/item/melee/baton{
+	pixel_x = 3;
+	pixel_y = 17
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_y = -6;
+	pixel_x = -6
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor2";
+	pixel_x = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"MA" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"MJ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/item/book/manual/wiki/engineering_guide{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 4;
+	pixel_y = -7;
+	pixel_x = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Nh" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/machinery/shower/directional/east,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Nk" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Nu" = (
+/obj/structure/sign/poster/official/get_your_legs/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"NG" = (
+/obj/structure/fluff/paper/stack{
+	dir = 5;
+	pixel_y = -2;
+	pixel_x = -6
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_y = 12;
+	pixel_x = 6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"NP" = (
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor4";
+	pixel_x = -21;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor6";
+	pixel_x = 7
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor7";
+	pixel_y = -8;
+	pixel_x = -9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"NQ" = (
+/obj/item/book/manual{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"NR" = (
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"NY" = (
+/turf/template_noop,
+/area/template_noop)
+"Oa" = (
+/obj/structure/flora/tree/jungle,
+/obj/structure/flora/grass/jungle{
+	pixel_x = 6;
+	pixel_y = -15
+	},
+/obj/structure/flora/grass/jungle{
+	pixel_y = 7
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"On" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/mob/living/carbon/human/species/monkey/angry,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Op" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_y = 13
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_y = 1;
+	pixel_x = -8;
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"OP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "dense vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"OQ" = (
+/obj/effect/decal/cleanable/glass{
+	dir = 1
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"OR" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"OX" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 9;
+	pixel_y = 4;
+	pixel_x = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Pc" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor6";
+	pixel_x = 7
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Pl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet/chestdrawer,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Pq" = (
+/obj/item/ammo_casing/shotgun/buckshot/spent,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"PE" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"PI" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"PN" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/closed/mineral/random/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"PQ" = (
+/obj/structure/fluff/paper/stack{
+	dir = 4;
+	pixel_y = 4;
+	pixel_x = -12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Qb" = (
+/obj/structure/safe,
+/obj/item/language_manual/codespeak_manual,
+/obj/item/keycard/library,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Qc" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/item/toy/plush/lizard_plushie{
+	pixel_x = 11;
+	pixel_y = 4
+	},
+/obj/item/clothing/glasses/regular{
+	pixel_x = -2;
+	pixel_y = -2;
+	name = "reading glasses"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Qe" = (
+/obj/structure/chair/stool/directional/south,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Qf" = (
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/iron/stairs/right{
+	color = "#A47449"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ql" = (
+/obj/structure/bookcase/random/adult,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Qm" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/shreds{
+	pixel_y = 4;
+	pixel_x = -8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Qt" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"QA" = (
+/obj/structure/flora/grass/jungle{
+	pixel_x = 12;
+	pixel_y = 6
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"QI" = (
+/obj/structure/fluff/paper/stack{
+	dir = 10;
+	pixel_x = -17;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"QM" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"QO" = (
+/obj/structure/grille/broken{
+	icon_state = "brokenratvargrille"
+	},
+/obj/effect/decal/cleanable/glass{
+	pixel_x = 5;
+	dir = 4
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"QP" = (
+/obj/structure/fluff/paper/stack{
+	pixel_y = -23;
+	dir = 10;
+	pixel_x = 5
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"QU" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Rb" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_y = 13
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Rc" = (
+/obj/structure/chair/pew/left{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Rg" = (
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ri" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Rj" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mob_spawn/corpse/human/assistant{
+	name = "Paramedic";
+	outfit = /datum/outfit/job/paramedic
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor3";
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Rq" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Rw" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_y = -12;
+	pixel_x = -5;
+	dir = 1
+	},
+/obj/structure/fluff/paper/stack{
+	pixel_y = 15;
+	dir = 9;
+	pixel_x = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"RI" = (
+/obj/structure/fluff/paper/stack{
+	pixel_x = 3;
+	pixel_y = 10;
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Sc" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 4;
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Sn" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ss" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1;
+	pixel_x = -10;
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"St" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 10;
+	pixel_y = -13;
+	pixel_x = 18
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Sx" = (
+/obj/structure/flora/rock/pile/jungle{
+	pixel_x = -8
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"SF" = (
+/obj/structure/table/wood/fancy,
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"SK" = (
+/obj/structure/fluff/paper/stack{
+	pixel_y = -16;
+	dir = 4;
+	pixel_x = 2
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Te" = (
+/obj/effect/turf_decal/siding/brown{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/cobweb,
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Tg" = (
+/obj/structure/fluff/paper/stack{
+	dir = 6;
+	pixel_y = 1;
+	pixel_x = -11
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ts" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor7";
+	pixel_y = -1;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ty" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"TG" = (
+/obj/structure/grille/broken,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"TJ" = (
+/obj/effect/mob_spawn/corpse/human/assistant{
+	oxy_damage = 200
+	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"TQ" = (
+/obj/structure/fluff/paper/stack{
+	dir = 5;
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ux" = (
+/obj/item/book/bible{
+	pixel_x = 6;
+	pixel_y = -6
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/item/ammo_casing/c10mm{
+	desc = "A 10mm bullet casing. It is spent.";
+	pixel_x = -1
+	},
+/obj/item/ammo_casing/c10mm{
+	desc = "A 10mm bullet casing. It is spent.";
+	pixel_x = 7;
+	pixel_y = -7
+	},
+/obj/item/gun/ballistic/automatic/pistol{
+	desc = "A small, easily concealable 10mm handgun. Has a threaded barrel for suppressors. Does not fire holy ammo.";
+	name = "bible gun";
+	pixel_x = -7;
+	pixel_y = -8
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"UJ" = (
+/obj/structure/chair/pew/left{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"UK" = (
+/obj/item/ammo_casing/c10mm{
+	desc = "A 10mm bullet casing. It is spent.";
+	pixel_x = 7;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/c10mm{
+	desc = "A 10mm bullet casing. It is spent.";
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/item/ammo_casing/c10mm{
+	desc = "A 10mm bullet casing. It is spent.";
+	pixel_x = 2
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"UM" = (
+/obj/structure/flora/grass/jungle{
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"US" = (
+/obj/item/book/random{
+	pixel_x = -3;
+	pixel_y = -1
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 5;
+	pixel_y = -1;
+	pixel_x = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Vh" = (
+/obj/structure/fluff/paper/stack{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Vj" = (
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Vo" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 17;
+	pixel_x = 5
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 13;
+	pixel_y = 18
+	},
+/obj/effect/decal/cleanable/blood/splatter{
+	pixel_y = 15
+	},
+/obj/item/ammo_casing/shotgun/buckshot/spent,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Vp" = (
+/obj/structure/flora/grass/jungle,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Vv" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Vx" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"VH" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/structure/chair/comfy/beige,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"VR" = (
+/obj/structure/fluff/paper/stack{
+	pixel_y = 7;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"VS" = (
+/obj/structure/fluff/paper/stack{
+	dir = 4;
+	pixel_x = -12;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Wd" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Wi" = (
+/obj/structure/sign/poster/official/cleanliness/directional/west,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"WA" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/chair/stool/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"WE" = (
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"WN" = (
+/obj/effect/mob_spawn/corpse/human/assistant{
+	name = "Chaplain";
+	outfit = /datum/outfit/job/chaplain
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_y = 14
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor4";
+	pixel_x = -24
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"WO" = (
+/obj/structure/fluff/paper/stack{
+	dir = 10;
+	pixel_y = -3;
+	pixel_x = -3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"WP" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 1;
+	pixel_x = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"WQ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/item/book/manual/wiki/engineering_hacking{
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/obj/item/book/manual/wiki/medicine{
+	pixel_x = -3;
+	pixel_y = -9
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 9;
+	pixel_x = 3;
+	pixel_y = -7
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"WW" = (
+/obj/structure/showcase/machinery/cloning_pod,
+/obj/effect/turf_decal/siding/brown{
+	dir = 5
+	},
+/obj/machinery/door/poddoor/shutters/indestructible{
+	id = "exp_celadon_library_library_shutters"
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Xl" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/vending/games,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"XU" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/item/stack/medical/wrap/gauze{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ye" = (
+/obj/structure/flora/tree/jungle,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Yi" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/item/ammo_casing/shotgun/buckshot/spent,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Ym" = (
+/obj/machinery/bookbinder,
+/obj/effect/decal/cleanable/wrapping,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Yp" = (
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/machinery/door/airlock/wood/glass,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Yt" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Yz" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"YD" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Zc" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/vending/snack/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Zd" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Zi" = (
+/obj/effect/decal/cleanable/glass{
+	dir = 8
+	},
+/obj/structure/spacevine{
+	name = "vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Zn" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/sign/poster/official/random/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Zp" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/carbon/human/species/monkey/angry,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Zr" = (
+/obj/structure/flora/rock/pile/jungle{
+	pixel_x = -8;
+	pixel_y = -36
+	},
+/obj/structure/flora/tree/jungle/small{
+	pixel_x = -37
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Zt" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/blood/splatter{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"Zu" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 9;
+	pixel_x = -2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ZG" = (
+/obj/structure/table/wood/fancy,
+/obj/item/toy/figure/cargotech{
+	pixel_x = -10;
+	pixel_y = 12
+	},
+/obj/item/toy/figure/secofficer{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ZH" = (
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+"ZM" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor4";
+	pixel_x = 13
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle)
+
+(1,1,1) = {"
+NY
+NY
+NY
+ta
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+ta
+NY
+ta
+NY
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+NY
+NY
+NY
+ta
+NY
+ta
+ta
+ta
+Vj
+NY
+NY
+NY
+"}
+(2,1,1) = {"
+NY
+NY
+ta
+ta
+ta
+NY
+NY
+ta
+ta
+ta
+NY
+ta
+ta
+NY
+NY
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+Vj
+NY
+NY
+NY
+"}
+(3,1,1) = {"
+NY
+NY
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+NY
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+Vj
+Vj
+Vj
+aJ
+NY
+NY
+"}
+(4,1,1) = {"
+NY
+ta
+ta
+ta
+ta
+Gu
+Gu
+Gu
+Gu
+ta
+ta
+ta
+Gu
+CH
+CH
+Gu
+Gu
+Gu
+yT
+yT
+Gu
+ta
+Gu
+Gu
+CH
+CH
+Gu
+Gu
+az
+ld
+Vj
+Vj
+rh
+Vj
+Vj
+"}
+(5,1,1) = {"
+NY
+ta
+ta
+ta
+ta
+Gu
+DH
+Qb
+Gu
+ta
+ta
+ta
+ta
+sJ
+SF
+jP
+Nu
+gO
+eW
+Hh
+Gu
+Gu
+Gu
+zU
+Fd
+dM
+dE
+az
+az
+Gu
+Gu
+Vj
+Vp
+Oa
+Vj
+"}
+(6,1,1) = {"
+ta
+ta
+ta
+ta
+ta
+Gu
+vc
+pR
+Gu
+Gu
+ta
+ta
+ta
+by
+Cz
+bc
+yZ
+hS
+bV
+qk
+GM
+DC
+bc
+Ri
+ba
+ba
+DN
+az
+hS
+cY
+Gu
+Vj
+Vj
+Vj
+Dq
+"}
+(7,1,1) = {"
+ta
+ta
+ta
+ta
+Gu
+Gu
+DW
+Ci
+Gu
+gO
+wW
+hS
+hS
+hS
+hS
+yZ
+yZ
+yZ
+yZ
+yZ
+bc
+vG
+wP
+as
+bc
+cT
+gO
+hS
+hS
+cY
+Gu
+Vj
+hU
+DX
+Vj
+"}
+(8,1,1) = {"
+NY
+ta
+ta
+ta
+Gu
+cY
+Ap
+yZ
+Gu
+hg
+hS
+bc
+cY
+QI
+cY
+qs
+wy
+wy
+sB
+zr
+cY
+Ql
+Ql
+cY
+Ql
+cT
+yZ
+hS
+gO
+cY
+Gu
+Vj
+Ye
+Vj
+Vj
+"}
+(9,1,1) = {"
+NY
+NY
+ta
+ta
+ta
+cY
+iE
+hS
+Gu
+ZM
+Pc
+oC
+Ct
+Sc
+Hy
+MJ
+WQ
+kr
+oC
+FX
+Op
+ee
+FJ
+Zu
+DP
+bX
+oC
+Yz
+hS
+cY
+Gu
+ld
+Vj
+JK
+Vj
+"}
+(10,1,1) = {"
+ta
+ta
+ta
+ta
+ta
+ta
+nX
+Fg
+rg
+Ga
+mq
+mf
+Fu
+zZ
+sE
+tQ
+ny
+Hi
+PQ
+IR
+Hi
+zZ
+Hi
+Hi
+Hi
+mf
+Hi
+Io
+Dl
+hS
+yT
+Lz
+ld
+Vp
+Vj
+"}
+(11,1,1) = {"
+NY
+NY
+ta
+ta
+ta
+ta
+wW
+hS
+Gu
+uP
+UK
+Pq
+Hi
+Hi
+Zp
+Hi
+Hi
+qi
+Hi
+zZ
+az
+az
+az
+az
+zZ
+Hi
+Hi
+mf
+Yt
+sV
+Gu
+Gu
+Gu
+vU
+Vj
+"}
+(12,1,1) = {"
+NY
+NY
+ta
+ta
+ta
+Gu
+Ia
+CT
+Gu
+Vv
+mf
+Hi
+mf
+Iw
+zL
+zL
+zL
+de
+ja
+sI
+ta
+ta
+ta
+az
+sI
+aE
+zL
+zL
+PI
+hS
+za
+cG
+CH
+Vj
+yc
+"}
+(13,1,1) = {"
+NY
+ta
+ta
+ta
+ta
+ta
+Gu
+Gu
+Gu
+Gu
+Hi
+Hi
+pW
+yZ
+ul
+ul
+ul
+ul
+ul
+ld
+ta
+ta
+ta
+ta
+az
+fH
+GM
+yZ
+yZ
+cT
+yZ
+cT
+CH
+Vj
+QA
+"}
+(14,1,1) = {"
+ta
+ta
+ta
+ta
+ta
+ta
+Wi
+Nh
+Gu
+Lu
+Hi
+Eo
+Yi
+WP
+Ss
+My
+FX
+pd
+QM
+PE
+az
+ta
+ta
+qZ
+az
+oC
+CX
+MA
+yZ
+rz
+iK
+Bh
+CH
+Vj
+qr
+"}
+(15,1,1) = {"
+ta
+ta
+ta
+ta
+ta
+ta
+TJ
+NR
+Gu
+Xl
+Hi
+Hi
+Ao
+Ll
+Zt
+eK
+eK
+eK
+vO
+Jj
+az
+az
+az
+az
+nt
+nt
+nt
+wi
+yW
+Gu
+Gu
+Gu
+Gu
+Sx
+Vj
+"}
+(16,1,1) = {"
+NY
+ta
+ta
+ta
+ta
+ta
+ta
+xz
+Gu
+Nk
+mf
+Hi
+CC
+uK
+ws
+DA
+Te
+xE
+wi
+rO
+rD
+rD
+Fr
+Zd
+Pl
+Ym
+nt
+wi
+yZ
+or
+oy
+Rq
+ld
+qn
+Vj
+"}
+(17,1,1) = {"
+NY
+NY
+NY
+ta
+ta
+ta
+ta
+OP
+KK
+aF
+Hi
+Bg
+Fe
+HR
+Wd
+ET
+Bq
+bQ
+wi
+rO
+mf
+rD
+Fr
+aF
+HJ
+fZ
+nt
+wi
+cT
+Gu
+Gu
+si
+tP
+iH
+vd
+"}
+(18,1,1) = {"
+NY
+NY
+ta
+ta
+ta
+ta
+ta
+OP
+Yp
+aF
+Hi
+mf
+Ts
+kh
+Lb
+ET
+fg
+bQ
+wi
+aF
+ao
+Hi
+wi
+aF
+GH
+bM
+bI
+Vx
+yZ
+yZ
+DZ
+Qt
+mZ
+dy
+Vj
+"}
+(19,1,1) = {"
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+Gu
+Zn
+Hi
+bD
+iz
+ZG
+Rj
+ET
+wz
+bQ
+Fr
+yZ
+fx
+Hi
+wi
+aF
+Ly
+jz
+sx
+Vx
+yZ
+Gu
+Gu
+Qt
+Qf
+ld
+Vj
+"}
+(20,1,1) = {"
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+bc
+Gu
+Zc
+zZ
+NP
+ok
+cN
+HV
+WW
+gG
+uj
+Qm
+aF
+mf
+zZ
+Fr
+aF
+cJ
+GC
+iV
+wi
+iL
+Gu
+Hu
+ip
+jA
+dY
+Vj
+"}
+(21,1,1) = {"
+NY
+ta
+ta
+ta
+ta
+ta
+gO
+vt
+Gu
+pt
+Hi
+Hi
+wi
+YD
+OR
+eK
+pT
+eK
+dT
+gF
+mf
+Hi
+yF
+aF
+nt
+uz
+nt
+Fr
+cc
+Gu
+Gu
+Gu
+Gu
+Vj
+Vj
+"}
+(22,1,1) = {"
+NY
+NY
+ta
+NY
+ta
+Gu
+Gu
+Gu
+Gu
+Gu
+HG
+Hi
+wi
+yZ
+bU
+Ci
+sI
+sI
+qZ
+az
+ta
+Io
+BG
+IZ
+Ci
+aE
+oB
+PI
+yZ
+ld
+FR
+OQ
+QO
+qP
+Vj
+"}
+(23,1,1) = {"
+NY
+NY
+NY
+NY
+ta
+Gu
+Sn
+HW
+WA
+Rc
+mf
+Hi
+BG
+yZ
+ul
+ul
+ul
+ta
+ta
+ta
+wg
+Io
+Hi
+wi
+bc
+fH
+GM
+cT
+bc
+PE
+Zr
+mY
+ld
+DX
+DE
+"}
+(24,1,1) = {"
+NY
+NY
+NY
+ta
+ta
+Gu
+Hv
+ZH
+ZH
+IA
+Hi
+mf
+mf
+BG
+FX
+oC
+HE
+bq
+PN
+ta
+az
+Hi
+mf
+BG
+yZ
+FX
+rD
+FX
+GM
+ld
+Zi
+mY
+TG
+Vj
+Vj
+"}
+(25,1,1) = {"
+NY
+ta
+ta
+ta
+Gu
+Gu
+WN
+ZH
+Qe
+tR
+zZ
+Hi
+Hi
+mf
+mf
+Hi
+zZ
+Io
+az
+az
+Hi
+Hi
+mf
+mf
+az
+az
+az
+mf
+WE
+zq
+Gu
+Gu
+Gu
+Vj
+Ye
+"}
+(26,1,1) = {"
+ta
+ta
+ta
+ta
+ta
+aA
+Ux
+dt
+On
+eJ
+mf
+mf
+mf
+Hi
+Hi
+Hi
+mf
+Gt
+yP
+oW
+SK
+QP
+mf
+rD
+az
+ta
+az
+az
+Yt
+PE
+Gu
+Vj
+Vj
+Vj
+hs
+"}
+(27,1,1) = {"
+NY
+ta
+NY
+ta
+Gu
+Mo
+uZ
+ga
+tU
+XU
+EF
+aE
+OX
+aE
+vE
+he
+mC
+St
+Rb
+aE
+Rw
+lH
+gJ
+sI
+ta
+ta
+ta
+hz
+sX
+hu
+Gu
+Vj
+pr
+rh
+Vj
+"}
+(28,1,1) = {"
+NY
+NY
+NY
+ta
+or
+Bd
+uZ
+IY
+Bv
+qa
+Vo
+ev
+cY
+jU
+NG
+cY
+uw
+US
+NQ
+VR
+cY
+cR
+cR
+az
+ta
+ta
+ta
+az
+rD
+hu
+Gu
+Vj
+Ye
+vT
+sM
+"}
+(29,1,1) = {"
+NY
+ta
+ta
+ta
+ta
+Gu
+AR
+ZH
+Qe
+UJ
+hI
+RI
+mQ
+yZ
+Rg
+eT
+TQ
+uw
+Tg
+VS
+yZ
+al
+rD
+az
+az
+ta
+ta
+ta
+az
+hu
+Gu
+Vj
+UM
+oo
+Vp
+"}
+(30,1,1) = {"
+NY
+NY
+ta
+ta
+ta
+Gu
+uZ
+FW
+gI
+Kv
+Vh
+yI
+FX
+VH
+GB
+yZ
+WO
+ap
+sh
+Ty
+AK
+zi
+oC
+QU
+GY
+ta
+ta
+az
+eQ
+IU
+Gu
+Vj
+Jc
+Vj
+NY
+"}
+(31,1,1) = {"
+NY
+ta
+ta
+ta
+ta
+ta
+ej
+ld
+ld
+eh
+fu
+xZ
+Gu
+Qc
+LU
+rc
+dN
+ld
+bt
+kQ
+Gu
+Gu
+Gu
+qT
+GG
+tx
+nq
+Gu
+Gu
+Gu
+Gu
+ta
+ta
+ta
+ta
+"}
+(32,1,1) = {"
+NY
+ta
+ta
+ta
+ta
+Gu
+Gu
+ta
+Gu
+Gu
+Gu
+yT
+Gu
+Aa
+ta
+Gu
+Gu
+ta
+ta
+jR
+Gu
+NY
+Gu
+Gu
+CH
+CH
+Gu
+Gu
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+"}
+(33,1,1) = {"
+NY
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+"}
+(34,1,1) = {"
+NY
+ta
+ta
+ta
+ta
+ta
+ta
+NY
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+NY
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+"}
+(35,1,1) = {"
+NY
+NY
+ta
+ta
+NY
+NY
+ta
+ta
+ta
+NY
+ta
+ta
+ta
+ta
+NY
+NY
+ta
+ta
+ta
+ta
+ta
+ta
+ta
+NY
+NY
+ta
+ta
+NY
+ta
+ta
+ta
+ta
+ta
+ta
+NY
+"}
+(36,1,1) = {"
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+ta
+NY
+NY
+NY
+NY
+NY
+ta
+ta
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+NY
+"}

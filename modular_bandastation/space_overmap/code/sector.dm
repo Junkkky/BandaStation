@@ -183,8 +183,8 @@
 		site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(right_edge + 2, round(world.maxy / 2), level.z_value))
 		sites[site.id] = site
 		QDEL_NULL(template)
-	var/list/positions = list(list(800, 350), list(-100, -1250), list(-1500, 800), list(1800, 1100))
-	var/list/profiles = list(/datum/stationtrauma_overmap_site/space/planet, /datum/stationtrauma_overmap_site/space/planet/frozen, /datum/stationtrauma_overmap_site/space/planet/arid, /datum/stationtrauma_overmap_site/space/planet/lush)
+	var/list/positions = list(list(800, 350), list(-100, -1250), list(-1500, 800), list(1800, 1100), list(-1800, -1300))
+	var/list/profiles = list(/datum/stationtrauma_overmap_site/space/planet, /datum/stationtrauma_overmap_site/space/planet/frozen, /datum/stationtrauma_overmap_site/space/planet/arid, /datum/stationtrauma_overmap_site/space/planet/lush, /datum/stationtrauma_overmap_site/space/planet/lava)
 	var/first_seed = rand(1, 1000001 - length(positions))
 	for(var/index in 1 to length(positions))
 		var/profile = profiles[index]

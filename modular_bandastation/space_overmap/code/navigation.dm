@@ -16,10 +16,6 @@
 	var/dispatch_timer
 	/// Site reserved by the pending station delivery.
 	var/datum/stationtrauma_overmap_site/space/dispatch_target
-	/// Up to three recent positions, oldest first, drawn as the chart's fading track.
-	var/list/track = list()
-	/// World time of the next track sample.
-	var/next_track = 0
 
 /datum/stationtrauma_overmap/space/New(obj/docking_port/mobile/stationtrauma_space/owner)
 	vessel = owner
@@ -64,11 +60,6 @@
 	if(!is_operational())
 		return PROCESS_KILL
 	advance()
-	if(world.time >= next_track)
-		next_track = world.time + 20 SECONDS
-		track += list(list(pos_x, pos_y))
-		if(length(track) > 3)
-			track.Cut(1, 2)
 	refresh_engine_audio()
 	process_encounters()
 	if(!preparing && !relocating && world.time >= next_listen)
@@ -118,7 +109,10 @@
 
 /** Manual thrust retains lateral drift; the autopilot uses the same bounded acceleration to brake. */
 /datum/stationtrauma_overmap/space/integrate_velocity(seconds, available)
-	return integrate_thrust(seconds, available, maneuver_direction)
+	var/list/step = thrust_step(seconds, available, maneuver_direction, course, velocity_x, velocity_y)
+	velocity_x = step[3]
+	velocity_y = step[4]
+	return step
 
 /** Retain a validated lateral thrust order independently of navigation window focus. */
 /datum/stationtrauma_overmap/space/proc/command_maneuver(direction)
@@ -162,40 +156,61 @@
 	maneuver_direction = NONE
 	return ..()
 
-/** Integrate bounded forward and lateral acceleration, preserving unopposed drift. */
-/datum/stationtrauma_overmap/space/proc/integrate_thrust(seconds, available, direction)
-	var/change_x = sin(course) * available - velocity_x
-	var/change_y = cos(course) * available - velocity_y
+/** Return displacement and final velocity without mutating the live ship, also used by the chart forecast. */
+/datum/stationtrauma_overmap/space/proc/thrust_step(seconds, available, direction, heading, vx, vy)
+	var/change_x = sin(heading) * available - vx
+	var/change_y = cos(heading) * available - vy
 	var/acceleration = get_braking_acceleration()
 	if(!autopilot && !braking)
-		var/forward_speed = sin(course) * velocity_x + cos(course) * velocity_y
+		var/forward_speed = sin(heading) * vx + cos(heading) * vy
 		var/budget = acceleration * seconds
 		var/forward_change = clamp(available - forward_speed, -budget, budget)
 		var/side_change = budget * (!!(direction & EAST) - !!(direction & WEST))
 		var/requested = sqrt(forward_change ** 2 + side_change ** 2)
 		var/budget_scale = requested > budget ? budget / requested : 1
-		var/next_x = velocity_x + (sin(course) * forward_change + cos(course) * side_change) * budget_scale
-		var/next_y = velocity_y + (cos(course) * forward_change - sin(course) * side_change) * budget_scale
+		var/next_x = vx + (sin(heading) * forward_change + cos(heading) * side_change) * budget_scale
+		var/next_y = vy + (cos(heading) * forward_change - sin(heading) * side_change) * budget_scale
 		var/next_speed = sqrt(next_x ** 2 + next_y ** 2)
 		// Permit steering at the cap, and preserve existing drift after engine damage.
-		var/limit = max(5 * engine_fraction(), sqrt(velocity_x ** 2 + velocity_y ** 2))
+		var/limit = max(5 * engine_fraction(), sqrt(vx ** 2 + vy ** 2))
 		var/scale = next_speed > limit ? limit / next_speed : 1
-		change_x = next_x * scale - velocity_x
-		change_y = next_y * scale - velocity_y
+		change_x = next_x * scale - vx
+		change_y = next_y * scale - vy
 	else
 		if(braking)
-			change_x = -velocity_x
-			change_y = -velocity_y
+			change_x = -vx
+			change_y = -vy
 	var/change_length = sqrt(change_x ** 2 + change_y ** 2)
 	var/duration = acceleration ? min(seconds, change_length / acceleration) : 0
 	var/fraction = change_length ? acceleration * duration / change_length : 0
 	if(autopilot || braking)
 		change_x *= fraction
 		change_y *= fraction
-	var/list/displacement = list(velocity_x * seconds + change_x * (seconds - duration / 2), velocity_y * seconds + change_y * (seconds - duration / 2))
-	velocity_x += change_x
-	velocity_y += change_y
-	return displacement
+	return list(vx * seconds + change_x * (seconds - duration / 2), vy * seconds + change_y * (seconds - duration / 2), vx + change_x, vy + change_y)
+
+/** Forecast 20/40/60 seconds under the present thrust order; do not advance time or reveal terrain. */
+/datum/stationtrauma_overmap/space/proc/predict_trajectory()
+	var/list/points = list()
+	if(!helm_engaged || docked || ship_docking || relocating || jump_target)
+		return points
+	var/x = pos_x
+	var/y = pos_y
+	var/vx = velocity_x
+	var/vy = velocity_y
+	var/heading = course
+	var/available = braking ? 0 : get_target_speed()
+	// Forecast holds the current order; future autopilot decisions and collisions can change it.
+	for(var/second in 1 to 60)
+		var/turn = WRAP(ordered_course - heading + 180, 0, 360) - 180
+		heading = WRAP(heading + clamp(turn, -ST_NAV_TURN_RATE, ST_NAV_TURN_RATE), 0, 360)
+		var/list/step = thrust_step(1, available, maneuver_direction, heading, vx, vy)
+		x += step[1]
+		y += step[2]
+		vx = step[3]
+		vy = step[4]
+		if(second % 20 == 0)
+			points += list(list("x" = x, "y" = y, "seconds" = second))
+	return points
 
 /datum/stationtrauma_overmap/space/select_site(id)
 	if(relocating)

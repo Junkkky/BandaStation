@@ -1,0 +1,4038 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_medtech_outbreak.dmm
+"ae" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"ah" = (
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"an" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"ay" = (
+/obj/structure/table,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/computer{
+	desc = "Some kind of outdated office computer. You don't understand the error screen but something definitely has gone horribly wrong...";
+	name = "Administrative computer";
+	pixel_y = 5
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"az" = (
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/tree/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"aB" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/chem_master,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"aK" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/door/window/right/directional/west,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 3;
+	pixel_y = -17
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"aP" = (
+/obj/effect/gibspawner/generic,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"aS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper{
+	default_raw_text = "<h1>Export expectations</h1><p>By the end of the month facility No.475-24 is expected to provide the following amounts of medicine to be ready for export:</p><ol><li>300u of Perfluorodecalin</li><li>270u of Thializid</li><li>50 Burnpatches</li><li>65 Synthflesh patches</li><li>275u of atropine</li></ol><p>Production is to be proceeded with imidiately.</p>";
+	name = "Export orders";
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"bd" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"be" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/item/reagent_containers/cup/beaker/large{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"bj" = (
+/obj/structure/railing,
+/turf/open/floor/iron/stairs/right{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"bx" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"bD" = (
+/obj/effect/turf_decal/siding/wideplating/dark,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"bR" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/item/reagent_containers/cup/beaker{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/dropper,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"bV" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"bW" = (
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/tree/jungle/small,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"bX" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"cd" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/gibspawner/human,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"ci" = (
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"ck" = (
+/obj/structure/chair/comfy/beige,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/zombie{
+	name = "Zombiefied Facility Director"
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"cp" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/gibspawner/human,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"cs" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/plumbing/reaction_chamber,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"ct" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/item/shard,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"cH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"cI" = (
+/obj/effect/turf_decal/trimline/blue/filled/corner,
+/obj/item/ammo_casing{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = -10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"cK" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/virology/glass{
+	name = "High Security Chem-lab #1"
+	},
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_medtech_lablock1"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"cS" = (
+/obj/machinery/light_switch{
+	pixel_x = -5;
+	pixel_y = 23
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"cT" = (
+/obj/structure/sign/warning/biohazard,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"da" = (
+/obj/effect/gibspawner/human/bodypartless,
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"de" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"ds" = (
+/obj/structure/chair/office,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"dt" = (
+/obj/structure/chair{
+	dir = 4;
+	icon_state = "chair_toppled"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"dv" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"dI" = (
+/obj/effect/turf_decal/trimline/purple/filled/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"dL" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"dV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper{
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"em" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/obj/item/paper_bin/carbon{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"ep" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/door/window/left/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"ey" = (
+/obj/structure/cable,
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"eC" = (
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"eJ" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/item/ammo_casing{
+	dir = 4;
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"eR" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"eX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"ff" = (
+/obj/structure/table_frame,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"fi" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/gibspawner/human,
+/mob/living/basic/zombie,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"fl" = (
+/obj/item/stack/tile/iron/white,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"fF" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/door/window/left/directional/south,
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/cup/bottle/aluminium{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/cup/bottle/amanitin{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/cup/bottle/ammonia{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/reagent_containers/cup/bottle/bromine{
+	pixel_y = -4
+	},
+/obj/item/shard,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"fP" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/zombie,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"fX" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/machinery/light/broken/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"gb" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/tree/jungle/small,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"gq" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/door/airlock/research{
+	name = "Chemical Factory"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"gr" = (
+/obj/structure/sink/directional/south,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"gt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"gz" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/command{
+	id_tag = "exp_celadon_medtech_office_bolts";
+	locked = 1;
+	name = "Facility Director's Office"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"gU" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"gX" = (
+/obj/structure/extinguisher_cabinet/directional/north,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"hc" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer{
+	desc = "Some kind of outdated office computer.";
+	name = "Administrative computer";
+	pixel_y = 5
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"ht" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/bush/grassy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"hA" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"hH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"hN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"hR" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"hU" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"ig" = (
+/obj/structure/sign/warning/biohazard,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"ii" = (
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"iu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing{
+	dir = 4;
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/ammo_casing{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = -10
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"iv" = (
+/obj/item/stack/tile/iron/white{
+	pixel_x = 12;
+	pixel_y = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"iz" = (
+/obj/structure/cable,
+/obj/structure/table_frame,
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"iH" = (
+/obj/machinery/light/broken/directional/south,
+/obj/machinery/button/door{
+	desc = "A door remote bast door switch.";
+	id = "exp_celadon_medtech_lablock2";
+	name = "Lab #2 lockdown";
+	pixel_x = 7;
+	pixel_y = -23
+	},
+/obj/machinery/button/door{
+	id = "exp_celadon_medtech_office_bolts";
+	name = "Office door bolts";
+	normaldoorcontrol = 1;
+	pixel_y = -33;
+	specialfunctions = 4
+	},
+/obj/machinery/button/door{
+	desc = "A door remote bast door switch.";
+	id = "exp_celadon_medtech_lablock1";
+	name = "Lab #1 lockdown";
+	pixel_x = -7;
+	pixel_y = -23
+	},
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"iI" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"iK" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"iL" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"iN" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/item/ammo_casing,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"iO" = (
+/obj/structure/table,
+/obj/item/paper_bin/carbon{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"iU" = (
+/obj/structure/filingcabinet/chestdrawer,
+/obj/structure/railing{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"iW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/box/corners,
+/obj/machinery/light/floor,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"jf" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/gibspawner/human,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"js" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper{
+	desc = "written hastly on a blood stained peace of paper.";
+	default_raw_text = "They breached all the doors, I am the last one, its over for me..";
+	name = "MedTech chmist's last note";
+	pixel_x = 15;
+	pixel_y = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"jt" = (
+/obj/structure/sign/warning/no_smoking/circle/directional/north,
+/obj/effect/turf_decal/delivery,
+/obj/structure/frame,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"jy" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"jC" = (
+/obj/structure/flora/bush/grassy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"jQ" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 10
+	},
+/obj/machinery/light/directional/south,
+/mob/living/basic/zombie,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"kf" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"kh" = (
+/obj/structure/chair/plastic,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"ku" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 4
+	},
+/obj/item/shard,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"kv" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"kA" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/stack/rods,
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = -12;
+	pixel_y = -7
+	},
+/obj/structure/grille/broken,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"le" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/corner,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/pen{
+	pixel_x = -7;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"lf" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"lm" = (
+/obj/effect/turf_decal/trimline/purple/filled/warning,
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"lo" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"lB" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line,
+/obj/item/folder/white,
+/obj/item/paper{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"lI" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/item/paper{
+	default_raw_text = "<center><h1> Welcome at MedTech Ltd.!</h1></center><hr><p>MedTech is a professional chemical and pharmaceutical manufacturing company with a leading position in the galactinc market.</p><p>Our goal is to provide all relevant medical and industrial chemicals to every customer in the galaxy within a short time, and at a affordable price. We achieve this goal by diversifying our manufacturing sites across the all frontiers and by sourcing all raw materials locally.</p><center><p><b>Special orders are avalible now!</b></p><p>Buy our products or visit one of our manufacturing plants today!</p></center><hr></p><sub>MedTech Ltd. takes no liability for any misuse or side effects of their products including diarrhea, dizziness, heart issues (palpitations, irregular heartbeats), death, and all other forms of possible pre- and post-mortem agony.</sub></p>";
+	name = "MedTech flyer";
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"lY" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 9
+	},
+/obj/structure/filingcabinet,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"mc" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"mp" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"mu" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/item/shard{
+	pixel_x = 9;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -13
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"mw" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"mD" = (
+/obj/structure/rack,
+/obj/item/crowbar/red,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/engineering/electrical)
+"mI" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"mK" = (
+/obj/item/kirbyplants/random/fullysynthetic{
+	pixel_y = 21
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"mQ" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"mR" = (
+/obj/structure/cable,
+/obj/structure/table_frame,
+/obj/item/storage/pill_bottle{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"ng" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"nn" = (
+/obj/structure/cable,
+/obj/item/reagent_containers/syringe,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"nt" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/grassy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"nR" = (
+/obj/machinery/door/airlock/virology{
+	name = "High Security Chem-lab #1"
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_medtech_lablock1";
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"oh" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 9
+	},
+/obj/structure/table_frame,
+/obj/item/paper{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"oq" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/machinery/light_switch{
+	pixel_x = 8;
+	pixel_y = 25;
+	state_open = 1
+	},
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/item/food/chips{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/structure/table_frame,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"or" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 5
+	},
+/obj/structure/closet/l3closet/scientist,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"ov" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"oH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"oL" = (
+/obj/machinery/reagentgrinder{
+	pixel_y = 4
+	},
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"oT" = (
+/obj/structure/closet/crate/grave/filled,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"ph" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"pp" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"pv" = (
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"pw" = (
+/obj/structure/sign/poster/contraband/pwr_game/directional/north,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"pH" = (
+/obj/effect/gibspawner/human,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"pP" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"pU" = (
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"qo" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"qr" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"qu" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/item/food/energybar{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/obj/item/food/donut/choco{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"qO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/box/corners{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"qV" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/grass/jungle,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"qX" = (
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = -12;
+	pixel_y = -7
+	},
+/obj/item/stack/tile/iron/white{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"qY" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"rb" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"rr" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/door/window/right/directional/north,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -13
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"rw" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/paper,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"ry" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/machinery/shower/directional/north,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"rO" = (
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"rR" = (
+/obj/item/rack_parts,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"rT" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"rU" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/spawner/random/vending/snackvend,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"rX" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"rZ" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/chem_master,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"sb" = (
+/obj/machinery/door/airlock/research{
+	name = "Administrative office";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"sf" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/grass/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"sk" = (
+/obj/item/newspaper{
+	pixel_y = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"sl" = (
+/obj/item/bodybag,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"sm" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/machinery/vending/coffee,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"sn" = (
+/obj/item/reagent_containers/cup/beaker{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"sw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"sK" = (
+/obj/effect/turf_decal/trimline/purple/filled/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"sU" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"sY" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/effect/gibspawner/human,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"tg" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"tj" = (
+/obj/structure/railing{
+	dir = 9
+	},
+/obj/structure/table,
+/obj/item/flashlight/lamp{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"tm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing{
+	dir = 10;
+	pixel_x = -7;
+	pixel_y = -16
+	},
+/obj/item/ammo_casing{
+	dir = 4;
+	pixel_x = 3;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"to" = (
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"tq" = (
+/obj/structure/flora/grass/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"ts" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"tt" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"tv" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/item/wrench,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/engineering/electrical)
+"tw" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/item/pen{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/paper{
+	desc = "written hastly on a blood stained peace of paper.";
+	default_raw_text = "Hilbert welded himself in maintenance from the inside. Perhaps a death from starvation is better than the fate that awaits us when the doors bust...";
+	name = "Office clerks last note";
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/mob/living/basic/zombie,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"tx" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"tE" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"tP" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"tV" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"ua" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"un" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/structure/table_frame,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -12;
+	pixel_y = -7
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"ur" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"ut" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/zombie,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"uw" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 6
+	},
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"uA" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/item/kirbyplants{
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"uE" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/research{
+	name = "Administrative office";
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"uF" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"uN" = (
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/grassy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"uU" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/structure/sign/departments/chemistry/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"uY" = (
+/obj/effect/gibspawner/generic,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"uZ" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/hypospray/medipen/stimpack,
+/obj/machinery/door/window/right/directional/south,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"vc" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/grass/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"vg" = (
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"vn" = (
+/obj/effect/turf_decal/trimline/purple/filled/warning{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"vF" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/virology/glass{
+	name = "High Security Chem-lab #2"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_celadon_medtech_lablock2"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"vG" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/welded,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"vH" = (
+/obj/effect/gibspawner/human/bodypartless,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/item/organ/eyes,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"vN" = (
+/obj/machinery/power/smes,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/engineering/electrical)
+"vP" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/broken/directional/east,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"vR" = (
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"vY" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"we" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "exp_celadon_medtech_chemdoors";
+	name = "door bolts";
+	normaldoorcontrol = 1;
+	pixel_x = -26;
+	specialfunctions = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"wq" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/organ/liver{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"wt" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"xk" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"xo" = (
+/obj/structure/table/wood/fancy,
+/obj/item/flashlight/lamp/green{
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/obj/item/folder{
+	desc = "Folder with a huge 'TOP SECRET' stamp";
+	icon_state = "folder_sred";
+	name = "Suspicious folder";
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"xr" = (
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/item/weldingtool/empty,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/engineering/electrical)
+"xt" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"xv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_containers/applicator/patch/synthflesh{
+	pixel_x = 4;
+	pixel_y = -5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"xx" = (
+/obj/item/ammo_casing{
+	dir = 4;
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"xI" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/power/apc/auto_name/directional/south,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"yo" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"yr" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"yu" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"yA" = (
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"yI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"yM" = (
+/obj/structure/flora/tree/jungle/small,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"yN" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"yO" = (
+/obj/machinery/vending/wardrobe/chem_wardrobe,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"yQ" = (
+/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"za" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"zd" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/obj/item/ammo_casing,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"zf" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"zk" = (
+/obj/structure/table_frame,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 3;
+	pixel_y = -17
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"zr" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/table_frame,
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = -2;
+	pixel_y = 11
+	},
+/obj/effect/gibspawner/human,
+/obj/item/ammo_box/magazine/wt550m9,
+/obj/item/ammo_box/magazine/wt550m9,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"zt" = (
+/obj/structure/railing,
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"zw" = (
+/obj/structure/table,
+/obj/item/paper{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/paper,
+/obj/structure/railing,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"zy" = (
+/obj/structure/table/wood/fancy,
+/obj/item/paper_bin/bundlenatural{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/pen/fountain{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/structure/cable,
+/obj/item/reagent_containers/cup/bottle{
+	desc = "A small bottle, it is cracked in several spots.";
+	name = "Empty Romerol sample";
+	pixel_x = -9;
+	pixel_y = 2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"zB" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/purple/filled/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"zJ" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/obj/machinery/door/airlock/virology{
+	name = "High Security Chem-lab #2";
+	dir = 4
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_celadon_medtech_lablock2";
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"zL" = (
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/mob/living/basic/zombie,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"zS" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 10
+	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/machinery/chem_heater,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"zV" = (
+/obj/structure/table/glass,
+/obj/item/flashlight/lamp{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"zX" = (
+/obj/effect/turf_decal/trimline/purple/filled/warning,
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"zZ" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Ah" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/item/shard,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"As" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"AA" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"AH" = (
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"AP" = (
+/obj/machinery/door/airlock/research{
+	name = "Chemical Factory";
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"AS" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"AT" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/item/pen{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"Bd" = (
+/obj/structure/table,
+/obj/item/folder/blue{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/paper{
+	pixel_x = -2;
+	pixel_y = -6
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Be" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/cable,
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = -12;
+	pixel_y = -7
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Bk" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Bz" = (
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"BE" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"BG" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/table_frame,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"BL" = (
+/obj/structure/rack,
+/obj/structure/sign/warning/chem_diamond/directional/north,
+/obj/item/storage/box/lights/mixed,
+/obj/item/wrench,
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"BM" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_medtech_lablock1"
+	},
+/obj/machinery/door/airlock/virology/glass{
+	name = "High Security Chem-lab #1"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"BR" = (
+/obj/effect/gibspawner/generic,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Ca" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/effect/mapping_helpers/apc/no_charge,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Cf" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/dropper,
+/obj/item/clothing/neck/stethoscope{
+	pixel_y = 15
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Cm" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Cn" = (
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Cr" = (
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/grass/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"CA" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"CH" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/grassy,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"CI" = (
+/mob/living/basic/zombie,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"CQ" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"CU" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/item/organ/heart{
+	pixel_x = 11;
+	pixel_y = 11
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Dc" = (
+/obj/structure/closet/cabinet,
+/obj/item/hatchet/wooden,
+/obj/item/ammo_box/c357,
+/obj/item/gun/ballistic/revolver,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"Dk" = (
+/obj/structure/flora/grass/jungle,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Dl" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/item/shard{
+	pixel_x = 9;
+	pixel_y = 10
+	},
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 3;
+	pixel_y = -17
+	},
+/obj/structure/grille/broken,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Do" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/structure/cable,
+/obj/item/crowbar/red,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Dt" = (
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/item/organ/lungs{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Dx" = (
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"DA" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"DJ" = (
+/obj/item/ammo_casing,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"DN" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/door/window/left/directional/south,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"DO" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/virology{
+	name = "High Security Chem-lab #1"
+	},
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_medtech_lablock1";
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"DR" = (
+/obj/item/paper{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"DY" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/effect/mapping_helpers/airlock/welded,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/engineering/electrical)
+"Em" = (
+/obj/machinery/door/poddoor/shutters{
+	id = "exp_celadon_medtech_chemdoors";
+	name = "MedTech Chemical Manufacturing Facility Shutters";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"EA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"EY" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Ft" = (
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Fv" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = -12;
+	pixel_y = -7
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Gn" = (
+/obj/machinery/light/broken/directional/north,
+/obj/effect/gibspawner/generic,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"GA" = (
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"GG" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"GR" = (
+/obj/structure/safe,
+/obj/item/stack/spacecash/c500,
+/obj/item/stack/spacecash/c100{
+	pixel_y = 5
+	},
+/obj/item/stack/spacecash/c1000{
+	pixel_y = 3
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"Hk" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"Hs" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/item/ammo_casing{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = -10
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Hy" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/public{
+	name = "Administrative office";
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"HB" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/chem_dispenser,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"HG" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"HH" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/door/airlock/public/glass{
+	name = "Patio";
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"HN" = (
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/item/organ/liver{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"HQ" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Id" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/table/reinforced,
+/obj/machinery/reagentgrinder{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Ig" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/cable,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -12;
+	pixel_y = -7
+	},
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Ih" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 10
+	},
+/obj/structure/closet/l3closet/scientist,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Ik" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Io" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/box/corners{
+	dir = 1
+	},
+/obj/machinery/light/floor,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"IB" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave{
+	pixel_y = 7
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"IM" = (
+/obj/structure/flora/bush/grassy,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"IY" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Jg" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Jm" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Jn" = (
+/obj/machinery/door/airlock/public{
+	name = "MedTech Chemical Manufacturing Facility";
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"JF" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/machinery/door/airlock/virology{
+	name = "High Security Chem-lab #2";
+	dir = 4
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_celadon_medtech_lablock2";
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"JQ" = (
+/mob/living/basic/zombie,
+/obj/item/rack_parts,
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"JZ" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Kh" = (
+/obj/machinery/light_switch{
+	pixel_x = -25;
+	pixel_y = 5
+	},
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Kr" = (
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/grass/jungle,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Ks" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/broken/directional/west,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"KG" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/tree/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"KH" = (
+/obj/effect/turf_decal/trimline/purple/filled/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"KO" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Lf" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Lz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/pill_bottle{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"LH" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"LT" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"LZ" = (
+/obj/effect/turf_decal/trimline/blue/filled/warning,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Mb" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/machinery/door/airlock/virology/glass{
+	name = "High Security Chem-lab #2"
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_celadon_medtech_lablock2"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Mg" = (
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Mk" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Ml" = (
+/obj/structure/railing{
+	dir = 6
+	},
+/obj/structure/table_frame,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Mo" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/structure/extinguisher_cabinet/directional/north,
+/obj/item/stack/tile/iron/dark{
+	pixel_x = 8;
+	pixel_y = -10
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"My" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/machinery/shower/directional/south,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/machinery/door/window/right/directional/south,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"MD" = (
+/obj/machinery/photocopier/prebuilt,
+/obj/effect/turf_decal/box,
+/obj/machinery/light/broken/directional/north,
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"MJ" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"MX" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Ng" = (
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/effect/decal/fakelattice,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Nn" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 5
+	},
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"NA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/light/small/broken/directional/east,
+/obj/effect/mob_spawn/corpse/human/assistant{
+	mob_name = "Dr. Hibert Lacroix";
+	outfit = /datum/outfit/job/scientist
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/engineering/electrical)
+"NE" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/tree/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"NJ" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/item/ammo_casing{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = -10
+	},
+/obj/item/construction/plumbing,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"NQ" = (
+/mob/living/basic/zombie,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Ob" = (
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Oe" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"OC" = (
+/obj/item/circuitboard/machine/rdserver,
+/obj/structure/closet/crate/science,
+/obj/item/circuitboard/machine/rdserver{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"OF" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"OI" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/engineering/electrical)
+"OJ" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/engineering/electrical)
+"ON" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/item/stack/tile/iron/dark{
+	pixel_y = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"OZ" = (
+/obj/effect/turf_decal/box/corners{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Pg" = (
+/obj/machinery/door/airlock/research{
+	name = "Chemical Factory";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Ph" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 9
+	},
+/obj/structure/closet/l3closet/scientist,
+/obj/item/storage/medkit/toxin,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Pt" = (
+/obj/effect/turf_decal/trimline/blue/filled/corner,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"PN" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"PR" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/table_frame/wood,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/item/paper{
+	desc = "Written as with a dying hand..";
+	default_raw_text = "I bolted down my door to keep them out for w while, one of them got me in the arm. I hope the response unit will arrive soon...";
+	name = "Hastly scribbled note"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"PS" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/tree/jungle/small,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"PV" = (
+/obj/item/ammo_casing{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = -10
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"PY" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/item/hatchet,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"PZ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/mob/living/basic/zombie,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Qe" = (
+/obj/item/shard{
+	icon_state = "tiny";
+	pixel_x = -12;
+	pixel_y = 1
+	},
+/obj/item/stack/tile/iron/white,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Ql" = (
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/bush/grassy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Qs" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Qz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shovel,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"QM" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 6
+	},
+/obj/structure/closet/l3closet/scientist,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"QT" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Ra" = (
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/effect/mob_spawn/corpse/human/assistant{
+	outfit = /datum/outfit/job/chemist
+	},
+/obj/item/gun/ballistic/automatic/pistol/m1911/no_mag{
+	pixel_y = -13
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Re" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = -12;
+	pixel_y = -7
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Rf" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/item/paper{
+	pixel_x = 4;
+	pixel_y = -13
+	},
+/mob/living/basic/zombie,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Rn" = (
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/bush/sparsegrass,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Rq" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Ru" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"Rv" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/table/glass,
+/obj/item/storage/medkit/brute,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = -12;
+	pixel_y = -7
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Rz" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/gun/ballistic/automatic/wt550,
+/obj/item/ammo_casing{
+	dir = 10;
+	pixel_x = -7;
+	pixel_y = -16
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"RR" = (
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/decal/cleanable/blood/gibs/bubblegum,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"RS" = (
+/obj/structure/flora/tree/jungle/small,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"RW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/mob/living/basic/zombie,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"RX" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron/stairs/right{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Sc" = (
+/obj/structure/cable,
+/obj/effect/gibspawner/human,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Sg" = (
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Sz" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"SW" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Te" = (
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/effect/gibspawner/generic,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Tr" = (
+/obj/structure/flora/grass/jungle,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Ty" = (
+/obj/structure/chair/office/light,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"TB" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/grassy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"TK" = (
+/obj/machinery/light/broken/directional/north,
+/obj/structure/frame,
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Uj" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"Uo" = (
+/obj/structure/sign/warning/biohazard,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"Up" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"UB" = (
+/obj/machinery/light_switch{
+	pixel_x = -5;
+	pixel_y = 23
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/item/stamp/head/rd{
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"UH" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/bush/grassy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"UJ" = (
+/obj/effect/turf_decal/siding/wideplating/dark,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"UK" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"UO" = (
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 3;
+	pixel_y = -17
+	},
+/obj/structure/grille/broken,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"UU" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"UY" = (
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"UZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Vf" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Vj" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Vl" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
+/obj/machinery/computer/cargo{
+	dir = 4;
+	name = "Cargo computer"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Vw" = (
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/item/paper{
+	desc = "This is probably a document you were not supposed to see";
+	default_raw_text = "<center><h1 style='background-color:red;'>TOP SECRET - EYES ONLY!</h1></center><h2 align='center'>Pricing reqest</h2><p>The Syndicate is interested to place an order for several hundred units of a chemical known as romerol. Hereby a request is placed to set a pricetag for such an order.</p><p>A small sample of the regent in question has been attached for testing purposes.</p><p>The contents of this document is to be treated highly confidential, any suspicion that informatin cantained in this letter has been forwarded will be met with recogninzing MedTech Ltd. as a enemy side of the conflict by The Syndicate.</p></p>We are lookig forward for a reply that will ensure our long-term cooperation.</p><br></p>Death to Nanotrasen!</p><p style = 'font-family:serif'><i><b>The Syndicate</b></i></p><center><h1 style='background-color:red;'>TOP SECRET - EYES ONLY!</h1></center>";
+	name = "Top Secret Syndicate Romerol price request"
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge)
+"VA" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"VN" = (
+/obj/effect/decal/fakelattice,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"VR" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Wc" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/weldingtool/largetank,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Wf" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Wn" = (
+/obj/structure/closet/crate/large{
+	name = "construction materials crate"
+	},
+/obj/item/stack/sheet/plastic/five{
+	amount = 5
+	},
+/obj/item/stack/sheet/iron{
+	amount = 20
+	},
+/obj/item/stack/sheet/glass{
+	amount = 20
+	},
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Wv" = (
+/obj/item/ammo_casing{
+	dir = 4;
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"WC" = (
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"WE" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"WJ" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/table/greyscale{
+	dir = 8
+	},
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"WZ" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/structure/table/greyscale{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Xf" = (
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Xk" = (
+/obj/machinery/door/airlock/public{
+	name = "Administrative office";
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"Xo" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"XQ" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/obj/item/light/tube/broken,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"XZ" = (
+/obj/structure/sign/warning/biohazard,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Ye" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 8
+	},
+/obj/item/paper{
+	pixel_x = -2;
+	pixel_y = -6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Yk" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"Yv" = (
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"YB" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/structure/chair/office,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"YH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/medical/ointment{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine/m45,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"YI" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/machinery/smartfridge/chemistry/preloaded,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"YT" = (
+/obj/machinery/door/poddoor/shutters{
+	id = "exp_celadon_medtech_chemdoors";
+	name = "MedTech Chemical Manufacturing Facility Shutters";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
+"YU" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/item/paper{
+	default_raw_text = "<center><h1> Welcome at MedTech Ltd.!</h1></center><hr><p>MedTech is a professional chemical and pharmaceutical manufacturing company with a leading position in the galactinc market.</p><p>Our goal is to provide all relevant medical and industrial chemicals to every customer in the galaxy within a short time, and at a affordable price. We achieve this goal by diversifying our manufacturing sites across the all frontiers and by sourcing all raw materials locally.</p><center><p><b>Special orders are avalible now!</b></p><p>Buy our products or visit one of our manufacturing plants today!</p></center><hr></p><sub>MedTech Ltd. takes no liability for any misuse or side effects of their products including diarrhea, dizziness, heart issues (palpitations, irregular heartbeats), death, and all other forms of possible pre- and post-mortem agony.</sub></p>";
+	name = "MedTech flyer";
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/structure/table_frame,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway)
+"YX" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"Za" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/corner,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Zd" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office)
+"Zm" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+"Zu" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
+"ZD" = (
+/obj/structure/cable,
+/obj/item/stack/tile/iron/dark{
+	pixel_x = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+"ZJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
+
+(1,1,1) = {"
+Bk
+jC
+UZ
+qO
+UZ
+Bk
+ng
+UZ
+OZ
+Bk
+Bk
+tq
+OF
+Bk
+tg
+tg
+tg
+Jn
+Jn
+tg
+tg
+tg
+Bk
+jC
+tq
+"}
+(2,1,1) = {"
+Bk
+OF
+UZ
+ng
+Bk
+ng
+UZ
+UZ
+Bk
+Bk
+Bk
+bW
+Bk
+tg
+tg
+uA
+Hk
+jf
+sY
+dt
+YU
+tg
+tg
+tq
+sf
+"}
+(3,1,1) = {"
+tq
+yM
+Bk
+ng
+ng
+UZ
+UZ
+ng
+ng
+Bk
+OF
+OF
+jC
+xk
+hc
+BE
+zV
+fP
+lI
+bX
+sk
+fX
+xk
+jC
+yM
+"}
+(4,1,1) = {"
+Bk
+UZ
+Bk
+Io
+ng
+ng
+ng
+ng
+iW
+UZ
+Bk
+tq
+OF
+xk
+MD
+ds
+zk
+AT
+kf
+de
+oH
+kf
+xk
+tq
+sf
+"}
+(5,1,1) = {"
+TB
+Bk
+Bk
+Bk
+ng
+UZ
+Bk
+Bk
+Bk
+Bk
+Bk
+Bk
+TB
+tg
+tg
+em
+iz
+hR
+pp
+Uj
+qu
+tg
+tg
+OF
+tq
+"}
+(6,1,1) = {"
+Bk
+yr
+yr
+yr
+yr
+YT
+Em
+Em
+yr
+yr
+yr
+TB
+tq
+Bk
+tg
+tg
+tg
+Hy
+Xk
+tg
+tg
+tg
+OF
+tq
+jC
+"}
+(7,1,1) = {"
+yr
+yr
+rR
+lB
+XQ
+Yv
+Yv
+Xf
+we
+Vl
+yr
+yr
+tq
+UH
+Bk
+OF
+pP
+zB
+sK
+rU
+pP
+Bk
+UH
+jC
+OF
+"}
+(8,1,1) = {"
+yr
+yO
+uY
+bV
+aS
+Mk
+Mk
+xx
+Mk
+yA
+yQ
+yr
+Bk
+pP
+tP
+tP
+pw
+yo
+CU
+sm
+OJ
+OJ
+OJ
+OJ
+tq
+"}
+(9,1,1) = {"
+yr
+jt
+ua
+bd
+Mk
+Mk
+NQ
+HQ
+vH
+DJ
+uU
+yr
+yr
+pP
+YB
+oh
+lY
+Zd
+hU
+OJ
+OJ
+vN
+tv
+OJ
+OJ
+"}
+(10,1,1) = {"
+yr
+vR
+bV
+Mk
+Bz
+BR
+HQ
+hH
+SW
+iI
+yA
+oL
+yr
+IB
+le
+ON
+mI
+Rf
+lm
+DY
+xr
+NA
+OI
+mD
+OJ
+"}
+(11,1,1) = {"
+mp
+RX
+bj
+ur
+eC
+Jm
+cs
+Bz
+Ob
+UK
+fl
+As
+yr
+oq
+bD
+tj
+BG
+iO
+cp
+jy
+jy
+jy
+vG
+jy
+jy
+"}
+(12,1,1) = {"
+mp
+Vj
+eR
+pv
+Yk
+NJ
+Mk
+Mg
+zL
+tV
+mc
+LZ
+gq
+vn
+Za
+Vf
+tw
+zw
+ph
+jy
+DR
+xo
+Vw
+Dc
+jy
+"}
+(13,1,1) = {"
+mp
+OC
+da
+zt
+tE
+hA
+DA
+Mk
+RR
+za
+NQ
+rX
+rr
+Nn
+UJ
+iU
+ay
+Ml
+Lf
+jy
+mK
+PR
+ck
+iH
+jy
+"}
+(14,1,1) = {"
+yr
+TK
+JQ
+zt
+Yk
+Mk
+Mk
+Rq
+PY
+eX
+Pt
+Ca
+yr
+fi
+rw
+CA
+Ye
+Jg
+zX
+gz
+LH
+zy
+Ru
+GR
+jy
+"}
+(15,1,1) = {"
+yr
+BL
+ah
+zt
+zf
+NQ
+aP
+iv
+Mk
+HN
+As
+yr
+yr
+pP
+MX
+Bd
+uw
+mQ
+lo
+jy
+UB
+dV
+kv
+jy
+jy
+"}
+(16,1,1) = {"
+yr
+Wn
+vg
+zt
+Yk
+Mk
+rb
+Mk
+HQ
+cI
+MJ
+yr
+IM
+pP
+HH
+tP
+pP
+Mo
+Qs
+jy
+jy
+AA
+AA
+jy
+OF
+"}
+(17,1,1) = {"
+yr
+yr
+qr
+zt
+Te
+Ft
+to
+gX
+lf
+bx
+yr
+yr
+rO
+rO
+WZ
+WJ
+pP
+KH
+dI
+pP
+Bk
+Bk
+TB
+TB
+OF
+"}
+(18,1,1) = {"
+tq
+yr
+yr
+yr
+yr
+AP
+Pg
+yr
+yr
+yr
+gt
+Tr
+EY
+RS
+tm
+Wc
+PN
+sb
+uE
+PN
+PN
+sf
+Bk
+Ql
+Bk
+"}
+(19,1,1) = {"
+OF
+Bk
+Cr
+Wf
+Ph
+JZ
+Sz
+Wf
+Tr
+Kr
+xv
+Bk
+UZ
+Bk
+iu
+iN
+PN
+AS
+LT
+Ih
+PN
+Bk
+Bk
+tq
+Cr
+"}
+(20,1,1) = {"
+Ql
+UH
+Ql
+Wf
+My
+Dx
+jQ
+cT
+qV
+kh
+YH
+HG
+Dk
+PV
+sw
+rO
+Uo
+ci
+Sc
+ry
+PN
+tq
+sf
+Rn
+NE
+"}
+(21,1,1) = {"
+tq
+az
+tq
+Wf
+or
+YX
+qY
+Wf
+rO
+CH
+UZ
+Zm
+Bk
+EY
+Bk
+qV
+PN
+pH
+Xo
+QM
+PN
+tq
+OF
+Bk
+Ql
+"}
+(22,1,1) = {"
+OF
+Ql
+OF
+WE
+WE
+zJ
+JF
+WE
+WE
+Bk
+js
+sl
+Bk
+UZ
+UZ
+Oe
+Oe
+nR
+DO
+Oe
+Oe
+tq
+gb
+Bk
+Ql
+"}
+(23,1,1) = {"
+sf
+tq
+VN
+WE
+pU
+rT
+ku
+Kh
+yN
+WE
+Ra
+Wv
+Qz
+Bk
+Oe
+Oe
+WC
+ae
+Ik
+xI
+Oe
+Oe
+TB
+OF
+Bk
+"}
+(24,1,1) = {"
+tq
+kA
+Ng
+AH
+IY
+Ig
+be
+iL
+an
+XZ
+WE
+oT
+Bk
+Oe
+ig
+Cn
+PZ
+aK
+Be
+UU
+Up
+ig
+Oe
+tq
+vc
+"}
+(25,1,1) = {"
+tq
+Dl
+wt
+qX
+ct
+zZ
+CI
+aB
+ZJ
+ts
+WE
+WE
+Oe
+Oe
+GG
+hN
+Id
+Zu
+KO
+rZ
+cd
+yI
+yu
+Bk
+OF
+"}
+(26,1,1) = {"
+Bk
+VR
+VA
+fF
+ii
+mR
+ey
+ZD
+DN
+tt
+vF
+Ks
+Do
+cK
+ov
+ep
+nn
+eJ
+dL
+Ty
+un
+mw
+yu
+tq
+Bk
+"}
+(27,1,1) = {"
+UH
+VR
+VA
+uZ
+CI
+ff
+Cf
+tx
+sU
+Ah
+Mb
+xt
+vP
+BM
+Fv
+mu
+Rz
+zd
+ut
+UY
+HB
+mw
+yu
+OF
+Cr
+"}
+(28,1,1) = {"
+Bk
+VR
+ts
+EA
+CQ
+wq
+Lz
+qo
+Re
+ts
+WE
+WE
+Oe
+Oe
+cS
+Qe
+Hs
+Sg
+Dt
+zS
+dv
+GA
+yu
+tq
+jC
+"}
+(29,1,1) = {"
+Bk
+WE
+XZ
+Gn
+EA
+YI
+Rv
+Cm
+gU
+XZ
+WE
+tq
+tq
+Oe
+ig
+vY
+RW
+zr
+bR
+cH
+QT
+Oe
+UO
+tq
+PS
+"}
+(30,1,1) = {"
+Ql
+yM
+WE
+WE
+ts
+uF
+uF
+sn
+WE
+WE
+OF
+sf
+uN
+jC
+Oe
+Oe
+gr
+iK
+iK
+GG
+Oe
+Oe
+Bk
+ht
+Bk
+"}
+(31,1,1) = {"
+OF
+sf
+Bk
+WE
+VR
+VR
+VR
+VR
+WE
+OF
+nt
+jC
+sf
+KG
+Bk
+Oe
+yu
+yu
+yu
+yu
+Oe
+tq
+UH
+Bk
+sf
+"}

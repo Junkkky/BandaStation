@@ -16,7 +16,7 @@ import { useHelm } from './useHelm';
 export const SpaceNavigation = () => {
   const { data } = useBackend<NavigationData>();
   return (
-    <Window width={940} height={560}>
+    <Window width={1120} height={650}>
       <Window.Content>
         {data.sector ? (
           <Navigation key={data.sector} data={data} />
@@ -66,6 +66,47 @@ function Navigation({ data }: { data: NavigationData }) {
         <span>{mode}</span>
       </header>
       <div className="SpaceNavigation__body">
+        <aside className="SpaceNavigation__contacts" aria-label="Объекты">
+          <h2>
+            ОБЪЕКТЫ{' '}
+            <span>{data.routes.length + data.ship_contacts.length}</span>
+          </h2>
+          <div className="SpaceNavigation__routes">
+            {data.routes.map((site) => (
+              <Button
+                key={site.id}
+                fluid
+                tooltip={site.name}
+                selected={focusedContact === null && site.id === data.selected}
+                disabled={site.failed || data.preparing || data.relocating}
+                onClick={() => selectSite(site.id)}
+              >
+                <span>{site.name}</span>
+                <span>{distance(site.distance)}</span>
+              </Button>
+            ))}
+            {data.ship_contacts.map((record) => (
+              <Button
+                key={`contact-${record.id}`}
+                fluid
+                tooltip={record.identity?.callsign || 'Неопознанное судно'}
+                selected={record.id === focusedContact}
+                onClick={() => setFocusedContact(record.id)}
+              >
+                <span>
+                  К{record.id} ·{' '}
+                  {record.identity?.callsign || 'Неопознанное судно'}
+                </span>
+                <span>
+                  {distance(Math.hypot(record.x - data.x, record.y - data.y))}
+                </span>
+              </Button>
+            ))}
+            {!data.routes.length && !data.ship_contacts.length && (
+              <p className="SpaceNavigation__help">Нет отметок</p>
+            )}
+          </div>
+        </aside>
         <section className="SpaceNavigation__plot">
           <Chart
             data={data}
@@ -76,24 +117,10 @@ function Navigation({ data }: { data: NavigationData }) {
           <div className="SpaceNavigation__legend">
             <span>▲ Судно</span>
             <span>◇ Цель</span>
-            <span>↗ Путь за 1 мин</span>
+            <span title="При сохранении текущей тяги и команды курса">
+              ● +20 / 40 / 60 с
+            </span>
             <span>× Остановка</span>
-            <span>● След</span>
-          </div>
-          <div className="SpaceNavigation__routes">
-            {data.routes.map((site) => (
-              <Button
-                key={site.id}
-                fluid
-                compact
-                selected={site.id === data.selected}
-                disabled={site.failed || data.preparing || data.relocating}
-                onClick={() => selectSite(site.id)}
-              >
-                <span>{site.name}</span>
-                <span>{distance(site.distance)}</span>
-              </Button>
-            ))}
           </div>
           {focusedContact !== null && (
             <p className="SpaceNavigation__help" role="status">
@@ -126,17 +153,71 @@ function Navigation({ data }: { data: NavigationData }) {
             </p>
           )}
         </section>
-        <aside className="SpaceNavigation__telemetry">
+        <aside className="SpaceNavigation__telemetry" aria-label="Управление">
+          <div className="SpaceNavigation__engine-control">
+            <Button
+              className="SpaceNavigation__engine"
+              fluid
+              icon="power-off"
+              selected={!!data.engines_running}
+              tooltip={
+                data.engines_running
+                  ? 'Выключить двигатели'
+                  : 'Запустить двигатели'
+              }
+              disabled={
+                data.preparing ||
+                data.relocating ||
+                (!data.engines_running && !data.can_start_engines)
+              }
+              onClick={() =>
+                act('engine', { value: data.engines_running ? 0 : 1 })
+              }
+            >
+              {data.engines_running ? 'ДВИГАТЕЛИ ВКЛ' : 'ЗАПУСК ДВИГАТЕЛЕЙ'}
+            </Button>
+            <div className="SpaceNavigation__engine-state" role="status">
+              <Icon name="circle" color={data.engine_fault ? 'bad' : 'good'} />
+              <span>
+                {data.engine_fault
+                  ? 'НЕИСПРАВНОСТЬ'
+                  : data.engine_phase === 'starting'
+                    ? 'РОЗЖИГ'
+                    : data.engine_phase === 'purging'
+                      ? 'ПРОДУВКА'
+                      : data.engines_running
+                        ? 'РАБОТАЮТ'
+                        : 'ВЫКЛЮЧЕНЫ'}
+              </span>
+            </div>
+          </div>
+          {!!data.fuel && (
+            <div className="SpaceNavigation__fuel">
+              <span>
+                Тритий{' '}
+                <strong>
+                  {data.fuel.tritium} <small>моль</small>
+                </strong>
+              </span>
+              <span>
+                Кислород{' '}
+                <strong>
+                  {data.fuel.oxygen} <small>моль</small>
+                </strong>
+              </span>
+            </div>
+          )}
+
           <div className="SpaceNavigation__instruments">
             <div className="SpaceNavigation__sensor-speed">
               <Button
                 className="SpaceNavigation__scan"
-                icon="satellite-dish"
                 tooltip="Сканирование"
                 aria-label="Сканирование"
                 disabled={!data.scan_ready}
                 onClick={() => act('scan')}
               >
+                <Icon name="satellite-dish" />
                 <span
                   role="status"
                   aria-label={
@@ -215,6 +296,23 @@ function Navigation({ data }: { data: NavigationData }) {
                       aria-disabled={helm.blocked}
                       style={{ top: `${12 + (100 - displayValue) * 0.7}px` }}
                       onMouseDown={handleDragStart}
+                      onKeyDown={(event) => {
+                        if (helm.blocked) return;
+                        if (
+                          ['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(
+                            event.key,
+                          )
+                        ) {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          if (event.key === 'Home') helm.setThrottle(0);
+                          else if (event.key === 'End') helm.setThrottle(100);
+                          else
+                            helm.changeThrottle(
+                              event.key === 'ArrowUp' ? 5 : -5,
+                            );
+                        }
+                      }}
                     />
                     {inputElement}
                     <output>{displayValue}%</output>
@@ -223,43 +321,6 @@ function Navigation({ data }: { data: NavigationData }) {
               </DraggableControl>
             </div>
             <div className="SpaceNavigation__helm-buttons">
-              <div className="SpaceNavigation__engine-control">
-                <Button
-                  icon="power-off"
-                  selected={!!data.engines_running}
-                  tooltip={
-                    data.engines_running
-                      ? 'Выключить двигатели'
-                      : 'Запустить двигатели'
-                  }
-                  disabled={
-                    data.preparing ||
-                    data.relocating ||
-                    (!data.engines_running && !data.can_start_engines)
-                  }
-                  onClick={() =>
-                    act('engine', { value: data.engines_running ? 0 : 1 })
-                  }
-                />
-                <Icon
-                  name="circle"
-                  color={data.engine_fault ? 'bad' : 'good'}
-                />
-                <span>
-                  {data.engine_fault
-                    ? 'НЕИСПРАВНОСТЬ'
-                    : data.engine_phase === 'starting'
-                      ? 'РОЗЖИГ'
-                      : data.engine_phase === 'purging'
-                        ? 'ПРОДУВКА'
-                        : `ДВИГАТЕЛИ ${data.engines_running ? 'ВКЛ' : 'ВЫКЛ'}`}
-                </span>
-              </div>
-              {!!data.fuel && (
-                <div>
-                  Тритий {data.fuel.tritium} моль · O₂ {data.fuel.oxygen} моль
-                </div>
-              )}
               <div
                 className="SpaceNavigation__maneuvers"
                 role="group"
@@ -269,6 +330,7 @@ function Navigation({ data }: { data: NavigationData }) {
                   disabled={helm.blocked}
                   tooltip="Рыскание влево"
                   onClick={() => act('turn', { value: -15 })}
+                  aria-label="Рыскание влево"
                 >
                   ↶
                 </Button>
@@ -276,6 +338,7 @@ function Navigation({ data }: { data: NavigationData }) {
                   disabled={helm.blocked}
                   tooltip="Увеличить тягу"
                   onClick={() => helm.changeThrottle(5)}
+                  aria-label="Увеличить тягу"
                 >
                   ↑
                 </Button>
@@ -283,6 +346,7 @@ function Navigation({ data }: { data: NavigationData }) {
                   disabled={helm.blocked}
                   tooltip="Рыскание вправо"
                   onClick={() => act('turn', { value: 15 })}
+                  aria-label="Рыскание вправо"
                 >
                   ↷
                 </Button>
@@ -293,6 +357,13 @@ function Navigation({ data }: { data: NavigationData }) {
                   onMouseDown={(event) => {
                     if (event.button === 0) helm.hold('left');
                   }}
+                  aria-label="Боковая тяга влево"
+                  onClick={(event) => {
+                    if (event.detail === 0)
+                      act('maneuver', {
+                        value: data.maneuver_direction === 8 ? 0 : 8,
+                      });
+                  }}
                 >
                   ←
                 </Button>
@@ -300,6 +371,7 @@ function Navigation({ data }: { data: NavigationData }) {
                   disabled={helm.blocked}
                   tooltip="Уменьшить тягу"
                   onClick={() => helm.changeThrottle(-5)}
+                  aria-label="Уменьшить тягу"
                 >
                   ↓
                 </Button>
@@ -309,6 +381,13 @@ function Navigation({ data }: { data: NavigationData }) {
                   selected={data.maneuver_direction === 4}
                   onMouseDown={(event) => {
                     if (event.button === 0) helm.hold('right');
+                  }}
+                  aria-label="Боковая тяга вправо"
+                  onClick={(event) => {
+                    if (event.detail === 0)
+                      act('maneuver', {
+                        value: data.maneuver_direction === 4 ? 0 : 4,
+                      });
                   }}
                 >
                   →

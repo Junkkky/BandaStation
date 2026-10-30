@@ -5,7 +5,7 @@
 	ruin_type = "expedition_surface"
 	allow_duplicates = FALSE
 	/// Surface biome keys compatible with this ruin template.
-	var/list/planet_biomes = list("barren", "frozen", "arid", "lush")
+	var/list/planet_biomes = list("barren", "frozen", "arid", "lush", "lava")
 
 /datum/stationtrauma_overmap_site/space/planet
 	/// Surface biome key used to select compatible ruin templates.

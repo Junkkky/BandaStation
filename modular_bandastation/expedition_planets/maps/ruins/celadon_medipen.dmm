@@ -1,0 +1,2368 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_medipen_plant.dmm
+"aD" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/airlock/science/glass,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"bB" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/item/reagent_containers/hypospray/medipen/penacid,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"bN" = (
+/obj/structure/door_assembly/door_assembly_research{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"bV" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/hypospray/medipen/survival,
+/obj/item/reagent_containers/hypospray/medipen/survival,
+/obj/effect/turf_decal/box,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"cb" = (
+/turf/closed/indestructible/riveted,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"ck" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/plumbing/synthesizer,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"cQ" = (
+/mob/living/basic/trooper/nanotrasen,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"dL" = (
+/obj/structure/chair,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"dN" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/exterior)
+"dT" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard,
+/obj/item/shard{
+	icon_state = "small"
+	},
+/obj/item/reagent_containers/cup/beaker/large,
+/obj/item/reagent_containers/cup/beaker/large{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/table_frame,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"ek" = (
+/obj/machinery/plumbing/pill_press,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"es" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"et" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"eA" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"eK" = (
+/obj/effect/turf_decal/box,
+/obj/machinery/ltsrbt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"eR" = (
+/obj/machinery/door/window/left/directional/west,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"eX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"fk" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"fI" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"fV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"gd" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "small"
+	},
+/obj/item/shard,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"gl" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/shard,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"gF" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"gU" = (
+/obj/machinery/plumbing/tank,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"gV" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"ho" = (
+/obj/effect/turf_decal/box,
+/obj/machinery/chem_heater,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"hs" = (
+/obj/structure/rack,
+/obj/item/tank/internals/oxygen{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/tank/internals/oxygen,
+/obj/item/tank/internals/oxygen{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"hv" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"hH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/structure/sign/poster/official/random/directional/east,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"hV" = (
+/obj/machinery/door/airlock/public/glass,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"ia" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"il" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"iG" = (
+/obj/machinery/plumbing,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"jn" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible/layer4{
+	dir = 8
+	},
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"jx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"jG" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "small"
+	},
+/obj/item/shard,
+/obj/item/wrench,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/table_frame,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"jN" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"jR" = (
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/item/melee/baton/telescopic,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"jS" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"jW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/plumbing/synthesizer,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"kg" = (
+/obj/effect/turf_decal/box,
+/obj/machinery/chem_master,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"kp" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"kr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"kB" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/cardboard/fifty{
+	pixel_x = 3;
+	pixel_y = -3;
+	amount = 50
+	},
+/obj/item/stack/sheet/cardboard/fifty{
+	amount = 50
+	},
+/obj/item/stack/sheet/cardboard/fifty{
+	pixel_x = -3;
+	pixel_y = 3;
+	amount = 50
+	},
+/obj/effect/turf_decal/box,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"kM" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/door/airlock/science/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"kT" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"lp" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "small"
+	},
+/obj/item/shard,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"ly" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/closed/indestructible/riveted,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"lB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"lI" = (
+/obj/structure/door_assembly/door_assembly_research{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"lR" = (
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"mB" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"mP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"nc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"nj" = (
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"nL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"nO" = (
+/obj/machinery/plumbing/output,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"nP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"om" = (
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"oK" = (
+/obj/machinery/plumbing/reaction_chamber,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"oR" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"pH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"qa" = (
+/obj/structure/closet/crate/solarpanel_small,
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"qh" = (
+/obj/machinery/plumbing/synthesizer,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"ql" = (
+/obj/machinery/light/small/directional/west,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"qm" = (
+/obj/structure/closet/secure_closet/chemical,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"qo" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"qT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"rk" = (
+/obj/structure/table,
+/obj/item/storage/toolbox/emergency,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/item/restraints/handcuffs,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"rr" = (
+/obj/effect/spawner/random/vending/colavend,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"rw" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard,
+/obj/structure/table_frame,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"rG" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"rN" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"rW" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"sh" = (
+/obj/structure/chair,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"sV" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/item/clothing/under/rank/security/officer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"tj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"tm" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"ts" = (
+/obj/structure/closet/secure_closet/chemical,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/item/construction/plumbing,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"tz" = (
+/obj/item/paper{
+	default_raw_text = "First, pack the medpens in a box, this is nessarary or else the launchpad won't take the pens. Second, leave them on the pad, and click send. From there, they will be managed and transported to mining vendors all over  the galaxy.";
+	name = "Factory loading instructions"
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"tD" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/hypospray/medipen/survival,
+/obj/effect/turf_decal/box,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"tW" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
+/obj/structure/sign/poster/official/random/directional/east,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"ui" = (
+/obj/structure/rack,
+/obj/item/storage/medkit/brute,
+/obj/item/storage/medkit/fire{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"uF" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/box,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"uY" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"vo" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"vp" = (
+/obj/machinery/door/airlock/security/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"vF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"vY" = (
+/obj/machinery/light/directional/south,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"wn" = (
+/obj/item/wrench,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"wz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/closed/indestructible/riveted,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"wK" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"wV" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"wY" = (
+/obj/effect/turf_decal/box,
+/obj/machinery/chem_dispenser,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"xj" = (
+/obj/machinery/atmospherics/components/tank/air{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"xp" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "small"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"xv" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"yn" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"yv" = (
+/obj/machinery/plumbing/filter,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"zi" = (
+/obj/structure/rack,
+/obj/item/storage/box,
+/obj/effect/turf_decal/box,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"zm" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"zJ" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/glass/coffee,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Ad" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Ap" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Au" = (
+/obj/structure/table_frame,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "small"
+	},
+/obj/item/wrench,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"AE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Bz" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"BZ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Cl" = (
+/obj/structure/chair,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light/directional/west,
+/obj/structure/sign/poster/official/random/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Cs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/plumbing/pill_press,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Dc" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/hypospray/medipen/survival,
+/obj/effect/turf_decal/box,
+/obj/machinery/light/directional/south,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Dn" = (
+/obj/machinery/computer/vaultcontroller{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Du" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Dv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"DG" = (
+/obj/structure/rack,
+/obj/item/tank/internals/oxygen/yellow{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/tank/internals/oxygen/yellow,
+/obj/item/tank/internals/oxygen/yellow{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"DR" = (
+/obj/structure/rack,
+/obj/item/storage/box,
+/obj/effect/turf_decal/box,
+/obj/machinery/light/directional/north,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Ew" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"EM" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/box,
+/obj/machinery/light/directional/south,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"ES" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"ET" = (
+/obj/effect/turf_decal/loading_area,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"EX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Fa" = (
+/obj/structure/table_frame,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Fm" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/hypospray/medipen/survival,
+/obj/effect/turf_decal/box,
+/obj/machinery/light/directional/north,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"FN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"FS" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Gk" = (
+/obj/structure/tank_dispenser/oxygen,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Gw" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Gx" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"GQ" = (
+/obj/structure/filingcabinet,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"GZ" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"If" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Iy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"IE" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"IO" = (
+/obj/effect/turf_decal/box,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"IS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Jc" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/box,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Je" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Js" = (
+/obj/structure/table_frame,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "small"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Jy" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"JF" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"JK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"JM" = (
+/obj/machinery/door/airlock/atmos/glass{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"JY" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Kf" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Kp" = (
+/obj/machinery/plumbing/input,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"KV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"KY" = (
+/obj/machinery/plumbing/tank,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"La" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Lr" = (
+/obj/structure/table,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Lu" = (
+/obj/structure/sign/poster/official/random/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Lv" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"LS" = (
+/obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Mb" = (
+/turf/template_noop,
+/area/template_noop)
+"Me" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/machinery/reagentgrinder,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table_frame,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Mh" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Ml" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/mining_voucher,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"ME" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"MK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"MX" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Na" = (
+/obj/structure/closet/wardrobe/chemistry_white,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Nj" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Nu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Nv" = (
+/obj/machinery/plumbing/grinder_chemical,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"On" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"PB" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"PE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Qn" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"QL" = (
+/obj/structure/table_frame,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Rb" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Rl" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Rq" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"RB" = (
+/obj/item/reagent_containers/hypospray/medipen/survival,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"RI" = (
+/obj/structure/table_frame,
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/reagent_containers/cup/beaker/large{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/reagent_containers/cup/beaker/large,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"RL" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"RO" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"RQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"RV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Sc" = (
+/mob/living/basic/trooper/nanotrasen/ranged,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"SI" = (
+/obj/machinery/plumbing,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"TE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/item/circuitboard/computer/solar_control,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"TJ" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/hypospray/medipen/oxandrolone{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/reagent_containers/hypospray/medipen{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/hypospray/medipen/atropine,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"TO" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"TX" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Ud" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/box,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Uf" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Uw" = (
+/obj/machinery/plumbing/tank,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"UP" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"UR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"UZ" = (
+/obj/structure/table/glass,
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"VW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Wk" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Wo" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Wp" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Wy" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"WM" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/vending/snackvend,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"WP" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Xb" = (
+/obj/item/shard{
+	icon_state = "tiny"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Xh" = (
+/obj/structure/closet/wardrobe/chemistry_white,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Xi" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Xq" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"XQ" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"XY" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/exterior)
+"Ys" = (
+/obj/structure/rack,
+/obj/item/storage/medkit/toxin,
+/obj/item/storage/medkit{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Yv" = (
+/obj/structure/table/glass,
+/obj/structure/frame/machine,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"YT" = (
+/obj/machinery/door/airlock/vault/derelict,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Za" = (
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/south,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/exterior)
+"Zj" = (
+/obj/structure/table/glass,
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/item/stack/ducts/fifty{
+	amount = 50
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Zo" = (
+/obj/effect/spawner/random/vending/snackvend,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+"Zu" = (
+/obj/item/reagent_containers/hypospray/medipen/oxandrolone,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
+
+(1,1,1) = {"
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+dN
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+"}
+(2,1,1) = {"
+Mb
+Mb
+Mb
+Mb
+gF
+rG
+rG
+gF
+jn
+rG
+gF
+gF
+rG
+rG
+gF
+gF
+rG
+rG
+gF
+gF
+rG
+gF
+rG
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+"}
+(3,1,1) = {"
+Mb
+Mb
+Mb
+Mb
+gF
+xj
+qa
+ql
+BZ
+gF
+UZ
+Au
+RI
+Yv
+QL
+Fa
+Js
+nP
+Lv
+nP
+Lv
+JK
+gF
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+"}
+(4,1,1) = {"
+Mb
+Mb
+Mb
+Mb
+rG
+TE
+Wk
+gV
+wn
+gF
+MK
+jS
+PE
+Wk
+Wk
+Wk
+Zu
+qT
+PE
+jS
+qT
+fI
+gF
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+"}
+(5,1,1) = {"
+Mb
+Mb
+Mb
+Mb
+gF
+jN
+Xi
+RO
+Rb
+rG
+Wk
+PE
+jW
+Rl
+Dv
+Dv
+Dv
+iG
+Wk
+PE
+Cs
+Wk
+rG
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+"}
+(6,1,1) = {"
+Mb
+Mb
+Mb
+Mb
+gF
+WP
+Lu
+gV
+fk
+gF
+Wk
+PE
+PE
+Rl
+yv
+om
+Wk
+Rl
+Wk
+qT
+jS
+fI
+cb
+cb
+cb
+cb
+cb
+cb
+cb
+"}
+(7,1,1) = {"
+Mb
+gF
+rG
+gF
+gF
+rG
+gF
+JM
+AE
+gF
+IE
+qT
+jS
+Gx
+om
+om
+om
+oK
+zm
+PE
+nO
+pH
+cb
+Jc
+RB
+wY
+lR
+tD
+cb
+"}
+(8,1,1) = {"
+Mb
+gF
+Gk
+Cl
+zJ
+eA
+FS
+JF
+Bz
+gF
+MK
+Uw
+PE
+Gw
+Rl
+om
+Rl
+jS
+gU
+Wk
+Wk
+wV
+cb
+Fm
+lR
+kg
+cQ
+Dc
+cb
+"}
+(9,1,1) = {"
+Mb
+rG
+sh
+FS
+UP
+Qn
+FS
+FS
+Bz
+gF
+Xh
+Rl
+jS
+Gw
+Rl
+Kp
+Rl
+PE
+lB
+jS
+PE
+wV
+cb
+bV
+Sc
+ho
+lR
+Jc
+cb
+"}
+(10,1,1) = {"
+Mb
+rG
+dL
+TO
+il
+Ml
+yn
+Wo
+eR
+rG
+ts
+PE
+oK
+kr
+jS
+jS
+jS
+jS
+Mh
+PE
+Wk
+wV
+cb
+Fm
+lR
+tD
+lR
+Dc
+cb
+"}
+(11,1,1) = {"
+Za
+gF
+hs
+FS
+oR
+Jy
+Wy
+es
+vY
+gF
+tm
+GZ
+Nj
+gd
+Nj
+bN
+xp
+gl
+Rq
+Xb
+rN
+rN
+wz
+uF
+TX
+tD
+lR
+Jc
+cb
+"}
+(12,1,1) = {"
+XY
+hV
+TO
+FS
+FS
+Lr
+nc
+ui
+Nu
+kM
+PB
+RQ
+ME
+vo
+ES
+Rl
+Rl
+RV
+VW
+FN
+RV
+Kf
+YT
+lR
+lR
+tz
+ET
+eK
+cb
+"}
+(13,1,1) = {"
+XY
+hV
+FS
+TO
+TO
+Lr
+tj
+Ys
+MX
+aD
+RL
+vF
+hv
+La
+IS
+KV
+Xq
+Xq
+Xq
+ia
+fV
+Xq
+YT
+cQ
+lR
+lR
+lR
+nj
+cb
+"}
+(14,1,1) = {"
+Za
+gF
+DG
+TO
+FS
+On
+Dn
+TJ
+LS
+gF
+tm
+Wp
+XQ
+Ap
+Du
+lI
+JY
+JY
+lp
+XQ
+JY
+JY
+ly
+Ud
+et
+tD
+Sc
+tD
+cb
+"}
+(15,1,1) = {"
+Mb
+gF
+FS
+FS
+FS
+wK
+wK
+Uf
+vp
+gF
+qm
+qT
+jS
+UR
+eX
+Rl
+jS
+PE
+nL
+jS
+jS
+Wk
+cb
+DR
+cQ
+tD
+lR
+Dc
+cb
+"}
+(16,1,1) = {"
+Mb
+rG
+FS
+FS
+TO
+wK
+xv
+jR
+Ew
+rG
+Na
+PE
+Rl
+Mh
+Rl
+PE
+Rl
+Dv
+Iy
+Rl
+jS
+fI
+cb
+tD
+lR
+IO
+lR
+tD
+cb
+"}
+(17,1,1) = {"
+Mb
+rG
+Zo
+FS
+WM
+wK
+rk
+sV
+EX
+gF
+kT
+jS
+Rl
+qo
+Rl
+Dv
+Nv
+Rl
+Je
+Dv
+ck
+fI
+cb
+Fm
+lR
+IO
+RB
+EM
+cb
+"}
+(18,1,1) = {"
+Mb
+gF
+rr
+tW
+kp
+wK
+GQ
+jx
+hH
+rG
+mP
+Rl
+PE
+KY
+om
+om
+om
+Rl
+Ad
+jS
+jS
+rW
+cb
+zi
+lR
+IO
+lR
+kB
+cb
+"}
+(19,1,1) = {"
+Mb
+gF
+rG
+gF
+rG
+gF
+gF
+rG
+rG
+rG
+Rl
+qh
+Wk
+jS
+om
+SI
+Dv
+Dv
+jS
+Dv
+Rl
+wV
+cb
+cb
+cb
+cb
+cb
+cb
+cb
+"}
+(20,1,1) = {"
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+gF
+kT
+PE
+jS
+Rl
+Rl
+PE
+ek
+Dv
+jS
+Dv
+jS
+wV
+gF
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+"}
+(21,1,1) = {"
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+gF
+kT
+Wk
+PE
+PE
+Rl
+Rl
+qT
+jS
+Rl
+jS
+Uw
+wV
+rG
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+"}
+(22,1,1) = {"
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+gF
+Zj
+jG
+dT
+Me
+rw
+uY
+bB
+Wk
+If
+If
+If
+mB
+gF
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+"}
+(23,1,1) = {"
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+rG
+rG
+gF
+gF
+rG
+rG
+gF
+rG
+gF
+gF
+gF
+rG
+gF
+gF
+Mb
+Mb
+Mb
+Mb
+Mb
+Mb
+"}

@@ -34,7 +34,7 @@ export type NavigationData = Position & {
   celestial_bodies: CelestialBody[];
   vx: number;
   vy: number;
-  track: [number, number][];
+  trajectory: (Position & { seconds: number })[];
   course: number;
   ordered_course: number;
   speed: number;

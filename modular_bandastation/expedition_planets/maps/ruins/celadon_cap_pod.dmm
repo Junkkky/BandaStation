@@ -1,0 +1,641 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/IceRuins/icemoon_crashed_cap_pod.dmm
+"aY" = (
+/obj/structure/girder/reinforced,
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"cn" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"dE" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"dT" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/table_frame,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"ee" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"eN" = (
+/obj/item/stack/ore/iron,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"eY" = (
+/obj/structure/flora/grass/both,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"fb" = (
+/obj/structure/table_frame/abductor,
+/mob/living/basic/trooper/syndicate/melee/space,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"fC" = (
+/obj/structure/barricade/sandbags,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"fU" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"jp" = (
+/obj/structure/door_assembly/door_assembly_com,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"kc" = (
+/obj/item/minespawner,
+/obj/item/stack/rods/ten{
+	pixel_y = 5;
+	amount = 10
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"ku" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/lattice,
+/obj/item/minespawner,
+/obj/item/stack/ore/bluespace_crystal,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"kP" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/barricade/sandbags,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"lM" = (
+/mob/living/basic/mining/legion/snow{
+	faction = list("Syndicate")
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"mx" = (
+/obj/item/stack/ore/titanium{
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"nn" = (
+/obj/structure/lattice,
+/obj/structure/barricade/sandbags,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"op" = (
+/obj/structure/girder/reinforced,
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 5
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"oE" = (
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"pi" = (
+/obj/structure/barricade/sandbags,
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"pj" = (
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 5
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"qG" = (
+/obj/structure/flora/grass/both,
+/obj/item/stack/ore/titanium{
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"rL" = (
+/obj/item/stack/ore/uranium{
+	amount = 5
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"rU" = (
+/obj/structure/flora/rock/pile/icy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"sH" = (
+/obj/structure/lattice,
+/obj/item/minespawner,
+/obj/item/stack/ore/iron{
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"sS" = (
+/obj/machinery/light/small/broken/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"ti" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"up" = (
+/obj/structure/frame,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"ur" = (
+/obj/structure/barricade/sandbags{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"wp" = (
+/obj/item/shard{
+	pixel_x = -11;
+	pixel_y = -7
+	},
+/obj/item/shard{
+	pixel_x = 15;
+	pixel_y = 9
+	},
+/obj/item/stack/ore/uranium{
+	pixel_y = 10;
+	amount = 5
+	},
+/mob/living/basic/trooper/syndicate/ranged/shotgun/space,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"wN" = (
+/obj/item/wallframe/apc,
+/obj/machinery/light/small/broken/directional/east,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"zp" = (
+/obj/structure/safe,
+/obj/item/implanter,
+/obj/item/implantcase,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"zr" = (
+/obj/item/minespawner,
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"Az" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"CL" = (
+/obj/item/stack/ore/iron{
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"DF" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"Eh" = (
+/turf/closed/indestructible/rock/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"HO" = (
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"IU" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/basic/trooper/syndicate/ranged/smg/space,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"Jn" = (
+/obj/item/organ/liver,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"ML" = (
+/obj/structure/toilet{
+	color = "#ffd700"
+	},
+/obj/effect/mob_spawn/corpse/human/commander,
+/obj/item/melee/sabre,
+/turf/open/floor/mineral/gold,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"NN" = (
+/obj/item/stack/ore/uranium{
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"Ps" = (
+/obj/structure/frame/computer{
+	dir = 4
+	},
+/obj/machinery/light/small/broken/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"Qs" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"Ro" = (
+/obj/structure/barricade/sandbags{
+	dir = 8
+	},
+/obj/item/minespawner,
+/obj/item/stack/ore/titanium{
+	amount = 5
+	},
+/obj/item/stack/ore/titanium{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"Ul" = (
+/obj/structure/flora/rock/icy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"Vd" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"Vq" = (
+/obj/structure/table_frame,
+/mob/living/basic/trooper/syndicate/ranged/smg/space,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"Vy" = (
+/obj/machinery/door/airlock/highsecurity{
+	locked = 212
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"VG" = (
+/turf/template_noop,
+/area/template_noop)
+"Wl" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/mob_spawn/corpse/human/secoff,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"Wr" = (
+/obj/item/organ/stomach,
+/obj/structure/barricade/sandbags,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+"YF" = (
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 5
+	},
+/obj/structure/lattice,
+/obj/structure/barricade/sandbags{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+
+(1,1,1) = {"
+VG
+VG
+VG
+VG
+ti
+ti
+ti
+ti
+ti
+VG
+VG
+VG
+VG
+VG
+VG
+VG
+VG
+VG
+"}
+(2,1,1) = {"
+VG
+VG
+ti
+ti
+ti
+ti
+ti
+ti
+ti
+eY
+ti
+ti
+ti
+ti
+ti
+VG
+VG
+VG
+"}
+(3,1,1) = {"
+VG
+ti
+ti
+ti
+ti
+Eh
+ti
+Eh
+Eh
+Eh
+Eh
+Eh
+ti
+lM
+ti
+VG
+VG
+VG
+"}
+(4,1,1) = {"
+VG
+ti
+ti
+ti
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+ti
+rU
+ti
+Ul
+ti
+ti
+VG
+VG
+"}
+(5,1,1) = {"
+VG
+ti
+ti
+ti
+Eh
+Eh
+Eh
+Eh
+Eh
+ti
+ti
+Ro
+ur
+ti
+mx
+ti
+ti
+VG
+"}
+(6,1,1) = {"
+VG
+ti
+ti
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+lM
+qG
+ee
+pj
+Qs
+ti
+ti
+ti
+VG
+"}
+(7,1,1) = {"
+VG
+ti
+Eh
+Eh
+Eh
+Eh
+cn
+cn
+cn
+cn
+ee
+dE
+ee
+nn
+ti
+ti
+rU
+VG
+"}
+(8,1,1) = {"
+ti
+ti
+Eh
+cn
+op
+cn
+Az
+Ps
+fb
+aY
+kc
+Wr
+eN
+zr
+Vd
+DF
+ti
+VG
+"}
+(9,1,1) = {"
+ti
+Eh
+cn
+ML
+Vy
+IU
+dT
+rL
+ti
+jp
+ku
+kP
+Wl
+ti
+ti
+lM
+ti
+VG
+"}
+(10,1,1) = {"
+ti
+Eh
+Eh
+cn
+fU
+Vd
+oE
+wp
+sS
+fC
+ti
+Vd
+pi
+up
+ti
+HO
+ti
+VG
+"}
+(11,1,1) = {"
+ti
+ti
+Eh
+cn
+zp
+wN
+Vq
+cn
+cn
+cn
+ee
+sH
+fC
+ee
+Vd
+ti
+ti
+VG
+"}
+(12,1,1) = {"
+VG
+ti
+Eh
+op
+cn
+cn
+op
+cn
+Eh
+Eh
+Eh
+ee
+YF
+ee
+Jn
+ti
+ti
+VG
+"}
+(13,1,1) = {"
+VG
+ti
+Eh
+ti
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+ti
+ti
+ti
+CL
+eY
+ti
+VG
+"}
+(14,1,1) = {"
+VG
+ti
+ti
+ti
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+Eh
+ti
+ti
+ti
+ti
+VG
+"}
+(15,1,1) = {"
+VG
+ti
+ti
+ti
+Eh
+ti
+Eh
+Eh
+Eh
+ti
+ti
+lM
+ti
+ti
+ti
+ti
+Ul
+VG
+"}
+(16,1,1) = {"
+VG
+VG
+ti
+ti
+ti
+ti
+Eh
+Eh
+ti
+Eh
+ti
+NN
+rU
+ti
+ti
+mx
+ti
+VG
+"}
+(17,1,1) = {"
+VG
+VG
+VG
+ti
+ti
+ti
+VG
+VG
+VG
+eY
+ti
+ti
+VG
+VG
+VG
+ti
+VG
+VG
+"}

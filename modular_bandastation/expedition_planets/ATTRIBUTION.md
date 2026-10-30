@@ -26,6 +26,21 @@ TG-типы, rust-g и местный генератор с резервиров
 Внешняя графика для профилей не добавлялась: грунт, руда, флора и существа
 используют существующие ресурсы сборки с их исходными лицензиями.
 
+## Биомы Celadon
+
+Выбор биома по высоте, теплу и влажности, таблицы биомов, высота гор и плотности
+флоры и фауны адаптированы из генераторов планет CeladonSS13/Shiptest, коммит
+`4214796c7289b74779f10dd25df2d695c264aa8f` (исходный код — AGPL v3; авторы — участники
+Celadon, Shiptest и TG). Наполнение биомов заменено существующими TG-типами.
+
+| Локальный файл | Генератор Celadon |
+| --- | --- |
+| `code/barren.dm` | [moon_generator.dm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/code/datums/mapgen/planetary/moon_generator.dm) |
+| `code/frozen.dm` | [SnowGenerator.dm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/code/datums/mapgen/planetary/SnowGenerator.dm) |
+| `code/arid.dm` | [SandGenerator.dm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/code/datums/mapgen/planetary/SandGenerator.dm) |
+| `code/lush.dm` | [JungleGenerator.dm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/code/datums/mapgen/planetary/JungleGenerator.dm) |
+| `code/lava.dm` | [LavaGenerator.dm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/code/datums/mapgen/planetary/LavaGenerator.dm) |
+
 ## Наземные руины
 
 | Локальный файл | Исходник Sierra |
@@ -60,7 +75,29 @@ TG-типы, rust-g и местный генератор с резервиров
 посадочного лагеря отдельно указана в
 [space_overmap/ATTRIBUTION.md](../space_overmap/ATTRIBUTION.md).
 
-Исходные permalink, коммиты и контрольные суммы всех 23 карт включены в общий
+## Наземные руины Celadon
+
+Источник: CeladonSS13/Shiptest, коммит `4214796c7289b74779f10dd25df2d695c264aa8f`; планировки CC BY-SA 3.0,
+авторы — участники Celadon, Shiptest, Whitesands и TG.
+
+| Локальный файл | Источник CeladonSS13/Shiptest |
+| --- | --- |
+| `maps/ruins/celadon_botany.dmm` | [_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_botany.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_botany.dmm) |
+| `maps/ruins/celadon_medtech.dmm` | [_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_medtech_outbreak.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_medtech_outbreak.dmm) |
+| `maps/ruins/celadon_observatory.dmm` | [_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_observatory.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_observatory.dmm) |
+| `maps/ruins/celadon_library.dmm` | [_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_abandoned_library.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_abandoned_library.dmm) |
+| `maps/ruins/celadon_hydroponics.dmm` | [_maps/_mod_celadon/RandomRuins/IceRuins/icemoon_hydroponics_lab.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/IceRuins/icemoon_hydroponics_lab.dmm) |
+| `maps/ruins/celadon_cap_pod.dmm` | [_maps/_mod_celadon/RandomRuins/IceRuins/icemoon_crashed_cap_pod.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/IceRuins/icemoon_crashed_cap_pod.dmm) |
+| `maps/ruins/celadon_medipen.dmm` | [_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_medipen_plant.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_medipen_plant.dmm) |
+| `maps/ruins/celadon_waterplant.dmm` | [_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_waterplant.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_waterplant.dmm) |
+| `maps/ruins/celadon_miningexpedition.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_miningexpedition.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_miningexpedition.dmm) |
+| `maps/ruins/celadon_boxsci.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_boxsci.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_boxsci.dmm) |
+
+Планировки сохранены; несовместимые сущности, area, механизмы, обитатели и добыча
+заменены местными типами. Природный грунт вокруг построек берётся из генератора
+планеты. Оружие Shiptest заменено ближайшими местными аналогами.
+
+Исходные permalink, коммиты и контрольные суммы всех 33 карт включены в общий
 [ASSETS.json](../space_overmap/ASSETS.json). Указание авторства не означает
 одобрения этой адаптации исходными проектами.
 <!-- AI EDIT END -->

@@ -23,7 +23,7 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
   const svg = useRef<SVGSVGElement>(null);
   const scale = 0.16 * zoom;
   const width = 620;
-  const height = 300;
+  const height = 440;
   const centre = { x: data.x + pan.x, y: data.y + pan.y };
   const point = (x: number, y: number) => ({
     x: width / 2 + (x - centre.x) * scale,
@@ -38,10 +38,10 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
     };
     const move = (event: MouseEvent) => {
       if (!drag.current || !svg.current) return;
-      const bounds = svg.current.getBoundingClientRect();
-      if (!bounds.width || !bounds.height) return;
-      const dx = (event.clientX - drag.current.x) * (width / bounds.width);
-      const dy = (event.clientY - drag.current.y) * (height / bounds.height);
+      const matrix = svg.current.getScreenCTM();
+      if (!matrix?.a || !matrix.d) return;
+      const dx = (event.clientX - drag.current.x) / matrix.a;
+      const dy = (event.clientY - drag.current.y) / matrix.d;
       drag.current = { x: event.clientX, y: event.clientY };
       setPan((prior) => ({ x: prior.x - dx / scale, y: prior.y + dy / scale }));
     };
@@ -306,16 +306,18 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
             </g>
           );
         })}
-        {data.track.map(([x, y], index) => (
+        {data.trajectory.map(({ x, y, seconds }, index) => (
           <circle
-            key={index}
+            key={seconds}
             cx={point(x, y).x}
             cy={point(x, y).y}
-            r={3}
-            pointerEvents="none"
-            fill="#d6edc0"
-            fillOpacity={(index + 1) / (data.track.length + 1)}
-          />
+            r={4 - index * 0.5}
+            fill="#91d7d0"
+            fillOpacity={1 - index * 0.2}
+            stroke="#080e0d"
+          >
+            <title>{`+${seconds} с при текущей тяге`}</title>
+          </circle>
         ))}
         {data.braking_distance !== null && data.speed > 0.05 && (
           <path
@@ -325,7 +327,6 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
             transform={`translate(${own.x + (data.vx / data.speed) * data.braking_distance * scale} ${own.y - (data.vy / data.speed) * data.braking_distance * scale})`}
           />
         )}
-        <Velocity origin={own} vx={data.vx} vy={data.vy} scale={scale} />
         <path
           d="M0-15L7 10L-7 10Z"
           pointerEvents="none"

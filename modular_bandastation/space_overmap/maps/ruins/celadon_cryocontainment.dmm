@@ -1,0 +1,2332 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SpaceRuins/space_cryocontainment.dmm
+"ad" = (
+/obj/structure/frame/machine,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"aj" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ap" = (
+/mob/living/basic/carp,
+/obj/structure/lattice,
+/turf/template_noop,
+/area/space/nearstation)
+"aS" = (
+/obj/structure/fluff/paper/stack{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/obj/effect/decal/remains/robot,
+/obj/item/bodypart/arm/left/robot,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"bc" = (
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"bU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 5
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 4
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"cp" = (
+/obj/effect/mob_spawn/corpse/human/damaged{
+	outfit = /datum/outfit/job/scientist
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"cx" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/engine/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"cW" = (
+/obj/effect/decal/cleanable/chem_pile,
+/obj/effect/turf_decal/trimline/yellow/line,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"db" = (
+/obj/structure/table/glass,
+/obj/item/book/manual/wiki/chemistry,
+/obj/effect/turf_decal/trimline/yellow/line,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"dG" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"dJ" = (
+/obj/item/stack/ore/gold,
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"dK" = (
+/obj/structure/fluff/paper/stack{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"dN" = (
+/obj/structure/grille,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"dP" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/mob/living/basic/carp,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ee" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ek" = (
+/obj/structure/closet/wardrobe/chemistry_white,
+/obj/machinery/light/broken/directional/west,
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/item/stock_parts/scanning_module/phasic,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"el" = (
+/obj/machinery/computer{
+	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
+	dir = 4;
+	name = "Broken Computer"
+	},
+/obj/item/paper{
+	name = "console log";
+	default_raw_text = "SPECIMEN BREACHED FROM CRYO CELL, ACTIVATING LOCKDOWN PRTOCOLS, ACTIVATING DECOUPLING CHARGES. THE SPECIMEN MUST NOT GET TO THE MAIN STATION. RECONTAIN AT ALL COSTS."
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ey" = (
+/obj/machinery/chem_master,
+/obj/machinery/light/dim/directional/north,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"eA" = (
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"eL" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"fJ" = (
+/obj/machinery/vending/plasmaresearch,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"fK" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/structure/table_frame,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"fS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"fX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/item/surgery_tray/full,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"gq" = (
+/obj/effect/mob_spawn/corpse/human/damaged{
+	outfit = /datum/outfit/job/scientist
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"gH" = (
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"gZ" = (
+/obj/structure/table/optable,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"hn" = (
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"hz" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
+	dir = 8
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"hN" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/bodypart/arm/right/robot,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"hP" = (
+/obj/item/ammo_casing/spent{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/obj/item/ammo_casing/spent{
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/obj/item/ammo_casing/spent{
+	dir = 1;
+	pixel_x = -10
+	},
+/obj/machinery/light/broken/directional/west,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"hW" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"iL" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_cryocontainment_cryocontainmentlockdown";
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"iV" = (
+/obj/item/banner/science/mundane,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"jp" = (
+/obj/effect/decal/cleanable/greenglow,
+/obj/structure/frame/machine,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"kq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"kw" = (
+/obj/machinery/smartfridge/organ,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"kC" = (
+/obj/item/stack/ore/silver,
+/obj/item/stack/ore/silver,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"kD" = (
+/obj/structure/table/greyscale,
+/obj/item/storage/fancy/cigarettes/cigpack_carp,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"kQ" = (
+/obj/structure/table/glass,
+/obj/item/stock_parts/micro_laser/high,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"kS" = (
+/obj/item/stack/ore/gold,
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"lc" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"lo" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "exp_celadon_cryocontainment_cryocontainshutter"
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"lp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/purple{
+	dir = 10
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"lI" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_celadon_cryocontainment_cryocontainmentblastdoors"
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"lO" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"mh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"mw" = (
+/obj/structure/table_frame,
+/obj/item/stock_parts/power_store/cell/hyper/empty,
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/gibs/robot_debris/old,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"mF" = (
+/obj/effect/mine/stun,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"mR" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"mV" = (
+/obj/effect/decal/cleanable/blood/gibs/robot_debris/old,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"na" = (
+/obj/structure/chair/greyscale{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/obj/effect/mob_spawn/corpse/human/secoff,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"nd" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"nr" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"nL" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"nT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/purple{
+	dir = 4
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"om" = (
+/obj/effect/turf_decal/siding/purple{
+	dir = 8
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ot" = (
+/obj/structure/fluff/paper/stack{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ou" = (
+/obj/structure/table/reinforced,
+/obj/item/circuitboard/computer/crew,
+/obj/machinery/door/window/survival_pod/left/directional/north,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"oC" = (
+/obj/structure/fluff/paper/stack{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/obj/structure/frame/machine,
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"oI" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/item/clothing/glasses/science,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"oN" = (
+/obj/effect/turf_decal/trimline/purple/end,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"oR" = (
+/obj/structure/table/reinforced,
+/obj/item/ammo_box/magazine/m9mm,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"oS" = (
+/obj/machinery/door/airlock/security{
+	dir = 8
+	},
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_cryocontainment_cryocontainmentlockdown";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ph" = (
+/obj/structure/sign/warning/chem_diamond,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"pn" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"pF" = (
+/obj/machinery/computer/pandemic,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"pJ" = (
+/obj/machinery/door/airlock/public/glass{
+	dir = 8
+	},
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_cryocontainment_cryocontainmentlockdown";
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"qi" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"qo" = (
+/obj/item/stack/ore/plasma,
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"qx" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 4
+	},
+/mob/living/basic/carp,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"qA" = (
+/obj/item/stack/ore/plasma,
+/obj/machinery/light/broken/directional/west,
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"qU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
+/turf/open/floor/engine/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"qV" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"rh" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"rk" = (
+/obj/structure/fluff/paper/stack{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"rC" = (
+/obj/structure/lattice,
+/obj/item/stack/ore/titanium,
+/turf/template_noop,
+/area/space/nearstation)
+"si" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ss" = (
+/obj/structure/table/glass,
+/obj/machinery/light/dim/directional/north,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"sP" = (
+/obj/machinery/chem_heater,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"sR" = (
+/obj/machinery/chem_master,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"td" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door{
+	id = "exp_celadon_cryocontainment_cryocontainmentblastdoors";
+	name = "Blast Door Control"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"tu" = (
+/obj/item/shard,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"tB" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"uz" = (
+/obj/structure/table/glass,
+/obj/item/clothing/head/beret/medical,
+/obj/effect/turf_decal/trimline/yellow/line,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"uP" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"vJ" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"vK" = (
+/obj/machinery/light/broken/directional/south,
+/obj/effect/turf_decal/recharge,
+/obj/structure/sign/departments/science/directional/east,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"vL" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/structure/fluff/paper/stack{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"vT" = (
+/obj/effect/spawner/random/medical/supplies,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"vW" = (
+/obj/item/stack/ore/iron,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"wd" = (
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"wf" = (
+/obj/structure/grille/broken,
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ws" = (
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"xe" = (
+/mob/living/basic/carp,
+/turf/template_noop,
+/area/space/nearstation)
+"xm" = (
+/obj/item/stack/ore/titanium,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"xz" = (
+/obj/effect/decal/cleanable/chem_pile,
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"xV" = (
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"yL" = (
+/obj/effect/mob_spawn/corpse/human/damaged{
+	outfit = /datum/outfit/job/scientist
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"yP" = (
+/obj/structure/table/glass,
+/obj/item/toy/figure/chemist,
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"yU" = (
+/obj/structure/table/reinforced,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"yY" = (
+/obj/structure/table/reinforced,
+/obj/item/circuitboard/computer/scan_consolenew,
+/obj/machinery/door/window/survival_pod/left/directional/north,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"zt" = (
+/obj/effect/turf_decal/trimline/purple/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"zA" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/cup/beaker/cryoxadone{
+	pixel_x = -6
+	},
+/obj/item/reagent_containers/cup/beaker/cryoxadone{
+	pixel_x = 6
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"zD" = (
+/obj/structure/fluff/paper/stack{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"zG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/purple{
+	dir = 1
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"zK" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/item/circuitboard/aicore,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"zN" = (
+/mob/living/basic/carp/mega,
+/obj/machinery/light/floor,
+/obj/effect/turf_decal/trimline/yellow/end{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"zU" = (
+/obj/structure/cable,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"zY" = (
+/obj/structure/table/glass,
+/obj/item/reagent_containers/cup/beaker,
+/obj/effect/spawner/random/medical/supplies,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Ay" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/item/ammo_casing/spent{
+	dir = 10;
+	pixel_x = -11;
+	pixel_y = -5
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"AB" = (
+/obj/structure/sign/directions/science{
+	pixel_y = 25
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"AI" = (
+/turf/closed/mineral/random/low_chance,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Bp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 6
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Bz" = (
+/obj/effect/decal/cleanable/chem_pile,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"BE" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"BI" = (
+/obj/item/stack/ore/titanium,
+/turf/template_noop,
+/area/space/nearstation)
+"BM" = (
+/obj/effect/gibspawner/human,
+/obj/item/clothing/suit/toggle/labcoat,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Ce" = (
+/obj/item/shard,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Cm" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Cr" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"CE" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/stockparts/deluxe,
+/obj/machinery/door/window/survival_pod/left/directional/east,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"CS" = (
+/obj/item/stack/ore/silver,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Db" = (
+/obj/structure/fluff/paper/stack{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/chem_pile,
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Du" = (
+/obj/item/reagent_containers/syringe,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"DT" = (
+/obj/item/shard,
+/obj/item/stack/rods,
+/turf/template_noop,
+/area/space/nearstation)
+"DZ" = (
+/obj/effect/turf_decal/siding/purple,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Ef" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/siding/purple{
+	dir = 5
+	},
+/obj/machinery/pdapainter,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Er" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ED" = (
+/obj/machinery/door/airlock/science/glass,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"EM" = (
+/obj/structure/fluff/paper/stack{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"EN" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"EW" = (
+/obj/structure/lattice,
+/obj/item/stack/cable_coil/cut,
+/obj/item/stack/ore/titanium,
+/turf/template_noop,
+/area/space/nearstation)
+"EZ" = (
+/obj/structure/lattice,
+/obj/item/stack/cable_coil/cut,
+/turf/template_noop,
+/area/space/nearstation)
+"Fw" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Fz" = (
+/obj/structure/table/reinforced,
+/obj/item/gun/energy/laser/pistol,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/window/survival_pod/left/directional/east,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"FC" = (
+/obj/structure/grille/broken,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"GE" = (
+/obj/structure/table/glass,
+/obj/item/storage/bag/chemistry,
+/obj/effect/turf_decal/trimline/yellow/line,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"GJ" = (
+/mob/living/basic/carp,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Hq" = (
+/obj/structure/sign/departments/chemistry,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"HP" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Ie" = (
+/obj/structure/girder/displaced,
+/turf/template_noop,
+/area/space/nearstation)
+"Ih" = (
+/obj/item/stack/ore/titanium,
+/turf/closed/mineral/random/low_chance,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Ii" = (
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Io" = (
+/obj/item/stack/ore/uranium,
+/obj/structure/frame/machine,
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Ir" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/purple{
+	dir = 8
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Is" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Iv" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"IH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"IQ" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"IW" = (
+/obj/item/stack/ore/iron,
+/turf/template_noop,
+/area/space/nearstation)
+"IX" = (
+/turf/template_noop,
+/area/template_noop)
+"Jo" = (
+/obj/structure/sign/departments/science,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Jz" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/hatch{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"JH" = (
+/obj/structure/table_frame,
+/obj/item/shard,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"JL" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Kg" = (
+/obj/item/stock_parts/capacitor,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Kn" = (
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Ks" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Kw" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"KR" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/effect/mapping_helpers/apc/no_charge,
+/obj/effect/mapping_helpers/apc/away_general_access,
+/obj/item/ammo_casing/spent{
+	pixel_x = -9;
+	pixel_y = 11
+	},
+/obj/item/ammo_casing/spent{
+	dir = 10;
+	pixel_y = 5
+	},
+/obj/item/ammo_casing/spent{
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"KW" = (
+/obj/structure/table_frame,
+/obj/item/stack/ore/silver,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Ld" = (
+/obj/structure/lattice,
+/obj/item/stack/ore/iron,
+/turf/template_noop,
+/area/space/nearstation)
+"Lt" = (
+/obj/item/stack/ore/uranium,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"LV" = (
+/obj/structure/fluff/paper/stack{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Mc" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"MN" = (
+/obj/item/stack/ore/titanium,
+/obj/item/stack/ore/titanium,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Nn" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/space/nearstation)
+"NF" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"NH" = (
+/obj/machinery/blackbox_recorder,
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/siding/purple{
+	dir = 6
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"NO" = (
+/obj/item/stack/ore/iron,
+/obj/structure/fluff/paper/stack{
+	dir = 6
+	},
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Of" = (
+/obj/item/stack/ore/silver,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"On" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Oo" = (
+/obj/item/stack/ore/uranium,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Ox" = (
+/obj/structure/fluff/paper/stack{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"OF" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/accessory/medal/plasma/nobel_science,
+/obj/machinery/door/window/survival_pod/left/directional/south,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"OL" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button{
+	name = "Explosive Decoupler Control";
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/obj/machinery/button/door{
+	id = "exp_celadon_cryocontainment_cryocontainmentlockdown";
+	name = "Containment Lockdown Control";
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/obj/item/megaphone/command,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"OT" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door{
+	id = "exp_celadon_cryocontainment_cryocontainshutter";
+	name = "Window Shutter Control";
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/obj/item/gun/ballistic/automatic/pistol/no_mag,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"OV" = (
+/obj/item/stack/ore/titanium,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"OY" = (
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 1
+	},
+/obj/effect/decal/remains/robot,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Pl" = (
+/obj/structure/lattice,
+/obj/item/stack/rods,
+/turf/template_noop,
+/area/space/nearstation)
+"Pm" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/item/clothing/neck/cloak/rd,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"PC" = (
+/obj/structure/showcase/horrific_experiment,
+/turf/open/floor/engine/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"PS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"PZ" = (
+/obj/structure/sign/directions/science{
+	pixel_y = 25
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Qe" = (
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Qh" = (
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"RA" = (
+/obj/effect/decal/cleanable/greenglow,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"RH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ST" = (
+/obj/effect/spawner/random/medical/supplies,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Tg" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"TQ" = (
+/obj/effect/mine/stun,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Uk" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Um" = (
+/obj/item/shard,
+/turf/template_noop,
+/area/space/nearstation)
+"Uy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/purple{
+	dir = 9
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"UQ" = (
+/obj/machinery/smartfridge/chemistry,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"UV" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Vf" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Vl" = (
+/obj/structure/fluff/paper/stack{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Vp" = (
+/obj/effect/turf_decal/siding/purple{
+	dir = 1
+	},
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Vy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/purple,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"VD" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"VZ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Wf" = (
+/obj/machinery/cryo_cell{
+	state_open = 1
+	},
+/turf/open/floor/engine/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Ws" = (
+/obj/structure/table/reinforced,
+/obj/item/research_notes,
+/obj/machinery/door/window/survival_pod/left/directional/south,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"WB" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"WL" = (
+/obj/structure/chair/stool,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 8
+	},
+/obj/effect/decal/remains/human,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Xi" = (
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Yx" = (
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"YF" = (
+/obj/item/stack/cable_coil/cut,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"YM" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
+/obj/machinery/door/poddoor/preopen{
+	id = "exp_celadon_cryocontainment_cryocontainmentblastdoors"
+	},
+/obj/structure/door_assembly/door_assembly_hatch{
+	anchored = 1
+	},
+/turf/open/floor/engine/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"YY" = (
+/turf/open/floor/engine/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Zc" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/item/light/tube/broken,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/light/empty/directional/south,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"Zt" = (
+/obj/structure/grille,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+"ZI" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered)
+
+(1,1,1) = {"
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+Nn
+IX
+IX
+IX
+IX
+IX
+FC
+dN
+FC
+FC
+dN
+FC
+wf
+dN
+IX
+IX
+IX
+"}
+(2,1,1) = {"
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+Nn
+IX
+IX
+Pl
+IX
+IX
+IX
+IW
+Nn
+IX
+IX
+IX
+IX
+"}
+(3,1,1) = {"
+IX
+IX
+IX
+Ih
+xm
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+Nn
+IX
+IX
+IX
+IX
+Xi
+Xi
+Xi
+dG
+dG
+dG
+Xi
+JL
+IX
+FC
+IX
+"}
+(4,1,1) = {"
+IX
+IX
+xm
+AI
+AI
+tB
+kC
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+EW
+Nn
+Nn
+Ie
+IX
+dG
+dG
+iV
+CE
+Fz
+iV
+dG
+Xi
+Nn
+dN
+IX
+"}
+(5,1,1) = {"
+IX
+IX
+AI
+AI
+AI
+Oo
+AI
+AI
+IX
+IX
+xe
+IX
+IX
+IX
+BI
+Vf
+EZ
+DT
+IX
+dG
+Pm
+Uy
+Ir
+om
+lp
+zK
+dG
+IX
+dN
+IX
+"}
+(6,1,1) = {"
+IX
+IX
+IX
+Of
+AI
+AI
+AI
+AI
+tB
+IX
+IX
+IX
+IX
+IX
+Nn
+Vf
+ap
+Nn
+Ld
+dG
+OF
+Vp
+kq
+Yx
+Vy
+ou
+dG
+IX
+FC
+IX
+"}
+(7,1,1) = {"
+IX
+IX
+IX
+IX
+AI
+MN
+AI
+Oo
+AI
+IX
+IX
+IX
+IX
+Um
+Xi
+Vf
+Xi
+IX
+IX
+Xi
+Ws
+zG
+Yx
+kq
+DZ
+yY
+Xi
+IX
+dN
+IX
+"}
+(8,1,1) = {"
+IX
+IX
+IX
+IX
+IX
+AI
+AI
+AI
+AI
+IX
+IX
+IX
+IW
+IX
+Qe
+YF
+xV
+IX
+IX
+Xi
+oI
+Vp
+kq
+Yx
+Vy
+Mc
+Xi
+IX
+wf
+IX
+"}
+(9,1,1) = {"
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+BI
+IX
+IX
+IX
+xV
+Vf
+Zt
+IX
+IX
+Xi
+Jo
+Ef
+nT
+nT
+NH
+dG
+Xi
+Nn
+dN
+IX
+"}
+(10,1,1) = {"
+IX
+IX
+IX
+IX
+xe
+IX
+IX
+IX
+IX
+dN
+dN
+FC
+FC
+Um
+Zt
+aj
+nr
+rC
+Nn
+Xi
+dG
+dG
+Jz
+Jz
+Xi
+dG
+Xi
+IX
+dN
+IX
+"}
+(11,1,1) = {"
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IW
+Nn
+IX
+IW
+IX
+nr
+uP
+nr
+IX
+IX
+Nn
+IX
+Xi
+TQ
+mF
+dG
+IX
+Nn
+IW
+IX
+IX
+"}
+(12,1,1) = {"
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+Xi
+Xi
+Xi
+dG
+dG
+iL
+dG
+IX
+xe
+Nn
+IX
+Xi
+mh
+bc
+dG
+IX
+Nn
+IX
+IX
+IX
+"}
+(13,1,1) = {"
+IX
+IX
+IX
+IW
+IX
+BI
+IX
+IX
+IW
+IW
+Xi
+el
+oR
+lo
+eL
+Ks
+dG
+IX
+IX
+Nn
+dG
+dG
+Jz
+Jz
+dG
+dG
+Nn
+IX
+IX
+wf
+"}
+(14,1,1) = {"
+IX
+IX
+FC
+FC
+dN
+dN
+dN
+dN
+dN
+IX
+dG
+na
+OT
+lo
+bc
+mR
+Xi
+IW
+IX
+Xi
+Hq
+ek
+hn
+gH
+qA
+dG
+Xi
+Nn
+Pl
+FC
+"}
+(15,1,1) = {"
+IX
+IX
+FC
+IW
+IX
+Nn
+BI
+IX
+Nn
+IX
+dG
+Ay
+OL
+lo
+si
+Kw
+Xi
+Nn
+dG
+Xi
+zY
+ST
+Bz
+BE
+mw
+pF
+dG
+Xi
+IX
+dN
+"}
+(16,1,1) = {"
+IX
+IX
+dN
+IW
+IX
+Ld
+IX
+IX
+dG
+dG
+dG
+oS
+dG
+Xi
+Xi
+iL
+Xi
+Nn
+Xi
+kQ
+Lt
+cW
+Bz
+Vf
+yL
+CS
+eA
+Xi
+IX
+IX
+"}
+(17,1,1) = {"
+IX
+IX
+dN
+Nn
+dG
+Xi
+Xi
+dG
+dG
+zA
+Yx
+pn
+hP
+KR
+bc
+uP
+Xi
+IX
+Xi
+ss
+vT
+Kg
+GJ
+gH
+Ii
+hN
+kS
+Xi
+IW
+IX
+"}
+(18,1,1) = {"
+IX
+IX
+dN
+IX
+dG
+dG
+dG
+dG
+dG
+yU
+rh
+dP
+qi
+cp
+On
+Zc
+dG
+Xi
+dG
+jp
+xz
+Ox
+BE
+vW
+qo
+zt
+KW
+dG
+dG
+IX
+"}
+(19,1,1) = {"
+IX
+IX
+dN
+IX
+dG
+Xi
+PC
+YY
+lI
+td
+bc
+ZI
+BM
+zU
+bc
+lc
+dG
+PZ
+gH
+bc
+gH
+Vf
+Vf
+gH
+Vf
+OY
+EM
+ad
+dG
+IX
+"}
+(20,1,1) = {"
+IX
+IX
+dN
+Nn
+dG
+Xi
+cx
+YY
+lI
+ws
+Fw
+UV
+fX
+vL
+Cr
+HP
+ED
+gH
+Vf
+tu
+OV
+rk
+gH
+gH
+LV
+Ii
+mV
+Io
+dG
+IX
+"}
+(21,1,1) = {"
+IX
+IX
+FC
+IX
+dG
+Xi
+Wf
+qU
+YM
+hW
+gq
+nd
+gZ
+NF
+lc
+Yx
+ED
+gH
+gH
+Vf
+gH
+gH
+zN
+oN
+gH
+Ii
+gH
+Kn
+dG
+IX
+"}
+(22,1,1) = {"
+IX
+IX
+dN
+IX
+dG
+Xi
+cx
+YY
+lI
+qV
+eL
+Cm
+JH
+EN
+Uk
+ee
+ED
+gH
+EM
+bc
+vW
+ot
+gH
+gH
+gH
+zD
+Vf
+oC
+dG
+IX
+"}
+(23,1,1) = {"
+IX
+IX
+dN
+Nn
+Xi
+Xi
+PC
+YY
+lI
+VZ
+bU
+fS
+nL
+RH
+Ce
+Bp
+Xi
+AB
+Vf
+hn
+gH
+Bz
+tu
+ot
+OV
+Ii
+aS
+fJ
+dG
+IX
+"}
+(24,1,1) = {"
+IX
+IX
+dN
+IX
+Xi
+Xi
+Xi
+Xi
+dG
+Iv
+qx
+Du
+Yx
+lO
+VD
+WB
+Xi
+dG
+dG
+yP
+Is
+Vf
+Db
+gH
+GJ
+dJ
+Vl
+dG
+Xi
+IX
+"}
+(25,1,1) = {"
+IX
+IX
+dN
+IX
+dG
+Xi
+Xi
+dG
+dG
+vJ
+hz
+kw
+UQ
+sR
+Tg
+PS
+Xi
+IX
+ph
+vW
+BE
+Bz
+db
+LV
+Vl
+Ii
+eA
+Xi
+IX
+IX
+"}
+(26,1,1) = {"
+IX
+IX
+FC
+Nn
+Nn
+Nn
+Ld
+Nn
+dG
+dG
+Xi
+Xi
+Xi
+Xi
+IH
+pJ
+dG
+Nn
+Xi
+ey
+Qh
+BE
+fK
+EM
+Vf
+NO
+vK
+Xi
+IX
+IX
+"}
+(27,1,1) = {"
+IX
+IX
+FC
+IX
+IX
+xe
+IX
+IX
+IX
+Nn
+IX
+IW
+IX
+nr
+kD
+WL
+nr
+Ld
+Xi
+dG
+sP
+Vf
+GE
+wd
+gH
+dK
+dG
+dG
+IX
+dN
+"}
+(28,1,1) = {"
+IX
+IX
+IX
+IX
+FC
+dN
+dN
+dN
+dN
+dN
+dN
+FC
+IW
+nr
+nr
+nr
+nr
+IX
+IX
+dG
+dG
+RA
+uz
+IQ
+Er
+dG
+dG
+Pl
+Ld
+wf
+"}
+(29,1,1) = {"
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IW
+IX
+IX
+IX
+IX
+IX
+Nn
+Xi
+Xi
+dG
+Xi
+Xi
+dG
+Nn
+IX
+IX
+dN
+"}
+(30,1,1) = {"
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+IX
+Nn
+IX
+IX
+IX
+IX
+IX
+IX
+Nn
+IX
+IX
+IX
+"}

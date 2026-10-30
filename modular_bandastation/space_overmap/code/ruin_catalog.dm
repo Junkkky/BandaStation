@@ -69,4 +69,41 @@
 	name = "Expedition-Space paradise wreckedcargoship"
 	suffix = "paradise_wreckedcargoship.dmm"
 	overmap_name = "Разграбленный грузовой корабль"
+
+// CeladonSS13/Shiptest contributors; adapted layouts: CC BY-SA 3.0; see source links in each DMM.
+// https://github.com/CeladonSS13/Shiptest/tree/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins
+/** Expedition-only ruin template for Expedition-Space celadon fueldepot. */
+/datum/map_template/ruin/space/expedition/celadon_fueldepot
+	id = "celadon_fueldepot"
+	name = "Expedition-Space celadon fueldepot"
+	suffix = "celadon_fueldepot.dmm"
+	overmap_name = "Заброшенный топливный склад"
+
+/** Expedition-only ruin template for Expedition-Space celadon corporate_mining. */
+/datum/map_template/ruin/space/expedition/celadon_corporate_mining
+	id = "celadon_corporate_mining"
+	name = "Expedition-Space celadon corporate_mining"
+	suffix = "celadon_corporate_mining.dmm"
+	overmap_name = "Корпоративный шахтёрский модуль"
+
+/** Expedition-only ruin template for Expedition-Space celadon excavator. */
+/datum/map_template/ruin/space/expedition/celadon_excavator
+	id = "celadon_excavator"
+	name = "Expedition-Space celadon excavator"
+	suffix = "celadon_excavator.dmm"
+	overmap_name = "Разбитый экскаватор класса DK"
+
+/** Expedition-only ruin template for Expedition-Space celadon djstation. */
+/datum/map_template/ruin/space/expedition/celadon_djstation
+	id = "celadon_djstation"
+	name = "Expedition-Space celadon djstation"
+	suffix = "celadon_djstation.dmm"
+	overmap_name = "Музыкальная радиостанция"
+
+/** Expedition-only ruin template for Expedition-Space celadon cryocontainment. */
+/datum/map_template/ruin/space/expedition/celadon_cryocontainment
+	id = "celadon_cryocontainment"
+	name = "Expedition-Space celadon cryocontainment"
+	suffix = "celadon_cryocontainment.dmm"
+	overmap_name = "Криогенное хранилище"
 // AI EDIT END

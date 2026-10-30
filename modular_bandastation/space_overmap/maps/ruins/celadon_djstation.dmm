@@ -1,0 +1,899 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SpaceRuins/space_DJstation.dmm
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ae" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/space/nearstation)
+"aZ" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
+"bj" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/structure/disposaloutlet,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
+"bB" = (
+/obj/structure/table,
+/obj/item/flashlight/lamp,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"dF" = (
+/obj/structure/sign/warning/vacuum/external/directional/south,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"er" = (
+/obj/structure/frame/computer{
+	anchored = 1
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"gH" = (
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"gJ" = (
+/obj/structure/grille,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"gY" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"iM" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"ky" = (
+/obj/structure/closet,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"kT" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"mA" = (
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"ni" = (
+/obj/item/storage/box/lights/mixed,
+/obj/structure/sign/warning/electric_shock/directional/south,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"nV" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"pj" = (
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"qp" = (
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"rS" = (
+/obj/item/multitool,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"sk" = (
+/obj/structure/sink/directional/east,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"sW" = (
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"tV" = (
+/obj/structure/chair/office/light,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"uN" = (
+/obj/item/extinguisher,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"vx" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"vH" = (
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"vI" = (
+/obj/structure/rack,
+/obj/item/clothing/suit/space/orange,
+/obj/item/clothing/head/helmet/space/orange,
+/obj/item/clothing/mask/breath,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"vR" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"wr" = (
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"xk" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/item/radio/off{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"xC" = (
+/obj/machinery/door/airlock/external{
+	name = "Ruskie DJ Station"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"yG" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Aa" = (
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Bo" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"BF" = (
+/obj/machinery/vending/snack,
+/obj/machinery/light/small/directional/north,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Cx" = (
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/pen,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"CF" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/item/paper,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Da" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Washroom"
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Dg" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Dq" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"DK" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"DX" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/rack,
+/obj/item/clothing/under/costume/pirate,
+/obj/item/clothing/head/costume/pirate/bandana,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Eu" = (
+/obj/structure/bed,
+/obj/item/bedsheet,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Ff" = (
+/obj/machinery/door/airlock/external{
+	name = "Ruskie DJ Station"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Gy" = (
+/obj/machinery/telecomms/relay/preset/ruskie,
+/obj/machinery/light/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Ja" = (
+/obj/machinery/light/small/directional/south,
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Ku" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"KH" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"LP" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/obj/item/radio/off,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"LT" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"MW" = (
+/obj/machinery/power/smes/magical{
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit.";
+	name = "power storage unit"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Nf" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Pa" = (
+/obj/machinery/power/solar/fake,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Pe" = (
+/obj/machinery/power/terminal,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"QV" = (
+/obj/machinery/newscaster/directional/north{
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Sp" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/space_heater,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"Sx" = (
+/obj/machinery/light_switch{
+	pixel_y = 28
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"TN" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Kitchen";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"VD" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Rest Room";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"VI" = (
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"YT" = (
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"YV" = (
+/obj/effect/spawner/random/structure/crate_abandoned,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+"ZQ" = (
+/obj/machinery/light_switch{
+	pixel_y = 28
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+gJ
+gJ
+gJ
+gJ
+gJ
+gJ
+gJ
+aa
+KH
+yG
+yG
+yG
+KH
+aa
+ae
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+gJ
+Pa
+gH
+Pa
+gH
+Pa
+gJ
+aa
+KH
+kT
+sW
+Aa
+vx
+aZ
+aZ
+aZ
+bj
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+gJ
+Pa
+gH
+Pa
+gH
+Pa
+gJ
+aa
+KH
+vH
+vH
+Ja
+KH
+ae
+ae
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+aa
+ae
+gJ
+Pa
+gH
+Pa
+gH
+Pa
+gJ
+aa
+KH
+vH
+vH
+Nf
+KH
+KH
+KH
+KH
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+aa
+aa
+ae
+ae
+gJ
+Pa
+gH
+Pa
+gH
+Pa
+gJ
+aa
+KH
+vH
+vH
+vH
+Da
+VI
+sk
+KH
+aa
+aa
+"}
+(6,1,1) = {"
+gJ
+gJ
+gJ
+gJ
+gJ
+KH
+yG
+yG
+KH
+yG
+yG
+KH
+KH
+KH
+yG
+TN
+yG
+KH
+KH
+wr
+KH
+aa
+aa
+"}
+(7,1,1) = {"
+gJ
+Pa
+Pa
+Pa
+Pa
+yG
+Dq
+Dq
+Dq
+uN
+Dq
+LT
+KH
+mA
+Ku
+Ku
+Ku
+Ku
+KH
+KH
+KH
+aa
+aa
+"}
+(8,1,1) = {"
+gJ
+gH
+gH
+gH
+gH
+yG
+Dq
+Dq
+Dq
+Dq
+Dq
+ni
+KH
+BF
+Ku
+xk
+DK
+Ku
+vR
+Cx
+KH
+aa
+aa
+"}
+(9,1,1) = {"
+gJ
+Pa
+Pa
+Pa
+Pa
+KH
+Gy
+Dq
+Pe
+MW
+nV
+nV
+Bo
+Ku
+Ku
+tV
+LP
+Ku
+Ku
+Ku
+KH
+aa
+aa
+"}
+(10,1,1) = {"
+gJ
+gH
+gH
+gH
+gH
+yG
+Dq
+Dq
+rS
+Dq
+Dq
+Dq
+KH
+Sx
+Ku
+CF
+LP
+Ku
+Sp
+dF
+KH
+KH
+KH
+"}
+(11,1,1) = {"
+gJ
+Pa
+Pa
+Pa
+Pa
+yG
+Dq
+Dq
+pj
+Dq
+Dq
+vI
+KH
+QV
+Ku
+Ku
+Ku
+qp
+DX
+Ku
+xC
+Dq
+Ff
+"}
+(12,1,1) = {"
+gJ
+gJ
+gJ
+gJ
+gJ
+KH
+yG
+yG
+KH
+yG
+yG
+KH
+KH
+KH
+yG
+VD
+yG
+KH
+KH
+KH
+KH
+KH
+KH
+"}
+(13,1,1) = {"
+aa
+aa
+ae
+ae
+ae
+gJ
+Pa
+gH
+Pa
+gH
+Pa
+gJ
+aa
+KH
+YV
+YT
+er
+KH
+aa
+aa
+aa
+aa
+aa
+"}
+(14,1,1) = {"
+aa
+aa
+aa
+aa
+ae
+gJ
+Pa
+gH
+Pa
+gH
+Pa
+gJ
+aa
+KH
+ZQ
+YT
+iM
+KH
+aa
+aa
+aa
+aa
+aa
+"}
+(15,1,1) = {"
+aa
+aa
+aa
+aa
+ae
+gJ
+Pa
+gH
+Pa
+gH
+Pa
+gJ
+aa
+KH
+Eu
+YT
+Dg
+KH
+ae
+ae
+aa
+aa
+aa
+"}
+(16,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+gJ
+Pa
+gH
+Pa
+gH
+Pa
+gJ
+aa
+KH
+bB
+gY
+ky
+KH
+aa
+aa
+aa
+aa
+aa
+"}
+(17,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+gJ
+gJ
+gJ
+gJ
+gJ
+gJ
+gJ
+aa
+KH
+yG
+yG
+yG
+KH
+aa
+aa
+aa
+aa
+aa
+"}
+(18,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ae
+ae
+aa
+ae
+aa
+aa
+ae
+aa
+aa
+aa
+aa
+aa
+aa
+"}

@@ -1,0 +1,909 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_botany.dmm
+"aQ" = (
+/obj/item/spear,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"dl" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"dv" = (
+/obj/structure/table,
+/obj/item/plant_analyzer,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"dz" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"dG" = (
+/obj/machinery/hydroponics/constructable,
+/obj/item/food/grown/ambrosia,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"en" = (
+/obj/machinery/seed_extractor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"ep" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/grass/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/exterior)
+"er" = (
+/obj/structure/table,
+/obj/structure/fluff/dnamod,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"eA" = (
+/obj/structure/cable,
+/obj/structure/glowshroom/single,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"eI" = (
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"eT" = (
+/obj/structure/closet/crate/medical,
+/obj/item/stack/medical/aloe,
+/obj/item/stack/medical/suture,
+/obj/item/stack/medical/suture,
+/obj/item/stack/medical/aloe,
+/obj/item/gun/syringe,
+/obj/item/reagent_containers/syringe/piercing,
+/obj/item/reagent_containers/syringe/piercing,
+/obj/item/reagent_containers/syringe/piercing,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"hi" = (
+/obj/structure/cable,
+/obj/structure/sign/poster/contraband/kudzu/directional/east,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"hj" = (
+/obj/structure/spacevine,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"hm" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/mob/living/basic/killer_tomato,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"hS" = (
+/obj/structure/bed,
+/obj/item/bedsheet/green,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"im" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"ip" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"iA" = (
+/obj/structure/sign/poster/contraband/donut_corp/directional/north,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"ja" = (
+/obj/structure/sign/departments/botany,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"kx" = (
+/obj/structure/spacevine,
+/obj/item/food/grown/carrotlike/carrot,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"kC" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/spacevine,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"ld" = (
+/obj/machinery/door/airlock{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"lv" = (
+/obj/structure/sign/poster/contraband/ambrosia_vulgaris/directional/north,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"lA" = (
+/obj/structure/door_assembly/door_assembly_com{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"lL" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"mq" = (
+/obj/structure/closet/secure_closet/hydroponics,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"nf" = (
+/obj/structure/closet/crate/large,
+/obj/item/inducer,
+/obj/item/circuitboard/machine/smes,
+/obj/item/stock_parts/power_store/cell/potato,
+/obj/item/stock_parts/power_store/cell/potato,
+/obj/item/stock_parts/power_store/cell/potato,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"nz" = (
+/obj/structure/chair/greyscale{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"nR" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"oj" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"oy" = (
+/obj/structure/sign/departments/engineering,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"oF" = (
+/obj/structure/table,
+/obj/item/disk/data,
+/obj/item/disk/data,
+/obj/item/disk/data,
+/obj/item/disk/data,
+/obj/item/disk/data,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"oT" = (
+/obj/item/reagent_containers/cup/glass/bottle/hooch,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"pB" = (
+/obj/structure/table,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 6
+	},
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/fancy/rollingpapers,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"qv" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4;
+	pixel_y = 11
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"qV" = (
+/obj/structure/table,
+/obj/item/book/manual/hydroponics_pod_people,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"rJ" = (
+/obj/structure/grille/broken,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/exterior)
+"rP" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/spacevine,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/exterior)
+"sr" = (
+/obj/structure/table,
+/obj/item/clipboard,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"sL" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/folder,
+/obj/item/stamp/granted,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"tk" = (
+/obj/structure/sign/departments/botany,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"tl" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4;
+	pixel_y = 7
+	},
+/mob/living/basic/killer_tomato,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"tF" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering{
+	locked = 1;
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"tX" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"ux" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"vi" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"vS" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/exterior)
+"xn" = (
+/obj/structure/grille/broken,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"xY" = (
+/obj/structure/bed,
+/obj/item/bedsheet/black,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"yb" = (
+/obj/structure/cable,
+/obj/structure/spacevine,
+/obj/item/food/grown/banana,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"yK" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"zA" = (
+/obj/machinery/vending/hydronutrients,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Aj" = (
+/obj/structure/table,
+/obj/item/screwdriver/power{
+	pixel_y = 6
+	},
+/obj/item/storage/belt/utility,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"AM" = (
+/obj/machinery/washing_machine,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Ch" = (
+/obj/machinery/vending/sovietsoda,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Dm" = (
+/obj/structure/closet/crate{
+	icon_state = "crateopen"
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 20
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"DO" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Eo" = (
+/obj/machinery/hydroponics/constructable,
+/obj/structure/spacevine,
+/obj/item/food/grown/cherries,
+/obj/item/food/grown/cherries,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Es" = (
+/obj/machinery/door/airlock/external{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Et" = (
+/obj/machinery/door/airlock/glass{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"EQ" = (
+/obj/structure/table,
+/obj/item/toy/cards/deck/tarot{
+	pixel_x = -8
+	},
+/obj/item/food/salad{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Ft" = (
+/obj/machinery/hydroponics/constructable,
+/obj/structure/spacevine,
+/obj/item/food/grown/ambrosia,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"GF" = (
+/obj/structure/spacevine,
+/obj/machinery/smartfridge/drying/rack,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"GK" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"GX" = (
+/obj/structure/flora/bush/grassy,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/exterior)
+"Hv" = (
+/obj/structure/closet/crate/bin,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"HF" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"HG" = (
+/obj/structure/cable,
+/obj/item/food/grown/berries,
+/obj/structure/glowshroom/single,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"HN" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/glass,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"HY" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/larva,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"IA" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"IK" = (
+/obj/structure/table,
+/obj/item/storage/fancy/cigarettes/cigpack_robust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"IO" = (
+/obj/structure/flora/grass/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/exterior)
+"IS" = (
+/obj/machinery/door/airlock,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"JC" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"JG" = (
+/obj/machinery/hydroponics/constructable,
+/obj/item/food/grown/garlic{
+	pixel_y = -3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Lt" = (
+/obj/structure/chair/greyscale{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Mo" = (
+/obj/item/kirbyplants/random/fullysynthetic,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Nm" = (
+/obj/structure/glowshroom/single,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"NN" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/spacevine,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"NP" = (
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Ob" = (
+/obj/effect/spawner/structure/window/hollow/reinforced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Og" = (
+/obj/machinery/door/airlock,
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"OY" = (
+/obj/structure/table,
+/obj/structure/cable,
+/obj/item/food/salad{
+	pixel_y = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Pn" = (
+/obj/structure/closet/crate/radiation,
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 20
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"PA" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/command,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"PN" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"SC" = (
+/obj/structure/cable,
+/obj/structure/spacevine,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"SK" = (
+/obj/structure/table,
+/obj/item/food/salad{
+	pixel_y = 7
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"SP" = (
+/obj/structure/table,
+/obj/item/clothing/glasses/meson,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"TR" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Uj" = (
+/obj/structure/flora/grass/jungle,
+/obj/structure/spacevine,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/exterior)
+"Uk" = (
+/obj/machinery/power/smes,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Uw" = (
+/obj/item/seeds/tomato/killer,
+/obj/item/seeds/kudzu,
+/obj/item/seeds/cannabis,
+/obj/item/seeds/random,
+/obj/structure/closet/crate/secure/hydroponics,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"UG" = (
+/obj/structure/closet/crate/large,
+/obj/item/circuitboard/machine/biogenerator,
+/obj/item/reagent_containers/spray/pestspray,
+/obj/item/reagent_containers/spray/pestspray,
+/obj/item/reagent_containers/spray/weedspray,
+/obj/item/reagent_containers/spray/weedspray,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"UR" = (
+/obj/structure/cable,
+/obj/structure/spacevine,
+/obj/item/food/grown/banana,
+/mob/living/basic/venus_human_trap,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"VR" = (
+/obj/structure/chair/greyscale{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Ws" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 10
+	},
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/obj/item/cigarette/rollie/trippy{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Wv" = (
+/obj/structure/frame/machine,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Xq" = (
+/obj/structure/sign/poster/contraband/kudzu/directional/east,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"Xs" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4;
+	pixel_y = 11
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+"XP" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/food/grown/berries,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
+
+(1,1,1) = {"
+tX
+tk
+eI
+eI
+tk
+tX
+Ob
+tX
+Ob
+Ob
+GX
+IO
+"}
+(2,1,1) = {"
+nR
+PN
+dl
+dl
+lL
+tX
+oF
+sr
+sL
+Ob
+rJ
+rP
+"}
+(3,1,1) = {"
+tX
+tX
+Es
+Es
+Xq
+tX
+dz
+VR
+hj
+NN
+rJ
+rJ
+"}
+(4,1,1) = {"
+tX
+pB
+IA
+IA
+IA
+PA
+kC
+vi
+Ws
+hj
+hj
+Ob
+"}
+(5,1,1) = {"
+tX
+dv
+IA
+HF
+Wv
+tX
+eA
+IA
+hm
+hj
+UG
+tX
+"}
+(6,1,1) = {"
+tX
+qV
+Nm
+dz
+mq
+nR
+Hv
+TR
+IA
+HF
+eT
+Ob
+"}
+(7,1,1) = {"
+tX
+tX
+ja
+Et
+tX
+nR
+tX
+tX
+hi
+lA
+tX
+tX
+"}
+(8,1,1) = {"
+tX
+lv
+Uw
+dz
+Nm
+dG
+tX
+DO
+IA
+HY
+Lt
+tX
+"}
+(9,1,1) = {"
+IO
+tX
+zA
+yb
+HF
+XP
+nR
+Ch
+JC
+dz
+EQ
+tX
+"}
+(10,1,1) = {"
+rP
+Ob
+Eo
+SC
+UR
+IA
+HN
+IA
+IA
+dz
+nz
+tX
+"}
+(11,1,1) = {"
+rP
+xn
+Ft
+SC
+hj
+JG
+tX
+OY
+IA
+yK
+Mo
+tX
+"}
+(12,1,1) = {"
+Uj
+Ob
+GF
+HG
+kx
+Ft
+tX
+SK
+IA
+Hv
+tX
+tX
+"}
+(13,1,1) = {"
+IO
+tX
+en
+SC
+er
+tX
+tX
+tX
+oj
+tX
+tX
+vS
+"}
+(14,1,1) = {"
+GX
+tX
+oy
+tF
+tX
+tX
+xY
+IS
+Xs
+ux
+Ob
+IO
+"}
+(15,1,1) = {"
+vS
+tX
+Aj
+IA
+nf
+tX
+tX
+tX
+tl
+ux
+tX
+ep
+"}
+(16,1,1) = {"
+IO
+nR
+SP
+IA
+Pn
+tX
+hS
+Og
+qv
+AM
+Ob
+IO
+"}
+(17,1,1) = {"
+IO
+nR
+Dm
+IA
+dz
+tX
+tX
+tX
+ld
+tX
+tX
+GX
+"}
+(18,1,1) = {"
+IO
+tX
+Uk
+ip
+dz
+iA
+GK
+aQ
+NP
+Ob
+IO
+vS
+"}
+(19,1,1) = {"
+vS
+tX
+im
+IA
+dz
+tX
+IK
+dz
+oT
+Ob
+vS
+IO
+"}
+(20,1,1) = {"
+IO
+tX
+tX
+tX
+tX
+tX
+tX
+Ob
+Ob
+tX
+IO
+IO
+"}

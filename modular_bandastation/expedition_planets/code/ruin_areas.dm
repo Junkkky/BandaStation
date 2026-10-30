@@ -475,4 +475,140 @@
 /** Imported room boundary for Потерянный транспорт: кормовой отсек; inherits the expedition ruin environment. */
 /area/ruin/space/has_grav/expedition_content/exp_void_transport18/ruin/space/transport18aft
 	name = "Потерянный транспорт: кормовой отсек"
+
+/** Imported room boundary for Разрушенная ботаническая лаборатория: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/exterior
+	name = "Разрушенная ботаническая лаборатория: наружная территория"
+
+/** Imported room boundary for Разрушенная ботаническая лаборатория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered
+	name = "Разрушенная ботаническая лаборатория"
+
+/** Imported room boundary for Обломок научного крыла: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/exterior
+	name = "Обломок научного крыла: наружная территория"
+
+/** Imported room boundary for Обломок научного крыла: обесточенный отсек; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered
+	name = "Обломок научного крыла: обесточенный отсек"
+
+/** Imported room boundary for Разбитый челнок: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior
+	name = "Разбитый челнок: наружная территория"
+
+/** Imported room boundary for Корпоративный шахтёрский модуль; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space
+	name = "Корпоративный шахтёрский модуль"
+
+/** Imported room boundary for Корпоративный шахтёрский модуль; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine
+	name = "Корпоративный шахтёрский модуль"
+
+/** Imported room boundary for Корпоративный шахтёрский модуль: рубка; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge
+	name = "Корпоративный шахтёрский модуль: рубка"
+
+/** Imported room boundary for Корпоративный шахтёрский модуль: жилые помещения; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters
+	name = "Корпоративный шахтёрский модуль: жилые помещения"
+
+/** Imported room boundary for Корпоративный шахтёрский модуль: коридор; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall
+	name = "Корпоративный шахтёрский модуль: коридор"
+
+/** Imported room boundary for Криогенное хранилище: обесточенный отсек; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_cryocontainment/ruin/unpowered
+	name = "Криогенное хранилище: обесточенный отсек"
+
+/** Imported room boundary for Музыкальная радиостанция; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_djstation/ruin/space/has_grav/powered
+	name = "Музыкальная радиостанция"
+
+/** Imported room boundary for Разбитый экскаватор класса DK; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_excavator/ruin/space
+	name = "Разбитый экскаватор класса DK"
+
+/** Imported room boundary for Разбитый экскаватор класса DK; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_excavator/ruin/space/has_grav/astraeus
+	name = "Разбитый экскаватор класса DK"
+
+/** Imported room boundary for Заброшенный топливный склад: обесточенный отсек; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_fueldepot/ruin/unpowered
+	name = "Заброшенный топливный склад: обесточенный отсек"
+
+/** Imported room boundary for Гидропонная лаборатория: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/exterior
+	name = "Гидропонная лаборатория: наружная территория"
+
+/** Imported room boundary for Гидропонная лаборатория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab
+	name = "Гидропонная лаборатория"
+
+/** Imported room boundary for Заброшенная библиотека; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_library/ruin/jungle
+	name = "Заброшенная библиотека"
+
+/** Imported room boundary for Заброшенная фабрика автоинъекторов: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/exterior
+	name = "Заброшенная фабрика автоинъекторов: наружная территория"
+
+/** Imported room boundary for Заброшенная фабрика автоинъекторов; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered
+	name = "Заброшенная фабрика автоинъекторов"
+
+/** Imported room boundary for Фармацевтический завод MedTech: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior
+	name = "Фармацевтический завод MedTech: наружная территория"
+
+/** Imported room boundary for Фармацевтический завод MedTech: рубка; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/bridge
+	name = "Фармацевтический завод MedTech: рубка"
+
+/** Imported room boundary for Фармацевтический завод MedTech: кабинет; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/crew/office
+	name = "Фармацевтический завод MedTech: кабинет"
+
+/** Imported room boundary for Фармацевтический завод MedTech: электрощитовая; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/engineering/electrical
+	name = "Фармацевтический завод MedTech: электрощитовая"
+
+/** Imported room boundary for Фармацевтический завод MedTech: коридор; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/hallway
+	name = "Фармацевтический завод MedTech: коридор"
+
+/** Imported room boundary for Фармацевтический завод MedTech: медицинский отсек; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical
+	name = "Фармацевтический завод MedTech: медицинский отсек"
+
+/** Imported room boundary for Фармацевтический завод MedTech: лаборатория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science
+	name = "Фармацевтический завод MedTech: лаборатория"
+
+/** Imported room boundary for Фармацевтический завод MedTech: склад; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage
+	name = "Фармацевтический завод MedTech: склад"
+
+/** Imported room boundary for Шахтёрская экспедиция: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_miningexpedition/exterior
+	name = "Шахтёрская экспедиция: наружная территория"
+
+/** Imported room boundary for Шахтёрская экспедиция; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_miningexpedition/ruin/rockplanet/nanotrasen
+	name = "Шахтёрская экспедиция"
+
+/** Imported room boundary for Заброшенная обсерватория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle
+	name = "Заброшенная обсерватория"
+
+/** Imported room boundary for Заброшенная обсерватория: лаборатория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab
+	name = "Заброшенная обсерватория: лаборатория"
+
+/** Imported room boundary for Заброшенная водоочистная станция: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/exterior
+	name = "Заброшенная водоочистная станция: наружная территория"
+
+/** Imported room boundary for Заброшенная водоочистная станция; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered
+	name = "Заброшенная водоочистная станция"
 // AI EDIT END

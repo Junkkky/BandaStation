@@ -49,7 +49,7 @@
 		"star" = list("x" = 0, "y" = 0),
 		"celestial_bodies" = sector?.celestial_bodies,
 		"x" = map.pos_x, "y" = map.pos_y,
-		"vx" = map.velocity_x, "vy" = map.velocity_y, "track" = map.track,
+		"vx" = map.velocity_x, "vy" = map.velocity_y, "trajectory" = map.predict_trajectory(),
 		"course" = map.course, "ordered_course" = map.ordered_course,
 		"speed" = map.speed, "throttle" = map.throttle,
 		"maneuver_direction" = map.maneuver_direction,

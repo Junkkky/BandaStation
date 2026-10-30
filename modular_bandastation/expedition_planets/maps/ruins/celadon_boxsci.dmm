@@ -1,0 +1,1123 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_boxsci.dmm
+"ax" = (
+/obj/structure/table,
+/obj/item/hemostat,
+/obj/item/cautery{
+	pixel_x = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"aX" = (
+/turf/closed/wall/r_wall/plastitanium/syndicate,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"bp" = (
+/obj/effect/turf_decal/recharge,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"bq" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/neutral/filled/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"bJ" = (
+/obj/machinery/door/airlock/research{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"cV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/conveyor_switch/oneway,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"dw" = (
+/obj/structure/table,
+/obj/item/clothing/gloves/latex/nitrile,
+/obj/item/razor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"dU" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 9
+	},
+/obj/structure/reagent_dispensers/wall/peppertank/directional/north{
+	pixel_x = -32
+	},
+/obj/structure/closet/secure_closet/security/science,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"dY" = (
+/obj/item/circuitboard/machine/rdserver,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"eo" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"ep" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/door/poddoor/shutters,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"eC" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/bot/secbot/ed209/nukie{
+	name = "\improper Abandoned ED-209 Robot";
+	desc = "A security robot. It looks like they have a loose trigger finger."
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"eK" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"fz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"gi" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"gr" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/frame/machine,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"gE" = (
+/obj/structure/disposalpipe/trunk,
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"gY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"hm" = (
+/obj/structure/table,
+/obj/machinery/button/door{
+	pixel_x = 6;
+	pixel_y = 25
+	},
+/obj/item/research_notes,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"ht" = (
+/obj/structure/frame/machine{
+	anchored = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"hv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/brain_processor/positronic,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"hC" = (
+/obj/item/brain_processor/positronic,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"iA" = (
+/obj/structure/bodycontainer/morgue,
+/obj/effect/turf_decal/trimline/neutral/filled/line,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"ja" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"ji" = (
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"jU" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"jX" = (
+/obj/effect/turf_decal/box,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/robot_suit/prebuilt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"ko" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"kL" = (
+/obj/structure/table_frame,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"lb" = (
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"lm" = (
+/obj/structure/table/optable,
+/obj/effect/turf_decal/trimline/neutral/filled/line,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"lD" = (
+/obj/machinery/button/door{
+	pixel_x = 6;
+	pixel_y = 25
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"mf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/warning/fire,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"mZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"nc" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/bot/secbot/ed209/nukie{
+	name = "\improper Abandoned ED-209 Robot";
+	desc = "A security robot. It looks like they have a loose trigger finger."
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"pa" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"pj" = (
+/obj/machinery/door/airlock/research,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"py" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"pH" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"pR" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"qt" = (
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"rI" = (
+/obj/machinery/door/airlock/research,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/grown/bananapeel,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"rT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mob_spawn/corpse/human/clown,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"sf" = (
+/obj/machinery/button/door{
+	pixel_x = 6;
+	pixel_y = 25
+	},
+/obj/machinery/light_switch{
+	pixel_x = -7;
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"si" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/pdapainter,
+/obj/machinery/light/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"so" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/circuit/red/telecomms,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"tJ" = (
+/obj/machinery/light/small/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"tY" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"ub" = (
+/obj/machinery/light/broken/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"uf" = (
+/obj/structure/frame/machine{
+	anchored = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"ul" = (
+/obj/machinery/door/poddoor,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"uo" = (
+/obj/machinery/door/window/right/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"ur" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"uv" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"vB" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"vE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"ww" = (
+/obj/machinery/mech_bay_recharge_port{
+	dir = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"wB" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"xl" = (
+/obj/structure/table,
+/obj/item/circular_saw,
+/obj/item/scalpel{
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"xI" = (
+/obj/structure/door_assembly/door_assembly_com{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"yr" = (
+/obj/structure/filingcabinet/chestdrawer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"yu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"yU" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/circuit/red/telecomms,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"zb" = (
+/obj/machinery/door/airlock/research,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Ao" = (
+/obj/structure/table_frame,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"AZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Bc" = (
+/obj/structure/girder/reinforced,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Bi" = (
+/obj/structure/table,
+/obj/item/retractor,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Bs" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"By" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"BA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"BD" = (
+/obj/structure/table,
+/obj/item/storage/box/bodybags,
+/obj/item/pen,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"BH" = (
+/obj/machinery/door/airlock/security,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/restraints/legcuffs/beartrap,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"BZ" = (
+/mob/living/basic/bot/secbot/ed209/nukie{
+	name = "\improper Abandoned ED-209 Robot";
+	desc = "A security robot. It looks like they have a loose trigger finger."
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Cq" = (
+/turf/template_noop,
+/area/template_noop)
+"Ds" = (
+/obj/effect/mine/shrapnel,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/exterior)
+"DG" = (
+/obj/effect/spawner/structure/window,
+/obj/machinery/door/poddoor/shutters,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Eg" = (
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Eu" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/bot/medbot/derelict,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Fb" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Fo" = (
+/obj/machinery/light/directional/south,
+/obj/structure/table,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/crowbar,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Fs" = (
+/turf/open/floor/circuit/red/telecomms,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Fv" = (
+/obj/machinery/door/poddoor/shutters,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Fw" = (
+/obj/machinery/computer/mech_bay_power_console{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"GD" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/poddoor/shutters,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"HO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"HZ" = (
+/obj/structure/frame/machine,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"IG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Je" = (
+/obj/structure/flora/rock/pile,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/exterior)
+"Jm" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/structure/table_frame,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Jo" = (
+/obj/structure/door_assembly/door_assembly_com,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"JV" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Kc" = (
+/obj/effect/turf_decal/recharge,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Kz" = (
+/obj/structure/table_frame,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"KP" = (
+/obj/machinery/recharge_station,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Lz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"LW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Mn" = (
+/obj/machinery/door/poddoor/shutters,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"MR" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/disposalpipe/broken{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Nv" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"NT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/frame/computer,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Of" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor,
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Oy" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Ph" = (
+/obj/machinery/light/small/broken/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Qe" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Rb" = (
+/obj/machinery/mech_bay_recharge_port{
+	dir = 2
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Rn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"RC" = (
+/obj/structure/table,
+/obj/item/brain_processor/organic/syndie,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"SD" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"SE" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"TL" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Vc" = (
+/obj/machinery/computer/mech_bay_power_console{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Vf" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/circuit/red/telecomms,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Vm" = (
+/obj/machinery/mecha_part_fabricator,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"VE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"VQ" = (
+/obj/machinery/computer/operating{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"VY" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper{
+	default_raw_text = "СМОТРИ. ПОД. НОГИ."
+	},
+/obj/structure/sign/warning/secure_area{
+	pixel_x = 15;
+	pixel_y = 0
+	},
+/obj/structure/sign/warning/secure_area{
+	pixel_x = -13;
+	pixel_y = 0
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Wm" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Wy" = (
+/obj/structure/table_frame,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"WR" = (
+/obj/structure/table,
+/obj/item/brain_processor/organic/syndie,
+/obj/item/brain_processor/organic/syndie,
+/obj/item/brain_processor/organic/syndie,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Xa" = (
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Xj" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/machinery/light/empty/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Yh" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"Yl" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/exterior)
+"Yu" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"YT" = (
+/obj/structure/disposalpipe/broken,
+/obj/machinery/light_switch{
+	pixel_x = -25;
+	pixel_y = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+"ZU" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
+
+(1,1,1) = {"
+ji
+MR
+aX
+aX
+aX
+aX
+aX
+aX
+aX
+aX
+ji
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+ji
+aX
+aX
+aX
+ji
+Cq
+"}
+(2,1,1) = {"
+aX
+lD
+Rb
+Kc
+Vc
+KP
+aX
+dw
+BD
+iA
+ji
+ji
+pj
+ji
+ji
+ji
+ji
+ji
+lb
+lb
+lb
+aX
+Yl
+"}
+(3,1,1) = {"
+Fv
+fz
+Fs
+eC
+so
+Yu
+aX
+ax
+HO
+SE
+ji
+Yh
+Bs
+ji
+uf
+tJ
+uf
+ji
+lb
+lb
+lb
+aX
+SD
+"}
+(4,1,1) = {"
+Fv
+yu
+gY
+Fs
+gY
+Fo
+aX
+xl
+Eu
+lm
+aX
+Rn
+Rn
+ji
+Vf
+dY
+yU
+ji
+lb
+lb
+lb
+lb
+eK
+"}
+(5,1,1) = {"
+Fv
+Nv
+so
+so
+so
+Xa
+aX
+Bi
+gY
+VQ
+aX
+Xa
+gY
+ji
+VE
+xI
+VE
+ji
+lb
+lb
+lb
+lb
+ul
+"}
+(6,1,1) = {"
+zb
+Nv
+ww
+bp
+Fw
+JV
+aX
+WR
+HO
+bq
+aX
+Yh
+Rn
+Jo
+mZ
+gY
+mZ
+ji
+lb
+lb
+lb
+gE
+Of
+"}
+(7,1,1) = {"
+aX
+bJ
+ZU
+vE
+vE
+aX
+aX
+Qe
+uo
+Oy
+aX
+gY
+Rn
+ji
+mZ
+AZ
+py
+ji
+lb
+lb
+lb
+aX
+SD
+"}
+(8,1,1) = {"
+aX
+TL
+Wm
+Wm
+qt
+YT
+By
+IG
+Rn
+Rn
+aX
+gY
+Rn
+ji
+ht
+Ph
+kL
+ji
+lb
+lb
+lb
+aX
+Yl
+"}
+(9,1,1) = {"
+aX
+HZ
+Rn
+Eg
+tY
+ko
+BZ
+cV
+gY
+wB
+aX
+Rn
+Rn
+ji
+ji
+ji
+ji
+ji
+ji
+ur
+Bc
+ji
+Cq
+"}
+(10,1,1) = {"
+aX
+NT
+gY
+gi
+gY
+uv
+hC
+Vm
+jU
+ub
+aX
+Rn
+gY
+ji
+dU
+Xj
+Bs
+Yl
+Cq
+Cq
+Cq
+Cq
+Cq
+"}
+(11,1,1) = {"
+ji
+aX
+hm
+gi
+Yu
+AZ
+mZ
+Kz
+jU
+LW
+ji
+Rn
+Rn
+ji
+sf
+BA
+uv
+Ds
+Yl
+Cq
+Cq
+Cq
+Cq
+"}
+(12,1,1) = {"
+Yl
+Mn
+ko
+gY
+uv
+jX
+Yu
+Wy
+jX
+LW
+ep
+rT
+py
+BH
+VY
+py
+Xa
+Yl
+Yl
+Yl
+Yl
+Cq
+Cq
+"}
+(13,1,1) = {"
+Yl
+GD
+Rn
+py
+hv
+ja
+Yu
+uv
+gY
+LW
+rI
+mf
+Rn
+eo
+Jm
+BA
+uv
+Yl
+Yl
+Yl
+Ds
+Cq
+Cq
+"}
+(14,1,1) = {"
+Yl
+Mn
+yr
+si
+Kz
+Wy
+Wy
+RC
+vB
+gr
+DG
+gY
+nc
+eo
+Ao
+Lz
+uv
+Je
+Cq
+Cq
+Cq
+Cq
+Cq
+"}
+(15,1,1) = {"
+Yl
+ji
+ji
+ji
+ji
+ji
+aX
+pH
+Fb
+ji
+ji
+Bs
+Xa
+ji
+pa
+pa
+pR
+Cq
+Cq
+Cq
+Cq
+Cq
+Cq
+"}

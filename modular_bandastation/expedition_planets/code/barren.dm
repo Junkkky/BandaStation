@@ -1,6 +1,8 @@
 // AI EDIT START - expedition planets module integration
 // Barren environment profile adapted from SierraBay, AGPL-3.0; terrain generation uses local TG/rust-g.
 // https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/code/modules/overmap/exoplanets/planet_types/barren.dm
+// Biome selection, tables and densities adapted from CeladonSS13/Shiptest, AGPL-3.0; contents use local TG types.
+// https://github.com/CeladonSS13/Shiptest/tree/4214796c7289b74779f10dd25df2d695c264aa8f/code/datums/mapgen/planetary
 /** Shared planetary surface area with native gravity and locally generated terrain. */
 /area/expedition_planet/barren
 	name = "Каменистая поверхность экзопланеты"
@@ -24,7 +26,7 @@
 	/// Terrain generator type for this planetary environment profile.
 	var/generator_type = /datum/map_generator/expedition_barren
 	/// Crew-facing summary of the surface environment.
-	var/biome = "Безжизненный каменистый"
+	var/biome = "Безжизненные равнины, базальтовые поля и рудные горы"
 	/// Crew-facing gas and pressure summary from the environment profile.
 	var/atmosphere = "Вакуум, 0 кПа"
 	/// Ambient surface temperature in kelvin.
@@ -36,10 +38,45 @@
 /datum/stationtrauma_overmap_site/space/planet/proc/survey_data()
 	return list("biome" = biome, "atmosphere" = atmosphere, "temperature" = surface_temperature, "breathable" = breathable)
 
-/** Sierra's airless, lifeless, mineral-rich profile, using TG's seeded rust-g noise. */
+/**
+ * Sierra's airless, lifeless, mineral-rich profile, using TG's seeded rust-g noise.
+ *
+ * Height, heat and humidity noise choose Celadon biomes: mountains above [/datum/map_generator/expedition_barren/var/mountain_height]
+ * use the cave table and keep ore-bearing rock between cave pockets. Terrain follows the seed; flora and fauna use TG biome population.
+ */
 /datum/map_generator/expedition_barren
 	/// Deterministic terrain seed, between 1 and 1000000.
 	var/seed
+	/// Height, heat and humidity noise scale in turfs; larger values give wider biomes.
+	var/biome_zoom = 65
+	/// Height noise above which terrain becomes mountain rock with cave pockets. Celadon's moon uses 0.8; Sierra's barren profile stays mineral-rich.
+	var/mountain_height = 0.5
+	/// Surface biomes by heat band (coldest first), then humidity band (driest first).
+	var/list/biome_table = list(
+		list(/datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar),
+		list(/datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar),
+		list(/datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar),
+		list(/datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar),
+		list(/datum/biome/expedition/lunar/rocky, /datum/biome/expedition/lunar/rocky, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar, /datum/biome/expedition/lunar),
+		list(/datum/biome/expedition/lunar/rocky, /datum/biome/expedition/lunar/rocky, /datum/biome/expedition/lunar/rocky, /datum/biome/expedition/lunar/rocky, /datum/biome/expedition/lunar),
+	)
+	/// Mountain cave biomes by cave heat band, then humidity band; a single biome type fills every cave.
+	var/cave_biome_table = /datum/biome/expedition/lunar
+	/// Rock left where a mountain tile carries no ore.
+	var/rock_type = /turf/closed/mineral
+	/// Ore wall types with cumulative per-mille upper bounds, checked in order.
+	var/list/ore_types = list(
+		/turf/closed/mineral/diamond = 5,
+		/turf/closed/mineral/gold = 20,
+		/turf/closed/mineral/silver = 40,
+		/turf/closed/mineral/uranium = 60,
+		/turf/closed/mineral/titanium = 90,
+		/turf/closed/mineral/iron = 240,
+	)
+	/// Generated open turfs of each biome, populated after the camp and ruins are placed.
+	var/list/biome_turfs
+	/// Distance in turfs around the camp where flora still grows but hostile fauna never starts.
+	var/fauna_clearance = 15
 	/// Generated square side length in turfs.
 	var/width = 128
 	/// World X of the generated square southwest corner.
@@ -84,38 +121,57 @@
 			return TRUE
 	return FALSE
 
-/** The reservation and open cross keep landing, the laboratory and the field connected. */
-/datum/map_generator/expedition_barren/proc/terrain_at(x, y)
-	// The opaque rim bounds this surface within its otherwise empty z-level.
-	if(x <= 2 || y <= 2 || x > width - 2 || y > width - 2)
-		return /turf/closed/indestructible/rock
-	if(is_reserved(x, y))
-		return floor_type
-	var/height = text2num(rustg_noise_get_at_coordinates("[seed]", "[x / 12]", "[y / 12]"))
-	if(height < 0.58)
-		return floor_type
-	var/ore = text2num(copytext(md5("[seed]:[x]:[y]"), 1, 5), 16) % 1000
-	switch(ore)
-		if(0 to 4)
-			return /turf/closed/mineral/diamond
-		if(5 to 19)
-			return /turf/closed/mineral/gold
-		if(20 to 39)
-			return /turf/closed/mineral/silver
-		if(40 to 59)
-			return /turf/closed/mineral/uranium
-		if(60 to 89)
-			return /turf/closed/mineral/titanium
-		if(90 to 239)
-			return /turf/closed/mineral/iron
-	return /turf/closed/mineral
+/** Celadon biome for relative coordinates, from the surface or mountain cave table. */
+/datum/map_generator/expedition_barren/proc/biome_at(x, y, mountain)
+	var/static/list/heat_bands = list(0.2, 0.4, 0.6, 0.65, 0.8)
+	var/static/list/cave_heat_bands = list(0.25, 0.5, 0.75)
+	var/static/list/humidity_bands = list(0.2, 0.4, 0.6, 0.8)
+	var/table = mountain ? cave_biome_table : biome_table
+	if(!islist(table))
+		return SSmapping.biomes[table]
+	// Seed offsets keep consecutive planet seeds from sharing noise fields.
+	var/heat = text2num(rustg_noise_get_at_coordinates("[seed + 1000000]", "[x / biome_zoom]", "[y / biome_zoom]"))
+	var/humidity = text2num(rustg_noise_get_at_coordinates("[seed + 2000000]", "[x / biome_zoom]", "[y / biome_zoom]"))
+	var/list/row = table[noise_band(heat, mountain ? cave_heat_bands : heat_bands)]
+	return SSmapping.biomes[row[noise_band(humidity, humidity_bands)]]
+
+/** One-based band of a noise value among ascending inclusive upper thresholds. */
+/datum/map_generator/expedition_barren/proc/noise_band(value, list/thresholds)
+	var/band = 1
+	for(var/threshold in thresholds)
+		if(value > threshold)
+			band++
+	return band
+
+/** Ore wall for a mountain tile, or the plain rock of this profile. */
+/datum/map_generator/expedition_barren/proc/ore_at(x, y)
+	var/roll = text2num(copytext(md5("[seed]:[x]:[y]"), 1, 5), 16) % 1000
+	for(var/ore_type in ore_types)
+		if(roll < ore_types[ore_type])
+			return ore_type
+	return rock_type
 
 /datum/map_generator/expedition_barren/generate_terrain(list/turfs, area/generate_in)
 	var/datum/stationtrauma_work_budget/budget = new
 	for(var/turf/tile as anything in turfs)
 		budget.yield()
 		tile.change_area(get_area(tile), generate_in)
-		var/turf/generated = tile.ChangeTurf(terrain_at(tile.x - origin_x + 1, tile.y - origin_y + 1), floor_type, CHANGETURF_IGNORE_AIR)
+		var/x = tile.x - origin_x + 1
+		var/y = tile.y - origin_y + 1
+		var/datum/biome/biome
+		var/terrain = floor_type
+		// The opaque rim bounds this surface within its otherwise empty z-level.
+		if(x <= 2 || y <= 2 || x > width - 2 || y > width - 2)
+			terrain = /turf/closed/indestructible/rock
+		// The reservation and open cross keep landing, the laboratory and the field connected.
+		else if(!is_reserved(x, y))
+			var/mountain = text2num(rustg_noise_get_at_coordinates("[seed]", "[x / biome_zoom]", "[y / biome_zoom]")) > mountain_height
+			biome = biome_at(x, y, mountain)
+			terrain = biome.open_turf_type
+			// Rock between cave pockets keeps the mountain mineable.
+			if(mountain && text2num(rustg_noise_get_at_coordinates("[seed + 3000000]", "[x / 8]", "[y / 8]")) > 0.5)
+				terrain = ore_at(x, y)
+		var/turf/generated = tile.ChangeTurf(terrain, floor_type, CHANGETURF_IGNORE_AIR)
 		if(ismineralturf(generated))
 			// Native ore variants must expose this planet's ground and atmosphere when mined.
 			var/turf/closed/mineral/rock = generated
@@ -123,8 +179,23 @@
 			rock.initial_gas_mix = initial(floor_type.initial_gas_mix)
 			if(rock_color)
 				rock.color = rock_color
+		else if(biome)
+			LAZYADDASSOCLIST(biome_turfs, biome, generated)
 
 /datum/map_generator/expedition_barren/populate_terrain(list/turfs, area/generate_in)
+	for(var/datum/biome/biome as anything in biome_turfs)
+		var/list/near_camp = list()
+		var/list/wild = list()
+		for(var/turf/tile as anything in biome_turfs[biome])
+			var/x = tile.x - origin_x + 1
+			var/y = tile.y - origin_y + 1
+			if(x >= camp_x - fauna_clearance && x < camp_x + camp_width + fauna_clearance && y >= camp_y - fauna_clearance && y < camp_y + camp_height + fauna_clearance)
+				near_camp += tile
+			else
+				wild += tile
+		biome.populate_turfs(near_camp, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = FALSE)
+		biome.populate_turfs(wild, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = TRUE)
+	biome_turfs = null
 	var/sources = 0
 	var/turf/origin = turfs[1]
 	var/offset = 8 + seed % 6
@@ -136,6 +207,17 @@
 		new source_type(tile)
 		sources++
 	return sources
+
+/** Celadon planetary biome; its open turf must carry the atmosphere of every planet that uses it. */
+/datum/biome/expedition
+
+/** Celadon lunar plains: bare airless regolith. */
+/datum/biome/expedition/lunar
+	open_turf_type = /turf/open/misc/asteroid/airless
+
+/** Celadon coarse lunar ground: airless basalt fields. */
+/datum/biome/expedition/lunar/rocky
+	open_turf_type = /turf/open/misc/asteroid/basalt/airless
 
 /** Finite research source: кристаллический нарост экзопланеты, with authored survey and laboratory observations. */
 /obj/structure/stationtrauma_research_source/mineral/expedition_barren

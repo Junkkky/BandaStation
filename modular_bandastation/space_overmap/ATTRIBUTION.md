@@ -16,6 +16,7 @@
 | --- | --- |
 | SierraBay/SierraBay12, участники SierraBay и Baystation | [8623b35f6943130998002e94cf001a9c6ccb3f4c](https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md#лизцензия) |
 | Void-Crew/Voidcrew-LRP, участники Voidcrew, Shiptest, Whitesands и TG | [66c552922bf2a28963c2a8f5d89993623a141a1f](https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md#license) |
+| CeladonSS13/Shiptest, участники Celadon, Shiptest, Whitesands и TG | [4214796c7289b74779f10dd25df2d695c264aa8f](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md) |
 | ParadiseSS13/Paradise, участники Paradise | [8e4ad940e497f64443c3fc635a09840a8fa7a1d2](https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/README.md#licenses) |
 | TG, BandaStation и Primera contributors | [65a9bd040b816783f0b6c24ba1e84ee7aab48456](https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/README.md#license) |
 
@@ -51,6 +52,19 @@
 площадка и её подключение добавлены здесь. `asteroid_field.dmm` и `drift_cargo.dmm`
 созданы для этой интеграции на штатных ресурсах. Существующие TG-руины подключаются
 по исходным шаблонам без копирования графики и изменения их лицензий.
+
+## Космические руины Celadon
+
+| Локальный файл | Источник CeladonSS13/Shiptest |
+| --- | --- |
+| `maps/ruins/celadon_fueldepot.dmm` | [_maps/_mod_celadon/RandomRuins/SpaceRuins/space_fueldepot.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SpaceRuins/space_fueldepot.dmm) |
+| `maps/ruins/celadon_corporate_mining.dmm` | [_maps/_mod_celadon/RandomRuins/AsteroidRuins/asteroid_corporate_mining.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/AsteroidRuins/asteroid_corporate_mining.dmm) |
+| `maps/ruins/celadon_excavator.dmm` | [_maps/_mod_celadon/RandomRuins/AsteroidRuins/asteroid_excavator_DK.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/AsteroidRuins/asteroid_excavator_DK.dmm) |
+| `maps/ruins/celadon_djstation.dmm` | [_maps/_mod_celadon/RandomRuins/SpaceRuins/space_DJstation.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SpaceRuins/space_DJstation.dmm) |
+| `maps/ruins/celadon_cryocontainment.dmm` | [_maps/_mod_celadon/RandomRuins/SpaceRuins/space_cryocontainment.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SpaceRuins/space_cryocontainment.dmm) |
+
+Планировки сохранены; несовместимые сущности, area, механизмы, обитатели и добыча
+заменены местными типами. Оружие Shiptest заменено ближайшими местными аналогами.
 
 ## Графика SEV Icarus
 

@@ -1,0 +1,3074 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_waterplant.dmm
+"ac" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"af" = (
+/obj/machinery/atmospherics/components/trinary/filter/on{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ak" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"as" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"aH" = (
+/obj/structure/table,
+/obj/item/paper,
+/obj/item/pen,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"aO" = (
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ba" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"bk" = (
+/obj/effect/turf_decal/box,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"bs" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"bA" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"bN" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"bS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"bT" = (
+/obj/structure/sign/poster/official/work_for_a_future/directional/north,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"cf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"cj" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"cW" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"cX" = (
+/obj/item/reagent_containers/cup/bucket,
+/obj/effect/decal/remains/human,
+/obj/structure/fluff/beach_umbrella,
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"dk" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"dz" = (
+/obj/machinery/igniter/incinerator_atmos,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/open/floor/engine/vacuum,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"dO" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"dX" = (
+/obj/effect/turf_decal/box,
+/obj/machinery/portable_atmospherics/canister/water_vapor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ec" = (
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ed" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ez" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 4
+	},
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"eN" = (
+/obj/structure/flora/tree/palm/style_2,
+/mob/living/basic/parrot,
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"eU" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"eX" = (
+/obj/structure/closet/crate,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"fa" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"fp" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/exterior)
+"fr" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/recharger,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"fx" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/open/floor/engine/vacuum,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"fy" = (
+/obj/item/reagent_containers/cup/bucket{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"gp" = (
+/obj/structure/chair/stool,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"gw" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"gH" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"gJ" = (
+/obj/structure/rack,
+/obj/item/paper,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"hu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"hP" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"hR" = (
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"hT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ij" = (
+/obj/effect/gibspawner,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"im" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"is" = (
+/obj/structure/bed,
+/obj/machinery/iv_drip,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"it" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"iC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"iD" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"iO" = (
+/obj/machinery/door/airlock/engineering{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"je" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/fancy/donut_box,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ju" = (
+/obj/structure/statue/bronze/marx,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"jC" = (
+/obj/structure/closet/secure_closet/brig,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"jD" = (
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"jF" = (
+/obj/item/reagent_containers/cup/bucket{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"jQ" = (
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"jU" = (
+/obj/structure/chair/comfy/beige,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ks" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"kE" = (
+/obj/machinery/atmospherics/components/binary/volume_pump,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"kF" = (
+/obj/structure/table/reinforced,
+/obj/item/organ/tongue,
+/obj/item/organ/tongue{
+	pixel_y = 5
+	},
+/obj/item/organ/tongue/lizard{
+	pixel_x = -4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"kN" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"kQ" = (
+/obj/structure/chair,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"la" = (
+/obj/structure/sign/poster/official/random/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ld" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 6
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"lk" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"lv" = (
+/obj/machinery/door/airlock/security/glass{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"lB" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"lJ" = (
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"lT" = (
+/obj/machinery/atmospherics/components/trinary/filter/on{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"me" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/plasma,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"mv" = (
+/obj/machinery/atmospherics/components/tank/air{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"mz" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/exterior)
+"mA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"mB" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"mO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"mU" = (
+/obj/structure/rack,
+/obj/item/storage/toolbox/mechanical/old,
+/obj/item/storage/toolbox/electrical{
+	icon_state = "toolbox_blue_old";
+	name = "rusty old electrical toolbox";
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/multitool,
+/obj/item/screwdriver,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"na" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"nq" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"nr" = (
+/obj/machinery/biogenerator,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ns" = (
+/obj/machinery/door/airlock/public/glass{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"nu" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Cell 2";
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ny" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"nz" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"nI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"nL" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"nO" = (
+/obj/structure/chair/stool,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"nT" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"of" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"oF" = (
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"pv" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"pC" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"pF" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"pG" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"pM" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"qd" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"qp" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"qr" = (
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"qu" = (
+/obj/structure/table/wood/fancy,
+/obj/item/food/cakeslice/chocolate,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"qx" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"qM" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"qX" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"qY" = (
+/obj/machinery/door/airlock/public/glass{
+	dir = 8
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ra" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ry" = (
+/obj/structure/flora/tree/palm,
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"rB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"rD" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 10
+	},
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"rG" = (
+/obj/machinery/door/airlock/security/glass{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"rQ" = (
+/obj/structure/fluff/paper/stack{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"rR" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"sc" = (
+/obj/structure/sign/poster/official/work_for_a_future/directional/north,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"sp" = (
+/obj/effect/turf_decal/arrows,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"sw" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 5
+	},
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"sx" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"sH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"sV" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"tw" = (
+/obj/structure/chair/comfy/blue,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"tJ" = (
+/obj/machinery/door/airlock/vault,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"tK" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"tU" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"uo" = (
+/obj/structure/sign/poster/official/random/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"up" = (
+/obj/item/toy/beach_ball,
+/obj/structure/geyser,
+/obj/machinery/plumbing/liquid_pump,
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ur" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"uC" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"uK" = (
+/obj/effect/turf_decal/box,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"uV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"uY" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ve" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"vH" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"wB" = (
+/obj/structure/sink,
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"wI" = (
+/obj/structure/table,
+/obj/item/storage/medkit{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/storage/medkit/brute,
+/obj/item/storage/medkit/fire{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"wM" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"wY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"xm" = (
+/obj/machinery/door/airlock/vault,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"xt" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"xD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"yk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"yl" = (
+/obj/structure/table,
+/obj/item/brain_processor/organic,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"yn" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/restraints/handcuffs,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"yo" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 6
+	},
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"yu" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"yy" = (
+/obj/structure/sign/poster/official/random/directional/west,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"yz" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"yB" = (
+/obj/structure/frame/computer,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"yI" = (
+/obj/machinery/door/poddoor/shutters{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"yZ" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"za" = (
+/obj/machinery/door/airlock/security/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ze" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"zg" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"zr" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"zX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Ad" = (
+/obj/effect/gibspawner,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Ae" = (
+/obj/structure/sign/poster/official/random/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Ag" = (
+/obj/item/reagent_containers/cup/bucket{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Ai" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/incinerator_input{
+	dir = 1
+	},
+/turf/open/floor/engine/vacuum,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Am" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"As" = (
+/obj/item/chair/stool,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Aw" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/assembly/flash/handheld,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"AG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"AI" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Bl" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Bm" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Br" = (
+/obj/structure/table,
+/obj/item/healthanalyzer,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Cb" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Cd" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Cj" = (
+/obj/structure/sign/poster/official/work_for_a_future/directional/north,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Cs" = (
+/obj/structure/sign/poster/official/nanotrasen_logo/directional/east,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/exterior)
+"Cy" = (
+/obj/item/cultivator,
+/obj/item/shovel/spade{
+	pixel_x = -5;
+	pixel_y = -11
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"CJ" = (
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/structure/closet/crate,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"CT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Db" = (
+/obj/structure/table/wood/fancy,
+/obj/item/food/cakeslice/cheese,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"De" = (
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Dm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Dv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"DD" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"DI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"DR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"DZ" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Ef" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Et" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Cell 3";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"EI" = (
+/obj/machinery/power/turbine/inlet_compressor{
+	dir = 1
+	},
+/turf/open/floor/engine/vacuum,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"EL" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Fi" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/visible,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Fu" = (
+/obj/machinery/door/airlock/public/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"FA" = (
+/obj/structure/closet/crate/bin,
+/obj/structure/sign/poster/official/random/directional/east,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"FM" = (
+/obj/machinery/door/window/left/directional/west,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Gd" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Gj" = (
+/obj/structure/table,
+/obj/item/pen/red{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/item/pen/blue,
+/obj/item/pen/fountain{
+	pixel_x = 1;
+	pixel_y = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"GB" = (
+/obj/structure/chair/office,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"GC" = (
+/obj/structure/grille,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"GG" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/door/airlock/security/glass{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"GH" = (
+/obj/effect/turf_decal/arrows,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"GM" = (
+/obj/structure/sign/poster/official/safety_report/directional/north,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"GR" = (
+/obj/structure/table,
+/obj/item/paper,
+/obj/item/pen,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"GU" = (
+/obj/item/chair/stool,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"GY" = (
+/obj/structure/bed,
+/obj/machinery/iv_drip,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Hh" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Hu" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Hx" = (
+/obj/item/reagent_containers/cup/soda_cans/cola,
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"HX" = (
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Io" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Ip" = (
+/obj/structure/table,
+/obj/item/folder/blue,
+/obj/item/folder/red,
+/obj/item/folder/yellow,
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"IE" = (
+/obj/machinery/door/airlock/security/glass,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"IK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/door/airlock/security/glass{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Jf" = (
+/obj/item/kirbyplants/random,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Ji" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Jp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Jq" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Jr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Jz" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"JX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/office,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Kb" = (
+/obj/machinery/seed_extractor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Kp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Kq" = (
+/obj/machinery/door/airlock/security/glass{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Kv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Kw" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"KT" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"KW" = (
+/obj/machinery/door/airlock/public/glass,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"KZ" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Lc" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Lr" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"LC" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"LF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Ml" = (
+/obj/item/plant_analyzer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Mq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"MB" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Break Room";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ME" = (
+/obj/effect/turf_decal/arrows,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ML" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/cup/glass/waterbottle/large{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/cup/glass/waterbottle/large,
+/obj/item/reagent_containers/cup/glass/waterbottle/large{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"NG" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/water_vapor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"NL" = (
+/obj/machinery/door/airlock/public/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"NW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Of" = (
+/obj/structure/table,
+/obj/item/paper,
+/obj/item/pen,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Op" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"OO" = (
+/mob/living/basic/crab,
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"OQ" = (
+/obj/structure/table/wood/fancy,
+/obj/item/food/cakeslice/lime,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"OT" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"OZ" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"PR" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Cell 1";
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"PV" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Qe" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Qf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Qi" = (
+/obj/machinery/door/airlock/public/glass/incinerator/atmos_interior,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Qk" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/cup/glass/waterbottle/large{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/cup/glass/waterbottle/large,
+/obj/item/reagent_containers/cup/glass/waterbottle/large{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/structure/sign/poster/official/random/directional/east,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Qx" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"QA" = (
+/obj/structure/chair,
+/obj/structure/sign/poster/official/random/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"QF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"QN" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"QT" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Rp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 4
+	},
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Rv" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Rw" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Sc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Se" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Ss" = (
+/obj/structure/table,
+/obj/item/flashlight/lamp,
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"St" = (
+/obj/structure/sign/warning/secure_area,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Sz" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"SD" = (
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"SU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"SX" = (
+/obj/machinery/computer/crew,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Tl" = (
+/obj/structure/geyser,
+/obj/machinery/plumbing/liquid_pump,
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Tn" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Tt" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"TK" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/right/directional/east{
+	name = "Warden's Desk"
+	},
+/obj/machinery/door/window/left/directional/west{
+	name = "Warden's Desk"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"TS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"TU" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"TW" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"TX" = (
+/obj/structure/chair/stool,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Ue" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"UT" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Va" = (
+/turf/template_noop,
+/area/template_noop)
+"Vj" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/obj/item/clothing/glasses/hud/health,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Vm" = (
+/obj/machinery/door/airlock/security/glass{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Vn" = (
+/obj/effect/turf_decal/arrows,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"VA" = (
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"VB" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"We" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Wi" = (
+/obj/machinery/door/airlock/security/glass{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Wz" = (
+/obj/structure/sign/warning/secure_area,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"WA" = (
+/obj/structure/table,
+/obj/item/storage/box/cups,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"WB" = (
+/obj/machinery/door/airlock/vault,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"WK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"WW" = (
+/obj/machinery/door/airlock/public/glass/incinerator/atmos_exterior,
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"WX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Xo" = (
+/obj/structure/sign/poster/official/random/directional/east,
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Xr" = (
+/obj/structure/table,
+/obj/item/storage/backpack/duffelbag/sec/surgery,
+/obj/item/bodypart/leg/left{
+	pixel_y = 5
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Xv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"XK" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Yi" = (
+/obj/item/reagent_containers/cup/bucket{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/turf/open/misc/asteroid/expedition_arid,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"YG" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"YJ" = (
+/obj/structure/chair/stool,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"YT" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Zd" = (
+/obj/structure/closet/crate/large,
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Zi" = (
+/obj/machinery/computer/arcade,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Zo" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"Zr" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+"ZL" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered)
+
+(1,1,1) = {"
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+"}
+(2,1,1) = {"
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Cs
+Va
+Va
+Va
+Va
+Cs
+aO
+Sz
+aO
+aO
+Sz
+aO
+Sz
+Sz
+aO
+Va
+"}
+(3,1,1) = {"
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+qp
+qp
+qp
+DD
+Cd
+ns
+qY
+Cd
+DD
+qp
+me
+bN
+kE
+uC
+Cb
+TW
+Ai
+aO
+Va
+"}
+(4,1,1) = {"
+Va
+Va
+Va
+DD
+yI
+QT
+QT
+QT
+QT
+QT
+QT
+qp
+kQ
+qX
+as
+gJ
+yu
+AG
+gJ
+as
+DD
+sx
+wY
+DI
+Qi
+ld
+WW
+dz
+EI
+fp
+"}
+(5,1,1) = {"
+Va
+Va
+Va
+DD
+yu
+DI
+AG
+DI
+yu
+Gd
+dX
+DD
+QA
+AG
+yu
+rQ
+AG
+AG
+VA
+yu
+yo
+qd
+lT
+af
+uC
+mB
+uC
+fx
+aO
+Va
+"}
+(6,1,1) = {"
+Va
+Va
+Va
+DD
+DI
+DI
+Gd
+yu
+DI
+DI
+dX
+DD
+qp
+qp
+qx
+Gj
+im
+Ss
+Ip
+FM
+Rp
+mv
+Rw
+NG
+aO
+aO
+aO
+Sz
+Sz
+Va
+"}
+(7,1,1) = {"
+Va
+Va
+Va
+DD
+DI
+yu
+yu
+yu
+yu
+Gd
+uK
+DD
+Am
+DI
+WA
+ny
+Kw
+OZ
+DI
+QN
+Rp
+CJ
+lB
+ed
+bS
+Dv
+Gd
+yu
+aO
+Va
+"}
+(8,1,1) = {"
+Va
+Va
+Va
+DD
+bk
+yu
+AG
+hR
+hR
+yu
+uK
+DD
+yu
+Gd
+ak
+QF
+lk
+uV
+Gd
+yu
+rD
+Ue
+Hh
+Hh
+yz
+iO
+cW
+Fi
+sw
+Va
+"}
+(9,1,1) = {"
+Va
+Va
+Va
+DD
+Qx
+uY
+YG
+PV
+OT
+rR
+rR
+NL
+hu
+hu
+mA
+xt
+pM
+rR
+hu
+rR
+Fu
+ks
+yy
+Io
+ac
+Hu
+AG
+yu
+SU
+Va
+"}
+(10,1,1) = {"
+Va
+Va
+Va
+DD
+DI
+DI
+of
+mO
+yu
+Zd
+Gd
+KW
+AG
+yu
+yu
+Gd
+Gd
+yu
+Gd
+la
+KW
+DI
+AG
+of
+mO
+Jr
+Gd
+Gd
+SU
+Va
+"}
+(11,1,1) = {"
+DD
+DD
+DD
+qp
+AG
+yu
+AG
+yu
+DI
+AG
+yu
+DD
+yu
+FA
+pF
+Qk
+ML
+Qk
+cj
+qp
+DD
+Xo
+uo
+qp
+Cd
+Wi
+Cd
+qp
+SU
+Va
+"}
+(12,1,1) = {"
+Sz
+Sz
+Sz
+Sz
+aO
+aO
+Sz
+aO
+aO
+Sz
+Sz
+Sz
+aO
+aO
+Sz
+Sz
+aO
+Sz
+Sz
+Sz
+Sz
+aO
+aO
+LF
+hu
+tK
+DI
+AG
+ez
+Va
+"}
+(13,1,1) = {"
+aO
+yu
+qr
+pC
+bA
+SD
+mA
+hu
+ba
+Xv
+bA
+DR
+HX
+hT
+bA
+We
+mA
+ec
+bA
+na
+nz
+SD
+za
+lJ
+DI
+Bm
+KT
+yu
+SU
+Va
+"}
+(14,1,1) = {"
+Sz
+AI
+gH
+Rv
+DI
+Lc
+DI
+DI
+Jr
+of
+yu
+Jq
+gH
+Ef
+AI
+Qe
+AI
+nI
+it
+wM
+Ef
+Ji
+IE
+XK
+Aw
+fr
+sV
+Gd
+ez
+Va
+"}
+(15,1,1) = {"
+aO
+Cd
+rG
+kN
+qp
+qp
+tU
+AG
+Zo
+Zr
+aO
+Tt
+PR
+Sc
+aO
+Tt
+nu
+Sc
+aO
+gw
+Et
+iD
+Sz
+GM
+yn
+je
+DI
+AG
+ez
+Va
+"}
+(16,1,1) = {"
+Sz
+GY
+ve
+Jp
+pv
+Cd
+yu
+yu
+ze
+DI
+Sz
+ur
+Qe
+As
+aO
+CT
+GU
+TS
+aO
+of
+bs
+TX
+aO
+pG
+VB
+qM
+AG
+Gd
+SU
+Va
+"}
+(17,1,1) = {"
+Sz
+KZ
+ij
+TS
+ra
+Cd
+Cd
+TK
+lv
+Cd
+aO
+dO
+iC
+aH
+sc
+nT
+Gd
+GR
+sc
+nT
+Kp
+aH
+Sz
+NW
+Ae
+Qf
+JX
+AG
+SU
+Va
+"}
+(18,1,1) = {"
+Sz
+is
+zr
+sH
+Ad
+Cd
+mU
+AG
+zg
+DZ
+Sz
+Sz
+GG
+Sz
+Sz
+Sz
+Kq
+Sz
+aO
+aO
+IK
+Sz
+Sz
+aO
+qp
+MB
+DD
+qp
+SU
+Va
+"}
+(19,1,1) = {"
+aO
+Xr
+yl
+wI
+Br
+Cd
+SX
+yu
+GB
+kF
+Cd
+Jf
+nL
+Se
+DI
+AG
+Qx
+Gd
+DI
+Se
+vH
+yu
+Tn
+Sz
+ju
+UT
+tw
+qu
+SU
+Va
+"}
+(20,1,1) = {"
+aO
+Sz
+aO
+aO
+Sz
+aO
+yB
+AG
+cf
+Vj
+Cd
+AG
+WX
+sp
+GH
+GH
+yk
+GH
+ME
+Vn
+Kv
+AG
+AG
+Cd
+eX
+LC
+jU
+Db
+ez
+Va
+"}
+(21,1,1) = {"
+Va
+aO
+De
+De
+De
+aO
+dk
+yu
+TU
+jC
+Cd
+Tn
+AG
+TS
+AG
+DI
+AG
+yu
+AG
+ZL
+hP
+DI
+Jf
+Sz
+Jz
+YT
+jU
+OQ
+ez
+Va
+"}
+(22,1,1) = {"
+aO
+De
+Sz
+aO
+Sz
+Sz
+Op
+EL
+Sz
+Sz
+aO
+Sz
+Cj
+Sz
+aO
+aO
+bT
+qp
+qp
+qp
+Vm
+qp
+qp
+aO
+aO
+aO
+Sz
+Sz
+SU
+Va
+"}
+(23,1,1) = {"
+Sz
+De
+aO
+Tl
+jQ
+Hx
+jQ
+Tl
+aO
+De
+aO
+fa
+fa
+fa
+fa
+fa
+Sz
+Zi
+yZ
+oF
+WK
+Gd
+Gd
+Sz
+Va
+Va
+Va
+Va
+mz
+Va
+"}
+(24,1,1) = {"
+Sz
+De
+Sz
+OO
+jQ
+eN
+cX
+jQ
+aO
+Sz
+Wz
+fy
+Ag
+fy
+AG
+fy
+Wz
+fa
+AG
+Mq
+gp
+nq
+YJ
+Sz
+Va
+Va
+Va
+Va
+Va
+Va
+"}
+(25,1,1) = {"
+aO
+De
+aO
+jQ
+jQ
+wB
+jQ
+jQ
+xm
+yu
+WB
+AG
+xD
+zX
+Dm
+hu
+tJ
+rR
+hu
+rB
+nO
+Of
+TS
+aO
+Va
+Va
+Va
+Va
+Va
+Va
+"}
+(26,1,1) = {"
+aO
+De
+aO
+jQ
+ry
+jF
+Yi
+jQ
+aO
+Sz
+St
+Ag
+AG
+fy
+fy
+DI
+Wz
+jD
+Ml
+Bl
+AG
+As
+Gd
+Sz
+Va
+Va
+Va
+Va
+Va
+Va
+"}
+(27,1,1) = {"
+Sz
+De
+aO
+up
+jQ
+OO
+jQ
+Tl
+Sz
+De
+Sz
+fa
+eU
+fa
+pF
+fa
+Sz
+Bl
+Cy
+Lr
+Kb
+nr
+Tn
+aO
+Va
+Va
+Va
+Va
+Va
+Va
+"}
+(28,1,1) = {"
+aO
+De
+Sz
+aO
+aO
+Sz
+aO
+aO
+Sz
+GC
+Sz
+Sz
+aO
+aO
+Sz
+aO
+Sz
+Sz
+aO
+Sz
+Sz
+aO
+Sz
+aO
+Va
+Va
+Va
+Va
+Va
+Va
+"}
+(29,1,1) = {"
+Va
+aO
+GC
+De
+De
+De
+De
+De
+De
+aO
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+"}
+(30,1,1) = {"
+Va
+Va
+aO
+Sz
+Sz
+aO
+aO
+Sz
+Sz
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+Va
+"}

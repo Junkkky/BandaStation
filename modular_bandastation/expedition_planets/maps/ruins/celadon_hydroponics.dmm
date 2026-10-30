@@ -1,0 +1,3301 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/IceRuins/icemoon_hydroponics_lab.dmm
+"ai" = (
+/obj/structure/showcase/machinery/tv,
+/obj/structure/table,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"aD" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/green,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"aG" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"aK" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/gun/ballistic/automatic/pistol/m1911/no_mag,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"aL" = (
+/obj/effect/turf_decal/trimline/dark/filled/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/brown/corner{
+	dir = 1;
+	color = "#791500"
+	},
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"aN" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bottle{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/cup/bottle/sodium{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"bj" = (
+/obj/item/gun/ballistic/automatic/pistol/m1911/no_mag{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/ammo_casing{
+	pixel_x = -5;
+	pixel_y = 9;
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"bt" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"bE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"bV" = (
+/obj/item/paper/crumpled/bloody,
+/turf/closed/mineral/random/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/exterior)
+"bX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"cd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/purple{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"cg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/warning/biohazard/directional/east,
+/obj/structure/closet/emcloset,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"cI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"cK" = (
+/obj/structure/table,
+/obj/item/seeds/berry{
+	pixel_x = 3
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"dn" = (
+/obj/structure/closet/secure_closet/freezer/fridge/open,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"dE" = (
+/obj/structure/table,
+/obj/item/seeds/starthistle/corpse_flower{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/cup/bottle/nutrient/l4z{
+	pixel_x = -10;
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"dQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bottle{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/obj/item/food/grown/tomato/blood{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/cup/bottle/nutrient/rh{
+	pixel_y = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"el" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/light/small/broken/directional/north,
+/obj/item/ammo_casing{
+	pixel_y = -1;
+	dir = 5;
+	pixel_x = 3
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ey" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"fc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"fi" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_y = 5
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"fl" = (
+/turf/closed/mineral/random/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/exterior)
+"fn" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"fz" = (
+/obj/structure/chair/plastic{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"fS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/purple{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"gc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"gg" = (
+/obj/effect/turf_decal/siding/brown{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/box,
+/obj/machinery/door/window/brigdoor/right/directional/east,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"gn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/green,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"gW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"gX" = (
+/obj/machinery/biogenerator,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/purple{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ho" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/yellow,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"hC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/food/grown/mushroom/amanita{
+	pixel_y = 5
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/yellow{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"hI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/bush/stalky,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"hK" = (
+/obj/structure/table,
+/obj/item/shovel/spade{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/machinery/light/dim/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"hL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"im" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/yellow{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"io" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"iL" = (
+/obj/structure/table,
+/obj/item/seeds/apple{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"iS" = (
+/obj/structure/closet/secure_closet/hydroponics,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/purple{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"iU" = (
+/obj/structure/table,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/item/seeds/kudzu{
+	pixel_y = 2;
+	pixel_x = -3
+	},
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/siding/brown{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"jf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/north,
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/brown{
+	dir = 1
+	},
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"jq" = (
+/obj/effect/turf_decal/trimline/dark/filled/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/brown/corner{
+	dir = 8;
+	color = "#791500"
+	},
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"jM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/energybar{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/obj/structure/table,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"jR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/food/chips{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/structure/table,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"jT" = (
+/obj/structure/table,
+/obj/item/food/grown/tomato/blood{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/seeds/tomato/killer{
+	pixel_y = -9;
+	pixel_x = -2
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"kg" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ks" = (
+/obj/machinery/light/small/directional/west,
+/obj/structure/table,
+/obj/item/wrench{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/screwdriver{
+	pixel_x = 2
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"kG" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/purple,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"kW" = (
+/obj/structure/table,
+/obj/item/flamethrower/full/tank{
+	pixel_x = 11;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/siding/brown,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"kZ" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing{
+	pixel_y = -9;
+	pixel_x = 11;
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ll" = (
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"lR" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"lS" = (
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"mf" = (
+/obj/machinery/light/dim/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bottle/nutrient/ez{
+	pixel_x = -5;
+	pixel_y = 11
+	},
+/obj/item/food/grown/tomato{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/green,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"mg" = (
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"mm" = (
+/obj/machinery/door/airlock/grunge,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"my" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/window/brigdoor/right/directional/north,
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/brown{
+	dir = 5
+	},
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"mG" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 5
+	},
+/obj/item/seeds/cabbage{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"mN" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"mZ" = (
+/obj/item/pen/blue{
+	pixel_y = -2;
+	pixel_x = -6
+	},
+/obj/item/paper/crumpled/bloody{
+	pixel_x = 3;
+	pixel_y = 2;
+	default_raw_text = "SATURDAY<BR><BR>It looks like karma has finally caught up. I was a fool to ever think I could repay my debts. I was a villain for creating such abhorities. And I was a coward. I could have saved us both. But I just stood there, listening to the screams. If I had just taken the flamethrower last night...<BR><BR><BR><BR>I can only hope our benefactors find our blood and give us a second chance. Perhaps I'll be able to make things right again.";
+	name = "bloody note"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"nz" = (
+/obj/effect/decal/cleanable/food/plant_smudge,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/yellow/corner{
+	dir = 4;
+	color = "#C3630C"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"nK" = (
+/obj/structure/table,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/siding/brown{
+	dir = 10
+	},
+/obj/structure/sign/warning/radiation/directional/west,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"nM" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"oe" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/purple{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"om" = (
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/brown{
+	dir = 9
+	},
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"or" = (
+/mob/living/basic/killer_tomato,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/green/corner{
+	dir = 1;
+	color = "#99BB76"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ou" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"oM" = (
+/obj/effect/decal/cleanable/food/plant_smudge,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"oZ" = (
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/obj/item/ammo_casing{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"pc" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/green/corner{
+	dir = 8;
+	color = "#B7D993"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"pf" = (
+/obj/machinery/light/dim/directional/north,
+/obj/structure/table,
+/obj/item/multitool{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"pS" = (
+/obj/machinery/door/airlock/highsecurity,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"qe" = (
+/obj/structure/table/wood,
+/obj/item/folder{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/pen/fountain{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"qE" = (
+/mob/living/basic/venus_human_trap,
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/brown{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"qI" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"qJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ra" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/item/storage/bag/plants/portaseeder{
+	pixel_x = 3;
+	pixel_y = 0
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"rm" = (
+/obj/structure/table,
+/obj/item/plant_analyzer{
+	pixel_x = 13;
+	pixel_y = 4
+	},
+/obj/item/cultivator,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"rt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"rv" = (
+/obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"rA" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/green,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"rE" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing{
+	pixel_x = -8;
+	pixel_y = 6;
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/effect/turf_decal/siding/yellow/corner{
+	color = "#C3630C"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"so" = (
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/yellow,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"tb" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 12;
+	pixel_x = 11
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/ammo_casing{
+	pixel_y = 4;
+	dir = 5;
+	pixel_x = 2
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/purple/corner{
+	color = "#AE8CA8"
+	},
+/obj/effect/turf_decal/siding/purple/corner{
+	dir = 8;
+	color = "#AE8CA8"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"td" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/cable_coil{
+	pixel_x = 3;
+	pixel_y = -2;
+	amount = 2
+	},
+/obj/item/wallframe/camera{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"tg" = (
+/obj/effect/decal/cleanable/glass,
+/obj/item/stack/rods{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/shard{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/obj/item/shard{
+	pixel_x = 4
+	},
+/obj/effect/turf_decal/trimline/dark/filled/line,
+/obj/effect/turf_decal/siding/brown,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"tj" = (
+/obj/structure/table,
+/obj/item/seeds/watermelon{
+	pixel_x = -13;
+	pixel_y = 12
+	},
+/obj/item/toy/figure/botanist,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"tq" = (
+/obj/structure/closet,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/hooded/wintercoat/security{
+	pixel_y = 0
+	},
+/obj/item/clothing/shoes/winterboots{
+	pixel_y = 0
+	},
+/obj/item/ammo_box/magazine/m45{
+	pixel_y = 0
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"tL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/effect/turf_decal/siding/green/corner{
+	color = "#B7D993"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"tW" = (
+/obj/structure/toilet{
+	pixel_y = 10
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ud" = (
+/obj/item/paper{
+	pixel_y = 5;
+	default_raw_text = "<B>Hey fellow botanist!</B><BR>\n<BR>\nI didn't trust the station folk so I left<BR>\na couple of weeks ago. But here's some<BR>\ninstructions on how to operate things here.<BR>\nYou can grow plants and each iteration they become<BR>\nstronger, more potent and have better yield, if you<BR>\nknow which ones to pick. Use your botanist's analyzer<BR>\nfor that. You can turn harvested plants into seeds<BR>\nat the seed extractor, and replant them for better stuff!<BR>\nSometimes if the weed level gets high in the tray<BR>\nmutations into different mushroom or weed species have<BR>\nbeen witnessed. On the rare occasion even weeds mutate!<BR>\n<BR>\nEither way, have fun!<BR>\n<BR>\nBest regards,<BR>\nBilly Bob Johnson.<BR>\n<BR>\nPS.<BR>\nHere's a few tips:<BR>\nIn nettles, potency = damage<BR>\nIn amanitas, potency = deadliness + side effect<BR>\nIn Liberty caps, potency = drug power + effect<BR>\nIn chilies, potency = heat<BR>\n<B>Nutrients keep mushrooms alive!</B><BR>\n<B>Water keeps weeds such as nettles alive!</B><BR>\n<B>All other plants need both.</B>";
+	name = "paper- 'Greetings from Billy Bob'"
+	},
+/obj/structure/table,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ue" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/security{
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"uq" = (
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/obj/item/shard{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/obj/item/shard{
+	pixel_x = 4
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"uB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"uI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"uO" = (
+/obj/structure/table,
+/obj/item/seeds/glowshroom{
+	pixel_y = -1;
+	pixel_x = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"uP" = (
+/obj/structure/table,
+/obj/item/pen{
+	pixel_x = -6
+	},
+/obj/item/paper/crumpled/bloody{
+	pixel_x = 3;
+	pixel_y = 5;
+	default_raw_text = "MONDAY<BR><BR>I owe the doc more than a couple of beers by now. Saved my ass more times than I can count. But something's not... right. I've never seen them this way before. I mean, I've seen them cram late nights before and they got a little nutty... but this is a new kind of nutty.<BR><BR>THURSDAY<BR><BR>Some sketchy looking guys came in. We haven't had visitors in forever. They started to shout at me but they were just listing off drinks. I thought it was perhaps just some random hermits, but when I reached for my gun, they were quicker on the draw. Just as I thought they were about to blast me to bits the doc came bursting through the door. They seemed like they were pleading about something but they were uttering the same gibberish. I tried asking the doc about what that was all about, but they seemed to dodge the question. I can only hope that will be the last visit we get";
+	name = "officer's diary"
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/red,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ve" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/purple/corner{
+	dir = 1;
+	color = "#AE8CA8"
+	},
+/obj/effect/turf_decal/siding/purple/corner{
+	color = "#AE8CA8"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"vf" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"vq" = (
+/obj/machinery/light/directional/west,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"wa" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4;
+	pixel_x = 15
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"wc" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/siding/brown{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ws" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_containers/blood/b_minus{
+	desc = "Contains blood used for transfusion. Must be attached to an IV drip. Something is scribbled on the back in bright blue letters: ICARUS"
+	},
+/obj/item/reagent_containers/blood/o_minus{
+	desc = "Contains blood used for transfusion. Must be attached to an IV drip. Something is scribbled on the back in blue letters: DAEDALUS"
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"wC" = (
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"wD" = (
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"wY" = (
+/mob/living/basic/venus_human_trap,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"xm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"xS" = (
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/yellow/corner{
+	dir = 1;
+	color = "#C3630C"
+	},
+/obj/effect/turf_decal/siding/yellow/corner{
+	color = "#C3630C"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"yq" = (
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"yw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"yz" = (
+/obj/effect/mob_spawn/corpse/human/generic_assistant,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/item/hatchet{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"yF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/tile/iron/dark,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"zj" = (
+/obj/item/clothing/shoes/jackboots{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"zr" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp{
+	pixel_y = 5;
+	pixel_x = -1
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"zv" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"zC" = (
+/obj/item/stack/cable_coil{
+	pixel_x = 4;
+	pixel_y = -2;
+	amount = 2
+	},
+/obj/item/wallframe/camera{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/purple{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Ae" = (
+/obj/effect/turf_decal/trimline/dark/filled/line,
+/obj/effect/turf_decal/siding/brown,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Ak" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"An" = (
+/obj/machinery/door/airlock/engineering,
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Ar" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"AO" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/effect/turf_decal/siding/green/corner{
+	color = "#B7D993"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Bq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/trash/boritos{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"BP" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"BU" = (
+/obj/item/ammo_casing{
+	pixel_x = 8;
+	pixel_y = 4;
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/yellow/corner{
+	dir = 8;
+	color = "#C3630C"
+	},
+/obj/effect/turf_decal/siding/yellow/corner{
+	dir = 4;
+	color = "#C3630C"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"BV" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/decal/cleanable/greenglow,
+/obj/effect/turf_decal/siding/purple,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Cy" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark,
+/obj/machinery/door/airlock{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"CC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/l3closet/scientist,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"CO" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"CQ" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"CY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 6
+	},
+/obj/structure/frame/machine,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"CZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/cable_coil{
+	pixel_x = 2;
+	pixel_y = -4;
+	amount = 2
+	},
+/obj/item/wallframe/camera{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Da" = (
+/obj/item/toy/katana,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Do" = (
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Dy" = (
+/obj/machinery/microwave,
+/obj/structure/table,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"DT" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Em" = (
+/obj/item/stack/cable_coil{
+	pixel_x = 7;
+	pixel_y = -4;
+	amount = 2
+	},
+/obj/item/wallframe/camera{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/yellow{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Ey" = (
+/turf/template_noop,
+/area/template_noop)
+"EH" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"EY" = (
+/obj/structure/table,
+/obj/item/seeds/plump/walkingmushroom,
+/obj/machinery/light/dim/directional/north,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Ff" = (
+/mob/living/basic/killer_tomato,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Fh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/can{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Ft" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"FV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/food/grown/mushroom/plumphelmet{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/yellow{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Go" = (
+/obj/machinery/door/window/brigdoor/left/directional/north,
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 1
+	},
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Gv" = (
+/obj/structure/flora/bush/flowers_pp,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"GA" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bottle/nutrient/l4z{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/cup/bottle/nutrient/ez{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Hp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/yellow{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"HN" = (
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/door/airlock/research{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"HU" = (
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Ib" = (
+/obj/item/trash/chips{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Ii" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/siding/brown{
+	dir = 9
+	},
+/obj/structure/sign/warning/secure_area/directional/west,
+/obj/machinery/light/small/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Is" = (
+/obj/structure/curtain,
+/obj/machinery/shower/directional/north,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Iv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/green/corner{
+	dir = 4;
+	color = "#B7D993"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"IH" = (
+/obj/structure/table,
+/obj/item/seeds/cherry{
+	pixel_x = 9;
+	pixel_y = 6
+	},
+/obj/item/seeds/carrot{
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"II" = (
+/obj/machinery/computer/security{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/red,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"IN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 1
+	},
+/obj/structure/frame/machine,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Jb" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/machinery/door/airlock/security,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Jd" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/yellow{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Jf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/bush/sparsegrass,
+/obj/machinery/light/directional/south,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Jg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/plastic,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Kg" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/green/corner{
+	dir = 4;
+	color = "#B7D993"
+	},
+/obj/effect/turf_decal/siding/green/corner{
+	dir = 1;
+	color = "#B7D993"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Ky" = (
+/obj/structure/table,
+/obj/item/circuitboard/machine/hydroponics{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"KB" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bottle/nutrient/ez{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Lc" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/exterior)
+"Ln" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/effect/turf_decal/siding/green/corner{
+	color = "#99BB76"
+	},
+/obj/effect/turf_decal/siding/green/corner{
+	dir = 8;
+	color = "#99BB76"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Lx" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Ly" = (
+/obj/structure/table,
+/obj/item/food/grown/tomato{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"LG" = (
+/obj/structure/chair/office,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"LQ" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 10
+	},
+/obj/item/stack/cable_coil{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/circuitboard/machine/hydroponics{
+	pixel_y = 2;
+	pixel_x = -3
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"LS" = (
+/mob/living/basic/killer_tomato,
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4;
+	pixel_x = 15
+	},
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Mc" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bottle/ammonia{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/cup/bottle/diethylamine{
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/cup/bottle/ethanol{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"MD" = (
+/mob/living/basic/killer_tomato,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/tile/iron/dark,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"MI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ML" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/hydroponics/constructable,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"NU" = (
+/obj/machinery/door/airlock/hatch,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"NY" = (
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Oq" = (
+/obj/effect/decal/cleanable/food/salt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/purple{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"OA" = (
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/brown{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Pe" = (
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/green/corner{
+	dir = 8;
+	color = "#99BB76"
+	},
+/obj/effect/turf_decal/siding/green/corner{
+	dir = 4;
+	color = "#99BB76"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Qa" = (
+/obj/structure/marker_beacon,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/exterior)
+"Qh" = (
+/mob/living/basic/killer_tomato,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Qi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/north,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Qo" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/siding/brown,
+/obj/structure/sign/warning/fire/directional/north,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Qr" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/yellow{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Rp" = (
+/obj/machinery/door/airlock{
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"RM" = (
+/mob/living/basic/killer_tomato,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"RS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/brown{
+	dir = 10
+	},
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Sx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/clothing/shoes/winterboots{
+	pixel_y = 5;
+	pixel_x = 3
+	},
+/obj/item/clothing/shoes/winterboots{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"SC" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/green/corner{
+	dir = 1;
+	color = "#99BB76"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"TM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/hydroponics/constructable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"TN" = (
+/obj/item/stack/cable_coil{
+	pixel_x = 1;
+	pixel_y = 4;
+	amount = 2
+	},
+/obj/item/wallframe/camera{
+	pixel_x = -11;
+	pixel_y = 6
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Us" = (
+/obj/structure/flora/bush/fullgrass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Ut" = (
+/obj/item/trash/chips{
+	pixel_x = -1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"UL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/clothing/suit/hooded/wintercoat{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/obj/item/clothing/suit/hooded/wintercoat{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"UY" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/purple{
+	dir = 1
+	},
+/obj/item/reagent_containers/cup/bottle/diethylamine{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"UZ" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/purple/corner{
+	dir = 1;
+	color = "#AE8CA8"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Vp" = (
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/brown{
+	dir = 5
+	},
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Vr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/purple,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Vv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/bush/flowers_yw,
+/obj/machinery/door/window/brigdoor/left/directional/north,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Vx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/bush/jungle/a,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"VA" = (
+/mob/living/basic/killer_tomato,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/green,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"VD" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/grassy,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Wg" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bottle/nutrient/rh{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/cup/bottle/mutagen{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Wk" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Wz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"WC" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"WI" = (
+/obj/machinery/seed_extractor,
+/obj/machinery/light/dim/directional/north,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/purple{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Xf" = (
+/obj/structure/table,
+/obj/item/seeds/cannabis{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/paper{
+	pixel_x = -2;
+	pixel_y = 2;
+	default_raw_text = "FRIDAY<BR><BR>The doc's taught me well, but the crushing weight of this mountain is really starting to make me question why I even agreed to be their assistant in the first place. The doc used to be a little more light-hearted, but they've gotten more and more manic over the past couple of months. They've locked himself deeper in the facility more and more often, to the point where I sometimes go days without seeing them. Perhaps this cannabis can help lighten them up...";
+	name = "botanist's diary"
+	},
+/obj/item/pen{
+	pixel_x = -9
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/purple{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Xl" = (
+/obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/brown{
+	dir = 4
+	},
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Xv" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bottle/mutagen{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/cup/bottle/nutrient/ez{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"XG" = (
+/obj/item/stack/cable_coil{
+	pixel_x = 1;
+	pixel_y = -2;
+	amount = 2
+	},
+/obj/item/wallframe/camera{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"XK" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/siding/brown{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/vault,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"XT" = (
+/obj/structure/table,
+/obj/item/food/grown/tomato{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Yc" = (
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/ferny,
+/mob/living/basic/venus_human_trap,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Yd" = (
+/obj/effect/mob_spawn/corpse/human/scientist,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Yt" = (
+/obj/structure/sink/directional/west,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"YA" = (
+/obj/item/trash/sosjerky{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"YC" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bottle/diethylamine{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/cup/bottle{
+	pixel_x = -6
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"YN" = (
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/brown{
+	dir = 8
+	},
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"YQ" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = -1
+	},
+/obj/machinery/light/dim/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing{
+	pixel_x = 6;
+	pixel_y = 6;
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/siding/yellow,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Zk" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/under/rank/security/officer{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/shreds,
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/red/corner{
+	dir = 4;
+	color = "#B4696A"
+	},
+/obj/effect/turf_decal/siding/red/corner{
+	dir = 1;
+	color = "#B4696A"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"Zp" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bottle{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ZA" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/obj/item/ammo_casing{
+	pixel_y = -9;
+	pixel_x = -9;
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ZG" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 8
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+"ZP" = (
+/obj/item/book/manual/hydroponics_pod_people{
+	pixel_y = 0
+	},
+/obj/structure/table,
+/obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/green{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
+
+(1,1,1) = {"
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+fl
+fl
+fl
+fl
+Ey
+Ey
+Ey
+Ey
+fl
+fl
+fl
+fl
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+"}
+(2,1,1) = {"
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+"}
+(3,1,1) = {"
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Lc
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+"}
+(4,1,1) = {"
+Ey
+Ey
+Ey
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Lc
+Lc
+Ey
+Ey
+Ey
+Ey
+Ey
+Ey
+"}
+(5,1,1) = {"
+Ey
+Ey
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Ar
+Do
+Ar
+Ar
+fl
+fl
+fl
+Lc
+Lc
+Lc
+Lc
+Ey
+Ey
+Ey
+Ey
+Ey
+"}
+(6,1,1) = {"
+Ey
+fl
+fl
+fl
+fl
+bV
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Ar
+tW
+Is
+Ar
+fl
+fl
+Lc
+Lc
+Lc
+Lc
+fl
+fl
+Ey
+Ey
+Ey
+Ey
+"}
+(7,1,1) = {"
+Ey
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Ar
+Do
+Do
+Ar
+Ar
+CQ
+Yt
+Ar
+fl
+fl
+Lc
+Lc
+Lc
+fl
+fl
+fl
+fl
+fl
+Ey
+Ey
+"}
+(8,1,1) = {"
+Ey
+fl
+fl
+fl
+Do
+Ar
+Do
+Ar
+Do
+Ar
+fl
+fl
+fl
+Ar
+Dy
+jR
+dn
+Do
+Rp
+Ar
+Ar
+fl
+Lc
+Lc
+Lc
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Ey
+"}
+(9,1,1) = {"
+fl
+fl
+fl
+fl
+Do
+Xf
+zC
+Oq
+oe
+Ar
+fl
+fl
+fl
+Do
+jM
+yw
+mN
+Ib
+mg
+vf
+Do
+fl
+Lc
+Lc
+Lc
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Ey
+"}
+(10,1,1) = {"
+fl
+fl
+fl
+fl
+Ar
+gX
+yF
+WC
+Vr
+Do
+Ar
+Do
+Ar
+Ar
+pf
+CO
+Lx
+Fh
+lS
+YA
+Do
+fl
+Lc
+Lc
+Lc
+Lc
+Lc
+fl
+fl
+fl
+fl
+fl
+Ey
+"}
+(11,1,1) = {"
+fl
+fl
+fl
+fl
+Ar
+WI
+gW
+aN
+BV
+Ar
+kZ
+zj
+uq
+Ar
+TN
+Ut
+ai
+Jg
+Bq
+fz
+Ar
+fl
+fl
+Lc
+Lc
+Lc
+Lc
+Lc
+fl
+fl
+fl
+fl
+Ey
+"}
+(12,1,1) = {"
+fl
+fl
+fl
+fl
+Do
+UY
+oM
+Mc
+kG
+Ar
+el
+Ff
+II
+Do
+mg
+vf
+Ar
+Do
+Ar
+Ar
+Ar
+fl
+fl
+fl
+Lc
+Lc
+Lc
+Lc
+Lc
+fl
+fl
+fl
+fl
+"}
+(13,1,1) = {"
+fl
+fl
+fl
+fl
+Ar
+iS
+UZ
+Xv
+tb
+Jb
+Zk
+oZ
+uP
+Ar
+ZG
+Ar
+Ar
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Lc
+Lc
+Lc
+fl
+fl
+fl
+fl
+"}
+(14,1,1) = {"
+Ey
+fl
+fl
+fl
+Ar
+Ar
+fS
+ve
+cd
+Do
+ZA
+aK
+tq
+Ar
+mg
+vf
+Do
+Ar
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Lc
+Lc
+Lc
+Lc
+fl
+fl
+fl
+"}
+(15,1,1) = {"
+Ey
+fl
+fl
+fl
+fl
+Do
+Ar
+HN
+Ar
+Do
+Do
+ue
+Do
+Ar
+Qi
+mN
+vf
+Ar
+Ar
+Do
+Ar
+Ar
+fl
+fl
+fl
+Qa
+Lc
+Lc
+Lc
+Lc
+fl
+fl
+fl
+"}
+(16,1,1) = {"
+Ey
+fl
+fl
+fl
+Ar
+Ar
+im
+BU
+Qr
+Em
+Ar
+mg
+mg
+zr
+CO
+bX
+mg
+Ar
+Sx
+td
+UL
+Ar
+fl
+Qa
+Lc
+Lc
+Lc
+Lc
+Lc
+fl
+fl
+fl
+fl
+"}
+(17,1,1) = {"
+Ey
+fl
+fl
+fl
+Ar
+hC
+nz
+cK
+IH
+ho
+Ar
+uI
+LG
+qe
+cI
+bX
+mg
+NU
+wC
+wC
+bE
+NU
+Lc
+Lc
+Lc
+Lc
+Lc
+Qa
+fl
+fl
+fl
+fl
+fl
+"}
+(18,1,1) = {"
+Ey
+fl
+fl
+fl
+Ar
+ra
+gc
+uO
+ud
+YQ
+Ar
+mg
+vf
+fi
+CO
+Ak
+vf
+Do
+wC
+bt
+nM
+Ar
+fl
+Lc
+Qa
+Lc
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+"}
+(19,1,1) = {"
+Ey
+fl
+fl
+fl
+Do
+EY
+NY
+iL
+tj
+so
+Do
+DT
+DT
+DT
+cI
+bX
+lR
+Do
+Ar
+Ar
+Do
+Ar
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+"}
+(20,1,1) = {"
+Ey
+fl
+fl
+fl
+Ar
+dE
+gW
+oM
+rE
+Hp
+An
+wD
+xm
+fn
+zv
+Wz
+XG
+Ar
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+"}
+(21,1,1) = {"
+fl
+fl
+fl
+fl
+Ar
+FV
+Jd
+xS
+Hp
+Ar
+Ar
+Ar
+io
+rv
+Wz
+mg
+Ar
+Ar
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+"}
+(22,1,1) = {"
+fl
+fl
+fl
+fl
+Ar
+Do
+Ar
+Cy
+Do
+Ar
+Da
+Do
+Ar
+Ar
+Do
+Ar
+Do
+fl
+fl
+fl
+fl
+fl
+Ar
+Ar
+Do
+Ar
+Do
+fl
+fl
+fl
+fl
+fl
+fl
+"}
+(23,1,1) = {"
+fl
+fl
+fl
+fl
+Ar
+rm
+GA
+Pe
+RM
+Ar
+Ar
+Ar
+MI
+vq
+hL
+Ar
+fl
+fl
+fl
+fl
+Ar
+Ar
+Do
+Ii
+iU
+nK
+Ar
+fl
+fl
+fl
+fl
+fl
+fl
+"}
+(24,1,1) = {"
+Ey
+fl
+fl
+fl
+Ar
+YC
+wa
+NY
+yq
+Zp
+Ar
+ws
+Iv
+HU
+gn
+Do
+Ar
+Ar
+Do
+Do
+Ar
+om
+RS
+XK
+gg
+wc
+Ar
+Do
+Do
+fl
+fl
+fl
+Ey
+"}
+(25,1,1) = {"
+Ey
+fl
+fl
+fl
+Do
+KB
+LS
+Ft
+Qh
+rA
+Ar
+Ky
+bj
+yF
+pc
+ks
+LQ
+Do
+bE
+kg
+Do
+jf
+jq
+YN
+qE
+qI
+Us
+Vx
+Ar
+fl
+fl
+fl
+Ey
+"}
+(26,1,1) = {"
+Ey
+fl
+fl
+fl
+Do
+hK
+yz
+dQ
+gc
+mf
+Do
+IN
+Yd
+mZ
+NY
+ll
+aD
+pS
+wC
+bE
+pS
+Vp
+aL
+uB
+Ae
+Vv
+Gv
+aG
+Ar
+fl
+fl
+fl
+Ey
+"}
+(27,1,1) = {"
+Ey
+fl
+fl
+fl
+Ar
+Wg
+or
+HU
+MD
+Ln
+mm
+Kg
+EH
+fc
+AO
+qJ
+CY
+Ar
+CC
+cg
+Ar
+kW
+Go
+wY
+tg
+Gv
+Yc
+Jf
+Ar
+fl
+fl
+fl
+Ey
+"}
+(28,1,1) = {"
+Ey
+fl
+fl
+fl
+Ar
+Ar
+CZ
+SC
+oM
+VA
+Ar
+BP
+ey
+tL
+ou
+Ar
+Do
+Ar
+Ar
+Ar
+Ar
+Qo
+my
+Xl
+OA
+rt
+hI
+TM
+Do
+fl
+fl
+fl
+Ey
+"}
+(29,1,1) = {"
+Ey
+fl
+fl
+fl
+fl
+Ar
+Do
+Ly
+jT
+XT
+Do
+mG
+ZP
+Wk
+Do
+Ar
+fl
+fl
+fl
+fl
+Ar
+Do
+Do
+Ar
+Do
+ML
+VD
+Ar
+Ar
+fl
+fl
+fl
+Ey
+"}
+(30,1,1) = {"
+Ey
+Ey
+fl
+fl
+fl
+fl
+Ar
+Ar
+Do
+Ar
+Ar
+Ar
+Ar
+Do
+Do
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Do
+Ar
+Ar
+Ar
+fl
+fl
+fl
+Ey
+Ey
+"}
+(31,1,1) = {"
+Ey
+Ey
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Ey
+Ey
+"}
+(32,1,1) = {"
+Ey
+Ey
+Ey
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Ey
+Ey
+Ey
+"}
+(33,1,1) = {"
+Ey
+Ey
+Ey
+Ey
+Ey
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+fl
+Ey
+Ey
+Ey
+Ey
+Ey
+fl
+fl
+fl
+fl
+fl
+Ey
+Ey
+Ey
+Ey
+"}

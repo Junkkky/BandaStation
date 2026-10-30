@@ -1,0 +1,1814 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_observatory.dmm
+"ao" = (
+/turf/closed/mineral/random/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"aZ" = (
+/obj/item/stock_parts/capacitor/super,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"bc" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"bp" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/drinkingglass,
+/obj/item/food/grown/cannabis,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"br" = (
+/obj/item/rack_parts,
+/obj/machinery/door/window/left/directional/north,
+/obj/item/stack/cable_coil,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"bv" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin,
+/obj/item/pen/fountain,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"bS" = (
+/obj/structure/cable,
+/obj/structure/flora/bush/large,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"cc" = (
+/obj/item/stock_parts/scanning_module/triphasic,
+/obj/item/stock_parts/subspace/treatment,
+/obj/item/multitool/ai_detect,
+/obj/item/stack/ore/iron{
+	amount = 10
+	},
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"cg" = (
+/obj/item/stock_parts/subspace/filter,
+/obj/machinery/door/window/left/directional/east,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"cx" = (
+/obj/structure/cable,
+/obj/machinery/camera/autoname{
+	dir = 10
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"cF" = (
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"cS" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"cT" = (
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"dr" = (
+/obj/structure/railing,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"dx" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/camera/autoname/directional/east,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"dy" = (
+/obj/structure/sign/poster/contraband/space_cola/directional/north,
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"dA" = (
+/obj/machinery/power/tracker,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"dK" = (
+/obj/structure/table/wood,
+/obj/item/disk/design_disk,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"dP" = (
+/obj/item/pickaxe/mini,
+/obj/item/grenade/syndieminibomb,
+/obj/item/camera,
+/obj/item/clothing/accessory/spy_bug,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"ef" = (
+/obj/structure/chair/comfy/purp,
+/obj/item/radio/intercom/directional/east,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"eA" = (
+/obj/machinery/holopad,
+/obj/item/clothing/under/rank/rnd/scientist,
+/obj/effect/spawner/random/medical/medkit,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"eZ" = (
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/circuitboard/machine/circuit_imprinter,
+/obj/machinery/light/directional/south,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"fw" = (
+/obj/machinery/power/solar,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"gl" = (
+/mob/living/basic/snake,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"hL" = (
+/obj/structure/sign/poster/contraband/masked_men/directional/north,
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"it" = (
+/obj/item/stock_parts/scanning_module/triphasic,
+/obj/machinery/rnd/production/protolathe/department/science,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"iP" = (
+/obj/effect/mob_spawn/corpse/human/scientist,
+/obj/machinery/light/directional/south,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"ja" = (
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"kk" = (
+/obj/structure/railing{
+	dir = 6
+	},
+/obj/structure/table/wood/fancy,
+/obj/item/cultivator/rake,
+/obj/item/plant_analyzer,
+/obj/item/reagent_containers/cup/bucket,
+/obj/item/seeds/ambrosia/deus,
+/obj/item/seeds/potato,
+/obj/item/seeds/onion,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"kL" = (
+/obj/structure/reflector/single{
+	dir = 10
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"la" = (
+/obj/structure/railing,
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"ld" = (
+/obj/item/storage/belt/utility/full,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"lw" = (
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"lK" = (
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"mq" = (
+/obj/structure/sign/poster/contraband/power/directional/north,
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"mE" = (
+/obj/structure/cable,
+/obj/machinery/light/directional/south,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"nq" = (
+/obj/structure/closet/wardrobe/science_white,
+/obj/item/gun/energy/disabler,
+/obj/item/clothing/head/helmet,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/storage/belt/security/webbing,
+/obj/item/clothing/under/misc/overalls,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"nP" = (
+/obj/machinery/suit_storage_unit/rd,
+/obj/structure/sign/flag/terragov/directional/south,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"oI" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/obj/machinery/light_switch{
+	pixel_x = 19;
+	dir = 8;
+	pixel_y = 11
+	},
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets/donkpocketberry,
+/obj/item/storage/box/donkpockets/donkpockethonk,
+/obj/item/storage/box/donkpockets/donkpocketpizza,
+/obj/item/storage/box/donkpockets/donkpocketspicy,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"pn" = (
+/obj/structure/railing/wooden_fence,
+/turf/open/floor/wood/darkwood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"pR" = (
+/obj/structure/spacevine,
+/obj/item/flashlight/lantern,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"pW" = (
+/obj/machinery/camera/directional/north,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"qe" = (
+/obj/structure/reflector/single{
+	dir = 9
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"qi" = (
+/obj/effect/spawner/structure/window/hollow,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"qU" = (
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"rG" = (
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"sF" = (
+/turf/closed/indestructible/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"sG" = (
+/turf/open/floor/circuit,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"tj" = (
+/obj/structure/closet/crate/solarpanel_small,
+/obj/item/clothing/glasses/hud/diagnostic/sunglasses,
+/obj/machinery/light/directional/south,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"tI" = (
+/obj/effect/mob_spawn/corpse/human/scientist,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"tP" = (
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"uw" = (
+/obj/structure/chair/comfy/beige,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"uV" = (
+/obj/structure/filingcabinet,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"vc" = (
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"vA" = (
+/turf/open/floor/wood/darkwood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"vU" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/mob/living/basic/venus_human_trap,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"we" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"xg" = (
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"xl" = (
+/obj/machinery/power/solar,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"ya" = (
+/obj/machinery/power/solar_control{
+	dir = 8
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"yC" = (
+/obj/structure/filingcabinet,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"yF" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"za" = (
+/obj/machinery/camera/autoname{
+	dir = 5
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"zQ" = (
+/turf/closed/mineral/random/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Ay" = (
+/mob/living/basic/snake,
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"Bc" = (
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Bf" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Bk" = (
+/obj/item/stock_parts/scanning_module/triphasic,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"BW" = (
+/obj/structure/window/spawner/directional/south,
+/obj/machinery/computer/camera_advanced{
+	dir = 8
+	},
+/obj/structure/sign/flag/terragov/directional/west,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"BY" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"CK" = (
+/obj/structure/cable,
+/obj/structure/chair/comfy/corp{
+	dir = 4
+	},
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"CM" = (
+/obj/machinery/light/directional/south,
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"De" = (
+/obj/item/screwdriver,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Dn" = (
+/obj/item/rack_parts,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"En" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"EA" = (
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"FS" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/structure/spacevine,
+/obj/item/gun/ballistic/automatic/pistol/m1911,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"FY" = (
+/obj/effect/spawner/structure/window/hollow,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Gf" = (
+/obj/structure/showcase/machinery/tv,
+/obj/structure/table/wood,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Gs" = (
+/obj/structure/railing/wooden_fence,
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"Gw" = (
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"GL" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/research,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"GR" = (
+/obj/item/stock_parts/power_store/cell/super,
+/obj/item/storage/backpack/duffelbag/mining_conscript,
+/obj/item/stack/ore/iron{
+	amount = 10
+	},
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Ho" = (
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"HQ" = (
+/obj/item/kirbyplants/photosynthetic{
+	pixel_y = 25
+	},
+/obj/structure/filingcabinet/chestdrawer,
+/obj/structure/cable,
+/obj/item/gun/energy/plasmacutter{
+	pixel_y = 2;
+	pixel_x = 4
+	},
+/obj/item/stamp,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"HR" = (
+/obj/item/storage/toolbox/mechanical/old,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"HS" = (
+/obj/structure/closet/crate/medical,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"HT" = (
+/obj/structure/table/wood,
+/obj/item/food/burger,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Id" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"IY" = (
+/obj/machinery/door/window/left/directional/west,
+/obj/structure/frame/machine,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"IZ" = (
+/obj/machinery/autolathe,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Jl" = (
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Jw" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/basic/venus_human_trap,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"JL" = (
+/obj/structure/table/wood,
+/obj/item/clothing/glasses/hud/diagnostic/sunglasses,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"JR" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/drinkingglass,
+/obj/machinery/recharger{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/cup/glass/drinkingglass{
+	pixel_y = 7;
+	pixel_x = 8
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"KH" = (
+/obj/machinery/door/window/left/directional/west,
+/obj/machinery/rnd/server,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"LM" = (
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Mf" = (
+/obj/item/rack_parts,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Mg" = (
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"MV" = (
+/turf/open/floor/iron/stairs/old{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Ol" = (
+/obj/structure/table/wood,
+/obj/machinery/microwave,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Oq" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Oy" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"OU" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Pj" = (
+/obj/machinery/door/airlock/research,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Pt" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/spacevine,
+/obj/item/clothing/mask/animal/frog,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"Qp" = (
+/obj/structure/railing,
+/obj/machinery/camera/directional/north,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Qu" = (
+/obj/structure/chair/comfy/black,
+/obj/machinery/light/directional/east,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Qv" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/drinks/fullupgrade,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"QW" = (
+/obj/machinery/door/airlock/silver{
+	name = "Telescope Accesss";
+	dir = 4
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"QX" = (
+/obj/machinery/door/window/left/directional/west,
+/obj/machinery/telecomms/message_server,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"RH" = (
+/obj/machinery/camera/autoname/directional/east,
+/turf/open/floor/concrete/slab_4,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"SD" = (
+/obj/machinery/hydroponics/soil,
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"Ta" = (
+/obj/structure/bed,
+/obj/item/bedsheet/rd,
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Tt" = (
+/obj/machinery/light/directional/north,
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"TY" = (
+/obj/machinery/door/airlock/survival_pod/glass{
+	name = "Observatory NT-RF-23445"
+	},
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Vr" = (
+/obj/structure/railing/wooden_fence,
+/turf/open/floor/iron/stairs/old{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"VP" = (
+/obj/structure/filingcabinet/chestdrawer,
+/obj/item/clothing/under/rank/rnd/scientist,
+/obj/effect/spawner/random/medical/medkit,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Wh" = (
+/obj/machinery/door/window/left/directional/west,
+/obj/machinery/telecomms/server,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Ws" = (
+/obj/structure/bed,
+/obj/item/bedsheet/purple,
+/obj/structure/curtain/cloth/fancy,
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Xh" = (
+/turf/closed/indestructible/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/ruin/jungle)
+"XV" = (
+/obj/machinery/power/solar_control{
+	dir = 4
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Yp" = (
+/obj/structure/cable,
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"Ze" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+"ZS" = (
+/obj/machinery/light/directional/west,
+/obj/item/stack/sheet/glass{
+	amount = 20
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
+
+(1,1,1) = {"
+vc
+vc
+vc
+vc
+Xh
+vc
+Xh
+vc
+Xh
+vc
+vc
+vc
+vc
+gl
+Xh
+vc
+Xh
+vc
+Xh
+Xh
+vc
+vc
+vc
+Xh
+Xh
+Xh
+vc
+vc
+Xh
+Xh
+Xh
+Xh
+Xh
+"}
+(2,1,1) = {"
+vc
+vc
+vc
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+Xh
+ao
+ao
+ao
+Xh
+Xh
+vc
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+vc
+vc
+vc
+vc
+Xh
+vc
+vc
+Xh
+"}
+(3,1,1) = {"
+vc
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+ao
+ao
+ao
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+Xh
+vc
+vc
+"}
+(4,1,1) = {"
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+vc
+vc
+ao
+ao
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+vc
+"}
+(5,1,1) = {"
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+ao
+ao
+ao
+vc
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+Xh
+"}
+(6,1,1) = {"
+vc
+Xh
+Xh
+Xh
+Xh
+vc
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+ao
+ao
+ao
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+"}
+(7,1,1) = {"
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Ho
+Ho
+Gs
+MV
+Vr
+Ho
+Ho
+Ho
+Ho
+Ho
+Ho
+Ho
+Ho
+Ho
+Ho
+Ho
+Ho
+Ho
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+vc
+"}
+(8,1,1) = {"
+vc
+Xh
+Xh
+Xh
+vc
+Xh
+Xh
+Ho
+Ho
+Ho
+Gs
+vA
+pn
+Ho
+Ho
+fw
+fw
+Ho
+Ho
+Ay
+Ho
+Ho
+Ho
+Ho
+Ho
+Ho
+Ho
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+"}
+(9,1,1) = {"
+vc
+Xh
+Xh
+Xh
+vc
+Xh
+Ho
+Ho
+Ho
+Ho
+Gs
+vA
+pn
+Oy
+Oy
+fw
+fw
+Ho
+Ho
+Ho
+FY
+FY
+FY
+FY
+FY
+Ho
+Ho
+Ho
+Xh
+Xh
+Xh
+vc
+vc
+"}
+(10,1,1) = {"
+vc
+Xh
+Xh
+Xh
+vc
+Xh
+Ho
+Ho
+Ho
+Ho
+Gs
+vA
+pn
+Bc
+sF
+Bc
+Ho
+Ho
+Ho
+FY
+sG
+Jl
+Jl
+Jl
+sG
+FY
+Ho
+Ho
+Ho
+Xh
+Xh
+Xh
+Xh
+"}
+(11,1,1) = {"
+vc
+Xh
+Xh
+Xh
+Xh
+la
+Oy
+Oy
+Oy
+Oy
+dx
+vA
+vA
+RH
+Bc
+kk
+Ho
+Ho
+FY
+sG
+xl
+Jl
+Jl
+Jl
+xl
+sG
+FY
+Ho
+Ho
+Xh
+Xh
+Xh
+Xh
+"}
+(12,1,1) = {"
+vc
+vc
+Xh
+Xh
+Xh
+la
+Bc
+BY
+BY
+BY
+BY
+TY
+TY
+BY
+dr
+SD
+Ho
+Ho
+FY
+Jl
+Jl
+kL
+Jl
+qe
+Jl
+Jl
+FY
+Ho
+Ho
+Xh
+Xh
+Xh
+vc
+"}
+(13,1,1) = {"
+Xh
+Xh
+Xh
+Xh
+Xh
+la
+Bc
+BY
+tI
+iP
+BY
+Tt
+CM
+BY
+dr
+SD
+Ho
+Ho
+FY
+Jl
+Jl
+Jl
+dA
+Jl
+Jl
+Jl
+FY
+Ho
+Ay
+Ho
+Xh
+Xh
+Xh
+"}
+(14,1,1) = {"
+vc
+Xh
+Xh
+Xh
+Xh
+la
+Bc
+BY
+tI
+Gw
+Pj
+EA
+EA
+BY
+dr
+SD
+SD
+SD
+FY
+Jl
+Jl
+qe
+Jl
+kL
+Jl
+Jl
+FY
+Ho
+Ho
+Ho
+Xh
+Xh
+Xh
+"}
+(15,1,1) = {"
+Xh
+Xh
+Xh
+Xh
+Xh
+la
+Bc
+BY
+BY
+BY
+Bf
+pW
+EA
+BY
+Bc
+Oy
+Oy
+Oy
+FY
+sG
+xl
+Jl
+Jl
+Jl
+xl
+sG
+FY
+Ho
+Ho
+Ho
+Xh
+Xh
+vc
+"}
+(16,1,1) = {"
+Xh
+vc
+Xh
+Xh
+Xh
+la
+Bc
+Bf
+Ws
+Gw
+Pj
+EA
+En
+BY
+Bf
+BY
+BY
+Bc
+dr
+FY
+sG
+Jl
+Jl
+Jl
+sG
+FY
+Bc
+dr
+Ho
+ao
+Xh
+Xh
+vc
+"}
+(17,1,1) = {"
+Xh
+vc
+Xh
+Xh
+Xh
+la
+Bc
+BY
+VP
+cS
+hL
+EA
+EA
+HS
+nq
+nq
+BY
+BY
+dr
+cT
+FY
+FY
+lw
+FY
+FY
+BY
+BY
+Qp
+Ho
+ao
+Xh
+Xh
+Xh
+"}
+(18,1,1) = {"
+vc
+Xh
+Xh
+Xh
+Xh
+la
+Bc
+BY
+BY
+BY
+BY
+Oq
+EA
+br
+cc
+Dn
+it
+BY
+dr
+cT
+cT
+qi
+Mg
+Mg
+Mg
+lK
+BY
+dr
+ao
+Ho
+Xh
+Xh
+Xh
+"}
+(19,1,1) = {"
+vc
+Xh
+Xh
+Xh
+Xh
+la
+Bc
+BY
+Ws
+Gw
+Pj
+EA
+EA
+yC
+eA
+GR
+eZ
+BY
+Bc
+Oy
+Oy
+qi
+qi
+BY
+BY
+lK
+BY
+dr
+Ho
+ao
+Xh
+Xh
+vc
+"}
+(20,1,1) = {"
+Xh
+Xh
+Xh
+Xh
+Xh
+la
+za
+BY
+VP
+cS
+Bf
+EA
+EA
+uV
+cg
+Bk
+Mf
+qU
+BY
+Bf
+dy
+BY
+BY
+BY
+BY
+QW
+BY
+dr
+Ho
+ao
+Xh
+Xh
+Xh
+"}
+(21,1,1) = {"
+vc
+vc
+Xh
+Xh
+Xh
+la
+Bc
+BY
+BY
+BY
+BY
+ja
+EA
+EA
+EA
+EA
+EA
+LM
+Id
+lK
+lK
+ZS
+lK
+lK
+lK
+lK
+BY
+dr
+Ho
+Ho
+Xh
+Xh
+Xh
+"}
+(22,1,1) = {"
+Xh
+ao
+Xh
+Xh
+Xh
+la
+Bc
+mq
+Ta
+cF
+GL
+xg
+xg
+CK
+xg
+xg
+bS
+JR
+dK
+JL
+yF
+lK
+XV
+XV
+lK
+IZ
+BY
+dr
+Ho
+Xh
+Xh
+Xh
+vc
+"}
+(23,1,1) = {"
+Xh
+vc
+Xh
+Xh
+Xh
+la
+Bc
+BY
+nP
+mE
+BY
+EA
+uw
+bp
+uw
+EA
+xg
+bv
+we
+lK
+lK
+lK
+bc
+bc
+lK
+tj
+BY
+dr
+Ho
+Ho
+Xh
+Xh
+Xh
+"}
+(24,1,1) = {"
+vc
+vc
+Xh
+Xh
+Xh
+la
+Bc
+BY
+BY
+HQ
+BY
+Gf
+Qu
+HT
+ef
+Qv
+oI
+Ol
+ya
+BW
+KH
+IY
+QX
+Wh
+Wh
+BY
+BY
+dr
+Ho
+Xh
+Xh
+vc
+Xh
+"}
+(25,1,1) = {"
+vc
+Xh
+Xh
+Xh
+Xh
+la
+Bc
+Bc
+BY
+Yp
+BY
+BY
+BY
+BY
+BY
+BY
+BY
+BY
+BY
+BY
+BY
+BY
+BY
+BY
+BY
+BY
+Bc
+zQ
+ao
+Xh
+Xh
+Xh
+Xh
+"}
+(26,1,1) = {"
+Xh
+Xh
+Xh
+Xh
+Xh
+ao
+ao
+Bc
+tP
+cx
+Bc
+zQ
+Bc
+Bc
+Bc
+zQ
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+Bc
+zQ
+Ho
+ao
+ao
+Xh
+Xh
+Xh
+vc
+"}
+(27,1,1) = {"
+Xh
+Xh
+Xh
+Xh
+Xh
+ao
+ao
+Bc
+OU
+Ze
+HR
+ao
+ao
+ao
+ao
+ao
+Ho
+Ho
+Ho
+Xh
+Ay
+Ho
+Ho
+ao
+ao
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+"}
+(28,1,1) = {"
+vc
+Xh
+Xh
+Xh
+Xh
+Xh
+ao
+ld
+De
+rG
+aZ
+ao
+Xh
+Xh
+ao
+ao
+ao
+ao
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+"}
+(29,1,1) = {"
+Xh
+vc
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+pR
+Pt
+Xh
+ao
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+"}
+(30,1,1) = {"
+vc
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+ao
+Xh
+Jw
+vU
+ao
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+"}
+(31,1,1) = {"
+Xh
+Xh
+Xh
+vc
+vc
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+vc
+ao
+ao
+FS
+dP
+ao
+Xh
+Xh
+Xh
+vc
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+Xh
+"}
+(32,1,1) = {"
+vc
+Xh
+Xh
+Xh
+Xh
+vc
+Xh
+vc
+Xh
+Xh
+Xh
+Xh
+ao
+vc
+Xh
+Xh
+ao
+ao
+Xh
+Xh
+vc
+Xh
+vc
+Xh
+Xh
+Xh
+vc
+Xh
+Xh
+vc
+Xh
+vc
+Xh
+"}
+(33,1,1) = {"
+Xh
+vc
+Xh
+Xh
+vc
+Xh
+Xh
+Xh
+vc
+vc
+vc
+vc
+Xh
+ao
+vc
+vc
+ao
+vc
+vc
+vc
+Xh
+Xh
+Xh
+Xh
+vc
+Xh
+vc
+vc
+vc
+Xh
+Xh
+vc
+Xh
+"}

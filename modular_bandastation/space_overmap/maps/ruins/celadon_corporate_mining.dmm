@@ -1,0 +1,4536 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/AsteroidRuins/asteroid_corporate_mining.dmm
+"ak" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"aY" = (
+/obj/machinery/door/airlock{
+	name = "Room 1"
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/effect/turf_decal/trimline/brown/filled/warning{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/brown/filled/warning,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"ba" = (
+/obj/structure/closet/crate,
+/obj/item/stack/ore/iron,
+/obj/item/stack/ore/iron,
+/obj/item/stack/ore/iron,
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"bb" = (
+/obj/machinery/door/airlock/wood{
+	locked = 1;
+	name = "Corporate Bedroom"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"bu" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"bz" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"bN" = (
+/obj/structure/grille/broken,
+/obj/structure/lattice,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"bO" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/white/corner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"bV" = (
+/obj/machinery/power/solar,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"cg" = (
+/obj/structure/chair/stool/bar/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"ci" = (
+/obj/effect/decal/cleanable/plastic,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"cv" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white/corner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"cA" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"cH" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"cL" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"cO" = (
+/obj/structure/grille,
+/obj/structure/lattice,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"cT" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/structure/chair/stool/bar/directional/south,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"dc" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/airalarm/directional/west,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"dr" = (
+/obj/structure/railing,
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"dM" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/circuitboard/machine/autolathe,
+/obj/item/stock_parts/matter_bin,
+/obj/item/stock_parts/matter_bin,
+/obj/item/stock_parts/matter_bin,
+/obj/item/stock_parts/servo,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"dV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/effect/turf_decal/siding/white,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"dW" = (
+/obj/machinery/modular_computer/preset/engineering{
+	dir = 8
+	},
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"eJ" = (
+/obj/structure/sink,
+/turf/closed/mineral/random/low_chance,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"eO" = (
+/obj/structure/closet/crate/bin,
+/obj/item/trash/can/food/beans,
+/obj/effect/turf_decal/siding/white{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"eT" = (
+/obj/structure/cable,
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"eX" = (
+/obj/effect/mob_spawn/corpse/human/miner,
+/obj/effect/decal/cleanable/blood,
+/obj/item/gun/energy/recharge/kinetic_accelerator,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"fc" = (
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"fe" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"ff" = (
+/obj/item/trash/popcorn,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"fY" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"gb" = (
+/obj/machinery/door/airlock{
+	name = "Room 2"
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/brown/filled/warning,
+/obj/effect/turf_decal/trimline/brown/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"gm" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"gp" = (
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"gC" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/machinery/light/broken/directional/west,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"gE" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/gibs/bubblegum,
+/obj/effect/mob_spawn/corpse/human/miner,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"gW" = (
+/obj/structure/chair/office/light{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"hq" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/machinery/door/airlock/public/glass{
+	name = "Cargo";
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"hE" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/stamp/granted,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"hM" = (
+/obj/item/shard,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"hT" = (
+/mob/living/basic/mining/hivelord,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"ih" = (
+/obj/machinery/modular_computer{
+	dir = 8
+	},
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"iz" = (
+/obj/structure/bed,
+/obj/item/bedsheet/syndie,
+/obj/structure/curtain,
+/obj/effect/gibspawner/human,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"iS" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"jT" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"jX" = (
+/obj/structure/cable,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"ka" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"km" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"kw" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/mob_spawn/corpse/human/miner,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"kD" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"kQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"ll" = (
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"lo" = (
+/turf/closed/mineral/random/low_chance,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"lz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/frame/machine,
+/obj/item/circuitboard/machine/ore_redemption,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"lA" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"lB" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"lO" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"lX" = (
+/obj/structure/cable,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"mp" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"ms" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"mD" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/machinery/atmospherics/components/trinary/filter/atmos/co2,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"mK" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/south,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"mO" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"mS" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/machinery/vending/coffee,
+/obj/effect/turf_decal/siding/white{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"mU" = (
+/obj/structure/closet/crate,
+/obj/item/stack/ore/titanium,
+/obj/item/stack/ore/titanium,
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"nh" = (
+/obj/item/trash/can,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white/corner,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"nn" = (
+/obj/item/trash/candy,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"nx" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"nB" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/white,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"nE" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"nH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/plastic,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"nX" = (
+/obj/structure/table,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/multitool,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"oa" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"od" = (
+/obj/structure/sink/directional/north,
+/obj/structure/toilet{
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"og" = (
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"os" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"oC" = (
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"pb" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"pn" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"ps" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"pF" = (
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"pO" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"pV" = (
+/obj/machinery/airalarm/directional/west,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"qc" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/structure/closet/crate{
+	icon_state = "crateopen"
+	},
+/obj/item/flashlight,
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"qs" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"qw" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"qx" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"qJ" = (
+/obj/machinery/power/floodlight{
+	anchored = 1
+	},
+/obj/structure/cable,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"qL" = (
+/obj/structure/sign/departments/engineering,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"qO" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Cargo";
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"qT" = (
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"ra" = (
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/obj/structure/chair/office/light,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"rj" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 8
+	},
+/obj/machinery/light/broken/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"rr" = (
+/turf/template_noop,
+/area/template_noop)
+"rK" = (
+/obj/structure/sign/poster/contraband/power/directional/north,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"rO" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"rR" = (
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"rT" = (
+/obj/item/gibtonite,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"rW" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"rX" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/item/trash/can/food/peaches/maint,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/machinery/airalarm/directional/west,
+/obj/machinery/light/broken/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"sm" = (
+/obj/item/trash/sosjerky,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"sr" = (
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
+/obj/structure/cable,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"sK" = (
+/obj/structure/railing,
+/obj/structure/cable,
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"tk" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/plastic,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"tL" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"tZ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"ua" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering"
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/brown/filled/warning{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/brown/filled/warning,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"ul" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/machinery/modular_computer{
+	dir = 8
+	},
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"ut" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"ux" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"uR" = (
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"uZ" = (
+/obj/effect/spawner/structure/window/hollow/reinforced/directional{
+	dir = 5
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"vb" = (
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"vo" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"vs" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"vu" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/binary/pump/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"vx" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/sign/warning/vacuum/external/directional/east,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"vJ" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Bathroom";
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"vO" = (
+/obj/machinery/suit_storage_unit/mining/eva,
+/obj/effect/turf_decal/box,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"wk" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"wv" = (
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"wB" = (
+/obj/structure/closet/secure_closet/miner,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"wK" = (
+/obj/machinery/power/solar,
+/obj/structure/railing,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"xd" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"xf" = (
+/obj/structure/closet/cabinet,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/clothing/under/syndicate,
+/obj/item/clothing/suit/hazardvest,
+/obj/item/food/donkpocket,
+/obj/item/gun/ballistic/automatic/pistol,
+/obj/item/suppressor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"xi" = (
+/obj/item/pickaxe/drill,
+/obj/effect/mob_spawn/corpse/human/miner,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"xn" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"xr" = (
+/obj/structure/flora/rock/pile,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"xA" = (
+/obj/structure/closet/crate,
+/obj/effect/turf_decal/box/white,
+/obj/effect/spawner/random/engineering/material,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"yd" = (
+/obj/machinery/shower/directional/south,
+/obj/machinery/light/small/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"yi" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/item/trash/sosjerky,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"yz" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"yB" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/machinery/airalarm/directional/north,
+/obj/effect/turf_decal/siding/white{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"yM" = (
+/obj/structure/sign/warning/no_smoking/circle/directional/north,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"zq" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/structure/closet/crate,
+/obj/effect/turf_decal/box/white,
+/obj/effect/spawner/random/engineering/material,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"zw" = (
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"zD" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"zH" = (
+/obj/machinery/vending/hydroseeds,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"zJ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"zR" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/turf_decal/siding/white{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"Ah" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 6
+	},
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Aj" = (
+/obj/structure/grille/broken,
+/obj/item/shard,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"AW" = (
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Bd" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Bf" = (
+/obj/structure/railing,
+/obj/structure/cable,
+/turf/open/floor/iron/stairs{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"BJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"BU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Cj" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"Cm" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"CB" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"CY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"CZ" = (
+/obj/item/pickaxe/drill,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Dk" = (
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"Dl" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"Dt" = (
+/obj/structure/cable,
+/obj/machinery/power/floodlight{
+	anchored = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"DA" = (
+/obj/structure/table,
+/obj/item/folder/blue,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"DE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"DH" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"DJ" = (
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Eo" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Eq" = (
+/obj/structure/girder/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"Et" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Ex" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"EC" = (
+/obj/effect/mob_spawn/corpse/human/miner,
+/obj/item/shovel,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"EW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Fc" = (
+/obj/structure/closet/crate/engineering,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Fq" = (
+/obj/structure/table/wood/poker,
+/obj/item/toy/cards/deck,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"Fu" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"FQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"FS" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/item/assembly/igniter,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"Gb" = (
+/obj/item/trash/candy,
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"Ge" = (
+/obj/item/shard,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"Gi" = (
+/obj/structure/bed/medical/emergency,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Gj" = (
+/obj/structure/closet/crate,
+/obj/item/stack/ore/gold,
+/obj/item/stack/ore/gold,
+/obj/machinery/airalarm/directional/east,
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Gl" = (
+/obj/structure/cable,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Hq" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Hv" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"Hw" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"Hx" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"HC" = (
+/obj/machinery/suit_storage_unit/mining/eva,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"HQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"Ic" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Ie" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"IQ" = (
+/obj/machinery/door/airlock/wood/glass{
+	name = "Corporate's Office";
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/brown/filled/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/brown/filled/warning{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"Jj" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/sign/warning/vacuum/external/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Ju" = (
+/obj/structure/spawner/mining/goliath,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Jx" = (
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/obj/machinery/light/broken/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"Jy" = (
+/obj/machinery/power/solar_control{
+	dir = 1
+	},
+/obj/effect/turf_decal/box,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"JA" = (
+/obj/effect/spawner/structure/window/hollow/reinforced/directional{
+	dir = 6
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"JH" = (
+/obj/machinery/light/broken/directional/west,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"JJ" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"JO" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Ki" = (
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"KN" = (
+/obj/structure/grille/broken,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"KQ" = (
+/obj/item/stack/ore/uranium,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"KZ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Lh" = (
+/obj/structure/barricade/sandbags,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Lq" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Lw" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"LM" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"LU" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Solar Control";
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Mm" = (
+/obj/structure/closet/crate{
+	icon_state = "crateopen"
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 20
+	},
+/obj/item/stack/ore/diamond,
+/obj/item/stack/ore/diamond,
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Ms" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Mu" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"MA" = (
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"MB" = (
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"MK" = (
+/obj/machinery/door/airlock{
+	name = "Preparations"
+	},
+/obj/structure/barricade/wooden/crude,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/turf_decal/trimline/brown/filled/warning,
+/obj/effect/turf_decal/trimline/brown/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"Na" = (
+/obj/structure/railing,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"NJ" = (
+/obj/item/rollingpaper,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"NT" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 6
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Oj" = (
+/obj/structure/cable,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Ou" = (
+/obj/effect/spawner/structure/window/hollow/reinforced/middle{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"OM" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"OR" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"OU" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Pf" = (
+/obj/machinery/vending/cigarette,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Ph" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"Pl" = (
+/obj/structure/closet/crate,
+/obj/effect/turf_decal/box/white,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"PD" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"PF" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/structure/closet/crate{
+	icon_state = "crateopen"
+	},
+/obj/item/flashlight/glowstick/blue,
+/obj/item/flashlight/glowstick/pink,
+/obj/item/flashlight/glowstick/orange,
+/obj/item/flashlight/glowstick/yellow,
+/obj/item/trash/syndi_cakes,
+/obj/item/storage/bag/ore,
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"PT" = (
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"PU" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"PW" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/structure/chair/stool/bar/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"PX" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"QD" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin,
+/obj/item/pen/fountain,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/item/food/donkpocket,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"Rl" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Rm" = (
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
+/obj/effect/decal/cleanable/blood/gibs/bubblegum,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"RJ" = (
+/obj/structure/table/wood,
+/obj/machinery/fax,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"RL" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"RO" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"RR" = (
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Se" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green,
+/obj/machinery/light/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"Sw" = (
+/obj/item/stack/ore/plasma,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Sy" = (
+/obj/structure/cable,
+/turf/open/floor/iron/stairs,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"SD" = (
+/obj/item/stack/ore/uranium,
+/obj/item/stack/ore/uranium,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"SE" = (
+/obj/structure/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"SV" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Te" = (
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 4
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"TG" = (
+/obj/item/trash/syndi_cakes,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"TP" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"TS" = (
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"TX" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"Ug" = (
+/obj/machinery/door/airlock/command{
+	name = "Bridge";
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/brown/filled/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/brown/filled/warning{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/bridge)
+"UV" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"Va" = (
+/obj/machinery/jukebox,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"Vn" = (
+/obj/structure/mecha_wreckage/ripley/mk2,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Vy" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/turf_decal/siding/white{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"VL" = (
+/mob/living/basic/mining/goliath/ancient,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"VN" = (
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine)
+"We" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Wh" = (
+/obj/machinery/door/airlock{
+	name = "Room 3"
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/brown/filled/warning,
+/obj/effect/turf_decal/trimline/brown/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"Ws" = (
+/obj/structure/table/wood,
+/obj/machinery/computer/pod/old/syndicate,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"WA" = (
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"WH" = (
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/contraband/random/directional/west,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"WI" = (
+/obj/effect/decal/cleanable/ash,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"WT" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"WX" = (
+/obj/structure/closet/crate{
+	icon_state = "crateopen"
+	},
+/obj/item/flashlight,
+/obj/item/reagent_containers/cup/soda_cans/random,
+/obj/item/stack/ore/bluespace_crystal,
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Xm" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Xo" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"Xx" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"Xy" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"XG" = (
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"XM" = (
+/obj/item/flashlight/flare,
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"YB" = (
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 9
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/binary/valve/digital/on/layer4,
+/obj/machinery/atmospherics/components/binary/valve/digital/on/layer2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"YX" = (
+/obj/machinery/power/tracker,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space)
+"Zi" = (
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"Zy" = (
+/obj/structure/cable,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/crewquarters)
+"ZI" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 5
+	},
+/obj/machinery/light/small/broken/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+"ZQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_corporate_mining/ruin/space/has_grav/corporatemine/hall)
+
+(1,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+rr
+rr
+rr
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(2,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(3,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(4,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(5,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+VL
+PD
+PD
+xi
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(6,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+rr
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(7,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+xr
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(8,1,1) = {"
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(9,1,1) = {"
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+lo
+lo
+Ms
+Ms
+Ms
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(10,1,1) = {"
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+Ms
+Ms
+lo
+Ms
+Ms
+lo
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+Ms
+Ju
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(11,1,1) = {"
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+xr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(12,1,1) = {"
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+xr
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(13,1,1) = {"
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(14,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(15,1,1) = {"
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(16,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+xr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+xr
+hT
+gE
+tL
+rW
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(17,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+WT
+Ms
+Sw
+Ms
+Ms
+Ms
+Ms
+SD
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(18,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+Ms
+Ms
+WT
+Ms
+Ms
+Ic
+Sw
+Sw
+Ms
+Ms
+Ms
+KQ
+KQ
+Ms
+lo
+lo
+lo
+lo
+SV
+SV
+SV
+SV
+SV
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(19,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+sr
+Ms
+Ms
+Ms
+WT
+Ms
+Ms
+AW
+lo
+lo
+lo
+lo
+lo
+Ms
+xr
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+SV
+Gl
+mO
+OM
+SV
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+"}
+(20,1,1) = {"
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+qJ
+WT
+xr
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+SV
+Gl
+Jy
+MB
+SV
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+"}
+(21,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+WT
+Ms
+Ms
+lo
+lo
+lo
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+lo
+lo
+lo
+SV
+Oj
+Gl
+wk
+SV
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(22,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Vn
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+Ms
+Xx
+Xx
+Xx
+oC
+oC
+Xx
+Xx
+Xx
+oC
+lo
+lo
+Ms
+Ms
+Ms
+lo
+lo
+SV
+lX
+LU
+SV
+SV
+lo
+lo
+gm
+cO
+cO
+cO
+cO
+"}
+(23,1,1) = {"
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+EC
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+Te
+Ms
+Xx
+Ws
+gW
+pV
+bb
+dc
+WH
+RL
+oC
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+lo
+mp
+sK
+eT
+TP
+Ms
+Ms
+rr
+gm
+rr
+rr
+rr
+cO
+"}
+(24,1,1) = {"
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Lh
+Ms
+Lh
+lo
+lo
+lo
+Lq
+Lq
+tZ
+uR
+Xx
+RJ
+ff
+Cm
+Xx
+Se
+QD
+os
+Xx
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+Ms
+DJ
+DJ
+DJ
+DJ
+Ms
+rr
+gm
+rr
+rr
+rr
+cO
+"}
+(25,1,1) = {"
+rr
+rr
+lo
+lo
+lo
+lo
+Ms
+Ms
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+uR
+Ah
+mD
+ZI
+oC
+xf
+xn
+iz
+Xx
+PX
+km
+nn
+Xx
+lo
+lo
+lo
+Ms
+Ms
+Dt
+WI
+DJ
+DJ
+XG
+XG
+Bf
+rr
+rr
+gm
+gm
+gm
+gm
+gm
+"}
+(26,1,1) = {"
+rr
+lo
+lo
+lo
+Ms
+xr
+Ms
+Ms
+Ju
+lo
+Ms
+lO
+Ms
+Rm
+Ms
+Ms
+lo
+lo
+rK
+vu
+zD
+BU
+oC
+oC
+Xx
+Xx
+oC
+Xx
+IQ
+oC
+Xx
+uR
+Lq
+lo
+Rl
+Ms
+Ms
+XG
+DJ
+XG
+lo
+Ms
+dr
+rr
+rr
+rr
+rr
+gm
+rr
+cO
+"}
+(27,1,1) = {"
+rr
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+lo
+Ms
+Ms
+Ms
+lo
+lo
+uR
+qw
+pn
+YB
+ua
+ZQ
+kD
+ZQ
+Xo
+Mu
+ut
+Jj
+vb
+RR
+zw
+Sy
+DH
+Et
+Et
+DJ
+XG
+lo
+lo
+Ms
+dr
+rr
+rr
+rr
+rr
+gm
+rr
+cO
+"}
+(28,1,1) = {"
+rr
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+lO
+xr
+Ms
+Ex
+lo
+Ms
+Ms
+lO
+lo
+lo
+Lq
+Fc
+dW
+dM
+qL
+vo
+cv
+JO
+XM
+EW
+qx
+vx
+ll
+pF
+WA
+wv
+Eo
+qs
+qs
+qs
+lo
+lo
+rr
+gm
+cL
+rr
+bV
+bV
+bV
+wK
+rr
+cO
+"}
+(29,1,1) = {"
+rr
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+vs
+Ms
+Ms
+CZ
+Ms
+lo
+lo
+Lq
+SV
+SV
+Hq
+qT
+Gi
+mK
+SV
+Hq
+qO
+hq
+Hq
+Hq
+SV
+Lq
+lo
+OU
+mp
+Ms
+lo
+lo
+rr
+rr
+gm
+cL
+cL
+cL
+cL
+cL
+Na
+rr
+cO
+"}
+(30,1,1) = {"
+rr
+lo
+lo
+Ju
+Ms
+Ms
+Ms
+rT
+eX
+PD
+PD
+bu
+kw
+Ms
+xr
+lo
+lo
+lo
+Xx
+Vy
+zJ
+Ie
+iS
+cH
+oa
+Hq
+Mm
+ci
+BJ
+xA
+ba
+qc
+uR
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+gm
+cL
+rr
+bV
+bV
+bV
+wK
+rr
+cO
+"}
+(31,1,1) = {"
+rr
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+PU
+xd
+bz
+ps
+Wh
+Mu
+NJ
+qT
+lA
+pO
+nH
+RO
+tk
+rO
+Lq
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+gm
+cL
+rr
+rr
+rr
+rr
+gm
+rr
+gm
+"}
+(32,1,1) = {"
+rr
+lo
+lo
+lo
+Ms
+Ms
+xr
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+lO
+Ms
+lo
+lo
+lo
+Xx
+yB
+sm
+pb
+Ph
+vo
+ak
+SV
+mU
+zq
+WX
+Gj
+PF
+Pl
+uR
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+gm
+cL
+rr
+rr
+rr
+rr
+gm
+rr
+cO
+"}
+(33,1,1) = {"
+rr
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+Ms
+Ms
+xr
+lo
+lo
+lo
+lo
+lo
+Xx
+Ph
+iS
+iS
+Ph
+vo
+Xm
+SV
+SV
+Hq
+Hq
+Hq
+SV
+Lq
+Lq
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+gm
+gm
+cL
+rr
+bV
+bV
+bV
+wK
+rr
+cO
+"}
+(34,1,1) = {"
+rr
+lo
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+xr
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+Xx
+zR
+zJ
+Ie
+Ph
+vo
+We
+eO
+nE
+vO
+JH
+TX
+zH
+Hv
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+gm
+cL
+cL
+cL
+cL
+cL
+Na
+rr
+cO
+"}
+(35,1,1) = {"
+rr
+lo
+lo
+lo
+lo
+Ms
+Ms
+Ms
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+PU
+xd
+HQ
+fY
+gb
+OR
+LM
+Pf
+nE
+HC
+yi
+Lw
+wB
+Ki
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+gm
+cL
+rr
+bV
+bV
+bV
+wK
+rr
+cO
+"}
+(36,1,1) = {"
+rr
+rr
+rr
+lo
+lo
+Ms
+xr
+Ms
+Ms
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+oC
+yB
+TG
+pb
+Ph
+Bd
+nh
+mS
+ka
+HC
+Fu
+hM
+lz
+UV
+rr
+rr
+rr
+lo
+rr
+rr
+rr
+rr
+rr
+gm
+cL
+rr
+rr
+rr
+rr
+gm
+rr
+cO
+"}
+(37,1,1) = {"
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+oC
+Xx
+Xx
+oC
+Ph
+Ph
+Ph
+PT
+cH
+ak
+ka
+ka
+JJ
+Aj
+FQ
+lB
+CY
+cA
+rr
+rr
+gm
+gm
+gm
+gm
+gm
+gm
+gm
+cL
+rr
+rr
+rr
+rr
+gm
+rr
+gm
+"}
+(38,1,1) = {"
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Xx
+yM
+cg
+CB
+aY
+ms
+ms
+DE
+kQ
+dV
+nE
+Jx
+fc
+Ge
+CY
+cA
+cA
+cA
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+gm
+cL
+rr
+bV
+bV
+bV
+wK
+rr
+cO
+"}
+(39,1,1) = {"
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+PU
+Va
+Fq
+cT
+Ph
+jX
+Zy
+yz
+cH
+bO
+MK
+ux
+fe
+CY
+cA
+cA
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+gm
+cL
+cL
+cL
+cL
+cL
+Na
+rr
+cO
+"}
+(40,1,1) = {"
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Xx
+rR
+PW
+Zi
+Ph
+Ph
+vJ
+iS
+KZ
+nB
+nE
+rj
+FS
+CY
+Eq
+cA
+rr
+gm
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+gm
+cL
+rr
+bV
+bV
+bV
+wK
+rr
+cO
+"}
+(41,1,1) = {"
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Xx
+oC
+oC
+Xx
+Xx
+yd
+od
+Ph
+Xy
+NT
+nE
+VN
+Ki
+CY
+CY
+cA
+gm
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+gm
+cL
+rr
+rr
+rr
+rr
+gm
+rr
+gm
+"}
+(42,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+jT
+Hx
+Hx
+Ug
+Hw
+Hx
+jT
+rr
+rr
+rr
+gm
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+gm
+gm
+gm
+YX
+gm
+gm
+gm
+gm
+gm
+rr
+cO
+"}
+(43,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+eJ
+lo
+lo
+lo
+jT
+nX
+rX
+nx
+gC
+Dl
+MA
+rr
+rr
+gm
+rr
+gm
+gm
+gm
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+gm
+rr
+rr
+rr
+rr
+rr
+rr
+cO
+"}
+(44,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+jT
+hE
+SE
+gp
+ra
+TS
+MA
+rr
+gm
+gm
+rr
+gm
+lo
+lo
+lo
+lo
+lo
+KN
+rr
+bN
+cO
+gm
+gm
+gm
+cO
+cO
+cO
+cO
+cO
+cO
+"}
+(45,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+MA
+DA
+gp
+og
+Cj
+Gb
+MA
+rr
+rr
+gm
+rr
+rr
+rr
+lo
+lo
+lo
+KN
+KN
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(46,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+Dk
+TS
+ul
+ih
+ih
+TS
+Dk
+rr
+rr
+gm
+rr
+rr
+rr
+rr
+lo
+KN
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(47,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+rr
+uZ
+Ou
+Ou
+Ou
+Ou
+Ou
+JA
+gm
+cO
+cO
+cO
+KN
+KN
+KN
+KN
+KN
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(48,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(49,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+lo
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
+(50,1,1) = {"
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+lo
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+rr
+"}
