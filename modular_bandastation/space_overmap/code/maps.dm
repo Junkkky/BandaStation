@@ -148,6 +148,20 @@
 /datum/map_template/stationtrauma_space
 	should_place_on_top = FALSE
 
+/** A failed map must release native loading gates before an outer caller handles the failure. */
+/datum/parsed_map/load(x_offset = 0, y_offset = 0, z_offset = 0, crop_map = FALSE, no_changeturf = FALSE, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, place_on_top = FALSE, new_z = FALSE)
+	Master.StartLoadingMap()
+	try
+		. = _load_impl(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z)
+	catch(var/exception/failure)
+		SSatoms.map_loader_stop(REF(src))
+		loading = FALSE
+		bounds = null
+		Master.StopLoadingMap()
+		log_mapping("Failed to load map [original_path]: [failure] at [failure.file]:[failure.line]")
+		return FALSE
+	Master.StopLoadingMap()
+
 /** Templates initialize their footprint; the traversable vacuum outside it also needs native space gas. */
 /datum/map_template/stationtrauma_space/initTemplateBounds(list/bounds)
 	if(bounds)

@@ -73,9 +73,18 @@
 		return null
 	var/min_x = round((world.maxx - template.width) / 2) + 1
 	var/min_y = round((world.maxy - template.height) / 2) + 1
+	var/obj/docking_port/mobile/stationtrauma_space/vessel
+	var/list/areas = list()
 	for(var/turf/tile as anything in block(locate(min_x, min_y, home.z_value), locate(min_x + template.width - 1, min_y + template.height - 1, home.z_value)))
-		var/obj/docking_port/mobile/stationtrauma_space/vessel = locate() in tile
-		if(vessel)
+		areas |= get_area(tile)
+		if(!vessel)
+			vessel = locate() in tile
+	if(vessel)
+		for(var/area/ship_area as anything in areas)
+			if(istype(ship_area, vessel.area_type))
+				vessel.shuttle_areas[ship_area] = TRUE
+		if(length(vessel.shuttle_areas))
+			vessel.calculate_docking_port_information()
 			SSatoms.InitializeAtoms(list(vessel))
 			qdel(template)
 			return vessel
