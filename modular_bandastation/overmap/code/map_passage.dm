@@ -95,13 +95,17 @@
 	shot.fired = TRUE
 	if(shot.hitscan)
 		shot.record_hitscan_start(offset = FALSE)
-	shot.scan_moved_turf()
-	// forceMove scans living targets, but dense cover on the landing also needs ordinary projectile impact.
-	for(var/obj/obstacle in landing)
-		if(QDELETED(shot) || shot.deletion_queued)
-			break
-		if(shot.can_hit_target(obstacle, obstacle == shot.original))
-			shot.Bump(obstacle)
+	// Resolve the entry border before Moved's target scan, as ordinary movement does.
+	var/atom/movable/first_bump
+	for(var/atom/movable/obstacle as anything in landing)
+		if(obstacle == shot || obstacle.CanPass(shot, REVERSE_DIR(direction)))
+			continue
+		if(!first_bump || ((obstacle.layer > first_bump.layer || (obstacle.flags_1 & ON_BORDER_1)) && !(first_bump.flags_1 & ON_BORDER_1)))
+			first_bump = obstacle
+	if(first_bump)
+		shot.Bump(first_bump)
+	if(!QDELETED(shot) && !shot.deletion_queued)
+		shot.scan_moved_turf()
 	return TRUE
 /** Environment adapters may require an initialized exterior medium on the landing. */
 /datum/component/stationtrauma_map_passage/proc/landing_available()

@@ -11,7 +11,7 @@
 	var/width
 	/// Both gates own the lifetime of this visual connection.
 	var/list/passages
-	/// Geometry subscriptions on both sides, including temporarily obstructed cells.
+	/// Watched turf -> remote cell, including temporarily obstructed cells.
 	var/list/watched_tiles = list()
 	/// Remote turf -> corresponding local exterior turf.
 	var/list/tiles = list()
@@ -19,6 +19,12 @@
 	var/list/projections = list()
 	/// Live remote lighting replaces the local exterior's ambient light on each preview tile.
 	var/list/lighting = list()
+	/// Remote cell -> owned lighting carrier, allowing one cell to be withdrawn independently.
+	var/list/cell_lighting = list()
+	/// Remote cells awaiting a coalesced geometry refresh.
+	var/list/dirty_tiles = list()
+	/// Serialize cooperative geometry refreshes while new changes accumulate.
+	var/refreshing_geometry = FALSE
 	/// Visual carrier subtype supplied by the environment adapter.
 	var/projection_type = /obj/effect/abstract/stationtrauma_map_projection
 	/// Inactive builds collect actors without displaying a half-prepared connection.
@@ -78,6 +84,8 @@
 /datum/stationtrauma_map_preview/proc/release_tiles()
 	enabled = FALSE
 	QDEL_LIST(lighting)
+	cell_lighting.Cut()
+	dirty_tiles.Cut()
 	pending_actors.Cut()
 	for(var/atom/actor as anything in projections.Copy())
 		remove_actor(actor)
@@ -115,7 +123,6 @@
 /datum/stationtrauma_map_preview/proc/rebuild(datum/stationtrauma_work_budget/budget)
 	if(closing || QDELETED(src) || rebuilding)
 		return FALSE
-	// Only inactive voyage preparation may yield; live geometry keeps its existing frame atomicity.
 	rebuilding = TRUE
 	var/revision = geometry_revision
 	var/ready = FALSE
@@ -154,7 +161,7 @@
 			for(var/turf/tile as anything in list(local_tile, remote_tile))
 				if(!tile)
 					continue
-				watched_tiles += tile
+				watched_tiles[tile] = remote_tile
 				RegisterSignal(tile, COMSIG_TURF_CHANGE, PROC_REF(geometry_changed))
 			if(!local_tile || !remote_tile || GET_TURF_PLANE_OFFSET(local_tile) != GET_TURF_PLANE_OFFSET(remote_tile))
 				continue
@@ -167,20 +174,77 @@
 		if(closing || QDELETED(src) || geometry_revision != revision)
 			return FALSE
 		watch_remote(remote_tile)
-		lighting += new /atom/movable/stationtrauma_map_lighting(tiles[remote_tile], remote_tile)
+		var/atom/movable/stationtrauma_map_lighting/light = new(tiles[remote_tile], remote_tile)
+		lighting += light
+		cell_lighting[remote_tile] = light
 		if(!isspaceturf(remote_tile))
 			track(remote_tile)
 		for(var/atom/movable/actor as anything in remote_tile)
 			track(actor)
 	return !closing && !QDELETED(src) && geometry_revision == revision
 
-/** Invalidate paused strip builds and schedule a coalesced geometry rebuild. */
-/datum/stationtrauma_map_preview/proc/geometry_changed()
+/** Invalidate paused builds; live connections refresh only the cells whose geometry changed. */
+/datum/stationtrauma_map_preview/proc/geometry_changed(turf/source)
 	SIGNAL_HANDLER
 	geometry_revision++
 	if(closing || rebuilding)
 		return
-	addtimer(CALLBACK(src, PROC_REF(rebuild)), 0, TIMER_UNIQUE)
+	var/turf/remote_tile = watched_tiles[source]
+	if(!remote_tile)
+		return
+	dirty_tiles[remote_tile] = TRUE
+	if(!refreshing_geometry)
+		addtimer(CALLBACK(src, PROC_REF(refresh_geometry)), 0, TIMER_UNIQUE)
+
+/** Drain changed cells cooperatively; replacement turfs retain their external signal subscriptions. */
+/datum/stationtrauma_map_preview/proc/refresh_geometry()
+	if(closing || QDELETED(src) || rebuilding || refreshing_geometry)
+		return
+	refreshing_geometry = TRUE
+	var/datum/stationtrauma_work_budget/budget = new
+	try
+		while(dirty_tiles.len)
+			var/list/changed_tiles = dirty_tiles
+			dirty_tiles = list()
+			for(var/turf/remote_tile as anything in changed_tiles)
+				budget.yield()
+				if(closing || QDELETED(src) || rebuilding)
+					refreshing_geometry = FALSE
+					return
+				if(remote_tile in watched_tiles)
+					refresh_cell(remote_tile)
+	catch(var/exception/failure)
+		refreshing_geometry = FALSE
+		throw failure
+	refreshing_geometry = FALSE
+
+/** Replace one cell's visuals and occupant subscriptions without touching the rest of the strip. */
+/datum/stationtrauma_map_preview/proc/refresh_cell(turf/remote_tile)
+	UnregisterSignal(remote_tile, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, COMSIG_ATOM_UPDATED_ICON))
+	var/list/actors = list(remote_tile)
+	actors += remote_tile.contents
+	for(var/atom/actor as anything in actors)
+		pending_actors -= actor
+		remove_actor(actor)
+	var/atom/movable/stationtrauma_map_lighting/old_light = cell_lighting[remote_tile]
+	cell_lighting -= remote_tile
+	lighting -= old_light
+	qdel(old_light)
+	tiles -= remote_tile
+	var/turf/local_tile = locate(local_origin[1] + remote_tile.x - remote_origin[1], local_origin[2] + remote_tile.y - remote_origin[2], local_origin[3])
+	if(!local_tile || GET_TURF_PLANE_OFFSET(local_tile) != GET_TURF_PLANE_OFFSET(remote_tile) || !local_tile_available(local_tile))
+		return
+	tiles[remote_tile] = local_tile
+	watch_remote(remote_tile)
+	var/atom/movable/stationtrauma_map_lighting/light = new(local_tile, remote_tile)
+	lighting += light
+	cell_lighting[remote_tile] = light
+	if(enabled)
+		light.invisibility = INVISIBILITY_LIGHTING
+	if(!isspaceturf(remote_tile))
+		track(remote_tile)
+	for(var/atom/movable/actor as anything in remote_tile)
+		track(actor)
 
 /** Track an eligible actor after it enters a watched remote turf. */
 /datum/stationtrauma_map_preview/proc/actor_entered(datum/source, atom/movable/actor)
