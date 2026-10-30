@@ -2,7 +2,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button, Dropdown } from 'tgui-core/components';
 
-import { distanceLabel, type NavigationData, type Position } from './types';
+import {
+  distanceLabel,
+  type NavigationData,
+  type Position,
+  VECTOR_SECONDS,
+} from './types';
 
 type Props = {
   data: NavigationData;
@@ -301,6 +306,25 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
             </g>
           );
         })}
+        {data.track.map(([x, y], index) => (
+          <circle
+            key={index}
+            cx={point(x, y).x}
+            cy={point(x, y).y}
+            r={3}
+            pointerEvents="none"
+            fill="#d6edc0"
+            fillOpacity={(index + 1) / (data.track.length + 1)}
+          />
+        ))}
+        {data.braking_distance !== null && data.speed > 0.05 && (
+          <path
+            d="M-5-5L5 5M-5 5L5-5"
+            pointerEvents="none"
+            stroke="#edc587"
+            transform={`translate(${own.x + (data.vx / data.speed) * data.braking_distance * scale} ${own.y - (data.vy / data.speed) * data.braking_distance * scale})`}
+          />
+        )}
         <Velocity origin={own} vx={data.vx} vy={data.vy} scale={scale} />
         <path
           d="M0-15L7 10L-7 10Z"
@@ -334,16 +358,15 @@ function Velocity({
   vy: number;
   scale: number;
 }) {
-  const speed = Math.hypot(vx, vy);
-  if (speed < 0.01) return null;
-  const length = Math.max(36, Math.min(140, speed * scale * 90));
+  if (Math.hypot(vx, vy) < 0.01) return null;
+  // The tip is where the vessel will be after VECTOR_SECONDS of unchanged motion.
   return (
     <line
       pointerEvents="none"
       x1={origin.x}
       y1={origin.y}
-      x2={origin.x + (vx / speed) * length}
-      y2={origin.y - (vy / speed) * length}
+      x2={origin.x + vx * VECTOR_SECONDS * scale}
+      y2={origin.y - vy * VECTOR_SECONDS * scale}
       stroke="#91d7d0"
       strokeWidth={2}
       markerEnd="url(#velocity-arrow)"

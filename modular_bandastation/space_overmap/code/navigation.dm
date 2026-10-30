@@ -16,6 +16,10 @@
 	var/dispatch_timer
 	/// Site reserved by the pending station delivery.
 	var/datum/stationtrauma_overmap_site/space/dispatch_target
+	/// Up to three recent positions, oldest first, drawn as the chart's fading track.
+	var/list/track = list()
+	/// World time of the next track sample.
+	var/next_track = 0
 
 /datum/stationtrauma_overmap/space/New(obj/docking_port/mobile/stationtrauma_space/owner)
 	vessel = owner
@@ -60,6 +64,11 @@
 	if(!is_operational())
 		return PROCESS_KILL
 	advance()
+	if(world.time >= next_track)
+		next_track = world.time + 20 SECONDS
+		track += list(list(pos_x, pos_y))
+		if(length(track) > 3)
+			track.Cut(1, 2)
 	refresh_engine_audio()
 	process_encounters()
 	if(!preparing && !relocating && world.time >= next_listen)

@@ -34,6 +34,7 @@ export type NavigationData = Position & {
   celestial_bodies: CelestialBody[];
   vx: number;
   vy: number;
+  track: [number, number][];
   course: number;
   ordered_course: number;
   speed: number;
@@ -44,6 +45,7 @@ export type NavigationData = Position & {
   engines: number;
   engines_running: BooleanLike;
   engine_phase: string | null;
+  fuel: { tritium: number; oxygen: number } | null;
   engine_fault: BooleanLike;
   can_start_engines: BooleanLike;
   helm: BooleanLike;
@@ -79,6 +81,25 @@ export type NavigationData = Position & {
     breathable: BooleanLike;
   };
 };
+
+/** Seconds of unchanged motion represented by a velocity vector. */
+export const VECTOR_SECONDS = 60;
+
+/**
+ * Closest point of approach from the sensor fix, dead-reckoned to now.
+ * Uses only the observed contact track, so a stale fix gives a stale forecast.
+ */
+export function closestApproach(own: NavigationData, contact: Contact) {
+  if (contact.vx === undefined || contact.vy === undefined) return null;
+  const rx = contact.x + contact.vx * contact.age - own.x;
+  const ry = contact.y + contact.vy * contact.age - own.y;
+  const vx = contact.vx - own.vx;
+  const vy = contact.vy - own.vy;
+  const closing = vx * vx + vy * vy;
+  // Matched velocities keep the current separation; past CPA means opening.
+  const time = closing < 1e-6 ? 0 : Math.max(0, -(rx * vx + ry * vy) / closing);
+  return { distance: Math.hypot(rx + vx * time, ry + vy * time), time };
+}
 
 export function distanceLabel(value: number, scale: number) {
   return `${(value * scale).toFixed(Math.abs(value) >= 10 ? 3 : 5)} а.е.`;

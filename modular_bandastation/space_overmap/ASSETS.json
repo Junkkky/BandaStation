@@ -83,6 +83,25 @@
 			"byte_identical": false
 		},
 		{
+			"path": "_maps/map_files/debug/raven_draft.dmm",
+			"sha256": "48e12ec9baf636291e7053fd5ef81fa9a0f5952a729666b717c4eb1c5480f8ad",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"TG, BandaStation and Primera contributors",
+				"Junkkky (revised layout)"
+			],
+			"source": {
+				"repository": "SpaceStation220/Primera",
+				"commit": "65a9bd040b816783f0b6c24ba1e84ee7aab48456",
+				"path": "_maps/shuttles/emergency/emergency_raven.dmm",
+				"url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/_maps/shuttles/emergency/emergency_raven.dmm",
+				"sha256": "92cea4ce13f09b84782d96f7339fc6738e5ef18d6a9e7b58771a0ff2277f599b",
+				"license_policy_url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/README.md"
+			},
+			"changes": "Reworked Raven layout with a tritium combustion chamber, gas-fed nozzles and overmap equipment; original Raven attribution retained.",
+			"byte_identical": false
+		},
+		{
 			"path": "modular_bandastation/space_overmap/maps/raven.dmm",
 			"sha256": "03d16a1fdbaeb13986e2520bcbecb1d6f25fb562dfe64c7a806b508d80bec9d2",
 			"license": "CC-BY-SA-3.0",
@@ -648,7 +667,7 @@
 		},
 		{
 			"path": "icons/obj/fluff/map_previews.dmi",
-			"sha256": "b2861100830e6bb775b11b407bd9d73f6650aca8cdb2c579ddc627c6d2fea121",
+			"sha256": "5b93e84a9802c497f1caee2d776b5123b78eb5cd333a844c2cc615056500a28f",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["TG, BandaStation and Primera contributors"],
 			"source": {

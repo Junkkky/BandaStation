@@ -63,7 +63,7 @@
 	// Station delivery is independent of the crew's main-engine switch.
 	return is_operational() && vessel.dispatchable && knows_site(site) && !site.failed && site.physical_docking && vessel.permits_docking(site) \
 		&& !preparing && !planning && !relocating && !arrival_pending && !docked && !ship_docking && !helm_engaged && speed <= 0.05 \
-		&& (!site.docking_owner || site.docking_owner == src) && !QDELETED(site.berth) && engine_fraction() > 0 && vessel.check_dock(site.berth, TRUE)
+		&& (!site.docking_owner || site.docking_owner == src) && !QDELETED(site.berth) && vessel.check_dock(site.berth, TRUE)
 
 /** Reserve a station berth and schedule delivery of a callable idle hull. */
 /datum/stationtrauma_overmap/space/proc/dispatch_to(datum/stationtrauma_overmap_site/space/site)

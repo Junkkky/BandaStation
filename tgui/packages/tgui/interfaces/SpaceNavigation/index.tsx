@@ -5,7 +5,12 @@ import { Button, DraggableControl, Icon } from 'tgui-core/components';
 import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
 import { Chart } from './Chart';
-import { distanceLabel, type NavigationData, speedLabel } from './types';
+import {
+  closestApproach,
+  distanceLabel,
+  type NavigationData,
+  speedLabel,
+} from './types';
 import { useHelm } from './useHelm';
 
 export const SpaceNavigation = () => {
@@ -31,6 +36,7 @@ function Navigation({ data }: { data: NavigationData }) {
   const contact = data.ship_contacts.find(
     (record) => record.id === focusedContact,
   );
+  const approach = contact && closestApproach(data, contact);
   const distance = (value: number) => distanceLabel(value, data.au_scale);
   const reverse =
     data.vx * Math.sin((data.course * Math.PI) / 180) +
@@ -70,7 +76,9 @@ function Navigation({ data }: { data: NavigationData }) {
           <div className="SpaceNavigation__legend">
             <span>▲ Судно</span>
             <span>◇ Цель</span>
-            <span>↗ Вектор движения</span>
+            <span>↗ Путь за 1 мин</span>
+            <span>× Остановка</span>
+            <span>● След</span>
           </div>
           <div className="SpaceNavigation__routes">
             {data.routes.map((site) => (
@@ -106,6 +114,11 @@ function Navigation({ data }: { data: NavigationData }) {
                   {contact.vx !== undefined && contact.vy !== undefined
                     ? ` · Скорость ≈ ${speedLabel(Math.hypot(contact.vx, contact.vy), data.au_scale)}`
                     : ' · Движение не определено'}
+                  {approach &&
+                    (approach.time > 0
+                      ? ` · Сближение до ≈ ${distance(approach.distance)} через ${Math.round(approach.time)} с`
+                      : ' · Расходимся')}
+                  {approach && contact.age >= 20 && ' (прогноз устарел)'}
                 </>
               ) : (
                 `Отметка ${focusedContact} устарела`
@@ -242,6 +255,11 @@ function Navigation({ data }: { data: NavigationData }) {
                         : `ДВИГАТЕЛИ ${data.engines_running ? 'ВКЛ' : 'ВЫКЛ'}`}
                 </span>
               </div>
+              {!!data.fuel && (
+                <div>
+                  Тритий {data.fuel.tritium} моль · O₂ {data.fuel.oxygen} моль
+                </div>
+              )}
               <div
                 className="SpaceNavigation__maneuvers"
                 role="group"

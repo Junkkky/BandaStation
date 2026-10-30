@@ -51,7 +51,15 @@
 /obj/docking_port/mobile/stationtrauma_space/check_dock(obj/docking_port/stationary/target, silent = FALSE)
 	if(!..())
 		return FALSE
-	for(var/turf/tile as anything in return_ordered_turfs(target.x, target.y, target.z, target.dir))
+	// Native index order pairs each hull tile with its rotated target; bounding-box corners outside the hull never move.
+	var/list/hull_turfs = return_ordered_turfs(x, y, z, dir)
+	var/list/target_turfs = return_ordered_turfs(target.x, target.y, target.z, target.dir)
+	if(length(target_turfs) != length(hull_turfs))
+		return FALSE
+	for(var/index in 1 to length(hull_turfs))
+		if(!shuttle_areas[get_area(hull_turfs[index])])
+			continue
+		var/turf/tile = target_turfs[index]
 		if(!isopenturf(tile) || tile.density)
 			return FALSE
 		for(var/atom/movable/occupant as anything in tile)

@@ -29,6 +29,61 @@
 		return SHUTTLE_SOMEONE_ELSE_DOCKED
 	return ..()
 
+/** Every evacuation call path ends here; expedition hulls yield the shared bay without propulsion. */
+/obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signal_origin, reason, red_alert, set_coefficient = null)
+	. = ..()
+	// Only opt-in overmap maps place expedition bays on the evacuation berth.
+	if(mode == SHUTTLE_CALL && SSmapping.current_map.space_overmap)
+		clear_stationtrauma_bay(SSshuttle.getDock("emergency_home"))
+
+/** Arrival retries cover hulls that finished docking during the call or could not leave on the first attempt. */
+/obj/docking_port/mobile/emergency/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force = FALSE)
+	if(!force && mode == SHUTTLE_CALL)
+		clear_stationtrauma_bay(new_dock)
+	return ..()
+
+/**
+ * Start a service departure for an expedition hull docked at a station bay sharing the evacuation berth.
+ *
+ * Native occupancy keeps the bay blocked until the hull physically leaves, so crush protection is unchanged.
+ * Arguments:
+ * * home - Stationary port the evacuation shuttle is heading to
+ */
+/obj/docking_port/mobile/emergency/proc/clear_stationtrauma_bay(obj/docking_port/stationary/home)
+	if(QDELETED(home))
+		return
+	for(var/obj/docking_port/stationary/stationtrauma_space_station/bay in home.loc)
+		var/obj/docking_port/mobile/stationtrauma_space/ship = bay.get_docked()
+		if(istype(ship) && !QDELETED(ship.overmap) && ship.overmap.docked?.berth == bay)
+			INVOKE_ASYNC(ship.overmap, TYPE_PROC_REF(/datum/stationtrauma_overmap/space, yield_station_bay))
+
+/** A called evacuation shuttle claims the shared bay before arrival; native occupancy covers its stay. */
+/obj/docking_port/mobile/stationtrauma_space/canDock(obj/docking_port/stationary/target)
+	. = ..()
+	if(. != SHUTTLE_CAN_DOCK || !istype(target, /obj/docking_port/stationary/stationtrauma_space_station) || SSshuttle.emergency?.mode != SHUTTLE_CALL)
+		return .
+	for(var/obj/docking_port/stationary/home in target.loc)
+		if(home.shuttle_id == "emergency_home")
+			return SHUTTLE_SOMEONE_ELSE_DOCKED
+	return .
+
+/** Service departure from a shared bay: no propulsion, fuel or helm order; the hull keeps its virtual position. */
+/datum/stationtrauma_overmap/space/proc/yield_station_bay()
+	var/datum/stationtrauma_overmap_site/space/site = docked
+	if(!site?.physical_docking || relocating || preparing || ship_docking || !relocate(flight_berth))
+		return
+	// Native relocation yields; only a hull still holding this dock state drops it.
+	if(QDELETED(src) || docked != site)
+		return
+	if(site.docking_owner == src)
+		site.docking_owner = null
+	docked = null
+	if(sites[selected_destination] == site)
+		selected_destination = null
+		prepared_site = null
+	stop("Причал станции освобождён для эвакуационного шаттла")
+	navigation_notice("Причал станции освобождён для эвакуационного шаттла; корабль переведён на орбитальную стоянку.")
+
 /** Validate the opt-in map profile and prepare its shared native berth and terminal. */
 /datum/controller/subsystem/stationtrauma_space_voyage/proc/prepare_station(list/config)
 	if(!istext(config["port"]) || !islist(config["ships"]) || !length(config["ships"]))
