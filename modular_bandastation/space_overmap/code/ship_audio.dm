@@ -1,9 +1,9 @@
 // AI EDIT START - space overmap module integration
 /** Native engine sound loop with launch, running and shutdown clips. */
 /datum/looping_sound/stationtrauma_ship_engine
-	start_sound = 'modular_bandastation/space_overmap/sound/ship_engine_starts.ogg'
-	mid_sounds = 'modular_bandastation/space_overmap/sound/ship_engine_processing.ogg'
-	end_sound = 'modular_bandastation/space_overmap/sound/ship_engine_stops.ogg'
+	start_sound = 'sound/items/jet_ignite.ogg'
+	mid_sounds = 'sound/items/jet_active.ogg'
+	end_sound = 'sound/items/jet_off.ogg'
 	start_volume = 35
 	end_volume = 30
 	volume = 10
@@ -55,7 +55,7 @@
 /** Create the hull-owned ambience and engine audio resources. */
 /datum/stationtrauma_overmap/space/proc/initialize_ship_audio()
 	engine_audio = new(vessel)
-	interior_audio = new(vessel, 'modular_bandastation/space_overmap/sound/ship_interior_ambience.ogg', radius * 2 + 2, 22, _repeating = TRUE)
+	interior_audio = new(vessel, 'sound/ambience/general/shipambience.ogg', radius * 2 + 2, 22, _repeating = TRUE)
 	refresh_engine_audio()
 
 /** Switch main propulsion without erasing drift. */
@@ -99,7 +99,7 @@
 
 /** A remote seam also has listeners on the destination level; physical docking needs only one emission. */
 /datum/stationtrauma_overmap/space/proc/play_maneuver_audio(atom/remote, departing = FALSE)
-	var/clip = departing ? 'modular_bandastation/space_overmap/sound/ship_engine_starts.ogg' : 'modular_bandastation/space_overmap/sound/ship_landing.ogg'
+	var/clip = departing ? 'sound/items/jet_ignite.ogg' : 'sound/machines/airlock/airlock_latch_hiss.ogg'
 	if(departing && engine_audio)
 		// Restart the launch sequence without emitting a shutdown clip or cutting propulsion.
 		var/end_clip = engine_audio.end_sound
