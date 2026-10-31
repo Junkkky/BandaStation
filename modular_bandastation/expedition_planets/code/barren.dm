@@ -33,16 +33,19 @@
 	var/surface_temperature = TCMB
 	/// Whether the environment profile supports unprotected human breathing.
 	var/breathable = FALSE
+	/// Survey names of the modifiers rolled for this planet.
+	var/list/modifier_names = list()
 
 /** Serialize environment observations without exposing the planet generation seed. */
 /datum/stationtrauma_overmap_site/space/planet/proc/survey_data()
-	return list("biome" = biome, "atmosphere" = atmosphere, "temperature" = surface_temperature, "breathable" = breathable)
+	return list("biome" = biome, "atmosphere" = atmosphere, "temperature" = surface_temperature, "breathable" = breathable, "modifiers" = modifier_names)
 
 /**
  * Sierra's airless, lifeless, mineral-rich profile, using TG's seeded rust-g noise.
  *
  * Height, heat and humidity noise choose Celadon biomes: mountains above [/datum/map_generator/expedition_barren/var/mountain_height]
- * use the cave table and keep ore-bearing rock between cave pockets. Terrain follows the seed; flora and fauna use TG biome population.
+ * use the cave table and keep ore-bearing rock between cave pockets. Terrain follows the seed; ore veins, flora and fauna use TG's random
+ * vein growth and biome population.
  */
 /datum/map_generator/expedition_barren
 	/// Deterministic terrain seed, between 1 and 1000000.
@@ -62,21 +65,33 @@
 	)
 	/// Mountain cave biomes by cave heat band, then humidity band; a single biome type fills every cave.
 	var/cave_biome_table = /datum/biome/expedition/lunar
-	/// Rock left where a mountain tile carries no ore.
+	/// Mountain rock; ore veins are grown inside it after the terrain pass.
 	var/rock_type = /turf/closed/mineral
-	/// Ore wall types with cumulative per-mille upper bounds, checked in order.
+	/// Percent chance that a mountain rock tile seeds an ore vein.
+	var/mineral_chance = 11
+	/// Weighted ore stacks for vein seeds; each ore's own vein type and size shape the deposit.
 	var/list/ore_types = list(
-		/turf/closed/mineral/diamond = 5,
-		/turf/closed/mineral/gold = 20,
-		/turf/closed/mineral/silver = 40,
-		/turf/closed/mineral/uranium = 60,
-		/turf/closed/mineral/titanium = 90,
-		/turf/closed/mineral/iron = 240,
+		/obj/item/stack/ore/diamond = 5,
+		/obj/item/stack/ore/gold = 15,
+		/obj/item/stack/ore/silver = 20,
+		/obj/item/stack/ore/uranium = 20,
+		/obj/item/stack/ore/titanium = 30,
+		/obj/item/stack/ore/iron = 150,
 	)
 	/// Generated open turfs of each biome, populated after the camp and ruins are placed.
 	var/list/biome_turfs
 	/// Distance in turfs around the camp where flora still grows but hostile fauna never starts.
 	var/fauna_clearance = 15
+	/// Whether this profile's biomes spawn fauna that modifiers can thin out or multiply.
+	var/wildlife = FALSE
+	/// Fauna density multiplier from modifiers, applied to this planet's own biome copies.
+	var/fauna_multiplier = 1
+	/// This planet's biome copies by type, so modifier densities never reach other planets.
+	var/list/biomes
+	/// Z-level trait of the profile's periodic storm weather, if it has one.
+	var/storm_trait
+	/// Whether a modifier enabled the periodic storm weather.
+	var/storms = FALSE
 	/// Generated square side length in turfs.
 	var/width = 128
 	/// World X of the generated square southwest corner.
@@ -128,12 +143,21 @@
 	var/static/list/humidity_bands = list(0.2, 0.4, 0.6, 0.8)
 	var/table = mountain ? cave_biome_table : biome_table
 	if(!islist(table))
-		return SSmapping.biomes[table]
+		return local_biome(table)
 	// Seed offsets keep consecutive planet seeds from sharing noise fields.
 	var/heat = text2num(rustg_noise_get_at_coordinates("[seed + 1000000]", "[x / biome_zoom]", "[y / biome_zoom]"))
 	var/humidity = text2num(rustg_noise_get_at_coordinates("[seed + 2000000]", "[x / biome_zoom]", "[y / biome_zoom]"))
 	var/list/row = table[noise_band(heat, mountain ? cave_heat_bands : heat_bands)]
-	return SSmapping.biomes[row[noise_band(humidity, humidity_bands)]]
+	return local_biome(row[noise_band(humidity, humidity_bands)])
+
+/** This planet's own biome instance, with the modifier fauna density applied once. */
+/datum/map_generator/expedition_barren/proc/local_biome(biome_type)
+	var/datum/biome/biome = LAZYACCESS(biomes, biome_type)
+	if(!biome)
+		biome = new biome_type
+		biome.fauna_density *= fauna_multiplier
+		LAZYSET(biomes, biome_type, biome)
+	return biome
 
 /** One-based band of a noise value among ascending inclusive upper thresholds. */
 /datum/map_generator/expedition_barren/proc/noise_band(value, list/thresholds)
@@ -143,16 +167,9 @@
 			band++
 	return band
 
-/** Ore wall for a mountain tile, or the plain rock of this profile. */
-/datum/map_generator/expedition_barren/proc/ore_at(x, y)
-	var/roll = text2num(copytext(md5("[seed]:[x]:[y]"), 1, 5), 16) % 1000
-	for(var/ore_type in ore_types)
-		if(roll < ore_types[ore_type])
-			return ore_type
-	return rock_type
-
 /datum/map_generator/expedition_barren/generate_terrain(list/turfs, area/generate_in)
 	var/datum/stationtrauma_work_budget/budget = new
+	var/list/turf/closed/mineral/rocks = list()
 	for(var/turf/tile as anything in turfs)
 		budget.yield()
 		tile.change_area(get_area(tile), generate_in)
@@ -170,17 +187,30 @@
 			terrain = biome.open_turf_type
 			// Rock between cave pockets keeps the mountain mineable.
 			if(mountain && text2num(rustg_noise_get_at_coordinates("[seed + 3000000]", "[x / 8]", "[y / 8]")) > 0.5)
-				terrain = ore_at(x, y)
+				terrain = rock_type
 		var/turf/generated = tile.ChangeTurf(terrain, floor_type, CHANGETURF_IGNORE_AIR)
 		if(ismineralturf(generated))
-			// Native ore variants must expose this planet's ground and atmosphere when mined.
-			var/turf/closed/mineral/rock = generated
-			rock.turf_type = floor_type
-			rock.initial_gas_mix = initial(floor_type.initial_gas_mix)
-			if(rock_color)
-				rock.color = rock_color
+			prepare_rock(generated)
+			rocks += generated
 		else if(biome)
 			LAZYADDASSOCLIST(biome_turfs, biome, generated)
+	// Veins spread into neighbouring rock, so they start only once the whole mountain exists.
+	// The typed loop skips tiles changed while the budget slept.
+	for(var/turf/closed/mineral/rock in rocks)
+		budget.yield()
+		if(rock.mineral_type || !prob(mineral_chance))
+			continue
+		var/obj/item/stack/ore/ore_type = pick_weight(ore_types)
+		rock.change_ore(ore_type)
+		if(prob(ore_type::spread_chance))
+			rock.spread_vein(ore_type)
+
+/** Native rock must expose this planet's ground, atmosphere and tint when mined. */
+/datum/map_generator/expedition_barren/proc/prepare_rock(turf/closed/mineral/rock)
+	rock.turf_type = floor_type
+	rock.initial_gas_mix = initial(floor_type.initial_gas_mix)
+	if(rock_color)
+		rock.color = rock_color
 
 /datum/map_generator/expedition_barren/populate_terrain(list/turfs, area/generate_in)
 	for(var/datum/biome/biome as anything in biome_turfs)
@@ -238,8 +268,12 @@
 	for(var/index in 1 to 6)
 		new /obj/item/stationtrauma_sample(src)
 
-/** Preload once; subsequent landings only move the vessel onto the retained native berth. */
-/proc/load_stationtrauma_planet(seed = rand(1, 1000000), planet_id = "moon", planet_name = "Каменистая экзопланета", planet_type = /datum/stationtrauma_overmap_site/space/planet)
+/**
+ * Preload once; subsequent landings only move the vessel onto the retained native berth.
+ *
+ * `modifier_level` sets the planet modifier budgets; sectors derive it from the distance to their arrival point.
+ */
+/proc/load_stationtrauma_planet(seed = rand(1, 1000000), planet_id = "moon", planet_name = "Каменистая экзопланета", planet_type = /datum/stationtrauma_overmap_site/space/planet, modifier_level = 1)
 	if(!ispath(planet_type, /datum/stationtrauma_overmap_site/space/planet))
 		CRASH("Invalid expedition planet profile [planet_type]")
 	var/start_time = REALTIMEOFDAY
@@ -249,7 +283,11 @@
 	var/datum/map_template/camp = new('modular_bandastation/space_overmap/maps/moon.dmm', "Экспедиционная лаборатория")
 	if(camp.width + 8 > generator.width || camp.height + 8 > generator.width)
 		CRASH("Expedition camp does not fit the reserved planetary surface")
-	var/datum/space_level/level = SSmapping.add_new_zlevel(planet_name, ZTRAITS_AWAY)
+	site.modifier_names = generator.apply_modifiers(modifier_level)
+	var/list/traits = ZTRAITS_AWAY
+	if(generator.storms)
+		traits[generator.storm_trait] = TRUE
+	var/datum/space_level/level = SSmapping.add_new_zlevel(planet_name, traits)
 	generator.origin_x = round((world.maxx - generator.width) / 2) + 1
 	generator.origin_y = round((world.maxy - generator.width) / 2) + 1
 	generator.camp_x = 5
@@ -266,6 +304,8 @@
 	var/list/turfs = block(bottom, locate(bottom.x + generator.width - 1, bottom.y + generator.width - 1, bottom.z))
 	var/area/expedition_planet/barren/surface = new
 	surface.name = "[planet_name]: поверхность"
+	// Storms only reach outdoor areas; the camp, ruins and landed vessels keep their own sheltered areas.
+	surface.outdoors = generator.storms
 	generator.generate_terrain(turfs, surface)
 	var/turf/camp_origin = locate(bottom.x + generator.camp_x - 1, bottom.y + generator.camp_y - 1, bottom.z)
 	if(!camp.load(camp_origin))
@@ -306,8 +346,10 @@
 	marker.name = site.name
 	SSmapping.reg_in_areas_in_z(list(surface))
 	smooth_zlevel(level.z_value)
+	// Storm traits are registered only once the surface is complete; SSweather then alternates storms with calm periods.
+	SSweather.update_z_level(level)
 	site.generation_seconds = ((REALTIMEOFDAY - start_time + MIDNIGHT_ROLLOVER) % MIDNIGHT_ROLLOVER) / 10
-	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [site.generation_seconds]s")
+	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [site.generation_seconds]s, modifiers: [jointext(site.modifier_names, ", ")]")
 	qdel(camp)
 	qdel(generator)
 	return site

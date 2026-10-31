@@ -13,9 +13,12 @@
 
 /** Seeded jungle terrain with flora and wildlife excluded from reserved paths and ruins. */
 /datum/map_generator/expedition_barren/lush
+	wildlife = TRUE
+	storm_trait = ZTRAIT_RAINSTORM
 	floor_type = /turf/open/misc/grass/jungle
 	source_type = /obj/structure/stationtrauma_research_source/expedition_lush
 	mountain_height = 0.85
+	mineral_chance = 5
 	biome_table = list(
 		list(/datum/biome/expedition/jungle_wasteland, /datum/biome/expedition/jungle_wasteland, /datum/biome/expedition/jungle/plains, /datum/biome/expedition/jungle/plains, /datum/biome/expedition/mudlands),
 		list(/datum/biome/expedition/jungle_wasteland, /datum/biome/expedition/jungle/plains, /datum/biome/expedition/jungle, /datum/biome/expedition/mudlands, /datum/biome/expedition/mudlands),

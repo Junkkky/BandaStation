@@ -494,6 +494,7 @@ function Navigation({ data }: { data: NavigationData }) {
               {data.planet.breathable
                 ? 'Пригодна для дыхания'
                 : 'Требуется EVA-снаряжение'}
+              {data.planet.modifiers.map((modifier) => ` · ${modifier}`)}
             </p>
           )}
         </aside>

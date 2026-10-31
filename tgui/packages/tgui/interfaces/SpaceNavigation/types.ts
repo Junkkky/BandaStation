@@ -79,6 +79,7 @@ export type NavigationData = Position & {
     atmosphere: string;
     temperature: number;
     breathable: BooleanLike;
+    modifiers: string[];
   };
 };
 

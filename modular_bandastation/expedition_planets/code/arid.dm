@@ -13,11 +13,14 @@
 
 /** Seeded desert terrain using a local oxygen-free planetary atmosphere. */
 /datum/map_generator/expedition_barren/arid
+	wildlife = TRUE
+	storm_trait = ZTRAIT_SANDSTORM
 	floor_type = /turf/open/misc/asteroid/expedition_arid
 	source_type = /obj/structure/stationtrauma_research_source/mineral/expedition_arid
 	rock_color = "#c6aa73"
 	biome_zoom = 70
 	mountain_height = 0.8
+	mineral_chance = 8
 	biome_table = list(
 		list(/datum/biome/expedition/sand, /datum/biome/expedition/sand, /datum/biome/expedition/sand/grass/dead, /datum/biome/expedition/sand/flats, /datum/biome/expedition/sand/flats),
 		list(/datum/biome/expedition/sand, /datum/biome/expedition/sand/riverbed, /datum/biome/expedition/sand/wasteland, /datum/biome/expedition/sand/wasteland, /datum/biome/expedition/sand/flats),

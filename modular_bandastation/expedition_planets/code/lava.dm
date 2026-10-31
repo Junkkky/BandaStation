@@ -15,6 +15,8 @@
 
 /** Seeded volcanic terrain with volcanic ore walls. */
 /datum/map_generator/expedition_barren/lava
+	wildlife = TRUE
+	storm_trait = ZTRAIT_ASHSTORM
 	floor_type = /turf/open/misc/asteroid/basalt/expedition_volcanic
 	source_type = /obj/structure/stationtrauma_research_source/mineral/expedition_volcanic
 	mountain_height = 0.45
@@ -33,14 +35,15 @@
 		list(/datum/biome/expedition/volcanic_cave/rocky, /datum/biome/expedition/volcanic_cave/mossy, /datum/biome/expedition/volcanic_cave/obsidian, /datum/biome/expedition/volcanic_lava, /datum/biome/expedition/volcanic_lava),
 	)
 	rock_type = /turf/closed/mineral/volcanic
+	mineral_chance = 16
 	ore_types = list(
-		/turf/closed/mineral/diamond/volcanic = 5,
-		/turf/closed/mineral/gold/volcanic = 20,
-		/turf/closed/mineral/silver/volcanic = 40,
-		/turf/closed/mineral/uranium/volcanic = 60,
-		/turf/closed/mineral/titanium/volcanic = 90,
-		/turf/closed/mineral/plasma/volcanic = 140,
-		/turf/closed/mineral/iron/volcanic = 240,
+		/obj/item/stack/ore/diamond = 5,
+		/obj/item/stack/ore/gold = 15,
+		/obj/item/stack/ore/silver = 20,
+		/obj/item/stack/ore/uranium = 20,
+		/obj/item/stack/ore/titanium = 30,
+		/obj/item/stack/ore/plasma = 50,
+		/obj/item/stack/ore/iron = 100,
 	)
 
 /** Basalt ground carrying the volcanic profile atmosphere. */

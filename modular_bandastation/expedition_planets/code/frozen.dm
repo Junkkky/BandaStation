@@ -12,6 +12,8 @@
 
 /** Seeded snow and ice terrain with reduced ore availability. */
 /datum/map_generator/expedition_barren/frozen
+	wildlife = TRUE
+	storm_trait = ZTRAIT_SNOWSTORM
 	floor_type = /turf/open/misc/asteroid/snow
 	source_type = /obj/structure/stationtrauma_research_source/mineral/expedition_frozen
 	biome_zoom = 55
@@ -26,7 +28,8 @@
 	)
 	cave_biome_table = /datum/biome/expedition/snow_cave
 	rock_type = /turf/closed/mineral/snowmountain
-	ore_types = list(/turf/closed/mineral/iron/ice = 25)
+	mineral_chance = 0.8
+	ore_types = list(/obj/item/stack/ore/iron = 1)
 
 /** Single-deck surface ice that cannot open a fishing hole into a nonexistent lower level. */
 /turf/open/misc/ice/expedition
