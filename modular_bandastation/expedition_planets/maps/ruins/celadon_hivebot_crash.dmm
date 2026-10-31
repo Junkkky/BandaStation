@@ -1,0 +1,1999 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_crash.dmm
+"ai" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ao" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ar" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor5";
+	pixel_x = -2
+	},
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/structure/girder/displaced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"aw" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/structure/sink/directional/south,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"aD" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"aT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"aW" = (
+/obj/structure/table,
+/obj/item/storage/bag/plants/portaseeder,
+/obj/item/shovel/spade,
+/obj/item/cultivator,
+/obj/item/plant_analyzer,
+/obj/item/reagent_containers/cup/bucket,
+/obj/effect/turf_decal/tile/green,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"bm" = (
+/obj/structure/table,
+/obj/item/radio{
+	pixel_x = 6;
+	pixel_y = 14
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door{
+	id = "exp_celadon_hivebot_crash_whiteship_windows";
+	name = "Windows Blast Door Control";
+	pixel_x = -22;
+	pixel_y = -6
+	},
+/obj/machinery/button/door{
+	id = "exp_celadon_hivebot_crash_whiteship_bridge";
+	name = "Bridge Blast Door Control";
+	pixel_x = -22;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"bO" = (
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"cf" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/basic/hivebot/rapid,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ci" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"cw" = (
+/obj/structure/flora/rock/pile,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"cS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/door/airlock/external{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"dq" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"dL" = (
+/obj/structure/closet/secure_closet/freezer/fridge/open,
+/obj/item/food/meat/slab/synthmeat{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/food/meat/slab/synthmeat{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/food/meat/slab/synthmeat{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/condiment/flour{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/condiment/flour{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/green,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"dV" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ef" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ep" = (
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"eM" = (
+/obj/machinery/suit_storage_unit/atmos,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ff" = (
+/obj/structure/table,
+/obj/item/healthanalyzer,
+/obj/item/storage/medkit/o2,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/item/defibrillator/loaded,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"fj" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder{
+	pixel_y = 6
+	},
+/obj/item/knife/kitchen{
+	pixel_x = 16
+	},
+/obj/item/kitchen/rollingpin{
+	pixel_x = 8
+	},
+/obj/item/storage/box/drinkingglasses{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/donkpockets,
+/obj/effect/turf_decal/tile/green,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"fR" = (
+/obj/structure/table,
+/obj/item/storage/medkit/fire,
+/obj/item/storage/medkit/brute,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"fV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/item/flashlight/glowstick/red,
+/mob/living/basic/hivebot/strong,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"gt" = (
+/obj/machinery/door/airlock/mining,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"gV" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Crew Quarters"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ht" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"hB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"iq" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/mining,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"jl" = (
+/obj/structure/marker_beacon,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"jo" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"jt" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/machinery/door/airlock/command/glass{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"jE" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/machinery/light/broken/directional/south,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"jV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"kx" = (
+/obj/machinery/light/broken/directional/east,
+/obj/effect/turf_decal/tile/green,
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"kQ" = (
+/obj/machinery/door/airlock/external,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ll" = (
+/obj/structure/table,
+/obj/item/storage/medkit/regular,
+/obj/item/storage/medkit/regular,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"lt" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/item/stack/ore/titanium,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"lA" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_hivebot_crash_whiteship_windows";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"lD" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/item/flashlight/glowstick/red,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"lX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/frame/machine,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"mg" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ms" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/item/flashlight/glowstick/red,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"nd" = (
+/obj/item/stack/ore/titanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"nJ" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_hivebot_crash_whiteship_bridge";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"oC" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/structure/cable,
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/door/airlock/public/glass{
+	name = "Crew Quarters"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"oL" = (
+/obj/structure/flora/rock,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"oS" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"oV" = (
+/obj/structure/cable,
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/door/airlock/command/glass{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"pr" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/atmospherics/pipe/smart/simple/yellow/visible,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_hivebot_crash_whiteship_windows"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"pv" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"pC" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/north{
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"pE" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"qn" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"qB" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"qC" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/mob/living/basic/hivebot/rapid,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"qX" = (
+/turf/closed/mineral/random/low_chance,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"ra" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_hivebot_crash_whiteship_bridge";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ro" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"rt" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"rD" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"sM" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ta" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/mob/living/basic/hivebot/rapid,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"tg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"th" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"tL" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"uB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"vr" = (
+/obj/item/stack/ore/titanium,
+/obj/item/stack/ore/titanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"vR" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"vY" = (
+/obj/structure/table,
+/obj/item/reagent_containers/condiment/saltshaker{
+	pixel_x = -10;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/condiment/peppermill{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/trash/chips{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/trash/chips{
+	pixel_y = 12
+	},
+/obj/item/trash/chips{
+	pixel_x = 11;
+	pixel_y = 4
+	},
+/obj/item/kitchen/fork{
+	pixel_x = 12;
+	pixel_y = 3
+	},
+/obj/item/kitchen/fork{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"wb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/smes/full{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"wi" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor5";
+	pixel_x = -2
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/mob/living/basic/hivebot/range,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"xj" = (
+/obj/machinery/computer/monitor{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"xq" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"xF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/structure/cable,
+/obj/machinery/door/airlock/medical/glass,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"xG" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"xO" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ys" = (
+/obj/structure/marker_beacon,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"yw" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"yH" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_hivebot_crash_whiteship_bridge"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"yP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"za" = (
+/obj/machinery/suit_storage_unit/atmos,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"zp" = (
+/obj/structure/chair,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/machinery/airalarm/directional/north{
+	pixel_y = 25
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"zs" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"zJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"AA" = (
+/obj/machinery/power/smes/full{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"AI" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Bk" = (
+/obj/machinery/light/broken/directional/south,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Bq" = (
+/obj/machinery/light/broken/directional/west,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"BI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor5";
+	pixel_x = -2
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"BN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"BO" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Ca" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Co" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/south{
+	pixel_y = -25
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"CA" = (
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"CB" = (
+/obj/structure/table,
+/obj/structure/cable,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"CS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/flashlight/glowstick/red,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Da" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Db" = (
+/obj/structure/marker_beacon,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"Ds" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor5";
+	pixel_x = -2
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"DO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Er" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/holopad{
+	pixel_y = 16
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"EL" = (
+/obj/structure/tank_dispenser/oxygen,
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Fp" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"Fx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/structure/marker_beacon,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Fz" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"FF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Gc" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Gn" = (
+/obj/machinery/light/broken/directional/west,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Go" = (
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Gp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Gs" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"GC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor5";
+	pixel_x = -2
+	},
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Hj" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"Ho" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Hq" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"HA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Ij" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"IV" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Ji" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Jk" = (
+/obj/structure/cable,
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Jn" = (
+/obj/item/pickaxe/rusted,
+/obj/effect/gibspawner/human/bodypartless,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"JU" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Kf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/mob/living/basic/hivebot/range,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Kk" = (
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Kw" = (
+/obj/structure/closet/emcloset/anchored,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"KO" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"LG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"MF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"MI" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"MR" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor5";
+	pixel_x = -2
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Nh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/brown,
+/obj/item/flashlight/glowstick/red,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Np" = (
+/obj/item/chainsaw,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Nz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"NV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Oh" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Ow" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"OI" = (
+/obj/item/stack/ore/titanium,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"OJ" = (
+/obj/machinery/processor,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"OK" = (
+/obj/structure/closet/emcloset/anchored,
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/item/electronics/apc,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Pj" = (
+/obj/machinery/atmospherics/components/unary/vent_pump,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"PI" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/structure/ore_box,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Qb" = (
+/obj/effect/decal/cleanable/plasma,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Qr" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_hivebot_crash_whiteship_windows"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"QM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"QV" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/structure/cable,
+/obj/machinery/door/airlock/medical/glass,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Rb" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Ro" = (
+/obj/effect/turf_decal/tile/brown,
+/obj/machinery/airalarm/directional/south{
+	pixel_y = -25
+	},
+/obj/structure/rack,
+/obj/item/pickaxe/emergency,
+/obj/item/pickaxe/emergency,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Ry" = (
+/obj/structure/table,
+/obj/item/gps{
+	pixel_x = -9;
+	pixel_y = 7
+	},
+/obj/item/megaphone{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"RN" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"RV" = (
+/obj/structure/cable,
+/obj/structure/barricade/wooden/crude,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/door/airlock/mining,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Sa" = (
+/obj/item/flashlight/glowstick/red,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"Tj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"TB" = (
+/obj/structure/table,
+/obj/machinery/recharger,
+/obj/item/gun/energy/laser/retro,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"TO" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 10
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+"Ua" = (
+/obj/effect/decal/cleanable/blood/innards,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Uh" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Uk" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Uq" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"VB" = (
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Wd" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 1
+	},
+/obj/item/flashlight/glowstick/red,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Wz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"WE" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"WH" = (
+/obj/item/ectoplasm,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/item/flashlight/glowstick/red,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"WO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/machinery/door/airlock/external{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Xf" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/door_assembly/door_assembly_min{
+	anchored = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Xv" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"XD" = (
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"XE" = (
+/obj/machinery/computer/crew,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Yb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Yk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Yt" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/mob/living/basic/hivebot/strong,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"Yx" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_hivebot_crash_whiteship_windows";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"YV" = (
+/obj/item/stack/sheet/mineral/titanium,
+/obj/structure/girder/displaced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ZG" = (
+/obj/structure/girder,
+/obj/item/stack/sheet/mineral/titanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+"ZZ" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
+
+(1,1,1) = {"
+Fp
+Fp
+Fp
+jl
+cw
+Fp
+Fp
+BO
+MI
+Jk
+BO
+Fp
+oL
+Fp
+jl
+Fp
+Fp
+Fp
+"}
+(2,1,1) = {"
+BO
+Oh
+Qb
+Oh
+Oh
+BO
+cw
+Qr
+Fx
+Np
+Qr
+Fp
+BO
+Oh
+Oh
+Oh
+Oh
+BO
+"}
+(3,1,1) = {"
+jo
+AA
+lX
+AA
+wb
+BO
+Fp
+Qr
+WH
+tg
+Qr
+Fp
+MF
+AA
+AA
+AA
+AA
+BO
+"}
+(4,1,1) = {"
+Qr
+xq
+jV
+GC
+CS
+dq
+Fp
+Qr
+aT
+tg
+Qr
+Fp
+BO
+Fz
+Xv
+ci
+aW
+Qr
+"}
+(5,1,1) = {"
+Qr
+zJ
+ht
+Ds
+Yb
+BO
+Fp
+BO
+WO
+cS
+BO
+Fp
+BO
+aw
+zs
+ZZ
+ep
+Qr
+"}
+(6,1,1) = {"
+VB
+MR
+ht
+Ua
+tg
+BO
+BO
+aD
+qn
+NV
+aD
+lA
+BO
+zp
+vY
+xO
+fj
+Qr
+"}
+(7,1,1) = {"
+Kk
+pv
+wi
+Ji
+th
+Xf
+mg
+RV
+Da
+Ij
+gV
+Ij
+oC
+Nz
+vR
+rD
+OJ
+Qr
+"}
+(8,1,1) = {"
+pr
+Ca
+ht
+ar
+oS
+aD
+Yx
+BO
+BN
+QM
+aD
+lA
+BO
+ms
+ai
+cf
+dL
+Qr
+"}
+(9,1,1) = {"
+Qr
+LG
+bO
+NV
+BI
+BO
+Fp
+jo
+lt
+Ij
+BO
+Fp
+BO
+dq
+ef
+tg
+Hq
+Qr
+"}
+(10,1,1) = {"
+BO
+Go
+sM
+ta
+qB
+ZG
+Fp
+Qr
+JU
+NV
+Qr
+Fp
+BO
+yw
+kx
+yP
+Gc
+OI
+"}
+(11,1,1) = {"
+BO
+nd
+ZG
+BO
+BO
+dq
+Fp
+Qr
+DO
+zJ
+Qr
+Fp
+BO
+jo
+BO
+BO
+YV
+MF
+"}
+(12,1,1) = {"
+Fp
+Fp
+Fp
+jl
+Fp
+Sa
+Fp
+vr
+qn
+rD
+Qr
+Fp
+Fp
+Fp
+jl
+Fp
+Fp
+Fp
+"}
+(13,1,1) = {"
+BO
+BO
+BO
+BO
+BO
+BO
+Fp
+jo
+lD
+Wz
+Qr
+Fp
+BO
+BO
+BO
+BO
+BO
+BO
+"}
+(14,1,1) = {"
+BO
+za
+Nh
+Ow
+OK
+BO
+Fp
+BO
+JU
+Tj
+BO
+Fp
+BO
+Kw
+CA
+pE
+fR
+Qr
+"}
+(15,1,1) = {"
+aD
+lA
+tg
+uB
+Ro
+BO
+lA
+aD
+qn
+tg
+aD
+BO
+BO
+pC
+Bk
+aD
+lA
+aD
+"}
+(16,1,1) = {"
+ao
+Pj
+RN
+AI
+Gp
+gt
+Ij
+iq
+Yk
+Tj
+xF
+Ij
+QV
+HA
+Ho
+XD
+Wd
+kQ
+"}
+(17,1,1) = {"
+aD
+aD
+FF
+IV
+qC
+BO
+lA
+aD
+Kf
+Tj
+BO
+lA
+aD
+Yt
+jE
+BO
+BO
+aD
+"}
+(18,1,1) = {"
+BO
+eM
+hB
+PI
+EL
+BO
+Fp
+BO
+WE
+Uh
+BO
+TO
+BO
+ll
+Gs
+Uk
+ff
+Qr
+"}
+(19,1,1) = {"
+BO
+BO
+lA
+Yx
+BO
+BO
+Fp
+BO
+qn
+NV
+BO
+Hj
+BO
+BO
+Yx
+Yx
+BO
+BO
+"}
+(20,1,1) = {"
+Fp
+Fp
+Fp
+Fp
+jl
+Fp
+Fp
+BO
+Yk
+Ij
+BO
+xG
+ys
+TO
+Fp
+Fp
+Fp
+qX
+"}
+(21,1,1) = {"
+qX
+Fp
+oL
+Fp
+Fp
+Fp
+BO
+BO
+jt
+oV
+aD
+BO
+oL
+Hj
+Sa
+qX
+qX
+qX
+"}
+(22,1,1) = {"
+qX
+Fp
+Fp
+cw
+Fp
+BO
+BO
+bm
+Rb
+ro
+CB
+BO
+BO
+Hj
+qX
+qX
+qX
+qX
+"}
+(23,1,1) = {"
+qX
+qX
+Fp
+jl
+Fp
+yH
+Gn
+KO
+fV
+Er
+Uq
+Bq
+yH
+Db
+Jn
+Fp
+jl
+Fp
+"}
+(24,1,1) = {"
+qX
+qX
+Fp
+Sa
+Fp
+yH
+XE
+tL
+rD
+NV
+dV
+Co
+BO
+Fp
+cw
+qX
+qX
+Fp
+"}
+(25,1,1) = {"
+qX
+qX
+qX
+Fp
+Fp
+BO
+BO
+xj
+Ry
+TB
+rt
+BO
+BO
+Fp
+qX
+qX
+qX
+qX
+"}
+(26,1,1) = {"
+qX
+qX
+qX
+qX
+Fp
+Fp
+BO
+nJ
+nJ
+ra
+BO
+BO
+Fp
+Fp
+Fp
+Fp
+qX
+qX
+"}

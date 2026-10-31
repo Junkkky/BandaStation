@@ -1,0 +1,469 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_comm_outpost.dmm
+"aY" = (
+/obj/structure/table/reinforced,
+/obj/item/paper{
+	desc = "It seems like it was written in a hurry";
+	default_raw_text = "<i>Hey, you're probably reading this after having killed me, but that's alright. I probably shot first. Names' Yuto, Syndicate Radio Operator, there used to be another op here, a nice one too. Had syndicate command not forgotten about this post, we'd of probably been executed for sentinmental attachments on the job. Although she didn't have to worry about that, the local fauna got her first. I guess this note is my way of saying sorry. Take what you want from this station and my body, you need it more than I do now. Good luck out there, whoever you are. - Syndicate Radio</i><br><br><i>e f.</i>";
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"dZ" = (
+/obj/structure/closet/crate,
+/obj/item/clothing/gloves/combat,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/gun/ballistic/automatic/pistol,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"fC" = (
+/obj/structure/chair/comfy/black{
+	desc = "It looks like it hasn't been used in a long time."
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"hl" = (
+/obj/structure/table/reinforced,
+/obj/item/flashlight/lantern,
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"hO" = (
+/obj/structure/table/reinforced,
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"iq" = (
+/turf/open/floor/mineral/plastitanium{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"lI" = (
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"nV" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"ox" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Secure Airlock"
+	},
+/turf/open/floor/mineral/plastitanium{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"rg" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/exterior)
+"rz" = (
+/obj/structure/bed/dogbed{
+	desc = "A well worn dog bed, wait... are dog beds supposed to have burn marks?."
+	},
+/mob/living/basic/mining/watcher/magmawing{
+	desc = "A domesticated Magmawing watcher, you weren't aware that was even possible. Unfortunately though, it's been domesticated by the Syndicate..";
+	dir = 4;
+	faction = list("Syndicate")
+	},
+/turf/open/floor/mineral/plastitanium{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"xn" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/syndicate,
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"yh" = (
+/obj/machinery/vending/cigarette/syndicate,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"yu" = (
+/obj/machinery/light/dim/directional/north,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"ze" = (
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"zm" = (
+/obj/structure/closet/crate/grave/filled,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/exterior)
+"zO" = (
+/mob/living/basic/trooper/syndicate/ranged{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"AB" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"Bi" = (
+/obj/machinery/door/airlock/hatch,
+/turf/open/floor/mineral/plastitanium{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"Bp" = (
+/obj/machinery/telecomms/bus,
+/turf/open/floor/mineral/plastitanium{
+	name = "telecomms floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"BD" = (
+/obj/item/trash/sosjerky{
+	pixel_x = -9;
+	pixel_y = 16
+	},
+/turf/open/floor/mineral/plastitanium{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"BG" = (
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"Dv" = (
+/obj/machinery/computer/telecomms/monitor,
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"Ev" = (
+/obj/machinery/door/window/left/directional/south,
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"Fm" = (
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north{
+	name = "window"
+	},
+/turf/open/floor/mineral/plastitanium{
+	name = "telecomms floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"FL" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"Ip" = (
+/obj/structure/chair/comfy/black,
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"IF" = (
+/obj/machinery/telecomms/broadcaster,
+/turf/open/floor/mineral/plastitanium{
+	name = "telecomms floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"JA" = (
+/obj/structure/chair/comfy/black,
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"MB" = (
+/obj/machinery/vending/sustenance,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"NL" = (
+/obj/machinery/computer/telecomms{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"Pj" = (
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"PI" = (
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north{
+	name = "Window"
+	},
+/turf/open/floor/mineral/plastitanium{
+	name = "telecomms floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"Ra" = (
+/obj/structure/table/reinforced,
+/obj/item/trash/syndi_cakes{
+	pixel_y = 13
+	},
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"SB" = (
+/obj/machinery/telecomms/receiver,
+/turf/open/floor/mineral/plastitanium{
+	name = "telecomms floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"Tt" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"Tv" = (
+/obj/machinery/door/window/survival_pod/left/directional/north,
+/turf/open/floor/mineral/plastitanium{
+	name = "telecomms floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"TT" = (
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/mineral/plastitanium{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"Wt" = (
+/turf/template_noop,
+/area/template_noop)
+"YS" = (
+/obj/machinery/door/airlock/hatch{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"ZF" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+"ZO" = (
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/mineral/plastitanium{
+	name = "base floor"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
+
+(1,1,1) = {"
+rg
+rg
+rg
+rg
+rg
+rg
+rg
+rg
+Wt
+Wt
+Wt
+Wt
+Wt
+Wt
+"}
+(2,1,1) = {"
+rg
+Tt
+Tt
+Tt
+ox
+Tt
+Tt
+rg
+rg
+Wt
+Wt
+Wt
+Wt
+Wt
+"}
+(3,1,1) = {"
+rg
+Tt
+rz
+ZO
+iq
+iq
+Tt
+Tt
+rg
+rg
+rg
+rg
+rg
+Wt
+"}
+(4,1,1) = {"
+rg
+nV
+iq
+BD
+iq
+iq
+iq
+Tt
+Tt
+Tt
+Tt
+Tt
+rg
+rg
+"}
+(5,1,1) = {"
+rg
+nV
+Ra
+hO
+AB
+AB
+iq
+iq
+ZF
+yh
+MB
+Tt
+Tt
+rg
+"}
+(6,1,1) = {"
+rg
+nV
+ze
+JA
+ze
+hl
+iq
+iq
+Bi
+Pj
+BG
+dZ
+Tt
+rg
+"}
+(7,1,1) = {"
+rg
+Tt
+ze
+zO
+ze
+Ev
+iq
+TT
+ZF
+yu
+Pj
+BG
+Tt
+rg
+"}
+(8,1,1) = {"
+rg
+Tt
+ZF
+ZF
+YS
+ZF
+ZF
+ZF
+ZF
+Ip
+aY
+fC
+Tt
+rg
+"}
+(9,1,1) = {"
+rg
+Tt
+Dv
+lI
+ze
+ze
+Fm
+IF
+ZF
+nV
+nV
+nV
+Tt
+rg
+"}
+(10,1,1) = {"
+rg
+Tt
+Tt
+NL
+ze
+ze
+Tv
+Bp
+Tt
+rg
+rg
+rg
+rg
+rg
+"}
+(11,1,1) = {"
+rg
+rg
+Tt
+Tt
+xn
+FL
+PI
+SB
+Tt
+zm
+rg
+rg
+rg
+Wt
+"}
+(12,1,1) = {"
+Wt
+rg
+rg
+Tt
+Tt
+Tt
+Tt
+Tt
+Tt
+rg
+rg
+rg
+rg
+Wt
+"}
+(13,1,1) = {"
+Wt
+Wt
+rg
+rg
+rg
+rg
+rg
+rg
+rg
+rg
+rg
+rg
+Wt
+Wt
+"}

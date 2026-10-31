@@ -2160,6 +2160,182 @@
 			},
 			"changes": "Adapted greeble layout; natural ground and rock became generator placeholders, incompatible entities replaced with local types.",
 			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_comm_outpost.dmm",
+			"sha256": "f05d670015ba8dcab6ed50c1e41c87c50fbec6f06e42ff66c60d8f82e9b5e021",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_comm_outpost.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_comm_outpost.dmm",
+				"sha256": "6d42c0cc4190cdd31f9a232333e1fdf6a8a2d83632799669d43b5a163b99932b",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_pinnace.dmm",
+			"sha256": "33923cc2753ab34348fab3cc18bec1001fa815cac678fa33e9377dd4047de2ac",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_crashed_pinnance.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_crashed_pinnance.dmm",
+				"sha256": "f52674f4627b0c2bbc4b6299f9577ece1bad57c798c99e60d9dda604a8f87c48",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_dwarf_fortress.dmm",
+			"sha256": "520b05631571f7677b5599ddb49591125a2c4c784c8e4d4063a6eb4027b496a8",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_dwarffortress.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_dwarffortress.dmm",
+				"sha256": "63fa277675fe9eca2a55d76d202b18484595db3af3c9648a2bd7c9dfad7dfe5d",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_spooky_crash.dmm",
+			"sha256": "4b89d778d1d7b1bc0993186c1f346aa0011df81950f5f0752bff529fce92f2ac",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_SPOOKYCRASH.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_SPOOKYCRASH.dmm",
+				"sha256": "7725cb0dd41a5cbe964446d2fc526c5a6aa26b485c39c9318dfc4de33f7e923b",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_xeno_nest.dmm",
+			"sha256": "c337837913e0835374a5fb60269777d98d59039904178260acdfa03e3d5e8552",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_xeno_nest.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_xeno_nest.dmm",
+				"sha256": "46036fc21ad7a54a718eaafba30211cde63ef3c3c982b7e4ab0eac86d0a97aa7",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_listening_post.dmm",
+			"sha256": "efc7c53a37b1297399c534b39c709f01216de40303266adf10eec1b871fa7111",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_abandonedlisteningpost.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_abandonedlisteningpost.dmm",
+				"sha256": "940aaff4273c149f44eb8e34d0011dd0266ee4a091c52f7893a0de2e862cdecd",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_hivebot_crash.dmm",
+			"sha256": "c7d0b350037e9ac56232b932a78d49f18fae0d82ffbc416120244ced3bbc0be9",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_crash.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_crash.dmm",
+				"sha256": "4f876ea9b4ce614c552a11dadf0d784028192cd02399329a0afcea583074c663",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_dangerpod.dmm",
+			"sha256": "7f6549a3638d016fe03a101a8e9e4077342dabdf7caa60a1585d02410a40793f",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_dangerpod.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_dangerpod.dmm",
+				"sha256": "2d24620cc96b009295bc7d5a37bc5b2b94cdc8c671d2ba479d5e3af95b72c907",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_saloon.dmm",
+			"sha256": "6f7fed965c8fe660880eb43dd7121ced3fd152ebc2cbd09d613ba8791aebd6a9",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_saloon.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_saloon.dmm",
+				"sha256": "9740d48626109bf4530e12b73053319e0a188c1382cc1743ba239a1bc374112f",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_harm_factory.dmm",
+			"sha256": "e9f3b2de1721b655a07df2ceff74179a53dcbdbb0e224b11e4df3b74d0b51488",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_harmfactory.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_harmfactory.dmm",
+				"sha256": "086eb2977a0019e5413f3141c2930b010100fc60ce48ebad860168bcb0ed5c56",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_budget_cuts.dmm",
+			"sha256": "faedcab59bfc1cd918fea60a961c7b20dada1f6f42f1bf1f09db402b7b003c9b",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_budgetcuts.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_budgetcuts.dmm",
+				"sha256": "1cb6fc4742a6af9f1f15a5d1ffd8eb292e70a33663826d9f6d729727ae7eae14",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
 		}
 	]
 }

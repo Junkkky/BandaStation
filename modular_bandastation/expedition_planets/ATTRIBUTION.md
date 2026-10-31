@@ -92,6 +92,17 @@ Celadon, Shiptest и TG). Наполнение биомов заменено с�
 | `maps/ruins/celadon_waterplant.dmm` | [_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_waterplant.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_waterplant.dmm) |
 | `maps/ruins/celadon_miningexpedition.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_miningexpedition.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_miningexpedition.dmm) |
 | `maps/ruins/celadon_boxsci.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_boxsci.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_boxsci.dmm) |
+| `maps/ruins/celadon_comm_outpost.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_comm_outpost.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_comm_outpost.dmm) |
+| `maps/ruins/celadon_pinnace.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_crashed_pinnance.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_crashed_pinnance.dmm) |
+| `maps/ruins/celadon_dwarf_fortress.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_dwarffortress.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_dwarffortress.dmm) |
+| `maps/ruins/celadon_spooky_crash.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_SPOOKYCRASH.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_SPOOKYCRASH.dmm) |
+| `maps/ruins/celadon_xeno_nest.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_xeno_nest.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_xeno_nest.dmm) |
+| `maps/ruins/celadon_listening_post.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_abandonedlisteningpost.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_abandonedlisteningpost.dmm) |
+| `maps/ruins/celadon_hivebot_crash.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_crash.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_crash.dmm) |
+| `maps/ruins/celadon_dangerpod.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_dangerpod.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_dangerpod.dmm) |
+| `maps/ruins/celadon_saloon.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_saloon.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_saloon.dmm) |
+| `maps/ruins/celadon_harm_factory.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_harmfactory.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_harmfactory.dmm) |
+| `maps/ruins/celadon_budget_cuts.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_budgetcuts.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_budgetcuts.dmm) |
 
 Планировки сохранены; несовместимые сущности, area, механизмы, обитатели и добыча
 заменены местными типами. Природный грунт вокруг построек берётся из генератора
@@ -119,7 +130,7 @@ Celadon, Shiptest, Whitesands и TG. Расстановка по планете 
 Вода Whitesands несёт атмосферу пустынного профиля, а её случайные спавнеры сохраняют
 донорские шансы с местной флорой и фауной; пещерные медведи стали шахтёрскими волками.
 
-Исходные permalink, коммиты и контрольные суммы всех 33 карт руин и 78 деталей рельефа
+Исходные permalink, коммиты и контрольные суммы всех 44 карт руин и 78 деталей рельефа
 включены в общий [ASSETS.json](../space_overmap/ASSETS.json). Указание авторства не означает
 одобрения этой адаптации исходными проектами.
 <!-- AI EDIT END -->

@@ -1,0 +1,3789 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_harmfactory.dmm
+"aq" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"aJ" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"aR" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 20
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"aX" = (
+/mob/living/basic/mining/mook,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"aY" = (
+/obj/structure/railing,
+/obj/machinery/light/dim/directional/north,
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"bh" = (
+/obj/structure/cable,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"bx" = (
+/obj/machinery/light/dim/directional/west,
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"bM" = (
+/obj/structure/fence/door/opened{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"bW" = (
+/obj/structure/table/wood,
+/obj/machinery/computer/security/wooden_tv,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ca" = (
+/obj/machinery/vending/sovietsoda,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ch" = (
+/obj/machinery/light/dim/directional/east,
+/obj/structure/railing,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"cu" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"cS" = (
+/obj/structure/railing/corner,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"cV" = (
+/obj/structure/table/greyscale,
+/obj/item/stack/spacecash/c1000{
+	pixel_y = 10
+	},
+/obj/item/toy/cards/deck/syndicate{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/toy/cards/deck/kotahi,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"dd" = (
+/obj/structure/chair/plastic,
+/obj/structure/railing,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"de" = (
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"dh" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"dj" = (
+/obj/structure/table/greyscale,
+/obj/item/keycard{
+	name = "stockroom keycard";
+	desc = "A keycard opening a door within the world's worst factory";
+	color = "#cf2323";
+	puzzle_id = "celadon_harm_factory_stockroom"
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"dw" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"dH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"dS" = (
+/obj/structure/holosign/barrier/engineering,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ed" = (
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"eq" = (
+/obj/machinery/power/smes/magical,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"eI" = (
+/obj/structure/chair/plastic{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"eS" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 10
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"eT" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/mega_arachnid{
+	dir = 4
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"eU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/cola/sodie,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"fd" = (
+/obj/structure/railing,
+/obj/structure/cable,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"fj" = (
+/obj/structure/broken_flooring/corner/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ft" = (
+/obj/item/kirbyplants/random/dead{
+	desc = "It doesn't look very healthy...";
+	name = "potted plant";
+	pixel_y = 10
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"fv" = (
+/obj/machinery/door/airlock/public/glass,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"fw" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"fB" = (
+/obj/structure/railing/corner,
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"fE" = (
+/obj/structure/cable,
+/obj/machinery/door/puzzle/keycard{
+	name = "Keycard Locked Door";
+	puzzle_id = "celadon_harm_factory_entry"
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"fP" = (
+/obj/machinery/door/airlock/multi_tile/public/glass,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"fQ" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"fZ" = (
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/machinery/conveyor/auto{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"gg" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"gi" = (
+/obj/machinery/light/dim/directional/east,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"gq" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"gF" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"gI" = (
+/obj/machinery/conveyor/auto,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"gJ" = (
+/obj/structure/sign/departments/medbay/alt,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"gN" = (
+/obj/structure/railing{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"he" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ht" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/broken/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"hu" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"hS" = (
+/obj/effect/decal/remains/human,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"hX" = (
+/obj/structure/closet/crate/secure/loot,
+/obj/machinery/light/dim/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/hazardvest,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ia" = (
+/obj/structure/fence/door/opened,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ih" = (
+/obj/machinery/light/dim/directional/south,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"ik" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ir" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"iy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/snack/green,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"iK" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/hazardvest,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/storage/toolbox/electrical,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"iP" = (
+/obj/structure/table/greyscale,
+/obj/item/stack/license_plates/empty/fifty{
+	pixel_y = 6;
+	amount = 50
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"iQ" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ju" = (
+/obj/structure/table/wood/fancy,
+/obj/machinery/computer/records/medical/laptop,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/newspaper{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"jy" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"jz" = (
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"jS" = (
+/obj/structure/railing{
+	dir = 5
+	},
+/obj/structure/table/greyscale,
+/obj/item/megaphone,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"kc" = (
+/obj/structure/cable,
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"kf" = (
+/obj/structure/railing,
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"kH" = (
+/obj/structure/holosign/barrier/engineering,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"kL" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/structure/plasticflaps/opaque,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"lj" = (
+/obj/structure/closet/crate/bin,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"lB" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"lD" = (
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"lI" = (
+/obj/structure/table/wood,
+/obj/item/paper{
+	pixel_x = 5;
+	pixel_y = 2;
+	name = "pamphlet"
+	},
+/obj/item/reagent_containers/cup/glass/waterbottle/empty{
+	pixel_x = -9;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"lJ" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"lN" = (
+/obj/machinery/light/dim/directional/north,
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"lO" = (
+/obj/machinery/light/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/bin,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"lR" = (
+/obj/machinery/door/airlock/public/glass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"lY" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 6
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ms" = (
+/obj/structure/railing,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"mI" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"mP" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"mT" = (
+/obj/machinery/door/puzzle/keycard{
+	name = "Keycard Locked Door";
+	puzzle_id = "celadon_harm_factory_office"
+	},
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"mV" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"mW" = (
+/obj/structure/table/greyscale,
+/obj/item/keycard{
+	name = "factory keycard";
+	desc = "A keycard opening a door within the world's worst factory";
+	color = "#727a7c";
+	puzzle_id = "celadon_harm_factory_factory"
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"nb" = (
+/obj/structure/table/greyscale,
+/obj/item/stack/medical/wrap/gauze/improvised{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/storage/medkit/brute{
+	pixel_y = 5
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"nd" = (
+/obj/structure/table/wood,
+/obj/item/kirbyplants{
+	pixel_y = 13
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"nj" = (
+/mob/living/basic/mining/mook,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"nx" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"nF" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/hazardvest,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/storage/toolbox/electrical,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"nJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/fence/door{
+	dir = 4
+	},
+/turf/open/floor/iron/stairs/old{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"nR" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"om" = (
+/obj/structure/closet/crate/bin,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"os" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"oB" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_y = 13
+	},
+/obj/item/newspaper{
+	pixel_x = -5
+	},
+/obj/item/reagent_containers/cup/glass/coffee{
+	pixel_x = 9;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"oW" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"oZ" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"pd" = (
+/obj/structure/table/greyscale,
+/obj/item/trash/chips{
+	pixel_y = 3
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"pe" = (
+/obj/structure/table/greyscale,
+/obj/item/melee/baton/security/cattleprod{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/obj/item/surgery_tray/full{
+	pixel_y = 9
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ps" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"pL" = (
+/obj/structure/closet/crate,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"pN" = (
+/mob/living/basic/mining/mook,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"pV" = (
+/obj/structure/railing/corner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"pW" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 5
+	},
+/obj/item/circuitboard/machine/protolathe/department/engineering,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"qf" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"qg" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"qi" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"qr" = (
+/obj/structure/railing,
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"qA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"qB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"qK" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"qM" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"qN" = (
+/obj/structure/railing,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"sb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/greyscale,
+/obj/item/storage/medkit/regular{
+	pixel_y = 14
+	},
+/obj/item/stack/medical/wrap/gauze/improvised{
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"sj" = (
+/obj/structure/rack,
+/obj/structure/cable,
+/obj/item/gun/energy/plasmacutter/adv,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"so" = (
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 9
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ss" = (
+/obj/structure/flora/rock/pile/style_random,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"sy" = (
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"sD" = (
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"tc" = (
+/obj/structure/cable,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"tx" = (
+/obj/structure/table/greyscale,
+/obj/item/stack/license_plates/empty/fifty{
+	pixel_x = -9;
+	pixel_y = 7;
+	amount = 50
+	},
+/obj/item/stack/license_plates/empty/fifty{
+	amount = 50
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"tN" = (
+/obj/machinery/light/dim/directional/east,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"ui" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"un" = (
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"uw" = (
+/turf/closed/mineral/random/low_chance,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"uF" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/dim/directional/north,
+/obj/item/stack/spacecash/c1000,
+/obj/item/stack/spacecash/c1000,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"uL" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"uM" = (
+/obj/machinery/conveyor/auto{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"uN" = (
+/obj/structure/chair/comfy/beige,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"uY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"vy" = (
+/obj/structure/chair/plastic{
+	dir = 8
+	},
+/obj/effect/decal/remains/human,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"vF" = (
+/obj/machinery/light/broken/directional/west,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"vG" = (
+/obj/machinery/conveyor/auto{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"vV" = (
+/obj/structure/cable,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"wc" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/structure/plasticflaps/opaque,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"wf" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"wh" = (
+/obj/structure/table/greyscale{
+	pixel_y = 8
+	},
+/obj/item/storage/toolbox/emergency{
+	pixel_y = 13
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"wm" = (
+/obj/structure/cable,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"wy" = (
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"wC" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 20
+	},
+/obj/item/organ/cyberimp/arm/toolkit/esword,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"wN" = (
+/obj/machinery/plate_press,
+/obj/machinery/conveyor/auto,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"xa" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"xv" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"xB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"xK" = (
+/obj/structure/sign/warning/electric_shock,
+/obj/structure/cable,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"xV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"xW" = (
+/obj/structure/cable,
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ye" = (
+/turf/open/floor/iron/stairs/old,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"yP" = (
+/obj/machinery/conveyor/auto{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"yU" = (
+/obj/structure/fence/door{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"zb" = (
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"zk" = (
+/obj/structure/cable,
+/obj/machinery/conveyor/auto{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"zp" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"zr" = (
+/obj/machinery/light/dim/directional/west,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"zw" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"zx" = (
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"zF" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"zG" = (
+/obj/structure/cable,
+/obj/machinery/disposal/delivery_chute{
+	dir = 4
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/machinery/conveyor/auto,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"zP" = (
+/obj/structure/table/wood/fancy,
+/obj/item/gun/ballistic/shotgun/toy/crossbow{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/ammo_box/foambox/riot{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"zZ" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ac" = (
+/obj/machinery/door/puzzle/keycard{
+	name = "Keycard Locked Door";
+	puzzle_id = "celadon_harm_factory_entry"
+	},
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Av" = (
+/obj/structure/railing/corner,
+/obj/structure/cable,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"AB" = (
+/obj/structure/railing/corner,
+/obj/effect/turf_decal/stripes/asteroid/line,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"AG" = (
+/obj/structure/railing{
+	dir = 9
+	},
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"AM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Bg" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Bh" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Bj" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Bp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/bin,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"BJ" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/item/chair/plastic{
+	dir = 1;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"BK" = (
+/turf/closed/indestructible/reinforced,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Cx" = (
+/obj/machinery/conveyor/auto{
+	dir = 1
+	},
+/obj/item/keycard{
+	name = "entry keycard";
+	desc = "A keycard opening a door within the world's worst factory";
+	color = "#1a27e7";
+	puzzle_id = "celadon_harm_factory_entry"
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Cz" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"CB" = (
+/obj/machinery/light/dim/directional/west,
+/obj/structure/railing{
+	dir = 5
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"CJ" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Da" = (
+/obj/machinery/light/dim/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/stairs/old,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Di" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Dj" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/mining/mook,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Dr" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/asteroid/line,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ds" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"DK" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Em" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"EI" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"EK" = (
+/obj/structure/cable,
+/obj/machinery/door/puzzle/keycard{
+	name = "Keycard Locked Door";
+	puzzle_id = "celadon_harm_factory_office"
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"EU" = (
+/obj/structure/railing/corner,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"EY" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Fd" = (
+/obj/machinery/light/dim/directional/south,
+/obj/structure/table/wood,
+/obj/item/newspaper{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Fq" = (
+/obj/structure/table/wood,
+/obj/machinery/computer/security/wooden_tv,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"FO" = (
+/obj/item/toy/plush/moth,
+/obj/structure/table/greyscale,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"FS" = (
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ge" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Gs" = (
+/obj/structure/cable,
+/obj/machinery/conveyor/auto{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"GH" = (
+/obj/effect/spawner/structure/window/hollow/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"GI" = (
+/obj/structure/railing/corner,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"GT" = (
+/obj/structure/cable,
+/mob/living/basic/mining/mook,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"GV" = (
+/turf/template_noop,
+/area/template_noop)
+"GW" = (
+/obj/structure/table/wood/fancy,
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/pen/fountain{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/assembly/timer{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"GZ" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/broken/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Hh" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Hm" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Hp" = (
+/obj/machinery/power/emitter/welded,
+/obj/structure/cable,
+/obj/machinery/light/dim/directional/north,
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/machinery/conveyor/auto,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ht" = (
+/obj/structure/closet/crate/secure/loot,
+/obj/machinery/light/broken/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/hazardvest,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"HK" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"HM" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"HO" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"HV" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/structure/railing{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"HZ" = (
+/obj/effect/spawner/structure/window/hollow/reinforced/middle,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ic" = (
+/obj/structure/table/wood/fancy,
+/obj/item/melee/baton/telescopic{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/shield/riot{
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/obj/item/grenade/chem_grenade/teargas{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ig" = (
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ix" = (
+/obj/machinery/vending/sustenance,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Iz" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"IV" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Jc" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"Jg" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Jn" = (
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/iron/stairs/old,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Jo" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Js" = (
+/obj/machinery/recycler/deathtrap,
+/obj/machinery/conveyor/auto{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"JG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/machinery/conveyor/auto,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"JL" = (
+/obj/structure/railing/corner,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"JM" = (
+/obj/structure/table/wood,
+/obj/item/paper{
+	pixel_x = 11;
+	pixel_y = -5;
+	name = "pamphlet"
+	},
+/obj/item/paper{
+	pixel_x = -6;
+	pixel_y = 6;
+	name = "pamphlet"
+	},
+/obj/item/paper{
+	name = "pamphlet"
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Kk" = (
+/obj/machinery/disposal/delivery_chute{
+	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/machinery/conveyor/auto{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"KW" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Lf" = (
+/obj/machinery/light/broken/directional/east,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"Lk" = (
+/obj/structure/table/greyscale,
+/obj/item/storage/toolbox/drone{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Lo" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_y = 13
+	},
+/obj/item/newspaper{
+	pixel_y = -3
+	},
+/obj/item/newspaper{
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ls" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/mining/mook,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"LG" = (
+/obj/effect/spawner/structure/window/hollow/reinforced/end,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"LM" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/dim/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"LY" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"MG" = (
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"MT" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"MX" = (
+/obj/structure/table/greyscale,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Nm" = (
+/obj/structure/chair/plastic{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 5
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Nq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ns" = (
+/obj/machinery/door/puzzle/keycard{
+	name = "Keycard Locked Door";
+	puzzle_id = "celadon_harm_factory_factory"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ny" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/pistachios,
+/obj/item/clothing/suit/hazardvest,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/storage/toolbox/drone,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"NG" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"NL" = (
+/obj/structure/fence/door{
+	dir = 4
+	},
+/turf/open/floor/iron/stairs/old{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"NN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"NR" = (
+/obj/structure/railing{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Or" = (
+/obj/machinery/computer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Oz" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/structure/cable,
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"OH" = (
+/obj/item/chair/plastic{
+	dir = 1;
+	pixel_y = 12
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Pe" = (
+/obj/structure/railing{
+	dir = 9
+	},
+/mob/living/basic/mining/mook,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Pn" = (
+/obj/structure/filingcabinet/employment,
+/obj/structure/safe/floor,
+/obj/item/keycard{
+	name = "office keycard";
+	desc = "A keycard opening a door within the world's worst factory";
+	color = "#1dac22";
+	puzzle_id = "celadon_harm_factory_office"
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Pz" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/conveyor/auto,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"PK" = (
+/obj/structure/fence/door,
+/obj/effect/turf_decal/stripes/asteroid/line,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"PL" = (
+/obj/structure/chair/plastic,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"PS" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"PV" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Qc" = (
+/obj/structure/railing{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Qk" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Qw" = (
+/obj/structure/plasticflaps/opaque,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Qz" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"QE" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"QJ" = (
+/obj/machinery/door/airlock/multi_tile/public/glass,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"QQ" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/mob/living/basic/mining/mook,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"QZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Rc" = (
+/obj/structure/rack,
+/obj/machinery/light/dim/directional/north,
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 5
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Rl" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ro" = (
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/conveyor/auto{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Rx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/door/puzzle/keycard{
+	name = "Keycard Locked Door";
+	puzzle_id = "celadon_harm_factory_factory"
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"RB" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+"RI" = (
+/obj/structure/table/wood/fancy,
+/obj/machinery/computer/records/security/laptop,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"RT" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"RY" = (
+/obj/machinery/door/puzzle/keycard{
+	name = "Keycard Locked Door";
+	puzzle_id = "celadon_harm_factory_stockroom"
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Sa" = (
+/obj/structure/table/greyscale,
+/obj/item/laser_pointer/blue{
+	pixel_x = 10;
+	pixel_y = 9
+	},
+/obj/item/megaphone,
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Sc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Sd" = (
+/obj/structure/fence/door,
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"SG" = (
+/obj/structure/table/greyscale,
+/obj/item/clothing/head/collectable/hardhat{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/utility/hardhat,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"SI" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Tp" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"TA" = (
+/obj/structure/sign/poster/contraband/missing_gloves/directional/north,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"TQ" = (
+/obj/machinery/plate_press,
+/obj/machinery/conveyor/auto{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"TT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/effect/decal/remains/human,
+/obj/item/clothing/neck/tie/red,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ua" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ul" = (
+/obj/structure/railing{
+	dir = 6
+	},
+/obj/structure/table/greyscale,
+/obj/item/trash/semki{
+	pixel_y = 11
+	},
+/obj/item/laser_pointer/red{
+	pixel_y = 3
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Up" = (
+/obj/machinery/conveyor/auto{
+	dir = 4
+	},
+/mob/living/basic/mining/mook,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"UA" = (
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"UI" = (
+/obj/structure/cable,
+/obj/machinery/door/puzzle/keycard{
+	name = "Keycard Locked Door";
+	puzzle_id = "celadon_harm_factory_stockroom"
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"UK" = (
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"UO" = (
+/obj/structure/railing{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"UY" = (
+/obj/structure/fence/door,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Ve" = (
+/obj/structure/fence/door/opened{
+	dir = 8
+	},
+/turf/open/floor/iron/stairs/old{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Vw" = (
+/obj/structure/railing,
+/obj/structure/chair/plastic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"VL" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"VN" = (
+/obj/structure/broken_flooring/corner/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"VT" = (
+/obj/structure/sign/warning/test_chamber,
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"VW" = (
+/obj/machinery/light/directional/south,
+/obj/structure/closet/emcloset,
+/obj/item/storage/medkit/ancient,
+/obj/item/clothing/neck/stethoscope,
+/obj/item/grenade/chem_grenade/teargas{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/grenade/chem_grenade/teargas,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"We" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/fence/door{
+	dir = 4
+	},
+/turf/open/floor/iron/stairs/old{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"WG" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"WJ" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"WO" = (
+/obj/structure/chair/comfy/beige,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"WP" = (
+/obj/structure/railing/corner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"WT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/stairs/old,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"WX" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Xs" = (
+/obj/effect/decal/remains/human,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"XA" = (
+/obj/structure/door_assembly/door_assembly_highsecurity,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"XB" = (
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"XL" = (
+/obj/machinery/door/airlock/highsecurity,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"XM" = (
+/obj/structure/rack,
+/obj/item/trash/candy,
+/obj/item/clothing/suit/hazardvest,
+/obj/item/clothing/under/rank/engineering/engineer/hazard,
+/obj/item/storage/toolbox/drone,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"XN" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_y = 6
+	},
+/obj/item/pen/fourcolor{
+	pixel_y = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"XR" = (
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Yy" = (
+/mob/living/basic/mining/mook,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"YF" = (
+/obj/structure/chair/plastic{
+	dir = 8
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"YP" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"YU" = (
+/obj/machinery/vending/sovietsoda,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Zb" = (
+/obj/structure/railing,
+/obj/machinery/light/dim/directional/north,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Zn" = (
+/obj/machinery/power/emitter/welded{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/light/dim/directional/south,
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/machinery/conveyor/auto{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"Zu" = (
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ZA" = (
+/obj/machinery/light/broken/directional/south,
+/obj/structure/filingcabinet/chestdrawer,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ZP" = (
+/obj/structure/cable,
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+"ZU" = (
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
+
+(1,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+ss
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(2,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+Em
+Em
+ss
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(3,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+Em
+Em
+uw
+uw
+uw
+Em
+Em
+Em
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(4,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+Em
+Em
+uw
+uw
+aJ
+aJ
+Ig
+gF
+Em
+Em
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(5,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+Em
+Em
+uw
+uw
+uw
+aJ
+wh
+SG
+gF
+Em
+Em
+Em
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(6,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+Em
+gF
+aJ
+aJ
+gF
+gF
+Zu
+VN
+gF
+aJ
+gF
+aJ
+aJ
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(7,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+ss
+gF
+gF
+cS
+YP
+qg
+HK
+nj
+qA
+ht
+zZ
+Bj
+lJ
+aJ
+aJ
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(8,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+Em
+aJ
+pV
+UO
+WG
+Hh
+kf
+nJ
+NL
+EY
+Hh
+WG
+gN
+QE
+aJ
+Em
+ss
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(9,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+Em
+uw
+gF
+ms
+fB
+ik
+ik
+gq
+Ge
+UA
+JL
+ik
+ik
+PV
+xa
+aJ
+aJ
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(10,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+uw
+uw
+gF
+zp
+wc
+Up
+TQ
+mP
+Nq
+Ge
+qN
+wN
+yP
+kL
+gg
+eU
+aJ
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(11,1,1) = {"
+GV
+GV
+GV
+GV
+Em
+uw
+uw
+uw
+gF
+gF
+ms
+wc
+yP
+Qw
+uL
+iP
+Lk
+Dr
+Qw
+yP
+kL
+SI
+pd
+gF
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(12,1,1) = {"
+GV
+GV
+GV
+GV
+uw
+uw
+uw
+BK
+gF
+ca
+Bh
+sy
+yP
+Qw
+zw
+nb
+tx
+AB
+Qw
+yP
+Pe
+DK
+gF
+gF
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(13,1,1) = {"
+GV
+GV
+GV
+uw
+uw
+BK
+ir
+BK
+aJ
+Bp
+Iz
+Vw
+yP
+TQ
+hu
+Ge
+UA
+qN
+wN
+yP
+BJ
+MG
+aJ
+uw
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(14,1,1) = {"
+GV
+GV
+GV
+uw
+uw
+BK
+eq
+kc
+xW
+ZP
+EU
+Ul
+yP
+MT
+gi
+UA
+pN
+ch
+MT
+yP
+jS
+os
+aJ
+uw
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+"}
+(15,1,1) = {"
+GV
+GV
+GV
+uw
+uw
+BK
+BK
+BK
+BK
+xW
+Zb
+wc
+Js
+FO
+MT
+bM
+yU
+MT
+dj
+Js
+kL
+gg
+gF
+uw
+uw
+Em
+Em
+Em
+Em
+hS
+Em
+Em
+ss
+Em
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+"}
+(16,1,1) = {"
+GV
+GV
+GV
+Em
+uw
+uw
+uw
+BK
+BK
+xW
+Bg
+wc
+yP
+MT
+CB
+gq
+WP
+bx
+MT
+yP
+kL
+xa
+gF
+gF
+uw
+Em
+tN
+Em
+Em
+Em
+Lf
+Em
+Em
+tN
+Em
+Em
+Em
+Em
+Em
+GV
+GV
+"}
+(17,1,1) = {"
+GV
+GV
+Em
+Em
+Em
+Em
+uw
+uw
+BK
+wm
+oZ
+KW
+gI
+gI
+pL
+dh
+ui
+pL
+vG
+vG
+HV
+Qz
+qA
+VT
+gF
+GH
+gF
+GH
+aJ
+aJ
+gF
+GH
+GH
+gF
+aJ
+aJ
+Em
+Em
+Em
+Em
+GV
+"}
+(18,1,1) = {"
+GV
+Em
+Em
+Em
+Em
+wm
+de
+LG
+MT
+wm
+Bg
+Hm
+qi
+he
+he
+nR
+Tp
+he
+he
+he
+qf
+xa
+XB
+ye
+Jn
+WT
+ye
+Zu
+qA
+fv
+lD
+zx
+om
+XR
+OH
+gF
+gF
+Em
+Em
+Em
+Em
+"}
+(19,1,1) = {"
+GV
+ss
+hS
+ih
+wm
+wm
+Ic
+zP
+VW
+wm
+ms
+Rl
+JL
+ik
+EI
+iQ
+iQ
+Di
+UA
+ZU
+lY
+SI
+gF
+aJ
+aJ
+gF
+gF
+oB
+WO
+gF
+PL
+Zu
+qA
+qA
+Zu
+qA
+fP
+HO
+Em
+Em
+Em
+"}
+(20,1,1) = {"
+GV
+hS
+Em
+Em
+zb
+RI
+vV
+qB
+UK
+wm
+WX
+sy
+qN
+Qw
+Qw
+Qw
+Qw
+Jg
+cu
+Jo
+aJ
+aJ
+TA
+XM
+Ht
+nF
+gF
+aJ
+gF
+gF
+YU
+Zu
+bW
+XN
+Zu
+qA
+Iz
+xv
+Em
+Em
+Em
+"}
+(21,1,1) = {"
+GV
+Em
+Em
+Em
+HZ
+Or
+dH
+GT
+xB
+XL
+sD
+dw
+RT
+xK
+lN
+vG
+vG
+vG
+dh
+UA
+PK
+ps
+qA
+zx
+nj
+qA
+xV
+qA
+kH
+ia
+Zu
+Iz
+aq
+JM
+VN
+ZA
+gF
+ss
+Em
+Em
+Em
+"}
+(22,1,1) = {"
+GV
+Em
+Em
+Em
+HZ
+Or
+WJ
+dH
+vV
+XA
+QZ
+IV
+GI
+xK
+lN
+Cx
+vG
+vG
+dh
+Ge
+Sd
+Ls
+dS
+NN
+Ds
+Zu
+eI
+Xs
+qA
+UY
+Zu
+zx
+QQ
+lI
+zx
+Fd
+gF
+Em
+Em
+ss
+Em
+"}
+(23,1,1) = {"
+GV
+Em
+Em
+Em
+ed
+ju
+dH
+zx
+aX
+MT
+Av
+Qc
+qN
+Qw
+Qw
+Qw
+Qw
+Dj
+qM
+Jo
+gF
+gF
+VT
+iK
+hX
+Ny
+gF
+gF
+aJ
+gF
+Ix
+qA
+Fq
+nd
+Iz
+Zu
+QJ
+RB
+Em
+Em
+Em
+"}
+(24,1,1) = {"
+GV
+GV
+Em
+ih
+tc
+Oz
+GW
+Pn
+lO
+MT
+fd
+dh
+Tp
+he
+he
+qi
+he
+jy
+Ge
+nx
+eS
+Qz
+gF
+gF
+aJ
+aJ
+gF
+Lo
+uN
+gF
+ft
+zx
+Zu
+Zu
+qA
+Zu
+AM
+Jc
+Em
+Em
+Em
+"}
+(25,1,1) = {"
+GV
+GV
+GV
+Em
+Em
+tc
+de
+LG
+wy
+MT
+fQ
+dh
+UA
+Ge
+UA
+UA
+Ge
+UA
+UA
+UA
+ui
+xa
+zx
+WT
+Da
+ye
+ye
+Zu
+Zu
+lR
+FS
+Zu
+fj
+YF
+vy
+aJ
+aJ
+Em
+Em
+Em
+Em
+"}
+(26,1,1) = {"
+GV
+GV
+Em
+Em
+Em
+Em
+uw
+uw
+uw
+MT
+fd
+dh
+UA
+UA
+un
+Qk
+Qk
+cu
+UA
+UA
+zF
+fw
+Zu
+VT
+gF
+GH
+gF
+GH
+gF
+gF
+aJ
+GH
+GH
+aJ
+aJ
+aJ
+Em
+Em
+Em
+Em
+GV
+"}
+(27,1,1) = {"
+GV
+Em
+uw
+uw
+uw
+uw
+uw
+uw
+BK
+gF
+HM
+dh
+UA
+MT
+mI
+yP
+yP
+mI
+MT
+UA
+ui
+lB
+gF
+gF
+uw
+Em
+vF
+Em
+Em
+Em
+zr
+Em
+Em
+zr
+Em
+Em
+Em
+Em
+Em
+GV
+GV
+"}
+(28,1,1) = {"
+Em
+uw
+uw
+BK
+BK
+BK
+BK
+BK
+BK
+aJ
+aY
+oW
+wm
+Hp
+Pz
+Pz
+JG
+yP
+yP
+MT
+ui
+gg
+gF
+uw
+uw
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+GV
+GV
+GV
+"}
+(29,1,1) = {"
+Em
+uw
+BK
+BK
+aR
+pW
+BK
+BK
+BK
+aJ
+wf
+Sa
+mI
+zG
+uM
+mW
+MX
+yP
+Kk
+mI
+so
+NG
+gF
+uw
+Em
+Em
+Em
+Em
+Em
+ss
+Em
+Em
+Em
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+"}
+(30,1,1) = {"
+uw
+uw
+BK
+Rc
+eT
+Iz
+mT
+RY
+Ns
+Ac
+Sc
+dd
+MT
+Gs
+Gs
+zk
+fZ
+Ro
+Zn
+MT
+cV
+jz
+gF
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(31,1,1) = {"
+uw
+uw
+BK
+uF
+bh
+TT
+EK
+UI
+Rx
+fE
+Av
+uY
+UA
+MT
+mI
+uM
+uM
+mI
+MT
+UA
+Nm
+lJ
+gF
+aJ
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(32,1,1) = {"
+uw
+uw
+BK
+BK
+sj
+wC
+BK
+BK
+BK
+gF
+Bg
+dh
+UA
+UA
+nx
+Hh
+Hh
+qK
+UA
+UA
+ui
+lB
+iy
+aJ
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(33,1,1) = {"
+uw
+uw
+uw
+BK
+BK
+BK
+BK
+BK
+BK
+gF
+Cz
+dh
+UA
+Ge
+UA
+Ge
+UA
+UA
+UA
+UA
+zF
+Qz
+lj
+aJ
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(34,1,1) = {"
+GV
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+BK
+aJ
+Bg
+Rl
+UA
+UA
+UA
+Ge
+UA
+UA
+UA
+Nq
+zF
+xa
+aJ
+aJ
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(35,1,1) = {"
+GV
+Em
+Em
+Em
+Em
+Em
+Em
+uw
+uw
+aJ
+WX
+NR
+LY
+Qk
+qr
+Ve
+We
+Jg
+LY
+Qk
+AG
+CJ
+aJ
+Em
+ss
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(36,1,1) = {"
+GV
+GV
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+aJ
+aJ
+mV
+PS
+Ua
+LM
+XB
+Zu
+GZ
+PS
+VL
+DK
+gF
+gF
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(37,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+ss
+Em
+Em
+aJ
+aJ
+aJ
+gF
+gF
+Zu
+Yy
+gF
+gF
+aJ
+aJ
+gF
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(38,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+uw
+uw
+uw
+uw
+gF
+sb
+pe
+gF
+Em
+Em
+Em
+ss
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(39,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+Em
+uw
+uw
+aJ
+gJ
+gF
+gF
+Em
+Em
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(40,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+Em
+uw
+uw
+uw
+Em
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(41,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}
+(42,1,1) = {"
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+Em
+ss
+Em
+Em
+Em
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+GV
+"}

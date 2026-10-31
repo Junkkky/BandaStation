@@ -1,0 +1,2258 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_saloon.dmm
+"aF" = (
+/obj/structure/chair/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"bH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"bY" = (
+/obj/structure/barricade/wooden/crude,
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"cs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"cB" = (
+/obj/structure/railing/corner{
+	color = "#BA8C63";
+	dir = 4
+	},
+/obj/item/ammo_casing{
+	pixel_x = 6;
+	pixel_y = -10
+	},
+/obj/item/gun/ballistic/automatic/pistol,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"cG" = (
+/obj/item/megaphone{
+	pixel_x = 10;
+	pixel_y = 16
+	},
+/obj/item/flashlight/flare/torch{
+	pixel_x = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"cP" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"cV" = (
+/obj/item/ammo_casing{
+	pixel_x = 6;
+	pixel_y = -10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"dd" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"de" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"dz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"dT" = (
+/obj/structure/sink/directional/south,
+/obj/structure/mirror{
+	pixel_y = 28
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit/old{
+	icon_state = "vomit_1-old"
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"ec" = (
+/obj/structure/barricade/wooden,
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"er" = (
+/obj/structure/musician/piano,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"eI" = (
+/obj/item/shard{
+	icon_state = "small"
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"fS" = (
+/mob/living/basic/cockroach/glockroach,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"fY" = (
+/obj/structure/chair/stool/bar/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"gd" = (
+/obj/structure/sink/directional/north,
+/obj/structure/mirror{
+	pixel_y = -28
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"gx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"gH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood/end,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"gI" = (
+/obj/item/shard,
+/obj/structure/barricade/wooden/crude,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"hy" = (
+/obj/structure/table/wood/fancy/black,
+/obj/item/reagent_containers/cup/glass/bottle/vermouth{
+	pixel_x = -6;
+	pixel_y = 14
+	},
+/obj/item/reagent_containers/cup/glass/bottle/rum{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/cup/glass/bottle/wine{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/cup/glass/bottle/kahlua{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/cup/glass/bottle/grappa{
+	pixel_x = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"hC" = (
+/obj/item/chair/wood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"hE" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/five,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"hQ" = (
+/obj/item/chair/stool/bar{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"hW" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"ij" = (
+/obj/structure/table/wood,
+/obj/item/trash/chips{
+	pixel_y = 2
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"iq" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/structure/curtain,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"iR" = (
+/obj/item/stack/medical/wrap/gauze{
+	amount = 2;
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/item/stack/medical/suture{
+	amount = 4;
+	pixel_x = 7
+	},
+/obj/item/stack/medical/suture{
+	amount = 1;
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/healthanalyzer{
+	pixel_x = -4;
+	pixel_y = -13
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"jq" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"jX" = (
+/obj/structure/chair/stool/bar/directional/west,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"kn" = (
+/obj/machinery/vending/cola,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"kr" = (
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"lg" = (
+/obj/effect/spawner/random/food_or_drink/keg,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"ln" = (
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"lr" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/structure/curtain,
+/obj/effect/decal/cleanable/vomit/old{
+	icon_state = "vomit_4-old"
+	},
+/mob/living/basic/creature,
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/storage/medkit{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"lw" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/structure/barricade/wooden,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"lx" = (
+/obj/structure/chair/stool/bar/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"lz" = (
+/obj/structure/table/wood/fancy/royalblack,
+/obj/machinery/chem_dispenser/drinks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"lQ" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"mi" = (
+/obj/structure/railing/corner{
+	color = "#BA8C63"
+	},
+/obj/item/ammo_casing{
+	pixel_x = -4;
+	pixel_y = -7
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"mj" = (
+/obj/structure/barricade/wooden,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"mp" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/stack/spacecash/c500{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"mH" = (
+/obj/structure/sink/directional/north,
+/obj/structure/mirror{
+	pixel_y = -28
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"mT" = (
+/obj/item/chair/stool/bar{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"nl" = (
+/obj/item/chair/stool/bar,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"ns" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"nC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"nP" = (
+/obj/machinery/vending/boozeomat,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"nY" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/costume/buttondown/slacks/service,
+/obj/item/clothing/under/costume/buttondown/skirt/service,
+/obj/item/toy/figure/bartender,
+/obj/item/clothing/head/collectable/tophat,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 9
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"oh" = (
+/obj/structure/table/wood/fancy/royalblack,
+/obj/machinery/chem_dispenser/drinks/beer{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"oi" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/cigbutt/cigarbutt{
+	pixel_y = -6
+	},
+/obj/item/broken_bottle{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/paper{
+	pixel_x = 8;
+	pixel_y = -6;
+	name = "paper scrap"
+	},
+/obj/item/paper{
+	pixel_x = 1;
+	pixel_y = 3;
+	name = "paper scrap"
+	},
+/obj/item/broken_bottle{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/obj/effect/spawner/random/maintenance/two,
+/obj/effect/spawner/random/clothing/gloves,
+/obj/effect/spawner/random/decoration/glowstick,
+/obj/effect/decal/cleanable/wrapping,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"oQ" = (
+/obj/structure/table/wood,
+/obj/item/trash/chips{
+	pixel_y = 2
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"oW" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"pi" = (
+/obj/item/ammo_casing{
+	pixel_x = -4;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing{
+	pixel_x = 9;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"pC" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"pK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"pZ" = (
+/obj/machinery/jukebox,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"qO" = (
+/obj/item/chair/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"rY" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"se" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/stack/spacecash/c200{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/item/coin/iron{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/coin/iron{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/coin/iron{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"sm" = (
+/obj/item/chair/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"sp" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/migo,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"st" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/whiskey{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/cup/glass/bottle{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"sL" = (
+/mob/living/basic/hivebot,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"sS" = (
+/obj/item/chair/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"sV" = (
+/obj/structure/door_assembly/door_assembly_wood{
+	anchored = 1;
+	dir = 8
+	},
+/turf/open/floor/wood/parquet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"td" = (
+/obj/structure/sink/directional/south,
+/obj/structure/mirror{
+	pixel_y = 28
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"tt" = (
+/obj/item/ammo_casing/shotgun/buckshot,
+/obj/item/ammo_casing/shotgun/buckshot{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"tw" = (
+/obj/structure/table/wood,
+/obj/item/storage/fancy/cigarettes/cigars/havana{
+	pixel_y = 4
+	},
+/obj/item/lighter{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30"
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"ty" = (
+/obj/structure/railing{
+	color = "#BA8C63";
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"tT" = (
+/obj/structure/chair/stool/directional/west,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"uB" = (
+/obj/structure/closet/crate/wooden,
+/obj/effect/spawner/random/maintenance/three,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"uM" = (
+/obj/structure/door_assembly/door_assembly_silver{
+	anchored = 1
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"uP" = (
+/obj/item/clothing/mask/breath{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/item/tank/internals/emergency_oxygen/engi/empty{
+	pixel_x = -18;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/tile,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"vo" = (
+/obj/structure/railing{
+	color = "#BA8C63"
+	},
+/obj/structure/railing/corner{
+	color = "#BA8C63"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"vL" = (
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/door/airlock/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"we" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 6
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"wf" = (
+/obj/structure/dresser,
+/obj/item/clothing/glasses/sunglasses{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/item/storage/medkit{
+	pixel_x = -12;
+	pixel_y = -9
+	},
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 5
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"wq" = (
+/obj/item/chair/stool/bar{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"wX" = (
+/obj/item/stack/medical/mesh{
+	pixel_x = 12;
+	pixel_y = -7
+	},
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"xp" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"xD" = (
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"xV" = (
+/obj/machinery/door/airlock/silver,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"yr" = (
+/obj/structure/table/wood,
+/obj/item/trash/chips{
+	pixel_y = 2
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"yz" = (
+/obj/structure/door_assembly/door_assembly_silver{
+	anchored = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"yB" = (
+/obj/structure/table/wood/fancy/black,
+/obj/structure/sign/poster/official/high_class_martini/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"zd" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/reagent_containers/hypospray/medipen{
+	desc = "A rapid and safe way to stabilize patients in critical condition for personnel without advanced medical knowledge. Contains a powerful preservative that can delay decomposition when applied to a dead body. This one is spent.";
+	icon_state = "medipen0";
+	name = "spent epinephrine medipen";
+	pixel_x = 3;
+	pixel_y = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"zV" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/shaker{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/item/rag{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"zX" = (
+/obj/machinery/door/airlock/silver,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Ao" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Aw" = (
+/obj/item/chair/stool/bar{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"BQ" = (
+/obj/structure/barricade/wooden/crude,
+/obj/structure/door_assembly/door_assembly_wood{
+	anchored = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"BU" = (
+/obj/structure/barricade/wooden,
+/obj/item/shard{
+	icon_state = "small"
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"BX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Ck" = (
+/obj/structure/barricade/wooden/crude,
+/obj/machinery/door/airlock/wood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/parquet,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Dh" = (
+/obj/structure/table/wood,
+/obj/item/trash/chips{
+	pixel_y = 2
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"DF" = (
+/obj/machinery/chem_master/condimaster{
+	desc = "Used to mix booze. You can see a Coondimaster label lazily covered up.";
+	name = "Hoochmaster 2000"
+	},
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 9
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"DJ" = (
+/obj/structure/chair/stool/bar/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"DO" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Eg" = (
+/mob/living/basic/creature,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"Em" = (
+/obj/structure/table/wood,
+/obj/machinery/reagentgrinder{
+	pixel_y = 8
+	},
+/obj/item/storage/box/drinkingglasses,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"ED" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"ET" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"EU" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/tile,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Fs" = (
+/obj/structure/railing{
+	color = "#BA8C63"
+	},
+/obj/structure/railing/corner{
+	color = "#BA8C63";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"Gv" = (
+/obj/structure/railing{
+	color = "#BA8C63"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"GP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"GY" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/small{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Hh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"HA" = (
+/obj/structure/ore_box,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"HM" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"HQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30"
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Iw" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"IC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"IH" = (
+/obj/structure/table/wood,
+/obj/item/trash/chips{
+	pixel_y = 2
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_y = 6
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"IW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Jk" = (
+/obj/structure/closet/cabinet,
+/obj/item/storage/bag/money/vault,
+/obj/item/stack/spacecash/c1000,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 5
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Jp" = (
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"JD" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"JJ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"JW" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/small{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Kf" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Kg" = (
+/obj/structure/table/wood,
+/obj/item/book/manual/wiki/barman_recipes{
+	pixel_x = -2;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/cup/glass/flask{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 8
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Ki" = (
+/obj/structure/railing{
+	color = "#BA8C63"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"Kj" = (
+/obj/structure/table/wood,
+/obj/item/trash/chips{
+	pixel_y = 2
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Km" = (
+/obj/effect/decal/remains/human,
+/obj/item/clothing/under/costume/buttondown/slacks/service{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/clothing/shoes/laceup{
+	pixel_x = -6;
+	pixel_y = -10
+	},
+/obj/item/clothing/suit/armor/vest/alt{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/gun/ballistic/shotgun/riot{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"KP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"KQ" = (
+/obj/structure/barricade/wooden,
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"KU" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Lg" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Lm" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/stack/spacecash/c100{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/coin/gold{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"LM" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Mg" = (
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Mh" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Mn" = (
+/obj/item/ammo_casing{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Nb" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Ne" = (
+/obj/structure/railing/corner{
+	color = "#BA8C63";
+	dir = 1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"Nx" = (
+/obj/structure/barricade/wooden,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"NE" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"NN" = (
+/obj/item/chair/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"NQ" = (
+/obj/item/chair/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Os" = (
+/obj/structure/chair/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Ot" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 1
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"OD" = (
+/obj/structure/closet/crate/bin,
+/obj/item/broken_bottle{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/paper{
+	pixel_x = 1;
+	pixel_y = -5;
+	name = "paper scrap"
+	},
+/obj/item/cigbutt/cigarbutt{
+	pixel_y = -6
+	},
+/obj/item/cigbutt/cigarbutt{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/effect/spawner/random/maintenance/two,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 10
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"OL" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"OS" = (
+/obj/effect/decal/cleanable/generic,
+/obj/item/storage/box/papersack{
+	pixel_x = -8;
+	pixel_y = -3
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"Pk" = (
+/obj/machinery/door/airlock/silver,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"PD" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 6
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"PO" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/migo,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"PP" = (
+/obj/structure/railing/corner{
+	color = "#BA8C63";
+	dir = 4
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"QV" = (
+/obj/structure/chair/stool/bar{
+	pixel_x = 16
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"QW" = (
+/mob/living/basic/migo,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"Ri" = (
+/turf/template_noop,
+/area/template_noop)
+"Rx" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Se" = (
+/obj/effect/decal/cleanable/garbage,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"SI" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"SQ" = (
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Tg" = (
+/obj/item/stack/medical/mesh{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/tile,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"TD" = (
+/obj/item/chair/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"TJ" = (
+/obj/effect/spawner/structure/window,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Ud" = (
+/obj/structure/chair/wood{
+	pixel_x = 16;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Uy" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"UF" = (
+/obj/structure/railing{
+	color = "#BA8C63";
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"Vk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Vu" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/mob/living/basic/migo,
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Vx" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/toy/cards/deck/syndicate,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"VB" = (
+/obj/item/chair/stool/bar,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"VK" = (
+/obj/item/chair/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"VP" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/tequila{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Wk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"WF" = (
+/obj/structure/railing/corner{
+	color = "#BA8C63";
+	dir = 8
+	},
+/obj/item/ammo_casing{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/ammo_casing{
+	pixel_x = 6;
+	pixel_y = -10
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+"WS" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/cognac{
+	pixel_x = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Xf" = (
+/obj/item/chair/stool/bar,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Xn" = (
+/obj/structure/barricade/wooden/crude,
+/obj/effect/spawner/structure/window,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"XE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"XT" = (
+/obj/structure/toilet,
+/obj/structure/curtain,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"XU" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"XX" = (
+/obj/structure/chair/stool/bar,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Ya" = (
+/obj/structure/table/wood,
+/obj/item/trash/chips{
+	pixel_x = -5
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/book{
+	desc = "Retells the moments of a bartender in this saloon. Find out it's pages have been lost to time.";
+	icon_state = "book4";
+	name = "bartender's diary";
+	pixel_x = 15;
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 10
+	},
+/turf/open/floor/wood/oak,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Yc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Yf" = (
+/obj/item/chair/stool{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"YR" = (
+/obj/structure/toilet,
+/obj/structure/curtain,
+/obj/effect/decal/cleanable/vomit/old{
+	icon_state = "vomit_3-old"
+	},
+/mob/living/basic/cockroach/glockroach,
+/turf/open/floor/iron/freezer,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"Zl" = (
+/obj/item/clothing/neck/tie/black,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/tile,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"ZB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+"ZV" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/two,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
+
+(1,1,1) = {"
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Iw
+"}
+(2,1,1) = {"
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Iw
+Iw
+Iw
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Iw
+Iw
+"}
+(3,1,1) = {"
+Ri
+Ri
+Ri
+Ri
+Ri
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Ri
+"}
+(4,1,1) = {"
+Ri
+Ri
+Ri
+Ri
+Iw
+QW
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Ri
+"}
+(5,1,1) = {"
+Ri
+Ri
+Ri
+Ri
+Iw
+Iw
+Iw
+OL
+OL
+BU
+kr
+OL
+OL
+OL
+Nx
+bY
+OL
+mj
+Iw
+Iw
+"}
+(6,1,1) = {"
+Ri
+Ri
+Ri
+Iw
+Iw
+Iw
+Iw
+OL
+DF
+Em
+Kg
+OD
+OL
+nY
+Wk
+Ud
+Ya
+OL
+Iw
+Iw
+"}
+(7,1,1) = {"
+Ri
+Ri
+Iw
+Iw
+Iw
+Iw
+Iw
+mj
+wX
+Tg
+EU
+HQ
+Ck
+lQ
+uP
+Zl
+tw
+OL
+Iw
+Iw
+"}
+(8,1,1) = {"
+Ri
+Iw
+Iw
+Iw
+Iw
+Iw
+Eg
+Uy
+Jk
+lg
+zd
+we
+OL
+wf
+Km
+iR
+PD
+mj
+Iw
+Ri
+"}
+(9,1,1) = {"
+Iw
+Iw
+OL
+OL
+mj
+OL
+OL
+OL
+OL
+Uy
+OL
+sV
+OL
+OL
+OL
+OL
+OL
+OL
+Iw
+Iw
+"}
+(10,1,1) = {"
+Iw
+Iw
+OL
+TD
+Dh
+Nb
+NQ
+Dh
+Nb
+XX
+Kj
+pC
+nP
+hy
+lz
+oh
+yB
+OL
+Iw
+Iw
+"}
+(11,1,1) = {"
+Iw
+Iw
+ec
+DO
+gx
+gx
+gx
+cs
+cP
+VB
+st
+cs
+Ot
+bH
+bH
+gH
+xp
+TJ
+Iw
+Iw
+"}
+(12,1,1) = {"
+Iw
+sL
+eI
+GP
+Vk
+dz
+cP
+Mh
+sp
+cs
+gx
+NE
+gx
+tt
+gx
+cs
+ZV
+Nx
+Iw
+Iw
+"}
+(13,1,1) = {"
+Iw
+Iw
+OL
+nC
+nC
+nC
+ns
+yr
+oW
+cP
+GY
+WS
+Jp
+JW
+VP
+zV
+oQ
+OL
+UF
+QW
+"}
+(14,1,1) = {"
+Ri
+Se
+OL
+SQ
+Kf
+nC
+KP
+qO
+gx
+gx
+jX
+mT
+fY
+Xf
+nl
+Aw
+lx
+OL
+Ki
+Iw
+"}
+(15,1,1) = {"
+Iw
+oi
+OL
+Yf
+SQ
+nC
+nC
+DO
+cs
+cP
+gx
+cP
+Mh
+Ao
+pi
+KU
+de
+OL
+vo
+PP
+"}
+(16,1,1) = {"
+Iw
+OS
+OL
+kn
+PO
+cG
+nC
+ns
+sS
+gx
+cs
+hC
+yr
+Vu
+cV
+Mn
+xD
+BQ
+WF
+Ne
+"}
+(17,1,1) = {"
+Ri
+Iw
+OL
+er
+Kf
+Hh
+nC
+aF
+yr
+jq
+cs
+cP
+NN
+IW
+Hh
+Mg
+XU
+vL
+mi
+cB
+"}
+(18,1,1) = {"
+Iw
+uB
+OL
+tT
+Kf
+nC
+ln
+ns
+HM
+gx
+cs
+gx
+cs
+xp
+Hh
+BX
+Lg
+OL
+Fs
+Ne
+"}
+(19,1,1) = {"
+Iw
+HA
+OL
+Kf
+Kf
+ln
+BX
+SI
+oW
+gx
+Mh
+gx
+cP
+DJ
+hQ
+SI
+pZ
+OL
+Gv
+Iw
+"}
+(20,1,1) = {"
+Iw
+HA
+OL
+nC
+ln
+nC
+ns
+cP
+gx
+NN
+IH
+jq
+QV
+Vx
+Lm
+cs
+IW
+OL
+ty
+Iw
+"}
+(21,1,1) = {"
+Iw
+Iw
+gI
+BX
+ET
+Yc
+sp
+gx
+cP
+gx
+HM
+gx
+oW
+se
+mp
+gx
+xp
+lw
+Iw
+Iw
+"}
+(22,1,1) = {"
+Iw
+Iw
+Xn
+rY
+gx
+gx
+cP
+cs
+gx
+cP
+oW
+gx
+gx
+wq
+fY
+cP
+hE
+kr
+Iw
+Iw
+"}
+(23,1,1) = {"
+Iw
+Iw
+OL
+Os
+ij
+VK
+sm
+ij
+Rx
+Vk
+Vk
+IC
+Vk
+Vk
+JJ
+JD
+hW
+OL
+Iw
+Iw
+"}
+(24,1,1) = {"
+Iw
+Iw
+OL
+Uy
+mj
+mj
+OL
+OL
+OL
+Uy
+OL
+ED
+OL
+mj
+XE
+OL
+OL
+OL
+Iw
+Iw
+"}
+(25,1,1) = {"
+Ri
+Iw
+Iw
+Iw
+Iw
+Iw
+OL
+YR
+zX
+gd
+OL
+ZB
+OL
+td
+uM
+iq
+mj
+Iw
+Iw
+Ri
+"}
+(26,1,1) = {"
+Ri
+Ri
+Iw
+Iw
+Iw
+Iw
+OL
+OL
+OL
+mH
+OL
+dd
+OL
+dT
+OL
+OL
+OL
+Iw
+Iw
+Ri
+"}
+(27,1,1) = {"
+Ri
+Ri
+Ri
+Iw
+Iw
+Iw
+mj
+XT
+uM
+fS
+Pk
+pK
+yz
+LM
+xV
+lr
+OL
+Iw
+Ri
+Ri
+"}
+(28,1,1) = {"
+Ri
+Ri
+Ri
+Ri
+Iw
+Iw
+OL
+OL
+OL
+OL
+OL
+KQ
+OL
+OL
+OL
+OL
+OL
+Iw
+Iw
+Ri
+"}
+(29,1,1) = {"
+Ri
+Ri
+Ri
+Ri
+Ri
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Ri
+"}
+(30,1,1) = {"
+Ri
+Ri
+Ri
+Ri
+Ri
+Ri
+Iw
+Iw
+Iw
+QW
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Iw
+Ri
+Iw
+Iw
+"}

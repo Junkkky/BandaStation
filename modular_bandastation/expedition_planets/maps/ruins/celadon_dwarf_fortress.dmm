@@ -1,0 +1,623 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_dwarffortress.dmm
+"ae" = (
+/obj/structure/closet/cabinet,
+/obj/item/instrument/banjo,
+/obj/item/instrument/trombone,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"bM" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/ale{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/cup/glass/bottle/lizardwine{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"bT" = (
+/obj/item/chair/wood/wings,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"cb" = (
+/obj/structure/chair/wood/wings{
+	dir = 1
+	},
+/mob/living/basic/mining/legion{
+	icon_state = "dwarf_legion";
+	name = "dwarf legion"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"ck" = (
+/obj/structure/table/wood,
+/obj/item/shield/buckler,
+/obj/item/shield/buckler,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"fD" = (
+/obj/structure/chair/comfy/beige,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"gH" = (
+/obj/structure/table/wood,
+/obj/item/food/meat/steak/goliath{
+	pixel_y = 6
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"kf" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"kP" = (
+/obj/item/dice/d20{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/toy/figure/clown{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/obj/structure/table/wood/fancy/purple,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"lb" = (
+/obj/structure/table/wood,
+/obj/item/toy/plush/lizard_plushie{
+	pixel_y = 3
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"ly" = (
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/item/clothing/head/helmet/skull,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"oG" = (
+/obj/structure/table/wood,
+/obj/item/spear/bonespear,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"qB" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"rZ" = (
+/obj/structure/mineral_door/iron,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"sS" = (
+/turf/template_noop,
+/area/template_noop)
+"wh" = (
+/obj/structure/table/wood,
+/obj/item/hatchet/wooden,
+/obj/item/hatchet/wooden,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"wt" = (
+/mob/living/basic/mining/legion{
+	icon_state = "dwarf_legion";
+	name = "dwarf legion"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"xb" = (
+/obj/structure/chair/stool/bar,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"yJ" = (
+/obj/effect/spawner/random/food_or_drink/keg,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Bl" = (
+/obj/structure/barricade/wooden,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Eb" = (
+/mob/living/basic/mining/legion/dwarf{
+	name = "dwarf armorer"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Eq" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"GR" = (
+/obj/structure/chair/stool/bar,
+/mob/living/basic/mining/legion{
+	icon_state = "dwarf_legion";
+	name = "dwarf legion"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Jl" = (
+/obj/structure/bed,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Jx" = (
+/obj/structure/table/wood,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"LX" = (
+/obj/structure/table/wood,
+/obj/item/toy/cards/deck{
+	pixel_y = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Mc" = (
+/obj/structure/table/wood,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Mx" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Np" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/drinkingglass,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Pn" = (
+/obj/structure/sign/poster/official/high_class_martini/directional/north,
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Ps" = (
+/obj/effect/decal/cleanable/blood/old,
+/mob/living/basic/mining/legion/dwarf,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Pt" = (
+/obj/structure/sign/poster/contraband/eat/directional/north,
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"PV" = (
+/mob/living/basic/mining/legion/dwarf{
+	name = "dwarf bartender"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Rq" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Sy" = (
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"TQ" = (
+/obj/structure/fermenting_barrel,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"Xi" = (
+/mob/living/basic/mining/legion{
+	name = "tall dwarf legion"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"XL" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/flashlight/flare/torch,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"YZ" = (
+/mob/living/basic/mining/legion/dwarf,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+"ZD" = (
+/mob/living/basic/mining/legion/dwarf,
+/obj/effect/decal/cleanable/blood/old,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+
+(1,1,1) = {"
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+"}
+(2,1,1) = {"
+qB
+qB
+qB
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+qB
+qB
+qB
+qB
+qB
+"}
+(3,1,1) = {"
+qB
+qB
+Rq
+Pt
+yJ
+qB
+kP
+cb
+Rq
+Jl
+wt
+Eq
+Rq
+kf
+YZ
+qB
+qB
+qB
+"}
+(4,1,1) = {"
+qB
+qB
+Rq
+qB
+qB
+qB
+Sy
+qB
+Rq
+Eq
+qB
+Jl
+Rq
+qB
+qB
+qB
+qB
+qB
+"}
+(5,1,1) = {"
+qB
+qB
+Rq
+qB
+Np
+xb
+qB
+qB
+Rq
+Jl
+kf
+Jl
+Rq
+YZ
+qB
+Ps
+qB
+qB
+"}
+(6,1,1) = {"
+qB
+qB
+Rq
+qB
+Np
+xb
+qB
+qB
+Rq
+Jl
+qB
+Eq
+Rq
+kf
+qB
+qB
+qB
+qB
+"}
+(7,1,1) = {"
+qB
+qB
+Rq
+PV
+Np
+GR
+qB
+qB
+rZ
+qB
+qB
+Jl
+Rq
+qB
+Bl
+qB
+qB
+qB
+"}
+(8,1,1) = {"
+qB
+qB
+Rq
+qB
+LX
+xb
+qB
+qB
+Rq
+kf
+qB
+ZD
+Rq
+qB
+qB
+kf
+qB
+qB
+"}
+(9,1,1) = {"
+qB
+qB
+Rq
+bM
+gH
+xb
+qB
+qB
+Rq
+Jl
+qB
+Eq
+Rq
+qB
+ly
+qB
+qB
+qB
+"}
+(10,1,1) = {"
+qB
+qB
+Rq
+TQ
+qB
+qB
+qB
+ae
+Rq
+Eq
+wt
+qB
+Rq
+qB
+Bl
+YZ
+qB
+qB
+"}
+(11,1,1) = {"
+qB
+qB
+Rq
+Rq
+Rq
+Rq
+qB
+Pn
+Rq
+Rq
+Rq
+rZ
+Rq
+Rq
+qB
+qB
+qB
+qB
+"}
+(12,1,1) = {"
+qB
+qB
+qB
+Rq
+bT
+qB
+qB
+qB
+qB
+Rq
+qB
+qB
+Jx
+Rq
+qB
+kf
+qB
+qB
+"}
+(13,1,1) = {"
+sS
+qB
+qB
+Rq
+Np
+qB
+qB
+Xi
+Np
+Rq
+Mc
+qB
+qB
+Rq
+qB
+qB
+qB
+qB
+"}
+(14,1,1) = {"
+sS
+qB
+qB
+Rq
+Sy
+qB
+qB
+qB
+qB
+Rq
+Jx
+qB
+kf
+rZ
+qB
+qB
+qB
+qB
+"}
+(15,1,1) = {"
+sS
+qB
+Rq
+Rq
+qB
+YZ
+qB
+qB
+qB
+Rq
+Mx
+Eb
+qB
+rZ
+kf
+qB
+qB
+qB
+"}
+(16,1,1) = {"
+sS
+XL
+Rq
+qB
+qB
+qB
+qB
+lb
+qB
+Rq
+qB
+kf
+qB
+Rq
+qB
+qB
+qB
+qB
+"}
+(17,1,1) = {"
+sS
+qB
+rZ
+qB
+qB
+qB
+qB
+fD
+qB
+Rq
+wh
+oG
+ck
+Rq
+qB
+qB
+qB
+qB
+"}
+(18,1,1) = {"
+sS
+wt
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+wt
+qB
+qB
+qB
+"}
+(19,1,1) = {"
+sS
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+"}
+(20,1,1) = {"
+sS
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+qB
+"}

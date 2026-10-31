@@ -1,0 +1,5048 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_budgetcuts.dmm
+"ai" = (
+/obj/vehicle/ridden/janicart/upgraded,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ak" = (
+/mob/living/basic/trooper/nanotrasen/ranged/smg,
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 1
+	},
+/obj/item/radio/intercom/directional/north{
+	pixel_x = 1;
+	pixel_y = 23
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"al" = (
+/obj/machinery/vending/dinnerware,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ar" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"as" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"au" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ax" = (
+/obj/structure/chair/stool/directional/west{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"aO" = (
+/obj/machinery/door/airlock/grunge,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"aX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"be" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/turf_decal/caution,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"bq" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/obj/item/folder/blue{
+	pixel_x = -6;
+	pixel_y = -5
+	},
+/obj/item/pen{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"bv" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/item/reagent_containers/condiment/peppermill{
+	desc = "Often used to flavor food or make people sneeze. Fashionably moved to the left side of the table.";
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/condiment/saltshaker{
+	desc = "Salt. From space oceans, presumably. A staple of modern medicine.";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/toy/figure/chef,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"bx" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"bH" = (
+/obj/structure/fermenting_barrel,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"bK" = (
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"bN" = (
+/obj/effect/turf_decal/tile/red/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ca" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"cv" = (
+/obj/structure/fluff/oldturret,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"cG" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/glass/plasma{
+	pixel_y = -7
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"cK" = (
+/obj/structure/table_frame,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"cQ" = (
+/obj/structure/flora/rock/pile/jungle{
+	pixel_x = -3;
+	pixel_y = -8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"cT" = (
+/mob/living/basic/trooper/pirate/melee/space,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"dd" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"de" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"dj" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "coatblood"
+	},
+/obj/item/ammo_box/magazine/m45{
+	pixel_x = -14;
+	pixel_y = 7
+	},
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"dp" = (
+/obj/structure/mecha_wreckage/ripley/deathripley,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"du" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"dM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/garbage,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"dS" = (
+/obj/machinery/door/airlock/hatch{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ed" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ee" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/sign/poster/official/random/directional/north,
+/obj/structure/frame/computer,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ek" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"eu" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"eA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"eE" = (
+/obj/structure/closet/secure_closet/brig{
+	name = "Cell Locker"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/tile/red/fourcorners,
+/obj/item/radio/intercom/directional/north{
+	pixel_x = 1;
+	pixel_y = 23
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"eG" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"eK" = (
+/obj/structure/flora/rock/style_random,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"eS" = (
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"eZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/sign/poster/official/random/directional/west,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"fr" = (
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"fz" = (
+/obj/effect/mob_spawn/corpse/human/scientist,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "coatblood"
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor2";
+	pixel_x = 6
+	},
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"fK" = (
+/obj/structure/table/reinforced,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/item/stock_parts/power_store/cell/high{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"fQ" = (
+/obj/structure/table,
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 6
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_uplift{
+	pixel_x = 9;
+	pixel_y = 7
+	},
+/obj/item/lighter/greyscale{
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/obj/item/toy/figure/roboticist{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/trash/sosjerky{
+	pixel_y = 8;
+	pixel_x = -2
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"gx" = (
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
+/obj/machinery/power/port_gen/pacman,
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"gz" = (
+/obj/effect/spawner/random/vending/colavend,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/dim/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"gT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"gU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"gX" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"hl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/dim/directional/north,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"hs" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/circuit_stack,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"hE" = (
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"hN" = (
+/mob/living/basic/trooper/nanotrasen/ranged/smg,
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"hV" = (
+/obj/structure/flora/rock/pile,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"ie" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"io" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"iK" = (
+/obj/structure/table/reinforced,
+/obj/item/disk/tech_disk{
+	pixel_x = 6
+	},
+/obj/item/disk/tech_disk{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/toy/figure/scientist{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"iM" = (
+/mob/living/basic/trooper/pirate/ranged/space,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"jc" = (
+/obj/structure/closet/cabinet,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"jd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/holosign/barrier/wetsign,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"jh" = (
+/obj/structure/flora/rock/pile/style_random{
+	pixel_x = 10;
+	pixel_y = 14
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"jn" = (
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"jJ" = (
+/obj/structure/closet/cardboard,
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron{
+	pixel_x = 8;
+	pixel_y = -5;
+	amount = 20
+	},
+/obj/item/stack/sheet/plasteel/twenty{
+	pixel_x = -5;
+	pixel_y = -6;
+	amount = 20
+	},
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"kj" = (
+/obj/structure/broken_flooring/pile/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ku" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/mob/living/basic/trooper/nanotrasen/ranged,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"kw" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"kA" = (
+/obj/machinery/door/window/brigdoor/security/cell/right/directional/east{
+	id = "exp_celadon_budget_cuts_brig2";
+	name = "Cell 2"
+	},
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"kL" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"kR" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"lh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ll" = (
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -7;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"lK" = (
+/obj/structure/fermenting_barrel,
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"lQ" = (
+/obj/item/pickaxe/drill/jackhammer,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"lS" = (
+/obj/item/stock_parts/matter_bin{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stock_parts/matter_bin,
+/obj/item/stock_parts/micro_laser,
+/obj/item/stock_parts/scanning_module{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/servo,
+/obj/item/stock_parts/capacitor,
+/obj/item/multitool{
+	pixel_x = 3
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"mf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"mj" = (
+/obj/structure/flora/bush/large,
+/obj/structure/flora/rock/pile/style_random{
+	pixel_x = 7;
+	pixel_y = -3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"mm" = (
+/obj/structure/flora/rock/pile/jungle{
+	pixel_x = 12;
+	pixel_y = 6
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"mw" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"mG" = (
+/obj/machinery/door/airlock/mining{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"mP" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"mY" = (
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"mZ" = (
+/obj/structure/flora/tree/stump,
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"na" = (
+/turf/closed/mineral/random/low_chance,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"nf" = (
+/obj/machinery/chem_master/condimaster{
+	name = "CondiMaster Neo"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"nv" = (
+/obj/machinery/door/airlock/research,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"nA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"nC" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/purple/line,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"nQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/frame/computer,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"nV" = (
+/obj/machinery/light/dim/directional/north,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"oa" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/sand,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"of" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ok" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/item/trash/sosjerky,
+/obj/item/trash/energybar,
+/obj/item/trash/chips,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"oR" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/sign/poster/official/random/directional/east,
+/obj/structure/frame/machine,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"pd" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp{
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"pk" = (
+/obj/structure/flora/bush/large{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"pm" = (
+/obj/effect/turf_decal/trimline/purple/line,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"pD" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/stack/package_wrap,
+/obj/item/hand_labeler,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"pG" = (
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"pR" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"pT" = (
+/obj/structure/dresser,
+/obj/item/pai_card{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"pW" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"pX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2;
+	color = "#808080"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"pY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"qe" = (
+/obj/structure/chair/greyscale{
+	dir = 8
+	},
+/obj/structure/sign/poster/official/random/directional/north,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"qt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/hatch{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"qz" = (
+/obj/structure/closet/radiation,
+/obj/effect/turf_decal/stripes/line,
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"qK" = (
+/obj/machinery/door/airlock/security/glass{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"qW" = (
+/obj/machinery/vending/snack,
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"rg" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/structure/railing,
+/obj/item/storage/box/ingredients/wildcard{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/condiment/sugar{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/food/tortilla,
+/obj/item/food/tortilla,
+/obj/item/food/tortilla,
+/obj/item/food/tortilla,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ri" = (
+/turf/open/floor/iron/stairs{
+	color = "#A47449";
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"rj" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/bedsheet/rd,
+/obj/structure/curtain{
+	color = "#5c131b"
+	},
+/obj/item/toy/plush/nukeplushie,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/holofloor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"rk" = (
+/obj/effect/turf_decal/sand,
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"rv" = (
+/obj/structure/flora/rock/pile/style_random{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"rD" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/machinery/light/dim/directional/east,
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"rG" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"rM" = (
+/obj/structure/sign/poster/official/random/directional/east,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"sg" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"sB" = (
+/obj/item/kirbyplants/random,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"sD" = (
+/obj/machinery/processor,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom/directional/north{
+	pixel_x = 1;
+	pixel_y = 23
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"sL" = (
+/obj/structure/filingcabinet/chestdrawer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"sZ" = (
+/obj/structure/sink/directional/south,
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"tb" = (
+/obj/structure/flora/rock/pile/style_random{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/obj/structure/flora/rock/pile/style_random{
+	pixel_x = -14;
+	pixel_y = 7
+	},
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"tq" = (
+/obj/structure/chair/comfy/black,
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"tu" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"tv" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ty" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"tE" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
+/obj/structure/grille/broken,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"tR" = (
+/obj/structure/chair/office{
+	dir = 4;
+	name = "tactical swivel chair"
+	},
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"tW" = (
+/obj/effect/turf_decal/sand,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"tX" = (
+/obj/machinery/gibber,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"uk" = (
+/obj/machinery/door/airlock/research,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ut" = (
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"uJ" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"uV" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/firedoor,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"uY" = (
+/obj/structure/table,
+/obj/item/storage/box/handcuffs{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/storage/box/flashes,
+/obj/item/storage/box/minertracker{
+	pixel_x = -8;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"vm" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"vn" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"vo" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"vt" = (
+/obj/machinery/power/smes/full{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/window/reinforced/plasma/spawner,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"vJ" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4;
+	name = "tactical chair"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"vN" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4;
+	name = "tactical chair"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"vS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"vY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/mob/living/basic/trooper/nanotrasen,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"we" = (
+/obj/effect/mine/shrapnel,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"wx" = (
+/obj/machinery/door/airlock/vault,
+/obj/machinery/door/firedoor,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"wF" = (
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"wQ" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp{
+	pixel_y = 4
+	},
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/obj/item/radio/intercom/directional/west,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"wY" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/structure/railing/corner,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"xd" = (
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"xi" = (
+/obj/structure/table/reinforced,
+/obj/item/wrench,
+/obj/item/crowbar,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/glasses/science,
+/obj/item/multitool{
+	pixel_x = 3
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"xk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white/corner,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"xy" = (
+/obj/machinery/door/firedoor,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"xC" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"xK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"xQ" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/item/food/pie/cream,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"yh" = (
+/obj/structure/chair/comfy/black,
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"yi" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/sign/poster/official/random/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"yj" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"yk" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"yn" = (
+/obj/structure/hedge,
+/obj/machinery/light/dim/directional/south,
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"yt" = (
+/obj/structure/table/reinforced,
+/obj/item/aicard{
+	pixel_x = 5
+	},
+/obj/item/aicard,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"yv" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"yw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"yy" = (
+/obj/machinery/door/airlock/freezer{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"yB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/wallframe/light_fixture{
+	pixel_y = -14;
+	pixel_x = 10
+	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"yI" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/pen/fountain{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/obj/item/stamp/head/rd{
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/item/stamp/denied{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/stamp/granted{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"yK" = (
+/obj/machinery/light/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"zb" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"zd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"zw" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/obj/item/stamp/head/hos{
+	pixel_x = -9;
+	pixel_y = 9
+	},
+/obj/item/pen{
+	pixel_x = -9;
+	pixel_y = 1
+	},
+/obj/machinery/status_display/evac{
+	pixel_y = 32
+	},
+/obj/machinery/computer/records/medical/laptop{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"zy" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/gun/energy/recharge/kinetic_accelerator,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"zz" = (
+/obj/machinery/vending/security,
+/obj/item/radio/intercom/directional/north{
+	pixel_x = 1;
+	pixel_y = 23
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"zD" = (
+/obj/effect/mob_spawn/corpse/human/scientist,
+/obj/effect/decal/cleanable/blood/tracks{
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"zE" = (
+/obj/structure/flora/rock/style_random,
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"zF" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/records/medical/laptop{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/machinery/computer/records/security/laptop{
+	pixel_x = 16;
+	pixel_y = 3
+	},
+/obj/structure/sign/poster/official/random/directional/west,
+/obj/effect/turf_decal/tile/red/fourcorners,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"zS" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"zT" = (
+/obj/structure/flora/rock/pile,
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Ar" = (
+/mob/living/basic/trooper/nanotrasen,
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Au" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Ay" = (
+/obj/structure/broken_flooring/corner/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"AX" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Bc" = (
+/obj/effect/mob_spawn/corpse/human/scientist,
+/obj/item/gun/ballistic/automatic/pistol,
+/obj/item/ammo_casing/spent,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "splatter1";
+	pixel_x = 18;
+	pixel_y = 4
+	},
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Bf" = (
+/obj/machinery/computer/crew{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Bm" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/sign/poster/official/random/directional/north,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Bw" = (
+/obj/machinery/door/airlock/security,
+/obj/effect/decal/cleanable/blood/tracks{
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "floor3"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Bx" = (
+/obj/machinery/rnd/experimentor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"BA" = (
+/obj/machinery/light/dim/directional/west,
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"BI" = (
+/obj/structure/flora/rock/pile/style_random{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"BO" = (
+/obj/effect/decal/cleanable/glass/plasma{
+	pixel_x = -14
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Cs" = (
+/obj/structure/flora/rock,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Cu" = (
+/obj/structure/flora/rock/pile/jungle,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Cv" = (
+/obj/structure/bed,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2;
+	color = "#808080"
+	},
+/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"CD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"CI" = (
+/obj/structure/sign/poster/official/random/directional/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1;
+	color = "#808080"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"CN" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"CX" = (
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Dl" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4;
+	name = "tactical chair"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"DB" = (
+/obj/structure/flora/rock/style_random,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"DD" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/cup/bottle/epinephrine{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/cup/bottle/multiver{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/item/reagent_containers/dropper,
+/obj/item/stack/medical/bruise_pack{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/obj/item/stack/medical/ointment,
+/obj/item/healthanalyzer{
+	pixel_y = 14
+	},
+/obj/structure/extinguisher_cabinet/directional/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"DG" = (
+/obj/structure/flora/rock/style_random{
+	icon_state = "lavarocks2"
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"DK" = (
+/obj/structure/closet/l3closet/scientist{
+	pixel_x = -2
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Ee" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet{
+	anchored = 1;
+	icon_state = "hos";
+	name = "Head Of Security's Locker"
+	},
+/obj/item/clothing/mask/gas/sechailer,
+/obj/item/clothing/shoes/cowboy/black,
+/obj/item/storage/belt/military,
+/obj/item/clothing/suit/armor/vest/leather,
+/obj/item/clothing/suit/armor/hos/trenchcoat,
+/obj/item/clothing/neck/cloak/hos,
+/obj/item/clothing/under/rank/security/head_of_security/alt,
+/obj/item/clothing/under/rank/security/head_of_security/alt/skirt,
+/obj/item/gun/energy/e_gun,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Ei" = (
+/obj/structure/chair/greyscale{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Eo" = (
+/turf/template_noop,
+/area/template_noop)
+"Ev" = (
+/obj/machinery/light/directional/east,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Ew" = (
+/obj/machinery/door/airlock/hatch{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"EC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags,
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"EU" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/frame/machine,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Fg" = (
+/obj/effect/turf_decal/tile/red/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"FH" = (
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red/fourcorners,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"FY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Gh" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"GE" = (
+/obj/machinery/light/dim/directional/north,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"GX" = (
+/obj/machinery/door/airlock/multi_tile/public/glass,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"GZ" = (
+/obj/machinery/door/airlock/hatch{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Hd" = (
+/obj/item/kirbyplants/random,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Hn" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/flora/rock/pile,
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Hz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/stairs{
+	color = "#A47449";
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"HG" = (
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"HI" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"HQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"HT" = (
+/obj/item/kirbyplants/random{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"HW" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"HX" = (
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_y = 5
+	},
+/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Id" = (
+/obj/structure/closet/secure_closet/security/sec,
+/obj/effect/turf_decal/box,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Ii" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/innards,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Il" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"IA" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"IE" = (
+/obj/structure/closet/crate/medical,
+/obj/item/storage/medkit/brute{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/storage/medkit/fire{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/storage/medkit/o2,
+/obj/item/defibrillator/compact/loaded,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"IO" = (
+/obj/machinery/suit_storage_unit/hos,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"IQ" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"IU" = (
+/obj/machinery/door/airlock/security{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"IZ" = (
+/obj/item/stack/sheet/glass,
+/obj/item/clothing/glasses/welding,
+/obj/item/wrench,
+/obj/item/crowbar,
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Jl" = (
+/obj/machinery/light/small/directional/east,
+/obj/structure/bed/pod,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/spawner/random/bedsheet,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"JL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"JW" = (
+/obj/structure/bed/pod,
+/obj/effect/spawner/random/bedsheet,
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Ke" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/white/corner,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Kj" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Kn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/greenglow,
+/obj/effect/decal/cleanable/wrapping,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Kr" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Ks" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "trails_2"
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"KB" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/left/directional/east,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"KN" = (
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Lb" = (
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"LB" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"LC" = (
+/obj/effect/decal/cleanable/plasma{
+	pixel_x = 14;
+	pixel_y = -12
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"LO" = (
+/obj/structure/bed,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1;
+	color = "#808080"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"LU" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"LY" = (
+/obj/effect/mob_spawn/corpse/human/secoff,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "bubblegumfoot"
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "coatblood";
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"LZ" = (
+/obj/structure/flora/rock/style_random{
+	pixel_y = 12
+	},
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Me" = (
+/obj/structure/barricade/sandbags,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Mm" = (
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white/corner,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Mr" = (
+/obj/effect/decal/cleanable/ash{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Mt" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Mx" = (
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"MD" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ME" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder{
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/condiment/enzyme{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/cup/beaker,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"MK" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"MY" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/frame/machine,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Nf" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/records/medical/laptop{
+	dir = 4;
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Ns" = (
+/obj/structure/chair/office{
+	dir = 4;
+	name = "tactical swivel chair"
+	},
+/obj/effect/turf_decal/tile/red/fourcorners,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"NI" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "gib3"
+	},
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"NS" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"NU" = (
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/rank/rnd/research_director/turtleneck,
+/obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt,
+/obj/item/clothing/under/rank/rnd/research_director,
+/obj/item/clothing/under/rank/rnd/research_director/alt,
+/turf/open/floor/holofloor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"NV" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Of" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Og" = (
+/mob/living/basic/trooper/pirate/melee/space,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Ol" = (
+/obj/machinery/light/dim/directional/north,
+/obj/structure/railing{
+	dir = 8
+	},
+/mob/living/basic/trooper/nanotrasen/ranged,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"On" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/tracks{
+	pixel_y = 10
+	},
+/obj/machinery/light/dim/directional/east,
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"OF" = (
+/obj/structure/table,
+/obj/item/food/mint,
+/obj/item/food/pastrybase{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/food/pastrybase{
+	pixel_x = -6
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"OL" = (
+/obj/structure/closet/crate/engineering/electrical,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"OV" = (
+/obj/effect/turf_decal/delivery,
+/obj/structure/closet/crate/secure/science,
+/obj/item/paper{
+	default_raw_text = "Someone stole nanites.."
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Pc" = (
+/obj/structure/table/reinforced{
+	color = "#c1b6a5"
+	},
+/obj/item/radio{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/trash/semki{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Pq" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Pr" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Pw" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/item/ammo_casing/spent{
+	pixel_x = 5;
+	pixel_y = -9
+	},
+/obj/item/gun/ballistic/automatic/pistol/m1911/no_mag,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"PR" = (
+/obj/structure/table/reinforced,
+/obj/item/food/donut/jelly/slimejelly{
+	pixel_x = -4;
+	pixel_y = -1
+	},
+/obj/item/food/donut/jelly/slimejelly{
+	pixel_x = 8
+	},
+/obj/item/food/donut/jelly/slimejelly,
+/obj/item/food/donut/jelly/slimejelly,
+/obj/item/food/donut/jelly/slimejelly{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/item/t_scanner,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Qa" = (
+/obj/structure/flora/tree/jungle/small,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Qf" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Qj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/greenglow,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"QA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/structure/dresser,
+/obj/machinery/light/dim/directional/east,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"QH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"QM" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"QT" = (
+/obj/machinery/door/airlock/vault,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Rc" = (
+/obj/structure/bed/pod,
+/obj/effect/spawner/random/bedsheet,
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Rd" = (
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Rr" = (
+/obj/machinery/door/airlock/medical{
+	name = "Kitchen"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"RA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"RF" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Sk" = (
+/obj/structure/table/reinforced,
+/obj/item/flashlight/lamp{
+	pixel_x = -3;
+	pixel_y = 12
+	},
+/obj/effect/turf_decal/tile/red/fourcorners,
+/obj/item/storage/fancy/donut_box,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Su" = (
+/obj/structure/chair/comfy/black,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Sy" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/window/reinforced/plasma/spawner/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Sz" = (
+/obj/structure/bed/pod,
+/obj/effect/spawner/random/bedsheet,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"SD" = (
+/obj/structure/flora/bush/large{
+	pixel_x = -22;
+	pixel_y = -3
+	},
+/obj/structure/flora/rock/pile/style_random{
+	pixel_x = 18;
+	pixel_y = -11
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"SI" = (
+/obj/structure/table/reinforced,
+/obj/item/flashlight/lamp{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/gps{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"SR" = (
+/obj/machinery/light/dim/directional/east,
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Tb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Td" = (
+/mob/living/basic/trooper/nanotrasen/ranged,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/dim/directional/north,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/item/radio/intercom/directional/north{
+	pixel_x = 1;
+	pixel_y = 23
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Tf" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/obj/item/pen,
+/obj/item/taperecorder{
+	pixel_x = 9;
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Tr" = (
+/obj/structure/flora/tree/dead/style_random,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Tu" = (
+/obj/machinery/light/small/directional/east,
+/obj/effect/decal/cleanable/garbage,
+/obj/machinery/power/apc/auto_name/directional/north,
+/turf/open/floor/vault/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"TM" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"TQ" = (
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Ug" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Uk" = (
+/obj/structure/table/reinforced{
+	color = "#c1b6a5"
+	},
+/obj/machinery/light/directional/north,
+/obj/item/plate,
+/obj/item/flashlight/flare/candle{
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/obj/item/trash/popcorn,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Um" = (
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Ux" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1;
+	name = "tactical chair"
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Uy" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/storage/fancy/cigarettes/cigars/cohiba{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/item/lighter{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"UP" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/spider/giant,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"UU" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/structure/railing,
+/obj/item/storage/box/ingredients/wildcard{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/storage/box/ingredients/wildcard{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/machinery/light/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Vc" = (
+/obj/effect/decal/cleanable/blood/gibs/robot_debris/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Vs" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "bubblegumfoot"
+	},
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Vz" = (
+/obj/structure/chair/greyscale{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"VD" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"VH" = (
+/obj/structure/displaycase/labcage,
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/carpet/purple,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"VN" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/red/fourcorners,
+/obj/item/food/donut/jelly/blumpkin{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"VQ" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/flora/rock/pile/style_random,
+/obj/machinery/light/floor,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"VS" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"VY" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Wa" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/structure/bookcase/random,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Wd" = (
+/obj/structure/flora/rock/pile/style_random,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Wi" = (
+/obj/machinery/door/airlock/vault,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Wl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/light/small/broken/directional/north,
+/mob/living/basic/trooper/pirate/ranged/space,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Wn" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Wo" = (
+/obj/structure/closet/secure_closet/brig{
+	name = "Cell Locker"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/tile/red/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Wy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"WB" = (
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/obj/machinery/light/dim/directional/south,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"WG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"WM" = (
+/turf/closed/wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"WT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/white,
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Xo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_y = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Xt" = (
+/obj/structure/flora/rock/pile/jungle/large{
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/turf/closed/mineral/random/low_chance,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"XJ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/bookcase/random,
+/obj/machinery/light/dim/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"XO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/trashcart,
+/obj/item/trash/syndi_cakes{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/trash/energybar,
+/obj/item/trash/candy,
+/obj/item/trash/sosjerky,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"XX" = (
+/obj/machinery/light/dim/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/catwalk_floor,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"XY" = (
+/obj/machinery/deepfryer,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Ye" = (
+/obj/item/kirbyplants/random,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Yo" = (
+/obj/machinery/door/airlock/wood,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"Yr" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"Yz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"YB" = (
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/flora/rock/pile/style_random,
+/obj/structure/flora/rock/pile/style_random,
+/obj/machinery/light/floor,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"YG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"YO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"YP" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"YW" = (
+/obj/structure/flora/rock/pile,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"ZA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior)
+"ZG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ZS" = (
+/obj/structure/chair/greyscale{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glass{
+	dir = 8;
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/plastic,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ZT" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ZW" = (
+/obj/structure/table/wood,
+/obj/item/cigbutt/cigarbutt{
+	pixel_x = 8;
+	pixel_y = -1
+	},
+/obj/machinery/requests_console{
+	name = "Head of Security RC";
+	pixel_x = 30
+	},
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/item/phone{
+	desc = "Supposedly a direct line to nanotrasen Central Command. It's not even plugged in.";
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/structure/railing/corner,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+"ZX" = (
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
+
+(1,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(2,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(3,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+na
+na
+TQ
+TQ
+MK
+TQ
+MK
+MK
+MK
+MK
+MK
+MK
+TQ
+MK
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(4,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+TQ
+OL
+IE
+jJ
+RF
+ok
+Kr
+Rr
+JL
+ax
+UU
+TQ
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(5,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+TQ
+Tu
+gU
+yw
+uV
+bx
+MD
+RF
+tX
+QH
+rg
+MK
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(6,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+MK
+MK
+RF
+RF
+RF
+VD
+yi
+RF
+RF
+yy
+RF
+MK
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+NV
+NV
+NV
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+Eo
+"}
+(7,1,1) = {"
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+MK
+Vz
+ZS
+Yz
+sg
+Kj
+RF
+sD
+ty
+al
+MK
+MK
+MK
+MK
+MK
+na
+na
+na
+na
+na
+na
+na
+na
+eK
+mZ
+hV
+rv
+jn
+na
+na
+na
+na
+Eo
+Eo
+Eo
+"}
+(8,1,1) = {"
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+MK
+Uk
+Pc
+Hd
+sg
+Kj
+bv
+ty
+JL
+XY
+RF
+pX
+XX
+CI
+MK
+na
+na
+na
+na
+na
+na
+na
+NV
+du
+mj
+LZ
+jn
+jn
+jn
+na
+na
+na
+Eo
+Eo
+Eo
+"}
+(9,1,1) = {"
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+MK
+qe
+Ei
+yk
+tv
+Kj
+xQ
+eS
+ty
+HX
+RF
+Cv
+pY
+LO
+MK
+na
+na
+na
+na
+na
+na
+na
+du
+Wd
+jn
+jn
+jn
+jn
+jn
+jn
+Xt
+na
+Eo
+Eo
+Eo
+"}
+(10,1,1) = {"
+na
+na
+MK
+MK
+MK
+MK
+MK
+na
+na
+MK
+kR
+kR
+RF
+Qf
+au
+RF
+nf
+OF
+ME
+RF
+kR
+kA
+kR
+MK
+na
+na
+na
+na
+na
+na
+na
+NV
+BI
+jn
+jn
+jn
+jn
+jn
+NV
+NV
+na
+na
+Eo
+Eo
+"}
+(11,1,1) = {"
+na
+na
+MK
+SI
+Nf
+Uy
+MK
+na
+na
+MK
+VQ
+YB
+kR
+ri
+Hz
+RF
+RF
+RF
+RF
+RF
+eE
+Fg
+Wo
+MK
+MK
+na
+na
+na
+na
+na
+na
+Tr
+NV
+zE
+jn
+zE
+jn
+jn
+Qa
+NV
+na
+na
+Eo
+Eo
+"}
+(12,1,1) = {"
+na
+na
+MK
+HT
+yh
+yI
+MK
+MK
+MK
+MK
+RF
+RF
+RF
+Ar
+xy
+RF
+eG
+Yr
+Yr
+ku
+CN
+CN
+CN
+tq
+MK
+na
+na
+na
+na
+na
+na
+du
+SD
+jn
+jn
+jn
+jn
+pk
+du
+YG
+na
+na
+Eo
+Eo
+"}
+(13,1,1) = {"
+na
+na
+MK
+Mx
+Bc
+IQ
+RF
+pT
+cK
+RF
+jc
+pd
+RF
+vo
+Ke
+Bw
+NI
+On
+NS
+NS
+NS
+SR
+Pr
+fQ
+MK
+na
+na
+na
+na
+na
+na
+NV
+du
+DG
+tb
+jn
+jn
+du
+YW
+mm
+na
+na
+Eo
+Eo
+"}
+(14,1,1) = {"
+na
+na
+MK
+VH
+bK
+Bf
+RF
+Rc
+KN
+RF
+JW
+LU
+RF
+hl
+Vs
+RF
+RF
+RF
+IU
+RF
+RF
+RF
+qK
+MK
+MK
+na
+na
+na
+na
+na
+na
+na
+du
+NV
+Wd
+Wd
+du
+DB
+cQ
+na
+na
+na
+Eo
+Eo
+"}
+(15,1,1) = {"
+na
+na
+MK
+Wa
+Kr
+RF
+RF
+RF
+Ew
+RF
+RF
+GZ
+RF
+gT
+ZT
+RF
+zF
+bN
+bN
+FH
+RF
+zz
+eu
+uY
+MK
+na
+na
+na
+na
+na
+na
+na
+na
+NV
+NV
+NV
+NV
+NV
+na
+na
+na
+na
+Eo
+Eo
+"}
+(16,1,1) = {"
+na
+na
+MK
+XJ
+TM
+CX
+as
+RA
+ZG
+eZ
+ZG
+zd
+RF
+Of
+Ii
+RF
+VN
+Ns
+bN
+Sk
+RF
+Id
+rM
+WB
+TQ
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+"}
+(17,1,1) = {"
+na
+na
+TQ
+NU
+rj
+RF
+rD
+vY
+FY
+HQ
+FY
+ie
+aO
+mf
+ZT
+RF
+RF
+bq
+KB
+RF
+MK
+MK
+MK
+MK
+MK
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+"}
+(18,1,1) = {"
+na
+na
+TQ
+MK
+MK
+RF
+RF
+dS
+RF
+RF
+RF
+qt
+RF
+Of
+Il
+RF
+hE
+zS
+zS
+Ye
+MK
+Ol
+ca
+TQ
+na
+na
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+"}
+(19,1,1) = {"
+na
+na
+na
+na
+MK
+wQ
+Su
+UP
+IO
+RF
+Sz
+pR
+RF
+vo
+Mt
+RF
+Td
+eu
+eu
+LY
+Wi
+nA
+nA
+QT
+be
+NV
+tW
+NV
+Wd
+na
+VS
+NV
+NV
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+"}
+(20,1,1) = {"
+na
+na
+na
+na
+MK
+zw
+ZW
+Jl
+Ee
+RF
+QA
+Xo
+RF
+GE
+vn
+RF
+Bm
+zD
+zS
+IA
+MK
+nV
+of
+TQ
+Hn
+VS
+tW
+HW
+NV
+na
+xK
+gX
+ZA
+gX
+LB
+NV
+na
+na
+na
+na
+na
+na
+na
+Eo
+"}
+(21,1,1) = {"
+na
+na
+na
+na
+MK
+MK
+MK
+MK
+MK
+RF
+RF
+RF
+RF
+CD
+kL
+RF
+RF
+Pw
+RF
+MK
+MK
+MK
+MK
+TQ
+na
+Um
+zb
+NV
+mP
+na
+Ug
+ut
+ut
+ut
+oa
+NV
+na
+na
+na
+na
+na
+na
+na
+Eo
+"}
+(22,1,1) = {"
+na
+na
+na
+na
+na
+na
+na
+na
+MK
+Tf
+DD
+xi
+RF
+gT
+tu
+GX
+Ks
+dj
+qW
+MK
+na
+na
+na
+na
+na
+VS
+Wd
+rk
+du
+NV
+Ug
+ut
+ut
+ut
+yj
+NV
+na
+na
+na
+na
+na
+na
+na
+Eo
+"}
+(23,1,1) = {"
+Eo
+na
+na
+na
+na
+na
+na
+na
+MK
+ee
+pW
+Lb
+uk
+mf
+xk
+yv
+hN
+Mm
+yn
+MK
+na
+na
+na
+na
+na
+NV
+VS
+du
+VS
+du
+dd
+ut
+ut
+ut
+VY
+NV
+na
+na
+na
+na
+na
+na
+na
+Eo
+"}
+(24,1,1) = {"
+Eo
+na
+na
+na
+na
+na
+na
+na
+MK
+qz
+Lb
+DK
+RF
+Of
+Tb
+RF
+RF
+mG
+RF
+MK
+MK
+MK
+MK
+na
+na
+zb
+NV
+mP
+NV
+mP
+uJ
+ut
+ut
+ut
+VY
+NV
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+"}
+(25,1,1) = {"
+Eo
+na
+na
+na
+na
+na
+na
+na
+TQ
+kR
+mY
+kR
+RF
+hl
+Rd
+RF
+dM
+jd
+zS
+EC
+OV
+Kn
+MK
+na
+na
+Cs
+NV
+HW
+NV
+NV
+Ug
+ut
+ut
+ut
+VY
+NV
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+"}
+(26,1,1) = {"
+Eo
+na
+na
+na
+na
+na
+na
+na
+MK
+vm
+YP
+ZX
+RF
+sB
+WT
+RF
+fr
+lh
+Wy
+aX
+Wy
+de
+MK
+na
+na
+NV
+HW
+VS
+VS
+NV
+WG
+ut
+ut
+ut
+VY
+NV
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+"}
+(27,1,1) = {"
+Eo
+na
+na
+na
+na
+na
+na
+na
+MK
+vm
+Bx
+vm
+RF
+RF
+eA
+RF
+zy
+kj
+Wn
+Ay
+de
+ai
+MK
+na
+NV
+NV
+HW
+VS
+NV
+na
+AX
+xC
+vS
+vS
+Pq
+Cu
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+"}
+(28,1,1) = {"
+Eo
+na
+na
+na
+na
+na
+na
+na
+MK
+vm
+Mr
+Vc
+RF
+ek
+eA
+RF
+RF
+RF
+RF
+MK
+MK
+MK
+MK
+na
+NV
+Qa
+NV
+NV
+NV
+na
+Wd
+NV
+ar
+NV
+NV
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+"}
+(29,1,1) = {"
+Eo
+na
+na
+na
+na
+na
+na
+na
+TQ
+yK
+ed
+Ev
+RF
+gz
+kw
+nv
+wF
+BA
+xd
+MK
+na
+na
+na
+na
+NV
+NV
+na
+NV
+NV
+na
+na
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+"}
+(30,1,1) = {"
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+MK
+MK
+MK
+MK
+MK
+MK
+MK
+MK
+ak
+HG
+pm
+MK
+MK
+na
+na
+na
+NV
+na
+na
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+"}
+(31,1,1) = {"
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+MK
+sL
+hs
+MK
+sZ
+HG
+nC
+fK
+MK
+na
+na
+na
+na
+na
+na
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+"}
+(32,1,1) = {"
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+TQ
+YO
+ZX
+wx
+pG
+fz
+tR
+lS
+MK
+na
+na
+na
+na
+na
+NV
+NV
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+"}
+(33,1,1) = {"
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+MK
+PR
+yt
+MK
+pD
+QM
+iK
+IZ
+MK
+na
+na
+na
+na
+na
+NV
+NV
+Me
+cv
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+"}
+(34,1,1) = {"
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+TQ
+MK
+MK
+MK
+EU
+HI
+Gh
+MK
+io
+Og
+na
+na
+na
+na
+NV
+NV
+Me
+Me
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+"}
+(35,1,1) = {"
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+MK
+oR
+wY
+MY
+MK
+dp
+Qj
+na
+na
+na
+na
+NV
+NV
+NV
+we
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+"}
+(36,1,1) = {"
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+MK
+MK
+MK
+MK
+MK
+Wl
+yB
+na
+na
+na
+na
+NV
+NV
+NV
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+"}
+(37,1,1) = {"
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+XO
+lQ
+na
+na
+na
+na
+na
+NV
+NV
+NV
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+"}
+(38,1,1) = {"
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+cT
+na
+na
+na
+na
+na
+NV
+we
+NV
+NV
+NV
+NV
+NV
+na
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+"}
+(39,1,1) = {"
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+ll
+na
+na
+na
+na
+na
+na
+NV
+NV
+NV
+NV
+NV
+we
+NV
+NV
+we
+na
+NV
+NV
+NV
+NV
+NV
+NV
+"}
+(40,1,1) = {"
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+tE
+na
+na
+na
+na
+na
+na
+na
+na
+na
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+we
+na
+na
+na
+na
+"}
+(41,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+we
+NV
+NV
+NV
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+"}
+(42,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+bH
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+"}
+(43,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+du
+du
+bH
+na
+Wd
+NV
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+NV
+NV
+NV
+na
+na
+na
+na
+na
+Eo
+Eo
+"}
+(44,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+du
+du
+NV
+NV
+NV
+NV
+LC
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+NV
+we
+NV
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(45,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+du
+NV
+NV
+na
+na
+gx
+vt
+rG
+NV
+du
+zT
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+NV
+NV
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(46,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+du
+NV
+WM
+WM
+vJ
+vN
+Dl
+Yo
+NV
+du
+YG
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+NV
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(47,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+NV
+Au
+nQ
+Ux
+iM
+mw
+Yo
+NV
+NV
+du
+du
+NV
+na
+na
+na
+na
+na
+na
+na
+na
+NV
+NV
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(48,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+du
+Au
+Au
+na
+cG
+vt
+Sy
+NV
+NV
+du
+du
+NV
+NV
+na
+na
+na
+na
+NV
+NV
+NV
+NV
+NV
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(49,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+du
+NV
+NV
+NV
+BO
+NV
+jh
+NV
+du
+du
+du
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+na
+na
+we
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(50,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+NV
+du
+du
+lK
+na
+NV
+du
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(51,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}
+(52,1,1) = {"
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+na
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+Eo
+"}

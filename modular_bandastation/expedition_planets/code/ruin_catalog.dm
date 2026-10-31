@@ -222,4 +222,81 @@
 	name = "Expedition-Surface Celadon boxsci"
 	suffix = "celadon_boxsci.dmm"
 	planet_biomes = list("barren")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon comm_outpost. */
+/datum/map_template/ruin/expedition/celadon_comm_outpost
+	id = "celadon_comm_outpost"
+	name = "Expedition-Surface Celadon comm_outpost"
+	suffix = "celadon_comm_outpost.dmm"
+	planet_biomes = list("lava")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon pinnace. */
+/datum/map_template/ruin/expedition/celadon_pinnace
+	id = "celadon_pinnace"
+	name = "Expedition-Surface Celadon pinnace"
+	suffix = "celadon_pinnace.dmm"
+	planet_biomes = list("lava")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon dwarf_fortress. */
+/datum/map_template/ruin/expedition/celadon_dwarf_fortress
+	id = "celadon_dwarf_fortress"
+	name = "Expedition-Surface Celadon dwarf_fortress"
+	suffix = "celadon_dwarf_fortress.dmm"
+	planet_biomes = list("lava")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon spooky_crash. */
+/datum/map_template/ruin/expedition/celadon_spooky_crash
+	id = "celadon_spooky_crash"
+	name = "Expedition-Surface Celadon spooky_crash"
+	suffix = "celadon_spooky_crash.dmm"
+	planet_biomes = list("lava")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon xeno_nest. */
+/datum/map_template/ruin/expedition/celadon_xeno_nest
+	id = "celadon_xeno_nest"
+	name = "Expedition-Surface Celadon xeno_nest"
+	suffix = "celadon_xeno_nest.dmm"
+	planet_biomes = list("lava")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon listening_post. */
+/datum/map_template/ruin/expedition/celadon_listening_post
+	id = "celadon_listening_post"
+	name = "Expedition-Surface Celadon listening_post"
+	suffix = "celadon_listening_post.dmm"
+	planet_biomes = list("lava")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon hivebot_crash. */
+/datum/map_template/ruin/expedition/celadon_hivebot_crash
+	id = "celadon_hivebot_crash"
+	name = "Expedition-Surface Celadon hivebot_crash"
+	suffix = "celadon_hivebot_crash.dmm"
+	planet_biomes = list("barren")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon dangerpod. */
+/datum/map_template/ruin/expedition/celadon_dangerpod
+	id = "celadon_dangerpod"
+	name = "Expedition-Surface Celadon dangerpod"
+	suffix = "celadon_dangerpod.dmm"
+	planet_biomes = list("barren")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon saloon. */
+/datum/map_template/ruin/expedition/celadon_saloon
+	id = "celadon_saloon"
+	name = "Expedition-Surface Celadon saloon"
+	suffix = "celadon_saloon.dmm"
+	planet_biomes = list("barren")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon harm_factory. */
+/datum/map_template/ruin/expedition/celadon_harm_factory
+	id = "celadon_harm_factory"
+	name = "Expedition-Surface Celadon harm_factory"
+	suffix = "celadon_harm_factory.dmm"
+	planet_biomes = list("barren")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon budget_cuts. */
+/datum/map_template/ruin/expedition/celadon_budget_cuts
+	id = "celadon_budget_cuts"
+	name = "Expedition-Surface Celadon budget_cuts"
+	suffix = "celadon_budget_cuts.dmm"
+	planet_biomes = list("barren")
 // AI EDIT END

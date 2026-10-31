@@ -1,0 +1,454 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_SPOOKYCRASH.dmm
+"af" = (
+/obj/structure/closet/crate{
+	name = "DANGER: PARANORMAL ARTEFACTS"
+	},
+/obj/item/food/muffin/booberry,
+/obj/item/instrument/trombone,
+/obj/item/food/grown/ghost_chili,
+/obj/item/clothing/head/utility/hardhat/pumpkinhead,
+/obj/item/scythe,
+/obj/item/clothing/head/helmet/skull,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"ag" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"ai" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 10
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"ap" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"ar" = (
+/obj/machinery/light/broken/directional/north,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"as" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"ax" = (
+/obj/machinery/power/smes,
+/obj/structure/window/reinforced/tinted/spawner/directional/south,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"ay" = (
+/obj/structure/girder,
+/obj/item/stack/sheet/mineral/titanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"az" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"aB" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"aH" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/stack/tile/mineral/plastitanium/red,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"aP" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/basic/mining/legion,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"eA" = (
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"gn" = (
+/obj/item/stack/tile/mineral/titanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"kR" = (
+/obj/machinery/door/airlock/shuttle,
+/obj/structure/fans/tiny,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"nC" = (
+/obj/item/stack/tile/mineral/plastitanium/red,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"nP" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"oX" = (
+/obj/machinery/door/airlock/shuttle,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"ro" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 13;
+	pixel_y = 8
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"sH" = (
+/obj/structure/window/reinforced/tinted/spawner/directional/south,
+/obj/structure/closet/crate{
+	name = "emergency supplies"
+	},
+/obj/item/pickaxe/emergency,
+/obj/item/storage/medkit/regular,
+/obj/item/storage/toolbox/emergency,
+/obj/item/flashlight/flare,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"ut" = (
+/obj/structure/table,
+/obj/item/paper{
+	default_raw_text = "Objective is to locate and secure the reliquary holding the supernatural items, then swing them back to HQ for containment. Simple job for Mystery Inc.";
+	name = "Mission Statement";
+	pixel_x = -5
+	},
+/obj/item/toy/figure/chaplain{
+	pixel_x = 6
+	},
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"wy" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/suit/armor/riot/knight/red,
+/obj/item/clothing/head/helmet/knight/red,
+/obj/item/claymore{
+	desc = "Comically rusted to the point of near uselessness.";
+	name = "rusted claymore"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"yA" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"Aw" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"AU" = (
+/obj/item/ectoplasm,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 11;
+	pixel_y = -3
+	},
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"BH" = (
+/obj/structure/girder/displaced,
+/obj/item/stack/sheet/mineral/titanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"Cf" = (
+/obj/item/stack/tile/mineral/plastitanium/red,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"Dp" = (
+/obj/item/grenade/chem_grenade/holy,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"Eu" = (
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"GC" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/light/broken/directional/south,
+/obj/item/stack/tile/mineral/titanium/blue,
+/obj/item/book/bible,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"Ky" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/item/clothing/under/rank/civilian/chaplain,
+/obj/item/clothing/head/helmet/chaplain/witchunter_hat,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"KP" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/glass,
+/obj/item/stack/rods,
+/obj/item/stack/tile/mineral/titanium/blue,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"Nj" = (
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"Nu" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"Pg" = (
+/obj/structure/table,
+/obj/item/storage/belt/chameleon,
+/obj/item/toy/plush/lizard_plushie,
+/obj/machinery/light/broken/directional/north,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/door/window/brigdoor/right/directional/west,
+/obj/item/clothing/head/wizard/black,
+/obj/item/clothing/suit/wizrobe/black,
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"PT" = (
+/obj/structure/window/reinforced/tinted/spawner/directional/south,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/bed/dogbed,
+/mob/living/basic/pet/dog/pug{
+	name = "Gooby-Moo"
+	},
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"QA" = (
+/obj/structure/frame/computer,
+/obj/item/shard,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"Rs" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+"Uj" = (
+/obj/structure/closet/crate/coffin{
+	icon_state = "coffinopen"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+
+(1,1,1) = {"
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+ag
+ag
+ag
+ag
+ag
+ag
+aB
+aB
+"}
+(2,1,1) = {"
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+ag
+ag
+ag
+ag
+aB
+aB
+"}
+(3,1,1) = {"
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+ay
+az
+az
+az
+ag
+ag
+ag
+ag
+aP
+"}
+(4,1,1) = {"
+aB
+aB
+az
+aB
+az
+az
+ar
+aH
+ap
+af
+ax
+as
+ag
+ag
+ai
+aB
+"}
+(5,1,1) = {"
+aB
+aB
+yA
+ut
+GC
+az
+Aw
+nP
+nP
+Nu
+sH
+ag
+ag
+ag
+ag
+aB
+"}
+(6,1,1) = {"
+aB
+aB
+Nj
+QA
+Ky
+oX
+Dp
+AU
+Rs
+gn
+PT
+ag
+ag
+ro
+ag
+aB
+"}
+(7,1,1) = {"
+aB
+aB
+aB
+aB
+KP
+BH
+nC
+nP
+Cf
+wy
+Eu
+eA
+ag
+ag
+ag
+aB
+"}
+(8,1,1) = {"
+aB
+aB
+aB
+az
+az
+az
+Pg
+Nu
+Uj
+Uj
+ax
+as
+ag
+ag
+ag
+ag
+"}
+(9,1,1) = {"
+aB
+aB
+aB
+aB
+aB
+az
+az
+kR
+az
+az
+az
+ag
+ag
+ag
+ag
+ag
+"}
+(10,1,1) = {"
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+ag
+ag
+ag
+ag
+ag
+aB
+"}
+(11,1,1) = {"
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+"}

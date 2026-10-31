@@ -611,4 +611,96 @@
 /** Imported room boundary for Заброшенная водоочистная станция; inherits the expedition ruin environment. */
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/ruin/powered
 	name = "Заброшенная водоочистная станция"
+
+/** Imported room boundary for Заброшенный пост охраны: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/exterior
+	name = "Заброшенный пост охраны: наружная территория"
+
+/** Imported room boundary for Заброшенный пост охраны; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen
+	name = "Заброшенный пост охраны"
+
+/** Imported room boundary for Заброшенный узел связи: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/exterior
+	name = "Заброшенный узел связи: наружная территория"
+
+/** Imported room boundary for Заброшенный узел связи; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms
+	name = "Заброшенный узел связи"
+
+/** Imported room boundary for Аварийная капсула; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod
+	name = "Аварийная капсула"
+
+/** Imported room boundary for Подгорная крепость: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior
+	name = "Подгорная крепость: наружная территория"
+
+/** Imported room boundary for Заброшенная фабрика: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior
+	name = "Заброшенная фабрика: наружная территория"
+
+/** Imported room boundary for Заброшенная фабрика; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered
+	name = "Заброшенная фабрика"
+
+/** Imported room boundary for Разбитый транспорт: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior
+	name = "Разбитый транспорт: наружная территория"
+
+/** Imported room boundary for Разбитый транспорт: обесточенный отсек; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered
+	name = "Разбитый транспорт: обесточенный отсек"
+
+/** Imported room boundary for Заброшенный пост прослушивания: обесточенный отсек; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_listening_post/ruin/unpowered
+	name = "Заброшенный пост прослушивания: обесточенный отсек"
+
+/** Imported room boundary for Заброшенный пост прослушивания; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_listening_post/ruin/unpowered/listening_post
+	name = "Заброшенный пост прослушивания"
+
+/** Imported room boundary for Заброшенный пост прослушивания; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_listening_post/ruin/unpowered/listening_post/canteen
+	name = "Заброшенный пост прослушивания"
+
+/** Imported room boundary for Заброшенный пост прослушивания; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_listening_post/ruin/unpowered/listening_post/commons
+	name = "Заброшенный пост прослушивания"
+
+/** Imported room boundary for Заброшенный пост прослушивания; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_listening_post/ruin/unpowered/listening_post/engineering
+	name = "Заброшенный пост прослушивания"
+
+/** Imported room boundary for Заброшенный пост прослушивания; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_listening_post/ruin/unpowered/listening_post/operations
+	name = "Заброшенный пост прослушивания"
+
+/** Imported room boundary for Разбитая пинасса: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior
+	name = "Разбитая пинасса: наружная территория"
+
+/** Imported room boundary for Разбитая пинасса; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms
+	name = "Разбитая пинасса"
+
+/** Imported room boundary for Заброшенный салун: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior
+	name = "Заброшенный салун: наружная территория"
+
+/** Imported room boundary for Заброшенный салун: обесточенный отсек; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered
+	name = "Заброшенный салун: обесточенный отсек"
+
+/** Imported room boundary for Место крушения: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior
+	name = "Место крушения: наружная территория"
+
+/** Imported room boundary for Гнездо ксеноморфов: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_xeno_nest/exterior
+	name = "Гнездо ксеноморфов: наружная территория"
+
+/** Imported room boundary for Гнездо ксеноморфов; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_xeno_nest/ruin/unpowered/crashed_holemaker
+	name = "Гнездо ксеноморфов"
 // AI EDIT END

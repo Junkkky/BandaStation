@@ -1,0 +1,1591 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_crashed_pinnance.dmm
+"aS" = (
+/obj/item/food/canned/beans,
+/obj/structure/sign/poster/official/science/directional/south,
+/obj/effect/decal/cleanable/ash/large,
+/obj/machinery/light/small/broken/directional/south,
+/obj/item/shard,
+/obj/structure/table_frame,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"bc" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer2,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"bs" = (
+/obj/structure/grille/broken,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"cT" = (
+/obj/structure/flora/rock,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"de" = (
+/obj/structure/frame/machine,
+/obj/machinery/light/small/broken/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"dA" = (
+/obj/structure/table{
+	name = "thinking table"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"ee" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder,
+/obj/item/stack/ore/titanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"ex" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"fr" = (
+/obj/structure/flora/rock/pile,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"fH" = (
+/obj/structure/girder,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"gc" = (
+/obj/structure/table_frame/wood,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"gG" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4,
+/obj/effect/turf_decal/box,
+/obj/structure/table_frame,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"hn" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/obj/item/broken_bottle,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"hy" = (
+/obj/structure/chair/stool/directional/west,
+/obj/item/shard,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"hB" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4;
+	desc = "An expensive variant of a standard ion thruster, using highest quality components in order to achieve much better performance. This one seems broken beyond restoration"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"iU" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/west,
+/obj/structure/windoor_assembly{
+	dir = 2
+	},
+/obj/effect/spawner/random/maintenance/two,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"kp" = (
+/obj/structure/lattice,
+/obj/structure/fluff/beach_umbrella/science,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"ky" = (
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"kT" = (
+/obj/item/stack/ore/titanium,
+/obj/item/chair/plastic,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"lg" = (
+/obj/structure/lattice,
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"li" = (
+/obj/machinery/door/window/left/directional/west,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"lp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"lO" = (
+/obj/structure/lattice,
+/obj/structure/flora/rock/pile,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"mg" = (
+/obj/item/stack/ore/titanium,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"mM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"mZ" = (
+/obj/machinery/door/window/left/directional/west,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/frame/computer{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"nL" = (
+/obj/item/stack/ore/titanium{
+	amount = 5
+	},
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"nV" = (
+/obj/item/chair/plastic,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"oE" = (
+/obj/structure/lattice,
+/obj/item/stack/ore/titanium{
+	amount = 5
+	},
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"oJ" = (
+/obj/structure/lattice,
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"oV" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"ps" = (
+/obj/structure/girder,
+/obj/item/stack/ore/titanium{
+	amount = 5
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"pW" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4;
+	desc = "An expensive variant of a standard ion thruster, using highest quality components in order to achieve much better performance. This one seems broken beyond restoration"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"qo" = (
+/obj/structure/closet/emcloset{
+	name = "survey gear"
+	},
+/obj/item/clothing/accessory/armband/science,
+/obj/item/clothing/suit/toggle/labcoat/science,
+/obj/item/clothing/glasses/science,
+/obj/item/tank/internals/oxygen,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"qv" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/windoor_assembly,
+/obj/item/flashlight/glowstick,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"qA" = (
+/obj/structure/flora/rock,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"qT" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"rN" = (
+/obj/structure/girder,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"sc" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"tP" = (
+/obj/structure/lattice,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"vb" = (
+/obj/machinery/power/smes/full{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"vJ" = (
+/obj/structure/bed,
+/obj/structure/curtain,
+/obj/item/shard,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"vO" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/structure/door_assembly/door_assembly_shuttle,
+/turf/open/floor/iron/white/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"vY" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"wT" = (
+/obj/item/stack/cable_coil/cut,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"wU" = (
+/obj/structure/grille/broken,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"wW" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"xd" = (
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"xt" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/item/shard,
+/turf/open/floor/iron/white/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"yv" = (
+/obj/structure/girder/displaced,
+/obj/item/stack/ore/titanium{
+	amount = 5
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"zJ" = (
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Ak" = (
+/obj/machinery/airalarm/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/broken/directional/west,
+/obj/item/bedsheet/rd,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Bu" = (
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/obj/item/stack/tile/iron/dark,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Ds" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/effect/turf_decal/box,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Eh" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/item/light/tube/broken,
+/obj/structure/light_construct/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Em" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/ash,
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/ore/plasma,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Ev" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"ED" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/binary/pump/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"EF" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/plasma,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Fh" = (
+/obj/item/stack/ore/titanium,
+/obj/structure/flora/rock,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"Fz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"FQ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/box,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/plasma,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Gx" = (
+/obj/structure/chair/office{
+	dir = 1;
+	name = "thinking chair";
+	desc = "You sit in this. Innovation flows from there."
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Iy" = (
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/on/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"KR" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Lx" = (
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/effect/turf_decal/box,
+/obj/item/shard,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"MB" = (
+/obj/structure/lattice,
+/obj/item/stack/ore/titanium,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Ng" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/windoor_assembly{
+	dir = 4
+	},
+/obj/item/stack/tile/iron,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Nk" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/box,
+/obj/structure/table_frame,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"NA" = (
+/obj/structure/table,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer4,
+/obj/item/storage/toolbox/mechanical,
+/obj/structure/railing,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Og" = (
+/obj/effect/spawner/random/maintenance/two,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Ot" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/shuttle,
+/turf/open/floor/iron/white/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"OO" = (
+/obj/item/clothing/under/shorts/purple,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"Qw" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Rr" = (
+/obj/item/clothing/glasses/orange,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"Rt" = (
+/obj/effect/decal/cleanable/ash/large,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"Sz" = (
+/turf/closed/indestructible/rock,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"SK" = (
+/obj/structure/chair/stool/directional/west,
+/obj/structure/window/spawner/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"SX" = (
+/obj/effect/spawner/random/maintenance/two,
+/turf/template_noop,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+"Tp" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/outlet_injector/layer4,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Tw" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/iron/white/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Uh" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"VL" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/cobweb,
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"VR" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Wm" = (
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/west,
+/obj/structure/windoor_assembly,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Wn" = (
+/obj/structure/girder,
+/obj/item/stack/ore/titanium,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Wt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/rack_parts,
+/obj/structure/windoor_assembly{
+	dir = 2
+	},
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Wy" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/item/stack/tile/iron,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Wz" = (
+/turf/template_noop,
+/area/template_noop)
+"XG" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"XO" = (
+/obj/structure/girder,
+/obj/structure/lattice,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Yf" = (
+/obj/structure/cable,
+/obj/machinery/holopad,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/effect/mapping_helpers/apc/no_charge,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Yg" = (
+/obj/machinery/airalarm/directional/south,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Yh" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Za" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+"Zs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/broken/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
+
+(1,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+fH
+Yh
+ky
+Rt
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+ky
+ky
+ky
+ky
+ky
+Wz
+Wz
+Wz
+Wz
+"}
+(2,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+Yh
+Yh
+pW
+ky
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+Wz
+Wz
+Wz
+Wz
+"}
+(3,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Rt
+Wm
+tP
+wT
+oE
+ky
+Rt
+ky
+ky
+ky
+ky
+Rr
+ky
+lg
+vY
+XG
+tP
+ky
+Wz
+Wz
+Wz
+Wz
+"}
+(4,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+qv
+tP
+tP
+tP
+ky
+nL
+hB
+vY
+ky
+cT
+Uh
+Uh
+MB
+vY
+Sz
+tP
+ky
+Wz
+Wz
+Wz
+Wz
+"}
+(5,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+qA
+XO
+MB
+vY
+vb
+vY
+vY
+vb
+vY
+tP
+Uh
+nV
+Uh
+oJ
+iU
+ky
+ky
+ky
+ky
+Wz
+Wz
+Wz
+"}
+(6,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+MB
+tP
+vY
+VL
+bc
+Eh
+VR
+vY
+tP
+Uh
+gc
+Og
+tP
+Wt
+ky
+ky
+ky
+Wz
+Wz
+Wz
+Wz
+"}
+(7,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+fr
+tP
+vY
+EF
+Em
+ED
+Yg
+vY
+tP
+kp
+Uh
+Uh
+tP
+rN
+ky
+ky
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(8,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+ky
+tP
+vY
+FQ
+NA
+KR
+sc
+vY
+lg
+tP
+ky
+kT
+ky
+Fh
+ky
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(9,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+tP
+vY
+vY
+vY
+mZ
+Fz
+vY
+tP
+ky
+OO
+SX
+ky
+ky
+ky
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(10,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+Rt
+vY
+mM
+de
+hn
+lp
+ee
+ky
+ky
+fr
+ky
+mg
+ky
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(11,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+qA
+ky
+wU
+dA
+Gx
+Qw
+tP
+lg
+mg
+fr
+ky
+qA
+ky
+ky
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(12,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+ky
+lg
+tP
+tP
+tP
+Bu
+bs
+ky
+ky
+ky
+ky
+ky
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(13,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+Uh
+Uh
+Uh
+Uh
+tP
+xd
+ky
+ky
+ky
+ky
+fr
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(14,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+ky
+Wz
+Wz
+Wz
+ky
+Uh
+lO
+tP
+lg
+tP
+tP
+tP
+tP
+ky
+ky
+ky
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(15,1,1) = {"
+Wz
+Wz
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+yv
+qo
+Zs
+Ev
+Za
+vY
+ky
+ky
+ky
+Wz
+Wz
+Wz
+ky
+ky
+ky
+Wz
+Wz
+"}
+(16,1,1) = {"
+Wz
+Wz
+ky
+oV
+ky
+ky
+qA
+ky
+ky
+nL
+qA
+ky
+zJ
+vY
+vY
+vY
+li
+SK
+vY
+ky
+ky
+ky
+Wz
+Wz
+qA
+ky
+oV
+oV
+Wz
+Wz
+"}
+(17,1,1) = {"
+Wz
+Wz
+Wz
+oV
+oV
+oV
+ky
+ky
+ky
+nL
+ky
+ky
+Tp
+Ot
+Iy
+vO
+wW
+aS
+vY
+ky
+ky
+ky
+ky
+ky
+ky
+ky
+oV
+oV
+oV
+Wz
+"}
+(18,1,1) = {"
+Wz
+Wz
+Wz
+oV
+oV
+oV
+oV
+ky
+oV
+ky
+ky
+ky
+qT
+Yh
+vY
+vY
+Ng
+hy
+vY
+ky
+ky
+ky
+ky
+ky
+ky
+oV
+oV
+oV
+oV
+Wz
+"}
+(19,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+oV
+oV
+oV
+oV
+oV
+oV
+ky
+nL
+ky
+vY
+vJ
+Ak
+Wy
+Yf
+vY
+ky
+qA
+ky
+fr
+oV
+oV
+oV
+oV
+oV
+Wz
+Wz
+"}
+(20,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+oV
+oV
+oV
+oV
+oV
+oV
+fr
+ky
+ky
+vY
+gG
+xt
+Tw
+Nk
+vY
+ky
+ky
+ky
+oV
+oV
+oV
+oV
+oV
+Wz
+Wz
+Wz
+"}
+(21,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+fr
+ps
+vY
+Ds
+Lx
+yv
+vY
+ky
+fr
+fr
+oV
+oV
+oV
+oV
+Wz
+Wz
+Wz
+Wz
+"}
+(22,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+XG
+vY
+wU
+wU
+ex
+Wn
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+Wz
+Wz
+Wz
+Wz
+"}
+(23,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(24,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(25,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(26,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(27,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+oV
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(28,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+oV
+oV
+oV
+oV
+oV
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(29,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}
+(30,1,1) = {"
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+Wz
+"}

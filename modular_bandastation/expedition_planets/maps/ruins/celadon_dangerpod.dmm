@@ -1,0 +1,94 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_dangerpod.dmm
+"d" = (
+/turf/closed/wall/mineral/plastitanium/survival/pod,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod)
+"j" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/black,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod)
+"l" = (
+/obj/structure/fans,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod)
+"n" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod)
+"o" = (
+/obj/item/gps/computer,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod)
+"q" = (
+/obj/structure/chair/comfy/black,
+/obj/structure/tubes,
+/obj/effect/decal/cleanable/blood/old,
+/mob/living/basic/hivebot,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod)
+"w" = (
+/obj/effect/decal/cleanable/blood/old,
+/mob/living/basic/skeleton/plasmaminer/jackhammer,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod)
+"D" = (
+/obj/machinery/door/airlock/survival_pod,
+/obj/structure/fans/tiny,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod)
+"F" = (
+/obj/machinery/smartfridge/survival_pod,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod)
+"P" = (
+/obj/machinery/sleeper/survival_pod,
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod)
+"R" = (
+/obj/structure/table/survival_pod,
+/obj/item/t_scanner/adv_mining_scanner,
+/obj/item/instrument/guitar,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_dangerpod/ruin/rockplanet/dangerpod)
+
+(1,1,1) = {"
+d
+d
+d
+d
+d
+"}
+(2,1,1) = {"
+d
+l
+P
+R
+d
+"}
+(3,1,1) = {"
+d
+F
+w
+n
+D
+"}
+(4,1,1) = {"
+d
+o
+j
+q
+d
+"}
+(5,1,1) = {"
+d
+d
+d
+d
+d
+"}
