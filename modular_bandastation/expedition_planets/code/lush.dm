@@ -13,6 +13,7 @@
 
 /** Seeded jungle terrain with flora and wildlife excluded from reserved paths and ruins. */
 /datum/map_generator/expedition_barren/lush
+	hole_type = /turf/open/openspace/expedition_lush
 	wildlife = TRUE
 	storm_trait = ZTRAIT_RAINSTORM
 	floor_type = /turf/open/misc/grass/jungle
@@ -228,4 +229,9 @@
 	icon_state = "bushb1"
 	field_notes = "На освещённых пластинах заметен тёмный пигмент. Волокна уходят в почву и связывают несколько соседних побегов."
 	laboratory_notes = "В образце обнаружены растительные клетки и симбиотические микроорганизмы. Пористые волокна удерживают влагу; чередование плотных и рыхлых слоёв отражает периоды пересыхания почвы."
+
+/** Drop into the cave level that keeps this profile's surface atmosphere. */
+/turf/open/openspace/expedition_lush
+	initial_gas_mix = /turf/open/misc/grass/jungle::initial_gas_mix
+	planetary_atmos = TRUE
 // AI EDIT END

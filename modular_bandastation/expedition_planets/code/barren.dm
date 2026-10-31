@@ -92,6 +92,14 @@
 	var/storm_trait
 	/// Whether a modifier enabled the periodic storm weather.
 	var/storms = FALSE
+	/// Whether a modifier added a cave level beneath the surface.
+	var/underground = FALSE
+	/// Set while [/datum/map_generator/expedition_barren/proc/generate_terrain] fills the cave level instead of the surface.
+	var/cave_level = FALSE
+	/// Open space carrying this profile's atmosphere, used for drops into the cave level.
+	var/turf/open/openspace/hole_type = /turf/open/openspace/airless/planetary
+	/// Relative coordinates of surface ladders and drops; the cave level keeps a clearing beneath each.
+	var/list/connector_points = list()
 	/// Generated square side length in turfs.
 	var/width = 128
 	/// Greatest depth of the mineable cliff band inside the rim, as a fraction of half the width.
@@ -196,15 +204,20 @@
 		if(x <= 2 || y <= 2 || x > width - 2 || y > width - 2)
 			terrain = /turf/closed/indestructible/rock
 		// The reservation and open cross keep landing, the laboratory and the field connected.
-		else if(!is_reserved(x, y))
-			var/mountain = text2num(rustg_noise_get_at_coordinates("[seed]", "[x / biome_zoom]", "[y / biome_zoom]")) > mountain_height
+		else if(cave_level ? !in_clearing(x, y) : !is_reserved(x, y))
+			// The cave level is one mountain; its own pocket noise keeps it from mirroring surface caves.
+			var/mountain = cave_level || text2num(rustg_noise_get_at_coordinates("[seed]", "[x / biome_zoom]", "[y / biome_zoom]")) > mountain_height
 			biome = biome_at(x, y, mountain)
 			terrain = biome.open_turf_type
 			// Noisy cliffs inside the rim replace its straight edge; the camp, ruins and cross stay reserved.
 			var/edge = max(abs(x - width / 2), abs(y - width / 2)) / (width / 2) + text2num(rustg_noise_get_at_coordinates("[seed + 4000000]", "[x / 16]", "[y / 16]")) * edge_roughness
 			// Rock between cave pockets keeps the mountain mineable.
-			if(edge > 1 || (mountain && text2num(rustg_noise_get_at_coordinates("[seed + 3000000]", "[x / 8]", "[y / 8]")) > 0.5))
+			if(edge > 1 || (mountain && text2num(rustg_noise_get_at_coordinates("[seed + (cave_level ? 6000000 : 3000000)]", "[x / 8]", "[y / 8]")) > 0.5))
 				terrain = rock_type
+		// Clearings under ladders and drops are cave floor kept free of flora and fauna.
+		else if(cave_level)
+			var/datum/biome/clearing_biome = biome_at(x, y, TRUE)
+			terrain = clearing_biome.open_turf_type
 		var/turf/generated = tile.ChangeTurf(terrain, floor_type, CHANGETURF_IGNORE_AIR)
 		if(ismineralturf(generated))
 			prepare_rock(generated)
@@ -212,10 +225,12 @@
 		else if(biome)
 			LAZYADDASSOCLIST(biome_turfs, biome, generated)
 	// Veins spread into neighbouring rock, so they start only once the whole mountain exists.
+	// The deeper cave level seeds half again as many veins.
+	var/vein_chance = cave_level ? mineral_chance * 1.5 : mineral_chance
 	// The typed loop skips tiles changed while the budget slept.
 	for(var/turf/closed/mineral/rock in rocks)
 		budget.yield()
-		if(rock.mineral_type || !prob(mineral_chance))
+		if(rock.mineral_type || !prob(vein_chance))
 			continue
 		var/obj/item/stack/ore/ore_type = pick_weight(ore_types)
 		rock.change_ore(ore_type)
@@ -288,7 +303,60 @@
 		placed += list(list(x, y, x + template.width - 1, y + template.height - 1))
 	return length(placed)
 
-/datum/map_generator/expedition_barren/populate_terrain(list/turfs, area/generate_in)
+/** Whether relative cave-level coordinates lie in the clearing beneath a surface ladder or drop. */
+/datum/map_generator/expedition_barren/proc/in_clearing(x, y)
+	for(var/list/point as anything in connector_points)
+		if(abs(x - point[1]) <= 2 && abs(y - point[2]) <= 2)
+			return TRUE
+	return FALSE
+
+/**
+ * Fill the cave level beneath a finished surface and link the two with ladders and drops.
+ *
+ * Connectors sit on free open surface ground, apart from each other, the reservation and features.
+ * Unbreakable ladders guarantee a way back up; drops are one-way open space into a cave clearing.
+ * Returns the number of connectors.
+ */
+/datum/map_generator/expedition_barren/proc/generate_underground(turf/surface_bottom, datum/space_level/caves, area/surface, planet_name)
+	var/ladders = 3
+	var/drops = 2
+	for(var/attempt in 1 to 200)
+		if(length(connector_points) >= ladders + drops)
+			break
+		var/x = rand(8, width - 8)
+		var/y = rand(8, width - 8)
+		var/turf/tile = locate(origin_x + x - 1, origin_y + y - 1, surface_bottom.z)
+		if(!isopenturf(tile) || tile.loc != surface || is_reserved(x, y) || LAZYACCESS(feature_turfs, tile) || tile.is_blocked_turf(TRUE))
+			continue
+		var/near = FALSE
+		for(var/list/point as anything in connector_points)
+			if(max(abs(x - point[1]), abs(y - point[2])) < 16)
+				near = TRUE
+				break
+		if(!near)
+			connector_points += list(list(x, y))
+	if(length(connector_points) <= drops)
+		return 0
+	var/turf/bottom = locate(surface_bottom.x, surface_bottom.y, caves.z_value)
+	var/area/expedition_planet/barren/caves_area = new
+	caves_area.name = "[planet_name]: пещеры"
+	cave_level = TRUE
+	generate_terrain(block(bottom, locate(bottom.x + width - 1, bottom.y + width - 1, bottom.z)), caves_area)
+	populate_biomes()
+	for(var/index in 1 to length(connector_points))
+		var/list/point = connector_points[index]
+		var/turf/upper = locate(origin_x + point[1] - 1, origin_y + point[2] - 1, surface_bottom.z)
+		if(index <= length(connector_points) - drops)
+			var/obj/structure/ladder/unbreakable/lower_ladder = new(locate(upper.x, upper.y, caves.z_value))
+			new /obj/structure/ladder/unbreakable(upper, null, lower_ladder)
+		else
+			upper.ChangeTurf(hole_type, hole_type, CHANGETURF_IGNORE_AIR)
+	SSmapping.reg_in_areas_in_z(list(caves_area))
+	smooth_zlevel(caves.z_value)
+	return length(connector_points)
+
+/** Populate the generated biomes; fauna never starts near the camp or on placed features. */
+/datum/map_generator/expedition_barren/proc/populate_biomes()
 	for(var/datum/biome/biome as anything in biome_turfs)
 		var/list/near_camp = list()
 		var/list/wild = list()
@@ -304,6 +372,9 @@
 		biome.populate_turfs(near_camp, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = FALSE)
 		biome.populate_turfs(wild, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = TRUE)
 	biome_turfs = null
+
+/datum/map_generator/expedition_barren/populate_terrain(list/turfs, area/generate_in)
+	populate_biomes()
 	var/sources = 0
 	var/turf/origin = turfs[1]
 	var/offset = 8 + seed % 6
@@ -365,6 +436,11 @@
 	var/list/traits = ZTRAITS_AWAY
 	if(generator.storms)
 		traits[generator.storm_trait] = TRUE
+	var/datum/space_level/caves
+	// Multi-z links adjacent z values, so the cave level is created immediately below the surface.
+	if(generator.underground)
+		caves = SSmapping.add_new_zlevel("[planet_name]: пещеры", ZTRAITS_AWAY + list(ZTRAIT_UP = TRUE))
+		traits[ZTRAIT_DOWN] = TRUE
 	var/datum/space_level/level = SSmapping.add_new_zlevel(planet_name, traits)
 	generator.origin_x = round((world.maxx - generator.width) / 2) + 1
 	generator.origin_y = round((world.maxy - generator.width) / 2) + 1
@@ -421,6 +497,8 @@
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(supplies))
 	marker.site_id = site.id
 	marker.name = site.name
+	if(caves && !generator.generate_underground(bottom, caves, surface, planet_name))
+		CRASH("Expedition planet [seed] has no free surface for cave connectors")
 	SSmapping.reg_in_areas_in_z(list(surface))
 	smooth_zlevel(level.z_value)
 	// Storm traits are registered only once the surface is complete; SSweather then alternates storms with calm periods.

@@ -12,6 +12,7 @@
 
 /** Seeded snow and ice terrain with reduced ore availability. */
 /datum/map_generator/expedition_barren/frozen
+	hole_type = /turf/open/openspace/expedition_frozen
 	wildlife = TRUE
 	storm_trait = ZTRAIT_SNOWSTORM
 	floor_type = /turf/open/misc/asteroid/snow
@@ -168,4 +169,9 @@
 	icon_state = "diamond"
 	field_notes = "Чередуются прозрачные и пылевые слои. Мелкие пузырьки газа вытянуты вдоль границ слоёв; поверхность пересечена старыми трещинами."
 	laboratory_notes = "Керн содержит несколько поколений льда и минеральную пыль. Состав газа в изолированных пузырьках отличается от современной атмосферы: отложение сохраняет следы прежних климатических условий."
+
+/** Drop into the cave level that keeps this profile's surface atmosphere. */
+/turf/open/openspace/expedition_frozen
+	initial_gas_mix = /turf/open/misc/asteroid/snow::initial_gas_mix
+	planetary_atmos = TRUE
 // AI EDIT END

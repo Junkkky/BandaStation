@@ -27,6 +27,8 @@
 	var/fauna_multiplier = 1
 	/// Whether the profile's periodic storm weather is enabled on this planet.
 	var/storms = FALSE
+	/// Whether this planet gains a richer cave level beneath its surface.
+	var/underground = FALSE
 
 /** Whether this modifier means anything for the generator's environment profile. */
 /datum/expedition_planet_modifier/proc/can_apply(datum/map_generator/expedition_barren/generator)
@@ -82,6 +84,14 @@
 /datum/expedition_planet_modifier/storms/can_apply(datum/map_generator/expedition_barren/generator)
 	return !!generator.storm_trait
 
+/datum/expedition_planet_modifier/caves
+	name = "Пещерная система"
+	group = "underground"
+	category = PLANET_MODIFIER_REWARD
+	cost = 0.5
+	probability = 40
+	underground = TRUE
+
 /**
  * Roll offered modifiers in random order and apply those that fit the remaining budgets.
  *
@@ -110,6 +120,7 @@
 		mineral_chance *= modifier.ore_multiplier
 		fauna_multiplier *= modifier.fauna_multiplier
 		storms ||= modifier.storms
+		underground ||= modifier.underground
 		names += modifier.name
 	return names
 

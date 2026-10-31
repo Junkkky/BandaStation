@@ -13,6 +13,7 @@
 
 /** Seeded desert terrain using a local oxygen-free planetary atmosphere. */
 /datum/map_generator/expedition_barren/arid
+	hole_type = /turf/open/openspace/expedition_arid
 	wildlife = TRUE
 	storm_trait = ZTRAIT_SANDSTORM
 	floor_type = /turf/open/misc/asteroid/expedition_arid
@@ -186,4 +187,9 @@
 	icon_state = "silver"
 	field_notes = "Соляные слои пересечены минеральными прожилками. На поверхности видны следы ветровой эрозии; слои залегают почти горизонтально."
 	laboratory_notes = "Последовательность солевых фракций указывает на многократное испарение древнего водоёма. Металлоносные прожилки образовались позднее и пересекают уже высохшие отложения."
+
+/** Drop into the cave level that keeps this profile's surface atmosphere. */
+/turf/open/openspace/expedition_arid
+	initial_gas_mix = /turf/open/misc/asteroid/expedition_arid::initial_gas_mix
+	planetary_atmos = TRUE
 // AI EDIT END

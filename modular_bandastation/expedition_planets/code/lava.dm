@@ -15,6 +15,7 @@
 
 /** Seeded volcanic terrain with volcanic ore walls. */
 /datum/map_generator/expedition_barren/lava
+	hole_type = /turf/open/openspace/expedition_lava
 	wildlife = TRUE
 	storm_trait = ZTRAIT_ASHSTORM
 	floor_type = /turf/open/misc/asteroid/basalt/expedition_volcanic
@@ -244,4 +245,9 @@
 	icon_state = "plasma"
 	field_notes = "Поверхность натёка покрыта застывшими волнами. Пузыри газа вытянуты по направлению течения; в трещинах заметен тонкий налёт серы."
 	laboratory_notes = "Порода быстро остыла: в ней много вулканического стекла и мелких кристаллов. Газовые включения и сернистый налёт указывают на недавнюю вулканическую активность под поверхностью."
+
+/** Drop into the cave level that keeps this profile's surface atmosphere. */
+/turf/open/openspace/expedition_lava
+	initial_gas_mix = /turf/open/misc/asteroid/basalt/expedition_volcanic::initial_gas_mix
+	planetary_atmos = TRUE
 // AI EDIT END
