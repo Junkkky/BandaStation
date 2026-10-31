@@ -1,6 +1,6 @@
 // AI EDIT START - expedition planets module integration
 // Volcanic profile with biomes adapted from Celadon's lava planet generator (see barren.dm); local TG turfs, flora and fauna.
-// Donor purple rock, moss, hell bushes, landmines, elite tumors, anomalies, ore veins, burrows and crystal fauna are omitted or replaced.
+// Donor grass and purple rock become ash and shale; moss, hell bushes, landmines, elite tumors, anomalies, ore veins, burrows and crystal fauna are omitted or replaced.
 /// Fixed volcanic atmosphere; TG lavaland air is randomized per round and would contradict the survey.
 #define EXPEDITION_VOLCANIC_ATMOS (GAS_CO2 + "=60;" + GAS_N2 + "=30;TEMP=380")
 
@@ -55,12 +55,12 @@
 	turf_type = /turf/open/misc/asteroid/basalt/expedition_volcanic
 	worm_chance = 0
 
-/** Smooth glassy basalt near lava, in the volcanic profile atmosphere. */
-/turf/open/misc/asteroid/basalt/smooth/expedition_volcanic
+/** Layered shale near lava, in the volcanic profile atmosphere. */
+/turf/open/misc/asteroid/basalt/smooth/shale/expedition_volcanic
 	initial_gas_mix = EXPEDITION_VOLCANIC_ATMOS
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/misc/asteroid/basalt/smooth/expedition_volcanic
-	turf_type = /turf/open/misc/asteroid/basalt/smooth/expedition_volcanic
+	baseturfs = /turf/open/misc/asteroid/basalt/smooth/shale/expedition_volcanic
+	turf_type = /turf/open/misc/asteroid/basalt/smooth/shale/expedition_volcanic
 	worm_chance = 0
 
 /** Iron-red volcanic rock in the volcanic profile atmosphere. */
@@ -71,11 +71,12 @@
 	turf_type = /turf/open/misc/asteroid/basalt/smooth/siderite/expedition_volcanic
 	worm_chance = 0
 
-/** Ash grass in the volcanic profile atmosphere. */
-/turf/open/misc/grass/lavaland/expedition_volcanic
+/** Volcanic ash drifts in the volcanic profile atmosphere; as walkable as the green grass it replaces. */
+/turf/open/misc/ashplanet/ash/expedition_volcanic
 	initial_gas_mix = EXPEDITION_VOLCANIC_ATMOS
 	planetary_atmos = TRUE
 	baseturfs = /turf/open/misc/asteroid/basalt/expedition_volcanic
+	slowdown = 0
 
 /** Lava lakes in the volcanic profile atmosphere. */
 /turf/open/lava/smooth/expedition_volcanic
@@ -91,8 +92,8 @@
 	flora_density = 1
 	flora_types = list(
 		/obj/structure/flora/ash/fireblossom = 1,
-		/obj/structure/flora/bush/sparsegrass/style_random = 4,
-		/obj/structure/flora/bush/flowers_yw/style_random = 1,
+		/obj/structure/flora/ash/cap_shroom = 2,
+		/obj/structure/flora/rock/pile/style_random = 3,
 	)
 	feature_density = 0.3
 	feature_types = list(
@@ -108,80 +109,76 @@
 		/mob/living/basic/mining/brimdemon = 20,
 	)
 
-/** Celadon dead forest on ash grass. */
+/** Celadon dead forest on ash. */
 /datum/biome/expedition/volcanic/forest
-	open_turf_type = /turf/open/misc/grass/lavaland/expedition_volcanic
-	flora_density = 80
+	open_turf_type = /turf/open/misc/ashplanet/ash/expedition_volcanic
+	flora_density = 20
 	flora_types = list(
-		/obj/structure/flora/tree/dead/style_random = 2,
-		/obj/structure/flora/bush/fullgrass/style_random = 10,
-		/obj/structure/flora/bush/sparsegrass/style_random = 5,
+		/obj/structure/flora/tree/dead/style_random = 4,
+		/obj/structure/flora/ash/stem_shroom = 1,
+		/obj/structure/flora/ash/tall_shroom = 1,
+		/obj/structure/flora/rock/pile/style_random = 2,
 	)
 
 /** Celadon rocky dead forest. */
 /datum/biome/expedition/volcanic/forest/rocky
-	flora_density = 75
+	flora_density = 25
 	flora_types = list(
 		/obj/structure/flora/rock/pile/style_random = 5,
 		/obj/structure/flora/rock/volcano = 4,
 		/obj/structure/flora/tree/dead/style_random = 10,
-		/obj/structure/flora/bush/fullgrass/style_random = 40,
-		/obj/structure/flora/bush/sparsegrass/style_random = 20,
-		/obj/structure/flora/bush/generic/style_random = 4,
+		/obj/structure/flora/ash/cacti = 1,
 	)
 
-/** Celadon ash grass plains. */
+/** Celadon ash plains. */
 /datum/biome/expedition/volcanic/plains
-	open_turf_type = /turf/open/misc/grass/lavaland/expedition_volcanic
-	flora_density = 15
+	open_turf_type = /turf/open/misc/ashplanet/ash/expedition_volcanic
+	flora_density = 5
 	flora_types = list(
-		/obj/structure/flora/bush/fullgrass/style_random = 50,
-		/obj/structure/flora/bush/sparsegrass/style_random = 35,
-		/obj/structure/flora/bush/flowers_yw/style_random = 1,
-		/obj/structure/flora/bush/grassy/style_random = 4,
-		/obj/structure/flora/ash/fireblossom = 1,
+		/obj/structure/flora/ash/fireblossom = 2,
+		/obj/structure/flora/ash/cap_shroom = 2,
+		/obj/structure/flora/ash/seraka = 1,
+		/obj/structure/flora/rock/pile/style_random = 3,
 	)
 
 /** Celadon dense ash plains with scattered dead trees. */
 /datum/biome/expedition/volcanic/plains/dense
-	flora_density = 85
+	flora_density = 10
 	feature_density = 5
 	feature_types = list(/obj/structure/flora/tree/dead/style_random = 1)
 
 /** Celadon mixed ash plains. */
 /datum/biome/expedition/volcanic/plains/dense/mixed
-	flora_density = 50
+	flora_density = 7
 
 /** Celadon ash outback scrub. */
 /datum/biome/expedition/volcanic/outback
-	open_turf_type = /turf/open/misc/grass/lavaland/expedition_volcanic
-	flora_density = 30
+	open_turf_type = /turf/open/misc/ashplanet/ash/expedition_volcanic
+	flora_density = 15
 	flora_types = list(
-		/obj/structure/flora/bush/grassy/style_random = 10,
-		/obj/structure/flora/bush/generic/style_random = 10,
-		/obj/structure/flora/bush/sparsegrass/style_random = 3,
+		/obj/structure/flora/ash/cacti = 4,
+		/obj/structure/flora/ash/stem_shroom = 1,
 		/obj/structure/flora/tree/dead/style_random = 3,
 		/obj/structure/flora/rock/volcano = 2,
+		/obj/structure/flora/rock/pile/style_random = 3,
 	)
 
 /** Celadon flowering ash meadow. */
 /datum/biome/expedition/volcanic/lush
-	open_turf_type = /turf/open/misc/grass/lavaland/expedition_volcanic
-	flora_density = 30
+	open_turf_type = /turf/open/misc/ashplanet/ash/expedition_volcanic
+	flora_density = 20
 	flora_types = list(
 		/obj/structure/flora/ash/fireblossom = 3,
 		/obj/structure/flora/tree/dead/style_random = 1,
-		/obj/structure/flora/bush/grassy/style_random = 5,
-		/obj/structure/flora/bush/fullgrass/style_random = 10,
-		/obj/structure/flora/bush/sparsegrass/style_random = 8,
-		/obj/structure/flora/bush/ferny/style_random = 5,
-		/obj/structure/flora/bush/generic/style_random = 5,
-		/obj/structure/flora/bush/flowers_yw/style_random = 7,
+		/obj/structure/flora/ash/leaf_shroom = 3,
+		/obj/structure/flora/ash/cap_shroom = 3,
+		/obj/structure/flora/ash/seraka = 2,
+		/obj/structure/flora/ash/glowgrowth = 2,
 	)
 
 /** Celadon glassy shore of a lava lake. */
 /datum/biome/expedition/volcanic/nearlava
-	open_turf_type = /turf/open/misc/asteroid/basalt/smooth/expedition_volcanic
+	open_turf_type = /turf/open/misc/asteroid/basalt/smooth/shale/expedition_volcanic
 	flora_density = 2
 	flora_types = list(
 		/obj/structure/flora/rock/volcano = 1,
@@ -213,7 +210,7 @@
 
 /** Celadon obsidian cave floor. */
 /datum/biome/expedition/volcanic_cave/obsidian
-	open_turf_type = /turf/open/misc/asteroid/basalt/smooth/expedition_volcanic
+	open_turf_type = /turf/open/misc/asteroid/basalt/smooth/shale/expedition_volcanic
 
 /** Celadon rocky cave of iron-red stone. */
 /datum/biome/expedition/volcanic_cave/rocky
@@ -224,13 +221,12 @@
 		/obj/structure/flora/rock/volcano = 6,
 	)
 
-/** Celadon overgrown cave; ash grass replaces the donor moss. */
+/** Celadon overgrown cave; mushroom thickets on ash replace the donor moss. */
 /datum/biome/expedition/volcanic_cave/mossy
-	open_turf_type = /turf/open/misc/grass/lavaland/expedition_volcanic
-	flora_density = 80
+	open_turf_type = /turf/open/misc/ashplanet/ash/expedition_volcanic
+	flora_density = 30
 	flora_types = list(
-		/obj/structure/flora/bush/fullgrass/style_random = 10,
-		/obj/structure/flora/bush/sparsegrass/style_random = 5,
+		/obj/structure/flora/ash/glowgrowth = 1,
 		/obj/structure/flora/ash/leaf_shroom = 1,
 		/obj/structure/flora/ash/cap_shroom = 2,
 		/obj/structure/flora/ash/stem_shroom = 2,

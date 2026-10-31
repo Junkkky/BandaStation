@@ -52,19 +52,11 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/moon.dmm",
-			"sha256": "e2a437ef1274e8e0b627f84a9fcfff33a4f4cbe84b61731025d047a098003011",
+			"sha256": "6b253eae39ea4a19876b36586e70ae4b5849146cb22cd3073979defa635726e5",
 			"license": "CC-BY-SA-3.0",
-			"authors": ["SierraBay and Baystation contributors"],
-			"source": {
-				"repository": "SierraBay/SierraBay12",
-				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
-				"path": "maps/random_ruins/exoplanet_ruins/deserted_lab/deserted_lab.dmm",
-				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/deserted_lab/deserted_lab.dmm",
-				"sha256": "0ca326c38162eb59afe5144fbb100c0ecda3b0bdf4e748efa531dea1eeacd224",
-				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
-			},
-			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
-			"byte_identical": false
+			"authors": ["StationTrauma / BandaStation contributors"],
+			"source": null,
+			"changes": "Original layout using existing repository assets."
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/pocketrocket.dmm",

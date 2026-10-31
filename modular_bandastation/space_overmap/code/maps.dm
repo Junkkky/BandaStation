@@ -1,8 +1,6 @@
 // AI EDIT START - space overmap module integration
 /*
  * raven.dmm: adapted from local _maps/shuttles/emergency/emergency_raven.dmm, /tg/ contributors, CC BY-SA 3.0.
- * moon.dmm laboratory: SierraBay/SierraBay12 contributors, CC BY-SA 3.0:
- * https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/deserted_lab/deserted_lab.dmm
  */
 /// Only the copied prototype has unlimited power; native shuttle maps retain their settings.
 /area/shuttle/stationtrauma_space

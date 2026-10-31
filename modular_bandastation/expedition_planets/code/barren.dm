@@ -429,7 +429,7 @@
 	var/datum/stationtrauma_overmap_site/space/planet/site = new planet_type
 	site.id = planet_id
 	var/datum/map_generator/expedition_barren/generator = new site.generator_type(seed)
-	var/datum/map_template/camp = new('modular_bandastation/space_overmap/maps/moon.dmm', "Экспедиционная лаборатория")
+	var/datum/map_template/camp = new('modular_bandastation/space_overmap/maps/moon.dmm', "Посадочная площадка экспедиции")
 	if(camp.width + 8 > generator.width || camp.height + 8 > generator.width)
 		CRASH("Expedition camp does not fit the reserved planetary surface")
 	site.modifier_names = generator.apply_modifiers(modifier_level)
@@ -467,7 +467,7 @@
 		qdel(generator)
 		qdel(site)
 		return null
-	// The shared camp template retains its rooms, but exposed ground follows the planet's atmosphere.
+	// The shared landing clearing follows the planet's ground and atmosphere.
 	generator.adapt_template_turfs(camp.get_affected_turfs(camp_origin), surface)
 	if(!site.load_ruins(ruins, bottom))
 		qdel(camp)
@@ -487,14 +487,13 @@
 			break
 	if(!site.berth || generator.populate_terrain(turfs, surface) != 3)
 		CRASH("Expedition planet [seed] lacks its landing berth or research sources")
-	var/obj/structure/closet/crate/expedition_planet_supplies/supplies
-	for(var/turf/open/floor/tile in camp.get_affected_turfs(camp_origin))
-		if(!tile.is_blocked_turf(TRUE))
-			supplies = new(tile)
-			break
-	if(!supplies)
-		CRASH("Expedition planet [seed] has no free laboratory floor for field equipment")
-	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(supplies))
+	// Field equipment waits beside the vessel footprint, where landing never needs to trample it.
+	var/list/pad_bounds = site.berth.return_coords()
+	var/turf/supplies_turf = locate(min(pad_bounds[1], pad_bounds[3]) - 2, site.berth.y, site.berth.z)
+	if(!isopenturf(supplies_turf) || supplies_turf.is_blocked_turf(TRUE))
+		CRASH("Expedition planet [seed] has no free ground beside its landing berth for field equipment")
+	new /obj/structure/closet/crate/expedition_planet_supplies(supplies_turf)
+	var/obj/effect/landmark/stationtrauma_research_site/marker = new(supplies_turf)
 	marker.site_id = site.id
 	marker.name = site.name
 	if(caves && !generator.generate_underground(bottom, caves, surface, planet_name))
