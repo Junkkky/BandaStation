@@ -378,7 +378,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
 "uN" = (
@@ -660,9 +660,9 @@
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 10
 	},
-/obj/item/circuitboard/computer,
-/obj/item/circuitboard/computer,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
+/obj/effect/spawner/random/techstorage/arcade_boards,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/item/analyzer,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)

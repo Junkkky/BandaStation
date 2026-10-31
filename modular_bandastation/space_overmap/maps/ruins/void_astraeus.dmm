@@ -299,7 +299,7 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/glass,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark/airless{
 	initial_gas_mix = "TEMP=2.7"

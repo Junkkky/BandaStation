@@ -9155,7 +9155,7 @@
 	dir = 8
 	},
 /obj/structure/table,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab2/oldlab2/lab)
 "YU" = (

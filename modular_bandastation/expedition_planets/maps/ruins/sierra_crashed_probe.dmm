@@ -441,7 +441,7 @@
 "JL" = (
 /obj/structure/frame/machine,
 /obj/item/stack/cable_coil,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron,
@@ -449,7 +449,7 @@
 "Kp" = (
 /obj/structure/frame/machine,
 /obj/item/stack/cable_coil,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron,
@@ -600,7 +600,7 @@
 "XG" = (
 /obj/structure/frame/machine,
 /obj/item/stack/cable_coil,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron,
@@ -611,7 +611,7 @@
 "Zw" = (
 /obj/structure/frame/machine,
 /obj/item/stack/cable_coil,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)

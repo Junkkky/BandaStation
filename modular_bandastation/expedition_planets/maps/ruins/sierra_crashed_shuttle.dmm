@@ -331,9 +331,9 @@
 /obj/structure/frame/computer{
 	dir = 4
 	},
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/item/disk/data,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/item/shard,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 6;
@@ -440,9 +440,9 @@
 /obj/structure/frame/computer{
 	dir = 8
 	},
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/item/disk/data,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_shuttle/crashed_shuttle/graysontug)

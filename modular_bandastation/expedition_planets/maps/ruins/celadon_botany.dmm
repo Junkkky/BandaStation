@@ -376,7 +376,7 @@
 /obj/item/toy/cards/deck/tarot{
 	pixel_x = -8
 	},
-/obj/item/food/salad{
+/obj/item/food/salad/fruit{
 	pixel_x = 8;
 	pixel_y = 12
 	},
@@ -502,7 +502,7 @@
 "OY" = (
 /obj/structure/table,
 /obj/structure/cable,
-/obj/item/food/salad{
+/obj/item/food/salad/fruit{
 	pixel_y = 8
 	},
 /turf/open/floor/iron,
@@ -538,7 +538,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_botany/ruin/powered)
 "SK" = (
 /obj/structure/table,
-/obj/item/food/salad{
+/obj/item/food/salad/fruit{
 	pixel_y = 7
 	},
 /turf/open/floor/iron,

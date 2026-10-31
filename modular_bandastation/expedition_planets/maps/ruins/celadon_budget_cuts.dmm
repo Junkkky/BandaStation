@@ -2095,16 +2095,16 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_budget_cuts/ruin/rockplanet/nanotrasen)
 "PR" = (
 /obj/structure/table/reinforced,
-/obj/item/food/donut/jelly/slimejelly{
+/obj/item/food/donut/jelly/slimejelly/plain{
 	pixel_x = -4;
 	pixel_y = -1
 	},
-/obj/item/food/donut/jelly/slimejelly{
+/obj/item/food/donut/jelly/slimejelly/plain{
 	pixel_x = 8
 	},
-/obj/item/food/donut/jelly/slimejelly,
-/obj/item/food/donut/jelly/slimejelly,
-/obj/item/food/donut/jelly/slimejelly{
+/obj/item/food/donut/jelly/slimejelly/plain,
+/obj/item/food/donut/jelly/slimejelly/plain,
+/obj/item/food/donut/jelly/slimejelly/plain{
 	pixel_x = 4;
 	pixel_y = -6
 	},

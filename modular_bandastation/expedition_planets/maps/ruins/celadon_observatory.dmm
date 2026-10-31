@@ -432,7 +432,7 @@
 	pixel_y = 2;
 	pixel_x = 4
 	},
-/obj/item/stamp,
+/obj/item/stamp/granted,
 /turf/open/floor/mineral/titanium/tiled/white,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_observatory/station/science/misc_lab)
 "HR" = (
