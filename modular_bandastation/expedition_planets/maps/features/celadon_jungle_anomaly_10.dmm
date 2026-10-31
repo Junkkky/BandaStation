@@ -1,0 +1,151 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_anomaly_10.dmm
+"g" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+"D" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/misc/beach/sand,
+/area/expedition_planet/barren)
+"L" = (
+/obj/effect/mob_spawn/corpse/human/engineer{
+	brute_damage = 600
+	},
+/obj/effect/anomaly/flux{
+	immortal = 1;
+	move_chance = 0
+	},
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+"R" = (
+/obj/structure/flora/tree/dead,
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+"T" = (
+/turf/template_noop,
+/area/template_noop)
+"U" = (
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+"V" = (
+/obj/structure/flora/bush/fullgrass,
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+"Y" = (
+/obj/structure/flora/bush/fullgrass,
+/turf/open/misc/beach/sand,
+/area/expedition_planet/barren)
+"Z" = (
+/turf/open/misc/beach/sand,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+T
+T
+Y
+D
+D
+Y
+Z
+T
+"}
+(2,1,1) = {"
+T
+Z
+Y
+U
+U
+U
+D
+T
+"}
+(3,1,1) = {"
+Z
+D
+R
+U
+g
+U
+D
+Z
+"}
+(4,1,1) = {"
+Y
+D
+U
+U
+U
+g
+R
+D
+"}
+(5,1,1) = {"
+Y
+U
+g
+U
+U
+U
+g
+Z
+"}
+(6,1,1) = {"
+D
+U
+U
+U
+L
+U
+U
+Y
+"}
+(7,1,1) = {"
+D
+D
+U
+U
+g
+g
+V
+D
+"}
+(8,1,1) = {"
+T
+Y
+U
+U
+V
+V
+U
+Y
+"}
+(9,1,1) = {"
+T
+Y
+D
+R
+g
+g
+U
+D
+"}
+(10,1,1) = {"
+T
+T
+D
+Z
+g
+U
+D
+D
+"}
+(11,1,1) = {"
+T
+T
+T
+Z
+Z
+Z
+Z
+T
+"}

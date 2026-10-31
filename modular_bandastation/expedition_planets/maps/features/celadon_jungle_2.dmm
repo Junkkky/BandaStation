@@ -1,0 +1,288 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_2.dmm
+"ab" = (
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"ad" = (
+/obj/structure/flora/bush/large,
+/obj/structure/spacevine{
+	name = "dense vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"af" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"ai" = (
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"al" = (
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"an" = (
+/obj/structure/flora/tree/jungle,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"ao" = (
+/obj/structure/flora/bush/fullgrass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aF" = (
+/obj/structure/flora/bush/large,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"aI" = (
+/obj/structure/flora/bush/jungle/b,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"aP" = (
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aQ" = (
+/obj/structure/flora/bush/flowers_pp,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/wooden_fence,
+/obj/machinery/hydroponics/soil,
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"bo" = (
+/obj/structure/flora/tree/jungle{
+	icon_state = "tree5"
+	},
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"dr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"ho" = (
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"hv" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"lI" = (
+/obj/item/cultivator/rake,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"nF" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/ash/cap_shroom,
+/obj/structure/railing/wooden_fence,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"oH" = (
+/obj/structure/flora/bush/fullgrass,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/wooden_fence,
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/machinery/hydroponics/soil,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"tT" = (
+/obj/structure/flora/bush/large,
+/obj/structure/spacevine{
+	name = "dense vines"
+	},
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"tW" = (
+/obj/structure/flora/ash/cap_shroom,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"vB" = (
+/obj/structure/flora/bush/flowers_yw,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"zs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"zD" = (
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/structure/railing/wooden_fence,
+/obj/machinery/hydroponics/soil,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"Cg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/mask/scarecrow{
+	pixel_y = 15
+	},
+/obj/effect/turf_decal/sand/plating,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"CE" = (
+/obj/structure/spacevine{
+	name = "dense vines"
+	},
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"Gi" = (
+/obj/structure/flora/tree/jungle,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"HK" = (
+/obj/structure/flora/bush/large,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"IS" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/flora/ash/cap_shroom,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"Jk" = (
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"MW" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/ash/cap_shroom,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"Ol" = (
+/obj/structure/flora/bush/jungle/a,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"SC" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"SD" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/ash/cap_shroom,
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"SS" = (
+/obj/structure/flora/ash/cap_shroom,
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"TN" = (
+/obj/structure/flora/bush/jungle/b{
+	pixel_x = -13;
+	pixel_y = 3
+	},
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+an
+aI
+aP
+aq
+ab
+ab
+an
+al
+"}
+(2,1,1) = {"
+aF
+aQ
+af
+ao
+ab
+ab
+ai
+ad
+"}
+(3,1,1) = {"
+ab
+aS
+lI
+MW
+ab
+nF
+ab
+af
+"}
+(4,1,1) = {"
+dr
+tW
+SC
+SS
+hv
+oH
+zs
+ab
+"}
+(5,1,1) = {"
+ab
+zD
+hv
+IS
+Jk
+SD
+ab
+Ol
+"}
+(6,1,1) = {"
+Ol
+SC
+dr
+Cg
+SC
+ab
+ab
+ab
+"}
+(7,1,1) = {"
+tT
+TN
+aQ
+SC
+ab
+ab
+ho
+bo
+"}
+(8,1,1) = {"
+Gi
+vB
+ho
+ab
+ab
+an
+HK
+CE
+"}

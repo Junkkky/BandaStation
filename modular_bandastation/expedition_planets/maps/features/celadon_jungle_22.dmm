@@ -1,0 +1,549 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_22.dmm
+"af" = (
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"aj" = (
+/obj/structure/cable,
+/obj/machinery/newscaster/directional/north,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 5
+	},
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"an" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/firealarm/directional/south,
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 6
+	},
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark,
+/area/expedition_planet/barren)
+"aq" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/machinery/light_switch{
+	pixel_y = 23
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 1
+	},
+/obj/structure/spacevine,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"as" = (
+/obj/structure/spacevine,
+/turf/closed/mineral,
+/area/expedition_planet/barren)
+"av" = (
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"az" = (
+/obj/structure/girder,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"aE" = (
+/turf/closed/mineral,
+/area/expedition_planet/barren)
+"aG" = (
+/obj/effect/turf_decal/trimline/dark/filled/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark,
+/area/expedition_planet/barren)
+"aJ" = (
+/turf/template_noop,
+/area/template_noop)
+"aL" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/item/radio/intercom/directional/south,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/trimline/blue/line,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"aQ" = (
+/obj/structure/spacevine,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/expedition_planet/barren)
+"aS" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/trimline/blue/line,
+/obj/machinery/light/broken/directional/south,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"aV" = (
+/obj/structure/closet/crate/bin,
+/obj/item/trash/candy,
+/obj/item/trash/sosjerky{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/trash/candy{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/shreds{
+	pixel_x = 10;
+	pixel_y = -7
+	},
+/obj/structure/cable,
+/obj/structure/noticeboard/directional/north,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 1
+	},
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"ii" = (
+/obj/structure/railing,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/turf/open/floor/circuit/telecomms,
+/area/expedition_planet/barren)
+"ji" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/pen/fountain/captain{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/folder/blue{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/stamp/head/captain{
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/newspaper,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/circuit/telecomms,
+/area/expedition_planet/barren)
+"nb" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"oA" = (
+/obj/structure/cable,
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/expedition_planet/barren)
+"ql" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark/corner,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4;
+	name = "Helm"
+	},
+/mob/living/basic/bear,
+/obj/effect/gibspawner/human/bodypartless,
+/obj/effect/decal/remains/human,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"tZ" = (
+/obj/machinery/light/broken/directional/north,
+/turf/closed/mineral,
+/area/expedition_planet/barren)
+"uk" = (
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "minutecop_bridge"
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"zo" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/item/stock_parts/power_store/cell/high,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"AD" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"BF" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/item/wallframe/apc,
+/obj/item/food/grown/berries,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Fn" = (
+/obj/machinery/door/poddoor{
+	id = "minutecop_bridge";
+	dir = 4
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"FG" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 4;
+	name = "Helm"
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/obj/effect/gibspawner/human/bodypartless,
+/obj/structure/door_assembly,
+/obj/effect/decal/remains/human,
+/turf/open/floor/iron/dark,
+/area/expedition_planet/barren)
+"FX" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger{
+	pixel_x = 12
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 9
+	},
+/obj/structure/lattice/catwalk,
+/obj/item/fish/perch,
+/obj/item/fish/perch{
+	pixel_y = 8;
+	pixel_x = -5
+	},
+/turf/open/floor/circuit/telecomms,
+/area/expedition_planet/barren)
+"FY" = (
+/obj/machinery/door/poddoor{
+	id = "minutecop_bridge"
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"GV" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 10
+	},
+/obj/item/radio/intercom/directional/south,
+/obj/machinery/firealarm/directional/south,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/lattice/catwalk,
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/turf/open/floor/circuit/telecomms,
+/area/expedition_planet/barren)
+"JT" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/structure/lattice/catwalk,
+/obj/item/food/grown/berries{
+	pixel_y = 5
+	},
+/turf/open/floor/circuit/telecomms,
+/area/expedition_planet/barren)
+"Ll" = (
+/obj/machinery/porta_turret/syndicate/energy/ruin{
+	dir = 5
+	},
+/turf/closed/wall/mineral/plastitanium,
+/area/expedition_planet/barren)
+"Nq" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/structure/spacevine,
+/turf/open/floor/wood,
+/area/expedition_planet/barren)
+"NR" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/structure/spacevine,
+/turf/open/floor/wood,
+/area/expedition_planet/barren)
+"Qu" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/expedition_planet/barren)
+"ST" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/obj/item/wallframe/airalarm{
+	dir = 8
+	},
+/obj/structure/door_assembly,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"VT" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/structure/lattice/catwalk,
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/item/food/grown/berries{
+	pixel_y = 1;
+	pixel_x = -5
+	},
+/obj/item/toy/plush/lizard_plushie{
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Xv" = (
+/obj/effect/turf_decal/trimline/dark/filled/line,
+/obj/machinery/door/airlock/hatch{
+	name = "Captains Cabin"
+	},
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/textured_large,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+aJ
+af
+av
+av
+av
+av
+aE
+aE
+aJ
+aJ
+"}
+(2,1,1) = {"
+aJ
+af
+aQ
+aV
+aL
+aQ
+aE
+aE
+af
+af
+"}
+(3,1,1) = {"
+av
+av
+aQ
+aq
+aS
+az
+as
+aE
+aE
+af
+"}
+(4,1,1) = {"
+av
+av
+aQ
+aj
+an
+aQ
+as
+as
+aE
+aE
+"}
+(5,1,1) = {"
+av
+av
+aQ
+aQ
+aG
+Qu
+az
+az
+Qu
+aE
+"}
+(6,1,1) = {"
+aJ
+NR
+aQ
+ST
+AD
+oA
+BF
+GV
+Qu
+aE
+"}
+(7,1,1) = {"
+aJ
+Nq
+Xv
+nb
+zo
+FX
+ql
+JT
+FY
+aE
+"}
+(8,1,1) = {"
+as
+as
+Qu
+tZ
+FG
+ji
+VT
+FY
+Fn
+aE
+"}
+(9,1,1) = {"
+aE
+aE
+Qu
+aE
+ii
+FY
+uk
+Fn
+aE
+aE
+"}
+(10,1,1) = {"
+aE
+aE
+Ll
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+"}
+(11,1,1) = {"
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aE
+aJ
+"}
+(12,1,1) = {"
+aJ
+aJ
+aE
+aE
+aE
+aE
+aE
+aE
+aJ
+aJ
+"}
+(13,1,1) = {"
+aJ
+aJ
+aJ
+aE
+aE
+aJ
+aJ
+aJ
+aJ
+aJ
+"}

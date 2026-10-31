@@ -1,0 +1,165 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_28.dmm
+"m" = (
+/obj/structure/flora/bush/jungle/a,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"o" = (
+/obj/structure/spacevine,
+/obj/structure/flora/bush/jungle/c,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"p" = (
+/obj/structure/railing/wooden_fence,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"s" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/structure/spacevine,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"u" = (
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"x" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"A" = (
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/stairs/old{
+	dir = 8
+	},
+/area/expedition_planet/barren)
+"B" = (
+/turf/template_noop,
+/area/template_noop)
+"D" = (
+/obj/structure/railing/wooden_fence,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"H" = (
+/obj/structure/spacevine,
+/obj/structure/flora/rock/pile/jungle,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"N" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/stairs/old{
+	dir = 8
+	},
+/area/expedition_planet/barren)
+"O" = (
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"R" = (
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"T" = (
+/obj/structure/flora/tree/jungle/small,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"U" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/structure/spacevine,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/stairs/old{
+	dir = 4
+	},
+/area/expedition_planet/barren)
+"V" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"Y" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/spacevine,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+B
+B
+R
+O
+R
+B
+"}
+(2,1,1) = {"
+u
+T
+O
+U
+A
+R
+"}
+(3,1,1) = {"
+u
+o
+O
+s
+Y
+H
+"}
+(4,1,1) = {"
+u
+O
+R
+V
+D
+R
+"}
+(5,1,1) = {"
+m
+x
+R
+V
+p
+R
+"}
+(6,1,1) = {"
+x
+R
+R
+N
+A
+B
+"}
+(7,1,1) = {"
+B
+B
+R
+R
+R
+B
+"}

@@ -1,0 +1,1020 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_21.dmm
+"au" = (
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"ax" = (
+/obj/structure/railing/wooden_fence{
+	dir = 10
+	},
+/obj/structure/railing/wooden_fence,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"ba" = (
+/obj/structure/railing/wooden_fence{
+	dir = 9
+	},
+/obj/structure/railing/corner/end/wooden_fence,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"cl" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"df" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/glass,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"dm" = (
+/obj/structure/railing/wooden_fence{
+	dir = 6
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"dn" = (
+/obj/structure/flora/tree/jungle/small,
+/obj/structure/flora/grass/jungle,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"dH" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"dL" = (
+/obj/structure/flora/bush/large,
+/obj/item/stack/ore/titanium,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"dV" = (
+/obj/structure/flora/tree/jungle,
+/obj/structure/flora/grass/jungle,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"ef" = (
+/obj/item/stack/ore/titanium,
+/obj/structure/railing/wooden_fence,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"ex" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"fb" = (
+/obj/structure/flora/rock/pile/jungle,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"fU" = (
+/obj/structure/flora/bush/large,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"gk" = (
+/obj/structure/flora/tree/jungle/small,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"hk" = (
+/obj/structure/railing/wooden_fence{
+	dir = 5
+	},
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"hr" = (
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"jd" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"kG" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"ls" = (
+/obj/structure/railing/corner/end/wooden_fence{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"lE" = (
+/obj/structure/railing/corner/end/wooden_fence,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"me" = (
+/obj/structure/railing/wooden_fence,
+/obj/item/stack/ore/titanium,
+/obj/structure/railing/wooden_fence,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"nf" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/flora/rock/pile/jungle,
+/obj/structure/spacevine,
+/obj/structure/railing/wooden_fence,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"nw" = (
+/obj/structure/flora/bush/large,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"nB" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"nC" = (
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"nD" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"nH" = (
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"nP" = (
+/obj/structure/flora/tree/jungle,
+/obj/structure/flora/bush/jungle/b,
+/obj/structure/flora/grass/jungle,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"pj" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"ps" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"pN" = (
+/obj/structure/railing/wooden_fence{
+	dir = 5
+	},
+/obj/structure/railing/corner/end/wooden_fence{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"rA" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"rO" = (
+/obj/structure/railing/wooden_fence{
+	dir = 9
+	},
+/obj/structure/railing/corner/end/wooden_fence,
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"ss" = (
+/obj/structure/flora/rock/pile/jungle,
+/obj/item/stack/ore/iron,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"sK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"tb" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"tB" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/glass,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"ua" = (
+/obj/structure/flora/bush/jungle/b,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"uv" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/spacevine,
+/obj/structure/railing/wooden_fence,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"uZ" = (
+/obj/structure/railing/wooden_fence,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"vn" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/railing/wooden_fence,
+/obj/structure/spacevine,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"vq" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"wm" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"xk" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"xu" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"xH" = (
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"xI" = (
+/obj/structure/flora/tree/jungle/small,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"xJ" = (
+/obj/structure/railing/wooden_fence{
+	dir = 9
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"yi" = (
+/obj/item/stack/ore/iron,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"yu" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/stairs/old{
+	dir = 4
+	},
+/area/expedition_planet/barren)
+"yG" = (
+/obj/structure/flora/grass/jungle,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"yU" = (
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"zE" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/railing/wooden_fence,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"Al" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/railing/wooden_fence,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"AX" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"Bp" = (
+/obj/structure/railing/wooden_fence{
+	dir = 10
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"Cl" = (
+/turf/open/floor/iron/stairs/old{
+	dir = 4
+	},
+/area/expedition_planet/barren)
+"CN" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"Dc" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/template_noop,
+/area/expedition_planet/barren)
+"De" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"ED" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/railing/wooden_fence,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"EM" = (
+/obj/structure/flora/rock/pile/jungle,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"FQ" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/structure/flora/bush/jungle/b,
+/obj/item/stack/ore/titanium,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"Gm" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"Gt" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Gw" = (
+/mob/living/basic/seedling,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"GF" = (
+/obj/structure/flora/tree/jungle,
+/obj/structure/flora/rock/pile/jungle,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"GL" = (
+/obj/structure/railing/wooden_fence{
+	dir = 6
+	},
+/obj/structure/railing/wooden_fence,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"Iq" = (
+/obj/structure/spacevine,
+/turf/open/floor/iron/stairs/old{
+	dir = 4
+	},
+/area/expedition_planet/barren)
+"Iv" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"IA" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"IM" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/stairs/old{
+	dir = 4
+	},
+/area/expedition_planet/barren)
+"IV" = (
+/obj/structure/railing/wooden_fence{
+	dir = 5
+	},
+/obj/structure/railing/corner/end/wooden_fence{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"Ji" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"Jl" = (
+/obj/structure/flora/bush/jungle/b,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"Js" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"KV" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"Li" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"Ll" = (
+/obj/item/stack/ore/iron,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"LQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"LY" = (
+/obj/structure/railing/wooden_fence,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"NM" = (
+/obj/structure/floodlight_frame,
+/obj/effect/decal/cleanable/glass,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"PQ" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"Qd" = (
+/obj/structure/flora/grass/jungle,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"Qm" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"Qy" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"Sj" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/structure/spacevine,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"Sx" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Tm" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"TH" = (
+/obj/structure/railing/wooden_fence{
+	dir = 6
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"Uv" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron/dark/smooth_large,
+/area/expedition_planet/barren)
+"UI" = (
+/obj/structure/railing/wooden_fence{
+	dir = 10
+	},
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Vr" = (
+/obj/structure/flora/bush/jungle/c,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"Wy" = (
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"WX" = (
+/obj/structure/flora/rock/pile/jungle,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"Yg" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/obj/structure/railing/wooden_fence{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/floor/plating/rust,
+/area/expedition_planet/barren)
+"Yj" = (
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+Yj
+Yj
+Yj
+Qd
+EM
+wm
+jd
+nH
+nH
+nH
+au
+GF
+au
+au
+Qd
+"}
+(2,1,1) = {"
+Yj
+wm
+IA
+WX
+Jl
+xH
+nH
+NM
+nH
+nH
+Qd
+au
+EM
+dV
+wm
+"}
+(3,1,1) = {"
+wm
+IA
+lE
+kG
+kG
+kG
+cl
+Uv
+LQ
+kG
+tB
+kG
+sK
+wm
+xI
+"}
+(4,1,1) = {"
+wm
+nP
+uZ
+rO
+CN
+CN
+yu
+CN
+yu
+CN
+CN
+Bp
+df
+xH
+Yj
+"}
+(5,1,1) = {"
+Vr
+IA
+uZ
+PQ
+ba
+AX
+yu
+Wy
+IM
+nD
+UI
+ED
+df
+yU
+Yj
+"}
+(6,1,1) = {"
+yU
+yG
+xu
+Iv
+ps
+xJ
+Cl
+FQ
+Iq
+ax
+Sx
+ED
+Js
+nH
+Yj
+"}
+(7,1,1) = {"
+nH
+yU
+xu
+PQ
+Gt
+Qy
+nC
+nC
+fb
+Al
+Sx
+ED
+Js
+Gm
+nH
+"}
+(8,1,1) = {"
+nH
+yU
+xu
+PQ
+dH
+Tm
+Ll
+nw
+Ll
+Al
+nB
+zE
+Js
+gk
+nH
+"}
+(9,1,1) = {"
+nH
+nH
+LY
+Iv
+dH
+Tm
+fb
+hr
+hr
+ef
+nB
+ED
+Js
+yU
+Gm
+"}
+(10,1,1) = {"
+nH
+yU
+uZ
+Iv
+dH
+Tm
+hr
+Gw
+hr
+me
+nB
+ED
+Js
+Gm
+vq
+"}
+(11,1,1) = {"
+Yj
+yU
+uZ
+Iv
+ps
+Tm
+dL
+yi
+fU
+uv
+vn
+ED
+pj
+nH
+nH
+"}
+(12,1,1) = {"
+Yj
+wm
+uZ
+PQ
+Gt
+Tm
+ss
+nC
+yi
+nf
+Sx
+zE
+pj
+nH
+Yj
+"}
+(13,1,1) = {"
+Yj
+wm
+uZ
+PQ
+Gt
+hk
+xk
+xk
+Ji
+GL
+nB
+ED
+pj
+nH
+Yj
+"}
+(14,1,1) = {"
+Dc
+xI
+uZ
+PQ
+pN
+Yg
+Sj
+rA
+Yg
+tb
+dm
+ED
+Js
+wm
+Yj
+"}
+(15,1,1) = {"
+wm
+wm
+uZ
+IV
+KV
+KV
+KV
+KV
+KV
+KV
+KV
+TH
+pj
+xI
+Yj
+"}
+(16,1,1) = {"
+Yj
+ua
+ls
+ex
+Qm
+ex
+De
+De
+ex
+ex
+ex
+Qm
+Li
+Qd
+wm
+"}
+(17,1,1) = {"
+Yj
+wm
+dV
+Qd
+Qd
+wm
+yU
+Gm
+Gm
+yU
+yU
+nH
+wm
+GF
+Qd
+"}
+(18,1,1) = {"
+Yj
+Yj
+wm
+wm
+dn
+wm
+Yj
+Gm
+yU
+Gm
+Yj
+Yj
+Yj
+Yj
+Yj
+"}

@@ -1,0 +1,84 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/jungle_greeble_30.dmm
+"b" = (
+/turf/open/misc/beach/sand,
+/area/expedition_planet/barren)
+"A" = (
+/turf/template_noop,
+/area/template_noop)
+"G" = (
+/obj/structure/flora/bush/reed{
+	pixel_x = 8;
+	pixel_y = -8
+	},
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+"H" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/beach/sand,
+/area/expedition_planet/barren)
+"N" = (
+/obj/structure/flora/bush/reed{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+"P" = (
+/obj/structure/flora/bush/reed{
+	pixel_x = -3;
+	pixel_y = -2
+	},
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+"V" = (
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+A
+A
+b
+b
+H
+A
+"}
+(2,1,1) = {"
+A
+H
+b
+V
+b
+H
+"}
+(3,1,1) = {"
+A
+b
+G
+V
+b
+b
+"}
+(4,1,1) = {"
+b
+b
+P
+N
+b
+A
+"}
+(5,1,1) = {"
+H
+b
+b
+b
+b
+H
+"}
+(6,1,1) = {"
+b
+b
+H
+b
+A
+A
+"}

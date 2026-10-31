@@ -1,0 +1,337 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_11.dmm
+"ac" = (
+/obj/item/ammo_casing/spent,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"ae" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"ak" = (
+/obj/item/ammo_casing/spent{
+	pixel_y = 9;
+	pixel_x = -10
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = -9
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = 8;
+	pixel_x = 5
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"al" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"am" = (
+/obj/structure/flora/tree/dead/style_2,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"ao" = (
+/obj/effect/decal/cleanable/blood/gibs/robot_debris/up,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"ap" = (
+/turf/template_noop,
+/area/template_noop)
+"ar" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"av" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/corner/end/wooden_fence{
+	dir = 8
+	},
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"aw" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"ax" = (
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"aD" = (
+/obj/item/stack/ore/iron{
+	amount = 5
+	},
+/obj/item/stack/ore/titanium,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"aW" = (
+/obj/item/ammo_casing/spent{
+	pixel_y = 12;
+	pixel_x = 9
+	},
+/obj/item/ammo_casing/spent{
+	pixel_y = -9
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"aX" = (
+/obj/item/ammo_casing/spent{
+	pixel_y = -1
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"aY" = (
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"dw" = (
+/obj/effect/decal/cleanable/blood/gibs/robot_debris/limb,
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"jX" = (
+/obj/machinery/recharger,
+/obj/structure/cable,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"lF" = (
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"mg" = (
+/obj/structure/railing/wooden_fence,
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"nu" = (
+/obj/effect/decal/cleanable/shreds,
+/obj/structure/barricade/sandbags,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"rw" = (
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"rQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"wj" = (
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/effect/decal/cleanable/ash,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"wk" = (
+/obj/structure/barricade/sandbags,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"yB" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4;
+	color = "#4D0000";
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"yG" = (
+/obj/effect/decal/cleanable/shreds{
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/obj/structure/barricade/sandbags,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"AN" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/railing/corner/end/wooden_fence{
+	dir = 8
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"BA" = (
+/obj/effect/decal/remains/robot,
+/obj/effect/decal/cleanable/blood/gibs/robot_debris,
+/obj/item/stack/ore/gold,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"Df" = (
+/obj/structure/flora/tree/dead/style_2,
+/obj/structure/railing/corner/end/wooden_fence,
+/obj/structure/railing/corner/end/wooden_fence{
+	dir = 8
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"Dv" = (
+/obj/item/stack/cable_coil/cut,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"DV" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/railing/wooden_fence,
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"IJ" = (
+/obj/item/stack/ore/iron,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"JU" = (
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4;
+	color = "#4D0000"
+	},
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"Ke" = (
+/obj/effect/decal/cleanable/shreds,
+/obj/effect/decal/cleanable/shreds{
+	pixel_y = 4;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/wooden_fence{
+	dir = 1
+	},
+/turf/open/floor/iron/stairs/old{
+	dir = 8
+	},
+/area/expedition_planet/barren)
+"Lp" = (
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/floor/iron/stairs/old{
+	dir = 8
+	},
+/area/expedition_planet/barren)
+"Px" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/railing/wooden_fence{
+	dir = 4
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"Vm" = (
+/obj/structure/barricade/sandbags,
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"YU" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+ap
+ap
+ap
+ae
+ap
+ap
+ap
+ap
+ap
+"}
+(2,1,1) = {"
+ap
+ap
+am
+al
+aW
+ap
+ak
+ap
+ap
+"}
+(3,1,1) = {"
+aY
+ar
+aY
+aD
+ac
+aY
+ar
+am
+ap
+"}
+(4,1,1) = {"
+ar
+al
+aX
+al
+al
+ar
+ao
+aw
+aY
+"}
+(5,1,1) = {"
+ax
+av
+rQ
+Df
+Px
+BA
+IJ
+dw
+AN
+"}
+(6,1,1) = {"
+nu
+Ke
+yG
+mg
+wk
+wk
+Lp
+wk
+lF
+"}
+(7,1,1) = {"
+rw
+wj
+Vm
+DV
+wk
+jX
+yB
+wk
+lF
+"}
+(8,1,1) = {"
+ap
+YU
+ap
+rw
+ap
+Dv
+JU
+ap
+ap
+"}

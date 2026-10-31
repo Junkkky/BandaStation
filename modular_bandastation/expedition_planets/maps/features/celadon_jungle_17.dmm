@@ -1,0 +1,218 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_17.dmm
+"ab" = (
+/obj/structure/fence/cut/large,
+/mob/living/basic/chicken,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"ad" = (
+/mob/living/basic/chicken,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"ae" = (
+/turf/template_noop,
+/area/template_noop)
+"ah" = (
+/obj/machinery/light/broken/directional/east,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"am" = (
+/mob/living/basic/chicken,
+/obj/structure/flora/ash/cap_shroom,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"an" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/flora/tree/jungle/small,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"ao" = (
+/obj/structure/fence,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"ap" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aq" = (
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"au" = (
+/obj/structure/closet/cardboard,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aw" = (
+/obj/machinery/light/broken/directional/north,
+/mob/living/basic/chicken,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"ax" = (
+/obj/machinery/space_heater{
+	pixel_y = 14
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aB" = (
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/expedition_planet/barren)
+"aC" = (
+/obj/structure/flora/tree/jungle/small,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"aD" = (
+/mob/living/basic/chicken,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aE" = (
+/obj/structure/barricade/wooden,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aI" = (
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aJ" = (
+/obj/structure/plasticflaps,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"aN" = (
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"aO" = (
+/mob/living/basic/chicken,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"aQ" = (
+/obj/structure/barricade/wooden,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aR" = (
+/obj/structure/spacevine,
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/expedition_planet/barren)
+"aV" = (
+/obj/structure/flora/ash/cap_shroom,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"aY" = (
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"aZ" = (
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"wi" = (
+/obj/structure/fence/end,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+ae
+ae
+aI
+aI
+ae
+ae
+aY
+aY
+ae
+"}
+(2,1,1) = {"
+aZ
+aR
+aE
+aE
+aB
+am
+aN
+ad
+aY
+"}
+(3,1,1) = {"
+aZ
+aR
+aw
+ap
+ap
+aq
+aJ
+aN
+aY
+"}
+(4,1,1) = {"
+aZ
+aR
+au
+aD
+aE
+aq
+aO
+aN
+aY
+"}
+(5,1,1) = {"
+aZ
+aR
+ax
+ap
+aE
+aq
+aC
+aN
+aY
+"}
+(6,1,1) = {"
+ae
+aQ
+ap
+aD
+aE
+aO
+aO
+aV
+aI
+"}
+(7,1,1) = {"
+ae
+an
+ah
+ap
+aE
+aV
+aq
+aO
+ae
+"}
+(8,1,1) = {"
+ae
+aR
+aR
+aR
+aR
+ab
+ao
+wi
+ae
+"}
+(9,1,1) = {"
+ae
+aY
+aY
+aY
+aY
+aY
+aI
+ae
+ae
+"}

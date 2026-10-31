@@ -1,0 +1,126 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_anomaly_2.dmm
+"l" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+"s" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"t" = (
+/turf/closed/mineral,
+/area/expedition_planet/barren)
+"u" = (
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+"w" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/effect/mob_spawn/corpse/human/monkey,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"y" = (
+/turf/template_noop,
+/area/template_noop)
+"R" = (
+/obj/effect/anomaly/bioscrambler{
+	immortal = 1;
+	move_chance = 0
+	},
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+"W" = (
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"Y" = (
+/obj/effect/mob_spawn/corpse/human/monkey,
+/turf/open/water/jungle,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+y
+y
+y
+t
+t
+t
+y
+s
+y
+"}
+(2,1,1) = {"
+y
+t
+t
+t
+t
+t
+t
+W
+s
+"}
+(3,1,1) = {"
+t
+t
+t
+t
+Y
+u
+s
+W
+W
+"}
+(4,1,1) = {"
+t
+t
+R
+l
+u
+w
+W
+W
+s
+"}
+(5,1,1) = {"
+y
+t
+t
+u
+u
+t
+W
+w
+y
+"}
+(6,1,1) = {"
+y
+t
+t
+t
+t
+t
+t
+s
+y
+"}
+(7,1,1) = {"
+t
+t
+t
+t
+t
+t
+t
+t
+y
+"}
+(8,1,1) = {"
+y
+t
+y
+y
+y
+t
+t
+y
+y
+"}

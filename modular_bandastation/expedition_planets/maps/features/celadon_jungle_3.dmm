@@ -1,0 +1,222 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_3.dmm
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"c" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/girder,
+/turf/open/floor/wood,
+/area/expedition_planet/barren)
+"h" = (
+/obj/machinery/light/broken/directional/west,
+/obj/item/trash/candy,
+/turf/open/floor/wood,
+/area/expedition_planet/barren)
+"j" = (
+/obj/structure/frame/machine,
+/turf/open/floor/wood,
+/area/expedition_planet/barren)
+"m" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"o" = (
+/turf/closed/wall/mineral/wood,
+/area/expedition_planet/barren)
+"p" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/item/trash/can/food,
+/obj/item/trash/can/food{
+	pixel_y = 5;
+	pixel_x = -10
+	},
+/obj/item/trash/can/food{
+	pixel_y = 11;
+	pixel_x = 10
+	},
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"q" = (
+/obj/item/gun/ballistic/rifle/boltaction/presawn,
+/obj/item/clothing/head/beret/sec,
+/obj/effect/decal/remains/human,
+/obj/structure/closet/crate/grave{
+	desc = "A marked patch of soil, adorned with a cross. A simple flower is etched into the wood."
+	},
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"r" = (
+/obj/structure/barricade/wooden/crude,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"w" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/item/trash/can/food{
+	pixel_y = -10;
+	pixel_x = -10
+	},
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"x" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"y" = (
+/obj/structure/girder,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"E" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"F" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"G" = (
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"J" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"L" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/closet/crate/wooden,
+/obj/item/trash/can/food/beans,
+/obj/item/trash/can/food/beans,
+/turf/open/floor/wood,
+/area/expedition_planet/barren)
+"M" = (
+/obj/structure/bed/double,
+/obj/item/toy/plush/snakeplushie,
+/turf/open/floor/wood,
+/area/expedition_planet/barren)
+"N" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/expedition_planet/barren)
+"P" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/closed/wall/mineral/wood,
+/area/expedition_planet/barren)
+"T" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/machinery/light/broken/directional/east,
+/obj/effect/spawner/random/maintenance/four,
+/turf/open/floor/wood,
+/area/expedition_planet/barren)
+"U" = (
+/obj/structure/table/wood,
+/obj/item/stack/ore/iron{
+	amount = 20
+	},
+/obj/item/stack/cable_coil/cut,
+/obj/item/stack/ore/gold{
+	amount = 5
+	},
+/turf/open/floor/wood,
+/area/expedition_planet/barren)
+"V" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/girder,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"X" = (
+/obj/item/chair/plastic,
+/turf/open/floor/wood,
+/area/expedition_planet/barren)
+"Z" = (
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+o
+o
+o
+J
+o
+o
+a
+"}
+(3,1,1) = {"
+o
+M
+h
+w
+L
+o
+a
+"}
+(4,1,1) = {"
+V
+N
+q
+F
+p
+P
+Z
+"}
+(5,1,1) = {"
+m
+E
+G
+X
+Z
+r
+Z
+"}
+(6,1,1) = {"
+N
+x
+T
+U
+j
+o
+Z
+"}
+(7,1,1) = {"
+o
+c
+y
+o
+o
+o
+a
+"}

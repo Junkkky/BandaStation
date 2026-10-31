@@ -97,7 +97,24 @@ Celadon, Shiptest и TG). Наполнение биомов заменено с�
 заменены местными типами. Природный грунт вокруг построек берётся из генератора
 планеты. Оружие Shiptest заменено ближайшими местными аналогами.
 
-Исходные permalink, коммиты и контрольные суммы всех 33 карт включены в общий
-[ASSETS.json](../space_overmap/ASSETS.json). Указание авторства не означает
+## Детали рельефа Celadon
+
+Мелкие шаблоны поверхности (greebles) из CeladonSS13/Shiptest, коммит
+`4214796c7289b74779f10dd25df2d695c264aa8f`; планировки CC BY-SA 3.0, авторы — участники
+Celadon, Shiptest, Whitesands и TG. Расстановка по планете — местный код генератора.
+
+| Локальные файлы | Источник CeladonSS13/Shiptest |
+| --- | --- |
+| `maps/features/celadon_moon_crater1.dmm` … `celadon_moon_crater6.dmm` | [_maps/templates/greebles/moon_crater1.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/moon_crater1.dmm) … `moon_crater6.dmm` |
+| `maps/features/celadon_jungle_1.dmm` … `celadon_jungle_29.dmm` | [_maps/templates/greebles/jungle/greeble_jungle_1.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_1.dmm) … `greeble_jungle_29.dmm` |
+| `maps/features/celadon_jungle_30.dmm` | [_maps/templates/greebles/jungle/jungle_greeble_30.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/jungle_greeble_30.dmm) |
+| `maps/features/celadon_jungle_anomaly_1.dmm` … `celadon_jungle_anomaly_12.dmm` | [_maps/templates/greebles/jungle/greeble_jungle_anomaly_1.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_anomaly_1.dmm) … `greeble_jungle_anomaly_12.dmm` |
+
+Природный грунт и скала стали заглушками, которые генератор заменяет грунтом и
+породой планеты. Аномалии Shiptest заменены неподвижными бессрочными аномалиями TG,
+источники радиации — декалями без излучения, оружие — ближайшими местными аналогами.
+
+Исходные permalink, коммиты и контрольные суммы всех 33 карт руин и 48 деталей рельефа
+включены в общий [ASSETS.json](../space_overmap/ASSETS.json). Указание авторства не означает
 одобрения этой адаптации исходными проектами.
 <!-- AI EDIT END -->

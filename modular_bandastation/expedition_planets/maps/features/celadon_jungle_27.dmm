@@ -1,0 +1,69 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_27.dmm
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"e" = (
+/obj/effect/decal/cleanable/ash{
+	pixel_y = -5;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/ash{
+	pixel_x = 7;
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/ash{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/effect/decal/cleanable/ash{
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/ash/large{
+	pixel_y = 1
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"u" = (
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"I" = (
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"M" = (
+/obj/structure/flora/rock,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"S" = (
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+I
+I
+I
+u
+a
+"}
+(2,1,1) = {"
+I
+M
+S
+u
+a
+"}
+(3,1,1) = {"
+a
+S
+e
+M
+u
+"}
+(4,1,1) = {"
+a
+M
+S
+S
+a
+"}

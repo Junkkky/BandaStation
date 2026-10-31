@@ -1,0 +1,145 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_anomaly_7.dmm
+"c" = (
+/obj/effect/anomaly/hallucination{
+	immortal = 1;
+	move_chance = 0
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/flora/rock/pile,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/blood/gibs/robot_debris/down,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"h" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/remains/human,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"i" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"j" = (
+/obj/effect/decal/cleanable/vomit/old,
+/obj/effect/decal/remains/human,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"l" = (
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"n" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"p" = (
+/turf/template_noop,
+/area/template_noop)
+"y" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/flora/rock/pile/jungle/large,
+/obj/effect/decal/cleanable/glass,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"C" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/remains/human,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"J" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/effect/decal/remains/human,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"L" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"Q" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/glass,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"S" = (
+/obj/structure/flora/tree/dead/style_2,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"T" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/remains/human,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"X" = (
+/obj/structure/flora/tree/dead/style_2,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/effect/decal/remains/human,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+S
+J
+L
+l
+l
+p
+p
+"}
+(2,1,1) = {"
+l
+y
+C
+i
+l
+j
+p
+"}
+(3,1,1) = {"
+p
+T
+i
+i
+Q
+p
+p
+"}
+(4,1,1) = {"
+p
+n
+i
+c
+i
+l
+p
+"}
+(5,1,1) = {"
+p
+p
+i
+i
+h
+L
+l
+"}
+(6,1,1) = {"
+p
+p
+p
+p
+l
+X
+p
+"}
+(7,1,1) = {"
+p
+p
+p
+p
+p
+l
+p
+"}

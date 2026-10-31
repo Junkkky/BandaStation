@@ -1,0 +1,448 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_25.dmm
+"bD" = (
+/turf/template_noop,
+/area/template_noop)
+"cM" = (
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"dI" = (
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"dT" = (
+/obj/structure/spacevine,
+/obj/structure/flora/bush/large,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"fq" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/bush/jungle/c,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"fF" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/bush/jungle/b,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"fY" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/spacevine,
+/turf/open/floor/concrete/slab_4,
+/area/expedition_planet/barren)
+"hT" = (
+/obj/structure/flora/grass/jungle,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"ks" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/bush/large,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"kA" = (
+/obj/effect/turf_decal/stripes/corner,
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"mU" = (
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"nV" = (
+/obj/structure/flora/tree/jungle,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"pg" = (
+/obj/structure/spacevine,
+/obj/structure/flora/tree/jungle,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"ph" = (
+/obj/structure/spacevine,
+/obj/structure/flora/bush/jungle/b,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"pR" = (
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"qv" = (
+/obj/structure/flora/bush/jungle/b,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"tW" = (
+/obj/structure/spacevine,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"vH" = (
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"wc" = (
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/bush/large,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"xa" = (
+/obj/structure/spacevine,
+/obj/structure/flora/tree/jungle,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"xO" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/concrete/slab_4,
+/area/expedition_planet/barren)
+"Af" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"CM" = (
+/obj/structure/flora/tree/jungle,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"Dd" = (
+/obj/structure/flora/grass/jungle,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"Fb" = (
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"FY" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/bush/large,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"HQ" = (
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"Je" = (
+/obj/structure/spacevine,
+/obj/structure/flora/bush/large,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"Kf" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"Ml" = (
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"Nj" = (
+/obj/structure/spacevine,
+/obj/structure/flora/bush/jungle/b,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"Nk" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"NN" = (
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"PQ" = (
+/obj/structure/spacevine,
+/obj/structure/flora/bush/jungle/c,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"Uf" = (
+/obj/structure/spacevine,
+/obj/structure/flora/tree/jungle,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"VE" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/spacevine,
+/turf/open/floor/concrete/slab_4,
+/area/expedition_planet/barren)
+"XS" = (
+/obj/structure/flora/bush/large,
+/turf/open/misc/grass/jungle,
+/area/expedition_planet/barren)
+"Zu" = (
+/obj/structure/spacevine,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+bD
+bD
+bD
+cM
+cM
+dI
+dI
+qv
+dI
+dI
+dI
+dI
+dI
+bD
+"}
+(2,1,1) = {"
+bD
+bD
+Fb
+cM
+Nj
+Fb
+dI
+dI
+nV
+dI
+qv
+Nk
+fq
+Af
+"}
+(3,1,1) = {"
+bD
+Nk
+Ml
+kA
+tW
+tW
+dI
+dI
+tW
+tW
+vH
+vH
+fF
+vH
+"}
+(4,1,1) = {"
+bD
+Ml
+Ml
+dI
+tW
+tW
+tW
+tW
+dI
+Fb
+Fb
+Fb
+Nk
+dI
+"}
+(5,1,1) = {"
+Ml
+PQ
+dT
+hT
+tW
+dI
+hT
+dI
+NN
+cM
+Fb
+Fb
+Nk
+dI
+"}
+(6,1,1) = {"
+tW
+pg
+ph
+dI
+hT
+dI
+dI
+Zu
+Fb
+xa
+Fb
+Fb
+vH
+dI
+"}
+(7,1,1) = {"
+XS
+ph
+pR
+dI
+dI
+dI
+tW
+Zu
+Fb
+FY
+Nk
+Fb
+vH
+vH
+"}
+(8,1,1) = {"
+bD
+dI
+pR
+hT
+dI
+tW
+Zu
+Zu
+Zu
+Zu
+Fb
+Fb
+vH
+bD
+"}
+(9,1,1) = {"
+bD
+dI
+hT
+dI
+tW
+Zu
+HQ
+HQ
+Zu
+Zu
+Zu
+Fb
+bD
+bD
+"}
+(10,1,1) = {"
+bD
+dI
+vH
+xO
+HQ
+HQ
+HQ
+HQ
+HQ
+HQ
+Zu
+vH
+bD
+bD
+"}
+(11,1,1) = {"
+bD
+vH
+Nk
+xO
+HQ
+HQ
+Kf
+HQ
+HQ
+Zu
+Zu
+vH
+bD
+bD
+"}
+(12,1,1) = {"
+vH
+vH
+Fb
+fY
+HQ
+ks
+Kf
+HQ
+HQ
+Zu
+HQ
+vH
+vH
+bD
+"}
+(13,1,1) = {"
+vH
+vH
+Fb
+fY
+Ml
+Uf
+NN
+HQ
+HQ
+HQ
+vH
+vH
+vH
+bD
+"}
+(14,1,1) = {"
+bD
+vH
+mU
+fY
+wc
+Ml
+Zu
+Zu
+Zu
+vH
+vH
+vH
+Fb
+vH
+"}
+(15,1,1) = {"
+bD
+dI
+pR
+dI
+Af
+Zu
+Zu
+Zu
+Zu
+Fb
+vH
+CM
+mU
+Dd
+"}
+(16,1,1) = {"
+bD
+dI
+dI
+dI
+dI
+dI
+dI
+VE
+VE
+Fb
+vH
+Fb
+Fb
+mU
+"}
+(17,1,1) = {"
+bD
+bD
+dI
+dI
+bD
+mU
+mU
+bD
+bD
+bD
+bD
+Dd
+mU
+Je
+"}

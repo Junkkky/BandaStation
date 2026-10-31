@@ -1,0 +1,93 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_anomaly_12.dmm
+"b" = (
+/turf/template_noop,
+/area/template_noop)
+"g" = (
+/obj/structure/flora/rock/pile,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"h" = (
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"m" = (
+/obj/structure/flora/rock/pile/jungle,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"r" = (
+/obj/effect/anomaly/ectoplasm{
+	immortal = 1;
+	move_chance = 0
+	},
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+"L" = (
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"O" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/misc/dirt/jungle/wasteland,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+b
+L
+h
+L
+m
+L
+b
+"}
+(2,1,1) = {"
+L
+h
+r
+O
+L
+L
+L
+"}
+(3,1,1) = {"
+L
+O
+g
+h
+h
+r
+m
+"}
+(4,1,1) = {"
+b
+m
+h
+r
+g
+O
+L
+"}
+(5,1,1) = {"
+b
+h
+h
+O
+h
+r
+h
+"}
+(6,1,1) = {"
+h
+r
+h
+h
+m
+h
+L
+"}
+(7,1,1) = {"
+g
+O
+b
+L
+b
+b
+L
+"}

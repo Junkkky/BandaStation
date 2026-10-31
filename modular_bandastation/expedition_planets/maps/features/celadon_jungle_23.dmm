@@ -1,0 +1,776 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_23.dmm
+"be" = (
+/obj/structure/closet/crate/engineering,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"cs" = (
+/obj/structure/closet/crate/secure/gear,
+/obj/item/clothing/under/misc/overalls,
+/obj/item/clothing/under/misc/overalls,
+/obj/item/clothing/under/misc/overalls,
+/obj/item/clothing/under/misc/overalls,
+/obj/item/clothing/under/misc/overalls,
+/obj/item/clothing/under/misc/overalls,
+/obj/item/clothing/under/misc/overalls,
+/obj/item/clothing/shoes/workboots{
+	pixel_y = -5
+	},
+/obj/item/clothing/shoes/workboots{
+	pixel_y = -5
+	},
+/obj/item/clothing/shoes/workboots{
+	pixel_y = -5
+	},
+/obj/item/clothing/shoes/workboots{
+	pixel_y = -5
+	},
+/obj/item/clothing/shoes/workboots{
+	pixel_y = -5
+	},
+/obj/item/clothing/shoes/workboots{
+	pixel_y = -5
+	},
+/obj/item/clothing/shoes/workboots{
+	pixel_y = -5
+	},
+/obj/item/knife/combat/survival{
+	pixel_x = -5
+	},
+/obj/item/knife/combat/survival{
+	pixel_x = -5
+	},
+/obj/item/knife/combat/survival{
+	pixel_x = -5
+	},
+/obj/item/knife/combat/survival{
+	pixel_x = -5
+	},
+/obj/item/knife/combat/survival{
+	pixel_x = -5
+	},
+/obj/item/knife/combat/survival{
+	pixel_x = -5
+	},
+/obj/item/knife/combat/survival{
+	pixel_x = -5
+	},
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"cF" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"dZ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"en" = (
+/obj/structure/spacevine,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"eo" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"fx" = (
+/obj/structure/spacevine,
+/obj/structure/flora/rock/pile/jungle/large,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"fD" = (
+/obj/structure/closet/crate/secure/gear,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"fT" = (
+/obj/structure/spacevine,
+/obj/structure/spider/stickyweb,
+/obj/structure/flora/tree/jungle/small,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"gG" = (
+/obj/structure/closet/crate/solarpanel_small,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"gJ" = (
+/obj/structure/spacevine,
+/obj/structure/flora/bush/jungle/c,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"iU" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"kY" = (
+/obj/structure/spacevine,
+/obj/structure/spider/stickyweb,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"lm" = (
+/obj/structure/spacevine,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"ls" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/spacevine,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"lt" = (
+/obj/structure/spacevine,
+/obj/structure/flora/rock/pile/jungle,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"mj" = (
+/obj/item/hand_labeler,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"nd" = (
+/obj/structure/spacevine,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"nh" = (
+/turf/closed/wall,
+/area/expedition_planet/barren)
+"oh" = (
+/obj/structure/rack,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"oO" = (
+/obj/structure/closet/crate/engineering{
+	name = "stock part crate"
+	},
+/obj/item/storage/box/stockparts/basic,
+/obj/item/storage/box/stockparts/basic,
+/obj/item/storage/box/stockparts/basic,
+/obj/item/storage/box/stockparts/basic,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/clothing/gloves/color/yellow,
+/obj/item/clothing/gloves/color/yellow,
+/obj/item/clothing/gloves/color/yellow,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"oR" = (
+/obj/structure/spacevine,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"qg" = (
+/obj/structure/spacevine,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/spider/stickyweb,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"sc" = (
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"tP" = (
+/obj/structure/spacevine,
+/obj/structure/flora/bush/jungle/a,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"ue" = (
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"ug" = (
+/obj/structure/closet/crate/engineering,
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron{
+	amount = 50
+	},
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"wX" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"xH" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/gun/ballistic/automatic/pistol,
+/obj/item/gun/ballistic/automatic/pistol,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"yu" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"zn" = (
+/obj/structure/spacevine,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"zv" = (
+/obj/structure/spacevine,
+/obj/structure/flora/bush/large,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"zS" = (
+/obj/structure/closet/crate/solarpanel_small,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Az" = (
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"AF" = (
+/obj/item/hand_labeler,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Bc" = (
+/obj/structure/closet/crate,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"BX" = (
+/obj/structure/spacevine,
+/obj/structure/spider/stickyweb,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"CO" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"Dl" = (
+/obj/structure/closet/crate/engineering,
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"DA" = (
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"DX" = (
+/obj/structure/flora/bush/jungle/c,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"Ew" = (
+/obj/structure/grille,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Ex" = (
+/obj/structure/spacevine,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"ED" = (
+/obj/structure/rack,
+/obj/structure/closet/crate,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Ga" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/ammo_box/c9mm,
+/obj/item/ammo_box/c9mm,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Gb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"HJ" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"ID" = (
+/obj/structure/spacevine,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"JE" = (
+/obj/structure/spacevine,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"JT" = (
+/obj/structure/spacevine,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"Kx" = (
+/obj/structure/spacevine,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"KY" = (
+/obj/structure/closet/crate/engineering,
+/obj/item/circuitboard/machine/fax,
+/obj/item/circuitboard/machine/fax,
+/obj/item/circuitboard/machine/cell_charger,
+/obj/item/circuitboard/machine/cell_charger,
+/obj/item/circuitboard/machine/autolathe,
+/obj/item/circuitboard/machine/autolathe,
+/obj/item/electronics/apc,
+/obj/item/electronics/apc,
+/obj/item/electronics/apc,
+/obj/item/electronics/apc,
+/obj/item/electronics/apc,
+/obj/item/electronics/apc,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Lu" = (
+/obj/structure/spacevine,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"Lz" = (
+/obj/structure/spacevine,
+/turf/closed/wall,
+/area/expedition_planet/barren)
+"LP" = (
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"LV" = (
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"Mf" = (
+/obj/structure/spacevine,
+/obj/structure/flora/tree/jungle/small,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"Mg" = (
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"NG" = (
+/obj/structure/spacevine,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"NW" = (
+/mob/living/basic/spider/giant/nurse,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Pw" = (
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"Qk" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"Ri" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"SN" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/closet/crate/engineering{
+	name = "atmospherics crate"
+	},
+/obj/item/cigarette/pipe,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Tr" = (
+/obj/structure/rack,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Uy" = (
+/obj/structure/closet/crate/secure/gear,
+/obj/item/storage/box/fishing_hooks,
+/obj/item/storage/box/fishing_hooks,
+/obj/item/storage/box/fishing_hooks,
+/obj/item/storage/box/fishing_hooks,
+/obj/item/storage/box/fishing_lines,
+/obj/item/storage/box/fishing_lines,
+/obj/item/storage/box/fishing_lines,
+/obj/item/storage/box/fishing_lines,
+/obj/item/fishing_rod,
+/obj/item/fishing_rod,
+/obj/item/fishing_rod,
+/obj/item/fishing_rod,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Vj" = (
+/obj/structure/rack,
+/obj/structure/closet/crate,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"VS" = (
+/obj/structure/spider/stickyweb,
+/turf/open/misc/dirt/jungle,
+/area/expedition_planet/barren)
+"Xv" = (
+/obj/structure/spacevine,
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+"Yz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/spider/stickyweb,
+/mob/living/basic/spider/giant/hunter,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"YD" = (
+/obj/structure/spacevine,
+/obj/effect/turf_decal/stripes/corner,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/concrete/slab_1,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+LV
+LV
+Qk
+gJ
+LP
+LP
+LP
+Qk
+Az
+LV
+LV
+LV
+"}
+(2,1,1) = {"
+LP
+Mf
+tP
+LP
+Qk
+oR
+nd
+lt
+DA
+tP
+LP
+LP
+"}
+(3,1,1) = {"
+LP
+Lz
+Lz
+Lz
+Lz
+JT
+Lu
+nh
+nh
+nh
+Lz
+LP
+"}
+(4,1,1) = {"
+LP
+Lz
+Tr
+xH
+eo
+JE
+JE
+ls
+ED
+Bc
+nh
+LP
+"}
+(5,1,1) = {"
+LP
+Ew
+sc
+NW
+yu
+cF
+JE
+ls
+ID
+sc
+Ew
+tP
+"}
+(6,1,1) = {"
+tP
+Ew
+mj
+sc
+yu
+Pw
+HJ
+Yz
+ID
+sc
+Ew
+LP
+"}
+(7,1,1) = {"
+LP
+Lz
+oh
+Ga
+yu
+Ex
+CO
+iU
+Vj
+Bc
+Lz
+Az
+"}
+(8,1,1) = {"
+LP
+Lz
+nh
+nh
+nh
+Ex
+Ex
+nh
+Lz
+Lz
+Lz
+Az
+"}
+(9,1,1) = {"
+BX
+BX
+lm
+kY
+Ex
+Xv
+zv
+ue
+JE
+Kx
+fT
+gJ
+"}
+(10,1,1) = {"
+VS
+VS
+qg
+JE
+JE
+Ex
+ue
+JE
+JE
+Kx
+BX
+LP
+"}
+(11,1,1) = {"
+VS
+nh
+nh
+nh
+Lz
+JE
+Ex
+nh
+Lz
+Lz
+Lz
+Ri
+"}
+(12,1,1) = {"
+DX
+nh
+oh
+KY
+eo
+JE
+ue
+dZ
+Tr
+AF
+Lz
+LP
+"}
+(13,1,1) = {"
+tP
+Mg
+ug
+zS
+SN
+Ex
+ue
+dZ
+cs
+sc
+Ew
+LP
+"}
+(14,1,1) = {"
+LP
+Mg
+Dl
+gG
+oO
+Pw
+HJ
+Yz
+fD
+sc
+Ew
+LP
+"}
+(15,1,1) = {"
+lt
+nh
+oh
+be
+wX
+HJ
+HJ
+Gb
+Tr
+Uy
+Lz
+LP
+"}
+(16,1,1) = {"
+LP
+Lz
+Lz
+Lz
+Lz
+NG
+YD
+nh
+Lz
+Lz
+Lz
+LP
+"}
+(17,1,1) = {"
+LP
+Az
+tP
+DA
+tP
+zn
+en
+BX
+Mf
+LP
+fx
+LP
+"}
+(18,1,1) = {"
+LV
+LP
+LP
+lt
+LV
+LV
+LP
+LV
+LV
+LV
+LP
+LV
+"}

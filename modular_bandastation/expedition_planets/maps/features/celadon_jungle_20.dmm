@@ -1,0 +1,294 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/jungle/greeble_jungle_20.dmm
+"ab" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/gibspawner/human,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"ag" = (
+/obj/effect/decal/cleanable/glass,
+/obj/item/stack/ore/iron,
+/turf/open/floor/iron/dark/small,
+/area/expedition_planet/barren)
+"ai" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/iron/dark/small,
+/area/expedition_planet/barren)
+"ak" = (
+/obj/structure/spacevine,
+/turf/closed/mineral,
+/area/expedition_planet/barren)
+"am" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/item/stack/ore/iron,
+/turf/open/floor/iron/dark/small,
+/area/expedition_planet/barren)
+"ao" = (
+/turf/template_noop,
+/area/template_noop)
+"at" = (
+/turf/closed/mineral,
+/area/expedition_planet/barren)
+"au" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/structure/door_assembly,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"av" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"ax" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"ay" = (
+/obj/effect/gibspawner/human,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron/dark/textured,
+/area/expedition_planet/barren)
+"aA" = (
+/turf/closed/wall,
+/area/expedition_planet/barren)
+"aD" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/machinery/light/broken/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/expedition_planet/barren)
+"aF" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "frontiepod1"
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron/dark/textured,
+/area/expedition_planet/barren)
+"aJ" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"aS" = (
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"aW" = (
+/obj/structure/door_assembly,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron/dark/small,
+/area/expedition_planet/barren)
+"aX" = (
+/obj/effect/gibspawner/human,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"eX" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"jq" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/spacevine,
+/obj/item/stack/ore/iron,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"lf" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"vx" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/spacevine,
+/obj/effect/decal/cleanable/glass,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"Fy" = (
+/obj/effect/decal/cleanable/glass,
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"IN" = (
+/obj/structure/spacevine,
+/obj/effect/decal/cleanable/glass,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"Mp" = (
+/obj/machinery/power/smes/full{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/spacevine,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Oo" = (
+/obj/structure/spacevine,
+/obj/item/stack/ore/iron,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"TI" = (
+/obj/structure/spacevine,
+/turf/closed/wall,
+/area/expedition_planet/barren)
+"Vb" = (
+/obj/structure/flora/grass/jungle,
+/obj/structure/spacevine,
+/obj/effect/decal/cleanable/glass,
+/obj/item/stack/ore/iron,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"Xg" = (
+/obj/structure/flora/grass/jungle,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+"ZN" = (
+/obj/structure/spacevine,
+/turf/open/misc/dirt/jungle/dark,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+ao
+at
+at
+at
+at
+at
+at
+at
+ao
+"}
+(2,1,1) = {"
+at
+at
+aX
+at
+at
+at
+at
+at
+at
+"}
+(3,1,1) = {"
+at
+at
+aF
+aF
+ay
+at
+at
+at
+at
+"}
+(4,1,1) = {"
+ao
+aA
+ai
+av
+ax
+at
+ak
+ak
+at
+"}
+(5,1,1) = {"
+ao
+aA
+aD
+aW
+ag
+at
+ak
+ak
+ak
+"}
+(6,1,1) = {"
+ao
+aA
+am
+aJ
+aJ
+ak
+ak
+ak
+ao
+"}
+(7,1,1) = {"
+ao
+aA
+aA
+ab
+au
+ak
+ak
+aS
+ao
+"}
+(8,1,1) = {"
+eX
+ZN
+TI
+Mp
+Mp
+TI
+jq
+ZN
+ao
+"}
+(9,1,1) = {"
+Vb
+vx
+TI
+lf
+lf
+TI
+vx
+eX
+ao
+"}
+(10,1,1) = {"
+IN
+ZN
+TI
+eX
+ZN
+TI
+Fy
+ZN
+ao
+"}
+(11,1,1) = {"
+ao
+ZN
+eX
+jq
+ZN
+ZN
+ZN
+ao
+ao
+"}
+(12,1,1) = {"
+ao
+ao
+Xg
+Fy
+ZN
+Oo
+ao
+ao
+ao
+"}

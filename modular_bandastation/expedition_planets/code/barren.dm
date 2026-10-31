@@ -94,6 +94,8 @@
 	var/storms = FALSE
 	/// Generated square side length in turfs.
 	var/width = 128
+	/// Greatest depth of the mineable cliff band inside the rim, as a fraction of half the width.
+	var/edge_roughness = 0.25
 	/// World X of the generated square southwest corner.
 	var/origin_x
 	/// World Y of the generated square southwest corner.
@@ -114,6 +116,19 @@
 	var/source_type = /obj/structure/stationtrauma_research_source/mineral/expedition_barren
 	/// Optional tint applied to generated mineral terrain.
 	var/rock_color
+	/// Small surface feature maps with pick weights; placeholders adapt to this profile's ground and rock.
+	var/list/feature_maps = list(
+		"modular_bandastation/expedition_planets/maps/features/celadon_moon_crater1.dmm" = 1,
+		"modular_bandastation/expedition_planets/maps/features/celadon_moon_crater2.dmm" = 1,
+		"modular_bandastation/expedition_planets/maps/features/celadon_moon_crater3.dmm" = 1,
+		"modular_bandastation/expedition_planets/maps/features/celadon_moon_crater4.dmm" = 1,
+		"modular_bandastation/expedition_planets/maps/features/celadon_moon_crater5.dmm" = 1,
+		"modular_bandastation/expedition_planets/maps/features/celadon_moon_crater6.dmm" = 1,
+	)
+	/// Surface features placed on each planet when free space allows.
+	var/feature_count = 6
+	/// Turfs covered by placed features; flora and fauna never start on them.
+	var/list/feature_turfs
 
 /datum/map_generator/expedition_barren/New(chosen_seed)
 	. = ..()
@@ -185,8 +200,10 @@
 			var/mountain = text2num(rustg_noise_get_at_coordinates("[seed]", "[x / biome_zoom]", "[y / biome_zoom]")) > mountain_height
 			biome = biome_at(x, y, mountain)
 			terrain = biome.open_turf_type
+			// Noisy cliffs inside the rim replace its straight edge; the camp, ruins and cross stay reserved.
+			var/edge = max(abs(x - width / 2), abs(y - width / 2)) / (width / 2) + text2num(rustg_noise_get_at_coordinates("[seed + 4000000]", "[x / 16]", "[y / 16]")) * edge_roughness
 			// Rock between cave pockets keeps the mountain mineable.
-			if(mountain && text2num(rustg_noise_get_at_coordinates("[seed + 3000000]", "[x / 8]", "[y / 8]")) > 0.5)
+			if(edge > 1 || (mountain && text2num(rustg_noise_get_at_coordinates("[seed + 3000000]", "[x / 8]", "[y / 8]")) > 0.5))
 				terrain = rock_type
 		var/turf/generated = tile.ChangeTurf(terrain, floor_type, CHANGETURF_IGNORE_AIR)
 		if(ismineralturf(generated))
@@ -212,11 +229,72 @@
 	if(rock_color)
 		rock.color = rock_color
 
+/** Swap template placeholder ground and rock for this profile's types and move carrier tiles into the planet surface area. */
+/datum/map_generator/expedition_barren/proc/adapt_template_turfs(list/turfs, area/surface)
+	for(var/turf/tile as anything in turfs)
+		var/area/tile_area = tile.loc
+		if(tile_area.type == /area/expedition_planet/barren && tile_area != surface)
+			tile.change_area(tile_area, surface)
+		if(tile.type == /turf/open/misc/asteroid/airless && floor_type != tile.type)
+			tile.ChangeTurf(floor_type, floor_type, CHANGETURF_IGNORE_AIR)
+		else if(tile.type == /turf/closed/mineral)
+			prepare_rock(rock_type == tile.type ? tile : tile.ChangeTurf(rock_type, floor_type, CHANGETURF_IGNORE_AIR))
+
+/**
+ * Whether a feature fits at relative coordinates: clear of reserved terrain, the camp's fauna clearance
+ * and earlier features, and mostly open so it does not vanish inside a mountain.
+ */
+/datum/map_generator/expedition_barren/proc/feature_fits(x, y, datum/map_template/template, list/placed, z)
+	var/right = x + template.width - 1
+	var/top = y + template.height - 1
+	// Features may carry hostile fauna, so they stay outside the camp's fauna clearance.
+	if(x < camp_x + camp_width + fauna_clearance && y < camp_y + camp_height + fauna_clearance)
+		return FALSE
+	for(var/list/bounds as anything in placed)
+		if(x <= bounds[3] + 1 && right >= bounds[1] - 1 && y <= bounds[4] + 1 && top >= bounds[2] - 1)
+			return FALSE
+	var/open = 0
+	for(var/tile_x in x to right)
+		for(var/tile_y in y to top)
+			if(is_reserved(tile_x, tile_y))
+				return FALSE
+			if(isopenturf(locate(origin_x + tile_x - 1, origin_y + tile_y - 1, z)))
+				open++
+	return open * 4 >= template.width * template.height * 3
+
+/** Load this profile's small surface features at random free spots after the camp and ruins; returns how many were placed. */
+/datum/map_generator/expedition_barren/proc/place_features(turf/bottom, area/surface)
+	var/static/list/templates = list()
+	var/list/placed = list()
+	for(var/attempt in 1 to feature_count * 5)
+		if(length(placed) >= feature_count)
+			break
+		var/map = pick_weight(feature_maps)
+		var/datum/map_template/template = templates[map]
+		if(!template)
+			template = new(map)
+			templates[map] = template
+		var/x = rand(4, width - 3 - template.width)
+		var/y = rand(4, width - 3 - template.height)
+		if(!feature_fits(x, y, template, placed, bottom.z))
+			continue
+		var/turf/origin = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
+		if(!template.load(origin))
+			continue
+		var/list/covered = template.get_affected_turfs(origin)
+		adapt_template_turfs(covered, surface)
+		for(var/turf/tile as anything in covered)
+			LAZYSET(feature_turfs, tile, TRUE)
+		placed += list(list(x, y, x + template.width - 1, y + template.height - 1))
+	return length(placed)
+
 /datum/map_generator/expedition_barren/populate_terrain(list/turfs, area/generate_in)
 	for(var/datum/biome/biome as anything in biome_turfs)
 		var/list/near_camp = list()
 		var/list/wild = list()
 		for(var/turf/tile as anything in biome_turfs[biome])
+			if(LAZYACCESS(feature_turfs, tile))
+				continue
 			var/x = tile.x - origin_x + 1
 			var/y = tile.y - origin_y + 1
 			if(x >= camp_x - fauna_clearance && x < camp_x + camp_width + fauna_clearance && y >= camp_y - fauna_clearance && y < camp_y + camp_height + fauna_clearance)
@@ -314,14 +392,13 @@
 		qdel(site)
 		return null
 	// The shared camp template retains its rooms, but exposed ground follows the planet's atmosphere.
-	for(var/turf/tile as anything in camp.get_affected_turfs(camp_origin))
-		if(tile.type == /turf/open/misc/asteroid/airless && generator.floor_type != tile.type)
-			tile.ChangeTurf(generator.floor_type, generator.floor_type, CHANGETURF_IGNORE_AIR)
+	generator.adapt_template_turfs(camp.get_affected_turfs(camp_origin), surface)
 	if(!site.load_ruins(ruins, bottom))
 		qdel(camp)
 		qdel(generator)
 		qdel(site)
 		return null
+	var/features = generator.place_features(bottom, surface)
 	site.name = planet_name
 	site.pos_x = -100
 	site.pos_y = -1250
@@ -349,7 +426,7 @@
 	// Storm traits are registered only once the surface is complete; SSweather then alternates storms with calm periods.
 	SSweather.update_z_level(level)
 	site.generation_seconds = ((REALTIMEOFDAY - start_time + MIDNIGHT_ROLLOVER) % MIDNIGHT_ROLLOVER) / 10
-	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [site.generation_seconds]s, modifiers: [jointext(site.modifier_names, ", ")]")
+	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [site.generation_seconds]s, features: [features], modifiers: [jointext(site.modifier_names, ", ")]")
 	qdel(camp)
 	qdel(generator)
 	return site

@@ -1,0 +1,74 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted to local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/templates/greebles/moon_crater1.dmm
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"u" = (
+/turf/closed/mineral,
+/area/expedition_planet/barren)
+"Q" = (
+/turf/open/misc/asteroid/airless,
+/area/expedition_planet/barren)
+
+(1,1,1) = {"
+a
+a
+a
+u
+u
+u
+a
+"}
+(2,1,1) = {"
+a
+a
+u
+Q
+Q
+u
+u
+"}
+(3,1,1) = {"
+a
+u
+Q
+Q
+Q
+Q
+u
+"}
+(4,1,1) = {"
+a
+a
+Q
+Q
+Q
+Q
+u
+"}
+(5,1,1) = {"
+a
+Q
+Q
+Q
+u
+u
+a
+"}
+(6,1,1) = {"
+u
+Q
+Q
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+Q
+a
+u
+a
+a
+a
+a
+"}
