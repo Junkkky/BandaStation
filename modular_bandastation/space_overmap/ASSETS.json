@@ -111,7 +111,7 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/ruins/icarus.dmm",
-			"sha256": "ca80b5e81ce06a8aa931a81325c8d4411b37bc1237243f67a9a4063fe23b7019",
+			"sha256": "f0d05d2aabe432972ab0aa91b7e26ebcdb1052ef615dfa258849d793349c93c0",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -127,7 +127,7 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/ruins/paradise_abandoned_engi_sat.dmm",
-			"sha256": "0691ae8b84cfb4601ff58cf33a9dc9692d4aa08efe3c7884490830f36f1bb683",
+			"sha256": "46cee7a476383de1a572fb53e5514f01176d0e2858dba6d35e967b898f71fa1b",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["ParadiseSS13/Paradise contributors"],
 			"source": {
@@ -243,7 +243,7 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/maps/ruins/void_nuclear_dump.dmm",
-			"sha256": "90100091cb92ef5d6179e408f9ef1a1aca9d1d1d3522bbffa302513dfe981876",
+			"sha256": "33a93f0e2aae977925fa1dee5ccc8dbbbfc34094becf0b69a8ce88891de20525",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -371,7 +371,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_ec_old_crash.dmm",
-			"sha256": "4f824ad5f78769d1d166bc2f4d7fd884575e9709a0c7af45ae1b77cacdb804db",
+			"sha256": "ad8fb7c837973568ca26b23998444cbd5aaa4bf375c89f2685e109e2bf2c7484",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -419,7 +419,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_hydrobase.dmm",
-			"sha256": "b83ddebfdbd4342b2ab75af4091eab4597650e101eb328184aa573a476d54961",
+			"sha256": "25ee42dfc1e128ce153f301fdd73c1b933cfc4be38f90956fb47b94394c862e9",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -515,7 +515,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_oldlab.dmm",
-			"sha256": "d1e08fcc8d6093045d7b006687b3d11304ea15b1e76bc00c9926ffd9ddd5fb6d",
+			"sha256": "d303039d7b6933bd60921c6fdd0767c4ada6f2cb21bea6c3bef4ea8c1d9bf125",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -547,7 +547,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_oldpod.dmm",
-			"sha256": "de777ad65639b72a26801a27b8bad10e4e6a928bd111b31a51a028a3f970b903",
+			"sha256": "4d4a406c5e5c6cf648bd154609a1edb8e1cf6c5e0ec6cdbbde00ac93fe1cf938",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -579,7 +579,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_skrell_biodome.dmm",
-			"sha256": "8fe1aea2968b5039ef0e3ae2b588a390979bc8b9601c45f2bad483626d95b770",
+			"sha256": "4622a3613ce06d2eb2b48bcac7100fce834fba6f7a2da7b2bfdc214d9316965f",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -627,7 +627,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_transshipment.dmm",
-			"sha256": "e78f004ae07bf6c9d383f27eaa80e1153ce9395037959271bd39015ed7308878",
+			"sha256": "53debc156ca112f05db5ba93e89954362aed6aa1eb47c71c43d7223f494061b8",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {

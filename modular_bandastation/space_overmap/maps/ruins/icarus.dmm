@@ -2,7 +2,7 @@
 "ae" = (
 /obj/item/stack/tile/iron/dark,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "aj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/light_construct,
@@ -115,7 +115,7 @@
 	alpha = 230
 	},
 /obj/structure/frame/computer,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /turf/open/floor/iron/dark/airless{
 	initial_gas_mix = "TEMP=2.7"
 	},
@@ -155,7 +155,7 @@
 /area/ruin/space/has_grav/stationtrauma_icarus/sci)
 "eU" = (
 /obj/structure/frame/computer,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shard,
 /turf/open/floor/iron/dark/airless{
@@ -215,7 +215,7 @@
 "fQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/frame/computer,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/item/shard,
 /turf/open/floor/iron/dark/side/airless{
 	initial_gas_mix = "TEMP=2.7"
@@ -264,7 +264,7 @@
 /area/ruin/space/has_grav/stationtrauma_icarus/sec)
 "gz" = (
 /obj/structure/frame/computer,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark/airless{
 	initial_gas_mix = "TEMP=2.7"
@@ -390,7 +390,7 @@
 "iE" = (
 /obj/item/paper_bin,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "jg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/ore/slag,
@@ -454,7 +454,7 @@
 	alpha = 230
 	},
 /obj/structure/frame/computer,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark/airless{
 	initial_gas_mix = "TEMP=2.7"
@@ -636,7 +636,7 @@
 "ph" = (
 /obj/effect/spawner/random/maintenance,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "pr" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 5
@@ -689,7 +689,7 @@
 "qf" = (
 /obj/item/stack/rods,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "qE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -821,12 +821,7 @@
 /area/ruin/space/has_grav/stationtrauma_icarus/bridge)
 "uz" = (
 /obj/structure/table/wood,
-/obj/item/toy{
-	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi';
-	icon_state = "model";
-	name = "SEV Icarus model";
-	desc = "A 1:278 scale model of the lost expedition ship."
-	},
+/obj/item/toy/stationtrauma_icarus_model,
 /turf/open/floor/wood{
 	initial_gas_mix = "TEMP=2.7"
 	},
@@ -868,7 +863,7 @@
 "wI" = (
 /obj/structure/girder/displaced,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "wJ" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 9
@@ -894,7 +889,7 @@
 "xM" = (
 /obj/structure/closet/crate/freezer/organ,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "xU" = (
 /obj/structure/grille,
 /turf/open/floor/engine{
@@ -902,12 +897,8 @@
 	},
 /area/ruin/space/has_grav/stationtrauma_icarus/driver/west)
 "yB" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/rack,
 /obj/effect/turf_decal/trimline/white/line,
 /obj/effect/spawner/random/exotic/antag_gear_weak,
@@ -1011,9 +1002,7 @@
 	},
 /area/ruin/space/has_grav/stationtrauma_icarus/bridge)
 "Ax" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/rack,
 /obj/effect/turf_decal/trimline/white/line,
 /obj/effect/spawner/random/mod/maint,
@@ -1358,12 +1347,8 @@
 	},
 /area/ruin/space/has_grav/stationtrauma_icarus/sci)
 "LX" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/rack,
 /obj/effect/turf_decal/trimline/white/line,
 /obj/effect/spawner/random/exotic/antag_gear_weak,
@@ -1552,7 +1537,7 @@
 /area/ruin/space/has_grav/stationtrauma_icarus/bridge)
 "QT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /turf/open/floor/iron/dark/airless{
 	initial_gas_mix = "TEMP=2.7"
 	},
@@ -1560,7 +1545,7 @@
 "Rf" = (
 /obj/item/folder/blue,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "Rg" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 6
@@ -1586,7 +1571,7 @@
 "Rv" = (
 /obj/effect/spawner/random/engineering/toolbox,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "RB" = (
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/stationtrauma_icarus/bridge)
@@ -1706,7 +1691,7 @@
 /turf/open/floor/plating/airless{
 	initial_gas_mix = "TEMP=2.7"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "UY" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -1746,7 +1731,7 @@
 "Vv" = (
 /obj/item/stack/tile/iron/dark_side,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "Vw" = (
 /obj/item/stack/rods,
 /obj/effect/turf_decal/tile/blue{
@@ -1842,7 +1827,7 @@
 "Wl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/frame/computer,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/item/shard,
 /turf/open/floor/plating/airless{
 	initial_gas_mix = "TEMP=2.7"
@@ -1890,7 +1875,7 @@
 /area/ruin/space/has_grav/stationtrauma_icarus/bridge)
 "Xn" = (
 /turf/closed/wall/r_wall,
-/area/template_noop)
+/area/space/nearstation)
 "Xw" = (
 /obj/structure/girder,
 /obj/effect/decal/cleanable/dirt,
@@ -1915,7 +1900,7 @@
 "XV" = (
 /obj/structure/closet/crate/stationtrauma_icarus_tools,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "Ya" = (
 /obj/effect/turf_decal{
 	dir = 8;
@@ -1968,9 +1953,7 @@
 /area/ruin/space/has_grav/stationtrauma_icarus/driver/east)
 "YX" = (
 /obj/structure/table/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /obj/item/folder/blue,
 /turf/open/floor/carpet/purple/airless{
 	initial_gas_mix = "TEMP=2.7"
@@ -2005,7 +1988,7 @@
 /area/ruin/space/has_grav/stationtrauma_icarus/bridge)
 "ZP" = (
 /obj/structure/frame/computer,
-/obj/item/circuitboard/computer,
+/obj/effect/spawner/random/techstorage/arcade_boards,
 /obj/item/shard,
 /turf/open/floor/iron/dark/airless{
 	initial_gas_mix = "TEMP=2.7"

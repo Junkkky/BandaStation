@@ -93,6 +93,13 @@
 	name = "SEV Icarus research archive"
 	desc = "An encrypted archive from the lost expedition. Its label requests delivery to Expeditionary Corps Command."
 
+/** Bridge scale model of the lost expedition ship. */
+/obj/item/toy/stationtrauma_icarus_model
+	name = "SEV Icarus model"
+	desc = "A 1:278 scale model of the lost expedition ship."
+	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi'
+	icon_state = "model"
+
 /** Mapped radiation protection and native anomaly containment tools. */
 /obj/structure/closet/crate/stationtrauma_icarus_tools
 	name = "anomaly containment equipment"
