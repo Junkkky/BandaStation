@@ -51,14 +51,6 @@
 			"changes": "Original layout using existing repository assets."
 		},
 		{
-			"path": "modular_bandastation/space_overmap/maps/moon.dmm",
-			"sha256": "6b253eae39ea4a19876b36586e70ae4b5849146cb22cd3073979defa635726e5",
-			"license": "CC-BY-SA-3.0",
-			"authors": ["StationTrauma / BandaStation contributors"],
-			"source": null,
-			"changes": "Original layout using existing repository assets."
-		},
-		{
 			"path": "modular_bandastation/space_overmap/maps/pocketrocket.dmm",
 			"sha256": "9b54a99d21d3f50c7a0768873cb5ef87c556108dad232f7f663354c640dcd876",
 			"license": "CC-BY-SA-3.0",

@@ -30,7 +30,6 @@
 | --- | --- |
 | `maps/asteroid_field.dmm` | Собственная планировка StationTrauma на штатных ресурсах сборки |
 | `maps/drift_cargo.dmm` | Собственная планировка StationTrauma на штатных ресурсах сборки |
-| `maps/moon.dmm` | Собственная планировка StationTrauma на штатных ресурсах сборки |
 | `maps/pocketrocket.dmm` | [_maps/shuttles/shiptest/voidcrew/pocketrocket.dmm](https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/_maps/shuttles/shiptest/voidcrew/pocketrocket.dmm) |
 | `maps/raven.dmm` | [_maps/shuttles/emergency/emergency_raven.dmm](https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/_maps/shuttles/emergency/emergency_raven.dmm) |
 | `../../_maps/map_files/debug/raven_draft.dmm` | Переработка `maps/raven.dmm`: планировка Junkkky, тритиевая камера сгорания и оборудование овермапы; исходные авторы и лицензия Raven сохранены |
@@ -48,7 +47,7 @@
 
 Несовместимые объекты, механизмы, обитатели и лут заменены местными типами.
 Изолированы area и управляющие ID. На кораблях добавлены навигация, транспондеры,
-терминалы переходов и порты. `moon.dmm`, `asteroid_field.dmm` и `drift_cargo.dmm`
+терминалы переходов и порты. `asteroid_field.dmm` и `drift_cargo.dmm`
 созданы для этой интеграции на штатных ресурсах. Существующие TG-руины подключаются
 по исходным шаблонам без копирования графики и изменения их лицензий.
 

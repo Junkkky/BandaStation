@@ -169,6 +169,9 @@
 /datum/map_generator/expedition_barren/proc/is_reserved(x, y)
 	if(in_camp(x, y) || abs(x - round(width / 2)) <= 1 || abs(y - round(width / 2)) <= 1)
 		return TRUE
+	// An open row links the camp to the cross, so mountains never wall the landing site in.
+	if(y == camp_y + round(camp_height / 2) && x >= camp_x && x <= round(width / 2))
+		return TRUE
 	for(var/list/bounds as anything in ruin_bounds)
 		if(x >= bounds[1] - 1 && x <= bounds[3] + 1 && y >= bounds[2] - 1 && y <= bounds[4] + 1)
 			return TRUE
@@ -472,9 +475,16 @@
 	// Landings generate beside live gameplay; a quarter of each tick builds the surface within the descent.
 	budget.allowance = 25
 	generator.budget = budget
-	var/datum/map_template/camp = new('modular_bandastation/space_overmap/maps/moon.dmm', "Посадочная площадка экспедиции")
-	if(camp.width + 8 > generator.width || camp.height + 8 > generator.width)
-		CRASH("Expedition camp does not fit the reserved planetary surface")
+	// The clearing fits every hull allowed to land, with a margin of open ground around it; the rest is terrain.
+	var/list/extents = landing_extents()
+	var/margin = 5
+	generator.camp_x = 5
+	generator.camp_y = 5
+	generator.camp_width = extents[1] + extents[2] + margin * 2
+	generator.camp_height = extents[3] + extents[4] + margin * 2
+	// Ruins keep out of the camp's quadrant, so the clearing must stay inside it.
+	if(generator.camp_x + generator.camp_width > round(generator.width / 2) - 1 || generator.camp_y + generator.camp_height > round(generator.width / 2) - 1)
+		CRASH("Landing hulls do not fit the expedition camp quadrant")
 	var/list/traits = ZTRAITS_AWAY
 	if(generator.storms)
 		traits[generator.storm_trait] = TRUE
@@ -486,13 +496,8 @@
 	var/datum/space_level/level = SSmapping.add_new_zlevel(name, traits)
 	generator.origin_x = round((world.maxx - generator.width) / 2) + 1
 	generator.origin_y = round((world.maxy - generator.width) / 2) + 1
-	generator.camp_x = 5
-	generator.camp_y = 5
-	generator.camp_width = camp.width
-	generator.camp_height = camp.height
 	var/list/ruins = prepare_ruins(generator)
 	if(!ruins)
-		qdel(camp)
 		return FALSE
 	var/turf/bottom = locate(generator.origin_x, generator.origin_y, level.z_value)
 	var/list/turfs = block(bottom, locate(bottom.x + generator.width - 1, bottom.y + generator.width - 1, bottom.z))
@@ -501,25 +506,20 @@
 	// Storms only reach outdoor areas, the landing clearing included; ruins and landed vessels keep their own sheltered areas.
 	surface.outdoors = generator.storms
 	generator.generate_terrain(turfs, surface)
-	budget.yield()
-	var/turf/camp_origin = locate(bottom.x + generator.camp_x - 1, bottom.y + generator.camp_y - 1, bottom.z)
-	if(!camp.load(camp_origin))
-		qdel(camp)
-		return FALSE
-	// The shared landing clearing follows the planet's ground and atmosphere.
-	generator.adapt_template_turfs(camp.get_affected_turfs(camp_origin), surface)
+	// Native berths face north, so the hull rectangle starts dwidth and dheight below the port.
+	var/obj/docking_port/stationary/stationtrauma_space_surface/pad = new(locate(bottom.x + generator.camp_x - 1 + margin + extents[1], bottom.y + generator.camp_y - 1 + margin + extents[3], bottom.z))
+	pad.dwidth = extents[1]
+	pad.width = extents[1] + extents[2]
+	pad.dheight = extents[3]
+	pad.height = extents[3] + extents[4]
+	pad.name = "Посадочная площадка экспедиции"
+	berth = pad
 	budget.yield()
 	if(!load_ruins(ruins, bottom, surface, budget))
-		qdel(camp)
 		return FALSE
 	var/features = generator.place_features(bottom, surface)
-	for(var/obj/docking_port/stationary/stationtrauma_space_surface/pad in SSshuttle.stationary_docking_ports)
-		if(pad.z == level.z_value)
-			berth = pad
-			pad.name = "Посадочная площадка экспедиции"
-			break
-	if(!berth || generator.populate_terrain(turfs, surface) != 3)
-		CRASH("Expedition planet [seed] lacks its landing berth or research sources")
+	if(generator.populate_terrain(turfs, surface) != 3)
+		CRASH("Expedition planet [seed] lacks its research sources")
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(berth))
 	marker.site_id = id
 	marker.name = name
@@ -537,6 +537,29 @@
 	SSweather.update_z_level(level)
 	generation_seconds = ((REALTIMEOFDAY - start_time + MIDNIGHT_ROLLOVER) % MIDNIGHT_ROLLOVER) / 10
 	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [generation_seconds]s, features: [features], modifiers: [jointext(modifier_names, ", ")]")
-	qdel(camp)
 	return TRUE
+
+/**
+ * Native berth extents fitting every hull allowed to land here: list(dwidth, width - dwidth, dheight, height - dheight).
+ * Without such hulls the surface berth type's own size applies.
+ */
+/datum/stationtrauma_overmap_site/space/planet/proc/landing_extents()
+	var/list/extents
+	for(var/sector_id in SSstationtrauma_space_voyage.sectors)
+		var/datum/stationtrauma_overmap_sector/sector = SSstationtrauma_space_voyage.sectors[sector_id]
+		for(var/ship_id in sector.ships)
+			var/datum/stationtrauma_overmap/space/navigation = sector.ships[ship_id]
+			if(!istype(navigation) || QDELETED(navigation.vessel) || !navigation.vessel.permits_docking(src))
+				continue
+			var/obj/docking_port/mobile/stationtrauma_space/vessel = navigation.vessel
+			var/list/hull = list(vessel.dwidth, vessel.width - vessel.dwidth, vessel.dheight, vessel.height - vessel.dheight)
+			if(!extents)
+				extents = hull
+				continue
+			for(var/index in 1 to 4)
+				extents[index] = max(extents[index], hull[index])
+	if(extents)
+		return extents
+	var/obj/docking_port/stationary/stationtrauma_space_surface/pad = /obj/docking_port/stationary/stationtrauma_space_surface
+	return list(initial(pad.dwidth), initial(pad.width) - initial(pad.dwidth), initial(pad.dheight), initial(pad.height) - initial(pad.dheight))
 // AI EDIT END
