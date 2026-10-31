@@ -81,6 +81,13 @@ export type NavigationData = Position & {
     breathable: BooleanLike;
     modifiers: string[];
   };
+  descent: {
+    elapsed: number;
+    duration: number;
+    site: string;
+    biome: string | null;
+    surveying: BooleanLike;
+  } | null;
 };
 
 /** Seconds of unchanged motion represented by a velocity vector. */

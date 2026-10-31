@@ -260,10 +260,17 @@
 		stop("Точка назначения достигнута: [site.name]")
 	arrival_pending = FALSE
 
+/** Whether docking may begin before the berth exists because the descent generates it. */
+/datum/stationtrauma_overmap_site/space/proc/awaits_surface()
+	return FALSE
+
 /** Revalidate the selected site, berth ownership, proximity and helm order revision. */
 /datum/stationtrauma_overmap/space/proc/can_dock(datum/stationtrauma_overmap_site/space/site, revision)
-	if(!is_operational() || ship_docking || !knows_site(site) || QDELETED(site.berth) || site.failed || !vessel.permits_docking(site) || (site.docking_owner && site.docking_owner != src) || revision != control_revision || helm_engaged || site != sites[selected_destination] || distance_to(site) > radius + site.radius + ST_NAV_APPROACH + 5)
+	if(!is_operational() || ship_docking || !knows_site(site) || (QDELETED(site.berth) && !site.awaits_surface()) || site.failed || !vessel.permits_docking(site) || (site.docking_owner && site.docking_owner != src) || revision != control_revision || helm_engaged || site != sites[selected_destination] || distance_to(site) > radius + site.radius + ST_NAV_APPROACH + 5)
 		return FALSE
+	// The generated berth is sized for the prototype hull; descent revalidates it once it exists.
+	if(site.awaits_surface())
+		return TRUE
 	if(site.landing || site.physical_docking)
 		var/compatibility = vessel.canDock(site.berth)
 		return compatibility == SHUTTLE_CAN_DOCK || compatibility == SHUTTLE_ALREADY_DOCKED
@@ -284,7 +291,9 @@
 	var/ready = FALSE
 	var/physical_docking = site.landing || site.physical_docking
 	try
-		if(physical_docking)
+		if(site.landing)
+			ready = descend(site, revision)
+		else if(physical_docking)
 			ready = relocate(site.berth)
 		else
 			ready = connection.connect(site.berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
@@ -292,6 +301,8 @@
 		stack_trace("Space prototype docking failed: [failure]")
 	if(QDELETED(src))
 		return FALSE
+	landing_started = 0
+	update_parallax()
 	// Native relocation has committed the hull; an engine stop cannot roll that movement back.
 	ready = ready && (physical_docking ? vessel.get_docked() == site.berth : can_dock(site, revision))
 	if(!ready)
@@ -314,7 +325,7 @@
 	return TRUE
 
 /datum/stationtrauma_overmap/space/update_parallax()
-	var/direction = speed > 0.05 || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
+	var/direction = speed > 0.05 || landing_started || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
 	var/background = parallax_background()
 	var/motion_changed = direction != parallax_direction
 	if(!motion_changed && background == space_background)

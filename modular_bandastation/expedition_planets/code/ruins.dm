@@ -52,8 +52,8 @@
 		placements += list(list(template, x, y))
 	return placements
 
-/** Load reserved ruins and retain their IDs. */
-/datum/stationtrauma_overmap_site/space/planet/proc/load_ruins(list/placements, turf/origin)
+/** Load reserved ruins and retain their IDs, yielding to `budget` between templates. */
+/datum/stationtrauma_overmap_site/space/planet/proc/load_ruins(list/placements, turf/origin, datum/stationtrauma_work_budget/budget)
 	for(var/list/placement as anything in placements)
 		var/datum/map_template/ruin/expedition/template = placement[1]
 		var/turf/bottom = locate(origin.x + placement[2] - 1, origin.y + placement[3] - 1, origin.z)
@@ -63,6 +63,7 @@
 		template.loaded++
 		new /obj/effect/landmark/ruin(center, template)
 		ruin_ids += template.id
+		budget?.yield()
 	return TRUE
 
 /** Finite research source: испещрённый бороздами монолит, with authored survey and laboratory observations. */

@@ -122,6 +122,10 @@
   &__marker {
     cursor: pointer;
   }
+  &__descent {
+    cursor: default;
+  }
+
   &__marker:focus {
     outline: 1px solid #d4e4be;
   }

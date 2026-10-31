@@ -190,7 +190,7 @@
 		var/profile = profiles[index]
 		// Planets farther from the arrival point roll stronger dangers and rewards.
 		var/modifier_level = sqrt((positions[index][1] - entry_x) ** 2 + (positions[index][2] - entry_y) ** 2) / 500
-		var/datum/stationtrauma_overmap_site/space/planet/planet = load_stationtrauma_planet(seed = first_seed + index - 1, planet_id = "planet_[index]", planet_name = "[name] [index]", planet_type = profile, modifier_level = modifier_level)
+		var/datum/stationtrauma_overmap_site/space/planet/planet = create_stationtrauma_planet(seed = first_seed + index - 1, planet_id = "planet_[index]", planet_name = "[name] [index]", planet_type = profile, modifier_level = modifier_level)
 		if(!planet)
 			return FALSE
 		planet.pos_x = positions[index][1]

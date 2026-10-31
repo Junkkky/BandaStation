@@ -4,6 +4,8 @@
 	var/obj/docking_port/stationary/stationtrauma_space_flight/flight_berth
 	/// Native shuttle movement yields; navigation commands cannot interrupt a partially moved hull.
 	var/relocating = FALSE
+	/// world.time at which the current planetary descent began; zero outside a descent, which locks the helm.
+	var/landing_started = 0
 
 /** Retained native berth marking the hull position on its stationary flight level. */
 /obj/docking_port/stationary/stationtrauma_space_flight
@@ -144,4 +146,33 @@
 		SSjob.latejoin_trackers -= original
 		SSjob.latejoin_trackers |= crew_spawns[original]
 	return TRUE
+
+/**
+ * Hold the hull on its approach for the descent, generating an uncharted surface meanwhile, then land.
+ *
+ * Crew aboard feel atmospheric entry through the middle of the descent; the shake is purely visual.
+ */
+/datum/stationtrauma_overmap/space/proc/descend(datum/stationtrauma_overmap_site/space/site, revision)
+	landing_started = world.time
+	status = "Посадка: [site.name]"
+	update_parallax()
+	var/datum/stationtrauma_overmap_site/space/planet/planet = istype(site, /datum/stationtrauma_overmap_site/space/planet) ? site : null
+	if(planet?.awaits_surface() && !planet.generating)
+		INVOKE_ASYNC(planet, TYPE_PROC_REF(/datum/stationtrauma_overmap_site/space/planet, generate_surface))
+	var/elapsed = 0
+	while((elapsed = world.time - landing_started) < ST_SPACE_LANDING_TIME || planet?.generating)
+		var/entry = elapsed / ST_SPACE_LANDING_TIME
+		if(entry > 0.25 && entry < 0.75)
+			// Strongest halfway through atmospheric entry, at most a fifth of a tile.
+			var/strength = 0.2 * sin(180 * (entry - 0.25) / 0.5)
+			for(var/mob/crew as anything in SSmobs.clients_by_zlevel[vessel.z])
+				if(vessel.is_in_shuttle_bounds(crew))
+					shake_camera(crew, 1 SECONDS, strength)
+		sleep(1 SECONDS)
+		if(QDELETED(src) || QDELETED(site))
+			return FALSE
+	if(!site.failed && can_dock(site, revision) && relocate(site.berth))
+		return TRUE
+	status = site.failed ? "Посадка отменена: поверхность не картографирована" : "Посадка прервана"
+	return FALSE
 // AI EDIT END

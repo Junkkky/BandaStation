@@ -5,6 +5,7 @@ import { Button, DraggableControl, Icon } from 'tgui-core/components';
 import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
 import { Chart } from './Chart';
+import { Descent } from './Descent';
 import {
   closestApproach,
   distanceLabel,
@@ -43,8 +44,10 @@ function Navigation({ data }: { data: NavigationData }) {
       data.vy * Math.cos((data.course * Math.PI) / 180) <
     -0.05;
   const needle = Math.PI * (1 - Math.min(1, data.speed / 5));
-  const mode = data.preparing
-    ? 'ПОДГОТОВКА'
+  const mode = data.descent
+    ? 'ПОСАДКА'
+    : data.preparing
+      ? 'ПОДГОТОВКА'
     : moored
       ? data.landed
         ? 'НА ПОВЕРХНОСТИ'
@@ -108,12 +111,16 @@ function Navigation({ data }: { data: NavigationData }) {
           </div>
         </aside>
         <section className="SpaceNavigation__plot">
-          <Chart
-            data={data}
-            focusedContact={focusedContact}
-            onContact={setFocusedContact}
-            onSite={selectSite}
-          />
+          {data.descent ? (
+            <Descent descent={data.descent} />
+          ) : (
+            <Chart
+              data={data}
+              focusedContact={focusedContact}
+              onContact={setFocusedContact}
+              onSite={selectSite}
+            />
+          )}
           <div className="SpaceNavigation__legend">
             <span>▲ Судно</span>
             <span>◇ Цель</span>

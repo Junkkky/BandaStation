@@ -3,6 +3,8 @@
 #define ST_SPACE_JUMP_TIME (20 SECONDS)
 #define ST_SPACE_DOCK_SPEED 0.5
 #define ST_SPACE_DOCK_REQUEST_TIME (30 SECONDS)
+/// Planetary descent duration; a first landing generates the surface meanwhile.
+#define ST_SPACE_LANDING_TIME (2 MINUTES)
 #define COMSIG_AREA_SPACE_PARALLAX_CHANGED "area_space_parallax_changed"
 #define SHIP_CHAMBER_OFF "off"
 #define SHIP_CHAMBER_STARTING "starting"

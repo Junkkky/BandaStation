@@ -35,6 +35,10 @@
 	var/breathable = FALSE
 	/// Survey names of the modifiers rolled for this planet.
 	var/list/modifier_names = list()
+	/// Charted generator awaiting the first landing; null once the surface is built or has failed.
+	var/datum/map_generator/expedition_barren/generator
+	/// Set while the first descent builds the surface.
+	var/generating = FALSE
 
 /** Serialize environment observations without exposing the planet generation seed. */
 /datum/stationtrauma_overmap_site/space/planet/proc/survey_data()
@@ -137,6 +141,8 @@
 	var/feature_count = 6
 	/// Turfs covered by placed features; flora and fauna never start on them.
 	var/list/feature_turfs
+	/// Work slice shared by every generation step of this surface.
+	var/datum/stationtrauma_work_budget/budget
 
 /datum/map_generator/expedition_barren/New(chosen_seed)
 	. = ..()
@@ -191,7 +197,7 @@
 	return band
 
 /datum/map_generator/expedition_barren/generate_terrain(list/turfs, area/generate_in)
-	var/datum/stationtrauma_work_budget/budget = new
+	budget ||= new
 	var/list/turf/closed/mineral/rocks = list()
 	for(var/turf/tile as anything in turfs)
 		budget.yield()
@@ -301,6 +307,7 @@
 		for(var/turf/tile as anything in covered)
 			LAZYSET(feature_turfs, tile, TRUE)
 		placed += list(list(x, y, x + template.width - 1, y + template.height - 1))
+		budget?.yield()
 	return length(placed)
 
 /** Whether relative cave-level coordinates lie in the clearing beneath a surface ladder or drop. */
@@ -418,93 +425,114 @@
 		new /obj/item/stationtrauma_sample(src)
 
 /**
- * Preload once; subsequent landings only move the vessel onto the retained native berth.
+ * Chart a planet without building it; the first landing generates its surface.
  *
+ * Modifiers are rolled here so orbital surveys report them before anyone lands.
  * `modifier_level` sets the planet modifier budgets; sectors derive it from the distance to their arrival point.
  */
-/proc/load_stationtrauma_planet(seed = rand(1, 1000000), planet_id = "moon", planet_name = "Каменистая экзопланета", planet_type = /datum/stationtrauma_overmap_site/space/planet, modifier_level = 1)
+/proc/create_stationtrauma_planet(seed = rand(1, 1000000), planet_id = "moon", planet_name = "Каменистая экзопланета", planet_type = /datum/stationtrauma_overmap_site/space/planet, modifier_level = 1)
 	if(!ispath(planet_type, /datum/stationtrauma_overmap_site/space/planet))
 		CRASH("Invalid expedition planet profile [planet_type]")
-	var/start_time = REALTIMEOFDAY
 	var/datum/stationtrauma_overmap_site/space/planet/site = new planet_type
 	site.id = planet_id
-	var/datum/map_generator/expedition_barren/generator = new site.generator_type(seed)
+	site.name = planet_name
+	site.seed = seed
+	site.generator = new site.generator_type(seed)
+	site.surface_width = site.generator.width
+	site.modifier_names = site.generator.apply_modifiers(modifier_level)
+	return site
+
+/datum/stationtrauma_overmap_site/space/planet/awaits_surface()
+	return !!generator
+
+/**
+ * Build the surface once beside live gameplay; subsequent landings only move the vessel onto the retained native berth.
+ *
+ * Descents wait on [/datum/stationtrauma_overmap_site/space/planet/var/generating]. A crash inside the build only aborts that call,
+ * so the planet is still released as failed instead of waiting for another attempt. No try block here: it would turn any
+ * runtime from a single generated atom's Initialize into a failed planet.
+ */
+/datum/stationtrauma_overmap_site/space/planet/proc/generate_surface()
+	if(!generator || generating)
+		return
+	generating = TRUE
+	failed = !build_surface()
+	QDEL_NULL(generator)
+	generating = FALSE
+
+/** Generate every level of the surface, yielding between work slices; returns whether the planet is ready for landing. */
+/datum/stationtrauma_overmap_site/space/planet/proc/build_surface()
+	var/start_time = REALTIMEOFDAY
+	var/datum/stationtrauma_work_budget/budget = new
+	// Landings generate beside live gameplay; a quarter of each tick builds the surface within the descent.
+	budget.allowance = 25
+	generator.budget = budget
 	var/datum/map_template/camp = new('modular_bandastation/space_overmap/maps/moon.dmm', "Посадочная площадка экспедиции")
 	if(camp.width + 8 > generator.width || camp.height + 8 > generator.width)
 		CRASH("Expedition camp does not fit the reserved planetary surface")
-	site.modifier_names = generator.apply_modifiers(modifier_level)
 	var/list/traits = ZTRAITS_AWAY
 	if(generator.storms)
 		traits[generator.storm_trait] = TRUE
 	var/datum/space_level/caves
 	// Multi-z links adjacent z values, so the cave level is created immediately below the surface.
 	if(generator.underground)
-		caves = SSmapping.add_new_zlevel("[planet_name]: пещеры", ZTRAITS_AWAY + list(ZTRAIT_UP = TRUE))
+		caves = SSmapping.add_new_zlevel("[name]: пещеры", ZTRAITS_AWAY + list(ZTRAIT_UP = TRUE))
 		traits[ZTRAIT_DOWN] = TRUE
-	var/datum/space_level/level = SSmapping.add_new_zlevel(planet_name, traits)
+	var/datum/space_level/level = SSmapping.add_new_zlevel(name, traits)
 	generator.origin_x = round((world.maxx - generator.width) / 2) + 1
 	generator.origin_y = round((world.maxy - generator.width) / 2) + 1
 	generator.camp_x = 5
 	generator.camp_y = 5
 	generator.camp_width = camp.width
 	generator.camp_height = camp.height
-	var/list/ruins = site.prepare_ruins(generator)
+	var/list/ruins = prepare_ruins(generator)
 	if(!ruins)
 		qdel(camp)
-		qdel(generator)
-		qdel(site)
-		return null
+		return FALSE
 	var/turf/bottom = locate(generator.origin_x, generator.origin_y, level.z_value)
 	var/list/turfs = block(bottom, locate(bottom.x + generator.width - 1, bottom.y + generator.width - 1, bottom.z))
 	var/area/expedition_planet/barren/surface = new
-	surface.name = "[planet_name]: поверхность"
+	surface.name = "[name]: поверхность"
 	// Storms only reach outdoor areas; the camp, ruins and landed vessels keep their own sheltered areas.
 	surface.outdoors = generator.storms
 	generator.generate_terrain(turfs, surface)
+	budget.yield()
 	var/turf/camp_origin = locate(bottom.x + generator.camp_x - 1, bottom.y + generator.camp_y - 1, bottom.z)
 	if(!camp.load(camp_origin))
 		qdel(camp)
-		qdel(generator)
-		qdel(site)
-		return null
+		return FALSE
 	// The shared landing clearing follows the planet's ground and atmosphere.
 	generator.adapt_template_turfs(camp.get_affected_turfs(camp_origin), surface)
-	if(!site.load_ruins(ruins, bottom))
+	budget.yield()
+	if(!load_ruins(ruins, bottom, budget))
 		qdel(camp)
-		qdel(generator)
-		qdel(site)
-		return null
+		return FALSE
 	var/features = generator.place_features(bottom, surface)
-	site.name = planet_name
-	site.pos_x = -100
-	site.pos_y = -1250
-	site.seed = seed
-	site.surface_width = generator.width
 	for(var/obj/docking_port/stationary/stationtrauma_space_surface/pad in SSshuttle.stationary_docking_ports)
 		if(pad.z == level.z_value)
-			site.berth = pad
+			berth = pad
 			pad.name = "Посадочная площадка экспедиции"
 			break
-	if(!site.berth || generator.populate_terrain(turfs, surface) != 3)
+	if(!berth || generator.populate_terrain(turfs, surface) != 3)
 		CRASH("Expedition planet [seed] lacks its landing berth or research sources")
 	// Field equipment waits beside the vessel footprint, where landing never needs to trample it.
-	var/list/pad_bounds = site.berth.return_coords()
-	var/turf/supplies_turf = locate(min(pad_bounds[1], pad_bounds[3]) - 2, site.berth.y, site.berth.z)
+	var/list/pad_bounds = berth.return_coords()
+	var/turf/supplies_turf = locate(min(pad_bounds[1], pad_bounds[3]) - 2, berth.y, berth.z)
 	if(!isopenturf(supplies_turf) || supplies_turf.is_blocked_turf(TRUE))
 		CRASH("Expedition planet [seed] has no free ground beside its landing berth for field equipment")
 	new /obj/structure/closet/crate/expedition_planet_supplies(supplies_turf)
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(supplies_turf)
-	marker.site_id = site.id
-	marker.name = site.name
-	if(caves && !generator.generate_underground(bottom, caves, surface, planet_name))
+	marker.site_id = id
+	marker.name = name
+	budget.yield()
+	if(caves && !generator.generate_underground(bottom, caves, surface, name))
 		CRASH("Expedition planet [seed] has no free surface for cave connectors")
 	SSmapping.reg_in_areas_in_z(list(surface))
 	smooth_zlevel(level.z_value)
 	// Storm traits are registered only once the surface is complete; SSweather then alternates storms with calm periods.
 	SSweather.update_z_level(level)
-	site.generation_seconds = ((REALTIMEOFDAY - start_time + MIDNIGHT_ROLLOVER) % MIDNIGHT_ROLLOVER) / 10
-	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [site.generation_seconds]s, features: [features], modifiers: [jointext(site.modifier_names, ", ")]")
+	generation_seconds = ((REALTIMEOFDAY - start_time + MIDNIGHT_ROLLOVER) % MIDNIGHT_ROLLOVER) / 10
+	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [generation_seconds]s, features: [features], modifiers: [jointext(modifier_names, ", ")]")
 	qdel(camp)
-	qdel(generator)
-	return site
+	return TRUE
 // AI EDIT END

@@ -14,7 +14,7 @@ ADMIN_VERB(stationtrauma_overmap_jump, R_DEBUG, "Overmap - Переместит�
 	var/list/destinations = list()
 	for(var/id in navigation.sites)
 		var/datum/stationtrauma_overmap_site/space/site = navigation.sites[id]
-		if(site.berth && !site.failed)
+		if((site.berth || site.awaits_surface()) && !site.failed)
 			destinations["[site.name] ([id])"] = site
 	var/choice = tgui_input_list(user, "Объект", "Перемещение на овермапе", destinations)
 	var/datum/stationtrauma_overmap_site/space/site = destinations[choice]
@@ -35,7 +35,7 @@ ADMIN_VERB(stationtrauma_overmap_jump, R_DEBUG, "Overmap - Переместит�
 
 /** A non-yielding debug effect; the admin verb revalidates permissions after its dialogs and departure. */
 /datum/stationtrauma_overmap/space/proc/debug_reposition(datum/stationtrauma_overmap_site/space/site)
-	if(!is_operational() || preparing || relocating || planning || arrival_pending || docked || ship_docking || QDELETED(site) || sites[site.id] != site || !site.berth || site.failed)
+	if(!is_operational() || preparing || relocating || planning || arrival_pending || docked || ship_docking || QDELETED(site) || sites[site.id] != site || (!site.berth && !site.awaits_surface()) || site.failed)
 		return FALSE
 	stop("Движение остановлено")
 	clear_encounters()

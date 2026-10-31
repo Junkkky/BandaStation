@@ -75,7 +75,17 @@
 		"zones" = map.encounter_data(), "terrain" = map.terrain_data(),
 		"ship_contacts" = map.ship_echo_data(),
 		"encounter" = map.encounter_status, "sensor_range" = map.sensor_range,
+		"descent" = null,
 	)
+	if(map.landing_started && target)
+		var/datum/stationtrauma_overmap_site/space/planet/descent_planet = target
+		data["descent"] = list(
+			"elapsed" = (world.time - map.landing_started) / (1 SECONDS),
+			"duration" = ST_SPACE_LANDING_TIME / (1 SECONDS),
+			"site" = target.name,
+			"biome" = istype(descent_planet) ? descent_planet.ruin_biome : null,
+			"surveying" = istype(descent_planet) && descent_planet.generating,
+		)
 	if(istype(target, /datum/stationtrauma_overmap_site/space/planet) && map.knows_site(target))
 		var/datum/stationtrauma_overmap_site/space/planet/planet = target
 		data["planet"] = planet.survey_data()
@@ -84,7 +94,7 @@
 /** Validate and dispatch a helm command. */
 /obj/machinery/computer/stationtrauma_space_navigation/proc/navigation_command(action, value)
 	var/datum/stationtrauma_overmap/space/map = vessel?.overmap
-	if(!map || map.relocating || panel_open || (machine_stat & (NOPOWER|BROKEN)))
+	if(!map || map.relocating || map.landing_started || panel_open || (machine_stat & (NOPOWER|BROKEN)))
 		return FALSE
 	if((map.jump_target || map.dispatch_target) && action != "stop")
 		return FALSE
