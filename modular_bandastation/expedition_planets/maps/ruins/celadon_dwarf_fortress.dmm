@@ -4,7 +4,7 @@
 /obj/item/instrument/banjo,
 /obj/item/instrument/trombone,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "bM" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/glass/bottle/ale{
@@ -16,11 +16,11 @@
 	pixel_y = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "bT" = (
 /obj/item/chair/wood/wings,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "cb" = (
 /obj/structure/chair/wood/wings{
 	dir = 1
@@ -30,28 +30,28 @@
 	name = "dwarf legion"
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "ck" = (
 /obj/structure/table/wood,
 /obj/item/shield/buckler,
 /obj/item/shield/buckler,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "fD" = (
 /obj/structure/chair/comfy/beige,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "gH" = (
 /obj/structure/table/wood,
 /obj/item/food/meat/steak/goliath{
 	pixel_y = 6
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "kf" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "kP" = (
 /obj/item/dice/d20{
 	pixel_x = 5;
@@ -63,31 +63,31 @@
 	},
 /obj/structure/table/wood/fancy/purple,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "lb" = (
 /obj/structure/table/wood,
 /obj/item/toy/plush/lizard_plushie{
 	pixel_y = 3
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "ly" = (
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/item/clothing/head/helmet/skull,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "oG" = (
 /obj/structure/table/wood,
 /obj/item/spear/bonespear,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "qB" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "rZ" = (
 /obj/structure/mineral_door/iron,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "sS" = (
 /turf/template_noop,
 /area/template_noop)
@@ -96,37 +96,37 @@
 /obj/item/hatchet/wooden,
 /obj/item/hatchet/wooden,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "wt" = (
 /mob/living/basic/mining/legion{
 	icon_state = "dwarf_legion";
 	name = "dwarf legion"
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "xb" = (
 /obj/structure/chair/stool/bar,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "yJ" = (
 /obj/effect/spawner/random/food_or_drink/keg,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Bl" = (
 /obj/structure/barricade/wooden,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Eb" = (
 /mob/living/basic/mining/legion/dwarf{
 	name = "dwarf armorer"
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Eq" = (
 /obj/structure/bed,
 /obj/effect/spawner/random/bedsheet,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "GR" = (
 /obj/structure/chair/stool/bar,
 /mob/living/basic/mining/legion{
@@ -134,92 +134,92 @@
 	name = "dwarf legion"
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Jl" = (
 /obj/structure/bed,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Jx" = (
 /obj/structure/table/wood,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "LX" = (
 /obj/structure/table/wood,
 /obj/item/toy/cards/deck{
 	pixel_y = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Mc" = (
 /obj/structure/table/wood,
 /obj/item/pickaxe,
 /obj/item/pickaxe,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Mx" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lantern,
 /obj/item/flashlight/lantern,
 /obj/item/flashlight/lantern,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Np" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/glass/drinkingglass,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Pn" = (
 /obj/structure/sign/poster/official/high_class_martini/directional/north,
 /turf/closed/wall/mineral/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Ps" = (
 /obj/effect/decal/cleanable/blood/old,
 /mob/living/basic/mining/legion/dwarf,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Pt" = (
 /obj/structure/sign/poster/contraband/eat/directional/north,
 /turf/closed/wall/mineral/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "PV" = (
 /mob/living/basic/mining/legion/dwarf{
 	name = "dwarf bartender"
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Rq" = (
 /turf/closed/wall/mineral/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Sy" = (
 /obj/structure/chair/wood/wings{
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "TQ" = (
 /obj/structure/fermenting_barrel,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "Xi" = (
 /mob/living/basic/mining/legion{
 	name = "tall dwarf legion"
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "XL" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/item/flashlight/flare/torch,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "YZ" = (
 /mob/living/basic/mining/legion/dwarf,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 "ZD" = (
 /mob/living/basic/mining/legion/dwarf,
 /obj/effect/decal/cleanable/blood/old,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_dwarf_fortress/exterior)
+/area/expedition_planet/barren)
 
 (1,1,1) = {"
 qB

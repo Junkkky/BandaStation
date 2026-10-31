@@ -32,7 +32,7 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/tree/jungle,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "aB" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 9
@@ -139,7 +139,7 @@
 /obj/structure/flora/bush/sparsegrass,
 /obj/structure/flora/tree/jungle/small,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "bX" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/plating,
@@ -424,7 +424,7 @@
 /obj/structure/flora/bush/sparsegrass,
 /obj/structure/flora/tree/jungle/small,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "gq" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/blood/tracks,
@@ -485,7 +485,7 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/bush/grassy,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "hA" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -548,7 +548,7 @@
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "iv" = (
 /obj/item/stack/tile/iron/white{
 	pixel_x = 12;
@@ -618,7 +618,7 @@
 /obj/structure/flora/bush/sparsegrass,
 /obj/item/ammo_casing,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "iO" = (
 /obj/structure/table,
 /obj/item/paper_bin/carbon{
@@ -643,7 +643,7 @@
 /obj/effect/turf_decal/box/corners,
 /obj/machinery/light/floor,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "jf" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 5
@@ -663,7 +663,7 @@
 	pixel_y = 1
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "jt" = (
 /obj/structure/sign/warning/no_smoking/circle/directional/north,
 /obj/effect/turf_decal/delivery,
@@ -676,7 +676,7 @@
 "jC" = (
 /obj/structure/flora/bush/grassy,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "jQ" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 10
@@ -694,7 +694,7 @@
 "kh" = (
 /obj/structure/chair/plastic,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "ku" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 4
@@ -862,7 +862,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "nn" = (
 /obj/structure/cable,
 /obj/item/reagent_containers/syringe,
@@ -875,7 +875,7 @@
 /obj/structure/flora/bush/grassy,
 /obj/structure/flora/bush/grassy,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "nR" = (
 /obj/machinery/door/airlock/virology{
 	name = "High Security Chem-lab #1"
@@ -950,7 +950,7 @@
 "oT" = (
 /obj/structure/closet/crate/grave/filled,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "ph" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 10
@@ -1030,12 +1030,12 @@
 	},
 /obj/machinery/light/floor,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "qV" = (
 /obj/structure/flora/bush/sparsegrass,
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "qX" = (
 /obj/item/shard{
 	icon_state = "small";
@@ -1104,7 +1104,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
 "rO" = (
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "rR" = (
 /obj/item/rack_parts,
 /turf/open/floor/iron/dark,
@@ -1166,7 +1166,7 @@
 /obj/structure/flora/bush/sparsegrass,
 /obj/structure/flora/grass/jungle,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "sk" = (
 /obj/item/newspaper{
 	pixel_y = 3
@@ -1179,7 +1179,7 @@
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "sm" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 10
@@ -1204,7 +1204,7 @@
 	},
 /obj/effect/decal/cleanable/blood/bubblegum,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "sK" = (
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 8
@@ -1265,7 +1265,7 @@
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "to" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 4
@@ -1279,7 +1279,7 @@
 "tq" = (
 /obj/structure/flora/grass/jungle,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "ts" = (
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
@@ -1418,7 +1418,7 @@
 /obj/structure/flora/bush/grassy,
 /obj/structure/flora/bush/grassy,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "uU" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/structure/sign/departments/chemistry/directional/south,
@@ -1446,7 +1446,7 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/grass/jungle,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "vg" = (
 /turf/open/floor/catwalk_floor,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science/storage)
@@ -1574,7 +1574,7 @@
 	pixel_y = -5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "xx" = (
 /obj/item/ammo_casing{
 	dir = 4;
@@ -1613,7 +1613,7 @@
 "yM" = (
 /obj/structure/flora/tree/jungle/small,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "yN" = (
 /obj/structure/sign/poster/contraband/random/directional/north,
 /turf/closed/wall/r_wall,
@@ -1865,7 +1865,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/science)
 "Bk" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Bz" = (
 /obj/effect/decal/cleanable/blood/bubblegum,
 /turf/open/floor/iron/white,
@@ -1946,7 +1946,7 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/grass/jungle,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "CA" = (
 /obj/effect/turf_decal/siding/wideplating/dark{
 	dir = 8
@@ -1958,7 +1958,7 @@
 /obj/structure/flora/bush/sparsegrass,
 /obj/structure/flora/bush/grassy,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "CI" = (
 /mob/living/basic/zombie,
 /turf/open/floor/plating,
@@ -1994,7 +1994,7 @@
 /obj/structure/flora/grass/jungle,
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Dl" = (
 /obj/item/shard{
 	icon_state = "tiny"
@@ -2105,7 +2105,7 @@
 "EY" = (
 /obj/structure/flora/bush/sparsegrass,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Ft" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 4
@@ -2190,7 +2190,7 @@
 	dir = 9
 	},
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "HH" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/machinery/door/airlock/public/glass{
@@ -2266,7 +2266,7 @@
 	},
 /obj/machinery/light/floor,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "IB" = (
 /obj/structure/table/reinforced,
 /obj/machinery/microwave{
@@ -2286,7 +2286,7 @@
 "IM" = (
 /obj/structure/flora/bush/grassy,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "IY" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -2353,7 +2353,7 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Ks" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 9
@@ -2368,7 +2368,7 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/tree/jungle,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "KH" = (
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 4
@@ -2532,7 +2532,7 @@
 /obj/structure/flora/bush/sparsegrass,
 /obj/structure/flora/tree/jungle,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "NJ" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 5
@@ -2569,7 +2569,7 @@
 "OF" = (
 /obj/structure/flora/bush/sparsegrass,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "OI" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/greenglow,
@@ -2594,7 +2594,7 @@
 	},
 /obj/machinery/light/floor,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Pg" = (
 /obj/machinery/door/airlock/research{
 	name = "Chemical Factory";
@@ -2637,7 +2637,7 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/tree/jungle/small,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "PV" = (
 /obj/item/ammo_casing{
 	dir = 8;
@@ -2646,7 +2646,7 @@
 	},
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "PY" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 9
@@ -2674,7 +2674,7 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/bush/grassy,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Qs" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/plating,
@@ -2683,7 +2683,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shovel,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "QM" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 6
@@ -2708,7 +2708,7 @@
 	pixel_y = -13
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Re" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -2736,7 +2736,7 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/bush/sparsegrass,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Rq" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 9
@@ -2789,7 +2789,7 @@
 "RS" = (
 /obj/structure/flora/tree/jungle/small,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "RW" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -2843,7 +2843,7 @@
 "Tr" = (
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Ty" = (
 /obj/structure/chair/office/light,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -2853,7 +2853,7 @@
 /obj/structure/flora/bush/sparsegrass,
 /obj/structure/flora/bush/grassy,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "TK" = (
 /obj/machinery/light/broken/directional/north,
 /obj/structure/frame,
@@ -2891,7 +2891,7 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/bush/grassy,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "UJ" = (
 /obj/effect/turf_decal/siding/wideplating/dark,
 /turf/open/floor/iron/dark,
@@ -2925,7 +2925,7 @@
 "UZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Vf" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /obj/effect/decal/cleanable/blood/bubblegum,
@@ -2971,7 +2971,7 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/weldingtool/largetank,
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Wf" = (
 /turf/closed/wall,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/ship/medical)
@@ -3000,7 +3000,7 @@
 	dir = 6
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "WC" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron/white,
@@ -3014,7 +3014,7 @@
 	dir = 8
 	},
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "WZ" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 8
@@ -3024,7 +3024,7 @@
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Xf" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 8
@@ -3098,7 +3098,7 @@
 	},
 /obj/item/ammo_box/magazine/m45,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "YI" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 6
@@ -3172,7 +3172,7 @@
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medtech/exterior)
+/area/expedition_planet/barren)
 "Zu" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 8

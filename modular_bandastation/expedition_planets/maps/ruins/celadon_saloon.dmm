@@ -38,7 +38,7 @@
 	},
 /obj/item/gun/ballistic/automatic/pistol,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "cG" = (
 /obj/item/megaphone{
 	pixel_x = 10;
@@ -351,7 +351,7 @@
 	},
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "mj" = (
 /obj/structure/barricade/wooden,
 /obj/effect/decal/cleanable/dirt,
@@ -458,7 +458,7 @@
 /obj/effect/spawner/random/decoration/glowstick,
 /obj/effect/decal/cleanable/wrapping,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "oQ" = (
 /obj/structure/table/wood,
 /obj/item/trash/chips{
@@ -579,7 +579,7 @@
 "sL" = (
 /mob/living/basic/hivebot,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "sS" = (
 /obj/item/chair/wood,
 /turf/open/floor/wood,
@@ -632,7 +632,7 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "tT" = (
 /obj/structure/chair/stool/directional/west,
 /turf/open/floor/carpet/green,
@@ -641,7 +641,7 @@
 /obj/structure/closet/crate/wooden,
 /obj/effect/spawner/random/maintenance/three,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "uM" = (
 /obj/structure/door_assembly/door_assembly_silver{
 	anchored = 1
@@ -673,7 +673,7 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "vL" = (
 /obj/structure/barricade/wooden/crude,
 /obj/machinery/door/airlock/wood,
@@ -902,7 +902,7 @@
 "Eg" = (
 /mob/living/basic/creature,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "Em" = (
 /obj/structure/table/wood,
 /obj/machinery/reagentgrinder{
@@ -954,7 +954,7 @@
 	},
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "Gv" = (
 /obj/structure/railing{
 	color = "#BA8C63"
@@ -965,7 +965,7 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "GP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/siding/wood{
@@ -988,7 +988,7 @@
 "HA" = (
 /obj/structure/ore_box,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "HM" = (
 /obj/structure/chair/wood{
 	dir = 8
@@ -1005,7 +1005,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/ruin/unpowered)
 "Iw" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "IC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/siding/wood/corner,
@@ -1100,7 +1100,7 @@
 	},
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "Kj" = (
 /obj/structure/table/wood,
 /obj/item/trash/chips{
@@ -1217,7 +1217,7 @@
 	dir = 1
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "Nx" = (
 /obj/structure/barricade/wooden,
 /obj/item/shard{
@@ -1298,7 +1298,7 @@
 	pixel_y = -3
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "Pk" = (
 /obj/machinery/door/airlock/silver,
 /obj/effect/turf_decal/siding/wood,
@@ -1325,7 +1325,7 @@
 	dir = 4
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "QV" = (
 /obj/structure/chair/stool/bar{
 	pixel_x = 16
@@ -1335,7 +1335,7 @@
 "QW" = (
 /mob/living/basic/migo,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "Ri" = (
 /turf/template_noop,
 /area/template_noop)
@@ -1352,7 +1352,7 @@
 "Se" = (
 /obj/effect/decal/cleanable/garbage,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "SI" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
@@ -1409,7 +1409,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "Vk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/siding/wood{
@@ -1482,7 +1482,7 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_saloon/exterior)
+/area/expedition_planet/barren)
 "WS" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/glass/bottle/cognac{

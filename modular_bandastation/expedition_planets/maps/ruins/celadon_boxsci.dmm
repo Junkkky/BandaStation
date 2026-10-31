@@ -445,7 +445,7 @@
 "Ds" = (
 /obj/effect/mine/shrapnel,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/exterior)
+/area/expedition_planet/barren)
 "DG" = (
 /obj/effect/spawner/structure/window,
 /obj/machinery/door/poddoor/shutters,
@@ -512,7 +512,7 @@
 "Je" = (
 /obj/structure/flora/rock/pile,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/exterior)
+/area/expedition_planet/barren)
 "Jm" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
@@ -724,7 +724,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/ruin/unpowered)
 "Yl" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_boxsci/exterior)
+/area/expedition_planet/barren)
 "Yu" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,

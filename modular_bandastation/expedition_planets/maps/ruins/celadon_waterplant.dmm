@@ -165,7 +165,7 @@
 	dir = 2
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/exterior)
+/area/expedition_planet/barren)
 "fr" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/red,
@@ -460,7 +460,7 @@
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/exterior)
+/area/expedition_planet/barren)
 "mA" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
@@ -1138,7 +1138,7 @@
 "Cs" = (
 /obj/structure/sign/poster/official/nanotrasen_logo/directional/east,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waterplant/exterior)
+/area/expedition_planet/barren)
 "Cy" = (
 /obj/item/cultivator,
 /obj/item/shovel/spade{

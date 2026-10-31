@@ -5,61 +5,61 @@
 "c" = (
 /obj/effect/spawner/random/trash/garbage,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "i" = (
 /obj/structure/table,
 /obj/item/gps,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "q" = (
 /obj/effect/spawner/random/engineering/toolbox,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "r" = (
 /obj/machinery/power/floodlight{
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "v" = (
 /obj/structure/table,
 /obj/effect/spawner/random/engineering/tool,
 /obj/item/stack/medical/wrap/sticky_tape,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "w" = (
 /obj/structure/stationtrauma_research_source/mineral/expedition_shell,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "x" = (
 /turf/closed/mineral,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "z" = (
 /obj/structure/closet/crate/stationtrauma_icarus_tools{
 	dir = 4
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "B" = (
 /obj/effect/spawner/random/engineering/tool_advanced,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "E" = (
 /obj/structure/ore_box,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "L" = (
 /obj/item/stationtrauma_field_scanner,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "N" = (
 /obj/item/pickaxe,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "Q" = (
 /obj/structure/closet/crate/secure/science,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "T" = (
 /obj/structure/closet/crate,
 /obj/structure/stationtrauma_research_source/mineral/expedition_shell,
@@ -67,17 +67,17 @@
 /obj/effect/spawner/random/exotic/technology,
 /obj/effect/spawner/random/exotic/technology,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "V" = (
 /obj/structure/table,
 /obj/effect/spawner/random/medical/supplies,
 /obj/effect/spawner/random/medical/supplies,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 "X" = (
 /obj/effect/spawner/random/maintenance,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_excavation_site/exterior)
+/area/expedition_planet/barren)
 
 (1,1,1) = {"
 a

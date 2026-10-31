@@ -882,7 +882,7 @@
 	desc = "Привод панели обесточен. Шлюз открывается непосредственно с двери."
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/exterior)
+/area/expedition_planet/barren)
 "zJ" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3

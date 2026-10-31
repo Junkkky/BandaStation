@@ -67,7 +67,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/ruin/unpowered/corprejectrooms)
 "rg" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/exterior)
+/area/expedition_planet/barren)
 "rz" = (
 /obj/structure/bed/dogbed{
 	desc = "A well worn dog bed, wait... are dog beds supposed to have burn marks?."
@@ -104,7 +104,7 @@
 "zm" = (
 /obj/structure/closet/crate/grave/filled,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_comm_outpost/exterior)
+/area/expedition_planet/barren)
 "zO" = (
 /mob/living/basic/trooper/syndicate/ranged{
 	dir = 8

@@ -4,19 +4,19 @@
 /area/template_noop)
 "r" = (
 /turf/open/misc/dirt/jungle/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_tar_anomaly/exterior)
+/area/expedition_planet/barren)
 "w" = (
 /obj/structure/flora/grass/jungle/a,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_tar_anomaly/exterior)
+/area/expedition_planet/barren)
 "z" = (
 /obj/effect/anomaly/grav/stationtrauma_icarus,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_tar_anomaly/exterior)
+/area/expedition_planet/barren)
 "T" = (
 /obj/structure/stationtrauma_research_source/expedition_monolith,
 /turf/open/misc/dirt/jungle/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_tar_anomaly/exterior)
+/area/expedition_planet/barren)
 
 (1,1,1) = {"
 r

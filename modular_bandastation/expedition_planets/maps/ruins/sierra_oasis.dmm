@@ -5,41 +5,41 @@
 "n" = (
 /obj/structure/flora/grass/jungle/a,
 /turf/open/water,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+/area/expedition_planet/barren)
 "u" = (
 /obj/structure/flora/grass/brown,
 /turf/open/misc/grass/jungle,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+/area/expedition_planet/barren)
 "z" = (
 /obj/structure/flora/grass/jungle/a,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+/area/expedition_planet/barren)
 "D" = (
 /turf/open/water,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+/area/expedition_planet/barren)
 "H" = (
 /obj/structure/flora/bush,
 /turf/open/misc/grass/jungle,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+/area/expedition_planet/barren)
 "J" = (
 /obj/structure/flora/bush,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+/area/expedition_planet/barren)
 "M" = (
 /turf/open/misc/grass/jungle,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+/area/expedition_planet/barren)
 "T" = (
 /obj/structure/flora/grass/jungle/a,
 /turf/open/misc/grass/jungle,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+/area/expedition_planet/barren)
 "W" = (
 /obj/structure/flora/grass/both,
 /turf/open/misc/grass/jungle,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+/area/expedition_planet/barren)
 "Y" = (
 /obj/structure/flora/grass/green,
 /turf/open/misc/grass/jungle,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis/exterior)
+/area/expedition_planet/barren)
 
 (1,1,1) = {"
 a

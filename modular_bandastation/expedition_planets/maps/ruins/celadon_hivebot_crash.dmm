@@ -108,7 +108,7 @@
 "cw" = (
 /obj/structure/flora/rock/pile,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "cS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -289,7 +289,7 @@
 "jl" = (
 /obj/structure/marker_beacon,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "jo" = (
 /obj/structure/girder,
 /turf/open/floor/plating,
@@ -415,7 +415,7 @@
 "oL" = (
 /obj/structure/flora/rock,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "oS" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 10
@@ -481,7 +481,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
 "qX" = (
 /turf/closed/mineral/random/low_chance,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "ra" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
 /obj/machinery/door/poddoor{
@@ -666,7 +666,7 @@
 	dir = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "xO" = (
 /obj/structure/chair{
 	dir = 1
@@ -677,7 +677,7 @@
 /obj/structure/marker_beacon,
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "yw" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -879,7 +879,7 @@
 	dir = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "Ds" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood{
@@ -916,7 +916,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/ruin/unpowered)
 "Fp" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "Fx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/tracks{
@@ -1007,7 +1007,7 @@
 	dir = 4
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "Ho" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden{
 	dir = 8
@@ -1070,7 +1070,7 @@
 /obj/item/pickaxe/rusted,
 /obj/effect/gibspawner/human/bodypartless,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "JU" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
@@ -1300,7 +1300,7 @@
 "Sa" = (
 /obj/item/flashlight/glowstick/red,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "Tj" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
@@ -1319,7 +1319,7 @@
 	dir = 10
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hivebot_crash/exterior)
+/area/expedition_planet/barren)
 "Ua" = (
 /obj/effect/decal/cleanable/blood/innards,
 /turf/open/floor/plating,

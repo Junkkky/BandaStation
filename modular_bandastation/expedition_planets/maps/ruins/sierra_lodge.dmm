@@ -6,68 +6,68 @@
 /obj/structure/table/wood,
 /obj/item/stack/sheet/mineral/wood,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "bX" = (
 /obj/machinery/portable_atmospherics/scrubber,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "ed" = (
 /obj/effect/turf_decal/trimline/brown/line,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "fO" = (
 /obj/structure/table/wood,
 /obj/item/book,
 /obj/item/reagent_containers/cup/beaker,
 /obj/item/toy/cards/deck,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "gw" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "iI" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "kd" = (
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "kf" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "kq" = (
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "lB" = (
 /obj/machinery/portable_atmospherics/scrubber,
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "lM" = (
 /obj/structure/rack,
 /obj/item/gun/ballistic/shotgun/doublebarrel,
 /obj/item/ammo_box/c12ga,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "lO" = (
 /obj/machinery/power/port_gen/pacman,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "oy" = (
 /obj/machinery/rnd/server{
 	desc = "A jury-rigged server setup.";
 	name = "low-tech server"
 	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "pI" = (
 /obj/item/paper{
 	name = "полевой журнал: Охотничье зимовье";
@@ -75,10 +75,10 @@
 	},
 /obj/structure/mineral_door/wood,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "pK" = (
 /turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "pZ" = (
 /obj/structure/table/wood,
 /obj/item/knife/kitchen,
@@ -87,34 +87,34 @@
 	dir = 1
 	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "qs" = (
 /obj/structure/table/wood,
 /obj/item/cigarette/pipe/cobpipe,
 /obj/item/storage/fancy/cigarettes/cigpack_robust,
 /obj/item/reagent_containers/cup/beaker,
 /turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "qA" = (
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "sV" = (
 /obj/machinery/hydroponics/soil,
 /obj/item/seeds/wheat,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "tQ" = (
 /turf/closed/wall/mineral/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "vT" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /obj/effect/turf_decal/trimline/brown/line,
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "yf" = (
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "zT" = (
 /obj/structure/closet,
 /obj/item/stack/sheet/iron{
@@ -133,7 +133,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "Bu" = (
 /obj/structure/table/wood,
 /obj/item/kitchen/fork,
@@ -144,7 +144,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "BH" = (
 /obj/structure/chair/wood{
 	dir = 8
@@ -153,12 +153,12 @@
 	dir = 4
 	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "Cz" = (
 /obj/machinery/hydroponics/soil,
 /obj/item/seeds/random,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "Ex" = (
 /obj/machinery/oven,
 /obj/effect/turf_decal/trimline/brown/line{
@@ -168,53 +168,53 @@
 	dir = 4
 	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "HA" = (
 /obj/effect/turf_decal/trimline/brown/line{
 	dir = 6
 	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "Kc" = (
 /obj/effect/turf_decal/trimline/brown/line{
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "Lp" = (
 /obj/item/flashlight/lamp/green,
 /obj/structure/table/wood,
 /turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "MN" = (
 /obj/structure/chair/wood{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "Os" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/turf_decal/trimline/brown/line{
 	dir = 1
 	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "Ph" = (
 /obj/effect/turf_decal/trimline/brown/line{
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "Qc" = (
 /obj/machinery/hydroponics/soil,
 /obj/item/seeds/potato,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "QC" = (
 /obj/effect/turf_decal/trimline/brown/line,
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "RK" = (
 /obj/structure/table/wood,
 /obj/effect/decal/cleanable/blood/drip,
@@ -222,25 +222,25 @@
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/knife/butcher,
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "WA" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/color/black,
 /obj/item/clothing/shoes/jackboots,
 /obj/item/clothing/mask/breath,
 /turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "WD" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
 /turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "WX" = (
 /obj/effect/turf_decal/trimline/brown/line{
 	dir = 4
 	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "Xj" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/atmos_alert{
@@ -248,12 +248,12 @@
 	name = "old laptop"
 	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 "Zf" = (
 /obj/machinery/hydroponics/soil,
 /obj/item/seeds/tower,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_lodge/exterior)
+/area/expedition_planet/barren)
 
 (1,1,1) = {"
 aa

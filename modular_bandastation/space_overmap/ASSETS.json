@@ -307,7 +307,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_crashed_probe.dmm",
-			"sha256": "4868e4a00531ceef1210269ade1eb64a559f612715feca789dcedcc9b2f71cdb",
+			"sha256": "ddb4d07029ab084df11856f31f112db1463296e72ca8e5aaf4dede375ff35b5b",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -339,7 +339,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_deserted_lab.dmm",
-			"sha256": "8d73215d0393c12955da21263f3d4f88fb344696c04b6006f7586fe842755552",
+			"sha256": "8cce8a828a464c5ee92464c2d3c7de8fbe540f3961294988fbe6575c7ea3c9fa",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -355,7 +355,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_drill_site.dmm",
-			"sha256": "44540b4873a2f1d22089a4bf254ecff5b1fca5719b035bc162cc2f2bc3571f1b",
+			"sha256": "d113f952a2335dde29e42f0865a99855348216c0b0e9b938809bfeebb6d961ac",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -371,7 +371,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_ec_old_crash.dmm",
-			"sha256": "ad8fb7c837973568ca26b23998444cbd5aaa4bf375c89f2685e109e2bf2c7484",
+			"sha256": "9a271fa366b542f4fa629c211c3e3317db2d4e64bdd1fbae21fd186e347b6c03",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -387,7 +387,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_excavation_site.dmm",
-			"sha256": "97777d5166669b3fb5b23c5de341ae05bea9ccd2b8ba3e08aac76d680f76ac2e",
+			"sha256": "9e11bc3292a3ff0041cb15d509cd315432291bfae928cd9b33abd52bbbd9f9c5",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -403,7 +403,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_hut.dmm",
-			"sha256": "42a098c88e6a5d8c53442298348526fc4273128d1e119b77bd9730210f1b62a8",
+			"sha256": "eedf4d1e0e76e6c6151e8c2e0f2bb32575b353d22cfe9d139fa83c0855c118f9",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -419,7 +419,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_hydrobase.dmm",
-			"sha256": "25ee42dfc1e128ce153f301fdd73c1b933cfc4be38f90956fb47b94394c862e9",
+			"sha256": "ee5ce6d37ae3f196b557e683ff2efa68cff9e6a85668279ddd26f3f040cc9724",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -435,7 +435,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_lodge.dmm",
-			"sha256": "8b25ee2a7c9b9c7a9e91f1127994c17e61260e1d04672423a74960b269a6d936",
+			"sha256": "5122c32b4b54e515a8f761d69c700ae96f4113819f3662a7dc246af3c855e492",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -451,7 +451,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_monoliths.dmm",
-			"sha256": "b984c3a15c3ac5078a81f0bcb5c6373343f96dbd35fb7a072bfbc70826a4da1f",
+			"sha256": "a7857eca497a371630d635474318ae56411a68e13eb245f2ecff7c92afec116c",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -467,7 +467,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_oasis.dmm",
-			"sha256": "2d7bb7dbd8f988c21a9e7f5e543fb6cb3c670b7265aba79a06f700012af841e1",
+			"sha256": "18175035e5b399e17d9c43c15ff2ba21816a674906ec39e2e9fb4d5ff57603ca",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -483,7 +483,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_oasis2.dmm",
-			"sha256": "8fa66cc41cf0ba8538dde145e1841f8b4b0be0a23b84bfae22f9d118bdabbff0",
+			"sha256": "c5bfe76c172ce7e2a3cfc92a56bacbaff80a903b731969e50acdd943d6ff14c1",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -499,7 +499,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_oasis3.dmm",
-			"sha256": "a63302e2539a363b31a1b4d30cc83b999c27965ba92e93bdd36661b0b867b073",
+			"sha256": "dc442ca2b42594a7d8ae39ade089c13f58af513eb1c00fa9a884beef3ca8faf3",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -563,7 +563,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_radshrine.dmm",
-			"sha256": "86fa245bf78b67b9c1608bf795b8d908cd77e442fd95a91674f04a1668f4f2f5",
+			"sha256": "079c86ce7b32d598412625cdb3f679771da55166b57224d6157ff54966a14211",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -579,7 +579,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_skrell_biodome.dmm",
-			"sha256": "4622a3613ce06d2eb2b48bcac7100fce834fba6f7a2da7b2bfdc214d9316965f",
+			"sha256": "a908971bdddc5cdeb534462a499aaab086d1a457f8e3a4a6c9a39f0617e8cbd2",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -595,7 +595,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_spider_nest.dmm",
-			"sha256": "befac3cda82c23382aee4e7b308b33a1101633c557013bc09bcdb89d56dc869c",
+			"sha256": "fdbecada552a733d4e861b5bfaadfa56bffbe1ddfe16788a32932faa8963b9cc",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -611,7 +611,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_tar_anomaly.dmm",
-			"sha256": "99bed073de6fdd7dbfb3c2dd334a5f7729ec99977f4e3ba641a9c56ec9314ab7",
+			"sha256": "e7acc390d8454f0d21d84194d33fb0744f72937a36a5128cc0720a20d22e61c8",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -643,7 +643,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/sierra_trash_heap.dmm",
-			"sha256": "fbad1eaf969b6a395ee5b04dd15a3384263b9106462683737275c052478448e4",
+			"sha256": "df7bd3ce1ce8ed4eb3046447fa00c8c3c48e56b83c5e67d8596bf625f8db0f56",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["SierraBay and Baystation contributors"],
 			"source": {
@@ -755,7 +755,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_botany.dmm",
-			"sha256": "647595b1cc967cf0624c2f2d512398f7327902e48800099dcb62216c36c5db27",
+			"sha256": "b8326827edc598305f51bbf712718d387360e5d36c9a8cef3ad95f4a928e3cbe",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -771,7 +771,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_medtech.dmm",
-			"sha256": "f91c7859315a3abcf67864aeb1f5484b16443c74b9d75d6408184c8aea582ed0",
+			"sha256": "adcc9a9ea8a2787e33c51faed3952157dee80bca9fdfc92acb6a68794fac8890",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -819,7 +819,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_hydroponics.dmm",
-			"sha256": "85214487b2004da52228b28e049ffadf548988fca463649481aa364ecb4b26e6",
+			"sha256": "b25af38073e35dcfdddc57c75840f34be856e491b5704146b8c2cd1a317d17c8",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -835,7 +835,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_cap_pod.dmm",
-			"sha256": "7c389c0f4d0cfae6eaf789238c615825d9a2b47e3306e9375ff3219f6157bf0c",
+			"sha256": "2f12ed912e64261c6be92382f22d366f19d95836f106deb3fc4a6c3728ee4f6c",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -851,7 +851,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_medipen.dmm",
-			"sha256": "db3e8afce1ce1688f838e0af4b50b8997abdae8589d07b604b5dc74d71581ebb",
+			"sha256": "72498d3a942ccaab3ad73d13ef2ac1bc8ee6b59cb177a17f7330cc073e0d6374",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -867,7 +867,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_waterplant.dmm",
-			"sha256": "4e27b67fc2af5a1f7b9eedd318275fc01e2332fefa77e8920d708ffe9a63c967",
+			"sha256": "daee64f837e39688b32066a792b19c7e73eb629a606c6362b6969d775f63fd99",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -883,7 +883,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_miningexpedition.dmm",
-			"sha256": "e7ee5f5201e8eaf45b0478b118dc7f9c7ba32ce4462e40399b2db4962e579755",
+			"sha256": "739786269a20e60decc3c798a17b3d714c63be65f81938706a4ad6c8522f71f6",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -899,7 +899,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_boxsci.dmm",
-			"sha256": "b765ed3deabc2d0914285fdf2877c2524593140e75567d378daeef8f8ea71201",
+			"sha256": "b4cbc0de3d943f5020cf13186cc46279532a32266e8ae2d344deea9415ee08dc",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -2163,7 +2163,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_comm_outpost.dmm",
-			"sha256": "f05d670015ba8dcab6ed50c1e41c87c50fbec6f06e42ff66c60d8f82e9b5e021",
+			"sha256": "174c364b8505e60e09de0888f862ec97b0b07df9b3d1d88c723017534e8db575",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -2179,7 +2179,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_pinnace.dmm",
-			"sha256": "33923cc2753ab34348fab3cc18bec1001fa815cac678fa33e9377dd4047de2ac",
+			"sha256": "7a23ab4fd0dadf991a16664ee2e0dc6814ec85780c5f0b36fb2b6434c207b4ad",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -2195,7 +2195,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_dwarf_fortress.dmm",
-			"sha256": "520b05631571f7677b5599ddb49591125a2c4c784c8e4d4063a6eb4027b496a8",
+			"sha256": "58d32ab822b5f78a2139c30596abd5e2b67c460c8a54a4400ec734c7e5645105",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -2211,7 +2211,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_spooky_crash.dmm",
-			"sha256": "4b89d778d1d7b1bc0993186c1f346aa0011df81950f5f0752bff529fce92f2ac",
+			"sha256": "5e776b3157a84bf4d988dc4e5b0f34da716dd1e3e2dab09d65fcd5922574f22d",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -2227,7 +2227,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_xeno_nest.dmm",
-			"sha256": "c337837913e0835374a5fb60269777d98d59039904178260acdfa03e3d5e8552",
+			"sha256": "28dc9a9cef6f76ba73366d2252a68c38d320f57674acf43118ec0256701fb8ae",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -2259,7 +2259,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_hivebot_crash.dmm",
-			"sha256": "c7d0b350037e9ac56232b932a78d49f18fae0d82ffbc416120244ced3bbc0be9",
+			"sha256": "a5ec9871e9e97af128710437174f702ea4b502c21764472feda684b182059393",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -2291,7 +2291,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_saloon.dmm",
-			"sha256": "6f7fed965c8fe660880eb43dd7121ced3fd152ebc2cbd09d613ba8791aebd6a9",
+			"sha256": "ff49940c802a20f7db63a4771ccc055c771af5389acbc0bb3292f58287232808",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -2307,7 +2307,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_harm_factory.dmm",
-			"sha256": "e9f3b2de1721b655a07df2ceff74179a53dcbdbb0e224b11e4df3b74d0b51488",
+			"sha256": "deccc5ffe29346115b6edca819ac8a610c599d10c753c931709762be09e468eb",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -2323,7 +2323,7 @@
 		},
 		{
 			"path": "modular_bandastation/expedition_planets/maps/ruins/celadon_budget_cuts.dmm",
-			"sha256": "acf29504625101901f1923e5ac3216cfd8f931e17bf0ee69fdc8a8f9ffea8d18",
+			"sha256": "27bdc5beca08c46ac4b7a2a9c4cc75b39dc1ff4a500b7be4e8e2b1004024fdf4",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {

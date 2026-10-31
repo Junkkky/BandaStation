@@ -40,7 +40,7 @@
 	},
 /obj/effect/decal/cleanable/ash,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+/area/expedition_planet/barren)
 "gT" = (
 /obj/machinery/door/airlock/glass,
 /turf/open/floor/iron,
@@ -359,16 +359,16 @@
 "DN" = (
 /obj/item/shard,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+/area/expedition_planet/barren)
 "DP" = (
 /obj/effect/decal/cleanable/ash,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+/area/expedition_planet/barren)
 "Fn" = (
 /obj/item/stack/rods,
 /obj/item/shard,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+/area/expedition_planet/barren)
 "Fw" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/power/solar,
@@ -413,7 +413,7 @@
 "HA" = (
 /obj/item/stack/rods,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+/area/expedition_planet/barren)
 "Ik" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/cable,
@@ -472,7 +472,7 @@
 "Mx" = (
 /mob/living/basic/hivebot/range,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+/area/expedition_planet/barren)
 "MA" = (
 /obj/machinery/power/shuttle_engine/propulsion{
 	dir = 8
@@ -513,7 +513,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/ecprobe/engineering)
 "Or" = (
 /turf/closed/wall/r_wall,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+/area/expedition_planet/barren)
 "PF" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/glass,
@@ -550,7 +550,7 @@
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_probe/exterior)
+/area/expedition_planet/barren)
 "Tz" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/machinery/door/window/right/directional/west{

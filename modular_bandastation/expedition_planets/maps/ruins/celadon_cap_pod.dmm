@@ -5,46 +5,46 @@
 	amount = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "cn" = (
 /turf/closed/wall/mineral/titanium,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "dE" = (
 /obj/machinery/power/shuttle_engine/propulsion{
 	dir = 1
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "dT" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/table_frame,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "ee" = (
 /obj/structure/lattice,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "eN" = (
 /obj/item/stack/ore/iron,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "eY" = (
 /obj/structure/flora/grass/both,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "fb" = (
 /obj/structure/table_frame/abductor,
 /mob/living/basic/trooper/syndicate/melee/space,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "fC" = (
 /obj/structure/barricade/sandbags,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "jp" = (
 /obj/structure/door_assembly/door_assembly_com,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "kc" = (
 /obj/item/minespawner,
 /obj/item/stack/rods/ten{
@@ -52,77 +52,77 @@
 	amount = 10
 	},
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "ku" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/structure/lattice,
 /obj/item/minespawner,
 /obj/item/stack/ore/bluespace_crystal,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "kP" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/structure/barricade/sandbags,
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "lM" = (
 /mob/living/basic/mining/legion/snow{
 	faction = list("Syndicate")
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "mx" = (
 /obj/item/stack/ore/titanium{
 	amount = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "nn" = (
 /obj/structure/lattice,
 /obj/structure/barricade/sandbags,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "op" = (
 /obj/structure/girder/reinforced,
 /obj/item/stack/sheet/mineral/titanium{
 	amount = 5
 	},
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "oE" = (
 /turf/open/floor/iron/textured_large,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "pi" = (
 /obj/structure/barricade/sandbags,
 /obj/effect/decal/cleanable/blood/oil/slippery,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "pj" = (
 /obj/item/stack/sheet/mineral/titanium{
 	amount = 5
 	},
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "qG" = (
 /obj/structure/flora/grass/both,
 /obj/item/stack/ore/titanium{
 	amount = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "rL" = (
 /obj/item/stack/ore/uranium{
 	amount = 5
 	},
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "rU" = (
 /obj/structure/flora/rock/pile/icy,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "sH" = (
 /obj/structure/lattice,
 /obj/item/minespawner,
@@ -130,24 +130,24 @@
 	amount = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "sS" = (
 /obj/machinery/light/small/broken/directional/east,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "ti" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "up" = (
 /obj/structure/frame,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "ur" = (
 /obj/structure/barricade/sandbags{
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "wp" = (
 /obj/item/shard{
 	pixel_x = -11;
@@ -163,57 +163,57 @@
 	},
 /mob/living/basic/trooper/syndicate/ranged/shotgun/space,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "wN" = (
 /obj/item/wallframe/apc,
 /obj/machinery/light/small/broken/directional/east,
 /turf/open/floor/iron/textured_large,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "zp" = (
 /obj/structure/safe,
 /obj/item/implanter,
 /obj/item/implantcase,
 /turf/open/floor/iron/textured_large,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "zr" = (
 /obj/item/minespawner,
 /obj/item/stack/sheet/mineral/titanium{
 	amount = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "Az" = (
 /obj/structure/girder/reinforced,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "CL" = (
 /obj/item/stack/ore/iron{
 	amount = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "DF" = (
 /obj/effect/decal/cleanable/blood/oil/slippery,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "Eh" = (
 /turf/closed/indestructible/rock/snow,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "HO" = (
 /obj/item/stack/sheet/mineral/titanium{
 	amount = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "IU" = (
 /obj/effect/decal/cleanable/blood,
 /mob/living/basic/trooper/syndicate/ranged/smg/space,
 /turf/open/floor/iron/textured_large,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "Jn" = (
 /obj/item/organ/liver,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "ML" = (
 /obj/structure/toilet{
 	color = "#ffd700"
@@ -221,24 +221,24 @@
 /obj/effect/mob_spawn/corpse/human/commander,
 /obj/item/melee/sabre,
 /turf/open/floor/mineral/gold,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "NN" = (
 /obj/item/stack/ore/uranium{
 	amount = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "Ps" = (
 /obj/structure/frame/computer{
 	dir = 4
 	},
 /obj/machinery/light/small/broken/directional/west,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "Qs" = (
 /obj/structure/barricade/sandbags,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "Ro" = (
 /obj/structure/barricade/sandbags{
 	dir = 8
@@ -252,25 +252,25 @@
 	pixel_y = -4
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "Ul" = (
 /obj/structure/flora/rock/icy,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "Vd" = (
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "Vq" = (
 /obj/structure/table_frame,
 /mob/living/basic/trooper/syndicate/ranged/smg/space,
 /turf/open/floor/iron/textured_large,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "Vy" = (
 /obj/machinery/door/airlock/highsecurity{
 	locked = 212
 	},
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "VG" = (
 /turf/template_noop,
 /area/template_noop)
@@ -278,12 +278,12 @@
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/mob_spawn/corpse/human/secoff,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "Wr" = (
 /obj/item/organ/stomach,
 /obj/structure/barricade/sandbags,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 "YF" = (
 /obj/item/stack/sheet/mineral/titanium{
 	amount = 5
@@ -293,7 +293,7 @@
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_cap_pod/exterior)
+/area/expedition_planet/barren)
 
 (1,1,1) = {"
 VG

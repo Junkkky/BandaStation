@@ -87,7 +87,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_xeno_nest/ruin/unpowered/crashed_holemaker)
 "aO" = (
 /turf/open/lava/smooth/expedition_volcanic,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_xeno_nest/exterior)
+/area/expedition_planet/barren)
 "aP" = (
 /obj/structure/alien/weeds,
 /obj/effect/decal/cleanable/blood/gibs,

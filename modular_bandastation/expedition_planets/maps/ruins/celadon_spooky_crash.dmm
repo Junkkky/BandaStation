@@ -10,23 +10,23 @@
 /obj/item/scythe,
 /obj/item/clothing/head/helmet/skull,
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "ag" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "ai" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 10
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "ap" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "ar" = (
 /obj/machinery/light/broken/directional/north,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -34,29 +34,29 @@
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "as" = (
 /obj/machinery/power/shuttle_engine/propulsion{
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "ax" = (
 /obj/machinery/power/smes,
 /obj/structure/window/reinforced/tinted/spawner/directional/south,
 /turf/open/floor/mineral/titanium,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "ay" = (
 /obj/structure/girder,
 /obj/item/stack/sheet/mineral/titanium,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "az" = (
 /turf/closed/wall/mineral/titanium,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "aB" = (
 /turf/closed/mineral,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "aH" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
@@ -64,46 +64,46 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/stack/tile/mineral/plastitanium/red,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "aP" = (
 /obj/effect/decal/cleanable/blood,
 /mob/living/basic/mining/legion,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "eA" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "gn" = (
 /obj/item/stack/tile/mineral/titanium,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "kR" = (
 /obj/machinery/door/airlock/shuttle,
 /obj/structure/fans/tiny,
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "nC" = (
 /obj/item/stack/tile/mineral/plastitanium/red,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "nP" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "oX" = (
 /obj/machinery/door/airlock/shuttle,
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/mineral/titanium/blue,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "ro" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 13;
 	pixel_y = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "sH" = (
 /obj/structure/window/reinforced/tinted/spawner/directional/south,
 /obj/structure/closet/crate{
@@ -114,7 +114,7 @@
 /obj/item/storage/toolbox/emergency,
 /obj/item/flashlight/flare,
 /turf/open/floor/mineral/titanium,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "ut" = (
 /obj/structure/table,
 /obj/item/paper{
@@ -126,7 +126,7 @@
 	pixel_x = 6
 	},
 /turf/open/floor/mineral/titanium/blue,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "wy" = (
 /obj/effect/mob_spawn/corpse/human/damaged,
 /obj/effect/decal/cleanable/blood,
@@ -137,11 +137,11 @@
 	name = "rusted claymore"
 	},
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "yA" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "Aw" = (
 /obj/effect/mob_spawn/corpse/human/damaged,
 /obj/item/clothing/shoes/jackboots,
@@ -149,7 +149,7 @@
 /obj/item/clothing/glasses/welding,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "AU" = (
 /obj/item/ectoplasm,
 /obj/effect/decal/cleanable/blood/drip{
@@ -157,23 +157,23 @@
 	pixel_y = -3
 	},
 /turf/open/floor/mineral/titanium,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "BH" = (
 /obj/structure/girder/displaced,
 /obj/item/stack/sheet/mineral/titanium,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "Cf" = (
 /obj/item/stack/tile/mineral/plastitanium/red,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = -3
 	},
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "Dp" = (
 /obj/item/grenade/chem_grenade/holy,
 /turf/open/floor/mineral/titanium,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "Eu" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/glass,
@@ -182,14 +182,14 @@
 	pixel_y = 1
 	},
 /turf/open/floor/mineral/titanium,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "GC" = (
 /obj/effect/decal/cleanable/blood,
 /obj/machinery/light/broken/directional/south,
 /obj/item/stack/tile/mineral/titanium/blue,
 /obj/item/book/bible,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "Ky" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -200,24 +200,24 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/mineral/titanium/blue,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "KP" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/glass,
 /obj/item/stack/rods,
 /obj/item/stack/tile/mineral/titanium/blue,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "Nj" = (
 /obj/structure/grille/broken,
 /obj/effect/decal/cleanable/glass,
 /obj/item/shard,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "Nu" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "Pg" = (
 /obj/structure/table,
 /obj/item/storage/belt/chameleon,
@@ -228,7 +228,7 @@
 /obj/item/clothing/head/wizard/black,
 /obj/item/clothing/suit/wizrobe/black,
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "PT" = (
 /obj/structure/window/reinforced/tinted/spawner/directional/south,
 /obj/effect/decal/cleanable/blood,
@@ -237,22 +237,22 @@
 	name = "Gooby-Moo"
 	},
 /turf/open/floor/mineral/titanium,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "QA" = (
 /obj/structure/frame/computer,
 /obj/item/shard,
 /turf/open/floor/mineral/titanium/blue,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "Rs" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/mineral/titanium,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 "Uj" = (
 /obj/structure/closet/crate/coffin{
 	icon_state = "coffinopen"
 	},
 /turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_spooky_crash/exterior)
+/area/expedition_planet/barren)
 
 (1,1,1) = {"
 aB

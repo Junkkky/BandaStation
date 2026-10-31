@@ -5,11 +5,11 @@
 "z" = (
 /obj/structure/flora/grass/jungle/a,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis3/exterior)
+/area/expedition_planet/barren)
 "U" = (
 /obj/structure/sink,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oasis3/exterior)
+/area/expedition_planet/barren)
 
 (1,1,1) = {"
 a

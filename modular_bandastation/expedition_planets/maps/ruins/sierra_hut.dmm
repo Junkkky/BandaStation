@@ -6,30 +6,30 @@
 /obj/effect/spawner/random/maintenance,
 /obj/effect/spawner/random/exotic/technology,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "aF" = (
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "aI" = (
 /obj/machinery/stationtrauma_sample_analyzer,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "aN" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "aP" = (
 /turf/closed/wall,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "aR" = (
 /obj/structure/bookcase,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "aT" = (
 /obj/structure/filingcabinet,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "aX" = (
 /obj/structure/rack,
 /obj/item/clothing/glasses/hud/health,
@@ -38,48 +38,48 @@
 /obj/effect/spawner/random/clothing/beret_or_rabbitears,
 /obj/effect/spawner/random/mod/maint,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "aY" = (
 /obj/machinery/rnd/server,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "fz" = (
 /obj/structure/bed,
 /obj/item/bedsheet/rainbow,
 /obj/effect/spawner/random/food_or_drink/booze,
 /obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/carpet,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "rQ" = (
 /obj/machinery/door/airlock,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "sl" = (
 /obj/structure/sign/warning/biohazard{
 	pixel_y = 32
 	},
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "sI" = (
 /obj/structure/closet/crate/freezer/surplus_limbs,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "ti" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/effect/spawner/random/clothing/beret_or_rabbitears,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "wI" = (
 /obj/effect/spawner/random/trash/garbage,
 /obj/machinery/door/airlock,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "yR" = (
 /obj/vehicle/ridden/wheelchair,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "AD" = (
 /obj/item/paper{
 	name = "полевой журнал: Хижина полевого исследователя";
@@ -87,19 +87,19 @@
 	},
 /obj/item/pen/fourcolor,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "BB" = (
 /mob/living/basic/bot/medbot,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "Eb" = (
 /obj/structure/stone_tile,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "UB" = (
 /obj/structure/curtain,
 /turf/open/floor/carpet,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 "ZV" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp,
@@ -107,7 +107,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hut/exterior)
+/area/expedition_planet/barren)
 
 (1,1,1) = {"
 aP

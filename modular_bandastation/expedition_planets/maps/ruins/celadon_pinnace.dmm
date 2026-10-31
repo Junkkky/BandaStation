@@ -43,7 +43,7 @@
 "fr" = (
 /obj/structure/flora/rock/pile,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "fH" = (
 /obj/structure/girder,
 /turf/open/floor/plating/rust,
@@ -100,12 +100,12 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
 "ky" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "kT" = (
 /obj/item/stack/ore/titanium,
 /obj/item/chair/plastic,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "lg" = (
 /obj/structure/lattice,
 /obj/effect/decal/cleanable/ash/large,
@@ -137,7 +137,7 @@
 "mg" = (
 /obj/item/stack/ore/titanium,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "mM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
@@ -164,7 +164,7 @@
 	amount = 5
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "nV" = (
 /obj/item/chair/plastic,
 /turf/open/misc/asteroid/airless,
@@ -183,7 +183,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/ruin/unpowered/corprejectrooms)
 "oV" = (
 /turf/closed/mineral,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "ps" = (
 /obj/structure/girder,
 /obj/item/stack/ore/titanium{
@@ -219,7 +219,7 @@
 "qA" = (
 /obj/structure/flora/rock,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "qT" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -377,7 +377,7 @@
 /obj/item/stack/ore/titanium,
 /obj/structure/flora/rock,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "Fz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -479,7 +479,7 @@
 "OO" = (
 /obj/item/clothing/under/shorts/purple,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "Qw" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	dir = 8
@@ -493,14 +493,14 @@
 "Rr" = (
 /obj/item/clothing/glasses/orange,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "Rt" = (
 /obj/effect/decal/cleanable/ash/large,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "Sz" = (
 /turf/closed/indestructible/rock,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "SK" = (
 /obj/structure/chair/stool/directional/west,
 /obj/structure/window/spawner/directional/west,
@@ -510,7 +510,7 @@
 "SX" = (
 /obj/effect/spawner/random/maintenance/two,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pinnace/exterior)
+/area/expedition_planet/barren)
 "Tp" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,

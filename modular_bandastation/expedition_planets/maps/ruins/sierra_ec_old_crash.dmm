@@ -115,7 +115,7 @@
 "hd" = (
 /obj/effect/decal/cleanable/ash,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/exterior)
+/area/expedition_planet/barren)
 "hh" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 1
@@ -673,12 +673,12 @@
 	initialize_directions = 3
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/exterior)
+/area/expedition_planet/barren)
 "vX" = (
 /obj/structure/grille,
 /obj/effect/decal/cleanable/ash,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/exterior)
+/area/expedition_planet/barren)
 "wn" = (
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/engine)
@@ -882,7 +882,7 @@
 	dir = 8
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/exterior)
+/area/expedition_planet/barren)
 "Bs" = (
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/cockpit)
@@ -1081,7 +1081,7 @@
 	},
 /obj/effect/decal/cleanable/ash,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/exterior)
+/area/expedition_planet/barren)
 "GH" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/smart/simple/general/visible{
@@ -1265,7 +1265,7 @@
 "Oi" = (
 /obj/structure/grille,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/exterior)
+/area/expedition_planet/barren)
 "Oy" = (
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/ecship/cryo)
@@ -1354,7 +1354,7 @@
 	dir = 1
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_ec_old_crash/exterior)
+/area/expedition_planet/barren)
 "QP" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/layer4{
 	dir = 8

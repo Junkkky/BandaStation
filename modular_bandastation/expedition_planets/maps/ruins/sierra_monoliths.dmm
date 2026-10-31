@@ -8,10 +8,10 @@
 	 default_raw_text = "Объект: Поле каменных монолитов. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_monoliths/exterior)
+/area/expedition_planet/barren)
 "s" = (
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_monoliths/exterior)
+/area/expedition_planet/barren)
 "y" = (
 /obj/effect/anomaly/grav/stationtrauma_icarus,
 /obj/structure/window/reinforced/spawner/directional/east,
@@ -19,11 +19,11 @@
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_monoliths/exterior)
+/area/expedition_planet/barren)
 "R" = (
 /obj/structure/stationtrauma_research_source/expedition_monolith,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_monoliths/exterior)
+/area/expedition_planet/barren)
 
 (1,1,1) = {"
 a

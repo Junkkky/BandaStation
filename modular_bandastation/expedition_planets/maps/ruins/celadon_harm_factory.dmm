@@ -284,7 +284,7 @@
 "hS" = (
 /obj/effect/decal/remains/human,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "hX" = (
 /obj/structure/closet/crate/secure/loot,
 /obj/machinery/light/dim/directional/east,
@@ -299,7 +299,7 @@
 "ih" = (
 /obj/machinery/light/dim/directional/south,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "ik" = (
 /obj/structure/railing{
 	dir = 4
@@ -705,7 +705,7 @@
 "ss" = (
 /obj/structure/flora/rock/pile/style_random,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "sy" = (
 /obj/structure/railing{
 	dir = 10
@@ -735,7 +735,7 @@
 "tN" = (
 /obj/machinery/light/dim/directional/east,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "ui" = (
 /obj/effect/turf_decal/stripes/asteroid/line,
 /turf/open/floor/engine,
@@ -746,7 +746,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
 "uw" = (
 /turf/closed/mineral/random/low_chance,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "uF" = (
 /obj/structure/rack,
 /obj/effect/decal/cleanable/dirt,
@@ -791,7 +791,7 @@
 "vF" = (
 /obj/machinery/light/broken/directional/west,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "vG" = (
 /obj/machinery/conveyor/auto{
 	dir = 1
@@ -858,7 +858,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "xB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -915,7 +915,7 @@
 "zr" = (
 /obj/machinery/light/dim/directional/west,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "zw" = (
 /obj/structure/railing/corner{
 	dir = 4
@@ -1102,7 +1102,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/ruin/powered)
 "Em" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "EI" = (
 /obj/structure/railing{
 	dir = 4
@@ -1257,7 +1257,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "HV" = (
 /obj/effect/turf_decal/stripes/asteroid/line,
 /obj/structure/railing{
@@ -1312,7 +1312,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "Jg" = (
 /obj/structure/railing{
 	dir = 1
@@ -1390,7 +1390,7 @@
 "Lf" = (
 /obj/machinery/light/broken/directional/east,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "Lk" = (
 /obj/structure/table/greyscale,
 /obj/item/storage/toolbox/drone{
@@ -1661,7 +1661,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_harm_factory/exterior)
+/area/expedition_planet/barren)
 "RI" = (
 /obj/structure/table/wood/fancy,
 /obj/machinery/computer/records/security/laptop,

@@ -57,7 +57,7 @@
 	dir = 4
 	},
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/exterior)
+/area/expedition_planet/barren)
 "dT" = (
 /obj/item/shard{
 	icon_state = "tiny"
@@ -1576,7 +1576,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/ruin/powered)
 "XY" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/exterior)
+/area/expedition_planet/barren)
 "Ys" = (
 /obj/structure/rack,
 /obj/item/storage/medkit/toxin,
@@ -1606,7 +1606,7 @@
 "Za" = (
 /obj/structure/sign/poster/official/nanotrasen_logo/directional/south,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_medipen/exterior)
+/area/expedition_planet/barren)
 "Zj" = (
 /obj/structure/table/glass,
 /obj/item/stack/ducts/fifty{

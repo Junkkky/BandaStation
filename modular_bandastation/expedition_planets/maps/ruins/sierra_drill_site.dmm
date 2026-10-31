@@ -5,48 +5,48 @@
 "i" = (
 /obj/effect/spawner/random/clothing/beret_or_rabbitears,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+/area/expedition_planet/barren)
 "m" = (
 /obj/machinery/power/floodlight,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+/area/expedition_planet/barren)
 "o" = (
 /obj/structure/girder,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+/area/expedition_planet/barren)
 "r" = (
 /obj/effect/spawner/random/food_or_drink/booze,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+/area/expedition_planet/barren)
 "w" = (
 /obj/effect/spawner/random/engineering/tool_advanced,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+/area/expedition_planet/barren)
 "z" = (
 /obj/effect/spawner/random/engineering/tool,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+/area/expedition_planet/barren)
 "B" = (
 /obj/effect/spawner/random/exotic/technology,
 /obj/effect/spawner/random/maintenance,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+/area/expedition_planet/barren)
 "J" = (
 /obj/effect/spawner/random/engineering/toolbox,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+/area/expedition_planet/barren)
 "T" = (
 /obj/effect/spawner/random/trash/garbage,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+/area/expedition_planet/barren)
 "X" = (
 /obj/effect/spawner/random/exotic/technology,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+/area/expedition_planet/barren)
 "Y" = (
 /obj/structure/ore_box,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_drill_site/exterior)
+/area/expedition_planet/barren)
 
 (1,1,1) = {"
 a

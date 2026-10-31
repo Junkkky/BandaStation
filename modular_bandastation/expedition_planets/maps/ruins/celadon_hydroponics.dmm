@@ -73,7 +73,7 @@
 "bV" = (
 /obj/item/paper/crumpled/bloody,
 /turf/closed/mineral/random/snow,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/exterior)
+/area/expedition_planet/barren)
 "bX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/siding/wood,
@@ -181,7 +181,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
 "fl" = (
 /turf/closed/mineral/random/snow,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/exterior)
+/area/expedition_planet/barren)
 "fn" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -1514,7 +1514,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/ruin/powered/hydroponicslab)
 "Lc" = (
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/exterior)
+/area/expedition_planet/barren)
 "Ln" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark/corner{
 	dir = 8
@@ -1672,7 +1672,7 @@
 "Qa" = (
 /obj/structure/marker_beacon,
 /turf/template_noop,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_hydroponics/exterior)
+/area/expedition_planet/barren)
 "Qh" = (
 /mob/living/basic/killer_tomato,
 /turf/open/floor/iron/dark/textured_large,
