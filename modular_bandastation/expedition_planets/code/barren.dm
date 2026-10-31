@@ -509,7 +509,7 @@
 	// The shared landing clearing follows the planet's ground and atmosphere.
 	generator.adapt_template_turfs(camp.get_affected_turfs(camp_origin), surface)
 	budget.yield()
-	if(!load_ruins(ruins, bottom, budget))
+	if(!load_ruins(ruins, bottom, surface, budget))
 		qdel(camp)
 		return FALSE
 	var/features = generator.place_features(bottom, surface)

@@ -79,14 +79,19 @@
 			return list(x, y)
 	return null
 
-/** Load reserved ruins and retain their IDs, yielding to `budget` between templates. */
-/datum/stationtrauma_overmap_site/space/planet/proc/load_ruins(list/placements, turf/origin, datum/stationtrauma_work_budget/budget)
+/**
+ * Load reserved ruins and retain their IDs, yielding to `budget` between templates.
+ *
+ * Placeholder ground and rock inside a ruin take the planet's own types, as they do in surface features.
+ */
+/datum/stationtrauma_overmap_site/space/planet/proc/load_ruins(list/placements, turf/origin, area/surface, datum/stationtrauma_work_budget/budget)
 	for(var/list/placement as anything in placements)
 		var/datum/map_template/ruin/expedition/template = placement[1]
 		var/turf/bottom = locate(origin.x + placement[2] - 1, origin.y + placement[3] - 1, origin.z)
 		var/turf/center = locate(bottom.x + round(template.width / 2), bottom.y + round(template.height / 2), origin.z)
 		if(!template.load(bottom))
 			return FALSE
+		generator.adapt_template_turfs(template.get_affected_turfs(bottom), surface)
 		new /obj/effect/landmark/ruin(center, template)
 		ruin_ids += template.id
 		budget?.yield()
