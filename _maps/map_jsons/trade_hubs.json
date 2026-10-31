@@ -1,0 +1,18 @@
+{
+	"version": 1,
+	"map_name": "Trade Hub Test Hall",
+	"map_path": "map_files/debug",
+	"map_file": "trade_hubs.dmm",
+	"space_ruin_levels": 0,
+	"space_empty_levels": 0,
+	"wilderness_levels": 0,
+	"minetype": "none",
+	"load_all_away_missions": false,
+	"ignored_unit_tests": [
+		"/datum/unit_test/cargo_dep_order_locations",
+		"/datum/unit_test/maptest_job_roundstart_spawnpoints",
+		"/datum/unit_test/maptest_required_map_items",
+		"/datum/unit_test/spy_bounty"
+	],
+	"bonus_weakpoints": -3
+}

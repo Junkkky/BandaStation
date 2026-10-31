@@ -317,6 +317,7 @@
 #include "overmap_planet.dm"
 #include "overmap_power.dm"
 #include "overmap_ship_docking.dm"
+#include "trade_hub.dm"
 #include "oxyloss_suffocation.dm"
 #include "paintings.dm"
 #include "pills.dm"

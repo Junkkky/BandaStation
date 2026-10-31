@@ -1309,6 +1309,16 @@
 			},
 			"changes": "Adapted greeble layout; natural ground and rock became generator placeholders, incompatible entities replaced with local types.",
 			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/debug/trade_hubs.dmm",
+			"sha256": "0a376c95b6ca1ae24dcce790455c377fbfea3047bfa770a0d4482006ddfa3715",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"BandaStation contributors; existing TG and BandaStation assets"
+			],
+			"source": null,
+			"changes": "Original standalone trade-hub test hall layout using existing repository assets."
 		}
 	]
 }

@@ -30,3 +30,5 @@
 #include "code/startup.dm"
 #include "code/parallax.dm"
 #include "code/exterior_drift.dm"
+#include "code/trade_hub.dm"
+#include "code/trade_hub_catalog.dm"
