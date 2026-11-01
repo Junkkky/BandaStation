@@ -1,0 +1,1490 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"as" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/rack,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 5
+	},
+/obj/item/storage/toolbox/electrical,
+/obj/item/multitool,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"az" = (
+/obj/structure/rack,
+/obj/machinery/airalarm/directional/west,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/storage/bag/ore,
+/obj/item/storage/bag/ore,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/mining_scanner,
+/obj/item/mining_scanner,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"aJ" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/item/kirbyplants/random,
+/obj/machinery/airalarm/directional/south,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"aZ" = (
+/turf/closed/wall,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"bo" = (
+/obj/machinery/computer/stationtrauma_transponder/bubble{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"bE" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/external)
+"bO" = (
+/obj/structure/sink/directional/west,
+/obj/machinery/shower/directional/west,
+/obj/structure/mirror{
+	pixel_x = 28
+	},
+/obj/structure/toilet{
+	pixel_y = 7
+	},
+/turf/open/floor/plating/rust,
+/area/shuttle/stationtrauma_space/bubble/maintenance/port)
+"bS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/external)
+"bT" = (
+/obj/effect/turf_decal/tile/green/fourcorners,
+/obj/machinery/door/airlock{
+	name = "Dormitories"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/crew/dorm)
+"cv" = (
+/obj/machinery/power/shieldwallgen{
+	dir = 8
+	},
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_bubble_bubbledoors";
+	name = "Cargo Bay Blast Door"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"cy" = (
+/obj/item/kirbyplants/random,
+/obj/machinery/firealarm/directional/west,
+/obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/obj/item/clothing/neck/stethoscope,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"da" = (
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"dd" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"dj" = (
+/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/trimline/purple/line,
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"dx" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 50
+	},
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 5
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"dz" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/obj/machinery/light_switch/directional/west,
+/obj/machinery/firealarm/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"dY" = (
+/obj/machinery/door/poddoor/shutters{
+	dir = 4;
+	id = "exp_celadon_bubble_thr"
+	},
+/obj/structure/cable,
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"eK" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"fH" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"fK" = (
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"gt" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"gW" = (
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/obj/machinery/portable_atmospherics/canister/plasma,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"hF" = (
+/obj/effect/turf_decal/trimline/purple/line,
+/obj/machinery/airalarm/directional/west,
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"hI" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"ia" = (
+/obj/machinery/holopad,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"id" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4;
+	id = "exp_celadon_bubble_thr"
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"jw" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"jZ" = (
+/obj/machinery/power/smes/full{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"kt" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/starboard)
+"kw" = (
+/obj/machinery/light_switch{
+	pixel_x = 11;
+	pixel_y = 23
+	},
+/obj/machinery/power/smes/engineering,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"ld" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"lv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/structure/cable,
+/turf/open/floor/carpet,
+/area/shuttle/stationtrauma_space/bubble/crew/dorm)
+"lS" = (
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"nf" = (
+/obj/structure/bed,
+/obj/structure/curtain/bounty,
+/obj/machinery/light_switch/directional/north,
+/obj/effect/spawner/random/bedsheet,
+/turf/open/floor/carpet,
+/area/shuttle/stationtrauma_space/bubble/crew/dorm)
+"nv" = (
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"ny" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/item/wrench,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"nE" = (
+/obj/effect/turf_decal/tile/purple/anticorner{
+	dir = 1
+	},
+/obj/structure/frame/machine,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"om" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/external)
+"ov" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"oQ" = (
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/obj/machinery/door/airlock/multi_tile/public/glass,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"oV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/external)
+"py" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"qh" = (
+/obj/structure/rack,
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/plasteel/fifty{
+	amount = 50
+	},
+/obj/item/pipe_dispenser,
+/obj/item/construction/plumbing,
+/obj/item/construction/rcd/arcd,
+/obj/item/construction/rcd/combat,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"rC" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"rE" = (
+/obj/machinery/power/shieldwallgen{
+	dir = 4
+	},
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_bubble_bubbledoors";
+	name = "Cargo Bay Blast Door"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"rO" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/structure/frame/machine,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"sg" = (
+/obj/machinery/light_switch{
+	pixel_x = 11;
+	pixel_y = 23
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 9
+	},
+/obj/machinery/firealarm/directional/north,
+/obj/structure/frame/machine,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"sr" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/firealarm/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"sw" = (
+/obj/item/soap,
+/turf/open/floor/plating/rust,
+/area/shuttle/stationtrauma_space/bubble/maintenance/port)
+"sA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/closed/wall,
+/area/shuttle/stationtrauma_space/bubble/science)
+"sI" = (
+/obj/machinery/vending/clothing,
+/obj/machinery/firealarm/directional/south,
+/obj/machinery/newscaster/directional/west,
+/turf/open/floor/carpet,
+/area/shuttle/stationtrauma_space/bubble/crew/dorm)
+"sK" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"sU" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"tf" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"tQ" = (
+/obj/machinery/computer/stationtrauma_bluespace{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue/anticorner,
+/obj/machinery/button/door/directional/north{
+	id = "exp_celadon_bubble_bridge"
+	},
+/obj/machinery/newscaster/directional/south,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"tT" = (
+/obj/effect/turf_decal/trimline/purple/line,
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"uc" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/power/port_gen/pacman,
+/obj/machinery/light/directional/east,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"ui" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 9
+	},
+/obj/structure/frame/computer{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"uY" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/machinery/power/port_gen/pacman/super,
+/obj/machinery/airalarm/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"vI" = (
+/obj/structure/table/wood,
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/carpet,
+/area/shuttle/stationtrauma_space/bubble/crew/dorm)
+"wN" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"xs" = (
+/obj/machinery/firealarm/directional/east,
+/obj/machinery/light_switch/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"xA" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/item/storage/box/donkpockets{
+	pixel_x = -8
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_y = 5;
+	pixel_x = -8
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = 8
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_y = 5;
+	pixel_x = 8
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_y = 10;
+	pixel_x = 8
+	},
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/machinery/light_switch/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"xX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/item/toy/plush/lizard_plushie{
+	color = "cyan"
+	},
+/obj/item/clothing/head/wig/random{
+	pixel_x = -1;
+	pixel_y = -4
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/starboard)
+"zN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/external)
+"Ab" = (
+/obj/structure/rack,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"AE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"AQ" = (
+/obj/machinery/computer/cryopod/directional/west,
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet,
+/area/shuttle/stationtrauma_space/bubble/crew/dorm)
+"BJ" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/machinery/light_switch/directional/east,
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"BR" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"Ce" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/machinery/autolathe,
+/obj/item/stack/sheet/glass,
+/obj/item/stack/sheet/iron{
+	amount = 5
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"Dz" = (
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"DX" = (
+/obj/docking_port/mobile/stationtrauma_space{
+	name = "Bubble";
+	shuttle_id = "stationtrauma_bubble";
+	ship_class = "small";
+	area_type = /area/shuttle/stationtrauma_space/bubble;
+	preferred_direction = 4
+	},
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/structure/fans/tiny,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"ES" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	name = "engine fuel pump"
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"FA" = (
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/airlock/engineering/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"Ht" = (
+/obj/structure/rack,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"HF" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/airlock/command/glass{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"HI" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/effect/turf_decal/tile/brown/fourcorners,
+/obj/machinery/mineral/ore_redemption,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"Ia" = (
+/turf/closed/wall,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"Id" = (
+/obj/machinery/door/poddoor{
+	id = "exp_celadon_bubble_bubbledoors";
+	name = "Cargo Bay Blast Door"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"Im" = (
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"Is" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/obj/structure/frame/computer{
+	anchored = 1;
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"IA" = (
+/obj/machinery/light/directional/east,
+/obj/structure/lattice/catwalk,
+/obj/machinery/suit_storage_unit/mining/eva,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"IX" = (
+/obj/machinery/light/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"JH" = (
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/external)
+"JU" = (
+/obj/machinery/ore_silo,
+/obj/item/multitool,
+/obj/machinery/light_switch/directional/east,
+/obj/machinery/firealarm/directional/west,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"JW" = (
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"Kc" = (
+/turf/closed/wall,
+/area/shuttle/stationtrauma_space/bubble/science)
+"Kk" = (
+/obj/structure/frame/machine,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"Kn" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"Ky" = (
+/obj/structure/safe/floor,
+/obj/item/stack/spacecash/c1000,
+/obj/item/circuitboard/computer/rdconsole,
+/obj/item/circuitboard/machine/protolathe/department/science,
+/obj/item/circuitboard/machine/circuit_imprinter/department/science,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"KM" = (
+/turf/closed/wall,
+/area/shuttle/stationtrauma_space/bubble/crew/dorm)
+"KN" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 10
+	},
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/light_switch/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"LN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/external)
+"Mb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/external)
+"Mp" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"Mv" = (
+/obj/effect/turf_decal/tile/purple/fourcorners,
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/airlock/research/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/science)
+"MA" = (
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet,
+/obj/structure/curtain/bounty,
+/turf/open/floor/carpet,
+/area/shuttle/stationtrauma_space/bubble/crew/dorm)
+"NU" = (
+/obj/structure/cable,
+/turf/closed/wall,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"NZ" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/structure/cable,
+/turf/open/floor/carpet,
+/area/shuttle/stationtrauma_space/bubble/crew/dorm)
+"Od" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/external)
+"Ot" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"Ou" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/machinery/light_switch{
+	pixel_x = -13;
+	pixel_y = 23
+	},
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_y = 5
+	},
+/obj/machinery/newscaster/directional/north,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"Ov" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"OU" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"PQ" = (
+/obj/machinery/door/window/right/directional/east,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"Qx" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/machinery/button/door/directional/south{
+	id = "exp_celadon_bubble_thr"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"Ra" = (
+/turf/closed/wall,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"Rm" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/engineering)
+"RL" = (
+/obj/machinery/button/door/directional/west{
+	id = "exp_celadon_bubble_shield"
+	},
+/obj/machinery/button/door/directional/west{
+	id = "exp_celadon_bubble_bubbledoors"
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/suit_storage_unit/mining/eva,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"SK" = (
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/machinery/light_switch{
+	pixel_x = -13;
+	pixel_y = 23
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet,
+/area/shuttle/stationtrauma_space/bubble/crew/dorm)
+"SL" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"Tr" = (
+/turf/template_noop,
+/area/template_noop)
+"Tu" = (
+/obj/effect/turf_decal/trimline/purple/line,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"TP" = (
+/turf/closed/wall,
+/area/shuttle/stationtrauma_space/bubble/maintenance/starboard)
+"TY" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"Ui" = (
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"UU" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"UW" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters{
+	dir = 4;
+	id = "exp_celadon_bubble_thr"
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"Vl" = (
+/turf/closed/wall,
+/area/shuttle/stationtrauma_space/bubble/maintenance/port)
+"VV" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/layer2{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/starboard)
+"VW" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/hallway/central)
+"Wf" = (
+/turf/closed/wall,
+/area/shuttle/stationtrauma_space/bubble/cargo)
+"WD" = (
+/obj/machinery/light_switch/directional/east,
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/item/stack/spacecash/c1000,
+/obj/item/stack/spacecash/c1000,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/structure/cable,
+/obj/structure/closet/emcloset,
+/obj/item/stack/spacecash/c1000,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"WX" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4;
+	id = "exp_celadon_bubble_bridge"
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"XB" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"XT" = (
+/obj/machinery/computer/stationtrauma_space_navigation{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue/half{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"Yo" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "engine fuel pump"
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"Yz" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/science)
+"YN" = (
+/obj/structure/rack,
+/obj/structure/closet/crate/engineering,
+/obj/item/circuitboard/computer/arcade/orion_trail,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"Zc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+"Zp" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plating/rust,
+/area/shuttle/stationtrauma_space/bubble/maintenance/port)
+"ZG" = (
+/obj/machinery/airalarm/directional/north,
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/item/radio/off{
+	dir = 4;
+	pixel_y = 2;
+	pixel_x = 1
+	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/bubble/bridge)
+"ZK" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/light_switch/directional/west,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/bubble/maintenance/aft)
+
+(1,1,1) = {"
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Ra
+id
+UW
+id
+Ra
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+"}
+(2,1,1) = {"
+Tr
+Tr
+Tr
+Tr
+Ra
+dY
+Ra
+jZ
+sU
+jZ
+Ra
+dY
+Ra
+Tr
+Tr
+Tr
+Tr
+Tr
+"}
+(3,1,1) = {"
+Tr
+Tr
+Tr
+Tr
+Ra
+jZ
+Ra
+UU
+Yo
+UU
+Ra
+jZ
+Ra
+Tr
+Tr
+Tr
+Tr
+Tr
+"}
+(4,1,1) = {"
+Tr
+Tr
+Tr
+Ra
+Ra
+Qx
+Ab
+Zc
+YN
+wN
+Ht
+UU
+Ra
+Ra
+Tr
+Tr
+Tr
+Tr
+"}
+(5,1,1) = {"
+Tr
+Tr
+Tr
+Ra
+gW
+ES
+AE
+xs
+Mp
+IX
+ZK
+lS
+qh
+Ra
+Tr
+Tr
+Tr
+Tr
+"}
+(6,1,1) = {"
+Tr
+Tr
+KM
+KM
+KM
+KM
+KM
+Ra
+hI
+Ra
+Kc
+Kc
+Kc
+Kc
+Kc
+Tr
+Tr
+Tr
+"}
+(7,1,1) = {"
+Tr
+Tr
+KM
+AQ
+vI
+sI
+KM
+xA
+BR
+hF
+Kc
+sg
+ui
+nE
+Kc
+Tr
+Tr
+Tr
+"}
+(8,1,1) = {"
+Tr
+Tr
+KM
+SK
+NZ
+lv
+bT
+py
+VW
+Tu
+Mv
+ov
+SL
+KN
+Kc
+Tr
+Tr
+Tr
+"}
+(9,1,1) = {"
+Tr
+oV
+KM
+MA
+MA
+nf
+KM
+Ou
+Kn
+tT
+Kc
+Kk
+Yz
+aJ
+sA
+bS
+Tr
+Tr
+"}
+(10,1,1) = {"
+Tr
+om
+KM
+KM
+KM
+KM
+KM
+Im
+Kn
+dj
+Kc
+as
+PQ
+Ce
+Kc
+Od
+Tr
+Tr
+"}
+(11,1,1) = {"
+oV
+bE
+rE
+JU
+az
+BJ
+HI
+JW
+tf
+rO
+aZ
+kw
+rC
+uY
+aZ
+aZ
+aZ
+Tr
+"}
+(12,1,1) = {"
+zN
+JH
+Id
+jw
+TY
+OU
+oQ
+dd
+bo
+sK
+FA
+gt
+ny
+Rm
+da
+nv
+DX
+Tr
+"}
+(13,1,1) = {"
+Mb
+LN
+cv
+RL
+IA
+Dz
+fK
+dz
+Ui
+Is
+aZ
+sr
+dx
+uc
+aZ
+aZ
+aZ
+Tr
+"}
+(14,1,1) = {"
+Tr
+Tr
+Wf
+Wf
+Wf
+Ov
+Wf
+Ia
+HF
+Ia
+Ia
+Ot
+aZ
+aZ
+aZ
+Tr
+Tr
+Tr
+"}
+(15,1,1) = {"
+Tr
+Tr
+Tr
+Vl
+Zp
+sw
+Ia
+WD
+ia
+cy
+Ia
+kt
+VV
+TP
+Tr
+Tr
+Tr
+Tr
+"}
+(16,1,1) = {"
+Tr
+Tr
+Tr
+Vl
+Vl
+bO
+XB
+Ky
+eK
+ld
+fH
+xX
+TP
+TP
+Tr
+Tr
+Tr
+Tr
+"}
+(17,1,1) = {"
+Tr
+Tr
+Tr
+Tr
+Vl
+Vl
+NU
+ZG
+XT
+tQ
+Ia
+TP
+TP
+Tr
+Tr
+Tr
+Tr
+Tr
+"}
+(18,1,1) = {"
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Ia
+WX
+WX
+WX
+Ia
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+"}
+(19,1,1) = {"
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+"}

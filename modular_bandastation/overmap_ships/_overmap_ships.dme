@@ -1,3 +1,7 @@
 #include "_overmap_ships.dm"
 #include "code/raven.dm"
 #include "code/pocketrocket.dm"
+#include "code/venture.dm"
+#include "code/bubble.dm"
+#include "code/glimpse.dm"
+#include "code/kilo.dm"

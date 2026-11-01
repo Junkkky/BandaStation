@@ -1,0 +1,2182 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/corner,
+/obj/structure/closet{
+	pixel_y = 22;
+	dir = 1;
+	name = "food? locker"
+	},
+/obj/effect/spawner/random/maintenance/two,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"am" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 1
+	},
+/obj/structure/closet/crate/large,
+/obj/item/emergency_bed,
+/obj/item/storage/box/bodybags,
+/obj/item/clothing/neck/stethoscope,
+/obj/item/storage/medkit/toxin{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/obj/item/storage/pill_bottle/iron{
+	pixel_x = -9;
+	pixel_y = 7
+	},
+/obj/item/storage/medkit/ancient{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/item/storage/medkit/regular{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "exp_celadon_venture_venture_belt"
+	},
+/obj/machinery/iv_drip,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"aO" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 1
+	},
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/machinery/fax,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/light/directional/north,
+/obj/machinery/light_switch/directional/east,
+/turf/open/floor/iron/white,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"bB" = (
+/obj/machinery/autolathe/hacked,
+/obj/structure/closet/emcloset{
+	name = "closet"
+	},
+/obj/item/stack/sheet/iron{
+	pixel_x = 7;
+	pixel_y = 0;
+	amount = 10
+	},
+/obj/item/stack/sheet/glass{
+	pixel_x = -7;
+	pixel_y = 0;
+	amount = 5
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/turf/open/floor/circuit/telecomms,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"bR" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/structure/closet/emcloset{
+	dir = 2
+	},
+/obj/structure/railing,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"bU" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"cn" = (
+/obj/machinery/airalarm/directional/north,
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/yellow,
+/obj/machinery/space_heater,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"cr" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/light/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"cB" = (
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/yellow,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/obj/machinery/light_switch{
+	pixel_x = 11;
+	pixel_y = 23
+	},
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"dk" = (
+/obj/effect/turf_decal/siding/yellow/corner,
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 1
+	},
+/obj/machinery/conveyor{
+	dir = 10;
+	id = "exp_celadon_venture_venture_belt"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"dD" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/neutral/filled/line,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"ea" = (
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/yellow,
+/obj/effect/turf_decal/siding/yellow/corner{
+	dir = 1
+	},
+/obj/structure/ore_box,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"eg" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_celadon_venture_venture_front"
+	},
+/obj/machinery/power/shieldwallgen{
+	anchored = 1
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"eX" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"fY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/glass/plasma,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"ge" = (
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/machinery/door/airlock/engineering{
+	dir = 4;
+	name = "Engineering"
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"gC" = (
+/obj/item/stamp/head/qm,
+/obj/item/storage/backpack/satchel/explorer{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/obj/item/storage/backpack/explorer{
+	pixel_x = 9;
+	pixel_y = -6
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/item/clothing/under/rank/cargo/qm{
+	pixel_x = -7;
+	pixel_y = -9
+	},
+/obj/item/disk/computer/command/captain,
+/obj/item/clothing/shoes/laceup{
+	pixel_y = -14;
+	pixel_x = -9
+	},
+/obj/item/clothing/shoes/combat{
+	pixel_x = -4;
+	pixel_y = -9
+	},
+/obj/item/clothing/glasses/sunglasses{
+	pixel_y = 14;
+	pixel_x = 7
+	},
+/obj/item/radio/headset/heads/captain/alt,
+/obj/item/megaphone/cargo,
+/obj/item/clothing/head/soft{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/clothing/gloves/tackler/combat/insulated{
+	pixel_x = -8;
+	pixel_y = -7
+	},
+/obj/item/knife/hunting,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet{
+	name = "captain's locker";
+	dir = 1
+	},
+/obj/item/paper_bin,
+/obj/item/pen/fourcolor,
+/obj/item/gun/energy/e_gun/mini{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/recharger{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/clipboard{
+	pixel_x = 8;
+	pixel_y = -8
+	},
+/obj/item/modular_computer/pda/crew/heads/quartermaster,
+/obj/item/storage/box/shipping,
+/turf/open/floor/iron/white,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"hf" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/structure/closet/secure_closet{
+	name = "crew clothing locker";
+	dir = 1
+	},
+/obj/item/clothing/under/rank/cargo/miner{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/clothing/under/rank/cargo/miner{
+	pixel_x = 10;
+	pixel_y = 7
+	},
+/obj/item/clothing/under/rank/cargo/tech{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/clothing/under/rank/cargo/tech{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/item/clothing/under/color/blue{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/clothing/under/color/blue{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/obj/item/clothing/shoes/sneakers/black{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/clothing/shoes/sneakers/black{
+	pixel_x = 13;
+	pixel_y = -5
+	},
+/obj/item/clothing/shoes/sneakers/brown{
+	pixel_x = 8;
+	pixel_y = -9
+	},
+/obj/item/clothing/shoes/sneakers/brown{
+	pixel_x = 13;
+	pixel_y = -9
+	},
+/obj/item/clothing/shoes/jackboots{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/item/clothing/shoes/jackboots{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/item/clothing/shoes/jackboots{
+	pixel_x = -2;
+	pixel_y = -5
+	},
+/obj/item/clothing/gloves/color/black{
+	pixel_x = -9;
+	pixel_y = 4
+	},
+/obj/item/clothing/gloves/color/black{
+	pixel_x = -9;
+	pixel_y = 2
+	},
+/obj/item/clothing/gloves/color/black{
+	pixel_x = -9;
+	pixel_y = 0
+	},
+/obj/item/clothing/head/soft/blue{
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/obj/item/clothing/head/soft/blue{
+	pixel_x = 10;
+	pixel_y = 11
+	},
+/obj/item/clothing/head/soft{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/item/clothing/head/soft{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/obj/item/clothing/head/soft{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/crew/dorm)
+"hU" = (
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"hV" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"iE" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman/super{
+	anchored = 1
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"jm" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/structure/closet/crate/large,
+/obj/effect/spawner/random/engineering/material,
+/obj/effect/spawner/random/engineering/material,
+/obj/effect/spawner/random/maintenance/three,
+/obj/machinery/light/directional/south,
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "exp_celadon_venture_venture_belt"
+	},
+/obj/item/stack/sheet/iron{
+	amount = 20
+	},
+/obj/item/stack/sheet/glass{
+	amount = 20
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"jq" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"jV" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"kd" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/shreds,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"kR" = (
+/obj/structure/cable,
+/obj/machinery/power/smes/full{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/left/directional/east,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_celadon_venture_venture_eng"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"le" = (
+/obj/effect/turf_decal/tile/yellow/half,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"lt" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/structure/rack,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"ly" = (
+/obj/effect/turf_decal/siding/yellow,
+/obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/firealarm/directional/north,
+/obj/effect/decal/cleanable/wrapping,
+/obj/machinery/shieldgen,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"me" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"nq" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/power/shieldwallgen{
+	anchored = 1;
+	dir = 1;
+	locked = 1
+	},
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_celadon_venture_venture_front"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"ou" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"oO" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/caution{
+	dir = 8
+	},
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"oS" = (
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/yellow/corner{
+	dir = 8
+	},
+/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/turf_decal/siding/thinplating/dark/corner,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"oT" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow/half,
+/obj/machinery/mineral/ore_redemption,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"pR" = (
+/obj/effect/turf_decal/tile/dark_blue/anticorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 1
+	},
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/machinery/computer/stationtrauma_space_navigation{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/button/door/directional/north{
+	id = "exp_celadon_venture_venture_exit"
+	},
+/obj/machinery/button/door/directional/north{
+	id = "exp_celadon_venture_venture_eng";
+	name = "Engine Shutters"
+	},
+/obj/machinery/button/door/directional/north{
+	id = "exp_celadon_venture_venture_front";
+	name = "Cargo Bay Shutters"
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"qq" = (
+/obj/machinery/airalarm/directional/east,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"qF" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/stationtrauma_space/venture/crew/dorm)
+"rm" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/machinery/light_switch/directional/west,
+/obj/effect/decal/cleanable/molten_object,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"sk" = (
+/obj/effect/turf_decal/trimline/yellow/warning,
+/obj/machinery/light/directional/north,
+/obj/structure/closet/crate/miningcar{
+	name = "Mining cart"
+	},
+/obj/item/stack/ore/iron,
+/obj/item/stack/ore/iron,
+/obj/item/stack/ore/iron,
+/obj/item/stack/ore/plasma,
+/obj/item/stack/ore/plasma,
+/obj/item/stack/ore/silver,
+/obj/item/stack/ore/titanium,
+/obj/item/stack/ore/uranium,
+/obj/item/stack/ore/gold,
+/obj/item/shovel,
+/obj/item/clothing/under/costume/lobster{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/obj/item/clothing/head/costume/lobsterhat{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/machinery/conveyor{
+	dir = 5;
+	id = "exp_celadon_venture_venture_belt"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"tF" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"tL" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/newscaster/directional/north,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"uG" = (
+/obj/structure/cable,
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"vl" = (
+/obj/machinery/newscaster/directional/north,
+/obj/item/radio/intercom/directional/north,
+/obj/structure/toilet,
+/obj/structure/curtain/cloth{
+	color = "#32426b"
+	},
+/obj/structure/window/reinforced/tinted/frosted/spawner/directional/west,
+/obj/item/soap/nanotrasen,
+/turf/open/floor/carpet/black,
+/area/shuttle/stationtrauma_space/venture/crew/dorm)
+"vm" = (
+/turf/template_noop,
+/area/template_noop)
+"vL" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/obj/structure/lattice/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"vW" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/components/tank/air,
+/obj/machinery/light/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"ww" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"wX" = (
+/obj/structure/closet/crate{
+	name = "spare rations crate"
+	},
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/food/rationpack,
+/obj/item/reagent_containers/cup/glass/waterbottle/large{
+	pixel_x = 8;
+	name = "John Trasen's Reserve"
+	},
+/obj/item/reagent_containers/cup/glass/waterbottle/large{
+	pixel_x = 8;
+	name = "John Trasen's Reserve"
+	},
+/obj/item/reagent_containers/cup/glass/waterbottle/large{
+	pixel_x = 8;
+	name = "John Trasen's Reserve"
+	},
+/obj/item/reagent_containers/cup/glass/waterbottle/large{
+	pixel_x = 8;
+	name = "John Trasen's Reserve"
+	},
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/corner,
+/obj/machinery/conveyor_switch{
+	id = "exp_celadon_venture_venture_belt"
+	},
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"wY" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/machinery/power/smes/engineering,
+/obj/machinery/light/directional/south,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"xf" = (
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 10
+	},
+/obj/structure/closet/crate/large,
+/obj/machinery/conveyor{
+	id = "exp_celadon_venture_venture_belt"
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"yb" = (
+/obj/effect/turf_decal/siding/yellow/corner,
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/obj/item/food/burger/baconburger{
+	pixel_x = -2;
+	pixel_y = 9
+	},
+/obj/machinery/light/directional/south,
+/obj/item/food/burger/chicken{
+	pixel_x = -10;
+	pixel_y = -2
+	},
+/obj/item/food/fries{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/cup/glass/drinkingglass/filled/cola{
+	pixel_x = 11;
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"zf" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"zL" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 1
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/item/radio/intercom/directional/north,
+/obj/item/radio/intercom/directional/north,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"AT" = (
+/obj/structure/cable,
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"Be" = (
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/obj/machinery/firealarm/directional/south,
+/obj/structure/extinguisher_cabinet/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"BT" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/stationtrauma_space/venture/crew/dorm)
+"Ca" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/machinery/cell_charger,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"CJ" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"Eb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/dark_blue/half,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/holopad,
+/obj/structure/extinguisher_cabinet/directional/south,
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/iron/white,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"Ep" = (
+/obj/machinery/airalarm/directional/south,
+/obj/effect/turf_decal/siding/thinplating/corner,
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"Et" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"EB" = (
+/obj/machinery/door/window/left/directional/west,
+/obj/structure/mirror{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/obj/machinery/shower/directional/north,
+/obj/structure/sink/directional/west,
+/obj/effect/decal/cleanable/chem_pile,
+/turf/open/floor/iron/freezer,
+/area/shuttle/stationtrauma_space/venture/crew/dorm)
+"EE" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/caution{
+	dir = 8
+	},
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"Fl" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/machinery/light/directional/west,
+/obj/machinery/button/door/directional/east{
+	id = "exp_celadon_venture_venture_eng";
+	name = "Engine Shutters"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"FN" = (
+/obj/effect/turf_decal/tile/dark_blue/anticorner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 8
+	},
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/machinery/computer/stationtrauma_bluespace{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"FP" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"Gy" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock{
+	name = "Dormitory";
+	dir = 8
+	},
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/crew/dorm)
+"HB" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow/half,
+/obj/structure/rack,
+/obj/structure/closet/crate/secure{
+	name = "mining supplies crate";
+	desc = "A lock-enabled crate used to carry N+S Logistics merchandise destined for export to potential buyers."
+	},
+/obj/item/gun/energy/plasmacutter{
+	pixel_x = -2;
+	pixel_y = 7
+	},
+/obj/item/t_scanner/adv_mining_scanner{
+	pixel_y = -4;
+	pixel_x = -11
+	},
+/obj/item/t_scanner/adv_mining_scanner{
+	pixel_y = -4;
+	pixel_x = -3
+	},
+/obj/item/t_scanner/adv_mining_scanner{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/storage/bag/ore{
+	pixel_y = 2;
+	pixel_x = 0
+	},
+/obj/item/storage/bag/ore{
+	pixel_y = 2;
+	pixel_x = 0
+	},
+/obj/item/storage/bag/ore{
+	pixel_y = 2;
+	pixel_x = 0
+	},
+/obj/item/kinetic_crusher,
+/obj/item/kinetic_crusher,
+/obj/item/clothing/glasses/meson,
+/obj/item/clothing/glasses/meson{
+	pixel_x = 0;
+	pixel_y = -9
+	},
+/obj/item/gun/energy/recharge/kinetic_accelerator,
+/obj/item/borg/upgrade/modkit/cooldown/aoe/turfs,
+/obj/item/borg/upgrade/modkit/cooldown,
+/obj/item/borg/upgrade/modkit/damage,
+/obj/item/flashlight/seclite,
+/obj/item/storage/belt/mining,
+/obj/item/storage/belt/mining,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"Jr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/siding/thinplating,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/command{
+	name = "Bridge";
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"Js" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/portable_atmospherics/pump,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"JP" = (
+/obj/structure/cable,
+/obj/machinery/power/smes/full{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/right/directional/east,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_celadon_venture_venture_eng"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"JR" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/neutral/filled/line,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"Lv" = (
+/obj/structure/cable,
+/obj/machinery/power/smes/full{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/left/directional/east,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/poddoor{
+	dir = 4;
+	id = "exp_celadon_venture_venture_eng"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"LC" = (
+/obj/structure/cable,
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/docking_port/mobile/stationtrauma_space{
+	name = "Venture";
+	shuttle_id = "stationtrauma_venture";
+	ship_class = "small";
+	area_type = /area/shuttle/stationtrauma_space/venture;
+	preferred_direction = 4
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"LO" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/structure/lattice/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"Mj" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/lattice/catwalk,
+/obj/machinery/portable_atmospherics/scrubber,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"My" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"MF" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"ML" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/components/binary/pump/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"Na" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"No" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/microwave{
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 7;
+	pixel_y = 20
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"Nr" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"NS" = (
+/obj/structure/closet/crate/secure{
+	name = "special mining supplies crate";
+	desc = "A lock-enabled crate used to carry N+S Logistics merchandise destined for export to potential buyers."
+	},
+/obj/item/knife/combat,
+/obj/item/knife/combat/survival,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/survivalcapsule,
+/obj/item/survivalcapsule,
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/item/clothing/shoes/winterboots/ice_boots,
+/obj/item/clothing/shoes/winterboots/ice_boots,
+/obj/item/clothing/suit/hooded/explorer,
+/obj/item/clothing/suit/hooded/explorer,
+/obj/item/clothing/mask/gas/explorer,
+/obj/item/clothing/mask/gas/explorer,
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 4
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "exp_celadon_venture_venture_belt"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"NY" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/structure/closet/crate/secure/gear{
+	name = "Vigilitas Interstellar supplies crate"
+	},
+/obj/item/storage/box/handcuffs,
+/obj/item/clothing/under/rank/security/officer{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/clothing/head/helmet/alt{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/melee/baton/security/loaded{
+	pixel_x = -7;
+	pixel_y = 0
+	},
+/obj/item/flashlight/seclite,
+/obj/machinery/conveyor{
+	dir = 9;
+	id = "exp_celadon_venture_venture_belt"
+	},
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"Ol" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/dark{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"Ou" = (
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/obj/machinery/light_switch/directional/north,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"Ov" = (
+/obj/effect/turf_decal/trimline/yellow/warning,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/wrapping,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"PN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/yellow/corner,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/machinery/button/door/directional/east{
+	id = "exp_celadon_venture_venture_exit"
+	},
+/obj/machinery/button/door/directional/east{
+	id = "exp_celadon_venture_venture_front";
+	name = "Cargo Bay Shutters"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"PP" = (
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/yellow/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_blue/corner{
+	dir = 4
+	},
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"PV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/dark_blue/half,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/light/directional/south,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"PW" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/venture/crew/dorm)
+"Qq" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/structure/safe/floor,
+/obj/item/megaphone/command{
+	pixel_x = -7;
+	pixel_y = -6
+	},
+/obj/item/storage/wallet{
+	pixel_x = 4;
+	pixel_y = -11
+	},
+/obj/structure/railing{
+	dir = 8;
+	pixel_x = -4;
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stock_parts/capacitor/super,
+/obj/item/stack/spacecash/c1000{
+	pixel_x = 0;
+	pixel_y = -8
+	},
+/obj/item/gun/energy/laser/practice{
+	pixel_x = 5;
+	pixel_y = 9;
+	name = "SL L-104 practice laser gun"
+	},
+/obj/item/clothing/head/hats/intern{
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/obj/item/melee/baton/telescopic,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"Qz" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"Rc" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"Rg" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"Rm" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/warning,
+/obj/structure/closet/crate/engineering/electrical{
+	name = "repair supplies crate"
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -6;
+	pixel_y = -5
+	},
+/obj/item/stack/sheet/mineral/titanium{
+	pixel_x = -7;
+	pixel_y = 8;
+	amount = 20
+	},
+/obj/item/stack/sheet/plasmarglass{
+	pixel_x = 6;
+	pixel_y = 8;
+	amount = 5
+	},
+/obj/item/stack/sheet/plasmarglass{
+	pixel_x = 6;
+	pixel_y = 10;
+	amount = 5
+	},
+/obj/item/multitool{
+	pixel_x = 6;
+	pixel_y = -7
+	},
+/obj/item/storage/box/stockparts/basic{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/obj/item/clothing/gloves/color/yellow{
+	pixel_x = 0;
+	pixel_y = -7
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "exp_celadon_venture_venture_belt"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"RP" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/directional/east,
+/obj/item/clothing/suit/space,
+/obj/item/clothing/mask/gas/explorer,
+/obj/item/tank/internals/oxygen/yellow,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/suit_storage_unit,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"RW" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/iron/stairs{
+	color = "#8A9397";
+	dir = 8
+	},
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"Sk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"SD" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"SZ" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/dark_blue/half{
+	dir = 8
+	},
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/obj/machinery/light_switch/directional/east,
+/obj/machinery/light/floor{
+	pixel_x = 10;
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/crew/dorm)
+"Tc" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/yellow/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_blue/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"Tj" = (
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"Tm" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/dark_blue/half,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/airalarm/directional/west,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"TR" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/venture/bridge)
+"TW" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/dark_blue{
+	dir = 1
+	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/obj/machinery/computer/cryopod/directional/south,
+/obj/structure/extinguisher_cabinet/directional/west,
+/obj/machinery/firealarm/directional/west,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/crew/dorm)
+"Uc" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/machinery/firealarm/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"UA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"UY" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/glass/plasma,
+/obj/structure/ore_box,
+/obj/item/storage/box/shipping{
+	pixel_x = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"VD" = (
+/obj/machinery/computer/stationtrauma_transponder/venture{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"VI" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light/directional/east,
+/obj/machinery/suit_storage_unit,
+/obj/item/clothing/suit/space,
+/obj/item/clothing/mask/gas/explorer,
+/obj/item/tank/internals/oxygen/yellow,
+/obj/structure/railing,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"WR" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/oil/slippery,
+/obj/machinery/door/airlock/engineering{
+	dir = 4;
+	name = "Engineering"
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/engineering)
+"WV" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"Xi" = (
+/obj/effect/turf_decal/siding/thinplating,
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"XA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+"XY" = (
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/yellow/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 8
+	},
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 4;
+	pixel_y = 0
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/item/gun/ballistic/automatic/pistol/no_mag,
+/obj/item/ammo_box/c9mm,
+/obj/item/gun/energy/e_gun/mini{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/stock_parts/power_store/cell{
+	pixel_x = 11;
+	pixel_y = 5
+	},
+/obj/machinery/conveyor{
+	dir = 6;
+	id = "exp_celadon_venture_venture_belt"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"Zd" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/neutral/filled/line,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"Zt" = (
+/obj/structure/closet/crate/internals,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/head/helmet/space/eva,
+/obj/item/clothing/head/helmet/space/eva,
+/obj/item/clothing/suit/space/eva,
+/obj/item/clothing/suit/space/eva,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/yellow,
+/obj/effect/decal/cleanable/generic,
+/obj/item/tank/jetpack,
+/obj/item/tank/jetpack,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/stationtrauma_space/venture/cargo/port)
+"ZB" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/stationtrauma_space/venture/cargo/starboard)
+
+(1,1,1) = {"
+vm
+vm
+vm
+vm
+TR
+AT
+LC
+TR
+vm
+vm
+vm
+vm
+"}
+(2,1,1) = {"
+vm
+vm
+vm
+uG
+Rg
+Lv
+JP
+Rg
+AT
+vm
+vm
+vm
+"}
+(3,1,1) = {"
+vm
+vm
+FP
+kR
+Rg
+Mj
+Js
+Rg
+JP
+FP
+vm
+vm
+"}
+(4,1,1) = {"
+vm
+Na
+Rg
+zf
+Fl
+Ca
+bU
+iE
+LO
+Rg
+Na
+vm
+"}
+(5,1,1) = {"
+vm
+Rg
+vW
+ML
+Uc
+qq
+rm
+Qq
+vL
+wY
+Rg
+vm
+"}
+(6,1,1) = {"
+vm
+Na
+Rg
+ge
+TR
+TR
+TR
+TR
+WR
+Rg
+Na
+vm
+"}
+(7,1,1) = {"
+vm
+vm
+jV
+ww
+TR
+aO
+Tm
+Jr
+MF
+me
+vm
+vm
+"}
+(8,1,1) = {"
+vm
+vm
+jV
+eX
+TR
+gC
+Eb
+TR
+bR
+me
+vm
+vm
+"}
+(9,1,1) = {"
+vm
+Rc
+jV
+cr
+TR
+zL
+PV
+TR
+UA
+me
+ZB
+vm
+"}
+(10,1,1) = {"
+hV
+jV
+ea
+tF
+TR
+FN
+pR
+TR
+tL
+oS
+me
+hV
+"}
+(11,1,1) = {"
+jV
+oT
+kd
+Zd
+PN
+UY
+lt
+fY
+SD
+hU
+bB
+me
+"}
+(12,1,1) = {"
+Rc
+jV
+cB
+dD
+Ov
+ou
+VD
+CJ
+XA
+Ou
+me
+ZB
+"}
+(13,1,1) = {"
+vm
+jV
+ly
+JR
+Nr
+Tj
+Sk
+jq
+Qz
+Be
+me
+vm
+"}
+(14,1,1) = {"
+Rc
+jV
+cn
+JR
+VI
+oO
+EE
+RP
+WV
+Ep
+me
+ZB
+"}
+(15,1,1) = {"
+jV
+HB
+Zt
+Et
+jV
+eg
+nq
+me
+Ol
+Xi
+No
+ZB
+"}
+(16,1,1) = {"
+Rc
+jV
+wX
+RW
+jV
+vm
+vm
+me
+aa
+PP
+me
+ZB
+"}
+(17,1,1) = {"
+vm
+jV
+sk
+NY
+jV
+vm
+vm
+me
+Tc
+yb
+me
+vm
+"}
+(18,1,1) = {"
+Rc
+le
+NS
+am
+jV
+vm
+vm
+PW
+Gy
+PW
+PW
+BT
+"}
+(19,1,1) = {"
+jV
+xf
+Rm
+jm
+jV
+vm
+vm
+PW
+hf
+SZ
+TW
+PW
+"}
+(20,1,1) = {"
+My
+jV
+XY
+dk
+jV
+vm
+vm
+PW
+vl
+EB
+PW
+qF
+"}
+(21,1,1) = {"
+vm
+hV
+jV
+jV
+hV
+vm
+vm
+hV
+PW
+PW
+hV
+vm
+"}

@@ -52,6 +52,70 @@
 			},
 			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
 			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ships/venture.dmm",
+			"sha256": "efacd16cb3a1cee0465f69a0f01738653c79bc760574d553f33d76bd9421f62a",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/shuttles/nanotrasen/nanotrasen_venture.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/shuttles/nanotrasen/nanotrasen_venture.dmm",
+				"sha256": "a36d8d4ca7e0812a356bc6128be83fc12b144a2705a327b0a1434026f07912fa",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted ship layout; helm, engines and docking port replaced with overmap navigation, native engines and an overmap mobile port, cargo console replaced with the bluespace console, transponder added; incompatible entities, area IDs, equipment, loot, ship turrets and inhabitants replaced with local types or dropped.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ships/bubble.dmm",
+			"sha256": "7a5b1d26bd5774a61a6928cf6a553cafa31a962c15d05bfd5091c747930851f6",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/shuttles/independent/independent_bubble.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/shuttles/independent/independent_bubble.dmm",
+				"sha256": "2e3027ca9927d2264017b1faf184debdd24f9a237a99bbc3de8fd65610d6c932",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted ship layout; helm, engines and docking port replaced with overmap navigation, native engines and an overmap mobile port, cargo console replaced with the bluespace console, transponder added; incompatible entities, area IDs, equipment, loot, ship turrets and inhabitants replaced with local types or dropped.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ships/glimpse.dmm",
+			"sha256": "3e3ed64876ae4d33118a9923a18257931a5b44de67d27a5d399510fab49dfb20",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/shuttles/solfed/solfed_glimpse.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/shuttles/solfed/solfed_glimpse.dmm",
+				"sha256": "481309a2adb6e882dca26c6432627d95e14aa57eb856fbc096a10d54b9d6bfd3",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted ship layout; helm, engines and docking port replaced with overmap navigation, native engines and an overmap mobile port, cargo console replaced with the bluespace console, transponder added; incompatible entities, area IDs, equipment, loot, ship turrets and inhabitants replaced with local types or dropped.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ships/kilo.dmm",
+			"sha256": "5bbbff1aa186f4c87675877d62e3b472fedc42f61e302c87846cdac88cf3a289",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/shuttles/independent/independent_kilo.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/shuttles/independent/independent_kilo.dmm",
+				"sha256": "096bd02caefb772242bbf9e4f6b6c2a3d5d123205f7d0673114ae4e274daa399",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted ship layout; helm, engines and docking port replaced with overmap navigation, native engines and an overmap mobile port, cargo console replaced with the bluespace console, transponder added; incompatible entities, area IDs, equipment, loot, ship turrets and inhabitants replaced with local types or dropped.",
+			"byte_identical": false
 		}
 	]
 }
