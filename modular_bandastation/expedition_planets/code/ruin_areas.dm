@@ -567,4 +567,68 @@
 /** Imported room boundary for Гнездо ксеноморфов; inherits the expedition ruin environment. */
 /area/ruin/space/has_grav/expedition_content/exp_celadon_xeno_nest/ruin/unpowered/crashed_holemaker
 	name = "Гнездо ксеноморфов"
+
+/** Imported room boundary for Зимний биокупол; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft
+	name = "Зимний биокупол"
+
+/** Imported room boundary for Зимний биокупол; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed
+	name = "Зимний биокупол"
+
+/** Imported room boundary for Зимний биокупол; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks
+	name = "Зимний биокупол"
+
+/** Imported room boundary for Зимний биокупол; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse
+	name = "Зимний биокупол"
+
+/** Imported room boundary for Зимний биокупол; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent
+	name = "Зимний биокупол"
+
+/** Imported room boundary for Подпольная винокурня; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_distillery/ruin/rockplanet/distillery
+	name = "Подпольная винокурня"
+
+/** Imported room boundary for Подпольная винокурня; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_distillery/ruin/rockplanet/distillery/crew
+	name = "Подпольная винокурня"
+
+/** Imported room boundary for Подпольная винокурня; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_distillery/ruin/rockplanet/distillery/engineering
+	name = "Подпольная винокурня"
+
+/** Imported room boundary for Подпольная винокурня: кабинет; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_distillery/ruin/rockplanet/distillery/office
+	name = "Подпольная винокурня: кабинет"
+
+/** Imported room boundary for Подпольная винокурня; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_distillery/ruin/rockplanet/distillery/saloon
+	name = "Подпольная винокурня"
+
+/** Imported room boundary for Подпольная винокурня; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_distillery/ruin/rockplanet/distillery/shuttle
+	name = "Подпольная винокурня"
+
+/** Imported room boundary for Разрушенный завод; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_wrecked_factory/ruin/lavaland/factory/adminstrative
+	name = "Разрушенный завод"
+
+/** Imported room boundary for Разрушенный завод; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_wrecked_factory/ruin/lavaland/factory/dorms
+	name = "Разрушенный завод"
+
+/** Imported room boundary for Разрушенный завод; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_wrecked_factory/ruin/lavaland/factory/lobby
+	name = "Разрушенный завод"
+
+/** Imported room boundary for Разрушенный завод; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_wrecked_factory/ruin/lavaland/factory/manager_office
+	name = "Разрушенный завод"
+
+/** Imported room boundary for Разрушенный завод; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_wrecked_factory/ruin/lavaland/factory/warehouse
+	name = "Разрушенный завод"
 // AI EDIT END

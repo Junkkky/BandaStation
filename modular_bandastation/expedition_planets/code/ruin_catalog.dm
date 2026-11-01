@@ -299,4 +299,25 @@
 	name = "Expedition-Surface Celadon budget_cuts"
 	suffix = "celadon_budget_cuts.dmm"
 	planet_biomes = list("barren")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon biodome_winter. */
+/datum/map_template/ruin/expedition/celadon_biodome_winter
+	id = "celadon_biodome_winter"
+	name = "Expedition-Surface Celadon biodome_winter"
+	suffix = "celadon_biodome_winter.dmm"
+	planet_biomes = list("lava")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon wrecked_factory. */
+/datum/map_template/ruin/expedition/celadon_wrecked_factory
+	id = "celadon_wrecked_factory"
+	name = "Expedition-Surface Celadon wrecked_factory"
+	suffix = "celadon_wrecked_factory.dmm"
+	planet_biomes = list("lava")
+
+/** Expedition-only ruin template for Expedition-Surface Celadon distillery. */
+/datum/map_template/ruin/expedition/celadon_distillery
+	id = "celadon_distillery"
+	name = "Expedition-Surface Celadon distillery"
+	suffix = "celadon_distillery.dmm"
+	planet_biomes = list("barren")
 // AI EDIT END

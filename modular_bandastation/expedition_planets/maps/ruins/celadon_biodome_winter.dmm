@@ -1,0 +1,4295 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE | Layout: CeladonSS13/Shiptest contributors; CC BY-SA 3.0; adapted machinery, inhabitants and loot use local TG types. | https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_biodome_winter.dmm
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"aS" = (
+/obj/machinery/door/airlock/wood,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"bc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"bh" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"bm" = (
+/obj/structure/railing/wooden_fence,
+/turf/open/floor/iron/stairs/old{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"bo" = (
+/obj/structure/table/wood,
+/obj/item/paper/crumpled/bloody{
+	default_raw_text = "<i>Scheiße, I knew this would happen eventually. Legions have been piling up outside for days, and one of my former coworkers was unwise enough to let them in.<BR><BR>...They're all dead. I can hear the legions outside. The display case with the Claris is locked tight, and I cant find anything to break the glass with.<BR><BR>Please forgive me. My time is up. If anyone finds this, the Claris is yours. Just avenge us.</i>";
+	name = "hastily written note"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"bI" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/fluff/paper/stack{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"bR" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"cx" = (
+/obj/machinery/light/small/broken/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"cA" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"cR" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/broken/directional/west,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"cW" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"dj" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"dm" = (
+/obj/structure/flora/tree/pine/xmas,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"dq" = (
+/obj/structure/flora/ash/cacti,
+/turf/template_noop,
+/area/expedition_planet/barren)
+"dL" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"dR" = (
+/obj/structure/chair/office,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"dY" = (
+/obj/machinery/light/directional/east,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"ed" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/iron/stairs/old{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"ef" = (
+/obj/structure/flora/bush,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"et" = (
+/obj/structure/flora/ash/cap_shroom,
+/turf/template_noop,
+/area/expedition_planet/barren)
+"eD" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"eH" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"eM" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"eQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"eT" = (
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"fb" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"fc" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"fd" = (
+/obj/structure/flora/ash/cap_shroom,
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"fr" = (
+/obj/structure/chair/comfy/beige,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"fu" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"fO" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/mining/legion,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"gf" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"gg" = (
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 4
+	},
+/obj/structure/hedge/opaque,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"gq" = (
+/obj/machinery/light/small/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"gA" = (
+/obj/effect/turf_decal/tile/yellow/anticorner{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/light/small/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"gC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"gN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"gY" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"hc" = (
+/obj/item/toy/plush/moth{
+	pixel_y = 3
+	},
+/obj/structure/table/wood,
+/obj/item/flashlight/flare/candle{
+	pixel_x = -10;
+	pixel_y = 10
+	},
+/obj/item/flashlight/flare/candle{
+	pixel_x = 11;
+	pixel_y = 10
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"hg" = (
+/obj/machinery/door/airlock/command{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"hm" = (
+/obj/effect/turf_decal/tile/yellow/anticorner,
+/obj/structure/hedge/opaque,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"hv" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"hB" = (
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/paper{
+	default_raw_text = "<h1><center>Extrasolar Biodome Project</center></h1><BR><BR><center>The <b>Most Serene Solar and Intersolar Confederation</b> welcomes you to one of our many experimental biodomes out in the frontier.<BR>These facilities are developed and built as a collaboration with the Pionierskompanien and are to serve as extrasolar research bases for our most accomplished scientists and scribes. These facilities utilize breakthroughs in terraforming technology to create a comfortable, habitable environment in even the harshest of locales. Your purpose here is to research and report on the effectiveness of the technology utilized within the central dome, as well as maintain and protect the facility.";
+	name = "Solarian Frontier Project Pamphlet"
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"hG" = (
+/obj/machinery/door/airlock/glass{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"hQ" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"hW" = (
+/obj/structure/rack,
+/obj/item/clothing/shoes/winterboots,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/paper{
+	default_raw_text = "<h1><center>Extrasolar Biodome Project</center></h1><BR><BR><center>The <b>Most Serene Solar and Intersolar Confederation</b> welcomes you to one of our many experimental biodomes out in the frontier.<BR>These facilities are developed and built as a collaboration with the Pionierskompanien and are to serve as extrasolar research bases for our most accomplished scientists and scribes. These facilities utilize breakthroughs in terraforming technology to create a comfortable, habitable environment in even the harshest of locales. Your purpose here is to research and report on the effectiveness of the technology utilized within the central dome, as well as maintain and protect the facility.";
+	name = "Solarian Frontier Project Pamphlet"
+	},
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"it" = (
+/obj/machinery/computer/monitor{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"iu" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"iC" = (
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"iF" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"iK" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"iM" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"iX" = (
+/obj/structure/flora/tree/pine,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"jc" = (
+/obj/structure/flora/tree/dead/style_random,
+/turf/template_noop,
+/area/expedition_planet/barren)
+"jv" = (
+/obj/machinery/light/directional/north,
+/obj/structure/flora/ash/cap_shroom,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"jL" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"jO" = (
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"jV" = (
+/obj/effect/turf_decal/tile/yellow/anticorner{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/structure/closet/crate/secure/plasma,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"jW" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"jX" = (
+/obj/structure/table/wood,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 8
+	},
+/obj/item/paper{
+	default_raw_text = "<h1><center>Extrasolar Biodome Project</center></h1><BR><BR><center>The <b>Most Serene Solar and Intersolar Confederation</b> welcomes you to one of our many experimental biodomes out in the frontier.<BR>These facilities are developed and built as a collaboration with the Pionierskompanien and are to serve as extrasolar research bases for our most accomplished scientists and scribes. These facilities utilize breakthroughs in terraforming technology to create a comfortable, habitable environment in even the harshest of locales. Your purpose here is to research and report on the effectiveness of the technology utilized within the central dome, as well as maintain and protect the facility.";
+	name = "Solarian Frontier Project Pamphlet"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"ke" = (
+/obj/machinery/light/directional/south,
+/obj/structure/hedge/opaque,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"kv" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"kE" = (
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/fluff/paper/stack{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"kJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"li" = (
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"lz" = (
+/obj/effect/turf_decal/tile/yellow/anticorner,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/mining/legion,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"lJ" = (
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"lN" = (
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"mr" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"mG" = (
+/obj/structure/cable,
+/obj/structure/statue/snow/snowlegion,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"mH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"mP" = (
+/obj/effect/turf_decal/tile/yellow/half,
+/obj/structure/hedge/opaque,
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"mQ" = (
+/obj/structure/flora/ash/tall_shroom,
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"mR" = (
+/mob/living/basic/mining/legion,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"mW" = (
+/obj/effect/turf_decal/tile/blue/half{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"nh" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"nk" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"nt" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"nG" = (
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"nQ" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/machinery/airalarm/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/space_heater,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"oe" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/structure/closet/secure_closet/freezer,
+/obj/item/food/bread/plain,
+/obj/item/food/bread/plain,
+/obj/item/food/grown/cabbage,
+/obj/item/food/grown/cabbage,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"oj" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"ok" = (
+/obj/structure/flora/ash/leaf_shroom,
+/turf/template_noop,
+/area/expedition_planet/barren)
+"or" = (
+/obj/structure/chair/comfy/brown{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"os" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/cable,
+/turf/open/floor/iron/stairs/old{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"oz" = (
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"oB" = (
+/obj/item/coin/gold,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"oV" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"oY" = (
+/obj/machinery/light/directional/south,
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/mug/tea{
+	pixel_y = 3;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/cup/glass/mug/tea{
+	pixel_x = 10
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"pj" = (
+/obj/structure/rack,
+/obj/item/clothing/head/towel,
+/obj/item/clothing/head/towel,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"pm" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/item/paper_bin/bundlenatural{
+	pixel_y = 7
+	},
+/obj/machinery/light/small/broken/directional/north,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"pn" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"pp" = (
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"px" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"pR" = (
+/obj/machinery/door/window/left/directional/north,
+/obj/structure/curtain,
+/obj/machinery/shower/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"pV" = (
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 1
+	},
+/obj/structure/sink/kitchen/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"qE" = (
+/obj/machinery/door/airlock/glass,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"qH" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"qI" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/shuttle,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"qV" = (
+/obj/structure/railing/corner,
+/turf/open/floor/iron/stairs/old{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"qY" = (
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"rb" = (
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/structure/closet/emcloset{
+	dir = 2
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"ro" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"rp" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"rr" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"ry" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"rG" = (
+/obj/effect/turf_decal/tile/blue/half{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/broken/directional/north,
+/obj/structure/fluff/paper/stack{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"rM" = (
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/wood{
+	name = "bridge"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"rO" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"rU" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"sl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/south,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"so" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"sA" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/wood{
+	name = "bridge"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"sW" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"ta" = (
+/obj/structure/flora/ash/cap_shroom,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"te" = (
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"tf" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"th" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"tr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"tt" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"ty" = (
+/obj/effect/turf_decal/tile/blue/half{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/broken/directional/west,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"tA" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_y = 10;
+	pixel_x = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"tF" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/chair/sofa/corp/right{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"tJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"uc" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"uG" = (
+/obj/structure/chair/sofa/corp{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"uJ" = (
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 1
+	},
+/obj/structure/table/wood,
+/obj/machinery/microwave,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"uN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/mining/legion/big,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/obj/structure/cable,
+/turf/open/floor/wood{
+	name = "bridge"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"vf" = (
+/obj/machinery/airalarm/directional/east,
+/obj/structure/closet/firecloset,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"vi" = (
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/wood{
+	name = "bridge"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"vl" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/suit_storage_unit/open,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"vs" = (
+/obj/effect/turf_decal/tile/blue/half{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/structure/fluff/paper/stack,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"vt" = (
+/obj/structure/flora/rock/pile/icy,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"vv" = (
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"vw" = (
+/obj/structure/flora/tree/pine,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"vM" = (
+/obj/structure/flora/ash/leaf_shroom,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"vP" = (
+/obj/effect/turf_decal/tile/yellow/anticorner,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/fluff/paper/stack{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"wb" = (
+/obj/structure/flora/tree/dead,
+/obj/machinery/light/directional/west,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"we" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"wg" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"wn" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"wo" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"xc" = (
+/obj/effect/turf_decal/tile/blue/half{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/fluff/paper/stack{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"xf" = (
+/obj/machinery/light/directional/west,
+/obj/structure/flora/ash/tall_shroom,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"xh" = (
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"xi" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"xm" = (
+/obj/machinery/door/airlock/glass,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"xu" = (
+/obj/structure/hedge/opaque,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"xz" = (
+/obj/machinery/door/airlock/wood,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"xC" = (
+/obj/structure/flora/tree/dead,
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"xP" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"yj" = (
+/obj/machinery/light/small/directional/west,
+/obj/structure/closet/emcloset,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"yC" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"yT" = (
+/obj/structure/flora/ash/tall_shroom,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"za" = (
+/obj/structure/flora/ash,
+/turf/template_noop,
+/area/expedition_planet/barren)
+"zb" = (
+/obj/structure/railing/wooden_fence,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood{
+	name = "bridge"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"zl" = (
+/obj/machinery/door/airlock/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"zr" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mob_spawn/corpse/human/assistant,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"zz" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"zC" = (
+/turf/closed/wall/mineral/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"zU" = (
+/obj/machinery/door/airlock/command,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"zY" = (
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Aa" = (
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Aw" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Az" = (
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/firecloset{
+	dir = 1
+	},
+/obj/structure/fluff/paper/stack,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"AI" = (
+/obj/item/pen,
+/obj/item/paper_bin,
+/obj/structure/table/wood,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/obj/item/pen/blue,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"AT" = (
+/obj/effect/turf_decal/tile/yellow/anticorner,
+/obj/structure/closet/crate/bin,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"AV" = (
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"AW" = (
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"Br" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Bu" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/mining/legion,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Bv" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"BF" = (
+/obj/machinery/light/directional/east,
+/obj/structure/flora/ash/tall_shroom,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"BJ" = (
+/obj/structure/flora/ash/tall_shroom,
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"BO" = (
+/obj/effect/turf_decal/tile/blue/half{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"BP" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"Cc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"Cm" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/firecloset,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Cr" = (
+/obj/machinery/light/small/directional/north,
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Cx" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Cz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"CY" = (
+/obj/machinery/atmospherics/components/tank/air,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Df" = (
+/obj/machinery/light/small/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Dl" = (
+/obj/structure/displaycase,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"Dq" = (
+/obj/machinery/light/small/broken/directional/south,
+/obj/structure/closet/firecloset,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Ds" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Dz" = (
+/obj/structure/hedge/opaque,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"DT" = (
+/obj/structure/chair/pew/right{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"DW" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Eg" = (
+/obj/effect/turf_decal/tile/blue/half{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"El" = (
+/obj/structure/flora/ash/stem_shroom,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"Eu" = (
+/obj/structure/railing/wooden_fence,
+/turf/open/floor/wood{
+	name = "bridge"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"EA" = (
+/obj/structure/table/wood,
+/obj/item/clipboard,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"EB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"EE" = (
+/obj/effect/turf_decal/tile/yellow/half,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"EV" = (
+/obj/machinery/door/airlock/command,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"EW" = (
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Fk" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"FC" = (
+/obj/effect/turf_decal/tile/yellow/half,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet/chestdrawer,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"FD" = (
+/turf/closed/mineral,
+/area/expedition_planet/barren)
+"Gd" = (
+/obj/machinery/door/airlock/command{
+	dir = 4
+	},
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Gg" = (
+/obj/structure/flora/rock/icy,
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Gw" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"GE" = (
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"GG" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"GI" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"He" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Hf" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/shuttle,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Ho" = (
+/obj/structure/chair/pew/left{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Hs" = (
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Ie" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Iq" = (
+/obj/machinery/light/small/directional/north,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Iu" = (
+/obj/structure/flora/ash/tall_shroom,
+/turf/template_noop,
+/area/expedition_planet/barren)
+"Iy" = (
+/obj/structure/cable,
+/obj/machinery/light/directional/west,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"II" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"IM" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/mob/living/basic/mining/legion,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"IT" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/wood,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Js" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"Jw" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"JA" = (
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 4
+	},
+/obj/structure/filingcabinet,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"JE" = (
+/obj/structure/table/wood,
+/obj/item/clipboard,
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"JG" = (
+/obj/structure/curtain/cloth,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"JV" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/suit_storage_unit/open,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"JX" = (
+/obj/structure/table/wood,
+/obj/item/stack/spacecash/c50,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"Ka" = (
+/obj/structure/railing/corner,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Kg" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/machinery/light/directional/west,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 7
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Ku" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/structure/cable,
+/turf/open/floor/iron/stairs/old{
+	dir = 8
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"KH" = (
+/obj/effect/turf_decal/tile/blue/half{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"KJ" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin/bundlenatural{
+	pixel_y = 7
+	},
+/obj/item/pen/blue,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"KW" = (
+/obj/machinery/door/airlock/glass{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"LA" = (
+/obj/structure/rack,
+/obj/item/clothing/shoes/winterboots,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"LB" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"LD" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"LE" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"LH" = (
+/obj/structure/flora/bush,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"LK" = (
+/obj/machinery/light/small/directional/south,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Mh" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Mz" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/structure/table/wood,
+/obj/item/knife/kitchen,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"MD" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"MG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"MP" = (
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/airalarm/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Nf" = (
+/obj/machinery/door/airlock/wood,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"Nt" = (
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Ny" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"NQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"NS" = (
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/pod/light,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"NY" = (
+/obj/structure/flora/rock/icy,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Oa" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"Ob" = (
+/obj/machinery/light/directional/north,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Ox" = (
+/turf/template_noop,
+/area/expedition_planet/barren)
+"OB" = (
+/obj/structure/flora/rock,
+/turf/template_noop,
+/area/expedition_planet/barren)
+"OH" = (
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"ON" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/item/papercutter{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"PB" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"PC" = (
+/obj/machinery/light/directional/south,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"PW" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Qd" = (
+/obj/structure/chair/office,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Qo" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Qv" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"QW" = (
+/obj/machinery/light/small/directional/west,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Rj" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Rl" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Ru" = (
+/obj/structure/flora/ash/cap_shroom,
+/turf/open/floor/plating,
+/area/expedition_planet/barren)
+"RH" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"RJ" = (
+/obj/structure/cable,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"RQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/fluff/paper/stack{
+	dir = 1
+	},
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"RX" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Sa" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Sc" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"Sg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Sk" = (
+/obj/machinery/door/airlock/external{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Sz" = (
+/obj/structure/railing/corner,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/stairs/old{
+	dir = 4
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"SC" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"SK" = (
+/obj/effect/turf_decal/tile/yellow/anticorner,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"SO" = (
+/obj/structure/table/wood,
+/obj/item/food/breadslice/plain,
+/obj/item/food/grown/cabbage,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"SS" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/item/clipboard,
+/obj/item/pen/blue,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"SU" = (
+/obj/structure/bonfire,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Td" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/structure/cable,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Th" = (
+/obj/structure/rack,
+/obj/item/clothing/shoes/winterboots,
+/obj/item/clothing/suit/hooded/wintercoat,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Tv" = (
+/obj/structure/railing/wooden_fence,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"TV" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Uw" = (
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Uy" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/gun/ballistic/automatic/pistol,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"UB" = (
+/obj/machinery/light/directional/west,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"UX" = (
+/obj/structure/flora/tree/pine,
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Vh" = (
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 4
+	},
+/obj/structure/hedge/opaque,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Vt" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"Vw" = (
+/obj/effect/turf_decal/tile/yellow/anticorner{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"VC" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"VQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/emcloset,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"VW" = (
+/obj/machinery/light/directional/south,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Wj" = (
+/obj/effect/turf_decal/tile/yellow/anticorner,
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Wk" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/wood{
+	name = "bridge"
+	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"Wp" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/mining/legion,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Wr" = (
+/obj/machinery/light/small/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Wy" = (
+/obj/structure/chair/comfy/brown{
+	dir = 2
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"WE" = (
+/obj/structure/flora/bush,
+/obj/structure/railing/corner,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"WN" = (
+/obj/structure/flora/tree/dead,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"WW" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"WZ" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Xc" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/broken/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"XF" = (
+/obj/effect/turf_decal/tile/yellow/half,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"XJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"XK" = (
+/obj/effect/turf_decal/tile/yellow/anticorner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"Yl" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"Yr" = (
+/obj/effect/turf_decal/tile/yellow/anticorner,
+/obj/machinery/vending/coffee,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Yu" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Yx" = (
+/obj/effect/turf_decal/tile/blue/anticorner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"YR" = (
+/obj/structure/sink/kitchen/directional/east,
+/obj/item/reagent_containers/cup/bucket/wooden{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+"YS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"YY" = (
+/obj/machinery/space_heater,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"Za" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron/pod_dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"Zn" = (
+/obj/structure/flora/ash/tall_shroom,
+/turf/open/misc/snow,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/the_descent)
+"ZB" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft)
+"ZH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/atmospherics_shed)
+"ZI" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2,
+/obj/machinery/airalarm/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/fluff/paper/stack,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/barracks)
+"ZW" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/bathhouse)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Ox
+Ox
+Ox
+Ox
+Iu
+Ox
+Ox
+Ox
+ok
+Ox
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+Ox
+Ox
+Ox
+ok
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+jc
+Ox
+Ox
+ok
+Ox
+Ox
+Ox
+Ox
+Ox
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+aa
+Ox
+Ox
+Ox
+Iu
+Ox
+Ox
+Ox
+Ox
+Iu
+Ox
+Ox
+ok
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Iu
+Ox
+Ox
+Ox
+Ox
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+aa
+Ox
+Ox
+Ox
+ok
+Ox
+Ox
+Iu
+Ox
+ok
+Ox
+Ox
+yC
+yC
+yC
+yC
+yC
+yC
+NS
+yC
+yC
+yC
+yC
+yC
+yC
+Ox
+ok
+Ox
+Ox
+Ox
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+aa
+Ox
+Ox
+Ox
+Ox
+ok
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+yC
+CY
+dL
+we
+yC
+Df
+EB
+Dq
+yC
+jV
+Vw
+Cm
+yC
+Ox
+Ox
+Iu
+Ox
+Ox
+Ox
+Iu
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+aa
+Ox
+Ox
+Iu
+Ox
+Ox
+Ox
+ok
+Ox
+Ox
+FD
+Ox
+Ox
+yC
+PB
+mH
+Xc
+yC
+WW
+EB
+sl
+yC
+gA
+XK
+pp
+yC
+Ox
+ok
+ok
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+aa
+ok
+Ox
+Ox
+jc
+Iu
+Ox
+FD
+FD
+FD
+FD
+Ox
+Ox
+yC
+Cx
+YS
+oV
+yC
+vl
+nk
+JV
+yC
+sW
+lN
+zY
+yC
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(9,1,1) = {"
+aa
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+FD
+FD
+FD
+FD
+FD
+eM
+bc
+Rj
+hv
+AV
+hv
+hv
+Sk
+hv
+hv
+te
+hv
+gY
+yC
+Ox
+Ox
+Ox
+jc
+Ox
+ok
+Ox
+ok
+Ox
+Ox
+ok
+aa
+aa
+aa
+aa
+aa
+"}
+(10,1,1) = {"
+aa
+Ox
+Ox
+Ox
+ok
+Ox
+FD
+FD
+FD
+FD
+FD
+nh
+nh
+hv
+hv
+hv
+Jw
+cR
+ZH
+Ny
+Wp
+QW
+sW
+hv
+hv
+hv
+nh
+nh
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+aa
+aa
+aa
+aa
+aa
+"}
+(11,1,1) = {"
+aa
+Ox
+ok
+Ox
+FD
+FD
+FD
+FD
+FD
+nh
+nh
+nh
+ta
+lJ
+lJ
+hv
+LA
+LA
+fb
+rr
+AI
+dR
+it
+hv
+lJ
+lJ
+lJ
+nh
+nh
+nh
+Ox
+Ox
+Ox
+Iu
+Ox
+Ox
+Ox
+Ox
+aa
+aa
+aa
+aa
+"}
+(12,1,1) = {"
+aa
+aa
+Ox
+FD
+FD
+FD
+FD
+FD
+nh
+nh
+lJ
+wb
+lJ
+lJ
+vw
+hv
+qI
+qI
+hv
+hG
+hv
+qI
+qI
+hv
+lJ
+vt
+lJ
+xf
+lJ
+nh
+nh
+Ox
+ok
+Ox
+ok
+Ox
+Ox
+Ox
+aa
+aa
+aa
+aa
+"}
+(13,1,1) = {"
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+nh
+nh
+qY
+qY
+lJ
+WE
+dj
+tt
+UB
+Zn
+lJ
+hv
+jW
+RJ
+lJ
+ef
+UB
+lJ
+lJ
+Zn
+lJ
+lJ
+lJ
+nh
+nh
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+aa
+aa
+aa
+"}
+(14,1,1) = {"
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+nh
+qY
+qY
+qY
+qY
+Tv
+qV
+LH
+Zn
+lJ
+lJ
+hv
+Rl
+hv
+lJ
+lJ
+lJ
+Zn
+lJ
+lJ
+lJ
+vw
+lJ
+lJ
+nh
+Iu
+Ox
+Ox
+jc
+Ox
+ok
+Ox
+aa
+aa
+aa
+"}
+(15,1,1) = {"
+aa
+aa
+FD
+FD
+FD
+FD
+nh
+nh
+jv
+lJ
+qY
+qY
+Tv
+Eu
+qY
+lJ
+lJ
+vw
+lJ
+Qv
+Iy
+xC
+fd
+OH
+lJ
+lJ
+lJ
+lJ
+lJ
+lJ
+VW
+nh
+nh
+Ox
+Ox
+Ox
+Ox
+Ox
+Ox
+aa
+aa
+aa
+"}
+(16,1,1) = {"
+aa
+aa
+FD
+FD
+FD
+FD
+nh
+lJ
+lJ
+lJ
+lJ
+NY
+Tv
+zb
+qY
+qY
+qY
+lJ
+lJ
+tJ
+lJ
+lJ
+lJ
+Gg
+ef
+lJ
+Zn
+Zn
+lJ
+lJ
+vw
+lJ
+nh
+Ox
+ok
+Ox
+ok
+Ox
+Ox
+aa
+aa
+aa
+"}
+(17,1,1) = {"
+aa
+aa
+FD
+FD
+FD
+FD
+nh
+lJ
+lJ
+lJ
+vw
+lJ
+RX
+bm
+qY
+qY
+qY
+qY
+qY
+PW
+eQ
+eQ
+eQ
+GI
+so
+so
+so
+so
+Aw
+lJ
+lJ
+lJ
+nh
+Ox
+Ox
+Ox
+Ox
+Ox
+Iu
+aa
+aa
+aa
+"}
+(18,1,1) = {"
+aa
+aa
+FD
+FD
+FD
+nh
+nh
+vt
+lJ
+lJ
+lJ
+lJ
+mQ
+uc
+lJ
+lJ
+qY
+qY
+qY
+qY
+lJ
+ef
+UX
+kJ
+dj
+tt
+WN
+lJ
+Qv
+lJ
+ta
+lJ
+nh
+Ox
+et
+Ox
+Ox
+Ox
+Ox
+Ox
+aa
+aa
+"}
+(19,1,1) = {"
+aa
+aa
+FD
+FD
+FD
+nh
+lJ
+lJ
+lJ
+hQ
+hQ
+hQ
+hQ
+hQ
+hQ
+ta
+lJ
+qY
+qY
+qY
+qY
+lJ
+Ka
+os
+Sz
+cW
+lJ
+lJ
+Qv
+lJ
+bR
+bR
+bR
+bR
+Ox
+et
+Ox
+Ox
+Ox
+Ox
+aa
+aa
+"}
+(20,1,1) = {"
+aa
+FD
+FD
+FD
+FD
+nh
+lJ
+vw
+lJ
+aS
+rU
+gC
+Bv
+xu
+hQ
+hQ
+Ob
+vt
+qY
+qY
+qY
+qY
+Tv
+Wk
+vi
+lJ
+lJ
+lJ
+iX
+VW
+bR
+Th
+hW
+bR
+za
+OB
+Ox
+Ox
+Iu
+Ox
+aa
+aa
+"}
+(21,1,1) = {"
+aa
+FD
+FD
+FD
+FD
+nh
+jv
+lJ
+lJ
+hQ
+Js
+Js
+eH
+BP
+ke
+hQ
+lJ
+lJ
+qY
+qY
+qY
+qY
+Tv
+sA
+vi
+qY
+lJ
+lJ
+Qv
+lJ
+bR
+Iq
+Mh
+bR
+Ox
+Ox
+za
+Ox
+Ox
+Ox
+aa
+aa
+"}
+(22,1,1) = {"
+aa
+FD
+FD
+FD
+FD
+nh
+lJ
+lJ
+Zn
+hQ
+EA
+fr
+fr
+Cc
+YY
+hQ
+lJ
+WN
+mR
+qY
+qY
+qY
+Tv
+uN
+rM
+qY
+qY
+ef
+Qv
+Zn
+bR
+nQ
+th
+bR
+TV
+TV
+TV
+TV
+et
+Ox
+aa
+aa
+"}
+(23,1,1) = {"
+aa
+FD
+FD
+FD
+FD
+nh
+lJ
+lJ
+lJ
+hQ
+SO
+JX
+bo
+Gw
+AW
+aS
+lJ
+lJ
+lJ
+lJ
+zC
+vw
+Tv
+sA
+vi
+qY
+qY
+lJ
+Qv
+lJ
+qE
+ZW
+IM
+px
+TV
+jO
+yj
+TV
+Ox
+Ox
+aa
+aa
+"}
+(24,1,1) = {"
+aa
+FD
+FD
+FD
+FD
+nh
+lJ
+lJ
+WN
+hQ
+Js
+Dl
+fr
+Vt
+XJ
+Nf
+so
+yT
+so
+so
+so
+so
+LB
+Ku
+ed
+cW
+qY
+qY
+wo
+Td
+xm
+ro
+Yl
+SC
+xh
+oj
+cx
+ry
+Ox
+Ox
+aa
+aa
+"}
+(25,1,1) = {"
+aa
+FD
+FD
+FD
+FD
+nh
+vt
+lJ
+lJ
+hQ
+hQ
+gf
+zr
+gN
+Fk
+hQ
+Aa
+lJ
+lJ
+OH
+OH
+OH
+mr
+Ds
+Ds
+tf
+qY
+qY
+qY
+NY
+bR
+hB
+Nt
+LK
+TV
+TV
+TV
+TV
+Ox
+Ox
+aa
+aa
+"}
+(26,1,1) = {"
+aa
+FD
+FD
+FD
+FD
+nh
+Ob
+lJ
+lJ
+hQ
+vv
+JG
+Sc
+ZB
+oY
+hQ
+lJ
+lJ
+lJ
+OH
+WN
+lJ
+lJ
+Zn
+lJ
+lJ
+lJ
+qY
+qY
+qY
+bR
+pm
+Hs
+oz
+rb
+TV
+Iu
+Ox
+dq
+Ox
+aa
+aa
+"}
+(27,1,1) = {"
+aa
+FD
+FD
+FD
+FD
+nh
+lJ
+Zn
+lJ
+hQ
+hQ
+vv
+hQ
+eT
+Oa
+hQ
+lJ
+lJ
+vw
+OH
+lJ
+lJ
+lJ
+VW
+zz
+zl
+zz
+zz
+qY
+PC
+bR
+SS
+ON
+VC
+RQ
+TV
+za
+Ox
+Ox
+Ox
+aa
+aa
+"}
+(28,1,1) = {"
+aa
+aa
+FD
+FD
+FD
+nh
+lJ
+lJ
+lJ
+DW
+hQ
+hQ
+hQ
+hQ
+hQ
+hQ
+Ob
+lJ
+lJ
+OH
+ef
+lJ
+lJ
+lJ
+zz
+II
+pR
+zz
+qY
+qY
+bR
+bR
+bR
+hg
+Gd
+TV
+TV
+Ox
+Ox
+Ox
+aa
+aa
+"}
+(29,1,1) = {"
+aa
+aa
+FD
+FD
+FD
+nh
+nh
+ta
+lJ
+lJ
+lJ
+lJ
+UB
+lJ
+lJ
+lJ
+lJ
+ta
+lJ
+OH
+lJ
+lJ
+vw
+ta
+zz
+zz
+zz
+zz
+zz
+qY
+qY
+qY
+fc
+wn
+pn
+NQ
+iu
+za
+OB
+Ox
+aa
+aa
+"}
+(30,1,1) = {"
+aa
+aa
+FD
+FD
+FD
+FD
+nh
+lJ
+lJ
+lJ
+lJ
+ef
+lJ
+NY
+lJ
+dm
+lJ
+lJ
+lJ
+OH
+lJ
+lJ
+zz
+zz
+zz
+YR
+nG
+pj
+zz
+lJ
+qY
+qY
+fc
+KH
+MG
+FC
+iu
+Ox
+Ox
+Ox
+aa
+aa
+"}
+(31,1,1) = {"
+aa
+aa
+FD
+FD
+FD
+FD
+nh
+lJ
+lJ
+vw
+Zn
+lJ
+lJ
+lJ
+lJ
+lJ
+lJ
+lJ
+vw
+OH
+BJ
+OH
+IT
+Uw
+xz
+Uw
+nG
+SU
+zz
+lJ
+vw
+qY
+fc
+mW
+cA
+mP
+iu
+et
+et
+Ox
+aa
+aa
+"}
+(32,1,1) = {"
+aa
+aa
+FD
+FD
+FD
+FD
+nh
+nh
+Ob
+lJ
+vt
+lJ
+lJ
+WN
+lJ
+lJ
+Zn
+lJ
+lJ
+mG
+NY
+lJ
+zz
+zz
+zz
+Cr
+oB
+zz
+zz
+lJ
+VW
+fc
+fc
+xc
+iM
+hm
+iu
+Ox
+Ox
+Ox
+aa
+aa
+"}
+(33,1,1) = {"
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+nh
+NY
+lJ
+lJ
+lJ
+lJ
+lJ
+Zn
+lJ
+lJ
+lJ
+ef
+OH
+lJ
+lJ
+lJ
+Zn
+zz
+Ho
+DT
+zz
+lJ
+lJ
+lJ
+fc
+gg
+Bu
+XF
+iu
+iu
+Ox
+Ox
+et
+FD
+aa
+"}
+(34,1,1) = {"
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+nh
+nh
+lJ
+lJ
+vw
+ta
+lJ
+lJ
+dY
+lJ
+lJ
+lJ
+OH
+lJ
+lJ
+lJ
+dY
+zz
+zz
+zz
+zz
+lJ
+WN
+fc
+fc
+rG
+xP
+EE
+iu
+za
+dq
+Ox
+Ox
+FD
+aa
+"}
+(35,1,1) = {"
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+FD
+nh
+nh
+lJ
+dY
+lJ
+lJ
+vw
+fc
+Hf
+Hf
+Hf
+Hf
+Hf
+Hf
+Hf
+fc
+lJ
+lJ
+lJ
+BF
+lJ
+fc
+fc
+Az
+WZ
+kv
+SK
+iu
+Ox
+Ox
+Ox
+FD
+FD
+aa
+"}
+(36,1,1) = {"
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+FD
+FD
+nh
+nh
+nh
+lJ
+lJ
+lJ
+fc
+Dz
+Dz
+Wy
+JE
+or
+Dz
+Dz
+fc
+hc
+Zn
+lJ
+fc
+fc
+fc
+JA
+jL
+Sa
+AT
+iu
+iu
+Ox
+Ox
+Iu
+FD
+FD
+aa
+"}
+(37,1,1) = {"
+aa
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+fc
+fc
+fc
+fc
+fc
+vf
+Sg
+gq
+iF
+Wr
+Sg
+VQ
+fc
+fc
+fc
+fc
+fc
+Vh
+ty
+eD
+GG
+vP
+iu
+iu
+Ox
+OB
+Ox
+Ox
+FD
+FD
+aa
+"}
+(38,1,1) = {"
+aa
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+iu
+oe
+Kg
+uJ
+fc
+fc
+fc
+fc
+KW
+fc
+fc
+fc
+fc
+rp
+vs
+Eg
+BO
+He
+RH
+kE
+Yr
+iu
+iu
+Ox
+Ox
+et
+Ox
+FD
+FD
+FD
+aa
+"}
+(39,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+FD
+iu
+MD
+Uy
+EW
+qH
+Cz
+xi
+LD
+Br
+wg
+Ie
+ZI
+zU
+Za
+bI
+bh
+GE
+MP
+lz
+iu
+iu
+iu
+Ox
+et
+Ox
+Ox
+Ox
+FD
+FD
+aa
+aa
+"}
+(40,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+iu
+Mz
+nt
+Yx
+iK
+Yu
+jX
+fu
+fO
+fu
+rO
+Qo
+EV
+NQ
+li
+Wj
+iu
+iu
+iu
+iu
+Ox
+Ox
+dq
+Ox
+Ox
+Ox
+FD
+FD
+FD
+aa
+aa
+"}
+(41,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+FD
+FD
+FD
+iu
+iu
+iu
+pV
+tF
+uG
+LE
+Sg
+tr
+Qd
+KJ
+tA
+iu
+iu
+iu
+iu
+iu
+iC
+iC
+vM
+Ox
+OB
+Ox
+Ox
+za
+FD
+FD
+FD
+FD
+aa
+aa
+"}
+(42,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+iu
+iu
+iu
+iu
+iu
+iu
+iu
+iu
+iu
+iu
+iu
+iC
+Ru
+iC
+iC
+iC
+iC
+iC
+Ox
+Ox
+Iu
+FD
+FD
+FD
+FD
+FD
+aa
+aa
+aa
+"}
+(43,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+Ru
+iC
+Ru
+iC
+iC
+iC
+iC
+iC
+iC
+El
+iC
+iC
+Ru
+iC
+Ox
+FD
+FD
+FD
+FD
+FD
+FD
+aa
+aa
+aa
+aa
+"}
+(44,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+iC
+El
+iC
+iC
+Ru
+iC
+iC
+iC
+iC
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+aa
+aa
+aa
+aa
+aa
+"}
+(45,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(46,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

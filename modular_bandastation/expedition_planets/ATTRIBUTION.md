@@ -103,6 +103,9 @@ Celadon, Shiptest и TG). Наполнение биомов заменено с�
 | `maps/ruins/celadon_saloon.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_saloon.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_saloon.dmm) |
 | `maps/ruins/celadon_harm_factory.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_harmfactory.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_harmfactory.dmm) |
 | `maps/ruins/celadon_budget_cuts.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_budgetcuts.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_budgetcuts.dmm) |
+| `maps/ruins/celadon_biodome_winter.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_biodome_winter.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_biodome_winter.dmm) |
+| `maps/ruins/celadon_wrecked_factory.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_wrecked_factory.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_wrecked_factory.dmm) |
+| `maps/ruins/celadon_distillery.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_distillery.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_distillery.dmm) |
 
 Планировки сохранены; несовместимые сущности, area, механизмы, обитатели и добыча
 заменены местными типами. Природный грунт вокруг построек берётся из генератора
@@ -130,7 +133,7 @@ Celadon, Shiptest, Whitesands и TG. Расстановка по планете 
 Вода Whitesands несёт атмосферу пустынного профиля, а её случайные спавнеры сохраняют
 донорские шансы с местной флорой и фауной; пещерные медведи стали шахтёрскими волками.
 
-Исходные permalink, коммиты и контрольные суммы всех 44 карт руин и 78 деталей рельефа
+Исходные permalink, коммиты и контрольные суммы всех 47 карт руин и 78 деталей рельефа
 включены в общий [ASSETS.json](../space_overmap/ASSETS.json). Указание авторства не означает
 одобрения этой адаптации исходными проектами.
 <!-- AI EDIT END -->
