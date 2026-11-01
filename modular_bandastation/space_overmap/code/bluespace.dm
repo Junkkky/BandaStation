@@ -102,8 +102,6 @@
 	selected_destination = null
 	prepared_site = null
 	ship_observations.Cut()
-	charted_terrain.Cut()
-	echoes.Cut()
 	last_ping = null
 	pos_x = encounter_x = target.entry_x
 	pos_y = encounter_y = target.entry_y

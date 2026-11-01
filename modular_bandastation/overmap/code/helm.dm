@@ -20,27 +20,10 @@
 	helm_engaged = TRUE
 	status = "Торможение"
 
-/** Available acceleration in m/s²; propulsion adapters supply actual engine capability. */
+/** Available braking acceleration per second; propulsion adapters supply actual engine capability. */
 /datum/stationtrauma_overmap/proc/get_braking_acceleration()
-	return max(0, get_target_speed() / max(0.1, get_response_time()))
+	return 0
 
-/** Passive first-order stopping distance is a conservative bound for submerged vessels. */
+/** Stopping distance at the current speed, or null without braking capability. */
 /datum/stationtrauma_overmap/proc/get_braking_distance()
-	return speed * get_response_time()
-
-/** Integrate radial braking with linear drag, stopping within the step. */
-/datum/stationtrauma_overmap/proc/integrate_braking(seconds)
-	var/magnitude = sqrt(velocity_x ** 2 + velocity_y ** 2)
-	if(!magnitude)
-		return list(0, 0)
-	var/response_time = max(0.1, get_response_time())
-	var/acceleration = get_braking_acceleration()
-	var/duration = acceleration ? min(seconds, response_time * log(NUM_E, 1 + magnitude / (acceleration * response_time))) : seconds
-	var/decay = NUM_E ** (-duration / response_time)
-	var/distance = (magnitude + acceleration * response_time) * response_time * (1 - decay) - acceleration * response_time * duration
-	var/remaining = max(0, (magnitude + acceleration * response_time) * decay - acceleration * response_time)
-	var/dx = velocity_x * distance / magnitude
-	var/dy = velocity_y * distance / magnitude
-	velocity_x *= remaining / magnitude
-	velocity_y *= remaining / magnitude
-	return list(dx, dy)
+	return null

@@ -64,7 +64,8 @@
 	if(!preparing && !relocating && world.time >= next_listen)
 		listen()
 
-/datum/stationtrauma_overmap/space/listen()
+/** Passive ship observations within sensor range, refreshed every two seconds. */
+/datum/stationtrauma_overmap/space/proc/listen()
 	next_listen = world.time + 2 SECONDS
 	observe_ships(sensor_range, passive = TRUE)
 

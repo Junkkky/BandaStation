@@ -3,12 +3,6 @@
 #define ST_NAV_TURN_RATE 15
 /// Extra clearance in sector units for approaching a destination or another hull.
 #define ST_NAV_APPROACH 40
-/// Active sonar pulse range in sector units.
-#define ST_NAV_ACTIVE_RANGE 1200
-/// Passive listening range for the loudest sources, in sector units.
-#define ST_NAV_PASSIVE_RANGE 700
-/// Cooldown between active sonar pulses.
-#define ST_NAV_PING_INTERVAL (3 SECONDS)
 /// How long a ship observation stays on the chart.
 #define ST_NAV_SHIP_MEMORY (1 MINUTES)
 
@@ -119,18 +113,10 @@
 	var/list/autopilot_path
 	/// Direction changes alone notify native parallax listeners.
 	var/parallax_direction = NONE
-	/// Shared sonar settings, observations and cooldown for every linked console.
-	var/active_sonar = FALSE
-	/// Earliest world.time for the next active sonar pulse.
-	var/next_ping = 0
 	/// world.time of the last active emission, or null before emission.
 	var/last_ping
 	/// Earliest world.time for refreshing passive contacts.
 	var/next_listen = 0
-	/// Crew-local sensor snapshots; contains no live target references.
-	var/list/echoes = list()
-	/// Static terrain discovered by active pulses; moving contacts are never stored here.
-	var/list/charted_terrain = list()
 	/// Sector IDs remain server-side; each crew numbers its own position snapshots.
 	var/list/ship_observations = list()
 	/// Monotonic crew-local contact number; does not expose shuttle IDs.
@@ -147,7 +133,6 @@
 	QDEL_LIST(contacts)
 	discovered_sites.Cut()
 	visited_sites.Cut()
-	charted_terrain.Cut()
 	ship_observations.Cut()
 	prepared_site = null
 	return ..()
@@ -159,19 +144,6 @@
 /** Record a destination in the current crew chart without revealing it to peers. */
 /datum/stationtrauma_overmap/proc/discover_site(datum/stationtrauma_overmap_site/site)
 	discovered_sites[site.id] = TRUE
-
-/datum/stationtrauma_overmap/process(seconds_per_tick)
-	if(!is_operational())
-		return PROCESS_KILL
-	advance()
-	if(active_sonar && world.time >= next_ping)
-		if(has_sensors())
-			ping()
-		else
-			active_sonar = FALSE
-			listen()
-	else if(!active_sonar && world.time >= next_listen)
-		listen()
 
 /** Integrate motion with swept collision detection. */
 /datum/stationtrauma_overmap/proc/advance()
@@ -195,7 +167,7 @@
 		if(length(autopilot_path) == 1 && (prepared_site != sites[selected_destination] || preparing))
 			margin += ST_NAV_APPROACH + 4
 		var/remaining = max(0, distance - margin)
-		available = min(available, 0.7 * sqrt(2 * get_braking_acceleration() * remaining), remaining / max(1, get_response_time()))
+		available = min(available, 0.7 * sqrt(2 * get_braking_acceleration() * remaining), remaining)
 		if(abs(turn) > 5 || remaining == 0)
 			available = 0
 	if(braking)
@@ -300,10 +272,6 @@
 /datum/stationtrauma_overmap/proc/is_operational()
 	return TRUE
 
-/** Whether a powered detector is available. */
-/datum/stationtrauma_overmap/proc/has_sensors()
-	return TRUE
-
 /** Whether propulsion can engage. */
 /datum/stationtrauma_overmap/proc/propulsion_available()
 	return TRUE
@@ -312,23 +280,9 @@
 /datum/stationtrauma_overmap/proc/get_target_speed()
 	return 0
 
-/** Positive first-order velocity response time in seconds; independent of physical water simulation. */
-/datum/stationtrauma_overmap/proc/get_response_time()
-	return 1
-
-/** Default first-order response; vacuum adapters can integrate thrust without environmental drag. */
+/** Advance velocity by one step under the `available` target speed and return list(dx, dy); the environment adapter supplies the dynamics. */
 /datum/stationtrauma_overmap/proc/integrate_velocity(seconds, available)
-	if(braking || (autopilot && !available))
-		return integrate_braking(seconds)
-	var/response_time = get_response_time()
-	var/response = 1 - NUM_E ** (-seconds / response_time)
-	var/target_x = sin(course) * available
-	var/target_y = cos(course) * available
-	var/dx = target_x * seconds + (velocity_x - target_x) * response_time * response
-	var/dy = target_y * seconds + (velocity_y - target_y) * response_time * response
-	velocity_x += (target_x - velocity_x) * response
-	velocity_y += (target_y - velocity_y) * response
-	return list(dx, dy)
+	return list(0, 0)
 
 /** Update visual motion for the environment. */
 /datum/stationtrauma_overmap/proc/update_parallax()
