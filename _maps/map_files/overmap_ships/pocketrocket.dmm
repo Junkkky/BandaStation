@@ -1,7 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-// Layout: Voidcrew/Whitesands/TG contributors; adapted to BandaStation.
-// https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/_maps/shuttles/shiptest/voidcrew/pocketrocket.dmm
-// CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
 "ad" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave,
@@ -13,25 +10,6 @@
 	},
 /turf/open/floor/wood,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
-"aj" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 10
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 26
-	},
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "aF" = (
 /obj/machinery/button/door{
 	id = "shutterspocket";
@@ -50,22 +28,12 @@
 	},
 /turf/open/floor/carpet/black,
 /area/shuttle/stationtrauma_space/pocketrocket/bridge)
+"bi" = (
+/turf/open/space/basic,
+/area/space)
 "bU" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
-"cg" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/public/glass{
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/door/firedoor,
-/turf/open/floor/iron,
-/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
 "cV" = (
 /obj/machinery/door/poddoor{
 	id = "pocketdoor"
@@ -75,6 +43,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"cW" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/black,
+/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "da" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/plating,
@@ -87,19 +70,22 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/stationtrauma_space/pocketrocket/crew)
-"eR" = (
-/obj/machinery/power/smes,
-/obj/structure/cable{
-	icon_state = "0-2"
+"eV" = (
+/obj/structure/cable,
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 8
 	},
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
-"fe" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
 	},
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/black,
+/area/shuttle/stationtrauma_space/pocketrocket/bridge)
+"eW" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/public/glass{
 	req_access = list();
 	req_one_access = list()
 	},
@@ -110,14 +96,34 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/turf/open/floor/carpet/black,
-/area/shuttle/stationtrauma_space/pocketrocket/bridge)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/grimy,
+/area/shuttle/stationtrauma_space/pocketrocket/crew)
 "fr" = (
 /obj/machinery/computer/stationtrauma_space_navigation{
 	dir = 8
 	},
 /turf/open/floor/carpet/black,
 /area/shuttle/stationtrauma_space/pocketrocket/bridge)
+"fU" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
+"gd" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/pocketrocket/cargo)
 "gD" = (
 /turf/open/floor/iron/grimy,
 /area/shuttle/stationtrauma_space/pocketrocket/crew)
@@ -127,30 +133,38 @@
 "hS" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
-"ib" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+"hX" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/effect/decal/cleanable/garbage,
+/obj/structure/closet/emcloset{
+	dir = 4;
+	pixel_x = -32
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+/turf/open/floor/wood,
+/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
+"iM" = (
+/obj/machinery/power/smes{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/shuttle/stationtrauma_space/pocketrocket/cargo)
-"iL" = (
-/obj/structure/cable{
-	icon_state = "0-8"
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/door/window/right/directional/east{
+	name = "Engine Access"
 	},
-/obj/machinery/power/terminal,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/greenglow,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
+"jk" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/green,
+/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
 "jp" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -179,18 +193,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
-"md" = (
-/obj/structure/cable{
-	icon_state = "0-4"
+"mI" = (
+/obj/structure/cable,
+/obj/machinery/light{
+	dir = 1
 	},
 /obj/machinery/power/apc/auto_name/directional/north,
-/obj/effect/decal/cleanable/garbage,
-/obj/structure/closet/emcloset{
-	dir = 4;
-	pixel_x = -32
-	},
-/turf/open/floor/wood,
-/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"mL" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "mP" = (
 /obj/effect/turf_decal/stripes/full,
 /obj/machinery/suit_storage_unit/atmos,
@@ -205,34 +221,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet/black,
 /area/shuttle/stationtrauma_space/pocketrocket/bridge)
-"oB" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 8
-	},
+"pA" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
+/obj/effect/decal/cleanable/greenglow,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/shuttle/stationtrauma_space/pocketrocket/cargo)
-"oP" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/light,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 8
-	},
-/obj/machinery/power/apc/auto_name/directional/south,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 9
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/carpet/black,
-/area/shuttle/stationtrauma_space/pocketrocket/bridge)
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "pG" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -240,32 +235,40 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/crew)
-"rg" = (
-/obj/machinery/power/shuttle_engine/large{
-	dir = 4
+"rw" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 10
 	},
-/turf/open/floor/plating/airless,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
-"se" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/grimy,
+/area/shuttle/stationtrauma_space/pocketrocket/crew)
+"rM" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 8
+	dir = 2
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/carpet/green,
+/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
+"sv" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/public/glass{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron,
-/area/shuttle/stationtrauma_space/pocketrocket/cargo)
+/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
 "tc" = (
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/wood,
@@ -277,6 +280,31 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"tQ" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
+"us" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/command{
+	name = "Bridge";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/carpet/black,
+/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "uS" = (
 /obj/structure/table/wood,
 /obj/machinery/recharger{
@@ -291,6 +319,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
+"uX" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/external{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/pocketrocket/cargo)
 "vo" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -309,6 +348,19 @@
 /obj/item/storage/toolbox/electrical,
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"vw" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = 26;
+	pixel_y = -15
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "wv" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -329,107 +381,50 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
-"xA" = (
-/obj/machinery/power/smes{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
+"ym" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 8
 	},
-/obj/machinery/door/window/right/directional/north{
-	dir = 4;
-	name = "Engine Access"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
-"xI" = (
-/turf/open/space,
-/area/space)
-"yI" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 6
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/carpet/green,
-/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
-"zn" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"AH" = (
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
-"BC" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
-/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
 "BZ" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/stationtrauma_space/pocketrocket/crew)
-"CB" = (
-/obj/structure/cable{
-	icon_state = "0-8"
+"Ct" = (
+/obj/structure/cable,
+/obj/machinery/light/small{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 8
-	},
-/obj/machinery/power/apc/auto_name/directional/north,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 10
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/grimy,
-/area/shuttle/stationtrauma_space/pocketrocket/crew)
-"Df" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 26
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
+"DU" = (
+/obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/carpet/black,
-/area/shuttle/stationtrauma_space/pocketrocket/bridge)
-"Dx" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/external{
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/door/firedoor,
-/turf/open/floor/iron,
-/area/shuttle/stationtrauma_space/pocketrocket/cargo)
+/obj/structure/cable,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "Ec" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -465,15 +460,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/grimy,
 /area/shuttle/stationtrauma_space/pocketrocket/crew)
-"Ft" = (
-/obj/machinery/power/port_gen/pacman,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/effect/turf_decal/stripes/full,
-/obj/item/stack/sheet/mineral/plasma,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "FZ" = (
 /obj/machinery/door/poddoor{
 	id = "pocketdoor"
@@ -481,15 +467,6 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
-"Hx" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
-/obj/effect/decal/cleanable/greenglow,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "HE" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/stripes/line,
@@ -522,17 +499,12 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/stationtrauma_space/pocketrocket/crew)
-"IE" = (
-/obj/structure/cable{
-	icon_state = "2-4"
+"Jh" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/power/apc/auto_name/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
@@ -544,16 +516,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
-"JK" = (
-/obj/machinery/power/terminal{
-	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "JW" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/stationtrauma_space/pocketrocket/bridge)
@@ -563,6 +525,13 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"Kz" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/full,
+/obj/item/stack/sheet/mineral/plasma,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "KI" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -573,30 +542,13 @@
 "KO" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
-"Lg" = (
-/obj/structure/cable{
-	icon_state = "1-4"
+"Ll" = (
+/obj/machinery/power/shuttle_engine/large{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/shuttle/stationtrauma_space/pocketrocket/cargo)
-"MC" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 2
-	},
-/obj/effect/decal/cleanable/vomit,
-/turf/open/floor/carpet/green,
-/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "Nw" = (
 /obj/machinery/airalarm/directional/west,
 /obj/effect/decal/cleanable/dirt,
@@ -613,6 +565,10 @@
 /obj/item/storage/medkit/regular,
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"NI" = (
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
 "NK" = (
 /obj/structure/table/wood,
 /obj/item/chair/plastic{
@@ -638,66 +594,59 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/shuttle/stationtrauma_space/pocketrocket/crew)
+"QX" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/pocketrocket/cargo)
 "Re" = (
 /obj/effect/turf_decal/stripes/full,
 /obj/machinery/suit_storage_unit/engine,
 /obj/item/tank/internals/oxygen,
 /turf/open/floor/carpet/black,
 /area/shuttle/stationtrauma_space/pocketrocket/bridge)
-"Rr" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/public/glass{
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+"Rn" = (
+/obj/machinery/power/terminal{
 	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/grimy,
-/area/shuttle/stationtrauma_space/pocketrocket/crew)
-"Sz" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
-/area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
-"Tw" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
+	dir = 5
 	},
-/obj/machinery/power/apc/auto_name/directional/east,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 26;
-	pixel_y = -15
-	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
-"UB" = (
-/obj/structure/cable{
-	icon_state = "2-8"
+"VA" = (
+/obj/docking_port/mobile/stationtrauma_space{
+	name = "Pocket Rocket";
+	shuttle_id = "pocketrocket";
+	ship_class = "small";
+	area_type = /area/shuttle/stationtrauma_space/pocketrocket;
+	overmap_x = 280;
+	overmap_y = 80;
+	preferred_direction = 4
 	},
+/obj/machinery/power/shuttle_engine/large{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
+"WU" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
 "WY" = (
@@ -716,19 +665,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/wood,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
-"Zv" = (
-/obj/machinery/power/terminal{
-	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 5
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "ZQ" = (
 /obj/machinery/button/door{
 	id = "pocketdoor";
@@ -751,184 +687,162 @@
 	},
 /turf/open/floor/carpet/black,
 /area/shuttle/stationtrauma_space/pocketrocket/bridge)
-"ZZ" = (
-/obj/docking_port/mobile/stationtrauma_space{
-	name = "Pocket Rocket";
-	shuttle_id = "pocketrocket";
-	ship_class = "small";
-	width = 16;
-	height = 10;
-	dwidth = 0;
-	dheight = 5;
-	area_type = /area/shuttle/stationtrauma_space/pocketrocket;
-	overmap_x = 280;
-	overmap_y = 80;
-	preferred_direction = 4
-	},
-/obj/machinery/power/shuttle_engine/large{
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 
 (1,1,1) = {"
-xI
-xI
-xI
-xI
-ZZ
-rg
-xI
-xI
-xI
-xI
+bi
+bi
+bi
+bi
+VA
+Ll
+bi
+bi
+bi
+bi
 "}
 (2,1,1) = {"
-xI
+bi
 Qd
 bU
 bU
-xA
-xA
+iM
+iM
 wH
 tw
 wH
 KO
 "}
 (3,1,1) = {"
-xI
+bi
 bU
 Jk
 xr
-Zv
-JK
+Rn
+DU
 wH
 Kh
 ND
 wH
 "}
 (4,1,1) = {"
-xI
+bi
 bU
-Ft
+Kz
 da
-Hx
-zn
+pA
+AH
 wH
 ko
 HE
 wH
 "}
 (5,1,1) = {"
-xI
+bi
 bU
-iL
-eR
-Tw
-aj
-Dx
-Lg
+tQ
+mL
+vw
+Ct
+uX
+Jh
 vo
 wH
 "}
 (6,1,1) = {"
-xI
+bi
 bU
 bU
 bU
 bU
 bU
 wH
-ib
+ym
 wH
 KO
 "}
 (7,1,1) = {"
-xI
+bi
 hS
-md
+hX
 lE
 NK
 hS
-IE
-oB
+mI
+QX
 cV
 WY
 "}
 (8,1,1) = {"
-xI
+bi
 KI
-UB
-yI
-BC
-cg
-se
+NI
+jk
+fU
+sv
+gd
 ZQ
 FZ
 nc
 "}
 (9,1,1) = {"
-xI
+bi
 KI
 XD
-MC
+rM
 ad
 BZ
-Rr
+eW
 BZ
 BZ
-xI
+bi
 "}
 (10,1,1) = {"
-xI
+bi
 hS
 tc
-Sz
+WU
 uS
 BZ
-CB
+rw
 QL
 BZ
-xI
+bi
 "}
 (11,1,1) = {"
 lC
 JW
 JW
-fe
+us
 JW
 BZ
 Ec
 gD
 pG
-xI
+bi
 "}
 (12,1,1) = {"
 JW
 Re
 Nw
-Df
+cW
 JW
 BZ
 BZ
 dZ
 BZ
-xI
+bi
 "}
 (13,1,1) = {"
 JW
 mP
 nu
-oP
+eV
 JW
-xI
+bi
 BZ
 Ib
 BZ
-xI
+bi
 "}
 (14,1,1) = {"
 lC
@@ -936,33 +850,33 @@ JW
 aF
 wv
 jp
-xI
+bi
 gK
 BZ
 gK
-xI
+bi
 "}
 (15,1,1) = {"
-xI
+bi
 JW
 ZT
 fr
 JW
-xI
-xI
-xI
-xI
-xI
+bi
+bi
+bi
+bi
+bi
 "}
 (16,1,1) = {"
-xI
+bi
 lC
 jp
 jp
 lC
-xI
-xI
-xI
-xI
-xI
+bi
+bi
+bi
+bi
+bi
 "}

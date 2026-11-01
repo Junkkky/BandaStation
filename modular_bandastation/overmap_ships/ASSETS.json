@@ -4,7 +4,7 @@
 	"assets": [
 		{
 			"path": "_maps/map_files/overmap_ships/pocketrocket.dmm",
-			"sha256": "9b54a99d21d3f50c7a0768873cb5ef87c556108dad232f7f663354c640dcd876",
+			"sha256": "c608d9c3d0def25d9b1a3ba424ab2265973c0778fafee1b417b7ed0b83e8f0e5",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -39,7 +39,7 @@
 		},
 		{
 			"path": "_maps/map_files/overmap_ships/raven.dmm",
-			"sha256": "03d16a1fdbaeb13986e2520bcbecb1d6f25fb562dfe64c7a806b508d80bec9d2",
+			"sha256": "4285fbfc82e2dfecaab5604aae2e77f09e73fb8ede23ddc9f1d853a2728a3bed",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["TG, BandaStation and Primera contributors"],
 			"source": {

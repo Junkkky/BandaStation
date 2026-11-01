@@ -25,21 +25,16 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
+"cs" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	initialize_directions = 3
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
 "cQ" = (
 /turf/closed/wall,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
-"cY" = (
-/obj/machinery/door/airlock/hatch,
-/obj/structure/barricade/wooden,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	dir = 6;
-	initialize_directions = 6
-	},
-/turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
 "dk" = (
 /obj/item/stack/medical/bruise_pack,
 /turf/open/misc/asteroid/airless,
@@ -64,28 +59,27 @@
 /obj/structure/barricade/sandbags,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
-"dP" = (
+"ds" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	dir = 1;
+	initialize_directions = 3
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/core)
+"el" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
 "fb" = (
 /obj/item/stack/ore/titanium,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
-"fj" = (
-/obj/structure/barricade/wooden,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	dir = 4;
-	initialize_directions = 12
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
 "fE" = (
 /obj/item/stack/medical/bruise_pack,
 /obj/machinery/atmospherics/pipe/smart/manifold/general/hidden{
@@ -103,11 +97,13 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
 "gS" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	dir = 5;
+	initialize_directions = 5
 	},
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
+/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
 "ht" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/airless,
@@ -116,13 +112,6 @@
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
-"hR" = (
-/obj/machinery/power/port_gen/pacman,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
 "im" = (
 /obj/item/stack/ore/gold{
 	amount = 2;
@@ -154,17 +143,6 @@
 "jd" = (
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
-"jh" = (
-/obj/machinery/power/apc{
-	pixel_x = 24;
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/item/stack/sheet/iron,
-/turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
 "jt" = (
 /obj/machinery/portable_atmospherics/scrubber,
 /turf/open/floor/plating,
@@ -174,13 +152,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
 	dir = 10;
 	initialize_directions = 10
-	},
-/turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
-"kl" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "1-4"
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
@@ -195,15 +166,6 @@
 	},
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
-"lO" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	initialize_directions = 3
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
 "lU" = (
 /obj/item/stack/sheet/mineral/wood,
 /turf/open/floor/plating/airless,
@@ -226,18 +188,12 @@
 	},
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
-"mV" = (
-/obj/item/radio/off,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden{
-	dir = 4;
-	initialize_directions = 11
-	},
+"mZ" = (
+/obj/structure/table,
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
+/area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
 "ng" = (
 /obj/item/stack/ore/plasma{
 	amount = 10;
@@ -318,6 +274,10 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
+"sg" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
 "sT" = (
 /obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
 	dir = 4;
@@ -337,17 +297,6 @@
 /obj/item/stack/sheet/iron,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
-"vm" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	dir = 1;
-	initialize_directions = 3
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
 "vt" = (
 /obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
 	dir = 6;
@@ -359,15 +308,6 @@
 /obj/item/flashlight/lantern,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
-"wP" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	initialize_directions = 3
-	},
-/turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
 "wR" = (
 /obj/item/trash/can/food/beans,
 /obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
@@ -391,16 +331,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
 	dir = 5;
 	initialize_directions = 5
-	},
-/turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
-"xR" = (
-/obj/effect/mob_spawn/corpse/human/cargo_tech,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	initialize_directions = 3
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
@@ -448,6 +378,11 @@
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
+"AQ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
 "Bd" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/ash,
@@ -457,6 +392,22 @@
 /mob/living/basic/carp,
 /turf/open/space/basic,
 /area/space)
+"BD" = (
+/obj/item/radio/off,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/general/hidden{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
+"Cd" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/obj/item/stack/sheet/iron,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
 "Cm" = (
 /obj/effect/decal/remains/human,
 /obj/item/pickaxe/drill,
@@ -464,18 +415,6 @@
 /obj/item/mod/control/pre_equipped/mining,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
-"Cw" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	dir = 5;
-	initialize_directions = 5
-	},
-/obj/item/stack/sheet/iron,
-/obj/item/stack/sheet/mineral/wood,
-/turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
 "CU" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/stack/sheet/iron,
@@ -524,6 +463,13 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
+"DQ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	initialize_directions = 3
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
 "Eq" = (
 /obj/item/stack/ore/iron{
 	amount = 5;
@@ -536,12 +482,6 @@
 /obj/structure/bed,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
-"Ff" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
 "Fn" = (
 /turf/closed/mineral/random/labormineral,
 /area/ruin/space/has_grav)
@@ -555,6 +495,19 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
+"FZ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
+"Gm" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
 "GI" = (
 /obj/structure/closet/crate,
 /obj/machinery/light/small/broken,
@@ -602,11 +555,16 @@
 /mob/living/basic/mining/basilisk,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
-"Lr" = (
-/obj/machinery/power/apc{
-	pixel_x = 24;
-	dir = 4
+"Ll" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	initialize_directions = 3
 	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
+"Lr" = (
+/obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/core)
@@ -623,22 +581,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
-"LU" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	dir = 5;
-	initialize_directions = 5
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
 "Mw" = (
 /obj/item/paper{
 	name = "Mining base airlock maintenance";
@@ -702,14 +644,14 @@
 /obj/machinery/suit_storage_unit/open,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/core)
-"Rk" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable{
-	icon_state = "1-2"
+"RD" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	dir = 5;
+	initialize_directions = 5
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 4
-	},
+/obj/item/stack/sheet/iron,
+/obj/item/stack/sheet/mineral/wood,
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
 "RR" = (
@@ -724,16 +666,6 @@
 	},
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
-"Sj" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	dir = 10;
-	initialize_directions = 10
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
 "Sy" = (
 /obj/structure/table,
 /obj/machinery/light/small/broken{
@@ -745,20 +677,24 @@
 /obj/item/pickaxe/drill,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
-"TX" = (
-/obj/machinery/door/airlock/hatch,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	initialize_directions = 3
-	},
+"TS" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
 /turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
+/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
 "Ud" = (
 /obj/item/grenade,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
+"Uf" = (
+/obj/structure/barricade/wooden,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	dir = 4;
+	initialize_directions = 12
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
 "Um" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/machinery/atmospherics/components/unary/portables_connector{
@@ -795,17 +731,18 @@
 	},
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
-"Yq" = (
-/obj/structure/table,
-/obj/machinery/power/apc{
-	pixel_x = -24;
-	dir = 8
+"Yg" = (
+/obj/effect/mob_spawn/corpse/human/cargo_tech,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	initialize_directions = 3
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/stationtrauma_scav_mining/dorm)
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
+"Ym" = (
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance)
 "Yw" = (
 /turf/closed/wall/rust,
 /area/ruin/space/has_grav/stationtrauma_scav_mining/core)
@@ -824,6 +761,16 @@
 	},
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
+"YX" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/barricade/wooden/crude,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	dir = 6;
+	initialize_directions = 6
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/stationtrauma_scav_mining/core)
 "ZG" = (
 /obj/item/stack/sheet/iron,
 /turf/open/misc/asteroid/airless,
@@ -2235,15 +2182,15 @@ Fn
 Yw
 Qt
 dm
-vm
-mV
-lO
-TX
-wP
-Cw
-Ff
-Rk
-kl
+ds
+BD
+DQ
+Ll
+cs
+RD
+Ym
+el
+TS
 xf
 xf
 kV
@@ -2297,7 +2244,7 @@ Fn
 Yw
 LI
 sT
-dP
+AQ
 yn
 oh
 Ip
@@ -2305,7 +2252,7 @@ kV
 Pk
 kV
 fE
-xR
+Yg
 FN
 zT
 xD
@@ -2357,9 +2304,9 @@ aQ
 Fn
 Fn
 Yw
-hR
-Sj
-LU
+Gm
+FZ
+gS
 Lr
 AC
 Yw
@@ -2367,7 +2314,7 @@ Bd
 jP
 FN
 LM
-jh
+Cd
 ht
 kV
 Nk
@@ -2421,7 +2368,7 @@ Fn
 Ip
 Ip
 Yw
-cY
+YX
 Yw
 Yw
 Yw
@@ -2481,9 +2428,9 @@ aQ
 Fn
 Fn
 Sy
-Yq
-gS
-fj
+mZ
+sg
+Uf
 gI
 pF
 rv
