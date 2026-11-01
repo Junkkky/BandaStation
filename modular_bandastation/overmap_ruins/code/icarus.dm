@@ -1,30 +1,16 @@
-// AI EDIT START - space overmap module integration
 /*
  * Adapted SEV Icarus layout, logs and icons/icarus*.dmi: SierraBay/Baystation contributors,
  * https://github.com/SierraBay/SierraBay12/tree/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/icarus
  * Layout/art: CC BY-SA 3.0; companion code/text: AGPL-3.0. Artwork is unmodified.
- * Adapted Abandoned Mining Operation layout: Voidcrew/Whitesands/TG contributors,
- * https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/scav_mining.dmm
- * CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
- * Both retain their rooms; incompatible machinery/items/inhabitants use local TG types.
  */
 /** Expedition-only ruin template for Expedition-Ruin SEV Icarus. */
 /datum/map_template/ruin/space/stationtrauma_icarus
 	ruin_type = "expedition_space"
 	id = "stationtrauma_icarus"
-	prefix = "modular_bandastation/space_overmap/maps/ruins/"
+	prefix = "_maps/map_files/overmap_ruins/space/"
 	suffix = "icarus.dmm"
 	name = "Expedition-Ruin SEV Icarus"
 	description = "An airless expedition wreck with a damaged reactor and an abandoned anomaly laboratory."
-
-/** Expedition-only ruin template for Expedition-Ruin Abandoned Mining Base. */
-/datum/map_template/ruin/space/stationtrauma_scav_mining
-	ruin_type = "expedition_space"
-	id = "stationtrauma_scav_mining"
-	prefix = "modular_bandastation/space_overmap/maps/ruins/"
-	suffix = "scav_mining.dmm"
-	name = "Expedition-Ruin Abandoned Mining Base"
-	description = "A mining asteroid with salvageable equipment, ore deposits and hostile inhabitants."
 
 /** Mapped expedition area: SEV Icarus. */
 /area/ruin/space/has_grav/stationtrauma_icarus
@@ -58,18 +44,6 @@
 /area/ruin/space/has_grav/stationtrauma_icarus/driver/west
 	name = "SEV Icarus Port Mass Driver"
 
-/** Mapped expedition area: Abandoned Mine Operations. */
-/area/ruin/space/has_grav/stationtrauma_scav_mining/core
-	name = "Abandoned Mine Operations"
-
-/** Mapped expedition area: Abandoned Mine Dormitory. */
-/area/ruin/space/has_grav/stationtrauma_scav_mining/dorm
-	name = "Abandoned Mine Dormitory"
-
-/** Mapped expedition area: Abandoned Mine Airlock. */
-/area/ruin/space/has_grav/stationtrauma_scav_mining/entrance
-	name = "Abandoned Mine Airlock"
-
 /** Damaged Icarus shielding with a native radioactive emitter. */
 /obj/structure/girder/stationtrauma_icarus_core
 	name = "damaged reactor shielding"
@@ -97,7 +71,7 @@
 /obj/item/toy/stationtrauma_icarus_model
 	name = "SEV Icarus model"
 	desc = "A 1:278 scale model of the lost expedition ship."
-	icon = 'modular_bandastation/space_overmap/icons/icarus.dmi'
+	icon = 'modular_bandastation/overmap_ruins/icons/icarus.dmi'
 	icon_state = "model"
 
 /** Mapped radiation protection and native anomaly containment tools. */
@@ -123,4 +97,3 @@
 /obj/structure/closet/crate/stationtrauma_icarus_sample/PopulateContents()
 	..()
 	new /obj/item/assembly/signaler/anomaly/pyro(src)
-// AI EDIT END

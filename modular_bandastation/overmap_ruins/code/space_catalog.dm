@@ -1,11 +1,4 @@
-// AI EDIT START - space overmap module integration
 // Local TG equivalents of the original layouts; no foreign controllers or AI processing.
-/** Imported space templates excluded from ordinary station space ruin selection. */
-/datum/map_template/ruin/space/expedition
-	prefix = "modular_bandastation/space_overmap/maps/ruins/"
-	ruin_type = "expedition_space"
-	/// Crew-facing chart name for this imported ruin.
-	var/overmap_name
 
 /** Expedition-only ruin template for Expedition-Space void astraeus. */
 /datum/map_template/ruin/space/expedition/void_astraeus

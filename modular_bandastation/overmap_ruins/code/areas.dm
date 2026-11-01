@@ -1,4 +1,3 @@
-// AI EDIT START - expedition planets module integration
 // Room boundaries retained from the imported layouts; source attribution is stored in each DMM.
 /** Imported room boundary for Экспедиционный объект; inherits the expedition ruin environment. */
 /area/ruin/space/has_grav/expedition_content

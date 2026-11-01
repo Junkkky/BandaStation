@@ -1,3 +1,10 @@
+/** Imported space templates excluded from ordinary station space ruin selection. */
+/datum/map_template/ruin/space/expedition
+	prefix = "_maps/map_files/overmap_ruins/space/"
+	ruin_type = "expedition_space"
+	/// Crew-facing chart name for this imported ruin.
+	var/overmap_name
+
 /** Only reviewed local templates participate; native blacklists and round duplicate limits still apply. */
 /datum/stationtrauma_overmap_sector/space/proc/load_ruin_sector()
 	var/list/approved = list(

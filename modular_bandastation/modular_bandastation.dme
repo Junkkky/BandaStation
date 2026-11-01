@@ -53,6 +53,8 @@
 #include "space_overmap/_space_overmap.dme"
 #include "expedition_science/_expedition_science.dme"
 #include "expedition_planets/_expedition_planets.dme"
+#include "overmap_ships/_overmap_ships.dme"
+#include "overmap_ruins/_overmap_ruins.dme"
 // AI EDIT END
 #include "food_and_drinks/_food_and_drinks.dme"
 #include "galactic_map/_galactic_map.dme"

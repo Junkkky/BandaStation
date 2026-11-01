@@ -1,4 +1,3 @@
-// AI EDIT START - expedition planets module integration
 // SierraBay/SierraBay12 contributors; adapted layouts: CC BY-SA 3.0; see source links in each DMM.
 // https://github.com/SierraBay/SierraBay12/tree/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins
 

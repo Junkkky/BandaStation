@@ -1,0 +1,1050 @@
+{
+	"version": 1,
+	"scope": "Maps and imported icons of space and planetary ruins introduced or modified by the overmap_ruins module. Embedded code and existing referenced assets retain their original notices.",
+	"assets": [
+		{
+			"path": "modular_bandastation/overmap_ruins/icons/icarus.dmi",
+			"sha256": "6d8f85e4b0cca873652361d40f4523146aaafe934047aea888196e67fc6b6377",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/icarus/icarus.dmi",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/icarus/icarus.dmi",
+				"sha256": "6d8f85e4b0cca873652361d40f4523146aaafe934047aea888196e67fc6b6377",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Unmodified copy.",
+			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/overmap_ruins/icons/icarus_scglogo.dmi",
+			"sha256": "e393852831770ee0c50c2b29229f30898dcdc81e28a9eea84fb44ec45aae5aff",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/icarus/icarus_scglogo.dmi",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/icarus/icarus_scglogo.dmi",
+				"sha256": "e393852831770ee0c50c2b29229f30898dcdc81e28a9eea84fb44ec45aae5aff",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Unmodified copy.",
+			"byte_identical": true
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/icarus.dmm",
+			"sha256": "f81b45476e2e6fef7ec4013cacbe7080cd0bdc945c2414d77c8c9ce7563b52f5",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/icarus/icarus.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/icarus/icarus.dmm",
+				"sha256": "b9094bf21a46efa1699cf2dd1aa27e4b744c423d66343a726fe30a1320233775",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/paradise_abandoned_engi_sat.dmm",
+			"sha256": "46cee7a476383de1a572fb53e5514f01176d0e2858dba6d35e967b898f71fa1b",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["ParadiseSS13/Paradise contributors"],
+			"source": {
+				"repository": "ParadiseSS13/Paradise",
+				"commit": "8e4ad940e497f64443c3fc635a09840a8fa7a1d2",
+				"path": "_maps/map_files/RandomRuins/SpaceRuins/abandoned_engi_sat.dmm",
+				"url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/_maps/map_files/RandomRuins/SpaceRuins/abandoned_engi_sat.dmm",
+				"retrieval": "Original cached during the pinned source import.",
+				"sha256": "67c2d0bb9cb478b4263eb49551588c45080c7e2c0986c383cd69973d4cecd977",
+				"license_policy_url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/paradise_alien_cache_site.dmm",
+			"sha256": "0ff9c5bf50373ad0400ffee07ee54bfaf590d0a6e50a0f25f7354191cf3ffe73",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["ParadiseSS13/Paradise contributors"],
+			"source": {
+				"repository": "ParadiseSS13/Paradise",
+				"commit": "8e4ad940e497f64443c3fc635a09840a8fa7a1d2",
+				"path": "_maps/map_files/RandomRuins/SpaceRuins/alien_cache_site.dmm",
+				"url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/_maps/map_files/RandomRuins/SpaceRuins/alien_cache_site.dmm",
+				"retrieval": "Original cached during the pinned source import.",
+				"sha256": "9ea4a4ce8b6eeabbaf56eee11fcf83c1678f1ae93bdd81e2bef48690db5c6ed5",
+				"license_policy_url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/paradise_freighter.dmm",
+			"sha256": "0cea6daa07622f26ce7893405a6bda2b27fa7bd05acfd3da583b3f55d21da62a",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["ParadiseSS13/Paradise contributors"],
+			"source": {
+				"repository": "ParadiseSS13/Paradise",
+				"commit": "8e4ad940e497f64443c3fc635a09840a8fa7a1d2",
+				"path": "_maps/map_files/RandomRuins/SpaceRuins/freighter.dmm",
+				"url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/_maps/map_files/RandomRuins/SpaceRuins/freighter.dmm",
+				"retrieval": "Original cached during the pinned source import.",
+				"sha256": "2cae0c1bab3446b30a24d1bfbb326d50ccb5bb4984c9089bb3f476e738f39b17",
+				"license_policy_url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/paradise_wreckedcargoship.dmm",
+			"sha256": "5a9c066e33678ec495fa079bbb2b3be584bdd9a30a9dfeb0545fa5d86e75b4b2",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["ParadiseSS13/Paradise contributors"],
+			"source": {
+				"repository": "ParadiseSS13/Paradise",
+				"commit": "8e4ad940e497f64443c3fc635a09840a8fa7a1d2",
+				"path": "_maps/map_files/RandomRuins/SpaceRuins/wreckedcargoship.dmm",
+				"url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/_maps/map_files/RandomRuins/SpaceRuins/wreckedcargoship.dmm",
+				"retrieval": "Original cached during the pinned source import.",
+				"sha256": "142718855b534a28382a26304709b0b80058d393238dab6976cf668377790d2b",
+				"license_policy_url": "https://github.com/ParadiseSS13/Paradise/blob/8e4ad940e497f64443c3fc635a09840a8fa7a1d2/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/scav_mining.dmm",
+			"sha256": "ba73503f3f96e438cdebc473eaf6bf7e8f131f769d828ee7aaed4ae923a6b2f2",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/scav_mining.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/scav_mining.dmm",
+				"sha256": "f60c915838721e04a596a7b8e2ba17d9f4e77f4f258558b5e07b1a3bb2524af0",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/void_astraeus.dmm",
+			"sha256": "ac9bc93f7c6ad353027ba08cdf69be04c9c39f51352bbc3c585eb75eb168876e",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/astraeus.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/astraeus.dmm",
+				"sha256": "736608deeff93ebcc4c1a15fab8312dbfbca4a9744f10e39fea5fa185672fd81",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/void_dark_glade.dmm",
+			"sha256": "68c9372a197ea0788c488b24ce2c940457babae9689f412867098e71f0c53f77",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/dark_glade.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/dark_glade.dmm",
+				"sha256": "660c54a1770f9c6d8a2e7073c982ad49e8120755533da5ab79f1d24448bbad3c",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/void_nuclear_dump.dmm",
+			"sha256": "33a93f0e2aae977925fa1dee5ccc8dbbbfc34094becf0b69a8ce88891de20525",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/nuclear_dump.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/nuclear_dump.dmm",
+				"sha256": "c41ad12f46a23f03664316c030578bb985ef106247a8b372f485df943f07c102",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/void_power_puzzle.dmm",
+			"sha256": "a753412558c8588bc633f4bcca7e579f5fa71ebec638b94d3fe5cb066024fd21",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/power_puzzle.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/power_puzzle.dmm",
+				"sha256": "0a4113a1d4f5fea5aaa111f2b8e09db5fc6d6d9fa4bed08fac715bde2d780c75",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/void_transport18.dmm",
+			"sha256": "e4f9304a58aeb5c99554daabfbe8128f2c9c3964d19f381a40cff5d86394215c",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "Void-Crew/Voidcrew-LRP",
+				"commit": "66c552922bf2a28963c2a8f5d89993623a141a1f",
+				"path": "voidcrew/_maps/RandomRuins/SpaceRuins/transport18.dmm",
+				"url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/voidcrew/_maps/RandomRuins/SpaceRuins/transport18.dmm",
+				"sha256": "0aeca21b49018e612788420e4d41c0caef336a7add1143851e3f6999f7330ce8",
+				"license_policy_url": "https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_crashed_pod.dmm",
+			"sha256": "4616c80e4b28f2fecfb73bd3dbefd5c568b4ff1dd9669ba8ac795610846443b3",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/crashed_pod/crashed_pod.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/crashed_pod/crashed_pod.dmm",
+				"sha256": "af02f153c14936adf0a5d7a1be8a77c640d9648eb423f6bee0b46763a91f23a1",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_crashed_probe.dmm",
+			"sha256": "ddb4d07029ab084df11856f31f112db1463296e72ca8e5aaf4dede375ff35b5b",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/crashed_probe/crashed_probe.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/crashed_probe/crashed_probe.dmm",
+				"sha256": "fb9013d38b5538c1f28b98bad47aaaf06c19dcc8c03613dfdec119efb87d70d2",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_crashed_shuttle.dmm",
+			"sha256": "f3ca04c46632f774dc781fa18677acde58c6cf7897acc8c9596ab7ad5fe14555",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/crashed_shuttle/crashed_shuttle.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/crashed_shuttle/crashed_shuttle.dmm",
+				"sha256": "0f737d7ec3853ea6bff1615b38e2172861f6759c3eb13a80b594c989869c924d",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_deserted_lab.dmm",
+			"sha256": "8cce8a828a464c5ee92464c2d3c7de8fbe540f3961294988fbe6575c7ea3c9fa",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/deserted_lab/deserted_lab.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/deserted_lab/deserted_lab.dmm",
+				"sha256": "0ca326c38162eb59afe5144fbb100c0ecda3b0bdf4e748efa531dea1eeacd224",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_drill_site.dmm",
+			"sha256": "d113f952a2335dde29e42f0865a99855348216c0b0e9b938809bfeebb6d961ac",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/drill_site/drill_site.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/drill_site/drill_site.dmm",
+				"sha256": "b12ede7de8bfe6be67e7e32827699a68e2d294b0659d7936da0c60c2d815cc48",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_ec_old_crash.dmm",
+			"sha256": "9a271fa366b542f4fa629c211c3e3317db2d4e64bdd1fbae21fd186e347b6c03",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/ec_old_crash/ec_old_crash.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/ec_old_crash/ec_old_crash.dmm",
+				"sha256": "e96e6a3ba954d573fd8ae461cb38f8648ec0dba55c28e9c73e0cd22e4d711db7",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_excavation_site.dmm",
+			"sha256": "9e11bc3292a3ff0041cb15d509cd315432291bfae928cd9b33abd52bbbd9f9c5",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/excavation_site/excavation_site.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/excavation_site/excavation_site.dmm",
+				"sha256": "0493321a878edcc673dbd25af2c1885b4e217c00c6aa06488056b95dc186c2b6",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_hut.dmm",
+			"sha256": "eedf4d1e0e76e6c6151e8c2e0f2bb32575b353d22cfe9d139fa83c0855c118f9",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/hut/hut.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/hut/hut.dmm",
+				"sha256": "e1eb5f9c7318a64e384b56743f631839d64b388e395fa57bd6411f8a0fa57f01",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_hydrobase.dmm",
+			"sha256": "ee5ce6d37ae3f196b557e683ff2efa68cff9e6a85668279ddd26f3f040cc9724",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/hydrobase/hydrobase.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/hydrobase/hydrobase.dmm",
+				"sha256": "9e8a0421664ec20ab66cbda0e1957ac20b248c67f08b7fac7a10827f3ebfa51a",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_lodge.dmm",
+			"sha256": "5122c32b4b54e515a8f761d69c700ae96f4113819f3662a7dc246af3c855e492",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/lodge/lodge.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/lodge/lodge.dmm",
+				"sha256": "9670b75e8543e9ad46670b39994e0371f5ae43a43801b58ec47791ff211dfdb2",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_monoliths.dmm",
+			"sha256": "a7857eca497a371630d635474318ae56411a68e13eb245f2ecff7c92afec116c",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/monoliths/monoliths.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/monoliths/monoliths.dmm",
+				"sha256": "9277163f5b3bdd91e530033e3f12d37be67e057e595bbffb95454e2c89f9285e",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_oasis.dmm",
+			"sha256": "18175035e5b399e17d9c43c15ff2ba21816a674906ec39e2e9fb4d5ff57603ca",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oasis/oasis.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oasis/oasis.dmm",
+				"sha256": "6495aa57c9f01f1b9bbaac3d36fa03014ab94e51fa74508177c868248a8ef4fc",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_oasis2.dmm",
+			"sha256": "c5bfe76c172ce7e2a3cfc92a56bacbaff80a903b731969e50acdd943d6ff14c1",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oasis/oasis2.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oasis/oasis2.dmm",
+				"sha256": "75020ba4521780c93e9bc9a1f1c0025213bac4e87ee9acd00d965286c2fb4bb5",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_oasis3.dmm",
+			"sha256": "dc442ca2b42594a7d8ae39ade089c13f58af513eb1c00fa9a884beef3ca8faf3",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oasis/oasis3.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oasis/oasis3.dmm",
+				"sha256": "8093bfb120806d5fc7dbaf06f48edc165e1840e64e4cfedb461532f72f5e9b82",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_oldlab.dmm",
+			"sha256": "d303039d7b6933bd60921c6fdd0767c4ada6f2cb21bea6c3bef4ea8c1d9bf125",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oldlab/oldlab.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oldlab/oldlab.dmm",
+				"sha256": "4a81fd03b5be88e3bc0761cda211967421dea45449cd5cff846248ec7cae136b",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_oldlab2.dmm",
+			"sha256": "84a65a0d6f6a356cf1985f1fd2ec2a5c4fff05eab61031829ea832644a6a52a2",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oldlab2/oldlab2.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oldlab2/oldlab2.dmm",
+				"sha256": "3b3e819d387764bf5e30d89a2736eb3b900487c8ee4ff8858dd2462f94581a9c",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_oldpod.dmm",
+			"sha256": "4d4a406c5e5c6cf648bd154609a1edb8e1cf6c5e0ec6cdbbde00ac93fe1cf938",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/oldpod/oldpod.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/oldpod/oldpod.dmm",
+				"sha256": "29f2af237899d09b1b20a7c5d043bd58e009e9b12ac2e782374229af817abf01",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_radshrine.dmm",
+			"sha256": "079c86ce7b32d598412625cdb3f679771da55166b57224d6157ff54966a14211",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/radshrine/radshrine.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/radshrine/radshrine.dmm",
+				"sha256": "73bb8199d974a24cfb6f7aae5daa64a5859fd1cc647b86374882dfbe9e84c51e",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_skrell_biodome.dmm",
+			"sha256": "a908971bdddc5cdeb534462a499aaab086d1a457f8e3a4a6c9a39f0617e8cbd2",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/skrell_biodome/skrell_biodome.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/skrell_biodome/skrell_biodome.dmm",
+				"sha256": "d20bfef4a6f04d6018be17797cfb19b2a251356785c16430fc1b596fd94f95af",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_spider_nest.dmm",
+			"sha256": "fdbecada552a733d4e861b5bfaadfa56bffbe1ddfe16788a32932faa8963b9cc",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/spider_nest/spider_nest.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/spider_nest/spider_nest.dmm",
+				"sha256": "fcfd77aeaebc0584499765280c4064bce2bda65c213d00a66178c02ac0d0da58",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_tar_anomaly.dmm",
+			"sha256": "e7acc390d8454f0d21d84194d33fb0744f72937a36a5128cc0720a20d22e61c8",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/tar_anomaly/tar_anomaly.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/tar_anomaly/tar_anomaly.dmm",
+				"sha256": "eeac3657ae7f16cd0cf9cabf6a34fe8985d7c900131b2bcd142206f70f30ba23",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_transshipment.dmm",
+			"sha256": "53debc156ca112f05db5ba93e89954362aed6aa1eb47c71c43d7223f494061b8",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/transshipment/transshipment.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/transshipment/transshipment.dmm",
+				"sha256": "b283831963c087dab0d49c40a2b570208790e57b083c40d8d425a0fe6ab885ed",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/sierra_trash_heap.dmm",
+			"sha256": "df7bd3ce1ce8ed4eb3046447fa00c8c3c48e56b83c5e67d8596bf625f8db0f56",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["SierraBay and Baystation contributors"],
+			"source": {
+				"repository": "SierraBay/SierraBay12",
+				"commit": "8623b35f6943130998002e94cf001a9c6ccb3f4c",
+				"path": "maps/random_ruins/exoplanet_ruins/trash_heap/trash_heap.dmm",
+				"url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/maps/random_ruins/exoplanet_ruins/trash_heap/trash_heap.dmm",
+				"sha256": "30114d82d82320879ebba8e1bcbe7cddc1c0b3a86789ee75d79b80f7d270bec1",
+				"license_policy_url": "https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/celadon_fueldepot.dmm",
+			"sha256": "9562dc8bc319b75c45c04cb980b7c07c39814fcef2a49cc3cc0f0293c3f1c825",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/SpaceRuins/space_fueldepot.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SpaceRuins/space_fueldepot.dmm",
+				"sha256": "4b7c5f4e08ae4aededba0ba795520753d74817f6cab15fecb4dc6cfc92e8fe80",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/celadon_corporate_mining.dmm",
+			"sha256": "e729cec4377a9d624ef1807ba52813d8eecf1784b93c076033840f437b64feb9",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/AsteroidRuins/asteroid_corporate_mining.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/AsteroidRuins/asteroid_corporate_mining.dmm",
+				"sha256": "a16c4fca157b358d441a4a97ac379b5a19866757beb9549e3058db5d77494dbc",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/celadon_excavator.dmm",
+			"sha256": "d550c36958aa41c8f2595f3af8fcfc28ee1d3685701b936f6685214eace9036f",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/AsteroidRuins/asteroid_excavator_DK.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/AsteroidRuins/asteroid_excavator_DK.dmm",
+				"sha256": "69f386b8f2f353c8502aecf3e2b741158037a227496f08d103f4afa36fc9e8fa",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/celadon_djstation.dmm",
+			"sha256": "9b237f6d671048b05c8d3f5f19663046813e697140a2f33db3df27904143f8c5",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/SpaceRuins/space_DJstation.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SpaceRuins/space_DJstation.dmm",
+				"sha256": "5fd21482e0f78bebc3196e45627fd44007e4577525359185325385d832560854",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/space/celadon_cryocontainment.dmm",
+			"sha256": "234d17b1c570636642abe2be267e32060bd5c1d6195ea63384a0ef6996b078f8",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/SpaceRuins/space_cryocontainment.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SpaceRuins/space_cryocontainment.dmm",
+				"sha256": "0497e7d3f57b6fdd5207eddfe9508b6fa521e0348004ae2945e3a0e78573ef82",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_botany.dmm",
+			"sha256": "b8326827edc598305f51bbf712718d387360e5d36c9a8cef3ad95f4a928e3cbe",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_botany.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_botany.dmm",
+				"sha256": "7ca54c7e50ba51dcff4d5af73cd3981b0d43c1e50e289c371b6235d8b841abac",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_medtech.dmm",
+			"sha256": "adcc9a9ea8a2787e33c51faed3952157dee80bca9fdfc92acb6a68794fac8890",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_medtech_outbreak.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_medtech_outbreak.dmm",
+				"sha256": "d6a31f8c27e2c334fc842c31fdf87b090ec71a132c71b08fb91357615b5bbfa2",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_observatory.dmm",
+			"sha256": "c3b39c8e9c02625d8174dbd51b83c6d29da6b06d20fba841ca3447c2b5df27fd",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_observatory.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_observatory.dmm",
+				"sha256": "ab5cc6542a52498b604c0232cfe3807f578c561b28ba84e56e2220a10d96ec51",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_library.dmm",
+			"sha256": "3d4d7fd5a8d716aeb364e00f6140987d5bd4af20455f3f8ff14d8c705f14c7bf",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_abandoned_library.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_abandoned_library.dmm",
+				"sha256": "055d2fff7e9bb0448bdab411db786c1fd80d1aab4ecdc831e60a5bd0ca162af5",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_hydroponics.dmm",
+			"sha256": "b25af38073e35dcfdddc57c75840f34be856e491b5704146b8c2cd1a317d17c8",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/IceRuins/icemoon_hydroponics_lab.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/IceRuins/icemoon_hydroponics_lab.dmm",
+				"sha256": "cf96412d8986d1f8c37148d0c6e8c2a507e49cc31209288e9133e3d2adfaefab",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_cap_pod.dmm",
+			"sha256": "2f12ed912e64261c6be92382f22d366f19d95836f106deb3fc4a6c3728ee4f6c",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/IceRuins/icemoon_crashed_cap_pod.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/IceRuins/icemoon_crashed_cap_pod.dmm",
+				"sha256": "52df15f8f421fe78eac6010273c1622d3537f98e1a974f733596918d36eae4fe",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_medipen.dmm",
+			"sha256": "72498d3a942ccaab3ad73d13ef2ac1bc8ee6b59cb177a17f7330cc073e0d6374",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_medipen_plant.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_medipen_plant.dmm",
+				"sha256": "7f344358f79a484053a5d1b9abf54b9b8f8ed37fe17df1af74a01ab1db1e2dc6",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_waterplant.dmm",
+			"sha256": "daee64f837e39688b32066a792b19c7e73eb629a606c6362b6969d775f63fd99",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_waterplant.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/SandRuins/whitesands_surface_waterplant.dmm",
+				"sha256": "220614c5c1416023de457334d344a6be7fc78e60027efc20d01dc09746ad6d8c",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_miningexpedition.dmm",
+			"sha256": "739786269a20e60decc3c798a17b3d714c63be65f81938706a4ad6c8522f71f6",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_miningexpedition.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_miningexpedition.dmm",
+				"sha256": "d29b9987fd29359baacc40e605e8bdeeea707db49de952a8b46c3625f5d24dda",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_boxsci.dmm",
+			"sha256": "b4cbc0de3d943f5020cf13186cc46279532a32266e8ae2d344deea9415ee08dc",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_boxsci.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_boxsci.dmm",
+				"sha256": "5711323f1bede369f226409c25536561ae8defa006b961a8a7449cbfc3cf5195",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_comm_outpost.dmm",
+			"sha256": "174c364b8505e60e09de0888f862ec97b0b07df9b3d1d88c723017534e8db575",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_comm_outpost.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_comm_outpost.dmm",
+				"sha256": "6d42c0cc4190cdd31f9a232333e1fdf6a8a2d83632799669d43b5a163b99932b",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_pinnace.dmm",
+			"sha256": "7a23ab4fd0dadf991a16664ee2e0dc6814ec85780c5f0b36fb2b6434c207b4ad",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_crashed_pinnance.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_crashed_pinnance.dmm",
+				"sha256": "f52674f4627b0c2bbc4b6299f9577ece1bad57c798c99e60d9dda604a8f87c48",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_dwarf_fortress.dmm",
+			"sha256": "58d32ab822b5f78a2139c30596abd5e2b67c460c8a54a4400ec734c7e5645105",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_dwarffortress.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_dwarffortress.dmm",
+				"sha256": "63fa277675fe9eca2a55d76d202b18484595db3af3c9648a2bd7c9dfad7dfe5d",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_spooky_crash.dmm",
+			"sha256": "5e776b3157a84bf4d988dc4e5b0f34da716dd1e3e2dab09d65fcd5922574f22d",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_SPOOKYCRASH.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_SPOOKYCRASH.dmm",
+				"sha256": "7725cb0dd41a5cbe964446d2fc526c5a6aa26b485c39c9318dfc4de33f7e923b",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_xeno_nest.dmm",
+			"sha256": "28dc9a9cef6f76ba73366d2252a68c38d320f57674acf43118ec0256701fb8ae",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_xeno_nest.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_xeno_nest.dmm",
+				"sha256": "46036fc21ad7a54a718eaafba30211cde63ef3c3c982b7e4ab0eac86d0a97aa7",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_listening_post.dmm",
+			"sha256": "efc7c53a37b1297399c534b39c709f01216de40303266adf10eec1b871fa7111",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_abandonedlisteningpost.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_abandonedlisteningpost.dmm",
+				"sha256": "940aaff4273c149f44eb8e34d0011dd0266ee4a091c52f7893a0de2e862cdecd",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_hivebot_crash.dmm",
+			"sha256": "a5ec9871e9e97af128710437174f702ea4b502c21764472feda684b182059393",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_crash.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_crash.dmm",
+				"sha256": "4f876ea9b4ce614c552a11dadf0d784028192cd02399329a0afcea583074c663",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_dangerpod.dmm",
+			"sha256": "7f6549a3638d016fe03a101a8e9e4077342dabdf7caa60a1585d02410a40793f",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_dangerpod.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_dangerpod.dmm",
+				"sha256": "2d24620cc96b009295bc7d5a37bc5b2b94cdc8c671d2ba479d5e3af95b72c907",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_saloon.dmm",
+			"sha256": "ff49940c802a20f7db63a4771ccc055c771af5389acbc0bb3292f58287232808",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_saloon.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_saloon.dmm",
+				"sha256": "9740d48626109bf4530e12b73053319e0a188c1382cc1743ba239a1bc374112f",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_harm_factory.dmm",
+			"sha256": "deccc5ffe29346115b6edca819ac8a610c599d10c753c931709762be09e468eb",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_harmfactory.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_harmfactory.dmm",
+				"sha256": "086eb2977a0019e5413f3141c2930b010100fc60ce48ebad860168bcb0ed5c56",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_budget_cuts.dmm",
+			"sha256": "27bdc5beca08c46ac4b7a2a9c4cc75b39dc1ff4a500b7be4e8e2b1004024fdf4",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_budgetcuts.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_budgetcuts.dmm",
+				"sha256": "1cb6fc4742a6af9f1f15a5d1ffd8eb292e70a33663826d9f6d729727ae7eae14",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_biodome_winter.dmm",
+			"sha256": "27cbc6e553d2c692a05a0ae6b74f76d514d4efbdde184fc82b996302b3bd3924",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_biodome_winter.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_biodome_winter.dmm",
+				"sha256": "2c2e8f10eace54279e80307c488e029979765e8ffaf9533b457e00b97359bf19",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_wrecked_factory.dmm",
+			"sha256": "45b6c25c06585fdb0c8329d9107f9bd399e70d6eb5cacd7b5518fc85e51c89aa",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_wrecked_factory.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_wrecked_factory.dmm",
+				"sha256": "14435154774ae5737651ef7e600050399cad365cd033688d3d54b82d6a904a31",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_distillery.dmm",
+			"sha256": "f1354557274aae3f62a914bc3c6c1231a4decde67db55b0a6b7218692917dad2",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_distillery.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_distillery.dmm",
+				"sha256": "df1acccd360525cee23cfbf5647ac10cfd6e020f5e4fb93ec8f0cf6ca6801ac9",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
+		}
+	]
+}

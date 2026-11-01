@@ -62,7 +62,7 @@
 				"dispatchable": true
 			},
 			{
-				"template": "modular_bandastation/space_overmap/maps/pocketrocket.dmm"
+				"template": "_maps/map_files/overmap_ships/pocketrocket.dmm"
 			}
 		],
 		"dispatch_terminal": [

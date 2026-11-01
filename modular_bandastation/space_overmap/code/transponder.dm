@@ -15,19 +15,10 @@
 	registration_faction = "НТ"
 	callsign = "Борт НТ"
 
-/** Transponder preset raven; identity remains on the removable board. */
-/obj/item/circuitboard/computer/stationtrauma_transponder/nt/raven
-	callsign = "Raven"
-
 /** Transponder preset scg; identity remains on the removable board. */
 /obj/item/circuitboard/computer/stationtrauma_transponder/scg
 	registration_faction = "КССП"
 	callsign = "Борт КССП"
-
-/** Transponder preset pocketrocket; identity remains on the removable board. */
-/obj/item/circuitboard/computer/stationtrauma_transponder/pocketrocket
-	registration_faction = "Независимые"
-	callsign = "Pocket Rocket"
 
 /obj/item/circuitboard/computer/stationtrauma_transponder/examine(mob/user)
 	. = ..()
@@ -50,14 +41,6 @@
 	var/enabled = TRUE
 	/// Physical hull controlled by this navigation instance or console.
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
-
-/** Transponder preset raven; identity remains on the removable board. */
-/obj/machinery/computer/stationtrauma_transponder/raven
-	circuit = /obj/item/circuitboard/computer/stationtrauma_transponder/nt/raven
-
-/** Transponder preset pocketrocket; identity remains on the removable board. */
-/obj/machinery/computer/stationtrauma_transponder/pocketrocket
-	circuit = /obj/item/circuitboard/computer/stationtrauma_transponder/pocketrocket
 
 /obj/machinery/computer/stationtrauma_transponder/post_machine_initialize()
 	. = ..()

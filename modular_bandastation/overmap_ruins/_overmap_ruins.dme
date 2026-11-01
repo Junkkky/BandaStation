@@ -1,0 +1,7 @@
+#include "_overmap_ruins.dm"
+#include "code/areas.dm"
+#include "code/research_sources.dm"
+#include "code/icarus.dm"
+#include "code/scav_mining.dm"
+#include "code/space_catalog.dm"
+#include "code/planet_catalog.dm"

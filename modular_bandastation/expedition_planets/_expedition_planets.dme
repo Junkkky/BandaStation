@@ -9,6 +9,4 @@
 #include "code/lush.dm"
 #include "code/lava.dm"
 #include "code/ruins.dm"
-#include "code/ruin_catalog.dm"
-#include "code/ruin_areas.dm"
 // AI EDIT END
