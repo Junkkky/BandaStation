@@ -1,5 +1,5 @@
 #include "_overmap_ruins.dm"
-#include "code/areas.dm"
+#include "code/ruin_areas.dm"
 #include "code/research_sources.dm"
 #include "code/icarus.dm"
 #include "code/scav_mining.dm"

@@ -102,7 +102,8 @@
 		return
 	source.remaining_samples--
 	record = original_record
-	sample_id = "S-[++GLOB.stationtrauma_research_serial]"
+	GLOB.stationtrauma_research_serial++
+	sample_id = "S-[GLOB.stationtrauma_research_serial]"
 	collected_by = user.real_name
 	name = "экспедиционная проба [sample_id]"
 	update_appearance()

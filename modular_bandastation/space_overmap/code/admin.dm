@@ -1,23 +1,33 @@
 ADMIN_VERB(stationtrauma_overmap_jump, R_DEBUG, "Overmap - Переместить корабль к объекту", "Переместить корабль к координатам объекта без стыковки.", ADMIN_CATEGORY_DEBUG)
+	// Dialogs sleep, so only IDs survive them; the ship and site are looked up again after each one.
 	var/list/ships = list()
 	for(var/sector_id in SSstationtrauma_space_voyage.sectors)
-		var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors[sector_id]
-		for(var/id in sector.ships)
-			var/datum/stationtrauma_overmap/space/navigation = sector.ships[id]
-			ships["[navigation.vessel.name] ([id], [sector.name])"] = navigation
+		var/datum/stationtrauma_overmap_sector/space/listed_sector = SSstationtrauma_space_voyage.sectors[sector_id]
+		for(var/id in listed_sector.ships)
+			var/datum/stationtrauma_overmap/space/listed = listed_sector.ships[id]
+			ships["[listed.vessel.name] ([id], [listed_sector.name])"] = list(sector_id, id)
 	var/ship_choice = tgui_input_list(user, "Корабль", "Перемещение на овермапе", ships)
-	var/datum/stationtrauma_overmap/space/navigation = ships[ship_choice]
-	var/datum/stationtrauma_overmap_sector/space/sector = navigation?.sector
-	if(!check_rights_for(user, R_DEBUG) || QDELETED(sector) || QDELETED(navigation) || sector.ships[navigation.vessel.shuttle_id] != navigation)
+	if(!ship_choice || !check_rights_for(user, R_DEBUG))
+		return
+	var/list/ship_ids = ships[ship_choice]
+	var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors[ship_ids[1]]
+	var/datum/stationtrauma_overmap/space/navigation = sector ? sector.ships[ship_ids[2]] : null
+	if(QDELETED(navigation))
 		return
 	var/list/destinations = list()
 	for(var/id in navigation.sites)
-		var/datum/stationtrauma_overmap_site/space/site = navigation.sites[id]
-		if((site.berth || site.awaits_map()) && !site.failed)
-			destinations["[site.name] ([id])"] = site
+		var/datum/stationtrauma_overmap_site/space/listed_site = navigation.sites[id]
+		if((listed_site.berth || listed_site.awaits_map()) && !listed_site.failed)
+			destinations["[listed_site.name] ([id])"] = id
+	sector = null
+	navigation = null
 	var/choice = tgui_input_list(user, "Объект", "Перемещение на овермапе", destinations)
-	var/datum/stationtrauma_overmap_site/space/site = destinations[choice]
-	if(!check_rights_for(user, R_DEBUG) || QDELETED(navigation) || QDELETED(sector) || navigation.sector != sector || QDELETED(site) || navigation.sites[site.id] != site)
+	if(!choice || !check_rights_for(user, R_DEBUG))
+		return
+	sector = SSstationtrauma_space_voyage.sectors[ship_ids[1]]
+	navigation = sector ? sector.ships[ship_ids[2]] : null
+	var/datum/stationtrauma_overmap_site/space/site = navigation ? navigation.sites[destinations[choice]] : null
+	if(QDELETED(navigation) || QDELETED(site))
 		return
 	if(navigation.preparing || navigation.relocating || navigation.planning || navigation.arrival_pending)
 		to_chat(user, span_warning("Дождись завершения текущего манёвра."), confidential = TRUE)

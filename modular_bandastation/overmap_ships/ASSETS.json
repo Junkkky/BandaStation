@@ -55,7 +55,7 @@
 		},
 		{
 			"path": "_maps/map_files/overmap_ships/venture.dmm",
-			"sha256": "efacd16cb3a1cee0465f69a0f01738653c79bc760574d553f33d76bd9421f62a",
+			"sha256": "9807b4a2e2986fabd42349a7a1119596bcbc417fab171f54a714b6ccd453e622",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -87,7 +87,7 @@
 		},
 		{
 			"path": "_maps/map_files/overmap_ships/glimpse.dmm",
-			"sha256": "3e3ed64876ae4d33118a9923a18257931a5b44de67d27a5d399510fab49dfb20",
+			"sha256": "f8e458b19aecb47b026f3a4818da1d1fd442065b440df9fbfee29553e947ad1d",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -103,7 +103,7 @@
 		},
 		{
 			"path": "_maps/map_files/overmap_ships/kilo.dmm",
-			"sha256": "5bbbff1aa186f4c87675877d62e3b472fedc42f61e302c87846cdac88cf3a289",
+			"sha256": "94bac0c1fa2bd7ea37b6d69bc25b714e63f7a178f1012f41b5e1fd73feb7e516",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {

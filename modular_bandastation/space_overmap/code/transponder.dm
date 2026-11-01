@@ -88,7 +88,7 @@
 	. = ..()
 	if(.)
 		return
-	if(action != "toggle" || !can_interact(usr) || (machine_stat & (NOPOWER|BROKEN)))
+	if(action != "toggle" || !can_interact(ui.user) || (machine_stat & (NOPOWER|BROKEN)))
 		return FALSE
 	enabled = !enabled
 	return TRUE

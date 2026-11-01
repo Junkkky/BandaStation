@@ -1,9 +1,15 @@
 // Navigation distances are independent of turf coordinates.
+/// Hull turn rate, degrees per second.
 #define ST_NAV_TURN_RATE 15
+/// Extra clearance in sector units for approaching a destination or another hull.
 #define ST_NAV_APPROACH 40
+/// Active sonar pulse range in sector units.
 #define ST_NAV_ACTIVE_RANGE 1200
+/// Passive listening range for the loudest sources, in sector units.
 #define ST_NAV_PASSIVE_RANGE 700
+/// Cooldown between active sonar pulses.
 #define ST_NAV_PING_INTERVAL (3 SECONDS)
+/// How long a ship observation stays on the chart.
 #define ST_NAV_SHIP_MEMORY (1 MINUTES)
 
 /** First swept point-circle contact, or null for a clear path. */
@@ -200,7 +206,7 @@
 	speed = sqrt(velocity_x ** 2 + velocity_y ** 2)
 	var/fraction = 1
 	var/datum/stationtrauma_overmap_terrain/obstacle
-	for(var/datum/stationtrauma_overmap_terrain/terrain in contacts)
+	for(var/datum/stationtrauma_overmap_terrain/terrain as anything in contacts)
 		if(!terrain.blocking)
 			continue
 		var/hit = stationtrauma_terrain_hit(pos_x, pos_y, dx, dy, terrain.pos_x, terrain.pos_y, terrain.end_x, terrain.end_y, radius)
@@ -218,10 +224,10 @@
 		stop("Столкновение: [obstacle.name]")
 		on_collision(obstacle, impact_speed)
 	else
-		if(site && speed <= 0.05 && (!braking || autopilot) && prepared_site == site && !preparing && distance_to(site) <= radius + site.radius + 2)
+		if(site && speed <= ST_NAV_STOPPED_SPEED && (!braking || autopilot) && prepared_site == site && !preparing && in_arrival_range(site))
 			arrival_pending = TRUE
 			INVOKE_ASYNC(src, PROC_REF(arrive), site)
-		else if(braking && !autopilot && speed <= 0.05)
+		else if(braking && !autopilot && speed <= ST_NAV_STOPPED_SPEED)
 			stop("Движение остановлено")
 		else
 			status = braking ? "Торможение" : "В пути"
@@ -270,7 +276,7 @@
 
 /** Recheck after any yielded preparation; a stop invalidates pending arrival. */
 /datum/stationtrauma_overmap/proc/can_arrive(datum/stationtrauma_overmap_site/site)
-	return knows_site(site) && is_operational() && helm_engaged && arrival_pending && (!braking || autopilot) && speed <= 0.05 && !preparing && prepared_site == site && sites[selected_destination] == site && distance_to(site) <= radius + site.radius + 2
+	return knows_site(site) && is_operational() && helm_engaged && arrival_pending && (!braking || autopilot) && speed <= ST_NAV_STOPPED_SPEED && !preparing && prepared_site == site && sites[selected_destination] == site && in_arrival_range(site)
 
 /** Environment adapters must validate and activate their physical connection before calling the parent. */
 /datum/stationtrauma_overmap/proc/arrive(datum/stationtrauma_overmap_site/site)
@@ -285,6 +291,10 @@
 /** Distance to a virtual destination. */
 /datum/stationtrauma_overmap/proc/distance_to(datum/stationtrauma_overmap_site/site)
 	return sqrt((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2)
+
+/** Whether the hull is close enough to enter a prepared destination. */
+/datum/stationtrauma_overmap/proc/in_arrival_range(datum/stationtrauma_overmap_site/site)
+	return distance_to(site) <= radius + site.radius + 2
 
 /** Whether the owning vessel can still be processed. */
 /datum/stationtrauma_overmap/proc/is_operational()

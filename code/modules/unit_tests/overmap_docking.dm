@@ -2,6 +2,7 @@
 /obj/docking_port/mobile/stationtrauma_space/unit_test_docking
 	width = 2
 	height = 3
+	/// One-shot callback run inside the real native preflight, after its yield.
 	var/datum/callback/preflight_action
 
 /obj/docking_port/mobile/stationtrauma_space/unit_test_docking/preflight_check(list/old_turfs, list/new_turfs, list/areas_to_move, list/underlying_areas, rotation)
@@ -21,21 +22,34 @@
 /area/space/stationtrauma_space_home/unit_test_docking
 	area_flags_mapping = NONE
 
+/// Hull area of the fixture shuttle.
 /area/shuttle/stationtrauma_space/unit_test_docking
 	area_flags_mapping = NONE
 
+/// Shared fixture: a two-by-three shuttle with a real engine, a station bay and a docking site in reserved space.
 /datum/unit_test/overmap_docking
 	abstract_type = /datum/unit_test/overmap_docking
+	/// Reserved space holding the fixture; released in Destroy().
 	var/datum/turf_reservation/space
+	/// The fixture shuttle.
 	var/obj/docking_port/mobile/stationtrauma_space/unit_test_docking/ship
+	/// Shared station bay the ship docks at.
 	var/obj/docking_port/stationary/stationtrauma_space_station/bay
+	/// Native evacuation home port on the same turf as the bay.
 	var/obj/docking_port/stationary/home
+	/// Overmap navigation of the fixture ship; its processing is stopped for determinism.
 	var/datum/stationtrauma_overmap/space/navigation
+	/// Docking site backed by the bay.
 	var/datum/stationtrauma_overmap_site/space/site
+	/// Flight-level exterior area covering the reservation.
 	var/area/space/stationtrauma_space_home/exterior
+	/// Area of the fixture hull tiles.
 	var/area/shuttle/stationtrauma_space/hull_area
+	/// Native stationary port ID counters, restored after the test.
 	var/list/stationary_ids
+	/// Native mobile port ID counters, restored after the test.
 	var/list/mobile_ids
+	/// Reserved turf -> its area before the fixture took it over.
 	var/list/original_areas = list()
 
 /datum/unit_test/overmap_docking/New()
@@ -109,8 +123,11 @@
 	space = null
 	return ..()
 
+/// An emergency engine stop during native relocation keeps the committed arrival and blocks racing helm orders.
 /datum/unit_test/overmap_docking/engine_stop
+	/// Set once the stop ran inside preflight.
 	var/interrupted = FALSE
+	/// Helm revision right after the stop; arrival must not advance it.
 	var/revision_after_stop
 
 /datum/unit_test/overmap_docking/engine_stop/Run()
@@ -130,6 +147,7 @@
 	TEST_ASSERT_NULL(navigation.docked, "Departure must clear the virtual dock")
 	TEST_ASSERT_NULL(site.docking_owner, "Departure must release site ownership")
 
+/** Stop the engines and try racing orders while native relocation is suspended. */
 /datum/unit_test/overmap_docking/engine_stop/proc/stop_during_preflight()
 	TEST_ASSERT(navigation.relocating && navigation.preparing, "The callback must run within native docking")
 	interrupted = TRUE
@@ -139,7 +157,9 @@
 	TEST_ASSERT(!navigation.sail(), "Departure cannot race an unfinished native relocation")
 	TEST_ASSERT(!navigation.select_site("missing"), "Selection cannot change during native relocation")
 
+/// A berth occupied during the yielding preflight rejects the arrival without moving the occupant.
 /datum/unit_test/overmap_docking/blocked_preflight
+	/// Item dropped on the bay during preflight.
 	var/obj/item/blocker
 
 /datum/unit_test/overmap_docking/blocked_preflight/Run()
@@ -152,9 +172,11 @@
 	TEST_ASSERT_NULL(site.docking_owner, "Rejected arrival must release its reservation")
 	TEST_ASSERT_EQUAL(get_turf(blocker), get_turf(bay), "The late blocker must not be moved or crushed")
 
+/** Occupy the bay while native preflight is suspended. */
 /datum/unit_test/overmap_docking/blocked_preflight/proc/block_during_preflight()
 	blocker = allocate(/obj/item, get_turf(bay))
 
+/// Evacuation frees the shared bay even when the old flight footprint is occupied, harming nobody left outside.
 /datum/unit_test/overmap_docking/evacuation
 
 /datum/unit_test/overmap_docking/evacuation/Run()
@@ -183,6 +205,9 @@
 	SSshuttle.emergency.clear_stationtrauma_bay(home)
 	TEST_ASSERT_EQUAL(world.maxz, old_maxz, "Repeated evacuation attempts must not allocate new space")
 
+/// With every flight berth blocked, evacuation keeps the hull at the bay and moves nothing.
+/datum/unit_test/overmap_docking/no_safe_berth
+
 /datum/unit_test/overmap_docking/no_safe_berth/Run()
 	TEST_ASSERT(navigation.dock(), "The expedition ship must first dock at the shared bay")
 	var/turf/original_position = get_turf(navigation.flight_berth)
@@ -203,8 +228,11 @@
 	for(var/obj/item/blocker as anything in blockers)
 		TEST_ASSERT(!QDELETED(blocker) && get_turf(blocker) == blockers[blocker], "Searching for a berth must preserve every blocking object")
 
+/// A service departure whose new berth is occupied during preflight keeps the hull and its dock state.
 /datum/unit_test/overmap_docking/service_preflight_blocked
+	/// Item dropped on the alternative berth during preflight.
 	var/obj/item/late_blocker
+	/// Alternative berth found by the service departure.
 	var/turf/rejected_position
 
 /datum/unit_test/overmap_docking/service_preflight_blocked/Run()
@@ -224,6 +252,7 @@
 	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "A failed service departure must retain ownership")
 	TEST_ASSERT(!QDELETED(late_blocker) && get_turf(late_blocker) == rejected_position, "Late occupants must not be crushed or moved")
 
+/** Occupy the alternative berth and retry evacuation while the service departure is suspended. */
 /datum/unit_test/overmap_docking/service_preflight_blocked/proc/block_service_departure()
 	TEST_ASSERT(navigation.relocating && navigation.preparing, "The callback must run during the service departure")
 	rejected_position = get_turf(navigation.flight_berth)
@@ -233,7 +262,9 @@
 
 /// A service departure must leave the ship able to visit a virtual site through a real map seam.
 /datum/unit_test/overmap_docking/evacuation_then_virtual_dock
+	/// Borrowed turf -> list(type, baseturfs, area, turf_flags, destination x/y/z) to restore.
 	var/list/borrowed_turfs = list()
+	/// Berth of the virtual site on another level.
 	var/obj/docking_port/stationary/virtual_berth
 
 /datum/unit_test/overmap_docking/evacuation_then_virtual_dock/Destroy()
@@ -255,6 +286,7 @@
 	borrowed_turfs.Cut()
 	return ..()
 
+/** Record a turf for restoration and turn it into plain space, optionally inside the flight exterior. */
 /datum/unit_test/overmap_docking/evacuation_then_virtual_dock/proc/borrow_space(turf/tile, add_to_exterior = FALSE)
 	var/turf/open/open_tile = isopenturf(tile) ? tile : null
 	if(!borrowed_turfs[tile])

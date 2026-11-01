@@ -13,7 +13,7 @@
 	autopilot = FALSE
 	autopilot_path = null
 	throttle = 0
-	if(speed <= 0.05)
+	if(speed <= ST_NAV_STOPPED_SPEED)
 		stop()
 		return
 	braking = TRUE

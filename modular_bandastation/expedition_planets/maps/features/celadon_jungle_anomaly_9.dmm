@@ -12,14 +12,10 @@
 /turf/open/water/jungle,
 /area/expedition_planet/barren)
 "j" = (
-/obj/effect/decal/remains/human,
 /turf/open/water/jungle,
 /area/expedition_planet/barren)
 "k" = (
 /obj/effect/mob_spawn/corpse/human/monkey,
-/turf/open/water/jungle,
-/area/expedition_planet/barren)
-"m" = (
 /turf/open/water/jungle,
 /area/expedition_planet/barren)
 "p" = (
@@ -57,32 +53,31 @@
 /turf/open/misc/beach/sand,
 /area/expedition_planet/barren)
 "T" = (
-/obj/effect/decal/remains/human,
 /obj/effect/gibspawner/human/bodypartless,
 /obj/structure/flora/bush/generic,
 /turf/open/water/jungle,
 /area/expedition_planet/barren)
 
 (1,1,1) = {"
-m
+j
 h
-m
+j
 x
 P
 a
 a
 "}
 (2,1,1) = {"
-m
+j
 g
-m
+j
 x
 P
 x
 a
 "}
 (3,1,1) = {"
-m
+j
 h
 j
 j
@@ -104,7 +99,7 @@ L
 x
 I
 k
-m
+j
 j
 x
 "}
@@ -114,7 +109,7 @@ L
 x
 x
 T
-m
+j
 x
 "}
 (7,1,1) = {"
@@ -123,6 +118,6 @@ a
 a
 x
 P
-m
-m
+j
+j
 "}

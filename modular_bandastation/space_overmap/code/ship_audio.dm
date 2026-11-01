@@ -77,7 +77,7 @@
 		throttle = 0
 		braking = FALSE
 		maneuver_direction = NONE
-		helm_engaged = speed > 0.05
+		helm_engaged = speed > ST_NAV_STOPPED_SPEED
 	refresh_engine_audio()
 	return TRUE
 
@@ -89,7 +89,7 @@
 	if(!vessel.engines_running || (engine_fraction() <= 0 && chamber?.phase != SHIP_CHAMBER_STARTING))
 		engine_audio.stop()
 		return
-	var/new_volume = docked || speed <= 0.05 ? 10 : 25
+	var/new_volume = docked || speed <= ST_NAV_STOPPED_SPEED ? 10 : 25
 	if(engine_audio.volume != new_volume)
 		engine_audio.volume = new_volume
 		if(engine_audio.native_repeat_active)

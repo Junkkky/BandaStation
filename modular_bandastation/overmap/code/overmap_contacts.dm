@@ -19,6 +19,10 @@
 	/// Failed partial native loads must not allocate another copy on a repeated click.
 	var/failed = FALSE
 
+/datum/stationtrauma_overmap_site/Destroy()
+	berth = null
+	return ..()
+
 /** Ship-local shared snapshots follow Voidcrew's ship_sensors.dm without scanning physical maps. */
 /datum/stationtrauma_overmap_contact
 	/// Crew-facing name of the destination or sensed source.
@@ -141,7 +145,12 @@
 	var/list/previous = ship_observations[id]
 	if(previous && world.time - previous["seen"] >= ST_NAV_SHIP_MEMORY)
 		previous = null
-	var/number = previous ? previous["id"] : ++next_contact_number
+	var/number
+	if(previous)
+		number = previous["id"]
+	else
+		next_contact_number++
+		number = next_contact_number
 	var/list/observation = list("id" = number, "x" = other.pos_x, "y" = other.pos_y, "seen" = world.time, "mode" = mode)
 	if(previous)
 		var/seconds = (world.time - previous["seen"]) / (1 SECONDS)

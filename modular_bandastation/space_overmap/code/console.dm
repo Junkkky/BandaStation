@@ -69,7 +69,7 @@
 		"landing" = target?.landing, "distance" = distance,
 		"eta" = target && map.get_target_speed() > 0 ? max(0, distance - map.radius - target.radius) / map.get_target_speed() : null,
 		"scan_ready" = !map.preparing && !map.relocating && map.is_operational() && world.time >= map.next_scan && !panel_open && !(machine_stat & (NOPOWER|BROKEN)),
-		"can_dock" = !map.preparing && !map.docked && !map.helm_engaged && map.speed <= 0.05 && map.can_dock(target, map.control_revision),
+		"can_dock" = !map.preparing && !map.docked && !map.helm_engaged && map.speed <= ST_NAV_STOPPED_SPEED && map.can_dock(target, map.control_revision),
 		"routes" = map.known_sites(), "path" = map.autopilot_path,
 		"zones" = map.encounter_data(), "terrain" = map.terrain_data(),
 		"ship_contacts" = map.ship_echo_data(),

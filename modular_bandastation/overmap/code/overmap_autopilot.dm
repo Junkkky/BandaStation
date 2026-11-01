@@ -4,13 +4,16 @@
  * Keep bounded eight-way A*, bucket frontier, retained paths and final clearance checks;
  * use metre coordinates and hull clearance instead of the wrapping space grid and legal zones.
  */
+/// Autopilot search grid cell, in sector units.
 #define ST_NAV_GRID 160
+/// Clearance added to the hull radius when checking path legs against terrain.
 #define ST_NAV_PATH_MARGIN 25
+/// Upper bound on A* node expansions per course search.
 #define ST_NAV_MAX_EXPANSIONS 2000
 
 /** The same terrain geometry gates both planning and actual movement. */
 /datum/stationtrauma_overmap/proc/path_clear(ax, ay, bx, by)
-	for(var/datum/stationtrauma_overmap_terrain/terrain in contacts)
+	for(var/datum/stationtrauma_overmap_terrain/terrain as anything in contacts)
 		if(!terrain.blocking)
 			continue
 		if(!isnull(stationtrauma_terrain_hit(ax, ay, bx - ax, by - ay, terrain.pos_x, terrain.pos_y, terrain.end_x, terrain.end_y, radius + ST_NAV_PATH_MARGIN)))
@@ -136,7 +139,7 @@
 		return FALSE
 	autopilot_path = path
 	autopilot = TRUE
-	braking = speed > 0.05
+	braking = speed > ST_NAV_STOPPED_SPEED
 	return sail()
 
 /** Manual steering always takes control back from the autopilot. */
@@ -150,11 +153,11 @@
 /datum/stationtrauma_overmap/proc/steer_autopilot()
 	if(!length(autopilot_path))
 		return
-	if(braking && speed > 0.05)
+	if(braking && speed > ST_NAV_STOPPED_SPEED)
 		return
 	braking = FALSE
 	var/list/node = autopilot_path[1]
-	if((node[1] - pos_x) ** 2 + (node[2] - pos_y) ** 2 <= 20 ** 2 && length(autopilot_path) > 1 && speed <= 0.05)
+	if((node[1] - pos_x) ** 2 + (node[2] - pos_y) ** 2 <= 20 ** 2 && length(autopilot_path) > 1 && speed <= ST_NAV_STOPPED_SPEED)
 		autopilot_path.Cut(1, 2)
 		node = autopilot_path[1]
 	if(!path_clear(pos_x, pos_y, node[1], node[2]))
@@ -162,5 +165,5 @@
 		status = "Автопилот: путь перекрыт, торможение"
 		return
 	ordered_course = delta_to_angle(node[1] - pos_x, node[2] - pos_y)
-	if(abs(WRAP(ordered_course - course + 180, 0, 360) - 180) > 5 && speed > 0.05)
+	if(abs(WRAP(ordered_course - course + 180, 0, 360) - 180) > 5 && speed > ST_NAV_STOPPED_SPEED)
 		braking = TRUE

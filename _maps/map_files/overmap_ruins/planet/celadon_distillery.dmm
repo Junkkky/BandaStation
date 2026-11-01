@@ -1037,7 +1037,7 @@
 	dir = 4;
 	id = "exp_celadon_distillery_pod_aft"
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_distillery/ruin/rockplanet/distillery/shuttle)
 "ny" = (
 /obj/structure/chair/sofa/corp/left{
@@ -3272,7 +3272,7 @@
 	id = "exp_celadon_distillery_pod_fore"
 	},
 /obj/structure/cable,
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_distillery/ruin/rockplanet/distillery/shuttle)
 "RH" = (
 /obj/structure/window/reinforced/spawner/directional/west,

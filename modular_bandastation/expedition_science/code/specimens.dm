@@ -26,7 +26,8 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 	var/surveyed = FALSE
 
 /datum/stationtrauma_research_record/New(obj/structure/stationtrauma_research_source/source)
-	id = "F-[++GLOB.stationtrauma_research_serial]"
+	GLOB.stationtrauma_research_serial++
+	id = "F-[GLOB.stationtrauma_research_serial]"
 	source_name = source.name
 	field_notes = source.field_notes
 	laboratory_notes = source.laboratory_notes

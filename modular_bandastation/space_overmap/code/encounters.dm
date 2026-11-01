@@ -93,7 +93,7 @@
 /** Serialize nearby blocking terrain within the active sensor range. */
 /datum/stationtrauma_overmap/space/proc/terrain_data()
 	var/list/chart = list()
-	for(var/datum/stationtrauma_overmap_terrain/terrain in contacts)
+	for(var/datum/stationtrauma_overmap_terrain/terrain as anything in contacts)
 		var/list/point = terrain.nearest(pos_x, pos_y)
 		if(terrain.blocking && (point[1] - pos_x) ** 2 + (point[2] - pos_y) ** 2 <= sensor_range ** 2)
 			chart += list(list("x" = terrain.pos_x, "y" = terrain.pos_y, "end_x" = terrain.end_x, "end_y" = terrain.end_y))

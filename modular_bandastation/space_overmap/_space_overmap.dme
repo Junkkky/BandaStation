@@ -3,7 +3,7 @@
 #include "code/docking_port.dm"
 #include "code/map_loading.dm"
 #include "code/site.dm"
-#include "code/equipment.dm"
+#include "code/voyage_equipment.dm"
 #include "code/station.dm"
 #include "code/terminals.dm"
 #include "code/transponder.dm"

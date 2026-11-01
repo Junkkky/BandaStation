@@ -50,7 +50,7 @@
 /obj/machinery/iv_drip,
 /obj/item/reagent_containers/blood/o_minus,
 /obj/item/reagent_containers/blood/o_minus,
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/cargo/port)
 "aO" = (
 /obj/effect/turf_decal/stripes/line,
@@ -160,7 +160,7 @@
 	dir = 10;
 	id = "exp_celadon_venture_venture_belt"
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/cargo/port)
 "dD" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -204,7 +204,7 @@
 /obj/machinery/power/shieldwallgen{
 	anchored = 1
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/bridge)
 "eX" = (
 /obj/structure/cable,
@@ -453,7 +453,7 @@
 	anchored = 1
 	},
 /obj/machinery/light/directional/west,
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "jm" = (
 /obj/effect/turf_decal/trimline/yellow/line{
@@ -474,7 +474,7 @@
 /obj/item/stack/sheet/glass{
 	amount = 20
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/cargo/port)
 "jq" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
@@ -511,7 +511,7 @@
 	dir = 4;
 	id = "exp_celadon_venture_venture_eng"
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "le" = (
 /obj/effect/turf_decal/tile/yellow/half,
@@ -560,7 +560,7 @@
 	dir = 4;
 	id = "exp_celadon_venture_venture_front"
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/bridge)
 "ou" = (
 /obj/structure/cable,
@@ -699,7 +699,7 @@
 	dir = 5;
 	id = "exp_celadon_venture_venture_belt"
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/cargo/port)
 "tF" = (
 /obj/structure/cable,
@@ -767,14 +767,14 @@
 	},
 /obj/structure/lattice/catwalk,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "vW" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/components/tank/air,
 /obj/machinery/light/directional/north,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "ww" = (
 /obj/structure/cable,
@@ -827,7 +827,7 @@
 /obj/structure/lattice/catwalk,
 /obj/machinery/power/smes/engineering,
 /obj/machinery/light/directional/south,
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "xf" = (
 /obj/item/stack/sheet/mineral/uranium{
@@ -840,7 +840,7 @@
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 5
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/cargo/port)
 "yb" = (
 /obj/effect/turf_decal/siding/yellow/corner,
@@ -881,7 +881,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "zL" = (
 /obj/effect/turf_decal/stripes/line,
@@ -1009,7 +1009,7 @@
 	id = "exp_celadon_venture_venture_eng";
 	name = "Engine Shutters"
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "FN" = (
 /obj/effect/turf_decal/tile/dark_blue/anticorner{
@@ -1138,7 +1138,7 @@
 /obj/structure/lattice/catwalk,
 /obj/machinery/portable_atmospherics/pump,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "JP" = (
 /obj/structure/cable,
@@ -1154,7 +1154,7 @@
 	dir = 4;
 	id = "exp_celadon_venture_venture_eng"
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "JR" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -1184,7 +1184,7 @@
 	dir = 4;
 	id = "exp_celadon_venture_venture_eng"
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "LC" = (
 /obj/structure/cable,
@@ -1212,7 +1212,7 @@
 /obj/structure/lattice/catwalk,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "Mj" = (
 /obj/structure/cable,
@@ -1228,7 +1228,7 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "My" = (
 /obj/structure/sign/nanotrasen,
@@ -1251,7 +1251,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 10
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/engineering)
 "Na" = (
 /turf/closed/wall/mineral/titanium,
@@ -1301,7 +1301,7 @@
 	dir = 4;
 	id = "exp_celadon_venture_venture_belt"
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/cargo/port)
 "NY" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -1336,7 +1336,7 @@
 	id = "exp_celadon_venture_venture_belt"
 	},
 /obj/effect/decal/cleanable/blood/oil/slippery,
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/cargo/port)
 "Ol" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -1536,7 +1536,7 @@
 	dir = 4;
 	id = "exp_celadon_venture_venture_belt"
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/cargo/port)
 "RP" = (
 /obj/structure/cable,
@@ -1847,7 +1847,7 @@
 	dir = 6;
 	id = "exp_celadon_venture_venture_belt"
 	},
-/turf/open/floor/engine/hull/reinforced,
+/turf/open/floor/engine/hull/reinforced/air,
 /area/shuttle/stationtrauma_space/venture/cargo/port)
 "Zd" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{

@@ -36,11 +36,9 @@ SUBSYSTEM_DEF(stationtrauma_space_voyage)
 	var/list/vessels = list()
 	var/list/config = SSmapping.current_map.space_overmap
 	if(config)
-		var/obj/docking_port/stationary/stationtrauma_space_station/port
-		try
-			port = prepare_station(config)
-		catch(var/exception/failure)
-			log_mapping("Overmap station preparation failed: [failure] at [failure.file]:[failure.line]")
+		// prepare_station() reports its own runtime with the call stack and returns null.
+		var/obj/docking_port/stationary/stationtrauma_space_station/port = prepare_station(config)
+		if(!port)
 			return SS_INIT_FAILURE
 		// Atom initialization needs its native cleanup even when one mapped atom fails.
 		for(var/list/ship_config as anything in config["ships"])
@@ -59,7 +57,8 @@ SUBSYSTEM_DEF(stationtrauma_space_voyage)
 			if(ship_config["starts_docked"])
 				ship.starting_dock = port.site_id
 				ship.overmap_x = 1000
-	// Only startup scans mapped hulls; navigation processing uses the sector registry.
+	// Only startup scans the world: mapped hulls join SSshuttle.mobile_docking_ports in register(), which runs here.
+	// Navigation processing uses the sector registry.
 	for(var/obj/docking_port/mobile/stationtrauma_space/vessel in world)
 		if(!vessel.registered)
 			vessel.register()
@@ -77,15 +76,13 @@ SUBSYSTEM_DEF(stationtrauma_space_voyage)
 	if(!load_sectors())
 		log_mapping("Failed to load sector destinations")
 		return SS_INIT_FAILURE
-	try
-		for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in vessels)
-			var/datum/stationtrauma_overmap_sector/space/sector = sectors[vessel.overmap_sector]
-			if(!sector?.ready)
-				CRASH("Unknown or unavailable sector [vessel.overmap_sector]")
-			if(!sector.attach(vessel))
-				CRASH("Failed to register sector ship [vessel.shuttle_id]")
-	catch(var/exception/failure)
-		stack_trace("Space sector initialization failed: [failure] at [failure.file]:[failure.line]")
-		return SS_INIT_FAILURE
+	for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in vessels)
+		var/datum/stationtrauma_overmap_sector/space/sector = sectors[vessel.overmap_sector]
+		if(!sector?.ready)
+			stack_trace("Unknown or unavailable sector [vessel.overmap_sector]")
+			return SS_INIT_FAILURE
+		if(!sector.attach(vessel))
+			stack_trace("Failed to register sector ship [vessel.shuttle_id]")
+			return SS_INIT_FAILURE
 	log_mapping("Space sectors ready: [length(sectors)] sectors, [length(vessels)] ships")
 	return SS_INIT_SUCCESS

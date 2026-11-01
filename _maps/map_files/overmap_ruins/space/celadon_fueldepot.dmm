@@ -166,10 +166,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_fueldepot/ruin/unpowered)
-"ik" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/space/basic,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_fueldepot/ruin/unpowered)
 "ip" = (
 /obj/structure/frame/machine,
 /obj/effect/decal/cleanable/dirt,
@@ -243,11 +239,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_fueldepot/ruin/unpowered)
-"kR" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/space/basic,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_fueldepot/ruin/unpowered)
 "kW" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1724,7 +1715,7 @@ ZO
 ZO
 ZO
 Xj
-kR
+ed
 ZO
 ZO
 ZO
@@ -2919,7 +2910,7 @@ Pb
 ZO
 ZO
 ZO
-ik
+ed
 ZO
 ZO
 Lw

@@ -228,6 +228,7 @@
 /obj/effect/spawner/random/expedition_arid
 	name = "arid pool spawner"
 
+/// Ash mushrooms around a pool.
 /obj/effect/spawner/random/expedition_arid/shroom
 	spawn_loot_chance = 20
 	loot = list(
@@ -236,6 +237,7 @@
 		/obj/structure/flora/ash/stem_shroom,
 	)
 
+/// Rocks and rock piles around a pool.
 /obj/effect/spawner/random/expedition_arid/rock
 	spawn_loot_chance = 70
 	loot = list(
@@ -243,10 +245,12 @@
 		/obj/structure/flora/rock/pile/style_random,
 	)
 
+/// Cacti around a pool.
 /obj/effect/spawner/random/expedition_arid/cactus
 	spawn_loot_chance = 50
 	loot = list(/obj/structure/flora/ash/cacti)
 
+/// Goldgrubs or a basilisk by a pool.
 /obj/effect/spawner/random/expedition_arid/fauna
 	spawn_loot_chance = 40
 	loot = list(

@@ -274,7 +274,7 @@
 /** Build inactive seams cooperatively and revalidate stop/selection before publishing them. */
 /datum/stationtrauma_overmap/space/proc/dock()
 	var/datum/stationtrauma_overmap_site/space/site = sites[selected_destination]
-	if(preparing || docked || helm_engaged || speed > 0.05 || !can_dock(site, control_revision))
+	if(preparing || docked || helm_engaged || speed > ST_NAV_STOPPED_SPEED || !can_dock(site, control_revision))
 		return FALSE
 	// Reserve before native movement or seam construction can yield to another ship.
 	site.docking_owner = src
@@ -318,7 +318,7 @@
 	return TRUE
 
 /datum/stationtrauma_overmap/space/update_parallax()
-	var/direction = speed > 0.05 || approach_started || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
+	var/direction = speed > ST_NAV_STOPPED_SPEED || approach_started || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
 	var/background = parallax_background()
 	var/motion_changed = direction != parallax_direction
 	if(!motion_changed && background == space_background)

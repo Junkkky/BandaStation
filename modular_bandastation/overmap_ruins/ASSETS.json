@@ -584,7 +584,7 @@
 		},
 		{
 			"path": "_maps/map_files/overmap_ruins/space/celadon_fueldepot.dmm",
-			"sha256": "9562dc8bc319b75c45c04cb980b7c07c39814fcef2a49cc3cc0f0293c3f1c825",
+			"sha256": "3ba161d8c9577bf2304ce8ba973d82f3485e52b33d9b0fe217920bbb181cc0c4",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -1032,7 +1032,7 @@
 		},
 		{
 			"path": "_maps/map_files/overmap_ruins/planet/celadon_distillery.dmm",
-			"sha256": "f1354557274aae3f62a914bc3c6c1231a4decde67db55b0a6b7218692917dad2",
+			"sha256": "83790dd3e3486a5bb39e90f06bf59eea5a6aacdd6acd40de26933ec68b4f4c5f",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {

@@ -37,17 +37,23 @@
 	var/datum/stationtrauma_overmap_site/space/site = dispatch_site()
 	if(QDELETED(site) || site.berth?.z != z)
 		return
+	// The dialog sleeps, so only IDs survive it; the ship and berth are resolved again afterwards.
+	var/requested_site_id = site.id
 	var/list/choices = list()
 	for(var/id in sector.ships)
-		var/datum/stationtrauma_overmap/space/map = sector.ships[id]
-		if(map.vessel.dispatchable)
-			choices["Борт [length(choices) + 1]: [map.vessel.name]"] = map
+		var/datum/stationtrauma_overmap/space/listed = sector.ships[id]
+		if(listed.vessel.dispatchable)
+			choices["Борт [length(choices) + 1]: [listed.vessel.name]"] = id
 	if(!length(choices))
 		to_chat(user, span_notice("В системе нет кораблей, доступных для вызова."))
 		return
-	var/choice = tgui_input_list(user, "Вызвать корабль к причалу", name, choices)
-	var/datum/stationtrauma_overmap/space/map = choices[choice]
-	if(QDELETED(src) || !can_interact(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)) || QDELETED(map) || map.sector != sector || dispatch_site() != site || site.berth?.z != z)
+	var/choice = tgui_input_list(user, "Вызвать корабль к причалу", name, choices, timeout = 30 SECONDS)
+	if(!choice || QDELETED(src) || !can_interact(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)))
+		return
+	sector = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
+	site = dispatch_site()
+	var/datum/stationtrauma_overmap/space/map = sector ? sector.ships[choices[choice]] : null
+	if(QDELETED(map) || QDELETED(site) || site.id != requested_site_id || site.berth?.z != z)
 		return
 	if(map.docked == site)
 		to_chat(user, span_notice("Корабль уже у причала."))
@@ -61,7 +67,7 @@
 /datum/stationtrauma_overmap/space/proc/can_dispatch(datum/stationtrauma_overmap_site/space/site)
 	// Station delivery is independent of the crew's main-engine switch.
 	return is_operational() && vessel.dispatchable && knows_site(site) && !site.failed && site.physical_docking && vessel.permits_docking(site) \
-		&& !preparing && !planning && !relocating && !arrival_pending && !docked && !ship_docking && !helm_engaged && speed <= 0.05 \
+		&& !preparing && !planning && !relocating && !arrival_pending && !docked && !ship_docking && !helm_engaged && speed <= ST_NAV_STOPPED_SPEED \
 		&& (!site.docking_owner || site.docking_owner == src) && !QDELETED(site.berth) && vessel.check_dock(site.berth, TRUE)
 
 /** Reserve a station berth and schedule delivery of a callable idle hull. */
@@ -140,6 +146,8 @@
 	var/datum/stationtrauma_overmap/space/map = navigation()
 	if(QDELETED(map))
 		return
+	// The dialog sleeps, so only the hull ID and helm revision survive it; the overmap is resolved again afterwards.
+	var/vessel_id = map.vessel.shuttle_id
 	var/revision = map.control_revision
 	var/list/choices = list()
 	if(map.jump_target)
@@ -147,8 +155,12 @@
 	else
 		for(var/list/route as anything in map.jump_data())
 			choices[route["name"]] = route["id"]
-	var/choice = tgui_input_list(user, "Система назначения", name, choices)
-	if(QDELETED(src) || !can_interact(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)) || QDELETED(map) || navigation() != map || revision != map.control_revision || !(choice in choices))
+	map = null
+	var/choice = tgui_input_list(user, "Система назначения", name, choices, timeout = 30 SECONDS)
+	if(QDELETED(src) || !can_interact(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)) || !(choice in choices))
+		return
+	map = navigation()
+	if(QDELETED(map) || map.vessel.shuttle_id != vessel_id || revision != map.control_revision)
 		return
 	if(choices[choice] == "cancel")
 		map.request_brake()

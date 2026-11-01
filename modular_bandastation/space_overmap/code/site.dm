@@ -19,6 +19,12 @@
 	/// Outer airlock of a loaded ruin that the docking pinpointer leads to beyond the seam; null without one.
 	var/turf/entrance
 
+/datum/stationtrauma_overmap_site/space/Destroy()
+	docking_owner = null
+	// The loader callback holds the owning sector, which deletes its sites.
+	map_loader = null
+	return ..()
+
 /** Whether docking may begin before the berth exists because the approach loads the destination. */
 /datum/stationtrauma_overmap_site/space/proc/awaits_map()
 	return !!map_loader
