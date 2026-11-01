@@ -203,7 +203,7 @@
 		return FALSE
 	level.space_parallax_background = parallax
 	var/right_edge = round((world.maxx - template.width) / 2) + template.width
-	site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(right_edge + 2, round(world.maxy / 2), level.z_value))
+	site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(right_edge + 1, round(world.maxy / 2), level.z_value))
 	qdel(template)
 	return TRUE
 // AI EDIT END

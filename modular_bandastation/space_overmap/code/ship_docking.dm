@@ -82,7 +82,112 @@
 	INVOKE_ASYNC(link, TYPE_PROC_REF(/datum/stationtrauma_ship_docking, connect))
 	return TRUE
 
-/** A pair owns one shared seam; each hull retains its independent physical level and contents. */
+/**
+ * Outer hatches of this hull: turf mapped to the cardinal direction of the open space it leads to.
+ *
+ * A hatch is an airlock against space, or an open hull tile against space just outside a door, such as cargo bay doors.
+ * Airlocks come first, so airlock pairings are tried before bay openings.
+ */
+/obj/docking_port/mobile/stationtrauma_space/proc/outer_hatches()
+	var/list/airlocks = list()
+	var/list/openings = list()
+	for(var/turf/tile as anything in return_turfs())
+		if(!shuttle_areas[get_area(tile)] || tile.density)
+			continue
+		for(var/direction in GLOB.cardinals)
+			var/turf/outside = get_step(tile, direction)
+			var/turf/inside = get_step(tile, REVERSE_DIR(direction))
+			if(!isspaceturf(outside) || shuttle_areas[get_area(outside)] || !inside || !shuttle_areas[get_area(inside)])
+				continue
+			if(locate(/obj/machinery/door/airlock) in tile)
+				airlocks[tile] = direction
+			else if(locate(/obj/machinery/door) in inside)
+				openings[tile] = direction
+			break
+	return airlocks + openings
+
+/** Offset from this port to a hull `tile` if the port faced `facing`, following native ordered-turf rotation. */
+/obj/docking_port/mobile/stationtrauma_space/proc/rotated_offset(turf/tile, facing)
+	var/list/current = stationtrauma_port_rotation(dir)
+	var/list/target = stationtrauma_port_rotation(facing)
+	var/relative_x = tile.x - x
+	var/relative_y = tile.y - y
+	var/component_x = relative_x * current[1] + relative_y * current[2]
+	var/component_y = relative_y * current[1] - relative_x * current[2]
+	return list(component_x * target[1] - component_y * target[2], component_y * target[1] + component_x * target[2])
+
+/** Native docking port cosine and sine for a cardinal direction. */
+/proc/stationtrauma_port_rotation(direction)
+	switch(direction)
+		if(WEST)
+			return list(0, 1)
+		if(SOUTH)
+			return list(-1, 0)
+		if(EAST)
+			return list(0, -1)
+	return list(1, 0)
+
+/**
+ * Create a berth on `host`'s level holding one outer hatch of this hull directly against one of the host's, or return null.
+ *
+ * The hull may rotate; every moving hull tile must land on the host's open exterior vacuum away from the level border.
+ * Both hulls are held by the pair while `budget` yields between candidate placements; relocation rechecks the berth.
+ */
+/datum/stationtrauma_overmap/space/proc/flush_berth(datum/stationtrauma_overmap/space/host, datum/stationtrauma_work_budget/budget)
+	if(QDELETED(host?.exterior))
+		return null
+	var/list/hull = vessel.return_ordered_turfs(vessel.x, vessel.y, vessel.z, vessel.dir)
+	var/list/guest_hatches = vessel.outer_hatches()
+	var/list/host_hatches = host.vessel.outer_hatches()
+	for(var/turf/host_hatch as anything in host_hatches)
+		var/host_out = host_hatches[host_hatch]
+		var/turf/meeting = get_step(host_hatch, host_out)
+		var/turf/beyond = get_step(meeting, host_out)
+		if(!beyond)
+			continue
+		for(var/turf/guest_hatch as anything in guest_hatches)
+			var/turf/guest_inside = get_step(guest_hatch, REVERSE_DIR(guest_hatches[guest_hatch]))
+			for(var/facing in GLOB.cardinals)
+				var/list/door_offset = vessel.rotated_offset(guest_hatch, facing)
+				var/list/inside_offset = vessel.rotated_offset(guest_inside, facing)
+				// The guest hatch takes the meeting tile and its own interior lies farther from the host.
+				if(inside_offset[1] - door_offset[1] != beyond.x - meeting.x || inside_offset[2] - door_offset[2] != beyond.y - meeting.y)
+					continue
+				var/turf/port_turf = locate(meeting.x - door_offset[1], meeting.y - door_offset[2], meeting.z)
+				if(!port_turf)
+					continue
+				budget.yield()
+				if(QDELETED(src) || QDELETED(host) || QDELETED(host.exterior))
+					return null
+				var/list/bounds = vessel.return_coords(port_turf.x, port_turf.y, facing)
+				if(min(bounds[1], bounds[3]) <= TRANSITIONEDGE + 1 || max(bounds[1], bounds[3]) >= world.maxx - TRANSITIONEDGE || min(bounds[2], bounds[4]) <= TRANSITIONEDGE + 1 || max(bounds[2], bounds[4]) >= world.maxy - TRANSITIONEDGE)
+					continue
+				var/list/landing = vessel.return_ordered_turfs(port_turf.x, port_turf.y, port_turf.z, facing)
+				if(length(landing) != length(hull))
+					continue
+				var/clear = TRUE
+				for(var/index in 1 to length(hull))
+					if(!vessel.shuttle_areas[get_area(hull[index])])
+						continue
+					var/turf/tile = landing[index]
+					if(!isspaceturf(tile) || get_area(tile) != host.exterior)
+						clear = FALSE
+						break
+				if(!clear)
+					continue
+				var/obj/docking_port/stationary/stationtrauma_space_site/berth = new(port_turf)
+				berth.name = "Стыковочный узел"
+				berth.width = vessel.width
+				berth.height = vessel.height
+				berth.dwidth = vessel.dwidth
+				berth.dheight = vessel.dheight
+				berth.setDir(facing)
+				if(vessel.check_dock(berth, TRUE))
+					return berth
+				qdel(berth, force = TRUE)
+	return null
+
+/** A reserved pair of hulls joined hatch against hatch on the second hull's level, or through one shared seam between their levels. */
 /datum/stationtrauma_ship_docking
 	/// First reserved navigation instance; cleared when the pair is destroyed.
 	var/datum/stationtrauma_overmap/space/first
@@ -90,8 +195,10 @@
 	var/datum/stationtrauma_overmap/space/second
 	/// Physical seam used for previews and traversal between hull and destination.
 	var/datum/stationtrauma_map_connection/connection
-	/// Owned temporary berth used to align the other hull with the seam.
+	/// Owned temporary berth: the first hull's flush berth on the second's level, or the seam anchor beside the second hull.
 	var/obj/docking_port/stationary/anchor
+	/// Whether the first hull physically moved beside the second, hatch against hatch, instead of using a remote seam.
+	var/flush = FALSE
 	/// Physical position captured before yielding connection preparation.
 	var/turf/first_origin
 	/// Peer physical position captured before yielding connection preparation.
@@ -131,6 +238,9 @@
 			map.preparing = FALSE
 			map.status = closing ? "Соединение разомкнуто" : "Стыковка прервана"
 			map.refresh_engine_audio()
+	// An interrupted flush pair must not strand the first hull on its peer's level.
+	if(flush && !QDELETED(first) && !QDELETED(first.vessel) && first.vessel.z != first.flight_berth?.z)
+		INVOKE_ASYNC(first, TYPE_PROC_REF(/datum/stationtrauma_overmap/space, relocate), first.flight_berth)
 	if(anchor)
 		qdel(anchor, force = TRUE)
 		anchor = null
@@ -146,11 +256,33 @@
 		&& first.control_revision == first_revision && second.control_revision == second_revision \
 		&& get_turf(first.vessel) == first_origin && get_turf(second.vessel) == second_origin
 
-/** Build and publish the reserved ship seam cooperatively, rechecking both hulls. */
+/**
+ * Join the reserved hulls, rechecking both.
+ *
+ * The first hull moves beside the second, outer hatch against outer hatch, when such a pairing fits in open space;
+ * otherwise a remote seam is built cooperatively.
+ */
 /datum/stationtrauma_ship_docking/proc/connect()
 	var/ready = FALSE
 	var/datum/stationtrauma_work_budget/budget = new
 	if(current())
+		anchor = first.flush_berth(second, budget)
+		if(QDELETED(src))
+			if(anchor)
+				qdel(anchor, force = TRUE)
+			return FALSE
+		if(anchor && current())
+			flush = first.relocate(anchor)
+			if(QDELETED(src))
+				return FALSE
+			if(flush)
+				ready = TRUE
+				// Native movement yields; the new position is the one later checks must keep.
+				first_origin = get_turf(first.vessel)
+			else
+				qdel(anchor, force = TRUE)
+				anchor = null
+	if(!flush && current())
 		var/list/bounds = second.vessel.return_coords()
 		var/horizontal = !!(connection.direction & (EAST|WEST))
 		var/positive = connection.direction == NORTH || connection.direction == EAST
@@ -170,19 +302,29 @@
 		qdel(src)
 		return FALSE
 	first.preparing = second.preparing = FALSE
-	first.status = second.status = "Корабли состыкованы; внешний переход через шлюзы"
+	first.status = second.status = flush ? "Корабли состыкованы шлюзами" : "Корабли состыкованы; внешний переход через шлюзы"
 	first.play_maneuver_audio(second.vessel)
 	return TRUE
 
 /** Either pilot may release a voluntary pair; stop during cleanup cancels thrust, not the safe disconnect. */
 /datum/stationtrauma_ship_docking/proc/release(datum/stationtrauma_overmap/space/departing)
-	if(closing || !(departing in list(first, second)) || QDELETED(first) || QDELETED(second) || !connection.active || first.preparing || second.preparing || !departing.is_operational() || !departing.vessel.engines_running || departing.engine_fraction() <= 0)
+	if(closing || !(departing in list(first, second)) || QDELETED(first) || QDELETED(second) || !(flush || connection.active) || first.preparing || second.preparing || !departing.is_operational() || !departing.vessel.engines_running || departing.engine_fraction() <= 0)
 		return FALSE
 	closing = TRUE
 	first.preparing = second.preparing = TRUE
 	var/revision = departing.control_revision
 	var/datum/stationtrauma_overmap/space/peer = departing == first ? second : first
-	connection.disconnect_cooperatively(new /datum/stationtrauma_work_budget)
+	if(flush)
+		// The first hull returns to its own level before either pilot may fly away.
+		if(!first.relocate(first.flight_berth))
+			if(QDELETED(src))
+				return FALSE
+			closing = FALSE
+			first.preparing = second.preparing = FALSE
+			departing.status = "Расстыковка не выполнена: стоянка корабля перекрыта"
+			return FALSE
+	else
+		connection.disconnect_cooperatively(new /datum/stationtrauma_work_budget)
 	if(QDELETED(src))
 		return FALSE
 	var/ready = !QDELETED(departing) && departing.is_operational() && departing.control_revision == revision && departing.vessel.engines_running && departing.engine_fraction() > 0

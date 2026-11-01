@@ -6,6 +6,8 @@
 	var/loading_map = FALSE
 	/// Approach schematic on the navigation console: "ruin", "cargo" or "asteroids".
 	var/approach_scene = "ruin"
+	/// Outer airlock of a loaded ruin that the docking pinpointer leads to beyond the seam; null without one.
+	var/turf/entrance
 
 /** Whether docking may begin before the berth exists because the approach loads the destination. */
 /datum/stationtrauma_overmap_site/space/proc/awaits_map()
@@ -72,7 +74,7 @@
 		sites[site.id] = site
 	return TRUE
 
-/** Load one charted ruin on its own level, berthing the approach beside its outermost eastern airlock. */
+/** Load one charted ruin on its own level, berthing the approach right beside it, level with its entrance airlock. */
 /datum/stationtrauma_overmap_sector/space/proc/load_ruin_site(datum/stationtrauma_overmap_site/space/site, index, key, datum/map_template/ruin/template)
 	var/datum/space_level/level = SSmapping.add_new_zlevel("Экспедиционный сектор [index]", ZTRAITS_AWAY)
 	seedRuins(list(level.z_value), 1, list(/area/space), list((key) = template), mineral_budget = 0, ruins_type = ZTRAIT_SPACE_RUINS, immediate_load = TRUE)
@@ -89,14 +91,22 @@
 	stationtrauma_space_vacuum(level.z_value)
 	var/right_edge = origin.x + placed.width - 1
 	var/approach_y = origin.y + round(placed.height / 2)
-	var/closest_door = origin.x - 1
+	var/best_score = -INFINITY
 	for(var/turf/tile as anything in block(origin, locate(right_edge, origin.y + placed.height - 1, origin.z)))
 		for(var/obj/machinery/door/airlock/door in tile)
-			if(door.x > closest_door && isspaceturf(get_step(door, EAST)))
-				closest_door = door.x
-				approach_y = door.y
+			for(var/direction in GLOB.cardinals)
+				if(!isspaceturf(get_step(door, direction)))
+					continue
+				// The seam opens east of the ruin: east-facing airlocks are straight across, others rank by how far east they stand.
+				var/score = door.x + (direction == EAST ? world.maxx : 0)
+				if(score > best_score)
+					best_score = score
+					site.entrance = tile
+					approach_y = door.y
+				break
 	site.ruin_id = placed.id
-	site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(right_edge + 2, approach_y, origin.z))
+	// The seam lands crews on the column just outside the ruin, level with that airlock.
+	site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(right_edge + 1, approach_y, origin.z))
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(site.berth))
 	marker.site_id = site.id
 	marker.name = site.name
@@ -129,4 +139,53 @@
 			found++
 	navigation_notice("Сканирование завершено: новых точек [found]. Дальность [reach * ST_SPACE_AU_SCALE] а.е.")
 	return TRUE
+
+/**
+ * Handheld guide to the airlock of the destination a vessel holds through a remote seam.
+ *
+ * Aboard, it points at the seam exit level with the berth, since the seam keeps the crossing row; beyond the seam it points
+ * at the entrance airlock itself, or at the berth when the destination has none.
+ */
+/obj/item/pinpointer/stationtrauma_docking
+	name = "стыковочный пеленгатор"
+	desc = "Указывает путь к входному шлюзу объекта, у которого стоит корабль. На борту ведёт к точке выхода напротив шлюза."
+	/// Turf to head for on the holder's level; null without a seam-docked destination there.
+	var/turf/beacon
+
+/obj/item/pinpointer/stationtrauma_docking/Destroy()
+	beacon = null
+	return ..()
+
+/obj/item/pinpointer/stationtrauma_docking/scan_for_target()
+	beacon = null
+	var/turf/here = get_turf(src)
+	if(!here)
+		return
+	for(var/sector_id in SSstationtrauma_space_voyage.sectors)
+		var/datum/stationtrauma_overmap_sector/sector = SSstationtrauma_space_voyage.sectors[sector_id]
+		for(var/ship_id in sector.ships)
+			var/datum/stationtrauma_overmap/space/navigation = sector.ships[ship_id]
+			var/datum/stationtrauma_overmap_site/space/site = navigation?.docked
+			if(!istype(navigation) || !istype(site) || site.landing || site.physical_docking || QDELETED(site.berth) || !navigation.connection.active)
+				continue
+			if(here.z == site.berth.z)
+				beacon = site.entrance || get_turf(site.berth)
+				return
+			if(here.z != navigation.vessel.z)
+				continue
+			var/datum/stationtrauma_map_connection/connection = navigation.connection
+			var/edge = connection.get_ship_edge(navigation.vessel.return_coords(), 1, connection.direction)
+			if(isnull(edge))
+				continue
+			beacon = connection.direction & (EAST|WEST) ? locate(edge, site.berth.y, here.z) : locate(site.berth.x, edge, here.z)
+			return
+
+/obj/item/pinpointer/stationtrauma_docking/update_overlays()
+	. = ..()
+	var/turf/here = get_turf(src)
+	if(!active || !beacon || here?.z != beacon.z)
+		return
+	// The base pinpointer tracks movables only; a turf beacon replaces its idle overlay.
+	. -= "pinonnull"
+	. += get_direction_icon(here, beacon)
 // AI EDIT END

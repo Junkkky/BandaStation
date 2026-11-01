@@ -228,4 +228,5 @@
 		new /obj/item/clothing/mask/breath(src)
 		new /obj/item/pickaxe(src)
 		new /obj/item/storage/bag/ore(src)
+	new /obj/item/pinpointer/stationtrauma_docking(src)
 // AI EDIT END

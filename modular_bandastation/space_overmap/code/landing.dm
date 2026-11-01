@@ -45,7 +45,9 @@
 	if(!overmap?.relocating)
 		return DOCKING_BLOCKED
 	var/datum/stationtrauma_overmap_site/space/site = overmap.sites[overmap.selected_destination]
-	if(new_dock != overmap.flight_berth && ((!site?.landing && !site?.physical_docking) || site.berth != new_dock || !permits_docking(site)))
+	// A ship pair's own anchor is the first hull's flush berth; a seam anchor never receives a hull.
+	var/pair_berth = overmap.ship_docking && new_dock == overmap.ship_docking.anchor
+	if(new_dock != overmap.flight_berth && !pair_berth && ((!site?.landing && !site?.physical_docking) || site.berth != new_dock || !permits_docking(site)))
 		return DOCKING_BLOCKED
 	return ..(new_dock, movement_direction, FALSE)
 
@@ -114,7 +116,8 @@
 
 /** Relocate the hull and its latejoin turfs through native shuttle movement. */
 /datum/stationtrauma_overmap/space/proc/relocate(obj/docking_port/stationary/target)
-	if(relocating || ship_docking || QDELETED(target) || QDELETED(vessel) || !vessel.check_dock(target, TRUE))
+	// A ship pair moves only between the first hull's own berth and its flush berth beside the peer.
+	if(relocating || (ship_docking && target != flight_berth && target != ship_docking.anchor) || QDELETED(target) || QDELETED(vessel) || !vessel.check_dock(target, TRUE))
 		status = "Манёвр отменён: посадочная площадка занята или перекрыта"
 		return FALSE
 	var/was_preparing = preparing
