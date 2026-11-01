@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 /** Charted navigation regions use virtual coordinates in either environment. */
 /datum/stationtrauma_overmap_zone
 	/// Crew-facing name of the destination or sensed source.
@@ -24,4 +23,3 @@
 /** Include the swept segment so fast passage cannot skip a small region. */
 /datum/stationtrauma_overmap_zone/proc/crosses(ax, ay, bx, by)
 	return (bx - pos_x) ** 2 + (by - pos_y) ** 2 <= radius ** 2 || !isnull(stationtrauma_circle_hit(ax, ay, bx - ax, by - ay, pos_x, pos_y, radius))
-// AI EDIT END

@@ -1,4 +1,3 @@
-// AI EDIT START - expedition science module integration
 GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 
 /** A stable authored location ID, independent of room names and the allocated z-level. */
@@ -98,4 +97,3 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 	icon_state = "meat"
 	field_notes = "Различимы плотные внешние ткани и более мягкая внутренняя структура."
 	laboratory_notes = "Обнаружены несколько типов тканей и сеть полостей. По одному фрагменту нельзя восстановить физиологию целого организма."
-// AI EDIT END

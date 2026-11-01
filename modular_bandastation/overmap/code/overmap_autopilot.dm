@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 /**
  * Adapted from voidcrew/Voidcrew 0c87384b55294dc7348f83bbd3fddd9427d136de,
  * voidcrew/modules/overmap/code/modules/overmap/ship_autopilot.dm (AGPL-3.0).
@@ -165,4 +164,3 @@
 	ordered_course = delta_to_angle(node[1] - pos_x, node[2] - pos_y)
 	if(abs(WRAP(ordered_course - course + 180, 0, 360) - 180) > 5 && speed > 0.05)
 		braking = TRUE
-// AI EDIT END

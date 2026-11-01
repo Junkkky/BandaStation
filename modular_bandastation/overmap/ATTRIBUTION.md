@@ -1,4 +1,3 @@
-<!-- AI EDIT START - Sources and licenses of the overmap integration -->
 # Источники общей овермапы
 
 Код общей навигации и его адаптации распространяются на условиях GNU AGPL v3;
@@ -22,4 +21,3 @@
 карты и аудио в общий модуль не добавлялись. Ресурсы окружения перечислены в
 [space_overmap/ATTRIBUTION.md](../space_overmap/ATTRIBUTION.md) и
 [expedition_planets/ATTRIBUTION.md](../expedition_planets/ATTRIBUTION.md).
-<!-- AI EDIT END -->

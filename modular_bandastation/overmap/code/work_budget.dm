@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 /** Bound module work within native MC scheduling limits. */
 /datum/stationtrauma_work_budget
 	/// world.time at which the current cooperative work slice began.
@@ -19,4 +18,3 @@
 	sleep(world.tick_lag)
 	slice_tick = world.time
 	slice_start = TICK_USAGE
-// AI EDIT END

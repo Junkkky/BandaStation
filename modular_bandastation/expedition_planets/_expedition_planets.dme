@@ -1,4 +1,3 @@
-// AI EDIT START - expedition planets module integration
 #include "_expedition_planets.dm"
 #include "code/planet_site.dm"
 #include "code/planet_generator.dm"
@@ -9,4 +8,3 @@
 #include "code/lush.dm"
 #include "code/lava.dm"
 #include "code/ruins.dm"
-// AI EDIT END

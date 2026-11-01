@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 // Map loading may create and replace a light before its Initialize publishes the turf owner.
 /atom/movable/lighting_object
 	needs_update = TRUE
@@ -37,4 +36,3 @@
 		if(!QDELETED(light))
 			replacement.lighting_object = light
 			break
-// AI EDIT END

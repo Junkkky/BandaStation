@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /datum/stationtrauma_overmap/space
 	/// The original physical berth retained while the ship visits a planetary surface.
 	var/obj/docking_port/stationary/stationtrauma_space_flight/flight_berth
@@ -178,4 +177,3 @@
 		status = site.landing ? "Посадка отменена: поверхность не картографирована" : "Стыковка отменена: объект не обнаружен"
 		return FALSE
 	return can_dock(site, revision)
-// AI EDIT END

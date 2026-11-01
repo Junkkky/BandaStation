@@ -1,4 +1,3 @@
-// AI EDIT START - expedition planets module integration
 // Volcanic profile with biomes adapted from Celadon's lava planet generator (see planet_generator.dm); local TG turfs, flora and fauna.
 // Donor grass and purple rock become ash and shale; moss, hell bushes, landmines, elite tumors, anomalies, ore veins, burrows and crystal fauna are omitted or replaced.
 /// Fixed volcanic atmosphere; TG lavaland air is randomized per round and would contradict the survey.
@@ -256,4 +255,3 @@
 	// Never scheduled at random, so other levels with the same storm trait keep their periodic storms.
 	probability = 0
 	weather_flags = parent_type::weather_flags | WEATHER_ENDLESS
-// AI EDIT END

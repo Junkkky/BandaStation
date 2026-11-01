@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 /** Map seam using native zMove for occupants and pulled objects. */
 /datum/component/stationtrauma_map_passage
 	dupe_mode = COMPONENT_DUPE_UNIQUE
@@ -114,4 +113,3 @@
 /** Transfer an actor and its buckled or pulled occupants. */
 /datum/component/stationtrauma_map_passage/proc/move_actor(atom/movable/arrived)
 	return arrived.zMove(null, landing, ZMOVE_ALLOW_BUCKLED|ZMOVE_INCLUDE_PULLED)
-// AI EDIT END

@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /** Persistent obstacle state; only nearby rocks need physical atoms on the flight Z. */
 /datum/stationtrauma_overmap_terrain/asteroid
 	name = "астероид"
@@ -95,4 +94,3 @@
 			marker.update_integrity(rock.integrity)
 		else
 			marker.forceMove(tile)
-// AI EDIT END

@@ -99,4 +99,3 @@
 	name = "Expedition-Space celadon cryocontainment"
 	suffix = "celadon_cryocontainment.dmm"
 	overmap_name = "Криогенное хранилище"
-// AI EDIT END

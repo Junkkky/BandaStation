@@ -1,4 +1,3 @@
-// AI EDIT START - gas-fed shuttle receivers and nozzles
 /** Native engine registration stays nominal; the overmap reads delivered gas power separately. */
 /obj/machinery/power/shuttle_engine
 	/// Ordinary shuttle engines retain their original unlimited propellant behaviour.
@@ -206,4 +205,3 @@
 
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/crowbar_act(mob/living/user, obj/item/tool)
 	return crowbar_deconstruction_act(user, tool)
-// AI EDIT END

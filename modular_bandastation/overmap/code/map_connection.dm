@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 /** Own passages and previews across a full-width, multi-deck seam. */
 /datum/stationtrauma_map_connection
 	/// Vessel supplying the physical footprint.
@@ -187,4 +186,3 @@
 	for(var/datum/stationtrauma_map_preview/preview as anything in previews)
 		preview.activate()
 	return TRUE
-// AI EDIT END

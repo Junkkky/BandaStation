@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 /** Local visual continuation of remote actors, terrain and lighting. */
 /datum/stationtrauma_map_preview
 	/// Stable coordinates survive turf replacement while the strip is being rebuilt.
@@ -359,4 +358,3 @@
 /datum/stationtrauma_map_preview/proc/watch_remote(turf/tile)
 	RegisterSignals(tile, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(actor_entered))
 	RegisterSignal(tile, COMSIG_ATOM_UPDATED_ICON, PROC_REF(queue_refresh))
-// AI EDIT END

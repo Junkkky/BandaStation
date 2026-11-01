@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /** Navigation and helm console. */
 /obj/machinery/computer/stationtrauma_space_navigation
 	name = "навигационная консоль"
@@ -150,4 +149,3 @@
 	if(!can_interact(ui.user))
 		return FALSE
 	return navigation_command(action, params["value"])
-// AI EDIT END

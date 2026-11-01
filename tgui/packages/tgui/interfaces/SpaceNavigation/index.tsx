@@ -1,4 +1,3 @@
-// AI EDIT START - Ship navigation console in the existing CRT instrument style
 import { useState } from 'react';
 import { Button, DraggableControl, Icon } from 'tgui-core/components';
 
@@ -538,4 +537,3 @@ function Navigation({ data }: { data: NavigationData }) {
     </main>
   );
 }
-// AI EDIT END

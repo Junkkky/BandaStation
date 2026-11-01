@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 #define ST_SPACE_AU_SCALE 0.001
 #define ST_SPACE_JUMP_TIME (20 SECONDS)
 #define ST_SPACE_DOCK_SPEED 0.5
@@ -21,4 +20,3 @@
 	name = "Space Overmap StationTrauma"
 	desc = "Космические рейсы, межзвёздные переходы и экспедиционные локации."
 	author = "junkky"
-// AI EDIT END

@@ -630,4 +630,3 @@
 /** Imported room boundary for Разрушенный завод; inherits the expedition ruin environment. */
 /area/ruin/space/has_grav/expedition_content/exp_celadon_wrecked_factory/ruin/lavaland/factory/warehouse
 	name = "Разрушенный завод"
-// AI EDIT END

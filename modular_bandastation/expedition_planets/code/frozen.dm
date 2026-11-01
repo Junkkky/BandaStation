@@ -1,4 +1,3 @@
-// AI EDIT START - expedition planets module integration
 // Sierra's cold, ore-poor snow profile; local TG turfs provide atmosphere, footprints and slippery ice.
 // https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/code/modules/overmap/exoplanets/planet_types/snow.dm
 // Biomes adapted from Celadon's snow planet generator (see planet_generator.dm); donor ice rock, plasma lakes, ore veins, burrows and mines are omitted.
@@ -176,4 +175,3 @@
 /turf/open/openspace/expedition_frozen
 	initial_gas_mix = /turf/open/misc/asteroid/snow::initial_gas_mix
 	planetary_atmos = TRUE
-// AI EDIT END

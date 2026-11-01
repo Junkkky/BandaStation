@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 // Navigation distances are independent of turf coordinates.
 #define ST_NAV_TURN_RATE 15
 #define ST_NAV_APPROACH 40
@@ -328,4 +327,3 @@
 /** Physical damage is applied by the vessel adapter after the virtual collision stops motion. */
 /datum/stationtrauma_overmap/proc/on_collision(datum/stationtrauma_overmap_terrain/obstacle, impact_speed)
 	return
-// AI EDIT END

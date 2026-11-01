@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /** Buildable station dispatch console board. */
 /obj/item/circuitboard/computer/stationtrauma_dispatch
 	name = "терминал вызова кораблей"
@@ -155,4 +154,3 @@
 		map.request_brake()
 	else if(!map.request_jump(choices[choice]))
 		to_chat(user, span_warning("Переход недоступен. Освободите причал и дождитесь завершения текущего манёвра."))
-// AI EDIT END

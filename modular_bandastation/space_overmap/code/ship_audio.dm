@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /** Native engine sound loop with launch, running and shutdown clips. */
 /datum/looping_sound/stationtrauma_ship_engine
 	start_sound = 'sound/items/jet_ignite.ogg'
@@ -111,4 +110,3 @@
 		playsound(vessel, clip, 25, FALSE, extrarange = radius, pressure_affected = FALSE)
 	if(!QDELETED(remote) && remote.z != vessel.z)
 		playsound(remote, clip, 12, FALSE, extrarange = radius, pressure_affected = FALSE)
-// AI EDIT END

@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 /** Pilot throttle changes a command, never the existing velocity. */
 /datum/stationtrauma_overmap/proc/command_throttle(value)
 	if(!IS_FINITE(value) || value < 0 || value > 100)
@@ -45,4 +44,3 @@
 	velocity_x *= remaining / magnitude
 	velocity_y *= remaining / magnitude
 	return list(dx, dy)
-// AI EDIT END

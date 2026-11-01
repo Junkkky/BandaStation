@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /datum/stationtrauma_overmap/space
 	/// Stoppable completion timer for the current bluespace jump.
 	var/jump_timer
@@ -112,4 +111,3 @@
 	stop("Блюспейс-переход завершён: [target.name]")
 	navigation_notice("Прибытие в систему: [target.name].")
 	return TRUE
-// AI EDIT END

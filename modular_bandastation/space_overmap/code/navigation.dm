@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /** Vacuum propulsion and physical vessel navigation. */
 /datum/stationtrauma_overmap/space
 	throttle = 0
@@ -332,4 +331,3 @@
 			ship_area.set_parallax_movedir(direction)
 	exterior?.set_space_parallax_background(background)
 	exterior?.set_parallax_movedir(NONE)
-// AI EDIT END

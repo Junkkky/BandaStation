@@ -1,4 +1,3 @@
-// AI EDIT START - expedition planets module integration
 // Barren environment profile adapted from SierraBay, AGPL-3.0; terrain generation uses local TG/rust-g.
 // https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/code/modules/overmap/exoplanets/planet_types/barren.dm
 // Biome selection, tables and densities adapted from CeladonSS13/Shiptest, AGPL-3.0; contents use local TG types.
@@ -17,4 +16,3 @@
 	desc = "Минеральные включения на безвоздушной поверхности. Их можно обследовать и отобрать пробы."
 	field_notes = "В трещинах породы видны неоднородные кристаллические включения с острыми гранями. Следов растительности нет."
 	laboratory_notes = "Включения образуют несколько минеральных фракций. Состав и возможное применение требуют дальнейших испытаний."
-// AI EDIT END

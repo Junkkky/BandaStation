@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 #include "_overmap.dm"
 #include "code/overmap.dm"
 #include "code/sector.dm"
@@ -14,4 +13,3 @@
 #include "code/map_preview_interaction.dm"
 #include "code/map_lighting.dm"
 #include "code/map_connection.dm"
-// AI EDIT END

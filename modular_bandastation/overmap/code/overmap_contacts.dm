@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 /** Persistent virtual destination and its physical berth. */
 /datum/stationtrauma_overmap_site
 	/// Stable mapped docking ID, independent of display name and storage z.
@@ -178,4 +177,3 @@
 			echo["identity"] = identity.Copy()
 		observations += list(echo)
 	return observations
-// AI EDIT END

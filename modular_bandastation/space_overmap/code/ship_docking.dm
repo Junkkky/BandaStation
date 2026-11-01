@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /datum/stationtrauma_overmap/space
 	/// Shared voluntary docking link; null outside a reserved or connected pair.
 	var/datum/stationtrauma_ship_docking/ship_docking
@@ -332,4 +331,3 @@
 		departing.play_maneuver_audio(QDELETED(peer) ? null : peer.vessel, departing = TRUE)
 	qdel(src)
 	return ready
-// AI EDIT END

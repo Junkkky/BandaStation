@@ -319,4 +319,3 @@
 	name = "Expedition-Surface Celadon distillery"
 	suffix = "celadon_distillery.dmm"
 	planet_biomes = list("barren")
-// AI EDIT END

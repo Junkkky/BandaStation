@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 /** Replace local ambient light with the remote tile's live native lighting, without recalculating it. */
 /atom/movable/stationtrauma_map_lighting
 	icon = null
@@ -50,4 +49,3 @@
 		base_light.color = remote_area.area_has_base_lighting && remote_area.base_lighting_color != COLOR_STARLIGHT ? remote_area.base_lighting_color : GLOB.starlight_color
 		base_light.blend_mode = BLEND_ADD
 		add_overlay(base_light)
-// AI EDIT END

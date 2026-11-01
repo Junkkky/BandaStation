@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /** Removable identification memory; rebuilding a console preserves the installed identity. */
 /obj/item/circuitboard/computer/stationtrauma_transponder
 	name = "судовой транспондер"
@@ -105,4 +104,3 @@
 			return null
 		identity = answer
 	return identity
-// AI EDIT END

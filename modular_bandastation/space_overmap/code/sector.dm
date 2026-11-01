@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /** Mapper-declared scenario: extra hull templates are loaded before the shared destinations. */
 /obj/effect/landmark/stationtrauma_space_sector
 	name = "space overmap sector"
@@ -206,4 +205,3 @@
 	site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(right_edge + 1, round(world.maxy / 2), level.z_value))
 	qdel(template)
 	return TRUE
-// AI EDIT END

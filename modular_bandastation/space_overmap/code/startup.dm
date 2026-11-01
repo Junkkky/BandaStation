@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /// Mapped vessel ports opt into the shared sector without checking a primary map name.
 SUBSYSTEM_DEF(stationtrauma_space_voyage)
 	name = "StationTrauma space voyage"
@@ -90,4 +89,3 @@ SUBSYSTEM_DEF(stationtrauma_space_voyage)
 		return SS_INIT_FAILURE
 	log_mapping("Space sectors ready: [length(sectors)] sectors, [length(vessels)] ships")
 	return SS_INIT_SUCCESS
-// AI EDIT END

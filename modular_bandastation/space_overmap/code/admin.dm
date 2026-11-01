@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 ADMIN_VERB(stationtrauma_overmap_jump, R_DEBUG, "Overmap - Переместить корабль к объекту", "Переместить корабль к координатам объекта без стыковки.", ADMIN_CATEGORY_DEBUG)
 	var/list/ships = list()
 	for(var/sector_id in SSstationtrauma_space_voyage.sectors)
@@ -47,4 +46,3 @@ ADMIN_VERB(stationtrauma_overmap_jump, R_DEBUG, "Overmap - Переместит�
 	trip_distance = travelled = 0
 	update_parallax()
 	return TRUE
-// AI EDIT END

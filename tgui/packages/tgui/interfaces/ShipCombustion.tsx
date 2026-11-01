@@ -1,4 +1,3 @@
-// AI EDIT START - combustion chamber engineering controls
 import {
   Button,
   LabeledList,
@@ -257,4 +256,3 @@ function Controls() {
     </>
   );
 }
-// AI EDIT END

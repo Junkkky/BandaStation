@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /area
 	/// Null retains the native background; expedition areas choose a native layer explicitly.
 	var/space_parallax_background
@@ -98,4 +97,3 @@
 		if(zone.kind == "asteroids" && (pos_x - zone.pos_x) ** 2 + (pos_y - zone.pos_y) ** 2 <= zone.radius ** 2)
 			return /atom/movable/screen/parallax_layer/random/asteroids
 	return /atom/movable/screen/parallax_layer/layer_3
-// AI EDIT END

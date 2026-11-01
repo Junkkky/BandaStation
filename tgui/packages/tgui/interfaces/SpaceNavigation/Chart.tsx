@@ -1,4 +1,3 @@
-// AI EDIT START - CRT sector chart with hover labels and right-button panning
 import { useEffect, useRef, useState } from 'react';
 import { Button, Dropdown } from 'tgui-core/components';
 
@@ -374,4 +373,3 @@ function Velocity({
     />
   );
 }
-// AI EDIT END

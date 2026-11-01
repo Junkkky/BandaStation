@@ -1,4 +1,3 @@
-// AI EDIT START - expedition planets module integration
 // Sierra's hot, mineral-rich desert profile; local TG terrain and atmosphere are used.
 // https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/code/modules/overmap/exoplanets/planet_types/desert.dm
 // Biomes adapted from Celadon's sand planet generator (see planet_generator.dm); donor ice caps, acid and lava pools,
@@ -261,4 +260,3 @@
 	// Never scheduled at random, so other levels with the same storm trait keep their periodic storms.
 	probability = 0
 	weather_flags = parent_type::weather_flags | WEATHER_ENDLESS
-// AI EDIT END

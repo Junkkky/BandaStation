@@ -1,5 +1,3 @@
-// AI EDIT START - native atmos combustion chamber control
-
 /** Mapped glow plug; the controller heats through any linked igniter, so a crafted replacement works too. */
 /obj/machinery/igniter/ship_engine
 	name = "калильный воспламенитель"
@@ -550,5 +548,3 @@
 		else
 			return
 	return TRUE
-
-// AI EDIT END

@@ -1,5 +1,3 @@
-// AI EDIT START - Buildable ship identification console
-// BANDASTATION ADDITION - Ship transponder controls.
 import { Button, LabeledList, Section } from 'tgui-core/components';
 import type { BooleanLike } from 'tgui-core/react';
 
@@ -43,4 +41,3 @@ export const ShipTransponder = () => {
     </Window>
   );
 };
-// AI EDIT END

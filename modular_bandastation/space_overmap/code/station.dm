@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /datum/map_config
 	/// Optional expedition profile; absent for ordinary station configurations.
 	var/list/space_overmap
@@ -139,4 +138,3 @@
 		console.site_id = port.site_id
 		console.setDir(terminal[4])
 	return port
-// AI EDIT END

@@ -1,4 +1,3 @@
-// AI EDIT START - expedition science module integration
 /** Field instrument for surveying research sources. */
 /obj/item/stationtrauma_field_scanner
 	name = "полевой исследовательский сканер"
@@ -185,4 +184,3 @@
 	new /obj/item/stationtrauma_field_scanner(src)
 	for(var/index in 1 to 4)
 		new /obj/item/stationtrauma_sample(src)
-// AI EDIT END

@@ -1,4 +1,3 @@
-<!-- AI EDIT START - Sources and licenses of the expedition_planets integration -->
 # Источники экспедиционных планет
 
 Профили условий и планировки адаптированы из SierraBay/SierraBay12, коммит
@@ -68,4 +67,3 @@ Celadon, Shiptest, Whitesands и TG. Расстановка по планете 
 Исходные permalink, коммиты и контрольные суммы всех 78 деталей рельефа включены в
 [ASSETS.json](../space_overmap/ASSETS.json) `space_overmap`. Указание авторства не означает
 одобрения этой адаптации исходными проектами.
-<!-- AI EDIT END -->

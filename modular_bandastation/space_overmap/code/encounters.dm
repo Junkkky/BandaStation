@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 /** Vessel-local encounter state. */
 /datum/stationtrauma_overmap/space
 	/// Sector encounter regions borrowed while this ship is registered.
@@ -155,4 +154,3 @@
 	name = "мелкий космический обломок"
 	hits = 1
 	lifetime = 12
-// AI EDIT END

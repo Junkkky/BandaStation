@@ -1,4 +1,3 @@
-// AI EDIT START - space overmap module integration
 #include "_space_overmap.dm"
 #include "code/areas.dm"
 #include "code/docking_port.dm"
@@ -23,4 +22,3 @@
 #include "code/admin.dm"
 #include "code/startup.dm"
 #include "code/parallax.dm"
-// AI EDIT END

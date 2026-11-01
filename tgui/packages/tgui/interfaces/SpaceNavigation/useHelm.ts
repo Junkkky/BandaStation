@@ -1,4 +1,3 @@
-// AI EDIT START - Server-retained manual lateral thrust and bounded throttle input
 import { useEffect, useRef } from 'react';
 
 import { useBackend } from '../../backend';
@@ -153,4 +152,3 @@ export function useHelm(data: NavigationData) {
     },
   };
 }
-// AI EDIT END

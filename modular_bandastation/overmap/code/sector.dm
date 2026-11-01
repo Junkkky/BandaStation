@@ -1,4 +1,3 @@
-// AI EDIT START - overmap module integration
 /** A sector owns its persistent geography; registered vessels own their navigation and observations. */
 /datum/stationtrauma_overmap_sector
 	/// Owned stable destination ID to physical destination mapping.
@@ -37,4 +36,3 @@
 	navigation.sites = list()
 	navigation.contacts = list()
 	return TRUE
-// AI EDIT END

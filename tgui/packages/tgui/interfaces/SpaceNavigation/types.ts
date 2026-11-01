@@ -1,4 +1,3 @@
-// AI EDIT START - Navigation telemetry shared by the chart and helm
 import type { BooleanLike } from 'tgui-core/react';
 
 export type Position = { x: number; y: number };
@@ -135,4 +134,3 @@ export function speedLabel(value: number, scale: number) {
     ? `${lightSpeed.toFixed(2)} c`
     : `${Math.round(kilometres)} км/с`;
 }
-// AI EDIT END

@@ -1,4 +1,3 @@
-// AI EDIT START - expedition planets module integration
 /** Authored surface sites use the native ruin loader; the generator reserves their footprints first. */
 /datum/map_template/ruin/expedition
 	prefix = "_maps/map_files/overmap_ruins/planet/"
@@ -96,4 +95,3 @@
 		ruin_ids += template.id
 		budget?.yield()
 	return TRUE
-// AI EDIT END
