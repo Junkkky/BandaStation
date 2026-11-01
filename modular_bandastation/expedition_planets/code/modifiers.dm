@@ -29,6 +29,10 @@
 	var/storms = FALSE
 	/// Whether this planet gains a richer cave level beneath its surface.
 	var/underground = FALSE
+	/// Whether the profile's storm rages without pause instead of alternating with calm periods.
+	var/endless_storm = FALSE
+	/// Base light alpha of the open surface in the profile's sky colour; zero keeps the surface dark.
+	var/light_alpha = 0
 
 /** Whether this modifier means anything for the generator's environment profile. */
 /datum/expedition_planet_modifier/proc/can_apply(datum/map_generator/expedition_barren/generator)
@@ -84,6 +88,16 @@
 /datum/expedition_planet_modifier/storms/can_apply(datum/map_generator/expedition_barren/generator)
 	return !!generator.storm_trait
 
+/datum/expedition_planet_modifier/endless_storm
+	name = "Непрекращающийся шторм"
+	group = "weather"
+	cost = 1
+	probability = 20
+	endless_storm = TRUE
+
+/datum/expedition_planet_modifier/endless_storm/can_apply(datum/map_generator/expedition_barren/generator)
+	return !!generator.endless_storm_type
+
 /datum/expedition_planet_modifier/caves
 	name = "Пещерная система"
 	group = "underground"
@@ -91,6 +105,19 @@
 	cost = 0.5
 	probability = 40
 	underground = TRUE
+
+/datum/expedition_planet_modifier/bright_day
+	name = "Яркое светило"
+	group = "light"
+	probability = 30
+	// TG's bright day station trait lights the icemoon wastes this strongly.
+	light_alpha = 145
+
+/datum/expedition_planet_modifier/twilight
+	name = "Тусклое светило"
+	group = "light"
+	probability = 40
+	light_alpha = 60
 
 /**
  * Roll offered modifiers in random order and apply those that fit the remaining budgets.
@@ -120,7 +147,9 @@
 		mineral_chance *= modifier.ore_multiplier
 		fauna_multiplier *= modifier.fauna_multiplier
 		storms ||= modifier.storms
+		endless_storm ||= modifier.endless_storm
 		underground ||= modifier.underground
+		light_alpha = max(light_alpha, modifier.light_alpha)
 		names += modifier.name
 	return names
 

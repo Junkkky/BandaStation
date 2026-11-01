@@ -94,8 +94,16 @@
 	var/storm_trait
 	/// Whether a modifier enabled the periodic storm weather.
 	var/storms = FALSE
+	/// Endless variant of the profile's storm weather, if it has one.
+	var/datum/weather/endless_storm_type
+	/// Whether a modifier set the endless storm raging over the surface.
+	var/endless_storm = FALSE
 	/// Whether a modifier added a cave level beneath the surface.
 	var/underground = FALSE
+	/// Colour of the open surface's base light under this profile's sky.
+	var/sky_color = "#d8e0ff"
+	/// Base light alpha of the open surface from modifiers; zero keeps TG's dark planetary surface.
+	var/light_alpha = 0
 	/// Set while [/datum/map_generator/expedition_barren/proc/generate_terrain] fills the cave level instead of the surface.
 	var/cave_level = FALSE
 	/// Open space carrying this profile's atmosphere, used for drops into the cave level.
@@ -486,7 +494,8 @@
 	if(generator.camp_x + generator.camp_width > round(generator.width / 2) - 1 || generator.camp_y + generator.camp_height > round(generator.width / 2) - 1)
 		CRASH("Landing hulls do not fit the expedition camp quadrant")
 	var/list/traits = ZTRAITS_AWAY
-	if(generator.storms)
+	// The storm trait also drives weather sounds, so the endless storm keeps it.
+	if(generator.storms || generator.endless_storm)
 		traits[generator.storm_trait] = TRUE
 	var/datum/space_level/caves
 	// Multi-z links adjacent z values, so the cave level is created immediately below the surface.
@@ -504,7 +513,10 @@
 	var/area/expedition_planet/barren/surface = new
 	surface.name = "[name]: поверхность"
 	// Storms only reach outdoor areas, the landing clearing included; ruins and landed vessels keep their own sheltered areas.
-	surface.outdoors = generator.storms
+	surface.outdoors = generator.storms || generator.endless_storm
+	// Only the open surface is lit; ruins, landed vessels and the cave level keep their own areas and lighting.
+	if(generator.light_alpha)
+		surface.set_base_lighting(generator.sky_color, generator.light_alpha)
 	generator.generate_terrain(turfs, surface)
 	// Native berths face north, so the hull rectangle starts dwidth and dheight below the port.
 	var/obj/docking_port/stationary/stationtrauma_space_surface/pad = new(locate(bottom.x + generator.camp_x - 1 + margin + extents[1], bottom.y + generator.camp_y - 1 + margin + extents[3], bottom.z))
@@ -534,7 +546,11 @@
 	SSmapping.reg_in_areas_in_z(list(surface))
 	smooth_zlevel(level.z_value)
 	// Storm traits are registered only once the surface is complete; SSweather then alternates storms with calm periods.
-	SSweather.update_z_level(level)
+	// The endless storm starts once and is never scheduled, so periodic storms never stack on top of it.
+	if(generator.endless_storm)
+		SSweather.run_weather(generator.endless_storm_type, level.z_value)
+	else
+		SSweather.update_z_level(level)
 	generation_seconds = ((REALTIMEOFDAY - start_time + MIDNIGHT_ROLLOVER) % MIDNIGHT_ROLLOVER) / 10
 	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [generation_seconds]s, features: [features], modifiers: [jointext(modifier_names, ", ")]")
 	return TRUE

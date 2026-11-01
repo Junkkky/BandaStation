@@ -15,6 +15,8 @@
 	hole_type = /turf/open/openspace/expedition_frozen
 	wildlife = TRUE
 	storm_trait = ZTRAIT_SNOWSTORM
+	endless_storm_type = /datum/weather/snow_storm/forever_storm
+	sky_color = "#c0e0ff"
 	floor_type = /turf/open/misc/asteroid/snow
 	source_type = /obj/structure/stationtrauma_research_source/mineral/expedition_frozen
 	biome_zoom = 55

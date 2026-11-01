@@ -16,6 +16,8 @@
 	hole_type = /turf/open/openspace/expedition_lush
 	wildlife = TRUE
 	storm_trait = ZTRAIT_RAINSTORM
+	endless_storm_type = /datum/weather/particle/rain_storm/expedition_endless
+	sky_color = "#e0ffc8"
 	floor_type = /turf/open/misc/grass/jungle
 	source_type = /obj/structure/stationtrauma_research_source/expedition_lush
 	mountain_height = 0.85
@@ -247,4 +249,11 @@
 /turf/open/openspace/expedition_lush
 	initial_gas_mix = /turf/open/misc/grass/jungle::initial_gas_mix
 	planetary_atmos = TRUE
+
+/** Rain storm that never winds down, raised by the endless storm planet modifier. */
+/datum/weather/particle/rain_storm/expedition_endless
+	telegraph_duration = 0 SECONDS
+	// Never scheduled at random, so other levels with the same storm trait keep their periodic storms.
+	probability = 0
+	weather_flags = parent_type::weather_flags | WEATHER_ENDLESS
 // AI EDIT END

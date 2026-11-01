@@ -18,6 +18,8 @@
 	hole_type = /turf/open/openspace/expedition_lava
 	wildlife = TRUE
 	storm_trait = ZTRAIT_ASHSTORM
+	endless_storm_type = /datum/weather/particle/ash_storm/expedition_endless
+	sky_color = "#ff9060"
 	floor_type = /turf/open/misc/asteroid/basalt/expedition_volcanic
 	source_type = /obj/structure/stationtrauma_research_source/mineral/expedition_volcanic
 	mountain_height = 0.45
@@ -247,4 +249,11 @@
 /turf/open/openspace/expedition_lava
 	initial_gas_mix = /turf/open/misc/asteroid/basalt/expedition_volcanic::initial_gas_mix
 	planetary_atmos = TRUE
+
+/** Ash storm that never winds down, raised by the endless storm planet modifier. */
+/datum/weather/particle/ash_storm/expedition_endless
+	telegraph_duration = 0 SECONDS
+	// Never scheduled at random, so other levels with the same storm trait keep their periodic storms.
+	probability = 0
+	weather_flags = parent_type::weather_flags | WEATHER_ENDLESS
 // AI EDIT END

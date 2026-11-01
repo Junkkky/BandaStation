@@ -16,6 +16,8 @@
 	hole_type = /turf/open/openspace/expedition_arid
 	wildlife = TRUE
 	storm_trait = ZTRAIT_SANDSTORM
+	endless_storm_type = /datum/weather/sand_storm/expedition_endless
+	sky_color = "#ffd9a0"
 	floor_type = /turf/open/misc/asteroid/expedition_arid
 	source_type = /obj/structure/stationtrauma_research_source/mineral/expedition_arid
 	rock_color = "#c6aa73"
@@ -252,4 +254,11 @@
 		/mob/living/basic/mining/goldgrub = 2,
 		/mob/living/basic/mining/basilisk = 1,
 	)
+
+/** Sand storm that never winds down, raised by the endless storm planet modifier. */
+/datum/weather/sand_storm/expedition_endless
+	telegraph_duration = 0 SECONDS
+	// Never scheduled at random, so other levels with the same storm trait keep their periodic storms.
+	probability = 0
+	weather_flags = parent_type::weather_flags | WEATHER_ENDLESS
 // AI EDIT END
