@@ -214,10 +214,6 @@
 	desc = "Гарнитура, предназначенная для усиления психических волн. Защищает уши от светошумовых гранат."
 	icon_state = "psyker_headset"
 	worn_icon_state = "syndie_headset"
-	// AI EDIT START - Keep protected earpieces on their original worn state
-	// BANDASTATION ADDITION - Per-slot worn headset states
-	worn_icon_state_by_slot = null
-	// AI EDIT END
 	freerange = TRUE
 
 /obj/item/radio/headset/psyker/Initialize(mapload)
@@ -245,10 +241,6 @@
 	desc = "A psychic headset designed for the elite psyker seers."
 	icon_state = "med_headset_alt"
 	worn_icon_state = "med_headset_alt"
-	// AI EDIT START - Keep protected earpieces on their original worn state
-	// BANDASTATION ADDITION - Per-slot worn headset states
-	worn_icon_state_by_slot = null
-	// AI EDIT END
 	freerange = TRUE
 
 /obj/item/radio/headset/psyker_seer/Initialize(mapload)
@@ -266,3 +258,9 @@
 	. = ..()
 	atom_storage.max_slots = 5
 	atom_storage.max_total_storage = /obj/item/gun/ballistic/revolver/c38::w_class + (4 * /obj/item/ammo_box/speedloader/c38::w_class)
+
+/obj/item/radio/headset/psyker/get_worn_icon_state_by_slot()
+	return null
+
+/obj/item/radio/headset/psyker_seer/get_worn_icon_state_by_slot()
+	return null

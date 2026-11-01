@@ -157,7 +157,9 @@
 		item_target.worn_icon_state = picked_item::worn_icon_state
 		// AI EDIT START - Copy slot-specific worn states with the chosen disguise
 		// BANDASTATION ADDITION START - Slot-specific worn states
-		item_target.worn_icon_state_by_slot = copy_initial_worn_icon_states(picked_item)
+		var/obj/item/picked_item_prototype = new picked_item(null)
+		item_target.worn_icon_state_by_slot = picked_item_prototype.get_worn_icon_state_by_slot()
+		qdel(picked_item_prototype)
 		// BANDASTATION ADDITION END
 		// AI EDIT END
 		item_target.inhand_icon_state = picked_item::inhand_icon_state
@@ -221,7 +223,7 @@
 		if(!ispath(item_type, /obj/item))
 			stack_trace("Invalid item type passed to apply_outfit ([item_type])")
 			continue
-		if(chameleon_typecache[item_type])
+		if(chameleon_typecache[item_type] && !is_type_in_typecache(item_type, chameleon_blacklist))
 			using_item_type = item_type
 			break
 

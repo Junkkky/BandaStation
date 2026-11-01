@@ -105,7 +105,7 @@
 		var/mob/living/carbon/human/victim = target
 		if(victim.stat == DEAD)
 			return wrap_victim(victim)
-	else if(isitem(target))
+	else if(isitem(target) || ismecha(target))
 		shadow_demon_extinguish(target)
 	attack_sound = pick('modular_bandastation/shadow_demon/sound/shadowattack2.ogg', 'modular_bandastation/shadow_demon/sound/shadowattack3.ogg', 'modular_bandastation/shadow_demon/sound/shadowattack4.ogg')
 	return ..()

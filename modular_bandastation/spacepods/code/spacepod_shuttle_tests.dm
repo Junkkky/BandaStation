@@ -105,6 +105,8 @@
 	source = locate(source.x, source.y, source.z)
 	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, source)
 	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(source, SOUTH))
+	// Keep breathing-driven life support out of the shuttle's power-use assertion.
+	ADD_TRAIT(pilot, TRAIT_NOBREATH, TRAIT_SOURCE_UNIT_TESTS)
 	TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE), "The carried pod's pilot could not board.")
 	var/initial_integrity = pod.get_integrity()
 	var/initial_charge = pod.battery.charge
@@ -146,18 +148,29 @@
 	item_origin.toShuttleMove(source, MOVE_TURF, shuttle)
 	TEST_ASSERT_EQUAL(plain_cargo.loc, get_step(item_origin, NORTH), "The pod-specific impact changed native displacement of ordinary loose cargo.")
 
-/// A queued core timer must not produce another blast after a landing has already destroyed its owner.
+/// Landing on an already destroyed cabin must not repeat its immediate core explosion.
 /datum/unit_test/spacepod_shuttle/pending_core/Run()
-	TEST_ASSERT_NOTNULL(vacuum_origin, "Could not reserve the failing-core landing fixture.")
+	TEST_ASSERT_NOTNULL(vacuum_origin, "Could not reserve the destroyed-core landing fixture.")
 	var/obj/docking_port/mobile/shuttle = make_port()
 	var/obj/vehicle/sealed/spacepod/pod = allocate(__IMPLIED_TYPE__, vacuum_origin)
-	pod.take_damage(pod.max_integrity + 1, BRUTE, MELEE, sound_effect = FALSE)
-	TEST_ASSERT(pod.melting_down && !QDELETED(pod), "The failing-core fixture did not start its real three-second timer.")
+	var/list/turf/footprint = pod.locs.Copy()
 	var/explosions_before = SSexplosions.explosion_index
-	vacuum_origin.toShuttleMove(locate(vacuum_origin.x + 4, vacuum_origin.y, vacuum_origin.z), MOVE_TURF, shuttle)
-	TEST_ASSERT(QDELETED(pod), "A core already failing survived the landing impact until its old timer.")
-	var/deadline = world.time + 4 SECONDS
-	while(world.time < deadline)
+	pod.take_damage(pod.max_integrity + 1, BRUTE, MELEE, sound_effect = FALSE)
+	var/destroyed_immediately = QDELETED(pod)
+	var/immediate_explosions = SSexplosions.explosion_index
+	var/turf/source = locate(vacuum_origin.x + 4, vacuum_origin.y, vacuum_origin.z)
+	for(var/turf/tile as anything in footprint)
+		tile.toShuttleMove(source, MOVE_TURF, shuttle)
+	var/observe_until = world.time + 4 SECONDS
+	var/deadline = world.time + 8 SECONDS
+	while(world.time < deadline && (world.time < observe_until || SSexplosions.is_exploding()))
 		stoplag(1)
-	TEST_ASSERT_EQUAL(SSexplosions.explosion_index, explosions_before + 1, "The deleted pod's pending meltdown timer produced a second blast.")
-	allocated |= get_wreckage()
+	TEST_ASSERT(!SSexplosions.is_exploding(), "The destroyed-core blast did not finish processing before cleanup.")
+	TEST_ASSERT(destroyed_immediately, "Lethal damage left the pod alive until the subsequent shuttle landing.")
+	TEST_ASSERT_EQUAL(immediate_explosions, explosions_before + 1, "Lethal damage did not immediately trigger the core explosion before landing.")
+	TEST_ASSERT_EQUAL(SSexplosions.explosion_index, explosions_before + 1, "Landing over the destroyed cabin or a delayed callback produced a second blast.")
+	while(length(get_wreckage()) < 4 && world.time < deadline)
+		stoplag(1)
+	var/list/debris = get_wreckage()
+	allocated |= debris
+	TEST_ASSERT_EQUAL(length(debris), 4, "Landing over the destroyed cabin removed or duplicated its four mechanical fragments.")

@@ -90,6 +90,11 @@
 	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, PROC_REF(update_status_on_signal))
 	if(iscarbon(jaunter))
 		jaunter.drop_all_held_items()
+		var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(jaunter)
+		if(heretic_datum && !heretic_datum.ascended && !HAS_TRAIT(jaunter, TRAIT_ALLOW_HERETIC_CASTING))
+			REMOVE_TRAIT(jaunter, TRAIT_NO_TRANSFORM, REF(src))
+			exit_jaunt(jaunter, our_turf)
+			return FALSE
 		// Give them some space hands to prevent them from doing things
 		var/obj/item/space_crawl/left_hand = new(jaunter)
 		var/obj/item/space_crawl/right_hand = new(jaunter)

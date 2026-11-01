@@ -240,12 +240,11 @@
 	return TRUE
 
 /**
- * Allows the heretic to craft a spell focus, which passively regenerates some spell charges
+ * Allows the heretic to craft a focus for advanced spells
  */
 /datum/heretic_knowledge/amber_focus
 	name = "Янтарная фокусировка"
-	desc = "Создаёт Янтарную фокусировку.<br>\
-		Пока она надета, каждые несколько минут восстанавливает часть зарядов заклинаний, кроме некоторых особых заклинаний."
+	desc = "Создаёт Янтарную фокусировку. Пока она надета, позволяет применять продвинутые еретические заклинания."
 	transmute_text = "Трансмутируйте лист стекла и пару глаз."
 	gain_text = "Я чувствовал себя потерянным и лишенным направления. Всё, за что я пытался ухватиться, ускользало сквозь пальцы. \
 		Мне нужно было что-то, за что можно держаться, на чём можно сосредоточиться, чтобы не уйти слишком далеко с пути."
@@ -254,8 +253,8 @@
 		/obj/item/stack/sheet/glass = 1,
 	)
 	result_atoms = list(/obj/item/clothing/neck/heretic_focus)
-	cost = 1
-	drafting_tier = 1
+	cost = 0
+	is_starting_knowledge = TRUE
 	research_tree_icon_path = 'icons/obj/clothing/neck.dmi'
 	research_tree_icon_state = "eldritch_necklace"
 
@@ -293,7 +292,6 @@
 	action_to_add = /datum/action/cooldown/spell/shadow_cloak
 	cost = 1
 	drafting_tier = 1
-	max_charges = INFINITY
 	is_shop_only = TRUE // not actually but it's got special requirements
 
 /datum/heretic_knowledge/spell/cloak_of_shadows/spell_check(datum/action/the_spell, feedback)

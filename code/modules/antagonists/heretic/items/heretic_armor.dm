@@ -81,6 +81,7 @@
 
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/heretic_focus)
 	if(texture_type)
 		AddElement(/datum/element/equipment_bodypart_texture, BODY_ZONE_HEAD, texture_type)
 
@@ -1236,6 +1237,7 @@
 /// Makes our cloak "invisible". Not the wearer, the cloak itself.
 /obj/item/clothing/suit/hooded/cultrobes/void/proc/make_invisible()
 	add_traits(list(TRAIT_NO_STRIP, TRAIT_EXAMINE_SKIP), REF(src))
+	RemoveElement(/datum/element/heretic_focus)
 	flags_cover |= ALLOW_SURGERY_THROUGH
 
 	if(isliving(loc))
@@ -1247,6 +1249,7 @@
 /// Makes our cloak "visible" again.
 /obj/item/clothing/suit/hooded/cultrobes/void/proc/make_visible()
 	remove_traits(list(TRAIT_NO_STRIP, TRAIT_EXAMINE_SKIP), REF(src))
+	AddElement(/datum/element/heretic_focus)
 	flags_cover &= ~ALLOW_SURGERY_THROUGH
 
 	if(isliving(loc))

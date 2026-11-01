@@ -45,7 +45,10 @@
 	TEST_ASSERT(!pod.relaymove(passenger, EAST), "A passenger moved the pod.")
 	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge, "A rejected passenger input consumed energy.")
 	TEST_ASSERT(pod.relaymove(pilot, EAST), "The pilot could not move a powered pod across open floor.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge - SPACEPOD_ENERGY_UNIT, "One move did not consume one converted donor energy unit.")
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	pod.flight.process(0.05)
+	TEST_ASSERT(pod.battery.charge < initial_charge, "The accepted pilot thrust consumed no energy.")
+	TEST_ASSERT(pod.flight.velocity_x || pod.flight.velocity_y, "The accepted pilot thrust did not accelerate the cabin.")
 	ADD_TRAIT(pilot, TRAIT_RESTRAINED, TRAIT_SOURCE_UNIT_TESTS)
 	TEST_ASSERT(!pod.can_control(pilot), "A restrained pilot retained the controls.")
 	REMOVE_TRAIT(pilot, TRAIT_RESTRAINED, TRAIT_SOURCE_UNIT_TESTS)
@@ -238,6 +241,7 @@
 	var/turf/origin = locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y + 2, run_loc_floor_bottom_left.z)
 	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, origin)
 	pod.enter_delay = 0
+	pod.setDir(NORTH)
 	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
 	var/mob/living/carbon/human/consistent/passenger = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
 	TEST_ASSERT(pod.mob_try_enter(pilot), "The pilot could not board for the movement-lock test.")
@@ -247,11 +251,161 @@
 	var/keybind_result = SEND_SIGNAL(pilot, COMSIG_MOVABLE_KEYBIND_FACE_DIR, EAST)
 	TEST_ASSERT(!(keybind_result & COMSIG_IGNORE_MOVEMENT_LOCK), "Alt+direction incorrectly authorizes the client's movement branch.")
 	pilot.keybind_face_direction(EAST)
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	for(var/tick in 1 to 6)
+		pod.flight.process(0.05)
 	TEST_ASSERT_EQUAL(pod.loc, origin, "Turning with the native movement-lock signal moved the pod.")
 	TEST_ASSERT_EQUAL(pod.dir, EAST, "The movement-lock signal did not turn the cabin.")
 	TEST_ASSERT_EQUAL(pilot.dir, EAST, "Turning the cabin did not turn its pilot.")
 	TEST_ASSERT_EQUAL(passenger.dir, EAST, "Turning the cabin did not turn its passenger.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge, "Turning in place consumed flight energy.")
+	TEST_ASSERT(pod.battery.charge < initial_charge, "Powered turning in place consumed no flight energy.")
+	var/charge_after_turn = pod.battery.charge
 	TEST_ASSERT(pod.relaymove(pilot, NORTH), "Ordinary pilot movement stopped working after turning in place.")
-	TEST_ASSERT_EQUAL(pod.loc, get_step(origin, NORTH), "The first ordinary movement after turning ended at the wrong turf.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge - SPACEPOD_ENERGY_UNIT, "The first ordinary movement after turning consumed the wrong energy.")
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	pod.flight.process(0.05)
+	TEST_ASSERT_EQUAL(pod.loc, get_step(origin, EAST), "Forward thrust did not follow the newly aimed nose.")
+	TEST_ASSERT(pod.battery.charge < charge_after_turn, "Forward thrust after turning consumed no energy.")
+
+/datum/unit_test/spacepod_interaction
+	parent_type = /datum/unit_test/spacepod_vacuum
+	abstract_type = /datum/unit_test/spacepod_interaction
+	var/obj/vehicle/sealed/spacepod/interaction_pod
+	var/mob/living/carbon/human/consistent/interactor
+	var/obj/item/crowbar/crowbar
+	var/list/barrier_turfs = list()
+
+/datum/unit_test/spacepod_interaction/Destroy()
+	for(var/turf/route as anything in barrier_turfs)
+		route.ChangeTurf(/turf/open/space)
+	barrier_turfs.Cut()
+	interaction_pod = null
+	interactor = null
+	crowbar = null
+	return ..()
+
+/datum/unit_test/spacepod_interaction/proc/prepare_interaction()
+	if(!vacuum_origin)
+		return FALSE
+	interaction_pod = allocate(/obj/vehicle/sealed/spacepod/civilian, vacuum_origin)
+	STOP_PROCESSING(SSobj, interaction_pod)
+	interaction_pod.enter_delay = 0
+	interactor = allocate(__IMPLIED_TYPE__, get_step(vacuum_origin, SOUTH))
+	interactor.mock_client = allocate(/datum/client_interface)
+	interactor.set_combat_mode(FALSE)
+	crowbar = allocate(__IMPLIED_TYPE__, interactor.loc)
+	return interactor.put_in_active_hand(crowbar)
+
+/// Keep the native drag checks and restore the ambient actor before any assertion can return.
+/datum/unit_test/spacepod_interaction/proc/drag_self_into_pod()
+	var/mob/previous_usr = usr
+	usr = interactor
+	interactor.MouseDrop(interaction_pod)
+	usr = previous_usr
+
+/// Real tool clicks and self-drag boarding work around the whole hull, without extending its range.
+/datum/unit_test/spacepod_interaction/perimeter/Run()
+	TEST_ASSERT(prepare_interaction(), "Could not prepare the full-hull interaction fixture.")
+	var/list/perimeter = list(list(2, 2), list(1, 2), list(0, 2), list(-1, 2), list(2, 1), list(2, 0), list(2, -1), list(1, -1), list(0, -1), list(-1, -1), list(-1, 0), list(-1, 1))
+	for(var/list/offset as anything in perimeter)
+		interactor.forceMove(locate(vacuum_origin.x + offset[1], vacuum_origin.y + offset[2], vacuum_origin.z))
+		click_wrapper(interactor, interaction_pod, list(LEFT_CLICK = TRUE))
+		TEST_ASSERT(interaction_pod.hatch_open, "A real crowbar click could not open the hatch from hull offset ([offset[1]],[offset[2]]).")
+		click_wrapper(interactor, interaction_pod, list(LEFT_CLICK = TRUE))
+		TEST_ASSERT(!interaction_pod.hatch_open, "A real crowbar click could not close the hatch from the same edge.")
+		drag_self_into_pod()
+		TEST_ASSERT_EQUAL(interactor.loc, interaction_pod, "Self-drag boarding failed from hull offset ([offset[1]],[offset[2]]).")
+		TEST_ASSERT_EQUAL(interaction_pod.pilot, interactor, "Successful perimeter boarding did not assign pilot controls.")
+		TEST_ASSERT(interaction_pod.mob_exit(interactor, silent = TRUE), "The perimeter pilot could not leave before the next edge test.")
+		TEST_ASSERT(interactor.put_in_active_hand(crowbar), "Could not re-equip the crowbar dropped by native vehicle hand blocking.")
+	for(var/list/offset as anything in list(list(3, 1), list(1, 3), list(3, 3)))
+		interactor.forceMove(locate(vacuum_origin.x + offset[1], vacuum_origin.y + offset[2], vacuum_origin.z))
+		click_wrapper(interactor, interaction_pod, list(LEFT_CLICK = TRUE))
+		drag_self_into_pod()
+		TEST_ASSERT(!interaction_pod.hatch_open && interactor.loc != interaction_pod, "Interaction reached beyond the hull's one-tile perimeter.")
+	TEST_ASSERT(run_loc_floor_bottom_left.z != vacuum_origin.z, "The cross-Z control is not on a separate level.")
+	interactor.forceMove(run_loc_floor_bottom_left)
+	click_wrapper(interactor, interaction_pod, list(LEFT_CLICK = TRUE))
+	drag_self_into_pod()
+	TEST_ASSERT(!interaction_pod.hatch_open && interactor.loc != interaction_pod, "Interaction reached a hull on another Z level.")
+	var/obj/structure/closet/crate/container = allocate(__IMPLIED_TYPE__, locate(vacuum_origin.x + 2, vacuum_origin.y + 1, vacuum_origin.z))
+	interactor.forceMove(container)
+	click_wrapper(interactor, interaction_pod, list(LEFT_CLICK = TRUE))
+	drag_self_into_pod()
+	TEST_ASSERT(!interaction_pod.hatch_open && interactor.loc == container, "A closed unrelated container allowed external tool use or boarding.")
+	interactor.forceMove(locate(vacuum_origin.x + 2, vacuum_origin.y + 2, vacuum_origin.z))
+	var/obj/item/spacepod_equipment/lock/keyed/lock = allocate(__IMPLIED_TYPE__, interaction_pod)
+	TEST_ASSERT(interaction_pod.add_equipment(null, lock, lock.slot), "Could not install the lock control fixture.")
+	interaction_pod.unlocked = FALSE
+	click_wrapper(interactor, interaction_pod, list(LEFT_CLICK = TRUE))
+	drag_self_into_pod()
+	TEST_ASSERT(!interaction_pod.hatch_open && interactor.loc != interaction_pod, "Full-hull reach bypassed the installed door lock.")
+
+/// Hull reach retains window borders and the native two-path rule for diagonal corners.
+/datum/unit_test/spacepod_interaction/barriers/Run()
+	TEST_ASSERT(prepare_interaction(), "Could not prepare the hull-barrier fixture.")
+	interactor.forceMove(locate(vacuum_origin.x + 2, vacuum_origin.y + 1, vacuum_origin.z))
+	var/obj/structure/window/lower_window = allocate(__IMPLIED_TYPE__, locate(vacuum_origin.x + 1, vacuum_origin.y, vacuum_origin.z))
+	var/obj/structure/window/upper_window = allocate(__IMPLIED_TYPE__, locate(vacuum_origin.x + 1, vacuum_origin.y + 1, vacuum_origin.z))
+	lower_window.setDir(EAST)
+	upper_window.setDir(EAST)
+	click_wrapper(interactor, interaction_pod, list(LEFT_CLICK = TRUE))
+	drag_self_into_pod()
+	TEST_ASSERT(!interaction_pod.hatch_open && interactor.loc != interaction_pod, "Tool use or boarding crossed a complete window barrier.")
+	qdel(upper_window)
+	click_wrapper(interactor, interaction_pod, list(LEFT_CLICK = TRUE))
+	TEST_ASSERT(interaction_pod.hatch_open, "Removing the nearer window did not restore real crowbar access.")
+	click_wrapper(interactor, interaction_pod, list(LEFT_CLICK = TRUE))
+	drag_self_into_pod()
+	TEST_ASSERT_EQUAL(interactor.loc, interaction_pod, "Removing the nearer window did not restore self-drag boarding.")
+	TEST_ASSERT(interaction_pod.mob_exit(interactor, silent = TRUE), "The window control pilot could not exit.")
+	TEST_ASSERT(interactor.put_in_active_hand(crowbar), "Could not re-equip the crowbar before the diagonal-path checks.")
+	qdel(lower_window)
+	interactor.forceMove(locate(vacuum_origin.x + 2, vacuum_origin.y + 2, vacuum_origin.z))
+	var/turf/north_route = locate(vacuum_origin.x + 1, vacuum_origin.y + 2, vacuum_origin.z)
+	var/turf/east_route = locate(vacuum_origin.x + 2, vacuum_origin.y + 1, vacuum_origin.z)
+	barrier_turfs += list(north_route, east_route)
+	north_route = north_route.ChangeTurf(/turf/closed/indestructible)
+	east_route = east_route.ChangeTurf(/turf/closed/indestructible)
+	click_wrapper(interactor, interaction_pod, list(LEFT_CLICK = TRUE))
+	drag_self_into_pod()
+	TEST_ASSERT(!interaction_pod.hatch_open && interactor.loc != interaction_pod, "Interaction crossed a diagonally sealed hull corner.")
+	north_route = north_route.ChangeTurf(/turf/open/space)
+	click_wrapper(interactor, interaction_pod, list(LEFT_CLICK = TRUE))
+	TEST_ASSERT(interaction_pod.hatch_open, "Opening one diagonal path did not restore the real tool interaction.")
+	drag_self_into_pod()
+	TEST_ASSERT_EQUAL(interactor.loc, interaction_pod, "Opening one diagonal path did not restore boarding.")
+	east_route.ChangeTurf(/turf/open/space)
+
+/// Delayed boarding rechecks range and locking after the actual timed action has started.
+/datum/unit_test/spacepod_interaction/boarding_invalidation/Run()
+	TEST_ASSERT(prepare_interaction(), "Could not prepare delayed perimeter boarding.")
+	var/obj/item/spacepod_equipment/lock/keyed/lock = allocate(__IMPLIED_TYPE__, interaction_pod)
+	TEST_ASSERT(interaction_pod.add_equipment(null, lock, lock.slot), "Could not install the timed-boarding lock.")
+	interaction_pod.enter_delay = 0.5 SECONDS
+	interactor.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/base, multiplicative_slowdown = 1)
+	for(var/condition in list("none", "user moves", "pod moves", "locks"))
+		interaction_pod.forceMove(vacuum_origin)
+		interaction_pod.unlocked = TRUE
+		interactor.forceMove(locate(vacuum_origin.x + 2, vacuum_origin.y + 2, vacuum_origin.z))
+		var/list/outcome = list("finished" = FALSE, "success" = FALSE)
+		ASYNC
+			outcome["success"] = interaction_pod.enter_pod(interactor)
+			outcome["finished"] = TRUE
+		TEST_ASSERT(DOING_INTERACTION(interactor, interaction_pod), "Perimeter boarding did not enter the actual timed action for [condition].")
+		switch(condition)
+			if("user moves")
+				interactor.forceMove(locate(vacuum_origin.x + 4, vacuum_origin.y + 4, vacuum_origin.z))
+			if("pod moves")
+				interaction_pod.forceMove(locate(vacuum_origin.x - 3, vacuum_origin.y - 3, vacuum_origin.z))
+			if("locks")
+				interaction_pod.unlocked = FALSE
+		var/deadline = world.time + 2 SECONDS
+		while(!outcome["finished"] && world.time < deadline)
+			sleep(world.tick_lag)
+		TEST_ASSERT(outcome["finished"], "The timed perimeter boarding did not finish for [condition].")
+		TEST_ASSERT(!DOING_INTERACTION(interactor, interaction_pod), "Completed perimeter boarding retained its timed interaction.")
+		if(condition == "none")
+			TEST_ASSERT(outcome["success"] && interactor.loc == interaction_pod, "Uninterrupted timed boarding from the far corner failed.")
+			TEST_ASSERT(interaction_pod.mob_exit(interactor, silent = TRUE), "The timed boarding control could not exit.")
+		else
+			TEST_ASSERT(!outcome["success"] && interactor.loc != interaction_pod, "Timed boarding ignored [condition] after starting at the hull's far corner.")

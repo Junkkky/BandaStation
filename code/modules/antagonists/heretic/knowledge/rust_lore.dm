@@ -111,7 +111,6 @@
 	action_to_add = /datum/action/cooldown/mob_cooldown/charge/rust
 	cost = 2
 	is_final_knowledge = TRUE
-	max_charges = INFINITY
 
 /datum/heretic_knowledge/spell/rust_construction
 	name = "Возведение ржавчины"
@@ -121,10 +120,6 @@
 		они больше не выглядели рукотворными. А может быть, они вообще никогда и не существовали."
 	action_to_add = /datum/action/cooldown/spell/pointed/rust_construction
 	cost = 2
-	max_charges = 20
-	path_recharge_amount = 0.2
-	focus_recharge_amount = 0.5
-	holywater_drain_amount = 0.1
 
 /datum/heretic_knowledge/armor/rust
 	name = "Уцелевшие обломки"
@@ -147,17 +142,9 @@
 	desc = "Дарует вам заклинание «Агрессивное распространение», которое распространяет ржавчину на близлежащие поверхности. \
 		Уже заржавевшие поверхности разрушаются. \ Также улучшает способности ржавчины еретиков не Пути ржавчины."
 	gain_text = "Мудрецы знают, что не стоит посещать Ржавые холмы... Но рассказ Кузнеца был вдохновляющим."
-	required_atoms = list(
-		/obj/item/storage/toolbox = 1,
-	)
 	action_to_add = /datum/action/cooldown/spell/aoe/rust_conversion
 	cost = 2
 	research_tree_icon_frame = 5
-	max_charges = 12
-	path_recharge_amount = 0.25
-	focus_recharge_amount = 0.33
-	holywater_drain_amount = 0.16
-	transmute_text = "Можно вручную перезарядить, завершив ритуал с ящиком для инструментов."
 
 /datum/heretic_knowledge/blade_upgrade/rust
 	name = "Токсичный клинок"
@@ -186,10 +173,6 @@
 	action_to_add = /datum/action/cooldown/spell/cone/staggered/entropic_plume
 	cost = 2
 	drafting_tier = 5
-	max_charges = 4
-	path_recharge_amount = 0.25
-	focus_recharge_amount = 0.25
-	holywater_drain_amount = 0.25
 
 /datum/heretic_knowledge/ultimate/rust_final
 	name = "Клятва Несущего Ржавчину"

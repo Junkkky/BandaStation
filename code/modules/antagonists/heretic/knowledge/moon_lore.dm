@@ -97,10 +97,6 @@
 
 	action_to_add = /datum/action/cooldown/spell/pointed/mind_gate
 	cost = 2
-	max_charges = 6
-	path_recharge_amount = 0.33
-	focus_recharge_amount = 0.33
-	holywater_drain_amount = 0.33
 
 /datum/heretic_knowledge/moon_amulet
 	name = "Лунный амулет"
@@ -146,14 +142,8 @@
 		при попадании которого, цель присоединяется к параду, и начинает страдать от галюцинаций."
 	gain_text = "Музыка, словно отражение души, завораживала их, ведя их за собой, как мотыльков ведет за собой пламя."
 	action_to_add = /datum/action/cooldown/spell/pointed/projectile/moon_parade
-	notice = "Количество зарядов, полученных от применения Амулетов Лунного Света, не ограничено."
 	cost = 2
 	drafting_tier = 5
-	max_charges = 4
-	path_recharge_amount = 0.25
-	focus_recharge_amount = 0.25
-	holywater_drain_amount = 0.25
-	path_recharge_can_surpass_cap = TRUE
 
 /datum/heretic_knowledge/blade_upgrade/moon
 	name = "Лунный клинок"
@@ -189,17 +179,11 @@
 			Если значение их рассудка достаточно низкое, цель сойдет с ума, лишившись половины имевшегося рассудка."
 	gain_text = "Взял его за руку, мы поднялись, и те, кто видел правду, поднялись вместе с нами. \
 		Постановщик указал вверх, и тусклый свет правды осветил нас еще больше."
-	notice = "Количество зарядов, полученных от применения Амулетов Лунного Света, не ограничено."
 
 	action_to_add = /datum/action/cooldown/spell/aoe/moon_ringleader
 	cost = 2
 	research_tree_icon_frame = 5
 	is_final_knowledge = TRUE
-	max_charges = 2
-	path_recharge_amount = 0.25
-	focus_recharge_amount = 0.25
-	holywater_drain_amount = 0.25
-	path_recharge_can_surpass_cap = TRUE
 
 /datum/heretic_knowledge/ultimate/moon_final
 	name = "Последний Акт"

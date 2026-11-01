@@ -1,6 +1,6 @@
 /// Service the reserve from outside, through an open and unlocked maintenance hatch.
 /obj/vehicle/sealed/spacepod/proc/can_service_internal_tank(mob/living/user)
-	return !QDELETED(src) && !QDELETED(user) && isliving(user) && isturf(loc) && isturf(user.loc) && !user.combat_mode && !user.incapacitated && !HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) && user.Adjacent(src) && hatch_open && unlocked && !melting_down
+	return !QDELETED(src) && !QDELETED(user) && isliving(user) && isturf(loc) && isturf(user.loc) && !user.combat_mode && !user.incapacitated && !HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) && Adjacent(user) && hatch_open && unlocked && !melting_down
 
 /obj/vehicle/sealed/spacepod/proc/install_internal_tank(mob/living/user, obj/machinery/portable_atmospherics/canister/tank)
 	if(!can_service_internal_tank(user) || !istype(tank) || QDELETED(tank) || !isturf(tank.loc) || !user.Adjacent(tank))

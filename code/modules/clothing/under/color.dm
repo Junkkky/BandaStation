@@ -5,7 +5,6 @@
 	icon_state = "/obj/item/clothing/under/color"
 	post_init_icon_state = "jumpsuit"
 	inhand_icon_state = "jumpsuit"
-	worn_icon_state = "jumpsuit"
 	worn_icon = 'icons/mob/clothing/under/color.dmi'
 	dying_key = DYE_REGISTRY_UNDER
 	greyscale_colors = "#3f3f3f"

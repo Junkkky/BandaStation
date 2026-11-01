@@ -24,24 +24,16 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 	action_to_add = /datum/action/cooldown/spell/touch/mansus_grasp
 	cost = 0
 	is_starting_knowledge = TRUE
-	max_charges = 8
-	focus_recharge_amount = 0.25
-	holywater_drain_amount = 0.125
-	transmute_text = "Поглощение влияний и завершение жертвоприношений перезаряжает заклинание."
 
 // Heretics can enhance their fishing rods to fish better - fishing content.
 // Lasts until successfully fishing something up.
 /datum/heretic_knowledge/spell/basic/on_gain(mob/user, datum/antagonist/heretic/our_heretic)
 	. = ..()
 	RegisterSignal(user, COMSIG_TOUCH_HANDLESS_CAST, PROC_REF(on_grasp_cast))
-	RegisterSignal(our_heretic, COMSIG_HERETIC_INFLUENCE_DRAINED, PROC_REF(on_influence_tap))
-	RegisterSignal(our_heretic, COMSIG_HERETIC_SACRIFICE, PROC_REF(on_sacrifice))
 
 /datum/heretic_knowledge/spell/basic/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
 	. = ..()
 	UnregisterSignal(user, COMSIG_TOUCH_HANDLESS_CAST)
-	UnregisterSignal(our_heretic, COMSIG_HERETIC_INFLUENCE_DRAINED)
-	UnregisterSignal(our_heretic, COMSIG_HERETIC_SACRIFICE)
 
 /datum/heretic_knowledge/spell/basic/proc/on_grasp_cast(mob/living/carbon/cast_on, datum/action/cooldown/spell/touch/touch_spell)
 	SIGNAL_HANDLER
@@ -69,14 +61,6 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 		item.remove_filter("mansus_infusion")
 		REMOVE_TRAIT(item, TRAIT_ROD_MANSUS_INFUSED, REF(item))
 		item.difficulty_modifier += 20
-
-/datum/heretic_knowledge/spell/basic/proc/on_influence_tap(...)
-	SIGNAL_HANDLER
-	add_charges(max_charges)
-
-/datum/heretic_knowledge/spell/basic/proc/on_sacrifice(...)
-	SIGNAL_HANDLER
-	add_charges(max_charges)
 
 /**
  * The Living Heart heretic knowledge.

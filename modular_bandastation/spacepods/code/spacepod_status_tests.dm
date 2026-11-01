@@ -155,3 +155,248 @@
 	data = pod.get_status_data()
 	for(var/measurement in list("cabin_oxygen_kpa", "cabin_oxygen_liters", "cabin_pressure_kpa", "active_oxygen_kpa", "tank_pressure_kpa"))
 		TEST_ASSERT_NULL(data[measurement], "Missing gas source produced a stale [measurement] measurement.")
+
+/// Replace only client audio delivery; warning selection and managed sound channels remain real.
+/mob/living/carbon/human/consistent/spacepod_alert_listener
+	var/list/alert_audio = list()
+	var/list/stopped_channels = list()
+	var/accept_audio = TRUE
+
+/mob/living/carbon/human/consistent/spacepod_alert_listener/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/sound_to_use, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1, use_reverb = TRUE, wait = FALSE, datum/preference/numeric/volume/volume_preference = null, min_volume = 5)
+	if(findtext("[soundin]", "modular_bandastation/spacepods/sound/alerts/") == 1)
+		alert_audio += list(list("file" = soundin, "source" = turf_source, "channel" = channel, "volume" = vol, "vary" = vary, "pressure" = pressure_affected, "reverb" = use_reverb, "preference" = volume_preference))
+	return accept_audio
+
+/mob/living/carbon/human/consistent/spacepod_alert_listener/stop_sound_channel(chan)
+	stopped_channels += chan
+
+/datum/unit_test/spacepod_cabin_alerts
+	parent_type = /datum/unit_test/spacepod_vacuum
+	abstract_type = /datum/unit_test/spacepod_cabin_alerts
+	var/obj/vehicle/sealed/spacepod/civilian/alert_pod
+	var/mob/living/carbon/human/consistent/spacepod_alert_listener/alert_pilot
+
+/datum/unit_test/spacepod_cabin_alerts/Destroy()
+	alert_pod = null
+	alert_pilot = null
+	return ..()
+
+/datum/unit_test/spacepod_cabin_alerts/proc/prepare_alert_cabin()
+	if(!vacuum_origin)
+		return FALSE
+	alert_pod = allocate(__IMPLIED_TYPE__, vacuum_origin)
+	STOP_PROCESSING(SSobj, alert_pod)
+	alert_pod.enter_delay = 0
+	alert_pod.max_passengers = 2
+	alert_pod.max_occupants = 3
+	alert_pilot = board_alert_listener()
+	return !isnull(alert_pilot)
+
+/datum/unit_test/spacepod_cabin_alerts/proc/board_alert_listener(connected = TRUE)
+	var/mob/living/carbon/human/consistent/spacepod_alert_listener/listener = allocate(__IMPLIED_TYPE__, get_step(alert_pod, SOUTH))
+	if(connected)
+		listener.mock_client = allocate(/datum/client_interface)
+	if(!alert_pod.mob_try_enter(listener))
+		return
+	return listener
+
+/datum/unit_test/spacepod_cabin_alerts/proc/set_cabin_oxygen(pressure_kpa)
+	var/datum/gas_mixture/air = alert_pod.cabin_air
+	air.set_gas(/datum/gas/oxygen, pressure_kpa * air.volume / (R_IDEAL_GAS_EQUATION * air.temperature))
+
+/datum/unit_test/spacepod_cabin_alerts/proc/set_reserve_oxygen(standard_litres)
+	var/datum/gas_mixture/air = alert_pod.internal_tank.return_air()
+	air.set_gas(/datum/gas/oxygen, standard_litres * ONE_ATMOSPHERE / (R_IDEAL_GAS_EQUATION * T20C))
+
+/// Boundary crossings rearm only after recovery, and escalation respects the shared audio cooldown.
+/datum/unit_test/spacepod_cabin_alerts/battery/Run()
+	TEST_ASSERT(prepare_alert_cabin(), "Could not board the battery-warning fixture.")
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.21
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 0, "A healthy battery generated a warning.")
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.20
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 1, "The low-battery crossing did not dispatch one warning.")
+	var/list/first = alert_pilot.alert_audio[1]
+	TEST_ASSERT_EQUAL(first["file"], 'modular_bandastation/spacepods/sound/alerts/battery_low.ogg', "Low charge selected the wrong voice message.")
+	TEST_ASSERT_NULL(first["source"], "The cabin voice was made spatial instead of direct.")
+	TEST_ASSERT_EQUAL(first["volume"], 55, "The cabin voice changed its intended volume.")
+	TEST_ASSERT(!first["vary"] && !first["pressure"] && !first["reverb"], "The cabin voice is randomized, muted by vacuum, or reverberant.")
+	TEST_ASSERT_EQUAL(first["preference"], /datum/preference/numeric/volume/sound_tts_volume_announcement, "Cabin voice bypassed the announcement-volume preference.")
+	TEST_ASSERT_EQUAL(SSsounds.using_channels[num2text(first["channel"])], alert_pod, "Cabin voice did not reserve a managed sound channel.")
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.24
+	alert_pod.process_cabin_alerts()
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.05
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 1, "Escalation interrupted the active warning before its cooldown elapsed.")
+	TEST_ASSERT(COOLDOWN_TIMELEFT(alert_pod, cabin_alert_cooldown) > 0, "Dispatch did not start the warning cooldown.")
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 2, "Critical battery charge did not escalate after the cooldown.")
+	TEST_ASSERT_EQUAL(alert_pilot.alert_audio[2]["file"], 'modular_bandastation/spacepods/sound/alerts/battery_critical.ogg', "Critical charge selected the wrong voice message.")
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.09
+	alert_pod.process_cabin_alerts()
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.05
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 2, "Unrecovered critical charge repeated its warning or replayed the lower warning.")
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.10
+	alert_pod.process_cabin_alerts()
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.05
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 3, "Recovery to ten percent did not rearm the critical warning.")
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.24
+	alert_pod.process_cabin_alerts()
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.20
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 3, "Charge below the recovery boundary rearmed the low warning.")
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.25
+	alert_pod.process_cabin_alerts()
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.20
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 4, "Recovery to twenty-five percent did not rearm the low warning.")
+
+/// Critical breathing, hull and battery warnings are ordered and suppress their weaker counterparts.
+/datum/unit_test/spacepod_cabin_alerts/priority/Run()
+	TEST_ASSERT(prepare_alert_cabin(), "Could not board the warning-priority fixture.")
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.05
+	set_cabin_oxygen(15.5)
+	alert_pod.update_integrity(alert_pod.max_integrity / 4)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 1, "Simultaneous critical faults dispatched overlapping warnings.")
+	TEST_ASSERT_EQUAL(alert_pilot.alert_audio[1]["file"], 'modular_bandastation/spacepods/sound/alerts/oxygen_critical.ogg', "Breathing danger did not take priority over hull and battery damage.")
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 2, "The second critical warning was lost.")
+	TEST_ASSERT_EQUAL(alert_pilot.alert_audio[2]["file"], 'modular_bandastation/spacepods/sound/alerts/hull_critical.ogg', "Critical hull damage did not take priority over the critical battery.")
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 3, "The critical battery warning was lost.")
+	TEST_ASSERT_EQUAL(alert_pilot.alert_audio[3]["file"], 'modular_bandastation/spacepods/sound/alerts/battery_critical.ogg', "The final critical warning selected the wrong voice.")
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 3, "Critical warnings were followed by redundant lower-severity messages.")
+
+/// Selected breathable air and oxygen quantity in the reserve are independent warning sources.
+/datum/unit_test/spacepod_cabin_alerts/air_sources/Run()
+	TEST_ASSERT(prepare_alert_cabin(), "Could not board the air-warning fixture.")
+	set_reserve_oxygen(0)
+	var/list/status = alert_pod.get_status_data()
+	TEST_ASSERT(status["tank_pressure_kpa"] > ONE_ATMOSPHERE, "The nitrogen-only reserve fixture is not pressurized.")
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 1, "A pressurized nitrogen tank concealed its missing oxygen reserve.")
+	TEST_ASSERT_EQUAL(alert_pilot.alert_audio[1]["file"], 'modular_bandastation/spacepods/sound/alerts/reserve_low.ogg', "Reserve depletion was confused with cabin oxygen starvation.")
+	set_reserve_oxygen(500)
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	set_reserve_oxygen(0)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 1, "An incompletely refilled reserve rearmed its warning.")
+	set_reserve_oxygen(601)
+	alert_pod.process_cabin_alerts()
+	set_reserve_oxygen(399)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 2, "A recovered reserve did not warn on renewed oxygen depletion.")
+	set_reserve_oxygen(1000)
+	alert_pod.process_cabin_alerts()
+	set_cabin_oxygen(17.5)
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 3, "Low cabin oxygen did not produce a warning.")
+	TEST_ASSERT_EQUAL(alert_pilot.alert_audio[3]["file"], 'modular_bandastation/spacepods/sound/alerts/oxygen_low.ogg', "Low cabin oxygen selected the wrong message.")
+	set_cabin_oxygen(18.5)
+	alert_pod.process_cabin_alerts()
+	set_cabin_oxygen(15.5)
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 4, "Cabin oxygen did not escalate to critical.")
+	TEST_ASSERT_EQUAL(alert_pilot.alert_audio[4]["file"], 'modular_bandastation/spacepods/sound/alerts/oxygen_critical.ogg', "Critical cabin oxygen selected the wrong message.")
+	set_cabin_oxygen(18.5)
+	alert_pod.process_cabin_alerts()
+	set_cabin_oxygen(17.5)
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 4, "Oxygen that had not fully recovered repeated its lower warning.")
+	set_cabin_oxygen(20.5)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT(alert_pod.toggle_internal_tank(alert_pilot), "The pilot could not select exterior vacuum.")
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 5, "A full unused tank concealed the selected exterior vacuum.")
+	TEST_ASSERT_EQUAL(alert_pilot.alert_audio[5]["file"], 'modular_bandastation/spacepods/sound/alerts/oxygen_critical.ogg', "Exterior vacuum did not select the critical breathing warning.")
+	TEST_ASSERT(alert_pod.toggle_internal_tank(alert_pilot), "The pilot could not restore healthy cabin air.")
+	alert_pod.process_cabin_alerts()
+	var/valid_volume = alert_pod.cabin_air.volume
+	alert_pod.cabin_air.volume = 0
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 6, "An invalid active mixture did not warn about unavailable breathable air.")
+	alert_pod.cabin_air.volume = valid_volume
+	alert_pod.process_cabin_alerts()
+	QDEL_NULL(alert_pod.cabin_air)
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 7, "A missing cabin mixture concealed the fallback exterior vacuum.")
+
+/// Only current connected occupants hear warnings, and every departure releases its owned channel.
+/datum/unit_test/spacepod_cabin_alerts/audience/Run()
+	TEST_ASSERT(prepare_alert_cabin(), "Could not board the warning-audience fixture.")
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.20
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 1, "The initial pilot did not receive the warning.")
+	var/channel = alert_pod.cabin_alert_channel
+	var/mob/living/carbon/human/consistent/spacepod_alert_listener/passenger = board_alert_listener()
+	var/mob/living/carbon/human/consistent/spacepod_alert_listener/npc = board_alert_listener(connected = FALSE)
+	TEST_ASSERT_NOTNULL(passenger, "The new passenger could not board.")
+	TEST_ASSERT_NOTNULL(npc, "The disconnected control occupant could not board.")
+	var/mob/living/carbon/human/consistent/spacepod_alert_listener/outsider = allocate(__IMPLIED_TYPE__, get_step(alert_pod, SOUTH))
+	outsider.mock_client = allocate(/datum/client_interface)
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(passenger.alert_audio), 1, "A newly boarded passenger missed the existing fault.")
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 1, "A new passenger replayed an already-heard warning to the pilot.")
+	TEST_ASSERT_EQUAL(length(npc.alert_audio), 0, "A clientless occupant received cabin audio.")
+	TEST_ASSERT_EQUAL(length(outsider.alert_audio), 0, "Cabin voice leaked to an adjacent outsider.")
+	TEST_ASSERT(alert_pod.mob_exit(passenger, silent = TRUE), "The warned passenger could not exit.")
+	TEST_ASSERT(channel in passenger.stopped_channels, "Ejection did not stop that passenger's warning channel.")
+	TEST_ASSERT_EQUAL(SSsounds.using_channels[num2text(channel)], alert_pod, "One passenger's departure freed the remaining pilot's warning channel.")
+	alert_pilot.mock_client = null
+	alert_pilot.Logout()
+	TEST_ASSERT(channel in alert_pilot.stopped_channels, "Logout did not stop the former pilot's warning channel.")
+	TEST_ASSERT_NULL(alert_pod.cabin_alert_channel, "The empty audience retained its warning channel.")
+	TEST_ASSERT(SSsounds.using_channels[num2text(channel)] != alert_pod && !length(SSsounds.using_channels_by_datum[alert_pod]), "The empty audience leaked managed sound-channel ownership.")
+	COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+	var/mob/living/carbon/human/consistent/spacepod_alert_listener/newcomer = board_alert_listener()
+	TEST_ASSERT_NOTNULL(newcomer, "A new connected listener could not enter the occupied cabin.")
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(newcomer.alert_audio), 1, "A new audience missed the persistent cabin fault.")
+	channel = alert_pod.cabin_alert_channel
+	TEST_ASSERT_EQUAL(SSsounds.using_channels[num2text(channel)], alert_pod, "The renewed audience has no managed warning channel.")
+	qdel(alert_pod)
+	TEST_ASSERT(channel in newcomer.stopped_channels, "QDELETING did not stop the remaining listener's warning.")
+	TEST_ASSERT(SSsounds.using_channels[num2text(channel)] != alert_pod && !length(SSsounds.using_channels_by_datum[alert_pod]), "Deleting the cabin leaked its warning channel.")
+
+/// Muted or otherwise rejected audio is attempted once, and shipped voices are valid native sounds.
+/datum/unit_test/spacepod_cabin_alerts/declined_audio/Run()
+	TEST_ASSERT(prepare_alert_cabin(), "Could not board the declined-audio fixture.")
+	alert_pilot.accept_audio = FALSE
+	alert_pod.battery.charge = alert_pod.battery.maxcharge * 0.20
+	alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 1, "The declined voice was not attempted once.")
+	for(var/retry in 1 to 3)
+		COOLDOWN_RESET(alert_pod, cabin_alert_cooldown)
+		alert_pod.process_cabin_alerts()
+	TEST_ASSERT_EQUAL(length(alert_pilot.alert_audio), 1, "Declined or muted audio was retried while the same fault persisted.")
+	var/list/voices = list(
+		'modular_bandastation/spacepods/sound/alerts/battery_low.ogg',
+		'modular_bandastation/spacepods/sound/alerts/battery_critical.ogg',
+		'modular_bandastation/spacepods/sound/alerts/oxygen_low.ogg',
+		'modular_bandastation/spacepods/sound/alerts/oxygen_critical.ogg',
+		'modular_bandastation/spacepods/sound/alerts/reserve_low.ogg',
+		'modular_bandastation/spacepods/sound/alerts/hull_low.ogg',
+		'modular_bandastation/spacepods/sound/alerts/hull_critical.ogg',
+	)
+	for(var/voice in voices)
+		var/length_ds = SSsounds.get_sound_length(voice)
+		TEST_ASSERT(length_ds > 0 && length_ds < 6 SECONDS, "A shipped cabin voice is invalid or longer than its playback cooldown: [voice].")

@@ -2,7 +2,7 @@
 /datum/action/cooldown/spell/shadow_grapple
 	parent_type = /datum/action/cooldown/spell/pointed/projectile
 	name = "Shadow Grapple"
-	desc = "Выстрелите теневой рукой: она притянет жертву к вам, полностью истощив её выносливость, или вас к препятствию и погасит свет в радиусе двух тайлов."
+	desc = "Выстрелите теневой рукой: она притянет жертву к вам, полностью истощив её выносливость на три секунды, или вас к препятствию и погасит свет в радиусе двух тайлов."
 	button_icon = 'modular_bandastation/shadow_demon/icons/actions.dmi'
 	button_icon_state = "shadow_grapple"
 	background_icon = 'modular_bandastation/shadow_demon/icons/actions.dmi'
@@ -99,7 +99,10 @@
 	if(blocked >= 100 || . != BULLET_ACT_HIT)
 		return
 	var/mob/living/victim = target
+	var/previous_regen_time = victim.stamina_regen_time
+	victim.stamina_regen_time = min(previous_regen_time, 3 SECONDS)
 	victim.adjust_stamina_loss(victim.max_stamina)
+	victim.stamina_regen_time = previous_regen_time
 	victim.Immobilize(2 SECONDS)
 	victim.apply_damage(40, BRUTE, BODY_ZONE_CHEST)
 	victim.throw_at(get_step(firer, get_dir(firer, victim)), 50, 10)

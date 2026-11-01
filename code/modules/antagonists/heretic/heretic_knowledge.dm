@@ -213,28 +213,6 @@
 	var/datum/action/cooldown/spell/action_to_add
 	/// The spell we actually created.
 	VAR_FINAL/datum/action/cooldown/spell/created_action_ref
-	/// Used to display charges on the spell's action button, if applicable.
-	VAR_FINAL/mutable_appearance/charge_maptext
-	/// Charge count
-	VAR_FINAL/charges = 1
-	/// Max amount of charges before a heretic needs to recharge by doing the ritual again
-	var/max_charges = 1
-	/// Percent of max charges restored on a successful ritual
-	var/recharge_amount = 1.0
-	/// Percent of max charges restored on completing the path passive
-	var/path_recharge_amount = 0.5
-	/// What percent of the max charges the spell regains periodically while wearing a focus
-	var/focus_recharge_amount = 0.0
-	/// What percent of the max charges the spell loses periodically from consuming holy water
-	var/holywater_drain_amount = 0.0
-	/// When recharged via path passive, if TRUE, we bypass the max_charges cap.
-	var/path_recharge_can_surpass_cap = FALSE
-
-/datum/heretic_knowledge/spell/New()
-	. = ..()
-	charges = max_charges
-	if(max_charges != INFINITY)
-		desc += "<br>Количество зарядов: [max_charges][transmute_text ? ". После их расхода заклинание нужно перезарядить" : ""]."
 
 /datum/heretic_knowledge/spell/Destroy()
 	QDEL_NULL(created_action_ref)
@@ -246,152 +224,21 @@
 	// via the antag datum (on_gain and on_lose).
 	created_action_ref ||= new action_to_add(src)
 	created_action_ref.Grant(user)
-
-	RegisterSignal(created_action_ref, COMSIG_ACTION_STATUS_UPDATE, PROC_REF(action_update))
 	RegisterSignal(created_action_ref, COMSIG_QDELETING, PROC_REF(action_delete))
 	RegisterSignal(created_action_ref, COMSIG_SPELL_CAN_CAST_CHECK, PROC_REF(spell_check))
-
-	RegisterSignals(user, list(COMSIG_MOB_BEFORE_SPELL_CAST, COMSIG_MOB_SPELL_ACTIVATED), PROC_REF(check_charges))
-	if(istype(created_action_ref, /datum/action/cooldown/spell/pointed/projectile))
-		RegisterSignal(user, COMSIG_MOB_SPELL_PROJECTILE, PROC_REF(deduct_charge))
-	else if(istype(created_action_ref, /datum/action/cooldown/spell/touch))
-		RegisterSignal(user, COMSIG_SPELL_TOUCH_SPELL_ACTUALLY_CAST, PROC_REF(deduct_charge))
-	else
-		RegisterSignal(user, COMSIG_MOB_AFTER_SPELL_CAST, PROC_REF(deduct_charge))
-
-	update_charge_counter()
 
 /datum/heretic_knowledge/spell/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
 	if(created_action_ref?.owner == user)
 		created_action_ref.Remove(user)
 
-	UnregisterSignal(user, list(
-		COMSIG_SPELL_CAN_CAST_CHECK,
-		COMSIG_MOB_SPELL_ACTIVATED,
-		COMSIG_MOB_AFTER_SPELL_CAST,
-		COMSIG_MOB_BEFORE_SPELL_CAST,
-		COMSIG_MOB_SPELL_PROJECTILE,
-		COMSIG_SPELL_TOUCH_SPELL_ACTUALLY_CAST,
-	))
-
-/datum/heretic_knowledge/spell/can_be_invoked(datum/antagonist/heretic/invoker)
-	if(!LAZYLEN(required_atoms))
-		return FALSE
-	if(created_action_ref?.owner != invoker.owner?.current)
-		return FALSE
-	if(charges >= max_charges)
-		return FALSE
-	return TRUE
-
-/datum/heretic_knowledge/spell/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
-	add_charges(ceil(max_charges * recharge_amount))
-	return TRUE
-
-/datum/heretic_knowledge/spell/proc/action_update(datum/action/source, atom/movable/screen/movable/action_button/button, ...)
-	SIGNAL_HANDLER
-
-	if(charge_maptext)
-		button.cut_overlay(charge_maptext)
-
-	if(charges >= 100)
-		return
-	if(source.owner)
-		var/datum/antagonist/heretic/our_heretic = GET_HERETIC(source.owner)
-		if(our_heretic?.ascended)
-			return
-
-	charge_maptext ||= new()
-	charge_maptext.maptext_x = 4
-	charge_maptext.maptext_y = 20
-	charge_maptext.maptext = MAPTEXT("[charges]")
-	button.add_overlay(charge_maptext)
-
 /datum/heretic_knowledge/spell/proc/action_delete(datum/action/source)
 	SIGNAL_HANDLER
 	created_action_ref = null // shouldn't happen...
 
+/// Allows knowledge subtypes to enforce their own casting requirements.
 /datum/heretic_knowledge/spell/proc/spell_check(datum/action/the_spell, feedback)
 	SIGNAL_HANDLER
-
-	if(the_spell != created_action_ref || isnull(the_spell.owner))
-		return NONE
-	if(has_charges(the_spell.owner))
-		return NONE
-	var/datum/antagonist/heretic/our_heretic = GET_HERETIC(the_spell.owner)
-	if(our_heretic?.ascended)
-		return NONE
-
-	if(feedback)
-		to_chat(the_spell.owner, span_mansus("You don't have enough charges to cast this spell!"))
-	return SPELL_CANCEL_CAST
-
-/datum/heretic_knowledge/spell/proc/check_charges(mob/living/source, datum/action/cooldown/the_spell)
-	SIGNAL_HANDLER
-
-	if(the_spell != created_action_ref)
-		return NONE
-	if(has_charges(source))
-		return NONE
-	var/datum/antagonist/heretic/our_heretic = GET_HERETIC(source)
-	if(our_heretic?.ascended)
-		return NONE
-
-	to_chat(source, span_mansus("У вас недостаточно зарядов, чтобы произнести это заклинание! [transmute_text]"))
-	return SPELL_CANCEL_CAST
-
-/// Checks if we have enough charges to cast the spell
-/datum/heretic_knowledge/spell/proc/has_charges(mob/living/user)
-	return charges > 0
-
-/datum/heretic_knowledge/spell/proc/deduct_charge(mob/living/source, datum/action/cooldown/the_spell)
-	SIGNAL_HANDLER
-
-	if(the_spell != created_action_ref)
-		return
-	if(!should_deduct_charge(source))
-		return
-	var/datum/antagonist/heretic/our_heretic = GET_HERETIC(source)
-	if(our_heretic?.ascended)
-		return
-
-	remove_charges(1)
-
-/// Checks if casting the spell should deduct a charge
-/datum/heretic_knowledge/spell/proc/should_deduct_charge(mob/living/user)
-	return TRUE
-
-/// Add a number of charges, optionally bypassing the cap
-/datum/heretic_knowledge/spell/proc/add_charges(num, uncapped = FALSE)
-	if(num <= 0)
-		return FALSE
-
-	var/pre_charge_value = charges
-	if(uncapped)
-		charges += num
-	else
-		charges = min(charges + num, max_charges)
-	update_charge_counter()
-	return charges != pre_charge_value
-
-/// Remove a number of charges (down to 0)
-/datum/heretic_knowledge/spell/proc/remove_charges(num)
-	if(num <= 0)
-		return FALSE
-
-	var/pre_charge_value = charges
-	charges = max(charges - num, 0)
-	update_charge_counter()
-	if(charges <= 0 && created_action_ref.owner?.click_intercept == created_action_ref)
-		created_action_ref.unset_click_ability(created_action_ref.owner, refund_cooldown = FALSE)
-	return charges != pre_charge_value
-
-/datum/heretic_knowledge/spell/proc/update_charge_counter()
-	created_action_ref?.build_all_button_icons(UPDATE_BUTTON_STATUS)
-
-/datum/heretic_knowledge/spell/vv_edit_var(var_name, var_value)
-	. = ..()
-	if(var_name == NAMEOF(src, charges) || var_name == NAMEOF(src, max_charges))
-		update_charge_counter()
+	return NONE
 
 /**
  * A knowledge subtype for knowledge that can only

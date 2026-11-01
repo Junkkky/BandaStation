@@ -17,7 +17,7 @@
 		explosions_at_origin++
 // AI EDIT END
 
-/// Exercise the real lethal-damage callback and its three-second timer, including the blast.
+/// Lethal damage must immediately destroy the cabin, without a second delayed blast.
 /datum/unit_test/spacepod_failure_meltdown/Run()
 	var/turf/origin = locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y + 2, run_loc_floor_bottom_left.z)
 	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, origin)
@@ -46,22 +46,18 @@
 	RegisterSignal(SSdcs, COMSIG_GLOB_EXPLOSION, PROC_REF(on_explosion))
 	// AI EDIT END
 	pod.take_damage(pod.max_integrity + 1, BRUTE, MELEE, sound_effect = FALSE)
-	TEST_ASSERT(pod.melting_down, "A lethal native hit did not enter core meltdown.")
-	TEST_ASSERT(!QDELETED(pod), "Lethal damage skipped the donor's delayed core failure.")
-	TEST_ASSERT_EQUAL(pilot.loc, pod, "The pilot disappeared before the destruction timer fired.")
-	TEST_ASSERT(!pod.can_control(pilot), "A pilot retained controls during core meltdown.")
-	TEST_ASSERT(!pod.relaymove(pilot, EAST), "The pilot moved a pod with a failing core.")
-	TEST_ASSERT_EQUAL(pod.repair_damage(1000), 0, "Repair revived a pod after lethal core failure.")
-	TEST_ASSERT_EQUAL(pod.take_damage(1000, BRUTE, MELEE, sound_effect = FALSE), 0, "Further hits restarted the lethal-damage path.")
+	var/destroyed_immediately = QDELETED(pod)
+	var/immediate_explosions = explosions_at_origin
+	var/observe_until = world.time + 4 SECONDS
 	var/deadline = world.time + 8 SECONDS
-	while(!QDELETED(pod) && world.time < deadline)
-		stoplag(1)
-	TEST_ASSERT(QDELETED(pod), "The real three-second core timer never detonated the pod.")
-	while(SSexplosions.is_exploding() && world.time < deadline)
+	// Preserve the synchronous result, then drain even a failing regression's blast before cleanup.
+	while(world.time < deadline && (world.time < observe_until || SSexplosions.is_exploding()))
 		stoplag(1)
 	TEST_ASSERT(!SSexplosions.is_exploding(), "The pod blast did not finish processing within the bounded test interval.")
+	TEST_ASSERT(destroyed_immediately, "A lethal native hit did not immediately destroy the pod.")
+	TEST_ASSERT_EQUAL(immediate_explosions, 1, "Lethal damage did not immediately produce exactly one core explosion.")
 	// AI EDIT START - Preserve the strict single-blast assertion without a global counter
-	TEST_ASSERT_EQUAL(explosions_at_origin, 1, "One lethal core failure did not produce exactly one explosion.")
+	TEST_ASSERT_EQUAL(explosions_at_origin, 1, "A lethal core failure produced an additional delayed explosion.")
 	// AI EDIT END
 	for(var/turf/tile as anything in wreckage_turfs)
 		var/obj/effect/decal/remains/robot/spacepod/debris
@@ -77,8 +73,6 @@
 		TEST_ASSERT(isturf(occupant.loc), "An occupant remains inside a deleted cabin after core failure.")
 		TEST_ASSERT(!HAS_TRAIT_FROM(occupant, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT), "An occupant retained the deleted vehicle's blocked-hands trait source.")
 		TEST_ASSERT(occupant.get_brute_loss() > 0, "Core detonation failed to hurt an occupant.")
-	TEST_ASSERT_NULL(pod.pilot, "The destroyed pod retains its pilot reference.")
-	TEST_ASSERT_EQUAL(length(pod.occupants), 0, "The destroyed pod retains registered occupants.")
 	TEST_ASSERT(!(pod in GLOB.spacepods_list), "A detonated pod remains in the global registry.")
 	TEST_ASSERT(!(tracker in GLOB.pod_trackers), "A detonated tracker remains in the global tracker registry.")
 	for(var/datum/action/vehicle/sealed/spacepod/action as anything in old_actions)
@@ -113,6 +107,9 @@
 	while(!COOLDOWN_FINISHED(pod, cooldown_vehicle_move))
 		stoplag(1)
 	TEST_ASSERT(pod.relaymove(pilot, EAST), "The pod did not recover after its battery was recharged.")
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	pod.flight.process(0.05)
+	TEST_ASSERT(pod.loc != origin, "Recharging accepted input without restoring actual movement.")
 	var/turf/emp_origin = pod.loc
 	pod.emp_act(EMP_LIGHT)
 	TEST_ASSERT(!COOLDOWN_FINISHED(pod, cooldown_emp), "A real EMP did not start its movement lockout.")
@@ -125,6 +122,10 @@
 		stoplag(1)
 	TEST_ASSERT(COOLDOWN_FINISHED(pod, cooldown_emp), "The real light-EMP cooldown failed to expire.")
 	TEST_ASSERT(pod.relaymove(pilot, WEST), "The pod did not recover movement after the EMP naturally expired.")
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	var/charge_after_emp = cell.charge
+	pod.flight.process(0.05)
+	TEST_ASSERT(cell.charge < charge_after_emp, "The recovered pod accepted input without applying paid thrust.")
 	TEST_ASSERT(pod.mob_exit(pilot, silent = TRUE), "The recovered pilot could not leave the pod.")
 	pilot.forceMove(run_loc_floor_bottom_left)
 	var/old_lights = pod.lights

@@ -297,6 +297,7 @@
 /datum/status_effect/caretaker_refuge/on_apply()
 	animate(owner, alpha = 45, time = 0.5 SECONDS)
 	owner.set_density(FALSE)
+	RegisterSignal(owner, SIGNAL_REMOVETRAIT(TRAIT_ALLOW_HERETIC_CASTING), PROC_REF(on_focus_lost))
 	RegisterSignal(owner, COMSIG_MOB_BEFORE_SPELL_CAST, PROC_REF(prevent_spell_usage))
 	RegisterSignal(owner, COMSIG_ATOM_HOLYATTACK, PROC_REF(nullrod_handler))
 	RegisterSignal(owner, COMSIG_CARBON_CUFF_ATTEMPTED, PROC_REF(prevent_cuff))
@@ -308,6 +309,7 @@
 	owner.remove_traits(caretaking_traits, TRAIT_STATUS_EFFECT(id))
 	owner.alpha = initial(owner.alpha)
 	owner.density = initial(owner.density)
+	UnregisterSignal(owner, SIGNAL_REMOVETRAIT(TRAIT_ALLOW_HERETIC_CASTING))
 	UnregisterSignal(owner, COMSIG_MOB_BEFORE_SPELL_CAST)
 	UnregisterSignal(owner, COMSIG_ATOM_HOLYATTACK)
 	UnregisterSignal(owner, COMSIG_CARBON_CUFF_ATTEMPTED)
@@ -325,6 +327,12 @@
 	playsound(get_turf(owner), 'sound/effects/curse/curse1.ogg', 80, TRUE)
 	owner.visible_message(span_warning("[capitalize(weapon.declent_ru(NOMINATIVE))] рассеивает дымку вокруг [owner.declent_ru(GENITIVE)]!"))
 	owner.remove_status_effect(type)
+
+/// Ends the refuge when its casting focus is removed.
+/datum/status_effect/caretaker_refuge/proc/on_focus_lost()
+	SIGNAL_HANDLER
+	to_chat(owner, span_danger("Без фокусировки, ваше убежище ослабевает и рассеивается!"))
+	qdel(src)
 
 /datum/status_effect/caretaker_refuge/proc/no_strip(atom/source, mob/user, obj/item/equipping)
 	SIGNAL_HANDLER

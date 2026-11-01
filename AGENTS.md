@@ -136,6 +136,15 @@ Keep a test focused on one behavior; several assertions may describe that behavi
 
 The cost includes fixtures, production changes, CI runtime, flakiness and future maintenance. If a small fix needs a large artificial harness, reconsider the test boundary or use a documented manual scenario. This does not waive required CI checks or permit skipping verification of a high-risk path without explaining the gap.
 
+### Design for stability before writing the test
+
+Before adding or changing a test, trace its setup and execution for failure sources unrelated to the contract being checked. Name the relevant risks and how the fixture or verification controls them; a passing rerun alone does not establish stability.
+
+- Consider relevant sources such as incidental RNG and side effects, random wounds, reagents, traits, damage modifiers, background subsystem ticks, timer replacement, map conditions, test order and shared state. Check what can change across every yield before asserting an exact value.
+- Isolate unrelated effects with the narrowest existing fixture mechanism. For example, prevent random wounds when testing a stamina timer. Preserve the real entry point and the behavior under test; do not disable its timers or replace its implementation with a test double.
+- When timing matters, account for tick scheduling and runner load. Prefer an existing bounded wait for an observable condition when elapsed duration is not the contract; otherwise justify the timing bounds. Do not add arbitrary sleeps, retries, tolerances or weaker assertions just to hide an unexplained failure.
+- Use focused repetition, relevant suite execution or different RNG seeds when the identified risk warrants it. For regression tests, verify when practical that isolating unrelated effects still leaves the intended regression detectable. Report what was actually run and any remaining stability limits; remove local focus, repeat and diagnostic instrumentation before committing.
+
 ### What a useful automated test must do
 
 - Exercise the changed production behavior through an appropriate existing entry point and assert its observable contract. For an async validation fix, directly calling the final effect while bypassing the yield and revalidation does not test the fix. A check that an action was granted or a range was configured does not establish that activation or client-visible behavior works; verify that separately when relevant.

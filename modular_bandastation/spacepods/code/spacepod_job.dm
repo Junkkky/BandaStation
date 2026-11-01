@@ -51,6 +51,7 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
 	messenger = /obj/item/storage/backpack/messenger/eng
 	box = /obj/item/storage/box/survival/engineer
+	skillchips = list(/obj/item/skillchip/job/engineer)
 	backpack_contents = list(
 		/obj/item/pod_paint_bucket = 1,
 		/obj/item/spacepod_equipment/key = 1,
@@ -64,21 +65,20 @@
 	department_color = COLOR_ENGINEERING_ORANGE
 	subdepartment_color = COLOR_ENGINEERING_ORANGE
 	sechud_icon_state = SECHUD_STATION_ENGINEER
-	minimal_access = list(
-		ACCESS_ENGINEERING,
-		ACCESS_ENGINE_EQUIP,
-		ACCESS_CONSTRUCTION,
-		ACCESS_TECH_STORAGE,
-		ACCESS_MINERAL_STOREROOM,
-		ACCESS_EXTERNAL_AIRLOCKS,
-		ACCESS_EVA,
-	)
 	template_access = list(
 		ACCESS_CAPTAIN,
 		ACCESS_CHANGE_IDS,
 		ACCESS_CE,
 	)
 	job = /datum/job/spacepod_technician
+
+/// Copy engineering access before the parent applies this job's map and config changes.
+/datum/id_trim/job/spacepod_technician/New()
+	var/datum/id_trim/job/station_engineer/engineer_trim = new
+	minimal_access = engineer_trim.minimal_access + list(ACCESS_EVA)
+	extra_access = engineer_trim.extra_access.Copy()
+	qdel(engineer_trim)
+	return ..()
 
 /obj/effect/landmark/start/spacepod_technician
 	name = JOB_SPACEPOD_TECHNICIAN

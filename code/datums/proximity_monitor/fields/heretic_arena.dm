@@ -175,10 +175,6 @@ GLOBAL_LIST_EMPTY(heretic_arenas)
 			var/mob/living/carbon/carbon_owner = owner
 			for(var/datum/wound/wound as anything in carbon_owner.all_wounds)
 				wound.remove_wound()
-		if(crit_count == 3)
-			var/datum/antagonist/heretic/our_heretic = GET_HERETIC(owner)
-			var/datum/heretic_knowledge/spell/wolves_among_sheep/our_knowledge = our_heretic.get_knowledge(__IMPLIED_TYPE__)
-			our_knowledge?.add_charges(1)
 
 	if(arena_victor) // No need to spam if we've already killed at least 1 person
 		return

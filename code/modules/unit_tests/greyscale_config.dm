@@ -39,3 +39,32 @@
 		var/number_of_colors = length(colors) - 1
 		if(config.expected_colors != number_of_colors)
 			TEST_FAIL("[thing] has the wrong amount of colors configured for [config.DebugName()]. Expected [config.expected_colors] colors but found [number_of_colors].")
+
+/// Colored uniforms must render their own initialized state rather than an inherited jumpsuit state.
+/datum/unit_test/colored_uniform_worn_states/Run()
+	var/list/expected_states = list(
+		/obj/item/clothing/under/color/jumpskirt/grey = "jumpskirt",
+		/obj/item/clothing/under/color/rainbow = "rainbow",
+	)
+	for(var/uniform_type in expected_states)
+		var/obj/item/clothing/under/uniform = allocate(uniform_type)
+		var/mutable_appearance/worn = uniform.build_worn_icon(slot_id = ITEM_SLOT_ICLOTHING)
+		TEST_ASSERT_EQUAL(worn.icon_state, expected_states[uniform_type], "[uniform_type] rendered the wrong uniform shape.")
+
+/// Female uniform caching must keep distinct source images and cropping masks separate.
+/datum/unit_test/female_uniform_icon_cache/Run()
+	var/palette = "#123abc"
+	var/colored_file = SSgreyscale.GetColoredIconByType(/datum/greyscale_config/jumpsuit/worn, palette)
+	var/icon/template = wear_female_version("jumpsuit", 'icons/mob/clothing/under/color.dmi', FEMALE_UNIFORM_FULL, palette)
+	var/icon/colored = wear_female_version("jumpsuit", colored_file, FEMALE_UNIFORM_FULL, palette)
+	if(icon2base64(template) == icon2base64(colored))
+		TEST_FAIL("A colored uniform reused the uncolored template from the female icon cache.")
+
+	var/icon/full_mask = wear_female_version("jumpskirt", colored_file, FEMALE_UNIFORM_FULL, palette)
+	var/full_pixels = icon2base64(full_mask)
+	var/icon/top_mask = wear_female_version("jumpskirt", colored_file, FEMALE_UNIFORM_TOP_ONLY, palette)
+	if(full_pixels == icon2base64(top_mask))
+		TEST_FAIL("A top-only female mask reused an image cropped with the full mask.")
+	var/icon/custom_mask = wear_female_version("jumpskirt", colored_file, FEMALE_UNIFORM_FULL, palette, /datum/female_uniform/turtleneck)
+	if(full_pixels == icon2base64(custom_mask))
+		TEST_FAIL("A custom female mask reused an image cropped with the default mask.")

@@ -192,14 +192,9 @@
 	desc = "Дарует вам заклинание, «Ловкость воришки», которое \
 		перемещает случайный предмет из сумки жертвы в вашу руку."
 	gain_text = "Общение с Духами-Взломщиками не одобряется, но Хранитель Ключей всегда хочет узнавать о новых дверях."
-	required_atoms = list(/obj/item/clothing/gloves = 1)
 
 	action_to_add = /datum/action/cooldown/spell/pointed/burglar_finesse
 	cost = 2
-	max_charges = 12
-	focus_recharge_amount = 0.33
-	holywater_drain_amount = 0.33
-	transmute_text = "Можно вручную перезарядить, завершив ритуал с парой перчаток."
 
 /datum/heretic_knowledge/blade_upgrade/flesh/lock
 	name = "Открывающий клинок"
@@ -223,16 +218,7 @@
 	action_to_add = /datum/action/cooldown/spell/caretaker
 	cost = 2
 	is_final_knowledge = TRUE
-	max_charges = 3
-	path_recharge_amount = 0.66
-	holywater_drain_amount = 0.33
 	notice = "&bull; Нельзя использовать рядом с живыми разумными существами.<br>&bull; Прерывается, если по вам ударят антимагическим предметом."
-
-/datum/heretic_knowledge/spell/caretaker_refuge/has_charges(mob/living/user)
-	return user.has_status_effect(/datum/status_effect/caretaker_refuge) || ..()
-
-/datum/heretic_knowledge/spell/caretaker_refuge/should_deduct_charge(mob/living/user)
-	return !user.has_status_effect(/datum/status_effect/caretaker_refuge)
 
 /datum/heretic_knowledge/ultimate/lock_final
 	name = "Открытие Лабиринта"

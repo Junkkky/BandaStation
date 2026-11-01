@@ -90,3 +90,74 @@
 		knowledge_node["type"] = knowledge_path
 		flat_list += list(knowledge_node)
 	return flat_list
+
+/// Advanced spells require a worn focus or held open Codex, but no consumable charges.
+/datum/unit_test/heretic_spell_focus
+	var/mob/living/carbon/human/caster
+	var/datum/antagonist/heretic/heretic
+	var/list/original_influences
+
+/datum/unit_test/heretic_spell_focus/Destroy()
+	if(!QDELETED(heretic) && !QDELETED(caster))
+		heretic.remove_innate_effects(caster)
+	if(original_influences)
+		for(var/obj/effect/heretic_influence/influence as anything in GLOB.reality_smash_track.smashes - original_influences)
+			qdel(influence)
+	original_influences = null
+	QDEL_NULL(heretic)
+	caster = null
+	return ..()
+
+/datum/unit_test/heretic_spell_focus/Run()
+	caster = allocate(/mob/living/carbon/human/consistent)
+	caster.mind_initialize()
+	allocated += caster.mind
+	heretic = allocate(/datum/antagonist/heretic)
+	heretic.owner = caster.mind
+	LAZYADD(caster.mind.antag_datums, heretic)
+	// Innate effects install the real cast signals without generating objectives or starting knowledge.
+	original_influences = GLOB.reality_smash_track.smashes.Copy()
+	heretic.apply_innate_effects(caster)
+
+	var/datum/heretic_knowledge/spell/realignment/knowledge = allocate(/datum/heretic_knowledge/spell/realignment)
+	knowledge.on_gain(caster, heretic)
+	var/datum/action/cooldown/spell/realignment/spell = knowledge.created_action_ref
+	TEST_ASSERT(!spell.Trigger(), "An advanced heretic spell cast without a focus.")
+	TEST_ASSERT(!caster.has_status_effect(/datum/status_effect/realignment), "A rejected spell still applied its effect.")
+
+	var/obj/item/clothing/neck/heretic_focus/focus = allocate(/obj/item/clothing/neck/heretic_focus)
+	TEST_ASSERT(caster.equip_to_slot_if_possible(focus, ITEM_SLOT_NECK), "Could not equip the focus.")
+	// Realignment previously ran out after three casts; only its ordinary cooldown is reset here.
+	for(var/cast_number in 1 to 4)
+		spell.ResetCooldown()
+		TEST_ASSERT(spell.Trigger(), "Realignment failed on cast [cast_number] while wearing a focus.")
+		TEST_ASSERT(caster.has_status_effect(/datum/status_effect/realignment), "Realignment cast [cast_number] did not apply its effect.")
+		caster.remove_status_effect(/datum/status_effect/realignment)
+
+	TEST_ASSERT(caster.dropItemToGround(focus), "Could not remove the focus.")
+	spell.ResetCooldown()
+	TEST_ASSERT(!spell.Trigger(), "A dropped focus still allowed advanced spellcasting.")
+
+	var/obj/item/codex_cicatrix/codex = allocate(/obj/item/codex_cicatrix)
+	TEST_ASSERT(caster.put_in_hands(codex), "Could not hold the Codex.")
+	TEST_ASSERT(!spell.Trigger(), "A closed Codex allowed advanced spellcasting.")
+	codex.attack_self(caster)
+	TEST_ASSERT(spell.Trigger(), "A held open Codex did not allow advanced spellcasting.")
+	TEST_ASSERT(caster.has_status_effect(/datum/status_effect/realignment), "Casting with an open Codex did not apply the spell effect.")
+	caster.remove_status_effect(/datum/status_effect/realignment)
+	spell.ResetCooldown()
+	codex.attack_self(caster)
+	TEST_ASSERT(!spell.Trigger(), "Closing the Codex did not remove its focus effect.")
+	codex.attack_self(caster)
+	TEST_ASSERT(caster.dropItemToGround(codex), "Could not drop the open Codex.")
+	TEST_ASSERT(!spell.Trigger(), "A dropped open Codex still allowed advanced spellcasting.")
+	var/obj/item/clothing/suit/space/santa/storage_suit = allocate(/obj/item/clothing/suit/space/santa)
+	TEST_ASSERT(caster.equip_to_slot_if_possible(storage_suit, ITEM_SLOT_OCLOTHING), "Could not equip a suit with unrestricted storage.")
+	TEST_ASSERT(caster.equip_to_slot_if_possible(codex, ITEM_SLOT_SUITSTORE), "Could not store the open Codex.")
+	TEST_ASSERT(!spell.Trigger(), "A stored open Codex allowed spellcasting without being held.")
+
+	var/datum/heretic_knowledge/spell/basic/grasp_knowledge = allocate(/datum/heretic_knowledge/spell/basic)
+	grasp_knowledge.on_gain(caster, heretic)
+	var/datum/action/cooldown/spell/touch/mansus_grasp/grasp = grasp_knowledge.created_action_ref
+	TEST_ASSERT(grasp.Trigger(), "Mansus Grasp could not be invoked without a focus.")
+	TEST_ASSERT_NOTNULL(grasp.attached_hand, "Mansus Grasp did not create its touch hand.")

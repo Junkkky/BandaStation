@@ -370,15 +370,6 @@
 					to_chat(affected_mob, span_cult_large("Your blood rites falter as holy water scours your body!"))
 					COOLDOWN_START(src, spell_clear_cd, 3 SECONDS)
 
-		if(IS_HERETIC(affected_mob))
-			var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(affected_mob)
-			var/removed_any = FALSE
-			for(var/datum/heretic_knowledge/spell/spell in heretic_datum.get_researched_knowledge())
-				if(spell.remove_charges(ceil(spell.max_charges * spell.holywater_drain_amount)))
-					removed_any = TRUE
-			if(removed_any)
-				to_chat(affected_mob, span_mansus("Your intricate rituals are distrupted by the holy water scouring your body!"))
-				COOLDOWN_START(src, spell_clear_cd, 3 SECONDS)
 
 	if(data["deciseconds_metabolized"] >= (25 SECONDS)) // 10 units
 		affected_mob.adjust_stutter_up_to(2 SECONDS * metabolization_ratio * seconds_per_tick, 20 SECONDS)

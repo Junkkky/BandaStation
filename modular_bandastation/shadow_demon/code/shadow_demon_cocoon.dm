@@ -16,6 +16,8 @@
 
 /obj/structure/shadowcocoon/Initialize(mapload)
 	. = ..()
+	// As with a flashdark, portable overlay lights need their own subtractive mask.
+	AddComponent(/datum/component/overlay_lighting, light_range, light_power, light_color, force = TRUE)
 	playsound(src, 'modular_bandastation/shadow_demon/sound/shadownode.ogg', 5, TRUE, -1)
 	START_PROCESSING(SSobj, src)
 

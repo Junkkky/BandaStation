@@ -222,7 +222,6 @@
 	action_to_add = /datum/action/cooldown/spell/touch/flesh_surgery
 	cost = 2
 	drafting_tier = 5
-	max_charges = INFINITY
 
 /datum/heretic_knowledge/armor/flesh
 	name = "Извивающиеся объятия"

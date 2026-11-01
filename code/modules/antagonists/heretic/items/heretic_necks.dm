@@ -4,40 +4,15 @@
 	icon_state = "eldritch_necklace"
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FIRE_PROOF
-	/// Cooldown between attempts to recharge spells
-	var/cooldown_period = 3 MINUTES
-	COOLDOWN_DECLARE(spell_recharge_cd)
 
-/obj/item/clothing/neck/heretic_focus/equipped(mob/living/user, slot)
+/obj/item/clothing/neck/heretic_focus/Initialize(mapload)
 	. = ..()
-	if(!(slot & ITEM_SLOT_NECK) || !IS_HERETIC(user))
-		return
-	START_PROCESSING(SSobj, src)
-	COOLDOWN_START(src, spell_recharge_cd, cooldown_period)
-
-/obj/item/clothing/neck/heretic_focus/dropped(mob/living/user)
-	. = ..()
-	STOP_PROCESSING(SSobj, src)
-
-/obj/item/clothing/neck/heretic_focus/process(seconds_per_tick)
-	if(!COOLDOWN_FINISHED(src, spell_recharge_cd))
-		return
-
-	var/mob/living/wearer = loc
-	if(!istype(wearer) || !IS_HERETIC(wearer))
-		return PROCESS_KILL
-
-	var/datum/antagonist/heretic/our_heretic = GET_HERETIC(wearer)
-	for(var/datum/heretic_knowledge/spell/spell in our_heretic?.get_researched_knowledge())
-		spell.add_charges(ceil(spell.max_charges * spell.focus_recharge_amount))
-
-	COOLDOWN_START(src, spell_recharge_cd, cooldown_period)
+	AddElement(/datum/element/heretic_focus)
 
 /obj/item/clothing/neck/heretic_focus/crimson_medallion
 	name = "crimson medallion"
 	desc = "Кроваво-красная линза, обеспечивающая связь с потусторонним миром и даже хуже. Его глаз постоянно дёргается и смотрит во все стороны. Кажется, что он беззвучно кричит..."
 	icon_state = "crimson_medallion"
-	cooldown_period = 1 MINUTES
 	/// The aura healing component. Used to delete it when taken off.
 	var/datum/component/component
 	/// If active or not, used to add and remove its cult and heretic buffs.
@@ -138,6 +113,10 @@
 	/// A secondary clothing trait only applied to heretics.
 	var/heretic_only_trait = TRAIT_THERMAL_VISION
 
+/obj/item/clothing/neck/eldritch_amulet/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/heretic_focus)
+
 /obj/item/clothing/neck/eldritch_amulet/equipped(mob/user, slot)
 	. = ..()
 	if(!(slot & ITEM_SLOT_NECK))
@@ -180,6 +159,10 @@
 	)
 	var/valid_weapon_type = /obj/item/melee/sickly_blade
 	var/sanity_threshold = SANITY_LEVEL_INSANE
+
+/obj/item/clothing/neck/moon_amulet/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/heretic_focus)
 
 /obj/item/clothing/neck/moon_amulet/examine(mob/user)
 	. = ..()

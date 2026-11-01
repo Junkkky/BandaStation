@@ -32,6 +32,17 @@
 	TEST_ASSERT(!(ACCESS_ROBOTICS in card_access), "Spacepod Technician unexpectedly received robotics access.")
 	var/obj/machinery/mecha_part_fabricator/spacepod/fabricator = allocate(__IMPLIED_TYPE__)
 	TEST_ASSERT(fabricator.allowed(human), "Spacepod Technician cannot use the engineering pod fabricator.")
+	var/datum/id_trim/job/station_engineer/engineer_trim = allocate(__IMPLIED_TYPE__)
+	var/obj/machinery/door/airlock/engineering/airlock = allocate(__IMPLIED_TYPE__)
+	airlock.req_access = engineer_trim.access.Copy()
+	TEST_ASSERT(airlock.allowed(human), "Spacepod Technician cannot pass an airlock requiring ordinary engineer access.")
+	airlock.req_access = list(ACCESS_CE)
+	TEST_ASSERT(!airlock.allowed(human), "Spacepod Technician unexpectedly received Chief Engineer access.")
+	var/obj/item/organ/brain/brain = human.get_organ_slot(ORGAN_SLOT_BRAIN)
+	var/obj/item/skillchip/job/engineer/chip = locate() in brain.skillchips
+	TEST_ASSERT_NOTNULL(chip, "Spacepod Technician did not receive an engineering skillchip in their brain.")
+	TEST_ASSERT(chip.is_active(), "Spacepod Technician's engineering skillchip was not activated.")
+	TEST_ASSERT(airlock.wires.can_reveal_wires(human), "Spacepod Technician's skillchip does not reveal airlock wire functions.")
 	// AI EDIT START - Use the right ear slot for existing equipment
 	TEST_ASSERT(istype(human.ear_right, /obj/item/radio/headset/headset_eng), "Spacepod Technician did not receive an engineering headset.")
 	// AI EDIT END

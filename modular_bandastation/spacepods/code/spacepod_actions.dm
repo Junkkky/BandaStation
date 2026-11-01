@@ -5,6 +5,8 @@
 	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/lights, VEHICLE_CONTROL_SETTINGS)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/fire, VEHICLE_CONTROL_EQUIPMENT)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/systems, VEHICLE_CONTROL_SETTINGS)
+	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/brakes, VEHICLE_CONTROL_SETTINGS)
+	initialize_controller_action_type(/datum/action/vehicle/sealed/spacepod/turbo, VEHICLE_CONTROL_SETTINGS)
 
 /datum/action/vehicle/sealed/spacepod
 	button_icon = 'icons/mob/actions/actions_mecha.dmi'
@@ -69,12 +71,83 @@
 /datum/action/vehicle/sealed/spacepod/fire
 	name = "Стрелять"
 	desc = "Стреляет установленным оружием вперёд по курсу челнока."
-	button_icon_state = "mech_safeties_off"
+	button_icon_state = "mech_thrusters_off"
 
 /datum/action/vehicle/sealed/spacepod/fire/Trigger(mob/clicker, trigger_flags)
 	. = ..()
 	if(.)
 		pod.fireWeapon(owner)
+
+/datum/action/vehicle/sealed/spacepod/brakes
+	name = "Тормоз челнока"
+	desc = "Включает или отключает тормозную тягу. Для торможения нужен заряд батареи."
+	button_icon_state = "mech_safeties_off"
+
+/datum/action/vehicle/sealed/spacepod/brakes/Grant(mob/grant_to)
+	button_icon_state = pod?.flight?.brakes ? "mech_safeties_on" : "mech_safeties_off"
+	return ..()
+
+/datum/action/vehicle/sealed/spacepod/brakes/Trigger(mob/clicker, trigger_flags)
+	. = ..()
+	if(. && pod.can_control(owner) && pod.flight.toggle_brakes())
+		button_icon_state = pod.flight.brakes ? "mech_safeties_on" : "mech_safeties_off"
+		build_all_button_icons()
+		pod.balloon_alert(owner, pod.flight.brakes ? "тормоз включён" : "тормоз выключен")
+
+/datum/action/vehicle/sealed/spacepod/turbo
+	name = "ТУРБО"
+	desc = "Удваивает скорость и ускорение челнока. Расход батареи на тягу увеличивается в два раза."
+	button_icon_state = "mech_overload_off"
+
+/datum/action/vehicle/sealed/spacepod/turbo/Grant(mob/grant_to)
+	button_icon_state = pod?.flight?.turbo ? "mech_overload_on" : "mech_overload_off"
+	return ..()
+
+/datum/action/vehicle/sealed/spacepod/turbo/Trigger(mob/clicker, trigger_flags)
+	. = ..()
+	if(. && pod.can_control(owner) && pod.flight.toggle_turbo())
+		button_icon_state = pod.flight.turbo ? "mech_overload_on" : "mech_overload_off"
+		build_all_button_icons()
+		pod.balloon_alert(owner, pod.flight.turbo ? "турбо включено" : "турбо выключено")
+
+/// Mouse steering is scoped to a conscious pilot inside their own pod.
+/client/MouseMove(object, location, control, params)
+	. = ..()
+	if((control != "mapwindow.map" && control != "map") || !istype(mob?.loc, /obj/vehicle/sealed/spacepod))
+		return
+	if(istype(object, /atom/movable/screen) && !istype(object, /atom/movable/screen/click_catcher))
+		return
+	var/obj/vehicle/sealed/spacepod/pod = mob.loc
+	pod.aim_from_mouse(mob, params)
+
+/obj/vehicle/sealed/spacepod/proc/aim_from_mouse(mob/living/user, params)
+	if(!can_control(user) || !user.client || user.client.eye != src || !istext(params))
+		return FALSE
+	var/list/modifiers = params2list(params)
+	var/screen_position = modifiers[SCREEN_LOC]
+	if(!istext(screen_position) || length(screen_position) > 32)
+		return FALSE
+	var/list/axes = splittext(screen_position, ",")
+	if(length(axes) != 2)
+		return FALSE
+	var/list/view_size = getviewsize(user.client.view)
+	var/list/screen_pixels = list()
+	for(var/index in 1 to 2)
+		var/list/axis = splittext(axes[index], ":")
+		if(length(axis) != 2)
+			return FALSE
+		var/tile = text2num(axis[1])
+		var/pixel = text2num(axis[2])
+		if(!isnum(tile) || !isnum(pixel) || tile < 1 || tile > view_size[index] || pixel < 0 || pixel > ICON_SIZE_ALL)
+			return FALSE
+		screen_pixels += (tile - 1) * ICON_SIZE_ALL + pixel
+	// The flight camera follows the hull; its own offset must not steer the nose each tile.
+	var/list/flight_camera = flight.camera_offsets[user]
+	var/dx = screen_pixels[1] - view_size[1] * ICON_SIZE_X / 2 + user.client.pixel_x - (flight_camera ? flight_camera[1] : 0)
+	var/dy = screen_pixels[2] - view_size[2] * ICON_SIZE_Y / 2 + user.client.pixel_y - (flight_camera ? flight_camera[2] : 0)
+	if(dx ** 2 + dy ** 2 < ICON_SIZE_ALL ** 2)
+		return flight.aim(null)
+	return flight.aim(delta_to_angle(dx, dy))
 
 /datum/action/vehicle/sealed/spacepod/systems
 	name = "Дополнительные системы"

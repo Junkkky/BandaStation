@@ -58,6 +58,47 @@
 	TEST_ASSERT(!carried_lighter.lit, "A newly arrived carried lighter escaped the next cocoon pulse.")
 	TEST_ASSERT(!flashlight.light_on, "Relighting a stationary flashlight bypassed the next cocoon pulse.")
 
+/// Shadow touch, grapple and cocoon pulses keep the mech's native light and pilot action in sync.
+/datum/unit_test/shadow_demon_mech_lights/Run()
+	var/obj/vehicle/sealed/mecha/ripley/mech = allocate(/obj/vehicle/sealed/mecha/ripley)
+	var/mob/living/carbon/human/pilot = allocate(/mob/living/carbon/human/consistent)
+	TEST_ASSERT(mech.mob_enter(pilot, silent = TRUE), "The pilot could not enter the mech fixture.")
+	var/datum/action/vehicle/sealed/mecha/mech_toggle_lights/light_action = locate() in pilot.actions
+	TEST_ASSERT_NOTNULL(light_action, "The pilot did not receive the native light action.")
+	var/datum/component/overlay_lighting/lighting = mech.GetComponent(/datum/component/overlay_lighting)
+	TEST_ASSERT_NOTNULL(lighting, "The mech fixture has no directional light component.")
+	light_action.Trigger(pilot)
+	TEST_ASSERT(mech.light_on && (mech.mecha_flags & LIGHTS_ON), "The native action did not switch on the mech's lights.")
+	TEST_ASSERT(lighting.light.overlay_lighting_flags & LIGHTING_ON, "The mech fixture did not enable its rendered light.")
+	shadow_demon_extinguish(mech)
+	TEST_ASSERT(!mech.light_on && !(mech.mecha_flags & LIGHTS_ON), "Shadow touch did not disable the mech's light and flag.")
+	TEST_ASSERT(!(lighting.light.overlay_lighting_flags & LIGHTING_ON), "Shadow touch left the mech's rendered light enabled.")
+	TEST_ASSERT_EQUAL(light_action.button_icon_state, "mech_lights_off", "Shadow touch did not update the pilot's light action.")
+	shadow_demon_extinguish(mech)
+	TEST_ASSERT(!mech.light_on, "Touching an unlit mech switched its lights back on.")
+
+	var/mob/living/basic/demon/shadow/demon = allocate(/mob/living/basic/demon/shadow, get_step(get_turf(mech), EAST))
+	demon.obj_damage = 0
+	light_action.Trigger(pilot)
+	TEST_ASSERT(mech.light_on, "The pilot could not relight the mech after shadow touch.")
+	demon.melee_attack(mech, ignore_cooldown = TRUE)
+	TEST_ASSERT(!mech.light_on, "A direct demon melee hit did not extinguish the mech.")
+	light_action.Trigger(pilot)
+	var/obj/projectile/magic/shadow_hand/projectile = allocate(/obj/projectile/magic/shadow_hand, get_turf(mech))
+	projectile.firer = demon
+	projectile.on_hit(mech)
+	TEST_ASSERT(!mech.light_on, "Shadow Grapple did not extinguish the mech.")
+
+	var/obj/structure/shadowcocoon/cocoon = allocate(/obj/structure/shadowcocoon, get_turf(mech))
+	light_action.Trigger(pilot)
+	cocoon.process(2)
+	TEST_ASSERT(!mech.light_on && !(mech.mecha_flags & LIGHTS_ON), "A cocoon pulse did not extinguish the mech.")
+	TEST_ASSERT_EQUAL(light_action.button_icon_state, "mech_lights_off", "A cocoon pulse left the pilot's light action out of sync.")
+	cocoon.process(2)
+	TEST_ASSERT(!mech.light_on, "A second cocoon pulse relit an already dark mech.")
+	light_action.Trigger(pilot)
+	TEST_ASSERT(mech.light_on, "Shadow suppression permanently disabled the mech's native light action.")
+
 /// The actual Alt-click route must give immediate feedback and keep periodic lures running.
 /datum/unit_test/shadow_demon_cocoon_lure/Run()
 	var/obj/structure/shadowcocoon/lure_test/cocoon = allocate(/obj/structure/shadowcocoon/lure_test)

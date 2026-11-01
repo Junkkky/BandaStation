@@ -13,7 +13,7 @@
 
 /datum/unit_test/spacepod_vacuum/New()
 	..()
-	vacuum_block = SSmapping.request_turf_block_reservation(9, 9, 1, turf_type_override = /turf/open/space)
+	vacuum_block = SSmapping.request_turf_block_reservation(15, 15, 1, turf_type_override = /turf/open/space)
 	if(!vacuum_block)
 		return
 	vacuum_area = new
@@ -23,295 +23,778 @@
 		tile.change_area(original_area, vacuum_area)
 	vacuum_area.reg_in_areas_in_z()
 	var/turf/bottom_left = vacuum_block.bottom_left_turfs[1]
-	vacuum_origin = locate(bottom_left.x + 2, bottom_left.y + 2, bottom_left.z)
+	vacuum_origin = locate(bottom_left.x + 6, bottom_left.y + 6, bottom_left.z)
 
 /datum/unit_test/spacepod_vacuum/Destroy()
 	// Delete occupants and vehicles while the reservation and its turfs still exist.
 	QDEL_LIST(allocated)
 	for(var/turf/tile as anything in original_areas)
-		if(get_area(tile) == vacuum_area)
-			tile.change_area(vacuum_area, original_areas[tile])
+		tile.change_area(get_area(tile), original_areas[tile])
 	original_areas.Cut()
 	vacuum_origin = null
 	QDEL_NULL(vacuum_area)
 	QDEL_NULL(vacuum_block)
 	return ..()
 
-/// The real thruster path must work in zero gravity and reject repeat/unpowered inputs.
-/datum/unit_test/spacepod_vacuum/flight/Run()
-	TEST_ASSERT_NOTNULL(vacuum_block, "Could not reserve an independent vacuum enclosure.")
-	TEST_ASSERT(isspaceturf(vacuum_origin), "The vacuum enclosure did not contain real space turfs.")
-	var/obj/vehicle/sealed/spacepod/civilian/pod = allocate(__IMPLIED_TYPE__, vacuum_origin)
+/// Keep deterministic flight ticks separate from life support and subsystem scheduling.
+/datum/unit_test/spacepod_vacuum/proc/create_flight_pod(pod_type = /obj/vehicle/sealed/spacepod/civilian)
+	if(!vacuum_origin)
+		return
+	var/obj/vehicle/sealed/spacepod/pod = allocate(pod_type, vacuum_origin)
+	STOP_PROCESSING(SSobj, pod)
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
 	pod.enter_delay = 0
+	pod.setDir(NORTH)
+	pod.flight.heading = 0
+	pod.flight.desired_heading = 0
 	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(vacuum_origin, SOUTH))
-	TEST_ASSERT(pod.mob_try_enter(pilot), "A human could not board a real pod on space turfs.")
-	TEST_ASSERT_EQUAL(length(pod.locs), 4, "The vacuum pod does not occupy a 2x2 footprint.")
-	for(var/turf/tile as anything in pod.locs)
-		TEST_ASSERT(isspaceturf(tile), "Part of the pod's footprint is outside real space.")
-		TEST_ASSERT_EQUAL(get_area(tile), vacuum_area, "Part of the pod left its isolated test area.")
-	TEST_ASSERT(!pod.has_gravity() && !pilot.has_gravity(), "The vacuum flight fixture has gravity.")
-	var/initial_charge = pod.battery.charge
-	TEST_ASSERT(pod.relaymove(pilot, EAST), "A pilot could not propel the pod through actual zero-gravity space.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge - SPACEPOD_ENERGY_UNIT, "A vacuum move consumed the wrong amount of energy.")
-	var/turf/first_destination = get_step(vacuum_origin, EAST)
-	TEST_ASSERT_EQUAL(pod.loc, first_destination, "The vacuum move did not move exactly one tile east.")
-	TEST_ASSERT(COOLDOWN_TIMELEFT(pod, cooldown_vehicle_move) > 0, "Moving through space did not start the movement cooldown.")
-	TEST_ASSERT(!pod.relaymove(pilot, EAST), "A second movement input bypassed the cooldown.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge - SPACEPOD_ENERGY_UNIT, "A cooldown-rejected input consumed power.")
-	sleep(0.6 SECONDS)
-	TEST_ASSERT_EQUAL(pod.loc, first_destination, "The pod drifted after the pilot stopped thrusting.")
-	TEST_ASSERT_NULL(pod.drift_handler, "Thruster-held flight incorrectly started a Newtonian drift loop.")
-	TEST_ASSERT(pod.relaymove(pilot, NORTH), "The pod could not move again after its real cooldown elapsed.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge - 2 * SPACEPOD_ENERGY_UNIT, "Two successful vacuum moves consumed the wrong total power.")
-	var/turf/unpowered_position = get_turf(pod)
-	pod.battery.charge = 0
-	sleep(0.6 SECONDS)
-	TEST_ASSERT(!pod.relaymove(pilot, EAST), "An exhausted cell still powered vacuum flight.")
-	TEST_ASSERT_EQUAL(pod.loc, unpowered_position, "The pod moved or drifted with an exhausted cell.")
-	TEST_ASSERT_EQUAL(pod.battery.charge, 0, "An unpowered movement attempt changed an empty cell's charge.")
+	if(!pod.mob_try_enter(pilot))
+		return
+	return pod
 
-/// Inspect real spawned particles without replacing movement or the trail system.
+/// Input restarts the native processor; deterministic cases advance that same controller explicitly.
+/datum/unit_test/spacepod_vacuum/proc/advance_flight(obj/vehicle/sealed/spacepod/pod)
+	STOP_PROCESSING(SSnewtonian_movement, pod.flight)
+	pod.flight.process(0.05)
+
+/// A private hangar provides a real gravity boundary without changing the station.
+/area/spacepod_gravity_test
+	name = "Spacepod gravity test hangar"
+	area_flags_mapping = NONE
+	default_gravity = STANDARD_GRAVITY
+
+/datum/unit_test/spacepod_vacuum/gravity_transition
+	/// Released after the inherited fixture restores the reservation's original areas.
+	var/area/spacepod_gravity_test/hangar
+
+/datum/unit_test/spacepod_vacuum/gravity_transition/Destroy()
+	. = ..()
+	QDEL_NULL(hangar)
+
+/// Returning from space must retain continuous flight and sub-tile displacement at the hangar speed.
+/datum/unit_test/spacepod_vacuum/gravity_transition/Run()
+	TEST_ASSERT_NOTNULL(vacuum_origin, "Could not reserve the gravity transition enclosure.")
+	hangar = new
+	var/boundary_x = vacuum_origin.x
+	for(var/turf/tile as anything in vacuum_block.reserved_turfs)
+		if(tile.x < boundary_x)
+			tile = tile.ChangeTurf(/turf/open/indestructible)
+			tile.change_area(get_area(tile), hangar)
+	hangar.reg_in_areas_in_z()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not board the gravity transition pod.")
+	pod.forceMove(locate(boundary_x - 2, vacuum_origin.y, vacuum_origin.z))
+	TEST_ASSERT(pod.has_gravity(), "The hangar fixture does not have real gravity.")
+	for(var/direction in list(EAST, WEST))
+		pod.flight.velocity_x = direction == EAST ? 4 : -4
+		for(var/tick in 1 to 24)
+			advance_flight(pod)
+			if(direction == EAST ? pod.x > boundary_x : pod.x < boundary_x)
+				break
+		TEST_ASSERT(direction == EAST ? !pod.has_gravity() : pod.has_gravity(), "Flight did not cross the real gravity boundary for [direction].")
+		var/previous_x = pod.x + pod.flight.offset_x
+		advance_flight(pod)
+		var/speed = abs(pod.flight.velocity_x)
+		TEST_ASSERT(speed > 0 && speed <= 2.5, "The returning or departing cabin lost momentum or exceeded the hangar speed.")
+		TEST_ASSERT(abs(pod.x + pod.flight.offset_x - previous_x - pod.flight.velocity_x * 0.05) < 0.001, "Crossing the gravity boundary lost sub-tile distance.")
+		TEST_ASSERT_EQUAL(pod.animate_movement, NO_STEPS, "Crossing gravity restored jerky tile animation.")
+		TEST_ASSERT_NULL(pod.drift_handler, "Crossing gravity started a competing native drift loop.")
+	var/charge_before_coast = pod.battery.charge
+	var/start_x = pod.x + pod.flight.offset_x
+	for(var/tick in 1 to 4)
+		advance_flight(pod)
+	TEST_ASSERT(abs(pod.x + pod.flight.offset_x - start_x + 0.5) < 0.001, "Coasting in the hangar stalled or snapped to a tile.")
+	TEST_ASSERT_EQUAL(pod.battery.charge, charge_before_coast, "Gravity coasting consumed propulsion energy.")
+	TEST_ASSERT(pod.flight.aim(45), "Returning to gravity disabled steering.")
+	TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "Returning to gravity disabled relative thrust.")
+	advance_flight(pod)
+	TEST_ASSERT(pod.flight.heading > 0 && pod.flight.heading < 45, "Gravity did not interpolate the requested heading.")
+	TEST_ASSERT(pod.flight.velocity_y > 0, "Gravity did not apply forward thrust relative to the nose.")
+	TEST_ASSERT(pod.battery.charge < charge_before_coast, "Powered gravity flight consumed no energy.")
+
+/// Turbo doubles translation and its power draw, while preserving angular controls and free momentum.
+/datum/unit_test/spacepod_vacuum/turbo_flight/Run()
+	var/list/outcomes = list()
+	for(var/boosted in list(FALSE, TRUE))
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the [boosted] turbo comparison fixture.")
+		var/mob/living/pilot = pod.pilot
+		if(boosted)
+			TEST_ASSERT(pod.flight.toggle_turbo(), "The pilot could not enable turbo.")
+		var/start_y = pod.y + pod.flight.offset_y
+		var/initial_charge = pod.battery.charge
+		for(var/tick in 1 to 10)
+			TEST_ASSERT(pod.relaymove(pilot, NORTH), "The comparison pilot's forward thrust was rejected.")
+			advance_flight(pod)
+		var/list/outcome = list("velocity" = pod.flight.velocity_y, "distance" = pod.y + pod.flight.offset_y - start_y, "energy" = initial_charge - pod.battery.charge)
+		var/charge_before_turn = pod.battery.charge
+		TEST_ASSERT(pod.flight.aim(90), "The comparison pilot could not aim the hull.")
+		advance_flight(pod)
+		outcome["heading"] = pod.flight.heading
+		outcome["turn_energy"] = charge_before_turn - pod.battery.charge
+		outcomes += list(outcome)
+		qdel(pod)
+		qdel(pilot)
+	var/list/normal = outcomes[1]
+	var/list/boosted = outcomes[2]
+	TEST_ASSERT(normal["velocity"] > 0 && normal["distance"] > 0 && normal["energy"] > 0, "The normal comparison did not actually accelerate, move and consume power.")
+	for(var/measurement in list("velocity", "distance", "energy"))
+		TEST_ASSERT(abs(boosted[measurement] - 2 * normal[measurement]) < 0.001, "Turbo did not double the real [measurement] over the same thrust interval.")
+	TEST_ASSERT_EQUAL(normal["heading"], 18, "The normal angular-control fixture did not turn one physics tick.")
+	TEST_ASSERT_EQUAL(boosted["heading"], normal["heading"], "Turbo also accelerated mouse steering.")
+	TEST_ASSERT_EQUAL(boosted["turn_energy"], normal["turn_energy"], "Turbo multiplied angular-control energy consumption.")
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the turbo speed-cap fixture.")
+	var/mob/living/pilot = pod.pilot
+	TEST_ASSERT(pod.flight.toggle_turbo(), "The speed-cap pilot could not enable turbo.")
+	pod.flight.velocity_x = 7.8
+	pod.flight.velocity_y = 10.4
+	TEST_ASSERT(pod.relaymove(pilot, NORTHEAST), "The speed-cap diagonal thrust was rejected.")
+	advance_flight(pod)
+	var/speed = sqrt(pod.flight.velocity_x ** 2 + pod.flight.velocity_y ** 2)
+	TEST_ASSERT(abs(speed - 13.333333) < 0.001, "Turbo did not cap the diagonal vector's magnitude at its doubled maximum.")
+	var/velocity_x = pod.flight.velocity_x
+	var/velocity_y = pod.flight.velocity_y
+	TEST_ASSERT(pod.flight.toggle_turbo(), "The pilot could not disable turbo at speed.")
+	var/start_x = pod.x + pod.flight.offset_x
+	var/start_y = pod.y + pod.flight.offset_y
+	var/coast_charge = pod.battery.charge
+	for(var/tick in 1 to 5)
+		advance_flight(pod)
+	TEST_ASSERT(abs(pod.flight.velocity_x - velocity_x) < 0.00001 && abs(pod.flight.velocity_y - velocity_y) < 0.00001, "Disabling turbo acted as a free brake on existing momentum.")
+	TEST_ASSERT(abs(pod.x + pod.flight.offset_x - start_x - velocity_x * 0.25) < 0.001 && abs(pod.y + pod.flight.offset_y - start_y - velocity_y * 0.25) < 0.001, "High-speed coasting lost or duplicated diagonal distance.")
+	TEST_ASSERT_EQUAL(pod.battery.charge, coast_charge, "High-speed coasting continued drawing turbo power.")
+	TEST_ASSERT(pod.relaymove(pilot, NORTHEAST), "Normal thrust was rejected after disabling turbo.")
+	advance_flight(pod)
+	TEST_ASSERT(abs(sqrt(pod.flight.velocity_x ** 2 + pod.flight.velocity_y ** 2) - speed) < 0.001, "Normal thrust accelerated past retained turbo speed or abruptly clamped it down.")
+	qdel(pod)
+	qdel(pilot)
+	pod = create_flight_pod(/obj/vehicle/sealed/spacepod/sec)
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the reinforced turbo collision fixture.")
+	TEST_ASSERT(pod.flight.toggle_turbo(), "The collision pilot could not enable turbo.")
+	var/obj/structure/blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
+	blocker.density = TRUE
+	blocker.anchored = TRUE
+	pod.flight.velocity_y = 13.333333
+	var/turf/origin = pod.loc
+	var/initial_integrity = pod.get_integrity()
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(pod.loc, origin, "Turbo speed clipped the cabin's far corner through an obstacle.")
+	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "A turbo collision retained velocity into the obstacle.")
+	TEST_ASSERT(abs(initial_integrity - pod.get_integrity() - 176.8) < 0.001, "A turbo collision changed the existing impact-damage rule.")
+
+/// Stronger brakes stop short vectors exactly, and turbo cannot manufacture unpaid thrust.
+/datum/unit_test/spacepod_vacuum/turbo_brakes_and_power/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare turbo braking and power checks.")
+	TEST_ASSERT(pod.flight.toggle_turbo() && pod.flight.toggle_brakes(), "The pilot could not enable turbo braking.")
+	pod.flight.velocity_x = 0.05
+	pod.flight.velocity_y = 0.1
+	var/initial_charge = pod.battery.charge
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(pod.flight.velocity_x, 0, "Turbo braking overshot a short lateral velocity vector.")
+	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "Turbo braking overshot a short forward velocity vector.")
+	TEST_ASSERT(pod.battery.charge < initial_charge, "Turbo braking stopped momentum without paying for counter-thrust.")
+	TEST_ASSERT(pod.flight.toggle_brakes(), "The pilot could not release turbo brakes.")
+	pod.battery.charge = SPACEPOD_ENERGY_UNIT
+	TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "A positive but insufficient battery never reached the real payment boundary.")
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "An insufficient battery supplied turbo acceleration.")
+	TEST_ASSERT_EQUAL(pod.battery.charge, SPACEPOD_ENERGY_UNIT, "A rejected turbo payment partially drained the cell.")
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "Rejected turbo payment ignited the main engine.")
+	pod.battery.charge = 0
+	TEST_ASSERT(!pod.relaymove(pod.pilot, NORTH), "An empty battery accepted turbo thrust.")
+	pod.flight.velocity_x = 0.1
+	pod.flight.velocity_y = 0.2
+	TEST_ASSERT(pod.flight.toggle_brakes(), "The pilot could not select brakes with an empty cell.")
+	var/start_y = pod.y + pod.flight.offset_y
+	advance_flight(pod)
+	TEST_ASSERT(abs(pod.flight.velocity_x - 0.1) < 0.00001 && abs(pod.flight.velocity_y - 0.2) < 0.00001, "Unpowered turbo brakes removed existing momentum.")
+	TEST_ASSERT(pod.y + pod.flight.offset_y > start_y, "An empty cell froze a coasting turbo cabin.")
+	TEST_ASSERT_EQUAL(pod.battery.charge, 0, "Unpowered turbo flight changed an empty cell's charge.")
+
+/// Gravity flight keeps continuous rendering, with doubled turbo speed and paid thrust.
+/datum/unit_test/spacepod_vacuum/turbo_ground/Run()
+	var/turf/origin = locate(run_loc_floor_bottom_left.x, run_loc_floor_bottom_left.y + 2, run_loc_floor_bottom_left.z)
+	var/normal_energy
+	for(var/boosted in list(FALSE, TRUE))
+		var/obj/vehicle/sealed/spacepod/pod = allocate(/obj/vehicle/sealed/spacepod/civilian, origin)
+		STOP_PROCESSING(SSobj, pod)
+		pod.enter_delay = 0
+		pod.setDir(NORTH)
+		var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
+		TEST_ASSERT(pod.mob_try_enter(pilot) && pod.has_gravity(), "Could not board the ordinary-gravity turbo fixture.")
+		if(boosted)
+			TEST_ASSERT(pod.flight.toggle_turbo(), "The grounded pilot could not enable turbo.")
+		pod.flight.velocity_x = 3
+		pod.flight.velocity_y = 4
+		var/start_x = pod.x + pod.flight.offset_x
+		var/start_y = pod.y + pod.flight.offset_y
+		var/initial_charge = pod.battery.charge
+		TEST_ASSERT(pod.relaymove(pilot, NORTH), "Gravity flight rejected forward thrust.")
+		advance_flight(pod)
+		var/speed = sqrt(pod.flight.velocity_x ** 2 + pod.flight.velocity_y ** 2)
+		TEST_ASSERT(abs(speed - (boosted ? 5 : 2.5)) < 0.001, "Gravity flight did not cap the whole diagonal velocity vector.")
+		TEST_ASSERT(abs(pod.x + pod.flight.offset_x - start_x - pod.flight.velocity_x * 0.05) < 0.001 && abs(pod.y + pod.flight.offset_y - start_y - pod.flight.velocity_y * 0.05) < 0.001, "Gravity flight did not preserve continuous diagonal displacement.")
+		TEST_ASSERT_EQUAL(pod.animate_movement, NO_STEPS, "Gravity turbo restored tile animation.")
+		if(boosted)
+			TEST_ASSERT(abs(initial_charge - pod.battery.charge - 2 * normal_energy) < 0.001, "Gravity turbo did not double thrust energy consumption.")
+		else
+			normal_energy = initial_charge - pod.battery.charge
+		var/coast_charge = pod.battery.charge
+		advance_flight(pod)
+		TEST_ASSERT(abs(sqrt(pod.flight.velocity_x ** 2 + pod.flight.velocity_y ** 2) - speed) < 0.001, "Releasing gravity thrust lost inertia.")
+		TEST_ASSERT_EQUAL(pod.battery.charge, coast_charge, "Gravity coasting consumed propulsion energy.")
+		TEST_ASSERT(pod.flight.toggle_brakes(), "Gravity flight rejected the brake control.")
+		advance_flight(pod)
+		TEST_ASSERT(sqrt(pod.flight.velocity_x ** 2 + pod.flight.velocity_y ** 2) < speed && pod.battery.charge < coast_charge, "Gravity brakes did not apply paid counter-thrust.")
+		qdel(pod)
+		qdel(pilot)
+
+/// Hull damage follows impact speed, while rejected movement alone is not an impact.
+/datum/unit_test/spacepod_vacuum/collision_damage/Run()
+	var/list/impacts = list(
+		list("speed" = 0.5, "damage" = 0),
+		list("speed" = 1, "damage" = 0),
+		list("speed" = 2, "damage" = 3),
+		list("speed" = 4, "damage" = 15),
+		list("speed" = 1 / 0.15, "damage" = 43.4),
+	)
+	for(var/list/impact as anything in impacts)
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the [impact["speed"]]-tile/s collision fixture.")
+		var/mob/living/pilot = pod.pilot
+		var/obj/structure/blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
+		blocker.density = TRUE
+		blocker.anchored = TRUE
+		pod.flight.velocity_y = impact["speed"]
+		var/turf/origin = pod.loc
+		var/initial_integrity = pod.get_integrity()
+		advance_flight(pod)
+		TEST_ASSERT_EQUAL(pod.loc, origin, "An impact clipped the cabin's far corner through its blocker.")
+		TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "An impact retained velocity into its blocker.")
+		TEST_ASSERT(abs(initial_integrity - pod.get_integrity() - impact["damage"]) < 0.001, "Impact speed [impact["speed"]] caused [initial_integrity - pod.get_integrity()] hull damage, expected [impact["damage"]].")
+		qdel(blocker)
+		qdel(pod)
+		qdel(pilot)
+	var/obj/vehicle/sealed/spacepod/rejected_pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(rejected_pod, "Could not prepare the movement-denial control.")
+	rejected_pod.flight.velocity_y = 4
+	RegisterSignal(rejected_pod, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(block_without_collision))
+	var/initial_integrity = rejected_pod.get_integrity()
+	advance_flight(rejected_pod)
+	TEST_ASSERT_EQUAL(rejected_pod.flight.velocity_y, 0, "The movement-denial control did not reach the rejected step.")
+	TEST_ASSERT_EQUAL(rejected_pod.get_integrity(), initial_integrity, "A denied movement without a real collision damaged the hull.")
+	UnregisterSignal(rejected_pod, COMSIG_MOVABLE_PRE_MOVE)
+	qdel(rejected_pod.pilot)
+	qdel(rejected_pod)
+	var/obj/vehicle/sealed/spacepod/fragile_pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(fragile_pod, "Could not prepare the fatal-impact fixture.")
+	var/obj/structure/fatal_blocker = allocate(__IMPLIED_TYPE__, locate(fragile_pod.x + 1, fragile_pod.y + 2, fragile_pod.z))
+	fatal_blocker.density = TRUE
+	fatal_blocker.anchored = TRUE
+	fragile_pod.update_integrity(5)
+	fragile_pod.flight.velocity_y = 4
+	var/datum/spacepod_flight/fatal_flight = fragile_pod.flight
+	advance_flight(fragile_pod)
+	var/deleted_immediately = QDELETED(fragile_pod)
+	var/flight_deleted_immediately = QDELETED(fatal_flight)
+	var/flight_stopped_immediately = !(fatal_flight in SSnewtonian_movement.processing)
+	var/explosion_deadline = world.time + 8 SECONDS
+	while(SSexplosions.is_exploding() && world.time < explosion_deadline)
+		stoplag(1)
+	allocated |= get_wreckage()
+	TEST_ASSERT(!SSexplosions.is_exploding(), "The immediate collision blast did not finish its native queue before fixture cleanup.")
+	TEST_ASSERT(deleted_immediately, "A fatal collision retained the cabin instead of detonating immediately.")
+	TEST_ASSERT(flight_deleted_immediately, "A fatal collision retained the destroyed cabin's flight controller.")
+	TEST_ASSERT(flight_stopped_immediately, "A fatal collision retained scheduled flight processing.")
+
+/datum/unit_test/spacepod_vacuum/collision_damage/proc/block_without_collision(datum/source)
+	SIGNAL_HANDLER
+	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
+
+/// Tangential speed survives a glancing collision and does not increase its damage.
+/datum/unit_test/spacepod_vacuum/collision_glancing/Run()
+	for(var/list/impact as anything in list(list("normal" = 0.5, "damage" = 0), list("normal" = 2, "damage" = 3)))
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the glancing-impact fixture.")
+		var/mob/living/pilot = pod.pilot
+		var/obj/structure/blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
+		blocker.density = TRUE
+		blocker.anchored = TRUE
+		pod.flight.velocity_x = 4
+		pod.flight.velocity_y = impact["normal"]
+		var/start_x = pod.x + pod.flight.offset_x
+		var/start_y = pod.y
+		var/initial_integrity = pod.get_integrity()
+		advance_flight(pod)
+		TEST_ASSERT(pod.x + pod.flight.offset_x > start_x, "A glancing collision stopped unobstructed lateral travel.")
+		TEST_ASSERT_EQUAL(pod.y, start_y, "A glancing collision clipped through its north blocker.")
+		TEST_ASSERT_EQUAL(pod.flight.velocity_x, 4, "A glancing collision removed tangential velocity.")
+		TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "A glancing collision retained normal velocity.")
+		TEST_ASSERT(abs(initial_integrity - pod.get_integrity() - impact["damage"]) < 0.001, "Glancing damage included tangential speed or lost the normal impact.")
+		qdel(blocker)
+		qdel(pod)
+		qdel(pilot)
+
+/datum/unit_test/spacepod_vacuum/collision_corner
+	/// Observe real damage without replacing or intercepting it.
+	var/damage_events = 0
+
+/// Two stopped axes form one impact; holding thrust against that corner cannot repeat the hit.
+/datum/unit_test/spacepod_vacuum/collision_corner/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the corner-impact fixture.")
+	var/obj/structure/east_blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 2, pod.y + 1, pod.z))
+	var/obj/structure/north_blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
+	east_blocker.density = TRUE
+	north_blocker.density = TRUE
+	east_blocker.anchored = TRUE
+	north_blocker.anchored = TRUE
+	pod.flight.velocity_x = 2
+	pod.flight.velocity_y = 2
+	RegisterSignal(pod, COMSIG_ATOM_TAKE_DAMAGE, PROC_REF(on_collision_damage))
+	var/initial_integrity = pod.get_integrity()
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(pod.flight.velocity_x, 0, "The corner did not stop eastward motion.")
+	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "The corner did not stop northward motion.")
+	TEST_ASSERT_EQUAL(damage_events, 1, "Two corner contacts applied more than one damage event in a physics tick.")
+	TEST_ASSERT(abs(initial_integrity - pod.get_integrity() - 7) < 0.001, "The corner did not combine its two stopped velocity components into one impact.")
+	var/integrity_after_impact = pod.get_integrity()
+	for(var/tick in 1 to 20)
+		TEST_ASSERT(pod.relaymove(pod.pilot, NORTHEAST), "The intact cabin rejected thrust against its corner.")
+		advance_flight(pod)
+	TEST_ASSERT_EQUAL(pod.get_integrity(), integrity_after_impact, "Holding thrust against a wall repeatedly damaged the stopped cabin.")
+	TEST_ASSERT_EQUAL(damage_events, 1, "Low-speed thrust against the corner emitted additional damage events.")
+	UnregisterSignal(pod, COMSIG_ATOM_TAKE_DAMAGE)
+
+/datum/unit_test/spacepod_vacuum/collision_corner/proc/on_collision_damage(datum/source)
+	SIGNAL_HANDLER
+	damage_events++
+
+/// The flight controller accelerates the cabin, coasts without fuel and uses native cargo/collision checks.
+/datum/unit_test/spacepod_vacuum/flight/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not board the vacuum flight fixture.")
+	TEST_ASSERT_EQUAL(length(pod.locs), 4, "The flight fixture lost its 2x2 footprint.")
+	TEST_ASSERT(!pod.has_gravity(), "The flight fixture is not in zero gravity.")
+	var/initial_charge = pod.battery.charge
+	for(var/tick in 1 to 20)
+		TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "The pilot could not apply forward thrust.")
+		advance_flight(pod)
+	TEST_ASSERT(pod.flight.velocity_y > 3.9 && pod.flight.velocity_y < 4.1, "One second of forward thrust did not accelerate the cabin to four tiles per second.")
+	TEST_ASSERT(abs(pod.flight.velocity_x) < 0.00001, "Forward thrust added lateral velocity.")
+	TEST_ASSERT(pod.battery.charge < initial_charge, "Forward acceleration consumed no battery energy.")
+	var/obj/item/spacepod_equipment/cargo/ore/cargo = allocate(__IMPLIED_TYPE__, pod)
+	TEST_ASSERT(pod.add_equipment(null, cargo, cargo.slot), "Could not install the vacuum ore collector.")
+	var/obj/structure/ore_box/ore_box = allocate(__IMPLIED_TYPE__, cargo)
+	cargo.storage = ore_box
+	var/obj/item/stack/ore/iron/ore = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
+	allocate(/obj/structure/lattice, get_step(pod, SOUTH))
+	var/coast_charge = pod.battery.charge
+	var/coast_velocity = pod.flight.velocity_y
+	for(var/tick in 1 to 12)
+		advance_flight(pod)
+	TEST_ASSERT_EQUAL(ore.loc, ore_box, "The coasting cabin did not collect ore beneath its far corner.")
+	TEST_ASSERT(abs(pod.flight.velocity_y - coast_velocity) < 0.00001, "Coasting past a lattice changed the cabin's speed.")
+	TEST_ASSERT_EQUAL(pod.battery.charge, coast_charge, "Passive flight consumed propulsion energy.")
+	var/turf/blocked_position = get_turf(pod)
+	var/obj/structure/window/blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 1, pod.z))
+	blocker.setDir(NORTH)
+	for(var/tick in 1 to 20)
+		advance_flight(pod)
+	TEST_ASSERT_EQUAL(pod.loc, blocked_position, "Coasting pushed the cabin's far corner through a directional window.")
+	TEST_ASSERT(abs(pod.flight.velocity_y) < 0.00001, "A collision retained velocity into the blocking window.")
+	var/lateral_start = pod.x + pod.flight.offset_x
+	for(var/tick in 1 to 3)
+		pod.relaymove(pod.pilot, NORTHEAST)
+		advance_flight(pod)
+	TEST_ASSERT(pod.flight.velocity_x > 0 && pod.x + pod.flight.offset_x > lateral_start, "A blocked forward axis also stopped unobstructed lateral thrust.")
+	TEST_ASSERT(abs(pod.flight.velocity_y) < 0.00001, "Diagonal thrust crossed the blocking window instead of sliding along it.")
+	TEST_ASSERT_NULL(pod.drift_handler, "The flight controller also started a competing native drift loop.")
+
+/// Releasing cardinal or diagonal thrust preserves the vector and continuous displacement.
+/datum/unit_test/spacepod_vacuum/linear_coast/Run()
+	for(var/direction in list(NORTH, NORTHEAST))
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the [direction] coasting fixture.")
+		for(var/tick in 1 to 16)
+			TEST_ASSERT(pod.relaymove(pod.pilot, direction), "The [direction] input was rejected.")
+			advance_flight(pod)
+		var/velocity_x = pod.flight.velocity_x
+		var/velocity_y = pod.flight.velocity_y
+		TEST_ASSERT(velocity_y > 0 && (direction == NORTH || velocity_x > 0), "The commanded flight did not build the required velocity vector.")
+		var/start_x = pod.x + pod.flight.offset_x
+		var/start_y = pod.y + pod.flight.offset_y
+		var/initial_charge = pod.battery.charge
+		for(var/tick in 1 to 10)
+			advance_flight(pod)
+		TEST_ASSERT(abs(pod.flight.velocity_x - velocity_x) < 0.00001 && abs(pod.flight.velocity_y - velocity_y) < 0.00001, "Releasing [direction] thrust changed the flight velocity.")
+		TEST_ASSERT(abs(pod.x + pod.flight.offset_x - start_x - velocity_x * 0.5) < 0.001, "Coasting lost or duplicated horizontal distance.")
+		TEST_ASSERT(abs(pod.y + pod.flight.offset_y - start_y - velocity_y * 0.5) < 0.001, "Coasting lost or duplicated vertical distance.")
+		TEST_ASSERT_EQUAL(pod.battery.charge, initial_charge, "Releasing [direction] thrust continued consuming propulsion power.")
+		qdel(pod)
+
+/// Mouse heading rotates gradually; keyboard thrust follows the hull and brakes require power.
+/datum/unit_test/spacepod_vacuum/relative_controls_and_braking/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the relative-flight fixture.")
+	pod.flight.aim(90)
+	advance_flight(pod)
+	TEST_ASSERT(pod.flight.heading > 0 && pod.flight.heading < 90, "A new aim direction did not begin a gradual turn.")
+	for(var/tick in 1 to 4)
+		advance_flight(pod)
+	TEST_ASSERT(abs(pod.flight.heading - 90) < 0.001, "The hull did not complete a 90-degree turn within a quarter second.")
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(pod.flight.angular_velocity, 0, "The hull kept spinning after reaching its mouse heading.")
+	pod.flight.aim(350)
+	for(var/tick in 1 to 6)
+		advance_flight(pod)
+	TEST_ASSERT(abs(pod.flight.heading - 350) < 0.001, "The hull failed to reach the wraparound-turn fixture heading.")
+	pod.flight.aim(10)
+	advance_flight(pod)
+	TEST_ASSERT(abs(pod.flight.heading - 8) < 0.001, "Turning from 350 to 10 degrees took the long route or overshot the target.")
+	advance_flight(pod)
+	TEST_ASSERT(abs(pod.flight.heading - 10) < 0.001, "The short wraparound turn overshot its target.")
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(pod.flight.angular_velocity, 0, "The hull kept spinning after its wraparound turn.")
+	pod.flight.aim(90)
+	for(var/tick in 1 to 5)
+		advance_flight(pod)
+	for(var/tick in 1 to 10)
+		pod.relaymove(pod.pilot, NORTH)
+		advance_flight(pod)
+	TEST_ASSERT(pod.flight.velocity_x > 1.8 && abs(pod.flight.velocity_y) < 0.01, "Forward input did not follow the east-facing hull.")
+	var/velocity_before_reverse = pod.flight.velocity_x
+	for(var/tick in 1 to 5)
+		pod.relaymove(pod.pilot, SOUTH)
+		advance_flight(pod)
+	TEST_ASSERT(abs(velocity_before_reverse - pod.flight.velocity_x - 0.75) < 0.001, "Reverse counter-thrust did not reduce forward velocity by the configured responsive rate.")
+	for(var/tick in 1 to 10)
+		pod.relaymove(pod.pilot, WEST)
+		advance_flight(pod)
+	TEST_ASSERT(pod.flight.velocity_y > 1.4 && pod.flight.velocity_y < 1.6, "Left strafe did not accelerate north relative to an east-facing hull.")
+	var/charge_before_braking = pod.battery.charge
+	pod.flight.toggle_brakes()
+	for(var/tick in 1 to 20)
+		advance_flight(pod)
+	TEST_ASSERT(abs(pod.flight.velocity_x) < 0.00001 && abs(pod.flight.velocity_y) < 0.00001, "Powered brakes did not stop the existing velocity vector within one second.")
+	TEST_ASSERT(pod.battery.charge < charge_before_braking, "Braking applied thrust without consuming energy.")
+	pod.flight.toggle_brakes()
+	for(var/tick in 1 to 10)
+		pod.relaymove(pod.pilot, NORTH)
+		advance_flight(pod)
+	var/unpowered_velocity = pod.flight.velocity_x
+	TEST_ASSERT(unpowered_velocity > 0, "The cabin did not resume thrust after releasing its brakes.")
+	pod.battery.charge = 0
+	pod.flight.toggle_brakes()
+	var/start_x = pod.x + pod.flight.offset_x
+	for(var/tick in 1 to 10)
+		advance_flight(pod)
+	TEST_ASSERT(abs(pod.flight.velocity_x - unpowered_velocity) < 0.00001, "Unpowered brakes magically removed existing momentum.")
+	TEST_ASSERT(pod.x + pod.flight.offset_x > start_x, "An empty battery froze the coasting cabin.")
+	TEST_ASSERT_EQUAL(pod.battery.charge, 0, "Unpowered flight changed the empty battery's charge.")
+
+/// Exercise the real 20 Hz scheduler as well as the deterministic physics cases above.
+/datum/unit_test/spacepod_vacuum/flight_subsystem/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare scheduled flight.")
+	START_PROCESSING(SSnewtonian_movement, pod.flight)
+	for(var/tick in 1 to 10)
+		TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "The scheduled pilot input was rejected.")
+		sleep(world.tick_lag)
+	var/coast_velocity = pod.flight.velocity_y
+	TEST_ASSERT(coast_velocity > 0.5, "The Newtonian subsystem did not process repeated pilot thrust.")
+	var/charge_before_coasting = pod.battery.charge
+	var/previous_y = pod.y + pod.flight.offset_y
+	var/continuous_steps = 0
+	for(var/tick in 1 to 8)
+		sleep(world.tick_lag)
+		var/current_y = pod.y + pod.flight.offset_y
+		if(current_y > previous_y)
+			continuous_steps++
+		previous_y = current_y
+	TEST_ASSERT(continuous_steps >= 6, "Coasting did not update continuously on the movement subsystem's ticks.")
+	TEST_ASSERT(abs(pod.flight.velocity_y - coast_velocity) < 0.00001, "The real scheduler slowed down flight after input stopped.")
+	TEST_ASSERT_EQUAL(pod.battery.charge, charge_before_coasting, "Scheduled coasting continued drawing propulsion energy.")
+	var/datum/spacepod_flight/flight = pod.flight
+	qdel(pod)
+	TEST_ASSERT(QDELETED(flight), "Deleting the cabin retained its flight controller.")
+	TEST_ASSERT(!(flight in SSnewtonian_movement.processing), "Deleting the cabin retained scheduled flight processing.")
+
+/// No legacy ion particles may accompany the attached flame.
 /datum/unit_test/spacepod_vacuum/proc/get_thrust_particles(list/turfs)
 	if(isnull(turfs))
 		turfs = vacuum_block.reserved_turfs
 	var/list/particles = list()
 	for(var/turf/tile as anything in turfs)
-		for(var/obj/effect/particle_effect/ion_trails/spacepod/particle in tile)
+		for(var/obj/effect/particle_effect/ion_trails/particle in tile)
 			if(!QDELETED(particle))
 				particles += particle
 	return particles
 
-/// Successful thrust must leave visible exhaust once, while idle and rejected inputs leave none.
-/datum/unit_test/spacepod_vacuum/thrust_effects/Run()
-	TEST_ASSERT_NOTNULL(vacuum_origin, "Could not reserve a vacuum enclosure for thruster effects.")
-	var/obj/vehicle/sealed/spacepod/civilian/pod = allocate(__IMPLIED_TYPE__, vacuum_origin)
-	pod.enter_delay = 0
-	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(vacuum_origin, SOUTH))
-	TEST_ASSERT(pod.mob_try_enter(pilot), "The thruster test pilot could not board the pod.")
-	TEST_ASSERT(!pod.has_gravity(), "The thruster test pod is not in zero gravity.")
-	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 0, "Initializing an idle pod created exhaust.")
-	TEST_ASSERT(pod.relaymove(pilot, EAST), "A powered vacuum movement failed.")
-	var/list/particles = get_thrust_particles()
-	allocated |= particles
-	TEST_ASSERT_EQUAL(length(particles), 1, "One powered movement did not produce exactly one exhaust particle.")
-	var/obj/effect/particle_effect/ion_trails/spacepod/first_particle = particles[1]
-	TEST_ASSERT(!(get_turf(first_particle) in pod.locs), "The 2x2 pod hides its exhaust beneath its footprint.")
-	TEST_ASSERT_EQUAL(first_particle.plane, GAME_PLANE, "The exhaust is outside the visible world plane.")
-	TEST_ASSERT_EQUAL(pod.ion_trail.oldposition, get_turf(pod), "The trail retained a stale origin after movement.")
-	var/datum/looping_sound/spacepod_engine/first_sound = pod.engine_sounds[pilot]
-	TEST_ASSERT_NOTNULL(first_sound, "A powered thrust did not create a native cabin sound loop.")
-	TEST_ASSERT(first_sound.is_active(), "A powered thrust did not start the native cabin sound loop.")
-	TEST_ASSERT(!pod.relaymove(pilot, EAST), "An immediate input bypassed the native movement cooldown.")
-	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 1, "A cooldown-rejected input created exhaust.")
-	TEST_ASSERT_EQUAL(pod.engine_sounds[pilot], first_sound, "A cooldown-rejected input replaced the active engine sound.")
-	sleep(0.35 SECONDS)
-	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 1, "An idle pod kept generating exhaust without movement.")
-	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "The engine sound outlasted the completed movement glide.")
-	var/turf/current_turf = get_turf(pod)
-	var/obj/structure/blocker = allocate(/obj/structure, locate(current_turf.x + 2, current_turf.y + 1, current_turf.z))
+/// Inspect the attached appearance rather than treating its state flag as proof of rendering.
+/datum/unit_test/spacepod_vacuum/proc/get_thruster_flames(obj/vehicle/sealed/spacepod/pod)
+	var/list/flames = list()
+	for(var/mutable_appearance/overlay as anything in pod.overlays)
+		if(overlay.icon == 'icons/effects/effects.dmi' && overlay.icon_state == "jetfire")
+			flames += overlay
+	return flames
+
+/// The main engine's actual flame stays behind the hull and follows paid forward input only.
+/datum/unit_test/spacepod_vacuum/thruster_flame/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the attached-flame fixture.")
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "An idle cabin has an attached engine flame.")
+	for(var/tick in 1 to 3)
+		TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "The pilot could not fire the main engine.")
+		advance_flight(pod)
+		TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 1, "Forward thrust lost or stacked its attached flame.")
+	var/list/facings = list(
+		list("dir" = NORTH, "x" = 16, "y" = -4, "angle" = 0),
+		list("dir" = EAST, "x" = -4, "y" = 16, "angle" = 90),
+		list("dir" = SOUTH, "x" = 16, "y" = 36, "angle" = 180),
+		list("dir" = WEST, "x" = 36, "y" = 16, "angle" = 270),
+	)
+	for(var/list/facing as anything in facings)
+		pod.setDir(facing["dir"])
+		var/list/flames = get_thruster_flames(pod)
+		TEST_ASSERT_EQUAL(length(flames), 1, "Turning the cabin lost or duplicated its attached flame.")
+		var/mutable_appearance/flame = flames[1]
+		TEST_ASSERT_EQUAL(flame.dir, NORTH, "The flame's sprite direction compounds the hull's rotation.")
+		TEST_ASSERT_EQUAL(flame.pixel_x, facing["x"], "The flame is not centered behind this hull facing.")
+		TEST_ASSERT_EQUAL(flame.pixel_y, facing["y"], "The flame is not centered behind this hull facing.")
+		var/matrix/expected = matrix().Turn(facing["angle"])
+		var/matrix/actual = flame.transform || matrix()
+		TEST_ASSERT_EQUAL(actual.a, expected.a, "The flame has the wrong local rotation.")
+		TEST_ASSERT_EQUAL(actual.b, expected.b, "The flame has the wrong local rotation.")
+		TEST_ASSERT_EQUAL(actual.d, expected.d, "The flame has the wrong local rotation.")
+		TEST_ASSERT_EQUAL(actual.e, expected.e, "The flame has the wrong local rotation.")
+		TEST_ASSERT(!(flame.appearance_flags & RESET_TRANSFORM), "The attached flame ignores continuous hull rotation.")
+	pod.update_integrity(pod.max_integrity / 2)
+	var/has_damage_overlay = FALSE
+	for(var/mutable_appearance/overlay as anything in pod.overlays)
+		if(overlay.icon_state == "pod_damage")
+			has_damage_overlay = TRUE
+	TEST_ASSERT(has_damage_overlay, "The damaged hull did not rebuild its damage appearance.")
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 1, "Rebuilding the damage appearance removed the active flame.")
+	advance_flight(pod)
+	TEST_ASSERT(pod.flight.velocity_y > 0, "The released-input fixture did not keep coasting.")
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "Releasing forward thrust left an attached flame on the coasting hull.")
+	for(var/direction in list(EAST, SOUTH))
+		TEST_ASSERT(pod.relaymove(pod.pilot, direction), "A powered secondary thruster input was rejected.")
+		advance_flight(pod)
+		TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "Side or reverse thrust incorrectly ignited the rear main-engine flame.")
+	TEST_ASSERT(pod.relaymove(pod.pilot, NORTHEAST), "Combined forward and side thrust was rejected.")
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 1, "Combined forward and side thrust lost the main-engine flame.")
+
+/// The scheduler must clear the last flame even when a blocked thrust tick leaves no velocity.
+/datum/unit_test/spacepod_vacuum/blocked_flame_release/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the blocked-flame fixture.")
+	var/obj/structure/blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 2, pod.z))
 	blocker.density = TRUE
 	blocker.anchored = TRUE
-	TEST_ASSERT(!pod.relaymove(pilot, EAST), "The blocked vacuum movement unexpectedly succeeded.")
-	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 1, "A blocked movement created exhaust.")
-	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "A blocked movement started engine sound.")
-	qdel(blocker)
-	sleep(0.25 SECONDS)
-	TEST_ASSERT(pod.relaymove(pilot, NORTH), "A second unblocked vacuum movement failed.")
-	particles = get_thrust_particles()
-	allocated |= particles
-	TEST_ASSERT_EQUAL(length(particles), 2, "A second powered movement did not add one exhaust particle.")
-	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 1, "A second powered movement did not start one cabin engine sound.")
-	pod.battery.charge = 0
-	sleep(0.25 SECONDS)
-	TEST_ASSERT(!pod.relaymove(pilot, EAST), "An empty cell powered the thruster effect test.")
-	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 2, "An unpowered input created exhaust.")
-	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "An unpowered input restarted engine sound.")
-	sleep(2.1 SECONDS)
-	TEST_ASSERT(QDELETED(first_particle), "The temporary exhaust particle survived its two-second lifetime.")
-	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 0, "A stationary pod retained or regenerated exhaust indefinitely.")
-	var/datum/effect_system/trail_follow/ion/spacepod/trail = pod.ion_trail
-	qdel(pod)
-	TEST_ASSERT(QDELETED(trail), "Deleting the pod left its exhaust system alive.")
+	TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "Forward thrust against a blocker was rejected.")
+	var/deadline = world.time + 1 SECONDS
+	while(!length(get_thruster_flames(pod)) && world.time < deadline)
+		sleep(world.tick_lag)
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 1, "The actual movement processor did not show a flame for paid thrust into a wall.")
+	TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "The flame fixture did not actually collide with its blocker.")
+	while(length(get_thruster_flames(pod)) && world.time < deadline)
+		sleep(world.tick_lag)
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "The last blocked input left a permanent flame after the processor became idle.")
+	TEST_ASSERT_NULL(pod.thruster_flame_timer, "Vacuum flight incorrectly uses a ground-step flame timer.")
 
-/// A station floor with normal gravity must not emit the zero-gravity exhaust or engine pulse.
+/// Paid thrust uses cabin sound and its attached flame, without the removed ion-particle trail.
+/datum/unit_test/spacepod_vacuum/thrust_effects/Run()
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the flight-effects fixture.")
+	for(var/tick in 1 to 20)
+		TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "Powered flight input was rejected.")
+		advance_flight(pod)
+	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 0, "Forward thrust recreated the removed ion-particle trail.")
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 1, "Removing the ion trail also removed the paid main-engine flame.")
+	var/datum/looping_sound/spacepod_engine/engine_sound = pod.engine_sounds[pod.pilot]
+	TEST_ASSERT_NOTNULL(engine_sound, "Paid thrust did not create cabin engine sound.")
+	TEST_ASSERT(engine_sound.is_active(), "Paid thrust left its engine sound inactive.")
+	for(var/tick in 1 to 10)
+		advance_flight(pod)
+	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 0, "Coasting recreated the removed ion-particle trail.")
+	TEST_ASSERT(QDELETED(engine_sound) && !length(pod.engine_sounds), "Releasing thrust left engine sound playing during passive flight.")
+	pod.battery.charge = 0
+	TEST_ASSERT(!pod.relaymove(pod.pilot, NORTH), "An empty battery accepted new thrust.")
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "Unpowered flight started engine sound.")
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "Unpowered flight retained the attached flame.")
+
+/// Gravity uses the same paid flame and cabin engine loop, without a detached particle trail.
 /datum/unit_test/spacepod_vacuum/thrust_on_floor/Run()
 	var/turf/origin = locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y + 2, run_loc_floor_bottom_left.z)
 	var/obj/vehicle/sealed/spacepod/civilian/pod = allocate(__IMPLIED_TYPE__, origin)
+	STOP_PROCESSING(SSobj, pod)
 	pod.enter_delay = 0
+	pod.setDir(NORTH)
 	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
 	TEST_ASSERT(pod.mob_try_enter(pilot), "The station-floor test pilot could not board the pod.")
 	TEST_ASSERT(pod.has_gravity(), "The station-floor fixture does not have normal gravity.")
 	var/list/floor_turfs = get_area_turfs(get_area(origin))
-	TEST_ASSERT(pod.relaymove(pilot, EAST), "A powered movement across station floor failed.")
+	TEST_ASSERT(pod.relaymove(pilot, NORTH), "A powered movement across station floor failed.")
+	advance_flight(pod)
 	var/list/particles = get_thrust_particles(floor_turfs)
 	allocated |= particles
 	TEST_ASSERT_EQUAL(length(particles), 0, "Movement on station floor created a space exhaust trail.")
-	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "Movement on station floor started a space engine loop.")
-	TEST_ASSERT_NULL(pod.engine_sound_timer, "Movement on station floor scheduled a space engine loop timer.")
+	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 1, "Paid gravity thrust did not start the cabin engine loop.")
+	TEST_ASSERT_NULL(pod.drift_handler, "A powered movement in gravity started a space drift loop.")
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 1, "A powered ground step did not display its attached engine flame.")
+	TEST_ASSERT_NULL(pod.thruster_flame_timer, "Continuous gravity flight retained a tile-step flame timer.")
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "Releasing gravity thrust left an attached engine flame.")
+	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "Releasing gravity thrust left cabin engine sound playing.")
 
-/// Real movement owns native sound loops and channels only for the duration of its glide.
+/// Continuous thrust refreshes the same cabin channels across the original sample's lifetime.
 /datum/unit_test/spacepod_vacuum/engine_sound_motion/Run()
-	TEST_ASSERT_NOTNULL(vacuum_origin, "Could not reserve space for engine sound motion tests.")
-	var/obj/vehicle/sealed/spacepod/civilian/pod = allocate(__IMPLIED_TYPE__, vacuum_origin)
-	pod.enter_delay = 0
+	var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+	TEST_ASSERT_NOTNULL(pod, "Could not prepare the engine-sound fixture.")
 	pod.max_passengers = 1
 	pod.max_occupants = 2
-	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(vacuum_origin, SOUTH))
-	var/mob/living/carbon/human/consistent/passenger = allocate(__IMPLIED_TYPE__, get_step(vacuum_origin, SOUTH))
-	TEST_ASSERT(pod.mob_try_enter(pilot) && pod.mob_try_enter(passenger), "The sound test occupants could not board the real cabin.")
+	var/mob/living/carbon/human/consistent/passenger = allocate(__IMPLIED_TYPE__, get_step(pod, SOUTH))
+	TEST_ASSERT(pod.mob_try_enter(passenger), "The sound-test passenger could not board.")
 	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "An idle cabin allocated engine sound channels.")
-	TEST_ASSERT(pod.relaymove(pilot, NORTHEAST), "A real diagonal vacuum movement failed to start the engine.")
-	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 2, "A diagonal movement did not create exactly one loop per occupant.")
+	pod.relaymove(pod.pilot, EAST)
+	advance_flight(pod)
+	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 2, "Paid thrust did not create one loop per occupant.")
 	var/list/initial_sounds = pod.engine_sounds.Copy()
 	var/list/sound_channels = list()
 	for(var/mob/living/listener as anything in initial_sounds)
 		var/datum/looping_sound/spacepod_engine/engine_sound = initial_sounds[listener]
-		TEST_ASSERT(engine_sound.is_active() && engine_sound.direct, "The native cabin loop is inactive or not directed to its listener.")
-		TEST_ASSERT_EQUAL(engine_sound.parent, listener, "The cabin sound is attached to the wrong listener.")
-		TEST_ASSERT_EQUAL(engine_sound.volume, 15, "The engine sound volume exceeds its original value.")
-		TEST_ASSERT_NOTNULL(engine_sound.sound_channel, "The native engine loop has no allocated sound channel.")
-		TEST_ASSERT_EQUAL(SSsounds.using_channels[num2text(engine_sound.sound_channel)], engine_sound, "The engine channel is not owned by its native sound datum.")
+		TEST_ASSERT(engine_sound.is_active() && engine_sound.direct, "The cabin loop is inactive or not directed to its listener.")
+		TEST_ASSERT_EQUAL(engine_sound.parent, listener, "A cabin loop is attached to the wrong listener.")
+		TEST_ASSERT_EQUAL(engine_sound.volume, 15, "The engine sound changed its original volume.")
+		TEST_ASSERT_NOTNULL(engine_sound.sound_channel, "A cabin loop has no allocated sound channel.")
+		TEST_ASSERT_EQUAL(SSsounds.using_channels[num2text(engine_sound.sound_channel)], engine_sound, "A cabin channel is not owned by its native sound datum.")
 		sound_channels[engine_sound] = engine_sound.sound_channel
-	TEST_ASSERT(!pod.relaymove(pilot, EAST), "A repeated input bypassed the real movement cooldown.")
-	TEST_ASSERT(!pod.relaymove(passenger, EAST), "A passenger operated the engine during sound playback.")
-	for(var/mob/living/listener as anything in initial_sounds)
-		TEST_ASSERT_EQUAL(pod.engine_sounds[listener], initial_sounds[listener], "A cooldown or passenger input restarted the current sample.")
-	sleep(0.45 SECONDS)
-	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "A finite diagonal glide left a six-second sound playing after stopping.")
-	TEST_ASSERT_NULL(pod.engine_sound_timer, "The completed glide retained its sound stop timer.")
-	for(var/datum/looping_sound/spacepod_engine/engine_sound as anything in sound_channels)
-		TEST_ASSERT(QDELETED(engine_sound), "A completed glide retained a live native sound loop.")
-		TEST_ASSERT(SSsounds.using_channels[num2text(sound_channels[engine_sound])] != engine_sound, "A completed glide retained its reserved audio channel.")
-		TEST_ASSERT(!length(SSsounds.using_channels_by_datum[engine_sound]), "A completed glide leaked managed sound channel ownership.")
-	var/list/flight_path = list(EAST, NORTH, WEST, SOUTH)
+	TEST_ASSERT(!pod.relaymove(passenger, EAST), "A passenger operated the thrusters.")
 	var/flight_started = world.time
-	var/list/continuous_sounds
-	for(var/lap in 1 to 12)
-		for(var/direction in flight_path)
-			TEST_ASSERT(pod.relaymove(pilot, direction), "Sustained engine flight failed at lap [lap], direction [direction].")
-			TEST_ASSERT_EQUAL(length(pod.engine_sounds), 2, "Sustained flight layered or lost cabin sound loops.")
-			if(isnull(continuous_sounds))
-				continuous_sounds = pod.engine_sounds.Copy()
-			for(var/mob/living/listener as anything in pod.engine_sounds)
-				var/datum/looping_sound/spacepod_engine/engine_sound = pod.engine_sounds[listener]
-				TEST_ASSERT_EQUAL(engine_sound, continuous_sounds[listener], "Continuous movement restarted its existing engine sound datum.")
-				TEST_ASSERT(engine_sound.is_active(), "A successful sustained-flight step has no active native engine loop.")
-				TEST_ASSERT_EQUAL(SSsounds.using_channels[num2text(engine_sound.sound_channel)], engine_sound, "Sustained flight lost its managed engine channel.")
-				sound_channels[engine_sound] = engine_sound.sound_channel
-			// Send the next real step as soon as its native cooldown permits, without changing that cooldown.
-			sleep(COOLDOWN_TIMELEFT(pod, cooldown_vehicle_move))
-	TEST_ASSERT(world.time - flight_started > 6.2 SECONDS, "The sustained flight did not exceed the original sound sample's length.")
-	sleep(0.3 SECONDS)
-	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "Stopping a long flight left cabin engine sound playing.")
-	for(var/datum/looping_sound/spacepod_engine/engine_sound as anything in sound_channels)
-		TEST_ASSERT(QDELETED(engine_sound), "Sustained flight accumulated live sound datums.")
-		TEST_ASSERT(!length(SSsounds.using_channels_by_datum[engine_sound]), "Sustained flight leaked an engine sound channel.")
-	TEST_ASSERT(pod.relaymove(pilot, EAST), "The engine did not restart after a completed long flight.")
-	var/datum/looping_sound/spacepod_engine/pilot_sound = pod.engine_sounds[pilot]
-	var/datum/looping_sound/spacepod_engine/passenger_sound = pod.engine_sounds[passenger]
+	for(var/cycle in 1 to 16)
+		for(var/direction in list(EAST, WEST))
+			for(var/tick in 1 to 5)
+				TEST_ASSERT(pod.relaymove(pod.pilot, direction), "Sustained pilot input was rejected.")
+				advance_flight(pod)
+				TEST_ASSERT_EQUAL(length(pod.engine_sounds), 2, "Sustained thrust layered or lost cabin sound loops.")
+				for(var/mob/living/listener as anything in initial_sounds)
+					TEST_ASSERT_EQUAL(pod.engine_sounds[listener], initial_sounds[listener], "Repeated thrust replaced an active cabin loop.")
+				sleep(world.tick_lag)
+	TEST_ASSERT(world.time - flight_started > 6.2 SECONDS, "Sustained thrust did not exceed the original sound sample's length.")
 	pod.mob_exit(passenger, silent = TRUE)
-	TEST_ASSERT(QDELETED(passenger_sound), "A departing passenger retained their native engine loop.")
-	TEST_ASSERT(!length(SSsounds.using_channels_by_datum[passenger_sound]), "A departing passenger leaked their cabin sound channel.")
+	var/datum/looping_sound/spacepod_engine/passenger_sound = initial_sounds[passenger]
+	TEST_ASSERT(QDELETED(passenger_sound), "A departing passenger retained their cabin loop.")
 	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 1, "A departing passenger stopped or retained the wrong cabin loops.")
-	TEST_ASSERT_EQUAL(pod.engine_sounds[pilot], pilot_sound, "A departing passenger replaced the pilot's sound loop.")
-	TEST_ASSERT(pilot_sound.is_active(), "A departing passenger stopped the moving pilot's engine sound.")
+	var/mob/living/pilot = pod.pilot
+	TEST_ASSERT_EQUAL(pod.engine_sounds[pilot], initial_sounds[pilot], "A departing passenger replaced the pilot's loop.")
 	pod.mob_exit(pilot, silent = TRUE)
-	TEST_ASSERT(QDELETED(pilot_sound), "A departing pilot left engine sound playing.")
-	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "Losing the pilot retained cabin engine sound listeners.")
-	TEST_ASSERT_NULL(pod.engine_sound_timer, "Losing the pilot retained a pending engine sound stop timer.")
+	TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "A departing pilot left cabin sound playing.")
+	TEST_ASSERT_NULL(pod.engine_sound_timer, "Losing the pilot retained an engine sound timer.")
+	for(var/datum/looping_sound/spacepod_engine/engine_sound as anything in sound_channels)
+		TEST_ASSERT(QDELETED(engine_sound), "The completed flight retained a live cabin loop.")
+		TEST_ASSERT(SSsounds.using_channels[num2text(sound_channels[engine_sound])] != engine_sound, "The completed flight retained a reserved audio channel.")
+		TEST_ASSERT(!length(SSsounds.using_channels_by_datum[engine_sound]), "The completed flight leaked managed sound channel ownership.")
 
-/// Interrupt actual engine playback and verify native datum/channel cleanup synchronously.
+/// Interrupt actual engine playback and verify native datum/channel cleanup.
 /datum/unit_test/spacepod_vacuum/engine_sound_interruptions/Run()
-	TEST_ASSERT_NOTNULL(vacuum_origin, "Could not reserve space for engine sound interruption tests.")
-	for(var/scenario in list("blocked", "empty cell", "removed cell", "EMP", "pilot exit", "meltdown", "deletion"))
-		var/obj/vehicle/sealed/spacepod/civilian/pod = allocate(__IMPLIED_TYPE__, vacuum_origin)
-		pod.enter_delay = 0
-		var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(vacuum_origin, SOUTH))
-		TEST_ASSERT(pod.mob_try_enter(pilot), "The [scenario] pilot could not board the sound test pod.")
-		TEST_ASSERT(pod.relaymove(pilot, EAST), "The [scenario] movement did not start real engine playback.")
-		var/datum/looping_sound/spacepod_engine/engine_sound = pod.engine_sounds[pilot]
-		TEST_ASSERT_NOTNULL(engine_sound, "The [scenario] fixture has no real engine sound datum.")
-		TEST_ASSERT(engine_sound.is_active(), "The [scenario] fixture has no active engine sound.")
+	for(var/scenario in list("blocked", "empty cell", "removed cell", "EMP", "pilot exit", "logout", "reset", "meltdown", "deletion"))
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the [scenario] interruption fixture.")
+		for(var/tick in 1 to 20)
+			pod.relaymove(pod.pilot, NORTH)
+			advance_flight(pod)
+		var/datum/looping_sound/spacepod_engine/engine_sound = pod.engine_sounds[pod.pilot]
+		TEST_ASSERT_NOTNULL(engine_sound, "The [scenario] fixture has no cabin engine loop.")
+		TEST_ASSERT(engine_sound.is_active(), "The [scenario] fixture has no active cabin engine sound.")
+		TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 1, "The [scenario] fixture has no actual attached engine flame.")
 		var/channel = engine_sound.sound_channel
 		var/sound_stop_timer = pod.engine_sound_timer
 		var/obj/item/stock_parts/power_store/cell/cell = pod.battery
+		var/mob/living/pilot = pod.pilot
+		var/datum/spacepod_flight/flight = pod.flight
 		switch(scenario)
 			if("blocked")
-				var/obj/structure/blocker = allocate(/obj/structure, locate(pod.x + 2, pod.y + 1, pod.z))
-				blocker.density = TRUE
-				blocker.anchored = TRUE
-				// Keep the current audio active while exercising the actual collision branch.
-				COOLDOWN_RESET(pod, cooldown_vehicle_move)
-				TEST_ASSERT(!pod.relaymove(pilot, EAST), "The blocked sound fixture moved through a real dense obstacle.")
+				var/obj/structure/window/blocker = allocate(__IMPLIED_TYPE__, locate(pod.x + 1, pod.y + 1, pod.z))
+				blocker.setDir(NORTH)
+				for(var/tick in 1 to 20)
+					pod.relaymove(pilot, NORTH)
+					advance_flight(pod)
+				TEST_ASSERT(abs(pod.flight.velocity_y) < 0.00001, "Blocked thrust crossed a real directional window.")
 				qdel(blocker)
 			if("empty cell")
 				cell.charge = 0
-				TEST_ASSERT(!pod.relaymove(pilot, EAST), "An empty cell moved the pod during engine playback.")
+				TEST_ASSERT(!pod.relaymove(pilot, NORTH), "An empty cell accepted new thrust during engine playback.")
 			if("removed cell")
 				cell.forceMove(get_step(pod, SOUTH))
 			if("EMP")
 				pod.emp_act(EMP_HEAVY)
 			if("pilot exit")
 				pod.mob_exit(pilot, silent = TRUE)
+			if("logout")
+				pilot.Logout()
+			if("reset")
+				pod.flight.reset_motion()
 			if("meltdown")
 				pod.atom_destruction(BOMB)
 			if("deletion")
 				qdel(pod)
-		TEST_ASSERT(QDELETED(engine_sound), "[scenario] did not immediately delete the active native engine loop.")
+		if(scenario == "meltdown")
+			var/deleted_immediately = QDELETED(pod) && QDELETED(flight)
+			var/explosion_deadline = world.time + 8 SECONDS
+			while(SSexplosions.is_exploding() && world.time < explosion_deadline)
+				stoplag(1)
+			allocated |= get_wreckage()
+			TEST_ASSERT(!SSexplosions.is_exploding(), "The immediate core blast did not drain before the next interruption fixture.")
+			TEST_ASSERT(deleted_immediately, "Core destruction did not immediately delete the cabin and flight controller.")
+		if(!QDELETED(pod))
+			if(scenario != "blocked" && scenario != "empty cell")
+				TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "[scenario] did not immediately remove the attached engine flame.")
+			advance_flight(pod)
+		TEST_ASSERT(QDELETED(engine_sound), "[scenario] did not delete the active cabin loop.")
 		TEST_ASSERT(SSsounds.using_channels[num2text(channel)] != engine_sound, "[scenario] retained the native engine channel.")
 		TEST_ASSERT(!length(SSsounds.using_channels_by_datum[engine_sound]), "[scenario] leaked managed engine channel ownership.")
-		TEST_ASSERT(isnull(timeleft(sound_stop_timer)), "[scenario] retained the engine's pending glide timer.")
+		TEST_ASSERT(isnull(timeleft(sound_stop_timer)), "[scenario] retained the engine sound timer.")
 		if(!QDELETED(pod))
-			TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "[scenario] left sound listeners registered in the pod.")
+			TEST_ASSERT_EQUAL(length(pod.engine_sounds), 0, "[scenario] left sound listeners registered in the cabin.")
+			TEST_ASSERT_EQUAL(length(get_thruster_flames(pod)), 0, "[scenario] left an attached engine flame after thrust stopped.")
+			TEST_ASSERT_NULL(pod.thruster_flame_timer, "[scenario] retained an attached-flame timer.")
 			qdel(pod)
 		qdel(cell)
 		qdel(pilot)
 
-/// A sustained flight and turns must leave temporary particles, never a persistent sparkling wake.
-/datum/unit_test/spacepod_vacuum/thrust_trail_cleanup/Run()
-	TEST_ASSERT_NOTNULL(vacuum_origin, "Could not reserve space for the exhaust lifecycle test.")
-	var/obj/vehicle/sealed/spacepod/civilian/pod = allocate(__IMPLIED_TYPE__, vacuum_origin)
-	pod.enter_delay = 0
-	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(vacuum_origin, SOUTH))
-	TEST_ASSERT(pod.mob_try_enter(pilot), "The exhaust lifecycle pilot could not board the pod.")
-	TEST_ASSERT(pod.relaymove(pilot, EAST), "The initial exhaust lifecycle movement failed.")
-	var/list/all_particles = get_thrust_particles()
-	allocated |= all_particles
-	TEST_ASSERT_EQUAL(length(all_particles), 1, "An initial thrust did not emit exactly one real particle.")
-	var/obj/effect/particle_effect/ion_trails/spacepod/first_particle = all_particles[1]
-	var/turf/turning_position = get_turf(pod)
-	SEND_SIGNAL(pilot, COMSIG_MOVABLE_KEYBIND_FACE_DIR, NORTH)
-	sleep(0.25 SECONDS)
-	TEST_ASSERT_EQUAL(pod.loc, turning_position, "Turning in place moved the pod during the exhaust test.")
-	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 1, "Turning or idling regenerated the exhaust particle.")
-	var/list/flight_path = list(EAST, EAST, NORTH, NORTH, WEST, WEST, SOUTH, SOUTH)
-	for(var/lap in 1 to 2)
-		for(var/direction in flight_path)
-			TEST_ASSERT(pod.relaymove(pilot, direction), "Sustained flight failed at lap [lap], direction [direction].")
-			var/list/live_particles = get_thrust_particles()
-			all_particles |= live_particles
-			allocated |= live_particles
-			TEST_ASSERT_EQUAL(pod.ion_trail.oldposition, get_turf(pod), "Exhaust emission retained a previous position during sustained flight.")
-			// At 5 movements/second and a two-second lifetime, old particles must expire mid-flight.
-			TEST_ASSERT(length(live_particles) <= 12, "Exhaust particles accumulated instead of expiring during sustained flight.")
-			sleep(0.2 SECONDS)
-	TEST_ASSERT(QDELETED(first_particle), "The initial exhaust particle survived a sustained flight past its lifetime.")
-	TEST_ASSERT_EQUAL(length(all_particles), 17, "Seventeen successful movements did not emit seventeen real exhaust particles.")
-	sleep(2.2 SECONDS)
-	for(var/obj/effect/particle_effect/ion_trails/spacepod/particle as anything in all_particles)
-		TEST_ASSERT(QDELETED(particle), "A real exhaust particle remained after the pilot stopped and its lifetime elapsed.")
-	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 0, "Stopping the pod left or regenerated a stationary sparkling trail.")
-	TEST_ASSERT(pod.relaymove(pilot, EAST), "Exhaust stopped working after the previous wake expired.")
-	var/list/final_particles = get_thrust_particles()
-	allocated |= final_particles
-	TEST_ASSERT_EQUAL(length(final_particles), 1, "The final movement did not emit a real particle before destruction.")
-	var/datum/effect_system/trail_follow/ion/spacepod/trail = pod.ion_trail
-	qdel(pod)
-	TEST_ASSERT(QDELETED(trail), "Deleting a pod in flight left its trail generator alive.")
-	sleep(2.2 SECONDS)
-	for(var/obj/effect/particle_effect/ion_trails/spacepod/particle as anything in final_particles)
-		TEST_ASSERT(QDELETED(particle), "Deleting a pod in flight left a real exhaust particle after its lifetime.")
-	TEST_ASSERT_EQUAL(length(get_thrust_particles()), 0, "A deleted pod regenerated its exhaust particles.")
+/// Queued input must be revalidated after pilot loss, EMP or depletion before it can accelerate.
+/datum/unit_test/spacepod_vacuum/flight_control_denials/Run()
+	for(var/scenario in list("empty cell", "EMP", "pilot exit"))
+		var/obj/vehicle/sealed/spacepod/pod = create_flight_pod()
+		TEST_ASSERT_NOTNULL(pod, "Could not prepare the [scenario] control fixture.")
+		pod.max_passengers = 1
+		pod.max_occupants = 2
+		var/mob/living/carbon/human/consistent/passenger = allocate(__IMPLIED_TYPE__, get_step(pod, SOUTH))
+		TEST_ASSERT(pod.mob_try_enter(passenger), "Could not board the control-test passenger.")
+		TEST_ASSERT(!pod.relaymove(passenger, NORTH), "A passenger queued flight input.")
+		advance_flight(pod)
+		TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "Rejected passenger input accelerated the cabin.")
+		TEST_ASSERT(pod.relaymove(pod.pilot, NORTH), "The valid pilot input was rejected before invalidation.")
+		TEST_ASSERT(pod.flight.aim(90), "The valid pilot aim was rejected before invalidation.")
+		switch(scenario)
+			if("empty cell")
+				pod.battery.charge = 0
+			if("EMP")
+				pod.emp_act(EMP_HEAVY)
+			if("pilot exit")
+				pod.mob_exit(pod.pilot, silent = TRUE)
+		var/charge_before_tick = pod.battery.charge
+		advance_flight(pod)
+		TEST_ASSERT_EQUAL(pod.flight.velocity_y, 0, "Queued input accelerated the cabin after [scenario].")
+		TEST_ASSERT_EQUAL(pod.flight.angular_velocity, 0, "Queued aim turned the cabin after [scenario].")
+		TEST_ASSERT_EQUAL(pod.battery.charge, charge_before_tick, "Invalidated input consumed propulsion energy after [scenario].")
+		qdel(pod)
 
 /// Exercise the human's real lungs and environmental Life path without a suit or internals.
 /datum/unit_test/spacepod_vacuum/human_breathing/Run()

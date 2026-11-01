@@ -11,10 +11,9 @@
 	/// Helps determine the icon state of this item when it's used on self.
 	var/book_open = FALSE
 	/// How fast we can drain influences
-	var/drain_speed = 7.5 SECONDS
+	var/drain_speed = 5 SECONDS
 	/// How fast we can draw runes
-	var/draw_speed = 15 SECONDS
-
+	var/draw_speed = 8 SECONDS
 
 /obj/item/codex_cicatrix/Initialize(mapload)
 	. = ..()
@@ -35,6 +34,7 @@
 
 	. += span_notice("Может быть использован на разломах для получения дополнительных очков знаний.")
 	. += span_notice("Упрощает начертание или удаление рун трансмутации.")
+	. += span_notice("В раскрытом виде служит фокусировкой для ваших заклинаний, пока вы держите книгу в руках.")
 
 /obj/item/codex_cicatrix/attack_self(mob/user, modifiers)
 	. = ..()
@@ -42,19 +42,13 @@
 		return
 
 	if(book_open)
-		return
-
-	open_animation()
-	update_weight_class(WEIGHT_CLASS_NORMAL)
-	addtimer(CALLBACK(src, PROC_REF(close_book)), 30 SECONDS)
-
-	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
-	var/datum/heretic_knowledge/spell/basic/grasp_knowledge = heretic_datum.get_knowledge(__IMPLIED_TYPE__)
-	grasp_knowledge?.add_charges(ceil(grasp_knowledge.max_charges * 0.5))
-
-/obj/item/codex_cicatrix/proc/close_book()
-	close_animation()
-	update_weight_class(WEIGHT_CLASS_SMALL)
+		close_animation()
+		RemoveElement(/datum/element/heretic_focus)
+		update_weight_class(WEIGHT_CLASS_SMALL)
+	else
+		open_animation()
+		AddElement(/datum/element/heretic_focus)
+		update_weight_class(WEIGHT_CLASS_NORMAL)
 
 /obj/item/codex_cicatrix/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
@@ -85,8 +79,8 @@
 	desc = "Омерзительная, истрёпанная книга, покрытая отдельно моргающими глазами, смотрящими на вас. Вы даже не представляете, как держать ЭТО - и откровенно говоря, не уверены что вам это хочется."
 	base_icon_state = "book_morbus"
 	icon_state = "book_morbus"
-	drain_speed = 5 SECONDS
-	draw_speed = 10 SECONDS
+	drain_speed = 2.5 SECONDS
+	draw_speed = 5 SECONDS
 	/// List of mobs we've cursed with transmutation. When the codex is destroyed all those curses become undone
 	var/list/transmuted_victims = list()
 

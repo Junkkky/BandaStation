@@ -98,7 +98,11 @@ try {
     }
     Get-ChildItem -LiteralPath $repoRoot -Filter '*.dll' -File | Copy-Item -Destination $runDirectory
     New-Item -ItemType Directory -Force -Path (Join-Path $runDirectory 'data\spritesheets'), (Join-Path $runDirectory 'config') | Out-Null
-    Copy-Item -LiteralPath '_maps\map_jsons\metastation.json' -Destination (Join-Path $runDirectory 'data\next_map.json')
+    # These focused tests own their vacuum/mining fixtures; procedural ruins add unrelated world runtimes.
+    $testMap = Get-Content -LiteralPath '_maps\map_jsons\metastation.json' -Raw | ConvertFrom-Json
+    $testMap | Add-Member -NotePropertyName space_ruin_levels -NotePropertyValue 0 -Force
+    $testMap | Add-Member -NotePropertyName minetype -NotePropertyValue 'none' -Force
+    [IO.File]::WriteAllText((Join-Path $runDirectory 'data\next_map.json'), ($testMap | ConvertTo-Json -Depth 10), $utf8NoBom)
     [IO.File]::WriteAllLines((Join-Path $runDirectory 'config\maps.txt'), [string[]]@('map metastation', 'default', 'endmap'), $utf8NoBom)
 
     $server = Start-Process -FilePath $daemon -WorkingDirectory $runDirectory -WindowStyle Hidden -PassThru -ArgumentList 'spacepods.test.dmb -trusted -invisible -log console.log -params log-directory=spacepods'

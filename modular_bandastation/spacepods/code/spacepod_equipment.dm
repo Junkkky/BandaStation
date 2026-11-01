@@ -165,30 +165,32 @@
 		// Bursts yield. Never keep firing after an exit, module removal or deletion.
 		if(QDELETED(src) || QDELETED(pod) || my_atom != pod || pod.weapon_system != src || !pod.can_control(user) || pod.hatch_open)
 			break
-		var/turf/firstloc = get_turf(pod)
-		var/turf/secondloc
-		switch(pod.dir)
-			if(NORTH)
-				firstloc = get_step(firstloc, NORTH)
-				secondloc = get_step(firstloc, EAST)
-			if(SOUTH)
-				secondloc = get_step(firstloc, EAST)
-			if(EAST)
-				firstloc = get_step(firstloc, EAST)
-				secondloc = get_step(firstloc, NORTH)
-			if(WEST)
-				secondloc = get_step(firstloc, NORTH)
-		if(!firstloc || !secondloc)
+		var/turf/origin = get_turf(pod)
+		if(!origin)
 			break
-		for(var/turf/muzzle as anything in list(firstloc, secondloc))
+		var/firing_angle = pod.flight.heading
+		var/forward_x = sin(firing_angle)
+		var/forward_y = cos(firing_angle)
+		var/center_x = ICON_SIZE_X + pod.pixel_x - pod.base_pixel_x
+		var/center_y = ICON_SIZE_Y + pod.pixel_y - pod.base_pixel_y
+		var/half_tile = ICON_SIZE_ALL / 2
+		var/datum/point/left_muzzle = new(origin.x, origin.y, origin.z, center_x + half_tile * (forward_x - forward_y), center_y + half_tile * (forward_y + forward_x))
+		var/datum/point/right_muzzle = new(origin.x, origin.y, origin.z, center_x + half_tile * (forward_x + forward_y), center_y + half_tile * (forward_y - forward_x))
+		if(!left_muzzle.return_turf() || !right_muzzle.return_turf())
+			break
+		for(var/datum/point/muzzle_point as anything in list(left_muzzle, right_muzzle))
+			var/turf/muzzle = muzzle_point.return_turf()
 			var/obj/projectile/projectile = new projectile_type(muzzle)
 			projectile.starting = muzzle
+			// Keep integer pixel offsets continuous on both sides of a turf boundary.
+			projectile.pixel_x = round(muzzle_point.pixel_x - half_tile, 1)
+			projectile.pixel_y = round(muzzle_point.pixel_y - half_tile, 1)
 			projectile.firer = pod
 			projectile.fired_from = src
 			projectile.impacted[WEAKREF(pod)] = TRUE
 			for(var/mob/rider as anything in pod.occupants)
 				projectile.impacted[WEAKREF(rider)] = TRUE
-			projectile.fire(dir2angle(pod.dir))
+			projectile.fire(firing_angle)
 		playsound(pod, fire_sound, 50, TRUE)
 		log_combat(user, pod, "fired pod weapons", src)
 		if(shot < shots_per)

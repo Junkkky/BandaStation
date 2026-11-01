@@ -96,10 +96,6 @@
 	action_to_add = /datum/action/cooldown/spell/pointed/void_phase
 	cost = 2
 	research_tree_icon_frame = 7
-	max_charges = 4
-	path_recharge_amount = 0.25
-	focus_recharge_amount = 0.25
-	holywater_drain_amount = 0.25
 
 /datum/heretic_knowledge/void_prison
 	name = "Пустотная тюрьма"
@@ -177,10 +173,6 @@
 	action_to_add = /datum/action/cooldown/spell/aoe/void_pull
 	cost = 2
 	research_tree_icon_frame = 6
-	max_charges = 4
-	path_recharge_amount = 0.25
-	focus_recharge_amount = 0.25
-	holywater_drain_amount = 0.25
 
 /datum/heretic_knowledge/blade_upgrade/void
 	name = "Ищущий клинок"

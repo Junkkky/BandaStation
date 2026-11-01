@@ -64,6 +64,7 @@
 		/obj/item/retractor,
 		/obj/item/scalpel,
 		/obj/item/sensor_device,
+		/obj/item/sequence_scanner,
 		/obj/item/shears,
 		/obj/item/stack/medical,
 		/obj/item/stack/medical/wrap/sticky_tape, //surgical tape

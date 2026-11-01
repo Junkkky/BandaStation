@@ -83,7 +83,6 @@ type KnowledgeTier = {
 
 type HereticPassive = {
   name: string;
-  recharge: string;
   description: string[];
 };
 
@@ -226,9 +225,10 @@ const GuideSection = () => {
           <span style={hereticRed}>живым сердцем</span>.
         </Stack.Item>
         <Stack.Item>
-          - Сделайте себе <span style={hereticYellow}>фокусировку</span>, чтобы
-          читать более продвинутые заклинания, которые помогут вам с более
-          сложными жертвоприношениями.
+          - Наденьте <span style={hereticYellow}>фокусировку</span> или держите
+          раскрытый <span style={hereticPurple}>кодекс Цикатрикс</span> в руках,
+          чтобы читать продвинутые заклинания. Заклинания не расходуют заряды;
+          между применениями нужно дождаться восстановления.
         </Stack.Item>
         <Stack.Item>
           - Выполните все свои задачи, чтобы узнать{' '}
@@ -630,7 +630,6 @@ const PathContentUnselected = ({ path }: { path: HereticPath }) => {
           <Stack.Item style={{ justifyItems: 'center' }} width="50%">
             <Stack vertical>
               <Stack.Item bold>Пассивный навык: {path.passive.name}</Stack.Item>
-              <Stack.Item italic>{path.passive.recharge}</Stack.Item>
               <Stack.Item className="Passive" width="100%">
                 {path.passive.description[0]}
               </Stack.Item>
@@ -686,7 +685,6 @@ const PathContentSelected = ({
           <Stack.Item bold>
             Пассивный навык: {path.passive.name}, уровень: {passive_level}
           </Stack.Item>
-          <Stack.Item italic>{path.passive.recharge}</Stack.Item>
           {path.passive.description.map((line, index) => (
             <Stack.Item
               key={index}

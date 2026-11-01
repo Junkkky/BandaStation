@@ -255,6 +255,54 @@
 	immune_projectile.on_hit(immune_demon)
 	TEST_ASSERT_EQUAL(immune_demon.get_stamina_loss(), 0, "Shadow Grapple bypassed the demon's stamina immunity.")
 
+/// Grapple exhaustion expires in three seconds without changing later stamina recovery.
+/datum/unit_test/shadow_demon_grapple_recovery
+	priority = TEST_LONGER
+
+/datum/unit_test/shadow_demon_grapple_recovery/Run()
+	var/mob/living/basic/demon/shadow/demon = allocate(/mob/living/basic/demon/shadow)
+	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/second_victim = allocate(/mob/living/carbon/human/consistent)
+	second_victim.stamina_regen_time = 4 SECONDS
+	var/original_regen_time = victim.stamina_regen_time
+	for(var/mob/living/carbon/human/target in list(victim, second_victim))
+		// Random wounds add determination, whose healing would interfere with the stamina timer assertions.
+		ADD_TRAIT(target, TRAIT_NEVER_WOUNDED, TRAIT_SOURCE_UNIT_TESTS)
+		var/obj/projectile/magic/shadow_hand/projectile = allocate(/obj/projectile/magic/shadow_hand, get_turf(target))
+		projectile.firer = demon
+		projectile.on_hit(target)
+		TEST_ASSERT_EQUAL(target.get_stamina_loss(), target.max_stamina, "The grapple did not immediately exhaust its victim.")
+	TEST_ASSERT_EQUAL(victim.stamina_regen_time, original_regen_time, "The grapple permanently changed normal stamina recovery.")
+	TEST_ASSERT_EQUAL(second_victim.stamina_regen_time, 4 SECONDS, "The grapple overwrote custom stamina recovery.")
+	sleep(1 SECONDS)
+	TEST_ASSERT(victim.has_status_effect(/datum/status_effect/incapacitating/stamcrit), "Grapple exhaustion ended before its three-second duration.")
+	second_victim.set_stamina_loss(20)
+	second_victim.adjust_stamina_loss(10)
+	sleep(2.5 SECONDS)
+	TEST_ASSERT_EQUAL(victim.get_stamina_loss(), 0, "Grapple exhaustion did not recover after three seconds.")
+	TEST_ASSERT(!victim.has_status_effect(/datum/status_effect/incapacitating/stamcrit), "The victim remained in stamcrit after grapple recovery.")
+	TEST_ASSERT_EQUAL(second_victim.get_stamina_loss(), 30, "The old grapple timer erased later stamina damage with a different recovery delay.")
+	sleep(2 SECONDS)
+	TEST_ASSERT_EQUAL(second_victim.get_stamina_loss(), 0, "Later stamina damage did not recover on its own timer.")
+
+/// Cocoons absorb portable light before their pulse switches the emitter off.
+/datum/unit_test/lighting_lumcount/shadow_demon_cocoon/Run()
+	set_corner_values(0.25, 0.25, 0.25)
+	var/obj/effect/dummy/lighting_obj/source = allocate(/obj/effect/dummy/lighting_obj, sample_turf, 1, 1, COLOR_WHITE)
+	var/initial_lumcount = sample_turf.get_lumcount()
+	TEST_ASSERT(initial_lumcount > 0.2, "The combined static and portable-light fixture was not lit.")
+	var/obj/structure/shadowcocoon/cocoon = allocate(/obj/structure/shadowcocoon, sample_turf)
+	var/datum/component/overlay_lighting/darkness = cocoon.GetComponent(/datum/component/overlay_lighting)
+	TEST_ASSERT_NOTNULL(darkness, "The cocoon has no portable-light suppression mask.")
+	TEST_ASSERT_EQUAL(darkness.light.visible_mask.blend_mode, BLEND_SUBTRACT, "The cocoon's visual mask does not subtract light.")
+	TEST_ASSERT(sample_turf.get_lumcount() <= 0.2, "The cocoon did not absorb visible portable light before its extinguishing pulse.")
+	TEST_ASSERT(source.light_on, "The absorption test extinguished its light instead of masking it.")
+	shadow_demon_extinguish(cocoon, TRUE)
+	TEST_ASSERT(sample_turf.get_lumcount() <= 0.2, "Shadow extinguishing removed the cocoon's beneficial darkness.")
+	qdel(cocoon)
+	TEST_ASSERT_EQUAL(sample_turf.get_lumcount(), initial_lumcount, "Deleting a cocoon did not restore visible lighting.")
+	TEST_ASSERT(!(darkness in sample_turf.collect_dynamic_lightsources()), "Deleting a cocoon left its darkness in the light-source grid.")
+
 /// Extinguish carried equipment without removing the donor's special light counters.
 /datum/unit_test/shadow_demon_carried_lights/Run()
 	var/mob/living/carbon/human/carrier = allocate(/mob/living/carbon/human/consistent)

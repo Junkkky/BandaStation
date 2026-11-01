@@ -583,17 +583,18 @@ There are several things that need to be remembered:
 
 /// Modifies a sprite slightly to conform to female body shapes
 /proc/wear_female_version(icon_state, icon, type, greyscale_colors, datum/female_uniform/female_version) // BANDASTATION EDIT - more masks for female clothing
-	var/index = "[icon_state]-[greyscale_colors]"
+	// BANDASTATION EDIT START - more masks for female clothing
+	var/female_icon_state = female_version::mask_icon_state || \
+		"female[type == FEMALE_UNIFORM_FULL ? "_full" : ((!type || type & FEMALE_UNIFORM_TOP_ONLY) ? "_top" : "")][type & FEMALE_UNIFORM_NO_BREASTS ? "_no_breasts" : ""]"
+	var/mask_icon = female_version::mask_icon || FEMALE_MASK_ICON_DEFAULT
+	// BANDASTATION EDIT END
+	var/source_icon = fcopy_rsc(icon)
+	var/index = "[REF(source_icon)]-[icon_state]-[REF(mask_icon)]-[female_icon_state]-[greyscale_colors]"
 	var/static/list/female_clothing_icons = list()
 	var/icon/female_clothing_icon = female_clothing_icons[index]
 	if(!female_clothing_icon) //Create standing/laying icons if they don't exist
-		// BANDASTATION EDIT START - more masks for female clothing
-		var/female_icon_state = female_version::mask_icon_state || \
-			"female[type == FEMALE_UNIFORM_FULL ? "_full" : ((!type || type & FEMALE_UNIFORM_TOP_ONLY) ? "_top" : "")][type & FEMALE_UNIFORM_NO_BREASTS ? "_no_breasts" : ""]"
-		var/mask_icon = female_version::mask_icon || FEMALE_MASK_ICON_DEFAULT
 		var/icon/female_cropping_mask = icon(mask_icon, female_icon_state)
-		// BANDASTATION EDIT END
-		female_clothing_icon = icon(icon, icon_state)
+		female_clothing_icon = icon(source_icon, icon_state)
 		female_clothing_icon.Blend(female_cropping_mask, ICON_MULTIPLY)
 		female_clothing_icon = fcopy_rsc(female_clothing_icon)
 		female_clothing_icons[index] = female_clothing_icon

@@ -12,36 +12,6 @@
 	cost = 2
 	research_tree_icon_frame = 6
 	drafting_tier = 4
-	max_charges = 2
-	path_recharge_amount = 0.0
-	holywater_drain_amount = 0.5
-	transmute_text = "Для перезарядки раздавите блюспейс-кристалл, стоя над руной."
-	/// Tracks tim ein EVA
-	var/seconds_in_eva = 0
-
-/datum/heretic_knowledge/spell/space_phase/has_charges(mob/living/user)
-	return HAS_TRAIT(user, TRAIT_MAGICALLY_PHASED) || ..()
-
-/datum/heretic_knowledge/spell/space_phase/should_deduct_charge(mob/living/user)
-	return !HAS_TRAIT(user, TRAIT_MAGICALLY_PHASED)
-
-/datum/heretic_knowledge/spell/space_phase/on_gain(mob/user, datum/antagonist/heretic/our_heretic)
-	. = ..()
-	RegisterSignal(user, COMSIG_MOB_CRUSHED_BLUESPACE_CRYSTAL, PROC_REF(on_crystal_crushed))
-
-/datum/heretic_knowledge/spell/space_phase/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
-	. = ..()
-	UnregisterSignal(user, COMSIG_MOB_CRUSHED_BLUESPACE_CRYSTAL)
-
-/datum/heretic_knowledge/spell/space_phase/proc/on_crystal_crushed(mob/living/source, obj/item/crystal)
-	SIGNAL_HANDLER
-
-	var/obj/effect/heretic_rune/rune = locate() in view(1, source)
-	if(isnull(rune))
-		return
-
-	rune.ritual_animation()
-	add_charges(1)
 
 /datum/heretic_knowledge/unfathomable_curio
 	name = "Непостижимая реликвия"

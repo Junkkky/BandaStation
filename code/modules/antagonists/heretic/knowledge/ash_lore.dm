@@ -95,9 +95,6 @@
 	action_to_add = /datum/action/cooldown/spell/jaunt/ethereal_jaunt/ash
 	cost = 2
 	drafting_tier = 5
-	max_charges = 6
-	focus_recharge_amount = 0.15
-	holywater_drain_amount = 0.15
 
 /datum/heretic_knowledge/spell/fire_blast
 	name = "Взрыв вулкана"
@@ -108,9 +105,6 @@
 	action_to_add = /datum/action/cooldown/spell/charged/beam/fire_blast
 	cost = 2
 	research_tree_icon_frame = 7
-	max_charges = 3
-	focus_recharge_amount = 0.33
-	holywater_drain_amount = 0.16
 
 /datum/heretic_knowledge/armor/ash
 	name = "Выжженная мантия"
@@ -186,9 +180,6 @@
 	cost = 2
 	research_tree_icon_frame = 5
 	is_final_knowledge = TRUE
-	max_charges = 3
-	focus_recharge_amount = 0.33
-	holywater_drain_amount = 0.16
 
 /datum/heretic_knowledge/ultimate/ash_final
 	name = "Ритуал Пепельного Лорда"

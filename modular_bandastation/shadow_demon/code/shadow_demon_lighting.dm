@@ -13,6 +13,11 @@
 		else if(istype(target, /mob/living/silicon/pai))
 			target.set_light_on(FALSE)
 		return
+	if(ismecha(target))
+		var/obj/vehicle/sealed/mecha/mech = target
+		if(mech.mecha_flags & LIGHTS_ON)
+			mech.toggle_lights(forced_state = FALSE)
+		return
 	if(isitem(target))
 		var/datum/component/seclite_attachable/attachment = target.GetComponent(/datum/component/seclite_attachable)
 		if(attachment?.light)

@@ -170,6 +170,7 @@
 #include "cargo_dep_order_locations.dm"
 #include "cargo_selling.dm"
 #include "chain_pull_through_space.dm"
+#include "chameleon.dm"
 #include "changeling.dm"
 #include "chat_filter.dm"
 #include "circuit_component_category.dm"
@@ -483,6 +484,8 @@
 #include "../../../modular_bandastation/underclothing/code/tests.dm" // BANDASTATION ADDITION - Removable underclothing
 
 #include "../../../modular_bandastation/uplink_items/code/tests/syndicate_items.dm"
+
+#include "../../../modular_bandastation/objects/code/tests/lighter_lighting.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

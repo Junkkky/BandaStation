@@ -487,7 +487,7 @@
 
 /// Reset the stamina damage back to 0 after an amount of time (dictated by the [stamina_regen_time] var). However the timer is reset everytime the mob takes stamina damage.
 /mob/living/proc/timed_stamina_reset()
-	addtimer(CALLBACK(src, PROC_REF(set_stamina_loss), 0, TRUE, TRUE), stamina_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(set_stamina_loss), 0, TRUE, TRUE), stamina_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /**
  * heal ONE external organ, organ gets randomly selected from damaged ones.

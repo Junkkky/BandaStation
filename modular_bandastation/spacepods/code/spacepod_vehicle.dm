@@ -40,7 +40,12 @@
 	/// Paint is indexed by actual overlay state, avoiding an invalid selection index.
 	var/list/paint_colors = list()
 	var/melting_down = FALSE
-	var/datum/effect_system/trail_follow/ion/spacepod/ion_trail
+	/// Owns continuous flight independently of cabin life support.
+	var/datum/spacepod_flight/flight
+	/// An attached rear flame is visible only while the main thruster is firing.
+	var/thruster_flame_active = FALSE
+	/// Optional expiry for a finite thruster pulse.
+	var/thruster_flame_timer
 	/// One native sound loop per cabin listener, so stopping it also cuts the current sample.
 	var/list/engine_sounds = list()
 	/// Expires when the last successful movement finishes gliding.
@@ -56,9 +61,9 @@
 	cabin_air.set_gas(/datum/gas/nitrogen, ONE_ATMOSPHERE * N2STANDARD * cabin_air.volume / (R_IDEAL_GAS_EQUATION * T20C))
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
 	RegisterSignal(internal_tank, COMSIG_QDELETING, PROC_REF(clear_internal_tank))
-	ion_trail = new(get_turf(src))
-	ion_trail.attach(src)
-	ion_trail.start()
+	flight = new(src)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_flight_moved))
+	RegisterSignal(src, COMSIG_QDELETING, PROC_REF(stop_cabin_alerts))
 	GLOB.spacepods_list += src
 	AddElement(/datum/element/hostile_machine)
 	START_PROCESSING(SSobj, src)
@@ -66,10 +71,12 @@
 
 /obj/vehicle/sealed/spacepod/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	stop_cabin_alerts()
+	set_thruster_flame(FALSE)
 	stop_engine_sound()
+	QDEL_NULL(flight)
 	SStgui.close_uis(src)
 	GLOB.spacepods_list -= src
-	QDEL_NULL(ion_trail)
 	// Polymorphing an occupant can leave its replacement only in contents.
 	for(var/mob/occupant in (contents | occupants))
 		mob_exit(occupant, silent = TRUE)
@@ -93,41 +100,6 @@
 		QDEL_NULL(internal_tank)
 	return ..()
 
-/// Like jetpacks, the pod supplies each movement's old position instead of polling its spawn turf.
-/datum/effect_system/trail_follow/ion/spacepod
-	auto_process = FALSE
-	effect_type = /obj/effect/particle_effect/ion_trails/spacepod
-
-/datum/effect_system/trail_follow/ion/spacepod/generate_effect()
-	. = ..()
-	// The shared trail generator leaves the emission origin unchanged after spawning.
-	oldposition = get_turf(holder)
-
-/datum/effect_system/trail_follow/ion/spacepod/set_dir(obj/effect/effect)
-	. = ..()
-	var/obj/vehicle/sealed/spacepod/pod = holder
-	var/turf/exhaust_turf
-	// A 32px trail at the origin is hidden inside the 64px cabin, so emit behind its centreline.
-	switch(pod.dir)
-		if(NORTH)
-			exhaust_turf = locate(pod.x, pod.y - 1, pod.z)
-			effect.pixel_x = 16
-		if(SOUTH)
-			exhaust_turf = locate(pod.x, pod.y + 2, pod.z)
-			effect.pixel_x = 16
-		if(EAST)
-			exhaust_turf = locate(pod.x - 1, pod.y, pod.z)
-			effect.pixel_y = 16
-		if(WEST)
-			exhaust_turf = locate(pod.x + 2, pod.y, pod.z)
-			effect.pixel_y = 16
-	if(exhaust_turf)
-		effect.forceMove(exhaust_turf)
-
-/obj/effect/particle_effect/ion_trails/spacepod
-	plane = GAME_PLANE
-	layer = LOW_OBJ_LAYER
-
 /// Direct cabin audio remains audible in vacuum; the native loop owns and stops its reserved channel.
 /datum/looping_sound/spacepod_engine
 	mid_sounds = 'sound/vehicles/rocketlaunch.ogg'
@@ -143,6 +115,7 @@
 	if(gone == internal_tank)
 		clear_internal_tank(gone)
 	if(gone == battery)
+		set_thruster_flame(FALSE)
 		stop_engine_sound()
 		battery = null
 	if(istype(gone, /obj/item/spacepod_equipment))
@@ -159,6 +132,7 @@
 	give_air()
 	regulate_temp(seconds_per_tick)
 	occupant_sanity_check()
+	process_cabin_alerts()
 
 /obj/vehicle/sealed/spacepod/return_air()
 	if(use_internal_tank && cabin_air)
@@ -233,14 +207,26 @@
 	. = ..()
 	ADD_TRAIT(occupant, TRAIT_RUNECHAT_HIDDEN, REF(src))
 	occupant.reset_perspective(src)
+	RegisterSignal(occupant, COMSIG_MOB_LOGOUT, PROC_REF(on_occupant_logout))
+	RegisterSignal(occupant, COMSIG_MOB_LOGIN, PROC_REF(on_occupant_login))
+	RegisterSignal(occupant, COMSIG_MOB_RESET_PERSPECTIVE, PROC_REF(on_occupant_view_changed))
+	on_occupant_login(occupant)
 	if(occupant == pilot)
 		RegisterSignal(occupant, COMSIG_MOVABLE_KEYBIND_FACE_DIR, PROC_REF(on_pilot_turn))
 
 /obj/vehicle/sealed/spacepod/after_remove_occupant(mob/living/occupant)
 	. = ..()
+	stop_cabin_alert_for(occupant)
 	REMOVE_TRAIT(occupant, TRAIT_RUNECHAT_HIDDEN, REF(src))
 	SStgui.close_user_uis(occupant, src)
+	UnregisterSignal(occupant, list(COMSIG_MOB_LOGOUT, COMSIG_MOB_LOGIN, COMSIG_MOB_RESET_PERSPECTIVE))
+	if(occupant.client)
+		UnregisterSignal(occupant.client, COMSIG_CLIENT_SET_EYE)
+	flight?.release_camera(occupant)
 	if(occupant == pilot)
+		flight?.set_input(NONE)
+		flight?.aim(null)
+		set_thruster_flame(FALSE)
 		stop_engine_sound()
 		UnregisterSignal(occupant, COMSIG_MOVABLE_KEYBIND_FACE_DIR)
 		pilot = null
@@ -252,19 +238,45 @@
 /obj/vehicle/sealed/spacepod/proc/on_pilot_turn(mob/living/user, direction)
 	SIGNAL_HANDLER
 	if(can_control(user))
-		setDir(direction)
+		flight.aim(dir2angle(direction))
 	// Keep the client's movement lock: the pod has no mech-style pivot step.
 	return NONE
 
 /obj/vehicle/sealed/spacepod/setDir(newdir)
 	. = ..()
+	if(flight && animate_movement != NO_STEPS)
+		flight.heading = dir2angle(newdir)
+	if(!QDELETED(src) && thruster_flame_active)
+		update_appearance(UPDATE_OVERLAYS)
+		if(QDELETED(src))
+			return
 	for(var/mob/living/occupant as anything in occupants)
 		occupant.setDir(newdir)
+
+/// Reach any hull tile using the acting mob's normal window and diagonal pass checks.
+/obj/vehicle/sealed/spacepod/Adjacent(atom/neighbor, atom/target, atom/movable/mover)
+	if(QDELETED(src) || QDELETED(neighbor))
+		return FALSE
+	if(neighbor == loc || neighbor.loc == src)
+		return TRUE
+	if(!isturf(loc) || (!isturf(neighbor) && !isturf(neighbor.loc)))
+		return FALSE
+	target ||= src
+	if(!mover && ismovable(neighbor))
+		mover = neighbor
+	for(var/turf/hull_turf as anything in locs)
+		if(hull_turf.Adjacent(neighbor, target = target, mover = mover))
+			return TRUE
+	return FALSE
+
+/// Native clicks and drags need hull reach before the ordinary ranged-reach fallback.
+/obj/vehicle/sealed/spacepod/CheckReachableAdjacency(atom/movable/reacher, reacher_range)
+	return Adjacent(reacher) || ..()
 
 /obj/vehicle/sealed/spacepod/enter_checks(mob/living/user)
 	if(!ishuman(user) || user.incapacitated || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || user.has_buckled_mobs() || user.buckled)
 		return FALSE
-	if(!user.Adjacent(src) || (lock_system && !unlocked) || melting_down)
+	if(!Adjacent(user) || (lock_system && !unlocked) || melting_down)
 		return FALSE
 	if(length(user.get_all_contents_type(/obj/item/disk/nuclear)))
 		return FALSE
@@ -286,7 +298,7 @@
 		add_fingerprint(user)
 
 /obj/vehicle/sealed/spacepod/mouse_drop_receive(atom/dropping, mob/living/user, params)
-	if(!isliving(user) || user.incapacitated || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !user.Adjacent(src))
+	if(!isliving(user) || user.incapacitated || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !Adjacent(user))
 		return
 	if(dropping == user)
 		return enter_pod(user)
@@ -307,7 +319,7 @@
 		load_cargo(user, dropping)
 
 /obj/vehicle/sealed/spacepod/proc/can_load_passenger(mob/living/user, mob/living/passenger)
-	return !QDELETED(user) && !QDELETED(passenger) && !user.incapacitated && !HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) && user.Adjacent(src) && user.Adjacent(passenger) && !passenger.buckled && !passenger.has_buckled_mobs() && passenger.incapacitated && unlocked && !melting_down && length(passengers) < max_passengers && !is_occupant(passenger) && !length(passenger.get_all_contents_type(/obj/item/disk/nuclear))
+	return !QDELETED(user) && !QDELETED(passenger) && !user.incapacitated && !HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) && Adjacent(user) && user.Adjacent(passenger) && !passenger.buckled && !passenger.has_buckled_mobs() && passenger.incapacitated && unlocked && !melting_down && length(passengers) < max_passengers && !is_occupant(passenger) && !length(passenger.get_all_contents_type(/obj/item/disk/nuclear))
 
 /obj/vehicle/sealed/spacepod/mob_try_exit(mob/living/leaving, mob/user, silent = FALSE, randomstep = FALSE)
 	if(leaving != user)
@@ -351,9 +363,54 @@
 		else
 			passengers -= overflow
 
-// The donor's thrusters hold position instead of applying Newtonian drift.
+// Continuous flight owns inertia; native per-tile drift must not also move this cabin.
 /obj/vehicle/sealed/spacepod/Process_Spacemove(movement_dir = NONE, continuous_move = FALSE)
 	return TRUE
+
+/obj/vehicle/sealed/spacepod/proc/on_flight_moved(datum/source, atom/old_loc, direction, forced)
+	SIGNAL_HANDLER
+	if(forced && !inertia_moving)
+		flight?.reset_motion()
+
+/obj/vehicle/sealed/spacepod/proc/on_occupant_view_changed(mob/listener)
+	SIGNAL_HANDLER
+	flight?.release_camera(listener)
+	flight?.attach_camera(listener)
+
+/obj/vehicle/sealed/spacepod/proc/on_occupant_login(mob/listener)
+	SIGNAL_HANDLER
+	if(listener.client)
+		RegisterSignal(listener.client, COMSIG_CLIENT_SET_EYE, PROC_REF(on_cabin_eye_changed))
+	flight?.attach_camera(listener)
+	process_cabin_alerts()
+
+/obj/vehicle/sealed/spacepod/proc/on_cabin_eye_changed(client/viewer, atom/old_eye, atom/new_eye)
+	SIGNAL_HANDLER
+	var/mob/listener = viewer.mob
+	if(!is_occupant(listener))
+		return
+	flight?.release_camera(listener)
+	if(new_eye == src)
+		flight?.attach_camera(listener)
+
+/obj/vehicle/sealed/spacepod/proc/on_occupant_logout(mob/listener)
+	SIGNAL_HANDLER
+	stop_cabin_alert_for(listener)
+	flight?.release_camera(listener)
+	if(listener.client)
+		UnregisterSignal(listener.client, COMSIG_CLIENT_SET_EYE)
+	if(listener == pilot && flight)
+		flight.set_input(NONE)
+		flight.aim(null)
+		set_thruster_flame(FALSE)
+
+/obj/vehicle/sealed/spacepod/Move(atom/newloc, direct, glide_size_override = 0, update_dir = TRUE)
+	var/collect_drifting_ore = inertia_moving && !moving_diagonally
+	var/atom/old_loc = loc
+	. = ..()
+	// A blocked diagonal may still slide one tile; sector transfers may reset diagonal state.
+	if(collect_drifting_ore && !QDELETED(src) && loc != old_loc && isturf(loc) && cargo_system)
+		cargo_system.passover(locs)
 
 /obj/vehicle/sealed/spacepod/relaymove(mob/living/user, direction)
 	if(user != pilot)
@@ -362,10 +419,14 @@
 
 /obj/vehicle/sealed/spacepod/vehicle_move(direction)
 	if(!can_control(pilot) || !direction)
+		set_thruster_flame(FALSE)
 		stop_engine_sound()
 		return FALSE
+	if(direction != UP && direction != DOWN)
+		return flight.set_input(direction)
 	if(!COOLDOWN_FINISHED(src, cooldown_vehicle_move))
 		if(!battery?.charge || !COOLDOWN_FINISHED(src, cooldown_emp))
+			set_thruster_flame(FALSE)
 			stop_engine_sound()
 		return FALSE
 	if(melting_down || !battery || !COOLDOWN_FINISHED(src, cooldown_emp))
@@ -375,39 +436,49 @@
 		return FALSE
 	if(!isturf(loc) || !battery.use(SPACEPOD_ENERGY_UNIT))
 		if(!QDELETED(src))
+			set_thruster_flame(FALSE)
 			stop_engine_sound()
 			COOLDOWN_START(src, cooldown_vehicle_move, 0.5 SECONDS)
 		return FALSE
 	if(QDELETED(src))
 		return FALSE
 	var/turf/previous_turf = loc
-	var/calculated_delay = has_gravity() ? 0.4 SECONDS : 0.15 SECONDS
-	if(direction == UP || direction == DOWN)
-		calculated_delay = 0.5 SECONDS
-		. = try_step_multiz(direction)
-	else
-		var/turf/destination = get_step(src, direction)
-		if(destination)
-			. = Move(destination, direction)
-			if(ISDIAGONALDIR(direction) && loc == destination)
-				calculated_delay *= sqrt(2)
+	var/movement_multiplier = flight.turbo ? 2 : 1
+	var/calculated_delay = 0.5 SECONDS / movement_multiplier
+	set_glide_size(DELAY_TO_GLIDE_SIZE(calculated_delay))
+	. = try_step_multiz(direction)
+	calculated_delay = CEILING(calculated_delay, world.tick_lag)
 	set_glide_size(DELAY_TO_GLIDE_SIZE(calculated_delay))
 	COOLDOWN_START(src, cooldown_vehicle_move, calculated_delay)
 	if(.)
 		emit_thrust_effect(previous_turf, calculated_delay)
 	else
+		set_thruster_flame(FALSE)
 		stop_engine_sound()
-	if(. && cargo_system)
+	if(!QDELETED(src) && . && cargo_system)
 		cargo_system.passover(locs)
 
 /obj/vehicle/sealed/spacepod/proc/emit_thrust_effect(turf/previous_turf, glide_duration)
 	if(!previous_turf || !isturf(loc) || previous_turf == loc || previous_turf.has_gravity() || has_gravity())
 		stop_engine_sound()
 		return FALSE
-	ion_trail.oldposition = previous_turf
-	ion_trail.generate_effect()
 	start_engine_sound(glide_duration)
 	return TRUE
+
+/// Flight ticks own the flame directly; finite impulses may supply an expiry.
+/obj/vehicle/sealed/spacepod/proc/set_thruster_flame(active, duration = 0)
+	deltimer(thruster_flame_timer)
+	thruster_flame_timer = null
+	if(QDELETED(src))
+		thruster_flame_active = FALSE
+		return
+	if(active && (!can_control(pilot) || !battery?.charge || !COOLDOWN_FINISHED(src, cooldown_emp)))
+		active = FALSE
+	if(thruster_flame_active != active)
+		thruster_flame_active = active
+		update_appearance(UPDATE_OVERLAYS)
+	if(!QDELETED(src) && thruster_flame_active && duration > 0)
+		thruster_flame_timer = addtimer(CALLBACK(src, PROC_REF(set_thruster_flame), FALSE), duration, TIMER_STOPPABLE | TIMER_DELETE_ME)
 
 /// Repeated movement extends the current loops instead of layering another sample over them.
 /obj/vehicle/sealed/spacepod/proc/start_engine_sound(glide_duration)
@@ -449,7 +520,7 @@
 /obj/vehicle/sealed/spacepod/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(user.combat_mode)
 		return ..()
-	if(user.incapacitated || !user.Adjacent(src) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
+	if(user.incapacitated || !Adjacent(user) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		return ITEM_INTERACT_BLOCKING
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
 		if(!hatch_open || battery)
@@ -470,13 +541,13 @@
 
 /obj/vehicle/sealed/spacepod/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
-	if(. || user.incapacitated || !user.Adjacent(src))
+	if(. || user.incapacitated || !Adjacent(user))
 		return
 	if(user.combat_mode && unlocked && length(occupants))
 		var/mob/living/target = pilot || passengers[1]
 		if(!target || !do_after(user, 5 SECONDS, src))
 			return
-		if(user.incapacitated || !user.Adjacent(src) || !unlocked || !is_occupant(target) || target.loc != src)
+		if(user.incapacitated || !Adjacent(user) || !unlocked || !is_occupant(target) || target.loc != src)
 			return
 		mob_exit(target)
 		target.Stun(2 SECONDS)
@@ -512,7 +583,7 @@
 	for(var/obj/item/spacepod_equipment/module as anything in installed_modules)
 		choices["[module.name] ([module.slot])"] = module
 	var/choice = tgui_input_list(user, "Какое оборудование извлечь?", "Технический люк", choices)
-	if(!choice || user.incapacitated || !user.Adjacent(src) || !hatch_open || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
+	if(!choice || user.incapacitated || !Adjacent(user) || !hatch_open || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		return
 	var/atom/movable/selected = choices[choice]
 	if(QDELETED(selected) || selected.loc != src)
@@ -549,7 +620,7 @@
 	while(!melting_down && get_integrity() < max_integrity)
 		if(!tool.use_tool(src, user, 2 SECONDS, volume = 50))
 			break
-		if(QDELETED(src) || melting_down || user.incapacitated || !user.Adjacent(src))
+		if(QDELETED(src) || melting_down || user.incapacitated || !Adjacent(user))
 			break
 		repair_damage(10)
 	return TRUE
@@ -564,7 +635,7 @@
 /obj/vehicle/sealed/spacepod/proc/lock_pod(mob/living/user, external = FALSE)
 	if(!external && !can_control(user))
 		return FALSE
-	if(external && (user.incapacitated || !user.Adjacent(src) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED)))
+	if(external && (user.incapacitated || !Adjacent(user) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED)))
 		return FALSE
 	if(!lock_system)
 		unlocked = TRUE
@@ -621,14 +692,14 @@
 	user.put_in_hands(found)
 
 /obj/vehicle/sealed/spacepod/proc/apply_paint(mob/living/user)
-	if(!can_paint || user.incapacitated || !user.Adjacent(src))
+	if(!can_paint || user.incapacitated || !Adjacent(user))
 		return
 	var/list/parts = list("Фары" = "LIGHTS", "Окантовка" = "RIM", "Основной цвет" = "PAINT", "Стёкла" = "Windows")
 	var/part = tgui_input_list(user, "Выберите элемент", "Покраска челнока", parts)
-	if(!part || !parts[part] || user.incapacitated || !user.Adjacent(src))
+	if(!part || !parts[part] || user.incapacitated || !Adjacent(user))
 		return
 	var/color = tgui_color_picker(user, "Выберите цвет", "Цвет")
-	if(!color || user.incapacitated || !user.Adjacent(src) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
+	if(!color || user.incapacitated || !Adjacent(user) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		return
 	paint_colors[parts[part]] = color
 	if(parts[part] == "LIGHTS")
@@ -645,13 +716,20 @@
 		. += "pod_damage"
 	if(get_integrity() <= max_integrity / 4)
 		. += "pod_fire"
+	if(thruster_flame_active)
+		var/mutable_appearance/flame = make_mutable_appearance_directional(mutable_appearance('icons/effects/effects.dmi', "jetfire"), NORTH)
+		var/cardinal_heading = dir2angle(dir)
+		// Jetfire occupies the bottom four pixels of its 32px canvas.
+		flame.pixel_x = 16 - 20 * sin(cardinal_heading)
+		flame.pixel_y = 16 - 20 * cos(cardinal_heading)
+		flame.transform = matrix().Turn(cardinal_heading)
+		. += flame
 
 /obj/vehicle/sealed/spacepod/on_update_integrity(old_value, new_value)
 	. = ..()
 	update_appearance()
-	if(new_value < old_value && new_value <= max_integrity / 4 && new_value > 0)
-		to_chat(occupants, span_warning("Критические повреждения корпуса челнока!"))
-		playsound(src, 'sound/machines/beep/beep.ogg', 50, TRUE)
+	if(new_value > 0)
+		process_cabin_alerts()
 
 /obj/vehicle/sealed/spacepod/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	if(melting_down)
@@ -669,10 +747,10 @@
 	if(melting_down)
 		return
 	melting_down = TRUE
+	set_thruster_flame(FALSE)
 	stop_engine_sound()
-	to_chat(occupants, span_userdanger("Обнаружены критические повреждения! Взрыв ядра через три секунды!"))
-	// The parent deconstructs immediately, so notify it only after the meltdown completes.
-	addtimer(CALLBACK(src, PROC_REF(detonate), damage_flag), 3 SECONDS)
+	to_chat(occupants, span_userdanger("Критическое разрушение корпуса! Взрыв ядра!"))
+	detonate(damage_flag)
 
 /obj/vehicle/sealed/spacepod/proc/detonate(damage_flag)
 	if(QDELETED(src))
@@ -703,6 +781,7 @@
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
 		return
+	set_thruster_flame(FALSE)
 	stop_engine_sound()
 	if(battery?.charge > 0)
 		battery.use(battery.charge / (6 * severity))
@@ -711,6 +790,8 @@
 	for(var/obj/item/spacepod_equipment/module as anything in installed_modules.Copy())
 		module.emp_act(severity)
 	take_damage(80 / severity, BURN)
+	if(QDELETED(src))
+		return
 	if(COOLDOWN_TIMELEFT(src, cooldown_emp) < 80 SECONDS / severity)
 		COOLDOWN_START(src, cooldown_emp, 80 SECONDS / severity)
 	to_chat(occupants, span_warning("Консоль челнока мигает: ОБНАРУЖЕНА ЭМИ-ВОЛНА!"))

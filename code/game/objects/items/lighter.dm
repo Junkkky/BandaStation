@@ -110,6 +110,18 @@
 	. = ..()
 	. += create_lighter_overlay()
 
+/// Applies the item's active recoloring to its native flame light tint.
+/obj/item/lighter/update_atom_colour()
+	. = ..()
+	if(!cached_color_filter && !color)
+		set_light_color(initial(light_color))
+		return
+	var/list/applied_matrix = cached_color_filter
+	if(!applied_matrix)
+		applied_matrix = color_transition_filter(color, SATURATION_OVERRIDE)
+	var/new_light_color = apply_matrix_to_color(initial(light_color), applied_matrix["color"], applied_matrix["space"] || COLORSPACE_RGB)
+	set_light_color(new_light_color)
+
 /// Generates an overlay used by this lighter.
 /obj/item/lighter/proc/create_lighter_overlay()
 	return mutable_appearance(icon, "lighter_overlay_[overlay_state][lit ? "-on" : ""]")

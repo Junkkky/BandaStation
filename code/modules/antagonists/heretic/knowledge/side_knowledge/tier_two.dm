@@ -63,15 +63,9 @@
 	desc = "Дарует вам «Волну отчаяния», заклинание, которое можно применить только будучи скованным. \
 		При активации, оно освобождает вас, отталкивает и сбивает с ног окружающих, а также применяет «Хватку Мансуса» ко всем, кто находится поблизости."
 	gain_text = "Мои путы разорваны в темной ярости, их ничтожные оковы рушатся перед моей силой."
-	required_atoms = list(
-		/obj/item/clothing/suit/jacket/straight_jacket = 1,
-	)
 	action_to_add = /datum/action/cooldown/spell/aoe/wave_of_desperation
 	cost = 2
 	drafting_tier = 2
-	max_charges = 1
-	path_recharge_amount = 0.0
-	transmute_text = "Для перезарядки завершите ритуал со смирительной рубашкой."
 
 /datum/heretic_knowledge/rune_carver
 	name = "Резной нож"

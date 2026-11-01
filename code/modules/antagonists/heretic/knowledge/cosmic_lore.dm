@@ -82,7 +82,6 @@
 	action_to_add = /datum/action/cooldown/spell/cosmic_rune
 	cost = 2
 	drafting_tier = 5
-	max_charges = INFINITY
 
 /datum/heretic_knowledge/spell/star_blast
 	name = "Звёздный взрыв"
@@ -91,10 +90,6 @@
 	gain_text = "С каждой новой жертвой, как никогда ранее четко, слышу я слова Зверя, стоящего за мной."
 	action_to_add = /datum/action/cooldown/spell/pointed/projectile/star_blast
 	cost = 2
-	max_charges = 4
-	path_recharge_amount = 0.5
-	focus_recharge_amount = 0.25
-	holywater_drain_amount = 0.25
 
 /datum/heretic_knowledge/armor/cosmic
 	name = "Плащ сотканный из звёзд"
@@ -121,10 +116,6 @@
 		Теперь мои вены изучали странное фиолетовое сияние: Зверь знает, что я превзойду их ожидания."
 	action_to_add = /datum/action/cooldown/spell/touch/star_touch
 	cost = 2
-	max_charges = 4
-	path_recharge_amount = 0.5
-	focus_recharge_amount = 0.25
-	holywater_drain_amount = 0.25
 
 /datum/heretic_knowledge/blade_upgrade/cosmic
 	name = "Космический клинок"
@@ -225,9 +216,6 @@
 	action_to_add = /datum/action/cooldown/spell/conjure/cosmic_expansion
 	cost = 2
 	is_final_knowledge = TRUE
-	max_charges = 2
-	path_recharge_amount = 0.25
-	holywater_drain_amount = 0.25
 
 /datum/heretic_knowledge/ultimate/cosmic_final
 	name = "Дар Создателей"
