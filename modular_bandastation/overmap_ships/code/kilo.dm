@@ -30,6 +30,7 @@
 /** Mapped ship area: Kilo: наружный шлюз. */
 /area/shuttle/stationtrauma_space/kilo/external
 	name = "Kilo: наружный шлюз"
+	vacuum_by_design = TRUE
 
 /** Transponder preset kilo; identity remains on the removable board. */
 /obj/item/circuitboard/computer/stationtrauma_transponder/kilo

@@ -332,10 +332,4 @@
 			ship_area.set_parallax_movedir(direction)
 	exterior?.set_space_parallax_background(background)
 	exterior?.set_parallax_movedir(NONE)
-
-/datum/stationtrauma_overmap/space/on_collision(datum/stationtrauma_overmap_terrain/obstacle, impact_speed)
-	var/list/nearest = obstacle.nearest(pos_x, pos_y)
-	var/turf/target = stationtrauma_navigation_hull_target(vessel, course, 1, nearest[1] - pos_x, nearest[2] - pos_y, vessel.preferred_direction)
-	// A full-speed impact (5 sector units/s) reaches the severe, repairable hull tear tier.
-	stationtrauma_damage_hull(vessel, target, impact_speed * 12)
 // AI EDIT END

@@ -24,6 +24,15 @@ export type CelestialBody = Position & {
   orbit_x: number;
   orbit_y: number;
 };
+export type Compartment = {
+  name: string;
+  /** Mean floor pressure in the compartment, kPa; null without open floor. */
+  pressure: number | null;
+  low_pressure: BooleanLike;
+  fire: BooleanLike;
+  /** Hull tiles open to space. */
+  breaches: number;
+};
 export type NavigationData = Position & {
   au_scale: number;
   status: string;
@@ -89,7 +98,12 @@ export type NavigationData = Position & {
     biome: string | null;
     loading: BooleanLike;
   } | null;
+  compartments: Compartment[];
 };
+
+export function compartmentDamaged(room: Compartment) {
+  return !!(room.breaches || room.fire || room.low_pressure);
+}
 
 /** Seconds of unchanged motion represented by a velocity vector. */
 export const VECTOR_SECONDS = 60;

@@ -9,7 +9,6 @@
 #include "code/zones.dm"
 #include "code/work_budget.dm"
 #include "code/lighting_deferred.dm"
-#include "code/hull_damage.dm"
 #include "code/map_passage.dm"
 #include "code/map_preview.dm"
 #include "code/map_preview_interaction.dm"

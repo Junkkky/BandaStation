@@ -5,10 +5,12 @@ import { Button, DraggableControl, Icon } from 'tgui-core/components';
 import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
 import { Chart } from './Chart';
+import { Compartments } from './Compartments';
 import { Descent } from './Descent';
 import { Docking } from './Docking';
 import {
   closestApproach,
+  compartmentDamaged,
   distanceLabel,
   type NavigationData,
   speedLabel,
@@ -34,6 +36,8 @@ function Navigation({ data }: { data: NavigationData }) {
   const { act } = useBackend();
   const helm = useHelm(data);
   const [focusedContact, setFocusedContact] = useState<number | null>(null);
+  const [showCompartments, setShowCompartments] = useState(false);
+  const damaged = data.compartments.filter(compartmentDamaged).length;
   const moored = !!(data.docked || data.coupled);
   const contact = data.ship_contacts.find(
     (record) => record.id === focusedContact,
@@ -51,15 +55,15 @@ function Navigation({ data }: { data: NavigationData }) {
       : 'СТЫКОВКА'
     : data.preparing
       ? 'ПОДГОТОВКА'
-    : moored
-      ? data.landed
-        ? 'НА ПОВЕРХНОСТИ'
-        : 'ПРИСТЫКОВАН'
-      : data.autopilot
-        ? 'АВТОПИЛОТ'
-        : data.speed > 0.05
-          ? 'ПОЛЁТ'
-          : 'СТОП';
+      : moored
+        ? data.landed
+          ? 'НА ПОВЕРХНОСТИ'
+          : 'ПРИСТЫКОВАН'
+        : data.autopilot
+          ? 'АВТОПИЛОТ'
+          : data.speed > 0.05
+            ? 'ПОЛЁТ'
+            : 'СТОП';
   const selectSite = (id: string) => {
     setFocusedContact(null);
     act('select', { value: id });
@@ -73,45 +77,64 @@ function Navigation({ data }: { data: NavigationData }) {
       </header>
       <div className="SpaceNavigation__body">
         <aside className="SpaceNavigation__contacts" aria-label="Объекты">
-          <h2>
-            ОБЪЕКТЫ{' '}
-            <span>{data.routes.length + data.ship_contacts.length}</span>
+          <h2 className="SpaceNavigation__tabs">
+            <Button
+              selected={!showCompartments}
+              onClick={() => setShowCompartments(false)}
+            >
+              ОБЪЕКТЫ{' '}
+              <span>{data.routes.length + data.ship_contacts.length}</span>
+            </Button>
+            <Button
+              selected={showCompartments}
+              color={damaged ? 'bad' : undefined}
+              tooltip={damaged ? `Повреждено отсеков: ${damaged}` : undefined}
+              onClick={() => setShowCompartments(true)}
+            >
+              ОТСЕКИ {!!damaged && <span>{damaged}</span>}
+            </Button>
           </h2>
-          <div className="SpaceNavigation__routes">
-            {data.routes.map((site) => (
-              <Button
-                key={site.id}
-                fluid
-                tooltip={site.name}
-                selected={focusedContact === null && site.id === data.selected}
-                disabled={site.failed || data.preparing || data.relocating}
-                onClick={() => selectSite(site.id)}
-              >
-                <span>{site.name}</span>
-                <span>{distance(site.distance)}</span>
-              </Button>
-            ))}
-            {data.ship_contacts.map((record) => (
-              <Button
-                key={`contact-${record.id}`}
-                fluid
-                tooltip={record.identity?.callsign || 'Неопознанное судно'}
-                selected={record.id === focusedContact}
-                onClick={() => setFocusedContact(record.id)}
-              >
-                <span>
-                  К{record.id} ·{' '}
-                  {record.identity?.callsign || 'Неопознанное судно'}
-                </span>
-                <span>
-                  {distance(Math.hypot(record.x - data.x, record.y - data.y))}
-                </span>
-              </Button>
-            ))}
-            {!data.routes.length && !data.ship_contacts.length && (
-              <p className="SpaceNavigation__help">Нет отметок</p>
-            )}
-          </div>
+          {showCompartments ? (
+            <Compartments rooms={data.compartments} />
+          ) : (
+            <div className="SpaceNavigation__routes">
+              {data.routes.map((site) => (
+                <Button
+                  key={site.id}
+                  fluid
+                  tooltip={site.name}
+                  selected={
+                    focusedContact === null && site.id === data.selected
+                  }
+                  disabled={site.failed || data.preparing || data.relocating}
+                  onClick={() => selectSite(site.id)}
+                >
+                  <span>{site.name}</span>
+                  <span>{distance(site.distance)}</span>
+                </Button>
+              ))}
+              {data.ship_contacts.map((record) => (
+                <Button
+                  key={`contact-${record.id}`}
+                  fluid
+                  tooltip={record.identity?.callsign || 'Неопознанное судно'}
+                  selected={record.id === focusedContact}
+                  onClick={() => setFocusedContact(record.id)}
+                >
+                  <span>
+                    К{record.id} ·{' '}
+                    {record.identity?.callsign || 'Неопознанное судно'}
+                  </span>
+                  <span>
+                    {distance(Math.hypot(record.x - data.x, record.y - data.y))}
+                  </span>
+                </Button>
+              ))}
+              {!data.routes.length && !data.ship_contacts.length && (
+                <p className="SpaceNavigation__help">Нет отметок</p>
+              )}
+            </div>
+          )}
         </aside>
         <section className="SpaceNavigation__plot">
           {data.approach?.scene === 'planet' ? (

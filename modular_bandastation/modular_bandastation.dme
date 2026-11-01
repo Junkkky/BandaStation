@@ -51,6 +51,7 @@
 // AI EDIT START - Shared and space expedition modules
 #include "overmap/_overmap.dme"
 #include "space_overmap/_space_overmap.dme"
+#include "space_combat/_space_combat.dme"
 #include "expedition_science/_expedition_science.dme"
 #include "expedition_planets/_expedition_planets.dme"
 #include "overmap_ships/_overmap_ships.dme"

@@ -76,6 +76,7 @@
 		"ship_contacts" = map.ship_echo_data(),
 		"encounter" = map.encounter_status, "sensor_range" = map.sensor_range,
 		"approach" = null,
+		"compartments" = vessel.compartment_report(),
 	)
 	if(map.approach_started && target)
 		var/datum/stationtrauma_overmap_site/space/planet/approach_planet = target
