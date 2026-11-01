@@ -1,5 +1,7 @@
 // AI EDIT START - expedition planets module integration
 #include "_expedition_planets.dm"
+#include "code/planet_site.dm"
+#include "code/planet_generator.dm"
 #include "code/barren.dm"
 #include "code/modifiers.dm"
 #include "code/frozen.dm"

@@ -12,6 +12,7 @@
 #include "code/hull_damage.dm"
 #include "code/map_passage.dm"
 #include "code/map_preview.dm"
+#include "code/map_preview_interaction.dm"
 #include "code/map_lighting.dm"
 #include "code/map_connection.dm"
 // AI EDIT END

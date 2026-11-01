@@ -1,7 +1,7 @@
 // AI EDIT START - expedition planets module integration
 // Sierra's hot, mineral-rich desert profile; local TG terrain and atmosphere are used.
 // https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/code/modules/overmap/exoplanets/planet_types/desert.dm
-// Biomes adapted from Celadon's sand planet generator (see barren.dm); donor ice caps, acid and lava pools,
+// Biomes adapted from Celadon's sand planet generator (see planet_generator.dm); donor ice caps, acid and lava pools,
 // sulfur pools, ore veins, hermits, burrows and maintenance loot are omitted or replaced with local desert ground.
 /** Hot oxygen-free surface profile with saline mineral research sources. */
 /datum/stationtrauma_overmap_site/space/planet/arid

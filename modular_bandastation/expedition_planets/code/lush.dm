@@ -1,5 +1,5 @@
 // AI EDIT START - expedition planets module integration
-// Sierra's lush surface profile; flora and fauna come from Celadon's jungle planet biomes (see barren.dm).
+// Sierra's lush surface profile; flora and fauna come from Celadon's jungle planet biomes (see planet_generator.dm).
 // https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/code/modules/overmap/exoplanets/planet_types/grass.dm
 // Donor kudzu, gardens, capybaras, chicken flocks, ore veins, burrows, anomalies and terrain patches are omitted.
 /** Temperate breathable surface profile populated with jungle flora and wildlife. */

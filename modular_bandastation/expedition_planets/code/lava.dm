@@ -1,5 +1,5 @@
 // AI EDIT START - expedition planets module integration
-// Volcanic profile with biomes adapted from Celadon's lava planet generator (see barren.dm); local TG turfs, flora and fauna.
+// Volcanic profile with biomes adapted from Celadon's lava planet generator (see planet_generator.dm); local TG turfs, flora and fauna.
 // Donor grass and purple rock become ash and shale; moss, hell bushes, landmines, elite tumors, anomalies, ore veins, burrows and crystal fauna are omitted or replaced.
 /// Fixed volcanic atmosphere; TG lavaland air is randomized per round and would contradict the survey.
 #define EXPEDITION_VOLCANIC_ATMOS (GAS_CO2 + "=60;" + GAS_N2 + "=30;TEMP=380")

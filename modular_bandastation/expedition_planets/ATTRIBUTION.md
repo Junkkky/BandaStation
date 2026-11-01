@@ -15,7 +15,7 @@
 
 | Локальный профиль | Исходный профиль Sierra |
 | --- | --- |
-| `code/barren.dm` | [barren.dm](https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/code/modules/overmap/exoplanets/planet_types/barren.dm) |
+| `code/barren.dm`, `code/planet_site.dm`, `code/planet_generator.dm` | [barren.dm](https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/code/modules/overmap/exoplanets/planet_types/barren.dm) |
 | `code/frozen.dm` | [snow.dm](https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/code/modules/overmap/exoplanets/planet_types/snow.dm) |
 | `code/arid.dm` | [desert.dm](https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/code/modules/overmap/exoplanets/planet_types/desert.dm) |
 | `code/lush.dm` | [grass.dm](https://github.com/SierraBay/SierraBay12/blob/8623b35f6943130998002e94cf001a9c6ccb3f4c/code/modules/overmap/exoplanets/planet_types/grass.dm) |
@@ -35,7 +35,7 @@ Celadon, Shiptest и TG). Наполнение биомов заменено с�
 
 | Локальный файл | Генератор Celadon |
 | --- | --- |
-| `code/barren.dm` | [moon_generator.dm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/code/datums/mapgen/planetary/moon_generator.dm) |
+| `code/barren.dm`, `code/planet_generator.dm` | [moon_generator.dm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/code/datums/mapgen/planetary/moon_generator.dm) |
 | `code/frozen.dm` | [SnowGenerator.dm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/code/datums/mapgen/planetary/SnowGenerator.dm) |
 | `code/arid.dm` | [SandGenerator.dm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/code/datums/mapgen/planetary/SandGenerator.dm) |
 | `code/lush.dm` | [JungleGenerator.dm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/code/datums/mapgen/planetary/JungleGenerator.dm) |
