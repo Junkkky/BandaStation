@@ -49,7 +49,7 @@ function Navigation({ data }: { data: NavigationData }) {
     data.vx * Math.sin((data.course * Math.PI) / 180) +
       data.vy * Math.cos((data.course * Math.PI) / 180) <
     -0.05;
-  const needle = Math.PI * (1 - Math.min(1, data.speed / 5));
+  const needle = Math.PI * (1 - Math.min(1, data.speed / data.speed_scale));
   const mode = data.approach
     ? data.approach.scene === 'planet'
       ? 'ПОСАДКА'
@@ -251,7 +251,10 @@ function Navigation({ data }: { data: NavigationData }) {
                 aria-label="Скорость корабля"
                 aria-valuemin={0}
                 aria-valuemax={100}
-                aria-valuenow={Math.min(100, (data.speed / 5) * 100)}
+                aria-valuenow={Math.min(
+                  100,
+                  (data.speed / data.speed_scale) * 100,
+                )}
                 aria-valuetext={speedLabel(data.speed, data.au_scale)}
               >
                 <svg viewBox="0 0 100 58" aria-hidden="true">

@@ -27,6 +27,8 @@
 	var/can_land = TRUE
 	/// Connected transponder consoles; each console unregisters during teardown.
 	var/list/transponders = list()
+	/// Hull tiles inside the ship's own areas, measured once at registration.
+	var/hull_mass = 0
 
 /** Check mapped hull class and landing capability against the destination kind. */
 /obj/docking_port/mobile/stationtrauma_space/proc/permits_docking(datum/stationtrauma_overmap_site/space/site)
@@ -50,6 +52,14 @@
 			continue
 		var/obj/machinery/atmospherics/components/unary/ship_engine_heater/plasma/heater = locate() in get_step(engine, REVERSE_DIR(engine.dir))
 		heater?.bind_nozzle(src)
+
+/** Count the hull tiles inside this ship's bounds and areas; other hulls may share an area type. */
+/obj/docking_port/mobile/stationtrauma_space/proc/measure_hull()
+	hull_mass = 0
+	for(var/turf/tile as anything in return_turfs())
+		if(shuttle_areas[tile.loc])
+			hull_mass++
+	return hull_mass
 
 /** Whether any compartment still has equipment power; unpowered-by-design hulls always do. */
 /obj/docking_port/mobile/stationtrauma_space/proc/has_power()

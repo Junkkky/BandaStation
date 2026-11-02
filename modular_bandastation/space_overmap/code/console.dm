@@ -50,7 +50,7 @@
 		"x" = map.pos_x, "y" = map.pos_y,
 		"vx" = map.velocity_x, "vy" = map.velocity_y, "trajectory" = map.predict_trajectory(),
 		"course" = map.course, "ordered_course" = map.ordered_course,
-		"speed" = map.speed, "throttle" = map.throttle,
+		"speed" = map.speed, "throttle" = map.throttle, "speed_scale" = ST_SPACE_MAX_SPEED,
 		"maneuver_direction" = map.maneuver_direction,
 		"braking" = map.braking, "braking_distance" = map.get_braking_distance(),
 		"emergency_braking" = map.emergency_braking && vessel.has_power(),

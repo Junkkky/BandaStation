@@ -62,6 +62,8 @@
 	desc = "Сопло двигательной установки с подачей горячего газа от приёмного блока."
 	requires_combustion = TRUE
 	circuit = /obj/item/circuitboard/machine/engine/propulsion/tritium
+	// Tritium combustion is the strongest drive per nozzle.
+	engine_power = 2
 	exhaust_gradient = list("#FFFFFF", "#FCE6B6", "#FD481C")
 
 /** Large nozzle retaining the native two-by-two footprint. */
@@ -69,6 +71,8 @@
 	name = "большой тритиевый двигатель"
 	desc = "Тяжёлое сопло двигательной установки с подачей горячего газа."
 	requires_combustion = TRUE
+	// Four small nozzles' footprint.
+	engine_power = 8
 	exhaust_gradient = list("#FFFFFF", "#FCE6B6", "#FD481C")
 
 /**
@@ -140,7 +144,7 @@
 	var/datum/weakref/chamber
 	/// Delivered power remains available between native atmosphere ticks.
 	var/delivered_fraction = 0
-	/// Moles per second one unit of engine power draws at full load.
+	/// Moles per second one nozzle draws at full load; thrust comes from engine_power, not from more gas.
 	var/propellant_flow = 0.52
 
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/Initialize(mapload)
@@ -280,7 +284,7 @@
 	var/datum/stationtrauma_overmap/space/map = ship.overmap
 	var/load = map?.helm_engaged ? max(abs(map.throttle) / 100, !!map.braking, !!map.maneuver_direction) : 0
 	// The tritium value is calibrated for roughly twenty minutes at half thrust on Raven's standard canister pair.
-	var/requested = propellant_flow * engine.engine_power * max(0.15, load) * seconds_per_tick
+	var/requested = propellant_flow * max(0.15, load) * seconds_per_tick
 	var/datum/gas_mixture/air = airs[1]
 	var/datum/gas_mixture/exhausted = air.remove(requested)
 	if(!exhausted)

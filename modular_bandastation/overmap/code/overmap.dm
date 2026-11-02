@@ -157,7 +157,7 @@
 		if(!helm_engaged)
 			return
 		turn = WRAP(ordered_course - course + 180, 0, 360) - 180
-	course = WRAP(course + clamp(turn, -ST_NAV_TURN_RATE * seconds, ST_NAV_TURN_RATE * seconds), 0, 360)
+	course = WRAP(course + clamp(turn, -turn_rate() * seconds, turn_rate() * seconds), 0, 360)
 	var/datum/stationtrauma_overmap_site/site = sites[selected_destination]
 	var/available = get_target_speed()
 	if(autopilot && length(autopilot_path))
@@ -204,6 +204,10 @@
 		else
 			status = braking ? "Торможение" : "В пути"
 	update_parallax()
+
+/** Degrees per second the heading can change; environment adapters may scale it by hull mass. */
+/datum/stationtrauma_overmap/proc/turn_rate()
+	return ST_NAV_TURN_RATE
 
 /** Immediate stop; pilot controls use request_brake() for gradual braking. */
 /datum/stationtrauma_overmap/proc/stop(reason = "Стоп-машина")

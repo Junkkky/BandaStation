@@ -108,6 +108,7 @@
 	if(!vessel.registered)
 		vessel.register()
 	vessel.linkup(null)
+	vessel.measure_hull()
 	var/datum/stationtrauma_overmap/space/navigation = new(vessel)
 	if(!register(vessel.shuttle_id, navigation))
 		qdel(navigation)

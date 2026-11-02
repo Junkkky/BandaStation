@@ -63,6 +63,8 @@ export type NavigationData = Position & {
   course: number;
   ordered_course: number;
   speed: number;
+  /** Full scale of the speedometer, shared by every hull. */
+  speed_scale: number;
   throttle: number;
   maneuver_direction: number;
   braking: BooleanLike;

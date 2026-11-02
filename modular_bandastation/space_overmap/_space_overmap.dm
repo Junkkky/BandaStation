@@ -24,6 +24,14 @@
 #define SHIP_CHAMBER_LOCKED "locked"
 /// Nominal hot-gas temperature required for full nozzle power and a completed warm-up.
 #define SHIP_ENGINE_OPERATING_TEMPERATURE 1000
+/// Engine power per hull tile that gives the reference speed and acceleration.
+#define ST_SPACE_REFERENCE_THRUST 0.03
+/// Top speed of a hull at the reference thrust ratio.
+#define ST_SPACE_REFERENCE_SPEED 5
+/// Absolute top speed; also the full scale of the helm speedometer.
+#define ST_SPACE_MAX_SPEED 8
+/// Hull tiles of a ship turning at the base turn rate; lighter hulls turn faster.
+#define ST_SPACE_REFERENCE_MASS 250
 /// Constant slight deceleration of every hull per second, so a dead ship does not drift forever.
 #define ST_SPACE_DRAG 0.01
 /// Powered emergency manoeuvring thrusters: a tenth of a full main-engine brake, per second.

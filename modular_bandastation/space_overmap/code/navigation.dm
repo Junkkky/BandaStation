@@ -94,6 +94,20 @@
 		power += engine.engine_power * engine_output(engine)
 	return clamp(power / max(1, vessel.initial_engine_power), 0, 1)
 
+/** Engine power actually delivered per hull tile: the heavier the hull, the weaker the same engines. */
+/datum/stationtrauma_overmap/space/proc/thrust_ratio()
+	var/power = 0
+	for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
+		power += engine.engine_power * engine_output(engine)
+	return power / max(1, vessel.hull_mass)
+
+/** Top speed from the delivered thrust ratio; it grows with its square root and is capped. */
+/datum/stationtrauma_overmap/space/proc/max_speed()
+	return min(ST_SPACE_MAX_SPEED, ST_SPACE_REFERENCE_SPEED * sqrt(thrust_ratio() / ST_SPACE_REFERENCE_THRUST))
+
+/datum/stationtrauma_overmap/space/turn_rate()
+	return ST_NAV_TURN_RATE * clamp(sqrt(ST_SPACE_REFERENCE_MASS / max(1, vessel.hull_mass)), 0.5, 2)
+
 /** Share of one intact engine's nominal power; gas-fed nozzles depend on their delivered feed. */
 /datum/stationtrauma_overmap/space/proc/engine_output(obj/machinery/power/shuttle_engine/engine)
 	if(QDELETED(engine) || !engine.anchored || engine.engine_state != initial(engine.engine_state) || (engine.machine_stat & BROKEN) || engine.get_integrity() <= 0)
@@ -107,10 +121,10 @@
 	return !preparing && !ship_docking && vessel.engines_running && engine_fraction() > 0
 
 /datum/stationtrauma_overmap/space/get_target_speed()
-	return vessel.engines_running ? 5 * engine_fraction() * throttle / 100 : 0
+	return vessel.engines_running ? max_speed() * throttle / 100 : 0
 
 /datum/stationtrauma_overmap/space/get_braking_acceleration()
-	return vessel.engines_running ? (5 / 15) * engine_fraction() : 0
+	return vessel.engines_running ? min(1, (ST_SPACE_REFERENCE_SPEED / 15) * thrust_ratio() / ST_SPACE_REFERENCE_THRUST) : 0
 
 /datum/stationtrauma_overmap/space/get_braking_distance()
 	var/acceleration = get_braking_acceleration() + drift_damping()
@@ -202,7 +216,7 @@
 		var/next_y = vy + (cos(heading) * forward_change - sin(heading) * side_change) * budget_scale
 		var/next_speed = sqrt(next_x ** 2 + next_y ** 2)
 		// Permit steering at the cap, and preserve existing drift after engine damage.
-		var/limit = max(5 * engine_fraction(), sqrt(vx ** 2 + vy ** 2))
+		var/limit = max(max_speed(), sqrt(vx ** 2 + vy ** 2))
 		var/scale = next_speed > limit ? limit / next_speed : 1
 		change_x = next_x * scale - vx
 		change_y = next_y * scale - vy
@@ -241,10 +255,11 @@
 	var/heading = course
 	var/available = braking ? 0 : get_target_speed()
 	var/damping = drift_damping()
+	var/rate = turn_rate()
 	// Forecast holds the current order; future autopilot decisions and collisions can change it.
 	for(var/second in 1 to 60)
 		var/turn = WRAP(ordered_course - heading + 180, 0, 360) - 180
-		heading = WRAP(heading + clamp(turn, -ST_NAV_TURN_RATE, ST_NAV_TURN_RATE), 0, 360)
+		heading = WRAP(heading + clamp(turn, -rate, rate), 0, 360)
 		var/list/step = thrust_step(1, available, maneuver_direction, heading, vx, vy, damping)
 		x += step[1]
 		y += step[2]
