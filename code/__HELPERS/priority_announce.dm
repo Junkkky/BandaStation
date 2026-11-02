@@ -208,7 +208,7 @@
 	var/datum/callback/should_play_sound_callback = astype(should_play_sound)
 
 	for(var/mob/target in players)
-		if(isnewplayer(target) || HAS_TRAIT(target, TRAIT_DEAF))
+		if(isnewplayer(target) || HAS_TRAIT(target, TRAIT_DEAF) || stationtrauma_out_of_station_contact(target))
 			continue
 
 		to_chat(target, announcement)

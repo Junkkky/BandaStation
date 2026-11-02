@@ -138,3 +138,14 @@
 		console.site_id = port.site_id
 		console.setDir(terminal[4])
 	return port
+
+/**
+ * Living crew away from the station network miss station-wide announcements: a ship in flight,
+ * an expedition sector and a planet all occupy away levels. A ship docked at the station shares its level.
+ * Ghosts keep receiving them.
+ */
+/proc/stationtrauma_out_of_station_contact(mob/target)
+	if(!isliving(target))
+		return FALSE
+	var/turf/position = get_turf(target)
+	return !!position && SSmapping.level_trait(position.z, ZTRAIT_AWAY)
