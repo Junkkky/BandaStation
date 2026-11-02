@@ -23,6 +23,23 @@ export type CelestialBody = Position & {
   orbit_x: number;
   orbit_y: number;
 };
+export type FuelGauge = {
+  name: string;
+  /** Moles in the connected supply network. */
+  amount: number;
+  /** Standard fill of the connected canisters of this gas, moles; 0 without a canister. */
+  capacity: number;
+};
+/** Share of the connected canisters' standard fill, 0 to 1; 0 without a canister. */
+export function fuelShare(gauge: FuelGauge) {
+  return gauge.capacity > 0 ? Math.min(1, gauge.amount / gauge.capacity) : 0;
+}
+
+/** Below a fifth of the standard fill, or nothing connected at all. */
+export function fuelLow(gauge: FuelGauge) {
+  return fuelShare(gauge) < 0.2;
+}
+
 export type Compartment = {
   name: string;
   /** Mean floor pressure in the compartment, kPa; null without open floor. */
@@ -50,10 +67,14 @@ export type NavigationData = Position & {
   maneuver_direction: number;
   braking: BooleanLike;
   braking_distance: number | null;
+  /** Powered emergency manoeuvring thrusters are braking. */
+  emergency_braking: BooleanLike;
+  /** Any compartment has equipment power. */
+  ship_power: BooleanLike;
   engines: number;
   engines_running: BooleanLike;
   engine_phase: string | null;
-  fuel: { tritium: number; oxygen: number } | null;
+  fuel: FuelGauge[] | null;
   engine_fault: BooleanLike;
   can_start_engines: BooleanLike;
   helm: BooleanLike;

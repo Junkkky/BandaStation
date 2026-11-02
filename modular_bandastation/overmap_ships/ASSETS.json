@@ -4,7 +4,7 @@
 	"assets": [
 		{
 			"path": "_maps/map_files/overmap_ships/pocketrocket.dmm",
-			"sha256": "c608d9c3d0def25d9b1a3ba424ab2265973c0778fafee1b417b7ed0b83e8f0e5",
+			"sha256": "4ab4edc6c9b22a71ed78ab5439ec282be04308fb5a3520f27dc0cb897538759f",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["Voidcrew-LRP, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -19,8 +19,8 @@
 			"byte_identical": false
 		},
 		{
-			"path": "_maps/map_files/debug/raven_draft.dmm",
-			"sha256": "48e12ec9baf636291e7053fd5ef81fa9a0f5952a729666b717c4eb1c5480f8ad",
+			"path": "_maps/map_files/overmap_ships/raven.dmm",
+			"sha256": "6b0e0952775989923d8f9ce5a560f0176f117c05bf01d314409679945c779f99",
 			"license": "CC-BY-SA-3.0",
 			"authors": [
 				"TG, BandaStation and Primera contributors",
@@ -38,24 +38,8 @@
 			"byte_identical": false
 		},
 		{
-			"path": "_maps/map_files/overmap_ships/raven.dmm",
-			"sha256": "4285fbfc82e2dfecaab5604aae2e77f09e73fb8ede23ddc9f1d853a2728a3bed",
-			"license": "CC-BY-SA-3.0",
-			"authors": ["TG, BandaStation and Primera contributors"],
-			"source": {
-				"repository": "SpaceStation220/Primera",
-				"commit": "65a9bd040b816783f0b6c24ba1e84ee7aab48456",
-				"path": "_maps/shuttles/emergency/emergency_raven.dmm",
-				"url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/_maps/shuttles/emergency/emergency_raven.dmm",
-				"sha256": "92cea4ce13f09b84782d96f7339fc6738e5ef18d6a9e7b58771a0ff2277f599b",
-				"license_policy_url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/README.md"
-			},
-			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types. Vessel/camp maps have overmap consoles and docking/landing integration.",
-			"byte_identical": false
-		},
-		{
 			"path": "_maps/map_files/overmap_ships/venture.dmm",
-			"sha256": "9807b4a2e2986fabd42349a7a1119596bcbc417fab171f54a714b6ccd453e622",
+			"sha256": "193ba657c08085a36eddd1c8f9e210f63da63ecef77e92fd5d1f1a357e6f8f04",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -71,7 +55,7 @@
 		},
 		{
 			"path": "_maps/map_files/overmap_ships/bubble.dmm",
-			"sha256": "7a5b1d26bd5774a61a6928cf6a553cafa31a962c15d05bfd5091c747930851f6",
+			"sha256": "3a9d352fc80406808ad9c25d90ec765138768c04a22c81d76b4513ab1e5d5e7b",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -87,7 +71,7 @@
 		},
 		{
 			"path": "_maps/map_files/overmap_ships/glimpse.dmm",
-			"sha256": "f8e458b19aecb47b026f3a4818da1d1fd442065b440df9fbfee29553e947ad1d",
+			"sha256": "ba2032b2c95dacc9fdc9131837222d32e6d1369b4f4454388d1af1497f9cd3c5",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {
@@ -103,7 +87,7 @@
 		},
 		{
 			"path": "_maps/map_files/overmap_ships/kilo.dmm",
-			"sha256": "94bac0c1fa2bd7ea37b6d69bc25b714e63f7a178f1012f41b5e1fd73feb7e516",
+			"sha256": "1405273d21dc23d3a83e57e75c637c253c72ccd5a6198032fcc27c5c2f306d26",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
 			"source": {

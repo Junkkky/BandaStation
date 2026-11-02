@@ -734,7 +734,7 @@
 "uG" = (
 /obj/structure/cable,
 /obj/machinery/power/shuttle_engine/propulsion{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/window/reinforced/plasma/spawner/directional/south,
 /obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
@@ -902,7 +902,7 @@
 "AT" = (
 /obj/structure/cable,
 /obj/machinery/power/shuttle_engine/propulsion{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/window/reinforced/plasma/spawner/directional/south,
 /turf/open/floor/engine/hull/reinforced,
@@ -1189,7 +1189,7 @@
 "LC" = (
 /obj/structure/cable,
 /obj/machinery/power/shuttle_engine/propulsion{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/window/reinforced/plasma/spawner/directional/south,
 /obj/docking_port/mobile/stationtrauma_space{

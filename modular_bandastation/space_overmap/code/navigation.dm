@@ -15,6 +15,8 @@
 	var/dispatch_timer
 	/// Site reserved by the pending station delivery.
 	var/datum/stationtrauma_overmap_site/space/dispatch_target
+	/// Emergency manoeuvring thrusters are braking; they need ship power, not the main engines.
+	var/emergency_braking = FALSE
 
 /datum/stationtrauma_overmap/space/New(obj/docking_port/mobile/stationtrauma_space/owner)
 	vessel = owner
@@ -59,6 +61,9 @@
 	if(!is_operational())
 		return PROCESS_KILL
 	advance()
+	// Drag or the emergency thrusters ended an unpowered drift.
+	if(helm_engaged && !vessel.engines_running && !arrival_pending && !jump_target && speed <= ST_NAV_STOPPED_SPEED)
+		stop("Дрейф погашен")
 	refresh_engine_audio()
 	process_encounters()
 	if(!preparing && !relocating && world.time >= next_listen)
@@ -86,13 +91,17 @@
 /datum/stationtrauma_overmap/space/proc/engine_fraction()
 	var/power = 0
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
-		if(!QDELETED(engine) && engine.anchored && engine.engine_state == initial(engine.engine_state) && !(engine.machine_stat & BROKEN) && engine.get_integrity() > 0)
-			if(engine.requires_combustion)
-				var/obj/machinery/atmospherics/components/unary/ship_engine_heater/feed = engine.combustion_feed?.resolve()
-				power += engine.engine_power * (feed?.propulsion_fraction() || 0)
-			else
-				power += engine.engine_power
+		power += engine.engine_power * engine_output(engine)
 	return clamp(power / max(1, vessel.initial_engine_power), 0, 1)
+
+/** Share of one intact engine's nominal power; gas-fed nozzles depend on their delivered feed. */
+/datum/stationtrauma_overmap/space/proc/engine_output(obj/machinery/power/shuttle_engine/engine)
+	if(QDELETED(engine) || !engine.anchored || engine.engine_state != initial(engine.engine_state) || (engine.machine_stat & BROKEN) || engine.get_integrity() <= 0)
+		return 0
+	if(!engine.requires_combustion)
+		return 1
+	var/obj/machinery/atmospherics/components/unary/ship_engine_heater/feed = engine.combustion_feed?.resolve()
+	return feed?.propulsion_fraction() || 0
 
 /datum/stationtrauma_overmap/space/propulsion_available()
 	return !preparing && !ship_docking && vessel.engines_running && engine_fraction() > 0
@@ -104,12 +113,24 @@
 	return vessel.engines_running ? (5 / 15) * engine_fraction() : 0
 
 /datum/stationtrauma_overmap/space/get_braking_distance()
-	var/acceleration = get_braking_acceleration()
+	var/acceleration = get_braking_acceleration() + drift_damping()
 	return acceleration ? speed ** 2 / (2 * acceleration) : null
+
+/** Deceleration applied regardless of the main engines: constant drag plus powered emergency thrusters. */
+/datum/stationtrauma_overmap/space/proc/drift_damping()
+	return ST_SPACE_DRAG + (emergency_braking && vessel.has_power() ? ST_SPACE_RCS_DECELERATION : 0)
+
+/** Brake on the powered emergency thrusters; works with the main engines off or destroyed. */
+/datum/stationtrauma_overmap/space/proc/command_emergency_brake()
+	if(preparing || relocating || docked || ship_docking || speed <= ST_NAV_STOPPED_SPEED || !vessel.has_power())
+		return FALSE
+	request_brake()
+	emergency_braking = TRUE
+	return TRUE
 
 /** Manual thrust retains lateral drift; the autopilot uses the same bounded acceleration to brake. */
 /datum/stationtrauma_overmap/space/integrate_velocity(seconds, available)
-	var/list/step = thrust_step(seconds, available, maneuver_direction, course, velocity_x, velocity_y)
+	var/list/step = thrust_step(seconds, available, maneuver_direction, course, velocity_x, velocity_y, drift_damping())
 	velocity_x = step[3]
 	velocity_y = step[4]
 	return step
@@ -129,6 +150,7 @@
 	. = ..()
 	if(. && !QDELETED(src))
 		maneuver_direction = NONE
+		emergency_braking = FALSE
 
 /** Thrust resumes manual flight without requiring another undocking order. */
 /datum/stationtrauma_overmap/space/command_throttle(value)
@@ -138,6 +160,8 @@
 	if(!.)
 		return FALSE
 	throttle = value
+	if(value != 0)
+		emergency_braking = FALSE
 	if(value == 0)
 		request_brake()
 	if(value != 0 && !helm_engaged && !docked && !preparing && !relocating)
@@ -148,6 +172,7 @@
 	cancel_jump()
 	throttle = 0
 	maneuver_direction = NONE
+	emergency_braking = FALSE
 	. = ..()
 	refresh_engine_audio()
 
@@ -156,8 +181,13 @@
 	maneuver_direction = NONE
 	return ..()
 
-/** Return displacement and final velocity without mutating the live ship, also used by the chart forecast. */
-/datum/stationtrauma_overmap/space/proc/thrust_step(seconds, available, direction, heading, vx, vy)
+/**
+ * Return displacement and final velocity without mutating the live ship, also used by the chart forecast.
+ *
+ * Arguments:
+ * * damping - Deceleration per second that acts whatever the engines do
+ */
+/datum/stationtrauma_overmap/space/proc/thrust_step(seconds, available, direction, heading, vx, vy, damping = 0)
 	var/change_x = sin(heading) * available - vx
 	var/change_y = cos(heading) * available - vy
 	var/acceleration = get_braking_acceleration()
@@ -186,7 +216,18 @@
 	if(autopilot || braking)
 		change_x *= fraction
 		change_y *= fraction
-	return list(vx * seconds + change_x * (seconds - duration / 2), vy * seconds + change_y * (seconds - duration / 2), vx + change_x, vy + change_y)
+	var/next_x = vx + change_x
+	var/next_y = vy + change_y
+	var/step_x = vx * seconds + change_x * (seconds - duration / 2)
+	var/step_y = vy * seconds + change_y * (seconds - duration / 2)
+	var/next_speed = sqrt(next_x ** 2 + next_y ** 2)
+	if(damping > 0 && next_speed > 0)
+		var/loss = min(next_speed, damping * seconds)
+		step_x -= next_x / next_speed * loss * seconds / 2
+		step_y -= next_y / next_speed * loss * seconds / 2
+		next_x *= (next_speed - loss) / next_speed
+		next_y *= (next_speed - loss) / next_speed
+	return list(step_x, step_y, next_x, next_y)
 
 /** Forecast 20/40/60 seconds under the present thrust order; do not advance time or reveal terrain. */
 /datum/stationtrauma_overmap/space/proc/predict_trajectory()
@@ -199,11 +240,12 @@
 	var/vy = velocity_y
 	var/heading = course
 	var/available = braking ? 0 : get_target_speed()
+	var/damping = drift_damping()
 	// Forecast holds the current order; future autopilot decisions and collisions can change it.
 	for(var/second in 1 to 60)
 		var/turn = WRAP(ordered_course - heading + 180, 0, 360) - 180
 		heading = WRAP(heading + clamp(turn, -ST_NAV_TURN_RATE, ST_NAV_TURN_RATE), 0, 360)
-		var/list/step = thrust_step(1, available, maneuver_direction, heading, vx, vy)
+		var/list/step = thrust_step(1, available, maneuver_direction, heading, vx, vy, damping)
 		x += step[1]
 		y += step[2]
 		vx = step[3]
@@ -318,8 +360,26 @@
 	update_parallax()
 	return TRUE
 
+/**
+ * Parallax follows the real velocity in the hull's frame: a ship sliding sideways or backwards shows it.
+ *
+ * Native parallax animates only cardinal directions, so the motion is rounded to the nearest one.
+ */
+/datum/stationtrauma_overmap/space/proc/parallax_motion_dir()
+	if(approach_started || jump_phase >= HYPERSPACE_LAUNCH)
+		return vessel.preferred_direction
+	if(speed <= ST_NAV_STOPPED_SPEED)
+		return NONE
+	// Compass bearing of the velocity relative to the virtual heading, turned onto the hull's mapped nose.
+	var/bearing = 90 - ATAN2(velocity_x, velocity_y)
+	var/angle = WRAP(dir2angle(vessel.preferred_direction) + bearing - course, 0, 360)
+	// Keep the current direction near a 45 degree boundary instead of flickering between two.
+	if(parallax_direction && abs(WRAP(angle - dir2angle(parallax_direction) + 180, 0, 360) - 180) <= 55)
+		return parallax_direction
+	return angle2dir_cardinal(angle)
+
 /datum/stationtrauma_overmap/space/update_parallax()
-	var/direction = speed > ST_NAV_STOPPED_SPEED || approach_started || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
+	var/direction = parallax_motion_dir()
 	var/background = parallax_background()
 	var/motion_changed = direction != parallax_direction
 	if(!motion_changed && background == space_background)

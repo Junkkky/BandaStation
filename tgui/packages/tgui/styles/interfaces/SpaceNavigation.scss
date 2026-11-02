@@ -313,43 +313,117 @@
     }
   }
   &__engine-control {
-    margin-bottom: 6px;
-  }
-  .SpaceNavigation__engine {
-    min-height: 42px;
-    line-height: 40px;
-    text-align: center;
-    font-size: 12px;
-    font-weight: bold;
-  }
-  &__engine-state {
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-top: 6px;
-    color: var(--nav-muted);
-    font-size: 10px;
+    gap: 10px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--nav-border);
+  }
+  // Guarded red ignition switch; it glows while the drive is on.
+  .SpaceNavigation__engine {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    font-size: 22px;
+    line-height: 42px;
+    text-align: center;
+    color: #ffd9d2;
+    background: #6a1f1a;
+    border-color: #b8463a;
+
+    .Button__content {
+      padding: 0;
+    }
+    .Icon {
+      margin: 0;
+    }
+    &:hover {
+      background: #7d2720;
+    }
+    &.Button--selected {
+      background: #b3352a;
+      border-color: #ff8a76;
+      box-shadow: 0 0 8px #e0483a;
+    }
+  }
+  &__annunciator {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3px;
+    margin: 0 12px;
+    padding: 0;
+    list-style: none;
+    letter-spacing: 0;
+
+    li {
+      min-width: 46px;
+      padding: 2px 4px;
+      border: 1px solid #3b4a40;
+      border-radius: 2px;
+      background: #141b18;
+      color: #8a988d;
+      font-size: 9px;
+      font-weight: bold;
+      text-align: center;
+    }
+    li.lit {
+      color: #101511;
+    }
+    li.good {
+      background: #7fd38b;
+      border-color: #b5f0bd;
+      box-shadow: 0 0 6px #4fb565;
+    }
+    li.warn {
+      background: #e8be62;
+      border-color: #ffe2a3;
+      box-shadow: 0 0 6px #c7952f;
+    }
+    li.bad {
+      background: #e45d51;
+      border-color: #ffa196;
+      box-shadow: 0 0 6px #ad2821;
+    }
   }
   &__fuel {
     display: flex;
+    flex: 1;
+    justify-content: center;
     gap: 12px;
-    padding: 7px 0;
-    border-bottom: 1px solid var(--nav-border);
     color: var(--nav-muted);
     font-size: 10px;
+  }
+  &__fuel-dial {
+    width: 64px;
+    text-align: center;
+    line-height: 1.2;
 
-    > span {
-      flex: 1;
+    svg {
+      display: block;
+      width: 64px;
+      height: 34px;
+      fill: #91d7d0;
+    }
+    path {
+      stroke: #91d7d0;
+      stroke-width: 3;
+      fill: none;
+    }
+    .gauge {
+      stroke: #526d60;
+      stroke-width: 4;
+    }
+    .reserve {
+      stroke: #a3483e;
+      stroke-width: 4;
+    }
+    span {
+      display: block;
     }
     strong {
-      display: block;
       color: #e2e6c4;
-      font-size: 12px;
-      margin-top: 2px;
-    }
-    small {
-      font-size: 10px;
-      font-weight: normal;
     }
   }
   &__maneuvers {
@@ -447,9 +521,39 @@
       cursor: default;
     }
   }
+  &__brakes {
+    display: flex;
+    gap: 6px;
+
+    .SpaceNavigation__stop {
+      flex: 1;
+      text-align: center;
+    }
+  }
   .SpaceNavigation__stop {
     color: #f2b3a2;
     border-color: #b66e57;
+  }
+  // Emergency thrusters: amber-and-black guard colours, separate from the normal brake.
+  .SpaceNavigation__emergency {
+    flex-shrink: 0;
+    width: 34px;
+    padding: 0;
+    text-align: center;
+    color: #1a1406;
+    background: #d9a43a;
+    border-color: #f3cf7a;
+
+    .Icon {
+      margin: 0;
+    }
+    &:hover {
+      background: #e8b54c;
+    }
+    &.Button--selected {
+      background: #ffc94f;
+      box-shadow: 0 0 8px #e0a52c;
+    }
   }
   &__docking {
     display: flex;
@@ -469,13 +573,14 @@
   }
   &__request {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-top: 5px;
-    font-size: 10px;
-  }
-  &__request > span {
-    width: 100%;
+    gap: 7px;
+    margin-top: 7px;
+
+    .Button {
+      flex: 1;
+      font-size: 10px;
+      text-align: center;
+    }
   }
   &__help {
     color: var(--nav-muted);

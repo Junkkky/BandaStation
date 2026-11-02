@@ -58,7 +58,7 @@
 		"dock_direction": 1,
 		"ships": [
 			{
-				"template": "_maps/map_files/debug/raven_draft.dmm",
+				"template": "_maps/map_files/overmap_ships/raven.dmm",
 				"dispatchable": true
 			},
 			{

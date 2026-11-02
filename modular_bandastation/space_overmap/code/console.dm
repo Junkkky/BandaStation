@@ -53,10 +53,12 @@
 		"speed" = map.speed, "throttle" = map.throttle,
 		"maneuver_direction" = map.maneuver_direction,
 		"braking" = map.braking, "braking_distance" = map.get_braking_distance(),
+		"emergency_braking" = map.emergency_braking && vessel.has_power(),
+		"ship_power" = vessel.has_power(),
 		"engines" = round(engine_fraction * 100),
 		"engines_running" = vessel.engines_running,
 		"engine_phase" = chamber?.phase,
-		"fuel" = chamber?.fuel_reserve(),
+		"fuel" = vessel.fuel_gauges(),
 		"engine_fault" = engine_fault,
 		"can_start_engines" = chamber ? (chamber.phase != SHIP_CHAMBER_PURGING && chamber.phase != SHIP_CHAMBER_LOCKED && !chamber.fault && !chamber.equipment_fault()) : engine_fraction > 0,
 		"helm" = map.helm_engaged, "autopilot" = map.autopilot,
@@ -116,6 +118,8 @@
 			return map.scan_sector()
 		if("stop")
 			map.request_brake()
+		if("emergency_brake")
+			return map.command_emergency_brake()
 		if("select")
 			return istext(value) && map.select_site(value)
 		if("turn", "throttle")

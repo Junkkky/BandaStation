@@ -389,32 +389,15 @@
 		ui = new(user, src, "ShipCombustion", name)
 		ui.open()
 
-/** Count each real supply mixture once, including canisters behind inlet pumps. */
+/** Tritium and oxygen gauges for both mixer supply networks. */
 /obj/machinery/computer/ship_combustion/proc/fuel_reserve()
 	var/obj/machinery/atmospherics/components/trinary/mixer/mixer = device("mixer")
 	var/list/networks = list()
-	var/list/mixtures = list()
 	for(var/input in 1 to 2)
 		var/datum/pipeline/network = mixer?.parents[input]
 		if(network)
 			networks |= network
-	for(var/index = 1; index <= length(networks); index++)
-		var/datum/pipeline/network = networks[index]
-		if(!network)
-			continue
-		mixtures |= network.return_air()
-		for(var/obj/machinery/atmospherics/components/component as anything in network.other_atmos_machines)
-			mixtures |= component.return_airs_for_reconcilation(network)
-			networks |= component.return_pipenets_for_reconcilation(network)
-			if(istype(component, /obj/machinery/atmospherics/components/binary/pump))
-				if(component.parents[2] == network && component.parents[1])
-					networks |= component.parents[1]
-	var/tritium = 0
-	var/oxygen = 0
-	for(var/datum/gas_mixture/mixture as anything in mixtures)
-		tritium += mixture.moles[/datum/gas/tritium]
-		oxygen += mixture.moles[/datum/gas/oxygen]
-	return list("tritium" = round(tritium, 0.1), "oxygen" = round(oxygen, 0.1))
+	return stationtrauma_fuel_gauges(networks, list(/datum/gas/tritium = "Тритий", /datum/gas/oxygen = "Кислород"))
 
 /obj/machinery/computer/ship_combustion/ui_data(mob/user)
 	var/obj/machinery/atmospherics/components/unary/outlet_injector/inlet = device("inlet")

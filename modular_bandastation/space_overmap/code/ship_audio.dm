@@ -65,6 +65,8 @@
 		return TRUE
 	var/obj/machinery/computer/ship_combustion/chamber = vessel.combustion_controller?.resolve()
 	if(enabled)
+		// Picks up plasma heaters rebuilt during the round.
+		vessel.bind_plasma_heaters()
 		if(chamber)
 			if(chamber.phase != SHIP_CHAMBER_STARTING && chamber.phase != SHIP_CHAMBER_RUNNING && !chamber.start_chamber())
 				return FALSE
@@ -83,6 +85,7 @@
 
 /** Start or stop propulsion audio and select its docked or cruising volume. */
 /datum/stationtrauma_overmap/space/proc/refresh_engine_audio()
+	refresh_engine_exhaust()
 	if(!engine_audio)
 		return
 	var/obj/machinery/computer/ship_combustion/chamber = vessel.combustion_controller?.resolve()
@@ -95,6 +98,12 @@
 		if(engine_audio.native_repeat_active)
 			engine_audio.sound_token_instance?.set_volume(new_volume)
 	engine_audio.start()
+
+/** Show exhaust on every nozzle that is actually delivering commanded thrust; called with the audio refresh. */
+/datum/stationtrauma_overmap/space/proc/refresh_engine_exhaust()
+	var/thrusting = vessel.engines_running && helm_engaged && !docked && (throttle || braking || maneuver_direction)
+	for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
+		engine.set_exhaust(thrusting && engine_output(engine) > 0)
 
 /** A remote seam also has listeners on the destination level; physical docking needs only one emission. */
 /datum/stationtrauma_overmap/space/proc/play_maneuver_audio(atom/remote, departing = FALSE)

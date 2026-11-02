@@ -41,6 +41,38 @@
 	. = ..()
 	var/obj/machinery/computer/ship_combustion/chamber = combustion_controller?.resolve()
 	chamber?.bind_propulsion()
+	bind_plasma_heaters()
+
+/** Plasma heaters have no controller, so each unfed nozzle looks for one directly behind it. */
+/obj/docking_port/mobile/stationtrauma_space/proc/bind_plasma_heaters()
+	for(var/obj/machinery/power/shuttle_engine/engine as anything in engine_list)
+		if(!engine.requires_combustion || engine.combustion_feed?.resolve())
+			continue
+		var/obj/machinery/atmospherics/components/unary/ship_engine_heater/plasma/heater = locate() in get_step(engine, REVERSE_DIR(engine.dir))
+		heater?.bind_nozzle(src)
+
+/** Whether any compartment still has equipment power; unpowered-by-design hulls always do. */
+/obj/docking_port/mobile/stationtrauma_space/proc/has_power()
+	for(var/area/ship_area as anything in shuttle_areas)
+		if(ship_area.powered(AREA_USAGE_EQUIP))
+			return TRUE
+	return FALSE
+
+/** Pilot fuel gauges: the combustion chamber's supply, otherwise the plasma heaters' supply; null for unfuelled drives. */
+/obj/docking_port/mobile/stationtrauma_space/proc/fuel_gauges()
+	var/obj/machinery/computer/ship_combustion/chamber = combustion_controller?.resolve()
+	if(chamber)
+		return chamber.fuel_reserve()
+	var/list/networks = list()
+	var/heaters = 0
+	for(var/obj/machinery/power/shuttle_engine/engine as anything in engine_list)
+		var/obj/machinery/atmospherics/components/unary/ship_engine_heater/plasma/heater = engine.combustion_feed?.resolve()
+		if(!istype(heater))
+			continue
+		heaters++
+		if(heater.parents[1])
+			networks |= heater.parents[1]
+	return heaters ? stationtrauma_fuel_gauges(networks, list(/datum/gas/plasma = "Плазма")) : null
 
 /obj/docking_port/mobile/stationtrauma_space/Destroy(force)
 	if(!force)

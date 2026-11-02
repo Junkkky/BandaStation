@@ -24,6 +24,10 @@
 #define SHIP_CHAMBER_LOCKED "locked"
 /// Nominal hot-gas temperature required for full nozzle power and a completed warm-up.
 #define SHIP_ENGINE_OPERATING_TEMPERATURE 1000
+/// Constant slight deceleration of every hull per second, so a dead ship does not drift forever.
+#define ST_SPACE_DRAG 0.01
+/// Powered emergency manoeuvring thrusters: a tenth of a full main-engine brake, per second.
+#define ST_SPACE_RCS_DECELERATION (5 / 150)
 
 /** Registers the space overmap module and its compile-time dependencies. */
 /datum/modpack/space_overmap

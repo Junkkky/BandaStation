@@ -1,6 +1,8 @@
 /** Mapped expedition area: Pocket Rocket. */
 /area/shuttle/stationtrauma_space/pocketrocket
 	name = "Pocket Rocket"
+	// Every compartment has an APC; the plasma heaters draw real ship power.
+	requires_power = TRUE
 
 /** Mapped expedition area: Pocket Rocket: рубка. */
 /area/shuttle/stationtrauma_space/pocketrocket/bridge

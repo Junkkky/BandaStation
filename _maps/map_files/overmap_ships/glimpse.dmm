@@ -626,7 +626,7 @@
 /area/shuttle/stationtrauma_space/glimpse/crew/canteen/kitchen)
 "os" = (
 /obj/machinery/power/shuttle_engine/propulsion{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -810,7 +810,7 @@
 /area/shuttle/stationtrauma_space/glimpse/hallway/central)
 "su" = (
 /obj/machinery/power/shuttle_engine/propulsion{
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/glimpse/engineering)

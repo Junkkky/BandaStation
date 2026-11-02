@@ -3,6 +3,7 @@ import {
   LabeledList,
   NoticeBox,
   NumberInput,
+  ProgressBar,
   Section,
   Stack,
   Table,
@@ -30,7 +31,7 @@ type Data = {
     max: number | null;
     unit: string | null;
   }[];
-  fuel: { tritium: number; oxygen: number };
+  fuel: { name: string; amount: number; capacity: number }[];
   engines: {
     id: string;
     number: number;
@@ -209,12 +210,20 @@ function Controls() {
               onChange={(value) => act('oxygen_ratio', { value })}
             />
           </LabeledList.Item>
-          <LabeledList.Item label="Запас трития">
-            {data.fuel?.tritium ?? '—'} моль
-          </LabeledList.Item>
-          <LabeledList.Item label="Запас кислорода">
-            {data.fuel?.oxygen ?? '—'} моль
-          </LabeledList.Item>
+          {data.fuel.map((gauge) => (
+            <LabeledList.Item key={gauge.name} label={`Запас: ${gauge.name}`}>
+              <ProgressBar
+                value={gauge.capacity ? gauge.amount / gauge.capacity : 0}
+                ranges={{
+                  good: [0.5, Infinity],
+                  average: [0.2, 0.5],
+                  bad: [-Infinity, 0.2],
+                }}
+              >
+                {gauge.amount} моль
+              </ProgressBar>
+            </LabeledList.Item>
+          ))}
         </LabeledList>
       </Section>
       {!!data.engines.length && (
