@@ -134,8 +134,8 @@
 
 	var/obj/item/organ/eyes/eyes = patient.get_organ_slot(ORGAN_SLOT_EYES)
 	var/obj/item/organ/brain = patient.get_organ_slot(ORGAN_SLOT_BRAIN)
-	var/obj/item/organ/zombie_infection/tumor = patient.get_organ_slot(ORGAN_SLOT_ZOMBIE) //this slot only ever holds zombie tumors, so we can just check if this exists
-	var/braaaainz = tumor?.causes_damage //prevents steath tumors (admin bullshittery or romerol) from showing up to preserve stealthiness
+	var/obj/item/organ/paradise_zombie_tumor/tumor = patient.get_organ_slot(ORGAN_SLOT_ZOMBIE)
+	var/braaaainz = !isnull(tumor)
 	if(!eyes)
 		to_chat(user, span_warning("[patient] doesn't have any eyes!"))
 		return

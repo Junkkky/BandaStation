@@ -182,7 +182,7 @@
 				render_list += "<span class='alert ml-1'>Субъект был превращён в хаска [conditional_tooltip("поглощением", "Необратимо. При обычных обстоятельствах оживление возможно только путём пересадки мозга.", tochat)].</span><br>"
 			else if(HAS_TRAIT_FROM(target, TRAIT_HUSK, SKELETON_TRAIT))
 				render_list += "<span class='alert ml-1'>Субъект был превращён в хаска вследствие значительной потери мягких тканей.</span><br>"
-			else if(HAS_TRAIT_FROM(target, TRAIT_HUSK, /datum/status_effect/zombie::id))
+			else if(HAS_TRAIT_FROM(target, TRAIT_HUSK, PARADISE_ZOMBIE_TRAIT))
 				render_list += "<span class='alert ml-1'>Subject has been husked by [conditional_tooltip("zombification", \
 					"Surgically remove the source of the infection, typically located in the head. If no source is found, it is otherwise irreparable.", tochat)].</span><br>"
 			else if(!HAS_TRAIT_FROM(target, TRAIT_HUSK, BURN)) // prioritize showing unknown causes over burns

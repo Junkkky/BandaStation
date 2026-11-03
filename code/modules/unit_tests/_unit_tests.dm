@@ -485,6 +485,13 @@
 
 #include "../../../modular_bandastation/objects/code/tests/lighter_lighting.dm"
 
+#include "../../../modular_bandastation/paradise_zombies/code/tests.dm"
+#include "../../../modular_bandastation/paradise_zombies/code/tests_core.dm"
+#include "../../../modular_bandastation/paradise_zombies/code/tests_combat.dm"
+#include "../../../modular_bandastation/paradise_zombies/code/tests_chemistry.dm"
+#include "../../../modular_bandastation/paradise_zombies/code/tests_talisman.dm"
+#include "../../../modular_bandastation/paradise_zombies/code/tests_legacy_diseases.dm"
+
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
 #undef TEST_ASSERT_NOTEQUAL

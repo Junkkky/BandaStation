@@ -118,26 +118,27 @@ ADMIN_VERB(everyone_random, R_SERVER, "Make Everyone Random", "Make everyone hav
 	CONFIG_SET(flag/force_random_names, TRUE)
 	BLACKBOX_LOG_ADMIN_VERB("Make Everyone Random")
 
-ADMIN_VERB(mass_zombie_infection, R_ADMIN, "Mass Zombie Infection", "Infects all humans with a latent organ that will zombify them on death.", ADMIN_CATEGORY_FUN)
-	var/confirm = tgui_alert(user, "Please confirm you want to add latent zombie organs in all humans?", "Confirm Zombies", list("Yes", "No"))
-	if(confirm != "Yes")
+ADMIN_VERB(mass_zombie_infection, R_ADMIN, "Mass Zombie Infection", "Infects the crew with the necrotizing plague.", ADMIN_CATEGORY_FUN)
+	var/confirm = tgui_alert(user, "Infect the crew with the necrotizing plague?", "Confirm Zombies", list("Yes", "No"))
+	if(confirm != "Yes" || !check_rights_for(user, R_ADMIN))
 		return
 
 	for(var/i in GLOB.human_list)
 		var/mob/living/carbon/human/H = i
-		new /obj/item/organ/zombie_infection/nodamage(H)
+		try_to_zombie_infect(H)
 
-	message_admins("[key_name_admin(user)] added a latent zombie infection to all humans.")
-	log_admin("[key_name(user)] added a latent zombie infection to all humans.")
+	message_admins("[key_name_admin(user)] infected the crew with the necrotizing plague.")
+	log_admin("[key_name(user)] infected the crew with the necrotizing plague.")
 	BLACKBOX_LOG_ADMIN_VERB("Mass Zombie Infection")
 
 ADMIN_VERB(mass_zombie_cure, R_ADMIN, "Mass Zombie Cure", "Removes the zombie infection from all humans, returning them to normal.", ADMIN_CATEGORY_FUN)
 	var/confirm = tgui_alert(user, "Please confirm you want to cure all zombies?", "Confirm Zombie Cure", list("Yes", "No"))
-	if(confirm != "Yes")
+	if(confirm != "Yes" || !check_rights_for(user, R_ADMIN))
 		return
 
-	for(var/obj/item/organ/zombie_infection/nodamage/I in GLOB.zombie_infection_list)
-		qdel(I)
+	for(var/mob/living/carbon/human/patient in GLOB.human_list)
+		for(var/datum/disease/paradise_zombie/infection in patient.diseases?.Copy())
+			qdel(infection)
 
 	message_admins("[key_name_admin(user)] cured all zombies.")
 	log_admin("[key_name(user)] cured all zombies.")

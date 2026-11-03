@@ -274,7 +274,7 @@
 				. += span_notice("<b><i>[t_He] выглядит абсолютно ужасно; вы можете осмотреть подробнее, чтобы разглядеть шрамы...</i></b>")
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
-		if(HAS_TRAIT_FROM(src, TRAIT_HUSK, /datum/status_effect/zombie::id))
+		if(HAS_TRAIT_FROM(src, TRAIT_HUSK, PARADISE_ZOMBIE_TRAIT))
 			. += span_warning("[t_His] skin has rotted into a sickly green color.") // future todo: lizards don't have skin, they have scales
 		else
 			. += span_warning("Это тело превратилось в гротескную шелуху.")
