@@ -312,6 +312,7 @@
 #include "outfit_sanity.dm"
 #include "overmap_docking.dm"
 #include "overmap_passage.dm"
+#include "overmap_planet.dm"
 #include "overmap_power.dm"
 #include "overmap_preview.dm"
 #include "oxyloss_suffocation.dm"

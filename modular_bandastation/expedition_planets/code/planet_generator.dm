@@ -202,10 +202,6 @@
 			// Rock between cave pockets keeps the mountain mineable.
 			if(edge > 1 || (mountain && text2num(rustg_noise_get_at_coordinates("[seed + (cave_level ? 6000000 : 3000000)]", "[x / 8]", "[y / 8]")) > 0.5))
 				terrain = rock_type
-		// Clearings under ladders and drops are cave floor kept free of flora and fauna.
-		else if(cave_level)
-			var/datum/biome/clearing_biome = biome_at(x, y, TRUE)
-			terrain = clearing_biome.open_turf_type
 		var/turf/generated = tile.ChangeTurf(terrain, floor_type, CHANGETURF_IGNORE_AIR)
 		if(ismineralturf(generated))
 			prepare_rock(generated)
@@ -322,7 +318,7 @@
 		var/x = rand(8, width - 8)
 		var/y = rand(8, width - 8)
 		var/turf/tile = locate(origin_x + x - 1, origin_y + y - 1, surface_bottom.z)
-		if(!isopenturf(tile) || tile.loc != surface || is_reserved(x, y) || LAZYACCESS(feature_turfs, tile) || tile.is_blocked_turf(TRUE))
+		if(!isopenturf(tile) || isgroundlessturf(tile) || tile.loc != surface || is_reserved(x, y) || LAZYACCESS(feature_turfs, tile) || tile.is_blocked_turf(TRUE))
 			continue
 		var/near = FALSE
 		for(var/list/point as anything in connector_points)
@@ -344,7 +340,7 @@
 	// Research sources wait in open pockets away from the connectors and features.
 	var/list/pockets = list()
 	for(var/turf/open/tile in cave_turfs)
-		if(tile.loc == caves_area && !LAZYACCESS(feature_turfs, tile) && !in_clearing(tile.x - origin_x + 1, tile.y - origin_y + 1) && !tile.is_blocked_turf(TRUE))
+		if(tile.loc == caves_area && !isgroundlessturf(tile) && !LAZYACCESS(feature_turfs, tile) && !in_clearing(tile.x - origin_x + 1, tile.y - origin_y + 1) && !tile.is_blocked_turf(TRUE))
 			pockets += tile
 	for(var/index in 1 to min(cave_source_count, length(pockets)))
 		new source_type(pick_n_take(pockets))
