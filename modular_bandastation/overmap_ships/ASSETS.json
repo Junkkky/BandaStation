@@ -1,6 +1,6 @@
 {
 	"version": 1,
-	"scope": "Maps of ships flown on the space overmap, introduced or modified by the overmap_ships module. Embedded code and existing referenced assets retain their original notices.",
+	"scope": "Maps of ships flown on the space overmap and their mapper area icons, introduced or modified by the overmap_ships module. Embedded code and existing referenced assets retain their original notices.",
 	"assets": [
 		{
 			"path": "_maps/map_files/overmap_ships/pocketrocket.dmm",
@@ -20,7 +20,7 @@
 		},
 		{
 			"path": "_maps/map_files/overmap_ships/raven.dmm",
-			"sha256": "5c43be338638431254a55c3e183fac09012945952d1ce62657b3c4bafdfcf516",
+			"sha256": "9abd2ae6e0d8a12d9cea25382c6ce7a4effb1d5b535e7aa7665c668a5a738aca",
 			"license": "CC-BY-SA-3.0",
 			"authors": [
 				"TG, BandaStation and Primera contributors",
@@ -34,7 +34,7 @@
 				"sha256": "92cea4ce13f09b84782d96f7339fc6738e5ef18d6a9e7b58771a0ff2277f599b",
 				"license_policy_url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/README.md"
 			},
-			"changes": "Reworked Raven layout with a tritium combustion chamber, gas-fed nozzles and overmap equipment; original Raven attribution retained.",
+			"changes": "Reworked Raven layout with a tritium combustion chamber, gas-fed nozzles, overmap equipment and per-compartment areas; original Raven attribution retained.",
 			"byte_identical": false
 		},
 		{
@@ -100,6 +100,14 @@
 			},
 			"changes": "Adapted ship layout; helm, engines and docking port replaced with overmap navigation, native engines and an overmap mobile port, cargo console replaced with the bluespace console, transponder added; incompatible entities, area IDs, equipment, loot, ship turrets and inhabitants replaced with local types or dropped.",
 			"byte_identical": false
+		},
+		{
+			"path": "modular_bandastation/overmap_ships/icons/raven_areas.dmi",
+			"sha256": "1a2bdb829c087a465ae6cbdfcb8a8a084dba7aea5fb2dabc9cba45111a154eca",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["StationTrauma / BandaStation contributors"],
+			"source": null,
+			"changes": "Original mapper-only area icons for Raven compartments."
 		}
 	]
 }

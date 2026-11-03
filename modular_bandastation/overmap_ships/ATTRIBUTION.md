@@ -31,6 +31,10 @@
 Изолированы area и управляющие ID. На кораблях добавлены навигация, транспондеры,
 терминалы переходов и порты.
 
+`modular_bandastation/overmap_ships/icons/raven_areas.dmi` — собственная работа
+StationTrauma / BandaStation contributors, CC BY-SA 3.0: иконки отсеков Raven,
+видимые только в маппере.
+
 ## Корабли Celadon
 
 | Локальный файл | Источник CeladonSS13/Shiptest |
