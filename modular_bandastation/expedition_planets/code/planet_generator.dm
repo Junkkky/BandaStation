@@ -230,11 +230,15 @@
 	if(rock_color)
 		rock.color = rock_color
 
-/** Swap template placeholder ground and rock for this profile's types and move carrier tiles into the planet surface area. */
+/**
+ * Swap template placeholder ground and rock for this profile's types and move carrier tiles into the planet surface area.
+ *
+ * Open ground mapped inside a ruin's own area joins the surface too, so it shares the sky light instead of staying dark.
+ */
 /datum/map_generator/expedition_barren/proc/adapt_template_turfs(list/turfs, area/surface)
 	for(var/turf/tile as anything in turfs)
 		var/area/tile_area = tile.loc
-		if(tile_area.type == /area/expedition_planet/barren && tile_area != surface)
+		if(tile_area != surface && (tile_area.type == /area/expedition_planet/barren || istype(tile, /turf/open/misc)))
 			tile.change_area(tile_area, surface)
 		if(tile.type == /turf/open/misc/asteroid/airless && floor_type != tile.type)
 			tile.ChangeTurf(floor_type, floor_type, CHANGETURF_IGNORE_AIR)
