@@ -3,7 +3,7 @@
 /turf/closed/mineral/iron,
 /area/stationtrauma_space_site/asteroid)
 "nk" = (
-/turf/open/space,
+/turf/open/space/basic,
 /area/space)
 "rM" = (
 /turf/closed/mineral/titanium,
