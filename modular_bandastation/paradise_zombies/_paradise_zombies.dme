@@ -15,3 +15,8 @@
 #include "code/antagonist.dm"
 #include "code/admin.dm"
 #include "code/talisman.dm"
+#include "code/mutation_forms.dm"
+#include "code/mutation_progression.dm"
+#include "code/mutation_body.dm"
+#include "code/mutation_abilities.dm"
+#include "code/mutation_controller.dm"

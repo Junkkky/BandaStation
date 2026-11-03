@@ -1,0 +1,306 @@
+#ifdef UNIT_TESTS
+
+/// Fixed armour and integrity isolate a real window attack from unrelated breakage thresholds.
+/datum/armor/paradise_zombie_mutation_test
+
+/obj/structure/window/paradise_zombie_mutation_test
+	max_integrity = 500
+	armor_type = /datum/armor/paradise_zombie_mutation_test
+
+/// Common ability fixtures still use the production infection, claims, controller and granted actions.
+/datum/unit_test/paradise_zombie_mutation_ability_test
+	parent_type = /datum/unit_test/paradise_zombie_mutation_test
+	abstract_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+
+/datum/unit_test/paradise_zombie_mutation_ability_test/proc/extend_claws(mob/living/carbon/human/host)
+	var/datum/action/cooldown/paradise_zombie_claws/action = locate() in host.actions
+	TEST_ASSERT_NOTNULL(action, "A real mutant did not retain its Paradise claw action.")
+	TEST_ASSERT(action.Trigger(host), "A real mutant could not extend its claws.")
+	var/obj/item/paradise_zombie_claw/claws = host.get_active_held_item()
+	TEST_ASSERT(istype(claws), "The claw action did not produce its actual weapon.")
+	return claws
+
+/// A real claw chain verifies Beta weakening, repeated attacks, barrier damage and form cleanup.
+/datum/unit_test/paradise_zombie_mutation_claw_effects
+	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+
+/datum/unit_test/paradise_zombie_mutation_claw_effects/Run()
+	var/mob/living/carbon/human/host = make_mutant("brute")
+	TEST_ASSERT_NOTNULL(host, "The Brute fixture was not created.")
+	host.set_combat_mode(TRUE)
+	host.zone_selected = BODY_ZONE_CHEST
+	var/obj/item/paradise_zombie_claw/claws = extend_claws(host)
+	TEST_ASSERT_NOTNULL(claws, "The Brute fixture could not extend claws.")
+	TEST_ASSERT_NOTNULL(claws.GetComponent(/datum/component/paradise_zombie_mutation_claws), "Claw creation did not attach the actual mutation modifier.")
+	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
+	victim.forceMove(get_step(host, EAST))
+	ADD_TRAIT(victim, TRAIT_NEVER_WOUNDED, TRAIT_GENERIC)
+	var/obj/item/bodypart/chest/protected_chest = victim.get_bodypart(BODY_ZONE_CHEST)
+	claws.add_infection_bleeding(victim, protected_chest)
+	TEST_ASSERT_EQUAL(length(protected_chest.wounds), 0, "Infection bleeding installed a wound on a wound-immune limb.")
+	claws.melee_attack_chain(host, victim, list())
+	var/normal_force = claws.force
+	TEST_ASSERT(abs(normal_force - 31.5) < 0.001, "Brute claws did not apply their actual heavy force.")
+	host.reagents.add_reagent(/datum/reagent/medicine/paradise_zombie_cure/beta, 2)
+	claws.melee_attack_chain(host, victim, list())
+	TEST_ASSERT(abs(claws.force - 15) < 0.001, "Mutation force bypassed Paradise's Beta weakening.")
+	claws.melee_attack_chain(host, victim, list())
+	TEST_ASSERT(abs(claws.force - 15) < 0.001, "Repeated pre-attack signals compounded the mutation multiplier.")
+	var/obj/structure/window/paradise_zombie_mutation_test/barrier = allocate(/obj/structure/window/paradise_zombie_mutation_test, get_step(host, NORTH))
+	var/integrity_before = barrier.get_integrity()
+	claws.melee_attack_chain(host, barrier, list())
+	TEST_ASSERT(abs(integrity_before - barrier.get_integrity() - 75) < 0.001, "A real window attack lost either Beta-weakened force or Brute's barrier-breaking bonus.")
+	var/datum/component/paradise_zombie_mutation/controller = host.GetComponent(/datum/component/paradise_zombie_mutation)
+	controller.clear_form()
+	TEST_ASSERT_NULL(claws.GetComponent(/datum/component/paradise_zombie_mutation_claws), "Clearing a form retained its heavy-claw modifier.")
+	TEST_ASSERT_EQUAL(claws.force, 10, "Removing the modifier did not restore the current Beta-weakened force.")
+
+/// Movement uses a real capped throw, and an actual cure removes a second in-flight dash.
+/datum/unit_test/paradise_zombie_mutation_dash_cleanup
+	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+
+/datum/unit_test/paradise_zombie_mutation_dash_cleanup/Run()
+	var/mob/living/carbon/human/host = make_mutant("twitcher")
+	TEST_ASSERT_NOTNULL(host, "The Twitcher fixture was not created.")
+	var/datum/action/cooldown/paradise_zombie_mutation/dash/action = locate() in host.actions
+	TEST_ASSERT_NOTNULL(action, "Twitcher did not receive its real dash action.")
+	var/turf/start = get_turf(host)
+	var/turf/destination = locate(start.x + 6, start.y, start.z)
+	TEST_ASSERT(action.Trigger(host, target = destination), "The dash action rejected a valid distant target.")
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(!host.throwing || world.time >= deadline)
+	TEST_ASSERT_NULL(host.throwing, "The capped dash never ended.")
+	TEST_ASSERT_EQUAL(get_dist(start, host), 3, "The dash did not stop at its promised three-tile range.")
+	TEST_ASSERT_EQUAL(host.get_brute_loss(), 0, "The gentle dash damaged its caster.")
+	// An unbraced zero-gravity body must stop too, rather than gaining a native landing drift.
+	host.AddElement(/datum/element/forced_gravity, 0)
+	ADD_TRAIT(host, TRAIT_NOGRAV_ALWAYS_DRIFT, TRAIT_GENERIC)
+	TEST_ASSERT(!host.has_gravity() && !host.Process_Spacemove(NORTH, continuous_move = TRUE), "The zero-gravity dash fixture can still brace itself or has gravity.")
+	action.ResetCooldown()
+	start = get_turf(host)
+	destination = locate(host.x, host.y + 6, host.z)
+	TEST_ASSERT(action.Trigger(host, target = destination), "The dash could not launch in genuine zero gravity.")
+	deadline = world.time + 5 SECONDS
+	UNTIL(!host.throwing || world.time >= deadline)
+	TEST_ASSERT_NULL(host.throwing, "The zero-gravity dash never finalized.")
+	TEST_ASSERT_EQUAL(get_dist(start, host), 3, "The zero-gravity dash moved past its three-tile flight boundary.")
+	TEST_ASSERT_NULL(host.drift_handler, "The finished dash created a native inertial drift beyond its range.")
+	var/turf/landing = get_turf(host)
+	sleep(1 SECONDS)
+	TEST_ASSERT_EQUAL(get_turf(host), landing, "The zero-gravity caster drifted away after its dash ended.")
+	TEST_ASSERT(host.newtonian_move(dir2angle(EAST)), "A finished dash suppressed a later unrelated inertial impulse.")
+	TEST_ASSERT_NOTNULL(host.drift_handler, "A later external impulse did not create its normal native drift handler.")
+	QDEL_NULL(host.drift_handler)
+	host.RemoveElement(/datum/element/forced_gravity, 0)
+	REMOVE_TRAIT(host, TRAIT_NOGRAV_ALWAYS_DRIFT, TRAIT_GENERIC)
+	action.ResetCooldown()
+	destination = get_step(host, NORTH)
+	TEST_ASSERT(action.Trigger(host, target = destination), "The cleanup fixture could not start a second dash.")
+	var/datum/thrownthing/flight = host.throwing
+	TEST_ASSERT_NOTNULL(flight, "The deferred dash did not install a real throw datum.")
+	var/datum/disease/paradise_zombie/infection = locate() in host.diseases
+	infection.cure()
+	TEST_ASSERT(QDELETED(action) && QDELETED(flight), "Curing a mutant retained its dash action or in-flight effect.")
+	TEST_ASSERT_NULL(host.throwing, "Cure left a stale throwing state on the former mutant.")
+	TEST_ASSERT(host.Move(get_step(host, WEST), WEST), "The removed dash left a movement-blocking signal on its former caster.")
+
+/// Actual collision attacks once, while an empty landing really applies and then removes the miss penalty.
+/datum/unit_test/paradise_zombie_mutation_pounce
+	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+	var/knockdown_duration = 0
+
+/datum/unit_test/paradise_zombie_mutation_pounce/proc/on_knockdown(mob/living/source, amount)
+	SIGNAL_HANDLER
+	knockdown_duration = amount
+
+/datum/unit_test/paradise_zombie_mutation_pounce/Run()
+	var/mob/living/carbon/human/host = make_mutant("hunter")
+	TEST_ASSERT_NOTNULL(host, "The Hunter fixture was not created.")
+	host.set_combat_mode(TRUE)
+	var/obj/item/paradise_zombie_claw/claws = extend_claws(host)
+	TEST_ASSERT_NOTNULL(claws, "The Hunter fixture could not extend claws.")
+	var/datum/action/cooldown/paradise_zombie_mutation/dash/pounce/action = locate() in host.actions
+	TEST_ASSERT_NOTNULL(action, "Hunter did not receive its real ambush action.")
+	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
+	victim.forceMove(locate(host.x + 3, host.y, host.z))
+	ADD_TRAIT(victim, TRAIT_NEVER_WOUNDED, TRAIT_GENERIC)
+	RegisterSignal(victim, COMSIG_LIVING_STATUS_KNOCKDOWN, PROC_REF(on_knockdown))
+	TEST_ASSERT(action.Trigger(host, target = victim), "The pounce action rejected its real victim.")
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(!host.throwing || world.time >= deadline)
+	TEST_ASSERT_NULL(host.throwing, "The enemy pounce never finished.")
+	var/raw_damage = 0
+	for(var/obj/item/bodypart/limb as anything in victim.get_bodyparts())
+		raw_damage += limb.brute_dam
+	TEST_ASSERT(abs(raw_damage - 18.9) < 0.001, "A pounce did not deliver exactly one actual Hunter claw attack.")
+	TEST_ASSERT_EQUAL(knockdown_duration, 1 SECONDS, "A successful ambush did not apply its one-second knockdown.")
+	TEST_ASSERT(!host.has_status_effect(/datum/status_effect/paradise_zombie_mutation_exposed), "A successful pounce incorrectly applied the miss penalty.")
+	UnregisterSignal(victim, COMSIG_LIVING_STATUS_KNOCKDOWN)
+	victim.forceMove(run_loc_floor_top_right)
+	action.ResetCooldown()
+	TEST_ASSERT(action.Trigger(host, target = locate(host.x, host.y + 3, host.z)), "The miss fixture could not launch toward an empty tile.")
+	deadline = world.time + 5 SECONDS
+	UNTIL(!host.throwing || world.time >= deadline)
+	TEST_ASSERT_NULL(host.throwing, "The empty pounce never finished.")
+	TEST_ASSERT(host.has_status_effect(/datum/status_effect/paradise_zombie_mutation_exposed), "Missing an ambush did not actually expose the Hunter.")
+	TEST_ASSERT(host.has_movespeed_modifier(/datum/movespeed_modifier/paradise_zombie_mutation_exposed), "The miss penalty did not actually slow movement.")
+	var/obj/item/bodypart/chest/chest = host.get_bodypart(BODY_ZONE_CHEST)
+	var/damage_before = chest.brute_dam
+	host.apply_damage(8, BRUTE, BODY_ZONE_CHEST, wound_bonus = CANT_WOUND)
+	TEST_ASSERT(abs(chest.brute_dam - damage_before - 10) < 0.001, "The miss penalty did not increase actual incoming brute damage by twenty-five percent.")
+	deadline = world.time + 4 SECONDS
+	UNTIL(!host.has_status_effect(/datum/status_effect/paradise_zombie_mutation_exposed) || world.time >= deadline)
+	TEST_ASSERT(!host.has_status_effect(/datum/status_effect/paradise_zombie_mutation_exposed), "The miss vulnerability did not expire.")
+	TEST_ASSERT(!host.has_movespeed_modifier(/datum/movespeed_modifier/paradise_zombie_mutation_exposed), "The expired miss penalty retained its movement modifier.")
+	damage_before = chest.brute_dam
+	host.apply_damage(8, BRUTE, BODY_ZONE_CHEST, wound_bonus = CANT_WOUND)
+	TEST_ASSERT(abs(chest.brute_dam - damage_before - 8) < 0.001, "The expired miss penalty retained its damage multiplier.")
+
+/// A real projectile passes allies, leaves washable timed bile, and cure destroys remaining world effects.
+/datum/unit_test/paradise_zombie_mutation_bile_lifecycle
+	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+
+/datum/unit_test/paradise_zombie_mutation_bile_lifecycle/Run()
+	var/mob/living/carbon/human/host = make_mutant("spitter")
+	TEST_ASSERT_NOTNULL(host, "The Spitter fixture was not created.")
+	var/datum/action/cooldown/paradise_zombie_mutation/bile/action = locate() in host.actions
+	TEST_ASSERT_NOTNULL(action, "Spitter did not receive its real bile action.")
+	var/mob/living/carbon/human/friend = make_zombie(locate(host.x + 2, host.y, host.z))
+	TEST_ASSERT_NOTNULL(friend, "The friendly-fire fixture was not created.")
+	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
+	victim.forceMove(locate(host.x + 4, host.y, host.z))
+	TEST_ASSERT(isopenturf(get_turf(victim)), "The bile fixture put its victim inside a closed turf instead of on a floor.")
+	var/friendly_damage_before = friend.get_fire_loss()
+	TEST_ASSERT(action.Trigger(host, target = victim), "The bile action did not launch its projectile.")
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(victim.get_fire_loss() > 0 || world.time >= deadline)
+	TEST_ASSERT(victim.get_fire_loss() > 0, "The actual bile projectile never damaged its intended enemy.")
+	TEST_ASSERT_EQUAL(friend.get_fire_loss(), friendly_damage_before, "A bile projectile damaged the allied zombie in its flight path.")
+	var/obj/effect/decal/cleanable/paradise_zombie_bile/puddle = locate() in get_turf(victim)
+	TEST_ASSERT_NOTNULL(puddle, "The real projectile impact left no visible bile residue.")
+	TEST_ASSERT(victim.has_status_effect(/datum/status_effect/paradise_zombie_mutation_bile_slow), "Standing on actual bile did not slow the enemy.")
+	TEST_ASSERT(victim.has_movespeed_modifier(/datum/movespeed_modifier/paradise_zombie_mutation_bile), "Bile's status did not apply its real movement modifier.")
+	TEST_ASSERT_NULL(puddle.decal_reagent, "Hostile bile became a farmable reagent source.")
+	var/expiry = puddle.expiry_timer
+	TEST_ASSERT(timeleft(expiry) > 0, "Bile did not own an active expiry timer.")
+	puddle.wash(CLEAN_TYPE_LIGHT_DECAL)
+	TEST_ASSERT(QDELETED(puddle), "Ordinary cleaning could not wash away the hostile bile.")
+	TEST_ASSERT_NULL(timeleft(expiry), "Cleaning bile left a timer retaining its deleted world object.")
+
+	victim.forceMove(locate(host.x + 4, host.y + 2, host.z))
+	action.ResetCooldown()
+	TEST_ASSERT(action.Trigger(host, target = victim), "The second bile shot did not launch.")
+	deadline = world.time + 5 SECONDS
+	UNTIL((locate(/obj/effect/decal/cleanable/paradise_zombie_bile) in get_turf(victim)) || world.time >= deadline)
+	puddle = locate() in get_turf(victim)
+	TEST_ASSERT_NOTNULL(puddle, "The cleanup fixture never produced its second bile puddle.")
+	expiry = puddle.expiry_timer
+	action.ResetCooldown()
+	TEST_ASSERT(action.Trigger(host, target = locate(host.x + 6, host.y + 3, host.z)), "The cleanup fixture could not launch a still-flying third shot.")
+	var/obj/projectile/paradise_zombie_bile/in_flight = locate() in action.owned_effects
+	TEST_ASSERT_NOTNULL(in_flight, "The action did not retain its actual in-flight projectile.")
+	var/datum/disease/paradise_zombie/infection = locate() in host.diseases
+	infection.cure()
+	TEST_ASSERT(QDELETED(action) && QDELETED(puddle) && QDELETED(in_flight), "Cure retained a mutation action, projectile or hostile puddle.")
+	TEST_ASSERT_NULL(timeleft(expiry), "Cure left a live expiry timer for its deleted bile.")
+	deadline = world.time + 4 SECONDS
+	UNTIL(!victim.has_status_effect(/datum/status_effect/paradise_zombie_mutation_bile_slow) || world.time >= deadline)
+	TEST_ASSERT(!victim.has_movespeed_modifier(/datum/movespeed_modifier/paradise_zombie_mutation_bile), "The final contact's natural three-second residue never expired after cure.")
+
+/// Overlapping pools keep independent ownership instead of merging into the first caster's residue.
+/datum/unit_test/paradise_zombie_mutation_bile_two_sources
+	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+
+/datum/unit_test/paradise_zombie_mutation_bile_two_sources/Run()
+	var/mob/living/carbon/human/first = make_mutant("spitter")
+	TEST_ASSERT_NOTNULL(first, "The first Spitter fixture was not created.")
+	var/mob/living/carbon/human/second = make_zombie(get_step(first, NORTH))
+	TEST_ASSERT_NOTNULL(second, "The second Spitter fixture was not created.")
+	var/datum/component/paradise_zombie_mutation/controller = second.GetComponent(/datum/component/paradise_zombie_mutation)
+	TEST_ASSERT(controller.apply_form("spitter"), "The real outbreak rejected its permitted second special-form slot.")
+	var/datum/action/cooldown/paradise_zombie_mutation/bile/first_action = locate() in first.actions
+	var/datum/action/cooldown/paradise_zombie_mutation/bile/second_action = locate() in second.actions
+	TEST_ASSERT_NOTNULL(first_action, "The first caster lacks its bile action.")
+	TEST_ASSERT_NOTNULL(second_action, "The second caster lacks its bile action.")
+	var/turf/tile = get_step(first, EAST)
+	var/obj/effect/decal/cleanable/paradise_zombie_bile/first_pool = new(tile, first_action)
+	first_action.track_effect(first_pool)
+	var/obj/effect/decal/cleanable/paradise_zombie_bile/second_pool = new(tile, second_action)
+	second_action.track_effect(second_pool)
+	TEST_ASSERT(!QDELETED(first_pool) && !QDELETED(second_pool), "Native decal merging discarded one caster's independently owned residue.")
+	var/second_expiry = second_pool.expiry_timer
+	var/datum/disease/paradise_zombie/infection = locate() in first.diseases
+	infection.cure()
+	TEST_ASSERT(QDELETED(first_pool), "Cure did not clean its own caster's pool.")
+	TEST_ASSERT(!QDELETED(second_pool) && timeleft(second_expiry) > 0, "Curing the first caster removed or untimed the second caster's overlapping pool.")
+	second_pool.wash(CLEAN_TYPE_LIGHT_DECAL)
+	TEST_ASSERT(QDELETED(second_pool), "The independent second pool could not be washed off.")
+	TEST_ASSERT_NULL(timeleft(second_expiry), "Cleaning the second pool retained its timer.")
+
+/// A shot at the exposed original target reaches a non-dense nodule sharing the caster's tile.
+/datum/unit_test/paradise_zombie_mutation_nodule_counterplay
+	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+
+/datum/unit_test/paradise_zombie_mutation_nodule_counterplay/Run()
+	var/mob/living/carbon/human/host = make_mutant("exploder")
+	TEST_ASSERT_NOTNULL(host, "The Exploder fixture was not created.")
+	// Restore a real windup window instead of the consistent fixture's instant do_after modifier.
+	host.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/base, multiplicative_slowdown = 0.1)
+	var/datum/action/cooldown/paradise_zombie_mutation/explode/action = locate() in host.actions
+	TEST_ASSERT_NOTNULL(action, "Exploder did not receive its detonation action.")
+	var/mob/living/carbon/human/shooter = allocate(/mob/living/carbon/human/consistent)
+	shooter.forceMove(locate(host.x + 2, host.y, host.z))
+	INVOKE_ASYNC(action, TYPE_PROC_REF(/datum/action/cooldown, Trigger), host)
+	var/obj/structure/paradise_zombie_mutation_nodule/nodule = action.nodule
+	TEST_ASSERT_NOTNULL(nodule, "The real detonation windup did not expose its targetable nodule.")
+	TEST_ASSERT_EQUAL(get_turf(nodule), get_turf(host), "The targetable nodule was detached from the caster's location.")
+	var/health_before = host.get_brute_loss()
+	var/obj/projectile/bullet/shot = allocate(/obj/projectile/bullet, get_turf(shooter))
+	shot.firer = shooter
+	shot.original = nodule
+	shot.aim_projectile(nodule, get_turf(shooter))
+	shot.fire()
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(QDELETED(nodule) || world.time >= deadline)
+	TEST_ASSERT(QDELETED(nodule), "A real projectile could not hit and destroy the non-dense nodule above its caster.")
+	TEST_ASSERT(action.ruptured, "Destroying the real nodule did not invalidate the windup.")
+	TEST_ASSERT_EQUAL(host.get_brute_loss() - health_before, 40, "Shooting the nodule did not deal its actual forty damage to the host.")
+	deadline = world.time + 5 SECONDS
+	UNTIL(!action.priming || world.time >= deadline)
+	TEST_ASSERT(host.stat != DEAD, "A ruptured nodule still allowed the suicide blast to execute.")
+	TEST_ASSERT(action.next_use_time > world.time, "Nodule counterplay refunded the attempted detonation's cooldown.")
+	TEST_ASSERT_EQUAL(length(action.owned_effects), 0, "Interrupted detonation retained its exposed weak point.")
+
+/// Completing the real telegraph harms enemies, spares infected allies and leaves an ordinary curable corpse.
+/datum/unit_test/paradise_zombie_mutation_detonation
+	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+
+/datum/unit_test/paradise_zombie_mutation_detonation/Run()
+	var/mob/living/carbon/human/host = make_mutant("exploder")
+	TEST_ASSERT_NOTNULL(host, "The detonation fixture was not created.")
+	host.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/base, multiplicative_slowdown = 0.1)
+	var/datum/action/cooldown/paradise_zombie_mutation/explode/action = locate() in host.actions
+	TEST_ASSERT_NOTNULL(action, "The real Exploder action was not granted.")
+	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
+	victim.forceMove(get_step(host, NORTH))
+	var/mob/living/carbon/human/friend = make_zombie(locate(host.x + 1, host.y + 1, host.z))
+	TEST_ASSERT_NOTNULL(friend, "The blast's allied-zombie fixture was not created.")
+	var/mob/living/carbon/human/sheltered = allocate(/mob/living/carbon/human/consistent)
+	sheltered.forceMove(locate(host.x + 2, host.y, host.z))
+	var/obj/machinery/door/airlock/glass/cover = allocate(/obj/machinery/door/airlock/glass, get_step(host, EAST))
+	TEST_ASSERT(cover.density && !cover.opacity, "The cover fixture is not a real closed, transparent glass airlock.")
+	TEST_ASSERT(sheltered in view(2, host), "The glass-cover fixture is already excluded by visibility and would not exercise physical cover.")
+	var/friendly_damage_before = friend.get_brute_loss()
+	TEST_ASSERT(action.Trigger(host), "The real detonation did not complete its windup.")
+	TEST_ASSERT(victim.get_brute_loss() > 0, "The completed blast did not actually injure its adjacent enemy.")
+	TEST_ASSERT_EQUAL(friend.get_brute_loss(), friendly_damage_before, "The blast injured an allied zombie.")
+	TEST_ASSERT_EQUAL(sheltered.get_brute_loss(), 0, "The blast travelled through an intact closed glass airlock.")
+	TEST_ASSERT(!sheltered.IsKnockdown(), "The blast knocked down a victim behind physical cover.")
+	TEST_ASSERT_NULL(locate(/datum/disease/paradise_zombie) in sheltered.diseases, "The blast transmitted infection through its closed glass cover.")
+	TEST_ASSERT(!QDELETED(host) && host.stat == DEAD, "The blast did not leave its caster as an ordinary dead body.")
+	TEST_ASSERT_NOTNULL(host.get_organ_slot(ORGAN_SLOT_BRAIN), "The blast bypassed ordinary revival/cure by destroying the caster's brain.")
+	TEST_ASSERT_NOTNULL(locate(/datum/disease/paradise_zombie) in host.diseases, "The blast erased the body's underlying Paradise infection.")
+	TEST_ASSERT_NULL(action.nodule, "A completed blast retained its windup-only nodule.")
+	TEST_ASSERT_EQUAL(length(action.owned_effects), 0, "The dead Exploder retained owned world effects.")
+
+#endif

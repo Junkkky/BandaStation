@@ -333,7 +333,7 @@
 		break
 	if(!bleeding)
 		bleeding = affecting.force_wound_upwards(/datum/wound/slash/flesh/moderate, wound_source = src)
-	if(bleeding)
+	if(!QDELETED(bleeding) && bleeding.limb == affecting && bleeding.victim == target)
 		bleeding.set_blood_flow(bleeding.blood_flow + max(0, desired_rate - target.get_bleed_rate()))
 
 /// Ripping a skull takes three uninterrupted seconds and remains tied to the held claws and original brain.

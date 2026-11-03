@@ -48,6 +48,7 @@
 	COOLDOWN_START(src, stage_timer, 1 MINUTES)
 	if(instant_zombie)
 		stage = 8
+	GLOB.paradise_zombie_mutation_progression.note_infection(affected_mob)
 
 /datum/disease/paradise_zombie/Destroy()
 	if(affected_mob && !clearing_infection && !QDELETED(affected_mob))
@@ -203,6 +204,8 @@
 			antagonist.chosen_disease = plague_disease
 			antagonist.silent = TRUE
 		host.mind.add_antag_datum(antagonist)
+	if(GLOB.paradise_zombie_mutation_progression.is_mature_zombie(host) && !host.GetComponent(/datum/component/paradise_zombie_mutation))
+		host.AddComponent(/datum/component/paradise_zombie_mutation)
 	return TRUE
 
 /** Remembers exposure to an anti-plague sequence in the body and updates this strain's research name. */
@@ -229,6 +232,7 @@
 	var/mob/living/carbon/human/host = affected_mob
 	if(!istype(host) || QDELETED(host))
 		return
+	qdel(host.GetComponent(/datum/component/paradise_zombie_mutation))
 	for(var/obj/item/paradise_zombie_claw/claw in host.get_held_items())
 		qdel(claw)
 	host.mind?.remove_antag_datum(/datum/antagonist/wizard_minion/paradise_plague_zombie)

@@ -491,6 +491,10 @@
 #include "../../../modular_bandastation/paradise_zombies/code/tests_chemistry.dm"
 #include "../../../modular_bandastation/paradise_zombies/code/tests_talisman.dm"
 #include "../../../modular_bandastation/paradise_zombies/code/tests_legacy_diseases.dm"
+#include "../../../modular_bandastation/paradise_zombies/code/tests_mutations.dm"
+#include "../../../modular_bandastation/paradise_zombies/code/tests_mutation_body.dm"
+#include "../../../modular_bandastation/paradise_zombies/code/tests_mutation_progression.dm"
+#include "../../../modular_bandastation/paradise_zombies/code/tests_mutation_abilities.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
