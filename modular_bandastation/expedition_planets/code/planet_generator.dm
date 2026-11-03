@@ -46,8 +46,8 @@
 	var/wildlife = FALSE
 	/// Fauna density multiplier from modifiers, applied to this planet's own biome copies.
 	var/fauna_multiplier = 1
-	/// Spawner types rolled by modifiers, each placed once or twice by [/datum/map_generator/expedition_barren/proc/place_nests].
-	var/list/nest_types = list()
+	/// Applied modifiers placing surface objects through [/datum/map_generator/expedition_barren/proc/place_nests].
+	var/list/datum/expedition_planet_modifier/nests = list()
 	/// This planet's biome copies by type, so modifier densities never reach other planets.
 	var/list/biomes
 	/// Z-level trait of the profile's periodic storm weather, if it has one.
@@ -395,19 +395,23 @@
 /** Celadon planetary biome; its open turf must carry the atmosphere of every planet that uses it. */
 /datum/biome/expedition
 
-/** Place each rolled nest once or twice on free open ground, outside the camp's fauna clearance and its access corridors. */
+/** Place each rolled modifier's objects on free open ground, outside the camp's fauna clearance and its access corridors. */
 /datum/map_generator/expedition_barren/proc/place_nests(turf/bottom)
-	for(var/nest_type in nest_types)
-		for(var/count in 1 to rand(1, 2))
+	for(var/datum/expedition_planet_modifier/modifier as anything in nests)
+		var/list/patch
+		for(var/count in 1 to rand(modifier.nest_count[1], modifier.nest_count[2]))
 			for(var/attempt in 1 to 30)
-				var/x = rand(4, width - 3)
-				var/y = rand(4, width - 3)
-				if(is_reserved(x, y) || (x < camp_x + camp_width + fauna_clearance && y < camp_y + camp_height + fauna_clearance))
+				var/x = patch ? patch[1] + rand(-modifier.nest_cluster, modifier.nest_cluster) : rand(4, width - 3)
+				var/y = patch ? patch[2] + rand(-modifier.nest_cluster, modifier.nest_cluster) : rand(4, width - 3)
+				if(x < 4 || y < 4 || x > width - 3 || y > width - 3 || is_reserved(x, y) || (x < camp_x + camp_width + fauna_clearance && y < camp_y + camp_height + fauna_clearance))
 					continue
 				var/turf/open/misc/tile = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
 				if(!istype(tile) || tile.is_blocked_turf())
 					continue
+				var/nest_type = islist(modifier.nest_type) ? pick(modifier.nest_type) : modifier.nest_type
 				new nest_type(tile)
+				if(modifier.nest_cluster && !patch)
+					patch = list(x, y)
 				break
 
 /// Xenomorph egg cluster hatching hunters, drones and sentinels until it is torn down.
@@ -424,6 +428,18 @@
 	faction = list(ROLE_ALIEN)
 	mob_gps_id = "XEN"
 	spawner_gps_id = "Xenomorph Hive"
+
+/// Stable bluespace anomaly anchored to its planet; signalling it frees the core.
+/obj/effect/anomaly/bluespace/stationtrauma
+
+/obj/effect/anomaly/bluespace/stationtrauma/Initialize(mapload, new_lifespan)
+	. = ..()
+	stabilize(anchor = TRUE)
+
+/// Bone pit of a lost expedition, slower than the native pit so a landing party can reach it.
+/obj/structure/spawner/skeleton/stationtrauma
+	max_mobs = 5
+	spawn_time = 40 SECONDS
 
 /// Plague pit raising rotting dead until it is filled in.
 /obj/structure/spawner/stationtrauma_zombie_pit

@@ -35,8 +35,12 @@
 	var/endless_storm = FALSE
 	/// Base light alpha of the open surface in the profile's sky colour; zero keeps the surface dark.
 	var/light_alpha = 0
-	/// Spawner placed once or twice on the open surface, away from the camp.
+	/// Object placed on the open surface away from the camp, or a list to pick each one from.
 	var/nest_type
+	/// Lowest and highest number of [/datum/expedition_planet_modifier/var/nest_type] placed.
+	var/list/nest_count = list(1, 2)
+	/// Radius of the patch every placed object shares around the first one; zero scatters them over the whole surface.
+	var/nest_cluster = 0
 
 /** Whether this modifier means anything for the generator's environment profile. */
 /datum/expedition_planet_modifier/proc/can_apply(datum/map_generator/expedition_barren/generator)
@@ -118,21 +122,117 @@
 	probability = 40
 	underground = TRUE
 
-/// Danger: a xenomorph egg cluster hatches hunters until it is torn down.
-/datum/expedition_planet_modifier/xeno_hive
-	name = "Улей ксеноморфов"
+/// Danger: one or two spawners on the open surface; biome nests belong to their own profiles.
+/datum/expedition_planet_modifier/nest
 	group = "nest"
 	cost = 1
-	probability = 25
+	probability = 0
+	/// Generator profile types this nest fits; empty fits every profile.
+	var/list/profiles
+	/// Whether only the bare barren profile fits, not the profiles derived from it.
+	var/barren_only = FALSE
+
+/datum/expedition_planet_modifier/nest/can_apply(datum/map_generator/expedition_barren/generator)
+	if(barren_only)
+		return generator.type == /datum/map_generator/expedition_barren
+	if(!length(profiles))
+		return TRUE
+	for(var/profile in profiles)
+		if(istype(generator, profile))
+			return TRUE
+	return FALSE
+
+/// A xenomorph egg cluster hatches hunters until it is torn down.
+/datum/expedition_planet_modifier/nest/xeno_hive
+	name = "Улей ксеноморфов"
+	probability = 15
 	nest_type = /obj/structure/spawner/stationtrauma_xeno_hive
 
-/// Danger: a plague pit raises the dead until it is filled in.
-/datum/expedition_planet_modifier/zombie_pit
+/// A plague pit raises the dead until it is filled in.
+/datum/expedition_planet_modifier/nest/zombie_pit
 	name = "Очаг заражения"
-	group = "nest"
-	cost = 1
-	probability = 25
+	probability = 15
 	nest_type = /obj/structure/spawner/stationtrauma_zombie_pit
+
+/// Wolf packs den in cave mouths that hold a little ore.
+/datum/expedition_planet_modifier/nest/wolf_dens
+	name = "Волчьи логова"
+	probability = 30
+	profiles = list(/datum/map_generator/expedition_barren/frozen)
+	nest_type = /obj/structure/spawner/ice_moon
+
+/// A polar bear guards each den.
+/datum/expedition_planet_modifier/nest/bear_dens
+	name = "Берлоги полярных медведей"
+	probability = 25
+	profiles = list(/datum/map_generator/expedition_barren/frozen)
+	nest_type = /obj/structure/spawner/ice_moon/polarbear
+
+/// A netheric rift spits ice demons until it collapses.
+/datum/expedition_planet_modifier/nest/demonic_rift
+	name = "Демонический разлом"
+	cost = 2
+	probability = 15
+	profiles = list(/datum/map_generator/expedition_barren/frozen)
+	nest_type = /obj/structure/spawner/ice_moon/demonic_portal
+
+/// Ancient goliaths burrow in the ash.
+/datum/expedition_planet_modifier/nest/goliath_dens
+	name = "Гнёзда голиафов"
+	probability = 30
+	profiles = list(/datum/map_generator/expedition_barren/lava)
+	nest_type = /obj/structure/spawner/mining/goliath
+
+/// Hivelords bud from their colonies.
+/datum/expedition_planet_modifier/nest/hivelord_colony
+	name = "Колонии роевиков"
+	probability = 25
+	profiles = list(/datum/map_generator/expedition_barren/lava)
+	nest_type = /obj/structure/spawner/mining/hivelord
+
+/// Basilisks lair in the sun-baked rock.
+/datum/expedition_planet_modifier/nest/basilisk_lairs
+	name = "Логова василисков"
+	probability = 30
+	profiles = list(/datum/map_generator/expedition_barren/arid)
+	nest_type = /obj/structure/spawner/mining/basilisk
+
+/// Reward: a stable bluespace anomaly whose core a signaller tuned to it frees for the bluespace drive.
+/datum/expedition_planet_modifier/bluespace_anomaly
+	name = "Блюспейс-аномалия"
+	group = "anomaly"
+	category = PLANET_MODIFIER_REWARD
+	cost = 1
+	probability = 20
+	nest_type = /obj/effect/anomaly/bluespace/stationtrauma
+	nest_count = list(1, 1)
+
+/// Danger: a patch of light explosive mines left by an old war.
+/datum/expedition_planet_modifier/minefield
+	name = "Брошенное минное поле"
+	group = "hazard"
+	cost = 1
+	probability = 20
+	nest_type = /obj/effect/mine/explosive/light
+	nest_count = list(10, 16)
+	nest_cluster = 8
+
+/// Reward: chemical geysers for plumbing.
+/datum/expedition_planet_modifier/geysers
+	name = "Химические гейзеры"
+	group = "geysers"
+	category = PLANET_MODIFIER_REWARD
+	cost = 0.5
+	probability = 30
+	nest_type = list(/obj/structure/geyser/wittel, /obj/structure/geyser/plasma_oxide, /obj/structure/geyser/protozine, /obj/structure/geyser/hollowwater)
+	nest_count = list(2, 3)
+
+/// The dead of a forgotten expedition climb out of their pit.
+/datum/expedition_planet_modifier/nest/bone_pit
+	name = "Костяная яма"
+	probability = 30
+	barren_only = TRUE
+	nest_type = /obj/structure/spawner/skeleton/stationtrauma
 
 /// Free: the open surface is lit strongly in the profile sky colour.
 /datum/expedition_planet_modifier/bright_day
@@ -181,7 +281,7 @@
 		underground ||= modifier.underground
 		light_alpha = max(light_alpha, modifier.light_alpha)
 		if(modifier.nest_type)
-			nest_types += modifier.nest_type
+			nests += modifier
 		names += modifier.name
 	return names
 
