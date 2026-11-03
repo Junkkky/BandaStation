@@ -240,4 +240,35 @@
 	qdel(blocker)
 	TEST_ASSERT(controller.apply_form("brute"), "Releasing the failed drop did not permit a later valid mutation.")
 
+/** An item stuck in a hand survives infection and blocks mutation, while the zombie's abstract claws do not. */
+/datum/unit_test/paradise_zombie_mutation_stuck_held_item
+	parent_type = /datum/unit_test/paradise_zombie_mutation_test
+
+/datum/unit_test/paradise_zombie_mutation_stuck_held_item/Run()
+	var/mob/living/carbon/human/host = allocate(/mob/living/carbon/human/consistent)
+	host.mind_initialize()
+	var/obj/item/crowbar/tool = allocate(/obj/item/crowbar)
+	TEST_ASSERT(host.put_in_hands(tool), "The ordinary fixture could not pick up its tool before infection.")
+	ADD_TRAIT(tool, TRAIT_NODROP, TRAIT_SOURCE_UNIT_TESTS)
+	var/datum/disease/paradise_zombie/infection = new()
+	TEST_ASSERT(host.ForceContractDisease(infection, make_copy = FALSE, del_on_fail = TRUE), "The fixture could not contract its real infection while holding the stuck tool.")
+	infection.stage = 8
+	infection.process_infection_cycle()
+	TEST_ASSERT(host.is_holding(tool), "Ordinary zombification unexpectedly removed the stuck tool.")
+	var/datum/component/paradise_zombie_mutation/controller = host.GetComponent(/datum/component/paradise_zombie_mutation)
+	TEST_ASSERT_NOTNULL(controller, "The fully transformed fixture did not acquire a mutation controller.")
+	GLOB.paradise_zombie_mutation_progression.first_infection_at = world.time - 2 MINUTES
+	TEST_ASSERT(!controller.can_begin(), "Mutation ignored a nonremovable item already held before infection.")
+	TEST_ASSERT(!controller.apply_form("twitcher"), "Mutation applied a form without removing the stuck tool.")
+	TEST_ASSERT_NULL(controller.form, "The blocked hand check still applied a physical mutation.")
+	TEST_ASSERT_NULL(GLOB.paradise_zombie_mutation_progression.fixed_choices[WEAKREF(host.mind)], "A stuck held item permanently spent the mind's mutation choice.")
+	var/list/progress = GLOB.paradise_zombie_mutation_progression.get_progress()
+	TEST_ASSERT_EQUAL(progress["special_claimed"], 0, "A stuck held item consumed a special-form slot.")
+	REMOVE_TRAIT(tool, TRAIT_NODROP, TRAIT_SOURCE_UNIT_TESTS)
+	TEST_ASSERT(host.dropItemToGround(tool), "The released tool could not be dropped normally.")
+	var/datum/action/cooldown/paradise_zombie_claws/claw_action = locate() in host.actions
+	TEST_ASSERT_NOTNULL(claw_action, "The infected fixture did not receive its ordinary claw action.")
+	TEST_ASSERT(claw_action.Activate(), "The ordinary action could not extend its abstract claws.")
+	TEST_ASSERT(controller.can_begin() && controller.apply_form("twitcher"), "The zombie's abstract claws incorrectly blocked a valid mutation.")
+
 #endif

@@ -56,7 +56,7 @@
 	languages.add_blocked_language(blocked_languages, ALL, REF(src))
 	languages.grant_language(/datum/language/paradise_zombie, ALL, REF(src))
 	languages.selected_language = /datum/language/paradise_zombie
-	zombie.AddComponent(/datum/component/paradise_zombie_combat)
+	zombie.LoadComponent(/datum/component/paradise_zombie_combat)
 	RegisterSignal(zombie, COMSIG_LIVING_TRY_PUT_IN_HAND, PROC_REF(restrict_hands))
 	RegisterSignal(zombie, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(update_slowdown))
 	update_slowdown(zombie, zombie.body_position)

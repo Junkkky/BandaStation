@@ -133,7 +133,7 @@
 	if(!IsAvailable() || !destination || destination.z != user.z || destination == user.loc || !isturf(user.loc) || user.throwing || user.buckled)
 		return FALSE
 	// No thrower argument means walking momentum cannot increase the promised range.
-	if(!user.throw_at(destination, travel_range, 2, spin = FALSE, gentle = TRUE, quickstart = FALSE, throw_type_path = /datum/thrownthing/paradise_zombie_leap/mutation))
+	if(!user.throw_at(target, travel_range, 2, spin = FALSE, gentle = TRUE, quickstart = FALSE, throw_type_path = /datum/thrownthing/paradise_zombie_leap/mutation))
 		return FALSE
 	var/datum/thrownthing/paradise_zombie_leap/mutation/flight = user.throwing
 	flight.action_ref = WEAKREF(src)
@@ -252,6 +252,10 @@
 	cooldown_time = 12 SECONDS
 	click_to_activate = TRUE
 
+/// Pacifism blocks this attack at activation and while its delayed effects are resolving.
+/datum/action/cooldown/paradise_zombie_mutation/bile/is_active()
+	return ..() && !HAS_TRAIT(owner, TRAIT_PACIFISM)
+
 /datum/action/cooldown/paradise_zombie_mutation/bile/Activate(atom/target)
 	var/mob/living/carbon/human/user = owner
 	var/turf/destination = get_turf(target)
@@ -263,9 +267,8 @@
 	spit.action_ref = WEAKREF(src)
 	spit.firer = user
 	spit.fired_from = src
-	spit.original = target
 	spit.def_zone = BODY_ZONE_CHEST
-	spit.aim_projectile(destination, get_turf(user))
+	spit.aim_projectile(target, get_turf(user))
 	track_effect(spit)
 	playsound(user, 'sound/misc/moist_impact.ogg', 50, TRUE)
 	StartCooldown()
@@ -386,6 +389,10 @@
 	var/priming = FALSE
 	/// Rupture invalidates a do_after that is still waiting.
 	var/ruptured = FALSE
+
+/// Pacifism blocks this attack at activation and while its delayed effects are resolving.
+/datum/action/cooldown/paradise_zombie_mutation/explode/is_active()
+	return ..() && !HAS_TRAIT(owner, TRAIT_PACIFISM)
 
 /datum/action/cooldown/paradise_zombie_mutation/explode/Activate(atom/target)
 	if(!IsAvailable() || priming || !isturf(owner.loc))

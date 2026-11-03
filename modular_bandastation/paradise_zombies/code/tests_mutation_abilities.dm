@@ -121,6 +121,7 @@
 	TEST_ASSERT_NOTNULL(claws, "The Hunter fixture could not extend claws.")
 	var/datum/action/cooldown/paradise_zombie_mutation/dash/pounce/action = locate() in host.actions
 	TEST_ASSERT_NOTNULL(action, "Hunter did not receive its real ambush action.")
+	var/turf/launch_tile = get_turf(host)
 	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
 	victim.forceMove(locate(host.x + 3, host.y, host.z))
 	ADD_TRAIT(victim, TRAIT_NEVER_WOUNDED, TRAIT_GENERIC)
@@ -135,6 +136,22 @@
 	TEST_ASSERT(abs(raw_damage - 18.9) < 0.001, "A pounce did not deliver exactly one actual Hunter claw attack.")
 	TEST_ASSERT_EQUAL(knockdown_duration, 1 SECONDS, "A successful ambush did not apply its one-second knockdown.")
 	TEST_ASSERT(!host.has_status_effect(/datum/status_effect/paradise_zombie_mutation_exposed), "A successful pounce incorrectly applied the miss penalty.")
+	// The clicked victim remains a valid target after losing the density that normally causes a collision.
+	host.forceMove(launch_tile)
+	victim.Knockdown(1 MINUTES)
+	TEST_ASSERT(!victim.density, "The prone-pounce fixture still has a dense victim.")
+	knockdown_duration = 0
+	action.ResetCooldown()
+	TEST_ASSERT(action.Trigger(host, target = victim), "The pounce action rejected its prone victim.")
+	deadline = world.time + 5 SECONDS
+	UNTIL(!host.throwing || world.time >= deadline)
+	TEST_ASSERT_NULL(host.throwing, "The targeted prone pounce never finished.")
+	var/damage_after_prone_pounce = 0
+	for(var/obj/item/bodypart/limb as anything in victim.get_bodyparts())
+		damage_after_prone_pounce += limb.brute_dam
+	TEST_ASSERT(abs(damage_after_prone_pounce - raw_damage - 18.9) < 0.001, "The pounce passed over its clicked prone victim without one real claw attack.")
+	TEST_ASSERT_EQUAL(knockdown_duration, 1 SECONDS, "Hitting a prone victim did not deliver the pounce's knockdown.")
+	TEST_ASSERT(!host.has_status_effect(/datum/status_effect/paradise_zombie_mutation_exposed), "Hitting the clicked prone victim was treated as a miss.")
 	UnregisterSignal(victim, COMSIG_LIVING_STATUS_KNOCKDOWN)
 	victim.forceMove(run_loc_floor_top_right)
 	action.ResetCooldown()
@@ -188,12 +205,16 @@
 	TEST_ASSERT_NULL(timeleft(expiry), "Cleaning bile left a timer retaining its deleted world object.")
 
 	victim.forceMove(locate(host.x + 4, host.y + 2, host.z))
+	victim.Knockdown(1 MINUTES)
+	TEST_ASSERT(!victim.density, "The prone-bile fixture still has a dense victim.")
+	var/damage_before_prone_shot = victim.get_fire_loss()
 	action.ResetCooldown()
 	TEST_ASSERT(action.Trigger(host, target = victim), "The second bile shot did not launch.")
 	deadline = world.time + 5 SECONDS
 	UNTIL((locate(/obj/effect/decal/cleanable/paradise_zombie_bile) in get_turf(victim)) || world.time >= deadline)
 	puddle = locate() in get_turf(victim)
 	TEST_ASSERT_NOTNULL(puddle, "The cleanup fixture never produced its second bile puddle.")
+	TEST_ASSERT(victim.get_fire_loss() > damage_before_prone_shot, "The actual bile projectile passed over its clicked prone victim.")
 	expiry = puddle.expiry_timer
 	action.ResetCooldown()
 	TEST_ASSERT(action.Trigger(host, target = locate(host.x + 6, host.y + 3, host.z)), "The cleanup fixture could not launch a still-flying third shot.")
@@ -302,5 +323,75 @@
 	TEST_ASSERT_NOTNULL(locate(/datum/disease/paradise_zombie) in host.diseases, "The blast erased the body's underlying Paradise infection.")
 	TEST_ASSERT_NULL(action.nodule, "A completed blast retained its windup-only nodule.")
 	TEST_ASSERT_EQUAL(length(action.owned_effects), 0, "The dead Exploder retained owned world effects.")
+
+/// Harmful mutation actions retain the same pacifist restriction as ordinary claws and bites.
+/datum/unit_test/paradise_zombie_mutation_pacifism
+	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+	abstract_type = /datum/unit_test/paradise_zombie_mutation_pacifism
+	/// The concrete mutation exercised by this pacifist regression.
+	var/form_id
+
+/datum/unit_test/paradise_zombie_mutation_pacifism/bile
+	form_id = "spitter"
+
+/datum/unit_test/paradise_zombie_mutation_pacifism/explode
+	form_id = "exploder"
+
+/datum/unit_test/paradise_zombie_mutation_pacifism/Run()
+	var/mob/living/carbon/human/host = make_mutant(form_id)
+	TEST_ASSERT_NOTNULL(host, "The pacifist [form_id] fixture was not created.")
+	var/datum/action/cooldown/paradise_zombie_mutation/action = locate() in host.actions
+	TEST_ASSERT_NOTNULL(action, "The pacifist fixture did not receive its mutation action.")
+	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent, get_step(host, EAST))
+	ADD_TRAIT(host, TRAIT_PACIFISM, TRAIT_SOURCE_UNIT_TESTS)
+	TEST_ASSERT(!action.Trigger(host, target = victim), "A pacifist activated the harmful [form_id] mutation ability.")
+	TEST_ASSERT(action.next_use_time <= world.time, "Rejecting a pacifist mutation attempt still consumed its cooldown.")
+	TEST_ASSERT_EQUAL(length(action.owned_effects), 0, "A rejected pacifist action created temporary world effects.")
+	TEST_ASSERT_EQUAL(victim.get_brute_loss() + victim.get_fire_loss(), 0, "A rejected pacifist action damaged its target.")
+	TEST_ASSERT(host.stat != DEAD, "Rejecting a pacifist action still killed its caster.")
+
+/// Pacification during a real projectile's flight prevents its later damage and residue.
+/datum/unit_test/paradise_zombie_mutation_bile_late_pacifism
+	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+
+/datum/unit_test/paradise_zombie_mutation_bile_late_pacifism/Run()
+	var/mob/living/carbon/human/host = make_mutant("spitter")
+	TEST_ASSERT_NOTNULL(host, "The in-flight pacification fixture was not created.")
+	var/datum/action/cooldown/paradise_zombie_mutation/bile/action = locate() in host.actions
+	TEST_ASSERT_NOTNULL(action, "The in-flight pacification fixture has no bile action.")
+	var/turf/destination = locate(host.x + 4, host.y, host.z)
+	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent, destination)
+	TEST_ASSERT(action.Trigger(host, target = victim), "The unpacified caster could not launch its bile shot.")
+	var/obj/projectile/paradise_zombie_bile/shot = locate() in action.owned_effects
+	TEST_ASSERT_NOTNULL(shot, "The pacification fixture did not retain a real in-flight shot.")
+	ADD_TRAIT(host, TRAIT_PACIFISM, TRAIT_SOURCE_UNIT_TESTS)
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(QDELETED(shot) || world.time >= deadline)
+	TEST_ASSERT(QDELETED(shot), "The pacified caster retained its spent bile projectile.")
+	TEST_ASSERT_EQUAL(victim.get_fire_loss(), 0, "An in-flight bile projectile damaged its victim after the caster became pacifist.")
+	TEST_ASSERT_NULL(locate(/obj/effect/decal/cleanable/paradise_zombie_bile) in destination, "A pacified caster's projectile left hostile bile at its destination.")
+
+/// Pacification while the actual nodule is exposed aborts the blast without refunding its attempt.
+/datum/unit_test/paradise_zombie_mutation_explode_late_pacifism
+	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+
+/datum/unit_test/paradise_zombie_mutation_explode_late_pacifism/Run()
+	var/mob/living/carbon/human/host = make_mutant("exploder")
+	TEST_ASSERT_NOTNULL(host, "The windup pacification fixture was not created.")
+	host.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/base, multiplicative_slowdown = 0.1)
+	var/datum/action/cooldown/paradise_zombie_mutation/explode/action = locate() in host.actions
+	TEST_ASSERT_NOTNULL(action, "The windup pacification fixture has no detonation action.")
+	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent, get_step(host, EAST))
+	INVOKE_ASYNC(action, TYPE_PROC_REF(/datum/action/cooldown, Trigger), host)
+	TEST_ASSERT(action.priming && !QDELETED(action.nodule), "The pacification fixture did not enter its actual detonation windup.")
+	ADD_TRAIT(host, TRAIT_PACIFISM, TRAIT_SOURCE_UNIT_TESTS)
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(!action.priming || world.time >= deadline)
+	TEST_ASSERT(!action.priming, "Pacifying an Exploder left its windup pending.")
+	TEST_ASSERT(host.stat != DEAD, "An Exploder detonated after becoming pacifist during its windup.")
+	TEST_ASSERT_EQUAL(victim.get_brute_loss(), 0, "The pacified Exploder's delayed blast injured its neighbour.")
+	TEST_ASSERT_NULL(action.nodule, "Aborting a pacified detonation retained its exposed nodule.")
+	TEST_ASSERT_EQUAL(length(action.owned_effects), 0, "Aborting a pacified detonation retained temporary world effects.")
+	TEST_ASSERT(action.next_use_time > world.time, "Pacification refunded an already-started detonation attempt.")
 
 #endif

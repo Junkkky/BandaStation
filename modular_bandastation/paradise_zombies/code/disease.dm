@@ -186,8 +186,8 @@
 		if(rot.infect_limb())
 			return FALSE
 
-	host.AddComponent(/datum/component/paradise_zombie_regen)
-	host.AddComponent(/datum/component/paradise_zombie_combat)
+	host.LoadComponent(/datum/component/paradise_zombie_regen)
+	host.LoadComponent(/datum/component/paradise_zombie_combat)
 	ADD_TRAIT(host, TRAIT_PARADISE_ZOMBIE, PARADISE_ZOMBIE_TRAIT)
 	ADD_TRAIT(host, TRAIT_BRAINLESS_CARBON, PARADISE_ZOMBIE_TRAIT)
 	ADD_TRAIT(host, TRAIT_NOBREATH, PARADISE_ZOMBIE_TRAIT)
@@ -204,10 +204,9 @@
 			antagonist.chosen_disease = plague_disease
 			antagonist.silent = TRUE
 		host.mind.add_antag_datum(antagonist)
-	if(GLOB.paradise_zombie_mutation_progression.is_mature_zombie(host) && !host.GetComponent(/datum/component/paradise_zombie_mutation))
-		host.AddComponent(/datum/component/paradise_zombie_mutation)
-	if(!host.GetComponent(/datum/component/paradise_zombie_appearance))
-		host.AddComponent(/datum/component/paradise_zombie_appearance)
+	if(GLOB.paradise_zombie_mutation_progression.is_mature_zombie(host))
+		host.LoadComponent(/datum/component/paradise_zombie_mutation)
+	host.LoadComponent(/datum/component/paradise_zombie_appearance)
 	return TRUE
 
 /** Remembers exposure to an anti-plague sequence in the body and updates this strain's research name. */

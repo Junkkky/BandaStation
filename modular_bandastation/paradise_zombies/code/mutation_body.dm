@@ -11,10 +11,6 @@
 	var/list/body_appearances = list()
 	/// Horizontal anchor of the selected source artwork.
 	var/form_pixel_x = -8
-	/// The body's pre-mutation anchors, independent of its species and DNA.
-	var/old_pixel_x
-	/// The body's pre-mutation vertical anchor.
-	var/old_pixel_y
 	/// The body's pre-mutation resting horizontal anchor.
 	var/old_base_pixel_x
 	/// The body's pre-mutation resting vertical anchor.
@@ -30,8 +26,6 @@
 	if(!ishuman(parent) || !set_form(new_form_id))
 		return COMPONENT_INCOMPATIBLE
 	var/mob/living/carbon/human/host = parent
-	old_pixel_x = host.pixel_x
-	old_pixel_y = host.pixel_y
 	old_base_pixel_x = host.base_pixel_x
 	old_base_pixel_y = host.base_pixel_y
 
@@ -57,10 +51,9 @@
 	body_appearances.Cut()
 	if(QDELETED(host))
 		return
-	host.pixel_x = old_pixel_x
-	host.pixel_y = old_pixel_y
 	host.base_pixel_x = old_base_pixel_x
 	host.base_pixel_y = old_base_pixel_y
+	host.update_offsets()
 	host.appearance_flags &= ~added_appearance_flags
 	// A creating update would recolor transplanted tissue from the recipient's DNA.
 	host.update_body()

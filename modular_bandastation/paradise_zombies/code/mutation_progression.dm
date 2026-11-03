@@ -11,9 +11,11 @@ GLOBAL_DATUM_INIT(paradise_zombie_mutation_progression, /datum/paradise_zombie_m
 	/// Weak mind references retain their one permitted form across cures and body transfers.
 	var/list/fixed_choices = list()
 
-/** Starts the outbreak clock without advancing it again when somebody is reinfected. */
+/** Starts the outbreak clock for an infected mind, without advancing it again on reinfection. */
 /datum/paradise_zombie_mutation_progression/proc/note_infection(mob/living/carbon/human/host)
 	if(!is_ordinary_infection(host) || HAS_TRAIT(host, TRAIT_PARADISE_NPC_ZOMBIE))
+		return FALSE
+	if(!host.mind || QDELETED(host.mind) || host.mind.current != host)
 		return FALSE
 	if(isnull(first_infection_at))
 		first_infection_at = world.time

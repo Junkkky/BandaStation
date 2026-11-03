@@ -50,7 +50,7 @@
 	var/mob/living/carbon/human/host = parent
 	if(!is_active() || form || IS_UNCONSCIOUS_OR_CRIT(host) || host.incapacitated || host.handcuffed || host.legcuffed || host.buckled || !isturf(host.loc) || !host.mind || host.mind.current != host)
 		return FALSE
-	for(var/obj/item/item as anything in host.get_equipped_items(INCLUDE_POCKETS))
+	for(var/obj/item/item as anything in host.get_equipped_items(INCLUDE_POCKETS|INCLUDE_HELD))
 		if(!host.canUnEquip(item))
 			return FALSE
 	return TRUE
@@ -106,7 +106,7 @@
 		if(reason)
 			to_chat(host, span_warning(reason))
 		return FALSE
-	for(var/obj/item/item as anything in host.get_equipped_items(INCLUDE_POCKETS))
+	for(var/obj/item/item as anything in host.get_equipped_items(INCLUDE_POCKETS|INCLUDE_HELD))
 		if(!host.dropItemToGround(item) || QDELETED(src) || !is_active())
 			GLOB.paradise_zombie_mutation_progression.release_body(host)
 			return FALSE

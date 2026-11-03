@@ -153,4 +153,36 @@
 	TEST_ASSERT_EQUAL(length(host.get_held_items()), 2, "Ordinary body redraw broke the two-handed claw reservation.")
 	test_screenshot("equipped_claws", get_flat_icon_for_all_directions(host))
 
+/** Live TGMC and clothing overlays must use the same native height treatment after a height change. */
+/datum/unit_test/paradise_zombie_tgmc_height
+	parent_type = /datum/unit_test/paradise_zombie_appearance_test
+
+/datum/unit_test/paradise_zombie_tgmc_height/Run()
+	var/mob/living/carbon/human/host = make_zombie(run_loc_floor_bottom_left)
+	var/obj/item/clothing/under/color/grey/uniform = allocate(/obj/item/clothing/under/color/grey)
+	var/obj/item/clothing/glasses/sunglasses/glasses = allocate(/obj/item/clothing/glasses/sunglasses)
+	TEST_ASSERT(host.equip_to_slot_if_possible(uniform, ITEM_SLOT_ICLOTHING, disable_warning = TRUE, bypass_equip_delay_self = TRUE), "The height fixture could not equip its uniform.")
+	TEST_ASSERT(host.equip_to_slot_if_possible(glasses, ITEM_SLOT_EYES, disable_warning = TRUE, bypass_equip_delay_self = TRUE), "The height fixture could not equip its glasses.")
+	var/datum/component/paradise_zombie_appearance/appearance = host.GetComponent(/datum/component/paradise_zombie_appearance)
+	for(var/height in list(HUMAN_HEIGHT_SHORTEST, HUMAN_HEIGHT_TALLEST))
+		host.set_mob_height(height)
+		var/mutable_appearance/live_body
+		var/mutable_appearance/live_uniform
+		var/mutable_appearance/live_glasses
+		for(var/mutable_appearance/overlay as anything in host.overlays)
+			if(overlay.icon == appearance.body_appearance.icon)
+				live_body = overlay
+			else if(overlay.layer == -UNIFORM_LAYER)
+				live_uniform = overlay
+			else if(overlay.layer == -GLASSES_LAYER)
+				live_glasses = overlay
+		TEST_ASSERT_NOTNULL(live_body, "Changing height removed the live TGMC body overlay.")
+		TEST_ASSERT_NOTNULL(live_uniform, "Changing height removed the equipped uniform's live overlay.")
+		TEST_ASSERT_NOTNULL(live_glasses, "Changing height removed the equipped glasses' live overlay.")
+		var/height_filter = height == HUMAN_HEIGHT_SHORTEST ? "Cut_Legs" : "Lenghten_Legs"
+		TEST_ASSERT_NOTNULL(live_uniform.filters[height_filter], "The uniform fixture has no native height filter.")
+		TEST_ASSERT_NOTEQUAL(live_glasses.pixel_z, 0, "The eyewear fixture has no native height offset.")
+		TEST_ASSERT_NOTNULL(live_body.filters[height_filter], "The TGMC body ignores the height treatment applied to its clothing and eyewear.")
+	// getFlatIcon does not render displacement filters; client rendering needs separate visual verification.
+
 #endif

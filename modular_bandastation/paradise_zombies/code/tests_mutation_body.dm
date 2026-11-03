@@ -114,4 +114,32 @@
 	TEST_ASSERT_EQUAL(transplanted_arm.owner, recipient, "Clearing the old body's mutation took back its former transplant.")
 	TEST_ASSERT_EQUAL(transplanted_arm.skin_tone, transplant_skin_tone, "Clearing the old body's mutation recolored tissue now in a different body.")
 
+/** Curing a dead mutant must retain current native posture offsets rather than its old standing pixels. */
+/datum/unit_test/paradise_zombie_mutation_body_posture
+	parent_type = /datum/unit_test/paradise_zombie_mutation_test
+
+/datum/unit_test/paradise_zombie_mutation_body_posture/Run()
+	var/mob/living/carbon/human/host = make_mutant("hunter")
+	var/datum/component/paradise_zombie_mutation_body/body = host.GetComponent(/datum/component/paradise_zombie_mutation_body)
+	var/original_base_x = body.old_base_pixel_x
+	var/original_base_y = body.old_base_pixel_y
+	host.death()
+	// Settle the native falling animation without making this cleanup test depend on wall-clock interpolation.
+	host.update_offsets()
+	TEST_ASSERT_EQUAL(host.body_position, LYING_DOWN, "The normal death path did not put the mutant on the floor.")
+	TEST_ASSERT_NOTEQUAL(host.has_offset(LYING_DOWN_TRAIT, PIXEL_Y_OFFSET), 0, "The dead mutant has no native lying offset.")
+	var/obj/item/organ/paradise_zombie_tumor/tumor = host.get_organ_slot(ORGAN_SLOT_ZOMBIE)
+	TEST_ASSERT_NOTNULL(tumor, "The mutant fixture has no tumor for the actual surgical cure.")
+	tumor.Remove(host)
+	TEST_ASSERT_NULL(host.GetComponent(/datum/component/paradise_zombie_mutation_body), "Tumor extraction retained the mutation renderer.")
+	TEST_ASSERT_EQUAL(host.body_position, LYING_DOWN, "Visual cleanup changed the dead body's native posture.")
+	TEST_ASSERT_EQUAL(host.pixel_x, original_base_x + host.has_offset(null, PIXEL_X_OFFSET), "Visual cleanup restored stale standing X pixels instead of current native offsets.")
+	TEST_ASSERT_EQUAL(host.pixel_y, original_base_y + host.has_offset(null, PIXEL_Y_OFFSET), "Visual cleanup restored stale standing Y pixels instead of the corpse's native lying offset.")
+	TEST_ASSERT(host.revive(ADMIN_HEAL_ALL), "The cured posture fixture could not be revived for its standing check.")
+	host.get_up(TRUE)
+	host.update_offsets()
+	TEST_ASSERT_EQUAL(host.body_position, STANDING_UP, "The cured body could not stand after recovery.")
+	TEST_ASSERT_EQUAL(host.pixel_x, original_base_x, "Standing after recovery retained the mutation's horizontal anchor.")
+	TEST_ASSERT_EQUAL(host.pixel_y, original_base_y, "Standing after recovery retained a stale lying or mutation offset.")
+
 #endif

@@ -161,4 +161,24 @@
 	progression.note_infection(host)
 	TEST_ASSERT_EQUAL(progression.first_infection_at, 0, "A valid outbreak timestamp at world.time zero was reset as though it were uninitialized.")
 
+/** A real mapped zombie corpse must not age the global outbreak before any ordinary mind is infected. */
+/datum/unit_test/paradise_zombie_mutation_progression/mapped_corpse_clock/Run()
+	var/obj/effect/mob_spawn/corpse/human/zombie/spawner = allocate(/obj/effect/mob_spawn/corpse/human/zombie, run_loc_floor_bottom_left, TRUE)
+	var/mob/living/carbon/human/corpse = spawner.create()
+	TEST_ASSERT_NOTNULL(corpse, "The real map spawner did not create its zombie corpse.")
+	allocated |= corpse
+	TEST_ASSERT_NULL(corpse.mind, "The unoccupied map corpse unexpectedly acquired a mind.")
+	TEST_ASSERT(HAS_TRAIT(corpse, TRAIT_PARADISE_ZOMBIE), "The mapped corpse did not run its real species-driven infection.")
+	TEST_ASSERT(isnull(GLOB.paradise_zombie_mutation_progression.first_infection_at), "An unoccupied mapped zombie corpse started the global outbreak clock.")
+	var/mob/living/carbon/human/crewmember = allocate(/mob/living/carbon/human/consistent)
+	crewmember.mind_initialize()
+	var/datum/disease/paradise_zombie/infection = new()
+	TEST_ASSERT(crewmember.ForceContractDisease(infection, make_copy = FALSE, del_on_fail = TRUE), "The ordinary crewmember could not contract the first real outbreak infection.")
+	var/started_at = GLOB.paradise_zombie_mutation_progression.first_infection_at
+	TEST_ASSERT_EQUAL(started_at, world.time, "The first infected ordinary mind did not start the global outbreak clock.")
+	var/obj/item/organ/brain/brain = crewmember.get_organ_slot(ORGAN_SLOT_BRAIN)
+	brain.Remove(crewmember)
+	allocated |= brain
+	TEST_ASSERT_EQUAL(GLOB.paradise_zombie_mutation_progression.first_infection_at, started_at, "Extracting an infected crewmember's brain reset the existing outbreak clock.")
+
 #endif

@@ -94,6 +94,7 @@
 	if(mutation && mutation != removed_mutation && !QDELETED(mutation))
 		return
 	body_appearance = mutable_appearance(get_body_icon(), layer = -BODYPARTS_LAYER)
+	host.apply_height(body_appearance, ENTIRE_BODY)
 	host.add_overlay(body_appearance)
 
 /** Rebuilds the donor's real bodypart composition only when attached visible anatomy or physique changes. */
