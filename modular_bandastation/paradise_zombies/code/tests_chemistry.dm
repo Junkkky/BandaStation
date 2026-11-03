@@ -318,3 +318,40 @@
 	TEST_ASSERT_EQUAL(patient.get_oxy_loss(), 0, "Lazarus failed to clear the suffocation that native revival initially rejected.")
 	TEST_ASSERT_EQUAL(decay.decay_level, 0, "Lazarus revival did not reset its source decay level.")
 	TEST_ASSERT(patient.has_status_effect(/datum/status_effect/paradise_cloning_damage), "Lazarus revival lost its separate cellular-injury effect.")
+
+/** Lazarus must restart the heart stopped by the normal human death path. */
+/datum/unit_test/paradise_lazarus_restarts_heart/Run()
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent)
+	var/datum/reagent/medicine/strange_reagent/instant/lazarus = allocate(/datum/reagent/medicine/strange_reagent/instant)
+	patient.death()
+	lazarus.expose_mob(patient, INGEST, 1)
+	TEST_ASSERT_NOTEQUAL(patient.stat, DEAD, "An otherwise healthy human was not revived by Lazarus.")
+	TEST_ASSERT(!patient.undergoing_cardiac_arrest(), "Lazarus left the revived human's heart stopped by death, causing immediate suffocation and tissue damage.")
+
+/** Cryo must continue administering medicine after ordinary damage heals but cellular injury remains. */
+/datum/unit_test/paradise_lazarus_cryo_cellular_damage/Run()
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent)
+	var/datum/status_effect/paradise_cloning_damage/injury = patient.apply_status_effect(/datum/status_effect/paradise_cloning_damage, 50)
+	patient.set_brute_loss(10)
+	patient.heal_overall_damage(10)
+	TEST_ASSERT_EQUAL(patient.get_brute_loss(), 0, "The ordinary damage fixture was not fully healed.")
+	patient.bodytemperature = 200
+	var/obj/machinery/cryo_cell/cryo = allocate(/obj/machinery/cryo_cell)
+	cryo.set_machine_stat(cryo.machine_stat & ~NOPOWER)
+	var/datum/gas_mixture/internal_air = cryo.internal_connector.gas_connector.airs[1]
+	internal_air.set_gas(/datum/gas/oxygen, 20)
+	internal_air.temperature = 200
+	var/obj/item/reagent_containers/cup/beaker/beaker = allocate(/obj/item/reagent_containers/cup/beaker, cryo)
+	beaker.reagents.add_reagent(/datum/reagent/medicine/cryoxadone, 10)
+	cryo.beaker = beaker
+	cryo.open_machine()
+	cryo.close_machine(patient)
+	cryo.process(2)
+	TEST_ASSERT(cryo.on && cryo.occupant == patient, "Cryo declared a patient with untreated cellular injury fully recovered and stopped before administering cryoxadone.")
+	TEST_ASSERT(patient.reagents.has_reagent(/datum/reagent/medicine/cryoxadone), "Cryo did not administer cryoxadone for the remaining cellular injury.")
+	patient.reagents.metabolize(patient, 2)
+	injury.tick(2)
+	TEST_ASSERT(injury.amount < 50, "Real cryogenic administration and metabolism did not reduce the remaining cellular injury.")
+	injury.change_amount(-injury.amount)
+	cryo.process(2)
+	TEST_ASSERT(!cryo.on, "Cryo did not finish treatment after all cellular injury was healed.")

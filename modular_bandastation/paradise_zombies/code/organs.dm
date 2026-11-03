@@ -118,7 +118,8 @@
 			infection.cure()
 		for(var/obj/item/bodypart/limb as anything in organ_owner.get_bodyparts())
 			var/datum/component/paradise_zombie_limb/rot = limb.GetComponent(/datum/component/paradise_zombie_limb)
-			rot?.heal_necrosis()
+			if(rot?.infected)
+				rot.heal_necrosis()
 	if(!QDELETED(src))
 		qdel(src)
 

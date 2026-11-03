@@ -76,6 +76,7 @@
 	if(decay)
 		decay.update_decay()
 		decay_level = decay.decay_level
+	set_heartattack(FALSE)
 	if(revive())
 		if(ishuman(src))
 			var/mob/living/carbon/human/human = src
