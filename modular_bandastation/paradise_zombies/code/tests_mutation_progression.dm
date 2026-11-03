@@ -111,6 +111,8 @@
 	TEST_ASSERT(progression.claim(recipient, "twitcher") && progression.commit_choice(recipient, "twitcher"), "The original fixed choice could not be reused after its old infected body was cured.")
 	progression.release_body(recipient)
 	TEST_ASSERT(!progression.claim(recipient, "slasher"), "Releasing a body reservation allowed its mind to change an already committed choice.")
+	qdel(recipient)
+	TEST_ASSERT(!(recipient in GLOB.current_living_antags), "A deleted infected body remained in the living antagonist list after its mind transferred.")
 
 /** Failed application does not fix a choice, and a changed mind cannot commit someone else's reservation. */
 /datum/unit_test/paradise_zombie_mutation_progression/commit_identity/Run()

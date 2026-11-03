@@ -132,7 +132,7 @@
 	name = "Ginger Ale"
 	desc = "Spicy and fizzy soda."
 	icon_state = "sol_dry"
-	inhand_icon_state = "sol_dry"
+	inhand_icon_state = "sodawater"
 	list_reagents = list(/datum/reagent/consumable/paradise_ginger_ale = 30)
 	drink_type = SUGAR
 

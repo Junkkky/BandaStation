@@ -200,7 +200,8 @@
 	TEST_ASSERT_NULL(puddle.decal_reagent, "Hostile bile became a farmable reagent source.")
 	var/expiry = puddle.expiry_timer
 	TEST_ASSERT(timeleft(expiry) > 0, "Bile did not own an active expiry timer.")
-	puddle.wash(CLEAN_TYPE_LIGHT_DECAL)
+	var/turf/puddle_turf = get_turf(puddle)
+	puddle_turf.wash(CLEAN_TYPE_LIGHT_DECAL)
 	TEST_ASSERT(QDELETED(puddle), "Ordinary cleaning could not wash away the hostile bile.")
 	TEST_ASSERT_NULL(timeleft(expiry), "Cleaning bile left a timer retaining its deleted world object.")
 

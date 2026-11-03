@@ -21,7 +21,7 @@
 		if(reaction.required_symptom)
 			TEST_ASSERT(!reaction.pre_reaction_other_checks(holder), "[reaction_type] ignored its virology requirement.")
 			var/datum/disease/advance/advanced = allocate(/datum/disease/advance)
-			advanced.symptoms += allocate(reaction.required_symptom)
+			advanced.symptoms += new reaction.required_symptom()
 			blood.data["viruses"] += advanced
 		TEST_ASSERT(reaction.pre_reaction_other_checks(holder), "A valid research sample was rejected by [reaction_type].")
 		infection.cure_stage = reaction.cure_level
