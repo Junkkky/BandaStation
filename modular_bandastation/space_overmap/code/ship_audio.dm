@@ -1,25 +1,186 @@
-/** Native engine sound loop with launch, running and shutdown clips. */
-/datum/looping_sound/stationtrauma_ship_engine
-	start_sound = 'sound/items/jet_ignite.ogg'
-	mid_sounds = 'sound/items/jet_active.ogg'
-	end_sound = 'sound/items/jet_off.ogg'
-	start_volume = 35
-	end_volume = 30
-	volume = 10
-	use_sound_tokens = TRUE
-	falloff_exponent = SOUND_FALLOFF_EXPONENT
-	falloff_distance = 5
+/**
+ * Engine sound of one hull: idle and thrust loops inside and outside it, following the drive's actual work.
+ *
+ * Idle runs while the drive is lit; the thrust layer follows the commanded thrust times the output the engines deliver,
+ * never the hull speed, so a drifting hull with cold engines stays silent. Levels glide towards their targets and reach
+ * listeners only past a step threshold, so a steady drive sends nothing. Loops never restart on an update.
+ */
+/datum/stationtrauma_engine_sound
+	/// Owning navigation; its hull and engines are the sound sources.
+	var/datum/stationtrauma_overmap/space/map
+	/// Hull-only idle loop heard by the crew aboard.
+	var/datum/sound_token/stationtrauma_ship_interior/engine/interior_idle
+	/// Hull-only thrust loop heard by the crew aboard.
+	var/datum/sound_token/stationtrauma_ship_interior/engine/interior_thrust
+	/// Idle loop at a nozzle, heard only outside the hull.
+	var/datum/sound_token/stationtrauma_engine_exterior/exterior_idle
+	/// Thrust loop at a nozzle, heard only outside the hull.
+	var/datum/sound_token/stationtrauma_engine_exterior/exterior_thrust
+	/// Whether the drive is audibly lit.
+	var/running = FALSE
+	/// Smoothed idle level from 0 to 1.
+	var/idle_level = 0
+	/// Smoothed thrust level from 0 to 1; it also raises the pitch of both layers.
+	var/thrust_level = 0
+	/// Idle level last sent to listeners.
+	var/sent_idle = -1
+	/// Thrust level last sent to listeners.
+	var/sent_thrust = -1
+	/// Clip heard aboard when the drive lights.
+	var/interior_start_sound = 'modular_bandastation/space_overmap/sound/engine/engine_interior_start.ogg'
+	/// Loop heard aboard while the drive idles.
+	var/interior_idle_sound = 'modular_bandastation/space_overmap/sound/engine/engine_interior_idle.ogg'
+	/// Loop heard aboard over the idle while the drive thrusts.
+	var/interior_thrust_sound = 'modular_bandastation/space_overmap/sound/engine/engine_interior_thrust.ogg'
+	/// Clip heard aboard when the drive goes out.
+	var/interior_stop_sound = 'modular_bandastation/space_overmap/sound/engine/engine_interior_stop.ogg'
+	/// Clip heard outside when the drive lights.
+	var/exterior_start_sound = 'modular_bandastation/space_overmap/sound/engine/engine_exterior_start.ogg'
+	/// Loop heard outside while the drive idles.
+	var/exterior_idle_sound = 'modular_bandastation/space_overmap/sound/engine/engine_exterior_idle.ogg'
+	/// Loop heard outside over the idle while the drive thrusts.
+	var/exterior_thrust_sound = 'modular_bandastation/space_overmap/sound/engine/engine_exterior_thrust.ogg'
+	/// Clip heard outside when the drive goes out.
+	var/exterior_stop_sound = 'modular_bandastation/space_overmap/sound/engine/engine_exterior_stop.ogg'
 
-/datum/looping_sound/stationtrauma_ship_engine/New(obj/docking_port/mobile/stationtrauma_space/ship)
-	start_length = SSsounds.get_sound_length(start_sound)
-	extra_range = max(ship.width, ship.height)
-	return ..(ship)
-
-/datum/looping_sound/stationtrauma_ship_engine/on_stop()
-	// Stopping during the startup clip must also play the shutdown sound.
-	if(!loop_started && end_sound)
-		play(end_sound, end_volume, delete_when_finished = TRUE)
+/datum/stationtrauma_engine_sound/New(datum/stationtrauma_overmap/space/owner)
+	map = owner
 	return ..()
+
+/datum/stationtrauma_engine_sound/Destroy()
+	release()
+	map = null
+	return ..()
+
+/**
+ * Follow the drive state.
+ *
+ * Arguments:
+ * * seconds_per_tick - Time the levels glide for; zero applies only start and stop transitions
+ */
+/datum/stationtrauma_engine_sound/proc/update(seconds_per_tick)
+	var/obj/docking_port/mobile/stationtrauma_space/vessel = map.vessel
+	var/obj/machinery/computer/ship_combustion/chamber = vessel.combustion_controller?.resolve()
+	var/available = vessel.engines_running ? map.engine_fraction() : 0
+	var/lit = vessel.engines_running && (available > 0 || chamber?.phase == SHIP_CHAMBER_STARTING)
+	if(lit && !running)
+		running = TRUE
+		create_layers()
+		play_once(interior_start_sound, exterior_start_sound)
+	else if(!lit && running)
+		running = FALSE
+		play_once(interior_stop_sound, exterior_stop_sound)
+	// A warming chamber idles low until the engines deliver.
+	var/idle_target = lit ? 0.4 + 0.6 * available : 0
+	var/thrust_target = lit ? map.commanded_thrust() * available : 0
+	var/step = ST_ENGINE_SOUND_GLIDE * seconds_per_tick
+	idle_level += clamp(idle_target - idle_level, -step, step)
+	thrust_level += clamp(thrust_target - thrust_level, -step, step)
+	if(!running && idle_level <= 0 && thrust_level <= 0)
+		release()
+		return
+	if(running)
+		create_layers()
+	// Small changes wait for the next threshold step, but a settled level is always sent exactly.
+	var/idle_due = abs(idle_level - sent_idle) >= ST_ENGINE_SOUND_STEP || (idle_level == idle_target && idle_level != sent_idle)
+	var/thrust_due = abs(thrust_level - sent_thrust) >= ST_ENGINE_SOUND_STEP || (thrust_level == thrust_target && thrust_level != sent_thrust)
+	if(!idle_due && !thrust_due)
+		return
+	sent_idle = idle_level
+	sent_thrust = thrust_level
+	// Higher thrust spins both layers up; frequency is a playback rate multiplier.
+	set_layer(interior_idle, 25 * idle_level, 0.85 + 0.3 * thrust_level)
+	set_layer(interior_thrust, 30 * thrust_level, 0.9 + 0.25 * thrust_level)
+	set_layer(exterior_idle, 40 * idle_level, 0.85 + 0.3 * thrust_level)
+	set_layer(exterior_thrust, 45 * thrust_level, 0.9 + 0.25 * thrust_level)
+
+/** Create missing loops; a destroyed nozzle takes its exterior loops with it, so they move to a surviving one. */
+/datum/stationtrauma_engine_sound/proc/create_layers()
+	var/obj/docking_port/mobile/stationtrauma_space/vessel = map.vessel
+	var/created = FALSE
+	if(QDELETED(interior_idle))
+		interior_idle = new(vessel, interior_idle_sound, map.radius * 2 + 2, 1, _repeating = TRUE)
+		created = TRUE
+	if(QDELETED(interior_thrust))
+		interior_thrust = new(vessel, interior_thrust_sound, map.radius * 2 + 2, 1, _repeating = TRUE)
+		created = TRUE
+	if(QDELETED(exterior_idle) || QDELETED(exterior_thrust))
+		var/obj/machinery/power/shuttle_engine/nozzle = nozzle()
+		var/range = max(vessel.width, vessel.height) + 10
+		if(nozzle && QDELETED(exterior_idle))
+			exterior_idle = new(nozzle, exterior_idle_sound, range, 1, _falloff_distance = 5, _repeating = TRUE)
+			created = TRUE
+		if(nozzle && QDELETED(exterior_thrust))
+			exterior_thrust = new(nozzle, exterior_thrust_sound, range, 1, _falloff_distance = 5, _repeating = TRUE)
+			created = TRUE
+	if(created)
+		sent_idle = sent_thrust = -1
+
+/** Middle intact nozzle of the hull, the outside source of the drive's sound. */
+/datum/stationtrauma_engine_sound/proc/nozzle()
+	var/list/engines = list()
+	for(var/obj/machinery/power/shuttle_engine/engine as anything in map.vessel.engine_list)
+		if(!QDELETED(engine))
+			engines += engine
+	return length(engines) ? engines[CEILING(length(engines) / 2, 1)] : null
+
+/** Update a loop in place: a silent layer is muted rather than stopped, so it resumes without restarting. */
+/datum/stationtrauma_engine_sound/proc/set_layer(datum/sound_token/layer, volume, frequency)
+	if(QDELETED(layer))
+		return
+	layer.sound.frequency = frequency
+	layer.sound_status = volume < 1 ? SOUND_MUTE : NONE
+	layer.set_volume(max(1, volume))
+
+/** Play a start or stop clip to the listeners of the matching layer. */
+/datum/stationtrauma_engine_sound/proc/play_once(interior_clip, exterior_clip)
+	if(!QDELETED(interior_idle))
+		for(var/mob/listener as anything in interior_idle.listeners)
+			if(!(interior_idle.listeners[listener] & SOUND_MUTE))
+				listener.playsound_local(get_turf(listener), interior_clip, 35, pressure_affected = FALSE, use_reverb = FALSE, volume_preference = /datum/preference/numeric/volume/sound_ship_ambience_volume)
+	if(!QDELETED(exterior_idle))
+		var/turf/source = get_turf(exterior_idle.source)
+		for(var/mob/listener as anything in exterior_idle.listeners)
+			if(!(exterior_idle.listeners[listener] & SOUND_MUTE))
+				listener.playsound_local(source, exterior_clip, 60, max_distance = exterior_idle.range, falloff_distance = 5)
+
+/** Free every loop and its sound channel. */
+/datum/stationtrauma_engine_sound/proc/release()
+	QDEL_NULL(interior_idle)
+	QDEL_NULL(interior_thrust)
+	QDEL_NULL(exterior_idle)
+	QDEL_NULL(exterior_thrust)
+	sent_idle = sent_thrust = -1
+
+/** Cut the drive sound at once, with its stop clip when it was running; for a hull leaving processing. */
+/datum/stationtrauma_engine_sound/proc/silence()
+	if(running)
+		running = FALSE
+		play_once(interior_stop_sound, exterior_stop_sound)
+	idle_level = thrust_level = 0
+	release()
+
+/// Engine loops start muted, so the first send already plays them and later updates only unmute.
+/datum/sound_token/stationtrauma_ship_interior/engine
+	sound_status = SOUND_MUTE
+
+/// Exterior engine loop at a nozzle; listeners inside the hull hear the interior layers instead.
+/datum/sound_token/stationtrauma_engine_exterior
+	sound_status = SOUND_MUTE
+
+/datum/sound_token/stationtrauma_engine_exterior/update_listener(mob/listener_mob, update_sound = TRUE)
+	if(QDELETED(src) || isnull(listeners[listener_mob]))
+		return
+	var/obj/machinery/power/shuttle_engine/engine = source
+	var/obj/docking_port/mobile/stationtrauma_space/ship = engine.connected_ship
+	if(!ship?.shuttle_areas[get_area(listener_mob)] || !ship.is_in_shuttle_bounds(listener_mob))
+		return ..()
+	if(listeners[listener_mob] & SOUND_MUTE)
+		return
+	set_listener_status(listener_mob, SOUND_MUTE)
+	// Kept playing muted: the native unmute is an in-place update, and a first send must start the loop.
+	sound.status = sound_status | SOUND_MUTE | (update_sound ? SOUND_UPDATE : NONE)
+	SEND_SOUND(listener_mob, sound)
 
 /** The native token tracks movement/login/logout; interior ambience is non-positional and hull-only. */
 /datum/sound_token/stationtrauma_ship_interior/update_listener(mob/listener_mob, update_sound = TRUE)
@@ -46,14 +207,14 @@
 		crew.stop_sound_channel(CHANNEL_AMBIENCE)
 
 /datum/stationtrauma_overmap/space
-	/// Owned engine loop updated from engine state and docking status.
-	var/datum/looping_sound/stationtrauma_ship_engine/engine_audio
+	/// Owned engine sound following the drive's actual work.
+	var/datum/stationtrauma_engine_sound/engine_sound
 	/// Owned ambience token restricted to listeners inside the physical hull.
 	var/datum/sound_token/stationtrauma_ship_interior/interior_audio
 
 /** Create the hull-owned ambience and engine audio resources. */
 /datum/stationtrauma_overmap/space/proc/initialize_ship_audio()
-	engine_audio = new(vessel)
+	engine_sound = new(src)
 	interior_audio = new(vessel, 'sound/ambience/general/shipambience.ogg', radius * 2 + 2, 22, _repeating = TRUE)
 	refresh_engine_audio()
 
@@ -83,39 +244,37 @@
 	refresh_engine_audio()
 	return TRUE
 
-/** Start or stop propulsion audio and select its docked or cruising volume. */
-/datum/stationtrauma_overmap/space/proc/refresh_engine_audio()
+/**
+ * Refresh the exhaust and the engine sound.
+ *
+ * Arguments:
+ * * seconds_per_tick - Time the sound levels glide for; zero applies only start and stop transitions
+ */
+/datum/stationtrauma_overmap/space/proc/refresh_engine_audio(seconds_per_tick = 0)
 	refresh_engine_exhaust()
-	if(!engine_audio)
-		return
-	var/obj/machinery/computer/ship_combustion/chamber = vessel.combustion_controller?.resolve()
-	if(!vessel.engines_running || (engine_fraction() <= 0 && chamber?.phase != SHIP_CHAMBER_STARTING))
-		engine_audio.stop()
-		return
-	var/new_volume = docked || speed <= ST_NAV_STOPPED_SPEED ? 10 : 25
-	if(engine_audio.volume != new_volume)
-		engine_audio.volume = new_volume
-		if(engine_audio.native_repeat_active)
-			engine_audio.sound_token_instance?.set_volume(new_volume)
-	engine_audio.start()
+	engine_sound?.update(seconds_per_tick)
+
+/** Thrust the helm orders from the main engines, from 0 to 1; a docked hull orders none unless it climbs off a surface. */
+/datum/stationtrauma_overmap/space/proc/commanded_thrust()
+	if(ascending())
+		return 1
+	if(!helm_engaged || docked)
+		return 0
+	return max(abs(throttle) / 100, !!braking, !!maneuver_direction)
+
+/** Whether the hull is climbing off a planetary surface at full thrust. */
+/datum/stationtrauma_overmap/space/proc/ascending()
+	return approach_departing && docked?.landing
 
 /** Show exhaust on every nozzle that is actually delivering commanded thrust; called with the audio refresh. */
 /datum/stationtrauma_overmap/space/proc/refresh_engine_exhaust()
-	var/thrusting = vessel.engines_running && helm_engaged && !docked && (throttle || braking || maneuver_direction)
+	var/thrusting = vessel.engines_running && commanded_thrust() > 0
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
 		engine.set_exhaust(thrusting && engine_output(engine) > 0)
 
-/** A remote seam also has listeners on the destination level; physical docking needs only one emission. */
-/datum/stationtrauma_overmap/space/proc/play_maneuver_audio(atom/remote, departing = FALSE)
-	var/clip = departing ? 'sound/items/jet_ignite.ogg' : 'sound/machines/airlock/airlock_latch_hiss.ogg'
-	if(departing && engine_audio)
-		// Restart the launch sequence without emitting a shutdown clip or cutting propulsion.
-		var/end_clip = engine_audio.end_sound
-		engine_audio.end_sound = null
-		engine_audio.stop()
-		engine_audio.end_sound = end_clip
-		engine_audio.start()
-	else
-		playsound(vessel, clip, 25, FALSE, extrarange = radius, pressure_affected = FALSE)
+/** Docking latch; a remote seam also has listeners on the destination level, physical docking needs only one emission. */
+/datum/stationtrauma_overmap/space/proc/play_maneuver_audio(atom/remote)
+	var/clip = 'sound/machines/airlock/airlock_latch_hiss.ogg'
+	playsound(vessel, clip, 25, FALSE, extrarange = radius, pressure_affected = FALSE)
 	if(!QDELETED(remote) && remote.z != vessel.z)
 		playsound(remote, clip, 12, FALSE, extrarange = radius, pressure_affected = FALSE)

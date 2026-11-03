@@ -62,14 +62,15 @@
 	)
 	/// Native hull association is independent of global equipment IDs.
 	var/datum/weakref/vessel_ref
-	/// Last time native tritium combustion was observed in the chamber.
-	var/last_flame = 0
-	/**
-	 * Flame shown on the chamber injector while the tritium actually burns.
-	 *
-	 * The lean feed keeps tritium under the 0.5 mol a native hotspot needs, so the real burn is otherwise invisible.
-	 */
-	var/obj/effect/abstract/particle_holder/flame
+	/// Gas rushing through the purge injector while the chamber is purged.
+	var/datum/looping_sound/stationtrauma_chamber_purge/purge_sound
+
+/// Purge blow-down loop at the chamber's purge injector.
+/datum/looping_sound/stationtrauma_chamber_purge
+	mid_sounds = 'sound/items/jet_active.ogg'
+	volume = 30
+	use_sound_tokens = TRUE
+	falloff_distance = 3
 
 /obj/machinery/computer/ship_combustion/post_machine_initialize()
 	. = ..()
@@ -100,7 +101,7 @@
 	if(ship?.combustion_controller?.resolve() == src)
 		ship.combustion_controller = null
 	vessel_ref = null
-	QDEL_NULL(flame)
+	QDEL_NULL(purge_sound)
 	equipment.Cut()
 	return ..()
 
@@ -251,39 +252,6 @@
 	var/obj/docking_port/mobile/stationtrauma_space/ship = vessel_ref?.resolve()
 	if(ship?.engines_running)
 		ship.overmap?.set_engines_running(FALSE)
-	refresh_flame()
-
-/** Show the chamber flame only while combustion was observed within the last few seconds. */
-/obj/machinery/computer/ship_combustion/proc/refresh_flame()
-	var/obj/machinery/atmospherics/components/unary/outlet_injector/inlet = device("inlet")
-	var/burning = inlet && (phase == SHIP_CHAMBER_STARTING || phase == SHIP_CHAMBER_RUNNING) && world.time - last_flame <= 3 SECONDS
-	if(QDELETED(flame) || flame.parent != inlet || !burning)
-		var/atom/previous = flame?.parent
-		previous?.set_light(0)
-		QDEL_NULL(flame)
-	if(burning && !flame)
-		flame = new(inlet, /particles/chamber_flame)
-		inlet.set_light(2, 1, "#FFB060")
-
-/** Tritium flame filling one chamber tile. */
-/particles/chamber_flame
-	icon = 'icons/effects/particles/bonfire.dmi'
-	icon_state = "bonfire"
-	width = 64
-	height = 64
-	count = 80
-	spawning = 4
-	lifespan = 0.6 SECONDS
-	fade = 0.4 SECONDS
-	grow = -0.02
-	color = 0
-	color_change = 0.15
-	gradient = list("#FFFFFF", "#CFE8FF", "#FCE6B6", "#FD481C")
-	position = generator(GEN_BOX, list(-12, -12, 0), list(12, 12, 0), UNIFORM_RAND)
-	velocity = list(0, 0.6)
-	drift = generator(GEN_VECTOR, list(-0.4, -0.2), list(0.4, 0.4), NORMAL_RAND)
-	scale = generator(GEN_VECTOR, list(0.6, 0.6), list(1.1, 1.1), NORMAL_RAND)
-	spin = generator(GEN_NUM, -20, 20)
 
 /** Switch the stock siphon between working pressure and complete evacuation. */
 /obj/machinery/computer/ship_combustion/proc/set_exhaust(purging)
@@ -299,6 +267,17 @@
 		purge.volume_rate = purge_rate
 		// A running burner needs a continuous exhaust even at idle or with a full nozzle manifold.
 		purge.set_on(purging || phase == SHIP_CHAMBER_STARTING || phase == SHIP_CHAMBER_RUNNING)
+	refresh_purge_sound()
+
+/** Run the purge loop exactly while the chamber is being purged. */
+/obj/machinery/computer/ship_combustion/proc/refresh_purge_sound()
+	if(phase != SHIP_CHAMBER_PURGING)
+		purge_sound?.stop()
+		return
+	var/atom/source = device("purge") || src
+	if(!purge_sound)
+		purge_sound = new(source)
+	purge_sound.start(source)
 
 /** Confirm the real chamber and exhaust line are depressurized before accepting a reset. */
 /obj/machinery/computer/ship_combustion/proc/purge_complete()
@@ -336,6 +315,7 @@
 	var/obj/machinery/igniter/igniter = device("igniter")
 	if(!igniter.on)
 		igniter.toggle()
+	playsound(igniter, 'sound/items/jet_ignite.ogg', 50, TRUE)
 	process(0)
 	return TRUE
 
@@ -344,7 +324,6 @@
 	SIGNAL_HANDLER
 	if(air.reaction_results[/datum/gas_reaction/standard/tritfire] > 0)
 		flame_confirmed = TRUE
-		last_flame = world.time
 
 /obj/machinery/computer/ship_combustion/on_set_is_operational(old_value)
 	. = ..()
@@ -352,7 +331,6 @@
 		stop_chamber("Потеря питания или повреждение контроллера")
 
 /obj/machinery/computer/ship_combustion/process(seconds_per_tick)
-	refresh_flame()
 	if(phase == SHIP_CHAMBER_LOCKED)
 		return
 	var/obj/docking_port/mobile/stationtrauma_space/ship = vessel_ref?.resolve()
@@ -369,6 +347,7 @@
 			var/obj/machinery/atmospherics/components/unary/outlet_injector/purge = device("purge")
 			outlet?.set_on(FALSE)
 			purge?.set_on(FALSE)
+			refresh_purge_sound()
 		return
 	var/reason = equipment_fault()
 	if(reason || (!supply_enabled && phase != SHIP_CHAMBER_OFF))

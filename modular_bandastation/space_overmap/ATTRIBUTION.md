@@ -50,24 +50,43 @@ CRT-оформление TGUI и SVG-индикаторы созданы код�
 
 ## Звуки корабля
 
-`code/ship_audio.dm` ссылается на существующие ресурсы сборки без копирования,
-изменения или добавления аудиофайлов. Для них сохраняются исходные уведомления:
+### Звуки двигателя
+
+`sound/engine/` содержит звуки маршевых двигателей, которые проигрывает
+`code/ship_audio.dm`. Внешние варианты — исходные записи после сведения в моно,
+нормализации пика к −1 дБ и конвертации в OGG Vorbis. Внутренние варианты получены
+из внешних низкочастотным фильтром (срез около 700 Гц) с подъёмом низа под 150 Гц;
+петли обработаны по кругу, чтобы стык остался бесшовным.
+
+| Локальные файлы | Исходная запись | Автор и условия |
+| --- | --- | --- |
+| `engine_exterior_start.ogg`, `engine_interior_start.ogg` | `SFX_REACTORS_TAKE-ON_SPACESHIP.wav` | vycksounds (Vyck21) |
+| `engine_exterior_idle.ogg`, `engine_interior_idle.ogg` | `SFX_REACTORS_IDLE_SPACESHIP(L).wav` | vycksounds (Vyck21) |
+| `engine_exterior_stop.ogg`, `engine_interior_stop.ogg` | `SFX_REACTORS_LAND_SPACESHIP.wav` | vycksounds (Vyck21) |
+| `engine_exterior_thrust.ogg`, `engine_interior_thrust.ogg` | «Plane Loop», громкость приведена к петле холостого хода | qubodup, [Freesound 184723](https://freesound.org/people/qubodup/sounds/184723/), CC0 1.0 |
+
+Записи vycksounds взяты из набора [Spaceship SFX](https://vycksounds-21.itch.io/spaceship-sfx)
+(«SB SPACESHIP TRAVEL»). Условия автора: файлы можно использовать в некоммерческих
+и коммерческих проектах, но нельзя продавать отдельно, как есть, в том числе после
+изменения; автор просит указывать «vycksounds(Vyck21)». Эти файлы не распространяются
+по CC BY-SA 3.0 и сохраняют условия автора.
+
+### Существующие ресурсы сборки
+
+Остальные звуки берутся из сборки без копирования и изменения. Для них сохраняются
+исходные уведомления:
 
 | Назначение | Ресурс сборки | Источник и лицензия |
 | --- | --- | --- |
-| Запуск двигателя и отход | `sound/items/jet_ignite.ogg` | kyles, [Freesound 453408](https://freesound.org/people/kyles/sounds/453408/), CC0; обработка ArcaneMusic, см. [sound/attributions.txt](../../sound/attributions.txt) |
-| Работа двигателя | `sound/items/jet_active.ogg` | Тот же источник, CC0; очистка шума, небольшое изменение высоты тона, нарезка и конвертация в OGG указаны в исходном уведомлении |
-| Остановка двигателя | `sound/items/jet_off.ogg` | Тот же источник, CC0; исходное уведомление сохраняется |
+| Розжиг камеры сгорания | `sound/items/jet_ignite.ogg` | kyles, [Freesound 453408](https://freesound.org/people/kyles/sounds/453408/), CC0; обработка ArcaneMusic, см. [sound/attributions.txt](../../sound/attributions.txt) |
+| Продувка камеры сгорания | `sound/items/jet_active.ogg` | Тот же источник, CC0; очистка шума, небольшое изменение высоты тона, нарезка и конвертация в OGG указаны в исходном уведомлении |
 | Фон внутри корпуса | `sound/ambience/general/shipambience.ogg` | Существующий фон `/area`, участники TG; [общая лицензия ресурсов сборки](../../README.md#license), CC BY-SA 3.0 |
 | Посадка и стыковка | `sound/machines/airlock/airlock_latch_hiss.ogg` | Usernameis1337, [Freesound 632755](https://freesound.org/people/Usernameis1337/sounds/632755/), CC BY 4.0; см. [исходное уведомление](../../sound/machines/airlock/attributions.txt) |
 
-Тройка звуков двигателя уже используется штатным
-`/datum/looping_sound/burning_jet`. Ранее добавленные `sound/ship_engine_starts.ogg`,
-`sound/ship_engine_processing.ogg`, `sound/ship_engine_stops.ogg`,
-`sound/ship_interior_ambience.ogg` и `sound/ship_landing.ogg` удалены: их точный
-источник и условия распространения не подтверждены. Эта замена сохраняет запуск,
-зацикленную работу, остановку, фон корпуса и сигнал механической фиксации.
-Реестр `ASSETS.json` остаётся реестром неаудиоресурсов; новых медиа замена не вносит.
+Ранее добавленные `sound/ship_engine_starts.ogg`, `sound/ship_engine_processing.ogg`,
+`sound/ship_engine_stops.ogg`, `sound/ship_interior_ambience.ogg` и
+`sound/ship_landing.ogg` удалены: их точный источник и условия распространения не
+подтверждены. Реестр `ASSETS.json` остаётся реестром неаудиоресурсов.
 
 ## Границы записи
 

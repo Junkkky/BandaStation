@@ -282,7 +282,7 @@
 	if(!ship.engines_running)
 		return
 	var/datum/stationtrauma_overmap/space/map = ship.overmap
-	var/load = map?.helm_engaged ? max(abs(map.throttle) / 100, !!map.braking, !!map.maneuver_direction) : 0
+	var/load = map?.ascending() ? 1 : map?.helm_engaged ? max(abs(map.throttle) / 100, !!map.braking, !!map.maneuver_direction) : 0
 	// The tritium value is calibrated for roughly twenty minutes at half thrust on Raven's standard canister pair.
 	var/requested = propellant_flow * max(0.15, load) * seconds_per_tick
 	var/datum/gas_mixture/air = airs[1]

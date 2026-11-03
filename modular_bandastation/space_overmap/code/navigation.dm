@@ -28,11 +28,10 @@
 
 /datum/stationtrauma_overmap/space/Destroy()
 	docking_request = null
+	approach_site = null
 	QDEL_NULL(ship_docking)
 	QDEL_NULL(interior_audio)
-	if(engine_audio)
-		engine_audio.end_sound = null
-		QDEL_NULL(engine_audio)
+	QDEL_NULL(engine_sound)
 	cancel_dispatch()
 	cancel_jump()
 	clear_encounters()
@@ -59,12 +58,13 @@
 
 /datum/stationtrauma_overmap/space/process(seconds_per_tick)
 	if(!is_operational())
+		engine_sound?.silence()
 		return PROCESS_KILL
 	advance()
 	// Drag or the emergency thrusters ended an unpowered drift.
 	if(helm_engaged && !vessel.engines_running && !arrival_pending && !jump_target && speed <= ST_NAV_STOPPED_SPEED)
 		stop("Дрейф погашен")
-	refresh_engine_audio()
+	refresh_engine_audio(seconds_per_tick)
 	process_encounters()
 	if(!preparing && !relocating && world.time >= next_listen)
 		listen()
