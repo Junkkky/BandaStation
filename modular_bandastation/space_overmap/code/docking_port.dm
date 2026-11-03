@@ -63,12 +63,19 @@
 			hull_mass++
 	return hull_mass
 
-/** Whether any compartment still has equipment power; unpowered-by-design hulls always do. */
+/**
+ * Whether a metered compartment has equipment power; wholly unmetered hulls retain free power.
+ * Unmetered engine bays must not hide a ship-grid blackout on a mixed hull.
+ */
 /obj/docking_port/mobile/stationtrauma_space/proc/has_power()
+	var/requires_grid = FALSE
 	for(var/area/ship_area as anything in shuttle_areas)
+		if(!ship_area.requires_power)
+			continue
+		requires_grid = TRUE
 		if(ship_area.powered(AREA_USAGE_EQUIP))
 			return TRUE
-	return FALSE
+	return !requires_grid && length(shuttle_areas) > 0
 
 /** Pilot fuel gauges: the combustion chamber's supply, otherwise the plasma heaters' supply; null for unfuelled drives. */
 /obj/docking_port/mobile/stationtrauma_space/proc/fuel_gauges()
