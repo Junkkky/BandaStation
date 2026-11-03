@@ -3,8 +3,14 @@
 	var/obj/docking_port/stationary/stationtrauma_space_flight/flight_berth
 	/// Native shuttle movement yields; navigation commands cannot interrupt a partially moved hull.
 	var/relocating = FALSE
-	/// world.time at which the current approach or planetary descent began; zero outside one, which locks the helm.
+	/// world.time at which the current approach, descent, ascent or undocking began; zero outside one, which locks the helm.
 	var/approach_started = 0
+	/// Destination of the current approach, or the berth being left.
+	var/datum/stationtrauma_overmap_site/space/approach_site
+	/// Length of the current approach.
+	var/approach_duration = 0
+	/// Whether the current approach leaves its site instead of arriving.
+	var/approach_departing = FALSE
 
 /** Retained native berth marking the hull position on its stationary flight level. */
 /obj/docking_port/stationary/stationtrauma_space_flight
@@ -149,27 +155,53 @@
 		SSjob.latejoin_trackers |= crew_spawns[original]
 	return TRUE
 
+/** Lock the helm and publish the manoeuvre timer for the pilot plot. */
+/datum/stationtrauma_overmap/space/proc/begin_approach(datum/stationtrauma_overmap_site/space/site, duration, departing = FALSE)
+	approach_started = world.time
+	approach_site = site
+	approach_duration = duration
+	approach_departing = departing
+	update_parallax()
+	refresh_engine_audio()
+
+/** Unlock the helm after an approach or departure, whatever its outcome. */
+/datum/stationtrauma_overmap/space/proc/end_approach()
+	approach_started = 0
+	approach_site = null
+	approach_duration = 0
+	approach_departing = FALSE
+	update_parallax()
+	refresh_engine_audio()
+
+/**
+ * Crew aboard feel atmospheric flight through its middle; the shake is purely visual.
+ *
+ * Arguments:
+ * * progress - Fraction of the descent or ascent already flown
+ */
+/datum/stationtrauma_overmap/space/proc/shake_crew(progress)
+	if(progress <= 0.25 || progress >= 0.75)
+		return
+	// Strongest halfway through, at most a fifth of a tile.
+	var/strength = 0.2 * sin(180 * (progress - 0.25) / 0.5)
+	for(var/mob/crew as anything in SSmobs.clients_by_zlevel[vessel.z])
+		if(vessel.is_in_shuttle_bounds(crew))
+			shake_camera(crew, 1 SECONDS, strength)
+
 /**
  * Hold the hull on its approach, loading an uncharted destination meanwhile; returns whether docking may proceed.
  *
  * Planetary descents last longer, and crew aboard feel atmospheric entry through their middle; the shake is purely visual.
  */
 /datum/stationtrauma_overmap/space/proc/approach(datum/stationtrauma_overmap_site/space/site, revision)
-	approach_started = world.time
-	status = site.landing ? "Посадка: [site.name]" : "Сближение: [site.name]"
-	update_parallax()
+	begin_approach(site, site.landing ? ST_SPACE_LANDING_TIME : site.physical_docking ? ST_SPACE_MOORING_TIME : ST_SPACE_APPROACH_TIME)
+	status = site.landing ? "Посадка: [site.name]" : "Сближение: [site_label(site)]"
 	if(site.awaits_map() && !site.loading_map)
 		INVOKE_ASYNC(site, TYPE_PROC_REF(/datum/stationtrauma_overmap_site/space, load_map))
-	var/duration = site.landing ? ST_SPACE_LANDING_TIME : ST_SPACE_APPROACH_TIME
 	var/elapsed = 0
-	while((elapsed = world.time - approach_started) < duration || site.loading_map)
-		var/entry = elapsed / duration
-		if(site.landing && entry > 0.25 && entry < 0.75)
-			// Strongest halfway through atmospheric entry, at most a fifth of a tile.
-			var/strength = 0.2 * sin(180 * (entry - 0.25) / 0.5)
-			for(var/mob/crew as anything in SSmobs.clients_by_zlevel[vessel.z])
-				if(vessel.is_in_shuttle_bounds(crew))
-					shake_camera(crew, 1 SECONDS, strength)
+	while((elapsed = world.time - approach_started) < approach_duration || site.loading_map)
+		if(site.landing)
+			shake_crew(elapsed / approach_duration)
 		sleep(1 SECONDS)
 		if(QDELETED(src) || QDELETED(site))
 			return FALSE

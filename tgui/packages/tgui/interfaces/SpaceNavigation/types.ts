@@ -116,6 +116,7 @@ export type NavigationData = Position & {
   approach: {
     elapsed: number;
     duration: number;
+    departing: BooleanLike;
     site: string;
     scene: 'planet' | 'ruin' | 'cargo' | 'asteroids';
     biome: string | null;

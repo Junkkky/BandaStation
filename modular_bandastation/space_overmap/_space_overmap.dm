@@ -10,6 +10,14 @@
 #define ST_SPACE_LANDING_TIME (2 MINUTES)
 /// Approach to a space destination before its seam is built; a first visit loads the destination meanwhile.
 #define ST_SPACE_APPROACH_TIME (45 SECONDS)
+/// Planetary ascent at full thrust before the hull leaves the surface.
+#define ST_SPACE_TAKEOFF_TIME (1 MINUTES)
+/// Mooring or casting off at a physical berth or another hull.
+#define ST_SPACE_MOORING_TIME (20 SECONDS)
+/// Engine sound levels glide this much of their full range per second.
+#define ST_ENGINE_SOUND_GLIDE 0.8
+/// Smallest engine sound level change worth sending to listeners.
+#define ST_ENGINE_SOUND_STEP 0.04
 /// Sent by an area when its space parallax background changes: ().
 #define COMSIG_AREA_SPACE_PARALLAX_CHANGED "area_space_parallax_changed"
 /// Combustion chamber phase: cold and idle.

@@ -112,7 +112,7 @@
 	clear_encounters()
 	pos_x = encounter_x = site.pos_x
 	pos_y = encounter_y = site.pos_y
-	if(dock())
+	if(dock(instant = TRUE))
 		return TRUE
 	if(!QDELETED(src))
 		if(!QDELETED(site) && site.docking_owner == src && docked != site)

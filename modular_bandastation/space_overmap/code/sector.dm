@@ -138,7 +138,7 @@
 	navigation.preparing = FALSE
 	navigation.initialize_ship_audio()
 	if(vessel.starting_dock)
-		if(!navigation.select_site(vessel.starting_dock) || !navigation.dock())
+		if(!navigation.select_site(vessel.starting_dock) || !navigation.dock(instant = TRUE))
 			qdel(navigation)
 			return FALSE
 	navigation.update_parallax()

@@ -133,7 +133,7 @@
 /datum/unit_test/overmap_docking/engine_stop/Run()
 	TEST_ASSERT(navigation.set_engines_running(TRUE), "The real engine must start before docking")
 	ship.preflight_action = CALLBACK(src, PROC_REF(stop_during_preflight))
-	var/result = navigation.dock()
+	var/result = navigation.dock(instant = TRUE)
 	TEST_ASSERT(interrupted, "The stop action must execute while native relocation is suspended")
 	TEST_ASSERT(!ship.engines_running, "Emergency engine shutdown must remain effective during relocation")
 	TEST_ASSERT_EQUAL(ship.get_docked(), bay, "Native docking must actually move the hull into the bay")
@@ -142,7 +142,7 @@
 	TEST_ASSERT(result, "Committed docking must report success")
 	TEST_ASSERT_EQUAL(navigation.control_revision, revision_after_stop, "Arrival must not overwrite the stop action with another helm order")
 	TEST_ASSERT(navigation.set_engines_running(TRUE), "The engine must be restartable after docking")
-	TEST_ASSERT(navigation.sail(), "Departure after the interrupted arrival must remain possible")
+	TEST_ASSERT(navigation.depart(instant = TRUE), "Departure after the interrupted arrival must remain possible")
 	TEST_ASSERT_EQUAL(ship.get_docked(), navigation.flight_berth, "Departure must physically return the hull to flight space")
 	TEST_ASSERT_NULL(navigation.docked, "Departure must clear the virtual dock")
 	TEST_ASSERT_NULL(site.docking_owner, "Departure must release site ownership")
@@ -164,7 +164,7 @@
 
 /datum/unit_test/overmap_docking/blocked_preflight/Run()
 	ship.preflight_action = CALLBACK(src, PROC_REF(block_during_preflight))
-	var/result = navigation.dock()
+	var/result = navigation.dock(instant = TRUE)
 	TEST_ASSERT_NOTNULL(blocker, "The blocking action must execute during real native preflight")
 	TEST_ASSERT(!result, "A destination occupied during yielding preflight must reject the arrival")
 	TEST_ASSERT_EQUAL(ship.get_docked(), navigation.flight_berth, "Rejected arrival must leave the physical hull at its old berth")
@@ -180,7 +180,7 @@
 /datum/unit_test/overmap_docking/evacuation
 
 /datum/unit_test/overmap_docking/evacuation/Run()
-	TEST_ASSERT(navigation.dock(), "The expedition ship must first physically dock at the shared bay")
+	TEST_ASSERT(navigation.dock(instant = TRUE), "The expedition ship must first physically dock at the shared bay")
 	var/turf/old_flight_anchor = get_turf(navigation.flight_berth)
 	var/obj/item/blocker = allocate(/obj/item, old_flight_anchor)
 	var/mob/living/carbon/human/consistent/eva = allocate(/mob/living/carbon/human/consistent, old_flight_anchor)
@@ -209,7 +209,7 @@
 /datum/unit_test/overmap_docking/no_safe_berth
 
 /datum/unit_test/overmap_docking/no_safe_berth/Run()
-	TEST_ASSERT(navigation.dock(), "The expedition ship must first dock at the shared bay")
+	TEST_ASSERT(navigation.dock(instant = TRUE), "The expedition ship must first dock at the shared bay")
 	var/turf/original_position = get_turf(navigation.flight_berth)
 	var/old_maxz = world.maxz
 	var/list/blockers = list()
@@ -236,7 +236,7 @@
 	var/turf/rejected_position
 
 /datum/unit_test/overmap_docking/service_preflight_blocked/Run()
-	TEST_ASSERT(navigation.dock(), "The expedition ship must first dock at the shared bay")
+	TEST_ASSERT(navigation.dock(instant = TRUE), "The expedition ship must first dock at the shared bay")
 	var/turf/original_position = get_turf(navigation.flight_berth)
 	allocate(/obj/item, original_position)
 	ship.preflight_action = CALLBACK(src, PROC_REF(block_service_departure))
@@ -301,7 +301,7 @@
 		tile.change_area(get_area(tile), exterior)
 
 /datum/unit_test/overmap_docking/evacuation_then_virtual_dock/Run()
-	TEST_ASSERT(navigation.dock(), "The expedition hull must first dock at the shared bay")
+	TEST_ASSERT(navigation.dock(instant = TRUE), "The expedition hull must first dock at the shared bay")
 	var/turf/original_flight = get_turf(navigation.flight_berth)
 	var/obj/item/blocker = allocate(/obj/item, original_flight)
 	// Restrict this test's exterior to two real positions, with the world-edge candidate first.
@@ -335,7 +335,7 @@
 	TEST_ASSERT_NULL(home.get_docked(), "The shared bay must be physically vacated")
 	TEST_ASSERT(!QDELETED(blocker) && get_turf(blocker) == original_flight, "The original flight blocker must stay intact")
 	TEST_ASSERT(navigation.select_site(virtual_site.id), "The crew must be able to select a virtual destination after evacuation")
-	TEST_ASSERT(navigation.dock(), "The post-evacuation hull position must permit a real virtual-site seam")
+	TEST_ASSERT(navigation.dock(instant = TRUE), "The post-evacuation hull position must permit a real virtual-site seam")
 	TEST_ASSERT(navigation.connection.active, "The post-evacuation seam must publish its passages")
 	var/obj/item/coin/traveller = allocate(/obj/item/coin, locate(11, 32, flight_z))
 	TEST_ASSERT(traveller.Move(locate(10, 32, flight_z)), "The traveller must enter the actual ship-side passage")

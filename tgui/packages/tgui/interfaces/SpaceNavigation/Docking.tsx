@@ -91,17 +91,27 @@ export function Docking({ approach }: Props) {
   const path = useRef<SVGPathElement>(null);
   const seconds = useApproachClock(approach.elapsed, approach.duration);
   const progress = Math.min(1, seconds / approach.duration);
-  const travel = easeOut(progress);
-  const ship = pointOnPath(path.current, travel) || {
+  const departing = !!approach.departing;
+  // Casting off starts slowly and gathers speed away from the berth, nose first.
+  const travel = departing ? 1 - progress ** 2 : easeOut(progress);
+  const point = pointOnPath(path.current, travel) || {
     x: 590,
     y: 60,
     angle: 100,
   };
+  const ship = departing ? { ...point, angle: point.angle + 180 } : point;
   const distance = Math.round(RANGE * (1 - travel));
-  // Derivative of the eased travel over the approach, in metres per second.
-  const speed = (RANGE * 3 * (1 - progress) ** 2) / approach.duration;
-  const phase =
-    travel < 0.5
+  // Derivative of the eased travel over the manoeuvre, in metres per second.
+  const speed = departing
+    ? (RANGE * 2 * progress) / approach.duration
+    : (RANGE * 3 * (1 - progress) ** 2) / approach.duration;
+  const phase = departing
+    ? progress < 0.15
+      ? 'ОТДАЧА ЗАХВАТОВ'
+      : progress < 1
+        ? 'ОТХОД ОТ ПРИЧАЛА'
+        : 'СВОБОДНЫЙ ПОЛЁТ'
+    : travel < 0.5
       ? 'СБЛИЖЕНИЕ'
       : travel < 0.85
         ? 'УРАВНИВАНИЕ СКОРОСТЕЙ'
@@ -110,13 +120,16 @@ export function Docking({ approach }: Props) {
           : approach.loading
             ? 'ЗАХВАТ ОБЪЕКТА СЕНСОРАМИ'
             : 'СОЕДИНЕНИЕ';
+  const title = departing ? 'РАССТЫКОВКА' : 'СТЫКОВКА';
   const left = Math.max(0, Math.ceil(approach.duration - seconds));
   const aligned = travel >= 0.85;
 
   return (
     <>
       <div className="SpaceNavigation__plot-head">
-        <span>СТЫКОВКА · {approach.site}</span>
+        <span>
+          {title} · {approach.site}
+        </span>
         <span>
           {phase} · T−{Math.floor(left / 60)}:
           {String(left % 60).padStart(2, '0')}
@@ -127,7 +140,7 @@ export function Docking({ approach }: Props) {
         height={HEIGHT}
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         className="SpaceNavigation__chart SpaceNavigation__descent"
-        aria-label={`Стыковка: ${phase}`}
+        aria-label={`${title}: ${phase}`}
       >
         {approach.scene === 'cargo' ? (
           <Cargo />

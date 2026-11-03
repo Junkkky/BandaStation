@@ -73,7 +73,7 @@
 		var/datum/stationtrauma_overmap_site/space/site = sites[id]
 		if(!site.needs_scan && !knows_site(site) && distance_to(site) <= sensor_range)
 			discover_site(site)
-			navigation_notice("Обнаружен контакт — [site.name].")
+			navigation_notice("Обнаружен контакт — [site_label(site)].")
 
 /** Notify everyone aboard the vessel. */
 /datum/stationtrauma_overmap/space/proc/navigation_notice(message)

@@ -277,44 +277,76 @@
 		prepared_site = sites[id]
 
 /** Leave virtual docks in place; planetary departures first return the real hull to its flight berth. */
+/** Casting off takes time, so a moored hull departs asynchronously and engages the helm once clear. */
 /datum/stationtrauma_overmap/space/sail()
-	var/leaving_ship = !!ship_docking
-	if(ship_docking && !ship_docking.release(src))
-		return FALSE
+	if(docked || ship_docking)
+		if(approach_started || preparing || relocating || arrival_pending || !vessel.engines_running || engine_fraction() <= 0)
+			return FALSE
+		INVOKE_ASYNC(src, PROC_REF(depart))
+		return TRUE
 	if(!propulsion_available() || arrival_pending || relocating)
 		return FALSE
-	if(leaving_ship)
+	return ..()
+
+/**
+ * Cast off from the current berth or hull, then engage the helm.
+ *
+ * A planetary ascent burns at full thrust and shakes the crew; losing thrust or the berth keeps the hull where it is.
+ *
+ * Arguments:
+ * * instant - Leave at once, for admin repositioning
+ */
+/datum/stationtrauma_overmap/space/proc/depart(instant = FALSE)
+	if(ship_docking)
+		if(!ship_docking.release(src, instant))
+			return FALSE
 		throttle = 50
-	if((docked?.landing || docked?.physical_docking) && !relocate(flight_berth))
+		return sail()
+	var/datum/stationtrauma_overmap_site/space/old_dock = docked
+	if(!old_dock || approach_started || !propulsion_available() || arrival_pending || relocating)
+		return FALSE
+	var/revision = control_revision
+	if(!instant)
+		begin_approach(old_dock, old_dock.landing ? ST_SPACE_TAKEOFF_TIME : ST_SPACE_MOORING_TIME, departing = TRUE)
+		status = old_dock.landing ? "Взлёт: [old_dock.name]" : "Расстыковка: [old_dock.name]"
+		var/elapsed = 0
+		while((elapsed = world.time - approach_started) < approach_duration)
+			if(old_dock.landing)
+				shake_crew(elapsed / approach_duration)
+			sleep(1 SECONDS)
+			if(QDELETED(src))
+				return FALSE
+			if(QDELETED(old_dock) || docked != old_dock || revision != control_revision || !propulsion_available())
+				end_approach()
+				stop(old_dock.landing ? "Взлёт прерван" : "Расстыковка прервана")
+				return FALSE
+		end_approach()
+	if((old_dock.landing || old_dock.physical_docking) && !relocate(flight_berth))
 		stop(status)
 		return FALSE
-	if(docked)
-		var/datum/stationtrauma_overmap_site/space/old_dock = docked
-		var/revision = control_revision
-		preparing = TRUE
-		connection.disconnect_cooperatively(new /datum/stationtrauma_work_budget)
-		if(QDELETED(src))
-			return FALSE
-		if(old_dock.docking_owner == src)
-			old_dock.docking_owner = null
-		docked = null
-		preparing = FALSE
-		play_maneuver_audio(old_dock.berth, departing = TRUE)
-		refresh_engine_audio()
-		update_parallax()
-		if(QDELETED(src) || revision != control_revision)
-			return FALSE
-		throttle = 50
-		// The berth just left is no longer an arrival order during the first slow acceleration tick.
-		if(sites[selected_destination] == old_dock)
-			selected_destination = null
-			prepared_site = null
-	return ..()
+	preparing = TRUE
+	connection.disconnect_cooperatively(new /datum/stationtrauma_work_budget)
+	if(QDELETED(src))
+		return FALSE
+	if(old_dock.docking_owner == src)
+		old_dock.docking_owner = null
+	docked = null
+	preparing = FALSE
+	refresh_engine_audio()
+	update_parallax()
+	if(QDELETED(src) || revision != control_revision)
+		return FALSE
+	throttle = 50
+	// The berth just left is no longer an arrival order during the first slow acceleration tick.
+	if(sites[selected_destination] == old_dock)
+		selected_destination = null
+		prepared_site = null
+	return sail()
 
 /** Stop the autopilot at its destination; manual flight remains unrestricted. */
 /datum/stationtrauma_overmap/space/arrive(datum/stationtrauma_overmap_site/site)
 	if(autopilot && can_arrive(site))
-		stop("Точка назначения достигнута: [site.name]")
+		stop("Точка назначения достигнута: [site_label(site)]")
 	arrival_pending = FALSE
 
 /** Revalidate the selected site, berth ownership, proximity and helm order revision. */
@@ -329,31 +361,35 @@
 		return compatibility == SHUTTLE_CAN_DOCK || compatibility == SHUTTLE_ALREADY_DOCKED
 	return TRUE
 
-/** Build inactive seams cooperatively and revalidate stop/selection before publishing them. */
-/datum/stationtrauma_overmap/space/proc/dock()
+/**
+ * Build inactive seams cooperatively and revalidate stop/selection before publishing them.
+ *
+ * Arguments:
+ * * instant - Skip the approach at a physical berth: round start and station delivery already account for the arrival
+ */
+/datum/stationtrauma_overmap/space/proc/dock(instant = FALSE)
 	var/datum/stationtrauma_overmap_site/space/site = sites[selected_destination]
 	if(preparing || docked || helm_engaged || speed > ST_NAV_STOPPED_SPEED || !can_dock(site, control_revision))
 		return FALSE
 	// Reserve before native movement or seam construction can yield to another ship.
 	site.docking_owner = src
 	clear_encounters()
-	stop("Стыковка: [site.name]")
+	stop("Стыковка: [site_label(site)]")
 	var/revision = control_revision
 	preparing = TRUE
 	var/datum/stationtrauma_work_budget/budget = new
 	var/ready = FALSE
 	var/physical_docking = site.landing || site.physical_docking
 	try
-		if(site.physical_docking)
+		if(site.physical_docking && instant)
 			ready = relocate(site.berth)
 		else if(approach(site, revision))
-			ready = site.landing ? relocate(site.berth) : connection.connect(site.berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
+			ready = physical_docking ? relocate(site.berth) : connection.connect(site.berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
 	catch(var/exception/failure)
 		stack_trace("Space prototype docking failed: [failure]")
 	if(QDELETED(src))
 		return FALSE
-	approach_started = 0
-	update_parallax()
+	end_approach()
 	// Native relocation has committed the hull; an engine stop cannot roll that movement back.
 	ready = ready && (physical_docking ? vessel.get_docked() == site.berth : can_dock(site, revision))
 	if(!ready)
@@ -375,26 +411,8 @@
 	update_parallax()
 	return TRUE
 
-/**
- * Parallax follows the real velocity in the hull's frame: a ship sliding sideways or backwards shows it.
- *
- * Native parallax animates only cardinal directions, so the motion is rounded to the nearest one.
- */
-/datum/stationtrauma_overmap/space/proc/parallax_motion_dir()
-	if(approach_started || jump_phase >= HYPERSPACE_LAUNCH)
-		return vessel.preferred_direction
-	if(speed <= ST_NAV_STOPPED_SPEED)
-		return NONE
-	// Compass bearing of the velocity relative to the virtual heading, turned onto the hull's mapped nose.
-	var/bearing = 90 - ATAN2(velocity_x, velocity_y)
-	var/angle = WRAP(dir2angle(vessel.preferred_direction) + bearing - course, 0, 360)
-	// Keep the current direction near a 45 degree boundary instead of flickering between two.
-	if(parallax_direction && abs(WRAP(angle - dir2angle(parallax_direction) + 180, 0, 360) - 180) <= 55)
-		return parallax_direction
-	return angle2dir_cardinal(angle)
-
 /datum/stationtrauma_overmap/space/update_parallax()
-	var/direction = parallax_motion_dir()
+	var/direction = speed > ST_NAV_STOPPED_SPEED || approach_started || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
 	var/background = parallax_background()
 	var/motion_changed = direction != parallax_direction
 	if(!motion_changed && background == space_background)

@@ -34,7 +34,7 @@ ADMIN_VERB(stationtrauma_overmap_jump, R_DEBUG, "Overmap - Переместит�
 		return
 	navigation.stop()
 	var/revision = navigation.control_revision
-	if((navigation.docked || navigation.ship_docking) && !navigation.sail())
+	if((navigation.docked || navigation.ship_docking) && !navigation.depart(instant = TRUE))
 		to_chat(user, span_warning("Не удалось освободить стоянку: [navigation.status]"), confidential = TRUE)
 		return
 	if(!check_rights_for(user, R_DEBUG) || QDELETED(navigation) || navigation.control_revision != revision || !navigation.debug_reposition(site))

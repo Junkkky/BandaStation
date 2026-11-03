@@ -80,15 +80,17 @@
 		"approach" = null,
 		"compartments" = vessel.compartment_report(),
 	)
-	if(map.approach_started && target)
-		var/datum/stationtrauma_overmap_site/space/planet/approach_planet = target
+	var/datum/stationtrauma_overmap_site/space/approach_site = map.approach_site
+	if(map.approach_started && !QDELETED(approach_site))
+		var/datum/stationtrauma_overmap_site/space/planet/approach_planet = approach_site
 		data["approach"] = list(
 			"elapsed" = (world.time - map.approach_started) / (1 SECONDS),
-			"duration" = (target.landing ? ST_SPACE_LANDING_TIME : ST_SPACE_APPROACH_TIME) / (1 SECONDS),
-			"site" = target.name,
-			"scene" = istype(approach_planet) ? "planet" : target.approach_scene,
+			"duration" = map.approach_duration / (1 SECONDS),
+			"departing" = map.approach_departing,
+			"site" = map.site_label(approach_site),
+			"scene" = istype(approach_planet) ? "planet" : approach_site.approach_scene,
 			"biome" = istype(approach_planet) ? approach_planet.ruin_biome : null,
-			"loading" = target.loading_map,
+			"loading" = approach_site.loading_map,
 		)
 	if(istype(target, /datum/stationtrauma_overmap_site/space/planet) && map.knows_site(target))
 		var/datum/stationtrauma_overmap_site/space/planet/planet = target

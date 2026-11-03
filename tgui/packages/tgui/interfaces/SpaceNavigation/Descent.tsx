@@ -54,15 +54,26 @@ export function Descent({ approach }: Props) {
   const path = useRef<SVGPathElement>(null);
   const seconds = useApproachClock(approach.elapsed, approach.duration);
   const progress = Math.min(1, seconds / approach.duration);
-  const entry = progress > 0.25 && progress < 0.75;
-  const ship = pointOnPath(path.current, progress) || {
+  const departing = !!approach.departing;
+  // An ascent flies the descent path backwards, nose first.
+  const flown = departing ? 1 - progress : progress;
+  const entry = flown > 0.25 && flown < 0.75;
+  const point = pointOnPath(path.current, flown) || {
     x: 575,
     y: 45,
     angle: 180,
   };
+  const ship = departing ? { ...point, angle: point.angle + 180 } : point;
   const colour = (approach.biome && BIOME_COLOURS[approach.biome]) || '#8b8f8c';
-  const phase =
-    progress < 0.25
+  const phase = departing
+    ? progress < 0.25
+      ? 'ОТРЫВ ОТ ПОВЕРХНОСТИ'
+      : progress < 0.75
+        ? 'ПРОХОД АТМОСФЕРЫ'
+        : progress < 1
+          ? 'ВЫХОД НА ОРБИТУ'
+          : 'ОРБИТА'
+    : progress < 0.25
       ? 'СХОД С ОРБИТЫ'
       : progress < 0.75
         ? 'ВХОД В АТМОСФЕРУ'
@@ -71,13 +82,16 @@ export function Descent({ approach }: Props) {
           : approach.loading
             ? 'ОЖИДАНИЕ КАРТЫ ПОВЕРХНОСТИ'
             : 'КАСАНИЕ';
+  const title = departing ? 'ВЗЛЁТ' : 'ПОСАДКА';
   const left = Math.max(0, Math.ceil(approach.duration - seconds));
-  const heat = entry ? Math.sin(((progress - 0.25) / 0.5) * Math.PI) : 0;
+  const heat = entry ? Math.sin(((flown - 0.25) / 0.5) * Math.PI) : 0;
 
   return (
     <>
       <div className="SpaceNavigation__plot-head">
-        <span>ПОСАДКА · {approach.site}</span>
+        <span>
+          {title} · {approach.site}
+        </span>
         <span>
           {phase} · T−{Math.floor(left / 60)}:
           {String(left % 60).padStart(2, '0')}
@@ -88,7 +102,7 @@ export function Descent({ approach }: Props) {
         height={HEIGHT}
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         className="SpaceNavigation__chart SpaceNavigation__descent"
-        aria-label={`Посадка: ${phase}`}
+        aria-label={`${title}: ${phase}`}
       >
         <circle
           cx={PLANET.x}
@@ -116,7 +130,7 @@ export function Descent({ approach }: Props) {
         />
         <circle cx={207} cy={252} r={4} fill="none" stroke="#e6c78b" />
         <g
-          transform={`translate(${ship.x} ${ship.y}) rotate(${ship.angle}) scale(${1 - progress * 0.4})`}
+          transform={`translate(${ship.x} ${ship.y}) rotate(${ship.angle}) scale(${1 - flown * 0.4})`}
         >
           {heat > 0 && (
             <circle

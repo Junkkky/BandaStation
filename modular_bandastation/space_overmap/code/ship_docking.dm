@@ -270,13 +270,27 @@
 		&& first.control_revision == first_revision && second.control_revision == second_revision \
 		&& get_turf(first.vessel) == first_origin && get_turf(second.vessel) == second_origin
 
+/** Hold the pair through a mooring manoeuvre; fails as soon as the pair is gone or `still_valid` does. */
+/datum/stationtrauma_ship_docking/proc/hold(datum/callback/still_valid)
+	var/started = world.time
+	while(world.time - started < ST_SPACE_MOORING_TIME)
+		sleep(1 SECONDS)
+		if(QDELETED(src) || !still_valid.Invoke())
+			return FALSE
+	return TRUE
+
 /**
- * Join the reserved hulls, rechecking both.
+ * Join the reserved hulls after the mooring manoeuvre, rechecking both.
  *
  * The first hull moves beside the second, outer hatch against outer hatch, when such a pairing fits in open space;
  * otherwise a remote seam is built cooperatively.
  */
 /datum/stationtrauma_ship_docking/proc/connect()
+	first.status = second.status = "Стыковочный манёвр: сближение шлюзов"
+	if(!hold(CALLBACK(src, PROC_REF(current))))
+		if(!QDELETED(src))
+			qdel(src)
+		return FALSE
 	var/ready = FALSE
 	var/datum/stationtrauma_work_budget/budget = new
 	if(current())
@@ -320,14 +334,27 @@
 	first.play_maneuver_audio(second.vessel)
 	return TRUE
 
-/** Either pilot may release a voluntary pair; stop during cleanup cancels thrust, not the safe disconnect. */
-/datum/stationtrauma_ship_docking/proc/release(datum/stationtrauma_overmap/space/departing)
+/**
+ * Either pilot may release a voluntary pair after casting off; stop during cleanup cancels thrust, not the safe disconnect.
+ *
+ * Arguments:
+ * * instant - Skip casting off, for admin repositioning
+ */
+/datum/stationtrauma_ship_docking/proc/release(datum/stationtrauma_overmap/space/departing, instant = FALSE)
 	if(closing || !(departing in list(first, second)) || QDELETED(first) || QDELETED(second) || !(flush || connection.active) || first.preparing || second.preparing || !departing.is_operational() || !departing.vessel.engines_running || departing.engine_fraction() <= 0)
 		return FALSE
 	closing = TRUE
 	first.preparing = second.preparing = TRUE
 	var/revision = departing.control_revision
 	var/datum/stationtrauma_overmap/space/peer = departing == first ? second : first
+	departing.status = peer.status = "Расстыковка: отдача захватов"
+	if(!instant && !hold(CALLBACK(src, PROC_REF(releasable), departing, revision)))
+		if(QDELETED(src))
+			return FALSE
+		closing = FALSE
+		first.preparing = second.preparing = FALSE
+		first.status = second.status = "Расстыковка прервана"
+		return FALSE
 	if(flush)
 		// The first hull returns to its own level before either pilot may fly away.
 		if(!first.relocate(first.flight_berth))
@@ -341,8 +368,10 @@
 		connection.disconnect_cooperatively(new /datum/stationtrauma_work_budget)
 	if(QDELETED(src))
 		return FALSE
-	var/ready = !QDELETED(departing) && departing.is_operational() && departing.control_revision == revision && departing.vessel.engines_running && departing.engine_fraction() > 0
-	if(ready)
-		departing.play_maneuver_audio(QDELETED(peer) ? null : peer.vessel, departing = TRUE)
+	var/ready = releasable(departing, revision)
 	qdel(src)
 	return ready
+
+/** Whether the departing hull may still fly away under the order that started the release. */
+/datum/stationtrauma_ship_docking/proc/releasable(datum/stationtrauma_overmap/space/departing, revision)
+	return !QDELETED(departing) && departing.is_operational() && departing.control_revision == revision && departing.vessel.engines_running && departing.engine_fraction() > 0

@@ -52,8 +52,12 @@ function Navigation({ data }: { data: NavigationData }) {
   const needle = Math.PI * (1 - Math.min(1, data.speed / data.speed_scale));
   const mode = data.approach
     ? data.approach.scene === 'planet'
-      ? 'ПОСАДКА'
-      : 'СТЫКОВКА'
+      ? data.approach.departing
+        ? 'ВЗЛЁТ'
+        : 'ПОСАДКА'
+      : data.approach.departing
+        ? 'РАССТЫКОВКА'
+        : 'СТЫКОВКА'
     : data.preparing
       ? 'ПОДГОТОВКА'
       : moored

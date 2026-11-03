@@ -51,6 +51,11 @@
 	for(var/list/record as anything in .)
 		var/datum/stationtrauma_overmap_site/space/site = sites[record["id"]]
 		record["kind"] = istype(site, /datum/stationtrauma_overmap_site/space/planet) ? "planet" : site.physical_docking ? "station" : "signal"
+		record["name"] = site_label(site)
+
+/** Crew-facing name: a space object stays unidentified until this crew has docked there; planets and stations are charted. */
+/datum/stationtrauma_overmap/space/proc/site_label(datum/stationtrauma_overmap_site/space/site)
+	return site.landing || site.physical_docking || visited_sites[site.id] ? site.name : "???"
 
 /** A bounded metadata pulse, independent of loading and never exposing contacts outside detection range. */
 /datum/stationtrauma_overmap/space/proc/scan_sector()
