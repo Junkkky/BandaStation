@@ -309,10 +309,8 @@
 	if(!instant)
 		begin_approach(old_dock, old_dock.landing ? ST_SPACE_TAKEOFF_TIME : ST_SPACE_MOORING_TIME, departing = TRUE)
 		status = old_dock.landing ? "Взлёт: [old_dock.name]" : "Расстыковка: [old_dock.name]"
-		var/elapsed = 0
-		while((elapsed = world.time - approach_started) < approach_duration)
-			if(old_dock.landing)
-				shake_crew(elapsed / approach_duration)
+		while(world.time - approach_started < approach_duration)
+			shake_crew()
 			sleep(1 SECONDS)
 			if(QDELETED(src))
 				return FALSE
@@ -413,15 +411,22 @@
 
 /datum/stationtrauma_overmap/space/update_parallax()
 	var/direction = speed > ST_NAV_STOPPED_SPEED || approach_started || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
+	// Bluespace flight streaks the stars past the hull.
+	var/rush = jump_phase == HYPERSPACE_LAUNCH ? ST_SPACE_JUMP_PARALLAX_RUSH : 1
 	var/background = parallax_background()
-	var/motion_changed = direction != parallax_direction
+	var/motion_changed = direction != parallax_direction || rush != parallax_rush
 	if(!motion_changed && background == space_background)
 		return
 	space_background = background
 	parallax_direction = direction
+	parallax_rush = rush
 	for(var/area/ship_area as anything in vessel.shuttle_areas)
 		ship_area.set_space_parallax_background(background)
 		if(motion_changed)
+			ship_area.parallax_rush = rush
+			// Viewers restart their loop only on a direction change, so a new speed in the same direction passes through a stop.
+			if(ship_area.parallax_movedir == direction)
+				ship_area.set_parallax_movedir(NONE)
 			ship_area.set_parallax_movedir(direction)
 	exterior?.set_space_parallax_background(background)
 	exterior?.set_parallax_movedir(NONE)

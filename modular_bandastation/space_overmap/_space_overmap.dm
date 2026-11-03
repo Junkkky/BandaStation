@@ -8,6 +8,16 @@
 #define ST_FUEL_CACHE_PLANET_CHANCE 25
 /// Flight of a called ship to its station berth.
 #define ST_SPACE_DISPATCH_TIME (2 MINUTES)
+/// Parallax loop speed multiplier through bluespace flight.
+#define ST_SPACE_JUMP_PARALLAX_RUSH 8
+/// Reach of the star's corona from the system centre, in virtual sector units; the nearest rolled objects lie past 500.
+#define ST_STAR_CORONA_RADIUS 350
+/// Interval between corona effects on a hull inside it.
+#define ST_STAR_HEAT_INTERVAL (4 SECONDS)
+/// Bluespace jumps one anomaly core charges.
+#define ST_BLUESPACE_CORE_JUMPS 2
+/// Jumps a bluespace drive can hold.
+#define ST_BLUESPACE_DRIVE_CAPACITY 4
 /// Highest relative speed at which two hulls may dock.
 #define ST_SPACE_DOCK_SPEED 0.5
 /// How long a ship-to-ship docking request waits for an answer.

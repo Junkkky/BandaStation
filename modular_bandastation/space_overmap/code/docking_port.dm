@@ -21,6 +21,8 @@
 	var/engines_running = FALSE
 	/// Mapped combustion controller; ordinary ships keep their existing propulsion model.
 	var/datum/weakref/combustion_controller
+	/// Bluespace drive aboard; without a charged one the hull cannot leave the system.
+	var/datum/weakref/bluespace_drive
 	/// Mapper-declared role; physical berth compatibility still uses the actual hull dimensions.
 	var/ship_class = ST_SHIP_MEDIUM
 	/// Whether this hull may use planetary surface berths.

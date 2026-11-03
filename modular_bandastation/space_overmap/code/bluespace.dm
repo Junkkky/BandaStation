@@ -18,7 +18,7 @@
 		&& SSstationtrauma_space_voyage.sectors[origin.id] == origin && (id in origin.jump_routes) \
 		&& is_operational() && origin.ships[vessel.shuttle_id] == src && !target.ships[vessel.shuttle_id] \
 		&& !preparing && !relocating && !docked && !ship_docking && !connection.active \
-		&& !QDELETED(flight_berth) && vessel.z == flight_berth.z
+		&& !QDELETED(flight_berth) && vessel.z == flight_berth.z && jump_drive()
 
 /** Serialize charted resident sectors available from the current jump network node. */
 /datum/stationtrauma_overmap/space/proc/jump_data()
@@ -99,6 +99,8 @@
 		origin.register(vessel.shuttle_id, src)
 		stop("Блюспейс-прыжок не выполнен")
 		return FALSE
+	var/obj/machinery/stationtrauma_bluespace_drive/drive = jump_drive()
+	drive?.spend_charge()
 	selected_destination = null
 	prepared_site = null
 	ship_observations.Cut()
@@ -109,3 +111,63 @@
 	stop("Блюспейс-переход завершён: [target.name]")
 	navigation_notice("Прибытие в систему: [target.name].")
 	return TRUE
+
+/** Powered, charged bluespace drive aboard the hull, or null. */
+/datum/stationtrauma_overmap/space/proc/jump_drive()
+	var/obj/machinery/stationtrauma_bluespace_drive/drive = vessel.bluespace_drive?.resolve()
+	if(QDELETED(drive) || !drive.charges || (drive.machine_stat & (NOPOWER|BROKEN)) || !vessel.is_in_shuttle_bounds(drive))
+		return null
+	return drive
+
+/**
+ * Folds space around the hull for inter-system jumps; each bluespace anomaly core fed into it charges a fixed number of jumps.
+ * The jump itself is ordered from the bluespace terminal and spends a charge only on arrival.
+ */
+/obj/machinery/stationtrauma_bluespace_drive
+	name = "блюспейс-привод"
+	desc = "Складывает пространство вокруг корпуса для межсистемного перехода. Заряжается ядром блюспейс-аномалии."
+	icon = 'icons/obj/machines/teleporter.dmi'
+	icon_state = "controller"
+	density = TRUE
+	anchored = TRUE
+	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 5
+	/// Jumps left before the drive needs another core.
+	var/charges = 0
+
+/obj/machinery/stationtrauma_bluespace_drive/post_machine_initialize()
+	. = ..()
+	connect_to_shuttle(FALSE, SSshuttle.get_containing_shuttle(src))
+
+/obj/machinery/stationtrauma_bluespace_drive/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	. = ..()
+	var/obj/docking_port/mobile/stationtrauma_space/ship = port
+	if(istype(ship) && ship.is_in_shuttle_bounds(src))
+		ship.bluespace_drive = WEAKREF(src)
+
+/obj/machinery/stationtrauma_bluespace_drive/update_icon_state()
+	icon_state = charges && !(machine_stat & (NOPOWER|BROKEN)) ? "controller-p" : "controller"
+	return ..()
+
+/obj/machinery/stationtrauma_bluespace_drive/examine(mob/user)
+	. = ..()
+	. += span_notice("Запас переходов: [charges] из [ST_BLUESPACE_DRIVE_CAPACITY]. Одно ядро блюспейс-аномалии даёт [ST_BLUESPACE_CORE_JUMPS].")
+
+/obj/machinery/stationtrauma_bluespace_drive/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(!istype(tool, /obj/item/assembly/signaler/anomaly/bluespace))
+		return NONE
+	if(charges + ST_BLUESPACE_CORE_JUMPS > ST_BLUESPACE_DRIVE_CAPACITY)
+		balloon_alert(user, "привод заряжен")
+		return ITEM_INTERACT_BLOCKING
+	if(!user.temporarilyRemoveItemFromInventory(tool))
+		return ITEM_INTERACT_BLOCKING
+	qdel(tool)
+	charges += ST_BLUESPACE_CORE_JUMPS
+	update_appearance(UPDATE_ICON_STATE)
+	playsound(src, 'sound/effects/phasein.ogg', 50, TRUE)
+	balloon_alert(user, "ядро загружено")
+	return ITEM_INTERACT_SUCCESS
+
+/** Spend one jump of charge after a completed jump. */
+/obj/machinery/stationtrauma_bluespace_drive/proc/spend_charge()
+	charges = max(0, charges - 1)
+	update_appearance(UPDATE_ICON_STATE)

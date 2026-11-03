@@ -173,20 +173,28 @@
 	update_parallax()
 	refresh_engine_audio()
 
-/**
- * Crew aboard feel atmospheric flight through its middle; the shake is purely visual.
- *
- * Arguments:
- * * progress - Fraction of the descent or ascent already flown
- */
-/datum/stationtrauma_overmap/space/proc/shake_crew(progress)
+/** Strength of atmospheric flight from 0 to 1: it builds through the middle half of a descent or ascent and peaks halfway. */
+/datum/stationtrauma_overmap/space/proc/entry_heat()
+	if(!approach_started || !approach_site?.landing || approach_duration <= 0)
+		return 0
+	var/progress = (world.time - approach_started) / approach_duration
 	if(progress <= 0.25 || progress >= 0.75)
+		return 0
+	return sin(180 * (progress - 0.25) / 0.5)
+
+/** Crew aboard feel atmospheric flight: the camera shakes and the hull groans; the shake is purely visual. */
+/datum/stationtrauma_overmap/space/proc/shake_crew()
+	var/heat = entry_heat()
+	if(heat <= 0)
 		return
-	// Strongest halfway through, at most a fifth of a tile.
-	var/strength = 0.2 * sin(180 * (progress - 0.25) / 0.5)
+	var/groan = prob(40 * heat)
 	for(var/mob/crew as anything in SSmobs.clients_by_zlevel[vessel.z])
-		if(vessel.is_in_shuttle_bounds(crew))
-			shake_camera(crew, 1 SECONDS, strength)
+		if(!vessel.is_in_shuttle_bounds(crew))
+			continue
+		// At most two thirds of a tile at the peak.
+		shake_camera(crew, 1 SECONDS, 0.65 * heat)
+		if(groan)
+			crew.playsound_local(get_turf(crew), SFX_HULL_CREAKING, 30 + 40 * heat, TRUE, pressure_affected = FALSE)
 
 /**
  * Hold the hull on its approach, loading an uncharted destination meanwhile; returns whether docking may proceed.
@@ -198,10 +206,8 @@
 	status = site.landing ? "Посадка: [site.name]" : "Сближение: [site_label(site)]"
 	if(site.awaits_map() && !site.loading_map)
 		INVOKE_ASYNC(site, TYPE_PROC_REF(/datum/stationtrauma_overmap_site/space, load_map))
-	var/elapsed = 0
-	while((elapsed = world.time - approach_started) < approach_duration || site.loading_map)
-		if(site.landing)
-			shake_crew(elapsed / approach_duration)
+	while(world.time - approach_started < approach_duration || site.loading_map)
+		shake_crew()
 		sleep(1 SECONDS)
 		if(QDELETED(src) || QDELETED(site))
 			return FALSE

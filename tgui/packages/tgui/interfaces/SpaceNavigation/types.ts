@@ -98,6 +98,8 @@ export type NavigationData = Position & {
   scan_ready: BooleanLike;
   /** Seconds since the last sensor pulse, or null before the first one. */
   scan_age: number | null;
+  /** Sensor noise from 0 to 1, as near the star. */
+  interference: number;
   sensor_range: number;
   can_dock: BooleanLike;
   routes: Site[];
@@ -127,6 +129,8 @@ export type NavigationData = Position & {
     loading: BooleanLike;
   } | null;
   compartments: Compartment[];
+  /** Hull silhouette rows, north first: space outside, `#` wall, `!` breach, otherwise the compartment code. */
+  hull: string[];
 };
 
 export function compartmentDamaged(room: Compartment) {

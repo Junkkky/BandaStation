@@ -165,42 +165,4 @@
 	if(choices[choice] == "cancel")
 		map.request_brake()
 	else if(!map.request_jump(choices[choice]))
-		to_chat(user, span_warning("Переход недоступен. Освободите причал и дождитесь завершения текущего манёвра."))
-
-/** Buildable hull compartment monitor board. */
-/obj/item/circuitboard/computer/stationtrauma_compartments
-	name = "консоль контроля отсеков"
-	name_extension = "(плата компьютера)"
-	build_path = /obj/machinery/computer/stationtrauma_compartments
-
-/** Hull-bound compartment monitor: breaches, fire and pressure in every compartment, damaged first. */
-/obj/machinery/computer/stationtrauma_compartments
-	name = "консоль контроля отсеков"
-	desc = "Показывает состояние отсеков корабля: пробоины, пожары и давление."
-	icon_screen = "alert:0"
-	icon_keyboard = "atmos_key"
-	circuit = /obj/item/circuitboard/computer/stationtrauma_compartments
-	/// Physical hull whose compartments are shown.
-	var/obj/docking_port/mobile/stationtrauma_space/vessel
-
-/obj/machinery/computer/stationtrauma_compartments/post_machine_initialize()
-	. = ..()
-	connect_to_shuttle(FALSE, SSshuttle.get_containing_shuttle(src))
-
-/obj/machinery/computer/stationtrauma_compartments/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
-	. = ..()
-	vessel = istype(port, /obj/docking_port/mobile/stationtrauma_space) && port.is_in_shuttle_bounds(src) ? port : null
-
-/obj/machinery/computer/stationtrauma_compartments/Destroy()
-	vessel = null
-	return ..()
-
-/obj/machinery/computer/stationtrauma_compartments/ui_interact(mob/user, datum/tgui/ui)
-	. = ..()
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "ShipCompartments", name)
-		ui.open()
-
-/obj/machinery/computer/stationtrauma_compartments/ui_data(mob/user)
-	return list("compartments" = QDELETED(vessel) ? list() : vessel.compartment_report())
+		to_chat(user, span_warning(map.jump_drive() ? "Переход недоступен. Освободите причал и дождитесь завершения текущего манёвра." : "Переход недоступен: блюспейс-привод не заряжен или обесточен."))

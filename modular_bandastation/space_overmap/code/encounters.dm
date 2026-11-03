@@ -20,9 +20,12 @@
 	var/sensor_range = 600
 	/// Current crew-facing navigation hazard status.
 	var/encounter_status = "Маршрут свободен"
+	/// Sensor noise from 0 to 1 the crew sees on the chart.
+	var/interference = 0
 
 /** Create round-local encounter regions and persistent obstacles at random points of the system. */
 /datum/stationtrauma_overmap_sector/space/proc/build_encounters()
+	zones += new /datum/stationtrauma_overmap_zone("Корона звезды", "corona", 0, 0, ST_STAR_CORONA_RADIUS)
 	zones += new /datum/stationtrauma_overmap_zone("Астероидный пояс / обломки", "asteroids", belt_x, belt_y, 360)
 	for(var/index in 1 to rand(2, 3))
 		var/list/point = random_position(500, 1900, 450)
@@ -44,6 +47,7 @@
 		clear_encounters()
 		return
 	sensor_range = 600
+	interference = 0
 	encounter_status = "Маршрут свободен"
 	for(var/datum/stationtrauma_overmap_zone/zone as anything in zones)
 		var/inside = zone.crosses(encounter_x, encounter_y, pos_x, pos_y)
@@ -53,6 +57,9 @@
 		encounter_status = zone.name
 		if(zone.kind == "nebula")
 			sensor_range = 180
+			continue
+		if(zone.kind == "corona")
+			solar_heat(zone)
 			continue
 		if(isnull(zone_timers[zone]))
 			zone_timers[zone] = world.time + 8 SECONDS
@@ -89,7 +96,8 @@
 /datum/stationtrauma_overmap/space/proc/encounter_data()
 	var/list/chart = list()
 	for(var/datum/stationtrauma_overmap_zone/zone as anything in zones)
-		if(!charted_zones[zone])
+		// The corona is plain to see around the star.
+		if(!charted_zones[zone] && zone.kind != "corona")
 			continue
 		chart += list(list("name" = zone.name, "kind" = zone.kind, "x" = zone.pos_x, "y" = zone.pos_y, "radius" = zone.radius, "direction" = zone.direction))
 	return chart
@@ -114,7 +122,46 @@
 	encounter_x = pos_x
 	encounter_y = pos_y
 	sensor_range = 600
+	interference = 0
 	encounter_status = "Маршрут свободен"
+
+/**
+ * Starlight scorches the sun-facing plating, heats the air aboard and drowns the sensors, all growing towards the star.
+ * The plating takes the native weldable wall tearing, so three scorches on one plate open a breach.
+ */
+/datum/stationtrauma_overmap/space/proc/solar_heat(datum/stationtrauma_overmap_zone/corona)
+	var/dx = corona.pos_x - pos_x
+	var/dy = corona.pos_y - pos_y
+	var/heat = clamp(1 - sqrt(dx ** 2 + dy ** 2) / corona.radius, 0, 1)
+	interference = max(interference, heat)
+	sensor_range = min(sensor_range, round(600 * (1 - 0.6 * heat)))
+	encounter_status = "[corona.name]: перегрев корпуса"
+	if(isnull(zone_timers[corona]))
+		zone_timers[corona] = world.time + ST_STAR_HEAT_INTERVAL
+		navigation_notice("[corona.name]. Перегрев корпуса и помехи сенсоров, уходите от звезды.")
+		return
+	if(world.time < zone_timers[corona] || heat <= 0)
+		return
+	zone_timers[corona] = world.time + ST_STAR_HEAT_INTERVAL
+	var/limit = T20C + 250 * heat
+	for(var/turf/open/tile in vessel.return_turfs())
+		if(isspaceturf(tile) || !vessel.shuttle_areas[get_area(tile)])
+			continue
+		var/datum/gas_mixture/air = tile.air
+		if(!air || air.temperature >= limit)
+			continue
+		air.temperature = min(limit, air.temperature + 6 * heat)
+		tile.air_update_turf(FALSE, FALSE)
+	if(!prob(50 * heat))
+		return
+	// Starlight falls on the whole sun-facing side, so the scorched plate wanders along it.
+	var/spread = rand(-35, 35)
+	var/atom/plate = stationtrauma_navigation_hull_target(vessel, course, 1, dx * cos(spread) - dy * sin(spread), dx * sin(spread) + dy * cos(spread), vessel.preferred_direction)
+	if(iswallturf(plate))
+		plate.AddComponent(/datum/component/torn_wall)
+	else if(isobj(plate))
+		var/obj/barrier = plate
+		barrier.take_damage(40, BURN, FIRE)
 
 /** Release a deleted meteor from the encounter-owned set. */
 /datum/stationtrauma_overmap/space/proc/forget_meteor(datum/source)

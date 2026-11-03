@@ -100,6 +100,49 @@
       text-align: center;
     }
   }
+  &__hull {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 34%;
+    min-height: 0;
+    padding: 0 6px 4px;
+    border-top: 1px solid var(--nav-border);
+
+    h2 {
+      padding: 8px 4px 4px;
+    }
+    svg {
+      flex: 1;
+      min-height: 0;
+      width: 100%;
+    }
+    .SpaceNavigation__help {
+      margin: 4px 0 0;
+      max-height: 40px;
+      overflow-y: auto;
+    }
+    .wall {
+      fill: #6f8a74;
+    }
+    .floor {
+      fill: #2c4436;
+
+      &.leak {
+        fill: #b8954d;
+      }
+      &.fire {
+        fill: #c4513f;
+      }
+      &.hovered {
+        stroke: #d4e4be;
+        stroke-width: 0.15;
+      }
+    }
+    .breach {
+      fill: #ff8a6e;
+      animation: SpaceNavigation__breach 1s steps(2) infinite;
+    }
+  }
   &__compartment {
     margin-top: 4px;
     padding: 5px 7px;
@@ -178,23 +221,24 @@
     border-top: 1px solid #2b3c30;
 
     .Button {
-      min-height: 42px;
-      margin-top: 4px;
-      padding: 5px 7px;
+      margin-top: 3px;
+      padding: 2px 6px;
       line-height: 16px;
       background: #1d2a23;
     }
     .Button__content {
-      display: block;
+      display: flex;
+      gap: 6px;
     }
     span:first-child {
-      display: block;
+      flex: 1;
+      min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     span:last-child {
-      display: block;
+      flex-shrink: 0;
       color: var(--nav-muted);
       font-size: 10px;
     }
@@ -624,5 +668,17 @@
     &__plot {
       min-height: 410px;
     }
+  }
+}
+
+@keyframes SpaceNavigation__breach {
+  50% {
+    fill: #3a1d18;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .SpaceNavigation__hull .breach {
+    animation: none;
   }
 }

@@ -16,6 +16,8 @@
 	var/datum/sound_token/stationtrauma_engine_exterior/exterior_idle
 	/// Thrust loop at a nozzle, heard only outside the hull.
 	var/datum/sound_token/stationtrauma_engine_exterior/exterior_thrust
+	/// Hull-only roar of atmospheric flight, independent of the drive.
+	var/datum/sound_token/stationtrauma_ship_interior/engine/entry_roar
 	/// Whether the drive is audibly lit.
 	var/running = FALSE
 	/// Smoothed idle level from 0 to 1.
@@ -26,6 +28,12 @@
 	var/sent_idle = -1
 	/// Thrust level last sent to listeners.
 	var/sent_thrust = -1
+	/// Smoothed atmospheric roar level from 0 to 1.
+	var/entry_level = 0
+	/// Roar level last sent to listeners.
+	var/sent_entry = -1
+	/// Loop heard aboard through atmospheric flight.
+	var/entry_roar_sound = 'sound/runtime/hyperspace/hyperspace_progress.ogg'
 	/// Clip heard aboard when the drive lights.
 	var/interior_start_sound = 'modular_bandastation/space_overmap/sound/engine/engine_interior_start.ogg'
 	/// Loop heard aboard while the drive idles.
@@ -73,14 +81,23 @@
 	// A warming chamber idles low until the engines deliver.
 	var/idle_target = lit ? 0.4 + 0.6 * available : 0
 	var/thrust_target = lit ? map.commanded_thrust() * available : 0
+	var/entry_target = map.entry_heat()
 	var/step = ST_ENGINE_SOUND_GLIDE * seconds_per_tick
 	idle_level += clamp(idle_target - idle_level, -step, step)
 	thrust_level += clamp(thrust_target - thrust_level, -step, step)
-	if(!running && idle_level <= 0 && thrust_level <= 0)
+	entry_level += clamp(entry_target - entry_level, -step, step)
+	if(!running && idle_level <= 0 && thrust_level <= 0 && entry_level <= 0)
 		release()
 		return
 	if(running)
 		create_layers()
+	if(entry_level > 0 && QDELETED(entry_roar))
+		entry_roar = new(map.vessel, entry_roar_sound, map.radius * 2 + 2, 1, _repeating = TRUE)
+		sent_entry = -1
+	if(abs(entry_level - sent_entry) >= ST_ENGINE_SOUND_STEP || (entry_level == entry_target && entry_level != sent_entry))
+		sent_entry = entry_level
+		// The roar deepens as the air thickens around the hull.
+		set_layer(entry_roar, 75 * entry_level, 0.75 + 0.15 * entry_level)
 	// Small changes wait for the next threshold step, but a settled level is always sent exactly.
 	var/idle_due = abs(idle_level - sent_idle) >= ST_ENGINE_SOUND_STEP || (idle_level == idle_target && idle_level != sent_idle)
 	var/thrust_due = abs(thrust_level - sent_thrust) >= ST_ENGINE_SOUND_STEP || (thrust_level == thrust_target && thrust_level != sent_thrust)
@@ -89,10 +106,10 @@
 	sent_idle = idle_level
 	sent_thrust = thrust_level
 	// Higher thrust spins both layers up; frequency is a playback rate multiplier.
-	set_layer(interior_idle, 25 * idle_level, 0.85 + 0.3 * thrust_level)
-	set_layer(interior_thrust, 30 * thrust_level, 0.9 + 0.25 * thrust_level)
-	set_layer(exterior_idle, 40 * idle_level, 0.85 + 0.3 * thrust_level)
-	set_layer(exterior_thrust, 45 * thrust_level, 0.9 + 0.25 * thrust_level)
+	set_layer(interior_idle, 32 * idle_level, 0.85 + 0.3 * thrust_level)
+	set_layer(interior_thrust, 40 * thrust_level, 0.9 + 0.25 * thrust_level)
+	set_layer(exterior_idle, 50 * idle_level, 0.85 + 0.3 * thrust_level)
+	set_layer(exterior_thrust, 60 * thrust_level, 0.9 + 0.25 * thrust_level)
 
 /** Create missing loops; a destroyed nozzle takes its exterior loops with it, so they move to a surviving one. */
 /datum/stationtrauma_engine_sound/proc/create_layers()
@@ -137,12 +154,12 @@
 	if(!QDELETED(interior_idle))
 		for(var/mob/listener as anything in interior_idle.listeners)
 			if(!(interior_idle.listeners[listener] & SOUND_MUTE))
-				listener.playsound_local(get_turf(listener), interior_clip, 35, pressure_affected = FALSE, use_reverb = FALSE, volume_preference = /datum/preference/numeric/volume/sound_ship_ambience_volume)
+				listener.playsound_local(get_turf(listener), interior_clip, 45, pressure_affected = FALSE, use_reverb = FALSE, volume_preference = /datum/preference/numeric/volume/sound_ship_ambience_volume)
 	if(!QDELETED(exterior_idle))
 		var/turf/source = get_turf(exterior_idle.source)
 		for(var/mob/listener as anything in exterior_idle.listeners)
 			if(!(exterior_idle.listeners[listener] & SOUND_MUTE))
-				listener.playsound_local(source, exterior_clip, 60, max_distance = exterior_idle.range, falloff_distance = 5)
+				listener.playsound_local(source, exterior_clip, 75, max_distance = exterior_idle.range, falloff_distance = 5, pressure_affected = FALSE)
 
 /** Free every loop and its sound channel. */
 /datum/stationtrauma_engine_sound/proc/release()
@@ -150,14 +167,15 @@
 	QDEL_NULL(interior_thrust)
 	QDEL_NULL(exterior_idle)
 	QDEL_NULL(exterior_thrust)
-	sent_idle = sent_thrust = -1
+	QDEL_NULL(entry_roar)
+	sent_idle = sent_thrust = sent_entry = -1
 
 /** Cut the drive sound at once, with its stop clip when it was running; for a hull leaving processing. */
 /datum/stationtrauma_engine_sound/proc/silence()
 	if(running)
 		running = FALSE
 		play_once(interior_stop_sound, exterior_stop_sound)
-	idle_level = thrust_level = 0
+	idle_level = thrust_level = entry_level = 0
 	release()
 
 /// Engine loops start muted, so the first send already plays them and later updates only unmute.
@@ -168,19 +186,33 @@
 /datum/sound_token/stationtrauma_engine_exterior
 	sound_status = SOUND_MUTE
 
+/**
+ * Native range and level tracking, but only the listener's air carries the sound: the nozzle tile itself is open to space,
+ * so the native minimum of both pressures would silence the drive even for listeners in a pressurised station.
+ * shortcut: the listener's pressure is read on native updates only, so leaving the air keeps the loop until the next one.
+ */
 /datum/sound_token/stationtrauma_engine_exterior/update_listener(mob/listener_mob, update_sound = TRUE)
 	if(QDELETED(src) || isnull(listeners[listener_mob]))
 		return
+	var/turf/source_turf = get_turf(source)
+	var/turf/listener_turf = get_turf(listener_mob)
+	if(!source_turf || !listener_turf)
+		return
 	var/obj/machinery/power/shuttle_engine/engine = source
 	var/obj/docking_port/mobile/stationtrauma_space/ship = engine.connected_ship
-	if(!ship?.shuttle_areas[get_area(listener_mob)] || !ship.is_in_shuttle_bounds(listener_mob))
-		return ..()
-	if(listeners[listener_mob] & SOUND_MUTE)
+	var/aboard = ship?.shuttle_areas[get_area(listener_mob)] && ship.is_in_shuttle_bounds(listener_mob)
+	var/muted = aboard || source_turf.z != listener_turf.z || get_dist_euclidean(source_turf, listener_turf) > range || HAS_TRAIT(listener_mob, TRAIT_DEAF) || listener_turf.return_air()?.return_pressure() < SOUND_MINIMUM_PRESSURE
+	if(muted && (listeners[listener_mob] & SOUND_MUTE))
 		return
-	set_listener_status(listener_mob, SOUND_MUTE)
+	set_listener_status(listener_mob, muted ? SOUND_MUTE : NONE)
+	sound.status = sound_status | listeners[listener_mob] | (update_sound ? SOUND_UPDATE : NONE)
+	if(!update_sound)
+		sound.offset = calculate_offset()
 	// Kept playing muted: the native unmute is an in-place update, and a first send must start the loop.
-	sound.status = sound_status | SOUND_MUTE | (update_sound ? SOUND_UPDATE : NONE)
-	SEND_SOUND(listener_mob, sound)
+	if(muted || !listener_mob.playsound_local(source_turf, vol = volume, falloff_exponent = falloff_exponent, channel = sound_channel, sound_to_use = sound, max_distance = range, falloff_distance = falloff_distance, pressure_affected = FALSE))
+		sound.status = sound_status | SOUND_MUTE | (update_sound ? SOUND_UPDATE : NONE)
+		SEND_SOUND(listener_mob, sound)
+	sound.offset = null
 
 /** The native token tracks movement/login/logout; interior ambience is non-positional and hull-only. */
 /datum/sound_token/stationtrauma_ship_interior/update_listener(mob/listener_mob, update_sound = TRUE)

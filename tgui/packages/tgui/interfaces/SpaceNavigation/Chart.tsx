@@ -11,6 +11,16 @@ import {
 
 /** Seconds a sensor pulse takes to spread from the hull to the edge of sensor range. */
 const SCAN_WAVE = 1.5;
+/** Hazard region fill by kind; debris regions use the default. */
+const ZONE_FILL: Record<string, string> = {
+  nebula: '#5a5582',
+  corona: '#c7782f',
+};
+/** Hazard region outline by kind; debris regions use the default. */
+const ZONE_STROKE: Record<string, string> = {
+  nebula: '#6a718e',
+  corona: '#e7a35a',
+};
 
 /** Sensor pulse ring: spreads from the hull, slowing towards the edge of sensor range, and fades out. */
 function ScanWave(props: { age: number; x: number; y: number; radius: number }) {
@@ -140,6 +150,14 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
           >
             <path d="M0 1L8 5L0 9" fill="none" stroke="#91d7d0" />
           </marker>
+          <filter id="sensor-noise">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.9"
+              seed={Math.floor(Math.random() * 1000)}
+            />
+            <feColorMatrix values="0 0 0 0 0.85 0 0 0 0 0.9 0 0 0 0 0.75 0 0 0 1.4 -0.6" />
+          </filter>
         </defs>
         <g stroke="#22352c">
           {grid.map((x) => (
@@ -223,9 +241,9 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
               cx={point(zone.x, zone.y).x}
               cy={point(zone.x, zone.y).y}
               r={zone.radius * scale}
-              fill={zone.kind === 'nebula' ? '#5a5582' : '#825f32'}
+              fill={ZONE_FILL[zone.kind] || '#825f32'}
               fillOpacity={0.15}
-              stroke={zone.kind === 'nebula' ? '#6a718e' : '#b77558'}
+              stroke={ZONE_STROKE[zone.kind] || '#b77558'}
             >
               <title>{zone.name}</title>
             </circle>
@@ -374,6 +392,15 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
             {distanceLabel(100 / scale, data.au_scale)}
           </text>
         </g>
+        {data.interference > 0 && (
+          <rect
+            width={width}
+            height={height}
+            filter="url(#sensor-noise)"
+            opacity={0.6 * data.interference}
+            pointerEvents="none"
+          />
+        )}
       </svg>
     </>
   );

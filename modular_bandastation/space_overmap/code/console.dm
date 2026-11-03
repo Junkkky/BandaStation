@@ -77,10 +77,13 @@
 		"zones" = map.encounter_data(), "terrain" = map.terrain_data(),
 		"ship_contacts" = map.ship_echo_data(),
 		"encounter" = map.encounter_status, "sensor_range" = map.sensor_range,
+		"interference" = round(map.interference, 0.05),
 		"scan_age" = isnull(map.last_ping) ? null : (world.time - map.last_ping) / (1 SECONDS),
 		"approach" = null,
-		"compartments" = vessel.compartment_report(),
 	)
+	var/list/hull = vessel.compartment_report()
+	data["compartments"] = hull["rooms"]
+	data["hull"] = hull["rows"]
 	var/datum/stationtrauma_overmap_site/space/approach_site = map.approach_site
 	if(map.approach_started && !QDELETED(approach_site))
 		var/datum/stationtrauma_overmap_site/space/planet/approach_planet = approach_site

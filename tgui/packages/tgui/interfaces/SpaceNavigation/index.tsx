@@ -5,6 +5,7 @@ import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
 import { Annunciator } from './Annunciator';
 import { Chart } from './Chart';
+import { Compartments } from './Compartments';
 import { Descent } from './Descent';
 import { Docking } from './Docking';
 import { FuelGauges } from './Fuel';
@@ -137,6 +138,7 @@ function Navigation({ data }: { data: NavigationData }) {
               )}
             </div>
           )}
+          <Compartments rooms={data.compartments} hull={data.hull} />
         </aside>
         <section className="SpaceNavigation__plot">
           {data.approach?.scene === 'planet' ? (

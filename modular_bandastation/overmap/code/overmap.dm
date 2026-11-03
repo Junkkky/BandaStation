@@ -113,6 +113,8 @@
 	var/list/autopilot_path
 	/// Direction changes alone notify native parallax listeners.
 	var/parallax_direction = NONE
+	/// Parallax loop speed multiplier last applied to the hull areas.
+	var/parallax_rush = 1
 	/// world.time of the last active emission, or null before emission.
 	var/last_ping
 	/// Earliest world.time for refreshing passive contacts.
