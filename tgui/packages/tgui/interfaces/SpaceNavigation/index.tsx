@@ -471,7 +471,7 @@ function Navigation({ data }: { data: NavigationData }) {
               }
               disabled={
                 focusedContact !== null
-                  ? !contact || !data.can_request_ship_dock
+                  ? !contact || !data.dockable_contacts.includes(contact.id)
                   : !data.can_dock
               }
               onClick={() =>

@@ -90,6 +90,7 @@ export type NavigationData = Position & {
   coupled: BooleanLike;
   docking_request: { token: number; contact: number | null } | null;
   can_request_ship_dock: BooleanLike;
+  dockable_contacts: number[];
   landing: BooleanLike;
   distance: number;
   eta: number | null;

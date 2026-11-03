@@ -68,6 +68,7 @@
 		"coupled" = !!map.ship_docking,
 		"docking_request" = map.ship_docking_request_data(),
 		"can_request_ship_dock" = map.available_for_ship_docking(),
+		"dockable_contacts" = map.dockable_ship_contacts(),
 		"landing" = target?.landing, "distance" = distance,
 		"eta" = target && map.get_target_speed() > 0 ? max(0, distance - map.radius - target.radius) / map.get_target_speed() : null,
 		"scan_ready" = !map.preparing && !map.relocating && map.is_operational() && world.time >= map.next_scan && !panel_open && !(machine_stat & (NOPOWER|BROKEN)),

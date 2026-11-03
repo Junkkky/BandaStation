@@ -20,6 +20,17 @@
 		&& (pos_x - other.pos_x) ** 2 + (pos_y - other.pos_y) ** 2 <= (radius + other.radius + ST_NAV_APPROACH) ** 2 \
 		&& (velocity_x - other.velocity_x) ** 2 + (velocity_y - other.velocity_y) ** 2 <= ST_SPACE_DOCK_SPEED ** 2
 
+/** Crew-local contact numbers that currently pass the same check as a docking request. */
+/datum/stationtrauma_overmap/space/proc/dockable_ship_contacts()
+	var/list/numbers = list()
+	if(!available_for_ship_docking())
+		return numbers
+	for(var/id in ship_observations)
+		var/list/contact = ship_observations[id]
+		if(world.time - contact["seen"] < ST_NAV_SHIP_MEMORY && can_join_ship(sector.ships[id]))
+			numbers += contact["id"]
+	return numbers
+
 /** Return the live sender only while its request and order revision remain valid. */
 /datum/stationtrauma_overmap/space/proc/incoming_ship_request()
 	var/datum/stationtrauma_overmap/space/sender = docking_request?.resolve()
