@@ -46,6 +46,8 @@
 	var/wildlife = FALSE
 	/// Fauna density multiplier from modifiers, applied to this planet's own biome copies.
 	var/fauna_multiplier = 1
+	/// Spawner types rolled by modifiers, each placed once or twice by [/datum/map_generator/expedition_barren/proc/place_nests].
+	var/list/nest_types = list()
 	/// This planet's biome copies by type, so modifier densities never reach other planets.
 	var/list/biomes
 	/// Z-level trait of the profile's periodic storm weather, if it has one.
@@ -392,3 +394,48 @@
 
 /** Celadon planetary biome; its open turf must carry the atmosphere of every planet that uses it. */
 /datum/biome/expedition
+
+/** Place each rolled nest once or twice on free open ground, outside the camp's fauna clearance and its access corridors. */
+/datum/map_generator/expedition_barren/proc/place_nests(turf/bottom)
+	for(var/nest_type in nest_types)
+		for(var/count in 1 to rand(1, 2))
+			for(var/attempt in 1 to 30)
+				var/x = rand(4, width - 3)
+				var/y = rand(4, width - 3)
+				if(is_reserved(x, y) || (x < camp_x + camp_width + fauna_clearance && y < camp_y + camp_height + fauna_clearance))
+					continue
+				var/turf/open/misc/tile = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
+				if(!istype(tile) || tile.is_blocked_turf())
+					continue
+				new nest_type(tile)
+				break
+
+/// Xenomorph egg cluster hatching hunters, drones and sentinels until it is torn down.
+/obj/structure/spawner/stationtrauma_xeno_hive
+	name = "кладка ксеноморфов"
+	desc = "Пульсирующая кладка яиц, вросшая в смолу. Изнутри что-то скребётся."
+	icon = 'icons/mob/nonhuman-player/alien.dmi'
+	icon_state = "egg"
+	max_integrity = 200
+	max_mobs = 4
+	spawn_time = 60 SECONDS
+	mob_types = list(/mob/living/basic/alien, /mob/living/basic/alien/drone, /mob/living/basic/alien/sentinel)
+	spawn_text = "выбирается из"
+	faction = list(ROLE_ALIEN)
+	mob_gps_id = "XEN"
+	spawner_gps_id = "Xenomorph Hive"
+
+/// Plague pit raising rotting dead until it is filled in.
+/obj/structure/spawner/stationtrauma_zombie_pit
+	name = "чумная яма"
+	desc = "Яма, полная тел. Некоторые из них ещё шевелятся."
+	icon = 'icons/mob/simple/lavaland/nest.dmi'
+	icon_state = "hole"
+	max_integrity = 150
+	max_mobs = 5
+	spawn_time = 45 SECONDS
+	mob_types = list(/mob/living/basic/zombie/rotten)
+	spawn_text = "выползает из"
+	faction = list(FACTION_HOSTILE)
+	mob_gps_id = "ZMB"
+	spawner_gps_id = "Plague Pit"

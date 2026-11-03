@@ -123,6 +123,7 @@
 	if(!load_ruins(ruins, bottom, surface, budget))
 		return FALSE
 	var/features = generator.place_features(bottom, surface)
+	generator.place_nests(bottom)
 	if(generator.populate_terrain(turfs, surface) != 3)
 		CRASH("Expedition planet [seed] lacks its research sources")
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(berth))

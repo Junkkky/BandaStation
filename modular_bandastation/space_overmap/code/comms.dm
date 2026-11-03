@@ -14,15 +14,23 @@
 	return ..()
 
 /**
- * On an overmap map a holocall reaches only the same sector; Central Command and the same level stay in reach.
+ * On an overmap map a call to another level reaches only command posts in the same sector.
  *
- * Another hull must also be a sensor contact of the calling hull.
+ * Those are hull holopads, the station bridge and the Central Command control room, which every sector reaches;
+ * ruins and planets never answer. Another hull must also be a sensor contact of the calling hull.
+ * The same level and the station's own decks keep the native network.
  */
 /obj/machinery/holopad/holocall_reachable(obj/machinery/holopad/pad, established = FALSE)
-	if(!SSmapping.current_map.space_overmap || pad.z == z || is_centcom_level(z) || is_centcom_level(pad.z))
+	if(!SSmapping.current_map.space_overmap || pad.z == z || (is_station_level(z) && is_station_level(pad.z)))
+		return TRUE
+	if(is_centcom_level(pad.z))
+		return istype(get_area(pad), /area/centcom/central_command_areas/control)
+	var/obj/docking_port/mobile/stationtrauma_space/target = SSshuttle.get_containing_shuttle(pad)
+	if(!istype(target) && !(is_station_level(pad.z) && istype(get_area(pad), /area/station/command/bridge)))
+		return FALSE
+	if(is_centcom_level(z))
 		return TRUE
 	var/obj/docking_port/mobile/stationtrauma_space/ship = SSshuttle.get_containing_shuttle(src)
-	var/obj/docking_port/mobile/stationtrauma_space/target = SSshuttle.get_containing_shuttle(pad)
 	if(istype(ship) && istype(target))
 		return ship.overmap?.ship_in_sensor_contact(target.overmap, established)
 	return stationtrauma_comms_sector() == pad.stationtrauma_comms_sector()

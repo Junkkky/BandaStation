@@ -77,6 +77,7 @@
 		"zones" = map.encounter_data(), "terrain" = map.terrain_data(),
 		"ship_contacts" = map.ship_echo_data(),
 		"encounter" = map.encounter_status, "sensor_range" = map.sensor_range,
+		"scan_age" = isnull(map.last_ping) ? null : (world.time - map.last_ping) / (1 SECONDS),
 		"approach" = null,
 		"compartments" = vessel.compartment_report(),
 	)
@@ -118,7 +119,10 @@
 			var/direction = value
 			return IS_FINITE(direction) && map.command_maneuver(direction)
 		if("scan")
-			return map.scan_sector()
+			if(!map.scan_sector())
+				return FALSE
+			playsound(src, 'sound/machines/radar-ping.ogg', 50, FALSE)
+			return TRUE
 		if("stop")
 			map.request_brake()
 		if("emergency_brake")

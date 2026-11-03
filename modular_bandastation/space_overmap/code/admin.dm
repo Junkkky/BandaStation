@@ -56,3 +56,39 @@ ADMIN_VERB(stationtrauma_overmap_jump, R_DEBUG, "Overmap - Переместит�
 	trip_distance = travelled = 0
 	update_parallax()
 	return TRUE
+
+ADMIN_VERB(stationtrauma_overmap_skip_wait, R_DEBUG, "Overmap - Завершить прыжок или вызов", "Мгновенно завершить идущий блюспейс-прыжок или вызов корабля к причалу.", ADMIN_CATEGORY_DEBUG)
+	// The dialog sleeps, so only IDs survive it; the ship is looked up again afterwards.
+	var/list/ships = list()
+	for(var/sector_id in SSstationtrauma_space_voyage.sectors)
+		var/datum/stationtrauma_overmap_sector/space/listed_sector = SSstationtrauma_space_voyage.sectors[sector_id]
+		for(var/id in listed_sector.ships)
+			var/datum/stationtrauma_overmap/space/listed = listed_sector.ships[id]
+			if(listed.jump_timer || listed.dispatch_timer)
+				ships["[listed.vessel.name] ([id]): [listed.jump_timer ? "прыжок" : "вызов к причалу"]"] = list(sector_id, id)
+	if(!length(ships))
+		to_chat(user, span_notice("Нет кораблей в прыжке или в пути к причалу."), confidential = TRUE)
+		return
+	var/choice = tgui_input_list(user, "Корабль", "Завершить ожидание", ships)
+	if(!choice || !check_rights_for(user, R_DEBUG))
+		return
+	var/list/ship_ids = ships[choice]
+	var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors[ship_ids[1]]
+	var/datum/stationtrauma_overmap/space/navigation = sector ? sector.ships[ship_ids[2]] : null
+	if(QDELETED(navigation))
+		return
+	log_admin("[key_name(user)] skipped the jump or delivery wait of [navigation.vessel.shuttle_id]")
+	var/done = navigation.debug_skip_wait()
+	to_chat(user, done ? span_notice("Ожидание завершено.") : span_warning("Не завершено: [navigation?.status]"), confidential = TRUE)
+
+/** Debug: complete a pending jump or station delivery at once, through its normal completion and checks. */
+/datum/stationtrauma_overmap/space/proc/debug_skip_wait()
+	if(jump_timer)
+		deltimer(jump_timer)
+		jump_timer = null
+		return finish_jump(jump_target, control_revision)
+	if(dispatch_timer)
+		deltimer(dispatch_timer)
+		dispatch_timer = null
+		return finish_dispatch(control_revision)
+	return FALSE

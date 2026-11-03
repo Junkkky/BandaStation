@@ -35,6 +35,8 @@
 	var/endless_storm = FALSE
 	/// Base light alpha of the open surface in the profile's sky colour; zero keeps the surface dark.
 	var/light_alpha = 0
+	/// Spawner placed once or twice on the open surface, away from the camp.
+	var/nest_type
 
 /** Whether this modifier means anything for the generator's environment profile. */
 /datum/expedition_planet_modifier/proc/can_apply(datum/map_generator/expedition_barren/generator)
@@ -116,6 +118,22 @@
 	probability = 40
 	underground = TRUE
 
+/// Danger: a xenomorph egg cluster hatches hunters until it is torn down.
+/datum/expedition_planet_modifier/xeno_hive
+	name = "Улей ксеноморфов"
+	group = "nest"
+	cost = 1
+	probability = 25
+	nest_type = /obj/structure/spawner/stationtrauma_xeno_hive
+
+/// Danger: a plague pit raises the dead until it is filled in.
+/datum/expedition_planet_modifier/zombie_pit
+	name = "Очаг заражения"
+	group = "nest"
+	cost = 1
+	probability = 25
+	nest_type = /obj/structure/spawner/stationtrauma_zombie_pit
+
 /// Free: the open surface is lit strongly in the profile sky colour.
 /datum/expedition_planet_modifier/bright_day
 	name = "Яркое светило"
@@ -162,6 +180,8 @@
 		endless_storm ||= modifier.endless_storm
 		underground ||= modifier.underground
 		light_alpha = max(light_alpha, modifier.light_alpha)
+		if(modifier.nest_type)
+			nest_types += modifier.nest_type
 		names += modifier.name
 	return names
 

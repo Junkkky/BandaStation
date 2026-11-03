@@ -52,10 +52,16 @@
 		var/datum/stationtrauma_overmap_site/space/site = sites[record["id"]]
 		record["kind"] = istype(site, /datum/stationtrauma_overmap_site/space/planet) ? "planet" : site.physical_docking ? "station" : "signal"
 		record["name"] = site_label(site)
+		record["type"] = record["kind"] == "signal" ? site_structure(site) : record["kind"] == "planet" ? "Планета" : "Станция"
 
-/** Crew-facing name: a space object stays unidentified until this crew has docked there; planets and stations are charted. */
+/** Crew-facing name: space objects stay unidentified; planets and stations are charted. */
 /datum/stationtrauma_overmap/space/proc/site_label(datum/stationtrauma_overmap_site/space/site)
-	return site.landing || site.physical_docking || visited_sites[site.id] ? site.name : "???"
+	return site.landing || site.physical_docking ? site.name : "???"
+
+/** Kind of structure a space object reads as on sensors, from its approach schematic. */
+/datum/stationtrauma_overmap/space/proc/site_structure(datum/stationtrauma_overmap_site/space/site)
+	var/static/list/structures = list("cargo" = "Груз", "asteroids" = "Астероиды")
+	return structures[site.approach_scene] || "Руина"
 
 /** A bounded metadata pulse, independent of loading and never exposing contacts outside detection range. */
 /datum/stationtrauma_overmap/space/proc/scan_sector()

@@ -24,6 +24,12 @@
 	var/list/zones = list()
 	/// Chart-only bodies: name, position, symbol radius and orbit centre; never landing targets.
 	var/list/celestial_bodies = list()
+	/// Points already given to round-random destinations and hazards, the arrival point included.
+	var/list/taken_positions
+	/// Centre of the asteroid belt; the asteroid field destination lies inside it.
+	var/belt_x = 1250
+	/// Northing of the asteroid belt centre.
+	var/belt_y = -450
 
 /datum/stationtrauma_overmap_sector/space/Destroy()
 	. = ..()
@@ -115,8 +121,10 @@
 		return FALSE
 	vessel.overmap = navigation
 	navigation.zones = zones
-	navigation.pos_x = vessel.overmap_x
-	navigation.pos_y = vessel.overmap_y
+	// A hull without a mapped start enters where jumps arrive, not on the star at the origin.
+	var/unplaced = !vessel.overmap_x && !vessel.overmap_y
+	navigation.pos_x = unplaced ? entry_x : vessel.overmap_x
+	navigation.pos_y = unplaced ? entry_y : vessel.overmap_y
 	navigation.course = vessel.overmap_course
 	navigation.ordered_course = vessel.overmap_course
 	var/area/space/stationtrauma_space_home/exterior = new
@@ -160,9 +168,16 @@
 			sites[site.id] = site
 		ready = length(sites) > 0
 		return ready
+	// Every round charts a new system: its name, and where its planets, ruins and hazards lie.
+	name = "[pick("HD ", "HIP ", "Gliese ", "Kepler-", "TOI-", "Wolf ", "Ross ", "LHS ")][rand(100, 9999)]"
+	taken_positions = list(list(entry_x, entry_y))
+	var/list/belt = random_position(1100, 1700, 600)
+	belt_x = belt[1]
+	belt_y = belt[2]
+	var/list/cargo = random_position(600, 1200, 350)
 	var/list/locations = list(
-		list("asteroid_field", "Астероидное поле", 1250, -450, 'modular_bandastation/space_overmap/maps/asteroid_field.dmm', /atom/movable/screen/parallax_layer/random/asteroids, "asteroids"),
-		list("drift_cargo", "Дрейфующий груз", rand(700, 900), rand(-160, -40), 'modular_bandastation/space_overmap/maps/drift_cargo.dmm', /atom/movable/screen/parallax_layer/layer_3, "cargo"),
+		list("asteroid_field", "Астероидное поле", belt_x, belt_y, 'modular_bandastation/space_overmap/maps/asteroid_field.dmm', /atom/movable/screen/parallax_layer/random/asteroids, "asteroids"),
+		list("drift_cargo", "Дрейфующий груз", cargo[1], cargo[2], 'modular_bandastation/space_overmap/maps/drift_cargo.dmm', /atom/movable/screen/parallax_layer/layer_3, "cargo"),
 	)
 	for(var/list/location as anything in locations)
 		var/datum/stationtrauma_overmap_site/space/site = new
@@ -175,14 +190,17 @@
 		site.approach_scene = location[7]
 		site.map_loader = CALLBACK(src, PROC_REF(load_location), site, location[5], location[6])
 		sites[site.id] = site
-	var/list/positions = list(list(800, 350), list(-100, -1250), list(-1500, 800), list(1800, 1100), list(-1800, -1300))
-	var/list/profiles = list(/datum/stationtrauma_overmap_site/space/planet, /datum/stationtrauma_overmap_site/space/planet/frozen, /datum/stationtrauma_overmap_site/space/planet/arid, /datum/stationtrauma_overmap_site/space/planet/lush, /datum/stationtrauma_overmap_site/space/planet/lava)
+	var/list/positions = list()
+	for(var/index in 1 to 5)
+		positions += list(random_position(700, 2000, 450))
+	var/list/profiles = shuffle(list(/datum/stationtrauma_overmap_site/space/planet, /datum/stationtrauma_overmap_site/space/planet/frozen, /datum/stationtrauma_overmap_site/space/planet/arid, /datum/stationtrauma_overmap_site/space/planet/lush, /datum/stationtrauma_overmap_site/space/planet/lava))
+	var/static/list/planet_letters = list("b", "c", "d", "e", "f")
 	var/first_seed = rand(1, 1000001 - length(positions))
 	for(var/index in 1 to length(positions))
 		var/profile = profiles[index]
 		// Planets farther from the arrival point roll stronger dangers and rewards.
 		var/modifier_level = sqrt((positions[index][1] - entry_x) ** 2 + (positions[index][2] - entry_y) ** 2) / 500
-		var/datum/stationtrauma_overmap_site/space/planet/planet = create_stationtrauma_planet(seed = first_seed + index - 1, planet_id = "planet_[index]", planet_name = "[name] [index]", planet_type = profile, modifier_level = modifier_level)
+		var/datum/stationtrauma_overmap_site/space/planet/planet = create_stationtrauma_planet(seed = first_seed + index - 1, planet_id = "planet_[index]", planet_name = "[name] [planet_letters[index]]", planet_type = profile, modifier_level = modifier_level)
 		if(!planet)
 			return FALSE
 		planet.pos_x = positions[index][1]
@@ -195,6 +213,27 @@
 	return TRUE
 
 /** Load a charted fixed location on its own level; the first approach runs this. */
+/**
+ * A free point on a ring around the star, at least `gap` from every point already taken; it is taken in turn.
+ *
+ * Gives up spacing after a few tries rather than fail the sector, so a crowded ring still places everything.
+ */
+/datum/stationtrauma_overmap_sector/space/proc/random_position(min_radius, max_radius, gap)
+	var/list/point
+	for(var/attempt in 1 to 30)
+		var/angle = rand(0, 359)
+		var/distance = rand(min_radius, max_radius)
+		point = list(round(distance * sin(angle)), round(distance * cos(angle)))
+		var/clear = TRUE
+		for(var/list/taken as anything in taken_positions)
+			if((point[1] - taken[1]) ** 2 + (point[2] - taken[2]) ** 2 < gap ** 2)
+				clear = FALSE
+				break
+		if(clear)
+			break
+	taken_positions += list(point)
+	return point
+
 /datum/stationtrauma_overmap_sector/space/proc/load_location(datum/stationtrauma_overmap_site/space/site, map_path, parallax)
 	var/datum/map_template/stationtrauma_space/template = new(map_path, site.name)
 	var/datum/space_level/level = template.load_new_z()

@@ -1,12 +1,36 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button, Dropdown } from 'tgui-core/components';
 
+import { useApproachClock } from './Descent';
 import {
   distanceLabel,
   type NavigationData,
   type Position,
   VECTOR_SECONDS,
 } from './types';
+
+/** Seconds a sensor pulse takes to spread from the hull to the edge of sensor range. */
+const SCAN_WAVE = 1.5;
+
+/** Sensor pulse ring: spreads from the hull, slowing towards the edge of sensor range, and fades out. */
+function ScanWave(props: { age: number; x: number; y: number; radius: number }) {
+  const { age, x, y, radius } = props;
+  const seconds = useApproachClock(age, SCAN_WAVE);
+  if (seconds >= SCAN_WAVE) return null;
+  const progress = seconds / SCAN_WAVE;
+  return (
+    <circle
+      cx={x}
+      cy={y}
+      r={radius * (1 - (1 - progress) ** 2)}
+      fill="none"
+      stroke="#82de89"
+      strokeWidth={2}
+      strokeOpacity={1 - progress}
+      pointerEvents="none"
+    />
+  );
+}
 
 type Props = {
   data: NavigationData;
@@ -305,6 +329,14 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
             </g>
           );
         })}
+        {data.scan_age !== null && data.scan_age < SCAN_WAVE && (
+          <ScanWave
+            age={data.scan_age}
+            x={own.x}
+            y={own.y}
+            radius={data.sensor_range * scale}
+          />
+        )}
         {data.trajectory.map(({ x, y, seconds }, index) => (
           <circle
             key={seconds}

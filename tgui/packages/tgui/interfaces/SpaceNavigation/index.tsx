@@ -5,13 +5,12 @@ import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
 import { Annunciator } from './Annunciator';
 import { Chart } from './Chart';
-import { Compartments } from './Compartments';
 import { Descent } from './Descent';
 import { Docking } from './Docking';
 import { FuelGauges } from './Fuel';
+import { Scanner } from './Scanner';
 import {
   closestApproach,
-  compartmentDamaged,
   distanceLabel,
   type NavigationData,
   speedLabel,
@@ -37,8 +36,7 @@ function Navigation({ data }: { data: NavigationData }) {
   const { act } = useBackend();
   const helm = useHelm(data);
   const [focusedContact, setFocusedContact] = useState<number | null>(null);
-  const [showCompartments, setShowCompartments] = useState(false);
-  const damaged = data.compartments.filter(compartmentDamaged).length;
+  const [showScanner, setShowScanner] = useState(false);
   const moored = !!(data.docked || data.coupled);
   const contact = data.ship_contacts.find(
     (record) => record.id === focusedContact,
@@ -85,37 +83,35 @@ function Navigation({ data }: { data: NavigationData }) {
         <aside className="SpaceNavigation__contacts" aria-label="Объекты">
           <h2 className="SpaceNavigation__tabs">
             <Button
-              selected={!showCompartments}
-              onClick={() => setShowCompartments(false)}
+              selected={!showScanner}
+              onClick={() => setShowScanner(false)}
             >
               ОБЪЕКТЫ{' '}
               <span>{data.routes.length + data.ship_contacts.length}</span>
             </Button>
             <Button
-              selected={showCompartments}
-              color={damaged ? 'bad' : undefined}
-              tooltip={damaged ? `Повреждено отсеков: ${damaged}` : undefined}
-              onClick={() => setShowCompartments(true)}
+              selected={showScanner}
+              onClick={() => setShowScanner(true)}
             >
-              ОТСЕКИ {!!damaged && <span>{damaged}</span>}
+              СКАНЕР
             </Button>
           </h2>
-          {showCompartments ? (
-            <Compartments rooms={data.compartments} />
+          {showScanner ? (
+            <Scanner data={data} focusedContact={focusedContact} />
           ) : (
             <div className="SpaceNavigation__routes">
               {data.routes.map((site) => (
                 <Button
                   key={site.id}
                   fluid
-                  tooltip={site.name}
+                  tooltip={site.kind === 'signal' ? site.type : site.name}
                   selected={
                     focusedContact === null && site.id === data.selected
                   }
                   disabled={site.failed || data.preparing || data.relocating}
                   onClick={() => selectSite(site.id)}
                 >
-                  <span>{site.name}</span>
+                  <span>{site.kind === 'signal' ? site.type : site.name}</span>
                   <span>{distance(site.distance)}</span>
                 </Button>
               ))}

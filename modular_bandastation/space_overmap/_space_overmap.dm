@@ -1,7 +1,13 @@
 /// Astronomical units per sector unit, for crew-facing distances.
 #define ST_SPACE_AU_SCALE 0.001
 /// Duration of a bluespace jump between sectors.
-#define ST_SPACE_JUMP_TIME (20 SECONDS)
+#define ST_SPACE_JUMP_TIME (4 MINUTES)
+/// Percent chance that a space ruin holds a fuel cache.
+#define ST_FUEL_CACHE_SPACE_CHANCE 35
+/// Percent chance that a planet ruin holds a fuel cache; planets already offer ore and supply crates.
+#define ST_FUEL_CACHE_PLANET_CHANCE 25
+/// Flight of a called ship to its station berth.
+#define ST_SPACE_DISPATCH_TIME (2 MINUTES)
 /// Highest relative speed at which two hulls may dock.
 #define ST_SPACE_DOCK_SPEED 0.5
 /// How long a ship-to-ship docking request waits for an answer.

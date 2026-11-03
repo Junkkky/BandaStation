@@ -90,7 +90,9 @@
 		var/turf/center = locate(bottom.x + round(template.width / 2), bottom.y + round(template.height / 2), origin.z)
 		if(!template.load(bottom))
 			return FALSE
-		generator.adapt_template_turfs(template.get_affected_turfs(bottom), surface)
+		var/list/covered = template.get_affected_turfs(bottom)
+		generator.adapt_template_turfs(covered, surface)
+		stationtrauma_fuel_cache(covered, ST_FUEL_CACHE_PLANET_CHANCE)
 		new /obj/effect/landmark/ruin(center, template)
 		ruin_ids += template.id
 		budget?.yield()

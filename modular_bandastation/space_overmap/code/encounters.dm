@@ -21,17 +21,21 @@
 	/// Current crew-facing navigation hazard status.
 	var/encounter_status = "Маршрут свободен"
 
-/** Create round-local encounter regions and persistent obstacles. */
+/** Create round-local encounter regions and persistent obstacles at random points of the system. */
 /datum/stationtrauma_overmap_sector/space/proc/build_encounters()
-	zones += new /datum/stationtrauma_overmap_zone("Астероидный пояс / обломки", "asteroids", 1250, -450, 360)
-	// A central full-speed crossing must outlast the warning instead of making every storm harmless.
-	var/datum/stationtrauma_overmap_zone/stream = new("Метеорный поток", "meteors", -450 + rand(-60, 60), 260 + rand(-60, 60), 320)
-	stream.direction = pick(45, 90, 135, 225, 270, 315)
-	zones += stream
-	zones += new /datum/stationtrauma_overmap_zone("Плотная туманность", "nebula", 260, 640, 230)
+	zones += new /datum/stationtrauma_overmap_zone("Астероидный пояс / обломки", "asteroids", belt_x, belt_y, 360)
+	for(var/index in 1 to rand(2, 3))
+		var/list/point = random_position(500, 1900, 450)
+		// A central full-speed crossing must outlast the warning instead of making every storm harmless.
+		var/datum/stationtrauma_overmap_zone/stream = new("Метеорный поток", "meteors", point[1], point[2], rand(260, 340))
+		stream.direction = pick(45, 90, 135, 225, 270, 315)
+		zones += stream
+	for(var/index in 1 to rand(1, 2))
+		var/list/point = random_position(500, 1900, 400)
+		zones += new /datum/stationtrauma_overmap_zone("Плотная туманность", "nebula", point[1], point[2], rand(200, 280))
 	for(var/list/offset as anything in list(list(0, 200), list(-180, 60), list(-170, -130), list(50, -190), list(210, -50), list(150, 150)))
-		var/cx = 1250 + offset[1] + rand(-15, 15)
-		var/cy = -450 + offset[2] + rand(-15, 15)
+		var/cx = belt_x + offset[1] + rand(-15, 15)
+		var/cy = belt_y + offset[2] + rand(-15, 15)
 		contacts += new /datum/stationtrauma_overmap_terrain/asteroid(cx - 4, cy, cx + 4, cy)
 
 /** Leaving the region cancels future emissions; already launched objects retain their bounded flight. */
@@ -128,7 +132,9 @@
 	var/dx = sin(rotation)
 	var/dy = cos(rotation)
 	var/reach = max(vessel.width, vessel.height) / 2 + 10
-	var/offset = rand(-8, 8)
+	// Aim across the narrow side of the hull and a little beyond, so most fragments strike it but some pass by.
+	var/spread = round(min(vessel.width, vessel.height) / 2) + 4
+	var/offset = rand(-spread, spread)
 	var/turf/start = locate(cx + round(dx * reach - dy * offset), cy + round(dy * reach + dx * offset), vessel.z)
 	var/turf/goal = locate(cx - round(dx * reach + dy * offset), cy - round(dy * reach - dx * offset), vessel.z)
 	if(!isspaceturf(start) || !goal)
@@ -146,11 +152,12 @@
 	name = "обломок астероида"
 	hits = 1
 	hitpwr = EXPLODE_HEAVY
-	lifetime = 12
+	// Long enough to cross the widest hull from its launch point; it dies on the first hit anyway.
+	lifetime = 5 SECONDS
 	dropamt = 1
 
 /** Single-hit small debris used for lower-intensity sector encounters. */
 /obj/effect/meteor/sand/stationtrauma
 	name = "мелкий космический обломок"
 	hits = 1
-	lifetime = 12
+	lifetime = 5 SECONDS

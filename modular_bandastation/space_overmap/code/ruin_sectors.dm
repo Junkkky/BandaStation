@@ -33,8 +33,7 @@
 	if(!length(candidates))
 		stack_trace("No eligible expedition ruins; check space ruin blacklists and already loaded templates")
 		return FALSE
-	var/list/positions = list(list(1100, 400), list(-1100, 600), list(1400, -1100), list(-1400, -450), list(450, 1350), list(-650, -1400))
-	var/count = min(length(positions), length(candidates))
+	var/count = min(6, length(candidates))
 	// Templates are chosen now so the chart can name each signal; the first approach loads it.
 	for(var/index in 1 to count)
 		var/key = pick(candidates)
@@ -43,8 +42,9 @@
 		var/datum/stationtrauma_overmap_site/space/site = new
 		site.id = "expedition_[index]"
 		site.name = approved[template.type]
-		site.pos_x = positions[index][1]
-		site.pos_y = positions[index][2]
+		var/list/position = random_position(600, 1700, 350)
+		site.pos_x = position[1]
+		site.pos_y = position[2]
 		site.discovered = FALSE
 		site.needs_scan = TRUE
 		site.map_loader = CALLBACK(src, PROC_REF(load_ruin_site), site, index, key, template)
@@ -67,6 +67,7 @@
 		return FALSE
 	stationtrauma_space_vacuum(level.z_value)
 	var/right_edge = origin.x + placed.width - 1
+	stationtrauma_fuel_cache(block(origin, locate(right_edge, origin.y + placed.height - 1, origin.z)), ST_FUEL_CACHE_SPACE_CHANCE)
 	var/approach_y = origin.y + round(placed.height / 2)
 	var/best_score = -INFINITY
 	for(var/turf/tile as anything in block(origin, locate(right_edge, origin.y + placed.height - 1, origin.z)))
@@ -88,3 +89,28 @@
 	marker.site_id = site.id
 	marker.name = site.name
 	return TRUE
+
+/**
+ * Maybe leave a partly filled oxygen or tritium canister on free built floor among `turfs`.
+ *
+ * A find extends an expedition without replacing station supply: a tritium cache holds a few minutes of Raven's half thrust.
+ */
+/proc/stationtrauma_fuel_cache(list/turfs, chance)
+	if(!prob(chance))
+		return null
+	var/list/floors = list()
+	for(var/turf/open/floor/tile in turfs)
+		if(!tile.is_blocked_turf())
+			floors += tile
+	if(!length(floors))
+		return null
+	var/cache_type = prob(40) ? /obj/machinery/portable_atmospherics/canister/tritium/cache : /obj/machinery/portable_atmospherics/canister/oxygen/cache
+	return new cache_type(pick(floors))
+
+/// Tritium left behind on a ruin: about a fifth of a full canister.
+/obj/machinery/portable_atmospherics/canister/tritium/cache
+	filled = 0.2
+
+/// Oxygen left behind on a ruin: a partly emptied canister.
+/obj/machinery/portable_atmospherics/canister/oxygen/cache
+	filled = 0.35

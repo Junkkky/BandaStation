@@ -5,6 +5,7 @@ export type Site = Position & {
   id: string;
   name: string;
   kind: string;
+  type: string;
   distance: number;
   failed: BooleanLike;
 };
@@ -95,6 +96,9 @@ export type NavigationData = Position & {
   distance: number;
   eta: number | null;
   scan_ready: BooleanLike;
+  /** Seconds since the last sensor pulse, or null before the first one. */
+  scan_age: number | null;
+  sensor_range: number;
   can_dock: BooleanLike;
   routes: Site[];
   path: [number, number][];
