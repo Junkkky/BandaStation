@@ -206,6 +206,8 @@
 		host.mind.add_antag_datum(antagonist)
 	if(GLOB.paradise_zombie_mutation_progression.is_mature_zombie(host) && !host.GetComponent(/datum/component/paradise_zombie_mutation))
 		host.AddComponent(/datum/component/paradise_zombie_mutation)
+	if(!host.GetComponent(/datum/component/paradise_zombie_appearance))
+		host.AddComponent(/datum/component/paradise_zombie_appearance)
 	return TRUE
 
 /** Remembers exposure to an anti-plague sequence in the body and updates this strain's research name. */
@@ -232,6 +234,7 @@
 	var/mob/living/carbon/human/host = affected_mob
 	if(!istype(host) || QDELETED(host))
 		return
+	qdel(host.GetComponent(/datum/component/paradise_zombie_appearance))
 	qdel(host.GetComponent(/datum/component/paradise_zombie_mutation))
 	for(var/obj/item/paradise_zombie_claw/claw in host.get_held_items())
 		qdel(claw)

@@ -20,3 +20,4 @@
 #include "code/mutation_body.dm"
 #include "code/mutation_abilities.dm"
 #include "code/mutation_controller.dm"
+#include "code/appearance.dm"

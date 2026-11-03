@@ -8,6 +8,7 @@
 	. = ..()
 	if(istype(human_who_gained_species, /mob/living/carbon/human/dummy))
 		human_who_gained_species.become_husk(PARADISE_ZOMBIE_TRAIT)
+		human_who_gained_species.AddComponent(/datum/component/paradise_zombie_appearance)
 		return
 	var/datum/disease/paradise_zombie/infection = locate() in human_who_gained_species.diseases
 	if(!infection)
@@ -19,6 +20,7 @@
 /datum/species/zombie/on_species_loss(mob/living/carbon/human/human_who_lost_species, datum/species/new_species, pref_load, regenerate_icons, replace_missing)
 	. = ..()
 	if(istype(human_who_lost_species, /mob/living/carbon/human/dummy))
+		qdel(human_who_lost_species.GetComponent(/datum/component/paradise_zombie_appearance))
 		human_who_lost_species.cure_husk(PARADISE_ZOMBIE_TRAIT)
 
 /datum/species/zombie/get_species_description()

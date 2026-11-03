@@ -495,6 +495,7 @@
 #include "../../../modular_bandastation/paradise_zombies/code/tests_mutation_body.dm"
 #include "../../../modular_bandastation/paradise_zombies/code/tests_mutation_progression.dm"
 #include "../../../modular_bandastation/paradise_zombies/code/tests_mutation_abilities.dm"
+#include "../../../modular_bandastation/paradise_zombies/code/tests_appearance.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
