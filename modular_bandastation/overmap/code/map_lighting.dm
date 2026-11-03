@@ -12,6 +12,8 @@
 
 /atom/movable/stationtrauma_map_lighting/Initialize(mapload, turf/source_tile)
 	. = ..()
+	if(!isturf(source_tile) || QDELETED(source_tile))
+		return INITIALIZE_HINT_QDEL
 	remote_tile = source_tile
 	var/turf/local_tile = get_turf(src)
 	SET_PLANE(src, LIGHTING_PLANE, local_tile)
@@ -22,7 +24,8 @@
 	refresh()
 
 /atom/movable/stationtrauma_map_lighting/Destroy()
-	UnregisterSignal(remote_tile, list(COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, COMSIG_ATOM_UPDATED_ICON))
+	if(remote_tile)
+		UnregisterSignal(remote_tile, list(COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, COMSIG_ATOM_UPDATED_ICON))
 	UnregisterSignal(SSdcs, COMSIG_STARLIGHT_COLOR_CHANGED)
 	vis_contents.Cut()
 	remote_tile = null
