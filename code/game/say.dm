@@ -174,12 +174,17 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	// Language icon.
 	var/languageicon = ""
 	if(!message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
-		var/datum/language/dialect = GLOB.language_datum_instances[message_language]
-		var/dialect_icon_type = dialect?.display_icon_type(src, message_mods) || DISPLAY_LANGUAGE_ICON_NONE
-		if(dialect_icon_type != DISPLAY_LANGUAGE_ICON_NONE)
+		var/list/languages = list(message_language)
+		for(var/list/segment as anything in message_mods[LANGUAGE_MESSAGE_SEGMENTS])
+			languages |= segment["language"]
+		for(var/language in languages)
+			var/datum/language/dialect = GLOB.language_datum_instances[language]
+			var/dialect_icon_type = dialect?.display_icon_type(src, message_mods) || DISPLAY_LANGUAGE_ICON_NONE
+			if(dialect_icon_type == DISPLAY_LANGUAGE_ICON_NONE)
+				continue
 			var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
 			var/icon_tag = sheet.icon_tag("language-[dialect.icon_state][dialect_icon_type == DISPLAY_LANGUAGE_ICON_PARTIAL ? "-partial" : ""]")
-			languageicon = span_tooltip_subtle(dialect.name, icon_tag) + " "
+			languageicon += span_tooltip_subtle(dialect.name, icon_tag) + " "
 
 	// The actual message part.
 	var/messagepart = speaker.generate_messagepart(raw_message, spans, message_mods)
@@ -309,6 +314,24 @@ GLOBAL_LIST_INIT(emphasis_types, list(
 
 /// Modifies the message by comparing the languages of the speaker with the languages of the hearer. Called on the hearer.
 /atom/movable/proc/translate_language(atom/movable/speaker, datum/language/language, raw_message, list/spans, list/message_mods)
+	var/list/segments = message_mods?[LANGUAGE_MESSAGE_SEGMENTS]
+	if(length(segments))
+		var/list/original = list()
+		var/list/translated = list()
+		var/has_unknown_segment = FALSE
+		var/list/single_language_mods = message_mods.Copy()
+		single_language_mods -= LANGUAGE_MESSAGE_SEGMENTS
+		for(var/list/segment as anything in segments)
+			var/segment_language = segment["language"]
+			original += segment["message"]
+			var/translated_segment = translate_language(speaker, segment_language, segment["message"], spans, single_language_mods)
+			translated += translated_segment
+			if(translated_segment != segment["message"])
+				has_unknown_segment = TRUE
+		if(raw_message == jointext(original, " "))
+			return jointext(translated, " ")
+		// shortcut: damaged transmissions lose fragment boundaries; scramble the received text until telecomms preserves them.
+		return has_unknown_segment ? stars(raw_message, 100) : raw_message
 	if(!language)
 		return "makes a strange sound."
 
@@ -318,7 +341,7 @@ GLOBAL_LIST_INIT(emphasis_types, list(
 		var/list/partially_understood_languages = get_partially_understood_languages()
 		if(LAZYLEN(partially_understood_languages))
 			mutual_languages = partially_understood_languages.Copy()
-			for(var/bonus_language in message_mods[LANGUAGE_MUTUAL_BONUS])
+			for(var/bonus_language in message_mods?[LANGUAGE_MUTUAL_BONUS])
 				mutual_languages[bonus_language] = max(message_mods[LANGUAGE_MUTUAL_BONUS][bonus_language], mutual_languages[bonus_language])
 
 		var/datum/language/dialect = GLOB.language_datum_instances[language]

@@ -136,7 +136,7 @@
 #define COMSIG_MOB_UPDATE_SIGHT "mob_update_sight"
 ///from base of /mob/living/restore_initial_sight(): ()
 #define COMSIG_LIVING_RESTORE_INITIAL_SIGHT "mob_restore_init_sight"
-////from /mob/living/say(): ()
+/// From /mob/living/say(): (list/speech_args), once per language fragment; SPEECH_MODS carries its index and the full segment list.
 #define COMSIG_MOB_SAY "mob_say"
 	#define COMPONENT_UPPERCASE_SPEECH (1<<0)
 	// used to access COMSIG_MOB_SAY argslist
@@ -151,6 +151,9 @@
 	#define SPEECH_RANGE 9
 	#define SPEECH_SAYMODE 10
 	#define SPEECH_MODS 11
+
+/// From /mob/living/say(): (list/speech_args), once after all inline language fragments have been processed, before radio and local delivery.
+#define COMSIG_MOB_SAY_SEGMENTS_PROCESSED "mob_say_segments_processed"
 
 ///from /datum/component/speechmod/handle_speech(): ()
 #define COMSIG_TRY_MODIFY_SPEECH "try_modify_speech"
