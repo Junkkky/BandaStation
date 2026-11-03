@@ -9,6 +9,8 @@
 	var/docking_request_revision = 0
 	/// Monotonic response token rejecting replies to superseded requests.
 	var/docking_request_sequence = 0
+	/// Interval between successful outgoing requests, independent of helm revisions and recipient replies.
+	COOLDOWN_DECLARE(ship_docking_request_cooldown)
 
 /** Whether this free hull may reserve or accept a voluntary ship connection. */
 /datum/stationtrauma_overmap/space/proc/available_for_ship_docking()
@@ -51,6 +53,9 @@
 /datum/stationtrauma_overmap/space/proc/request_ship_docking(number)
 	if(!ISINTEGER(number) || number < 1 || !available_for_ship_docking())
 		return FALSE
+	if(!COOLDOWN_FINISHED(src, ship_docking_request_cooldown))
+		status = "Запрос не передан: подождите перед повторным запросом на стыковку"
+		return FALSE
 	var/datum/stationtrauma_overmap/space/other
 	for(var/id in ship_observations)
 		var/list/contact = ship_observations[id]
@@ -64,6 +69,7 @@
 	if(!can_join_ship(other) || other.incoming_ship_request())
 		status = "Запрос не передан: сократите дистанцию и относительную скорость либо дождитесь ответа борта"
 		return FALSE
+	COOLDOWN_START(src, ship_docking_request_cooldown, ST_SPACE_DOCK_REQUEST_TIME)
 	other.docking_request = WEAKREF(src)
 	other.docking_request_revision = control_revision
 	other.docking_request_until = world.time + ST_SPACE_DOCK_REQUEST_TIME
@@ -303,10 +309,12 @@
 			flush = first.relocate(anchor)
 			if(QDELETED(src))
 				return FALSE
-			if(flush)
+			if(flush && !QDELETED(anchor) && first.vessel.get_docked() == anchor)
 				ready = TRUE
-				// Native movement yields; the new position is the one later checks must keep.
+				// A committed native arrival retains the pair even if an engine stop changed the helm order.
 				first_origin = get_turf(first.vessel)
+				first_revision = first.control_revision
+				second_revision = second.control_revision
 			else
 				qdel(anchor, force = TRUE)
 				anchor = null
