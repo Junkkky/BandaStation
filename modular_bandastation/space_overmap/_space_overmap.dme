@@ -7,6 +7,7 @@
 #include "code/station.dm"
 #include "code/terminals.dm"
 #include "code/transponder.dm"
+#include "code/comms.dm"
 #include "code/sector.dm"
 #include "code/ruin_sectors.dm"
 #include "code/navigation.dm"

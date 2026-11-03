@@ -350,7 +350,7 @@ Possible to do for anyone motivated enough:
 				var/list/callnames = list()
 				for(var/I in holopads)
 					var/area/A = get_area(I)
-					if(A)
+					if(A && holocall_reachable(I))
 						LAZYADD(callnames[A], I)
 				callnames -= get_area(src)
 				var/result = tgui_input_list(usr, "Choose an area to call", "Holocall", sort_names(callnames))
@@ -423,6 +423,10 @@ Possible to do for anyone motivated enough:
 			if(outgoing_call)
 				outgoing_call.Disconnect(src)
 				return TRUE
+
+/// Whether a call placed from this holopad can reach `pad`; `established` is set for an answered call.
+/obj/machinery/holopad/proc/holocall_reachable(obj/machinery/holopad/pad, established = FALSE)
+	return TRUE
 
 //setters
 /**

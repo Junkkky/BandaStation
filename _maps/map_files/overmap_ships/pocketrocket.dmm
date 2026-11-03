@@ -9,6 +9,25 @@
 	},
 /turf/open/floor/carpet/green,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
+"ab" = (
+/obj/structure/cable,
+/obj/machinery/telecomms/allinone/ship,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
+"ac" = (
+/obj/structure/cable,
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/holopad,
+/turf/open/floor/carpet/black,
+/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "ad" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave,
@@ -697,7 +716,7 @@ wH
 bi
 bU
 ay
-av
+ab
 as
 al
 wH
@@ -805,7 +824,7 @@ bi
 JW
 mP
 nu
-eV
+ac
 JW
 bi
 BZ

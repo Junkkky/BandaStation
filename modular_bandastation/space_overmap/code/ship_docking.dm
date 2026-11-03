@@ -59,6 +59,10 @@
 	other.docking_request_sequence++
 	other.record_ship_observation(vessel.shuttle_id, src, "signal")
 	other.navigation_notice("Получен запрос на стыковку. Подтвердите или отклоните его на навигационной консоли.")
+	// Audible across the bridge, so nobody has to watch the console to notice a request.
+	for(var/area/ship_area as anything in other.vessel.shuttle_areas)
+		for(var/obj/machinery/computer/stationtrauma_space_navigation/console in ship_area)
+			playsound(console, 'sound/machines/terminal/terminal_alert.ogg', 70, extrarange = 4)
 	status = "Запрос на стыковку передан"
 	return TRUE
 

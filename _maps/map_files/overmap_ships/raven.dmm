@@ -24,6 +24,10 @@
 	},
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space)
+"af" = (
+/obj/machinery/telecomms/allinone/ship,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space)
 "ag" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space)
@@ -35,6 +39,11 @@
 /area/shuttle/stationtrauma_space)
 "ai" = (
 /turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space)
+"aj" = (
+/obj/effect/turf_decal/raven/five,
+/obj/machinery/holopad,
+/turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space)
 "ak" = (
 /obj/structure/window/reinforced/spawner/directional/south,
@@ -1907,7 +1916,7 @@ aM
 ck
 ag
 eJ
-bP
+af
 eB
 aM
 ag
@@ -1961,7 +1970,7 @@ dT
 ef
 ea
 dW
-dO
+aj
 dH
 ag
 du
