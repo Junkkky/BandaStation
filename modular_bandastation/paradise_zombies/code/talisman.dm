@@ -3,7 +3,7 @@
 /** Single-use artifact which raises a dead, inhabited human as a plague-bearing servant. */
 /obj/item/plague_talisman
 	name = "Plague Talisman"
-	desc = "A vile rune, capable of raising the dead as plague-bearing creatures of destruction. The edges have sharp hooks."
+	desc = "Зловещая руна, способная поднимать мёртвых в виде несущих чуму созданий разрушения. По краям расположены острые крючья."
 	icon = 'modular_bandastation/paradise_zombies/icons/plague_talisman.dmi'
 	icon_state = "plague_talisman"
 	w_class = WEIGHT_CLASS_TINY
@@ -34,16 +34,16 @@
 	if(expended || ritual_timer || !istype(victim) || !istype(necromancer) || !necromancer.mind || !necromancer.is_holding(src) || !necromancer.can_perform_action(victim))
 		return FALSE
 	if(victim.stat != DEAD)
-		to_chat(necromancer, span_warning("This artifact can only affect the dead!"))
+		to_chat(necromancer, span_warning("Этот артефакт действует только на мёртвых!"))
 		return FALSE
 	if(victim.mob_biotypes & MOB_ROBOTIC)
-		to_chat(necromancer, span_warning("This one isn't vulnerable to this form of plague magic."))
+		to_chat(necromancer, span_warning("Это тело невосприимчиво к такой чумной магии."))
 		return FALSE
 	if(HAS_TRAIT(victim, PARADISE_PLAGUE_RITUAL_TRAIT) || HAS_TRAIT(victim, TRAIT_PARADISE_PLAGUE_ZOMBIE) || victim.mind?.has_antag_datum(/datum/antagonist/wizard_minion/paradise_plague_zombie))
-		to_chat(necromancer, span_warning("This one is already under the artifact's influence! Give it time."))
+		to_chat(necromancer, span_warning("Это тело уже находится под воздействием артефакта! Подождите немного."))
 		return FALSE
 	if(!return_soul(victim) || !victim.mind)
-		to_chat(necromancer, span_warning("There is no soul connected to this body..."))
+		to_chat(necromancer, span_warning("С этим телом не связана ни одна душа..."))
 		return FALSE
 	if(!ispath(chosen_plague, /datum/disease))
 		chosen_plague = pick_disease()
@@ -53,7 +53,7 @@
 	ritual_master_mind_ref = WEAKREF(necromancer.mind)
 	ADD_TRAIT(victim, PARADISE_PLAGUE_RITUAL_TRAIT, REF(src))
 	expended = TRUE
-	victim.visible_message(span_danger("[necromancer] places a vile rune upon [victim]'s lifeless forehead. The rune adheres to the flesh, and [victim]'s body rots and decays at unnatural speeds!"))
+	victim.visible_message(span_danger("[necromancer] помещает зловещую руну на безжизненный лоб [victim.declent_ru(GENITIVE)]. Руна прилипает к плоти, и тело [victim.declent_ru(GENITIVE)] начинает неестественно быстро гнить и разлагаться!"))
 	for(var/datum/disease/infection as anything in victim.diseases?.Copy())
 		if(!istype(infection, /datum/disease/paradise_zombie))
 			infection.cure()
@@ -104,8 +104,8 @@
 	victim.setMaxHealth(200)
 	victim.updatehealth()
 	REMOVE_TRAIT(victim, PARADISE_PLAGUE_RITUAL_TRAIT, REF(src))
-	victim.visible_message(span_danger("[victim] rises into a horrendous undead creature!"))
-	log_combat(necromancer, victim, "raised as a plague zombie")
+	victim.visible_message(span_danger("[victim] восстаёт в облике чудовищной нежити!"))
+	log_combat(necromancer, victim, "воскресил в виде чумного зомби")
 	qdel(src)
 	return TRUE
 
@@ -145,7 +145,7 @@
 
 /** A plague servant retains the native wizard-minion faction, HUD and protection objective. */
 /datum/antagonist/wizard_minion/paradise_plague_zombie
-	name = "Necromancy-risen Plague Zombie"
+	name = "Чумной зомби, поднятый некромантией"
 	/// The necromancer's character remains the objective target across body transfers.
 	var/datum/weakref/master_ref
 	/// Native creator bond, removed only if this antagonist still owns it.
@@ -181,20 +181,21 @@
 	var/datum/objective/protect/objective = new()
 	objective.owner = owner
 	objective.target = master
-	objective.explanation_text = "Obey every order from and protect [master.name], even at the cost of your new life."
+	objective.objective_name = "Цель"
+	objective.explanation_text = "Выполняйте все приказы своего хозяина ([master.name]) и защищайте его даже ценой новой жизни."
 	objectives += objective
 
 /datum/antagonist/wizard_minion/paradise_plague_zombie/greet()
 	var/datum/mind/master = master_ref?.resolve()
 	var/datum/disease/plague = new chosen_plague()
-	to_chat(owner.current, span_userdanger("You have been raised into undeath by <b>[master?.name]</b>! Assist your master at all costs. You have been bestowed the following plague: [plague.name]!"))
+	to_chat(owner.current, span_userdanger("<b>[master?.name]</b> возвращает вас к существованию в облике нежити! Помогайте своему хозяину любой ценой. Вам дарована следующая болезнь: [plague.name]!"))
 	qdel(plague)
 	owner.announce_objectives()
 
 /** Five talismans in the original restricted runic belt. */
 /obj/item/storage/belt/plague_talisman
 	name = "Runic Belt"
-	desc = "A belt designed to safely contain Plague Talismans. Better hope it doesn't start dripping..."
+	desc = "Пояс для безопасного хранения чумных талисманов. Остаётся надеяться, что с него ничего не закапает..."
 	icon_state = "soulstonebelt"
 	inhand_icon_state = "soulstonebelt"
 	worn_icon_state = "soulstonebelt"
@@ -214,8 +215,8 @@
 
 /** Wizard spellbooks discover this artifact entry through the existing subtype registry. */
 /datum/spellbook_entry/item/paradise_plague_talismans
-	name = "Five Plague Talismans"
-	desc = "Special engraved runes, used to raise the dead into plague-ridden, animated corpses."
+	name = "Пять чумных талисманов"
+	desc = "Особые резные руны, позволяющие поднимать мёртвых в виде оживших, поражённых чумой трупов."
 	item_path = /obj/item/storage/belt/plague_talisman
 	category = "Поддержка"
 	cost = 1

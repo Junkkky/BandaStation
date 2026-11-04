@@ -9,13 +9,13 @@
 		apply_status_effect(/datum/status_effect/paradise_vomit_slow)
 	if(!blood && nutrition < 100)
 		if(message)
-			visible_message(span_warning("[src] dry heaves!"), span_userdanger("You try to throw up, but there's nothing in your stomach!"))
+			visible_message(span_warning("[src] мучается от сухих рвотных позывов!"), span_userdanger("Вы пытаетесь вырвать, но желудок пуст!"))
 		if(should_confuse)
 			Knockdown(20 SECONDS)
 			adjust_confusion(20 SECONDS)
 		return TRUE
 	if(message)
-		visible_message(span_danger("[src] throws up!"), span_userdanger("You throw up!"))
+		visible_message(span_danger("[src] блюёт!"), span_userdanger("Вас рвёт!"))
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 	var/turf/location = get_turf(src)
 	for(var/index in 0 to distance)
@@ -48,9 +48,9 @@
 		return FALSE
 	if(!no_text)
 		if(green)
-			visible_message(span_warning("[src] vomits up some green goo!"), span_warning("You vomit up some green goo!"))
+			visible_message(span_warning("[src] извергает зелёную жижу!"), span_warning("Вас рвёт зелёной жижей!"))
 		else
-			visible_message(span_warning("[src] pukes all over [p_themselves()]!"), span_warning("You puke all over yourself!"))
+			visible_message(span_warning("[src] заблёвывает себя!"), span_warning("Вы заблёвываете себя!"))
 	location.add_vomit_floor(null, green ? /obj/effect/decal/cleanable/vomit/toxic : /obj/effect/decal/cleanable/vomit, NONE, 0)
 	return TRUE
 

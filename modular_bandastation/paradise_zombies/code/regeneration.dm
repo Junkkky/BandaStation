@@ -50,8 +50,8 @@
 			zombie.reagents.remove_reagent(treatment.type, 2 * treatment.metabolization_rate * zombie.metabolism_efficiency * seconds_per_tick)
 			return
 		if(zombie_rejuv())
-			to_chat(zombie, span_userdanger("We... Awaken..."))
-			zombie.notify_revival("Your zombie body has risen again, re-enter your corpse to continue the feast!", source = zombie)
+			to_chat(zombie, span_userdanger("Мы... Пробуждаемся..."))
+			zombie.notify_revival("Ваше тело зомби снова восстало. Вернитесь в него, чтобы продолжить пир!", source = zombie)
 
 	if(zombie.stat != STABLE || HAS_TRAIT(zombie, TRAIT_HANDS_BLOCKED) || zombie.client || zombie.key)
 		return

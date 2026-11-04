@@ -1,8 +1,8 @@
 /** A mapped corpse uses the same body, infection and resurrection as infected crewmembers. */
 /mob/living/carbon/human/paradise_zombie_npc
-	name = "Shambling Corpse"
-	real_name = "Shambling Corpse"
-	desc = "When there is no more room in hell, the dead will walk in outer space."
+	name = "Бредущий труп"
+	real_name = "Бредущий труп"
+	desc = "Когда в аду больше не останется места, мёртвые выйдут в открытый космос."
 	faction = list(FACTION_HOSTILE)
 	/// Clothes previously rendered by the basic zombie, now worn by its real human body.
 	var/outfit = /datum/outfit/corpse_doctor
@@ -34,21 +34,21 @@
 	parent_type = /mob/living/carbon/human/paradise_zombie_npc
 
 /mob/living/basic/zombie/rotten
-	name = "Rotting Carcass"
-	desc = "This undead fiend looks to be badly decomposed."
+	name = "Гниющий труп"
+	desc = "Эта нежить находится на поздней стадии разложения."
 
 /mob/living/basic/zombie/rotten/assistant
 	outfit = /datum/outfit/corpse_assistant
 
 /datum/outfit/corpse_doctor
-	name = "Corpse Doctor"
+	name = "Труп врача"
 	suit = /obj/item/clothing/suit/toggle/labcoat
 	uniform = /obj/item/clothing/under/rank/medical/doctor
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	back = /obj/item/storage/backpack/medic
 
 /datum/outfit/corpse_assistant
-	name = "Corpse Assistant"
+	name = "Труп ассистента"
 	mask = /obj/item/clothing/mask/gas
 	uniform = /obj/item/clothing/under/color/grey
 	shoes = /obj/item/clothing/shoes/sneakers/black

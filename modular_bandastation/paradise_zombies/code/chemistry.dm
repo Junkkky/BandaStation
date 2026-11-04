@@ -2,34 +2,35 @@
 /datum/reagent/medicine/paradise_zombie_cure
 	abstract_type = /datum/reagent/medicine/paradise_zombie_cure
 	metabolization_rate = 0.05
+	taste_description = "горечи"
 	/// Highest infection stage treatment unlocked by this sequence.
 	var/cure_level = 0
 
 /** Prevents scratch infections and treats stage one infections. */
 /datum/reagent/medicine/paradise_zombie_cure/alpha
-	name = "Anti-Plague Sequence Alpha"
-	description = "The first step towards a cure for zombies. Prevents simple infections from scratches."
+	name = "Противочумная формула «Альфа»"
+	description = "Первый шаг к лечению зомби. Предотвращает заражение через царапины."
 	color = "#003602"
 	cure_level = 1
 
 /** Treats early infections and weakens zombie claws. */
 /datum/reagent/medicine/paradise_zombie_cure/beta
-	name = "Anti-Plague Sequence Beta"
-	description = "Cures low-level infections. Weakens zombies when in their system."
+	name = "Противочумная формула «Бета»"
+	description = "Лечит инфекцию на ранних стадиях. Ослабляет зомби, пока находится в их организме."
 	color = "#006238"
 	cure_level = 2
 
-/** Treats moderate infections and prevents resurrection while present. */
+/** Treats moderate infections and slows zombie regeneration. */
 /datum/reagent/medicine/paradise_zombie_cure/gamma
-	name = "Anti-Plague Sequence Gamma"
-	description = "Prevents zombies from reviving, but not from healing. Removes moderate infections."
+	name = "Противочумная формула «Гамма»"
+	description = "Замедляет регенерацию зомби в три раза. Лечит инфекцию на средних стадиях."
 	color = "#029779"
 	cure_level = 3
 
 /** Treats all plague stages and restores necrotic limbs one at a time. */
 /datum/reagent/medicine/paradise_zombie_cure/omega
-	name = "Anti-Plague Sequence Omega"
-	description = "Cures all cases of the Necrotizing Plague. Stops zombies from reviving."
+	name = "Противочумная формула «Омега»"
+	description = "Лечит некротическую чуму на любой стадии. Не даёт зомби воскресать."
 	color = "#001d4d"
 	cure_level = 4
 
@@ -55,7 +56,7 @@
 /datum/chemical_reaction/randomized/paradise_zombie_cure
 	abstract_type = /datum/chemical_reaction/randomized/paradise_zombie_cure
 	reaction_flags = REACTION_INSTANT|REACTION_IGNORE_PURITY
-	mix_message = "The mixture turns into a dark green paste."
+	mix_message = "Смесь превращается в тёмно-зелёную пасту."
 	required_temp = 0
 	/// Cure progress the infected blood must not already exceed.
 	var/cure_level = 0

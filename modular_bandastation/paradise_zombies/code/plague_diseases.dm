@@ -1,8 +1,10 @@
 /** Runs the original disease progression and cure rolls once every two seconds. */
 /datum/disease/paradise_plague_dependency
 	abstract_type = /datum/disease/paradise_plague_dependency
+	form = "Вирусная инфекция"
+	agent = "Неизвестно"
 	spread_flags = DISEASE_SPREAD_NON_CONTAGIOUS
-	spread_text = "Non-contagious"
+	spread_text = "Не передаётся"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	stage_prob = 4
 	cure_chance = 8
@@ -68,17 +70,27 @@
 /** Advanced Kingstons mutates the host into one persistent, randomly selected species. */
 /datum/disease/paradise_kingstons_advanced
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "Advanced Kingstons Syndrome"
-	desc = "If left untreated the subject will mutate to a different species."
-	agent = "AMB45DR Bacteria"
+	name = "Прогрессирующий синдром Кингстона"
+	desc = "Без лечения больной мутирует в представителя другого вида."
+	agent = "Бактерия AMB45DR"
 	max_stages = 4
-	cure_text = "Plasma"
+	cure_text = "Плазма"
 	cures = list(/datum/reagent/toxin/plasma)
 	cure_chance = 50
 	spreading_modifier = 0.75
 	severity = DISEASE_SEVERITY_BIOHAZARD
 	/// Same-species equivalents available in this build; absent Paradise species are not substituted.
 	var/static/list/mutation_species = list(/datum/species/human, /datum/species/tajaran, /datum/species/lizard, /datum/species/skrell, /datum/species/vulpkanin, /datum/species/jelly/slime, /datum/species/moth)
+	/// Local display names do not rename the species or change the mutation pool.
+	var/static/list/mutation_species_names = list(
+		/datum/species/human = "человек",
+		/datum/species/tajaran = "таяран",
+		/datum/species/lizard = "унатх",
+		/datum/species/skrell = "скрелл",
+		/datum/species/vulpkanin = "вульпканин",
+		/datum/species/jelly/slime = "слаймолюд",
+		/datum/species/moth = "ниан",
+	)
 	/// The strain's immutable transformation target, preserved in blood copies.
 	var/datum/species/chosen_species
 	/// The strain's random disease-name suffix.
@@ -87,8 +99,8 @@
 /datum/disease/paradise_kingstons_advanced/New()
 	. = ..()
 	chosen_species = pick(mutation_species)
-	chosen_suffix = pick("pox", "rot", "flu", "cough", "-gitis", "cold", "rash", "itch", "decay")
-	name = "[initial(chosen_species.name)] [chosen_suffix]"
+	chosen_suffix = pick("Оспа", "Гниль", "Грипп", "Кашель", "Воспаление", "Простуда", "Сыпь", "Зуд", "Разложение")
+	name = "[chosen_suffix] ([mutation_species_names[chosen_species]])"
 
 /datum/disease/paradise_kingstons_advanced/Copy()
 	var/datum/disease/paradise_kingstons_advanced/copied = ..()
@@ -100,13 +112,13 @@
 	switch(stage)
 		if(1)
 			if(prob(10))
-				to_chat(affected_mob, span_notice("You feel awkward."))
+				to_chat(affected_mob, span_notice("Вы чувствуете себя неловко."))
 		if(2)
 			if(prob(10))
-				to_chat(affected_mob, span_danger("You itch."))
+				to_chat(affected_mob, span_danger("Всё тело чешется."))
 		if(3)
 			if(prob(10))
-				to_chat(affected_mob, span_danger("Your skin starts to flake!"))
+				to_chat(affected_mob, span_danger("Ваша кожа начинает шелушиться!"))
 		if(4)
 			if(prob(5))
 				mutate_host()
@@ -117,10 +129,10 @@
 		return FALSE
 	var/mob/living/carbon/human/host = affected_mob
 	if(!istype(host.dna.species, chosen_species))
-		host.visible_message(span_danger("[host]'s skin splits and form contorts!"), span_userdanger("Your body mutates into a [initial(chosen_species.name)]!"))
+		host.visible_message(span_danger("[host] меняется на глазах: кожа трескается, а тело искажается!"), span_userdanger("Ваше тело меняется: теперь вы — [mutation_species_names[chosen_species]]!"))
 		host.set_species(chosen_species, replace_missing = FALSE)
 		return TRUE
-	host.visible_message(span_danger("[host] scratches at [host.p_their()] skin!"), span_userdanger("You scratch your skin to try not to itch!"))
+	host.visible_message(span_danger("[host] расчёсывает свою кожу!"), span_userdanger("Вы расчёсываете кожу, пытаясь унять зуд!"))
 	host.adjust_brute_loss(5)
 	host.adjust_stamina_loss(5)
 	return FALSE
@@ -128,12 +140,12 @@
 /** Uncontrollable aggression that can also be soothed by cannabis. */
 /datum/disease/paradise_berserker
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "Berserker"
-	desc = "Swearing, shouting, attacking nearby crew members uncontrollably."
-	agent = "Jagged Crystals"
+	name = "Берсеркерство"
+	desc = "Ругань, крики и неконтролируемые нападения на находящихся рядом членов экипажа."
+	agent = "Острые кристаллы"
 	max_stages = 2
 	stage_prob = 5
-	cure_text = "Anti-Psychotics"
+	cure_text = "Антипсихотики"
 	cures = list(/datum/reagent/medicine/haloperidol)
 	cure_chance = 10
 	severity = DISEASE_SEVERITY_BIOHAZARD
@@ -141,7 +153,7 @@
 
 /datum/disease/paradise_berserker/on_plague_cycle()
 	if(affected_mob.reagents.has_reagent(/datum/reagent/drug/cannabis))
-		to_chat(affected_mob, span_notice("You mellow out."))
+		to_chat(affected_mob, span_notice("Вы успокаиваетесь."))
 		cure()
 		return
 	switch(stage)
@@ -149,14 +161,14 @@
 			if(prob(5))
 				affected_mob.emote(pick("twitch", "grumble"))
 			if(prob(5))
-				affected_mob.say(pick("Grr...", "Fuck...", "Fucking...", "Fuck this fucking.. fuck.."), forced = name)
+				affected_mob.say(pick("Грр...", "Блядь...", "Ёбаный...", "Да ебись оно всё... блядь..."), forced = name)
 		if(2)
 			if(prob(5))
 				affected_mob.emote(pick("twitch", "scream"))
 			if(prob(5))
-				affected_mob.say(pick("AAARRGGHHH!!!!", "GRR!!!", "FUCK!! FUUUUUUCK!!!", "FUCKING SHITCOCK!!", "WROOAAAGHHH!!"), forced = name)
+				affected_mob.say(pick("АААРРГГХХХ!!!!", "ГРР!!!", "БЛЯДЬ!! БЛЯЯЯЯЯДЬ!!!", "ЁБАНЫЙ ХУЕСОС!!", "ВРООАААГХХХ!!"), forced = name)
 			if(prob(15))
-				affected_mob.visible_message(span_danger("[affected_mob] twitches violently!"))
+				affected_mob.visible_message(span_danger("[affected_mob] резко дёргается!"))
 				for(var/obj/item/held as anything in affected_mob.get_held_items())
 					affected_mob.dropItemToGround(held)
 			if(prob(33))
@@ -165,30 +177,30 @@
 /** Makes the actual nearby attacks while preserving the donor's miss chance. */
 /datum/disease/paradise_berserker/proc/thrash()
 	if(affected_mob.incapacitated)
-		affected_mob.visible_message(span_danger("[affected_mob] spasms and twitches!"))
+		affected_mob.visible_message(span_danger("[affected_mob] бьётся в судорогах!"))
 		return
-	affected_mob.visible_message(span_danger("[affected_mob] thrashes around violently!"))
+	affected_mob.visible_message(span_danger("[affected_mob] яростно мечется!"))
 	for(var/mob/living/carbon/victim in range(1, affected_mob))
 		if(victim == affected_mob)
 			continue
 		if(prob(80))
 			playsound(affected_mob, SFX_PUNCH, 25, TRUE)
 			victim.adjust_brute_loss(rand(1, 5))
-			log_combat(affected_mob, victim, "hit with Berserker disease")
-			affected_mob.visible_message(span_danger("[affected_mob] hits [victim] with [affected_mob.p_their()] thrashing!"))
+			log_combat(affected_mob, victim, "ударил из-за берсеркерства")
+			affected_mob.visible_message(span_danger("[affected_mob] беспорядочно размахивает руками и бьёт [victim.declent_ru(ACCUSATIVE)]!"))
 		else
 			playsound(affected_mob, 'sound/items/weapons/punchmiss.ogg', 25, TRUE)
-			affected_mob.visible_message(span_danger("[affected_mob] fails to hit [victim] with [affected_mob.p_their()] thrashing!"))
+			affected_mob.visible_message(span_danger("[affected_mob] беспорядочно размахивает руками, но не задевает [victim.declent_ru(ACCUSATIVE)]!"))
 
 /** The talisman's original appendicitis, cured by removing the affected organ. */
 /datum/disease/paradise_appendicitis
 	parent_type = /datum/disease/paradise_plague_dependency
-	form = "Condition"
-	name = "Appendicitis"
-	desc = "If left untreated the subject will become very weak, and may vomit often."
-	agent = "Shitty Appendix"
+	form = "Патология"
+	name = "Аппендицит"
+	desc = "Без лечения больной сильно ослабевает и может страдать от частой рвоты."
+	agent = "Паршивый аппендикс"
 	max_stages = 3
-	cure_text = "Surgery"
+	cure_text = "Хирургическое вмешательство"
 	severity = DISEASE_SEVERITY_MINOR
 	disease_flags = CAN_CARRY|CAN_RESIST
 	visibility_flags = HIDDEN_PANDEMIC
@@ -226,7 +238,7 @@
 				appendix.inflamation_stage = max(appendix.inflamation_stage, 1)
 				appendix.update_appearance()
 			if(prob(3))
-				to_chat(affected_mob, span_warning("You feel a stabbing pain in your abdomen!"))
+				to_chat(affected_mob, span_warning("Вы чувствуете колющую боль в животе!"))
 				affected_mob.Stun(rand(4 SECONDS, 6 SECONDS))
 				affected_mob.adjust_tox_loss(1)
 		if(3)
@@ -236,12 +248,12 @@
 /** Magic pressurizes stomach bile until a violent vomit throws the host backward. */
 /datum/disease/paradise_grut_gut
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "Grut Gut"
-	desc = "A magic-infused disease that builds up DANGEROUSLY high pressure bile within the stomach."
+	name = "Грутогастрит"
+	desc = "Магическая болезнь, при которой желчь скапливается в желудке под ОПАСНО высоким давлением."
 	agent = "Eruca Stomachum"
 	max_stages = 5
 	stage_prob = 5
-	cure_text = "Pyrotech stabilizing agents"
+	cure_text = "Стабилизаторы пиротехнических реагентов"
 	cures = list(/datum/reagent/stabilizing_agent)
 	severity = DISEASE_SEVERITY_DANGEROUS
 
@@ -249,15 +261,15 @@
 	switch(stage)
 		if(1)
 			if(prob(3))
-				to_chat(affected_mob, span_danger("Your stomach feels strange."))
+				to_chat(affected_mob, span_danger("В желудке странное ощущение."))
 		if(2)
 			if(prob(3))
-				to_chat(affected_mob, span_danger("You feel bloated."))
+				to_chat(affected_mob, span_danger("Вы чувствуете вздутие."))
 			if(prob(2))
-				to_chat(affected_mob, span_danger("You feel an uncomfortable pressure in your abdomen."))
+				to_chat(affected_mob, span_danger("Вы чувствуете неприятное давление в животе."))
 		if(3)
 			if(prob(3))
-				to_chat(affected_mob, span_danger("You feel an uncomfortable pressure in your abdomen."))
+				to_chat(affected_mob, span_danger("Вы чувствуете неприятное давление в животе."))
 			if(prob(2))
 				affected_mob.emote("burp")
 			if(prob(1))
@@ -269,24 +281,24 @@
 			if(prob(2))
 				affected_mob.emote("burp")
 			if(prob(3))
-				to_chat(affected_mob, span_danger("You feel horribly bloated."))
+				to_chat(affected_mob, span_danger("Живот ужасно раздуло."))
 			if(prob(2))
-				to_chat(affected_mob, span_danger("A deep bubbling resounds through your chest."))
+				to_chat(affected_mob, span_danger("В груди раздаётся глухое бульканье."))
 		if(5)
 			if(prob(2))
-				affected_mob.manual_emote("belches loudly!")
+				affected_mob.manual_emote("громко отрыгивает!")
 			if(prob(1))
 				affected_mob.emote("burp")
 			if(prob(1))
 				affected_mob.emote("groan")
 			if(prob(3))
-				to_chat(affected_mob, span_danger("Your stomach is killing you!"))
+				to_chat(affected_mob, span_danger("Желудок разрывается от боли!"))
 			if(prob(3))
-				to_chat(affected_mob, span_danger("Your abdomen gurgles and bubbles with a fierce intensity!"))
+				to_chat(affected_mob, span_danger("В животе неистово бурлит и клокочет!"))
 			if(prob(2) && affected_mob.nutrition >= 100)
 				affected_mob.adjust_brute_loss(5)
 				affected_mob.paradise_vomit(6, FALSE, TRUE, 7, FALSE)
-				affected_mob.visible_message(span_danger("[affected_mob] vomits with such force that [affected_mob.p_theyre()] sent flying backwards!"))
+				affected_mob.visible_message(span_danger("[affected_mob] извергает рвоту с такой силой, что отдача отбрасывает тело назад!"))
 				do_fling()
 
 /** Performs the original 200-tile, speed-three recoil throw. */
@@ -299,12 +311,12 @@
 /** A nose full of miniature wands that occasionally sneezes a real fireball. */
 /datum/disease/paradise_wand_rot
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "Wand Rot"
-	desc = "A magic-infused disease that replaces one's nose hairs with tiny wands. Avoid nasal irritants."
+	name = "Палочковая гниль"
+	desc = "Магическая болезнь, заменяющая волоски в носу крошечными волшебными палочками. Избегайте раздражителей слизистой носа."
 	agent = "nasum magicum"
 	max_stages = 5
 	stage_prob = 5
-	cure_text = "Acetaldehyde"
+	cure_text = "Ацетальдегид"
 	cures = list(/datum/reagent/acetaldehyde)
 	severity = DISEASE_SEVERITY_DANGEROUS
 	/// A pending sneeze is cancelled when the disease is removed or its host changes.
@@ -325,26 +337,26 @@
 			if(prob(3))
 				affected_mob.emote("sniff")
 			if(prob(3))
-				to_chat(affected_mob, span_danger("Your nose and throat feel uncomfortably dry."))
+				to_chat(affected_mob, span_danger("Вы чувствуете неприятную сухость в носу и горле."))
 		if(3)
 			if(prob(2))
 				affected_mob.emote("cough")
 			if(prob(3))
 				affected_mob.emote("sniff")
 			if(prob(3))
-				to_chat(affected_mob, span_danger("Your nose and throat feel uncomfortably dry."))
+				to_chat(affected_mob, span_danger("Вы чувствуете неприятную сухость в носу и горле."))
 		if(4)
 			if(prob(2))
 				affected_mob.emote("cough")
 			if(prob(3))
 				affected_mob.emote("sneeze")
 			if(prob(3))
-				to_chat(affected_mob, span_danger("Your throat burns and itches!"))
+				to_chat(affected_mob, span_danger("Горло горит и чешется!"))
 		if(5)
 			if(prob(2))
 				affected_mob.emote("cough")
 			if(prob(2))
-				to_chat(affected_mob, span_danger("Your nose feels like it's going to burn right off your face!"))
+				to_chat(affected_mob, span_danger("Кажется, ваш нос сейчас сгорит дотла!"))
 				affected_mob.adjust_fire_loss(5)
 			if(prob(3))
 				affected_mob.emote("sniff")
@@ -371,12 +383,12 @@
 /** Space-matter vomit drains the surrounding tile's atmosphere for fifteen seconds. */
 /datum/disease/paradise_mystic_malaise
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "Mystic Malaise"
-	desc = "A magic-infused disease that converts gastric juices into space-matter."
+	name = "Мистическое недомогание"
+	desc = "Магическая болезнь, превращающая желудочный сок в космическую материю."
 	agent = "Spatio Ventrem"
 	max_stages = 5
 	stage_prob = 5
-	cure_text = "Liquid dark matter"
+	cure_text = "Жидкая тёмная материя"
 	cures = list(/datum/reagent/liquid_dark_matter)
 	severity = DISEASE_SEVERITY_DANGEROUS
 
@@ -384,18 +396,18 @@
 	switch(stage)
 		if(1)
 			if(prob(2))
-				to_chat(affected_mob, span_danger("You feel nauseous."))
+				to_chat(affected_mob, span_danger("Вас тошнит."))
 		if(2)
 			if(prob(3))
-				to_chat(affected_mob, span_danger("Your stomach aches."))
+				to_chat(affected_mob, span_danger("У вас ноет желудок."))
 		if(3)
 			if(prob(3))
-				to_chat(affected_mob, span_danger("You feel a growing emptiness inside you."))
+				to_chat(affected_mob, span_danger("Вы чувствуете, как внутри растёт пустота."))
 			if(prob(2))
 				affected_mob.emote("cough")
 		if(4)
 			if(prob(3))
-				to_chat(affected_mob, span_danger("Your chest feels like it's going to cave in!"))
+				to_chat(affected_mob, span_danger("Кажется, ваша грудная клетка сейчас схлопнется!"))
 			if(prob(2))
 				affected_mob.emote("cough")
 			if(prob(2))
@@ -416,7 +428,7 @@
 /** Unscoopable fifteen-second local atmosphere sink. */
 /obj/effect/decal/cleanable/vomit/paradise_spacematter
 	name = "spacematter vomit"
-	desc = "Despite the hazard, it's dazzlingly beautiful. You should probably get away from it."
+	desc = "Несмотря на опасность, это ослепительно красиво. Наверное, стоит отойти подальше."
 	icon_state = "vomitnebula_1"
 	random_icon_states = list("vomitnebula_1", "vomitnebula_2", "vomitnebula_3", "vomitnebula_4")
 	decal_reagent = null
@@ -446,5 +458,5 @@
 			var/fraction = 1 - ((1 - min(1, 1500 / environment.volume)) ** seconds_per_tick)
 			tile.remove_air(environment.total_moles() * fraction)
 	if(world.time >= expires_at)
-		visible_message(span_danger("[src] evaporates into nothingness!"))
+		visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] бесследно испаряется!"))
 		qdel(src)

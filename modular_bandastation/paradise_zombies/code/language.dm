@@ -1,12 +1,12 @@
 /// Paradise's seven-word zombie language, with its original sentence-level scrambling.
 /datum/language/paradise_zombie
-	name = "Zombie"
-	desc = "The groaning language of flesh-hungry zombies. Braaaiiinsss..."
+	name = "Язык зомби"
+	desc = "Язык стонов зомби, жаждущих плоти. Мо-о-озги..."
 	// Wormspeak already owns Paradise's original 'w' key in this build.
 	key = null
 	flags = LANGUAGE_TONGUELESS_SPEECH
 	spans = list("zombie")
-	syllables = list("Brains", "Brainssss", "Flesh", "Grrr", "Hnng", "Braaaains", "Braaiiiins")
+	syllables = list("Мозги", "Мозги-и-и", "Плоть", "Гр-р-р", "Хн-н-н", "Мо-о-озги", "Мо-озги-и-и")
 	always_use_default_namelist = TRUE
 	default_priority = 110
 	icon_state = "aphasia"

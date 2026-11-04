@@ -1,46 +1,46 @@
 /// Paradise's original bee infestation, isolated from TG's different recovery model.
 /datum/disease/beesease/paradise_plague
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "Beesease"
-	form = "Infection"
+	name = "Пчелезнь"
+	form = "Инфекция"
 	max_stages = 4
-	cure_text = "Sugar"
+	cure_text = "Сахар"
 	cures = list(/datum/reagent/consumable/sugar)
-	agent = "Apidae Infection"
+	agent = "Инфекция Apidae"
 	viable_mobtypes = list(/mob/living/carbon/human)
-	desc = "If left untreated subject will regurgitate bees."
+	desc = "Без лечения больной начнёт откашливать пчёл."
 	severity = DISEASE_SEVERITY_BIOHAZARD
 
 /datum/disease/beesease/paradise_plague/on_plague_cycle()
 	switch(stage)
 		if(2)
 			if(prob(2))
-				to_chat(affected_mob, span_notice("You taste honey in your mouth."))
+				to_chat(affected_mob, span_notice("Вы чувствуете вкус мёда во рту."))
 		if(3)
 			if(prob(10))
-				to_chat(affected_mob, span_notice("Your stomach rumbles."))
+				to_chat(affected_mob, span_notice("У вас урчит в животе."))
 			if(prob(2))
-				to_chat(affected_mob, span_danger("Your stomach stings painfully."))
+				to_chat(affected_mob, span_danger("В желудке болезненно покалывает."))
 				if(prob(20))
 					affected_mob.adjust_tox_loss(2)
 		if(4)
 			if(prob(10))
-				affected_mob.visible_message(span_danger("[affected_mob] buzzes."), span_userdanger("Your stomach buzzes violently!"))
+				affected_mob.visible_message(span_danger("[affected_mob] жужжит."), span_userdanger("В животе неистово жужжит!"))
 			if(prob(5))
-				to_chat(affected_mob, span_danger("You feel something moving in your throat."))
+				to_chat(affected_mob, span_danger("Вы чувствуете, как что-то шевелится у вас в горле."))
 			if(prob(1))
-				affected_mob.visible_message(span_danger("[affected_mob] coughs up a swarm of bees!"), span_userdanger("You cough up a swarm of bees!"))
+				affected_mob.visible_message(span_danger("[affected_mob] откашливает рой пчёл!"), span_userdanger("Вы откашливаете рой пчёл!"))
 				new /mob/living/basic/bee(affected_mob.loc)
 
 /// ICE9 cold retains its original cooling, frost damage, and lack of spontaneous recovery.
 /datum/disease/cold9/paradise_plague
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "The Cold"
+	name = "Ледяная простуда"
 	max_stages = 3
-	cure_text = "Spaceacillin"
+	cure_text = "Космоциллин"
 	cures = list(/datum/reagent/medicine/spaceacillin)
-	agent = "ICE9-rhinovirus"
-	desc = "If left untreated the subject will slow, as if partly frozen."
+	agent = "Риновирус ICE9"
+	desc = "Без лечения больной замедляется, словно частично замерзает."
 	severity = DISEASE_SEVERITY_HARMFUL
 
 /datum/disease/cold9/paradise_plague/on_plague_cycle()
@@ -53,22 +53,22 @@
 	if(prob(2 * stage_factor))
 		affected_mob.emote("cough")
 	if(prob(3 * stage_factor))
-		to_chat(affected_mob, span_danger("Your throat feels sore."))
+		to_chat(affected_mob, span_danger("У вас болит горло."))
 	if(prob(5 * stage_factor))
-		to_chat(affected_mob, span_danger("You feel stiff."))
+		to_chat(affected_mob, span_danger("Ваши движения скованы."))
 		affected_mob.adjust_fire_loss(1)
 
 /// The original Spanish Inquisition flu heats its victim and burns at both symptomatic stages.
 /datum/disease/fluspanish/paradise_plague
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "Spanish Inquisition Flu"
+	name = "Грипп испанской инквизиции"
 	max_stages = 3
-	cure_text = "Spaceacillin"
+	cure_text = "Космоциллин"
 	cures = list(/datum/reagent/medicine/spaceacillin)
 	cure_chance = 10
-	agent = "1nqu1s1t10n flu virion"
+	agent = "Вирион гриппа 1nqu1s1t10n"
 	spreading_modifier = 0.75
-	desc = "If left untreated the subject will burn to death for being a heretic."
+	desc = "Без лечения больной сгорит заживо за свою ересь."
 	severity = DISEASE_SEVERITY_HARMFUL
 
 /datum/disease/fluspanish/paradise_plague/on_plague_cycle()
@@ -81,26 +81,26 @@
 	if(prob(3 * stage_factor))
 		affected_mob.emote("cough")
 	if(prob(2.5 * stage_factor))
-		to_chat(affected_mob, span_danger("You're burning in your own skin!"))
+		to_chat(affected_mob, span_danger("Ваша кожа словно горит!"))
 		affected_mob.adjust_fire_loss(5)
 
 /// Retrovirus keeps its strain-specific rest/mutadone cure and original two DNA-scrambling outcomes.
 /datum/disease/dna_retrovirus/paradise_plague
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "Retrovirus"
+	name = "Ретровирус"
 	max_stages = 4
-	cure_text = "Rest or an injection of mutadone"
+	cure_text = "Отдых или инъекция мутадона"
 	cure_chance = 6
 	spreading_modifier = 0.4
 	stage_prob = 2
-	desc = "A DNA-altering retrovirus that scrambles the structural and unique enzymes of a host constantly."
+	desc = "Изменяющий ДНК ретровирус, который постоянно перемешивает структурные и уникальные ферменты носителя."
 	severity = DISEASE_SEVERITY_BIOHAZARD
 	/// Sixty percent of new strains are cured by lying down rather than mutadone.
 	var/restcure = FALSE
 
 /datum/disease/dna_retrovirus/paradise_plague/New()
 	. = ..()
-	agent = "Virus class [pick("A", "B", "C", "D", "E", "F")][pick("A", "B", "C", "D", "E", "F")]-[rand(50, 300)]"
+	agent = "Вирус класса [pick("A", "B", "C", "D", "E", "F")][pick("A", "B", "C", "D", "E", "F")]-[rand(50, 300)]"
 	if(prob(40))
 		cures = list(/datum/reagent/medicine/mutadone)
 	else
@@ -121,30 +121,30 @@
 		if(4)
 			rest_chance = 5
 	if(restcure && affected_mob.body_position == LYING_DOWN && prob(rest_chance))
-		to_chat(affected_mob, span_notice("You feel better."))
+		to_chat(affected_mob, span_notice("Вам становится лучше."))
 		cure()
 		return
 	switch(stage)
 		if(1)
 			if(prob(8))
-				to_chat(affected_mob, span_danger("Your head hurts."))
+				to_chat(affected_mob, span_danger("У вас болит голова."))
 			if(prob(9))
-				to_chat(affected_mob, "You feel a tingling sensation in your chest.")
+				to_chat(affected_mob, "Вы чувствуете покалывание в груди.")
 			if(prob(9))
-				to_chat(affected_mob, span_danger("You feel angry."))
+				to_chat(affected_mob, span_danger("Вы чувствуете злость."))
 		if(2)
 			if(prob(8))
-				to_chat(affected_mob, span_danger("Your skin feels loose."))
+				to_chat(affected_mob, span_danger("Кажется, кожа на вас обвисла."))
 			if(prob(10))
-				to_chat(affected_mob, "You feel very strange.")
+				to_chat(affected_mob, "Вы чувствуете себя очень странно.")
 			if(prob(4))
-				to_chat(affected_mob, span_danger("You feel a stabbing pain in your head!"))
+				to_chat(affected_mob, span_danger("Вы чувствуете пронзительную боль в голове!"))
 				affected_mob.Paralyze(4 SECONDS)
 			if(prob(4))
-				to_chat(affected_mob, span_danger("Your stomach churns."))
+				to_chat(affected_mob, span_danger("У вас крутит живот."))
 		if(3)
 			if(prob(10))
-				to_chat(affected_mob, span_danger("Your entire body vibrates."))
+				to_chat(affected_mob, span_danger("Всё ваше тело вибрирует."))
 			if(prob(35))
 				scramble_host()
 		if(4)
@@ -161,14 +161,14 @@
 /// Fungal tuberculosis uses the donor's salbutamol cure and stage-specific symptoms.
 /datum/disease/tuberculosis/paradise_plague
 	parent_type = /datum/disease/paradise_plague_dependency
-	form = "Disease"
-	name = "Fungal tuberculosis"
+	form = "Болезнь"
+	name = "Грибковый туберкулёз"
 	max_stages = 5
-	cure_text = "Spaceacillin & Salbutamol"
+	cure_text = "Космоциллин и сальбутамол"
 	cures = list(/datum/reagent/medicine/spaceacillin, /datum/reagent/medicine/salbutamol)
-	agent = "Fungal Tubercle bacillus Cosmosis"
+	agent = "Грибковая туберкулёзная палочка Cosmosis"
 	cure_chance = 5
-	desc = "A rare highly transmittable virulent virus. Causes fever, blood vomiting, lung damage, weight loss, and fatigue."
+	desc = "Редкий высокозаразный вирулентный вирус. Вызывает жар, кровавую рвоту, повреждение лёгких, потерю веса и утомляемость."
 	required_organ = ORGAN_SLOT_LUNGS
 	severity = DISEASE_SEVERITY_HARMFUL
 
@@ -177,80 +177,80 @@
 		if(2)
 			if(prob(2))
 				affected_mob.emote("cough")
-				to_chat(affected_mob, span_danger("Your chest hurts."))
+				to_chat(affected_mob, span_danger("У вас болит грудь."))
 			if(prob(2))
-				to_chat(affected_mob, span_danger("Your stomach violently rumbles!"))
+				to_chat(affected_mob, span_danger("В животе неистово урчит!"))
 			if(prob(5))
-				to_chat(affected_mob, span_danger("You feel a cold sweat form."))
+				to_chat(affected_mob, span_danger("Вас прошибает холодный пот."))
 		if(4)
 			if(prob(2))
-				to_chat(affected_mob, span_userdanger("You see four of everything"))
+				to_chat(affected_mob, span_userdanger("У вас всё четверится."))
 				affected_mob.set_dizzy_if_lower(10 SECONDS)
 			if(prob(2))
-				to_chat(affected_mob, span_danger("You feel a sharp pain from your lower chest!"))
+				to_chat(affected_mob, span_danger("Вы чувствуете острую боль в нижней части груди!"))
 				affected_mob.adjust_oxy_loss(5)
 				affected_mob.emote("gasp")
 			if(prob(10))
-				to_chat(affected_mob, span_danger("You feel air escape from your lungs painfully."))
+				to_chat(affected_mob, span_danger("Вы чувствуете, как воздух с болью выходит из лёгких."))
 				affected_mob.adjust_oxy_loss(25)
 				affected_mob.emote("gasp")
 		if(5)
 			if(prob(2))
-				to_chat(affected_mob, span_userdanger("[pick("You feel your heart slowing...", "You relax and slow your heartbeat.")]"))
+				to_chat(affected_mob, span_userdanger("[pick("Вы чувствуете, как замедляется ваше сердце...", "Вы расслабляетесь, и ваше сердцебиение замедляется.")]"))
 				affected_mob.adjust_stamina_loss(70)
 			if(prob(10))
 				affected_mob.adjust_stamina_loss(100)
-				affected_mob.visible_message(span_warning("[affected_mob] faints!"), span_userdanger("You surrender yourself and feel at peace..."))
+				affected_mob.visible_message(span_warning("[affected_mob] теряет сознание!"), span_userdanger("Вы перестаёте сопротивляться и обретаете покой..."))
 				affected_mob.AdjustSleeping(10 SECONDS)
 			if(prob(2))
-				to_chat(affected_mob, span_userdanger("You feel your mind relax and your thoughts drift!"))
+				to_chat(affected_mob, span_userdanger("Разум расслабляется, а мысли уплывают!"))
 				affected_mob.adjust_confusion_up_to(16 SECONDS, 200 SECONDS)
 			if(prob(10))
 				affected_mob.paradise_vomit(20)
 			if(prob(3))
-				to_chat(affected_mob, span_warning("<i>[pick("Your stomach silently rumbles...", "Your stomach seizes up and falls limp, muscles dead and lifeless.", "You could eat a crayon")]</i>"))
+				to_chat(affected_mob, span_warning("<i>[pick("В животе тихо урчит...", "Желудок сводит судорогой, а затем он обмякает; мышцы мертвы и безжизненны.", "Вы готовы съесть даже мелок.")]</i>"))
 				// The donor counted two-second life ticks; TG stores deciseconds.
 				affected_mob.overeatduration = max(affected_mob.overeatduration - 200 SECONDS, 0)
 				affected_mob.adjust_nutrition(-100)
 			if(prob(15))
-				to_chat(affected_mob, span_danger("[pick("You feel uncomfortably hot...", "You feel like unzipping your jumpsuit", "You feel like taking off some clothes...")]"))
+				to_chat(affected_mob, span_danger("[pick("Вам неприятно жарко...", "Вам хочется расстегнуть комбинезон.", "Вам хочется снять с себя часть одежды...")]"))
 				affected_mob.bodytemperature += 40
 
 /// The original anxiety has longer confusion attacks and short-lived butterflies.
 /datum/disease/anxiety/paradise_plague
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "Severe Anxiety"
-	form = "Infection"
+	name = "Тяжёлая тревожность"
+	form = "Инфекция"
 	max_stages = 4
-	cure_text = "Ethanol"
+	cure_text = "Этанол"
 	cures = list(/datum/reagent/consumable/ethanol)
-	agent = "Excess Lepidopticides"
+	agent = "Избыток лепидоптицидов"
 	viable_mobtypes = list(/mob/living/carbon/human)
-	desc = "If left untreated subject will regurgitate butterflies."
+	desc = "Без лечения больной начнёт откашливать бабочек."
 	severity = DISEASE_SEVERITY_MINOR
 
 /datum/disease/anxiety/paradise_plague/on_plague_cycle()
 	switch(stage)
 		if(2)
 			if(prob(5))
-				to_chat(affected_mob, span_notice("You feel anxious."))
+				to_chat(affected_mob, span_notice("Вы чувствуете тревогу."))
 		if(3)
 			if(prob(10))
-				to_chat(affected_mob, span_notice("Your stomach flutters."))
+				to_chat(affected_mob, span_notice("Вы чувствуете трепет в животе."))
 			if(prob(5))
-				to_chat(affected_mob, span_notice("You feel panicky."))
+				to_chat(affected_mob, span_notice("Вас охватывает паника."))
 			if(prob(2))
-				to_chat(affected_mob, span_danger("You're overtaken with panic!"))
+				to_chat(affected_mob, span_danger("Паника полностью захватывает вас!"))
 				affected_mob.adjust_confusion(rand(4 SECONDS, 6 SECONDS))
 		if(4)
 			if(prob(10))
-				to_chat(affected_mob, span_danger("You feel butterflies in your stomach."))
+				to_chat(affected_mob, span_danger("Вы чувствуете бабочек в животе."))
 			if(prob(5))
-				affected_mob.visible_message(span_danger("[affected_mob] stumbles around in a panic."), span_userdanger("You have a panic attack!"))
+				affected_mob.visible_message(span_danger("[affected_mob] мечется в панике, спотыкаясь."), span_userdanger("У вас паническая атака!"))
 				affected_mob.adjust_confusion(rand(12 SECONDS, 16 SECONDS))
 				affected_mob.adjust_jitter(rand(12 SECONDS, 16 SECONDS))
 			if(prob(2))
-				affected_mob.visible_message(span_danger("[affected_mob] coughs up butterflies!"), span_userdanger("You cough up butterflies!"))
+				affected_mob.visible_message(span_danger("[affected_mob] откашливает бабочек!"), span_userdanger("Вы откашливаете бабочек!"))
 				spawn_butterflies()
 
 /// Spawn the donor's pair, each with its own five-to-twenty-five-second decomposition timer.
@@ -277,16 +277,16 @@
 
 /// Remove the insect and its corpse just as the donor's melt did.
 /mob/living/basic/butterfly/paradise_plague/proc/decompose()
-	visible_message(span_notice("[src] decomposes due to being outside of its original habitat for too long!"), span_userdanger("You decompose for being too long out of your habitat!"))
+	visible_message(span_notice("[capitalize(declent_ru(NOMINATIVE))] разлагается, слишком долго пробыв вне родной среды!"), span_userdanger("Вы разлагаетесь, слишком долго пробыв вне родной среды!"))
 	qdel(src)
 
 /// Wizarditis produces sayings, disposable clothes and rare teleports; it grants no TG spell arsenal.
 /datum/disease/wizarditis/paradise_plague
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "Wizarditis"
-	desc = "Subjects show signs of dementia, yelling obscure sentences, and a growing feeling of inner power."
+	name = "Волшебнит"
+	desc = "У больных наблюдаются признаки деменции, выкрикивание непонятных фраз и растущее ощущение внутренней силы."
 	max_stages = 4
-	cure_text = "The Manly Dorf"
+	cure_text = "Коктейль «The Manly Dorf»"
 	cures = list(/datum/reagent/consumable/ethanol/manly_dorf)
 	cure_chance = 100
 	agent = "Rincewindus Vulgaris"
@@ -311,12 +311,12 @@
 			if(prob(2))
 				affected_mob.say(pick("ТЫ!!! НЕ ПРОЙ-ДЁШЬ!!!", "Экспеллиармус!", "Мерлинова борода!", "Почувствуй силу тёмной стороны!"))
 			if(prob(8))
-				to_chat(affected_mob, span_danger("You feel [pick("that you don't have enough mana", "that the winds of magic are gone", "that this location gives you a +1 to INT", "an urge to summon familiar")]."))
+				to_chat(affected_mob, span_danger(pick("Вы чувствуете, что вам не хватает маны.", "Вы чувствуете, что ветры магии стихли.", "Кажется, это место даёт вам +1 к интеллекту.", "Вам хочется призвать фамильяра.")))
 		if(4)
 			if(prob(1))
 				affected_mob.say(pick("FORTI GY AMA!", "GITTAH WEIGH!", "TOKI WO TOMARE!", "TARCOL MINTI ZHERI!", "ONI SOMA!", "EI NATH!", "BIRUZ BENNAR!", "NWOLC EGNEVER!"))
 			if(prob(3))
-				to_chat(affected_mob, span_danger("You feel [pick("the tidal wave of raw power building inside", "that this location gives you a +2 to INT and +1 to WIS", "an urge to teleport", "the magic bubbling in your veins", "an urge to summon familiar")]."))
+				to_chat(affected_mob, span_danger(pick("Вы чувствуете, как внутри нарастает прилив необузданной силы.", "Кажется, это место даёт вам +2 к интеллекту и +1 к мудрости.", "Вам хочется телепортироваться.", "Вы чувствуете магию, бурлящую в ваших венах.", "Вам хочется призвать фамильяра.")))
 			if(prob(3))
 				spawn_wizard_clothes()
 			if(prob(0.033))

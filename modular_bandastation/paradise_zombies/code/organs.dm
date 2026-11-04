@@ -53,7 +53,7 @@
 	var/obj/item/bodypart/limb = parent
 	limb.add_color_override("#618C61", PARADISE_ZOMBIE_LIMB_COLOR_PRIORITY)
 	if(limb.owner)
-		to_chat(limb.owner, span_notice("You can't feel your [limb.plaintext_zone] anymore..."))
+		to_chat(limb.owner, span_notice("Вы больше не чувствуете [ru_parse_zone(limb.body_zone, ACCUSATIVE)]..."))
 	update_usability()
 	limb.owner?.update_body_parts()
 
@@ -97,12 +97,12 @@
 /datum/component/paradise_zombie_limb/proc/on_injury_check(obj/item/bodypart/source, mob/examiner, list/check_list)
 	SIGNAL_HANDLER
 	if(necrotic)
-		check_list += span_warning("The tissue is necrotic and unresponsive.")
+		check_list += span_warning("Ткань некротизирована и не реагирует на раздражители.")
 
 /** Removable head tumor whose extraction reverses the necrotizing plague. */
 /obj/item/organ/paradise_zombie_tumor
 	name = "necrotic tumor"
-	desc = "A tiny cluster of foul-smelling mushrooms which feed on and manipulate brain matter."
+	desc = "Крошечное скопление зловонных грибов, которые питаются мозговой тканью и управляют ею."
 	icon = 'icons/obj/service/hydroponics/harvest.dmi'
 	icon_state = "chanterelle"
 	w_class = WEIGHT_CLASS_TINY

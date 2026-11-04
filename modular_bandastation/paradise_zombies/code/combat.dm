@@ -43,7 +43,7 @@
 	SIGNAL_HANDLER
 	if(!HAS_TRAIT(source, TRAIT_PARADISE_ZOMBIE))
 		return NONE
-	limb.force_wound_upwards(/datum/wound/blunt/bone/severe, wound_source = "zombie limb fracture")
+	limb.force_wound_upwards(/datum/wound/blunt/bone/severe, wound_source = "травма при попытке отсечения конечности зомби")
 	return COMPONENT_CANCEL_DISMEMBER
 
 /datum/component/paradise_zombie_combat/proc/on_unarmed_attack(mob/living/carbon/human/source, atom/target, proximity, list/modifiers)
@@ -101,7 +101,7 @@
 			infection = locate() in target.diseases
 		if(infection)
 			infection.stage = max(rand(3, 4), infection.stage)
-	log_combat(user, target, "bit (Paradise zombie)")
+	log_combat(user, target, "укусил (зомби Paradise)")
 	user.stop_pulling()
 	return TRUE
 
@@ -141,7 +141,7 @@
 	if(user.nutrition < NUTRITION_LEVEL_FULL - 10)
 		user.set_nutrition(user.nutrition + 10)
 	user.heal_overall_damage(2, 2)
-	log_combat(user, target, "ate brain (Paradise zombie)")
+	log_combat(user, target, "съел мозг (зомби Paradise)")
 
 /// A single, two-handed pair of claws; clicking again retracts it.
 /datum/action/cooldown/paradise_zombie_claws
@@ -360,7 +360,7 @@
 	brain_holder.add_surgical_state(SURGERY_SKIN_OPEN|SURGERY_BONE_SAWED)
 	user.visible_message(span_danger("[user] с хрустом раскалывает череп [target]!"))
 	to_chat(target, span_userdanger("Ваш череп с хрустом раскрывается!"))
-	log_combat(user, target, "split skull open (Paradise zombie)")
+	log_combat(user, target, "вскрыл череп (зомби Paradise)")
 
 /// Plague claws trade normal claw damage for fifteen points of armour penetration.
 /obj/item/paradise_zombie_claw/plague
@@ -442,7 +442,7 @@
 	if(hit_something)
 		playsound(get_turf(user), 'sound/effects/meteorimpact.ogg', 100, TRUE)
 		user.visible_message(span_danger("[user] врезается в [target]!"), span_userdanger("Вы врезаетесь в [target]!"))
-		log_combat(user, target, "rammed (plague zombie leap)")
+		log_combat(user, target, "протаранил (прыжок чумного зомби)")
 	if(isobj(target))
 		if(target.uses_integrity)
 			target.take_damage(150, BRUTE)

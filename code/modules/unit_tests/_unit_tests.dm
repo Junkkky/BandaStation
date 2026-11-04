@@ -403,6 +403,7 @@
 #include "trauma_granting.dm"
 #include "turf_icons.dm"
 #include "tutorial_sanity.dm"
+#include "two_handed_names.dm"
 #include "unequip_defib.dm"
 #include "unit_test.dm"
 #include "verify_config_tags.dm"

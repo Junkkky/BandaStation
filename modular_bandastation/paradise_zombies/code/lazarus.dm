@@ -1,10 +1,10 @@
 /** Paradise Lazarus replaces TG Strange Reagent while preserving its callers. */
 /datum/reagent/medicine/strange_reagent
-	name = "Lazarus Reagent"
-	description = "A bioluminescent green fluid that seems to move on its own."
+	name = "Реагент Лазаря"
+	description = "Биолюминесцентная зелёная жидкость, которая, кажется, движется сама по себе."
 	color = "#A0E85E"
 	metabolization_rate = 0.1
-	taste_description = "life"
+	taste_description = "жизни"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_REVERSE_METABOLISM
 	/// Retained for the existing administrative instant subtype.
 	var/instant = FALSE
@@ -25,30 +25,30 @@
 			if(istype(exposed_mob, /mob/living/simple_animal))
 				var/mob/living/simple_animal/animal = exposed_mob
 				animal.loot.Cut()
-			exposed_mob.visible_message(span_warning("[exposed_mob] seems to rise from the dead!"))
+			exposed_mob.visible_message(span_warning("[capitalize(exposed_mob.declent_ru(NOMINATIVE))], похоже, восстаёт из мёртвых!"))
 		return
 	if(!iscarbon(exposed_mob) || (!(methods & INGEST) && (!(methods & TOUCH) || !prob(25))))
 		return
 	var/mob/living/carbon/carbon = exposed_mob
 	if(HAS_TRAIT(carbon, TRAIT_SUICIDED))
-		carbon.visible_message(span_warning("[carbon] twitches slightly, but appears to have no will to live!"))
+		carbon.visible_message(span_warning("[carbon] слегка дёргается, но, похоже, не желает возвращаться к жизни!"))
 		return
 	if(HAS_TRAIT(carbon, TRAIT_HUSK) || HAS_TRAIT(carbon, TRAIT_BADDNA))
-		carbon.visible_message(span_warning("[carbon] twitches slightly, but is otherwise unresponsive!"))
+		carbon.visible_message(span_warning("[carbon] слегка дёргается, но больше ни на что не реагирует!"))
 		return
 	var/datum/status_effect/paradise_cloning_damage/cloning_damage = carbon.has_status_effect(/datum/status_effect/paradise_cloning_damage)
 	if(carbon.get_brute_loss() + carbon.get_fire_loss() + cloning_damage?.amount >= 150)
 		if(carbon.mind?.has_antag_datum(/datum/antagonist/changeling) || HAS_TRAIT(carbon, TRAIT_PARADISE_ZOMBIE) || !carbon.get_ghost())
-			carbon.visible_message(span_warning("[carbon] twitches slightly, but nothing happens."))
+			carbon.visible_message(span_warning("[carbon] слегка дёргается, но ничего не происходит."))
 			return
 		carbon.gib()
 		return
 	if(carbon.paradise_lazarus_pending)
 		return
 	carbon.paradise_lazarus_pending = TRUE
-	carbon.visible_message(span_notice("[carbon]'s body begins to twitch as the Lazarus Reagent takes effect!"))
+	carbon.visible_message(span_notice("[carbon] начинает дёргаться под действием реагента Лазаря!"))
 	carbon.do_jitter_animation(30 SECONDS)
-	carbon.notify_revival("Lazarus Reagent is attempting to revive your body. Re-enter your body to be revived!")
+	carbon.notify_revival("Реагент Лазаря пытается оживить ваше тело. Вернитесь в него, чтобы воскреснуть!")
 	if(instant)
 		carbon.paradise_lazarus_revival()
 	else
@@ -63,7 +63,7 @@
 	paradise_lazarus_pending = FALSE
 	var/datum/status_effect/paradise_cloning_damage/cloning_damage = has_status_effect(/datum/status_effect/paradise_cloning_damage)
 	if(stat != DEAD || get_ghost() || HAS_TRAIT(src, TRAIT_SUICIDED) || HAS_TRAIT(src, TRAIT_HUSK) || get_brute_loss() + get_fire_loss() + cloning_damage?.amount >= 150)
-		visible_message(span_warning("[src]'s body stops twitching as the Lazarus Reagent loses potency."))
+		visible_message(span_warning("[src] перестаёт дёргаться: реагент Лазаря теряет силу."))
 		return
 	set_oxy_loss(0, updating_health = FALSE)
 	adjust_brute_loss(rand(0, 15), updating_health = FALSE)
@@ -81,8 +81,8 @@
 		if(ishuman(src))
 			var/mob/living/carbon/human/human = src
 			human.paradise_lazarus_decay_effects(decay_level)
-		visible_message(span_notice("[src] gasps as they return to life!"))
-		log_combat(src, src, "revived with Lazarus Reagent")
+		visible_message(span_notice("[src] с шумом вдыхает, возвращаясь к жизни!"))
+		log_combat(src, src, "ожил благодаря реагенту Лазаря")
 		SSblackbox.record_feedback("tally", "players_revived", 1, "lazarus_reagent")
 
 /** Tracks only the donor's whole-body decay level needed by Lazarus, independently of TG's rot aura. */
@@ -255,7 +255,7 @@
 
 /datum/status_effect/paradise_cloning_damage/proc/on_healthscan(datum/source, list/render_list, scanpower, mob/user, mode, tochat)
 	SIGNAL_HANDLER
-	render_list += "<span class='alert ml-1'>Cellular damage: [round(amount, 0.1)]. Requires Rezadone or cryogenic treatment.</span><br>"
+	render_list += "<span class='alert ml-1'>Клеточные повреждения: [round(amount, 0.1)]. Требуется резадон или криогенное лечение.</span><br>"
 
 /** Records topical/cryo administration separately from swallowed or injected doses. */
 /datum/reagent/medicine/cryoxadone/expose_mob(mob/living/exposed_mob, methods = TOUCH, reac_volume, show_message = TRUE, touch_protection = 0)

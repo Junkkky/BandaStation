@@ -14,10 +14,10 @@
 
 /** Temperature-regulating plasma compound used in Beta research. */
 /datum/reagent/medicine/paradise_teporone
-	name = "Teporone"
-	description = "This experimental plasma-based compound seems to regulate body temperature."
+	name = "Тепорон"
+	description = "Это экспериментальное соединение на основе плазмы, похоже, регулирует температуру тела."
 	color = "#D782E6"
-	taste_description = "warmth and stability"
+	taste_description = "тепла и стабильности"
 	metabolization_rate = 0.2
 	chemical_flags = REAGENT_REVERSE_METABOLISM
 	overdose_threshold = 50
@@ -32,9 +32,9 @@
 
 /** Activated charcoal, retaining the donor's indiscriminate reagent purge. */
 /datum/reagent/medicine/paradise_charcoal
-	name = "Charcoal"
-	description = "Activated charcoal slowly absorbs toxins in the body."
-	taste_description = "dust"
+	name = "Активированный уголь"
+	description = "Активированный уголь медленно поглощает токсины в организме."
+	taste_description = "пыли"
 	metabolization_rate = 0.2
 	chemical_flags = REAGENT_REVERSE_METABOLISM
 
@@ -49,10 +49,10 @@
 
 /** Repairs every internal organ, and rejuvenates detached organic organs. */
 /datum/reagent/medicine/paradise_mitocholide
-	name = "Mitocholide"
-	description = "Stimulates mitochondria to encourage internal organ healing. Ineffective against internal bleeding."
+	name = "Митохолид"
+	description = "Стимулирует митохондрии, способствуя восстановлению внутренних органов. Не помогает при внутреннем кровотечении."
 	color = "#8523be"
-	taste_description = "nurturing"
+	taste_description = "заботы"
 	metabolization_rate = 0.2
 	chemical_flags = REAGENT_REVERSE_METABOLISM
 
@@ -74,10 +74,10 @@
 
 /** Vomit collected from the floor for Gamma research. */
 /datum/reagent/paradise_vomit
-	name = "Vomit"
-	description = "Looks like someone lost their lunch. And then collected it. Yuck."
+	name = "Рвотная масса"
+	description = "Похоже, кто-то изверг свой обед. А потом собрал его. Фу."
 	color = "#FFFF00"
-	taste_description = "puke"
+	taste_description = "блевотины"
 	metabolization_rate = 0.2
 
 /datum/reagent/paradise_vomit/expose_turf(turf/exposed_turf, reac_volume)
@@ -88,10 +88,10 @@
 /** Contaminated toilet water is the precursor to Jenkem. */
 /datum/reagent/water/paradise_toilet
 	parent_type = /datum/reagent
-	name = "Toilet Water"
-	description = "Filthy water scoured from a nasty toilet bowl. Absolutely disgusting."
+	name = "Вода из унитаза"
+	description = "Грязная вода из мерзкого унитаза. Абсолютная гадость."
 	color = "#757547"
-	taste_description = "the inside of a toilet... or worse"
+	taste_description = "унитазных нечистот... или чего похуже"
 	metabolization_rate = 0.2
 
 /datum/reagent/water/paradise_toilet/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
@@ -103,10 +103,10 @@
 
 /** A fermented drug brewed from toilet water. */
 /datum/reagent/drug/paradise_jenkem
-	name = "Jenkem"
-	description = "A prison drug made from fermenting feces in a solution of urine. Extremely disgusting."
+	name = "Дженкем"
+	description = "Тюремный наркотик, получаемый брожением фекалий в моче. Невероятная мерзость."
 	color = "#644600"
-	taste_description = "the inside of a toilet... or worse"
+	taste_description = "унитазных нечистот... или чего похуже"
 	metabolization_rate = 0.2
 	addiction_types = list(/datum/addiction/hallucinogens = 5)
 
@@ -120,17 +120,17 @@
 
 /** A plain soda from the donor; its two-second nutrition and metabolism rates are unchanged. */
 /datum/reagent/consumable/paradise_ginger_ale
-	name = "Ginger Ale"
-	description = "Spicy and fizzy soda."
+	name = "Имбирный эль"
+	description = "Пряная газировка."
 	color = "#996B2B"
-	taste_description = "sweet, carbonated ginger"
+	taste_description = "сладкого газированного имбиря"
 	creation_purity = 1
 	metabolization_rate = 0.2
 
 /** The soft-drink vendor supplies the original otherwise uncraftable cure ingredient. */
 /obj/item/reagent_containers/cup/soda_cans/paradise_ginger_ale
 	name = "Ginger Ale"
-	desc = "Spicy and fizzy soda."
+	desc = "Пряная газировка."
 	icon_state = "sol_dry"
 	inhand_icon_state = "sodawater"
 	list_reagents = list(/datum/reagent/consumable/paradise_ginger_ale = 30)
@@ -139,9 +139,9 @@
 /** The mysterious substance obtained by grinding burned food. */
 /datum/reagent/paradise_questionmark
 	name = "????"
-	description = "A gross and unidentifiable substance."
+	description = "Мерзкая неопознаваемая субстанция."
 	color = "#63DE63"
-	taste_description = "burned food"
+	taste_description = "горелой еды"
 	metabolization_rate = 0.2
 
 /datum/reagent/paradise_questionmark/expose_mob(mob/living/exposed_mob, methods = TOUCH, reac_volume, show_message = TRUE, touch_protection = 0)
@@ -150,7 +150,7 @@
 		return
 	var/mob/living/carbon/human/human = exposed_mob
 	if(!HAS_TRAIT(human, TRAIT_AGEUSIA))
-		to_chat(human, span_danger("Ugh! Eating that was a terrible idea!"))
+		to_chat(human, span_danger("Фу! Есть это было ужасной идеей!"))
 		if(!(locate(/datum/disease/paradise_food_poisoning) in human.diseases))
 			human.paradise_fakevomit(no_text = TRUE)
 	if(HAS_TRAIT(human, TRAIT_NOHUNGER))
@@ -161,14 +161,14 @@
 /** A non-contagious infection retained for the burned-food ingredient. */
 /datum/disease/paradise_food_poisoning
 	parent_type = /datum/disease/paradise_plague_dependency
-	name = "Food Poisoning"
-	desc = "Nausea, sickness, and vomiting."
-	agent = "Salmonella"
+	name = "Пищевое отравление"
+	desc = "Тошнота, недомогание и рвота."
+	agent = "Сальмонелла"
 	max_stages = 3
 	stage_prob = 5
-	spread_text = "Non-contagious"
+	spread_text = "Не передаётся"
 	spread_flags = DISEASE_SPREAD_NON_CONTAGIOUS
-	cure_text = "Sleep"
+	cure_text = "Сон"
 	cures = list(/datum/reagent/consumable/nutriment/soup/chicken_noodle_soup, /datum/reagent/consumable/paradise_ginger_ale)
 	cure_chance = 10
 	viable_mobtypes = list(/mob/living/carbon/human)
@@ -177,15 +177,15 @@
 
 /datum/disease/paradise_food_poisoning/on_plague_cycle()
 	if((affected_mob.IsSleeping() && prob(33)) || (stage > 1 && prob(1) && prob(10)))
-		to_chat(affected_mob, span_notice("You feel better."))
+		to_chat(affected_mob, span_notice("Вам становится лучше."))
 		cure()
 		return FALSE
 	switch(stage)
 		if(1)
 			if(prob(5))
-				to_chat(affected_mob, span_danger("Your stomach feels weird."))
+				to_chat(affected_mob, span_danger("В желудке странное ощущение."))
 			if(prob(5))
-				to_chat(affected_mob, span_danger("You feel queasy."))
+				to_chat(affected_mob, span_danger("Вас мутит."))
 		if(2)
 			if(affected_mob.IsSleeping() && prob(40))
 				cure()
@@ -193,9 +193,9 @@
 			if(prob(10))
 				affected_mob.emote("groan")
 			if(prob(5))
-				to_chat(affected_mob, span_danger("Your stomach aches."))
+				to_chat(affected_mob, span_danger("У вас ноет желудок."))
 			if(prob(5))
-				to_chat(affected_mob, span_danger("You feel nauseous."))
+				to_chat(affected_mob, span_danger("Вас тошнит."))
 		if(3)
 			if(affected_mob.IsSleeping() && prob(25))
 				cure()
@@ -205,16 +205,16 @@
 			if(prob(10))
 				affected_mob.emote("groan")
 			if(prob(1))
-				to_chat(affected_mob, span_danger("Your stomach hurts."))
+				to_chat(affected_mob, span_danger("У вас болит желудок."))
 			if(prob(1))
-				to_chat(affected_mob, span_danger("You feel sick."))
+				to_chat(affected_mob, span_danger("Вы чувствуете недомогание."))
 			if(prob(5))
 				if(affected_mob.nutrition > 10)
-					affected_mob.visible_message(span_danger("[affected_mob] vomits on the floor profusely!"))
+					affected_mob.visible_message(span_danger("[affected_mob] обильно блюёт на пол!"))
 					affected_mob.paradise_fakevomit(no_text = TRUE)
 					affected_mob.adjust_nutrition(-rand(3, 5))
 				else
-					to_chat(affected_mob, span_danger("Your stomach lurches painfully!"))
+					to_chat(affected_mob, span_danger("Желудок болезненно скручивает!"))
 					affected_mob.Stun(rand(4 SECONDS, 8 SECONDS))
 					affected_mob.Knockdown(rand(4 SECONDS, 8 SECONDS))
 
@@ -223,10 +223,10 @@
 
 /** Original non-toxic-to-humans herbicide, also an Omega ingredient. */
 /datum/reagent/paradise_glyphosate
-	name = "Glyphosate"
-	description = "A broad-spectrum herbicide that is highly effective at killing all plants."
+	name = "Глифосат"
+	description = "Гербицид широкого действия, крайне эффективно уничтожающий любые растения."
 	color = "#d3cf50"
-	taste_description = "bitterness"
+	taste_description = "горечи"
 	metabolization_rate = 0.2
 	/// The donor's Atrazine subtype is poisonous where Glyphosate is not.
 	var/lethality = 0
@@ -258,17 +258,17 @@
 
 /** Toxic herbicide precursor used in the Sarin recipe. */
 /datum/reagent/paradise_glyphosate/atrazine
-	name = "Atrazine"
-	description = "A herbicidal compound used for destroying unwanted plants."
+	name = "Атразин"
+	description = "Гербицидное соединение для уничтожения нежелательных растений."
 	color = "#773E73"
 	lethality = 2
 
 /** Synthetic stimulant used in the Gamma ingredient pool. */
 /datum/reagent/drug/paradise_surge
-	name = "Surge"
-	description = "A superconducting gel that overloads processors, causing an effect reportedly similar to opiates in synthetic units."
+	name = "Сёрдж"
+	description = "Сверхпроводящий гель, перегружающий процессоры. По сообщениям, у синтетиков вызывает эффект, похожий на действие опиатов."
 	color = "#6DD16D"
-	taste_description = "heat conducting throughout the chassis"
+	taste_description = "тепла, растекающегося по корпусу"
 	metabolization_rate = 0.2
 	overdose_threshold = 20
 	addiction_types = list(/datum/addiction/stimulants = 5)
@@ -286,9 +286,9 @@
 	if(affected_mob.adjust_stamina_loss(-20 * seconds_per_tick, updating_stamina = FALSE, required_biotype = affected_biotype))
 		. |= UPDATE_MOB_HEALTH
 	if(SPT_PROB(5, seconds_per_tick / 2))
-		to_chat(affected_mob, span_notice(prob(10) ? "0100011101001111010101000101010001000001010001110100111101000110010000010101001101010100!" : pick("You feel calm.", "You feel collected.", "You feel like you need to relax.")))
+		to_chat(affected_mob, span_notice(prob(10) ? "0100011101001111010101000101010001000001010001110100111101000110010000010101001101010100!" : pick("Вы чувствуете спокойствие.", "Вы чувствуете собранность.", "Вам хочется расслабиться.")))
 	if(SPT_PROB(2.5 * 0.1 * recent_consumption, seconds_per_tick / 2))
-		to_chat(affected_mob, span_notice("Your circuits overheat!"))
+		to_chat(affected_mob, span_notice("Ваши схемы перегреваются!"))
 		affected_mob.bodytemperature += 30 * 0.2 * recent_consumption
 		affected_mob.set_confusion_if_lower(1 SECONDS * 0.2 * recent_consumption)
 
@@ -306,17 +306,17 @@
 	affected_mob.set_jitter_if_lower(40 SECONDS)
 	affected_mob.set_stutter_if_lower(10 SECONDS)
 	if(SPT_PROB(10, seconds_per_tick / 2))
-		to_chat(affected_mob, span_danger("You experience a violent electrical discharge!"))
+		to_chat(affected_mob, span_danger("Вас пронзает мощный электрический разряд!"))
 		do_sparks(5, TRUE, affected_mob)
 		affected_mob.adjust_fire_loss(rand(1, 5), required_bodytype = affected_bodytype)
 		affected_mob.adjust_brute_loss(rand(1, 5), required_bodytype = affected_bodytype)
 
 /** Synthetic lubricant: the donor's stimulant, distinct from TG superlube. */
 /datum/reagent/lube/paradise_ultra
-	name = "Ultra-Lube"
-	description = "An enhanced lubricant that stimulates synthetic users by reducing internal friction and increasing cooling."
+	name = "Ультрасмазка"
+	description = "Усовершенствованная смазка, стимулирующая синтетиков благодаря уменьшению внутреннего трения и усилению охлаждения."
 	color = "#1BB1FF"
-	taste_description = "slick servos"
+	taste_description = "смазанных сервоприводов"
 	metabolization_rate = 0.3
 	overdose_threshold = 20
 	addiction_types = list(/datum/addiction/stimulants = 5)
@@ -357,7 +357,7 @@
 	if(SPT_PROB(6 * 0.1 * recent_consumption, seconds_per_tick / 2))
 		affected_mob.adjust_organ_loss(ORGAN_SLOT_BRAIN, 10, required_organ_flag = affected_organ_flags)
 	if(SPT_PROB(5, seconds_per_tick / 2))
-		to_chat(affected_mob, span_notice(prob(10) ? "0100011101001111010101000101010001000001010001110100111101000110010000010101001101010100!" : pick("You feel your servos whir!", "You feel like you need to go faster.", "You feel like you were just overclocked!")))
+		to_chat(affected_mob, span_notice(prob(10) ? "0100011101001111010101000101010001000001010001110100111101000110010000010101001101010100!" : pick("Вы чувствуете, как жужжат ваши сервоприводы!", "Вам хочется двигаться быстрее.", "Кажется, вас только что разогнали!")))
 	if(SPT_PROB(5, seconds_per_tick / 2))
 		affected_mob.emote(pick("twitch", "shiver"))
 
@@ -368,7 +368,7 @@
 	if(SPT_PROB(20, seconds_per_tick / 2))
 		affected_mob.emote("ping")
 	if(SPT_PROB(33, seconds_per_tick / 2))
-		affected_mob.visible_message(span_danger("[affected_mob]'s hands flip out and flail everywhere!"))
+		affected_mob.visible_message(span_danger("[affected_mob] беспорядочно размахивает руками!"))
 		affected_mob.dropItemToGround(affected_mob.get_active_held_item())
 	affected_mob.adjust_fire_loss(2.5 * seconds_per_tick, required_bodytype = affected_bodytype)
 	affected_mob.adjust_organ_loss(ORGAN_SLOT_BRAIN, 1.5 * seconds_per_tick, required_organ_flag = affected_organ_flags)
@@ -379,8 +379,9 @@
 
 /** A progressive neurotoxin retained as an Omega candidate. */
 /datum/reagent/toxin/paradise_sarin
-	name = "Sarin"
-	description = "An extremely deadly neurotoxin."
+	name = "Зарин"
+	description = "Чрезвычайно смертоносный нейротоксин."
+	taste_description = "горечи"
 	color = "#C7C7C7"
 	metabolization_rate = 0.05
 	penetrates_skin = TOUCH|VAPOR
@@ -418,10 +419,10 @@
 				affected_mob.emote("faint")
 			if(SPT_PROB(5, seconds_per_tick / 2))
 				affected_mob.Knockdown(6 SECONDS)
-				affected_mob.visible_message(span_warning("[affected_mob] has a seizure!"))
+				affected_mob.visible_message(span_warning("[affected_mob] бьётся в припадке!"))
 				affected_mob.set_jitter(2000 SECONDS)
 			if(SPT_PROB(5, seconds_per_tick / 2))
-				to_chat(affected_mob, span_warning("You can't breathe!"))
+				to_chat(affected_mob, span_warning("Вы не можете дышать!"))
 				affected_mob.emote(pick("gasp", "choke", "cough"))
 				affected_mob.losebreath += 2
 		if(120 to INFINITY)

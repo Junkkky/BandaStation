@@ -1,12 +1,13 @@
 /** Paradise's seven-stage necrotizing plague. */
 /datum/disease/paradise_zombie
-	name = "Necrotizing Plague"
-	desc = "This virus infects humanoids and drives them insane with a hunger for flesh, along with possessing regenerative abilities."
+	name = "Некротическая чума"
+	desc = "Этот вирус заражает гуманоидов, сводит их с ума от жажды плоти и наделяет способностью к регенерации."
+	form = "Вирусная инфекция"
 	agent = ""
 	max_stages = 7
-	spread_text = "Blood and Saliva"
+	spread_text = "Кровь и слюна"
 	spread_flags = DISEASE_SPREAD_BLOOD
-	cure_text = "Anti-plague viral solutions"
+	cure_text = "Противочумные препараты"
 	disease_flags = CAN_CARRY
 	viable_mobtypes = list(/mob/living/carbon/human)
 	severity = DISEASE_SEVERITY_BIOHAZARD
@@ -94,21 +95,21 @@
 	switch(stage)
 		if(1)
 			if(prob(4))
-				to_chat(host, span_warning(pick("Your scalp itches.", "Your skin feels flakey.")))
+				to_chat(host, span_warning(pick("У вас чешется кожа головы.", "Ваша кожа шелушится.")))
 			else if(prob(5))
-				to_chat(host, span_warning("Your [pick("back", "arm", "leg", "elbow", "head")] itches."))
+				to_chat(host, span_warning(pick("У вас чешется спина.", "У вас чешется рука.", "У вас чешется нога.", "У вас чешется локоть.", "У вас чешется голова.")))
 		if(2)
 			if(prob(2))
-				to_chat(host, span_danger("Mucous runs down the back of your throat."))
+				to_chat(host, span_danger("Слизь стекает по задней стенке горла."))
 			else if(prob(5))
-				to_chat(host, span_warning(pick("You feel hungry.", "You crave for something to eat.")))
+				to_chat(host, span_warning(pick("Вы чувствуете голод.", "Вам ужасно хочется что-нибудь съесть.")))
 		if(3)
 			if(prob(2))
 				INVOKE_ASYNC(host, TYPE_PROC_REF(/mob, emote), "sneeze")
 			else if(prob(2))
 				INVOKE_ASYNC(host, TYPE_PROC_REF(/mob, emote), "cough")
 			else if(prob(5))
-				to_chat(host, span_warning("<i>[pick("So hungry...", "You'd kill someone for a bite of food...", "Hunger cramps seize you...")]</i>"))
+				to_chat(host, span_warning("<i>[pick("Как же хочется есть...", "Вы готовы убить за кусочек еды...", "Вас скручивает от голода...")]</i>"))
 			if(prob(5))
 				host.adjust_tox_loss(1)
 		if(4)
@@ -117,21 +118,21 @@
 			else if(prob(2))
 				INVOKE_ASYNC(host, TYPE_PROC_REF(/mob, emote), "drool")
 			else if(prob(5))
-				to_chat(host, span_danger("You feel a cold sweat form."))
+				to_chat(host, span_danger("Вас прошибает холодный пот."))
 			if(prob(25))
 				host.adjust_tox_loss(1)
 		if(5, 6)
 			var/turf/host_turf = get_turf(host)
 			if(host_turf?.get_lumcount() >= 0.5)
 				if(prob(5))
-					to_chat(host, span_danger("Those lights seem bright. It stings."))
+					to_chat(host, span_danger("Свет кажется слишком ярким. Он обжигает."))
 				if(prob(25))
 					host.adjust_fire_loss(2)
 			if(prob(2))
 				INVOKE_ASYNC(host, TYPE_PROC_REF(/mob, emote), "drool")
 			if(stage == 6 && !host.reagents.has_reagent(/datum/reagent/medicine/paradise_zombie_cure/gamma))
 				if(prob(10))
-					to_chat(host, span_danger("You feel your flesh rotting."))
+					to_chat(host, span_danger("Вы чувствуете, как гниёт ваша плоть."))
 				if(prob(10) || host.stat != DEAD)
 					handle_rot()
 		if(7)
@@ -214,8 +215,8 @@
 	for(var/datum/reagent/medicine/paradise_zombie_cure/medicine in affected_mob?.reagents?.reagent_list)
 		cure_stage = max(cure_stage, medicine.cure_level)
 	if(cure_stage)
-		var/static/list/stage_names = list("Stabilized", "Weakened", "Faltering", "Suppressed")
-		name = "[stage_names[cure_stage]] [initial(name)]"
+		var/static/list/stage_names = list("Стабилизированная", "Ослабленная", "Угасающая", "Подавленная")
+		name = "[stage_names[cure_stage]] [lowertext(initial(name))]"
 
 /datum/disease/paradise_zombie/has_cure()
 	update_cure_stage()
@@ -262,8 +263,8 @@
 /datum/disease/paradise_zombie/wizard
 	spread_flags = DISEASE_SPREAD_NON_CONTAGIOUS
 	bypasses_immunity = TRUE
-	spread_text = "Non Contagious"
-	cure_text = "Anti-magic"
+	spread_text = "Не передаётся"
+	cure_text = "Антимагия"
 
 /datum/disease/paradise_zombie/wizard/cure(add_resistance = FALSE)
 	return

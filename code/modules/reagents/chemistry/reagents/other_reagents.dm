@@ -2715,12 +2715,12 @@
 //Misc reagents
 
 /datum/reagent/romerol
-	name = "Romerol"
+	name = "Ромерол"
 	// the REAL zombie powder
-	description = "A highly experimental bioterror agent which transmits the necrotizing plague."
+	description = "Крайне экспериментальный агент биотеррора, передающий некротическую чуму."
 	color = "#123524" // RGB (18, 53, 36)
 	metabolization_rate = INFINITY
-	taste_description = "brains"
+	taste_description = "мозгов"
 	ph = 0.5
 
 /datum/reagent/romerol/expose_mob(mob/living/carbon/human/exposed_mob, methods=TOUCH, reac_volume, show_message = TRUE, touch_protection = 0)

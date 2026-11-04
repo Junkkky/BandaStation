@@ -1,6 +1,6 @@
 /// Retains mapped zombie species/spawns while using the same plague as infected crew.
 /datum/species/zombie
-	name = "Zombie"
+	name = "Зомби"
 	id = SPECIES_ZOMBIE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN
 
@@ -24,7 +24,7 @@
 		human_who_lost_species.cure_husk(PARADISE_ZOMBIE_TRAIT)
 
 /datum/species/zombie/get_species_description()
-	return "A victim of the necrotizing plague, driven by hunger for brains and able to rise again after death."
+	return "Жертва некротической чумы, жаждущая мозгов и способная восставать после смерти."
 
 /datum/species/zombie/get_species_lore()
-	return list("The necrotizing plague spreads through infected blood and saliva. Anti-plague research or removal of the necrotic tumor can reverse the infection.")
+	return list("Некротическая чума передаётся через заражённую кровь и слюну. Исследование противочумных препаратов или удаление некротической опухоли позволяет обратить заражение.")

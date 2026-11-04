@@ -275,7 +275,7 @@
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		if(HAS_TRAIT_FROM(src, TRAIT_HUSK, PARADISE_ZOMBIE_TRAIT))
-			. += span_warning("[t_His] skin has rotted into a sickly green color.") // future todo: lizards don't have skin, they have scales
+			. += span_warning("Ткани тела [declent_ru(GENITIVE)] изъедены гниением.")
 		else
 			. += span_warning("Это тело превратилось в гротескную шелуху.")
 	if(HAS_MIND_TRAIT(user, TRAIT_MORBID))

@@ -270,7 +270,7 @@
 		return
 	hit_enemy = TRUE
 	victim.Knockdown(1 SECONDS)
-	log_combat(user, victim, "pounced (Paradise zombie mutation)")
+	log_combat(user, victim, "атаковал прыжком (мутация зомби Paradise)")
 
 /datum/thrownthing/paradise_zombie_leap/mutation/finalize(hit = FALSE, atom/target = null)
 	var/datum/action/cooldown/paradise_zombie_mutation/dash/action = action_ref?.resolve()
@@ -496,7 +496,7 @@
 	var/mob/living/carbon/human/user = owner
 	user.apply_damage(40, BRUTE, BODY_ZONE_CHEST, wound_bonus = CANT_WOUND)
 	user.visible_message(span_danger("Желчный узел [user] лопается — взрыв сорван!"))
-	log_combat(weakpoint, user, "ruptured mutation nodule")
+	log_combat(weakpoint, user, "разорвал мутационный узел")
 
 /// A local blast respects cover and armour without digging station-wide explosion holes.
 /datum/action/cooldown/paradise_zombie_mutation/explode/proc/detonate(mob/living/carbon/human/user)
@@ -521,7 +521,7 @@
 		victim.Knockdown(1 SECONDS)
 		if(ishuman(victim) && armor < 100)
 			expose_target(victim)
-		log_combat(user, victim, "detonated (Paradise zombie mutation)")
+		log_combat(user, victim, "взорвался (мутация зомби Paradise)")
 	// Keep an ordinary corpse: Paradise resurrection and surgery continue to own its future.
 	user.adjust_brute_loss(user.maxHealth + 200)
 	if(user.stat != DEAD)

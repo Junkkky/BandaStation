@@ -1,6 +1,6 @@
 /** The antagonist is attached to a mind; the infection and necrotic tissue belong to its body. */
 /datum/antagonist/paradise_zombie
-	name = "Zombie"
+	name = "Зомби"
 	roundend_category = "Зомби"
 	antagpanel_category = ANTAG_GROUP_ABOMINATIONS
 	pref_flag = ROLE_ZOMBIE
@@ -36,8 +36,8 @@
 	if(HAS_TRAIT(owner.current, TRAIT_PARADISE_PLAGUE_ZOMBIE))
 		return
 	. = ..()
-	to_chat(owner.current, "<span class='userdanger zombie'>We are a Zombie!</span>")
-	to_chat(owner.current, span_notice("You can use your claws to break down doors and crack open damaged skulls. Once their head is open, use an empty hand to eat their brains. Alternatively, grab someone aggressively and attack them to bite and infect them. You heal faster in the dark; after death you slowly revive and reawaken."))
+	to_chat(owner.current, "<span class='userdanger zombie'>Мы — зомби!</span>")
+	to_chat(owner.current, span_notice("Когтями можно ломать двери и вскрывать повреждённые черепа. Когда череп вскрыт, атакуйте жертву пустой рукой, чтобы съесть её мозг. Также можно крепко схватить жертву и атаковать её, чтобы укусить и заразить. В темноте вы восстанавливаетесь быстрее. После смерти ваше тело постепенно восстанавливается, и вы оживаете."))
 	owner.announce_objectives()
 
 /datum/antagonist/paradise_zombie/apply_innate_effects(mob/living/mob_override)
@@ -46,7 +46,7 @@
 	if(!istype(zombie))
 		return
 	applied_body_ref = WEAKREF(zombie)
-	handle_clown_mutation(zombie, "B-Braaaaaains... Honk...", removing = TRUE)
+	handle_clown_mutation(zombie, "М-мо-о-озги... Хонк...", removing = TRUE)
 	ADD_TRAIT(zombie, TRAIT_NOBREATH, REF(src))
 	MODIFY_PHYSIOLOGY(zombie, STAMINA, 0.5)
 	var/datum/language_holder/languages = zombie.get_language_holder()
@@ -90,7 +90,7 @@
 		return
 	applied_body_ref = null
 	if(length(owner.antag_datums) <= 1)
-		handle_clown_mutation(zombie, "You feel funnier again.", removing = FALSE)
+		handle_clown_mutation(zombie, "К вам возвращается чувство юмора.", removing = FALSE)
 	REMOVE_TRAIT(zombie, TRAIT_NOBREATH, REF(src))
 	MODIFY_PHYSIOLOGY(zombie, STAMINA, 2)
 	UnregisterSignal(zombie, list(COMSIG_LIVING_TRY_PUT_IN_HAND, COMSIG_LIVING_SET_BODY_POSITION))
@@ -127,7 +127,8 @@
 	multiplicative_slowdown = 1
 
 /datum/objective/paradise_zombie
-	name = "Spread the plague"
-	explanation_text = "Eat brains and spread the infection."
+	name = "Распространить чуму"
+	objective_name = "Цель"
+	explanation_text = "Пожирайте мозги и распространяйте заразу."
 	completed = TRUE
 	no_failure = TRUE
