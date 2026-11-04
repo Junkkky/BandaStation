@@ -9,6 +9,10 @@
 	var/state_prefix
 	/// Complete bodypart appearances currently added to the host.
 	var/list/body_appearances = list()
+	/// Attached native flick visual, owned here so cure and anatomy changes can cancel it.
+	var/atom/movable/flick_visual/melee_visual
+	/// Resting arm hidden only while its attack image is visible.
+	var/melee_zone
 	/// Horizontal anchor of the selected source artwork.
 	var/form_pixel_x = -8
 	/// The body's pre-mutation resting horizontal anchor.
@@ -46,6 +50,7 @@
 	if(!appearance_applied)
 		return
 	appearance_applied = FALSE
+	clear_melee_visual()
 	var/mob/living/carbon/human/host = parent
 	host.cut_overlay(body_appearances)
 	body_appearances.Cut()
@@ -66,6 +71,7 @@
 	var/datum/paradise_zombie_form/chosen = get_paradise_zombie_form(new_form_id)
 	if(!chosen)
 		return FALSE
+	clear_melee_visual()
 	form_id = chosen.id
 	body_icon = chosen.body_icon
 	state_prefix = form_id == "spitter" ? "puker" : form_id
@@ -93,6 +99,7 @@
 
 /datum/component/paradise_zombie_mutation_body/proc/on_anatomy_changed()
 	SIGNAL_HANDLER
+	clear_melee_visual()
 	redraw_body()
 
 /** Draws actual attached limbs, so removal and transplantation remain native anatomy operations. */
@@ -103,6 +110,8 @@
 	for(var/obj/item/bodypart/limb as anything in host.get_bodyparts())
 		if(IS_STUMP(limb) || limb.is_invisible)
 			continue
+		if(limb.body_zone == melee_zone)
+			continue
 		// The source Exploder's fused legs are painted into its chest, not separate limb states.
 		if(form_id == "exploder" && (limb.body_zone in list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)))
 			continue
@@ -111,3 +120,62 @@
 			continue
 		body_appearances += mutable_appearance(body_icon, body_state, layer = -BODYPARTS_LAYER)
 	host.add_overlay(body_appearances)
+
+/** Animates original DS13 arm pixels without changing the limb, attack range, timing or damage. */
+/datum/component/paradise_zombie_mutation_body/proc/animate_melee(atom/target, hand_index)
+	var/mob/living/carbon/human/host = parent
+	if(!appearance_applied || !hand_index || QDELETED(target))
+		return FALSE
+	var/arm_zone = IS_RIGHT_INDEX(hand_index) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM
+	// The Exploder's left limb is its explosive bag; melee always uses its free arm.
+	if(form_id == "exploder")
+		arm_zone = BODY_ZONE_R_ARM
+	var/obj/item/bodypart/arm = host.get_bodypart(arm_zone)
+	if(!arm || IS_STUMP(arm) || arm.is_invisible)
+		return FALSE
+	clear_melee_visual()
+	melee_zone = arm_zone
+	var/mutable_appearance/swing = mutable_appearance(body_icon, "[state_prefix]_[arm_zone]", layer = ABOVE_MOB_LAYER)
+	swing.dir = host.dir
+	var/hand_sign = arm_zone == BODY_ZONE_R_ARM ? -1 : 1
+	var/matrix/start = matrix()
+	var/matrix/finish = matrix()
+	if(form_id == "hunter")
+		swing.icon = 'modular_bandastation/paradise_zombies/icons/mutations/hunter_swing.dmi'
+		swing.icon_state = "hunter_[hand_sign == 1 ? "left" : "right"]"
+		swing.pixel_x = -40 - form_pixel_x
+		swing.pixel_y = -32
+		start.Turn(dir2angle(get_dir(host, target)) - 55 * hand_sign)
+		finish = matrix(start).Turn(110 * hand_sign)
+	else
+		start.Turn(-12 * hand_sign)
+		finish.Turn(18 * hand_sign)
+		var/direction = get_dir(host, target)
+		finish.Translate(direction & EAST ? 6 : direction & WEST ? -6 : 0, direction & NORTH ? 6 : direction & SOUTH ? -6 : 0)
+	swing.transform = start
+	melee_visual = host.flick_overlay_view(swing, 0.3 SECONDS)
+	RegisterSignal(melee_visual, COMSIG_QDELETING, PROC_REF(on_melee_visual_deleted))
+	redraw_body()
+	animate(melee_visual, transform = finish, time = 0.15 SECONDS, easing = CIRCULAR_EASING)
+	if(form_id == "hunter")
+		animate(alpha = 0, time = 0.15 SECONDS)
+	else
+		animate(transform = matrix(), time = 0.15 SECONDS)
+	return TRUE
+
+/// A timed flick's deletion returns the resting arm only if this renderer still owns the body.
+/datum/component/paradise_zombie_mutation_body/proc/on_melee_visual_deleted()
+	SIGNAL_HANDLER
+	melee_visual = null
+	melee_zone = null
+	if(appearance_applied)
+		redraw_body()
+
+/// Cancel cosmetic movement without touching native two-handing, anatomy or body transforms.
+/datum/component/paradise_zombie_mutation_body/proc/clear_melee_visual()
+	if(melee_visual)
+		UnregisterSignal(melee_visual, COMSIG_QDELETING)
+		QDEL_NULL(melee_visual)
+	melee_zone = null
+	if(appearance_applied)
+		redraw_body()

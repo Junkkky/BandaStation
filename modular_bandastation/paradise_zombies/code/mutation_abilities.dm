@@ -7,25 +7,89 @@
 	var/barrier_damage_bonus = 0
 	/// Unmodified force restored when this component is removed.
 	var/unmodified_force
+	/// Mutation artwork used only by the two native hand slots.
+	var/form_id
+	/// Original primary HUD icon, restored on removal.
+	var/old_icon
+	/// Original primary HUD state.
+	var/old_icon_state
+	/// Native reservation remains owned by the two-handed component.
+	var/datum/weakref/offhand_ref
+	/// Original reserved offhand HUD icon.
+	var/old_offhand_icon
+	/// Original reserved offhand HUD state.
+	var/old_offhand_icon_state
 
 /datum/component/paradise_zombie_mutation_claws/Initialize(datum/paradise_zombie_form/form)
 	if(!istype(parent, /obj/item/paradise_zombie_claw) || !istype(form))
 		return COMPONENT_INCOMPATIBLE
 	claw_multiplier = form.claw_multiplier
 	barrier_damage_bonus = form.barrier_damage_bonus
+	form_id = form.id
 	var/obj/item/paradise_zombie_claw/claws = parent
+	old_icon = claws.icon
+	old_icon_state = claws.icon_state
 	unmodified_force = claws.force
 	claws.force *= claw_multiplier
 
 /datum/component/paradise_zombie_mutation_claws/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_PRE_ATTACK, PROC_REF(on_pre_attack))
 	RegisterSignal(parent, COMSIG_ITEM_AFTERATTACK, PROC_REF(on_afterattack))
+	RegisterSignal(parent, COMSIG_ITEM_ENTERED_HANDS, PROC_REF(update_hand_icons))
+	RegisterSignal(parent, COMSIG_ITEM_ATTACK_ANIMATION, PROC_REF(on_attack_animation))
+	var/obj/item/paradise_zombie_claw/claws = parent
+	update_hand_icons(claws, claws.loc)
 
 /datum/component/paradise_zombie_mutation_claws/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ITEM_PRE_ATTACK, COMSIG_ITEM_AFTERATTACK))
+	UnregisterSignal(parent, list(COMSIG_ITEM_PRE_ATTACK, COMSIG_ITEM_AFTERATTACK, COMSIG_ITEM_ENTERED_HANDS, COMSIG_ITEM_ATTACK_ANIMATION))
 	var/obj/item/paradise_zombie_claw/claws = parent
+	var/obj/item/offhand = offhand_ref?.resolve()
+	if(offhand)
+		offhand.icon = old_offhand_icon
+		offhand.icon_state = old_offhand_icon_state
+	offhand_ref = null
 	if(!QDELETED(claws))
 		claws.force = unmodified_force
+		claws.icon = old_icon
+		claws.icon_state = old_icon_state
+	if(ishuman(claws.loc))
+		var/mob/living/carbon/human/host = claws.loc
+		var/datum/component/paradise_zombie_mutation_body/body = host.GetComponent(/datum/component/paradise_zombie_mutation_body)
+		body?.clear_melee_visual()
+		host.update_held_items()
+
+/// ENTERED_HANDS runs after native two-handing has created and equipped its reserved offhand.
+/datum/component/paradise_zombie_mutation_claws/proc/update_hand_icons(obj/item/paradise_zombie_claw/source, mob/living/carbon/user)
+	SIGNAL_HANDLER
+	if(!istype(user))
+		return
+	var/hand_index = user.get_held_index_of_item(source)
+	if(!hand_index)
+		return
+	source.icon = 'modular_bandastation/paradise_zombies/icons/mutations/melee_hud.dmi'
+	source.icon_state = "[form_id]_[IS_RIGHT_INDEX(hand_index) ? "right" : "left"]"
+	var/datum/component/two_handed/two_handed = source.GetComponent(/datum/component/two_handed)
+	var/obj/item/offhand = two_handed?.offhand_item
+	if(offhand)
+		if(offhand != offhand_ref?.resolve())
+			offhand_ref = WEAKREF(offhand)
+			old_offhand_icon = offhand.icon
+			old_offhand_icon_state = offhand.icon_state
+		offhand.icon = source.icon
+		offhand.icon_state = "[form_id]_[IS_RIGHT_INDEX(two_handed.offhand_index) ? "right" : "left"]"
+	user.update_held_items()
+
+/// Keep the native body lunge and hit chain, replacing only the floating claw image with the form's arm.
+/datum/component/paradise_zombie_mutation_claws/proc/on_attack_animation(obj/item/paradise_zombie_claw/source, atom/movable/attacker, atom/target, animation_type, list/image_override)
+	SIGNAL_HANDLER
+	if(!ishuman(attacker))
+		return
+	var/mob/living/carbon/human/host = attacker
+	var/datum/component/paradise_zombie_mutation_body/body = host.GetComponent(/datum/component/paradise_zombie_mutation_body)
+	if(body?.animate_melee(target, host.get_held_index_of_item(source)))
+		// Native item animations raise alpha again, so the replacement must contain no pixels.
+		var/image/hidden_claw = image('icons/blanks/32x32.dmi', icon_state = "nothing")
+		image_override += hidden_claw
 
 /datum/component/paradise_zombie_mutation_claws/proc/on_pre_attack(obj/item/paradise_zombie_claw/source, atom/target, mob/living/user)
 	SIGNAL_HANDLER

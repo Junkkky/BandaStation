@@ -91,6 +91,104 @@
 	TEST_ASSERT_NULL(claws.GetComponent(/datum/component/paradise_zombie_mutation_claws), "Clearing a form retained its heavy-claw modifier.")
 	TEST_ASSERT_EQUAL(claws.force, 10, "Removing the modifier did not restore the current Beta-weakened force.")
 
+/// Actual attacks consume each form's arm artwork, while both HUD slots remain native two-handed items.
+/datum/unit_test/paradise_zombie_mutation_melee_graphics
+	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+	/// Observes the production override after its signal handler has run.
+	var/empty_attack_image = FALSE
+
+/datum/unit_test/paradise_zombie_mutation_melee_graphics/proc/on_attack_animation(obj/item/source, atom/movable/attacker, atom/target, animation_type, list/image_override)
+	SIGNAL_HANDLER
+	var/image/replacement = length(image_override) ? image_override[1] : null
+	// Native animate_attack later raises alpha, so alpha zero alone cannot hide the old claw.
+	empty_attack_image = replacement?.icon == 'icons/blanks/32x32.dmi' && replacement.icon_state == "nothing"
+
+/datum/unit_test/paradise_zombie_mutation_melee_graphics/proc/strike(mob/living/carbon/human/host, mob/living/carbon/human/victim, obj/item/paradise_zombie_claw/claws, form_id)
+	empty_attack_image = FALSE
+	var/zone = form_id == "exploder" ? BODY_ZONE_R_ARM : host.get_hand_zone_of_item(claws)
+	var/obj/item/bodypart/striking_arm = host.get_bodypart(zone)
+	var/damage_before = victim.get_brute_loss()
+	claws.melee_attack_chain(host, victim, list())
+	TEST_ASSERT(victim.get_brute_loss() > damage_before, "The [form_id] visual replaced its real claw damage.")
+	var/datum/component/paradise_zombie_mutation_body/body = host.GetComponent(/datum/component/paradise_zombie_mutation_body)
+	var/atom/movable/flick_visual/swing = body.melee_visual
+	TEST_ASSERT_NOTNULL(swing, "The actual [form_id] attack never created its native swing visual.")
+	TEST_ASSERT(swing in host.vis_contents, "The [form_id] swing was not attached to its actual attacking body.")
+	TEST_ASSERT(empty_attack_image, "The [form_id] attack retained a floating claw image which native alpha animation can reveal.")
+	var/prefix = form_id == "spitter" ? "puker" : form_id
+	var/expected_state = form_id == "hunter" ? "hunter_[zone == BODY_ZONE_L_ARM ? "left" : "right"]" : "[prefix]_[zone]"
+	var/expected_icon = form_id == "hunter" ? 'modular_bandastation/paradise_zombies/icons/mutations/hunter_swing.dmi' : get_paradise_zombie_form(form_id).body_icon
+	TEST_ASSERT_EQUAL(swing.icon, expected_icon, "The [form_id] strike consumed the wrong source sheet.")
+	TEST_ASSERT_EQUAL(swing.icon_state, expected_state, "The [form_id] strike did not use its own attacking arm.")
+	TEST_ASSERT(icon_exists(swing.icon, swing.icon_state), "The [form_id] strike points at missing source artwork.")
+	TEST_ASSERT_EQUAL(body.melee_zone, zone, "The [form_id] strike hid a different resting limb.")
+	TEST_ASSERT(host.get_bodypart(zone) == striking_arm && striking_arm?.owner == host, "Drawing the [form_id] swing removed or replaced a real arm.")
+	for(var/mutable_appearance/part as anything in body.body_appearances)
+		TEST_ASSERT_NOTEQUAL(part.icon_state, "[prefix]_[zone]", "The [form_id] attack drew its resting arm and swing simultaneously.")
+	return swing
+
+/datum/unit_test/paradise_zombie_mutation_melee_graphics/Run()
+	for(var/support_index in 1 to 7)
+		make_zombie(run_loc_floor_top_right)
+	GLOB.paradise_zombie_mutation_progression.first_infection_at = world.time - 20 MINUTES
+	for(var/form_id in list("slasher", "twitcher", "hunter", "brute", "spitter", "exploder"))
+		var/mob/living/carbon/human/host = make_zombie(run_loc_floor_bottom_left)
+		var/datum/component/paradise_zombie_mutation/controller = host.GetComponent(/datum/component/paradise_zombie_mutation)
+		TEST_ASSERT(controller.apply_form(form_id), "The real outbreak could not apply [form_id] for its melee fixture.")
+		host.set_combat_mode(TRUE)
+		host.swap_hand(LEFT_HANDS, silent = TRUE)
+		var/obj/item/paradise_zombie_claw/claws = extend_claws(host)
+		TEST_ASSERT_NOTNULL(claws, "The [form_id] fixture could not extend its actual claws.")
+		var/datum/component/two_handed/two_handed = claws.GetComponent(/datum/component/two_handed)
+		var/obj/item/offhand/offhand = two_handed.offhand_item
+		TEST_ASSERT_NOTNULL(offhand, "The [form_id] HUD cosmetic replaced the native offhand reservation.")
+		TEST_ASSERT_EQUAL(claws.icon, 'modular_bandastation/paradise_zombies/icons/mutations/melee_hud.dmi', "The [form_id] primary hand retained its generic claw icon.")
+		TEST_ASSERT_EQUAL(offhand.icon, claws.icon, "The [form_id] native offhand retained its generic reservation icon.")
+		TEST_ASSERT_EQUAL(claws.icon_state, "[form_id]_left", "The [form_id] primary HUD did not follow the actual left hand.")
+		TEST_ASSERT_EQUAL(offhand.icon_state, "[form_id]_right", "The [form_id] offhand HUD did not follow the actual right hand.")
+		TEST_ASSERT(two_handed.wielded && length(host.get_held_items()) == 2 && !host.swap_hand(two_handed.offhand_index, silent = TRUE), "The [form_id] cosmetics broke native two-handed wielding.")
+		RegisterSignal(claws, COMSIG_ITEM_ATTACK_ANIMATION, PROC_REF(on_attack_animation))
+		var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent, get_step(host, EAST))
+		ADD_TRAIT(victim, TRAIT_NEVER_WOUNDED, TRAIT_SOURCE_UNIT_TESTS)
+		var/atom/movable/flick_visual/first_swing = strike(host, victim, claws, form_id)
+		TEST_ASSERT_NOTNULL(first_swing, "The [form_id] first swing failed its native attack checks.")
+		var/atom/movable/flick_visual/next_swing = strike(host, victim, claws, form_id)
+		TEST_ASSERT_NOTNULL(next_swing, "The [form_id] repeated swing failed its native attack checks.")
+		TEST_ASSERT(QDELETED(first_swing) && next_swing != first_swing, "The [form_id] repeated attack retained its previous arm visual.")
+		if(form_id == "slasher")
+			var/datum/component/paradise_zombie_mutation_body/body = controller.body_renderer
+			var/deadline = world.time + 2 SECONDS
+			UNTIL(QDELETED(next_swing) || world.time >= deadline)
+			TEST_ASSERT(QDELETED(next_swing) && !body.melee_visual && !body.melee_zone, "The native timed swing never released its resting arm.")
+			var/arm_restored = FALSE
+			for(var/mutable_appearance/part as anything in body.body_appearances)
+				arm_restored ||= part.icon_state == "slasher_l_arm"
+			TEST_ASSERT(arm_restored, "Native swing expiry did not redraw the Slasher's resting arm.")
+			next_swing = strike(host, victim, claws, form_id)
+			TEST_ASSERT_NOTNULL(next_swing, "The expired native swing prevented a later real attack.")
+		var/datum/action/cooldown/paradise_zombie_claws/action = locate() in host.actions
+		TEST_ASSERT(action.Trigger(host), "The [form_id] claws could not retract during a swing.")
+		TEST_ASSERT(QDELETED(claws) && QDELETED(offhand) && QDELETED(next_swing), "Retraction retained the [form_id] weapon, offhand or swing.")
+		TEST_ASSERT_EQUAL(length(host.get_held_items()), 0, "The [form_id] retraction left a phantom hand reservation.")
+		host.swap_hand(RIGHT_HANDS, silent = TRUE)
+		claws = extend_claws(host)
+		two_handed = claws.GetComponent(/datum/component/two_handed)
+		offhand = two_handed.offhand_item
+		TEST_ASSERT(claws.icon_state == "[form_id]_right" && offhand?.icon_state == "[form_id]_left", "Re-extending [form_id] claws did not rebuild the reversed hand HUDs.")
+		RegisterSignal(claws, COMSIG_ITEM_ATTACK_ANIMATION, PROC_REF(on_attack_animation))
+		next_swing = strike(host, victim, claws, form_id)
+		TEST_ASSERT_NOTNULL(next_swing, "The [form_id] right-hand attack failed its native checks.")
+		var/datum/disease/paradise_zombie/infection = locate() in host.diseases
+		if(form_id in list("slasher", "hunter", "spitter"))
+			controller.clear_form()
+			TEST_ASSERT(QDELETED(next_swing), "Clearing [form_id] retained its active swing.")
+			TEST_ASSERT(!QDELETED(claws) && !QDELETED(offhand) && two_handed.wielded, "Clearing [form_id] destroyed ordinary native claws or their offhand.")
+			TEST_ASSERT(claws.icon == initial(claws.icon) && claws.icon_state == initial(claws.icon_state), "Clearing [form_id] did not restore its primary claw HUD.")
+			TEST_ASSERT(offhand.icon == initial(offhand.icon) && offhand.icon_state == initial(offhand.icon_state), "Clearing [form_id] did not restore its native offhand HUD.")
+		infection.cure()
+		TEST_ASSERT(QDELETED(next_swing) && QDELETED(claws) && QDELETED(offhand), "Curing [form_id] retained a melee visual or either reserved hand.")
+		TEST_ASSERT_NULL(host.GetComponent(/datum/component/paradise_zombie_mutation_body), "Curing [form_id] retained its melee renderer.")
+
 /// Movement uses a real capped throw, and an actual cure removes a second in-flight dash.
 /datum/unit_test/paradise_zombie_mutation_dash_cleanup
 	parent_type = /datum/unit_test/paradise_zombie_mutation_ability_test
