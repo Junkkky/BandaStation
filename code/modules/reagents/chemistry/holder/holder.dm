@@ -468,6 +468,8 @@
 		target_holder = target
 		target_atom = target_holder.my_atom
 	else
+		if(HAS_TRAIT(target, TRAIT_REAGENT_IMMUNE))
+			return FALSE
 		if(!ignore_stomach && (methods & INGEST) && iscarbon(target))
 			var/mob/living/carbon/eater = target
 			var/obj/item/organ/stomach/belly = eater.get_organ_slot(ORGAN_SLOT_STOMACH)

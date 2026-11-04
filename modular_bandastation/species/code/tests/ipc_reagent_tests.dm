@@ -34,6 +34,43 @@
 	TEST_ASSERT_EQUAL(ipc.reagents.ph, legacy_ph, "A rejected reaction agent modified the IPC's legacy contents before addition was blocked.")
 	TEST_ASSERT_EQUAL(buffer.reagents.total_volume, 10, "A rejected reaction agent consumed its source before addition was blocked.")
 
+/// Worn gum must respect chemical immunity before the missing-stomach expulsion path.
+/datum/unit_test/ipc_chewable_ingestion/Run()
+	var/mob/living/carbon/human/chewer = allocate(/mob/living/carbon/human/consistent)
+	chewer.set_species(/datum/species/ipc)
+	var/obj/item/food/bubblegum/gum = allocate(/obj/item/food/bubblegum)
+	TEST_ASSERT(chewer.equip_to_slot_if_possible(gum, ITEM_SLOT_MASK, disable_warning = TRUE), "The IPC could not equip gum in its mask slot.")
+	var/datum/element/chewable/chewing = SSdcs.GetElement(list(/datum/element/chewable), FALSE)
+	TEST_ASSERT_NOTNULL(chewing, "Equipping gum did not provide its native chewable element.")
+	TEST_ASSERT(gum in chewing.processing, "Equipping gum did not start native chewing.")
+	var/turf/floor = get_turf(chewer)
+	var/list/original_contents = floor.contents.Copy()
+	var/original_volume = gum.reagents.total_volume
+	var/original_charge = chewer.nutrition
+	chewing.handle_reagents(gum, 1)
+	var/obj/effect/decal/cleanable/vomit/spew = locate() in (floor.contents - original_contents)
+	if(spew)
+		allocated += spew
+	TEST_ASSERT_NULL(spew, "Chewing gum made an IPC expel its contents as vomit.")
+	TEST_ASSERT(abs(original_volume - gum.reagents.total_volume - REAGENTS_METABOLISM) <= CHEMICAL_QUANTISATION_LEVEL, "An IPC consumed more than one chewing dose.")
+	TEST_ASSERT_EQUAL(chewer.reagents.total_volume, 0, "Chewing gum bypassed IPC chemical immunity.")
+	TEST_ASSERT_EQUAL(chewer.nutrition, original_charge, "Chewing gum changed the IPC's battery charge.")
+
+	chewer.set_species(/datum/species/human)
+	var/obj/item/organ/stomach/stomach = chewer.get_organ_slot(ORGAN_SLOT_STOMACH)
+	TEST_ASSERT_NOTNULL(stomach, "The organic control had no stomach.")
+	var/original_stomach_volume = stomach.reagents.total_volume
+	chewing.handle_reagents(gum, 1)
+	TEST_ASSERT(abs(stomach.reagents.total_volume - original_stomach_volume - REAGENTS_METABOLISM) <= CHEMICAL_QUANTISATION_LEVEL, "Normal human chewing stopped delivering reagents to the stomach.")
+
+	stomach.Remove(chewer, special = TRUE)
+	allocated += stomach
+	chewing.handle_reagents(gum, 1)
+	spew = locate() in (floor.contents - original_contents)
+	if(spew)
+		allocated += spew
+	TEST_ASSERT_NOTNULL(spew, "An organic without a stomach stopped expelling ingested reagents.")
+
 /// Exercise the actual injector entry points, including the hypospray path which exposes before copying.
 /datum/unit_test/ipc_reagent_injectors/Run()
 	var/mob/living/carbon/human/ipc = allocate(/mob/living/carbon/human/consistent)
