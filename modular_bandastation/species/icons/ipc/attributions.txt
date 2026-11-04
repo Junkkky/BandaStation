@@ -43,3 +43,4 @@ https://github.com/ss220club/Paradise-SS220/blob/0fffca1f1f29a63aff49d9b56524813
 https://github.com/ss220club/Paradise-SS220/blob/0fffca1f1f29a63aff49d9b56524813eedf82c6d/modular_ss220/robolimbs/icons/etaminindustry_alt2.dmi
 https://github.com/ss220club/Paradise-SS220/blob/0fffca1f1f29a63aff49d9b56524813eedf82c6d/modular_ss220/robolimbs/icons/etaminindustry_alt3.dmi
 https://github.com/ss220club/Paradise-SS220/blob/0fffca1f1f29a63aff49d9b56524813eedf82c6d/modular_ss220/robolimbs/icons/etaminindustry_main.dmi
+yangcompany.dmi - Created by EdinoroGNK

@@ -77,6 +77,12 @@ GLOBAL_LIST_INIT(ipc_antennae, init_ipc_appearance_choices(/datum/sprite_accesso
 	has_body = FALSE
 	is_monitor = TRUE
 
+/datum/ipc_chassis/yangcompany
+	name = "Yang Company"
+	icon = 'modular_bandastation/species/icons/ipc/yangcompany.dmi'
+	has_head = TRUE
+	has_body = TRUE
+
 /datum/ipc_chassis/xion
 	name = "Xion Manufacturing Group"
 	icon = 'modular_bandastation/species/icons/ipc/xion.dmi'
@@ -443,7 +449,7 @@ GLOBAL_LIST_INIT(ipc_antennae, init_ipc_appearance_choices(/datum/sprite_accesso
 	name = "Humanoid Optics"
 	icon = 'modular_bandastation/species/icons/ipc/optics.dmi'
 	icon_state = "optics_s"
-	models_allowed = list("Bishop Cybernetics", "Hephaestus Industries", "Ward-Takahashi", "Xion Manufacturing Group", "Zeng-Hu Pharmaceuticals")
+	models_allowed = list("Bishop Cybernetics", "Hephaestus Industries", "Ward-Takahashi", "Xion Manufacturing Group", "Zeng-Hu Pharmaceuticals", "Yang Company")
 
 /datum/sprite_accessory/ipc_display/bishop_alt
 	name = "Bishop Alt. Optics"
