@@ -1,3 +1,5 @@
+#define PARADISE_ZOMBIE_MUTATION_ANIMATION_TAG "paradise_zombie_evolution"
+
 /// Ranged mutation exposure retains the source strain and Paradise's ordinary resistance rolls.
 /proc/paradise_zombie_mutation_expose(mob/living/carbon/human/victim, mob/living/carbon/human/source)
 	if(QDELETED(victim) || QDELETED(source) || HAS_TRAIT(victim, TRAIT_PARADISE_ZOMBIE) || victim.reagents?.has_reagent(/datum/reagent/medicine/paradise_zombie_cure/alpha))
@@ -17,6 +19,8 @@
 	/// Actual additive change, which may be clamped on bodies with severe cellular injury.
 	var/applied_health_bonus = 0
 	var/mutating = FALSE
+	/// Owns only the tagged pulse, never the host's current transform or other animations.
+	var/mutation_visual_active = FALSE
 
 /datum/component/paradise_zombie_mutation/Initialize()
 	if(!ishuman(parent))
@@ -29,6 +33,7 @@
 	on_mind_arrived()
 
 /datum/component/paradise_zombie_mutation/UnregisterFromParent()
+	stop_mutation_visuals()
 	UnregisterSignal(parent, list(COMSIG_MOB_MIND_INITIALIZED, COMSIG_MOB_MIND_TRANSFERRED_INTO, COMSIG_MOB_EQUIPPED_ITEM, COMSIG_HUMAN_EQUIPPING_ITEM))
 	QDEL_NULL(selection_action)
 	clear_form()
@@ -86,14 +91,52 @@
 	if(confirmed != "Мутировать" || host.mind != choosing_mind || !can_begin())
 		mutating = FALSE
 		return FALSE
+	mutating = FALSE
+	return perform_mutation(chosen.id)
+
+/// Runs the interruptible physical ritual after the menu's synchronous lock handoff.
+/datum/component/paradise_zombie_mutation/proc/perform_mutation(form_id)
+	if(mutating || !can_begin())
+		return FALSE
+	var/mob/living/carbon/human/host = parent
+	var/reason = GLOB.paradise_zombie_mutation_progression.get_unavailability_reason(host, form_id)
+	if(reason)
+		to_chat(host, span_warning(reason))
+		return FALSE
+	mutating = TRUE
+	var/datum/mind/choosing_mind = host.mind
+	mutation_visual_active = TRUE
+	RegisterSignals(host, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH, COMSIG_MOB_MIND_TRANSFERRED_OUT_OF), PROC_REF(stop_mutation_visuals))
+	// Relative steps cancel out on the server while the client visibly swells and contracts.
+	animate(host, transform = matrix().Scale(1.5), time = 0.5 SECONDS, loop = -1, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL, tag = PARADISE_ZOMBIE_MUTATION_ANIMATION_TAG)
+	animate(transform = matrix().Scale(1 / 1.5), time = 0.5 SECONDS, flags = ANIMATION_RELATIVE)
+	playsound(host, 'sound/effects/wounds/crack1.ogg', 60, TRUE)
 	host.visible_message(span_warning("Тело [host] начинает болезненно перестраиваться!"))
 	var/completed = do_after(host, 6 SECONDS, target = host)
 	if(QDELETED(src))
 		return FALSE
+	var/visual_was_active = mutation_visual_active
+	stop_mutation_visuals()
 	mutating = FALSE
-	if(!completed || host.mind != choosing_mind || !can_begin())
+	if(!completed || !visual_was_active || host.mind != choosing_mind || !can_begin())
 		return FALSE
-	return apply_form(chosen.id)
+	if(!apply_form(form_id))
+		return FALSE
+	playsound(host, 'sound/effects/goresplat.ogg', 75, TRUE)
+	host.gib_animation()
+	for(var/direction in GLOB.alldirs)
+		new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(host), direction)
+	return TRUE
+
+/// Cancels just the evolution pulse, including while a do_after is still unwinding.
+/datum/component/paradise_zombie_mutation/proc/stop_mutation_visuals()
+	SIGNAL_HANDLER
+	if(!mutation_visual_active)
+		return
+	mutation_visual_active = FALSE
+	UnregisterSignal(parent, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH, COMSIG_MOB_MIND_TRANSFERRED_OUT_OF))
+	if(!QDELETED(parent))
+		animate(parent, tag = PARADISE_ZOMBIE_MUTATION_ANIMATION_TAG)
 
 /// Synchronous final application: no slot is held while a menu or transformation delay is pending.
 /datum/component/paradise_zombie_mutation/proc/apply_form(form_id)
@@ -133,6 +176,7 @@
 	return TRUE
 
 /datum/component/paradise_zombie_mutation/proc/clear_form()
+	stop_mutation_visuals()
 	QDEL_LIST(granted_actions)
 	QDEL_NULL(body_renderer)
 	var/mob/living/carbon/human/host = parent
@@ -171,3 +215,5 @@
 /datum/action/cooldown/paradise_zombie_choose_mutation/Activate(atom/target)
 	var/datum/component/paradise_zombie_mutation/controller = src.target
 	return IsAvailable() && controller.choose_form()
+
+#undef PARADISE_ZOMBIE_MUTATION_ANIMATION_TAG
