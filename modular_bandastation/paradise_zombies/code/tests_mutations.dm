@@ -304,6 +304,8 @@
 	for(var/support_index in 1 to 7)
 		TEST_ASSERT_NOTNULL(make_zombie(run_loc_floor_top_right), "A supporting ritual infection was not created.")
 	GLOB.paradise_zombie_mutation_progression.first_infection_at = world.time - 20 MINUTES
+	// Mood processing must not change this fixture's six-second action speed.
+	ritual_host.mob_mood.set_enabled(FALSE)
 	// Consistent humans otherwise finish do_after instantly; exercise the actual six-second boundary.
 	ritual_host.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/base, multiplicative_slowdown = 1)
 	TEST_ASSERT_EQUAL(ritual_host.cached_multiplicative_actions_slowdown, 1, "The ritual fixture did not restore ordinary action speed.")

@@ -216,7 +216,7 @@
 		cure_stage = max(cure_stage, medicine.cure_level)
 	if(cure_stage)
 		var/static/list/stage_names = list("Стабилизированная", "Ослабленная", "Угасающая", "Подавленная")
-		name = "[stage_names[cure_stage]] [lowertext(initial(name))]"
+		name = "[stage_names[cure_stage]] [LOWER_TEXT(initial(name))]"
 
 /datum/disease/paradise_zombie/has_cure()
 	update_cure_stage()
