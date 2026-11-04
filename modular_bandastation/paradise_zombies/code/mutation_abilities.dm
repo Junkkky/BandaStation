@@ -114,16 +114,16 @@
 		return paradise_zombie_mutation_expose(victim, owner)
 	return FALSE
 
-/** Twitcher's short dash and Hunter's ambush use the existing throw-scoped impact suppression. */
+/** Twitcher's dash and Hunter's ambush use the existing throw-scoped impact suppression. */
 /datum/action/cooldown/paradise_zombie_mutation/dash
 	name = "Рывок"
-	desc = "Рвануть на три клетки. Стены и закрытые препятствия останавливают рывок."
+	desc = "Рвануть до 12 клеток. Стены и закрытые препятствия останавливают рывок."
 	button_icon_state = "blink"
 	required_form = "twitcher"
 	cooldown_time = 8 SECONDS
 	click_to_activate = TRUE
 	/// Maximum travel, independent of the clicked target's distance or gravity.
-	var/travel_range = 3
+	var/travel_range = 12
 	/// Hunter overrides this to deliver an attack instead of merely repositioning.
 	var/pounce = FALSE
 
@@ -144,11 +144,11 @@
 
 /datum/action/cooldown/paradise_zombie_mutation/dash/pounce
 	name = "Прыжок из засады"
-	desc = "Прыгнуть на пять клеток и сбить жертву когтями. После промаха на две секунды вы замедлены и получаете на четверть больше урона."
+	desc = "Прыгнуть до 10 клеток и сбить жертву когтями. После промаха на две секунды вы замедлены и получаете на четверть больше урона."
 	button_icon_state = "mutate"
 	required_form = "hunter"
 	cooldown_time = 20 SECONDS
-	travel_range = 5
+	travel_range = 10
 	pounce = TRUE
 
 /// Extends Paradise's existing scoped throw; no persistent mob impact hook is installed.
@@ -246,7 +246,7 @@
 /** A visible projectile can be dodged or stopped by cover; its residue is separately cleanable. */
 /datum/action/cooldown/paradise_zombie_mutation/bile
 	name = "Желчный плевок"
-	desc = "Плюнуть видимой едкой желчью. Попадание оставляет смываемую лужу, замедляющую живых противников."
+	desc = "Плюнуть видимой едкой желчью до 13 клеток. Попадание оставляет смываемую лужу, замедляющую живых противников."
 	button_icon_state = "smoke"
 	required_form = "spitter"
 	cooldown_time = 12 SECONDS
@@ -259,7 +259,7 @@
 /datum/action/cooldown/paradise_zombie_mutation/bile/Activate(atom/target)
 	var/mob/living/carbon/human/user = owner
 	var/turf/destination = get_turf(target)
-	if(!IsAvailable() || !destination || !isturf(user.loc) || destination.z != user.z || get_dist(user, destination) > 7 || destination == user.loc)
+	if(!IsAvailable() || !destination || !isturf(user.loc) || destination.z != user.z || get_dist(user, destination) > 13 || destination == user.loc)
 		return FALSE
 	if(isliving(target) && !can_hit(target))
 		return FALSE
@@ -282,7 +282,7 @@
 	damage = 8
 	damage_type = BURN
 	armor_flag = BIO
-	range = 7
+	range = 13
 	speed = 0.8
 	/// The action owns this shot and any residue it creates.
 	var/datum/weakref/action_ref
@@ -379,7 +379,7 @@
 /** An interruptible, announced suicide blast exposes a real targetable organ during its windup. */
 /datum/action/cooldown/paradise_zombie_mutation/explode
 	name = "Разрыв желчного узла"
-	desc = "Две секунды раздувать желчный узел, затем взорваться. Попадание по открытому узлу срывает взрыв и ранит вас."
+	desc = "Две секунды раздувать желчный узел, затем взорваться в радиусе 5 клеток. Попадание по открытому узлу срывает взрыв и ранит вас."
 	button_icon_state = "fireball"
 	required_form = "exploder"
 	cooldown_time = 20 SECONDS
@@ -440,7 +440,7 @@
 		return
 	new /obj/effect/temp_visual/explosion(get_turf(user))
 	playsound(user, 'sound/effects/explosion/explosion1.ogg', 80, TRUE)
-	for(var/mob/living/victim in view(2, user))
+	for(var/mob/living/victim in view(5, user))
 		if(!can_hit(victim))
 			continue
 		var/blocked_by_cover = FALSE
@@ -451,7 +451,7 @@
 		if(blocked_by_cover)
 			continue
 		var/armor = victim.run_armor_check(BODY_ZONE_CHEST, BOMB)
-		victim.apply_damage(60 - 15 * get_dist(user, victim), BRUTE, BODY_ZONE_CHEST, blocked = armor, wound_bonus = CANT_WOUND)
+		victim.apply_damage(60 - 6 * get_dist(user, victim), BRUTE, BODY_ZONE_CHEST, blocked = armor, wound_bonus = CANT_WOUND)
 		if(QDELETED(victim))
 			continue
 		victim.Knockdown(1 SECONDS)

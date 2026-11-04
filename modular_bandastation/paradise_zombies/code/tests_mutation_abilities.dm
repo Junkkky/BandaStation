@@ -7,10 +7,46 @@
 	max_integrity = 500
 	armor_type = /datum/armor/paradise_zombie_mutation_test
 
+/// A private range has normal gravity without depending on a reserved z-level's area.
+/area/paradise_zombie_mutation_ability_test
+	name = "Zombie mutation ability range"
+	requires_power = FALSE
+	default_gravity = STANDARD_GRAVITY
+
 /// Common ability fixtures still use the production infection, claims, controller and granted actions.
 /datum/unit_test/paradise_zombie_mutation_ability_test
 	parent_type = /datum/unit_test/paradise_zombie_mutation_test
 	abstract_type = /datum/unit_test/paradise_zombie_mutation_ability_test
+	/// Private floor released only after allocated actors finish normal teardown.
+	var/datum/turf_reservation/range_reservation
+	/// Supplies station gravity without changing other turf reservations.
+	var/area/paradise_zombie_mutation_ability_test/range_area
+	/// Restored before the temporary range area is deleted.
+	var/area/previous_range_area
+
+/// Keep run_loc unchanged: native teardown must never clear other reservations on this z-level.
+/datum/unit_test/paradise_zombie_mutation_ability_test/Destroy()
+	. = ..()
+	if(range_reservation)
+		for(var/turf/tile as anything in range_reservation.reserved_turfs)
+			tile.change_area(range_area, previous_range_area)
+	QDEL_NULL(range_reservation)
+	QDEL_NULL(range_area)
+	previous_range_area = null
+	return .
+
+/// Only the four long-range scenarios allocate a floor; supporting outbreak bodies stay in the unit room.
+/datum/unit_test/paradise_zombie_mutation_ability_test/proc/prepare_range(mob/living/carbon/human/host, offset = 1)
+	range_reservation = SSmapping.request_turf_block_reservation(17, 17, turf_type_override = /turf/open/indestructible)
+	TEST_ASSERT_NOTNULL(range_reservation, "The private ability range could not be reserved.")
+	var/turf/bottom_left = range_reservation.bottom_left_turfs[1]
+	previous_range_area = get_area(bottom_left)
+	range_area = new
+	for(var/turf/tile as anything in range_reservation.reserved_turfs)
+		tile.change_area(get_area(tile), range_area)
+	host.forceMove(locate(bottom_left.x + offset, bottom_left.y + offset, bottom_left.z))
+	TEST_ASSERT(host.has_gravity(), "The private range did not give its caster normal gravity.")
+	return TRUE
 
 /datum/unit_test/paradise_zombie_mutation_ability_test/proc/extend_claws(mob/living/carbon/human/host)
 	var/datum/action/cooldown/paradise_zombie_claws/action = locate() in host.actions
@@ -62,15 +98,16 @@
 /datum/unit_test/paradise_zombie_mutation_dash_cleanup/Run()
 	var/mob/living/carbon/human/host = make_mutant("twitcher")
 	TEST_ASSERT_NOTNULL(host, "The Twitcher fixture was not created.")
+	TEST_ASSERT(prepare_range(host), "The Twitcher fixture has no private range.")
 	var/datum/action/cooldown/paradise_zombie_mutation/dash/action = locate() in host.actions
 	TEST_ASSERT_NOTNULL(action, "Twitcher did not receive its real dash action.")
 	var/turf/start = get_turf(host)
-	var/turf/destination = locate(start.x + 6, start.y, start.z)
+	var/turf/destination = locate(start.x + 14, start.y, start.z)
 	TEST_ASSERT(action.Trigger(host, target = destination), "The dash action rejected a valid distant target.")
 	var/deadline = world.time + 5 SECONDS
 	UNTIL(!host.throwing || world.time >= deadline)
 	TEST_ASSERT_NULL(host.throwing, "The capped dash never ended.")
-	TEST_ASSERT_EQUAL(get_dist(start, host), 3, "The dash did not stop at its promised three-tile range.")
+	TEST_ASSERT_EQUAL(get_dist(start, host), 12, "The dash did not stop at twelve tiles when aimed beyond its range.")
 	TEST_ASSERT_EQUAL(host.get_brute_loss(), 0, "The gentle dash damaged its caster.")
 	// An unbraced zero-gravity body must stop too, rather than gaining a native landing drift.
 	host.AddElement(/datum/element/forced_gravity, 0)
@@ -78,12 +115,12 @@
 	TEST_ASSERT(!host.has_gravity() && !host.Process_Spacemove(NORTH, continuous_move = TRUE), "The zero-gravity dash fixture can still brace itself or has gravity.")
 	action.ResetCooldown()
 	start = get_turf(host)
-	destination = locate(host.x, host.y + 6, host.z)
+	destination = locate(host.x, host.y + 14, host.z)
 	TEST_ASSERT(action.Trigger(host, target = destination), "The dash could not launch in genuine zero gravity.")
 	deadline = world.time + 5 SECONDS
 	UNTIL(!host.throwing || world.time >= deadline)
 	TEST_ASSERT_NULL(host.throwing, "The zero-gravity dash never finalized.")
-	TEST_ASSERT_EQUAL(get_dist(start, host), 3, "The zero-gravity dash moved past its three-tile flight boundary.")
+	TEST_ASSERT_EQUAL(get_dist(start, host), 12, "The zero-gravity dash did not respect its twelve-tile flight boundary.")
 	TEST_ASSERT_NULL(host.drift_handler, "The finished dash created a native inertial drift beyond its range.")
 	var/turf/landing = get_turf(host)
 	sleep(1 SECONDS)
@@ -93,6 +130,7 @@
 	QDEL_NULL(host.drift_handler)
 	host.RemoveElement(/datum/element/forced_gravity, 0)
 	REMOVE_TRAIT(host, TRAIT_NOGRAV_ALWAYS_DRIFT, TRAIT_GENERIC)
+	TEST_ASSERT(host.has_gravity(), "Removing the zero-gravity fixture did not restore the range's normal gravity.")
 	action.ResetCooldown()
 	destination = get_step(host, NORTH)
 	TEST_ASSERT(action.Trigger(host, target = destination), "The cleanup fixture could not start a second dash.")
@@ -116,6 +154,7 @@
 /datum/unit_test/paradise_zombie_mutation_pounce/Run()
 	var/mob/living/carbon/human/host = make_mutant("hunter")
 	TEST_ASSERT_NOTNULL(host, "The Hunter fixture was not created.")
+	TEST_ASSERT(prepare_range(host), "The Hunter fixture has no private range.")
 	host.set_combat_mode(TRUE)
 	var/obj/item/paradise_zombie_claw/claws = extend_claws(host)
 	TEST_ASSERT_NOTNULL(claws, "The Hunter fixture could not extend claws.")
@@ -123,7 +162,7 @@
 	TEST_ASSERT_NOTNULL(action, "Hunter did not receive its real ambush action.")
 	var/turf/launch_tile = get_turf(host)
 	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
-	victim.forceMove(locate(host.x + 3, host.y, host.z))
+	victim.forceMove(locate(host.x + 10, host.y, host.z))
 	ADD_TRAIT(victim, TRAIT_NEVER_WOUNDED, TRAIT_GENERIC)
 	RegisterSignal(victim, COMSIG_LIVING_STATUS_KNOCKDOWN, PROC_REF(on_knockdown))
 	TEST_ASSERT(action.Trigger(host, target = victim), "The pounce action rejected its real victim.")
@@ -133,7 +172,7 @@
 	var/raw_damage = 0
 	for(var/obj/item/bodypart/limb as anything in victim.get_bodyparts())
 		raw_damage += limb.brute_dam
-	TEST_ASSERT(abs(raw_damage - 18.9) < 0.001, "A pounce did not deliver exactly one actual Hunter claw attack.")
+	TEST_ASSERT(abs(raw_damage - 18.9) < 0.001, "A pounce did not reach a victim ten tiles away with exactly one actual Hunter claw attack.")
 	TEST_ASSERT_EQUAL(knockdown_duration, 1 SECONDS, "A successful ambush did not apply its one-second knockdown.")
 	TEST_ASSERT(!host.has_status_effect(/datum/status_effect/paradise_zombie_mutation_exposed), "A successful pounce incorrectly applied the miss penalty.")
 	// The clicked victim remains a valid target after losing the density that normally causes a collision.
@@ -153,12 +192,19 @@
 	TEST_ASSERT_EQUAL(knockdown_duration, 1 SECONDS, "Hitting a prone victim did not deliver the pounce's knockdown.")
 	TEST_ASSERT(!host.has_status_effect(/datum/status_effect/paradise_zombie_mutation_exposed), "Hitting the clicked prone victim was treated as a miss.")
 	UnregisterSignal(victim, COMSIG_LIVING_STATUS_KNOCKDOWN)
-	victim.forceMove(run_loc_floor_top_right)
+	// A clicked prone victim one tile beyond the boundary must remain unharmed, despite being adjacent at landing.
+	host.forceMove(launch_tile)
+	victim.forceMove(locate(host.x + 11, host.y, host.z))
 	action.ResetCooldown()
-	TEST_ASSERT(action.Trigger(host, target = locate(host.x, host.y + 3, host.z)), "The miss fixture could not launch toward an empty tile.")
+	TEST_ASSERT(action.Trigger(host, target = victim), "The capped miss fixture could not launch toward a victim beyond its range.")
 	deadline = world.time + 5 SECONDS
 	UNTIL(!host.throwing || world.time >= deadline)
-	TEST_ASSERT_NULL(host.throwing, "The empty pounce never finished.")
+	TEST_ASSERT_NULL(host.throwing, "The out-of-range pounce never finished.")
+	TEST_ASSERT_EQUAL(get_dist(launch_tile, host), 10, "A pounce aimed at an eleven-tile victim did not stop at ten tiles.")
+	var/damage_after_miss = 0
+	for(var/obj/item/bodypart/limb as anything in victim.get_bodyparts())
+		damage_after_miss += limb.brute_dam
+	TEST_ASSERT(abs(damage_after_miss - damage_after_prone_pounce) < 0.001, "The capped pounce still attacked its out-of-range clicked victim.")
 	TEST_ASSERT(host.has_status_effect(/datum/status_effect/paradise_zombie_mutation_exposed), "Missing an ambush did not actually expose the Hunter.")
 	TEST_ASSERT(host.has_movespeed_modifier(/datum/movespeed_modifier/paradise_zombie_mutation_exposed), "The miss penalty did not actually slow movement.")
 	var/obj/item/bodypart/chest/chest = host.get_bodypart(BODY_ZONE_CHEST)
@@ -180,18 +226,23 @@
 /datum/unit_test/paradise_zombie_mutation_bile_lifecycle/Run()
 	var/mob/living/carbon/human/host = make_mutant("spitter")
 	TEST_ASSERT_NOTNULL(host, "The Spitter fixture was not created.")
+	TEST_ASSERT(prepare_range(host), "The Spitter fixture has no private range.")
 	var/datum/action/cooldown/paradise_zombie_mutation/bile/action = locate() in host.actions
 	TEST_ASSERT_NOTNULL(action, "Spitter did not receive its real bile action.")
+	var/cooldown_before = action.next_use_time
+	TEST_ASSERT(!action.Trigger(host, target = locate(host.x + 14, host.y, host.z)), "Bile accepted a target fourteen tiles away.")
+	TEST_ASSERT_EQUAL(action.next_use_time, cooldown_before, "Rejecting a fourteen-tile shot consumed its cooldown.")
+	TEST_ASSERT_EQUAL(length(action.owned_effects), 0, "Rejecting an out-of-range shot created a projectile or residue.")
 	var/mob/living/carbon/human/friend = make_zombie(locate(host.x + 2, host.y, host.z))
 	TEST_ASSERT_NOTNULL(friend, "The friendly-fire fixture was not created.")
 	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
-	victim.forceMove(locate(host.x + 4, host.y, host.z))
+	victim.forceMove(locate(host.x + 13, host.y, host.z))
 	TEST_ASSERT(isopenturf(get_turf(victim)), "The bile fixture put its victim inside a closed turf instead of on a floor.")
 	var/friendly_damage_before = friend.get_fire_loss()
 	TEST_ASSERT(action.Trigger(host, target = victim), "The bile action did not launch its projectile.")
 	var/deadline = world.time + 5 SECONDS
 	UNTIL(victim.get_fire_loss() > 0 || world.time >= deadline)
-	TEST_ASSERT(victim.get_fire_loss() > 0, "The actual bile projectile never damaged its intended enemy.")
+	TEST_ASSERT(victim.get_fire_loss() > 0, "The actual bile projectile never reached its enemy thirteen tiles away.")
 	TEST_ASSERT_EQUAL(friend.get_fire_loss(), friendly_damage_before, "A bile projectile damaged the allied zombie in its flight path.")
 	var/obj/effect/decal/cleanable/paradise_zombie_bile/puddle = locate() in get_turf(victim)
 	TEST_ASSERT_NOTNULL(puddle, "The real projectile impact left no visible bile residue.")
@@ -218,7 +269,7 @@
 	TEST_ASSERT(victim.get_fire_loss() > damage_before_prone_shot, "The actual bile projectile passed over its clicked prone victim.")
 	expiry = puddle.expiry_timer
 	action.ResetCooldown()
-	TEST_ASSERT(action.Trigger(host, target = locate(host.x + 6, host.y + 3, host.z)), "The cleanup fixture could not launch a still-flying third shot.")
+	TEST_ASSERT(action.Trigger(host, target = locate(host.x + 13, host.y + 3, host.z)), "The cleanup fixture could not launch a still-flying third shot.")
 	var/obj/projectile/paradise_zombie_bile/in_flight = locate() in action.owned_effects
 	TEST_ASSERT_NOTNULL(in_flight, "The action did not retain its actual in-flight projectile.")
 	var/datum/disease/paradise_zombie/infection = locate() in host.diseases
@@ -300,11 +351,15 @@
 /datum/unit_test/paradise_zombie_mutation_detonation/Run()
 	var/mob/living/carbon/human/host = make_mutant("exploder")
 	TEST_ASSERT_NOTNULL(host, "The detonation fixture was not created.")
+	TEST_ASSERT(prepare_range(host, offset = 8), "The Exploder fixture has no private range.")
 	host.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/base, multiplicative_slowdown = 0.1)
 	var/datum/action/cooldown/paradise_zombie_mutation/explode/action = locate() in host.actions
 	TEST_ASSERT_NOTNULL(action, "The real Exploder action was not granted.")
 	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
 	victim.forceMove(get_step(host, NORTH))
+	var/mob/living/carbon/human/center = allocate(/mob/living/carbon/human/consistent, get_turf(host))
+	var/mob/living/carbon/human/edge = allocate(/mob/living/carbon/human/consistent, locate(host.x - 5, host.y, host.z))
+	var/mob/living/carbon/human/outside = allocate(/mob/living/carbon/human/consistent, locate(host.x - 6, host.y, host.z))
 	var/mob/living/carbon/human/friend = make_zombie(locate(host.x + 1, host.y + 1, host.z))
 	TEST_ASSERT_NOTNULL(friend, "The blast's allied-zombie fixture was not created.")
 	var/mob/living/carbon/human/sheltered = allocate(/mob/living/carbon/human/consistent)
@@ -314,7 +369,12 @@
 	TEST_ASSERT(sheltered in view(2, host), "The glass-cover fixture is already excluded by visibility and would not exercise physical cover.")
 	var/friendly_damage_before = friend.get_brute_loss()
 	TEST_ASSERT(action.Trigger(host), "The real detonation did not complete its windup.")
-	TEST_ASSERT(victim.get_brute_loss() > 0, "The completed blast did not actually injure its adjacent enemy.")
+	TEST_ASSERT_EQUAL(center.get_brute_loss(), 60, "The completed blast did not deal sixty damage at its center.")
+	TEST_ASSERT_EQUAL(victim.get_brute_loss(), 54, "The completed blast did not apply its distance falloff to an adjacent enemy.")
+	TEST_ASSERT_EQUAL(edge.get_brute_loss(), 30, "The completed blast did not deal thirty damage at its five-tile boundary.")
+	TEST_ASSERT_EQUAL(outside.get_brute_loss(), 0, "The completed blast injured a victim six tiles away.")
+	TEST_ASSERT(!outside.IsKnockdown(), "The completed blast knocked down a victim beyond its five-tile boundary.")
+	TEST_ASSERT_NULL(locate(/datum/disease/paradise_zombie) in outside.diseases, "The completed blast transmitted infection beyond its five-tile boundary.")
 	TEST_ASSERT_EQUAL(friend.get_brute_loss(), friendly_damage_before, "The blast injured an allied zombie.")
 	TEST_ASSERT_EQUAL(sheltered.get_brute_loss(), 0, "The blast travelled through an intact closed glass airlock.")
 	TEST_ASSERT(!sheltered.IsKnockdown(), "The blast knocked down a victim behind physical cover.")
@@ -324,6 +384,11 @@
 	TEST_ASSERT_NOTNULL(locate(/datum/disease/paradise_zombie) in host.diseases, "The blast erased the body's underlying Paradise infection.")
 	TEST_ASSERT_NULL(action.nodule, "A completed blast retained its windup-only nodule.")
 	TEST_ASSERT_EQUAL(length(action.owned_effects), 0, "The dead Exploder retained owned world effects.")
+	var/datum/disease/paradise_zombie/infection = locate() in host.diseases
+	infection.cure()
+	TEST_ASSERT(QDELETED(action), "Curing the Exploder's corpse retained its mutation action.")
+	TEST_ASSERT_NULL(host.GetComponent(/datum/component/paradise_zombie_mutation), "Curing the Exploder's corpse retained its mutation controller.")
+	TEST_ASSERT(host.stat == DEAD && host.get_organ_slot(ORGAN_SLOT_BRAIN), "Curing the Exploder's ordinary corpse revived it or destroyed its brain.")
 
 /// Harmful mutation actions retain the same pacifist restriction as ordinary claws and bites.
 /datum/unit_test/paradise_zombie_mutation_pacifism

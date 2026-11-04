@@ -41,10 +41,10 @@ GLOBAL_LIST_INIT(paradise_zombie_mutation_forms, list(
 /datum/paradise_zombie_form/twitcher
 	id = "twitcher"
 	name = "Бегун"
-	desc = "Быстрое передвижение и короткий рывок. Хрупкое тело и ослабленные когти."
+	desc = "Быстрое передвижение и рывок до 12 клеток. Хрупкое тело и ослабленные когти."
 	body_icon = 'modular_bandastation/paradise_zombies/icons/mutations/twitcher.dmi'
 	health_bonus = -35
-	slowdown = -1.3
+	slowdown = -1.5
 	claw_multiplier = 0.85
 	ability_types = list(/datum/action/cooldown/paradise_zombie_mutation/dash)
 
