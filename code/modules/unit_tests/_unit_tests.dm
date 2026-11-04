@@ -478,6 +478,7 @@
 // AI EDIT END
 
 #include "../../../modular_bandastation/weapon/code/ranged/weapon_choice_tests.dm" // BANDASTATION ADDITION - HoS and Blueshield sidearms
+#include "../../../modular_bandastation/weapon/code/ranged/weapon_choice_ui_tests.dm"
 
 #include "../../../modular_bandastation/underclothing/code/tests.dm" // BANDASTATION ADDITION - Removable underclothing
 
@@ -496,6 +497,8 @@
 #include "../../../modular_bandastation/paradise_zombies/code/tests_mutation_progression.dm"
 #include "../../../modular_bandastation/paradise_zombies/code/tests_mutation_abilities.dm"
 #include "../../../modular_bandastation/paradise_zombies/code/tests_appearance.dm"
+#include "../../../modular_bandastation/telephones/_defines.dm"
+#include "../../../modular_bandastation/telephones/code/telephone_tests.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
