@@ -8,10 +8,6 @@
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	/// Are we holding the two handed item properly
 	var/wielded = FALSE
-	/// The item's exact name before our temporary grip label, including player renames.
-	var/unwielded_name
-	/// Only undo the name we assigned; a later rename belongs to its author.
-	var/wielded_name
 	/// The multiplier applied to force when wielded, does not work with force_wielded, and force_unwielded
 	var/force_multiplier = 1
 	/// The force of the item when weilded
@@ -269,10 +265,7 @@
 		parent_item.force = force_wielded
 	if(sharpened_increase)
 		parent_item.force += sharpened_increase
-	unwielded_name = parent_item.name
-	var/display_name = parent_item.get_tip_name()
-	wielded_name = "[display_name] (двуручный хват)"
-	parent_item.name = wielded_name
+	parent_item.name = "[parent_item.name] (Wielded)"
 	parent_item.update_appearance()
 
 	if(iscyborg(user))
@@ -286,7 +279,7 @@
 
 	// Let's reserve the other hand
 	offhand_item = new(user)
-	offhand_item.name = "[display_name] — вторая рука"
+	offhand_item.name = "[parent_item.name] - offhand"
 	offhand_item.desc = "Ваша вторая рука держит [parent_item.declent_ru(ACCUSATIVE)]."
 	offhand_item.wielded = TRUE
 	RegisterSignal(offhand_item, COMSIG_ITEM_DROPPED, PROC_REF(on_drop))
@@ -323,10 +316,12 @@
 	else if(force_unwielded != force_wielded)
 		parent_item.force = force_unwielded
 
-	if(parent_item.name == wielded_name)
-		parent_item.name = unwielded_name
-	unwielded_name = null
-	wielded_name = null
+	// update the items name to remove the wielded status
+	var/sf = findtext(parent_item.name, " (Wielded)", -10) // 10 == length(" (Wielded)")
+	if(sf)
+		parent_item.name = copytext(parent_item.name, 1, sf)
+	else
+		parent_item.name = "[initial(parent_item.name)]"
 
 	// Update icons
 	parent_item.update_appearance()
@@ -398,7 +393,7 @@
 
 	if(held_index == offhand_index)
 		if(!silent)
-			to_chat(user, span_warning("Эта рука уже занята удержанием [parent.declent_ru(GENITIVE)]."))
+			to_chat(user, span_warning("\The [user.get_held_index_name(held_index)] is too busy holding [parent]."))
 		return COMPONENT_BLOCK_SWAP
 
 /datum/component/two_handed/proc/on_cycling_hands(mob/source, cycle_dir, climb, silent)
