@@ -1155,28 +1155,28 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 /obj/item/proc/set_force_string()
 	switch(force)
 		if(0 to 4)
-			force_string = "очень низкая"
+			force_string = "very low"
 		if(4 to 7)
-			force_string = "низкая"
+			force_string = "low"
 		if(7 to 10)
-			force_string = "средняя"
+			force_string = "medium"
 		if(10 to 11)
-			force_string = "высокая"
+			force_string = "high"
 		if(11 to 20) //12 is the force of a toolbox
-			force_string = "мощная"
+			force_string = "robust"
 		if(20 to 25)
-			force_string = "очень мощная"
+			force_string = "very robust"
 		else
-			force_string = "исключительно мощная"
+			force_string = "exceptionally robust"
 	last_force_string_check = force
 
 /obj/item/proc/openTip(location, control, params, user)
 	if(last_force_string_check != force && !(item_flags & FORCE_STRING_OVERRIDE))
 		set_force_string()
 	if(!(item_flags & FORCE_STRING_OVERRIDE))
-		openToolTip(user, src, params, title = get_tip_name(), content = "[desc]<br>[force ? "<b>Сила:</b> [force_string]" : ""]", theme = "")
+		openToolTip(user, src, params, title = get_tip_name(), content = "[desc]<br>[force ? "<b>Force:</b> [force_string]" : ""]", theme = "")
 	else
-		openToolTip(user, src, params, title = get_tip_name(), content = "[desc]<br><b>Сила:</b> [force_string]", theme = "")
+		openToolTip(user, src, params, title = get_tip_name(), content = "[desc]<br><b>Force:</b> [force_string]", theme = "")
 
 /obj/item/MouseEntered(location, control, params)
 	. = ..()

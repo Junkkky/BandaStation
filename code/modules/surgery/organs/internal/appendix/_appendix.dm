@@ -39,8 +39,7 @@
 		// forced to ensure people don't use it to gain tox as slime person
 		owner.adjust_tox_loss(2 * seconds_per_tick, forced = TRUE)
 	else if(inflamation_stage)
-		if(!(locate(/datum/disease/paradise_appendicitis) in owner.diseases))
-			inflamation(seconds_per_tick)
+		inflamation(seconds_per_tick)
 	else if(SPT_PROB(APPENDICITIS_PROB, seconds_per_tick) && !HAS_TRAIT(owner, TRAIT_TEMPORARY_BODY))
 		become_inflamed()
 
