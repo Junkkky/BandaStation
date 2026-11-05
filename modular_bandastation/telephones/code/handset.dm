@@ -27,12 +27,14 @@
 	// The primary self action already raises/lowers the receiver; covering uses the secondary action.
 	cover.UnregisterSignal(src, COMSIG_ITEM_ATTACK_SELF)
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_tether_pre_move))
+	RegisterSignal(src, COMSIG_CAN_Z_MOVE, PROC_REF(on_tether_z_move))
 	RegisterSignal(base, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_tether_pre_move))
+	RegisterSignal(base, COMSIG_CAN_Z_MOVE, PROC_REF(on_tether_z_move))
 
 /obj/item/telephone/Destroy()
 	clear_holder()
 	if(attached_to)
-		UnregisterSignal(attached_to, COMSIG_MOVABLE_PRE_MOVE)
+		UnregisterSignal(attached_to, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_CAN_Z_MOVE))
 	if(attached_to?.handset == src)
 		attached_to.handset = null
 		attached_to.end_call()
@@ -51,6 +53,7 @@
 	inhand_icon_state = "rpb_phone_ear"
 	become_hearing_sensitive(ROUNDSTART_TRAIT)
 	RegisterSignal(holder, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_tether_pre_move))
+	RegisterSignal(holder, COMSIG_CAN_Z_MOVE, PROC_REF(on_tether_z_move))
 	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, PROC_REF(on_holder_moved))
 	RegisterSignal(holder, COMSIG_QDELETING, PROC_REF(on_holder_deleted))
 	check_tether()
@@ -123,7 +126,7 @@
 /** Releases the holder, movement listeners and cord before recall or deletion. */
 /obj/item/telephone/proc/clear_holder()
 	if(holder)
-		UnregisterSignal(holder, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
+		UnregisterSignal(holder, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_CAN_Z_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
 		holder = null
 	raised = FALSE
 	inhand_icon_state = "rpb_phone"
@@ -157,6 +160,13 @@
 	if(ismob(source))
 		balloon_alert(source, "шнур натянут!")
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
+
+/** Vertical movement must check the cord before forceMove separates its endpoints. */
+/obj/item/telephone/proc/on_tether_z_move(atom/movable/source, turf/start, turf/destination)
+	SIGNAL_HANDLER
+	if(on_tether_pre_move(source, destination) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
+		return COMPONENT_CANT_Z_MOVE
+	return NONE
 
 /** Keeps container handling, but never docks a handset because its distance changed. */
 /obj/item/telephone/proc/check_tether()

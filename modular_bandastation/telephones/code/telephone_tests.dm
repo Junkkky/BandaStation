@@ -196,6 +196,74 @@
 	TEST_ASSERT_EQUAL(calling_phone.handset.loc, beyond_cord, "Moving the base must never dock its handset.")
 	TEST_ASSERT_EQUAL(receiving_phone.current_call, calling_phone, "Moving either endpoint within the cord must preserve the call.")
 
+/// Floor transfers cannot separate an off-hook handset from its base, including a pulled base.
+/datum/unit_test/telephone/z_transition
+	var/datum/turf_reservation/phone_reservation
+	var/impacts = 0
+
+/datum/unit_test/telephone/z_transition/Destroy()
+	QDEL_LIST(allocated)
+	QDEL_NULL(phone_reservation)
+	return ..()
+
+/datum/unit_test/telephone/z_transition/proc/on_impact()
+	SIGNAL_HANDLER
+	impacts++
+
+/datum/unit_test/telephone/z_transition/Run()
+	phone_reservation = SSmapping.request_turf_block_reservation(3, 3, 2, turf_type_override = /turf/open/indestructible)
+	TEST_ASSERT_NOTNULL(phone_reservation, "Could not reserve two floors for telephone transport.")
+	var/turf/lower_corner = phone_reservation.bottom_left_turfs[2]
+	var/turf/origin = locate(lower_corner.x + 1, lower_corner.y + 1, lower_corner.z)
+	var/turf/destination = get_step(GET_TURF_ABOVE(origin), NORTH)
+	TEST_ASSERT_NOTNULL(destination, "The telephone fixture must expose its native upper floor.")
+	calling_phone.forceMove(origin)
+	calling_user.forceMove(origin)
+	calling_phone.set_anchored(FALSE)
+	TEST_ASSERT(calling_user.put_in_hands(calling_phone.handset), "The caller must lift the handset before changing floors.")
+	TEST_ASSERT(calling_phone.start_call(calling_user, receiving_phone.phone_id), "The call must start before testing floor transfers.")
+	TEST_ASSERT(!calling_user.can_z_move(UP, origin, destination, z_move_flags = ZMOVE_IGNORE_OBSTACLES), "An ordinary vertical movement probe must respect the held handset's cord.")
+	var/obj/structure/stairs/stairs = allocate(/obj/structure/stairs/north, origin)
+	stairs.force_open_above()
+	TEST_ASSERT(!calling_user.Move(get_step(origin, NORTH), NORTH), "The native stair exit must reject a climb with the handset off-hook.")
+	var/deadline = world.time + 1 SECONDS
+	UNTIL(!calling_user.currently_z_moving || world.time >= deadline)
+	TEST_ASSERT_EQUAL(calling_user.currently_z_moving, FALSE, "A rejected stair climb must clear its ascending movement state.")
+	TEST_ASSERT_EQUAL(calling_user.loc, origin, "A rejected stair climb must leave the holder on the original floor.")
+	qdel(stairs)
+	TEST_ASSERT(!calling_user.zMove(target = destination), "A targeted floor transfer must not bypass the held handset's cord.")
+	TEST_ASSERT_EQUAL(calling_user.loc, origin, "A rejected holder transfer must leave the holder on the original floor.")
+	TEST_ASSERT_EQUAL(calling_phone.handset.loc, calling_user, "A rejected transfer must not drop or dock the handset.")
+	TEST_ASSERT(calling_phone.can_use_handset(calling_user), "The handset must remain usable after a rejected floor transfer.")
+	calling_user.dropItemToGround(calling_phone.handset)
+	TEST_ASSERT(!calling_phone.handset.zMove(target = destination), "A handset on the floor must not transfer away from its base.")
+	TEST_ASSERT(!calling_phone.zMove(target = destination), "A base must not transfer away from its handset on the floor.")
+	calling_user.start_pulling(calling_phone)
+	TEST_ASSERT_EQUAL(calling_user.pulling, calling_phone, "The caller must be able to pull the unfastened base.")
+	TEST_ASSERT(!calling_user.zMove(target = destination, z_move_flags = ZMOVE_INCLUDE_PULLED), "A floor transfer must validate the pulled base before moving any member of the group.")
+	TEST_ASSERT_EQUAL(calling_user.loc, origin, "Rejecting a pulled base must also leave its puller on the original floor.")
+	TEST_ASSERT_EQUAL(calling_phone.loc, origin, "A rejected base transfer must leave the base on the original floor.")
+	TEST_ASSERT_EQUAL(calling_phone.handset.loc, origin, "Rejected transfers must leave an undocked handset on its original floor.")
+	TEST_ASSERT_EQUAL(calling_phone.status, PHONE_OUTGOING, "Rejected transfers must preserve the active call.")
+	TEST_ASSERT_EQUAL(receiving_phone.current_call, calling_phone, "Rejected transfers must preserve the reciprocal peer.")
+	calling_phone.handset.attempt_pickup(calling_user)
+	TEST_ASSERT(calling_phone.can_use_handset(calling_user), "The handset must still be pickable and usable after the rejected transfers.")
+	TEST_ASSERT_EQUAL(calling_phone.item_interaction(calling_user, calling_phone.handset, list()), ITEM_INTERACT_SUCCESS, "The caller must be able to put the handset back manually.")
+	TEST_ASSERT(calling_user.zMove(target = destination, z_move_flags = ZMOVE_INCLUDE_PULLED), "Docking the handset must allow normal transport of the pulled phone.")
+	TEST_ASSERT_EQUAL(calling_phone.loc, destination, "The docked base must reach the new floor with its puller.")
+	TEST_ASSERT_EQUAL(calling_phone.handset.loc, calling_phone, "Normal transport must retain the docked handset.")
+	TEST_ASSERT(calling_user.put_in_hands(calling_phone.handset), "The handset must lift normally on the destination floor.")
+	TEST_ASSERT(calling_phone.start_call(calling_user, receiving_phone.phone_id), "The transported phone must be able to start a new call.")
+	var/obj/structure/chair/chair = allocate(/obj/structure/chair, destination)
+	TEST_ASSERT(chair.buckle_mob(calling_user, force = TRUE), "The holder must buckle to the real chair before testing a grouped fall.")
+	RegisterSignal(chair, COMSIG_ATOM_ON_Z_IMPACT, PROC_REF(on_impact))
+	TEST_ASSERT(!destination.zFall(calling_user, force = TRUE), "A forced fall must respect the buckled holder's cord before moving the chair.")
+	TEST_ASSERT_EQUAL(chair.loc, destination, "A rejected grouped fall must not displace the chair.")
+	TEST_ASSERT_EQUAL(calling_user.loc, destination, "A rejected grouped fall must not displace its buckled holder.")
+	TEST_ASSERT_EQUAL(chair.currently_z_moving, FALSE, "A rejected grouped fall must clear the chair's falling state.")
+	TEST_ASSERT_EQUAL(calling_user.currently_z_moving, FALSE, "A rejected grouped fall must clear its holder's movement state.")
+	TEST_ASSERT_EQUAL(impacts, 0, "A rejected grouped fall must not produce an impact on the other floor.")
+
 /// Hanging up cancels audio already playing as well as callbacks waiting to play the next tone.
 /datum/unit_test/telephone/audio_cleanup/Run()
 	TEST_ASSERT(calling_user.put_in_hands(calling_phone.handset), "The caller must hold the handset.")
