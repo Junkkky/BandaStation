@@ -283,7 +283,8 @@
 		return
 
 	var/turf/target = get_turf(ladder)
-	user.zMove(target = target, z_move_flags = ZMOVE_CHECK_PULLEDBY|ZMOVE_ALLOW_BUCKLED|ZMOVE_INCLUDE_PULLED)
+	if(!user.zMove(target = target, z_move_flags = ZMOVE_CHECK_PULLEDBY|ZMOVE_ALLOW_BUCKLED|ZMOVE_INCLUDE_PULLED))
+		return
 
 	if(grant_exp)
 		var/fitness_level = user.mind?.get_skill_level(/datum/skill/athletics)

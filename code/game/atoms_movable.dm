@@ -398,6 +398,7 @@
  * * z_move_flags: bitflags used for various checks in both this proc and can_z_move(). See __DEFINES/movement.dm.
  */
 /atom/movable/proc/zMove(dir, turf/target, z_move_flags = ZMOVE_FLIGHT_FLAGS)
+	SHOULD_CALL_PARENT(TRUE)
 	if(!target)
 		target = can_z_move(dir, get_turf(src), null, z_move_flags)
 		if(!target)
@@ -405,6 +406,12 @@
 			return FALSE
 
 	var/list/moving_movs = get_z_move_affected(z_move_flags)
+
+	// Validate the whole group before any forceMove can separate a tethered companion.
+	for(var/atom/movable/movable as anything in moving_movs)
+		if(SEND_SIGNAL(movable, COMSIG_CAN_Z_MOVE, get_turf(movable), target) & COMPONENT_CANT_Z_MOVE)
+			set_currently_z_moving(FALSE, TRUE)
+			return FALSE
 
 	for(var/atom/movable/movable as anything in moving_movs)
 		movable.currently_z_moving = currently_z_moving || CURRENTLY_Z_MOVING_GENERIC

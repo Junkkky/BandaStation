@@ -1,7 +1,7 @@
 /** A tethered receiver which relays its holder's audible speech through an established call. */
 /obj/item/telephone
 	name = "handset"
-	desc = "Телефонная трубка. Используйте в руке, чтобы поднести её к уху или опустить. Alt+ЛКМ по трубке открывает телефонную книгу."
+	desc = "Телефонная трубка. Используйте в руке, чтобы поднести её к уху или опустить. ПКМ зажимает микрофон свободной рукой. Alt+ЛКМ по трубке открывает телефонную книгу."
 	icon = 'modular_bandastation/telephones/icons/phone.dmi'
 	icon_state = "phone"
 	inhand_icon_state = "rpb_phone"
@@ -12,7 +12,7 @@
 	var/obj/structure/transmitter/attached_to
 	/// The living mob currently holding the receiver in a hand.
 	var/mob/living/holder
-	/// Lowering the handset mutes both transmission and reception without hanging up.
+	/// Raising the handset enables its microphone and brings the incoming voice to the holder's ear.
 	var/raised = FALSE
 	/// The cord follows the holder or the handset lying on the floor.
 	var/datum/beam/telephone_beam
@@ -23,13 +23,18 @@
 		return INITIALIZE_HINT_QDEL
 	attached_to = base
 	icon = base.icon
+	var/datum/component/two_handed/cover = AddComponent(/datum/component/two_handed)
+	// The primary self action already raises/lowers the receiver; covering uses the secondary action.
+	cover.UnregisterSignal(src, COMSIG_ITEM_ATTACK_SELF)
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_tether_pre_move))
+	RegisterSignal(src, COMSIG_CAN_Z_MOVE, PROC_REF(on_tether_z_move))
 	RegisterSignal(base, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_tether_pre_move))
+	RegisterSignal(base, COMSIG_CAN_Z_MOVE, PROC_REF(on_tether_z_move))
 
 /obj/item/telephone/Destroy()
 	clear_holder()
 	if(attached_to)
-		UnregisterSignal(attached_to, COMSIG_MOVABLE_PRE_MOVE)
+		UnregisterSignal(attached_to, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_CAN_Z_MOVE))
 	if(attached_to?.handset == src)
 		attached_to.handset = null
 		attached_to.end_call()
@@ -48,6 +53,7 @@
 	inhand_icon_state = "rpb_phone_ear"
 	become_hearing_sensitive(ROUNDSTART_TRAIT)
 	RegisterSignal(holder, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_tether_pre_move))
+	RegisterSignal(holder, COMSIG_CAN_Z_MOVE, PROC_REF(on_tether_z_move))
 	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, PROC_REF(on_holder_moved))
 	RegisterSignal(holder, COMSIG_QDELETING, PROC_REF(on_holder_deleted))
 	check_tether()
@@ -75,6 +81,28 @@
 	user.update_held_items()
 	balloon_alert(user, raised ? "трубка у уха" : "трубка опущена")
 
+/// Reserves the other hand to cover only the microphone, leaving incoming speech audible.
+/obj/item/telephone/attack_self_secondary(mob/user, modifiers)
+	. = ..()
+	if(.)
+		return
+	if(!iscarbon(user) || !attached_to?.can_use_handset(user) || user.get_active_held_item() != src)
+		return TRUE
+	var/mob/living/carbon/phone_user = user
+	var/datum/component/two_handed/cover = GetComponent(/datum/component/two_handed)
+	if(cover.wielded)
+		cover.unwield(phone_user, show_message = FALSE)
+		balloon_alert(user, "микрофон открыт")
+		return TRUE
+	cover.wield(phone_user)
+	if(cover.wielded && !phone_user.is_holding(cover.offhand_item))
+		cover.unwield(phone_user, show_message = FALSE)
+	if(cover.wielded)
+		cover.offhand_item.name = "рука на микрофоне"
+		cover.offhand_item.desc = "Эта рука прикрывает микрофон телефонной трубки."
+		balloon_alert(user, "микрофон зажат")
+	return TRUE
+
 /obj/item/telephone/click_alt(mob/user)
 	if(!attached_to?.can_use_handset(user))
 		return CLICK_ACTION_BLOCKING
@@ -98,7 +126,7 @@
 /** Releases the holder, movement listeners and cord before recall or deletion. */
 /obj/item/telephone/proc/clear_holder()
 	if(holder)
-		UnregisterSignal(holder, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
+		UnregisterSignal(holder, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_CAN_Z_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
 		holder = null
 	raised = FALSE
 	inhand_icon_state = "rpb_phone"
@@ -133,6 +161,13 @@
 		balloon_alert(source, "шнур натянут!")
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
+/** Vertical movement must check the cord before forceMove separates its endpoints. */
+/obj/item/telephone/proc/on_tether_z_move(atom/movable/source, turf/start, turf/destination)
+	SIGNAL_HANDLER
+	if(on_tether_pre_move(source, destination) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
+		return COMPONENT_CANT_Z_MOVE
+	return NONE
+
 /** Keeps container handling, but never docks a handset because its distance changed. */
 /obj/item/telephone/proc/check_tether()
 	if(!attached_to || loc == attached_to)
@@ -157,7 +192,7 @@
 
 /obj/item/telephone/Hear(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range = 0)
 	. = ..()
-	if(!raised || speaker != holder || radio_freq || message_mods[MODE_RELAY] || !attached_to?.can_use_handset(holder))
+	if(!raised || HAS_TRAIT(src, TRAIT_WIELDED) || speaker != holder || radio_freq || message_mods[MODE_RELAY] || !attached_to?.can_use_handset(holder))
 		return
 	if(HAS_TRAIT(speaker, TRAIT_SIGN_LANG) || message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
 		return
@@ -165,7 +200,7 @@
 	var/obj/item/telephone/receiver = other?.handset
 	if(attached_to.status != PHONE_CONNECTED || other?.status != PHONE_CONNECTED || other.current_call != attached_to)
 		return
-	if(!receiver?.raised || !other.can_use_handset(receiver.holder))
+	if(QDELETED(receiver) || receiver.loc == other)
 		return
 
 	// Hear receives treated speech after saymodes, rather than the unfiltered COMSIG_MOB_SAY input.
@@ -175,9 +210,28 @@
 	relayed_mods[MODE_TTS_FILTERS] = list(/datum/singleton/sound_effect/radio)
 	var/atom/movable/virtualspeaker/voice = new(get_turf(receiver), speaker)
 	voice.runechat_anchors = list()
-	voice.runechat_anchors[receiver.holder] = receiver
-	receiver.holder.Hear(voice, message_language, raw_message, null, null, null, spans, relayed_mods, INFINITY)
+	var/mob/living/primary_listener
+	if(receiver.raised && other.can_use_handset(receiver.holder))
+		primary_listener = receiver.holder
+		voice.runechat_anchors[primary_listener] = receiver
+		primary_listener.Hear(voice, message_language, raw_message, null, null, null, spans, relayed_mods, INFINITY)
+
+	var/list/quiet_spans = spans?.Copy() || list()
+	quiet_spans |= SPAN_ITALICS
+	relayed_mods[SAY_MOD_VERB] = "тихо говорит"
+	relayed_mods[MODE_TTS_FILTERS] = list(/datum/singleton/sound_effect/radio, /datum/singleton/sound_effect/telephone_leak)
+	for(var/mob/living/listener in get_hearers_in_view(1, receiver))
+		if(listener == primary_listener)
+			continue
+		voice.runechat_anchors[listener] = receiver
+		// Per-listener delivery keeps TTS private to this one-tile audience instead of its default spatial range.
+		listener.Hear(voice, message_language, raw_message, null, null, null, quiet_spans, relayed_mods, INFINITY)
 	voice.source = null
 	voice.runechat_anchors = null
 	qdel(voice)
 	log_say("TELEPHONE: [key_name(speaker)] at '[attached_to.display_name]' to '[other.display_name]' said '[raw_message]'")
+
+/// Quiet voice leaking from the earpiece, combined with the ordinary telephone filter.
+/datum/singleton/sound_effect/telephone_leak
+	suffix = "_telephone_leak"
+	ffmpeg_arguments = "volume=0.2"
