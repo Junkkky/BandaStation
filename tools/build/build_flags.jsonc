@@ -44,6 +44,7 @@
 				{ "value": "nebulastation", "label": "NebulaStation" },
 				{ "value": "kilostation", "label": "Kilostation" },
 				{ "value": "catwalkstation", "label": "Catwalk Station" },
+				{ "value": "space_overmap", "label": "Cyberiad Overmap" },
 				{ "value": "gateway_test", "label": "Gateway Test (test)" },
 				{ "value": "multiz_debug", "label": "MultiZ Debug (test)" },
 				{ "value": "runtimestation", "label": "Runtime Station (low memory)" },

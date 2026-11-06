@@ -11,6 +11,13 @@
 		{
 			"type": "byond",
 			"request": "launch",
+			"name": "Launch DreamSeeker (Cyberiad Overmap)",
+			"preLaunchTask": "Build All (Cyberiad Overmap)",
+			"dmb": "${workspaceFolder}/${command:CurrentDMB}"
+		},
+		{
+			"type": "byond",
+			"request": "launch",
 			"name": "Launch DreamSeeker (low memory mode)",
 			"preLaunchTask": "Build All (low memory mode)",
 			"dmb": "${workspaceFolder}/${command:CurrentDMB}"

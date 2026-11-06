@@ -95,6 +95,13 @@ export type NavigationData = Position & {
   docked: string | null;
   coupled: BooleanLike;
   docking_request: { token: number; contact: number | null } | null;
+  station_docking?: {
+    required: BooleanLike;
+    state: 'none' | 'pending' | 'approved';
+    canRequest: BooleanLike;
+    canCancel: BooleanLike;
+    expiresIn: number | null;
+  };
   can_request_ship_dock: BooleanLike;
   dockable_contacts: number[];
   landing: BooleanLike;

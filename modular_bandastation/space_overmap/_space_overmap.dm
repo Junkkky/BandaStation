@@ -36,6 +36,16 @@
 #define ST_LOST_WRECK_RANGE 150
 /// Rescue berth distance from the open-space level border; the seam needs clearance from the transition edge.
 #define ST_LOST_BERTH_MARGIN 45
+/// Start closing and folding the gangway during the final seconds of casting off.
+#define ST_STANDARD_DOCK_RETRACTION_LEAD (4 SECONDS)
+/// Width of a standard S slot in tiles.
+#define ST_STANDARD_S_WIDTH 7
+/// Length of a standard S slot in tiles.
+#define ST_STANDARD_S_HEIGHT 15
+/// Width of a standard M slot in tiles.
+#define ST_STANDARD_M_WIDTH 19
+/// Length of a standard M slot in tiles.
+#define ST_STANDARD_M_HEIGHT 25
 /// Engine sound levels glide this much of their full range per second.
 #define ST_ENGINE_SOUND_GLIDE 0.8
 /// Smallest engine sound level change worth sending to listeners.

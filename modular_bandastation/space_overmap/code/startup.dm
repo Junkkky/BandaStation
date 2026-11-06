@@ -35,13 +35,15 @@ SUBSYSTEM_DEF(stationtrauma_space_voyage)
 /datum/controller/subsystem/stationtrauma_space_voyage/Initialize()
 	var/list/vessels = list()
 	var/list/config = SSmapping.current_map.space_overmap
+	var/station_id
 	if(config)
-		// prepare_station() reports its own runtime with the call stack and returns null.
-		var/obj/docking_port/stationary/stationtrauma_space_station/port = prepare_station(config)
-		if(!port)
+		station_id = config["station_id"]
+		var/list/fleet = config["ships"]
+		if(!istext(station_id) || !length(station_id) || !islist(fleet) || !length(fleet))
+			log_mapping("Overmap station requires a mapped station site ID and an expedition fleet")
 			return SS_INIT_FAILURE
 		// Atom initialization needs its native cleanup even when one mapped atom fails.
-		for(var/list/ship_config as anything in config["ships"])
+		for(var/list/ship_config as anything in fleet)
 			if(!islist(ship_config))
 				log_mapping("Invalid expedition ship profile")
 				return SS_INIT_FAILURE
@@ -55,7 +57,7 @@ SUBSYSTEM_DEF(stationtrauma_space_voyage)
 				return SS_INIT_FAILURE
 			ship.dispatchable = !!ship_config["dispatchable"]
 			if(ship_config["starts_docked"])
-				ship.starting_dock = port.site_id
+				ship.starting_dock = station_id
 				ship.overmap_x = 1000
 	// Only startup scans the world: mapped hulls join SSshuttle.mobile_docking_ports in register(), which runs here.
 	// Navigation processing uses the sector registry.
@@ -76,6 +78,12 @@ SUBSYSTEM_DEF(stationtrauma_space_voyage)
 	if(!load_sectors())
 		log_mapping("Failed to load sector destinations")
 		return SS_INIT_FAILURE
+	if(station_id)
+		var/datum/stationtrauma_overmap_sector/space/home/home_sector = sectors["epsilon_eridani"]
+		var/datum/stationtrauma_overmap_site/space/station = home_sector.sites[station_id]
+		if(QDELETED(station?.berth) || !is_station_level(station.berth.z) || station.berth.get_docked())
+			log_mapping("Overmap station site [station_id] requires a free mapped station berth")
+			return SS_INIT_FAILURE
 	for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in vessels)
 		var/datum/stationtrauma_overmap_sector/space/sector = sectors[vessel.overmap_sector]
 		if(!sector?.ready)

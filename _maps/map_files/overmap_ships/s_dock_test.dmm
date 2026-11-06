@@ -1,0 +1,185 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/space/basic,
+/area/space)
+"ab" = (
+/turf/closed/wall/r_wall,
+/area/shuttle/stationtrauma_space)
+"ac" = (
+/turf/open/floor/engine/hull/air,
+/area/shuttle/stationtrauma_space)
+"ad" = (
+/obj/docking_port/mobile/stationtrauma_space{
+	dir = 1;
+	name = "Тестовый шлюп S";
+	overmap_x = 1000;
+	overmap_y = 0;
+	ship_class = "small";
+	shuttle_id = "overmap_s_dock_test";
+	starting_dock = "cyberiad_s_dock"
+	},
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 2
+	},
+/turf/open/floor/engine/hull,
+/area/shuttle/stationtrauma_space)
+"ae" = (
+/obj/machinery/computer/stationtrauma_space_navigation,
+/turf/open/floor/engine/hull/air,
+/area/shuttle/stationtrauma_space)
+"af" = (
+/obj/machinery/door/airlock/stationtrauma_docking/ship{
+	dir = 4
+	},
+/turf/open/floor/engine/hull/air,
+/area/shuttle/stationtrauma_space)
+"ag" = (
+/obj/machinery/door/airlock{
+	dir = 4
+	},
+/turf/open/floor/engine/hull/air,
+/area/shuttle/stationtrauma_space)
+"ah" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/engine/hull/air,
+/area/shuttle/stationtrauma_space)
+"ai" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/engine/hull/air,
+/area/shuttle/stationtrauma_space)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+ab
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ab
+aa
+"}
+(4,1,1) = {"
+aa
+ab
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ah
+ab
+aa
+"}
+(5,1,1) = {"
+aa
+ab
+ai
+ae
+ac
+ac
+ac
+ac
+ac
+ac
+ab
+ad
+aa
+"}
+(6,1,1) = {"
+aa
+ab
+ac
+ac
+ac
+ac
+ag
+ac
+ac
+ac
+ac
+ab
+aa
+"}
+(7,1,1) = {"
+aa
+ab
+ac
+ac
+ac
+ab
+ac
+ab
+ac
+ac
+ac
+ab
+aa
+"}
+(8,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+ab
+af
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(9,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

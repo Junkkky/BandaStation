@@ -101,12 +101,14 @@
 		"selected" = map.selected_destination, "docked" = map.docked?.id,
 		"coupled" = !!map.ship_docking,
 		"docking_request" = map.ship_docking_request_data(),
+		"station_docking" = map.station_docking_data(target),
 		"can_request_ship_dock" = map.available_for_ship_docking(),
 		"dockable_contacts" = map.dockable_ship_contacts(),
 		"landing" = target?.landing, "distance" = distance,
 		"eta" = target && map.get_target_speed() > 0 ? max(0, distance - map.radius - target.radius) / map.get_target_speed() : null,
 		"scan_ready" = !map.preparing && !map.relocating && map.is_operational() && world.time >= map.next_scan && !panel_open && !(machine_stat & (NOPOWER|BROKEN)),
-		"can_dock" = !map.preparing && !map.docked && !map.helm_engaged && map.speed <= ST_NAV_STOPPED_SPEED && map.can_dock(target, map.control_revision),
+		"can_dock" = !map.preparing && !map.docked && !map.helm_engaged && map.speed <= ST_NAV_STOPPED_SPEED \
+			&& (!map.station_clearance_required(target) || map.has_station_clearance(target)) && map.can_dock(target, map.control_revision),
 		"routes" = map.known_sites(), "path" = map.autopilot_path,
 		"zones" = map.encounter_data(), "terrain" = map.terrain_data(),
 		"ship_contacts" = map.ship_echo_data(),
@@ -138,7 +140,12 @@
 /** Validate and dispatch a helm command. */
 /obj/machinery/computer/stationtrauma_space_navigation/proc/navigation_command(action, value)
 	var/datum/stationtrauma_overmap/space/map = vessel?.overmap
-	if(!map || map.relocating || map.approach_started || panel_open || (machine_stat & (NOPOWER|BROKEN)))
+	if(!map || panel_open || (machine_stat & (NOPOWER|BROKEN)))
+		return FALSE
+	// The pilot may relinquish clearance until the physical move consumes it.
+	if(action == "cancel_station_dock")
+		return istext(value) && value == map.selected_destination && map.cancel_station_docking()
+	if(map.relocating || map.approach_started)
 		return FALSE
 	if((map.jump_target || map.dispatch_target) && action != "stop")
 		return FALSE
@@ -148,6 +155,8 @@
 			return map.request_ship_docking(value)
 		if("accept_ship_dock", "decline_ship_dock")
 			return map.respond_ship_docking(value, action == "accept_ship_dock")
+		if("request_station_dock")
+			return istext(value) && value == map.selected_destination && map.request_station_docking(value)
 		if("engine")
 			if(!(value in list(0, 1)))
 				return FALSE
@@ -187,6 +196,11 @@
 				return FALSE
 			INVOKE_ASYNC(map, TYPE_PROC_REF(/datum/stationtrauma_overmap, engage_autopilot))
 		if("dock")
+			if(!isnull(value) && (!istext(value) || value != map.selected_destination))
+				return FALSE
+			var/datum/stationtrauma_overmap_site/space/target = map.sites[map.selected_destination]
+			if(map.station_clearance_required(target) && (isnull(value) || !map.has_station_clearance(target)))
+				return FALSE
 			INVOKE_ASYNC(map, TYPE_PROC_REF(/datum/stationtrauma_overmap/space, dock))
 		else
 			return FALSE
