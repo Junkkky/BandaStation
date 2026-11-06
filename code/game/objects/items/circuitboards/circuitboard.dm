@@ -65,7 +65,7 @@
 	return
 
 /**
- * This proc is called during /obj/structure/frame/machine/finalize_construction in case there's anything else that needs to be met before completion.
+ * This proc is called before a machine or computer frame completes construction.
  * Arguments:
  * * install_frame - The frame the circuit has been installed into for reference.
  */

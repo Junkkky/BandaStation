@@ -37,6 +37,13 @@
 	///The catalogue key each viewer was last sent, by REF(), so the catalogue is only resent when it changes.
 	var/list/sent_catalogue_keys
 
+/datum/computer_file/program/budgetorders/can_run(mob/user, loud = FALSE, access_to_check, downloading = FALSE, list/access)
+	if(!SSshuttle.supply)
+		if(loud && user)
+			to_chat(user, span_warning("Штатное снабжение недоступно."))
+		return FALSE
+	return ..()
+
 /datum/computer_file/program/budgetorders/proc/is_visible_pack(mob/user, paccess_to_check, list/access, contraband)
 	if(HAS_SILICON_ACCESS(user)) //Borgs can't buy things.
 		return FALSE

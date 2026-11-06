@@ -196,7 +196,7 @@ SUBSYSTEM_DEF(shuttle)
 		log_mapping("No /obj/docking_port/mobile/emergency placed on the map!")
 	if(!backup_shuttle)
 		log_mapping("No /obj/docking_port/mobile/emergency/backup placed on the map!")
-	if(!supply)
+	if(!supply && SSmapping.current_map.cargo_shuttle_enabled())
 		log_mapping("No /obj/docking_port/mobile/supply placed on the map!")
 	return SS_INIT_SUCCESS
 
@@ -579,6 +579,8 @@ SUBSYSTEM_DEF(shuttle)
 		if(!istype(d) || QDELETED(d))
 			trade_blockade -= d
 	supply_blocked = trade_blockade.len
+	if(!supply)
+		return
 
 	if(supply_blocked && (supply.mode == SHUTTLE_IGNITING))
 		supply.mode = SHUTTLE_STRANDED

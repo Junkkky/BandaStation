@@ -109,7 +109,8 @@
 		cpu.name = name
 
 /obj/machinery/modular_computer/preset/cargochat/proc/add_starting_software()
-	starting_programs += /datum/computer_file/program/department_order
+	if(SSmapping.current_map.cargo_shuttle_enabled())
+		starting_programs += /datum/computer_file/program/department_order
 
 /obj/machinery/modular_computer/preset/cargochat/proc/setup_starting_software()
 	if(!department_type)
@@ -120,8 +121,11 @@
 	cpu.idle_threads += chatprogram
 
 	var/datum/computer_file/program/department_order/orderprogram = cpu.find_file_by_name("dept_order")
-	orderprogram.set_linked_department(department_type)
-	cpu.active_program = orderprogram
+	if(orderprogram)
+		orderprogram.set_linked_department(department_type)
+		cpu.active_program = orderprogram
+	else
+		cpu.active_program = chatprogram
 	update_appearance(UPDATE_ICON)
 
 /obj/machinery/modular_computer/preset/cargochat/service
@@ -146,7 +150,8 @@
 
 /obj/machinery/modular_computer/preset/cargochat/cargo/add_starting_software()
 	starting_programs += /datum/computer_file/program/bounty_board
-	starting_programs += /datum/computer_file/program/budgetorders
+	if(SSmapping.current_map.cargo_shuttle_enabled())
+		starting_programs += /datum/computer_file/program/budgetorders
 	starting_programs += /datum/computer_file/program/shipping
 	starting_programs += /datum/computer_file/program/restock_tracker
 

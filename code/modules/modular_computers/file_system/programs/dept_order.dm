@@ -44,6 +44,13 @@ GLOBAL_VAR(department_cd_override)
 		/datum/job_department/service = RADIO_CHANNEL_SERVICE,
 	)
 
+/datum/computer_file/program/department_order/can_run(mob/user, loud = FALSE, access_to_check, downloading = FALSE, list/access)
+	if(!SSshuttle.supply)
+		if(loud && user)
+			to_chat(user, span_warning("Штатное снабжение недоступно."))
+		return FALSE
+	return ..()
+
 /// Sets the passed department type as the active department for this computer file.
 /datum/computer_file/program/department_order/proc/set_linked_department(datum/job_department/department)
 	linked_department = department
@@ -186,6 +193,8 @@ GLOBAL_VAR(department_cd_override)
 
 /// Submits the order with the specified supply pack id as the specified orderer
 /datum/computer_file/program/department_order/proc/submit_order(mob/living/orderer, id)
+	if(!SSshuttle.supply)
+		return
 	id = text2path(id) || id
 
 	var/datum/job_department/linked_department_real = SSjob.get_department_type(linked_department)
