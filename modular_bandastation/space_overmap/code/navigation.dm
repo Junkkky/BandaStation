@@ -410,23 +410,27 @@
 	return TRUE
 
 /datum/stationtrauma_overmap/space/update_parallax()
-	var/direction = speed > ST_NAV_STOPPED_SPEED || approach_started || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
+	var/background = parallax_background()
+	var/planet = parallax_planet()
+	var/moving = speed > ST_NAV_STOPPED_SPEED || approach_started || jump_phase >= HYPERSPACE_LAUNCH
+	// Undocking happens beside the station: its background stays put until the hull leaves for its flight level.
+	var/direction = moving && background != /atom/movable/screen/parallax_layer/planet ? vessel.preferred_direction : NONE
 	// Bluespace flight streaks the stars past the hull.
 	var/rush = jump_phase == HYPERSPACE_LAUNCH ? ST_SPACE_JUMP_PARALLAX_RUSH : 1
-	var/background = parallax_background()
 	var/motion_changed = direction != parallax_direction || rush != parallax_rush
-	if(!motion_changed && background == space_background)
+	if(!motion_changed && background == space_background && planet == space_planet)
 		return
 	space_background = background
+	space_planet = planet
 	parallax_direction = direction
 	parallax_rush = rush
 	for(var/area/ship_area as anything in vessel.shuttle_areas)
-		ship_area.set_space_parallax_background(background)
+		ship_area.set_space_parallax_background(background, planet)
 		if(motion_changed)
 			ship_area.parallax_rush = rush
 			// Viewers restart their loop only on a direction change, so a new speed in the same direction passes through a stop.
 			if(ship_area.parallax_movedir == direction)
 				ship_area.set_parallax_movedir(NONE)
 			ship_area.set_parallax_movedir(direction)
-	exterior?.set_space_parallax_background(background)
+	exterior?.set_space_parallax_background(background, planet)
 	exterior?.set_parallax_movedir(NONE)

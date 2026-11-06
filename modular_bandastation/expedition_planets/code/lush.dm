@@ -5,6 +5,7 @@
 /datum/stationtrauma_overmap_site/space/planet/lush
 	name = "Зелёная экзопланета"
 	generator_type = /datum/map_generator/expedition_barren/lush
+	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/lush
 	biome = "Джунгли, травянистые равнины, топкие низины и озёра"
 	atmosphere = "Кислород и азот, 101 кПа"
 	surface_temperature = T20C

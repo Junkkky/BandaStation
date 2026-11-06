@@ -80,6 +80,7 @@
 	name = "большой тритиевый двигатель"
 	desc = "Тяжёлое сопло двигательной установки с подачей горячего газа."
 	requires_combustion = TRUE
+	circuit = /obj/item/circuitboard/machine/engine/propulsion/tritium/large
 	// Four small nozzles' footprint.
 	engine_power = 8
 	exhaust_gradient = list("#FFFFFF", "#FCE6B6", "#FD481C")
@@ -133,6 +134,21 @@
 /obj/item/circuitboard/machine/engine/propulsion/tritium
 	name = "тритиевый двигатель"
 	build_path = /obj/machinery/power/shuttle_engine/propulsion/tritium
+
+/** The native large nozzle has no board; this one makes a wrecked heavy nozzle replaceable. */
+/obj/item/circuitboard/machine/engine/propulsion/tritium/large
+	name = "большой тритиевый двигатель"
+	build_path = /obj/machinery/power/shuttle_engine/large/tritium
+
+/datum/design/board/stationtrauma_large_engine
+	name = "Плата большого тритиевого двигателя"
+	desc = "Плата тяжёлого сопла корабля с подачей горячего газа."
+	build_path = /obj/item/circuitboard/machine/engine/propulsion/tritium/large
+	build_type = IMPRINTER
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
 
 /** One native pipe inlet, directed toward a separately installed physical nozzle. */
 /obj/machinery/atmospherics/components/unary/ship_engine_heater

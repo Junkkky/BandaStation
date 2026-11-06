@@ -5,8 +5,39 @@
 	icon_screen = "shuttle"
 	icon_keyboard = "tech_key"
 	use_power = NO_POWER_USE
+	circuit = /obj/item/circuitboard/computer/stationtrauma_space_navigation
 	/// Physical hull controlled by this navigation instance or console.
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
+
+/** Circuit board kept when the helm console is dismantled or wrecked. */
+/obj/item/circuitboard/computer/stationtrauma_space_navigation
+	name = "навигационная консоль"
+	greyscale_colors = CIRCUIT_COLOR_COMMAND
+	build_path = /obj/machinery/computer/stationtrauma_space_navigation
+
+/datum/design/board/shuttle/stationtrauma_space_navigation
+	name = "Плата навигационной консоли"
+	desc = "Плата консоли, управляющей полётом корабля, в котором она установлена."
+	build_path = /obj/item/circuitboard/computer/stationtrauma_space_navigation
+
+/datum/techweb_node/shuttle_engineering/New()
+	. = ..()
+	unlocked_designs += list(
+		/datum/design/board/shuttle/stationtrauma_space_navigation,
+		/datum/design/board/stationtrauma_bluespace_drive,
+		/datum/design/board/stationtrauma_large_engine,
+	)
+
+/obj/machinery/computer/stationtrauma_space_navigation/post_machine_initialize()
+	. = ..()
+	connect_to_shuttle(FALSE, SSshuttle.get_containing_shuttle(src))
+
+/// A console rebuilt aboard takes over the helm of the hull it stands in.
+/obj/machinery/computer/stationtrauma_space_navigation/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	. = ..()
+	var/obj/docking_port/mobile/stationtrauma_space/ship = port
+	if(istype(ship) && ship.is_in_shuttle_bounds(src))
+		vessel = ship
 
 /obj/machinery/computer/stationtrauma_space_navigation/Destroy()
 	vessel = null
@@ -45,7 +76,7 @@
 		"status" = map.status,
 		"sector" = sector?.id, "sector_name" = sector?.name,
 		"jumping" = !!map.jump_target,
-		"star" = list("x" = 0, "y" = 0),
+		"star" = list("x" = 0, "y" = 0, "name" = sector?.star_name, "radius" = sector?.star_radius || 10),
 		"celestial_bodies" = sector?.celestial_bodies,
 		"x" = map.pos_x, "y" = map.pos_y,
 		"vx" = map.velocity_x, "vy" = map.velocity_y, "trajectory" = map.predict_trajectory(),

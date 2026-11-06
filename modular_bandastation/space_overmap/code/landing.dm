@@ -153,6 +153,8 @@
 	for(var/turf/original as anything in crew_spawns)
 		SSjob.latejoin_trackers -= original
 		SSjob.latejoin_trackers |= crew_spawns[original]
+	// The crew sees the new level's background at once, not after the seam teardown that may still yield.
+	update_parallax()
 	return TRUE
 
 /** Lock the helm and publish the manoeuvre timer for the pilot plot. */
@@ -202,7 +204,9 @@
  * Planetary descents last longer, and crew aboard feel atmospheric entry through their middle; the shake is purely visual.
  */
 /datum/stationtrauma_overmap/space/proc/approach(datum/stationtrauma_overmap_site/space/site, revision)
-	begin_approach(site, site.landing ? ST_SPACE_LANDING_TIME : site.physical_docking ? ST_SPACE_MOORING_TIME : ST_SPACE_APPROACH_TIME)
+	// A rescue at a distress beacon stops alongside at once; a non-zero length keeps the console's approach clock finite.
+	var/duration = length(site.distress_callsigns()) ? 1 SECONDS : site.landing ? ST_SPACE_LANDING_TIME : site.physical_docking ? ST_SPACE_MOORING_TIME : ST_SPACE_APPROACH_TIME
+	begin_approach(site, duration)
 	status = site.landing ? "Посадка: [site.name]" : "Сближение: [site_label(site)]"
 	if(site.awaits_map() && !site.loading_map)
 		INVOKE_ASYNC(site, TYPE_PROC_REF(/datum/stationtrauma_overmap_site/space, load_map))

@@ -82,7 +82,8 @@
 	next_detection = world.time + 1 SECONDS
 	for(var/id in sites)
 		var/datum/stationtrauma_overmap_site/space/site = sites[id]
-		if(!site.needs_scan && !knows_site(site) && distance_to(site) <= sensor_range)
+		// A distress beacon is picked up within sensor range without a scan.
+		if((!site.needs_scan || length(site.distress_callsigns())) && !knows_site(site) && distance_to(site) <= sensor_range)
 			discover_site(site)
 			navigation_notice("Обнаружен контакт — [site_label(site)].")
 

@@ -77,6 +77,8 @@
 		deltimer(parallax_animate_timers[key])
 	parallax_animate_timers = list()
 	for(var/atom/movable/screen/parallax_layer/layer as anything in parallax_layers)
+		if(layer.absolute)
+			continue
 		var/scaled_time = PARALLAX_LOOP_TIME / layer.speed
 		if(new_parallax_movedir == NONE) // If we're stopping, we need to stop on the same dime, yeah?
 			scaled_time = PARALLAX_LOOP_TIME
@@ -101,6 +103,8 @@
 
 /atom/movable/screen/parallax_home/proc/update_parallax_motionblur(atom/movable/screen/parallax_layer/layer, new_parallax_movedir, matrix/new_transform)
 	parallax_animate_timers -= layer
+	if(layer.absolute)
+		return
 	// If we are moving in a direction, we used the QUAD_EASING function with EASE_IN
 	// This means our position function is x^2. This is always LESS then the linear we're using here
 	// But if we just used the same time delay, our rate of change would mismatch. f'(1) = 2x for quad easing, rather then the 1 we get for linear

@@ -105,14 +105,19 @@ function Navigation({ data }: { data: NavigationData }) {
                 <Button
                   key={site.id}
                   fluid
-                  tooltip={site.kind === 'signal' ? site.type : site.name}
+                  color={site.sos ? 'red' : undefined}
+                  tooltip={
+                    site.kind === 'signal' && !site.sos ? site.type : site.name
+                  }
                   selected={
                     focusedContact === null && site.id === data.selected
                   }
                   disabled={site.failed || data.preparing || data.relocating}
                   onClick={() => selectSite(site.id)}
                 >
-                  <span>{site.kind === 'signal' ? site.type : site.name}</span>
+                  <span>
+                    {site.kind === 'signal' && !site.sos ? site.type : site.name}
+                  </span>
                   <span>{distance(site.distance)}</span>
                 </Button>
               ))}

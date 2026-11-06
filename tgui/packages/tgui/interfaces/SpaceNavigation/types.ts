@@ -8,6 +8,8 @@ export type Site = Position & {
   type: string;
   distance: number;
   failed: BooleanLike;
+  /** A distress beacon transmits there. */
+  sos?: BooleanLike;
 };
 export type Contact = Position & {
   id: number;
@@ -56,7 +58,7 @@ export type NavigationData = Position & {
   sector: string;
   sector_name: string;
   jumping: BooleanLike;
-  star: Position;
+  star: Position & { name: string | null; radius: number };
   celestial_bodies: CelestialBody[];
   vx: number;
   vy: number;

@@ -5,6 +5,7 @@
 /datum/stationtrauma_overmap_site/space/planet/frozen
 	name = "Ледяная экзопланета"
 	generator_type = /datum/map_generator/expedition_barren/frozen
+	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/frozen
 	biome = "Снежные равнины, хвойные леса, ледяные озёра и пещеры"
 	atmosphere = "Кислород и азот, 62 кПа"
 	surface_temperature = 180

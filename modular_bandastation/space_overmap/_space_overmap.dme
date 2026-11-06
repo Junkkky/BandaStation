@@ -23,3 +23,4 @@
 #include "code/admin.dm"
 #include "code/startup.dm"
 #include "code/parallax.dm"
+#include "code/exterior_drift.dm"
