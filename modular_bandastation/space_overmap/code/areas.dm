@@ -27,3 +27,29 @@
 /area/stationtrauma_space_site/cargo
 	name = "Дрейфующая грузовая платформа"
 	default_gravity = ZERO_GRAVITY
+
+/** Powered interiors of the Epsilon Eridani trade outposts. */
+/area/stationtrauma_trade_outpost
+	name = "Торговый аванпост"
+	default_gravity = STANDARD_GRAVITY
+
+/area/stationtrauma_trade_outpost/industrial
+	name = "Промышленный торговый узел"
+
+/area/stationtrauma_trade_outpost/medical
+	name = "Медицинский торговый узел"
+
+/area/stationtrauma_trade_outpost/agricultural
+	name = "Аграрный торговый узел"
+
+/area/stationtrauma_trade_outpost/research
+	name = "Научный торговый узел"
+
+/area/stationtrauma_trade_outpost/security
+	name = "Охранный торговый узел"
+
+/area/stationtrauma_trade_outpost/service
+	name = "Сервисный торговый узел"
+
+/area/stationtrauma_trade_outpost/corporate
+	name = "Корпоративный торговый узел"

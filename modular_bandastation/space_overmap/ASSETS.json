@@ -23,6 +23,14 @@
 			"byte_identical": false
 		},
 		{
+			"path": "modular_bandastation/space_overmap/icons/trade_terminal.dmi",
+			"sha256": "89120251164d607b8247d95b1834e2fd489f41e622380f1a62a3c4aa5370887a",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["User-provided art direction and pixel edits; OpenAI image generation"],
+			"source": null,
+			"changes": "Generated from the supplied kiosk reference with TG/BandaStation machine sprites as style references, then retouched by the contributor. 32x48 pixel casing, separate powered and broken screen overlays, and an editor preview. Reference image not included."
+		},
+		{
 			"path": "modular_bandastation/space_overmap/icons/fusion_core.dmi",
 			"sha256": "1a97d2be6a2f00e9a60dc7615dbe51b49bec893a050862e7992c64f23aaec5c4",
 			"license": "CC-BY-SA-3.0",
@@ -59,7 +67,7 @@
 				"sha256": "884340c242ae79ac1147268b8611f4d13b8d712de38c9b271297d5ecbf5edc4f",
 				"license_policy_url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/README.md"
 			},
-			"changes": "Native auto-generated map preview sheet; includes the Cyberiad Overmap profile preview. Existing native thumbnails retained.",
+			"changes": "Native auto-generated map preview sheet; includes the Cyberiad Overmap profile. The trade terminal uses a preview in its own 32x48 DMI.",
 			"byte_identical": false
 		},
 		{
@@ -1309,6 +1317,72 @@
 			},
 			"changes": "Adapted greeble layout; natural ground and rock became generator placeholders, incompatible entities replaced with local types.",
 			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/debug/trade_hubs.dmm",
+			"sha256": "0a376c95b6ca1ae24dcce790455c377fbfea3047bfa770a0d4482006ddfa3715",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"BandaStation contributors; existing TG and BandaStation assets"
+			],
+			"source": null,
+			"changes": "Original standalone trade-hub test hall layout using existing repository assets."
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/trade_outpost_industrial.dmm",
+			"sha256": "e775fa934f33aec6237801a5a40a5cc173baacca7631cb3f14c1242b2b92df33",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
+			"source": null,
+			"changes": "Original trade outpost layout using existing repository assets."
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/trade_outpost_medical.dmm",
+			"sha256": "cfddbebc9ac2c90f1e80af70b3da0e75104b0a688fb0121049cb20794bbd15d5",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
+			"source": null,
+			"changes": "Original trade outpost layout using existing repository assets."
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/trade_outpost_agricultural.dmm",
+			"sha256": "d4f143e12cac5d52ec325844c111db21326e0a1160cbb8fd47463638aecfaaed",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
+			"source": null,
+			"changes": "Original trade outpost layout using existing repository assets."
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/trade_outpost_research.dmm",
+			"sha256": "7a82bec119deb71895557686a65acf10d20ff70a307e4702cbd19e32940d0552",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
+			"source": null,
+			"changes": "Original trade outpost layout using existing repository assets."
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/trade_outpost_security.dmm",
+			"sha256": "841c0b885554f2e30f3922256579df63cfa40f42bd6125c6ff7fc0094eb358f7",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
+			"source": null,
+			"changes": "Original trade outpost layout using existing repository assets."
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/trade_outpost_service.dmm",
+			"sha256": "859100e0098837f3349dbe05cd74c19e31b47dcef4680dd2e77de28fddff25e2",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
+			"source": null,
+			"changes": "Original trade outpost layout using existing repository assets."
+		},
+		{
+			"path": "modular_bandastation/space_overmap/maps/trade_outpost_corporate.dmm",
+			"sha256": "842193051d1ee81a091349e4d578e6ae60cbf13f0401c1d43b4d952473f7d210",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors; existing TG and BandaStation assets"],
+			"source": null,
+			"changes": "Original trade outpost layout using existing repository assets."
 		}
 	]
 }

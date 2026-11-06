@@ -183,18 +183,45 @@
 	if(ready || length(sites))
 		return ready
 	if(istype(src, /datum/stationtrauma_overmap_sector/space/home))
+		if(!(locate(/obj/docking_port/stationary/stationtrauma_space_station) in SSshuttle.stationary_docking_ports))
+			return FALSE
+		var/static/list/trade_maps = list(
+			"Промышленный узел" = 'modular_bandastation/space_overmap/maps/trade_outpost_industrial.dmm',
+			"Медицинский узел" = 'modular_bandastation/space_overmap/maps/trade_outpost_medical.dmm',
+			"Аграрный узел" = 'modular_bandastation/space_overmap/maps/trade_outpost_agricultural.dmm',
+			"Научный узел" = 'modular_bandastation/space_overmap/maps/trade_outpost_research.dmm',
+			"Охранный узел" = 'modular_bandastation/space_overmap/maps/trade_outpost_security.dmm',
+			"Сервисный узел" = 'modular_bandastation/space_overmap/maps/trade_outpost_service.dmm',
+			"Корпоративный узел" = 'modular_bandastation/space_overmap/maps/trade_outpost_corporate.dmm',
+		)
+		var/list/trade_levels = list()
+		for(var/outpost_name in trade_maps)
+			var/datum/map_template/stationtrauma_space/outpost = new(trade_maps[outpost_name], outpost_name)
+			var/datum/space_level/trade_level = outpost.load_new_z()
+			qdel(outpost)
+			if(!trade_level)
+				log_mapping("Failed to load Epsilon Eridani trade outpost [outpost_name]")
+				return FALSE
+			trade_levels += trade_level.z_value
+		// The map loader connects the cable nets after machine initialization.
+		for(var/obj/machinery/power/solar_control/controller as anything in SSmachines.get_machines_by_type(/obj/machinery/power/solar_control))
+			if(!(controller.z in trade_levels))
+				continue
+			controller.search_for_connected()
+			controller.set_panels(SSsun.azimuth)
+		taken_positions = list()
 		for(var/obj/docking_port/stationary/stationtrauma_space_station/port in SSshuttle.stationary_docking_ports)
 			var/datum/stationtrauma_overmap_site/space/site = new
 			site.id = port.site_id
 			site.name = port.station_name
-			site.pos_x = 1000
-			site.pos_y = 0
+			site.pos_x = port.overmap_x
+			site.pos_y = port.overmap_y
 			site.physical_docking = TRUE
 			site.berth = port
 			sites[site.id] = site
+			taken_positions += list(list(site.pos_x, site.pos_y))
 		if(!length(sites))
 			return FALSE
-		taken_positions = list(list(1000, 0))
 		for(var/list/body as anything in celestial_bodies)
 			taken_positions += list(list(body["x"], body["y"]))
 		// A few charted wrecks around the station for short runs and for crew lost overboard.
