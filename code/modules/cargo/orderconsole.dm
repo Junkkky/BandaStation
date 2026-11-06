@@ -74,6 +74,11 @@
 	. = ..()
 	circuit.configure_machine(src)
 
+/obj/machinery/computer/cargo/can_interact(mob/user)
+	if(!SSmapping.current_map.cargo_shuttle_enabled())
+		return FALSE
+	return ..()
+
 /obj/machinery/computer/cargo/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)

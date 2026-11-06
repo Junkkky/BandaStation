@@ -319,5 +319,9 @@
 	for (var/file in map_file)
 		. += "_maps/[map_path]/[file]"
 
+/// An explicit null cargo template opts out of standard supply shuttle service.
+/datum/map_config/proc/cargo_shuttle_enabled()
+	return !isnull(shuttles["cargo"])
+
 /datum/map_config/proc/MakeNextMap()
 	return config_filename == PATH_TO_NEXT_MAP_JSON || fcopy(config_filename, PATH_TO_NEXT_MAP_JSON)

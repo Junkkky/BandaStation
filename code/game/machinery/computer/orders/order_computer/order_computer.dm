@@ -165,6 +165,9 @@ GLOBAL_LIST_EMPTY(order_console_products)
 				return
 			if(forced_express)
 				return ui_act(action = "express")
+			if(!SSshuttle.supply)
+				say("Доставка штатным шаттлом недоступна.")
+				return
 			//So miners cant spam buy crates for a very low price
 			if(get_total_cost() < CARGO_CRATE_VALUE)
 				return

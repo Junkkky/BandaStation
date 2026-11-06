@@ -293,6 +293,8 @@
 	if(!anchored)
 		balloon_alert(user, "frame must be anchored!")
 		return FALSE
+	if(!circuit.completion_requirements(src, user))
+		return FALSE
 
 	tool.play_tool_sound(src)
 	var/obj/machinery/new_machine = new circuit.build_path(loc)

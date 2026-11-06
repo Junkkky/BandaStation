@@ -7598,7 +7598,6 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/security/prison/ghetto)
 "bPP" = (
-/obj/machinery/computer/cargo,
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/qm)
@@ -10677,9 +10676,6 @@
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
-	},
-/obj/machinery/computer/cargo{
-	dir = 4
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
@@ -18226,14 +18222,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "ets" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 5;
-	height = 7;
-	name = "Cargo Bay";
-	shuttle_id = "cargo_home";
-	width = 12
-	},
 /turf/open/space/openspace,
 /area/space)
 "etx" = (
@@ -50971,7 +50959,6 @@
 /turf/open/floor/iron/textured_large,
 /area/station/engineering/atmos/project)
 "mpC" = (
-/obj/machinery/computer/cargo/request,
 /obj/effect/turf_decal/tile/brown/half/contrasted,
 /obj/machinery/camera/directional/east{
 	c_tag = "Bridge - East";
@@ -77063,9 +77050,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "sHc" = (
-/obj/machinery/computer/cargo/request{
-	dir = 4
-	},
 /obj/item/radio/intercom/directional/north,
 /obj/structure/sign/departments/cargo/directional/west,
 /turf/open/floor/iron,
@@ -84505,9 +84489,6 @@
 /turf/open/floor/iron/dark/smooth_corner,
 /area/station/engineering/atmos)
 "uBQ" = (
-/obj/machinery/computer/cargo{
-	dir = 1
-	},
 /turf/open/floor/iron,
 /area/station/cargo/office)
 "uBS" = (

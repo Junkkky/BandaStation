@@ -237,6 +237,9 @@
 
 	switch(action)
 		if("buy")
+			if(!SSshuttle.supply)
+				say("Доставка штатным шаттлом недоступна.")
+				return
 			var/material_str = params["material"]
 			var/quantity = text2num(params["quantity"])
 

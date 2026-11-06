@@ -616,6 +616,13 @@
 	build_path = /obj/machinery/computer/cargo
 	var/contraband = FALSE
 
+/// Cargo, request and express boards all require standard supply service on this map.
+/obj/item/circuitboard/computer/cargo/completion_requirements(obj/structure/frame/install_frame, mob/living/user)
+	if(!SSmapping.current_map.cargo_shuttle_enabled())
+		install_frame.balloon_alert(user, "штатное снабжение отключено!")
+		return FALSE
+	return ..()
+
 /obj/item/circuitboard/computer/cargo/multitool_act(mob/living/user)
 	. = ..()
 	if(!(obj_flags & EMAGGED))

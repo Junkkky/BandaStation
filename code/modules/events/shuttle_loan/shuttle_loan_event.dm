@@ -12,6 +12,8 @@
 	var/list/unavailable_situations = list(/datum/shuttle_loan_situation/mail_strike)
 
 /datum/round_event_control/shuttle_loan/can_spawn_event(players_amt, allow_magic = FALSE)
+	if(!SSshuttle.supply)
+		return FALSE
 	. = ..()
 	for(var/datum/round_event/running_event in SSevents.running)
 		if(istype(running_event, /datum/round_event/shuttle_loan)) //Make sure two of these don't happen at once.
