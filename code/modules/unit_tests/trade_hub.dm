@@ -375,7 +375,8 @@
 			missing += "[pack_id]"
 	log_test("Trade hub catalogue: [normal_count] normal, [gated_count] gated, [excluded_count] excluded, [generated_count] generated IDs, [length(missing)] missing.")
 	TEST_ASSERT(normal_count > 0 && generated_count > 0, "The cargo-console oracle contained no normal or generated offers.")
-	var/missing_sample = missing.Copy(1, min(length(missing) + 1, 11)).Join(", ")
+	var/list/sample = missing.Copy(1, min(length(missing) + 1, 11))
+	var/missing_sample = sample.Join(", ")
 	TEST_ASSERT_EQUAL(length(missing), 0, "Supported runtime cargo IDs were not assigned; first ten: [missing_sample]")
 	TEST_ASSERT_EQUAL(length(unexpected), 0, "An unsupported cargo path was imported: [unexpected.Join(", ")]")
 	var/list/corporate_ids = list(

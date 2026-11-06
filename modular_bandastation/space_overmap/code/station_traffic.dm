@@ -1,4 +1,5 @@
 #define ST_STATION_DOCKING_REQUEST_TIME (2 MINUTES)
+#define ST_STATION_DOCKING_AUTO_RESPONSE_DELAY (3 SECONDS)
 
 /datum/stationtrauma_overmap_sector/space/home
 	/// Pending or approved station docking requests indexed by the registered ship ID.
@@ -66,7 +67,7 @@
 	var/approved = FALSE
 	/// Deadline in deciseconds of world time.
 	var/expires_at
-	/// Stoppable expiry timer, restarted once on approval.
+	/// Stoppable timer for the automatic response or the request's expiry.
 	var/timeout_timer
 
 /datum/stationtrauma_station_docking_request/New(datum/stationtrauma_overmap_sector/space/home/home, datum/stationtrauma_overmap/space/navigation, datum/stationtrauma_overmap_site/space/destination)
@@ -100,7 +101,24 @@
 /datum/stationtrauma_station_docking_request/proc/restart_timeout()
 	deltimer(timeout_timer)
 	expires_at = world.time + ST_STATION_DOCKING_REQUEST_TIME
+	var/obj/docking_port/stationary/stationtrauma_space_station/port = site.berth
+	if(!approved && port.auto_approve_docking)
+		timeout_timer = addtimer(CALLBACK(src, PROC_REF(respond_automatically)), ST_STATION_DOCKING_AUTO_RESPONSE_DELAY, TIMER_STOPPABLE)
+		return
 	timeout_timer = addtimer(CALLBACK(src, PROC_REF(expire)), ST_STATION_DOCKING_REQUEST_TIME, TIMER_STOPPABLE)
+
+/// Recheck the berth when the automatic response is due, without reserving it while the request waits.
+/datum/stationtrauma_station_docking_request/proc/respond_automatically()
+	if(approved)
+		return
+	timeout_timer = null
+	if(!is_current())
+		qdel(src)
+		return
+	if(sector.respond_station_docking(ship_id, token, TRUE))
+		return
+	requester.navigation_notice("Стыковка с «[site.name]» сейчас недоступна. Повторите запрос позже.")
+	qdel(src)
 
 /datum/stationtrauma_station_docking_request/proc/expire()
 	timeout_timer = null
@@ -128,6 +146,7 @@
 		return slot.accepts(vessel)
 	return TRUE
 
+/// Submit a clearance request for the dispatcher or the berth's automatic response.
 /datum/stationtrauma_overmap/space/proc/request_station_docking(site_id)
 	if(!istext(site_id) || site_id != selected_destination)
 		return FALSE
@@ -173,12 +192,18 @@
 	var/required = station_clearance_required(site)
 	var/datum/stationtrauma_station_docking_request/request = get_station_docking_request()
 	var/current = required && !QDELETED(request) && request.site == site && request.is_current()
+	var/seconds_left
+	if(current)
+		var/obj/docking_port/stationary/stationtrauma_space_station/port = site.berth
+		var/remaining = !request.approved && port.auto_approve_docking ? timeleft(request.timeout_timer) : request.expires_at - world.time
+		seconds_left = ceil(max(0, remaining) / (1 SECONDS))
 	return list(
 		"required" = required,
 		"state" = current ? (request.approved ? "approved" : "pending") : "none",
 		"canRequest" = required && !current && can_request_station_docking(site),
 		"canCancel" = current,
-		"expiresIn" = current ? ceil((request.expires_at - world.time) / (1 SECONDS)) : null,
+		"expiresIn" = seconds_left,
 	)
 
+#undef ST_STATION_DOCKING_AUTO_RESPONSE_DELAY
 #undef ST_STATION_DOCKING_REQUEST_TIME

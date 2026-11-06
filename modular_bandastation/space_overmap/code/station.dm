@@ -14,6 +14,12 @@
 	var/site_id
 	/// Crew-facing station destination name.
 	var/station_name
+	/// Position on the sector chart. Native station berths use the station's coordinates by default.
+	var/overmap_x = 1000
+	/// Position on the sector chart along the north-south axis.
+	var/overmap_y = 0
+	/// Unstaffed berths automatically answer clearance requests.
+	var/auto_approve_docking = FALSE
 
 /** A shared bay may have several profiles on one turf. The S-slot marker only describes its envelope. */
 /obj/docking_port/mobile/stationtrauma_space/get_docked()

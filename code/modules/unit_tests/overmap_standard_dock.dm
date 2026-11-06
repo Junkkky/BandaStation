@@ -421,6 +421,79 @@
 	TEST_ASSERT_NULL(home.station_docking_requests[ship.shuttle_id], "Successful docking must consume the clearance")
 	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "Physical occupancy must keep the berth reserved")
 
+/// A public dock answers after a delay and preserves one reservation at a time.
+/datum/unit_test/overmap_standard_dock/automatic_clearance
+	/// Second pilot's mobile port, kept apart from the main fixture's hull.
+	var/obj/docking_port/mobile/stationtrauma_space/unit_test_docking/second_ship
+	/// The second pilot's real sector navigation.
+	var/datum/stationtrauma_overmap/space/second_navigation
+
+/datum/unit_test/overmap_standard_dock/automatic_clearance/Destroy()
+	QDEL_NULL(second_navigation)
+	if(second_ship)
+		qdel(second_ship, force = TRUE)
+		second_ship = null
+	return ..()
+
+/datum/unit_test/overmap_standard_dock/automatic_clearance/Run()
+	var/datum/stationtrauma_overmap_sector/space/home/home = allocate(/datum/stationtrauma_overmap_sector/space/home)
+	navigation.sites -= site.id
+	TEST_ASSERT(home.register(ship.shuttle_id, navigation), "The first pilot must join the station sector")
+	home.sites[site.id] = site
+	bay.auto_approve_docking = TRUE
+
+	var/turf/second_origin = locate(12, 4, ship.z)
+	var/turf/second_corner = locate(13, 6, ship.z)
+	var/area/shuttle/stationtrauma_space/second_area = new /area/shuttle/stationtrauma_space/unit_test_docking
+	allocated += second_area
+	prepare_vacuum(second_origin, second_corner, navigation.exterior)
+	for(var/turf/tile as anything in block(second_origin, second_corner))
+		tile = tile.ChangeTurf(/turf/open/floor/plating)
+		tile.change_area(get_area(tile), second_area)
+	second_ship = allocate(/obj/docking_port/mobile/stationtrauma_space/unit_test_docking, second_origin, list(second_area))
+	second_ship.ship_class = fixture_ship_class
+	second_ship.register()
+	second_navigation = allocate(/datum/stationtrauma_overmap/space, second_ship)
+	second_ship.overmap = second_navigation
+	second_navigation.preparing = FALSE
+	STOP_PROCESSING(SSfastprocess, second_navigation)
+	TEST_ASSERT(home.register(second_ship.shuttle_id, second_navigation), "The second pilot must join the same sector")
+
+	var/obj/machinery/computer/stationtrauma_space_navigation/helm = allocate(/obj/machinery/computer/stationtrauma_space_navigation, get_turf(ship))
+	helm.vessel = ship
+	var/obj/machinery/computer/stationtrauma_space_navigation/second_helm = allocate(/obj/machinery/computer/stationtrauma_space_navigation, second_origin)
+	second_helm.vessel = second_ship
+	TEST_ASSERT(navigation.select_site(site.id) && second_navigation.select_site(site.id), "Both pilots must be able to select the same dock")
+
+	TEST_ASSERT(helm.navigation_command("request_station_dock", site.id), "A free public dock must accept the first request")
+	TEST_ASSERT(!navigation.has_station_clearance(site), "A public dock must wait before granting clearance")
+	TEST_ASSERT(helm.navigation_command("cancel_station_dock", site.id), "The first pilot must be able to cancel during the delay")
+	TEST_ASSERT(second_helm.navigation_command("request_station_dock", site.id), "The second pilot must be able to request a free dock")
+	var/deadline = world.time + 8 SECONDS
+	UNTIL(second_navigation.has_station_clearance(site) || world.time >= deadline)
+	TEST_ASSERT(second_navigation.has_station_clearance(site), "The automatic response must reserve the dock for the second pilot")
+	TEST_ASSERT_NULL(navigation.get_station_docking_request(), "A cancelled request must not be restored by its timer")
+
+	TEST_ASSERT(helm.navigation_command("request_station_dock", site.id), "A request can be submitted while another pilot holds clearance")
+	deadline = world.time + 8 SECONDS
+	UNTIL(!navigation.get_station_docking_request() || world.time >= deadline)
+	TEST_ASSERT_NULL(navigation.get_station_docking_request(), "The automatic response must refuse a reserved dock")
+	TEST_ASSERT(second_navigation.has_station_clearance(site), "A competing request must not revoke the existing clearance")
+	TEST_ASSERT(second_helm.navigation_command("cancel_station_dock", site.id), "The second pilot must be able to release the clearance")
+
+	TEST_ASSERT(helm.navigation_command("request_station_dock", site.id), "The first pilot must be able to retry after a refusal")
+	var/requested_at = world.time
+	deadline = requested_at + 8 SECONDS
+	UNTIL(navigation.has_station_clearance(site) || world.time >= deadline)
+	TEST_ASSERT(navigation.has_station_clearance(site), "The retry must grant clearance without a dispatcher")
+	TEST_ASSERT(world.time >= requested_at + 3 SECONDS, "The automatic response must wait at least three seconds")
+	TEST_ASSERT(navigation.dock(instant = TRUE), "Automatic clearance must permit the real docking maneuver")
+	TEST_ASSERT(second_helm.navigation_command("request_station_dock", site.id), "A request can be submitted to an occupied dock")
+	deadline = world.time + 8 SECONDS
+	UNTIL(!second_navigation.get_station_docking_request() || world.time >= deadline)
+	TEST_ASSERT_NULL(second_navigation.get_station_docking_request(), "A moored hull must block automatic clearance")
+	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "A refused request must leave the moored hull in control")
+
 /// A newly built controller must publish a real slot without claiming another controller's envelope.
 /datum/unit_test/overmap_standard_dock/runtime_controller
 	/// The two independently placed controllers claim adjacent, overlapping positions.

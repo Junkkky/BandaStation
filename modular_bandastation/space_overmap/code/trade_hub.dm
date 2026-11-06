@@ -390,8 +390,11 @@
 /obj/machinery/computer/trade_hub
 	name = "терминал грузов торгового узла"
 	desc = "Покупка местных запасов и сдача товаров по заявкам узла. Расчёты через бюджет карго."
-	icon_screen = "supply"
-	icon_keyboard = "tech_key"
+	icon = 'modular_bandastation/space_overmap/icons/trade_terminal.dmi'
+	icon_state = MAP_SWITCH("terminal", "terminal_map")
+	icon_screen = "terminal_screen"
+	icon_keyboard = null
+	generate_map_preview = FALSE
 	req_access = list(ACCESS_CARGO)
 	/// Same-level core key.
 	var/hub_id
@@ -420,6 +423,7 @@
 	return core
 
 /obj/machinery/computer/trade_hub/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "TradeHub", name)

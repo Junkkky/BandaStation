@@ -18,6 +18,7 @@ import { createSearch } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+import '../styles/themes/trade-hub.scss';
 
 type Data = {
   name: string;
@@ -69,7 +70,7 @@ export function TradeHub() {
   } = data;
 
   return (
-    <Window title="Торговый узел" width={820} height={660}>
+    <Window title="Торговый узел" width={820} height={660} theme="trade-hub">
       <Window.Content scrollable>
         <Section
           title={name}
@@ -321,7 +322,6 @@ function TradeHubRequests() {
                   <ProgressBar
                     value={request.delivered}
                     maxValue={Math.max(request.required, 1)}
-                    color={pending ? 'good' : 'blue'}
                   >
                     {request.delivered}/{request.required}
                   </ProgressBar>

@@ -488,7 +488,7 @@
 	if(!ready)
 		if(revision == control_revision && !site.failed)
 			if(clearance_lost)
-				status = "Стыковка отменена: нет действующего разрешения ЦУП"
+				status = "Стыковка отменена: нет действующего разрешения"
 			else
 				status = site.landing ? "Посадка прервана" : slot ? "Стыковка [slot.dock_class] отменена: нет свободного пути для трапа" : "Стыковка не выполнена: переход перекрыт"
 		return FALSE

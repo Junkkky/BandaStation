@@ -1,0 +1,26 @@
+.theme-trade-hub:root {
+  --trade-hub-phosphor: #b9da62;
+  --color-base: #17271b;
+  --color-primary: #476536;
+  --color-secondary: #33472e;
+  --color-text: #e5efd8;
+  --color-label: #b2c4a5;
+  --color-good: var(--trade-hub-phosphor);
+  --color-bad: #ff8d82;
+  --base-gradient-spread: 0;
+  --candystripe-odd: rgb(185 218 98 / 6%);
+
+  --titlebar-background: #101b13;
+  --titlebar-text: var(--trade-hub-phosphor);
+  --section-title-color: var(--trade-hub-phosphor);
+  --progress-bar-fill: #55763d;
+  --progress-bar-background: #101b13;
+
+  .Layout__content {
+    background-image: none;
+  }
+
+  .NoticeBox--type--info {
+    --noticebox-background: var(--color-primary);
+  }
+}

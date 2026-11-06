@@ -56,18 +56,18 @@ function Navigation({ data }: { data: NavigationData }) {
     dockDisabled = !contact || !data.dockable_contacts.includes(contact.id);
     dockTooltip = `Запрос стыковки К${focusedContact}`;
   } else if (stationDocking?.state === 'approved') {
-    dockTooltip = 'Начать стыковку по разрешению диспетчера';
+    dockTooltip = 'Начать стыковку';
   } else if (stationDocking) {
     const pending = stationDocking.state === 'pending';
     dockAction = 'request_station_dock';
     dockDisabled = pending || !stationDocking.canRequest;
     dockTooltip = pending
-      ? 'Запрос передан диспетчеру'
-      : 'Запросить разрешение у диспетчера';
+      ? 'Запрос передан'
+      : 'Запросить разрешение на стыковку';
   }
   const clearanceStatus =
     stationDocking && stationDocking.state !== 'none'
-      ? `${stationDocking.state === 'approved' ? 'Стыковка разрешена' : 'Запрос передан диспетчеру'}${stationDocking.expiresIn !== null ? ` (${Math.ceil(stationDocking.expiresIn)} с)` : ''}`
+      ? `${stationDocking.state === 'approved' ? 'Стыковка разрешена' : 'Запрос передан'}${stationDocking.expiresIn !== null ? ` (${Math.ceil(stationDocking.expiresIn)} с)` : ''}`
       : null;
   const distance = (value: number) => distanceLabel(value, data.au_scale);
   const reverse =
@@ -594,12 +594,12 @@ function Navigation({ data }: { data: NavigationData }) {
                 aria-label={
                   data.docking_request
                     ? 'Отклонить запрос стыковки'
-                    : 'Отменить запрос диспетчеру'
+                    : 'Отменить запрос на стыковку'
                 }
                 tooltip={
                   data.docking_request
                     ? 'Отклонить запрос стыковки'
-                    : 'Отменить запрос или разрешение диспетчера'
+                    : 'Отменить запрос или разрешение на стыковку'
                 }
                 disabled={!data.docking_request && !stationDocking?.canCancel}
                 onClick={() =>
