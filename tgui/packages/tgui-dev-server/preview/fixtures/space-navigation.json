@@ -1,0 +1,404 @@
+{
+  "config": {
+    "interface": {
+      "name": "SpaceNavigation"
+    },
+    "title": "Raven — навигационная консоль",
+    "window": {
+      "size": [
+        1280,
+        800
+      ]
+    }
+  },
+  "data": {
+    "au_scale": 1E-05,
+    "status": "Ручное управление. Двигатели в норме.",
+    "sector": "preview-sector",
+    "sector_name": "Система Кибериады",
+    "jumping": false,
+    "star": {
+      "x": 0,
+      "y": 0,
+      "name": "Звезда системы",
+      "radius": 14
+    },
+    "celestial_bodies": [
+      {
+        "name": "Ледяная планета",
+        "x": 1300,
+        "y": 1100,
+        "radius": 7,
+        "kind": "frozen",
+        "orbit_x": 0,
+        "orbit_y": 0
+      },
+      {
+        "name": "Вулканическая планета",
+        "x": -700,
+        "y": -350,
+        "radius": 9,
+        "kind": "lava",
+        "orbit_x": 0,
+        "orbit_y": 0
+      }
+    ],
+    "x": 900,
+    "y": 400,
+    "vx": 1.5,
+    "vy": 2,
+    "trajectory": [
+      {
+        "x": 932,
+        "y": 443,
+        "seconds": 20
+      },
+      {
+        "x": 969,
+        "y": 492,
+        "seconds": 40
+      },
+      {
+        "x": 1010,
+        "y": 547,
+        "seconds": 60
+      }
+    ],
+    "course": 37,
+    "ordered_course": 37,
+    "speed": 2.5,
+    "speed_scale": 8,
+    "throttle": 35,
+    "maneuver_direction": 0,
+    "braking": false,
+    "braking_distance": 90,
+    "emergency_braking": false,
+    "ship_power": true,
+    "engines": 100,
+    "engines_running": true,
+    "core_overdrive": false,
+    "afterburner": false,
+    "can_afterburner": true,
+    "core_heat": 12,
+    "fuel": [
+      {
+        "name": "Тритий",
+        "amount": 4200,
+        "capacity": 6000
+      }
+    ],
+    "engine_fault": false,
+    "can_start_engines": true,
+    "helm": true,
+    "autopilot": false,
+    "preparing": false,
+    "planning": false,
+    "relocating": false,
+    "landed": false,
+    "selected": "preview-frozen",
+    "docked": null,
+    "coupled": false,
+    "docking_request": null,
+    "can_request_ship_dock": true,
+    "dockable_contacts": [],
+    "landing": true,
+    "distance": 806.23,
+    "eta": 320,
+    "scan_ready": true,
+    "scan_age": 14,
+    "interference": 0,
+    "sensor_range": 1400,
+    "can_dock": false,
+    "routes": [
+      {
+        "id": "preview-station",
+        "name": "Кибериада",
+        "kind": "station",
+        "type": "Космическая станция",
+        "x": 250,
+        "y": 100,
+        "distance": 715.89,
+        "failed": false
+      },
+      {
+        "id": "preview-frozen",
+        "name": "Ледяная планета",
+        "kind": "planet",
+        "type": "Планета",
+        "x": 1300,
+        "y": 1100,
+        "distance": 806.23,
+        "failed": false
+      },
+      {
+        "id": "preview-lava",
+        "name": "Вулканическая планета",
+        "kind": "planet",
+        "type": "Планета",
+        "x": -700,
+        "y": -350,
+        "distance": 1767.06,
+        "failed": false
+      },
+      {
+        "id": "preview-cargo",
+        "name": "Дрейфующий грузовой корабль",
+        "kind": "signal",
+        "type": "Сигнал бедствия",
+        "x": 1700,
+        "y": 100,
+        "distance": 854.4,
+        "failed": false,
+        "sos": true
+      },
+      {
+        "id": "preview-ruin",
+        "name": "Заброшенный ретранслятор",
+        "kind": "signal",
+        "type": "Неопознанный сигнал",
+        "x": 650,
+        "y": 1350,
+        "distance": 982.34,
+        "failed": false
+      }
+    ],
+    "path": [],
+    "zones": [
+      {
+        "name": "Туманность",
+        "kind": "nebula",
+        "x": 1850,
+        "y": 1300,
+        "radius": 280,
+        "direction": 0
+      },
+      {
+        "name": "Метеоритный поток",
+        "kind": "meteors",
+        "x": 150,
+        "y": -200,
+        "radius": 180,
+        "direction": 60
+      },
+      {
+        "name": "Корона звезды",
+        "kind": "corona",
+        "x": 0,
+        "y": 0,
+        "radius": 280,
+        "direction": 0
+      },
+      {
+        "name": "Астероидный пояс / обломки",
+        "kind": "asteroids",
+        "x": 1750,
+        "y": -320,
+        "radius": 360,
+        "direction": 0
+      }
+    ],
+    "terrain": [
+      {
+        "x": 1450,
+        "y": 500,
+        "end_x": 1500,
+        "end_y": 530
+      },
+      {
+        "x": 1570,
+        "y": 600,
+        "end_x": 1600,
+        "end_y": 650
+      },
+      {
+        "x": 1640,
+        "y": 450,
+        "end_x": 1690,
+        "end_y": 475
+      }
+    ],
+    "ship_contacts": [
+      {
+        "id": 1,
+        "x": 1100,
+        "y": 850,
+        "age": 5,
+        "mode": "active",
+        "vx": -0.5,
+        "vy": 0.3,
+        "identity": {
+          "callsign": "Courier",
+          "faction": "Nanotrasen"
+        }
+      },
+      {
+        "id": 2,
+        "x": 1500,
+        "y": -100,
+        "age": 22,
+        "mode": "passive"
+      }
+    ],
+    "planet": {
+      "biome": "Ледяная планета",
+      "atmosphere": "Азотная атмосфера",
+      "temperature": 225,
+      "breathable": false,
+      "modifiers": [
+        "Богатые залежи руды"
+      ]
+    },
+    "approach": null,
+    "compartments": [
+      {
+        "name": "левый носовой шлюз",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "левый кормовой шлюз",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "изолятор",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "центральный коридор",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "жизнеобеспечение",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "топливный отсек",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "кладовая",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "двигатели",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "мостик",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "энергоузел",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "реакторный отсек",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "медотсек",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "пост двигателя",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "машинный отсек",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "правый кормовой шлюз",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      },
+      {
+        "name": "правый носовой шлюз",
+        "pressure": 101.3,
+        "low_pressure": false,
+        "fire": false,
+        "breaches": 0
+      }
+    ],
+    "hull": [
+      "      iiiiiiiii      ",
+      "     iiiiiiiiiii     ",
+      "     iiiiiiiiiii     ",
+      "     iiiiiiiiiii     ",
+      "     #iiiiiiiii#     ",
+      "   #####iiiii#####   ",
+      "  ##ccc##i#i##lll##  ",
+      "  #ccccc#ddd#lllll#  ",
+      " ##ccccccdddllllll## ",
+      " ccccccc#d#d#lllllll ",
+      " ##cccc##ddd##llll## ",
+      "####ccc#ddddd#lll####",
+      "#aa#ddddddddddddd#pp#",
+      "aaa#ddddddddddddd#ppp",
+      "#aadddddddddddddddpp#",
+      "aaa#ddddddddddddd#ppp",
+      "#a##ddddddddddddd##p#",
+      "###dddd##jjj##dddd###",
+      " dddddd#jjjjj#dddddd ",
+      "###dddd#jjjjj#dddd###",
+      "#b##ddd#jjjjj#ddd##o#",
+      "bbb#ddd#jjjjj#ddd#ooo",
+      "#bbbggg##jjj##mmmmoo#",
+      "bbb#gggkkkkkkkmmm#ooo",
+      "#bb#ggg#kkkkk#mmm#oo#",
+      "#####g##kkkkk##m#####",
+      " ##eeee#kkkkk#nnnn## ",
+      " eeeeeekkkkkkknnnnnn ",
+      " ##eeee#######nnnn## ",
+      "  ###hhhh###hhhh###  ",
+      "   #hhhhhh#hhhhhh#   ",
+      "    hh  hh hh  hh    "
+    ],
+    "vessel_name": "Raven"
+  },
+  "static_data": {},
+  "shared": {}
+}

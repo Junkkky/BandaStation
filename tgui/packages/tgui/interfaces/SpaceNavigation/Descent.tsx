@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-
+import { PlanetGlyph, ShipGlyph } from './DisplayArt';
 import type { NavigationData } from './types';
 
 type Props = {
@@ -113,14 +113,12 @@ export function Descent({ approach }: Props) {
           strokeOpacity={0.25}
           strokeWidth={6}
         />
-        <circle
-          cx={PLANET.x}
-          cy={PLANET.y}
-          r={PLANET.radius}
-          fill={colour}
-          fillOpacity={0.55}
-          stroke={colour}
-        />
+        <g transform={`translate(${PLANET.x} ${PLANET.y})`}>
+          <PlanetGlyph
+            radius={PLANET.radius}
+            kind={approach.biome || 'barren'}
+          />
+        </g>
         <path
           ref={path}
           d={APPROACH}
@@ -139,7 +137,9 @@ export function Descent({ approach }: Props) {
               fillOpacity={0.15 + heat * 0.35}
             />
           )}
-          <path d="M8 0L-6 -5L-3 0L-6 5Z" fill="#d6edc0" />
+          <g transform="rotate(90)" style={{ color: '#c4e9d7' }}>
+            <ShipGlyph />
+          </g>
         </g>
       </svg>
       {!!approach.loading && (
