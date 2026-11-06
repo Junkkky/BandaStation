@@ -46,20 +46,27 @@
 		return move_mode
 	return ..()
 
-/obj/docking_port/mobile/stationtrauma_space/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force = FALSE)
+/obj/docking_port/mobile/stationtrauma_space/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force = FALSE, datum/callback/before_takeoff)
 	if(!overmap?.relocating)
 		return DOCKING_BLOCKED
 	var/datum/stationtrauma_overmap_site/space/site = overmap.sites[overmap.selected_destination]
 	// A ship pair's own anchor is the first hull's flush berth; a seam anchor never receives a hull.
 	var/pair_berth = overmap.ship_docking && new_dock == overmap.ship_docking.anchor
-	if(new_dock != overmap.flight_berth && !pair_berth && ((!site?.landing && !site?.physical_docking) || site.berth != new_dock || !permits_docking(site)))
+	var/obj/docking_port/stationary/selected_berth = site?.berth
+	if(istype(selected_berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = selected_berth
+		selected_berth = slot.active_berth
+	if(new_dock != overmap.flight_berth && !pair_berth && ((!site?.landing && !site?.physical_docking) || selected_berth != new_dock || !permits_docking(site)))
 		return DOCKING_BLOCKED
-	return ..(new_dock, movement_direction, FALSE)
+	return ..(new_dock, movement_direction, FALSE, before_takeoff)
 
 /** Reused by native docking before and after its yielding preflight; never trample players or their construction. */
 /obj/docking_port/mobile/stationtrauma_space/check_dock(obj/docking_port/stationary/target, silent = FALSE)
 	if(!..())
 		return FALSE
+	if(istype(target, /obj/docking_port/stationary/stationtrauma_space_site/standard))
+		var/obj/docking_port/stationary/stationtrauma_space_site/standard/berth = target
+		return berth.route_clear(src)
 	// Native index order pairs each hull tile with its rotated target; bounding-box corners outside the hull never move.
 	var/list/hull_turfs = return_ordered_turfs(x, y, z, dir)
 	var/list/target_turfs = return_ordered_turfs(target.x, target.y, target.z, target.dir)
@@ -120,7 +127,7 @@
 	return FALSE
 
 /** Relocate the hull and its latejoin turfs through native shuttle movement. */
-/datum/stationtrauma_overmap/space/proc/relocate(obj/docking_port/stationary/target)
+/datum/stationtrauma_overmap/space/proc/relocate(obj/docking_port/stationary/target, datum/callback/before_takeoff)
 	// A ship pair moves only between the first hull's own berth and its flush berth beside the peer.
 	if(relocating || (ship_docking && target != flight_berth && target != ship_docking.anchor) || QDELETED(target) || QDELETED(vessel) || !vessel.check_dock(target, TRUE))
 		status = "Манёвр отменён: посадочная площадка занята или перекрыта"
@@ -139,7 +146,7 @@
 			crew_spawns[spawn_tile] = new_turfs[index]
 	var/result
 	try
-		result = vessel.initiate_docking(target)
+		result = vessel.initiate_docking(target, before_takeoff = before_takeoff)
 	catch(var/exception/failure)
 		relocating = FALSE
 		preparing = was_preparing
@@ -202,6 +209,7 @@
  * Planetary descents last longer, and crew aboard feel atmospheric entry through their middle; the shake is purely visual.
  */
 /datum/stationtrauma_overmap/space/proc/approach(datum/stationtrauma_overmap_site/space/site, revision)
+	var/controlled = station_clearance_required(site)
 	begin_approach(site, site.landing ? ST_SPACE_LANDING_TIME : site.physical_docking ? ST_SPACE_MOORING_TIME : ST_SPACE_APPROACH_TIME)
 	status = site.landing ? "Посадка: [site.name]" : "Сближение: [site_label(site)]"
 	if(site.awaits_map() && !site.loading_map)
@@ -209,7 +217,7 @@
 	while(world.time - approach_started < approach_duration || site.loading_map)
 		shake_crew()
 		sleep(1 SECONDS)
-		if(QDELETED(src) || QDELETED(site))
+		if(QDELETED(src) || QDELETED(site) || (controlled && site.docking_owner != src))
 			return FALSE
 	if(site.failed)
 		status = site.landing ? "Посадка отменена: поверхность не картографирована" : "Стыковка отменена: объект не обнаружен"

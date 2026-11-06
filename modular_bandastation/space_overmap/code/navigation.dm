@@ -33,6 +33,8 @@
 	QDEL_NULL(interior_audio)
 	QDEL_NULL(engine_sound)
 	cancel_dispatch()
+	cancel_station_docking()
+	clear_construction_site()
 	cancel_jump()
 	clear_encounters()
 	zones = null
@@ -40,6 +42,9 @@
 	for(var/id in sites)
 		var/datum/stationtrauma_overmap_site/space/site = sites[id]
 		if(site.docking_owner == src)
+			if(istype(site.berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
+				var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
+				slot.clear_berth()
 			site.docking_owner = null
 	QDEL_NULL(connection)
 	if(flight_berth)
@@ -272,8 +277,11 @@
 /datum/stationtrauma_overmap/space/select_site(id)
 	if(relocating)
 		return FALSE
+	var/previous_destination = selected_destination
 	. = ..()
 	if(.)
+		if(id != previous_destination)
+			cancel_station_docking()
 		prepared_site = sites[id]
 
 /** Leave virtual docks in place; planetary departures first return the real hull to its flight berth. */
@@ -305,9 +313,15 @@
 	var/datum/stationtrauma_overmap_site/space/old_dock = docked
 	if(!old_dock || approach_started || !propulsion_available() || arrival_pending || relocating)
 		return FALSE
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot
+	if(istype(old_dock.berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
+		slot = old_dock.berth
 	var/revision = control_revision
 	if(!instant)
-		begin_approach(old_dock, old_dock.landing ? ST_SPACE_TAKEOFF_TIME : ST_SPACE_MOORING_TIME, departing = TRUE)
+		var/duration = old_dock.landing ? ST_SPACE_TAKEOFF_TIME : ST_SPACE_MOORING_TIME
+		if(length(slot?.active_berth?.gangways))
+			duration -= ST_STANDARD_DOCK_RETRACTION_LEAD
+		begin_approach(old_dock, duration, departing = TRUE)
 		status = old_dock.landing ? "Взлёт: [old_dock.name]" : "Расстыковка: [old_dock.name]"
 		while(world.time - approach_started < approach_duration)
 			shake_crew()
@@ -319,9 +333,41 @@
 				stop(old_dock.landing ? "Взлёт прерван" : "Расстыковка прервана")
 				return FALSE
 		end_approach()
-	if((old_dock.landing || old_dock.physical_docking) && !relocate(flight_berth))
+	var/obj/docking_port/stationary/stationtrauma_space_site/standard/standard_berth = slot?.active_berth
+	var/has_gangways = length(standard_berth?.gangways)
+	var/datum/callback/before_takeoff
+	if(has_gangways)
+		if(!vessel.check_dock(flight_berth, TRUE))
+			stop("Расстыковка прервана: орбитальная стоянка перекрыта")
+			return FALSE
+		preparing = TRUE
+		var/ready_to_retract = standard_berth.prepare_retraction(instant)
+		if(QDELETED(src))
+			return FALSE
+		if(!ready_to_retract)
+			preparing = FALSE
+			stop("Расстыковка прервана: шлюзы не закрылись")
+			return FALSE
+		var/ready_to_move = TRUE
+		if(!instant)
+			ready_to_move = departure_gangway_valid(old_dock, slot, standard_berth, revision) && vessel.check_dock(flight_berth, TRUE) && standard_berth.fold_for_departure()
+			if(ready_to_move)
+				sleep(1 SECONDS)
+				if(QDELETED(src))
+					return FALSE
+		preparing = FALSE
+		if(!ready_to_move || !departure_gangway_valid(old_dock, slot, standard_berth, revision))
+			if(!QDELETED(standard_berth))
+				standard_berth.cancel_retraction()
+			stop("Расстыковка прервана")
+			return FALSE
+		before_takeoff = CALLBACK(src, PROC_REF(retract_departure_gangways), old_dock, slot, standard_berth, revision)
+	if((old_dock.landing || old_dock.physical_docking) && !relocate(flight_berth, before_takeoff))
+		if(has_gangways && !QDELETED(standard_berth))
+			standard_berth.cancel_retraction()
 		stop(status)
 		return FALSE
+	slot?.clear_berth()
 	preparing = TRUE
 	connection.disconnect_cooperatively(new /datum/stationtrauma_work_budget)
 	if(QDELETED(src))
@@ -329,6 +375,7 @@
 	if(old_dock.docking_owner == src)
 		old_dock.docking_owner = null
 	docked = null
+	clear_construction_site()
 	preparing = FALSE
 	refresh_engine_audio()
 	update_parallax()
@@ -340,6 +387,16 @@
 		selected_destination = null
 		prepared_site = null
 	return sail()
+
+/** Commit the folded passages once native preflight has accepted the departure. */
+/datum/stationtrauma_overmap/space/proc/retract_departure_gangways(datum/stationtrauma_overmap_site/space/site, obj/docking_port/stationary/stationtrauma_space_station/standard/slot, obj/docking_port/stationary/stationtrauma_space_site/standard/berth, revision)
+	return departure_gangway_valid(site, slot, berth, revision) && berth.finish_retraction()
+
+/** The approach must still own the berth and have propulsion at each commit point. */
+/datum/stationtrauma_overmap/space/proc/departure_gangway_valid(datum/stationtrauma_overmap_site/space/site, obj/docking_port/stationary/stationtrauma_space_station/standard/slot, obj/docking_port/stationary/stationtrauma_space_site/standard/berth, revision)
+	if(QDELETED(site) || docked != site || site.docking_owner != src || site.berth != slot || QDELETED(slot) || slot.active_berth != berth || QDELETED(berth) || !length(berth.gangways))
+		return FALSE
+	return control_revision == revision && !QDELETED(vessel) && vessel.engines_running && engine_fraction() > 0
 
 /** Stop the autopilot at its destination; manual flight remains unrestricted. */
 /datum/stationtrauma_overmap/space/arrive(datum/stationtrauma_overmap_site/site)
@@ -355,6 +412,9 @@
 	if(site.awaits_map())
 		return TRUE
 	if(site.landing || site.physical_docking)
+		if(istype(site.berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
+			var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
+			return slot.accepts(vessel) && (!slot.active_berth || slot.active_berth.ship == vessel)
 		var/compatibility = vessel.canDock(site.berth)
 		return compatibility == SHUTTLE_CAN_DOCK || compatibility == SHUTTLE_ALREADY_DOCKED
 	return TRUE
@@ -363,12 +423,18 @@
  * Build inactive seams cooperatively and revalidate stop/selection before publishing them.
  *
  * Arguments:
- * * instant - Skip the approach at a physical berth: round start and station delivery already account for the arrival
+ * * instant - Skip the approach at a physical berth.
+ * * station_authorized - Trusted round-start placement or station-initiated delivery.
  */
-/datum/stationtrauma_overmap/space/proc/dock(instant = FALSE)
+/datum/stationtrauma_overmap/space/proc/dock(instant = FALSE, station_authorized = FALSE)
 	var/datum/stationtrauma_overmap_site/space/site = sites[selected_destination]
 	if(preparing || docked || helm_engaged || speed > ST_NAV_STOPPED_SPEED || !can_dock(site, control_revision))
 		return FALSE
+	var/controlled = station_clearance_required(site)
+	if(controlled && !station_authorized && !has_station_clearance(site))
+		return FALSE
+	if(!controlled || station_authorized)
+		cancel_station_docking()
 	// Reserve before native movement or seam construction can yield to another ship.
 	site.docking_owner = src
 	clear_encounters()
@@ -378,36 +444,65 @@
 	var/datum/stationtrauma_work_budget/budget = new
 	var/ready = FALSE
 	var/physical_docking = site.landing || site.physical_docking
+	var/obj/docking_port/stationary/target_berth = site.berth
+	var/datum/callback/before_takeoff
+	if(controlled)
+		before_takeoff = CALLBACK(src, PROC_REF(commit_station_arrival), site, revision, station_authorized)
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot
+	var/obj/docking_port/stationary/stationtrauma_space_site/standard/standard_berth
+	if(istype(site.berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
+		slot = site.berth
 	try
-		if(site.physical_docking && instant)
-			ready = relocate(site.berth)
-		else if(approach(site, revision))
-			ready = physical_docking ? relocate(site.berth) : connection.connect(site.berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
+		if(slot)
+			standard_berth = slot.prepare_berth(vessel)
+			target_berth = standard_berth
+		if((!slot || target_berth) && ((site.physical_docking && instant) || approach(site, revision)))
+			if(!slot)
+				target_berth = site.berth
+			ready = physical_docking ? relocate(target_berth, before_takeoff) : connection.connect(target_berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
 	catch(var/exception/failure)
 		stack_trace("Space prototype docking failed: [failure]")
 	if(QDELETED(src))
 		return FALSE
 	end_approach()
 	// Native relocation has committed the hull; an engine stop cannot roll that movement back.
-	ready = ready && (physical_docking ? vessel.get_docked() == site.berth : can_dock(site, revision))
+	ready = ready && (physical_docking ? vessel.get_docked() == target_berth : can_dock(site, revision))
+	var/clearance_lost = controlled && !station_authorized && (QDELETED(site) || site.docking_owner != src)
 	if(!ready)
+		if(controlled)
+			cancel_station_docking()
+		if(standard_berth && slot?.active_berth == standard_berth)
+			slot.clear_berth()
 		connection.disconnect_cooperatively(budget)
 		if(site.docking_owner == src)
 			site.docking_owner = null
 	preparing = FALSE
 	if(!ready)
 		if(revision == control_revision && !site.failed)
-			status = site.landing ? "Посадка прервана" : "Стыковка не выполнена: переход перекрыт"
+			if(clearance_lost)
+				status = "Стыковка отменена: нет действующего разрешения ЦУП"
+			else
+				status = site.landing ? "Посадка прервана" : slot ? "Стыковка [slot.dock_class] отменена: нет свободного пути для трапа" : "Стыковка не выполнена: переход перекрыт"
 		return FALSE
 	docked = site
 	visited_sites[site.id] = TRUE
 	pos_x = site.pos_x
 	pos_y = site.pos_y
 	status = site.landing ? "Посадка: [site.name]" : "Стыковка: [site.name]"
-	play_maneuver_audio(site.berth)
+	if(standard_berth)
+		var/deployed = standard_berth.deploy_gangways()
+		if(deployed < length(standard_berth.routes))
+			status = deployed ? "Корабль пришвартован, часть проходов перекрыта" : "Корабль пришвартован, проходы перекрыты"
+	play_maneuver_audio(target_berth)
 	refresh_engine_audio()
 	update_parallax()
 	return TRUE
+
+/** Transfer clearance to the physical approach only after the native preflight. */
+/datum/stationtrauma_overmap/space/proc/commit_station_arrival(datum/stationtrauma_overmap_site/space/site, revision, station_authorized)
+	if(QDELETED(src) || !station_clearance_required(site) || site.docking_owner != src || !can_dock(site, revision))
+		return FALSE
+	return station_authorized || consume_station_clearance(site)
 
 /datum/stationtrauma_overmap/space/update_parallax()
 	var/direction = speed > ST_NAV_STOPPED_SPEED || approach_started || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE

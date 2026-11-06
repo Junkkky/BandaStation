@@ -1,6 +1,7 @@
 /// This is the main proc. Despite what the name suggests,
 /// it instantly moves our mobile port to stationary port `new_dock`.
-/obj/docking_port/mobile/proc/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force=FALSE)
+/// An optional non-sleeping before_takeoff callback may veto movement after preflight.
+/obj/docking_port/mobile/proc/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force=FALSE, datum/callback/before_takeoff)
 	// Crashing this ship with NO SURVIVORS
 
 	if(new_dock.get_docked() == src)
@@ -78,6 +79,10 @@
 		if(!canMove())
 			remove_ripples()
 			return DOCKING_IMMOBILIZED
+
+	if(before_takeoff && !before_takeoff.Invoke())
+		remove_ripples()
+		return DOCKING_BLOCKED
 
 	// Moving to the new location will trample the ripples there at the exact
 	// same time any mobs there are trampled, to avoid any discrepancy where

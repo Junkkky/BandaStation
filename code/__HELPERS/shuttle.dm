@@ -274,14 +274,15 @@ GLOBAL_LIST_EMPTY(shuttle_frames_by_turf)
 	if(!(move_mode & (MOVE_CONTENTS | MOVE_TURF)))
 		return EXTRA_ROOM_CHECK_SKIP
 
-/proc/shuttle_build_check(turf/origin, list/turfs, list/areas)
+/proc/shuttle_build_check(turf/origin, list/turfs, list/areas, max_turfs)
 	var/z = origin.z
 	var/using_prepassed_turfs = !!length(turfs)
 	if(using_prepassed_turfs && !(turfs[origin]))
 		. |= ORIGIN_NOT_ON_SHUTTLE
 	if(length(SSshuttle.custom_shuttles) >= CONFIG_GET(number/max_shuttle_count))
 		. |= TOO_MANY_SHUTTLES
-	var/max_turfs = CONFIG_GET(number/max_shuttle_size)
+	if(isnull(max_turfs))
+		max_turfs = CONFIG_GET(number/max_shuttle_size)
 	if(!using_prepassed_turfs)
 		var/datum/shuttle_frame/frame = GLOB.shuttle_frames_by_turf[origin]
 		if(!frame)
