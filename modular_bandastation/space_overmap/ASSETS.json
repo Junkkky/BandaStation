@@ -3,6 +3,26 @@
 	"scope": "Non-audio maps, imported icons and generated previews introduced or modified by space-overmap modules. Embedded code and existing referenced assets retain their original notices.",
 	"assets": [
 		{
+			"path": "modular_bandastation/space_overmap/icons/planets.dmi",
+			"sha256": "714840d77b7ad11205f47fba502a44420479d7d47b4e51c7fd52da6232971667",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"TG, BandaStation and Primera contributors (source artwork)",
+				"Junkkky (art direction)",
+				"StationTrauma contributors (native-grid adaptations)"
+			],
+			"source": {
+				"repository": "SpaceStation220/Primera",
+				"commit": "84ad68cbd1f99c5021af540407d1de5389651f6d",
+				"path": "icons/effects/parallax.dmi",
+				"url": "https://github.com/SpaceStation220/Primera/blob/84ad68cbd1f99c5021af540407d1de5389651f6d/icons/effects/parallax.dmi",
+				"sha256": "b5d1720ccab08ef21e48f880ea58663021faa644e417b2e620c3c3b8c44ef9fd",
+				"license_policy_url": "https://github.com/SpaceStation220/Primera/blob/84ad68cbd1f99c5021af540407d1de5389651f6d/README.md#license"
+			},
+			"changes": "Five native 480x480 planet-only layers adapted directly from existing parallax artwork. Frozen retains icemoon exactly; barren, arid and lush adapt its pixel patterns with palette changes, craters and continents. Lava retains the native planet body, removes moon/debris, restores occluded pixels and cleans its five-color palette. No resizing or realistic texture synthesis. Source cosmic DMI remains unchanged.",
+			"byte_identical": false
+		},
+		{
 			"path": "modular_bandastation/space_overmap/icons/fusion_core.dmi",
 			"sha256": "1a97d2be6a2f00e9a60dc7615dbe51b49bec893a050862e7992c64f23aaec5c4",
 			"license": "CC-BY-SA-3.0",

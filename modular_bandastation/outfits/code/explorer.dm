@@ -16,6 +16,7 @@
 
 	box = /obj/item/storage/box/survival/mining
 	belt = /obj/item/modular_computer/pda/crew/explorer
+	backpack_contents = list(/obj/item/stationtrauma_distress_beacon = 1)
 
 /datum/outfit/plasmaman/explorer
 	name = "Explorer Plasmaman"

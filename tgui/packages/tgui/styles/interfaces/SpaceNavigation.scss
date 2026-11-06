@@ -677,8 +677,27 @@
   }
 }
 
+.SpaceNavigation__sos {
+  pointer-events: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: SpaceNavigation__sos 1s ease-out infinite;
+}
+
+@keyframes SpaceNavigation__sos {
+  from {
+    transform: scale(0.8);
+    stroke-opacity: 1;
+  }
+  to {
+    transform: scale(2.4);
+    stroke-opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .SpaceNavigation__hull .breach {
+  .SpaceNavigation__hull .breach,
+  .SpaceNavigation__sos {
     animation: none;
   }
 }

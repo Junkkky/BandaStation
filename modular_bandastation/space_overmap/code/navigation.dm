@@ -5,7 +5,7 @@
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
 	/// Flight-level space area with a stationary parallax background.
 	var/area/space/stationtrauma_space_home/exterior
-	/// Physical seam used for previews and traversal between hull and destination.
+	/// Physical seam used for traversal between hull and destination; its gates show the far side.
 	var/datum/stationtrauma_map_connection/connection
 	/// Currently connected destination; null in free flight.
 	var/datum/stationtrauma_overmap_site/space/docked
@@ -332,12 +332,13 @@
 				end_approach()
 				stop(old_dock.landing ? "Взлёт прерван" : "Расстыковка прервана")
 				return FALSE
-		end_approach()
+	// The manoeuvre lasts until the helm takes over, so the hull keeps moving through gangway retraction, relocation and seam teardown.
 	var/obj/docking_port/stationary/stationtrauma_space_site/standard/standard_berth = slot?.active_berth
 	var/has_gangways = length(standard_berth?.gangways)
 	var/datum/callback/before_takeoff
 	if(has_gangways)
 		if(!vessel.check_dock(flight_berth, TRUE))
+			end_approach()
 			stop("Расстыковка прервана: орбитальная стоянка перекрыта")
 			return FALSE
 		preparing = TRUE
@@ -346,6 +347,7 @@
 			return FALSE
 		if(!ready_to_retract)
 			preparing = FALSE
+			end_approach()
 			stop("Расстыковка прервана: шлюзы не закрылись")
 			return FALSE
 		var/ready_to_move = TRUE
@@ -359,12 +361,14 @@
 		if(!ready_to_move || !departure_gangway_valid(old_dock, slot, standard_berth, revision))
 			if(!QDELETED(standard_berth))
 				standard_berth.cancel_retraction()
+			end_approach()
 			stop("Расстыковка прервана")
 			return FALSE
 		before_takeoff = CALLBACK(src, PROC_REF(retract_departure_gangways), old_dock, slot, standard_berth, revision)
 	if((old_dock.landing || old_dock.physical_docking) && !relocate(flight_berth, before_takeoff))
 		if(has_gangways && !QDELETED(standard_berth))
 			standard_berth.cancel_retraction()
+		end_approach()
 		stop(status)
 		return FALSE
 	slot?.clear_berth()
@@ -379,14 +383,18 @@
 	preparing = FALSE
 	refresh_engine_audio()
 	update_parallax()
-	if(QDELETED(src) || revision != control_revision)
+	if(QDELETED(src))
+		return FALSE
+	if(revision != control_revision)
+		end_approach()
 		return FALSE
 	throttle = 50
 	// The berth just left is no longer an arrival order during the first slow acceleration tick.
 	if(sites[selected_destination] == old_dock)
 		selected_destination = null
 		prepared_site = null
-	return sail()
+	. = sail()
+	end_approach()
 
 /** Commit the folded passages once native preflight has accepted the departure. */
 /datum/stationtrauma_overmap/space/proc/retract_departure_gangways(datum/stationtrauma_overmap_site/space/site, obj/docking_port/stationary/stationtrauma_space_station/standard/slot, obj/docking_port/stationary/stationtrauma_space_site/standard/berth, revision)
@@ -505,23 +513,27 @@
 	return station_authorized || consume_station_clearance(site)
 
 /datum/stationtrauma_overmap/space/update_parallax()
-	var/direction = speed > ST_NAV_STOPPED_SPEED || approach_started || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
+	var/background = parallax_background()
+	var/planet = parallax_planet()
+	// Casting off already moves the hull: the stars stream past while the station's planet keeps its place.
+	// An engaged helm under throttle counts as under way, so the stars do not pause before the speed registers.
+	var/direction = speed > ST_NAV_STOPPED_SPEED || approach_started || (helm_engaged && throttle > 0) || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
 	// Bluespace flight streaks the stars past the hull.
 	var/rush = jump_phase == HYPERSPACE_LAUNCH ? ST_SPACE_JUMP_PARALLAX_RUSH : 1
-	var/background = parallax_background()
 	var/motion_changed = direction != parallax_direction || rush != parallax_rush
-	if(!motion_changed && background == space_background)
+	if(!motion_changed && background == space_background && planet == space_planet)
 		return
 	space_background = background
+	space_planet = planet
 	parallax_direction = direction
 	parallax_rush = rush
 	for(var/area/ship_area as anything in vessel.shuttle_areas)
-		ship_area.set_space_parallax_background(background)
+		ship_area.set_space_parallax_background(background, planet)
 		if(motion_changed)
 			ship_area.parallax_rush = rush
 			// Viewers restart their loop only on a direction change, so a new speed in the same direction passes through a stop.
 			if(ship_area.parallax_movedir == direction)
 				ship_area.set_parallax_movedir(NONE)
 			ship_area.set_parallax_movedir(direction)
-	exterior?.set_space_parallax_background(background)
+	exterior?.set_space_parallax_background(background, planet)
 	exterior?.set_parallax_movedir(NONE)

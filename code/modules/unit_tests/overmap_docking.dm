@@ -268,7 +268,7 @@
 	var/obj/docking_port/stationary/virtual_berth
 
 /datum/unit_test/overmap_docking/evacuation_then_virtual_dock/Destroy()
-	// Remove passages, previews and the moved hull before restoring their borrowed coordinates.
+	// Remove passages and the moved hull before restoring their borrowed coordinates.
 	qdel(navigation)
 	qdel(ship, force = TRUE)
 	qdel(virtual_berth, force = TRUE)

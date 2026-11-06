@@ -30,6 +30,10 @@
 	var/belt_x = 1250
 	/// Northing of the asteroid belt centre.
 	var/belt_y = -450
+	/// Chart name of the central star; null leaves it unlabelled.
+	var/star_name
+	/// Chart radius of the central star symbol.
+	var/star_radius = 10
 
 /datum/stationtrauma_overmap_sector/space/Destroy()
 	. = ..()
@@ -40,6 +44,8 @@
 /datum/stationtrauma_overmap_sector/space/home
 	id = "epsilon_eridani"
 	name = "Эпсилон Эридана"
+	star_name = "Эпсилон"
+	star_radius = 18
 	jump_routes = list("frontier")
 	celestial_bodies = list(
 		list("name" = "Лазис Ардакс", "x" = 1000, "y" = -240, "radius" = 22, "kind" = "lava", "orbit_x" = 0, "orbit_y" = 0),
@@ -147,6 +153,7 @@
 		construction.pos_x = navigation.pos_x
 		construction.pos_y = navigation.pos_y
 	var/area/space/stationtrauma_space_home/exterior = new
+	exterior.navigation_ref = WEAKREF(navigation)
 	var/datum/stationtrauma_work_budget/budget = new
 	for(var/turf/open/space/tile in block(locate(1, 1, flight_z), locate(world.maxx, world.maxy, flight_z)))
 		var/area/old_area = get_area(tile)
@@ -185,7 +192,14 @@
 			site.physical_docking = TRUE
 			site.berth = port
 			sites[site.id] = site
-		ready = length(sites) > 0
+		if(!length(sites))
+			return FALSE
+		taken_positions = list(list(1000, 0))
+		for(var/list/body as anything in celestial_bodies)
+			taken_positions += list(list(body["x"], body["y"]))
+		// A few charted wrecks around the station for short runs and for crew lost overboard.
+		load_ruin_sector(4)
+		ready = TRUE
 		return ready
 	// Every round charts a new system: its name, and where its planets, ruins and hazards lie.
 	name = "[pick("HD ", "HIP ", "Gliese ", "Kepler-", "TOI-", "Wolf ", "Ross ", "LHS ")][rand(100, 9999)]"

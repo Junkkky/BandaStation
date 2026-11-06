@@ -147,6 +147,14 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/engine_control)
+"at" = (
+/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core{
+	pixel_y = -24
+	},
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/stripes/full,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/combustion)
 "au" = (
 /obj/effect/turf_decal/stripes/white/corner{
 	dir = 1
@@ -884,12 +892,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
-"bY" = (
-/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core,
-/obj/structure/cable/layer1,
-/obj/effect/turf_decal/stripes/full,
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/combustion)
 "bZ" = (
 /obj/structure/cable/layer1,
 /obj/machinery/power/terminal{
@@ -3005,7 +3007,7 @@ cv
 aU
 aO
 NP
-bY
+at
 bQ
 bI
 af

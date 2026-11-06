@@ -131,8 +131,34 @@
 	density = TRUE
 	anchored = TRUE
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 5
-	/// Jumps left before the drive needs another core.
+	circuit = /obj/item/circuitboard/machine/stationtrauma_bluespace_drive
+	/// Jumps left before the drive needs another core; lost with the machine.
 	var/charges = 0
+
+/obj/item/circuitboard/machine/stationtrauma_bluespace_drive
+	name = "блюспейс-привод"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/stationtrauma_bluespace_drive
+	req_components = list(
+		/obj/item/stack/ore/bluespace_crystal = 1,
+		/datum/stock_part/capacitor = 2,
+	)
+
+/datum/design/board/stationtrauma_bluespace_drive
+	name = "Плата блюспейс-привода"
+	desc = "Плата межсистемного привода корабля."
+	build_path = /obj/item/circuitboard/machine/stationtrauma_bluespace_drive
+	build_type = IMPRINTER
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
+
+/obj/machinery/stationtrauma_bluespace_drive/screwdriver_act(mob/living/user, obj/item/tool)
+	return default_deconstruction_screwdriver(user, tool)
+
+/obj/machinery/stationtrauma_bluespace_drive/crowbar_act(mob/living/user, obj/item/tool)
+	return default_deconstruction_crowbar(user, tool)
 
 /obj/machinery/stationtrauma_bluespace_drive/post_machine_initialize()
 	. = ..()

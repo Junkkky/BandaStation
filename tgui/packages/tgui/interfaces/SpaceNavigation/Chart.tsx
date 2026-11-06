@@ -11,6 +11,8 @@ import {
 
 /** Seconds a sensor pulse takes to spread from the hull to the edge of sensor range. */
 const SCAN_WAVE = 1.5;
+/** Seconds a distress signal keeps pulsing on the chart after a sensor pulse finds it. */
+const SOS_PULSE = 10;
 /** Hazard region fill by kind; debris regions use the default. */
 const ZONE_FILL: Record<string, string> = {
   nebula: '#5a5582',
@@ -219,9 +221,11 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
           <circle
             cx={point(data.star.x, data.star.y).x}
             cy={point(data.star.x, data.star.y).y}
-            r={10}
+            r={data.star.radius}
             fill="#e7c47b"
-          />
+          >
+            {data.star.name && <title>{data.star.name}</title>}
+          </circle>
         )}
         {bodies.map((body) => (
           <circle
@@ -293,15 +297,34 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
                 if (event.key === 'Enter' && !disabled && !site.failed)
                   onSite(site.id);
               }}
-              stroke={site.id === data.selected ? '#edc587' : '#7b9c86'}
+              stroke={
+                site.id === data.selected
+                  ? '#edc587'
+                  : site.sos
+                    ? '#e0533f'
+                    : '#7b9c86'
+              }
             >
               <title>{site.name}</title>
               <circle r={13} fill="transparent" stroke="none" />
               {site.kind === 'planet' ? (
                 <circle r={6} fill="#33473a" />
               ) : (
-                <path d="M0-7L7 0L0 7L-7 0Z" fill="#080e0d" />
+                <path
+                  d="M0-7L7 0L0 7L-7 0Z"
+                  fill={site.sos ? '#5a1810' : '#080e0d'}
+                />
               )}
+              {!!site.sos &&
+                data.scan_age !== null &&
+                data.scan_age < SOS_PULSE && (
+                  <circle
+                    r={9}
+                    fill="none"
+                    stroke="#e0533f"
+                    className="SpaceNavigation__sos"
+                  />
+                )}
             </g>
           );
         })}

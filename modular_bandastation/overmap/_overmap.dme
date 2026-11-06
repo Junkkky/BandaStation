@@ -9,7 +9,4 @@
 #include "code/work_budget.dm"
 #include "code/lighting_deferred.dm"
 #include "code/map_passage.dm"
-#include "code/map_preview.dm"
-#include "code/map_preview_interaction.dm"
-#include "code/map_lighting.dm"
 #include "code/map_connection.dm"

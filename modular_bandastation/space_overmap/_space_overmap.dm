@@ -30,6 +30,12 @@
 #define ST_SPACE_TAKEOFF_TIME (1 MINUTES)
 /// Mooring or casting off at a physical berth or another hull.
 #define ST_SPACE_MOORING_TIME (20 SECONDS)
+/// Losses overboard from one hull within this time share an open-space level.
+#define ST_LOST_SHARED_TIME (1 MINUTES)
+/// Chart distance within which a loss overboard drifts towards a charted object, in virtual sector units.
+#define ST_LOST_WRECK_RANGE 150
+/// Rescue berth distance from the open-space level border; the seam needs clearance from the transition edge.
+#define ST_LOST_BERTH_MARGIN 45
 /// Start closing and folding the gangway during the final seconds of casting off.
 #define ST_STANDARD_DOCK_RETRACTION_LEAD (4 SECONDS)
 /// Width of a standard S slot in tiles.

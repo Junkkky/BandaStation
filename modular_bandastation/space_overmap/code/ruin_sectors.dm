@@ -5,8 +5,11 @@
 	/// Crew-facing chart name for this imported ruin.
 	var/overmap_name
 
+/// Ruin template keys already charted by any sector; templates load only on approach, so `loaded` cannot guard this round.
+GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
+
 /** Only reviewed local templates participate; native blacklists and round duplicate limits still apply. */
-/datum/stationtrauma_overmap_sector/space/proc/load_ruin_sector()
+/datum/stationtrauma_overmap_sector/space/proc/load_ruin_sector(count = 6)
 	var/list/approved = list(
 		/datum/map_template/ruin/space/oldstation = "Древняя космическая станция",
 		/datum/map_template/ruin/space/deep_storage = "Автономный бункер",
@@ -28,17 +31,18 @@
 		if(istype(template, /datum/map_template/ruin/space/expedition))
 			var/datum/map_template/ruin/space/expedition/imported = template
 			approved[template.type] = imported.overmap_name
-		if(approved[template.type] && !template.unpickable && (!template.loaded || template.allow_duplicates))
+		if(approved[template.type] && !template.unpickable && (!template.loaded || template.allow_duplicates) && !GLOB.stationtrauma_charted_ruins[key])
 			candidates[key] = template
 	if(!length(candidates))
 		stack_trace("No eligible expedition ruins; check space ruin blacklists and already loaded templates")
 		return FALSE
-	var/count = min(6, length(candidates))
+	count = min(count, length(candidates))
 	// Templates are chosen now so the chart can name each signal; the first approach loads it.
 	for(var/index in 1 to count)
 		var/key = pick(candidates)
 		var/datum/map_template/ruin/template = candidates[key]
 		candidates -= key
+		GLOB.stationtrauma_charted_ruins[key] = TRUE
 		var/datum/stationtrauma_overmap_site/space/site = new
 		site.id = "expedition_[index]"
 		site.name = approved[template.type]
