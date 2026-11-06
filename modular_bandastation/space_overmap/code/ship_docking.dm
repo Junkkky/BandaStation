@@ -213,7 +213,7 @@
 	var/datum/stationtrauma_overmap/space/first
 	/// Second reserved navigation instance; cleared when the pair is destroyed.
 	var/datum/stationtrauma_overmap/space/second
-	/// Physical seam used for previews and traversal between hull and destination.
+	/// Physical seam used for traversal between hull and destination; its gates show the far side.
 	var/datum/stationtrauma_map_connection/connection
 	/// Owned temporary berth: the first hull's flush berth on the second's level, or the seam anchor beside the second hull.
 	var/obj/docking_port/stationary/anchor

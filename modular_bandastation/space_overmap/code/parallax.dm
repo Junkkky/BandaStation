@@ -7,6 +7,16 @@
 /area/shuttle/stationtrauma_space
 	space_parallax_background = /atom/movable/screen/parallax_layer/layer_3
 
+/// Navigation owns a hull's motion: native docking would take the berth's still background mid-manoeuvre.
+/area/shuttle/stationtrauma_space/onShuttleMove(turf/oldT, turf/newT, obj/docking_port/mobile/shuttle, area/fallback_area)
+	var/motion = parallax_movedir
+	. = ..()
+	set_parallax_movedir(motion)
+
+/// These hulls never use native transit, so the native "docked means still" rule does not apply.
+/area/shuttle/stationtrauma_space/afterShuttleMove(new_parallax_dir)
+	return ..(parallax_movedir)
+
 /area/space/stationtrauma_space_home
 	space_parallax_background = /atom/movable/screen/parallax_layer/layer_3
 

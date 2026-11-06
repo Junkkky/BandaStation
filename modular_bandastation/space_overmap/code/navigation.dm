@@ -5,7 +5,7 @@
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
 	/// Flight-level space area with a stationary parallax background.
 	var/area/space/stationtrauma_space_home/exterior
-	/// Physical seam used for previews and traversal between hull and destination.
+	/// Physical seam used for traversal between hull and destination; its gates show the far side.
 	var/datum/stationtrauma_map_connection/connection
 	/// Currently connected destination; null in free flight.
 	var/datum/stationtrauma_overmap_site/space/docked
@@ -318,8 +318,9 @@
 				end_approach()
 				stop(old_dock.landing ? "Взлёт прерван" : "Расстыковка прервана")
 				return FALSE
-		end_approach()
+	// The manoeuvre lasts until the helm takes over, so the hull keeps moving through relocation and seam teardown.
 	if((old_dock.landing || old_dock.physical_docking) && !relocate(flight_berth))
+		end_approach()
 		stop(status)
 		return FALSE
 	preparing = TRUE
@@ -332,14 +333,18 @@
 	preparing = FALSE
 	refresh_engine_audio()
 	update_parallax()
-	if(QDELETED(src) || revision != control_revision)
+	if(QDELETED(src))
+		return FALSE
+	if(revision != control_revision)
+		end_approach()
 		return FALSE
 	throttle = 50
 	// The berth just left is no longer an arrival order during the first slow acceleration tick.
 	if(sites[selected_destination] == old_dock)
 		selected_destination = null
 		prepared_site = null
-	return sail()
+	. = sail()
+	end_approach()
 
 /** Stop the autopilot at its destination; manual flight remains unrestricted. */
 /datum/stationtrauma_overmap/space/arrive(datum/stationtrauma_overmap_site/site)
@@ -412,9 +417,9 @@
 /datum/stationtrauma_overmap/space/update_parallax()
 	var/background = parallax_background()
 	var/planet = parallax_planet()
-	var/moving = speed > ST_NAV_STOPPED_SPEED || approach_started || jump_phase >= HYPERSPACE_LAUNCH
-	// Undocking happens beside the station: its background stays put until the hull leaves for its flight level.
-	var/direction = moving && background != /atom/movable/screen/parallax_layer/planet ? vessel.preferred_direction : NONE
+	// Casting off already moves the hull: the stars stream past while the station's planet keeps its place.
+	// An engaged helm under throttle counts as under way, so the stars do not pause before the speed registers.
+	var/direction = speed > ST_NAV_STOPPED_SPEED || approach_started || (helm_engaged && throttle > 0) || jump_phase >= HYPERSPACE_LAUNCH ? vessel.preferred_direction : NONE
 	// Bluespace flight streaks the stars past the hull.
 	var/rush = jump_phase == HYPERSPACE_LAUNCH ? ST_SPACE_JUMP_PARALLAX_RUSH : 1
 	var/motion_changed = direction != parallax_direction || rush != parallax_rush

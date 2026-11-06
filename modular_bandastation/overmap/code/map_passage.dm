@@ -17,10 +17,23 @@
 
 /datum/component/stationtrauma_map_passage/RegisterWithParent()
 	RegisterSignals(parent, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON), PROC_REF(on_entered))
+	RegisterSignal(parent, COMSIG_ATOM_ABSTRACT_ENTERED, PROC_REF(on_abstract_entered))
 	RegisterSignal(parent, COMSIG_TURF_CHANGE, PROC_REF(remove_passage))
 
 /datum/component/stationtrauma_map_passage/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, COMSIG_TURF_CHANGE))
+	UnregisterSignal(parent, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, COMSIG_ATOM_ABSTRACT_ENTERED, COMSIG_TURF_CHANGE))
+	parent.RemoveElement(/datum/element/mirage_border)
+
+/** Observers move abstractly and never trigger Entered; carry them across an open seam as well. */
+/datum/component/stationtrauma_map_passage/proc/on_abstract_entered(datum/source, atom/movable/arrived)
+	SIGNAL_HANDLER
+	if(!isobserver(arrived) || (connection && (QDELETED(connection) || !connection.active)) || QDELETED(landing))
+		return
+	arrived.abstract_move(landing)
+
+/** Show the far side beyond this gate with the native border mirage, as cross-linked space edges do. */
+/datum/component/stationtrauma_map_passage/proc/show_mirage()
+	parent.AddElement(/datum/element/mirage_border, landing, direction, (maxviewdist() - 1) / 2)
 
 /** Invalidate the owner connection before deleting a replaced seam tile. */
 /datum/component/stationtrauma_map_passage/proc/remove_passage()
@@ -36,8 +49,6 @@
 		var/obj/projectile/shot = arrived
 		// Initialization and entry can notify the same passage before the next projectile step.
 		RegisterSignal(shot, shot.fired ? COMSIG_PROJECTILE_MOVE_PROCESS_STEP : COMSIG_PROJECTILE_FIRE, PROC_REF(cross_projectile), override = TRUE)
-		return
-	if(istype(arrived, /obj/effect/abstract/stationtrauma_map_projection))
 		return
 	// Finish the original area's Entered/Moved signals before entering another area.
 	addtimer(CALLBACK(src, PROC_REF(cross), arrived, REF(arrived)), 0, TIMER_UNIQUE)
@@ -74,12 +85,6 @@
 	// Accuracy origins must stay inside the world after the coordinate shift.
 	if(shot.starting)
 		shot.starting = locate(clamp(shot.starting.x + delta_x, 1, world.maxx), clamp(shot.starting.y + delta_y, 1, world.maxy), landing.z)
-	if(istype(shot.original, /obj/effect/abstract/stationtrauma_map_projection))
-		var/obj/effect/abstract/stationtrauma_map_projection/projection = shot.original
-		shot.UnregisterSignal(projection, COMSIG_QDELETING)
-		shot.original = projection.visual_source
-		if(shot.original && shot.original != shot.firer)
-			shot.RegisterSignal(shot.original, COMSIG_QDELETING, TYPE_PROC_REF(/obj/projectile, original_deleted))
 	if(shot.hitscan)
 		shot.create_hitscan_point()
 		shot.generate_hitscan_tracers(impact_point = FALSE, impact_visual = FALSE)
