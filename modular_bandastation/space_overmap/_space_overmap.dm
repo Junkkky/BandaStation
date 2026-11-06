@@ -30,6 +30,16 @@
 #define ST_SPACE_TAKEOFF_TIME (1 MINUTES)
 /// Mooring or casting off at a physical berth or another hull.
 #define ST_SPACE_MOORING_TIME (20 SECONDS)
+/// Start closing and folding the gangway during the final seconds of casting off.
+#define ST_STANDARD_DOCK_RETRACTION_LEAD (4 SECONDS)
+/// Width of a standard S slot in tiles.
+#define ST_STANDARD_S_WIDTH 7
+/// Length of a standard S slot in tiles.
+#define ST_STANDARD_S_HEIGHT 15
+/// Width of a standard M slot in tiles.
+#define ST_STANDARD_M_WIDTH 19
+/// Length of a standard M slot in tiles.
+#define ST_STANDARD_M_HEIGHT 25
 /// Engine sound levels glide this much of their full range per second.
 #define ST_ENGINE_SOUND_GLIDE 0.8
 /// Smallest engine sound level change worth sending to listeners.

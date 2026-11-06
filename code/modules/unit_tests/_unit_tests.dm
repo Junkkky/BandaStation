@@ -311,6 +311,8 @@
 #include "orphaned_genturf.dm"
 #include "outfit_sanity.dm"
 #include "overmap_docking.dm"
+#include "overmap_standard_dock.dm"
+#include "overmap_ship_core.dm"
 #include "overmap_passage.dm"
 #include "overmap_planet.dm"
 #include "overmap_power.dm"

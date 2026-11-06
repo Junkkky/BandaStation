@@ -61,6 +61,8 @@
 	return TRUE
 
 /datum/stationtrauma_overmap_sector/space/unregister(datum/stationtrauma_overmap/space/navigation)
+	if(navigation.sector == src)
+		navigation.cancel_station_docking()
 	if(!..())
 		return FALSE
 	navigation.discovered_sites = list()
@@ -96,8 +98,8 @@
 	qdel(template)
 	return null
 
-/** Register a hull and prepare its flight level and consoles. */
-/datum/stationtrauma_overmap_sector/space/proc/attach(obj/docking_port/mobile/stationtrauma_space/vessel)
+/** Register a hull and prepare its flight level and consoles. Player construction supplies a separate flight berth. */
+/datum/stationtrauma_overmap_sector/space/proc/attach(obj/docking_port/mobile/stationtrauma_space/vessel, datum/stationtrauma_overmap_site/space/construction, turf/flight_position)
 	if(QDELETED(vessel) || vessel.width < 1 || vessel.height < 1 || !length(vessel.shuttle_areas))
 		return FALSE
 	if(!(vessel.ship_class in list(ST_SHIP_SMALL, ST_SHIP_MEDIUM, ST_SHIP_CAPITAL)))
@@ -105,14 +107,23 @@
 		return FALSE
 	if(vessel.overmap)
 		return vessel.overmap.sector == src
+	if(construction && (QDELETED(construction.berth) || vessel.get_docked() != construction.berth || !flight_position || flight_position.z == vessel.z))
+		return FALSE
+	var/flight_z = construction ? flight_position.z : vessel.z
 	// The current seam spans the entire flight level; two hulls cannot share that level.
 	for(var/id in ships)
 		var/datum/stationtrauma_overmap/space/other = ships[id]
-		if(other.flight_berth.z == vessel.z)
+		if(other.flight_berth.z == flight_z)
 			stack_trace("Overmap hull [vessel.shuttle_id] shares a flight level with [other.vessel.shuttle_id]")
 			return FALSE
 	if(!vessel.registered)
 		vessel.register()
+	if(construction)
+		// Native frame conversion notifies fitted engines before linkup registers all equipment.
+		for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list.Copy())
+			engine.unsync_ship()
+		vessel.initial_engine_power = 0
+		vessel.current_engine_power = 0
 	vessel.linkup(null)
 	vessel.measure_hull()
 	var/datum/stationtrauma_overmap/space/navigation = new(vessel)
@@ -120,6 +131,11 @@
 		qdel(navigation)
 		return FALSE
 	vessel.overmap = navigation
+	if(construction)
+		navigation.flight_berth.forceMove(flight_position)
+		navigation.construction_site = construction
+		navigation.docked = construction
+		construction.docking_owner = navigation
 	navigation.zones = zones
 	// A hull without a mapped start enters where jumps arrive, not on the star at the origin.
 	var/unplaced = !vessel.overmap_x && !vessel.overmap_y
@@ -127,9 +143,12 @@
 	navigation.pos_y = unplaced ? entry_y : vessel.overmap_y
 	navigation.course = vessel.overmap_course
 	navigation.ordered_course = vessel.overmap_course
+	if(construction)
+		construction.pos_x = navigation.pos_x
+		construction.pos_y = navigation.pos_y
 	var/area/space/stationtrauma_space_home/exterior = new
 	var/datum/stationtrauma_work_budget/budget = new
-	for(var/turf/open/space/tile in block(locate(1, 1, vessel.z), locate(world.maxx, world.maxy, vessel.z)))
+	for(var/turf/open/space/tile in block(locate(1, 1, flight_z), locate(world.maxx, world.maxy, flight_z)))
 		var/area/old_area = get_area(tile)
 		if(old_area.type == /area/space)
 			tile.change_area(old_area, exterior)
@@ -146,7 +165,7 @@
 	navigation.preparing = FALSE
 	navigation.initialize_ship_audio()
 	if(vessel.starting_dock)
-		if(!navigation.select_site(vessel.starting_dock) || !navigation.dock(instant = TRUE))
+		if(!navigation.select_site(vessel.starting_dock) || !navigation.dock(instant = TRUE, station_authorized = TRUE))
 			qdel(navigation)
 			return FALSE
 	navigation.update_parallax()

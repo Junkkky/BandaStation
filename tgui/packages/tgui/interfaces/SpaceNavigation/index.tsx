@@ -42,6 +42,32 @@ function Navigation({ data }: { data: NavigationData }) {
   const contact = data.ship_contacts.find(
     (record) => record.id === focusedContact,
   );
+  const stationDocking =
+    focusedContact === null && data.station_docking?.required
+      ? data.station_docking
+      : null;
+  let dockAction = 'dock';
+  let dockValue: string | number | null = data.selected;
+  let dockDisabled = !data.can_dock;
+  let dockTooltip = data.landing ? 'Посадка' : 'Стыковка';
+  let dockLabel = 'СТЫК / ПОСАДКА';
+  if (focusedContact !== null) {
+    dockAction = 'ship_dock';
+    dockValue = focusedContact;
+    dockDisabled = !contact || !data.dockable_contacts.includes(contact.id);
+    dockTooltip = `Запрос стыковки К${focusedContact}`;
+  } else if (stationDocking?.state === 'approved') {
+    dockLabel = 'СТЫКОВАТЬСЯ';
+    dockTooltip = 'Начать стыковку по разрешению диспетчера';
+  } else if (stationDocking) {
+    const pending = stationDocking.state === 'pending';
+    dockAction = 'request_station_dock';
+    dockDisabled = pending || !stationDocking.canRequest;
+    dockLabel = pending ? 'ОЖИДАНИЕ ОТВЕТА' : 'ЗАПРОС СТЫКОВКИ';
+    dockTooltip = pending
+      ? 'Запрос передан диспетчеру'
+      : 'Запросить разрешение у диспетчера';
+  }
   const approach = contact && closestApproach(data, contact);
   const distance = (value: number) => distanceLabel(value, data.au_scale);
   const reverse =
@@ -479,25 +505,11 @@ function Navigation({ data }: { data: NavigationData }) {
           <section className="SpaceNavigation__docking" aria-label="Стыковка">
             <Button
               fluid
-              tooltip={
-                focusedContact !== null
-                  ? `Запрос стыковки К${focusedContact}`
-                  : data.landing
-                    ? 'Посадка'
-                    : 'Стыковка'
-              }
-              disabled={
-                focusedContact !== null
-                  ? !contact || !data.dockable_contacts.includes(contact.id)
-                  : !data.can_dock
-              }
-              onClick={() =>
-                act(focusedContact === null ? 'dock' : 'ship_dock', {
-                  value: focusedContact,
-                })
-              }
+              tooltip={dockTooltip}
+              disabled={dockDisabled}
+              onClick={() => act(dockAction, { value: dockValue })}
             >
-              СТЫК / ПОСАДКА
+              {dockLabel}
             </Button>
             <Button
               fluid
@@ -514,6 +526,30 @@ function Navigation({ data }: { data: NavigationData }) {
               ОТСТЫК / ВЗЛЁТ
             </Button>
           </section>
+          {stationDocking && stationDocking.state !== 'none' && (
+            <div
+              className="SpaceNavigation__request"
+              role="group"
+              aria-label="Разрешение диспетчера"
+            >
+              <span role="status">
+                {stationDocking.state === 'approved'
+                  ? 'Стыковка разрешена'
+                  : 'Запрос передан'}
+                {stationDocking.expiresIn !== null &&
+                  ` (${Math.ceil(stationDocking.expiresIn)} с)`}
+              </span>
+              {!!stationDocking.canCancel && (
+                <Button
+                  onClick={() =>
+                    act('cancel_station_dock', { value: data.selected })
+                  }
+                >
+                  ОТМЕНА
+                </Button>
+              )}
+            </div>
+          )}
           <div
             className="SpaceNavigation__request"
             role="group"

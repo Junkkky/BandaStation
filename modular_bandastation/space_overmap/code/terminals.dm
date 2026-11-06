@@ -3,12 +3,18 @@
 	name = "терминал вызова кораблей"
 	build_path = /obj/machinery/computer/stationtrauma_dispatch
 
+/datum/design/board/shuttle/stationtrauma_dispatch
+	name = "Плата терминала вызова кораблей"
+	desc = "Плата для вызова кораблей к зарегистрированному станционному причалу."
+	build_path = /obj/item/circuitboard/computer/stationtrauma_dispatch
+
 /** Station terminal calling an idle registered ship to its assigned berth. */
 /obj/machinery/computer/stationtrauma_dispatch
 	name = "терминал вызова кораблей"
 	desc = "Диспетчерская связь с кораблями, обслуживающими причал."
 	icon_screen = "shuttle"
 	circuit = /obj/item/circuitboard/computer/stationtrauma_dispatch
+	req_access = list(ACCESS_COMMAND)
 	/// Stable sector destination ID associated with this station berth.
 	var/site_id
 
@@ -31,7 +37,7 @@
 
 /obj/machinery/computer/stationtrauma_dispatch/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	if(!can_interact(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)))
+	if(!can_interact(user) || !allowed(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)))
 		return
 	var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
 	var/datum/stationtrauma_overmap_site/space/site = dispatch_site()
@@ -48,7 +54,7 @@
 		to_chat(user, span_notice("В системе нет кораблей, доступных для вызова."))
 		return
 	var/choice = tgui_input_list(user, "Вызвать корабль к причалу", name, choices, timeout = 30 SECONDS)
-	if(!choice || QDELETED(src) || !can_interact(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)))
+	if(!choice || QDELETED(src) || !can_interact(user) || !allowed(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)))
 		return
 	sector = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
 	site = dispatch_site()
@@ -66,9 +72,14 @@
 /** Check an idle callable ship and an available compatible native station berth. */
 /datum/stationtrauma_overmap/space/proc/can_dispatch(datum/stationtrauma_overmap_site/space/site)
 	// Station delivery is independent of the crew's main-engine switch.
-	return is_operational() && vessel.dispatchable && knows_site(site) && !site.failed && site.physical_docking && vessel.permits_docking(site) \
+	if(!(is_operational() && vessel.dispatchable && knows_site(site) && !site.failed && site.physical_docking && vessel.permits_docking(site) \
 		&& !preparing && !planning && !relocating && !arrival_pending && !docked && !ship_docking && !helm_engaged && speed <= ST_NAV_STOPPED_SPEED \
-		&& (!site.docking_owner || site.docking_owner == src) && !QDELETED(site.berth) && vessel.check_dock(site.berth, TRUE)
+		&& (!site.docking_owner || site.docking_owner == src) && !QDELETED(site.berth)))
+		return FALSE
+	if(istype(site.berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
+		return slot.accepts(vessel) && !slot.active_berth
+	return vessel.check_dock(site.berth, TRUE)
 
 /** Reserve a station berth and schedule delivery of a callable idle hull. */
 /datum/stationtrauma_overmap/space/proc/dispatch_to(datum/stationtrauma_overmap_site/space/site)
@@ -77,6 +88,7 @@
 	stop("Вызов к причалу: [site.name]")
 	if(!select_site(site.id))
 		return FALSE
+	cancel_station_docking()
 	site.docking_owner = src
 	dispatch_target = site
 	preparing = TRUE
@@ -112,7 +124,7 @@
 	clear_encounters()
 	pos_x = encounter_x = site.pos_x
 	pos_y = encounter_y = site.pos_y
-	if(dock(instant = TRUE))
+	if(dock(instant = TRUE, station_authorized = TRUE))
 		return TRUE
 	if(!QDELETED(src))
 		if(!QDELETED(site) && site.docking_owner == src && docked != site)

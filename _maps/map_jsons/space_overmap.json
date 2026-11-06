@@ -1,8 +1,8 @@
 {
 	"version": 1,
 	"map_name": "Cyberiad Overmap",
-	"map_path": "map_files/Cyberiad",
-	"map_file": "Cyberiad.dmm",
+	"map_path": "map_files/CyberiadOvermap",
+	"map_file": "CyberiadOvermap.dmm",
 	"fluff_name": "Кибериада: экспедиционные рейсы",
 	"welcome_sound_override": "modular_bandastation/aesthetics_sounds/sound/welcome_sounds/welcome_cyberiad.ogg",
 	"main_floor": 2,
@@ -48,14 +48,7 @@
 	},
 	"height_autosetup": true,
 	"space_overmap": {
-		"station_name": "Кибериада",
 		"station_id": "cyberiad",
-		"port": "emergency_home",
-		"dock_width": 21,
-		"dock_height": 32,
-		"dock_dwidth": 0,
-		"dock_dheight": 16,
-		"dock_direction": 1,
 		"ships": [
 			{
 				"template": "_maps/map_files/overmap_ships/raven.dmm",
@@ -63,13 +56,10 @@
 			},
 			{
 				"template": "_maps/map_files/overmap_ships/pocketrocket.dmm"
+			},
+			{
+				"template": "_maps/map_files/overmap_ships/s_dock_test.dmm"
 			}
-		],
-		"dispatch_terminal": [
-			-104,
-			1,
-			0,
-			1
 		]
 	},
 	"space_ruin_levels": 0,
