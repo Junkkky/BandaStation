@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { Button, Dropdown } from 'tgui-core/components';
+import { Button } from 'tgui-core/components';
 
 import { useApproachClock } from './Descent';
+import {
+  PlanetGlyph,
+  ShipGlyph,
+  StationGlyph,
+  SunGlyph,
+  ZoneArt,
+} from './DisplayArt';
 import {
   distanceLabel,
   type NavigationData,
@@ -13,19 +20,14 @@ import {
 const SCAN_WAVE = 1.5;
 /** Seconds a distress signal keeps pulsing on the chart after a sensor pulse finds it. */
 const SOS_PULSE = 10;
-/** Hazard region fill by kind; debris regions use the default. */
-const ZONE_FILL: Record<string, string> = {
-  nebula: '#5a5582',
-  corona: '#c7782f',
-};
-/** Hazard region outline by kind; debris regions use the default. */
-const ZONE_STROKE: Record<string, string> = {
-  nebula: '#6a718e',
-  corona: '#e7a35a',
-};
 
 /** Sensor pulse ring: spreads from the hull, slowing towards the edge of sensor range, and fades out. */
-function ScanWave(props: { age: number; x: number; y: number; radius: number }) {
+function ScanWave(props: {
+  age: number;
+  x: number;
+  y: number;
+  radius: number;
+}) {
   const { age, x, y, radius } = props;
   const seconds = useApproachClock(age, SCAN_WAVE);
   if (seconds >= SCAN_WAVE) return null;
@@ -46,13 +48,21 @@ function ScanWave(props: { age: number; x: number; y: number; radius: number }) 
 
 type Props = {
   data: NavigationData;
+  zoom: number;
+  hoveredTarget: string | null;
   focusedContact: number | null;
   onContact: (id: number) => void;
   onSite: (id: string) => void;
 };
 
-export function Chart({ data, focusedContact, onContact, onSite }: Props) {
-  const [zoom, setZoom] = useState(1);
+export function Chart({
+  data,
+  focusedContact,
+  onContact,
+  onSite,
+  zoom,
+  hoveredTarget,
+}: Props) {
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const drag = useRef<Position | null>(null);
   const svg = useRef<SVGSVGElement>(null);
@@ -109,21 +119,15 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
   const bodies = data.celestial_bodies || [];
 
   return (
-    <>
-      <div className="SpaceNavigation__plot-head">
-        <span>{data.sector_name}</span>
+    <div className="SpaceNavigation__chart-stage">
+      <div className="SpaceNavigation__map-controls">
+        {' '}
         <Button
           compact
           icon="crosshairs"
           tooltip="Центрировать на корабле"
           aria-label="Центрировать на корабле"
           onClick={() => setPan({ x: 0, y: 0 })}
-        />
-        <Dropdown
-          width="65px"
-          selected={`${zoom}×`}
-          options={['0.5×', '1×', '2×', '4×']}
-          onSelected={(value) => setZoom(Number.parseFloat(value))}
         />
       </div>
       <svg
@@ -161,7 +165,7 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
             <feColorMatrix values="0 0 0 0 0.85 0 0 0 0 0.9 0 0 0 0 0.75 0 0 0 1.4 -0.6" />
           </filter>
         </defs>
-        <g stroke="#22352c">
+        <g stroke="#233936" strokeOpacity=".65">
           {grid.map((x) => (
             <line
               key={x}
@@ -181,7 +185,12 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
             />
           ))}
         </g>
-        <g fill="none" stroke="#354239">
+        <g
+          fill="none"
+          stroke="#64796b"
+          strokeOpacity=".4"
+          strokeDasharray="3 3"
+        >
           {bodies.map((body) => (
             <circle
               key={body.name}
@@ -217,51 +226,74 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
                 />
               ))}
         </g>
-        {data.star && (
-          <circle
-            cx={point(data.star.x, data.star.y).x}
-            cy={point(data.star.x, data.star.y).y}
-            r={data.star.radius}
-            fill="#e7c47b"
-          >
-            {data.star.name && <title>{data.star.name}</title>}
-          </circle>
-        )}
-        {bodies.map((body) => (
-          <circle
-            key={body.name}
-            cx={point(body.x, body.y).x}
-            cy={point(body.x, body.y).y}
-            r={body.radius}
-            fill={body.kind === 'lava' ? '#9d4931' : '#9aa9a0'}
-            stroke="#c4ae88"
-          >
-            <title>{body.name}</title>
-          </circle>
-        ))}
-        {data.zones.map((zone, index) => (
-          <g key={index}>
-            <circle
-              cx={point(zone.x, zone.y).x}
-              cy={point(zone.x, zone.y).y}
-              r={zone.radius * scale}
-              fill={ZONE_FILL[zone.kind] || '#825f32'}
-              fillOpacity={0.15}
-              stroke={ZONE_STROKE[zone.kind] || '#b77558'}
+        {bodies
+          .filter(
+            (body) =>
+              !data.routes.some(
+                (site) =>
+                  site.kind === 'planet' &&
+                  Math.hypot(site.x - body.x, site.y - body.y) < 1,
+              ),
+          )
+          .map((body) => (
+            <g
+              key={body.name}
+              transform={`translate(${point(body.x, body.y).x} ${point(body.x, body.y).y})`}
             >
-              <title>{zone.name}</title>
-            </circle>
-            {zone.kind === 'meteors' && (
-              <path
-                d="M0-24V24M0 24L-8 12M0 24L8 12"
-                transform={`translate(${point(zone.x, zone.y).x} ${point(zone.x, zone.y).y}) rotate(${zone.direction})`}
-                fill="none"
-                stroke="#b77558"
+              <title>{body.name}</title>
+              <PlanetGlyph
+                radius={Math.max(16, body.radius)}
+                kind={body.kind}
               />
-            )}
+            </g>
+          ))}
+        {data.zones.map((zone, index) => (
+          <g
+            className="SpaceNavigation__map-feature"
+            key={index}
+            transform={`translate(${point(zone.x, zone.y).x} ${point(zone.x, zone.y).y})`}
+          >
+            <circle r={zone.radius * scale} fill="transparent" stroke="none" />
+            <title>
+              {zone.kind === 'meteors' ? 'Метеоритный поток' : zone.name}
+            </title>
+            <ZoneArt
+              kind={zone.kind}
+              radius={zone.radius * scale}
+              direction={zone.direction}
+            />
+            <text
+              className="nav-feature-label nav-chart-label nav-chart-label--muted"
+              x={zone.radius * scale * 0.8 + 7}
+              y="0"
+              pointerEvents="none"
+            >
+              {zone.kind === 'meteors' ? 'Метеоритный поток' : zone.name}
+            </text>
           </g>
         ))}
-        <g stroke="#bdad80" strokeWidth={3}>
+        {data.star && (
+          <g
+            transform={`translate(${point(data.star.x, data.star.y).x} ${point(data.star.x, data.star.y).y})`}
+            className="SpaceNavigation__map-feature"
+          >
+            <circle
+              r={data.star.radius * 1.8}
+              fill="transparent"
+              stroke="none"
+            />
+            <SunGlyph radius={data.star.radius} />
+            <text
+              className="nav-feature-label nav-chart-label"
+              x={-data.star.radius - 8}
+              y={-data.star.radius - 5}
+              textAnchor="end"
+            >
+              {data.star.name}
+            </text>
+          </g>
+        )}
+        <g stroke="#bdad80" strokeWidth={0.65}>
           {data.terrain.map((rock, index) => (
             <line
               key={index}
@@ -281,13 +313,14 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
               .join(' ')}
           />
         )}
-        {data.routes.map((site) => {
+        {data.routes.map((site, siteIndex) => {
           const p = point(site.x, site.y);
+          const selected = focusedContact === null && site.id === data.selected;
           return (
             <g
               key={site.id}
               transform={`translate(${p.x} ${p.y})`}
-              className="SpaceNavigation__marker"
+              className={`SpaceNavigation__marker ${selected ? 'is-selected' : ''} ${hoveredTarget === `site:${site.id}` ? 'is-hovered' : ''}`}
               role="button"
               tabIndex={0}
               aria-label={site.name}
@@ -297,24 +330,62 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
                 if (event.key === 'Enter' && !disabled && !site.failed)
                   onSite(site.id);
               }}
-              stroke={
-                site.id === data.selected
-                  ? '#edc587'
-                  : site.sos
-                    ? '#e0533f'
-                    : '#7b9c86'
-              }
+              stroke={selected ? '#edc587' : site.sos ? '#e0533f' : '#7b9c86'}
             >
               <title>{site.name}</title>
-              <circle r={13} fill="transparent" stroke="none" />
-              {site.kind === 'planet' ? (
-                <circle r={6} fill="#33473a" />
-              ) : (
+              <circle
+                className="nav-marker-focus"
+                r={site.kind === 'planet' ? 33 : 15}
+                pointerEvents="none"
+              />
+              <circle
+                r={site.kind === 'planet' ? 31 : 18}
+                fill="transparent"
+                stroke="none"
+              />
+              <g
+                style={{
+                  color: selected ? '#e7c689' : '#9cc8b7',
+                }}
+              >
+                {site.kind === 'planet' ? (
+                  <PlanetGlyph
+                    radius={selected ? 25 : 17}
+                    kind={
+                      bodies.find(
+                        (body) =>
+                          Math.hypot(body.x - site.x, body.y - site.y) < 1,
+                      )?.kind || 'barren'
+                    }
+                  />
+                ) : site.kind === 'station' ? (
+                  <StationGlyph />
+                ) : (
+                  <g>
+                    <path d="M0-8L8 0L0 8L-8 0Z" fill="#10221d" />
+                    <path d="M-3 0H3M0-3V3" strokeWidth="1" />
+                  </g>
+                )}
+              </g>
+              <g
+                className="nav-object-label"
+                pointerEvents="none"
+                fill="none"
+                strokeWidth=".6"
+                strokeOpacity=".55"
+              >
                 <path
-                  d="M0-7L7 0L0 7L-7 0Z"
-                  fill={site.sos ? '#5a1810' : '#080e0d'}
+                  d={`M${site.kind === 'planet' ? 27 : 13} -4l11-${siteIndex % 2 ? 13 : 25}h50`}
                 />
-              )}
+              </g>
+              <text
+                className={`nav-object-label nav-chart-label ${selected ? 'nav-chart-label--selected' : ''}`}
+                x={site.kind === 'planet' ? 39 : 25}
+                y={siteIndex % 2 ? -20 : -32}
+                pointerEvents="none"
+              >
+                {site.kind === 'signal' && !site.sos ? site.type : site.name}
+              </text>
               {!!site.sos &&
                 data.scan_age !== null &&
                 data.scan_age < SOS_PULSE && (
@@ -333,7 +404,7 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
           return (
             <g
               key={contact.id}
-              className="SpaceNavigation__marker"
+              className={`SpaceNavigation__marker ${contact.id === focusedContact ? 'is-selected' : ''} ${hoveredTarget === `contact:${contact.id}` ? 'is-hovered' : ''}`}
               role="button"
               tabIndex={0}
               aria-label={`Контакт ${contact.id}`}
@@ -344,6 +415,13 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
             >
               <title>{`К${contact.id} · ${contact.identity?.callsign || 'Неопознанное судно'} · ${Math.floor(contact.age)} с`}</title>
               <circle cx={p.x} cy={p.y} r={13} fill="transparent" />
+              <circle
+                className="nav-marker-focus"
+                cx={p.x}
+                cy={p.y}
+                r="10"
+                pointerEvents="none"
+              />
               <circle
                 cx={p.x}
                 cy={p.y}
@@ -357,6 +435,15 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
                       : '#d2a46a'
                 }
               />
+              <text
+                className="nav-object-label nav-chart-label nav-chart-label--contact"
+                x={p.x + 12}
+                y={p.y + 4}
+                pointerEvents="none"
+              >
+                К{contact.id}
+                {contact.identity ? ` / ${contact.identity.callsign}` : ' / ?'}
+              </text>
               {contact.id === focusedContact &&
                 contact.vx !== undefined &&
                 contact.vy !== undefined && (
@@ -378,36 +465,48 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
             radius={data.sensor_range * scale}
           />
         )}
-        {data.trajectory.map(({ x, y, seconds }, index) => (
-          <circle
-            key={seconds}
-            cx={point(x, y).x}
-            cy={point(x, y).y}
-            r={4 - index * 0.5}
-            fill="#91d7d0"
-            fillOpacity={1 - index * 0.2}
-            stroke="#080e0d"
-          >
-            <title>{`+${seconds} с при текущей тяге`}</title>
-          </circle>
-        ))}
-        {data.braking_distance !== null && data.speed > 0.05 && (
-          <path
-            d="M-5-5L5 5M-5 5L5-5"
-            pointerEvents="none"
-            stroke="#edc587"
-            transform={`translate(${own.x + (data.vx / data.speed) * data.braking_distance * scale} ${own.y - (data.vy / data.speed) * data.braking_distance * scale})`}
-          />
-        )}
-        <path
-          d="M0-15L7 10L-7 10Z"
+        {data.trajectory.map(({ x, y, seconds }, index) => {
+          const previous = index ? data.trajectory[index - 1] : data;
+          const dx = x - previous.x,
+            dy = y - previous.y;
+          const angle =
+            dx || dy ? (Math.atan2(dx, dy) * 180) / Math.PI : data.course;
+          const position = point(x, y);
+          return (
+            <path
+              key={seconds}
+              className="nav-prediction"
+              d="M0-5L3.5 3L0 1L-3.5 3Z"
+              transform={`translate(${position.x} ${position.y}) rotate(${angle}) scale(${1 - index * 0.12})`}
+              fill="#91d7d0"
+              fillOpacity={1 - index * 0.2}
+              stroke="#080e0d"
+              strokeWidth=".65"
+              pointerEvents="none"
+            >
+              <title>{`+${seconds} с при текущей тяге`}</title>
+            </path>
+          );
+        })}
+        <g
+          transform={`translate(${own.x} ${own.y})`}
           pointerEvents="none"
-          fill="#19281f"
-          stroke="#d6edc0"
-          transform={`translate(${own.x} ${own.y}) rotate(${data.course})`}
-        />
+          style={{ color: '#c4e9d7' }}
+        >
+          <circle
+            r="24"
+            fill="none"
+            stroke="#a6d4c3"
+            strokeWidth=".5"
+            strokeOpacity=".35"
+            strokeDasharray="2 5"
+          />
+          <g transform={`rotate(${data.course})`}>
+            <ShipGlyph />
+          </g>
+        </g>
         <g fill="#718870" stroke="#718870">
-          <text x={12} y={18} stroke="none">
+          <text x={12} y={54} stroke="none">
             N ↑
           </text>
           <path d={`M12 ${height - 30}h100`} />
@@ -415,6 +514,9 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
             {distanceLabel(100 / scale, data.au_scale)}
           </text>
         </g>
+        <text className="nav-system-title" x="14" y="27" pointerEvents="none">
+          {data.sector_name}
+        </text>
         {data.interference > 0 && (
           <rect
             width={width}
@@ -425,7 +527,7 @@ export function Chart({ data, focusedContact, onContact, onSite }: Props) {
           />
         )}
       </svg>
-    </>
+    </div>
   );
 }
 

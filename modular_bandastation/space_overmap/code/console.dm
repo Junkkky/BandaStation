@@ -72,6 +72,7 @@
 	var/datum/stationtrauma_overmap_site/space/target = map.sites[map.selected_destination]
 	var/distance = target ? map.distance_to(target) : 0
 	var/list/data = list(
+		"vessel_name" = vessel.name,
 		"au_scale" = ST_SPACE_AU_SCALE,
 		"status" = map.status,
 		"sector" = sector?.id, "sector_name" = sector?.name,

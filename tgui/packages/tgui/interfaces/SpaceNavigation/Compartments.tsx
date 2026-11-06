@@ -35,31 +35,89 @@ export function Compartments({ rooms, hull }: Props) {
     <section className="SpaceNavigation__hull" aria-label="Отсеки">
       <h2>
         ОТСЕКИ{' '}
-        <span>
-          {damaged.length ? `повреждено ${damaged.length}` : 'норма'}
-        </span>
+        <span>{damaged.length ? `повреждено ${damaged.length}` : 'норма'}</span>
       </h2>
       {width ? (
         <svg
-          viewBox={`-0.5 -0.5 ${width + 1} ${hull.length + 1}`}
+          viewBox={`-3 -3 ${width + 6} ${hull.length + 6}`}
           preserveAspectRatio="xMidYMid meet"
-          shapeRendering="crispEdges"
+          shapeRendering="geometricPrecision"
           aria-hidden="true"
           onMouseLeave={() => setHovered(null)}
         >
+          <defs>
+            <pattern
+              id="hull-deck-grid"
+              width="1"
+              height="1"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M1 0H0V1"
+                fill="none"
+                stroke="#b6c9a0"
+                strokeOpacity=".3"
+                strokeWidth=".08"
+              />
+            </pattern>
+          </defs>
+          <g
+            pointerEvents="none"
+            fill="none"
+            stroke="#6c9d87"
+            strokeWidth=".08"
+            strokeOpacity=".5"
+          >
+            <path
+              d={`M${width / 2} -3V${hull.length + 3}M-3 ${hull.length / 2}H${width + 3}`}
+              strokeDasharray=".4 .7"
+            />
+            <path
+              d={`M-2 2V-2H2M${width - 2} -2H${width + 2}V2M${width + 2} ${hull.length - 2}V${hull.length + 2}H${width - 2}M2 ${hull.length + 2}H-2V${hull.length - 2}`}
+            />
+          </g>
+          <g
+            transform="translate(.6 .8)"
+            fill="#081410"
+            stroke="#9db99a"
+            strokeOpacity=".35"
+            strokeWidth=".12"
+            pointerEvents="none"
+          >
+            {runs.map((run) => (
+              <rect
+                key={`depth-${run.x}-${run.y}`}
+                x={run.x}
+                y={run.y}
+                width={run.length}
+                height="1"
+              />
+            ))}
+          </g>
           {runs.map((run) => {
             const index = CELL_CODES.indexOf(run.code);
             const room = index < 0 ? undefined : rooms[index];
             return (
-              <rect
-                key={`${run.x}-${run.y}`}
-                x={run.x}
-                y={run.y}
-                width={run.length}
-                height={1}
-                className={cellClass(run.code, room, index === hovered)}
-                onMouseEnter={() => setHovered(room ? index : null)}
-              />
+              <g key={`${run.x}-${run.y}`}>
+                <rect
+                  x={run.x}
+                  y={run.y}
+                  width={run.length}
+                  height={1}
+                  className={cellClass(run.code, room, index === hovered)}
+                  onMouseEnter={() => setHovered(room ? index : null)}
+                />
+                {index >= 0 && (
+                  <rect
+                    x={run.x}
+                    y={run.y}
+                    width={run.length}
+                    height="1"
+                    fill="url(#hull-deck-grid)"
+                    pointerEvents="none"
+                  />
+                )}
+              </g>
             );
           })}
         </svg>
@@ -73,7 +131,7 @@ export function Compartments({ rooms, hull }: Props) {
             ? damaged
                 .map((room) => `${room.name}: ${describe(room)}`)
                 .join('; ')
-            : 'Все отсеки в норме'}
+            : null}
       </p>
     </section>
   );

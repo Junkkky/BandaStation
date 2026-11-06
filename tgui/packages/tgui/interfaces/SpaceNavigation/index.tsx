@@ -7,21 +7,17 @@ import { Annunciator } from './Annunciator';
 import { Chart } from './Chart';
 import { Compartments } from './Compartments';
 import { Descent } from './Descent';
+import { ZoomKnob } from './DisplayArt';
 import { Docking } from './Docking';
-import { FuelGauges } from './Fuel';
+import { AnalogDial, FuelGauges } from './Fuel';
 import { Scanner } from './Scanner';
-import {
-  closestApproach,
-  distanceLabel,
-  type NavigationData,
-  speedLabel,
-} from './types';
+import { distanceLabel, type NavigationData, speedLabel } from './types';
 import { useHelm } from './useHelm';
 
 export const SpaceNavigation = () => {
   const { data } = useBackend<NavigationData>();
   return (
-    <Window width={1120} height={650}>
+    <Window width={1280} height={800}>
       <Window.Content>
         {data.sector ? (
           <Navigation key={data.sector} data={data} />
@@ -36,8 +32,12 @@ export const SpaceNavigation = () => {
 function Navigation({ data }: { data: NavigationData }) {
   const { act } = useBackend();
   const helm = useHelm(data);
+  const [chartZoom, setChartZoom] = useState(1);
+  const [hoveredTarget, setHoveredTarget] = useState<string | null>(null);
   const [focusedContact, setFocusedContact] = useState<number | null>(null);
-  const [showScanner, setShowScanner] = useState(false);
+  const [panel, setPanel] = useState<'objects' | 'contacts' | 'scanner'>(
+    'objects',
+  );
   const moored = !!(data.docked || data.coupled);
   const contact = data.ship_contacts.find(
     (record) => record.id === focusedContact,
@@ -50,31 +50,30 @@ function Navigation({ data }: { data: NavigationData }) {
   let dockValue: string | number | null = data.selected;
   let dockDisabled = !data.can_dock;
   let dockTooltip = data.landing ? 'Посадка' : 'Стыковка';
-  let dockLabel = 'СТЫК / ПОСАДКА';
   if (focusedContact !== null) {
     dockAction = 'ship_dock';
     dockValue = focusedContact;
     dockDisabled = !contact || !data.dockable_contacts.includes(contact.id);
     dockTooltip = `Запрос стыковки К${focusedContact}`;
   } else if (stationDocking?.state === 'approved') {
-    dockLabel = 'СТЫКОВАТЬСЯ';
     dockTooltip = 'Начать стыковку по разрешению диспетчера';
   } else if (stationDocking) {
     const pending = stationDocking.state === 'pending';
     dockAction = 'request_station_dock';
     dockDisabled = pending || !stationDocking.canRequest;
-    dockLabel = pending ? 'ОЖИДАНИЕ ОТВЕТА' : 'ЗАПРОС СТЫКОВКИ';
     dockTooltip = pending
       ? 'Запрос передан диспетчеру'
       : 'Запросить разрешение у диспетчера';
   }
-  const approach = contact && closestApproach(data, contact);
+  const clearanceStatus =
+    stationDocking && stationDocking.state !== 'none'
+      ? `${stationDocking.state === 'approved' ? 'Стыковка разрешена' : 'Запрос передан диспетчеру'}${stationDocking.expiresIn !== null ? ` (${Math.ceil(stationDocking.expiresIn)} с)` : ''}`
+      : null;
   const distance = (value: number) => distanceLabel(value, data.au_scale);
   const reverse =
     data.vx * Math.sin((data.course * Math.PI) / 180) +
       data.vy * Math.cos((data.course * Math.PI) / 180) <
     -0.05;
-  const needle = Math.PI * (1 - Math.min(1, data.speed / data.speed_scale));
   const mode = data.approach
     ? data.approach.scene === 'planet'
       ? data.approach.departing
@@ -102,138 +101,154 @@ function Navigation({ data }: { data: NavigationData }) {
   return (
     <main className="SpaceNavigation">
       <header>
-        <strong>НАВИГАЦИЯ</strong>
+        <div className="SpaceNavigation__nameplate">
+          <strong title={data.vessel_name}>
+            {data.vessel_name || 'НАВИГАЦИЯ'}
+          </strong>
+          <span>НАВИГАЦИЯ / NAV–01</span>
+        </div>
         <Annunciator data={data} />
-        <span>{mode}</span>
+        <ZoomKnob
+          zoom={chartZoom}
+          onChange={setChartZoom}
+          disabled={!!data.approach}
+        />
       </header>
       <div className="SpaceNavigation__body">
-        <aside className="SpaceNavigation__contacts" aria-label="Объекты">
-          <h2 className="SpaceNavigation__tabs">
-            <Button
-              selected={!showScanner}
-              onClick={() => setShowScanner(false)}
-            >
-              ОБЪЕКТЫ{' '}
-              <span>{data.routes.length + data.ship_contacts.length}</span>
-            </Button>
-            <Button
-              selected={showScanner}
-              onClick={() => setShowScanner(true)}
-            >
-              СКАНЕР
-            </Button>
-          </h2>
-          {showScanner ? (
-            <Scanner data={data} focusedContact={focusedContact} />
-          ) : (
-            <div className="SpaceNavigation__routes">
-              {data.routes.map((site) => (
-                <Button
-                  key={site.id}
-                  fluid
-                  color={site.sos ? 'red' : undefined}
-                  tooltip={
-                    site.kind === 'signal' && !site.sos ? site.type : site.name
-                  }
-                  selected={
-                    focusedContact === null && site.id === data.selected
-                  }
-                  disabled={site.failed || data.preparing || data.relocating}
-                  onClick={() => selectSite(site.id)}
-                >
-                  <span>
-                    {site.kind === 'signal' && !site.sos ? site.type : site.name}
-                  </span>
-                  <span>{distance(site.distance)}</span>
-                </Button>
-              ))}
-              {data.ship_contacts.map((record) => (
-                <Button
-                  key={`contact-${record.id}`}
-                  fluid
-                  tooltip={record.identity?.callsign || 'Неопознанное судно'}
-                  selected={record.id === focusedContact}
-                  onClick={() => setFocusedContact(record.id)}
-                >
-                  <span>
-                    К{record.id} ·{' '}
-                    {record.identity?.callsign || 'Неопознанное судно'}
-                  </span>
-                  <span>
-                    {distance(Math.hypot(record.x - data.x, record.y - data.y))}
-                  </span>
-                </Button>
-              ))}
-              {!data.routes.length && !data.ship_contacts.length && (
-                <p className="SpaceNavigation__help">Нет отметок</p>
-              )}
+        <div className="SpaceNavigation__left-bank">
+          <div
+            className="SpaceNavigation__tabs"
+            role="tablist"
+            aria-label="Данные навигации"
+          >
+            {(
+              [
+                ['objects', 'ОБЪЕКТЫ'],
+                ['contacts', 'КОНТАКТЫ'],
+                ['scanner', 'СКАНЕР'],
+              ] as const
+            ).map(([id, label]) => (
+              <button
+                type="button"
+                key={id}
+                className={`Button ${panel === id ? 'Button--selected' : ''}`}
+                role="tab"
+                aria-selected={panel === id}
+                onClick={() => setPanel(id)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <aside className="SpaceNavigation__contacts" aria-label="Объекты">
+            <div className="SpaceNavigation__screen-label">
+              <span>ОБЗОР</span>
+              <span>01</span>
             </div>
-          )}
-          <Compartments rooms={data.compartments} hull={data.hull} />
-        </aside>
+
+            {panel === 'scanner' ? (
+              <Scanner data={data} focusedContact={focusedContact} />
+            ) : (
+              <div className="SpaceNavigation__routes">
+                {panel === 'objects' &&
+                  data.routes.map((site) => (
+                    <Button
+                      key={site.id}
+                      fluid
+                      color={site.sos ? 'red' : undefined}
+                      tooltip={
+                        site.kind === 'signal' && !site.sos
+                          ? site.type
+                          : site.name
+                      }
+                      selected={
+                        focusedContact === null && site.id === data.selected
+                      }
+                      disabled={
+                        site.failed || data.preparing || data.relocating
+                      }
+                      onMouseEnter={() => setHoveredTarget(`site:${site.id}`)}
+                      onMouseLeave={() => setHoveredTarget(null)}
+                      onClick={() => selectSite(site.id)}
+                    >
+                      <span>
+                        {site.kind === 'signal' && !site.sos
+                          ? site.type
+                          : site.name}
+                      </span>
+                      <span>{distance(site.distance)}</span>
+                    </Button>
+                  ))}
+                {panel === 'contacts' &&
+                  data.ship_contacts.map((record) => (
+                    <Button
+                      key={`contact-${record.id}`}
+                      fluid
+                      tooltip={
+                        record.identity?.callsign || 'Неопознанное судно'
+                      }
+                      selected={record.id === focusedContact}
+                      onMouseEnter={() =>
+                        setHoveredTarget(`contact:${record.id}`)
+                      }
+                      onMouseLeave={() => setHoveredTarget(null)}
+                      onClick={() => setFocusedContact(record.id)}
+                    >
+                      <span>
+                        К{record.id} ·{' '}
+                        {record.identity?.callsign || 'Неопознанное судно'}
+                      </span>
+                      <span>
+                        {distance(
+                          Math.hypot(record.x - data.x, record.y - data.y),
+                        )}
+                      </span>
+                    </Button>
+                  ))}
+                {((panel === 'objects' && !data.routes.length) ||
+                  (panel === 'contacts' && !data.ship_contacts.length)) && (
+                  <p className="SpaceNavigation__help">Нет отметок</p>
+                )}
+              </div>
+            )}
+          </aside>
+          <div className="SpaceNavigation__hull-screen">
+            <Compartments rooms={data.compartments} hull={data.hull} />
+          </div>
+        </div>
         <section className="SpaceNavigation__plot">
+          <div className="SpaceNavigation__screen-label">
+            <span>ОРБИТАЛЬНАЯ НАВИГАЦИЯ</span>
+          </div>
           {data.approach?.scene === 'planet' ? (
             <Descent approach={data.approach} />
           ) : data.approach ? (
             <Docking approach={data.approach} />
           ) : (
             <Chart
+              zoom={chartZoom}
+              hoveredTarget={hoveredTarget}
               data={data}
               focusedContact={focusedContact}
-              onContact={setFocusedContact}
+              onContact={(id) => {
+                setFocusedContact(id);
+                setPanel('scanner');
+              }}
               onSite={selectSite}
             />
           )}
           <div className="SpaceNavigation__legend">
-            <span>▲ Судно</span>
-            <span>◇ Цель</span>
             <span title="При сохранении текущей тяги и команды курса">
-              ● +20 / 40 / 60 с
+              <Icon name="location-arrow" /> +20 / 40 / 60 с
             </span>
-            <span>× Остановка</span>
           </div>
-          {data.planet && (
-            <p className="SpaceNavigation__help">
-              {data.planet.biome} · {data.planet.atmosphere} ·{' '}
-              {Math.round(data.planet.temperature - 273.15)} °C ·{' '}
-              {data.planet.breathable
-                ? 'Пригодна для дыхания'
-                : 'Требуется EVA-снаряжение'}
-              {data.planet.modifiers.map((modifier) => ` · ${modifier}`)}
-            </p>
-          )}
-          {focusedContact !== null && (
-            <p className="SpaceNavigation__help" role="status">
-              {contact ? (
-                <>
-                  К{contact.id} ·{' '}
-                  {contact.identity
-                    ? `${contact.identity.callsign} [${contact.identity.faction}]`
-                    : 'Неопознанное судно'}
-                  {' · '}
-                  {contact.mode === 'signal'
-                    ? 'канал связи'
-                    : contact.mode === 'passive'
-                      ? 'пассивный канал'
-                      : 'активный канал'}
-                  {' · '}давность {Math.floor(contact.age)} с · дистанция ≈{' '}
-                  {distance(Math.hypot(contact.x - data.x, contact.y - data.y))}
-                  {contact.vx !== undefined && contact.vy !== undefined
-                    ? ` · Скорость ≈ ${speedLabel(Math.hypot(contact.vx, contact.vy), data.au_scale)}`
-                    : ' · Движение не определено'}
-                  {approach &&
-                    (approach.time > 0
-                      ? ` · Сближение до ≈ ${distance(approach.distance)} через ${Math.round(approach.time)} с`
-                      : ' · Расходимся')}
-                  {approach && contact.age >= 20 && ' (прогноз устарел)'}
-                </>
-              ) : (
-                `Отметка ${focusedContact} устарела`
-              )}
-            </p>
-          )}
         </section>
+
         <aside className="SpaceNavigation__telemetry" aria-label="Управление">
+          <div className="SpaceNavigation__engraving">
+            <span>ДВИГАТЕЛЬНАЯ УСТАНОВКА</span>
+            <span>01</span>
+          </div>
           <div className="SpaceNavigation__engine-control">
             <Button
               className="SpaceNavigation__engine"
@@ -254,7 +269,9 @@ function Navigation({ data }: { data: NavigationData }) {
               onClick={() =>
                 act('engine', { value: data.engines_running ? 0 : 1 })
               }
-            />
+            >
+              <span className="SpaceNavigation__key-label">ДВИГАТЕЛИ</span>
+            </Button>
             <Button
               className="SpaceNavigation__engine"
               icon="fire"
@@ -269,67 +286,58 @@ function Navigation({ data }: { data: NavigationData }) {
               aria-pressed={!!data.afterburner}
               disabled={!data.can_afterburner}
               onClick={() => act('afterburner')}
+            >
+              <span className="SpaceNavigation__key-label">ФОРСАЖ</span>
+            </Button>
+
+            <Button
+              className="SpaceNavigation__scan"
+              selected={data.scan_age !== null && data.scan_age < 1.5}
+              tooltip="Сканирование"
+              aria-label="Сканирование"
+              disabled={!data.scan_ready}
+              onClick={() => act('scan')}
+            >
+              <Icon name="satellite-dish" />
+              <span className="SpaceNavigation__key-label">СОНАР</span>
+              <span
+                role="status"
+                aria-label={
+                  data.scan_ready
+                    ? 'Сканирование доступно'
+                    : 'Сканирование недоступно'
+                }
+                className={`SpaceNavigation__lamp ${data.scan_ready ? 'ready' : ''}`}
+              />
+            </Button>
+          </div>
+
+          <div className="SpaceNavigation__gauges">
+            <AnalogDial
+              label="СКОРОСТЬ"
+              share={data.speed / data.speed_scale}
+              scaleMax={data.speed_scale}
+              readout={`${reverse ? '−' : ''}${speedLabel(data.speed, data.au_scale)}`}
             />
             {!!data.fuel && <FuelGauges gauges={data.fuel} />}
           </div>
-
-          <div className="SpaceNavigation__instruments">
-            <div className="SpaceNavigation__sensor-speed">
-              <Button
-                className="SpaceNavigation__scan"
-                tooltip="Сканирование"
-                aria-label="Сканирование"
-                disabled={!data.scan_ready}
-                onClick={() => act('scan')}
-              >
-                <Icon name="satellite-dish" />
-                <span
-                  role="status"
-                  aria-label={
-                    data.scan_ready
-                      ? 'Сканирование доступно'
-                      : 'Сканирование недоступно'
-                  }
-                  className={`SpaceNavigation__lamp ${data.scan_ready ? 'ready' : ''}`}
-                />
-              </Button>
-              <div
-                className="SpaceNavigation__speedometer"
-                role="meter"
-                aria-label="Скорость корабля"
-                aria-valuemin={0}
-                aria-valuemax={100}
-                aria-valuenow={Math.min(
-                  100,
-                  (data.speed / data.speed_scale) * 100,
-                )}
-                aria-valuetext={speedLabel(data.speed, data.au_scale)}
-              >
-                <svg viewBox="0 0 100 58" aria-hidden="true">
-                  <path className="gauge" d="M10 50a40 40 0 0 1 80 0" />
-                  <path
-                    d={`M50 50L${50 + 36 * Math.cos(needle)} ${50 - 36 * Math.sin(needle)}`}
-                  />
-                  <circle cx="50" cy="50" r="3" />
-                </svg>
-                <output>
-                  {reverse ? '−' : ''}
-                  {speedLabel(data.speed, data.au_scale)}
-                </output>
-              </div>
+          <div className="SpaceNavigation__flight-screen">
+            <div className="SpaceNavigation__screen-label">
+              <span>ПОЛЁТНЫЕ ДАННЫЕ</span>
+              <span>03</span>
             </div>
             <dl>
-              <dt>Координаты</dt>
+              <dt>ПОЗ</dt>
               <dd>
                 {distance(data.x)} / {distance(data.y)}
               </dd>
-              <dt>Курс</dt>
+              <dt>КУРС / ЗАД</dt>
               <dd>
                 {Math.round(data.course)}° / {Math.round(data.ordered_course)}°
               </dd>
-              <dt>Дистанция</dt>
+              <dt>ДИСТ</dt>
               <dd>{data.selected ? distance(data.distance) : '—'}</dd>
-              <dt>Тормозной путь</dt>
+              <dt>ТОРМ. ПУТЬ</dt>
               <dd>
                 {data.braking_distance === null
                   ? '—'
@@ -337,8 +345,14 @@ function Navigation({ data }: { data: NavigationData }) {
               </dd>
             </dl>
           </div>
+
+          <div className="SpaceNavigation__engraving">
+            <span>ТЯГА И МАНЁВРЫ</span>
+            <span>02</span>
+          </div>
           <div className="SpaceNavigation__helm">
-            <div className="SpaceNavigation__throttle">
+            <div className="SpaceNavigation__throttle" aria-label="Рычаг тяги">
+              <span className="SpaceNavigation__throttle-label">ТЯГА</span>
               <div className="SpaceNavigation__scale" aria-hidden="true">
                 {['+100', '+50', '0', '−50', '−100'].map((mark) => (
                   <span key={mark}>{mark}</span>
@@ -406,7 +420,7 @@ function Navigation({ data }: { data: NavigationData }) {
                   onClick={() => act('turn', { value: -15 })}
                   aria-label="Рыскание влево"
                 >
-                  ↶
+                  <Icon name="rotate-left" />
                 </Button>
                 <Button
                   disabled={helm.blocked}
@@ -414,7 +428,7 @@ function Navigation({ data }: { data: NavigationData }) {
                   onClick={() => helm.changeThrottle(5)}
                   aria-label="Увеличить тягу"
                 >
-                  ↑
+                  <Icon name="arrow-up" />
                 </Button>
                 <Button
                   disabled={helm.blocked}
@@ -422,7 +436,7 @@ function Navigation({ data }: { data: NavigationData }) {
                   onClick={() => act('turn', { value: 15 })}
                   aria-label="Рыскание вправо"
                 >
-                  ↷
+                  <Icon name="rotate-right" />
                 </Button>
                 <Button
                   disabled={helm.lateralBlocked}
@@ -439,7 +453,7 @@ function Navigation({ data }: { data: NavigationData }) {
                       });
                   }}
                 >
-                  ←
+                  <Icon name="arrow-left" />
                 </Button>
                 <Button
                   disabled={helm.blocked}
@@ -447,7 +461,7 @@ function Navigation({ data }: { data: NavigationData }) {
                   onClick={() => helm.changeThrottle(-5)}
                   aria-label="Уменьшить тягу"
                 >
-                  ↓
+                  <Icon name="arrow-down" />
                 </Button>
                 <Button
                   disabled={helm.lateralBlocked}
@@ -464,7 +478,7 @@ function Navigation({ data }: { data: NavigationData }) {
                       });
                   }}
                 >
-                  →
+                  <Icon name="arrow-right" />
                 </Button>
               </div>
               <Button
@@ -477,18 +491,26 @@ function Navigation({ data }: { data: NavigationData }) {
                   data.engines <= 0 ||
                   data.throttle <= 0
                 }
+                className="SpaceNavigation__auto"
+                icon="route"
+                aria-label="Автопилот"
+                tooltip="Автопилот к выбранной цели"
+                selected={!!data.autopilot}
                 onClick={() => act('autopilot')}
               >
-                АВТОПИЛОТ
+                <span className="SpaceNavigation__key-label">АП</span>
               </Button>
               <div className="SpaceNavigation__brakes">
                 <Button
                   className="SpaceNavigation__stop"
+                  icon="pause"
+                  aria-label="Торможение"
+                  selected={!!data.braking}
                   tooltip={data.jumping ? 'Отменить прыжок' : 'Торможение'}
                   disabled={data.relocating}
                   onClick={() => act('stop')}
                 >
-                  ТОРМОЖЕНИЕ
+                  <span className="SpaceNavigation__key-label">ТОРМОЗ</span>
                 </Button>
                 <Button
                   className="SpaceNavigation__emergency"
@@ -503,94 +525,114 @@ function Navigation({ data }: { data: NavigationData }) {
                     data.speed <= 0.05
                   }
                   onClick={() => act('emergency_brake')}
-                />
+                >
+                  <span className="SpaceNavigation__key-label">АВАР.</span>
+                </Button>
               </div>
             </div>
           </div>
-          <section className="SpaceNavigation__docking" aria-label="Стыковка">
-            <Button
-              fluid
-              tooltip={dockTooltip}
-              disabled={dockDisabled}
-              onClick={() => act(dockAction, { value: dockValue })}
-            >
-              {dockLabel}
-            </Button>
-            <Button
-              fluid
-              tooltip={data.landed ? 'Взлёт' : 'Отстыковка'}
-              disabled={
-                !moored ||
-                !data.engines_running ||
-                data.preparing ||
-                data.relocating ||
-                data.engines <= 0
-              }
-              onClick={() => act('depart')}
-            >
-              ОТСТЫК / ВЗЛЁТ
-            </Button>
-          </section>
-          {stationDocking && stationDocking.state !== 'none' && (
+
+          <div className="SpaceNavigation__engraving">
+            <span>СТЫКОВОЧНЫЕ ОПЕРАЦИИ</span>
+            <span>03</span>
+          </div>
+          <div className="SpaceNavigation__dock-bank">
+            <section className="SpaceNavigation__docking" aria-label="Стыковка">
+              <Button
+                fluid
+                aria-label="Стыковка или посадка"
+                tooltip={dockTooltip}
+                disabled={dockDisabled}
+                selected={!!clearanceStatus}
+                onClick={() => act(dockAction, { value: dockValue })}
+              >
+                <Icon name="right-to-bracket" />
+                <span className="SpaceNavigation__key-label">СТЫК</span>
+              </Button>
+              <Button
+                fluid
+                aria-label="Отстыковка или взлёт"
+                tooltip={data.landed ? 'Взлёт' : 'Отстыковка'}
+                disabled={
+                  !moored ||
+                  !data.engines_running ||
+                  data.preparing ||
+                  data.relocating ||
+                  data.engines <= 0
+                }
+                onClick={() => act('depart')}
+              >
+                <Icon name="right-from-bracket" />
+                <span className="SpaceNavigation__key-label">ОТСТЫК</span>
+              </Button>
+            </section>
             <div
               className="SpaceNavigation__request"
               role="group"
-              aria-label="Разрешение диспетчера"
+              aria-label="Входящий запрос стыковки"
             >
-              <span role="status">
-                {stationDocking.state === 'approved'
-                  ? 'Стыковка разрешена'
-                  : 'Запрос передан'}
-                {stationDocking.expiresIn !== null &&
-                  ` (${Math.ceil(stationDocking.expiresIn)} с)`}
-              </span>
-              {!!stationDocking.canCancel && (
-                <Button
-                  onClick={() =>
-                    act('cancel_station_dock', { value: data.selected })
-                  }
-                >
-                  ОТМЕНА
-                </Button>
-              )}
+              <Button
+                fluid
+                tooltip={
+                  data.docking_request
+                    ? `Принять запрос К${data.docking_request.contact ?? '?'}`
+                    : 'Нет запроса'
+                }
+                aria-label="Принять запрос стыковки"
+                disabled={!data.docking_request || !data.can_request_ship_dock}
+                onClick={() =>
+                  act('accept_ship_dock', {
+                    value: data.docking_request?.token,
+                  })
+                }
+              >
+                <Icon name="check" />
+                <span className="SpaceNavigation__key-label">ПРИНЯТЬ</span>
+              </Button>
+              <Button
+                fluid
+                aria-label={
+                  data.docking_request
+                    ? 'Отклонить запрос стыковки'
+                    : 'Отменить запрос диспетчеру'
+                }
+                tooltip={
+                  data.docking_request
+                    ? 'Отклонить запрос стыковки'
+                    : 'Отменить запрос или разрешение диспетчера'
+                }
+                disabled={!data.docking_request && !stationDocking?.canCancel}
+                onClick={() =>
+                  data.docking_request
+                    ? act('decline_ship_dock', {
+                        value: data.docking_request.token,
+                      })
+                    : act('cancel_station_dock', { value: data.selected })
+                }
+              >
+                <Icon name="xmark" />
+                <span className="SpaceNavigation__key-label">ОТКАЗ</span>
+              </Button>
             </div>
-          )}
-          <div
-            className="SpaceNavigation__request"
-            role="group"
-            aria-label="Входящий запрос стыковки"
-          >
-            <Button
-              fluid
-              tooltip={
-                data.docking_request
-                  ? `Принять запрос К${data.docking_request.contact ?? '?'}`
-                  : 'Нет запроса'
-              }
-              disabled={!data.docking_request || !data.can_request_ship_dock}
-              onClick={() =>
-                act('accept_ship_dock', {
-                  value: data.docking_request?.token,
-                })
-              }
-            >
-              ПРИНЯТЬ
-            </Button>
-            <Button
-              fluid
-              disabled={!data.docking_request}
-              onClick={() =>
-                act('decline_ship_dock', {
-                  value: data.docking_request?.token,
-                })
-              }
-            >
-              ОТКЛОНИТЬ
-            </Button>
           </div>
         </aside>
       </div>
-      <footer role="status">{data.status}</footer>
+      <div className="SpaceNavigation__status-bank">
+        <footer role="status" title={clearanceStatus || data.status}>
+          <span className="SpaceNavigation__status-dot" />
+          {clearanceStatus || data.status}
+        </footer>
+        <div
+          className="SpaceNavigation__mode-screen"
+          role="status"
+          aria-label="Состояние полёта"
+        >
+          <strong>{mode}</strong>
+          <span>
+            ТЯГА <b>{data.throttle}%</b>
+          </span>
+        </div>
+      </div>
     </main>
   );
 }

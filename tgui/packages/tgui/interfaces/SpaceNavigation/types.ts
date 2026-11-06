@@ -53,6 +53,7 @@ export type Compartment = {
   breaches: number;
 };
 export type NavigationData = Position & {
+  vessel_name?: string;
   au_scale: number;
   status: string;
   sector: string;
