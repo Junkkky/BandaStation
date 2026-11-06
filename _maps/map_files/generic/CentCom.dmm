@@ -16818,10 +16818,6 @@
 /obj/effect/turf_decal/siding/wood/end,
 /turf/open/floor/wood,
 /area/centcom/central_command_areas/admin)
-"kOz" = (
-/obj/machinery/central_telephone_exchange,
-/turf/open/floor/carpet/black,
-/area/centcom/central_command_areas/admin)
 "kPc" = (
 /obj/structure/statue/sandstone/venus/pure{
 	dir = 1
@@ -18959,6 +18955,16 @@
 /obj/effect/turf_decal/siding/wood/end,
 /turf/open/floor/wood,
 /area/centcom/central_command_areas/admin)
+"pwe" = (
+/obj/structure/railing/platform/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/dark/fourcorners{
+	alpha = 90
+	},
+/obj/machinery/central_telephone_exchange,
+/turf/open/floor/iron/dark,
+/area/centcom/central_command_areas/control)
 "pwM" = (
 /obj/item/kirbyplants/random,
 /obj/effect/turf_decal/siding/wood{
@@ -71704,7 +71710,7 @@ sgp
 sgp
 sgp
 sgp
-kOz
+sgp
 loM
 vhS
 odx
@@ -77322,7 +77328,7 @@ kBO
 rvF
 ucm
 jHG
-fgi
+pwe
 tsm
 feG
 feG

@@ -56149,6 +56149,11 @@
 /obj/item/flashlight/lamp/green{
 	pixel_y = 8
 	},
+/obj/structure/transmitter/command{
+	display_name = "Представитель НТ";
+	pixel_x = 12;
+	pixel_y = -3
+	},
 /turf/open/floor/carpet/royalblack,
 /area/station/command/heads_quarters/nanotrasen_representative)
 "nDy" = (
@@ -64010,11 +64015,6 @@
 /obj/item/pen{
 	pixel_y = 6
 	},
-/obj/structure/transmitter/medbay{
-	display_name = "МЕД - Стойка";
-	pixel_x = 0;
-	pixel_y = 6
-	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "pwX" = (
@@ -65461,6 +65461,11 @@
 	},
 /obj/item/storage/box/rxglasses{
 	pixel_y = 14
+	},
+/obj/structure/transmitter/medbay{
+	display_name = "МЕД - Стойка";
+	pixel_x = 0;
+	pixel_y = 6
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
