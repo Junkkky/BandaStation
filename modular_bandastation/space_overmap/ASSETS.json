@@ -3,6 +3,14 @@
 	"scope": "Non-audio maps, imported icons and generated previews introduced or modified by space-overmap modules. Embedded code and existing referenced assets retain their original notices.",
 	"assets": [
 		{
+			"path": "modular_bandastation/space_overmap/icons/fusion_core.dmi",
+			"sha256": "1a97d2be6a2f00e9a60dc7615dbe51b49bec893a050862e7992c64f23aaec5c4",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["Junkkky (art direction)", "StationTrauma contributors (native pixel artwork)"],
+			"source": null,
+			"changes": "Native 96x96 pixel painting in the style of cannon.dmi; fixed casing, animated energy and separate emissive masks. Approved spherical reactor form."
+		},
+		{
 			"path": "modular_bandastation/space_overmap/maps/asteroid_field.dmm",
 			"sha256": "5ffa8575ec2ef605831a2f8e025e53d77f2990f3739ec65342be3c4e8dfc2067",
 			"license": "CC-BY-SA-3.0",
@@ -20,7 +28,7 @@
 		},
 		{
 			"path": "icons/obj/fluff/map_previews.dmi",
-			"sha256": "5b93e84a9802c497f1caee2d776b5123b78eb5cd333a844c2cc615056500a28f",
+			"sha256": "de97b0ec7644c4a57e473e554c19b43e624d28d345acb17c3063acab7ab1a4bb",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["TG, BandaStation and Primera contributors"],
 			"source": {

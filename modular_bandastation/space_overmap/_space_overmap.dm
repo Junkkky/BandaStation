@@ -36,18 +36,42 @@
 #define ST_ENGINE_SOUND_STEP 0.04
 /// Sent by an area when its space parallax background changes: ().
 #define COMSIG_AREA_SPACE_PARALLAX_CHANGED "area_space_parallax_changed"
-/// Combustion chamber phase: cold and idle.
-#define SHIP_CHAMBER_OFF "off"
-/// Combustion chamber phase: warming up to operating temperature.
-#define SHIP_CHAMBER_STARTING "starting"
-/// Combustion chamber phase: burning and feeding the engines.
-#define SHIP_CHAMBER_RUNNING "running"
-/// Combustion chamber phase: venting the chamber.
-#define SHIP_CHAMBER_PURGING "purging"
-/// Combustion chamber phase: tripped by a fault until reset.
-#define SHIP_CHAMBER_LOCKED "locked"
-/// Nominal hot-gas temperature required for full nozzle power and a completed warm-up.
+/// Hot-gas temperature giving full nozzle power.
 #define SHIP_ENGINE_OPERATING_TEMPERATURE 1000
+/// Extra share of nominal nozzle power while the fusion core runs in overdrive.
+#define SHIP_AFTERBURNER_THRUST 0.5
+/// Tritium the fusion core burns per second at full output, in moles; a standard canister lasts about half an hour.
+#define ST_CORE_FUEL_RATE 1
+/// Hot helium the fusion core gives per mole of tritium; full output covers Raven's converters at full thrust.
+#define ST_CORE_HELIUM_YIELD 4.5
+/// Temperature of the helium leaving the fusion core.
+#define ST_CORE_EXHAUST_TEMPERATURE 3000
+/// Outlet line pressure above which the fusion core stops adding helium, in kPa.
+#define ST_CORE_EXHAUST_PRESSURE 1000
+/// Electric power the fusion core feeds into its grid at full output.
+#define ST_CORE_POWER (60 KILO WATTS)
+/// Output multiplier of the fusion core's overdrive.
+#define ST_CORE_OVERDRIVE_OUTPUT 1.5
+/// Fuel multiplier of the fusion core's overdrive.
+#define ST_CORE_OVERDRIVE_FUEL 2
+/// Seconds of overdrive from a cold core to its heat trip; cooling takes twice as long.
+#define ST_CORE_OVERDRIVE_ENDURANCE 60
+/// Neutron reach of the fusion core at full output, in tiles; a common wall stops it.
+#define ST_CORE_RADIATION_RANGE 3
+/// Time near a running core before its neutrons irradiate someone.
+#define ST_CORE_RADIATION_EXPOSURE (5 SECONDS)
+/// Highest manual output setting of the fusion core, in percent; above 100 is overload.
+#define ST_CORE_MAX_LEVEL 150
+/// Lowest output the fusion core's automatic mode keeps to hold the reaction, in percent.
+#define ST_CORE_IDLE_LEVEL 10
+/// Core heat per second for each full nominal output of overload, in percent; 150 % reaches the interlock in about three minutes.
+#define ST_CORE_OVERLOAD_HEATING 1.1
+/// Core heat at which an unprotected core certainly explodes, in percent.
+#define ST_CORE_MELTDOWN_HEAT 200
+/// Explosion chance per second for each percent of heat above 100 with the interlock off.
+#define ST_CORE_MELTDOWN_CHANCE 0.1
+/// Waste heat the fusion core releases into its room per nominal output of overload, and per full heat at half that rate.
+#define ST_CORE_WASTE_HEAT (40 KILO WATTS)
 /// Engine power per hull tile that gives the reference speed and acceleration.
 #define ST_SPACE_REFERENCE_THRUST 0.03
 /// Top speed of a hull at the reference thrust ratio.

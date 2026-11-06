@@ -25,10 +25,10 @@
 	var/datum/stationtrauma_overmap/space/map = vessel?.overmap
 	if(!map)
 		return list()
-	var/obj/machinery/computer/ship_combustion/chamber = vessel.combustion_controller?.resolve()
+	var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/reactor = vessel.fusion_core?.resolve()
 	var/engine_fraction = map.engine_fraction()
-	var/engine_fault = chamber ? !!(chamber.fault || chamber.equipment_fault()) : engine_fraction <= 0
-	if(chamber?.phase == SHIP_CHAMBER_RUNNING && !engine_fault)
+	var/engine_fault = reactor ? reactor.tripped : engine_fraction <= 0
+	if(reactor?.output && !engine_fault)
 		engine_fault = engine_fraction <= 0 || vessel.current_engine_power < vessel.initial_engine_power
 		for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
 			if(engine_fault)
@@ -57,10 +57,13 @@
 		"ship_power" = vessel.has_power(),
 		"engines" = round(engine_fraction * 100),
 		"engines_running" = vessel.engines_running,
-		"engine_phase" = chamber?.phase,
+		"core_overdrive" = !!reactor?.overdrive_active(),
+		"afterburner" = !!reactor?.overdrive,
+		"can_afterburner" = !!reactor && reactor.active && !reactor.tripped,
+		"core_heat" = reactor ? round(reactor.heat) : null,
 		"fuel" = vessel.fuel_gauges(),
 		"engine_fault" = engine_fault,
-		"can_start_engines" = chamber ? (chamber.phase != SHIP_CHAMBER_PURGING && chamber.phase != SHIP_CHAMBER_LOCKED && !chamber.fault && !chamber.equipment_fault()) : engine_fraction > 0,
+		"can_start_engines" = engine_fraction > 0,
 		"helm" = map.helm_engaged, "autopilot" = map.autopilot,
 		"preparing" = map.preparing, "planning" = map.planning,
 		"relocating" = map.relocating, "landed" = !!map.docked?.landing,
@@ -118,6 +121,9 @@
 			if(!(value in list(0, 1)))
 				return FALSE
 			return map.set_engines_running(value == 1)
+		if("afterburner")
+			var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/reactor = vessel.fusion_core?.resolve()
+			return reactor?.toggle_overdrive()
 		if("maneuver")
 			var/direction = value
 			return IS_FINITE(direction) && map.command_maneuver(direction)

@@ -224,6 +224,21 @@ function Navigation({ data }: { data: NavigationData }) {
                 act('engine', { value: data.engines_running ? 0 : 1 })
               }
             />
+            <Button
+              className="SpaceNavigation__engine"
+              icon="fire"
+              selected={!!data.afterburner}
+              color={data.afterburner ? 'good' : undefined}
+              tooltip={
+                data.afterburner
+                  ? 'Выключить форсаж'
+                  : 'Форсаж: +50 % тяги, двойной расход трития, ядро греется'
+              }
+              aria-label="Форсаж"
+              aria-pressed={!!data.afterburner}
+              disabled={!data.can_afterburner}
+              onClick={() => act('afterburner')}
+            />
             {!!data.fuel && <FuelGauges gauges={data.fuel} />}
           </div>
 

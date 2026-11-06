@@ -12,7 +12,7 @@
 #include "code/ruin_sectors.dm"
 #include "code/navigation.dm"
 #include "code/ship_audio.dm"
-#include "code/combustion.dm"
+#include "code/fusion_core.dm"
 #include "code/propulsion.dm"
 #include "code/ship_docking.dm"
 #include "code/bluespace.dm"

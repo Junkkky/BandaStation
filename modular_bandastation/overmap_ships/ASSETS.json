@@ -20,7 +20,7 @@
 		},
 		{
 			"path": "_maps/map_files/overmap_ships/raven.dmm",
-			"sha256": "9abd2ae6e0d8a12d9cea25382c6ce7a4effb1d5b535e7aa7665c668a5a738aca",
+			"sha256": "c56ed637a358b9ea972f4eb096ea0012d28457618d420ee336ab7e17e496575f",
 			"license": "CC-BY-SA-3.0",
 			"authors": [
 				"TG, BandaStation and Primera contributors",
@@ -34,7 +34,7 @@
 				"sha256": "92cea4ce13f09b84782d96f7339fc6738e5ef18d6a9e7b58771a0ff2277f599b",
 				"license_policy_url": "https://github.com/SpaceStation220/Primera/blob/65a9bd040b816783f0b6c24ba1e84ee7aab48456/README.md"
 			},
-			"changes": "Reworked Raven layout with a tritium combustion chamber, gas-fed nozzles, overmap equipment and per-compartment areas; original Raven attribution retained.",
+			"changes": "Reworked Raven layout with a centred 3x3 fusion core, exterior gas ports, gas-fed nozzles, overmap equipment and per-compartment areas; original Raven attribution retained.",
 			"byte_identical": false
 		},
 		{

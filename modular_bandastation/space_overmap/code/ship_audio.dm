@@ -68,9 +68,8 @@
  */
 /datum/stationtrauma_engine_sound/proc/update(seconds_per_tick)
 	var/obj/docking_port/mobile/stationtrauma_space/vessel = map.vessel
-	var/obj/machinery/computer/ship_combustion/chamber = vessel.combustion_controller?.resolve()
 	var/available = vessel.engines_running ? map.engine_fraction() : 0
-	var/lit = vessel.engines_running && (available > 0 || chamber?.phase == SHIP_CHAMBER_STARTING)
+	var/lit = vessel.engines_running && available > 0
 	if(lit && !running)
 		running = TRUE
 		create_layers()
@@ -78,7 +77,7 @@
 	else if(!lit && running)
 		running = FALSE
 		play_once(interior_stop_sound, exterior_stop_sound)
-	// A warming chamber idles low until the engines deliver.
+	// Idle rumble grows with the share of the drive that delivers.
 	var/idle_target = lit ? 0.4 + 0.6 * available : 0
 	var/thrust_target = lit ? map.commanded_thrust() * available : 0
 	var/entry_target = map.entry_heat()
@@ -256,18 +255,15 @@
 		return FALSE
 	if(vessel.engines_running == enabled)
 		return TRUE
-	var/obj/machinery/computer/ship_combustion/chamber = vessel.combustion_controller?.resolve()
 	if(enabled)
-		// Picks up plasma heaters rebuilt during the round.
+		// Picks up converters and plasma heaters rebuilt during the round.
+		var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/reactor = vessel.fusion_core?.resolve()
+		reactor?.bind_converters()
 		vessel.bind_plasma_heaters()
-		if(chamber)
-			if(chamber.phase != SHIP_CHAMBER_STARTING && chamber.phase != SHIP_CHAMBER_RUNNING && !chamber.start_chamber())
-				return FALSE
-		else if(engine_fraction() <= 0)
+		if(engine_fraction() <= 0)
 			return FALSE
 	vessel.engines_running = enabled
 	if(!enabled)
-		chamber?.stop_chamber()
 		command_course(ordered_course)
 		throttle = 0
 		braking = FALSE
@@ -298,11 +294,13 @@
 /datum/stationtrauma_overmap/space/proc/ascending()
 	return approach_departing && docked?.landing
 
-/** Show exhaust on every nozzle that is actually delivering commanded thrust; called with the audio refresh. */
+/** Show exhaust on every nozzle that is actually delivering commanded thrust, green on combustion nozzles while tritium burns; called with the audio refresh. */
 /datum/stationtrauma_overmap/space/proc/refresh_engine_exhaust()
 	var/thrusting = vessel.engines_running && commanded_thrust() > 0
+	var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/reactor = vessel.fusion_core?.resolve()
+	var/boosted = reactor?.overdrive_active()
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
-		engine.set_exhaust(thrusting && engine_output(engine) > 0)
+		engine.set_exhaust(thrusting && engine_output(engine) > 0, boosted && engine.requires_combustion)
 
 /** Docking latch; a remote seam also has listeners on the destination level, physical docking needs only one emission. */
 /datum/stationtrauma_overmap/space/proc/play_maneuver_audio(atom/remote)

@@ -1,60 +1,84 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/stationtrauma_space/raven/combustion)
+/obj/machinery/door/airlock/external/ruin{
+	name = "Emergency Shuttle External Airlock";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_port_aft)
 "ab" = (
 /turf/open/space/basic,
 /area/space/stationtrauma_space_home)
 "ac" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/combustion)
 "ad" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/fuel)
 "ae" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/machinery/portable_atmospherics/canister/tritium,
 /turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/combustion)
+/area/shuttle/stationtrauma_space/raven/engineering)
 "af" = (
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/combustion)
 "ag" = (
-/obj/machinery/atmospherics/components/unary/ship_engine_heater,
-/obj/structure/window/reinforced/spawner/directional/north,
-/turf/open/floor/plating/airless,
-/area/shuttle/stationtrauma_space/raven/fuel)
-"ah" = (
-/obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/stationtrauma_space/raven/fuel)
-"ai" = (
-/obj/effect/turf_decal/box/white/corners{
-	dir = 1
+/obj/machinery/door/airlock/external/ruin{
+	name = "Emergency Shuttle External Airlock";
+	req_access = list();
+	req_one_access = list()
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/obj/effect/turf_decal/bot,
-/obj/machinery/power/port_gen/pacman/pre_loaded,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"aj" = (
-/obj/structure/window/reinforced/spawner/directional/south,
-/obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/fuel)
-"ak" = (
-/obj/effect/turf_decal/box/white/corners{
-	dir = 4
+/area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
+"ah" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "raven_core_shutters"
 	},
-/obj/structure/cable,
-/obj/effect/turf_decal/bot,
-/obj/machinery/power/port_gen/pacman/pre_loaded,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/combustion)
+"ai" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "raven_core_shutters"
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/combustion)
+"aj" = (
+/obj/machinery/door/airlock/external/ruin{
+	name = "Emergency Shuttle External Airlock";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/docking_port/mobile/stationtrauma_space{
+	name = "Raven";
+	shuttle_id = "stationtrauma_space_raven"
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
+"ak" = (
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/engineering)
 "al" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Emergency Shutle Engineering";
@@ -75,51 +99,23 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/storage)
 "am" = (
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/fuel)
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/raven/combustion)
 "an" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/door/airlock/engineering{
-	name = "Emergency Shutle Engineering";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/door/firedoor{
-	ignore_alarms = 1
-	},
-/obj/structure/cable,
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/storage)
-"ao" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/door/airlock/engineering{
-	name = "Emergency Shutle Engineering";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/door/firedoor{
-	ignore_alarms = 1
-	},
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/fuel)
-"ap" = (
 /obj/structure/sign/warning/electric_shock/directional/north,
-/obj/structure/closet/secure_closet/engineering_personal,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/fuel)
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/raven/combustion)
+"ao" = (
+/obj/machinery/computer/stationtrauma_fusion_monitor{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"ap" = (
+/obj/machinery/atmospherics/components/unary/ship_engine_heater,
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/raven/engines)
 "aq" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Emergency Shutle Engineering";
@@ -147,25 +143,10 @@
 /area/shuttle/stationtrauma_space/raven/storage)
 "as" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/computer/ship_combustion{
-	dir = 1;
-	chamber_id = "raven_combustion"
-	},
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/engine_control)
-"at" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/storage)
 "au" = (
 /obj/effect/turf_decal/stripes/white/corner{
 	dir = 1
@@ -176,17 +157,18 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
 "av" = (
-/obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
+/obj/machinery/button/door/directional/north{
+	id = "raven_core_shutters";
+	name = "Core Shutters"
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
 	},
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
 /turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/fuel)
+/area/shuttle/stationtrauma_space/raven/combustion)
 "aw" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -302,6 +284,22 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
+"aE" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/raven/engines)
+"aF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/components/tank/air,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/life_support)
+"aG" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/components/tank/air,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/life_support)
 "aH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/medical/glass{
@@ -339,30 +337,44 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/stationtrauma_space/raven/engines)
 "aN" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector{
-	dir = 1;
-	id_tag = "raven_combustion_purge";
-	on = 0
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
 	},
-/turf/open/floor/plating/airless,
-/area/shuttle/stationtrauma_space/raven/engines)
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/combustion)
 "aO" = (
+/obj/structure/cable/layer1,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/combustion)
 "aP" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon{
-	dir = 2;
-	id_tag = "raven_combustion_outlet";
-	on = 0
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/combustion)
 "aQ" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector{
-	dir = 1;
-	id_tag = "raven_combustion_inlet";
-	volume_rate = 3;
-	on = 0
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
 	},
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/combustion)
@@ -370,27 +382,41 @@
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/airlock_port_fore)
 "aS" = (
-/obj/machinery/atmospherics/pipe/smart/simple/green/visible,
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/combustion)
-"aT" = (
-/obj/machinery/igniter/ship_engine{
-	id_tag = "raven_combustion_igniter"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "raven_core_shutters"
 	},
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/combustion)
-"aU" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
+/area/shuttle/stationtrauma_space/raven/power)
+"aT" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/obj/machinery/meter,
+/obj/structure/cable/layer1,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"aU" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/highsecurity,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "raven_core_shutters"
+	},
+/obj/structure/cable/layer1,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/power)
 "aV" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
@@ -438,18 +464,12 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_fore)
 "aY" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "raven_core_shutters"
 	},
-/obj/docking_port/mobile/stationtrauma_space{
-	name = "Raven";
-	shuttle_id = "stationtrauma_space_raven"
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
+/area/shuttle/stationtrauma_space/raven/power)
 "aZ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -631,6 +651,74 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
 "bq" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/machinery/portable_atmospherics/canister/tritium,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/full,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"br" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/life_support)
+"bs" = (
+/obj/machinery/telecomms/allinone/ship,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"bt" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"bu" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space/raven/brig)
+"bv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/bot,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/engineering)
+"bw" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/brig)
+"bx" = (
+/obj/effect/turf_decal/bot,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/storage/toolbox/mechanical,
+/obj/structure/table/reinforced,
+/obj/item/multitool,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/engineering)
+"by" = (
+/obj/machinery/door/airlock/external/ruin{
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
+"bz" = (
 /obj/machinery/door/airlock/external/ruin{
 	name = "Emergency Shuttle External Airlock";
 	req_access = list();
@@ -640,29 +728,140 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_aft)
-"bu" = (
-/turf/closed/wall/mineral/plastitanium,
-/area/shuttle/stationtrauma_space/raven/brig)
-"bw" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/brig)
+/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
+"bB" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"bC" = (
+/obj/structure/cable,
+/obj/machinery/computer/monitor{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
 "bD" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/brig)
+"bE" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/cable/layer1,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"bF" = (
+/obj/structure/cable/layer1,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"bG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/combustion)
+"bH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/combustion)
+"bI" = (
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/combustion)
 "bJ" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/emcloset/anchored,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_fore)
+"bK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/combustion)
+"bL" = (
+/obj/machinery/computer/monitor{
+	dir = 8
+	},
+/obj/structure/cable/layer1,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"bM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/bot,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/firealarm/directional/west,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/life_support)
+"bN" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/extinguisher_cabinet/directional/north,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/life_support)
+"bO" = (
+/obj/machinery/light/directional/north,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/airalarm/directional/north,
+/obj/structure/closet/secure_closet/engineering_personal,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/life_support)
+"bP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/combustion)
+"bQ" = (
+/obj/effect/turf_decal/stripes/full,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/combustion)
 "bR" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_fore)
+"bT" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/combustion)
+"bU" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/structure/sign/warning/radiation/directional/south,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "bV" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -670,6 +869,52 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_fore)
+"bW" = (
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/secure_closet/engineering_personal,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/engineering)
+"bX" = (
+/obj/machinery/power/terminal{
+	dir = 8;
+	cable_layer = 1
+	},
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"bY" = (
+/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core,
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/stripes/full,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/combustion)
+"bZ" = (
+/obj/structure/cable/layer1,
+/obj/machinery/power/terminal{
+	dir = 4;
+	cable_layer = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"ca" = (
+/obj/structure/extinguisher_cabinet/directional/north,
+/obj/structure/cable,
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/plasma/fifty,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/engineering)
+"cb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/bot,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/obj/machinery/firealarm/directional/east,
+/obj/machinery/power/port_gen/pacman/pre_loaded,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/engineering)
 "cc" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -685,12 +930,47 @@
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/hallway)
+"cf" = (
+/obj/effect/turf_decal/bot_white,
+/obj/machinery/firealarm/directional/west,
+/obj/structure/closet/crate/secure/radiation,
+/obj/item/assembly/signaler/anomaly/bluespace{
+	pixel_y = 7
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "cg" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_aft)
+"ch" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/storage)
+"ci" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 4
+	},
+/obj/machinery/light/directional/south,
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/glass{
+	amount = 20;
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/item/stack/sheet/plastitaniumglass{
+	amount = 20;
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "cn" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -705,21 +985,136 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_aft)
+"cq" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/engine_control)
+"ct" = (
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"cv" = (
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"cx" = (
+/obj/machinery/button/door/directional/south{
+	id = "raven_core_shutters";
+	name = "Core Shutters"
+	},
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
 "cy" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_aft)
+"cA" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"cG" = (
+/obj/machinery/airalarm/directional/north,
+/obj/machinery/stationtrauma_bluespace_drive{
+	charges = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"cH" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/power)
 "cI" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/emcloset/anchored,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_aft)
+"cJ" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering{
+	name = "Emergency Shutle Engineering";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/power)
+"cK" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/cable,
+/obj/structure/chair/comfy/shuttle/tactical{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "cP" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/life_support)
+"cS" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
+"cT" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
+"cU" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
+"cV" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/cable,
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "cY" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/life_support)
@@ -841,50 +1236,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"fb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/neutral/half/contrasted{
-	dir = 4
-	},
-/obj/machinery/light/directional/south,
-/obj/structure/table/reinforced,
-/obj/item/stack/sheet/glass{
-	amount = 20;
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/obj/item/stack/sheet/plastitaniumglass{
-	amount = 20;
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/obj/item/stack/sheet/mineral/plasma/fifty,
-/obj/item/stack/sheet/mineral/plasma/fifty,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"fj" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/bot,
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/machinery/firealarm/directional/west,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/life_support)
 "fo" = (
 /obj/machinery/atmospherics/components/binary/pump/on/layer4{
 	dir = 1
 	},
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/life_support)
-"fr" = (
-/obj/structure/window/reinforced/spawner/directional/south,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/components/tank/air,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/life_support)
 "fx" = (
@@ -953,89 +1308,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"go" = (
-/obj/item/clothing/suit/hazardvest{
-	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
-	name = "emergency lifejacket"
-	},
-/obj/item/clothing/suit/hazardvest{
-	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
-	name = "emergency lifejacket"
-	},
-/obj/item/clothing/suit/hazardvest{
-	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
-	name = "emergency lifejacket"
-	},
-/obj/item/clothing/suit/hazardvest{
-	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
-	name = "emergency lifejacket"
-	},
-/obj/item/clothing/suit/hazardvest{
-	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
-	name = "emergency lifejacket"
-	},
-/obj/item/tank/internals/emergency_oxygen{
-	pixel_x = 3
-	},
-/obj/item/tank/internals/emergency_oxygen{
-	pixel_x = 3
-	},
-/obj/item/tank/internals/emergency_oxygen{
-	pixel_x = 3
-	},
-/obj/item/tank/internals/emergency_oxygen{
-	pixel_x = 3
-	},
-/obj/item/tank/internals/emergency_oxygen{
-	pixel_x = 3
-	},
-/obj/item/clothing/mask/breath{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/clothing/mask/breath{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/clothing/mask/breath{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/clothing/mask/breath{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/clothing/mask/breath{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/clothing/head/utility/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 9
-	},
-/obj/item/clothing/head/utility/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 9
-	},
-/obj/item/clothing/head/utility/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 9
-	},
-/obj/item/clothing/head/utility/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 9
-	},
-/obj/item/clothing/head/utility/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 9
-	},
-/obj/structure/closet/crate{
-	name = "lifejackets"
-	},
-/obj/effect/turf_decal/bot_white,
-/obj/machinery/firealarm/directional/west,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
 "gq" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
@@ -1058,22 +1330,6 @@
 "gs" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/storage)
-"gt" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/extinguisher_cabinet/directional/north,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/life_support)
-"gu" = (
-/obj/structure/window/reinforced/spawner/directional/south,
-/obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/components/tank/air,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/life_support)
 "gy" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/machinery/door/poddoor/preopen{
@@ -1247,12 +1503,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/life_support)
-"gQ" = (
-/obj/structure/window/reinforced/spawner/directional/south,
-/obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/life_support)
 "gS" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/shieldgen{
@@ -1335,14 +1585,6 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/storage)
-"hh" = (
-/obj/machinery/light/directional/north,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/life_support)
 "hi" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -1410,23 +1652,10 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"ht" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/stationtrauma_space/raven/hallway)
 "hu" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/storage)
-"hw" = (
-/obj/structure/sign/warning/electric_shock/directional/north,
-/obj/structure/closet/secure_closet/engineering_personal,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/life_support)
-"hx" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/life_support)
 "hy" = (
 /obj/machinery/computer/stationtrauma_transponder/raven{
 	dir = 2
@@ -1475,45 +1704,9 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"hH" = (
-/obj/effect/turf_decal/stripes/white/corner,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"hJ" = (
-/obj/structure/cable,
-/obj/machinery/firealarm/directional/west,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"hK" = (
-/obj/effect/turf_decal/box/white/corners{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/power/terminal{
-	dir = 2
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"hL" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/power/smes/engineering,
-/obj/structure/cable,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
 "hM" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/power)
-"hN" = (
-/obj/machinery/portable_atmospherics/canister/tritium,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible,
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/fuel)
 "hP" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/fuel)
@@ -1577,76 +1770,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"ie" = (
-/obj/effect/turf_decal/stripes/white/line,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"if" = (
-/obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "spaceproto_raven_escape_cargo_shutters";
-	name = "Cargo Bay Shutters"
-	},
-/obj/machinery/button/door{
-	id = "spaceproto_raven_escape_cargo_shutters";
-	name = "Cargo Bay Shutters";
-	pixel_x = -26
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"ig" = (
-/obj/effect/turf_decal/box/white/corners{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"ih" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"ii" = (
-/obj/effect/turf_decal/box/white/corners,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"ij" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"ik" = (
-/obj/item/radio/intercom/directional/south{
-	pixel_y = 5
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/stationtrauma_space/raven/power)
-"il" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 2
-	},
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/fuel)
-"im" = (
-/obj/machinery/atmospherics/components/binary/pump/on{
-	name = "Unfiltered to Mix";
-	dir = 4;
-	target_pressure = 4500
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/fuel)
-"in" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/fuel)
 "iq" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/computer/stationtrauma_space_navigation,
@@ -1723,81 +1846,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"iA" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"iB" = (
-/obj/effect/turf_decal/stripes/white/line,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"iC" = (
-/obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "spaceproto_raven_escape_cargo_shutters";
-	name = "Cargo Bay Shutters"
-	},
-/obj/structure/cable,
-/obj/machinery/door/firedoor,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"iD" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/obj/machinery/telecomms/allinone/ship,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"iE" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/obj/machinery/stationtrauma_bluespace_drive{
-	charges = 2
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"iF" = (
-/obj/machinery/light/directional/south,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/obj/effect/turf_decal/bot,
-/obj/machinery/power/apc/auto_name/directional/south,
-/obj/structure/table/reinforced,
-/obj/item/assembly/signaler/anomaly/bluespace{
-	pixel_y = 7
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"iG" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible,
-/obj/machinery/light/directional/north,
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/fuel)
-"iH" = (
-/obj/machinery/atmospherics/components/trinary/mixer{
-	id_tag = "raven_combustion_mixer";
-	node1_concentration = 0.8;
-	node2_concentration = 0.2;
-	target_pressure = 2000;
-	on = 0
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/fuel)
-"iI" = (
-/obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/smart/simple/green/visible,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/stationtrauma_space/raven/fuel)
 "iO" = (
 /obj/structure/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
@@ -1920,62 +1968,9 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"iY" = (
-/obj/effect/turf_decal/stripes/white/line,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"iZ" = (
-/obj/effect/turf_decal/delivery/white,
-/obj/machinery/button/door{
-	id = "spaceproto_raven_escape_cargo_shutters";
-	name = "Cargo Bay Shutters";
-	pixel_x = 26
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "spaceproto_raven_escape_cargo_shutters";
-	name = "Cargo Bay Shutters"
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"ja" = (
-/obj/effect/turf_decal/box/white/corners{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
 "jb" = (
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
-"jc" = (
-/obj/effect/turf_decal/box/white/corners{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"jd" = (
-/obj/machinery/atmospherics/components/binary/pump/on{
-	name = "Unfiltered to Mix";
-	dir = 8;
-	target_pressure = 4500
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 2
-	},
-/obj/machinery/firealarm/directional/north,
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/fuel)
-"je" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/fuel)
 "jg" = (
 /obj/machinery/computer/stationtrauma_bluespace,
 /obj/effect/turf_decal/bot_white,
@@ -2009,44 +2004,6 @@
 /obj/structure/closet/emcloset/anchored,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"jm" = (
-/obj/effect/turf_decal/stripes/white/corner{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"jo" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"jp" = (
-/obj/effect/turf_decal/box/white/corners,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/obj/machinery/power/terminal{
-	dir = 2
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"jq" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/power/smes/engineering,
-/obj/structure/cable,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/power)
-"jr" = (
-/obj/item/radio/intercom/directional/north,
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 8
-	},
-/turf/open/floor/engine,
-/area/shuttle/stationtrauma_space/raven/fuel)
 "ju" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/computer{
@@ -2111,21 +2068,11 @@
 /obj/structure/sign/departments/medbay/alt,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"jC" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/stationtrauma_space/raven/power)
 "jE" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/engine_control)
 "jF" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/stationtrauma_space/raven/engineering)
-"jI" = (
-/obj/structure/window/reinforced/spawner/directional/south,
-/obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
-/turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/engineering)
 "jJ" = (
 /obj/effect/turf_decal/bot_white,
@@ -2213,23 +2160,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"jU" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/power/apc/auto_name/directional/west,
-/obj/structure/cable,
-/obj/structure/chair/comfy/shuttle/tactical{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
-"jV" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/airalarm/directional/west,
-/obj/structure/chair/comfy/shuttle/tactical{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
 "jW" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -2238,24 +2168,10 @@
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/engine_control)
-"jX" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/engine_control)
 "jZ" = (
 /obj/structure/sign/departments/engineering,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/engine_control)
-"ka" = (
-/obj/machinery/light/directional/north,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/engineering)
 "kb" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -2502,27 +2418,11 @@
 /obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/engine_control)
-"kD" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/extinguisher_cabinet/directional/north,
-/obj/structure/cable,
-/obj/machinery/recharge_station,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/engineering)
 "kE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/engineering)
-"kF" = (
-/obj/structure/window/reinforced/spawner/directional/south,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/bot,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/power_store/cell/high,
-/obj/structure/table/reinforced,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/engineering)
 "kH" = (
@@ -2603,32 +2503,6 @@
 "kQ" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
-"kS" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/bot,
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
-/obj/machinery/portable_atmospherics/canister/tritium,
-/obj/machinery/firealarm/directional/east,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/engineering)
-"kT" = (
-/obj/machinery/portable_atmospherics/canister/tritium,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/engineering)
-"kU" = (
-/obj/structure/window/reinforced/spawner/directional/south,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/bot,
-/obj/item/storage/toolbox/electrical{
-	pixel_x = -2;
-	pixel_y = 5
-	},
-/obj/item/storage/toolbox/mechanical,
-/obj/structure/table/reinforced,
-/obj/item/multitool,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/engineering)
 "kV" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/shieldgen{
@@ -2756,32 +2630,14 @@
 "lt" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
-"lu" = (
-/obj/machinery/door/airlock/external/ruin{
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
 "lv" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
-"lw" = (
-/obj/machinery/door/airlock/external/ruin{
-	name = "Emergency Shuttle External Airlock";
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/autoname,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
+"NP" = (
+/obj/structure/cable/layer1,
+/obj/effect/turf_decal/stripes/full,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/combustion)
 
 (1,1,1) = {"
 ab
@@ -2797,17 +2653,17 @@ ab
 ab
 aL
 aR
-aU
+bz
 aR
-aY
+aj
 aR
 aL
 ab
 be
 bi
-bq
+aa
 bi
-bq
+aa
 bi
 be
 ab
@@ -2905,16 +2761,16 @@ dA
 dA
 eO
 eV
-fb
+ci
 dA
 bi
 ax
 bi
-bi
+gs
 ey
-fj
+bM
 fo
-fr
+aF
 hP
 aI
 ab
@@ -2940,15 +2796,15 @@ gm
 gn
 gn
 gn
-go
+cf
 ce
 ay
 gq
 gr
 gs
-gt
+bN
 fo
-gu
+aG
 hP
 aK
 aJ
@@ -2982,8 +2838,8 @@ gM
 al
 gO
 gP
-gQ
-ag
+br
+ap
 aK
 aK
 "}
@@ -3005,19 +2861,19 @@ gH
 gn
 hb
 gn
-hc
-hc
-hc
 gn
+hc
+hc
+hc
 hd
 he
-at
+ch
 ar
-gs
-hh
+ey
+bO
 hi
-gQ
-ag
+br
+ap
 aM
 ab
 "}
@@ -3038,20 +2894,20 @@ hs
 gH
 gn
 hb
+gn
+hM
+hM
+hM
 dA
-dA
-dA
-dA
-ht
-dA
+hM
 hu
-an
+ai
 hu
-ey
-hw
-hx
-gQ
-ag
+am
+am
+ah
+af
+ap
 aM
 ab
 "}
@@ -3070,22 +2926,22 @@ dA
 hE
 hF
 gH
-hG
-hH
-dA
-ai
-hJ
-hK
-hL
+cU
+cT
+bU
 hM
-hN
+bs
+ao
+bq
+ct
+hM
 av
-hP
-ac
-ae
-ac
-aa
-ag
+bP
+bP
+bP
+bG
+af
+ap
 aK
 aJ
 "}
@@ -3105,21 +2961,21 @@ gn
 gn
 id
 hG
-ie
-if
-ig
-ih
-ii
-ij
-ik
-il
-im
-in
-aO
-aO
-aO
+hb
+gn
+cH
+jb
+jb
+cA
+bX
+aS
+aN
+bQ
+bQ
+bQ
+bH
 af
-hP
+aE
 aK
 aK
 "}
@@ -3138,23 +2994,23 @@ ix
 iy
 hb
 iz
-iA
-iB
-iC
-ij
-iD
-iE
-iF
-hM
-iG
-iH
-iI
-aS
-aQ
-aP
+cV
+gI
+cS
+cJ
+bB
+bE
+aT
+cv
+aU
+aO
+NP
+bY
+bQ
+bI
 af
-ah
-aN
+aE
+aE
 ab
 "}
 (12,1,1) = {"
@@ -3173,21 +3029,21 @@ iX
 gH
 id
 hG
-iY
-iZ
-ja
+hb
+gn
+cH
 jb
-jc
-ij
-hM
-jd
-je
-in
-aO
-aT
-aO
+bF
+bt
+bZ
+aY
+aP
+bQ
+bQ
+bQ
+bH
 af
-hP
+aE
 aK
 aJ
 "}
@@ -3206,22 +3062,22 @@ dA
 jl
 hF
 gH
-hG
-jm
-dA
-ak
-jo
-jp
-jq
+cU
+cT
+bU
 hM
-jr
-je
-hP
-ac
-ae
-ac
-aa
-ag
+cG
+bL
+bC
+cx
+am
+aQ
+bT
+bT
+bT
+bK
+af
+ap
 aK
 aK
 "}
@@ -3242,20 +3098,20 @@ hs
 gH
 gn
 hb
-dA
+gn
 hM
 hM
 hM
-jC
 hM
-hP
-ao
-hP
-hP
-ap
+hM
+jE
+ai
+jE
 am
-aj
-ag
+an
+ai
+ac
+ap
 aM
 ab
 "}
@@ -3277,19 +3133,19 @@ gH
 gn
 hb
 gn
-jT
-jU
-jV
 gn
-ce
+cK
+jT
+jT
+hd
 jW
-jX
+cq
 as
 jZ
-ka
+bW
 kb
-jI
-ag
+ae
+ap
 aM
 ab
 "}
@@ -3322,8 +3178,8 @@ km
 aq
 ko
 kp
-jI
-ag
+ae
+ap
 aK
 aJ
 "}
@@ -3354,9 +3210,9 @@ az
 kB
 kC
 jE
-kD
+ca
 kE
-kF
+bv
 hP
 aK
 aK
@@ -3388,9 +3244,9 @@ aA
 jE
 jE
 jF
-kS
-kT
-kU
+cb
+ak
+bx
 hP
 aI
 ab
@@ -3477,17 +3333,17 @@ ab
 ab
 lt
 kW
-lu
+by
 kW
-lu
+by
 kW
 lt
 ab
 lv
 kQ
-lw
+ag
 kQ
-lw
+ag
 kQ
 lv
 ab

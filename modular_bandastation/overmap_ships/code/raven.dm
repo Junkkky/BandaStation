@@ -56,12 +56,11 @@
 	name = "Raven: пост двигателя"
 	icon_state = "engine_control"
 
-/// Sealed like a supermatter chamber: purged to vacuum between burns, with no APC; its injector and siphon run unmetered.
+/// Shielded fusion core room; it holds no APC, so the core's own equipment runs unmetered.
 /area/shuttle/stationtrauma_space/raven/combustion
-	name = "Raven: камера сгорания"
+	name = "Raven: реакторный отсек"
 	icon_state = "combustion"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
-	vacuum_by_design = TRUE
 	requires_power = FALSE
 
 /area/shuttle/stationtrauma_space/raven/life_support
@@ -72,11 +71,12 @@
 	name = "Raven: машинный отсек"
 	icon_state = "engineering"
 
-/// Open engine bay behind the heaters; it holds no APC and nothing that needs one.
+/// Open engine bay with the receivers and nozzles; it takes the exhaust and purge, so it holds no APC.
 /area/shuttle/stationtrauma_space/raven/engines
 	name = "Raven: двигатели"
 	icon_state = "engines"
 	vacuum_by_design = TRUE
+	fire_by_design = TRUE
 	requires_power = FALSE
 
 /** Transponder preset raven; identity remains on the removable board. */

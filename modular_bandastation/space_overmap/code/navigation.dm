@@ -110,7 +110,7 @@
 
 /** Share of one intact engine's nominal power; gas-fed nozzles depend on their delivered feed. */
 /datum/stationtrauma_overmap/space/proc/engine_output(obj/machinery/power/shuttle_engine/engine)
-	if(QDELETED(engine) || !engine.anchored || engine.engine_state != initial(engine.engine_state) || (engine.machine_stat & BROKEN) || engine.get_integrity() <= 0)
+	if(QDELETED(engine) || !engine.crew_enabled || !engine.anchored || engine.engine_state != initial(engine.engine_state) || (engine.machine_stat & BROKEN) || engine.get_integrity() <= 0)
 		return 0
 	if(!engine.requires_combustion)
 		return 1

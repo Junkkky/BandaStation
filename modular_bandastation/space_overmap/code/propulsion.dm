@@ -8,6 +8,10 @@
 	var/obj/effect/abstract/particle_holder/exhaust
 	/// Plume colours from the nozzle outward; bluespace drives by default.
 	var/list/exhaust_gradient = list("#FFFFFF", "#9FF4FF", "#2F8CFF")
+	/// Whether the plume shows the green tritium afterburner.
+	var/exhaust_boosted = FALSE
+	/// Engineer's switch on the engine console; a switched-off nozzle gives no thrust and takes no gas.
+	var/crew_enabled = TRUE
 
 /obj/machinery/power/shuttle_engine/Destroy(force)
 	QDEL_NULL(exhaust)
@@ -18,14 +22,19 @@
  *
  * Arguments:
  * * active - Whether the nozzle is producing thrust
+ * * boosted - Whether burning tritium turns the plume green
  */
-/obj/machinery/power/shuttle_engine/proc/set_exhaust(active)
-	if(!!exhaust == !!active)
+/obj/machinery/power/shuttle_engine/proc/set_exhaust(active, boosted = FALSE)
+	boosted = active && boosted
+	if(!!exhaust == !!active && exhaust_boosted == boosted)
 		return
+	exhaust_boosted = boosted
+	QDEL_NULL(exhaust)
 	if(!active)
-		QDEL_NULL(exhaust)
 		set_light(0)
 		return
+	var/static/list/afterburner_gradient = list("#FFFFFF", "#C9FFB8", "#2BD23C")
+	var/list/gradient = boosted ? afterburner_gradient : exhaust_gradient
 	exhaust = new(src, /particles/ship_exhaust)
 	var/list/offset = dir2offset(dir)
 	// Emit across the whole outer edge of the real footprint, including rotated large nozzles.
@@ -35,8 +44,8 @@
 	var/spread_y = offset[2] ? 0 : bound_height / 2 - 6
 	exhaust.particles.position = generator(GEN_BOX, list(edge_x - spread_x, edge_y - spread_y, 0), list(edge_x + spread_x, edge_y + spread_y, 0), UNIFORM_RAND)
 	exhaust.particles.velocity = list(offset[1] * 6, offset[2] * 6)
-	exhaust.particles.gradient = exhaust_gradient
-	set_light(2, 1, exhaust_gradient[2])
+	exhaust.particles.gradient = gradient
+	set_light(2, 1, gradient[2])
 
 /** Flame jet and fading tail behind a firing nozzle. */
 /particles/ship_exhaust
@@ -56,13 +65,13 @@
 	scale = generator(GEN_VECTOR, list(0.9, 0.9), list(1.5, 1.5), NORMAL_RAND)
 	spin = generator(GEN_NUM, -20, 20)
 
-/** Small nozzle supplied by a combustion chamber. */
+/** Small nozzle fed with the fusion core's hot gas through its converter. */
 /obj/machinery/power/shuttle_engine/propulsion/tritium
 	name = "тритиевый двигатель"
 	desc = "Сопло двигательной установки с подачей горячего газа от приёмного блока."
 	requires_combustion = TRUE
 	circuit = /obj/item/circuitboard/machine/engine/propulsion/tritium
-	// Tritium combustion is the strongest drive per nozzle.
+	// The fusion-fed drive is the strongest per nozzle.
 	engine_power = 2
 	exhaust_gradient = list("#FFFFFF", "#FCE6B6", "#FD481C")
 
@@ -115,9 +124,9 @@
 		gauges += list(list("name" = gases[gas], "amount" = round(amount, 0.1), "capacity" = round(capacity, 0.1)))
 	return gauges
 
-/** Buildable receiver using the existing heater appearance. */
+/** Buildable converter using the existing heater appearance. */
 /obj/item/circuitboard/machine/engine/heater/combustion
-	name = "приёмный блок двигателя"
+	name = "преобразователь тяги"
 	build_path = /obj/machinery/atmospherics/components/unary/ship_engine_heater
 
 /** Rebuilding a small fuelled nozzle preserves its propellant requirement. */
@@ -127,21 +136,23 @@
 
 /** One native pipe inlet, directed toward a separately installed physical nozzle. */
 /obj/machinery/atmospherics/components/unary/ship_engine_heater
-	name = "приёмный блок двигателя"
-	desc = "Подаёт горячий газ из магистрали к соплу двигательной установки."
+	name = "преобразователь тяги"
+	desc = "Принимает горячий газ термоядерного ядра из магистрали и направляет его в сопло."
 	icon = 'icons/turf/shuttle.dmi'
 	icon_state = "heater"
 	dir = SOUTH
 	layer = OBJ_LAYER
 	density = TRUE
+	// It sits in the exhaust bay, as the native nozzles do.
+	resistance_flags = FIRE_PROOF
 	max_integrity = 300
 	use_power = IDLE_POWER_USE
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.25
 	circuit = /obj/item/circuitboard/machine/engine/heater/combustion
 	/// Physical nozzle; its footprint may contain several turfs.
 	var/datum/weakref/nozzle
-	/// Controller discovered through the actual supply pipeline.
-	var/datum/weakref/chamber
+	/// Fusion core found on the actual supply pipeline.
+	var/datum/weakref/core
 	/// Delivered power remains available between native atmosphere ticks.
 	var/delivered_fraction = 0
 	/// Moles per second one nozzle draws at full load; thrust comes from engine_power, not from more gas.
@@ -157,7 +168,7 @@
 	if(engine?.combustion_feed?.resolve() == src)
 		engine.combustion_feed = null
 	nozzle = null
-	chamber = null
+	core = null
 	return ..()
 
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/set_init_directions()
@@ -198,15 +209,17 @@
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/proc/hardware_fault()
 	var/obj/machinery/power/shuttle_engine/engine = nozzle?.resolve()
 	if(machine_stat & BROKEN)
-		return "Приёмник повреждён"
+		return "Преобразователь повреждён"
 	if(!is_operational)
-		return "Приёмник обесточен или отключён"
+		return "Преобразователь обесточен или отключён"
 	if(panel_open || !anchored)
-		return "Приёмник не собран"
+		return "Преобразователь не собран"
 	if(!nodes[1] || !parents[1])
 		return "Нет подключения к трубе"
 	if(!engine)
 		return "Сопло не подключено"
+	if(!engine.crew_enabled)
+		return "Отключено с пульта"
 	if(!engine.anchored || engine.engine_state != initial(engine.engine_state))
 		return "Сопло не собрано"
 	if((engine.machine_stat & BROKEN) || engine.get_integrity() <= 0)
@@ -219,28 +232,20 @@
 	if(.)
 		return
 	var/obj/machinery/power/shuttle_engine/engine = nozzle.resolve()
-	var/obj/machinery/computer/ship_combustion/control = chamber?.resolve()
-	if(!engine.connected_ship || !control?.is_operational)
-		return "Нет связи с контроллером"
-	if(control.vessel_ref?.resolve() != engine.connected_ship || engine.dir != dir || !(get_step(src, dir) in engine.locs))
+	var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/reactor = core?.resolve()
+	if(!engine.connected_ship || !reactor)
+		return "Нет связи с ядром"
+	if(reactor.vessel_ref?.resolve() != engine.connected_ship || engine.dir != dir || !(get_step(src, dir) in engine.locs))
 		return "Нарушено соединение с соплом"
-	var/obj/machinery/atmospherics/components/unary/vent_pump/outlet = control.device("outlet")
-	if(outlet?.parents[1] != parents[1])
-		return "Разрыв выпускной магистрали"
+	if(reactor.parents[2] != parents[1])
+		return "Разрыв магистрали ядра"
 	var/turf/open/exhaust = exhaust_turf()
 	if(!istype(exhaust))
 		return "Выпуск сопла перекрыт"
-	switch(control.phase)
-		if(SHIP_CHAMBER_OFF)
-			return "Выключен"
-		if(SHIP_CHAMBER_STARTING)
-			return "Прогрев"
-		if(SHIP_CHAMBER_PURGING)
-			return "Продувка"
-		if(SHIP_CHAMBER_LOCKED)
-			return "Блокировка"
-	if(control.phase != SHIP_CHAMBER_RUNNING)
-		return "Камера не готова"
+	if(reactor.tripped)
+		return "Ядро перегрето"
+	if(!reactor.active)
+		return "Ядро остановлено"
 	var/obj/docking_port/mobile/stationtrauma_space/ship = engine.connected_ship
 	// A delivered parcel powers its interval even if it emptied the inlet.
 	if(ship.engines_running && delivered_fraction > 0)
@@ -248,7 +253,7 @@
 	var/datum/gas_mixture/air = airs[1]
 	if(air.total_moles() <= 0)
 		return "Нет подачи газа"
-	if(air.temperature < TRITIUM_MINIMUM_BURN_TEMPERATURE)
+	if(air.temperature < PLASMA_MINIMUM_BURN_TEMPERATURE)
 		return "Газ остыл"
 	var/datum/gas_mixture/environment = exhaust.return_air()
 	if(air.return_pressure() <= (environment?.return_pressure() || 0))
@@ -266,12 +271,17 @@
 	var/datum/gas_mixture/air = airs[1]
 	return min(1, air.temperature / SHIP_ENGINE_OPERATING_TEMPERATURE)
 
-/** The cold/off preview permits ignition; powered flight uses only gas already delivered. */
+/** The off-engine preview permits a start; powered flight uses only gas already delivered, raised by core overdrive. */
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/proc/propulsion_fraction()
 	var/ready = ready_fraction()
 	var/obj/machinery/power/shuttle_engine/engine = nozzle?.resolve()
 	var/obj/docking_port/mobile/stationtrauma_space/ship = engine?.connected_ship
-	return ship?.engines_running ? min(ready, delivered_fraction) : ready
+	if(!ship?.engines_running)
+		return ready
+	. = min(ready, delivered_fraction)
+	var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/reactor = core?.resolve()
+	if(. && reactor?.overdrive_active())
+		. *= 1 + SHIP_AFTERBURNER_THRUST
 
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/process_atmos(seconds_per_tick)
 	delivered_fraction = 0
@@ -283,7 +293,7 @@
 		return
 	var/datum/stationtrauma_overmap/space/map = ship.overmap
 	var/load = map?.ascending() ? 1 : map?.helm_engaged ? max(abs(map.throttle) / 100, !!map.braking, !!map.maneuver_direction) : 0
-	// The tritium value is calibrated for roughly twenty minutes at half thrust on Raven's standard canister pair.
+	// The fusion core's full output covers every Raven converter at full thrust.
 	var/requested = propellant_flow * max(0.15, load) * seconds_per_tick
 	var/datum/gas_mixture/air = airs[1]
 	var/datum/gas_mixture/exhausted = air.remove(requested)
@@ -309,14 +319,14 @@
 	return min(1, exhausted.total_moles() / requested) * min(1, exhausted.temperature / SHIP_ENGINE_OPERATING_TEMPERATURE)
 
 /obj/machinery/atmospherics/components/unary/ship_engine_heater/screwdriver_act(mob/living/user, obj/item/tool)
-	var/obj/machinery/computer/ship_combustion/control = chamber?.resolve()
-	if(control?.phase == SHIP_CHAMBER_RUNNING || control?.phase == SHIP_CHAMBER_STARTING)
-		balloon_alert(user, "выключите установку!")
+	var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/reactor = core?.resolve()
+	if(reactor?.active)
+		balloon_alert(user, "остановите ядро!")
 		return ITEM_INTERACT_BLOCKING
 	if(get_integrity() < max_integrity)
 		if(do_after(user, 5 SECONDS, src))
-			control = chamber?.resolve()
-			if(control?.phase != SHIP_CHAMBER_RUNNING && control?.phase != SHIP_CHAMBER_STARTING)
+			reactor = core?.resolve()
+			if(!reactor?.active)
 				repair_damage(max_integrity)
 		return ITEM_INTERACT_SUCCESS
 	return default_deconstruction_screwdriver(user, tool)
@@ -351,7 +361,7 @@
 	name = "плазменный нагреватель"
 	desc = "Разогревает поступающую плазму электричеством и подаёт её к соплу."
 	circuit = /obj/item/circuitboard/machine/engine/heater/plasma
-	// Three times the tritium mass flow: a cheap but hungry drive.
+	// Three times the fusion drive mass flow: a cheap but hungry drive.
 	propellant_flow = 1.56
 	/// Maximum electric heating rate.
 	var/heating_power = 50 KILO WATTS
@@ -395,3 +405,75 @@
 		exhausted.temperature += use_energy(heat) / capacity
 	// Only electrical heating above room temperature produces thrust, so an unpowered heater gives none.
 	return min(1, exhausted.moles[/datum/gas/plasma] / requested) * clamp((exhausted.temperature - T20C) / (exhaust_temperature - T20C), 0, 1)
+
+/** Circuit board for the engine console. */
+/obj/item/circuitboard/computer/stationtrauma_engine_console
+	name = "пульт двигателей"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	build_path = /obj/machinery/computer/stationtrauma_engine_console
+
+/** Engine console: every nozzle of the hull by number and size, its condition, thrust and an on/off switch. */
+/obj/machinery/computer/stationtrauma_engine_console
+	name = "пульт двигателей"
+	desc = "Список сопел корабля по номерам: размер, техническое состояние и тяга. Каждое сопло можно отключить и включить."
+	icon_screen = "shuttle"
+	icon_keyboard = "atmos_key"
+	circuit = /obj/item/circuitboard/computer/stationtrauma_engine_console
+
+/** The hull this console stands in, resolved on demand so a rebuilt console needs no linking. */
+/obj/machinery/computer/stationtrauma_engine_console/proc/vessel()
+	var/obj/docking_port/mobile/stationtrauma_space/ship = SSshuttle.get_containing_shuttle(src)
+	return istype(ship) ? ship : null
+
+/** Nozzles in a stable order: from the port side to starboard, then from the stern forward. */
+/proc/cmp_stationtrauma_engine_position(atom/first, atom/second)
+	return first.x - second.x || first.y - second.y
+
+/obj/machinery/computer/stationtrauma_engine_console/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "StationTraumaEngines", name)
+		ui.open()
+
+/obj/machinery/computer/stationtrauma_engine_console/ui_data(mob/user)
+	var/obj/docking_port/mobile/stationtrauma_space/ship = vessel()
+	if(!ship?.overmap)
+		return list("missing" = TRUE)
+	var/list/engines = list()
+	for(var/obj/machinery/power/shuttle_engine/engine as anything in sortTim(ship.engine_list.Copy(), GLOBAL_PROC_REF(cmp_stationtrauma_engine_position)))
+		var/obj/machinery/atmospherics/components/unary/ship_engine_heater/feed = engine.combustion_feed?.resolve()
+		var/thrust = round(ship.overmap.engine_output(engine) * 100)
+		var/status
+		if(!engine.crew_enabled)
+			status = "Отключено с пульта"
+		else if(engine.requires_combustion)
+			status = feed ? feed.unavailable_reason() : "Преобразователь не подключён"
+		else if(engine.machine_stat & BROKEN)
+			status = "Повреждено"
+		status ||= ship.engines_running ? (thrust >= 100 ? "Работает" : "Ограниченная тяга") : "Готово"
+		engines += list(list(
+			"id" = REF(engine), "number" = length(engines) + 1,
+			"size" = engine.bound_width > ICON_SIZE_X ? "Большое" : "Малое",
+			"power" = engine.engine_power,
+			"enabled" = engine.crew_enabled,
+			"integrity" = round(100 * engine.get_integrity() / engine.max_integrity),
+			"status" = status,
+			"thrust" = thrust,
+		))
+	return list(
+		"engines_running" = ship.engines_running,
+		"total" = round(ship.overmap.engine_fraction() * 100),
+		"engines" = engines,
+	)
+
+/obj/machinery/computer/stationtrauma_engine_console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(. || action != "toggle")
+		return
+	var/obj/docking_port/mobile/stationtrauma_space/ship = vessel()
+	var/obj/machinery/power/shuttle_engine/engine = locate(params["id"]) in ship?.engine_list
+	if(!engine)
+		return FALSE
+	engine.crew_enabled = !engine.crew_enabled
+	return TRUE

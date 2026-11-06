@@ -17,16 +17,16 @@ export function Annunciator({ data }: { data: NavigationData }) {
       lit: !!data.engines_running && !data.engine_fault,
     },
     {
-      label: 'РОЗЖИГ',
-      title: 'Розжиг камеры сгорания',
+      label: 'ФОРСАЖ',
+      title: 'Форсаж термоядерного ядра',
       tone: 'warn',
-      lit: data.engine_phase === 'starting',
+      lit: !!data.core_overdrive,
     },
     {
-      label: 'ПРОДУВ',
-      title: 'Продувка камеры сгорания',
-      tone: 'warn',
-      lit: data.engine_phase === 'purging',
+      label: 'ПЕРЕГР',
+      title: 'Перегрев термоядерного ядра',
+      tone: 'bad',
+      lit: (data.core_heat ?? 0) >= 75,
     },
     {
       label: 'НЕИСПР',

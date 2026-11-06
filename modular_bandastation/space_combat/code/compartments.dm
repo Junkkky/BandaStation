@@ -6,6 +6,8 @@
 /area/shuttle/stationtrauma_space
 	/// Mapped airless (external airlock chambers): never reported as depressurised.
 	var/vacuum_by_design = FALSE
+	/// Burner compartments where flame is the working state: never reported as on fire.
+	var/fire_by_design = FALSE
 
 /**
  * Per-compartment damage summary for the helm, read from the physical hull: mean pressure, open fire, tiles open to space.
@@ -31,7 +33,7 @@
 		var/list/entry = rooms[room]
 		if(!entry)
 			var/area/shuttle/stationtrauma_space/ship_room = room
-			entry = list("name" = room.name, "airless" = istype(ship_room) && ship_room.vacuum_by_design, "breaches" = 0, "fire" = FALSE, "floor_tiles" = 0, "vacuum_tiles" = 0, "total_pressure" = 0)
+			entry = list("name" = room.name, "airless" = istype(ship_room) && ship_room.vacuum_by_design, "burner" = istype(ship_room) && ship_room.fire_by_design, "breaches" = 0, "fire" = FALSE, "floor_tiles" = 0, "vacuum_tiles" = 0, "total_pressure" = 0)
 			entry["code"] = copytext(COMPARTMENT_CELL_CODES, length(rooms) + 1, length(rooms) + 2) || "?"
 			rooms[room] = entry
 		if(isspaceturf(tile))
@@ -43,7 +45,7 @@
 			continue
 		cells[cell] = entry["code"]
 		var/turf/open/open_tile = tile
-		if(open_tile.active_hotspot)
+		if(open_tile.active_hotspot && !entry["burner"])
 			entry["fire"] = TRUE
 		var/pressure = open_tile.return_air()?.return_pressure() || 0
 		entry["floor_tiles"]++

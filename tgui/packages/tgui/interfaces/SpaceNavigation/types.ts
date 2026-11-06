@@ -76,7 +76,10 @@ export type NavigationData = Position & {
   ship_power: BooleanLike;
   engines: number;
   engines_running: BooleanLike;
-  engine_phase: string | null;
+  core_overdrive: BooleanLike;
+  afterburner: BooleanLike;
+  can_afterburner: BooleanLike;
+  core_heat: number | null;
   fuel: FuelGauge[] | null;
   engine_fault: BooleanLike;
   can_start_engines: BooleanLike;
