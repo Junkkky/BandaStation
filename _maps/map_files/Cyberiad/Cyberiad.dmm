@@ -11871,6 +11871,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/dock)
 "cRq" = (
+/obj/effect/landmark/start/spacepod_pilot,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
