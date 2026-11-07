@@ -22,7 +22,8 @@
 	sky_color = "#ff9060"
 	floor_type = /turf/open/misc/asteroid/basalt/expedition_volcanic
 	source_type = /obj/structure/stationtrauma_research_source/mineral/expedition_volcanic
-	mountain_height = 0.45
+	// Native lavaland density: basalt halls and ash thickets inside one tunnel maze instead of separate mountains.
+	surface_open_percent = 51
 	biome_table = list(
 		list(/datum/biome/expedition/volcanic/forest, /datum/biome/expedition/volcanic/plains/dense/mixed, /datum/biome/expedition/volcanic/forest/rocky, /datum/biome/expedition/volcanic/outback, /datum/biome/expedition/volcanic/plains/dense),
 		list(/datum/biome/expedition/volcanic/plains, /datum/biome/expedition/volcanic/outback, /datum/biome/expedition/volcanic/plains/dense, /datum/biome/expedition/volcanic/plains/dense/mixed, /datum/biome/expedition/volcanic),

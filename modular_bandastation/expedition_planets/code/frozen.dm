@@ -6,11 +6,11 @@
 	name = "Ледяная экзопланета"
 	generator_type = /datum/map_generator/expedition_barren/frozen
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/frozen
-	biome = "Снежные равнины, хвойные леса, ледяные озёра и пещеры"
+	biome = "Хвойные леса, снежные поляны, редкие скалы и ледяные озёра"
 	atmosphere = "Кислород и азот, 62 кПа"
 	surface_temperature = 180
 
-/** Seeded snow and ice terrain with reduced ore availability. */
+/** Seeded snow forest with scattered rock, as the native forested ice moon surface, and reduced ore availability. */
 /datum/map_generator/expedition_barren/frozen
 	hole_type = /turf/open/openspace/expedition_frozen
 	wildlife = TRUE
@@ -20,13 +20,14 @@
 	floor_type = /turf/open/misc/asteroid/snow
 	source_type = /obj/structure/stationtrauma_research_source/mineral/expedition_frozen
 	biome_zoom = 55
-	mountain_height = 0.45
+	// Forested ice moon ground with rock ridges; native 65 smooths almost every rock away on this small map.
+	surface_open_percent = 55
 	biome_table = list(
-		list(/datum/biome/expedition/arctic/rocky, /datum/biome/expedition/snow, /datum/biome/expedition/iceberg/lake, /datum/biome/expedition/iceberg, /datum/biome/expedition/iceberg),
-		list(/datum/biome/expedition/arctic, /datum/biome/expedition/arctic/rocky, /datum/biome/expedition/snow/lush, /datum/biome/expedition/snow, /datum/biome/expedition/iceberg),
-		list(/datum/biome/expedition/snow/thawed, /datum/biome/expedition/snow/forest, /datum/biome/expedition/snow, /datum/biome/expedition/snow/lush, /datum/biome/expedition/iceberg),
-		list(/datum/biome/expedition/snow/lush, /datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/forest, /datum/biome/expedition/snow/lush),
-		list(/datum/biome/expedition/snow, /datum/biome/expedition/snow/forest, /datum/biome/expedition/snow/thawed, /datum/biome/expedition/snow/lush, /datum/biome/expedition/snow),
+		list(/datum/biome/expedition/arctic/rocky, /datum/biome/expedition/snow, /datum/biome/expedition/snow/forest, /datum/biome/expedition/iceberg/lake, /datum/biome/expedition/snow),
+		list(/datum/biome/expedition/snow, /datum/biome/expedition/snow/forest, /datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/lush, /datum/biome/expedition/iceberg/lake),
+		list(/datum/biome/expedition/snow/forest, /datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/forest, /datum/biome/expedition/snow/lush),
+		list(/datum/biome/expedition/snow/lush, /datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/forest, /datum/biome/expedition/snow/thawed),
+		list(/datum/biome/expedition/snow/forest, /datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/thawed, /datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/forest),
 		list(/datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/forest, /datum/biome/expedition/snow/thawed, /datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/thawed),
 	)
 	cave_biome_table = /datum/biome/expedition/snow_cave
@@ -176,3 +177,32 @@
 /turf/open/openspace/expedition_frozen
 	initial_gas_mix = /turf/open/misc/asteroid/snow::initial_gas_mix
 	planetary_atmos = TRUE
+
+/** Open snow plain with rock scatter and plasma lakes, as the native ice moon surface. */
+/datum/stationtrauma_overmap_site/space/planet/frozen/plain
+	name = "Снежная экзопланета"
+	generator_type = /datum/map_generator/expedition_barren/frozen/plain
+	biome = "Снежные равнины, каменистые россыпи и плазменные озёра"
+
+/** Snow plain variant of the frozen profile, sharing its fauna, nests, storms and caves. */
+/datum/map_generator/expedition_barren/frozen/plain
+	// Native ice moon surface is almost all open floor; a little rock leaves the scatter of outcrops.
+	surface_open_percent = 85
+	biome_table = list(
+		list(/datum/biome/expedition/arctic/rocky, /datum/biome/expedition/arctic, /datum/biome/expedition/arctic, /datum/biome/expedition/plasma_lake, /datum/biome/expedition/plasma_lake),
+		list(/datum/biome/expedition/arctic, /datum/biome/expedition/arctic/rocky, /datum/biome/expedition/arctic, /datum/biome/expedition/snow/lush, /datum/biome/expedition/plasma_lake),
+		list(/datum/biome/expedition/arctic, /datum/biome/expedition/arctic, /datum/biome/expedition/arctic/rocky, /datum/biome/expedition/arctic, /datum/biome/expedition/snow/lush),
+		list(/datum/biome/expedition/arctic/rocky, /datum/biome/expedition/arctic, /datum/biome/expedition/snow/lush, /datum/biome/expedition/arctic, /datum/biome/expedition/arctic),
+		list(/datum/biome/expedition/arctic, /datum/biome/expedition/snow/lush, /datum/biome/expedition/arctic, /datum/biome/expedition/arctic/rocky, /datum/biome/expedition/arctic),
+		list(/datum/biome/expedition/arctic/rocky, /datum/biome/expedition/arctic, /datum/biome/expedition/arctic, /datum/biome/expedition/plasma_lake, /datum/biome/expedition/arctic/rocky),
+	)
+
+/** Native liquid plasma lake carrying the frozen profile atmosphere. */
+/turf/open/lava/plasma/expedition_frozen
+	initial_gas_mix = /turf/open/misc/asteroid/snow::initial_gas_mix
+	baseturfs = /turf/open/lava/plasma/expedition_frozen
+	planetary_atmos = TRUE
+
+/** Ice moon plasma lake. */
+/datum/biome/expedition/plasma_lake
+	open_turf_type = /turf/open/lava/plasma/expedition_frozen
