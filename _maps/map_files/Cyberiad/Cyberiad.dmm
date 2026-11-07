@@ -30499,7 +30499,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/spacepods/port)
 "hql" = (
@@ -33884,6 +33883,7 @@
 	dir = 4
 	},
 /obj/machinery/camera/directional/north,
+/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/spacepods/port)
 "ieg" = (
