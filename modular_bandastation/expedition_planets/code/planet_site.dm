@@ -57,6 +57,10 @@
 	site.name = planet_name
 	site.seed = seed
 	site.generator = new site.generator_type(seed)
+	// A large town or complex widens the surface around it; the template itself is chosen when the surface is built.
+	if(prob(site.generator.large_ruin_chance))
+		site.generator.width = site.generator.large_surface_width
+		site.generator.large_slot = TRUE
 	site.surface_width = site.generator.width
 	site.modifier_names = site.generator.apply_modifiers(modifier_level)
 	site.modifier_log = site.generator.modifier_log.Copy()

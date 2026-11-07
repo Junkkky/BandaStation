@@ -159,6 +159,11 @@
 /atom/movable/screen/parallax_layer/expedition_planet/lava
 	icon_state = "lava"
 
+/// The barren world darkened to ash by its war.
+/atom/movable/screen/parallax_layer/expedition_planet/dead
+	icon_state = "barren"
+	color = "#8a7c6c"
+
 /// The station's own native planet, seen from a flight level near the station.
 /atom/movable/screen/parallax_layer/expedition_planet/station
 	icon = 'icons/effects/parallax.dmi'
