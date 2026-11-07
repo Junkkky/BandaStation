@@ -32,8 +32,10 @@
 	var/surface_temperature = TCMB
 	/// Whether the environment profile supports unprotected human breathing.
 	var/breathable = FALSE
-	/// Survey names of the modifiers rolled for this planet.
+	/// Survey lines of the modifiers rolled for this planet.
 	var/list/modifier_names = list()
+	/// Names of the modifiers rolled for this planet, for admin logs.
+	var/list/modifier_log = list()
 	/// Charted generator awaiting the first landing; null once the surface is built or has failed.
 	var/datum/map_generator/expedition_barren/generator
 
@@ -55,8 +57,13 @@
 	site.name = planet_name
 	site.seed = seed
 	site.generator = new site.generator_type(seed)
+	// A large town or complex widens the surface around it; the template itself is chosen when the surface is built.
+	if(prob(site.generator.large_ruin_chance))
+		site.generator.width = site.generator.large_surface_width
+		site.generator.large_slot = TRUE
 	site.surface_width = site.generator.width
 	site.modifier_names = site.generator.apply_modifiers(modifier_level)
+	site.modifier_log = site.generator.modifier_log.Copy()
 	return site
 
 /datum/stationtrauma_overmap_site/space/planet/awaits_map()
@@ -124,8 +131,11 @@
 	budget.yield()
 	if(!load_ruins(ruins, bottom, surface, budget))
 		return FALSE
+	generator.build_hive(bottom, surface)
 	var/features = generator.place_features(bottom, surface)
 	generator.place_nests(bottom)
+	generator.place_megafauna(bottom)
+	generator.place_craters(bottom)
 	if(generator.populate_terrain(turfs, surface) != 3)
 		CRASH("Expedition planet [seed] lacks its research sources")
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(berth))
@@ -148,7 +158,7 @@
 	else
 		SSweather.update_z_level(level)
 	generation_seconds = ((REALTIMEOFDAY - start_time + MIDNIGHT_ROLLOVER) % MIDNIGHT_ROLLOVER) / 10
-	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [generation_seconds]s, features: [features], modifiers: [jointext(modifier_names, ", ")]")
+	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [generation_seconds]s, features: [features], modifiers: [jointext(modifier_log, ", ")]")
 	return TRUE
 
 /**
