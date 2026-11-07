@@ -21,6 +21,7 @@
 
 /datum/stationtrauma_overmap_site/space/Destroy()
 	docking_owner = null
+	host = null
 	// The loader callback holds the owning sector, which deletes its sites.
 	map_loader = null
 	return ..()
@@ -65,6 +66,12 @@
 		record["name"] = site_label(site)
 		record["type"] = record["kind"] == "signal" ? site_structure(site) : record["kind"] == "planet" ? "Планета" : "Станция"
 		record["sos"] = sos
+		// A remembered carrier contact is a measurement, not a live position tracker.
+		if(site.host && !(src in site.host.carrier_tree()))
+			var/list/observation = ship_observations[site.host.vessel.shuttle_id]
+			record["x"] = observation["x"]
+			record["y"] = observation["y"]
+			record["distance"] = round(sqrt((pos_x - observation["x"]) ** 2 + (pos_y - observation["y"]) ** 2))
 		. += list(record)
 
 /** Crew-facing name: space objects stay unidentified; planets and stations are charted. */

@@ -17,7 +17,7 @@
 	return istype(origin) && !QDELETED(target) && target != origin && origin.ready && target.ready \
 		&& SSstationtrauma_space_voyage.sectors[origin.id] == origin && (id in origin.jump_routes) \
 		&& is_operational() && origin.ships[vessel.shuttle_id] == src && !target.ships[vessel.shuttle_id] \
-		&& !preparing && !relocating && !docked && !ship_docking && !connection.active \
+		&& !preparing && !relocating && !docked && !ship_docking && !connection.active && carrier_transfer_ready(target) \
 		&& !QDELETED(flight_berth) && vessel.z == flight_berth.z && jump_drive()
 
 /** Serialize charted resident sectors available from the current jump network node. */
@@ -60,6 +60,7 @@
 			if(vessel.is_in_shuttle_bounds(crew))
 				shake_camera(crew, 1 SECONDS, 1)
 	update_parallax()
+	sync_carrier()
 	return TRUE
 
 /** Cancel owned jump timers and restore the current hull visual state. */
@@ -91,12 +92,9 @@
 		stop("Блюспейс-прыжок отменён")
 		return FALSE
 	cancel_jump()
-	var/datum/stationtrauma_overmap_sector/space/origin = sector
 	var/datum/stationtrauma_overmap_sector/space/target = SSstationtrauma_space_voyage.sectors[id]
 	clear_encounters()
-	origin.unregister(src)
-	if(!target.register(vessel.shuttle_id, src))
-		origin.register(vessel.shuttle_id, src)
+	if(!transfer_carrier_sector(target))
 		stop("Блюспейс-прыжок не выполнен")
 		return FALSE
 	var/obj/machinery/stationtrauma_bluespace_drive/drive = jump_drive()
@@ -109,6 +107,7 @@
 	pos_y = encounter_y = target.entry_y
 	trip_distance = travelled = 0
 	stop("Блюспейс-переход завершён: [target.name]")
+	sync_carrier()
 	navigation_notice("Прибытие в систему: [target.name].")
 	return TRUE
 

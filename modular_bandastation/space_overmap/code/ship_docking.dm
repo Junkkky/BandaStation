@@ -14,7 +14,7 @@
 
 /** Whether this free hull may reserve or accept a voluntary ship connection. */
 /datum/stationtrauma_overmap/space/proc/available_for_ship_docking()
-	return !QDELETED(src) && is_operational() && sector?.ships[vessel.shuttle_id] == src && !preparing && !planning && !relocating && !arrival_pending && !docked && !ship_docking && !connection.active && vessel.z == flight_berth.z
+	return !QDELETED(src) && is_operational() && !vessel.orbital_only && sector?.ships[vessel.shuttle_id] == src && !preparing && !planning && !relocating && !arrival_pending && !docked && !ship_docking && !connection.active && vessel.z == flight_berth.z
 
 /** Check two available hulls for common sector, proximity and low relative speed. */
 /datum/stationtrauma_overmap/space/proc/can_join_ship(datum/stationtrauma_overmap/space/other)

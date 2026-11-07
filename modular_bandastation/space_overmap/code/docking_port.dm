@@ -31,10 +31,45 @@
 	var/list/transponders = list()
 	/// Hull tiles inside the ship's own areas, measured once at registration.
 	var/hull_mass = 0
+	/// Physical deck reservations owned by this vessel, retained independently from native guest movement.
+	var/list/owned_z_levels = list()
+	/// Multideck hulls stay on their orbital maps and cannot use one-deck native relocation.
+	var/orbital_only = FALSE
+
+/obj/docking_port/mobile/stationtrauma_space/Initialize(mapload, list/areas)
+	. = ..()
+	classify_decks()
+
+/** A reserved multideck map must never enter the one-deck native movement pipeline. */
+/obj/docking_port/mobile/stationtrauma_space/proc/classify_decks()
+	if(length(owned_z_levels) <= 1)
+		return
+	orbital_only = TRUE
+	ship_class = ST_SHIP_CAPITAL
+	can_land = FALSE
+
+/** A single-deck guest follows its current native position while a multideck hull owns its reserved levels. */
+/obj/docking_port/mobile/stationtrauma_space/proc/contains_deck(level)
+	return length(owned_z_levels) > 1 ? (level in owned_z_levels) : level == z
+
+/** Native containment normally checks only the anchor's level. */
+/obj/docking_port/mobile/stationtrauma_space/is_in_shuttle_bounds(atom/thing)
+	if(length(owned_z_levels) <= 1)
+		return ..()
+	var/turf/tile = get_turf(thing)
+	if(!tile || !contains_deck(tile.z) || !shuttle_areas[get_area(tile)])
+		return FALSE
+	var/list/bounds = return_coords()
+	return ISINRANGE(tile.x, min(bounds[1], bounds[3]), max(bounds[1], bounds[3])) \
+		&& ISINRANGE(tile.y, min(bounds[2], bounds[4]), max(bounds[2], bounds[4]))
+
+/obj/docking_port/mobile/stationtrauma_space/canMove()
+	. = ..()
+	return . && !orbital_only
 
 /** Check mapped hull class and landing capability against the destination kind. */
 /obj/docking_port/mobile/stationtrauma_space/proc/permits_docking(datum/stationtrauma_overmap_site/space/site)
-	if(QDELETED(site))
+	if(orbital_only || QDELETED(site))
 		return FALSE
 	if(ship_class == ST_SHIP_CAPITAL)
 		return !site.landing && !site.physical_docking
@@ -55,12 +90,18 @@
 		var/obj/machinery/atmospherics/components/unary/ship_engine_heater/plasma/heater = locate() in get_step(engine, REVERSE_DIR(engine.dir))
 		heater?.bind_nozzle(src)
 
-/** Count the hull tiles inside this ship's bounds and areas; other hulls may share an area type. */
+/** Measure every owned deck and classify multideck hulls before navigation admits docking commands. */
 /obj/docking_port/mobile/stationtrauma_space/proc/measure_hull()
 	hull_mass = 0
-	for(var/turf/tile as anything in return_turfs())
-		if(shuttle_areas[tile.loc])
-			hull_mass++
+	var/derive_levels = !length(owned_z_levels)
+	for(var/area/hull_area as anything in shuttle_areas)
+		for(var/list/deck_turfs as anything in hull_area.get_zlevel_turf_lists())
+			for(var/turf/tile as anything in deck_turfs)
+				if(derive_levels)
+					owned_z_levels |= tile.z
+				if(derive_levels || contains_deck(tile.z))
+					hull_mass++
+	classify_decks()
 	return hull_mass
 
 /**
@@ -99,8 +140,11 @@
 	for(var/obj/machinery/computer/stationtrauma_transponder/device as anything in transponders)
 		device.vessel = null
 	transponders.Cut()
+	owned_z_levels.Cut()
 	fusion_core = null
 	QDEL_NULL(overmap)
+	QDEL_LIST_ASSOC_VAL(docking_surfaces)
+	docking_layer_indices.Cut()
 	return ..()
 
 /** Physical anchor for a destination connected by a remote map seam. */
