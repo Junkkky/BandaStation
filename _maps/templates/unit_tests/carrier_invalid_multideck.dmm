@@ -1,0 +1,22 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/docking_port/mobile/stationtrauma_space{
+	shuttle_id = "unit_test_bad_carrier_lower"
+	},
+/obj/machinery/power/shuttle_engine,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/lower)
+"b" = (
+/obj/docking_port/mobile/stationtrauma_space{
+	shuttle_id = "unit_test_bad_carrier_upper"
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
+
+(1,1,1) = {"
+a
+"}
+
+(1,1,2) = {"
+b
+"}

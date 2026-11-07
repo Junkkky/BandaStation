@@ -51,6 +51,8 @@
 	rcd_proof = TRUE
 	/// Owns this floor and its two temporary side seals.
 	var/datum/stationtrauma_dock_gangway/gangway
+	/// Ground covered when a carrier transports this temporary floor onto a surface.
+	var/datum/stationtrauma_dock_surface/docking_surface
 
 /turf/open/floor/plating/stationtrauma_dock_gangway/Initialize(mapload)
 	. = ..()
@@ -58,6 +60,7 @@
 
 /turf/open/floor/plating/stationtrauma_dock_gangway/Destroy(force)
 	RemoveElement(/datum/element/forced_gravity, STANDARD_GRAVITY)
+	QDEL_NULL(docking_surface)
 	return ..()
 
 /turf/open/floor/plating/stationtrauma_dock_gangway/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -117,7 +120,7 @@
 	retraction_prepared = TRUE
 	return TRUE
 
-/** Validate every interlock before making any of the bridge cells vacuum. */
+/** Validate every interlock before removing the temporary passage. */
 /obj/docking_port/stationary/stationtrauma_space_site/standard/proc/fold_for_departure()
 	if(!retraction_prepared)
 		return FALSE
@@ -152,12 +155,14 @@
 	var/obj/machinery/door/airlock/stationtrauma_docking/ship/ship
 	/// Fixed endpoint serving the strip.
 	var/obj/machinery/door/airlock/stationtrauma_docking/wall/wall
-	/// Temporary floors ordered from wall to ship.
-	var/list/turf/open/floor/plating/stationtrauma_dock_gangway/floors = list()
+	/// Passage floors ordered from wall to ship; existing ground is reused.
+	var/list/turf/open/floor/floors = list()
 	/// Side walls on the temporary floors.
 	var/list/obj/structure/window/reinforced/stationtrauma_dock_side/seals = list()
 	/// Bridge cells exposed during the departure pause, retained until the move commits.
 	var/list/folded_path
+	/// Temporary cells must redeploy over their original substrate if departure is cancelled.
+	var/list/folded_temporary
 	/// Only this endpoint may open during the current operation.
 	var/obj/machinery/door/airlock/stationtrauma_docking/opening_endpoint
 	/// An endpoint is currently animating as part of an operation.
@@ -170,6 +175,27 @@
 /datum/stationtrauma_dock_gangway/Destroy()
 	remove_passage()
 	return ..()
+
+/** Native carrying replaces floors and moves both endpoints as one assembly. Deletion stays watched. */
+/datum/stationtrauma_dock_gangway/proc/begin_carrier_move()
+	busy = TRUE
+	var/list/movement_signals = watched_signals - list(COMSIG_QDELETING)
+	for(var/atom/movable/part as anything in seals + list(ship, wall))
+		UnregisterSignal(part, movement_signals)
+	for(var/turf/tile as anything in floors)
+		UnregisterSignal(tile, COMSIG_TURF_CHANGE)
+
+/** Resume breach detection only after native floor scraping and rotation are complete. */
+/datum/stationtrauma_dock_gangway/proc/finish_carrier_move()
+	var/list/movement_signals = watched_signals - list(COMSIG_QDELETING)
+	for(var/atom/movable/part as anything in seals + list(ship, wall))
+		if(!QDELETED(part))
+			RegisterSignals(part, movement_signals, PROC_REF(on_breach))
+	for(var/turf/tile as anything in floors)
+		RegisterSignal(tile, COMSIG_TURF_CHANGE, PROC_REF(on_breach))
+	busy = FALSE
+	if(breached)
+		INVOKE_ASYNC(src, PROC_REF(seal_breach))
 
 /** Install the airless corridor only after the actual hull and port are in position. */
 /datum/stationtrauma_dock_gangway/proc/deploy(obj/machinery/door/airlock/stationtrauma_docking/ship/ship_endpoint, obj/machinery/door/airlock/stationtrauma_docking/wall/wall_endpoint, list/path, direction)
@@ -187,7 +213,7 @@
 		return FALSE
 	return TRUE
 
-/datum/stationtrauma_dock_gangway/proc/path_available(obj/machinery/door/airlock/stationtrauma_docking/ship/ship_endpoint, obj/machinery/door/airlock/stationtrauma_docking/wall/wall_endpoint, list/path, direction, restoring = FALSE)
+/datum/stationtrauma_dock_gangway/proc/path_available(obj/machinery/door/airlock/stationtrauma_docking/ship/ship_endpoint, obj/machinery/door/airlock/stationtrauma_docking/wall/wall_endpoint, list/path, direction, restoring = FALSE, list/temporary)
 	if(QDELETED(ship_endpoint) || QDELETED(wall_endpoint))
 		return FALSE
 	if(!(direction in GLOB.cardinals) || wall_endpoint.dir != direction || ship_endpoint.dir != REVERSE_DIR(direction))
@@ -195,18 +221,39 @@
 	if(!ship_endpoint.density || ship_endpoint.operating || !wall_endpoint.density || wall_endpoint.operating)
 		return FALSE
 	var/turf/cursor = get_turf(wall_endpoint)
+	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(wall_endpoint)
 	for(var/turf/tile as anything in path)
-		if(get_step(cursor, direction) != tile || !isspaceturf(tile) || (!restoring && !clear_tile(tile)))
+		if(get_step(cursor, direction) != tile || !stationtrauma_standard_dock_surface(tile) || (!restoring && !clear_tile(tile)))
+			return FALSE
+		var/obj/docking_port/mobile/owner = SSshuttle.get_containing_shuttle(tile)
+		if((owner && owner != host?.vessel) || (host && isfloorturf(tile) && owner != host.vessel && !(restoring && temporary?[tile])))
+			return FALSE
+		if(temporary?[tile] && isfloorturf(tile) && (islist(tile.baseturfs) ? length(tile.baseturfs) : 1) >= 10)
 			return FALSE
 		cursor = tile
 	return get_step(cursor, direction) == get_turf(ship_endpoint)
 
-/datum/stationtrauma_dock_gangway/proc/install_floors(list/path, direction)
+/datum/stationtrauma_dock_gangway/proc/install_floors(list/path, direction, list/temporary)
 	for(var/turf/tile as anything in path)
-		var/turf/open/floor/plating/stationtrauma_dock_gangway/floor = tile.place_on_top(/turf/open/floor/plating/stationtrauma_dock_gangway, CHANGETURF_NO_AREA_CHANGE | CHANGETURF_IGNORE_AIR)
-		if(!istype(floor))
+		var/turf/open/floor/floor = tile
+		if(isspaceturf(tile) || temporary?[tile])
+			var/datum/stationtrauma_dock_surface/surface
+			if(isfloorturf(tile))
+				surface = new(tile)
+				surface.conceal(tile)
+			var/turf/open/floor/plating/stationtrauma_dock_gangway/temporary_floor = tile.place_on_top(/turf/open/floor/plating/stationtrauma_dock_gangway, CHANGETURF_NO_AREA_CHANGE | CHANGETURF_IGNORE_AIR)
+			if(!istype(temporary_floor))
+				surface?.restore(tile)
+				qdel(surface)
+				return FALSE
+			temporary_floor.gangway = src
+			temporary_floor.docking_surface = surface
+			var/area/original_area = temporary?[tile]
+			if(!QDELETED(original_area) && get_area(temporary_floor) != original_area)
+				temporary_floor.change_area(get_area(temporary_floor), original_area)
+			floor = temporary_floor
+		if(!isfloorturf(floor))
 			return FALSE
-		floor.gangway = src
 		floors += floor
 		RegisterSignal(floor, COMSIG_TURF_CHANGE, PROC_REF(on_breach))
 		seals += new /obj/structure/window/reinforced/stationtrauma_dock_side(floor, turn(direction, 90))
@@ -300,9 +347,8 @@
 	if(!instant && length(floors))
 		var/duration = 1.5 SECONDS
 		var/list/effects = list()
-		for(var/turf/open/floor/plating/stationtrauma_dock_gangway/floor in floors)
-			if(floor.gangway == src)
-				effects += new /obj/effect/constructing_effect/stationtrauma_gangway(floor, duration, RCD_DECONSTRUCT)
+		for(var/turf/open/floor/floor as anything in floors)
+			effects += new /obj/effect/constructing_effect/stationtrauma_gangway(floor, duration, RCD_DECONSTRUCT)
 		sleep(duration)
 		QDEL_LIST(effects)
 	return !QDELETED(src)
@@ -324,10 +370,11 @@
 /datum/stationtrauma_dock_gangway/proc/cancel_retraction()
 	if(length(folded_path))
 		var/direction = wall?.dir
-		if(breached || !path_available(ship, wall, folded_path, direction, restoring = TRUE) || !install_floors(folded_path, direction))
+		if(breached || !path_available(ship, wall, folded_path, direction, restoring = TRUE, temporary = folded_temporary) || !install_floors(folded_path, direction, folded_temporary))
 			remove_floors()
 			breached = TRUE
 		folded_path = null
+		folded_temporary = null
 	busy = FALSE
 	if(breached)
 		INVOKE_ASYNC(src, PROC_REF(seal_breach))
@@ -343,6 +390,10 @@
 	if(length(floors))
 		if(!breached)
 			folded_path = floors.Copy()
+			folded_temporary = list()
+			for(var/turf/open/floor/plating/stationtrauma_dock_gangway/floor in floors)
+				if(floor.gangway == src)
+					folded_temporary[floor] = get_area(floor)
 		playsound(floors[1], 'sound/machines/click.ogg', 50, vary = TRUE, pressure_affected = FALSE)
 		remove_floors()
 
@@ -386,6 +437,7 @@
 /datum/stationtrauma_dock_gangway/proc/remove_passage()
 	opening_endpoint = null
 	folded_path = null
+	folded_temporary = null
 	for(var/obj/machinery/door/airlock/stationtrauma_docking/endpoint as anything in list(ship, wall))
 		if(!QDELETED(endpoint))
 			UnregisterSignal(endpoint, watched_signals)
@@ -406,5 +458,12 @@
 		var/turf/open/floor/plating/stationtrauma_dock_gangway/floor = tile
 		if(istype(floor) && floor.gangway == src)
 			floor.gangway = null
-			floor.ScrapeAway(flags = CHANGETURF_NO_AREA_CHANGE)
+			var/datum/stationtrauma_dock_surface/surface = floor.docking_surface
+			floor.docking_surface = null
+			var/turf/revealed = floor.ScrapeAway(flags = CHANGETURF_NO_AREA_CHANGE)
+			if(surface)
+				if(surface.surface_area && get_area(revealed) != surface.surface_area)
+					revealed.change_area(get_area(revealed), surface.surface_area)
+				surface.restore(revealed)
+				qdel(surface)
 	floors.Cut()

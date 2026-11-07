@@ -36,6 +36,8 @@
 	var/star_radius = 10
 
 /datum/stationtrauma_overmap_sector/space/Destroy()
+	for(var/ship_id in station_docking_requests.Copy())
+		qdel(station_docking_requests[ship_id])
 	. = ..()
 	ship_charts.Cut()
 	QDEL_LIST(zones)
@@ -77,49 +79,27 @@
 	navigation.zones = list()
 	return TRUE
 
-/** The native template loader supplies unique areas and shuttle IDs for each physical hull. */
-/proc/load_stationtrauma_space_ship(map_path)
-	var/datum/map_template/stationtrauma_space/template = new(map_path, "Overmap ship")
-	var/datum/space_level/home = template.load_new_z()
-	if(!home)
-		qdel(template)
-		return null
-	var/min_x = round((world.maxx - template.width) / 2) + 1
-	var/min_y = round((world.maxy - template.height) / 2) + 1
-	var/obj/docking_port/mobile/stationtrauma_space/vessel
-	var/list/areas = list()
-	for(var/turf/tile as anything in block(locate(min_x, min_y, home.z_value), locate(min_x + template.width - 1, min_y + template.height - 1, home.z_value)))
-		areas |= get_area(tile)
-		if(!vessel)
-			vessel = locate() in tile
-	if(vessel)
-		for(var/area/ship_area as anything in areas)
-			if(istype(ship_area, vessel.area_type))
-				vessel.shuttle_areas[ship_area] = TRUE
-		if(length(vessel.shuttle_areas))
-			vessel.calculate_docking_port_information()
-			SSatoms.InitializeAtoms(list(vessel))
-			qdel(template)
-			return vessel
-	qdel(template)
-	return null
-
 /** Register a hull and prepare its flight level and consoles. Player construction supplies a separate flight berth. */
-/datum/stationtrauma_overmap_sector/space/proc/attach(obj/docking_port/mobile/stationtrauma_space/vessel, datum/stationtrauma_overmap_site/space/construction, turf/flight_position)
+/datum/stationtrauma_overmap_sector/space/proc/attach(obj/docking_port/mobile/stationtrauma_space/vessel, datum/stationtrauma_overmap_site/space/construction, turf/flight_position, defer_starting_dock = FALSE)
 	if(QDELETED(vessel) || vessel.width < 1 || vessel.height < 1 || !length(vessel.shuttle_areas))
-		return FALSE
-	if(!(vessel.ship_class in list(ST_SHIP_SMALL, ST_SHIP_MEDIUM, ST_SHIP_CAPITAL)))
-		stack_trace("Overmap hull [vessel.shuttle_id] has an invalid ship_class: [vessel.ship_class]")
 		return FALSE
 	if(vessel.overmap)
 		return vessel.overmap.sector == src
+	vessel.measure_hull()
+	if(!(vessel.ship_class in list(ST_SHIP_SMALL, ST_SHIP_MEDIUM, ST_SHIP_CAPITAL)))
+		stack_trace("Overmap hull [vessel.shuttle_id] has an invalid ship_class: [vessel.ship_class]")
+		return FALSE
 	if(construction && (QDELETED(construction.berth) || vessel.get_docked() != construction.berth || !flight_position || flight_position.z == vessel.z))
 		return FALSE
 	var/flight_z = construction ? flight_position.z : vessel.z
-	// The current seam spans the entire flight level; two hulls cannot share that level.
+	var/list/reserved_levels = construction ? list(flight_z) : vessel.owned_z_levels.Copy()
+	if(!length(reserved_levels))
+		reserved_levels += flight_z
+	// Every deck has its own exterior; no other independent hull may claim any of them.
 	for(var/id in ships)
 		var/datum/stationtrauma_overmap/space/other = ships[id]
-		if(other.flight_berth.z == flight_z)
+		var/list/other_levels = length(other.flight_levels) ? other.flight_levels : list(other.flight_berth.z)
+		if(length(reserved_levels & other_levels))
 			stack_trace("Overmap hull [vessel.shuttle_id] shares a flight level with [other.vessel.shuttle_id]")
 			return FALSE
 	if(!vessel.registered)
@@ -131,12 +111,12 @@
 		vessel.initial_engine_power = 0
 		vessel.current_engine_power = 0
 	vessel.linkup(null)
-	vessel.measure_hull()
 	var/datum/stationtrauma_overmap/space/navigation = new(vessel)
 	if(!register(vessel.shuttle_id, navigation))
 		qdel(navigation)
 		return FALSE
 	vessel.overmap = navigation
+	navigation.flight_levels = reserved_levels
 	if(construction)
 		navigation.flight_berth.forceMove(flight_position)
 		navigation.construction_site = construction
@@ -155,13 +135,14 @@
 	var/area/space/stationtrauma_space_home/exterior = new
 	exterior.navigation_ref = WEAKREF(navigation)
 	var/datum/stationtrauma_work_budget/budget = new
-	for(var/turf/open/space/tile in block(locate(1, 1, flight_z), locate(world.maxx, world.maxy, flight_z)))
-		var/area/old_area = get_area(tile)
-		if(old_area.type == /area/space)
-			tile.change_area(old_area, exterior)
-		budget.yield()
-		if(QDELETED(vessel) || QDELETED(navigation) || QDELETED(src))
-			return FALSE
+	for(var/deck in reserved_levels)
+		for(var/turf/open/space/tile in block(locate(1, 1, deck), locate(world.maxx, world.maxy, deck)))
+			var/area/old_area = get_area(tile)
+			if(old_area.type == /area/space)
+				tile.change_area(old_area, exterior)
+			budget.yield()
+			if(QDELETED(vessel) || QDELETED(navigation) || QDELETED(src))
+				return FALSE
 	navigation.exterior = exterior
 	for(var/area/ship_area as anything in vessel.shuttle_areas)
 		for(var/obj/machinery/computer/stationtrauma_space_navigation/console in ship_area)
@@ -171,10 +152,9 @@
 	navigation.encounter_y = navigation.pos_y
 	navigation.preparing = FALSE
 	navigation.initialize_ship_audio()
-	if(vessel.starting_dock)
-		if(!navigation.select_site(vessel.starting_dock) || !navigation.dock(instant = TRUE, station_authorized = TRUE))
-			qdel(navigation)
-			return FALSE
+	if(!navigation.register_carrier_docks() || (!defer_starting_dock && !navigation.place_starting_dock()))
+		qdel(navigation)
+		return FALSE
 	navigation.update_parallax()
 	return TRUE
 
@@ -211,6 +191,8 @@
 			controller.set_panels(SSsun.azimuth)
 		taken_positions = list()
 		for(var/obj/docking_port/stationary/stationtrauma_space_station/port in SSshuttle.stationary_docking_ports)
+			if(port.host_ship_id)
+				continue
 			var/datum/stationtrauma_overmap_site/space/site = new
 			site.id = port.site_id
 			site.name = port.station_name

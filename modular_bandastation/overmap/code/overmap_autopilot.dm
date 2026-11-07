@@ -130,9 +130,10 @@
 		return FALSE
 	planning = TRUE
 	var/revision = control_revision
-	var/list/path = plan_course(site.pos_x, site.pos_y)
+	var/list/position = site_position(site)
+	var/list/path = position ? plan_course(position[1], position[2]) : null
 	planning = FALSE
-	if(QDELETED(src) || !is_operational() || revision != control_revision || site != sites[selected_destination])
+	if(QDELETED(src) || !is_operational() || revision != control_revision || site != sites[selected_destination] || !knows_site(site))
 		return FALSE
 	if(!length(path) || !path_clear(pos_x, pos_y, path[1][1], path[1][2]))
 		stop("Автопилот: безопасный маршрут не найден")

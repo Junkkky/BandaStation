@@ -53,6 +53,7 @@
 	var/list/moved_atoms = list() //Everything not a turf that gets moved in the shuttle
 	var/list/areas_to_move = list() //unique assoc list of areas on turfs being moved
 	var/list/underlying_areas = list() //unique assoc list of areas beneath turfs being moved
+	var/list/shuttle_depths = list()
 
 	. = preflight_check(old_turfs, new_turfs, areas_to_move, underlying_areas, rotation)
 	if(.)
@@ -87,11 +88,11 @@
 	// Moving to the new location will trample the ripples there at the exact
 	// same time any mobs there are trampled, to avoid any discrepancy where
 	// the ripples go away before it is safe.
-	takeoff(old_turfs, new_turfs, moved_atoms, rotation, movement_direction, old_dock, fallback_area)
+	takeoff(old_turfs, new_turfs, moved_atoms, rotation, movement_direction, old_dock, fallback_area, shuttle_depths)
 
 	CHECK_TICK
 
-	cleanup_runway(new_dock, old_turfs, new_turfs, areas_to_move, underlying_areas, moved_atoms, rotation, movement_direction, fallback_area)
+	cleanup_runway(new_dock, old_turfs, new_turfs, areas_to_move, underlying_areas, moved_atoms, rotation, movement_direction, fallback_area, shuttle_depths)
 
 	CHECK_TICK
 
@@ -139,14 +140,25 @@
 
 		old_turfs[oldT] = move_mode
 
-/obj/docking_port/mobile/proc/takeoff(list/old_turfs, list/new_turfs, list/moved_atoms, rotation, movement_direction, old_dock, area/fallback_area)
+/** Optional source layer boundary. Null retains native turf selection. */
+/obj/docking_port/mobile/proc/shuttle_layer_depth(turf/source)
+	return null
+
+/** Optional restoration immediately after a source turf has been scraped. */
+/obj/docking_port/mobile/proc/shuttle_source_restored(turf/source)
+	return
+
+/obj/docking_port/mobile/proc/takeoff(list/old_turfs, list/new_turfs, list/moved_atoms, rotation, movement_direction, old_dock, area/fallback_area, list/shuttle_depths)
 	for(var/i in 1 to old_turfs.len)
 		var/turf/oldT = old_turfs[i]
 		var/turf/newT = new_turfs[i]
 		var/move_mode = old_turfs[oldT]
 
 		if(move_mode & MOVE_TURF)
-			oldT.onShuttleMove(newT, movement_force, movement_direction, move_mode & MOVE_AREA) //turfs
+			var/source_depth = shuttle_layer_depth(oldT)
+			if(!isnull(source_depth))
+				shuttle_depths[oldT] = source_depth
+			oldT.onShuttleMove(newT, movement_force, movement_direction, move_mode & MOVE_AREA, source_depth) //turfs
 
 		if(move_mode & MOVE_AREA)
 			var/area/shuttle_area = oldT.loc
@@ -164,7 +176,7 @@
 			SEND_SIGNAL(oldT, COMSIG_SHUTTLE_TURF_ON_MOVE_SPECIAL, newT, movement_force, movement_direction, old_dock, src)
 
 
-/obj/docking_port/mobile/proc/cleanup_runway(obj/docking_port/stationary/new_dock, list/old_turfs, list/new_turfs, list/areas_to_move, list/underlying_areas, list/moved_atoms, rotation, movement_direction, area/fallback_area)
+/obj/docking_port/mobile/proc/cleanup_runway(obj/docking_port/stationary/new_dock, list/old_turfs, list/new_turfs, list/areas_to_move, list/underlying_areas, list/moved_atoms, rotation, movement_direction, area/fallback_area, list/shuttle_depths)
 	fallback_area.afterShuttleMove(0)
 	for(var/i in 1 to underlying_areas.len)
 		CHECK_TICK
@@ -195,7 +207,8 @@
 		if(!(old_move_mode & MOVE_TURF))
 			continue
 		var/turf/new_turf = new_turfs[i]
-		new_turf.afterShuttleMove(old_turf, rotation) //turfs
+		new_turf.afterShuttleMove(old_turf, rotation, shuttle_depths?[old_turf]) //turfs
+		shuttle_source_restored(old_turf)
 		var/turf/new_ceiling = get_step_multiz(new_turf, UP) // check if a ceiling is needed
 		if(new_ceiling)
 			// generate ceiling

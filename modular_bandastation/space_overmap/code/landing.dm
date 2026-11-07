@@ -39,6 +39,7 @@
 		if(vessel.shuttle_areas[get_area(tile)] && !isspaceturf(tile) && !isshuttleturf(tile))
 			tile.insert_baseturf(2, /turf/open/space)
 			tile.insert_baseturf(3, /turf/baseturf_skipover/shuttle)
+	vessel.initialize_docking_layers()
 
 /** Skip native trampling; expedition docking checks occupancy again after preflight. */
 /turf/toShuttleMove(turf/oldT, move_mode, obj/docking_port/mobile/shuttle)
@@ -47,7 +48,8 @@
 	return ..()
 
 /obj/docking_port/mobile/stationtrauma_space/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force = FALSE, datum/callback/before_takeoff)
-	if(!overmap?.relocating)
+	if(orbital_only || !overmap?.relocating || overmap.docking_relocation \
+		|| (overmap.carrier_relocation && overmap.carrier_relocation.root.vessel != src))
 		return DOCKING_BLOCKED
 	var/datum/stationtrauma_overmap_site/space/site = overmap.sites[overmap.selected_destination]
 	// A ship pair's own anchor is the first hull's flush berth; a seam anchor never receives a hull.
@@ -58,25 +60,51 @@
 		selected_berth = slot.active_berth
 	if(new_dock != overmap.flight_berth && !pair_berth && ((!site?.landing && !site?.physical_docking) || selected_berth != new_dock || !permits_docking(site)))
 		return DOCKING_BLOCKED
-	return ..(new_dock, movement_direction, FALSE, before_takeoff)
+	var/datum/stationtrauma_docking_layers/layers = new(src, new_dock, before_takeoff)
+	if(!layers.build())
+		qdel(layers)
+		return DOCKING_BLOCKED
+	overmap.docking_relocation = layers
+	var/result
+	var/exception/movement_failure
+	try
+		result = ..(new_dock, movement_direction, FALSE, CALLBACK(layers, TYPE_PROC_REF(/datum/stationtrauma_docking_layers, commit)))
+	catch(var/exception/failure)
+		movement_failure = failure
+	if(!QDELETED(overmap))
+		overmap.docking_relocation = null
+	qdel(layers)
+	if(movement_failure)
+		throw movement_failure
+	return result
 
 /** Reused by native docking before and after its yielding preflight; never trample players or their construction. */
 /obj/docking_port/mobile/stationtrauma_space/check_dock(obj/docking_port/stationary/target, silent = FALSE)
-	if(!..())
+	if(orbital_only || !..())
+		return FALSE
+	if(overmap?.docking_relocation && !overmap.docking_relocation.validate())
 		return FALSE
 	if(istype(target, /obj/docking_port/stationary/stationtrauma_space_site/standard))
 		var/obj/docking_port/stationary/stationtrauma_space_site/standard/berth = target
-		return berth.route_clear(src)
+		if(!berth.route_clear(src))
+			return FALSE
+	var/datum/stationtrauma_carrier_movement/movement = overmap?.carrier_relocation
+	if(movement?.root.vessel == src)
+		return movement.validate()
+	if(istype(target, /obj/docking_port/stationary/stationtrauma_space_site/standard))
+		return TRUE
 	// Native index order pairs each hull tile with its rotated target; bounding-box corners outside the hull never move.
 	var/list/hull_turfs = return_ordered_turfs(x, y, z, dir)
 	var/list/target_turfs = return_ordered_turfs(target.x, target.y, target.z, target.dir)
 	if(length(target_turfs) != length(hull_turfs))
 		return FALSE
 	for(var/index in 1 to length(hull_turfs))
-		if(!shuttle_areas[get_area(hull_turfs[index])])
+		if(!shuttle_areas[get_area(hull_turfs[index])] || !has_docking_layer(hull_turfs[index]))
 			continue
 		var/turf/tile = target_turfs[index]
 		if(!isopenturf(tile) || tile.density)
+			return FALSE
+		if(SSshuttle.get_containing_shuttle(tile))
 			return FALSE
 		for(var/atom/movable/occupant as anything in tile)
 			if(isliving(occupant) || (isobj(occupant) && !iseffect(occupant) && !istype(occupant, /obj/docking_port)))
@@ -128,6 +156,10 @@
 
 /** Relocate the hull and its latejoin turfs through native shuttle movement. */
 /datum/stationtrauma_overmap/space/proc/relocate(obj/docking_port/stationary/target, datum/callback/before_takeoff)
+	if(length(carrier_docks))
+		return relocate_carrier(target, before_takeoff)
+	if(!QDELETED(vessel))
+		vessel.initialize_docking_layers()
 	// A ship pair moves only between the first hull's own berth and its flush berth beside the peer.
 	if(relocating || (ship_docking && target != flight_berth && target != ship_docking.anchor) || QDELETED(target) || QDELETED(vessel) || !vessel.check_dock(target, TRUE))
 		status = "Манёвр отменён: посадочная площадка занята или перекрыта"

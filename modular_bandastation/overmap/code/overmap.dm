@@ -249,7 +249,8 @@
 	selected_destination = id
 	trip_distance = distance_to(site)
 	travelled = 0
-	ordered_course = delta_to_angle(site.pos_x - pos_x, site.pos_y - pos_y)
+	var/list/position = site_position(site)
+	ordered_course = delta_to_angle(position[1] - pos_x, position[2] - pos_y)
 	return TRUE
 
 /** Recheck after any yielded preparation; a stop invalidates pending arrival. */
@@ -268,7 +269,12 @@
 
 /** Distance to a virtual destination. */
 /datum/stationtrauma_overmap/proc/distance_to(datum/stationtrauma_overmap_site/site)
-	return sqrt((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2)
+	var/list/position = site_position(site)
+	return position ? sqrt((position[1] - pos_x) ** 2 + (position[2] - pos_y) ** 2) : INFINITY
+
+/** Position available to this navigator; mobile destinations may supply a sensor measurement. */
+/datum/stationtrauma_overmap/proc/site_position(datum/stationtrauma_overmap_site/site)
+	return QDELETED(site) ? null : list(site.pos_x, site.pos_y)
 
 /** Whether the hull is close enough to enter a prepared destination. */
 /datum/stationtrauma_overmap/proc/in_arrival_range(datum/stationtrauma_overmap_site/site)
