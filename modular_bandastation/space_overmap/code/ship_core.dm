@@ -205,7 +205,7 @@ GLOBAL_VAR_INIT(stationtrauma_available_flight_z, 0)
 		var/turf/outside = get_step(hatch, hatch.dir)
 		if(!(inside in turfs) || !isfloorturf(inside) || inside.is_blocked_turf(exclude_mobs = TRUE))
 			continue
-		while(isspaceturf(outside) && !(outside in turfs))
+		while(!(outside in turfs) && stationtrauma_standard_dock_clear_space(outside))
 			if(!ISINRANGE(outside.x, min_x, max_x) || !ISINRANGE(outside.y, min_y, max_y))
 				return null
 			outside = get_step(outside, hatch.dir)

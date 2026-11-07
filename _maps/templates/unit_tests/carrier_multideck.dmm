@@ -1,0 +1,455 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/space/basic,
+/area/space)
+"b" = (
+/obj/docking_port/mobile/stationtrauma_space/unit_test_docking{
+	shuttle_id = "unit_test_multideck_carrier";
+	name = "Multideck carrier fixture";
+	ship_class = "medium";
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/lower)
+"c" = (
+/obj/machinery/power/shuttle_engine,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/lower)
+"d" = (
+/obj/machinery/stationtrauma_bluespace_drive{
+	charges = 1
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/lower)
+"e" = (
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/lower)
+"f" = (
+/obj/docking_port/stationary/stationtrauma_space_station/standard_s{
+	site_id = "unit_test_multideck_upper_s";
+	host_ship_id = "unit_test_multideck_carrier";
+	station_name = "Upper deck S berth";
+	dir = 1
+	},
+/turf/open/space/basic,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
+"g" = (
+/turf/open/space/basic,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
+"h" = (
+/obj/machinery/door/airlock/stationtrauma_docking/wall{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
+"i" = (
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
+"j" = (
+/obj/machinery/computer/stationtrauma_space_navigation,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
+"k" = (
+/obj/machinery/computer/stationtrauma_station_traffic,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
+"l" = (
+/obj/machinery/power/shuttle_engine,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/unit_test_carrier_multideck/upper)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+
+(5,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+
+(6,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+
+(7,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+
+(8,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+
+(9,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+c
+b
+"}
+
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+e
+d
+"}
+
+(1,1,2) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+f
+"}
+
+(2,1,2) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+"}
+
+(3,1,2) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+"}
+
+(4,1,2) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+"}
+
+(5,1,2) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+"}
+
+(6,1,2) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+"}
+
+(7,1,2) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+"}
+
+(8,1,2) = {"
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+"}
+
+(9,1,2) = {"
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+h
+"}
+
+(10,1,2) = {"
+i
+i
+i
+i
+i
+i
+i
+i
+i
+i
+i
+i
+i
+i
+i
+"}
+
+(11,1,2) = {"
+i
+i
+l
+i
+i
+i
+k
+i
+j
+i
+i
+i
+i
+i
+i
+"}

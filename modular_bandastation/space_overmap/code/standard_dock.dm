@@ -41,6 +41,8 @@
 
 /** Cheap compatibility check for navigation displays. Obstructions are checked on demand. */
 /obj/docking_port/stationary/stationtrauma_space_station/standard/proc/accepts(obj/docking_port/mobile/stationtrauma_space/ship)
+	if(host_ship_id && (QDELETED(host) || host.sector?.sites[site_id] != carrier_site))
+		return FALSE
 	return !QDELETED(ship) && ship.ship_class == accepted_ship_class && ship.width > 0 && ship.height > 0 \
 		&& min(ship.width, ship.height) <= width && max(ship.width, ship.height) <= height \
 		&& (dir in GLOB.cardinals) && (ship.dir in GLOB.cardinals)
@@ -49,6 +51,8 @@
 /obj/docking_port/stationary/stationtrauma_space_station/standard/proc/prepare_berth(obj/docking_port/mobile/stationtrauma_space/ship)
 	if(active_berth || !accepts(ship))
 		return null
+	ship.initialize_docking_layers()
+	host?.vessel.initialize_docking_layers()
 	var/list/slot = return_turfs()
 	if(length(slot) != width * height)
 		return null
@@ -137,7 +141,7 @@
 	return min(hull_bounds[1], hull_bounds[3]) >= min(slot_bounds[1], slot_bounds[3]) && max(hull_bounds[1], hull_bounds[3]) <= max(slot_bounds[1], slot_bounds[3]) \
 		&& min(hull_bounds[2], hull_bounds[4]) >= min(slot_bounds[2], slot_bounds[4]) && max(hull_bounds[2], hull_bounds[4]) <= max(slot_bounds[2], slot_bounds[4])
 
-/** Project only occupied hull cells and reject non-vacuum or obstructions under them. */
+/** Project occupied hull cells onto clear ground or space belonging to the receiving dock. */
 /obj/docking_port/stationary/stationtrauma_space_station/standard/proc/project_hull(obj/docking_port/mobile/stationtrauma_space/ship, turf/anchor, facing)
 	var/list/source = ship.return_ordered_turfs(ship.x, ship.y, ship.z, ship.dir)
 	var/list/target = ship.return_ordered_turfs(anchor.x, anchor.y, anchor.z, facing)
@@ -145,22 +149,34 @@
 		return null
 	var/list/projected = list()
 	for(var/index in 1 to length(source))
-		if(!ship.shuttle_areas[get_area(source[index])])
+		if(!ship.has_docking_layer(source[index]))
 			continue
 		var/turf/tile = target[index]
-		if(!stationtrauma_standard_dock_clear_space(tile))
+		if(!stationtrauma_standard_dock_clear_space(tile, host))
 			return null
 		projected[tile] = TRUE
 	return projected
 
-/** Keep space fixtures and loose objects out of the hull projection and the gangway. */
-/proc/stationtrauma_standard_dock_clear_space(turf/tile)
-	if(!isspaceturf(tile) || tile.density)
+/** Solid ground and ordinary space can support a pad; transit edges cannot. */
+/proc/stationtrauma_standard_dock_surface(turf/tile)
+	if(!tile || tile.density || !(isspaceturf(tile) || isfloorturf(tile)))
 		return FALSE
-	var/turf/open/space/space_tile = tile
-	if(space_tile.destination_z)
+	if(isspaceturf(tile))
+		var/turf/open/space/space_tile = tile
+		if(space_tile.destination_z)
+			return FALSE
+	return TRUE
+
+/** Keep fixtures, loose objects and unrelated ships out of the hull and gangway. */
+/proc/stationtrauma_standard_dock_clear_space(turf/tile, datum/stationtrauma_overmap/space/host)
+	if(!stationtrauma_standard_dock_surface(tile))
+		return FALSE
+	var/obj/docking_port/mobile/owner = SSshuttle.get_containing_shuttle(tile)
+	if((owner && owner != host?.vessel) || (host && isfloorturf(tile) && owner != host.vessel))
 		return FALSE
 	for(var/atom/movable/occupant as anything in tile)
+		if(istype(occupant, /obj/docking_port/mobile))
+			return FALSE
 		if(istype(occupant, /obj/docking_port))
 			continue
 		if(occupant.density || isliving(occupant) || (isobj(occupant) && !iseffect(occupant)))
@@ -174,34 +190,34 @@
 	var/turf/inside = get_step(wall, REVERSE_DIR(facing))
 	return isfloorturf(inside) && !inside.is_blocked_turf(exclude_mobs = TRUE)
 
-/** A dedicated ship hatch needs walkable ship floor behind it and open space outside. */
+/** A dedicated hatch needs ship floor behind it and an unobstructed exterior. */
 /obj/docking_port/stationary/stationtrauma_space_station/standard/proc/hatch_available(obj/docking_port/mobile/stationtrauma_space/ship, obj/machinery/door/airlock/stationtrauma_docking/ship/hatch)
 	if(QDELETED(hatch) || !(hatch.dir in GLOB.cardinals) || !hatch.density || hatch.operating || hatch.gangway \
-		|| !isfloorturf(get_turf(hatch)) || !ship.is_in_shuttle_bounds(hatch))
+		|| !isfloorturf(get_turf(hatch)) || !ship.is_in_shuttle_bounds(hatch) || !ship.has_docking_layer(get_turf(hatch)))
 		return FALSE
 	var/turf/inside = get_step(hatch, REVERSE_DIR(hatch.dir))
 	var/turf/outside = get_step(hatch, hatch.dir)
 	return isfloorturf(inside) && !inside.is_blocked_turf(exclude_mobs = TRUE) && ship.shuttle_areas[get_area(inside)] \
-		&& isspaceturf(outside) && !ship.shuttle_areas[get_area(outside)]
+		&& !ship.shuttle_areas[get_area(outside)] && stationtrauma_standard_dock_clear_space(outside, ship.overmap?.carrier_host())
 
 /** Walk from the wall to the projected hatch, excluding both endpoint turfs. */
 /obj/docking_port/stationary/stationtrauma_space_station/standard/proc/gangway_path(obj/machinery/door/airlock/stationtrauma_docking/wall/wall, turf/projected_hatch, list/hull)
 	var/list/path = list()
 	var/turf/step = get_step(wall, wall.dir)
 	while(step && step != projected_hatch && length(path) < width)
-		if(hull[step] || !stationtrauma_standard_dock_clear_space(step))
+		if(hull[step] || !stationtrauma_standard_dock_clear_space(step, host))
 			return null
 		path += step
 		step = get_step(step, wall.dir)
 	return step == projected_hatch ? path : null
 
-/** One reserved pair of endpoints and the vacuum cells between them. */
+/** One reserved pair of endpoints and the clear cells between them. */
 /datum/stationtrauma_dock_route
 	/// The physical hatch that travels with the ship.
 	var/obj/machinery/door/airlock/stationtrauma_docking/ship/hatch
 	/// The selected addressable section.
 	var/obj/machinery/door/airlock/stationtrauma_docking/wall/wall
-	/// Clear vacuum turfs from the wall to the hatch.
+	/// Clear ground or space from the wall to the hatch.
 	var/list/path
 
 /** The native anchor and selected routes for one reserved standard slot approach. */

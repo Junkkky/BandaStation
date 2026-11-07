@@ -134,6 +134,8 @@
 
 /// A real enclosed cell behind the selected door keeps pressure stable across the opening animations.
 /datum/unit_test/overmap_standard_dock/proc/pressurize_endpoint(obj/machinery/door/airlock/stationtrauma_docking/endpoint)
+	var/closed = endpoint.close()
+	TEST_ASSERT(closed && endpoint.density && !endpoint.operating, "The pressure fixture must close its real endpoint before filling the isolated chamber")
 	var/turf/open/floor/doorway = get_turf(endpoint)
 	var/inward = REVERSE_DIR(endpoint.dir)
 	var/turf/open/floor/inside = get_step(doorway, inward)

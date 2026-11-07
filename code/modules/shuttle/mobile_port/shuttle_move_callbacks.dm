@@ -56,12 +56,12 @@ All ShuttleMove procs go here
 				qdel(thing)
 
 // Called on the old turf to move the turf data
-/turf/proc/onShuttleMove(turf/new_turf, list/movement_force, move_dir, ignore_area_change = FALSE)
+/turf/proc/onShuttleMove(turf/new_turf, list/movement_force, move_dir, ignore_area_change = FALSE, selected_depth)
 	if(new_turf == src) // In case of in place shuttle rotation shenanigans.
 		return
 	// Destination turf changes.
 	// Baseturfs is definitely a list or this proc wouldnt be called.
-	var/shuttle_depth = depth_to_find_baseturf(/turf/baseturf_skipover/shuttle)
+	var/shuttle_depth = isnull(selected_depth) ? depth_to_find_baseturf(/turf/baseturf_skipover/shuttle) : selected_depth
 
 	if(!shuttle_depth)
 		CRASH("A turf queued to move via shuttle somehow had no skipover in baseturfs. [src]([type]):[loc]")
@@ -78,12 +78,12 @@ All ShuttleMove procs go here
 	return TRUE
 
 // Called on the new turf after everything has been moved
-/turf/proc/afterShuttleMove(turf/oldT, rotation)
+/turf/proc/afterShuttleMove(turf/oldT, rotation, selected_depth)
 	//Dealing with the turf we left behind
 	oldT.TransferComponents(src)
 
 	SSexplosions.wipe_turf(src)
-	var/shuttle_depth = depth_to_find_baseturf(/turf/baseturf_skipover/shuttle)
+	var/shuttle_depth = isnull(selected_depth) ? depth_to_find_baseturf(/turf/baseturf_skipover/shuttle) : selected_depth
 
 	if(shuttle_depth)
 		oldT.ScrapeAway(shuttle_depth)

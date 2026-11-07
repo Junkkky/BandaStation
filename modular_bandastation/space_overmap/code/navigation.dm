@@ -27,6 +27,14 @@
 	return ..()
 
 /datum/stationtrauma_overmap/space/Destroy()
+	release_carrier_docks()
+	if(docked?.docking_owner == src)
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = docked.berth
+		if(istype(slot) && !QDELETED(slot))
+			slot.clear_berth()
+		docked.docking_owner = null
+		if(docked.failed && sites[docked.id] != docked)
+			qdel(docked)
 	docking_request = null
 	approach_site = null
 	QDEL_NULL(ship_docking)
@@ -65,7 +73,20 @@
 	if(!is_operational())
 		engine_sound?.silence()
 		return PROCESS_KILL
+	if(carrier_host())
+		// The parent's processing advances the whole assembly, including its passengers.
+		last_update = world.time
+		refresh_engine_audio(seconds_per_tick)
+		if(!preparing && !relocating && world.time >= next_listen)
+			listen()
+		return
+	var/datum/stationtrauma_overmap_site/space/target = sites[selected_destination]
+	if(target?.host && !knows_site(target))
+		selected_destination = null
+		prepared_site = null
+		stop("Контакт с носителем потерян")
 	advance()
+	sync_carrier()
 	// Drag or the emergency thrusters ended an unpowered drift.
 	if(helm_engaged && !vessel.engines_running && !arrival_pending && !jump_target && speed <= ST_NAV_STOPPED_SPEED)
 		stop("Дрейф погашен")
@@ -193,6 +214,7 @@
 	maneuver_direction = NONE
 	emergency_braking = FALSE
 	. = ..()
+	sync_carrier()
 	refresh_engine_audio()
 
 /datum/stationtrauma_overmap/space/request_brake()
@@ -287,6 +309,9 @@
 /** Leave virtual docks in place; planetary departures first return the real hull to its flight berth. */
 /** Casting off takes time, so a moored hull departs asynchronously and engages the helm once clear. */
 /datum/stationtrauma_overmap/space/sail()
+	var/datum/stationtrauma_overmap/space/owner = carrier_host()
+	if((owner && (owner.preparing || owner.relocating || owner.jump_target)) || carrier_busy())
+		return FALSE
 	if(docked || ship_docking)
 		if(approach_started || preparing || relocating || arrival_pending || !vessel.engines_running || engine_fraction() <= 0)
 			return FALSE
@@ -311,7 +336,8 @@
 		throttle = 50
 		return sail()
 	var/datum/stationtrauma_overmap_site/space/old_dock = docked
-	if(!old_dock || approach_started || !propulsion_available() || arrival_pending || relocating)
+	var/datum/stationtrauma_overmap/space/owner = carrier_host()
+	if(!old_dock || approach_started || !propulsion_available() || arrival_pending || relocating || (owner && (owner.preparing || owner.relocating || owner.jump_target)))
 		return FALSE
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot
 	if(istype(old_dock.berth, /obj/docking_port/stationary/stationtrauma_space_station/standard))
@@ -379,7 +405,11 @@
 	if(old_dock.docking_owner == src)
 		old_dock.docking_owner = null
 	docked = null
+	var/left_selected_dock = sites[selected_destination] == old_dock
+	var/orphaned_dock = old_dock.failed && !old_dock.host && sites[old_dock.id] != old_dock && !old_dock.docking_owner
 	clear_construction_site()
+	if(orphaned_dock)
+		qdel(old_dock)
 	preparing = FALSE
 	refresh_engine_audio()
 	update_parallax()
@@ -390,7 +420,7 @@
 		return FALSE
 	throttle = 50
 	// The berth just left is no longer an arrival order during the first slow acceleration tick.
-	if(sites[selected_destination] == old_dock)
+	if(left_selected_dock)
 		selected_destination = null
 		prepared_site = null
 	. = sail()
@@ -414,6 +444,10 @@
 
 /** Revalidate the selected site, berth ownership, proximity and helm order revision. */
 /datum/stationtrauma_overmap/space/proc/can_dock(datum/stationtrauma_overmap_site/space/site, revision)
+	if(!carrier_arrival_ready(site) || carrier_busy())
+		return FALSE
+	if(site?.host && sqrt((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2) > radius + site.radius + ST_NAV_APPROACH + 5)
+		return FALSE
 	if(!is_operational() || ship_docking || !knows_site(site) || (QDELETED(site.berth) && !site.awaits_map()) || site.failed || !vessel.permits_docking(site) || (site.docking_owner && site.docking_owner != src) || revision != control_revision || helm_engaged || site != sites[selected_destination] || distance_to(site) > radius + site.radius + ST_NAV_APPROACH + 5)
 		return FALSE
 	// Loaded berths are sized for the prototype hull; the approach revalidates them once they exist.
@@ -493,6 +527,9 @@
 				status = site.landing ? "Посадка прервана" : slot ? "Стыковка [slot.dock_class] отменена: нет свободного пути для трапа" : "Стыковка не выполнена: переход перекрыт"
 		return FALSE
 	docked = site
+	if(site.host)
+		carrier_heading_offset = WRAP(course - site.host.course, 0, 360)
+		site.host.sync_carrier()
 	visited_sites[site.id] = TRUE
 	pos_x = site.pos_x
 	pos_y = site.pos_y

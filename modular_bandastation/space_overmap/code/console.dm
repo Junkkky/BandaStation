@@ -70,6 +70,8 @@
 			engine_fault = !feed || !!feed.unavailable_reason()
 	var/datum/stationtrauma_overmap_sector/space/sector = map.sector
 	var/datum/stationtrauma_overmap_site/space/target = map.sites[map.selected_destination]
+	if(!map.knows_site(target))
+		target = null
 	var/distance = target ? map.distance_to(target) : 0
 	var/list/data = list(
 		"vessel_name" = vessel.name,

@@ -89,8 +89,17 @@ SUBSYSTEM_DEF(stationtrauma_space_voyage)
 		if(!sector?.ready)
 			stack_trace("Unknown or unavailable sector [vessel.overmap_sector]")
 			return SS_INIT_FAILURE
-		if(!sector.attach(vessel))
+		if(!sector.attach(vessel, defer_starting_dock = TRUE))
 			stack_trace("Failed to register sector ship [vessel.shuttle_id]")
+			return SS_INIT_FAILURE
+	// A guest may be listed before its carrier in the fleet configuration.
+	for(var/obj/docking_port/stationary/stationtrauma_space_station/port in SSshuttle.stationary_docking_ports)
+		if(port.host_ship_id && QDELETED(port.host))
+			log_mapping("Overmap berth [port.site_id] has no registered carrier [port.host_ship_id]")
+			return SS_INIT_FAILURE
+	for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in vessels)
+		if(!vessel.overmap.place_starting_dock())
+			stack_trace("Failed to place sector ship [vessel.shuttle_id] at [vessel.starting_dock]")
 			return SS_INIT_FAILURE
 	log_mapping("Space sectors ready: [length(sectors)] sectors, [length(vessels)] ships")
 	return SS_INIT_SUCCESS

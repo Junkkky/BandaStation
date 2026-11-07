@@ -32,6 +32,8 @@
 		return TRUE
 	var/obj/docking_port/mobile/stationtrauma_space/ship = SSshuttle.get_containing_shuttle(src)
 	if(istype(ship) && istype(target))
+		if(ship == target)
+			return TRUE
 		return ship.overmap?.ship_in_sensor_contact(target.overmap, established)
 	return stationtrauma_comms_sector() == pad.stationtrauma_comms_sector()
 

@@ -5,13 +5,13 @@
 
 /datum/design/board/shuttle/stationtrauma_station_traffic
 	name = "Плата центра управления полётами"
-	desc = "Управляет разрешениями на стыковку к причалам станции."
+	desc = "Управляет разрешениями на стыковку к причалам станции или носителя."
 	build_path = /obj/item/circuitboard/computer/stationtrauma_station_traffic
 
 /** Station-wide dispatch display and docking-clearance operator console. */
 /obj/machinery/computer/stationtrauma_station_traffic
 	name = "центр управления полётами"
-	desc = "Показывает состояние причалов станции и заявки на стыковку."
+	desc = "Показывает состояние причалов станции или носителя и заявки на стыковку."
 	icon_screen = "comm"
 	icon_keyboard = "tech_key"
 	req_access = list(ACCESS_COMMAND)
@@ -20,16 +20,18 @@
 /obj/machinery/computer/stationtrauma_station_traffic/proc/can_operate(mob/user)
 	if(QDELETED(src) || QDELETED(user) || !anchored || !is_operational || panel_open)
 		return FALSE
-	return !istype(get_area(src), /area/shuttle) && is_station_level(z) && can_interact(user) && allowed(user)
+	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
+	return (host || (!istype(get_area(src), /area/shuttle) && is_station_level(z))) && can_interact(user) && allowed(user)
 
 /obj/machinery/computer/stationtrauma_station_traffic/proc/traffic_sector()
-	var/datum/stationtrauma_overmap_sector/space/home/sector = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
+	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
+	var/datum/stationtrauma_overmap_sector/space/sector = host ? host.sector : SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
 	return sector?.ready ? sector : null
 
 /obj/machinery/computer/stationtrauma_station_traffic/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
 	if(!can_operate(user))
-		to_chat(user, span_warning("Для работы с ЦУП нужна закреплённая станционная консоль и доступ командования."))
+		to_chat(user, span_warning("Для работы с ЦУП нужна закреплённая консоль на станции или носителе и доступ командования."))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -44,14 +46,15 @@
 /obj/machinery/computer/stationtrauma_station_traffic/ui_data(mob/user)
 	if(!can_operate(user))
 		return list()
-	var/datum/stationtrauma_overmap_sector/space/home/sector = traffic_sector()
+	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
+	var/datum/stationtrauma_overmap_sector/space/sector = traffic_sector()
 	if(QDELETED(sector))
 		return list()
 	var/list/requests = list()
 	var/list/approvals = list()
 	for(var/ship_id in sector.station_docking_requests)
 		var/datum/stationtrauma_station_docking_request/request = sector.station_docking_requests[ship_id]
-		if(QDELETED(request) || !request.is_current())
+		if(QDELETED(request) || !request.is_current() || request.site.host != host)
 			continue
 		if(request.approved)
 			approvals[request.site] = request
@@ -67,7 +70,7 @@
 	var/list/docks = list()
 	for(var/site_id in sector.sites)
 		var/datum/stationtrauma_overmap_site/space/site = sector.sites[site_id]
-		if(!sector.is_station_berth(site))
+		if(!sector.is_station_berth(site) || site.host != host)
 			continue
 		docks += list(dock_data(site, approvals[site]))
 	return list("sector" = sector.name, "docks" = docks, "requests" = requests)
@@ -98,8 +101,10 @@
 /obj/machinery/computer/stationtrauma_station_traffic/proc/unavailable_berth(obj/docking_port/stationary/berth)
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/runtime_slot = berth
 	if(istype(runtime_slot))
-		var/obj/machinery/computer/stationtrauma_dock_controller/controller = runtime_slot.controller_ref?.resolve()
-		return runtime_slot.retiring || QDELETED(controller) || !controller.anchored || !controller.is_operational || controller.panel_open || get_turf(controller) != runtime_slot.controller_origin
+		return runtime_slot.retiring || !runtime_slot.controller_valid() || runtime_slot.host?.carrier_busy()
+	var/obj/docking_port/stationary/stationtrauma_space_station/port = berth
+	if(istype(port) && port.host?.carrier_busy())
+		return TRUE
 	if(SSshuttle.emergency?.mode != SHUTTLE_CALL)
 		return FALSE
 	for(var/obj/docking_port/stationary/native_berth in berth.loc)
@@ -119,8 +124,12 @@
 /obj/machinery/computer/stationtrauma_station_traffic/proc/respond_to_request(mob/user, ship_id, token, approve)
 	if(!can_operate(user) || !istext(ship_id) || !istext(token))
 		return FALSE
-	var/datum/stationtrauma_overmap_sector/space/home/sector = traffic_sector()
+	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(src)
+	var/datum/stationtrauma_overmap_sector/space/sector = traffic_sector()
 	if(QDELETED(sector))
+		return FALSE
+	var/datum/stationtrauma_station_docking_request/request = sector.station_docking_requests[ship_id]
+	if(QDELETED(request) || !sector.is_station_berth(request.site) || request.site.host != host)
 		return FALSE
 	if(!sector.respond_station_docking(ship_id, token, approve))
 		to_chat(user, span_warning("Заявка или причал изменились. Проверьте актуальный статус."))

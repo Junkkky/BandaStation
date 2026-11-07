@@ -45,8 +45,9 @@
 	highlight("#f00")
 #endif
 
+/** Forced template cleanup also handles ports that were never registered. */
 /obj/docking_port/stationary/Destroy(force)
-	if(force)
+	if(force && registered)
 		unregister()
 	return ..()
 

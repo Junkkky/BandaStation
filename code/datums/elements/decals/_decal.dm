@@ -83,6 +83,8 @@
 	smoothing = _smoothing
 
 	RegisterSignal(target, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(apply_overlay), TRUE)
+	// Cached decal elements may be attached again to the same target.
+	RegisterSignal(target, COMSIG_ATOM_GET_DECALS, PROC_REF(collect_decals), override = TRUE)
 	if(target.flags_1 & INITIALIZED_1)
 		target.update_appearance(UPDATE_OVERLAYS) //could use some queuing here now maybe.
 	else
@@ -126,7 +128,7 @@
 	return TRUE
 
 /datum/element/decal/Detach(atom/source)
-	UnregisterSignal(source, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_ATOM_EXAMINE, COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_TURF_ON_SHUTTLE_MOVE, COMSIG_ATOM_SMOOTHED_ICON, COMSIG_ATOM_DECALS_ROTATING))
+	UnregisterSignal(source, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_ATOM_EXAMINE, COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_TURF_ON_SHUTTLE_MOVE, COMSIG_ATOM_SMOOTHED_ICON, COMSIG_ATOM_DECALS_ROTATING, COMSIG_ATOM_GET_DECALS))
 	SSdcs.UnregisterSignal(source, COMSIG_ATOM_DIR_CHANGE)
 	source.update_appearance(UPDATE_OVERLAYS)
 	if(isitem(source))
@@ -179,6 +181,11 @@
 /datum/element/decal/proc/shuttle_rotate(datum/source, list/datum/element/decal/rotating)
 	SIGNAL_HANDLER
 	rotating += src
+
+/** Enumeration is independent of whether the decal follows direction changes. */
+/datum/element/decal/proc/collect_decals(datum/source, list/datum/element/decal/decals)
+	SIGNAL_HANDLER
+	decals += src
 
 /**
  * Reacts to the source atom smoothing.

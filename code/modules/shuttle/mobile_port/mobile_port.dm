@@ -92,8 +92,10 @@
 	highlight("#0f0")
 #endif
 
+/** Rejected templates may delete a mobile port before it reaches registration. */
 /obj/docking_port/mobile/Destroy(force)
-	unregister()
+	if(registered)
+		unregister()
 	destination = null
 	previous = null
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in engine_list)
