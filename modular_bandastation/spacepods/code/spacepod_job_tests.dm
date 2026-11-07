@@ -97,6 +97,7 @@
 
 	var/obj/item/storage/backpack/backpack = pilot.back
 	TEST_ASSERT(istype(backpack), "Spacepod Pilot did not receive a backpack.")
+	TEST_ASSERT(locate(/obj/item/choice_beacon/weapon/security_pistol) in backpack, "Spacepod Pilot did not receive the standard security sidearm beacon.")
 	var/obj/item/spacepod_equipment/key/security/key = locate() in backpack
 	TEST_ASSERT_NOTNULL(key, "Spacepod Pilot did not receive the security pod key.")
 	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, get_step(run_loc_floor_bottom_left, NORTH))

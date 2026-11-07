@@ -131,6 +131,7 @@
 	id_trim = /datum/id_trim/job/security_officer/spacepod_pilot
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
+		/obj/item/choice_beacon/weapon/security_pistol = 1,
 		/obj/item/spacepod_equipment/key/security = 1,
 	)
 
