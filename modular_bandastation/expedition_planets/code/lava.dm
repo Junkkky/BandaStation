@@ -24,6 +24,12 @@
 	source_type = /obj/structure/stationtrauma_research_source/mineral/expedition_volcanic
 	// Native lavaland density: basalt halls and ash thickets inside one tunnel maze instead of separate mountains.
 	surface_open_percent = 51
+	// The native lavaland megafauna weights.
+	megafauna_types = list(
+		/mob/living/simple_animal/hostile/megafauna/bubblegum = 6,
+		/mob/living/simple_animal/hostile/megafauna/colossus = 2,
+		/mob/living/simple_animal/hostile/megafauna/dragon = 4,
+	)
 	biome_table = list(
 		list(/datum/biome/expedition/volcanic/forest, /datum/biome/expedition/volcanic/plains/dense/mixed, /datum/biome/expedition/volcanic/forest/rocky, /datum/biome/expedition/volcanic/outback, /datum/biome/expedition/volcanic/plains/dense),
 		list(/datum/biome/expedition/volcanic/plains, /datum/biome/expedition/volcanic/outback, /datum/biome/expedition/volcanic/plains/dense, /datum/biome/expedition/volcanic/plains/dense/mixed, /datum/biome/expedition/volcanic),

@@ -22,6 +22,10 @@
 	biome_zoom = 55
 	// Forested ice moon ground with rock ridges; native 65 smooths almost every rock away on this small map.
 	surface_open_percent = 55
+	megafauna_types = list(
+		/mob/living/simple_animal/hostile/megafauna/colossus = 1,
+		/mob/living/simple_animal/hostile/megafauna/demonic_frost_miner = 1,
+	)
 	biome_table = list(
 		list(/datum/biome/expedition/arctic/rocky, /datum/biome/expedition/snow, /datum/biome/expedition/snow/forest, /datum/biome/expedition/iceberg/lake, /datum/biome/expedition/snow),
 		list(/datum/biome/expedition/snow, /datum/biome/expedition/snow/forest, /datum/biome/expedition/snow/forest/dense, /datum/biome/expedition/snow/lush, /datum/biome/expedition/iceberg/lake),

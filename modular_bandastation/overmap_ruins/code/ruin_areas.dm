@@ -567,6 +567,10 @@
 /area/ruin/space/has_grav/expedition_content/exp_celadon_xeno_nest/ruin/unpowered/crashed_holemaker
 	name = "Гнездо ксеноморфов"
 
+/** Imported room boundary for Гнездо ксеноморфов в джунглях: наружная территория; inherits the expedition ruin environment. */
+/area/ruin/space/has_grav/expedition_content/exp_celadon_jungle_nest/exterior
+	name = "Гнездо ксеноморфов в джунглях: наружная территория"
+
 /** Imported room boundary for Зимний биокупол; inherits the expedition ruin environment. */
 /area/ruin/space/has_grav/expedition_content/exp_celadon_biodome_winter/ruin/unpowered/icemoon/downed_transport/abandoned_mineshaft
 	name = "Зимний биокупол"

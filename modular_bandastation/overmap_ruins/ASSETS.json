@@ -1045,6 +1045,22 @@
 			},
 			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
 			"byte_identical": false
+		},
+		{
+			"path": "_maps/map_files/overmap_ruins/planet/celadon_jungle_nest.dmm",
+			"sha256": "d2a2254acb8562985e450713bf04e9d54757c1852ce57ad6f3a8fdc2f2b78083",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["CeladonSS13/Shiptest, Shiptest, Whitesands and TG contributors"],
+			"source": {
+				"repository": "CeladonSS13/Shiptest",
+				"commit": "4214796c7289b74779f10dd25df2d695c264aa8f",
+				"path": "_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_nest.dmm",
+				"url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_nest.dmm",
+				"sha256": "ea73ef08693835aaec1ad4eebdfe50b9dd14264748c5c11cf4f5408138397527",
+				"license_policy_url": "https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/README.md"
+			},
+			"changes": "Adapted layout; incompatible entities, area IDs, equipment, loot and inhabitants replaced with local types.",
+			"byte_identical": false
 		}
 	]
 }

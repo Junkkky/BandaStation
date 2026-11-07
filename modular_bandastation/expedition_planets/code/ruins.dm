@@ -27,6 +27,7 @@
  * Each template appears on one planet per round, so planets surveyed later may get fewer ruins, or none, once their biome's pool runs dry.
  */
 /datum/stationtrauma_overmap_site/space/planet/proc/prepare_ruins(datum/map_generator/expedition_barren/generator)
+	generator.reserve_hive()
 	var/list/large = list()
 	var/list/small = list()
 	for(var/key in SSmapping.ruins_templates)

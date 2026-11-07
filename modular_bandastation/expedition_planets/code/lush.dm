@@ -19,6 +19,7 @@
 	endless_storm_type = /datum/weather/particle/rain_storm/expedition_endless
 	sky_color = "#e0ffc8"
 	floor_type = /turf/open/misc/grass/jungle
+	hive_variants = list("jungle", "grown")
 	source_type = /obj/structure/stationtrauma_research_source/expedition_lush
 	mountain_height = 0.85
 	mineral_chance = 5

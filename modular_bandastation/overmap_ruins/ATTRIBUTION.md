@@ -122,6 +122,7 @@
 | `_maps/map_files/overmap_ruins/planet/celadon_dwarf_fortress.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_dwarffortress.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_dwarffortress.dmm) |
 | `_maps/map_files/overmap_ruins/planet/celadon_spooky_crash.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_SPOOKYCRASH.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_SPOOKYCRASH.dmm) |
 | `_maps/map_files/overmap_ruins/planet/celadon_xeno_nest.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_xeno_nest.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_surface_xeno_nest.dmm) |
+| `_maps/map_files/overmap_ruins/planet/celadon_jungle_nest.dmm` | [_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_nest.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/JungleRuins/jungle_nest.dmm) |
 | `_maps/map_files/overmap_ruins/planet/celadon_listening_post.dmm` | [_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_abandonedlisteningpost.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/LavaRuins/lavaland_abandonedlisteningpost.dmm) |
 | `_maps/map_files/overmap_ruins/planet/celadon_hivebot_crash.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_crash.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_crash.dmm) |
 | `_maps/map_files/overmap_ruins/planet/celadon_dangerpod.dmm` | [_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_dangerpod.dmm](https://github.com/CeladonSS13/Shiptest/blob/4214796c7289b74779f10dd25df2d695c264aa8f/_maps/_mod_celadon/RandomRuins/RockRuins/rockplanet_dangerpod.dmm) |
@@ -136,6 +137,6 @@
 заменены местными типами. Природный грунт вокруг построек берётся из генератора
 планеты. Оружие Shiptest заменено ближайшими местными аналогами.
 
-[ASSETS.json](ASSETS.json) перечисляет все 65 ресурсов модуля: 16 космических и 47 наземных
+[ASSETS.json](ASSETS.json) перечисляет все 66 ресурсов модуля: 16 космических и 48 наземных
 карт руин и два DMI Икара, с permalink, коммитами и SHA-256 исходников и локальных файлов.
 Для четырёх карт Paradise использованы исходники, сохранённые при импорте зафиксированного коммита.

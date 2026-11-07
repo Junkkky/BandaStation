@@ -48,6 +48,8 @@
 	var/wildlife = FALSE
 	/// Fauna density multiplier from modifiers, applied to this planet's own biome copies.
 	var/fauna_multiplier = 1
+	/// Names of the applied modifiers for admin logs; the survey shows only crew-facing lines.
+	var/list/modifier_log = list()
 	/// Applied modifiers placing surface objects through [/datum/map_generator/expedition_barren/proc/place_nests].
 	var/list/datum/expedition_planet_modifier/nests = list()
 	/// This planet's biome copies by type, so modifier densities never reach other planets.
@@ -382,8 +384,9 @@
 	smooth_zlevel(caves.z_value)
 	return length(connector_points)
 
-/** Populate the generated biomes; fauna never starts near the camp or on placed features. */
+/** Populate the generated biomes with flora, then settle their fauna in packs; fauna never starts near the camp or on placed features. */
 /datum/map_generator/expedition_barren/proc/populate_biomes()
+	var/list/wild_by_biome = list()
 	for(var/datum/biome/biome as anything in biome_turfs)
 		var/list/near_camp = list()
 		var/list/wild = list()
@@ -397,8 +400,10 @@
 			else
 				wild += tile
 		biome.populate_turfs(near_camp, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = FALSE)
-		biome.populate_turfs(wild, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = TRUE)
+		biome.populate_turfs(wild, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = FALSE)
+		wild_by_biome[biome] = wild
 	biome_turfs = null
+	place_packs(wild_by_biome)
 
 /datum/map_generator/expedition_barren/populate_terrain(list/turfs, area/generate_in)
 	populate_biomes()
@@ -431,7 +436,10 @@
 				if(!istype(tile) || tile.is_blocked_turf())
 					continue
 				var/nest_type = islist(modifier.nest_type) ? pick(modifier.nest_type) : modifier.nest_type
-				new nest_type(tile)
+				var/atom/nest = new nest_type(tile)
+				// Spawner dens hold their kind from the start; mines and geysers stand alone.
+				if(istype(nest, /obj/structure/spawner))
+					raise_lair(nest)
 				if(modifier.nest_cluster && !patch)
 					patch = list(x, y)
 				break
