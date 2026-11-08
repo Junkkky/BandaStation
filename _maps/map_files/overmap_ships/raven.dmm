@@ -2635,6 +2635,11 @@
 "lv" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
+"nl" = (
+/obj/structure/closet/wardrobe/expedition,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "NP" = (
 /obj/structure/cable/layer1,
 /obj/effect/turf_decal/stripes/full,
@@ -2964,7 +2969,7 @@ gn
 id
 hG
 hb
-gn
+nl
 cH
 jb
 jb
