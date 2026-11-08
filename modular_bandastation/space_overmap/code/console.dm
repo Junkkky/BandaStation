@@ -218,4 +218,12 @@
 		return
 	if(!can_interact(ui.user))
 		return FALSE
+	if(action == "interface_click")
+		return TRUE
 	return navigation_command(action, params["value"])
+
+/** Navigation buttons use the supplied tone; the throttle lever keeps the native mechanical click. */
+/obj/machinery/computer/stationtrauma_space_navigation/play_ui_sound(action, list/params)
+	if(action == "throttle" && params?["button"] != TRUE)
+		return ..()
+	playsound(src, 'modular_bandastation/space_overmap/sound/navigation_button.wav', 10, FALSE, FALSE)
