@@ -26,8 +26,10 @@
 #define ST_SPACE_LANDING_TIME (2 MINUTES)
 /// Approach to a space destination before its seam is built; a first visit loads the destination meanwhile.
 #define ST_SPACE_APPROACH_TIME (45 SECONDS)
-/// Planetary ascent at full thrust before the hull leaves the surface.
+/// Planetary ascent, mostly flown on the ship's flight level.
 #define ST_SPACE_TAKEOFF_TIME (1 MINUTES)
+/// Brief preparation at the old berth before casting off into flight space.
+#define ST_SPACE_DEPARTURE_DELAY (5 SECONDS)
 /// Mooring or casting off at a physical berth or another hull.
 #define ST_SPACE_MOORING_TIME (20 SECONDS)
 /// Losses overboard from one hull within this time share an open-space level.
@@ -36,7 +38,7 @@
 #define ST_LOST_WRECK_RANGE 150
 /// Rescue berth distance from the open-space level border; the seam needs clearance from the transition edge.
 #define ST_LOST_BERTH_MARGIN 45
-/// Start closing and folding the gangway during the final seconds of casting off.
+/// Part of the departure preparation reserved for closing and folding gangways.
 #define ST_STANDARD_DOCK_RETRACTION_LEAD (4 SECONDS)
 /// Width of a standard S slot in tiles.
 #define ST_STANDARD_S_WIDTH 7
@@ -65,7 +67,7 @@
 /// Outlet line pressure above which the fusion core stops adding helium, in kPa.
 #define ST_CORE_EXHAUST_PRESSURE 1000
 /// Electric power the fusion core feeds into its grid at full output.
-#define ST_CORE_POWER (60 KILO WATTS)
+#define ST_CORE_POWER (600 KILO WATTS)
 /// Output multiplier of the fusion core's overdrive.
 #define ST_CORE_OVERDRIVE_OUTPUT 1.5
 /// Fuel multiplier of the fusion core's overdrive.

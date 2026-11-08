@@ -308,7 +308,7 @@
 	if(!ship.engines_running)
 		return
 	var/datum/stationtrauma_overmap/space/map = ship.overmap
-	var/load = map?.ascending() ? 1 : map?.helm_engaged ? max(abs(map.throttle) / 100, !!map.braking, !!map.maneuver_direction) : 0
+	var/load = map?.commanded_thrust() || 0
 	// The fusion core's full output covers every Raven converter at full thrust.
 	var/requested = propellant_flow * max(0.15, load) * seconds_per_tick
 	var/datum/gas_mixture/air = airs[1]
