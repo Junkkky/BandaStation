@@ -2,13 +2,15 @@
 // https://github.com/crystallpunk-14/crystall-punk-14/blob/5b6108377e40235c768be3ac6ffadb37a085f441/Resources/Prototypes/_CP14/Procedural/Demiplane/Modifiers/Danger/mobs.yml
 
 /// Least distance in turfs between the anchors of two fauna packs.
-#define EXPEDITION_PACK_SPACING 16
+#define EXPEDITION_PACK_SPACING 24
 /// Percent chance per turf that robotic guardians anchor a pack on a lifeless biome.
-#define EXPEDITION_GUARDIAN_DENSITY 0.5
+#define EXPEDITION_GUARDIAN_DENSITY 0.1
 /// Footprint of a grown hive in turfs: width, then height.
 #define EXPEDITION_GROWN_HIVE_SIZE list(25, 21)
 
 /datum/map_generator/expedition_barren
+	/// Smallest and largest ambient group; profiles with heavy mining fauna use solitary encounters.
+	var/list/fauna_pack_size = list(1, 2)
 	/// Danger level the modifiers were rolled at; a stronger level breeds a larger hive garrison.
 	var/danger_level = 0
 	/// Hive layouts this profile offers the xenomorph hive modifier: a key of [/datum/map_generator/expedition_barren/proc/hive_template] or "grown".
@@ -18,7 +20,7 @@
 	/// Relative southwest corner reserved for the hive; null when no spot fitted.
 	var/list/hive_spot
 	/// Weighted megafauna the megafauna modifier picks from on this profile.
-	var/list/megafauna_types = list(/mob/living/simple_animal/hostile/megafauna/colossus = 1, /mob/living/basic/boss/blood_drunk_miner = 1)
+	var/list/megafauna_types = list()
 	/// Whether the megafauna modifier set a boss on this planet.
 	var/megafauna = FALSE
 	/// Weighted robots the guardian modifier sends in packs among the wildlife; empty without guardians.
@@ -182,7 +184,7 @@
 /datum/map_generator/expedition_barren/proc/raise_lair(obj/structure/spawner/den)
 	var/list/ground = standing_ground(get_turf(den), 3)
 	var/list/kinds = den.mob_types
-	for(var/index in 1 to rand(4, 6))
+	for(var/index in 1 to rand(1, min(3, den.max_mobs)))
 		if(!length(ground) || !length(kinds))
 			break
 		var/kind = pick(kinds)
@@ -195,7 +197,7 @@
 		new remain_type(pick_n_take(ground))
 
 /**
- * Settle the wild in packs of two to four of one kind, packs well apart, instead of lone creatures on every biome.
+ * Settle the wild in small groups of one kind, with solitary encounters on profiles carrying heavy mining fauna.
  *
  * Each biome's fauna density is the chance that one of its turfs anchors a pack; the pack's kind comes from that biome.
  * On a planet with robotic guardians some packs are robots instead, and lifeless biomes are patrolled by robots alone.
@@ -229,7 +231,9 @@
 			else
 				kind = weighted ? pick_weight(kinds) : pick(kinds)
 			var/list/ground = standing_ground(tile, 2)
-			for(var/index in 1 to rand(2, 4))
+			// Summoners and spellcasting ice fauna are encounters, never whole packs of ranged attackers.
+			var/solitary = ispath(kind, /mob/living/basic/mining/legion) || ispath(kind, /mob/living/basic/mining/ice_demon) || ispath(kind, /mob/living/basic/mining/ice_whelp)
+			for(var/index in 1 to (solitary ? 1 : rand(fauna_pack_size[1], fauna_pack_size[2])))
 				if(!length(ground))
 					break
 				new kind(pick_n_take(ground))

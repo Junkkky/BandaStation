@@ -54,6 +54,52 @@
 	TEST_ASSERT_EQUAL(clearing_edge.type, /turf/open/misc/asteroid/basalt/expedition_volcanic, "The edge of the cave connector clearing must also be solid ground.")
 	TEST_ASSERT_EQUAL(natural_lava.type, /turf/open/lava/smooth/expedition_volcanic, "Making a connector clearing safe must preserve the surrounding lava biome.")
 
+/// Profiles populate the real ground with their own fauna, without multiplying summoners into whole packs.
+/datum/unit_test/overmap_planet_fauna
+
+/datum/unit_test/overmap_planet_fauna/Run()
+	var/turf/centre = locate(run_loc_floor_bottom_left.x + 3, run_loc_floor_bottom_left.y + 3, run_loc_floor_bottom_left.z)
+	var/list/cases = list(
+		list(/datum/map_generator/expedition_barren/dead, /datum/biome/expedition/dead, null, 1, 2),
+		list(/datum/map_generator/expedition_barren/frozen, /datum/biome/expedition/snow, /mob/living/basic/mining/legion/snow, 1, 1),
+		list(/datum/map_generator/expedition_barren/frozen, /datum/biome/expedition/snow, /mob/living/basic/mining/ice_demon, 1, 1),
+		list(/datum/map_generator/expedition_barren/arid, /datum/biome/expedition/sand, /mob/living/basic/mining/goliath, 1, 1),
+		list(/datum/map_generator/expedition_barren/lava, /datum/biome/expedition/volcanic, /mob/living/basic/mining/legion, 1, 1),
+	)
+	for(var/list/entry as anything in cases)
+		var/datum/map_generator/expedition_barren/generator = allocate(entry[1], 1)
+		var/datum/biome/biome = generator.local_biome(entry[2])
+		// Remove only the anchor roll and species selection from this small placement fixture.
+		biome.fauna_density = 100
+		if(entry[3])
+			TEST_ASSERT(entry[3] in biome.fauna_types, "The profile no longer offers its expected fauna [entry[3]].")
+			biome.fauna_types = list(entry[3])
+		var/list/wild = list()
+		wild[biome] = list(centre)
+		generator.place_packs(wild)
+		var/list/creatures = list()
+		for(var/turf/tile in RANGE_TURFS(2, centre))
+			for(var/mob/living/creature in tile)
+				creatures += creature
+				allocated += creature
+				if(!entry[3])
+					TEST_ASSERT(istype(creature, /mob/living/basic/zombie/rotten/expedition), "The dead world spawned [creature.type] instead of its plague carriers.")
+		TEST_ASSERT(length(creatures) >= entry[4] && length(creatures) <= entry[5], "[generator.type] spawned [length(creatures)] mobs at a single anchor.")
+		QDEL_LIST(creatures)
+
+/// Planetary carcasses use the native bite infection, while the ordinary ruin carcass stays non-infectious.
+/datum/unit_test/overmap_planet_zombie_bite
+
+/datum/unit_test/overmap_planet_zombie_bite/Run()
+	var/mob/living/basic/zombie/rotten/expedition/carrier = allocate(/mob/living/basic/zombie/rotten/expedition)
+	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
+	TEST_ASSERT(carrier.infection_chance > 0, "The planetary carcass cannot infect through its bites.")
+	TEST_ASSERT_EQUAL(/mob/living/basic/zombie/rotten::infection_chance, 0, "The ordinary ruin carcass must stay non-infectious.")
+	// Make the bite deterministic; the native infection proc still checks the victim's actual armour and organs.
+	carrier.infection_chance = 100
+	carrier.melee_attack(victim, ignore_cooldown = TRUE)
+	TEST_ASSERT_NOTNULL(victim.get_organ_slot(ORGAN_SLOT_ZOMBIE), "A successful unprotected bite did not insert the native zombie infection.")
+
 /// Orbital artwork follows proximity and manoeuvre state without replacing the moving native space field.
 /datum/unit_test/overmap_docking/orbital_parallax
 

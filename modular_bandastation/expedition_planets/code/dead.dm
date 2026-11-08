@@ -11,7 +11,7 @@
 	// Ordinary wrecks and outposts of lifeless worlds stand here beside the waste ruins.
 	ruin_biome = "barren"
 
-/** Bombarded terrain around one large town or complex, with scrap fields and the dead risen as legions. */
+/** Bombarded terrain around one large town or complex, with scrap fields and scattered rotting dead. */
 /datum/map_generator/expedition_barren/dead
 	hole_type = /turf/open/openspace/expedition_dead
 	wildlife = TRUE
@@ -82,8 +82,8 @@
 		/obj/effect/decal/remains/human = 2,
 		/obj/item/shard = 1,
 	)
-	fauna_density = 1
-	fauna_types = list(/mob/living/basic/mining/legion = 1)
+	fauna_density = 0.5
+	fauna_types = list(/mob/living/basic/zombie/rotten/expedition = 1)
 
 /** Celadon basalt field of glassed rock. */
 /datum/biome/expedition/dead/basalt
@@ -103,7 +103,7 @@
 		/obj/structure/mecha_wreckage/ripley = 1,
 		/obj/structure/closet/crate/secure/loot = 1,
 	)
-	fauna_density = 0.5
+	fauna_density = 0.25
 
 /** Celadon rust field of old plating. */
 /datum/biome/expedition/dead/rust
@@ -115,7 +115,7 @@
 		/obj/effect/decal/cleanable/dirt = 3,
 		/obj/item/shard = 1,
 	)
-	fauna_density = 0.5
+	fauna_density = 0.25
 
 /** Dead world caves: bare ashen pockets with a few remains. */
 /datum/biome/expedition/dead/cave
@@ -124,7 +124,11 @@
 		/obj/structure/flora/rock/pile/style_random = 3,
 		/obj/effect/decal/remains/human = 1,
 	)
-	fauna_density = 0.5
+	fauna_density = 0.25
+
+/** The dead world's plague carriers retain the weak carcass combat stats and infect through ordinary bites. */
+/mob/living/basic/zombie/rotten/expedition
+	infection_chance = 25
 
 /** Finite research source: оплавленный обломок, with authored survey and laboratory observations. */
 /obj/structure/stationtrauma_research_source/mineral/expedition_dead

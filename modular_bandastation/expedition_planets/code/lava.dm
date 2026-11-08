@@ -15,6 +15,7 @@
 
 /** Seeded volcanic terrain with volcanic ore walls. */
 /datum/map_generator/expedition_barren/lava
+	fauna_pack_size = list(1, 1)
 	hole_type = /turf/open/openspace/expedition_lava
 	wildlife = TRUE
 	storm_trait = ZTRAIT_ASHSTORM

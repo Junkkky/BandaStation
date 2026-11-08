@@ -56,14 +56,14 @@
 		/obj/structure/flora/grass/both/style_random = 12,
 		/obj/structure/flora/ash/chilly = 4,
 	)
-	fauna_density = 1
+	fauna_density = 0.25
 	fauna_types = list(
-		/mob/living/basic/mining/wolf = 30,
-		/mob/living/basic/bear/snow = 30,
-		/mob/living/basic/mining/legion/snow = 25,
-		/mob/living/basic/mining/goldgrub = 10,
-		/mob/living/basic/mining/ice_demon = 5,
-		/mob/living/basic/mining/ice_whelp = 5,
+		/mob/living/basic/mining/wolf = 50,
+		/mob/living/basic/bear/snow = 10,
+		/mob/living/basic/mining/legion/snow = 5,
+		/mob/living/basic/mining/goldgrub = 20,
+		/mob/living/basic/mining/ice_demon = 2,
+		/mob/living/basic/mining/ice_whelp = 3,
 		/mob/living/basic/mining/lobstrosity = 10,
 	)
 
@@ -109,12 +109,12 @@
 		/obj/structure/statue/snow/snowman = 3,
 		/obj/structure/statue/snow/snowlegion = 1,
 	)
-	fauna_density = 1
+	fauna_density = 0.25
 	fauna_types = list(
-		/mob/living/basic/mining/wolf = 30,
-		/mob/living/basic/bear/snow = 30,
-		/mob/living/basic/mining/legion/snow = 25,
-		/mob/living/basic/mining/goldgrub = 10,
+		/mob/living/basic/mining/wolf = 50,
+		/mob/living/basic/bear/snow = 10,
+		/mob/living/basic/mining/legion/snow = 5,
+		/mob/living/basic/mining/goldgrub = 20,
 		/mob/living/basic/mining/ice_demon = 1,
 		/mob/living/basic/mining/ice_whelp = 1,
 		/mob/living/basic/mining/lobstrosity = 5,
@@ -131,12 +131,12 @@
 /** Celadon iceberg field; snow replaces the donor ice rock, which lacks a local equivalent. */
 /datum/biome/expedition/iceberg
 	open_turf_type = /turf/open/misc/asteroid/snow
-	fauna_density = 2
+	fauna_density = 0.4
 	fauna_types = list(
-		/mob/living/basic/mining/wolf = 30,
-		/mob/living/basic/bear/snow = 30,
-		/mob/living/basic/mining/legion/snow = 25,
-		/mob/living/basic/mining/goldgrub = 10,
+		/mob/living/basic/mining/wolf = 50,
+		/mob/living/basic/bear/snow = 10,
+		/mob/living/basic/mining/legion/snow = 5,
+		/mob/living/basic/mining/goldgrub = 20,
 		/mob/living/basic/mining/ice_demon = 1,
 		/mob/living/basic/mining/ice_whelp = 1,
 		/mob/living/basic/mining/lobstrosity = 5,
@@ -158,12 +158,12 @@
 		/obj/structure/flora/ash/cap_shroom = 2,
 		/obj/structure/flora/ash/stem_shroom = 2,
 	)
-	fauna_density = 2
+	fauna_density = 0.4
 	fauna_types = list(
-		/mob/living/basic/mining/wolf = 30,
-		/mob/living/basic/bear/snow = 30,
-		/mob/living/basic/mining/legion/snow = 25,
-		/mob/living/basic/mining/goldgrub = 10,
+		/mob/living/basic/mining/wolf = 50,
+		/mob/living/basic/bear/snow = 10,
+		/mob/living/basic/mining/legion/snow = 5,
+		/mob/living/basic/mining/goldgrub = 20,
 		/mob/living/basic/mining/ice_demon = 1,
 		/mob/living/basic/mining/ice_whelp = 1,
 		/mob/living/basic/mining/lobstrosity = 10,

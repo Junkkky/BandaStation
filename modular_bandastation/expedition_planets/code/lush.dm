@@ -188,10 +188,9 @@
 	)
 	fauna_density = 1
 	fauna_types = list(
-		/mob/living/basic/mining/wolf = 1,
 		/mob/living/basic/bear = 1,
-		/mob/living/basic/bat = 1,
-		/mob/living/basic/snake = 1,
+		/mob/living/basic/bat = 5,
+		/mob/living/basic/snake = 3,
 	)
 
 /** Celadon overgrown cave on bare dirt. */
