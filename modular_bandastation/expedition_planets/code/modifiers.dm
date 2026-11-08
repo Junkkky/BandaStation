@@ -159,6 +159,7 @@
 /// A whole xenomorph hive: the native nest with its queen, or a resin chamber grown anew; its egg clutch keeps breeding.
 /datum/expedition_planet_modifier/nest/xeno_hive
 	name = "Улей ксеноморфов"
+	profiles = list(/datum/map_generator/expedition_barren/lush, /datum/map_generator/expedition_barren/dead)
 	cost = 2
 	probability = 15
 	hive = TRUE
@@ -166,6 +167,7 @@
 /// A plague pit raises the dead until it is filled in.
 /datum/expedition_planet_modifier/nest/zombie_pit
 	name = "Очаг заражения"
+	profiles = list(/datum/map_generator/expedition_barren/dead)
 	probability = 15
 	nest_type = /obj/structure/spawner/stationtrauma_zombie_pit
 

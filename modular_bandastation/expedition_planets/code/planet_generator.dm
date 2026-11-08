@@ -480,7 +480,7 @@
 	max_integrity = 150
 	max_mobs = 5
 	spawn_time = 45 SECONDS
-	mob_types = list(/mob/living/basic/zombie/rotten)
+	mob_types = list(/mob/living/basic/zombie/rotten/expedition)
 	spawn_text = "выползает из"
 	faction = list(FACTION_HOSTILE)
 	mob_gps_id = "ZMB"
