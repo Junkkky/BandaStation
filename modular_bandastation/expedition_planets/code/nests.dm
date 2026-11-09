@@ -243,7 +243,15 @@
 			var/list/ground = standing_ground(tile, 2)
 			// Summoners and spellcasting ice fauna are encounters, never whole packs of ranged attackers.
 			var/solitary = ispath(kind, /mob/living/basic/mining/legion) || ispath(kind, /mob/living/basic/mining/ice_demon) || ispath(kind, /mob/living/basic/mining/ice_whelp)
-			for(var/index in 1 to (solitary ? 1 : rand(fauna_pack_size[1], fauna_pack_size[2])))
+			var/pack_size
+			if(istype(src, /datum/map_generator/expedition_barren/dead) && ispath(kind, /mob/living/basic/zombie/rotten/expedition))
+				var/datum/map_generator/expedition_barren/dead/dead_profile = src
+				pack_size = dead_profile.next_zombie_pack_size(tile, length(ground))
+			else
+				pack_size = solitary ? 1 : rand(fauna_pack_size[1], fauna_pack_size[2])
+			if(!pack_size)
+				continue
+			for(var/index in 1 to pack_size)
 				if(!length(ground))
 					break
 				var/mob/living/member = new kind(pick_n_take(ground))

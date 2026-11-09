@@ -151,7 +151,7 @@
 /datum/unit_test/overmap_planet_fauna/Run()
 	var/turf/centre = locate(run_loc_floor_bottom_left.x + 3, run_loc_floor_bottom_left.y + 3, run_loc_floor_bottom_left.z)
 	var/list/cases = list(
-		list(/datum/map_generator/expedition_barren/dead, /datum/biome/expedition/dead, null, 1, 2),
+		list(/datum/map_generator/expedition_barren/dead, /datum/biome/expedition/dead, null, 6, 10),
 		list(/datum/map_generator/expedition_barren/frozen, /datum/biome/expedition/snow, /mob/living/basic/mining/legion/snow, 1, 1),
 		list(/datum/map_generator/expedition_barren/frozen, /datum/biome/expedition/snow, /mob/living/basic/mining/ice_demon, 1, 1),
 		list(/datum/map_generator/expedition_barren/arid, /datum/biome/expedition/sand, /mob/living/basic/mining/goliath, 1, 1),
@@ -159,6 +159,9 @@
 	)
 	for(var/list/entry as anything in cases)
 		var/datum/map_generator/expedition_barren/generator = allocate(entry[1], 1)
+		// The fixture anchor is in the profile's north district, outside its empty middle third.
+		generator.origin_x = centre.x - 64
+		generator.origin_y = centre.y - 96
 		var/datum/biome/biome = generator.local_biome(entry[2])
 		// Remove only the anchor roll and species selection from this small placement fixture.
 		biome.fauna_density = 100
@@ -177,6 +180,76 @@
 					TEST_ASSERT(istype(creature, /mob/living/basic/zombie/rotten/expedition), "The dead world spawned [creature.type] instead of its plague carriers.")
 		TEST_ASSERT(length(creatures) >= entry[4] && length(creatures) <= entry[5], "[generator.type] spawned [length(creatures)] mobs at a single anchor.")
 		QDEL_LIST(creatures)
+
+/// Ambient zombies occupy one compass district in larger packs, with no second budget on a later population pass.
+/datum/unit_test/overmap_planet_zombie_region
+	/// Private level keeps the generated packs away from other test occupants.
+	var/level_z
+
+/datum/unit_test/overmap_planet_zombie_region/Destroy()
+	for(var/mob/living/creature as anything in GLOB.mob_living_list.Copy())
+		if(creature.z == level_z)
+			qdel(creature)
+	return ..()
+
+/datum/unit_test/overmap_planet_zombie_region/Run()
+	var/datum/space_level/level = SSmapping.add_new_zlevel("Zombie region placement test", ZTRAITS_AWAY)
+	level_z = level.z_value
+	var/datum/map_generator/expedition_barren/dead/generator = allocate(/datum/map_generator/expedition_barren/dead, 123)
+	generator.width = 176
+	generator.origin_x = 20
+	generator.origin_y = 20
+	var/list/anchors = list()
+	var/list/later_anchors = list()
+	var/list/bands = list(list(14, 42), list(75, 103), list(135, 163))
+	var/list/directions = list(list(SOUTHWEST, WEST, NORTHWEST), list(SOUTH, NONE, NORTH), list(SOUTHEAST, EAST, NORTHEAST))
+	var/list/anchor_regions = list()
+	for(var/x_band in 1 to 3)
+		for(var/y_band in 1 to 3)
+			if(x_band == 2 && y_band == 2)
+				continue
+			for(var/x in bands[x_band])
+				for(var/y in bands[y_band])
+					var/turf/anchor = locate(generator.origin_x + x - 1, generator.origin_y + y - 1, level_z)
+					anchors += anchor
+					anchor_regions[anchor] = directions[x_band][y_band]
+					later_anchors += locate(anchor.x + 8, anchor.y, level_z)
+	for(var/turf/anchor as anything in anchors + later_anchors)
+		for(var/turf/tile in RANGE_TURFS(2, anchor))
+			tile.ChangeTurf(/turf/open/misc/asteroid)
+	var/datum/biome/biome = generator.local_biome(/datum/biome/expedition/dead)
+	// Every district offers four equally viable anchors; only regional placement and pack limits are under test.
+	biome.fauna_density = 100
+	var/list/wild = list()
+	wild[biome] = anchors
+	generator.place_packs(wild)
+	var/pack_count = 0
+	var/total = 0
+	var/actual_region = NONE
+	for(var/turf/anchor as anything in anchors)
+		var/members = 0
+		for(var/turf/tile in RANGE_TURFS(2, anchor))
+			for(var/mob/living/basic/zombie/rotten/expedition/creature in tile)
+				members++
+		if(members)
+			if(!actual_region)
+				actual_region = anchor_regions[anchor]
+			TEST_ASSERT_EQUAL(anchor_regions[anchor], actual_region, "Actual groups must occupy one fixture district rather than different compass sectors.")
+			pack_count++
+			TEST_ASSERT(members >= 6 && members <= 10, "A viable ambient pack must contain six to ten actual zombies, got [members].")
+			total += members
+	TEST_ASSERT(pack_count >= 3 && pack_count <= 4, "The planet must have only three or four ordinary packs, got [pack_count].")
+	TEST_ASSERT_EQUAL(generator.zombie_region, actual_region, "The selected region must describe where the groups actually spawned.")
+	var/region = generator.zombie_region
+	generator.cave_level = TRUE
+	wild[biome] = later_anchors
+	generator.place_packs(wild)
+	var/after = 0
+	for(var/mob/living/basic/zombie/rotten/expedition/creature in GLOB.mob_living_list)
+		if(creature.z == level_z)
+			after++
+	TEST_ASSERT_EQUAL(after, total, "A later cave/population pass must not refill the planet-wide pack budget on fresh ground.")
+	TEST_ASSERT_EQUAL(generator.zombie_region, region, "Later passes must retain the same geographic district.")
 
 /// Planetary carcasses use the native bite infection, while the ordinary ruin carcass stays non-infectious.
 /datum/unit_test/overmap_planet_zombie_bite
