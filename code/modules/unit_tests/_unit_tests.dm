@@ -254,6 +254,7 @@
 #include "interaction_silicon.dm"
 #include "interaction_structures.dm"
 #include "job_display_order.dm"
+#include "job_experience.dm"
 #include "job_icons.dm"
 #include "json_savefile_importing.dm"
 #include "keybinding_init.dm"
@@ -480,6 +481,7 @@
 #include "../../../modular_bandastation/quirks/code/tests/porphyria.dm" // BANDASTATION ADDITION - Porphyria
 
 #include "../../../modular_bandastation/bug_reports/tests/bug_reports_test.dm" // BANDASTATION ADDITION - In-game bug reports
+#include "../../../modular_bandastation/examine_panel/tests/portrait_preferences.dm"
 
 // AI EDIT START - Separate ear slots
 // BANDASTATION ADDITION START - Separate ear slots
