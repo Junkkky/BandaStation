@@ -81,10 +81,30 @@
 	var/datum/preference/preference = GLOB.preference_entries_by_key["character_portrait_urls"]
 	TEST_ASSERT_NOTNULL(preference, "Portraits must use one registered list preference")
 	var/mob/living/carbon/human/target = allocate(/mob/living/carbon/human/consistent)
+	var/private_description = "A recognizable face with a distinctive scar"
+	target.dna.features["flavor_text"] = private_description
 	var/list/urls = list("", "https://i.gyazo.com/second.png", "https://files.catbox.moe/third.png")
 	preference.apply_to_human(target, urls, null)
 	urls[2] = ""
 	var/datum/component/examine_panel/panel = target.AddComponent(/datum/component/examine_panel)
 	TEST_ASSERT_EQUAL(json_encode(panel.get_portrait_urls(target)), json_encode(list("https://i.gyazo.com/second.png", "https://files.catbox.moe/third.png")), "Consumers must omit blank rows and keep a detached ordered copy")
+	var/atom/movable/screen/map_view/examine_panel_screen/screen = allocate(/atom/movable/screen/map_view/examine_panel_screen)
+	screen.assigned_map = "portrait_visibility_test"
+	panel.examine_panel_screen = screen
+	var/visible_preview = panel.get_carbon_flavor_text(target)
+	var/list/visible_data = panel.ui_data(target)
 	ADD_TRAIT(target, TRAIT_UNKNOWN_APPEARANCE, REF(src))
-	TEST_ASSERT_NULL(panel.get_portrait_urls(target), "An obscured face must not disclose any portrait URLs")
+	var/hidden_preview = panel.get_carbon_flavor_text(target)
+	var/list/hidden_data = panel.ui_data(target)
+	var/list/hidden_portraits = panel.get_portrait_urls(target)
+	panel.examine_panel_screen = null
+	REMOVE_TRAIT(target, TRAIT_UNKNOWN_APPEARANCE, REF(src))
+	TEST_ASSERT(findtext(visible_preview, private_description), "A recognizable face must show its chat description")
+	TEST_ASSERT(!visible_data["obscured"], "A recognizable face must remain visible in the panel")
+	TEST_ASSERT_EQUAL(visible_data["flavor_text"], private_description, "A recognizable face must show its panel description")
+	TEST_ASSERT(!findtext(hidden_preview, private_description), "The chat preview must respect the same face visibility check as portraits")
+	TEST_ASSERT(hidden_data["obscured"], "The panel must mark an unknown appearance as obscured")
+	TEST_ASSERT_EQUAL(hidden_data["character_name"], "Неизвестный", "The panel must not disclose an obscured character's name")
+	TEST_ASSERT_EQUAL(hidden_data["flavor_text"], "Скрывает лицо", "The panel must not disclose an obscured character's description")
+	TEST_ASSERT_NULL(hidden_data["portrait_urls"], "The panel must not disclose an obscured character's portraits")
+	TEST_ASSERT_NULL(hidden_portraits, "An obscured face must not disclose any portrait URLs")

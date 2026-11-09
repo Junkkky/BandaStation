@@ -52,15 +52,15 @@
 			portrait_urls += portrait_url
 	return portrait_urls
 
+/// Return the description preview or only its link when the face is obscured.
 /datum/component/examine_panel/proc/get_carbon_flavor_text(mob/living/carbon/source)
 	var/flavor_text_link
 	/// The first 1-FLAVOR_PREVIEW_LIMIT characters in the mob's "flavor_text" DNA feature. FLAVOR_PREVIEW_LIMIT is defined in flavor_defines.dm.
 	var/preview_text = copytext_char(flavor_text, 1, FLAVOR_PREVIEW_LIMIT)
-	// What examine_tgui.dm uses to determine if flavor text appears as "Obscured".
 	var/face_obscured = FALSE
 	if(ishuman(source))
 		var/mob/living/carbon/human/human_source = source
-		face_obscured = (human_source.wear_mask && (human_source.wear_mask.flags_inv & HIDEFACE)) || (human_source.head && (human_source.head.flags_inv & HIDEFACE))
+		face_obscured = human_source.is_face_obscured()
 
 	if (!(face_obscured))
 		flavor_text_link = span_notice("[preview_text]... <a href='byond://?src=[REF(src)];lookup_info=open_examine_panel'>Раскрыть описание</a>")
@@ -142,7 +142,7 @@
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/holder_human = parent
-		obscured = (holder_human.wear_mask && (holder_human.wear_mask.flags_inv & HIDEFACE)) || (holder_human.head && (holder_human.head.flags_inv & HIDEFACE))
+		obscured = holder_human.is_face_obscured()
 		tgui_flavor_text = obscured ? "Скрывает лицо" : flavor_text
 		if(!obscured)
 			data["portrait_urls"] = get_portrait_urls(holder_human)
