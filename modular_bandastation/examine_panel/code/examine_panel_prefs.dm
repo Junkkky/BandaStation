@@ -32,21 +32,6 @@
 /datum/preference/character_portrait_urls/create_default_value()
 	return list()
 
-/datum/preference/character_portrait_urls/create_informed_default_value(datum/preferences/preferences)
-	var/list/portrait_urls = create_default_value()
-	if(!preferences)
-		return portrait_urls
-	var/list/save_data = preferences.get_save_data_for_savefile_identifier(PREFERENCE_CHARACTER)
-	if(isnull(save_data) || (savefile_key in save_data))
-		return portrait_urls
-	// Existing slots may predate the single list preference.
-	var/static/list/legacy_keys = list("character_portrait_url", "character_portrait_url_2", "character_portrait_url_3")
-	for(var/key in legacy_keys)
-		var/portrait_url = save_data[key]
-		if(portrait_url && is_valid_url(portrait_url))
-			portrait_urls += portrait_url
-	return portrait_urls
-
 /datum/preference/character_portrait_urls/deserialize(input, datum/preferences/preferences)
 	if(!is_valid(input, preferences))
 		return null

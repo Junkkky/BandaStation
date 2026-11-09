@@ -55,13 +55,7 @@
 	var/datum/client_interface/mock_client = allocate(/datum/client_interface)
 	var/datum/preferences/preferences = allocate(/datum/preferences/character_portrait_test, mock_client)
 	var/list/save_data = preferences.get_save_data_for_savefile_identifier(PREFERENCE_CHARACTER)
-	save_data -= preference.savefile_key
-	preferences.value_cache -= preference.type
-	save_data["character_portrait_url"] = "https://i.gyazo.com/first.png"
-	save_data["character_portrait_url_2"] = ""
-	save_data["character_portrait_url_3"] = "https://files.catbox.moe/third.png"
-	var/list/migrated = preferences.read_preference(preference.type)
-	TEST_ASSERT_EQUAL(json_encode(migrated), json_encode(list("https://i.gyazo.com/first.png", "https://files.catbox.moe/third.png")), "Existing nonempty slots must migrate in order")
+	TEST_ASSERT(preferences.update_preference(preference, list("https://i.gyazo.com/first.png", "https://files.catbox.moe/third.png")), "The UI must accept a list of portraits")
 	TEST_ASSERT(!preferences.update_preference(preference, list("javascript:alert(1)")), "The real UI update boundary must reject invalid lists")
 	TEST_ASSERT_EQUAL(length(preferences.read_preference(preference.type)), 2, "Rejected UI updates must preserve prior values")
 	var/list/updated = list("https://file.garden/user/updated.jpg")
@@ -71,7 +65,7 @@
 	var/list/disk_data = json_decode(file2text(preferences.path))
 	TEST_ASSERT_EQUAL(json_encode(disk_data["character1"][preference.savefile_key]), json_encode(updated), "The complete list must reach the real JSON savefile")
 	TEST_ASSERT(preferences.load_character(), "The character slot must reload")
-	TEST_ASSERT_EQUAL(json_encode(preferences.read_preference(preference.type)), json_encode(updated), "The new key must take precedence over legacy fields")
+	TEST_ASSERT_EQUAL(json_encode(preferences.read_preference(preference.type)), json_encode(updated), "The saved portrait list must survive reloading")
 	preferences.max_save_slots = max(preferences.max_save_slots, 2)
 	preferences.savefile.set_entry("character2", list("version" = save_data["version"], "character_portrait_urls" = list("https://files.catbox.moe/other.png")))
 	TEST_ASSERT(preferences.load_character(2), "A second character slot must load")
@@ -81,10 +75,7 @@
 	TEST_ASSERT(preferences.update_preference(preference, list()), "The UI must allow clearing the list")
 	preferences.save_character()
 	preferences.load_character()
-	TEST_ASSERT_EQUAL(length(preferences.read_preference(preference.type)), 0, "Clearing must not resurrect legacy portraits on reload")
-	save_data[preference.savefile_key] = "corrupt"
-	preferences.value_cache -= preference.type
-	TEST_ASSERT_EQUAL(length(preferences.read_preference(preference.type)), 0, "A corrupt new value must not resurrect legacy portraits either")
+	TEST_ASSERT_EQUAL(length(preferences.read_preference(preference.type)), 0, "Cleared portraits must remain empty after reloading")
 
 /datum/unit_test/character_portrait_visibility/Run()
 	var/datum/preference/preference = GLOB.preference_entries_by_key["character_portrait_urls"]
