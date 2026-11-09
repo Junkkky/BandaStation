@@ -12,3 +12,4 @@
 #include "code/nests.dm"
 #include "code/call_for_help.dm"
 #include "code/craters.dm"
+#include "code/planet_debug.dm"

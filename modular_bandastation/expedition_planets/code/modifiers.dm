@@ -301,29 +301,45 @@
 	probability = 40
 	light_alpha = 60
 
-/**
- * Roll offered modifiers in random order and apply those that fit the remaining budgets.
- *
- * Both budgets are half of `level`, so distant planets afford stronger rewards and dangers.
- * Returns the survey lines of the applied modifiers; their own names go to [/datum/map_generator/expedition_barren/var/modifier_log].
- */
-/datum/map_generator/expedition_barren/proc/apply_modifiers(level)
+/** Shared read-only modifier prototypes used by generation and the admin picker. */
+/proc/expedition_planet_modifiers()
 	var/static/list/datum/expedition_planet_modifier/modifiers
 	if(!modifiers)
 		modifiers = list()
 		for(var/modifier_type in subtypesof(/datum/expedition_planet_modifier))
 			modifiers += new modifier_type
+	return modifiers
+
+/**
+ * Roll budgeted modifiers, or apply an exact admin selection without random offers or budget costs.
+ *
+ * Null selected_types keeps ordinary rolls; an empty list means no modifiers. Invalid, incompatible,
+ * duplicate or mutually exclusive selections return null before changing the generator.
+ * Returns survey lines; full modifier names are retained in modifier_log.
+ */
+/datum/map_generator/expedition_barren/proc/apply_modifiers(level, list/selected_types = null)
+	if(!isnull(selected_types) && !islist(selected_types))
+		return null
+	var/list/offered = list()
+	var/list/used_groups = list()
+	for(var/datum/expedition_planet_modifier/modifier as anything in expedition_planet_modifiers())
+		if(isnull(selected_types))
+			if(prob(modifier.probability) && modifier.can_apply(src))
+				offered += modifier
+		else if(modifier.type in selected_types)
+			if(!modifier.name || !modifier.can_apply(src) || (modifier.group in used_groups))
+				return null
+			used_groups += modifier.group
+			offered += modifier
+	if(!isnull(selected_types) && length(offered) != length(selected_types))
+		return null
+	used_groups.Cut()
 	danger_level = level
 	var/list/budget = list(PLANET_MODIFIER_DANGER = level / 2, PLANET_MODIFIER_REWARD = level / 2)
-	var/list/offered = list()
-	for(var/datum/expedition_planet_modifier/modifier as anything in modifiers)
-		if(prob(modifier.probability) && modifier.can_apply(src))
-			offered += modifier
-	var/list/used_groups = list()
 	var/list/names = list()
 	while(length(offered))
 		var/datum/expedition_planet_modifier/modifier = pick_n_take(offered)
-		if((modifier.group in used_groups) || modifier.cost > budget[modifier.category])
+		if((modifier.group in used_groups) || (isnull(selected_types) && modifier.cost > budget[modifier.category]))
 			continue
 		budget[modifier.category] -= modifier.cost
 		used_groups += modifier.group
