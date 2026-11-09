@@ -82,6 +82,11 @@
 			if(istype(tile, /turf/open/misc/asteroid/basalt/lava_land_surface) || istype(tile, /turf/open/lava/smooth/lava_land_surface))
 				tile.ChangeTurf(floor_type, floor_type, CHANGETURF_IGNORE_AIR)
 		adapt_template_turfs(covered, surface)
+		for(var/turf/tile as anything in covered)
+			for(var/mob/living/basic/member in tile)
+				member.add_expedition_help()
+			for(var/obj/structure/spawner/den in tile)
+				den.AddElement(/datum/element/stationtrauma_help_spawner)
 		place_clutch(locate(origin.x + round(template.width / 2), origin.y + round(template.height / 2), origin.z))
 		return TRUE
 	grow_hive(origin)
@@ -140,9 +145,11 @@
 		if(!length(floor))
 			return
 		var/xeno_type = pick_weight(garrison)
-		new xeno_type(pick_n_take(floor))
+		var/mob/living/member = new xeno_type(pick_n_take(floor))
+		member.add_expedition_help()
 	if(length(floor) && prob(clamp(20 * danger_level, 10, 60)))
-		new /mob/living/basic/alien/queen/large(pick_n_take(floor))
+		var/mob/living/queen = new /mob/living/basic/alien/queen/large(pick_n_take(floor))
+		queen.add_expedition_help()
 
 /** The egg clutch keeps a hive breeding until it is destroyed. */
 /datum/map_generator/expedition_barren/proc/place_clutch(turf/centre)
@@ -153,7 +160,8 @@
 				spot = tile
 				break
 	if(isopenturf(spot))
-		new /obj/structure/spawner/stationtrauma_xeno_hive(spot)
+		var/obj/structure/spawner/hive = new /obj/structure/spawner/stationtrauma_xeno_hive(spot)
+		hive.AddElement(/datum/element/stationtrauma_help_spawner)
 
 /** Set the rolled boss on open ground at least 40 turfs from the camp, with room around it; returns the boss or null. */
 /datum/map_generator/expedition_barren/proc/place_megafauna(turf/bottom)
@@ -182,13 +190,15 @@
 
 /** A den holds its kind from the start: a garrison around the spawner and the remains of their prey. */
 /datum/map_generator/expedition_barren/proc/raise_lair(obj/structure/spawner/den)
+	den.AddElement(/datum/element/stationtrauma_help_spawner)
 	var/list/ground = standing_ground(get_turf(den), 3)
 	var/list/kinds = den.mob_types
 	for(var/index in 1 to rand(1, min(3, den.max_mobs)))
 		if(!length(ground) || !length(kinds))
 			break
 		var/kind = pick(kinds)
-		new kind(pick_n_take(ground))
+		var/mob/living/member = new kind(pick_n_take(ground))
+		member.add_expedition_help()
 	var/static/list/remains = list(/obj/effect/decal/remains/human, /obj/effect/decal/cleanable/blood/gibs/old, /obj/effect/decal/cleanable/blood/old)
 	for(var/index in 1 to 3)
 		if(!length(ground))
@@ -236,7 +246,8 @@
 			for(var/index in 1 to (solitary ? 1 : rand(fauna_pack_size[1], fauna_pack_size[2])))
 				if(!length(ground))
 					break
-				new kind(pick_n_take(ground))
+				var/mob/living/member = new kind(pick_n_take(ground))
+				member.add_expedition_help()
 
 #undef EXPEDITION_PACK_SPACING
 #undef EXPEDITION_GUARDIAN_DENSITY

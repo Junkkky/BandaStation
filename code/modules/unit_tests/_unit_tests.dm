@@ -315,6 +315,7 @@
 #include "overmap_standard_dock.dm"
 #include "overmap_propulsion.dm"
 #include "overmap_plasma.dm"
+#include "overmap_planet_help.dm"
 #include "overmap_surface_dock.dm"
 #include "overmap_ship_core.dm"
 #include "overmap_carrier.dm"
