@@ -46,10 +46,8 @@
 /datum/component/examine_panel/proc/get_portrait_urls(mob/living/carbon/human/character)
 	if(!character.dna || character.is_face_obscured())
 		return null
-	var/static/list/portrait_keys = list("character_portrait_url", "character_portrait_url_2", "character_portrait_url_3")
 	var/list/portrait_urls = list()
-	for(var/key in portrait_keys)
-		var/portrait_url = character.dna.features[key]
+	for(var/portrait_url in character.dna.features["character_portrait_urls"])
 		if(portrait_url)
 			portrait_urls += portrait_url
 	return portrait_urls
