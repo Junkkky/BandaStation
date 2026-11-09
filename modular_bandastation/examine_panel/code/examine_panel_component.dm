@@ -32,9 +32,27 @@
 	else if(issilicon(source))
 		examine_list += get_silicon_flavor_text(source)
 
+	if(ishuman(source) && user.client?.prefs.read_preference(/datum/preference/toggle/show_character_portraits_in_chat))
+		var/list/portrait_urls = get_portrait_urls(source)
+		if(length(portrait_urls))
+			var/portrait_url = portrait_urls[1]
+			examine_list += "<img class='examine-portrait' src='[html_encode(portrait_url)]' alt='Портрет персонажа' referrerpolicy='no-referrer' style='max-width:100px;max-height:100px;image-rendering:auto'>"
+
 	if(user == source && !source.build_incapacitated())
 		var/edit_link = "byond://?src=[REF(src)];lookup_info=edit_flavor_text"
 		examine_list += span_notice("<a href='[edit_link]'>Изменить описание</a>")
+
+/// Return the configured portraits in slot order when the face can be identified.
+/datum/component/examine_panel/proc/get_portrait_urls(mob/living/carbon/human/character)
+	if(!character.dna || character.is_face_obscured())
+		return null
+	var/static/list/portrait_keys = list("character_portrait_url", "character_portrait_url_2", "character_portrait_url_3")
+	var/list/portrait_urls = list()
+	for(var/key in portrait_keys)
+		var/portrait_url = character.dna.features[key]
+		if(portrait_url)
+			portrait_urls += portrait_url
+	return portrait_urls
 
 /datum/component/examine_panel/proc/get_carbon_flavor_text(mob/living/carbon/source)
 	var/flavor_text_link
@@ -128,6 +146,8 @@
 		var/mob/living/carbon/human/holder_human = parent
 		obscured = (holder_human.wear_mask && (holder_human.wear_mask.flags_inv & HIDEFACE)) || (holder_human.head && (holder_human.head.flags_inv & HIDEFACE))
 		tgui_flavor_text = obscured ? "Скрывает лицо" : flavor_text
+		if(!obscured)
+			data["portrait_urls"] = get_portrait_urls(holder_human)
 
 	var/name = obscured ? "Неизвестный" : parent
 

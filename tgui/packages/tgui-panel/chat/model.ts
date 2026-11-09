@@ -57,7 +57,8 @@ export function serializeMessage(
   return {
     type: message.type,
     text: message.text,
-    html: message.html,
+    // Old chat history must not reload third-party portraits on reconnect.
+    html: message.html?.replace(/<img class='examine-portrait'[^>]*>/g, ''),
     times: message.times,
     createdAt: message.createdAt,
   };
