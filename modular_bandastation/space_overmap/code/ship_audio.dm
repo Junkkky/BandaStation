@@ -292,13 +292,14 @@
 		return 0
 	return max(abs(throttle) / 100, !!braking, !!maneuver_direction)
 
-/** Show exhaust on every nozzle that is actually delivering commanded thrust, green on combustion nozzles while tritium burns; called with the audio refresh. */
+/** Show each firing nozzle's actual converter palette and fusion overdrive state. */
 /datum/stationtrauma_overmap/space/proc/refresh_engine_exhaust()
 	var/thrusting = vessel.engines_running && commanded_thrust() > 0
 	var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/reactor = vessel.fusion_core?.resolve()
-	var/boosted = reactor?.overdrive_active()
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
-		engine.set_exhaust(thrusting && engine_output(engine) > 0, boosted && engine.requires_combustion)
+		var/obj/machinery/atmospherics/components/unary/ship_engine_heater/feed = engine.combustion_feed?.resolve()
+		var/boosted = reactor?.overdrive_active() && !reactor.is_electric && feed?.core?.resolve() == reactor
+		engine.set_exhaust(thrusting && engine_output(engine) > 0, boosted, feed?.exhaust_gradient)
 
 /** Docking latch; a remote seam also has listeners on the destination level, physical docking needs only one emission. */
 /datum/stationtrauma_overmap/space/proc/play_maneuver_audio(atom/remote)

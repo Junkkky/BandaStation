@@ -84,10 +84,10 @@
 #define ST_CORE_IDLE_LEVEL 10
 /// Core heat per second for each full nominal output of overload, in percent; 150 % reaches the interlock in about three minutes.
 #define ST_CORE_OVERLOAD_HEATING 1.1
-/// Core heat at which an unprotected core certainly explodes, in percent.
+/// Core heat required for an unprotected rupture after the warning grace period, in percent.
 #define ST_CORE_MELTDOWN_HEAT 200
-/// Explosion chance per second for each percent of heat above 100 with the interlock off.
-#define ST_CORE_MELTDOWN_CHANCE 0.1
+/// Minimum real time to respond to an unprotected overheating warning before critical heat can rupture the core.
+#define ST_CORE_MELTDOWN_DELAY (60 SECONDS)
 /// Waste heat the fusion core releases into its room per nominal output of overload, and per full heat at half that rate.
 #define ST_CORE_WASTE_HEAT (40 KILO WATTS)
 /// Engine power per hull tile that gives the reference speed and acceleration.

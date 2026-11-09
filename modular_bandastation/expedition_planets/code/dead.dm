@@ -24,6 +24,12 @@
 	craters = TRUE
 	large_ruin_chance = 100
 	large_ruin_biome = "dead"
+	/// One compass district shared by ambient zombie packs and plague pits on both levels.
+	var/zombie_region = NONE
+	/// Ambient packs already placed; the cave pass does not get a second population budget.
+	var/zombie_pack_count = 0
+	/// Lazily rolled planet-wide pack cap, scaled by the existing fauna modifier.
+	var/zombie_pack_limit = 0
 	biome_table = list(
 		list(/datum/biome/expedition/dead, /datum/biome/expedition/dead, /datum/biome/expedition/dead/scrap, /datum/biome/expedition/dead/scrap, /datum/biome/expedition/dead/rust),
 		list(/datum/biome/expedition/dead, /datum/biome/expedition/dead/basalt, /datum/biome/expedition/dead, /datum/biome/expedition/dead/scrap, /datum/biome/expedition/dead/rust),
@@ -33,6 +39,43 @@
 		list(/datum/biome/expedition/dead/rust, /datum/biome/expedition/dead/rust, /datum/biome/expedition/dead/scrap, /datum/biome/expedition/dead/rust, /datum/biome/expedition/dead/rust),
 	)
 	cave_biome_table = /datum/biome/expedition/dead/cave
+
+/** Compass district in the outer thirds of the generated square; the middle district has no zombies. */
+/datum/map_generator/expedition_barren/dead/proc/zombie_region_at(turf/tile)
+	var/x = tile.x - origin_x + 1
+	var/y = tile.y - origin_y + 1
+	if(x < 1 || y < 1 || x > width || y > width)
+		return NONE
+	var/region = NONE
+	if(x <= width / 3)
+		region |= WEST
+	else if(x > width * 2 / 3)
+		region |= EAST
+	if(y <= width / 3)
+		region |= SOUTH
+	else if(y > width * 2 / 3)
+		region |= NORTH
+	return region
+
+/** The first viable zombie encounter chooses the district; later encounters keep that same geography. */
+/datum/map_generator/expedition_barren/dead/proc/in_zombie_region(turf/tile)
+	var/region = zombie_region_at(tile)
+	if(!region)
+		return FALSE
+	if(!zombie_region)
+		zombie_region = region
+	return region == zombie_region
+
+/** Fewer, larger ambient groups, with one finite pack budget shared by surface and caves. */
+/datum/map_generator/expedition_barren/dead/proc/next_zombie_pack_size(turf/tile, available_ground)
+	if(available_ground < 6 || !in_zombie_region(tile))
+		return 0
+	if(!zombie_pack_limit)
+		zombie_pack_limit = max(1, round(rand(3, 4) * fauna_multiplier))
+	if(zombie_pack_count >= zombie_pack_limit)
+		return 0
+	zombie_pack_count++
+	return rand(6, min(10, available_ground))
 
 /** Ashen ground carrying the dead profile atmosphere and preserving it beneath excavation. */
 /turf/open/misc/asteroid/expedition_dead

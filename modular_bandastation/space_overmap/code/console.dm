@@ -25,7 +25,18 @@
 	unlocked_designs += list(
 		/datum/design/board/shuttle/stationtrauma_space_navigation,
 		/datum/design/board/stationtrauma_bluespace_drive,
+		/datum/design/board/stationtrauma_engine,
+		/datum/design/board/stationtrauma_engine/left,
+		/datum/design/board/stationtrauma_engine/right,
+		/datum/design/board/stationtrauma_engine/burst,
+		/datum/design/board/stationtrauma_engine/burst_left,
+		/datum/design/board/stationtrauma_engine/burst_right,
+		/datum/design/board/stationtrauma_engine/huge,
 		/datum/design/board/stationtrauma_large_engine,
+		/datum/design/board/stationtrauma_large_converter,
+		/datum/design/board/stationtrauma_ship_generator,
+		/datum/design/board/stationtrauma_plasma_core,
+		/datum/design/board/stationtrauma_plasma_converter,
 	)
 
 /obj/machinery/computer/stationtrauma_space_navigation/post_machine_initialize()
