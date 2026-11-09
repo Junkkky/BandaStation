@@ -756,7 +756,11 @@ class ChatRenderer {
     let messagesHtml = '';
     for (const message of this.visibleMessages) {
       if (message.node) {
-        messagesHtml += `${message.node.outerHTML}\n`;
+        const node = message.node.cloneNode(true) as HTMLElement;
+        for (const portrait of node.querySelectorAll('img.examine-portrait')) {
+          portrait.remove();
+        }
+        messagesHtml += `${node.outerHTML}\n`;
       }
     }
     // Create a page
