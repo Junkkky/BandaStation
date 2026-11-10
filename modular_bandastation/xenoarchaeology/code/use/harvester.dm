@@ -96,6 +96,8 @@
 // ===== Battery slot =====
 
 /obj/machinery/artifact_harvester/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(istype(tool, /obj/item/assembly/signaler/anomaly) || istype(tool, /obj/item/field_artefact))
+		return pour_from(tool, user)
 	if(!istype(tool, /obj/item/anomaly_battery))
 		return NONE
 	if(battery)
@@ -121,6 +123,55 @@
 	stop_draw()
 	if(!QDELETED(src))
 		update_appearance()
+
+/**
+ * Pours an anomaly core's or field artefact's energy straight into an empty battery, half full: a small
+ * source holds less than a large find. The core is spent; the artefact burns out into an empty husk.
+ */
+/obj/machinery/artifact_harvester/proc/pour_from(obj/item/source, mob/living/user)
+	if(!battery)
+		balloon_alert(user, "нет батареи!")
+		return ITEM_INTERACT_BLOCKING
+	if(drawing || battery.stored_charge > 0)
+		balloon_alert(user, "батарея не пуста!")
+		return ITEM_INTERACT_BLOCKING
+	if(!is_operational)
+		balloon_alert(user, "нет питания!")
+		return ITEM_INTERACT_BLOCKING
+	var/effect_type
+	var/kind
+	var/obj/item/field_artefact/artefact = source
+	var/obj/item/assembly/signaler/anomaly/planetary/planetary_core = source
+	if(istype(artefact))
+		effect_type = artefact.battery_effect
+		kind = artefact.energy_kind
+	else if(istype(planetary_core))
+		effect_type = planetary_core.battery_effect
+		kind = planetary_core.energy_kind
+	else
+		var/list/entry = GLOB.xenoarch_tg_core_battery[source.type]
+		if(!entry)
+			balloon_alert(user, "не подходит!")
+			return ITEM_INTERACT_BLOCKING
+		kind = entry[1]
+		effect_type = entry[2]
+	battery.fill_from(effect_type, kind, source.name, ARTIFACT_BATTERY_SMALL_CHARGE)
+	user.visible_message(
+		span_notice("[user] вкладывает [source] под купол [src], и в батарею тянется поток света."),
+		span_notice("Вы вкладываете [source] под купол [src]: батарея наполняется."),
+	)
+	log_game("[key_name(user)] poured [source] into [battery] in [src] at [AREACOORD(src)].")
+	if(istype(artefact))
+		artefact.journal_record?.log_observation(user, src, "Энергия влита в экзотическую батарею, образование опустело.")
+		artefact.burn_out()
+	else
+		if(istype(planetary_core))
+			planetary_core.journal_record?.log_observation(user, src, "Ядро влито в экзотическую батарею.")
+		qdel(source)
+	playsound(src, 'sound/machines/chime.ogg', 40, FALSE)
+	update_appearance()
+	SStgui.update_uis(src)
+	return ITEM_INTERACT_SUCCESS
 
 /// Hands the battery back, or drops it in front of the harvester.
 /obj/machinery/artifact_harvester/proc/eject_battery(mob/living/user)

@@ -121,6 +121,8 @@
 #define ARTIFACT_MAX_HARVESTS 3
 /// Charge an exotic battery holds. One harvest fills one battery.
 #define ARTIFACT_BATTERY_CAPACITY 200
+/// Charge a core or field artefact pours into an empty battery: half of what a large find gives.
+#define ARTIFACT_BATTERY_SMALL_CHARGE 100
 /// Charge per second a harvester draws on tier-1 capacitors: a full battery in 80 seconds.
 #define ARTIFACT_HARVEST_DRAW_RATE 2.5
 /// Charge per second a utilizer spends running a field or bursts: a full battery lasts 400 seconds.

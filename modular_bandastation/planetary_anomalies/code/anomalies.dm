@@ -21,6 +21,8 @@
 	var/particles_color
 	/// Where it appeared; it drifts no further than ANOMALY_LEASH from here.
 	var/turf/home
+	/// Corps journal protocol, opened when it is first read off the station.
+	var/datum/expedition_record/xenoarch_find/journal_record
 	COOLDOWN_DECLARE(pulse_cooldown)
 	COOLDOWN_DECLARE(touch_cooldown)
 
@@ -37,7 +39,23 @@
 
 /obj/effect/anomaly/pulsing/Destroy()
 	home = null
+	journal_record = null
 	QDEL_NULL(particles)
+	return ..()
+
+/// Writes a fact to its protocol, opening one first; only off the station, where the corps works.
+/obj/effect/anomaly/pulsing/proc/journal_note(mob/user, text)
+	var/turf/here = get_turf(src)
+	if(!here || is_station_level(here.z))
+		return
+	journal_record ||= new(xenoarch_new_serial(), src)
+	journal_record.log_observation(user, src, text)
+
+/obj/effect/anomaly/pulsing/anomalyNeutralize()
+	journal_note(ismob(usr) ? usr : null, "Аномалия «[name]» нейтрализована.")
+	var/obj/item/assembly/signaler/anomaly/planetary/core = anomaly_core
+	if(istype(core))
+		core.journal_record = journal_record
 	return ..()
 
 /obj/effect/anomaly/pulsing/move_anomaly()

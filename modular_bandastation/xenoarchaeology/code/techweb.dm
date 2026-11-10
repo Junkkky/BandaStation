@@ -15,7 +15,7 @@
 
 /datum/techweb_node/xenoarchaeology
 	display_name = "Ксеноархеология"
-	description = "Полевые стабилизаторы и спектрометр проб, чтобы извлекать крупные находки целыми, ящик для их перевозки, лабораторный анализатор с площадкой и маркировщиком, детектор аномальных полей и коллектор артефактов."
+	description = "Полевые стабилизаторы и спектрометр проб, чтобы извлекать крупные находки целыми, ящик для их перевозки, лабораторный анализатор с площадкой, детектор аномалий и коллектор артефактов."
 	prerequisite_nodes = list(/datum/techweb_node/fundamental_sci)
 	unlocked_designs = list(
 		/datum/design/xenoarch_stabiliser,
@@ -23,7 +23,6 @@
 		/datum/design/specimen_crate,
 		/datum/design/board/artifact_analyser,
 		/datum/design/board/artifact_scanpad,
-		/datum/design/artifact_labeler,
 		/datum/design/field_detector,
 		/datum/design/field_collector,
 	)
@@ -33,7 +32,7 @@
 
 /datum/techweb_node/xenoarch_excavation
 	display_name = "Продвинутые раскопки"
-	description = "Глубинный сканер, сразу определяющий нужное стабилизирующее поле, и быстрая кисть."
+	description = "Продвинутый стратиграфический сканер, сразу определяющий нужное стабилизирующее поле, и быстрая кисть."
 	prerequisite_nodes = list(/datum/techweb_node/xenoarchaeology)
 	unlocked_designs = list(
 		/datum/design/xenoarch_scanner_advanced,
@@ -56,31 +55,32 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
-/// Three different dug artifacts fully analysed for the station's research network.
+/// Finds of three different energy kinds studied on the scan pad, from any source.
 /datum/experiment/xenoarch_analysis
-	name = "Анализ артефактов"
-	description = "Полностью проанализируйте три разных выкопанных артефакта на сканирующей площадке."
+	name = "Виды аномальной энергии"
+	description = "Изучите на сканирующей площадке находки трёх разных видов энергии: крупные артефакты, артефакты аномальных полей или ядра аномалий."
 	exp_tag = "Ксеноархеология"
-	performance_hint = "Первый полный анализ каждой выкопанной находки засчитывается автоматически."
-	/// Different finds required
+	performance_hint = "Засчитываются первый анализ крупного артефакта и первая каталогизация артефакта поля или ядра."
+	/// Different energy kinds required
 	var/required = 3
-	/// Catalogue numbers of the finds analysed so far
-	var/list/serials = list()
+	/// ARTIFACT_ENERGY_* kinds studied so far
+	var/list/kinds = list()
 
 /datum/experiment/xenoarch_analysis/is_complete()
-	return length(serials) >= required
+	return length(kinds) >= required
 
 /datum/experiment/xenoarch_analysis/check_progress()
-	return list(EXPERIMENT_PROG_INT("Проанализировано выкопанных артефактов", length(serials), required))
+	return list(EXPERIMENT_PROG_INT("Изучено видов энергии", length(kinds), required))
 
-/// Counts the first full analysis of a dug find toward the station's open experiment.
-/proc/xenoarch_record_analysis(obj/machinery/artifact/find)
+/// Counts a newly studied find's energy kind toward the station's open energy experiments.
+/proc/xenoarch_record_study(kind)
+	if(!kind)
+		return
 	var/datum/techweb/web = locate(/datum/techweb/science) in SSresearch.techwebs
 	for(var/datum/experiment/xenoarch_analysis/experiment in web?.available_experiments)
-		experiment.serials |= find.serial
+		experiment.kinds |= kind
 		if(experiment.is_complete())
 			experiment.finish_experiment(null, web)
-		return
 
 /datum/design/specimen_crate
 	name = "Ящик для образцов"
@@ -106,16 +106,4 @@
 	desc = "Печатная плата площадки, через которую анализатор считывает находку."
 	build_path = /obj/item/circuitboard/machine/artifact_scanpad
 	category = list(RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_RESEARCH)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
-
-/datum/design/artifact_labeler
-	name = "Маркировщик образцов"
-	desc = "Ручной принтер этикеток для крупных находок."
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(
-		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,
-		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 1.5,
-	)
-	build_path = /obj/item/artifact_labeler
-	category = list(RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE

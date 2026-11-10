@@ -185,6 +185,9 @@
 	if(QDELETED(src) || record.settled)
 		return ITEM_INTERACT_BLOCKING
 	record.sounded = max(record.sounded, scanner.exact ? 2 : 1)
+	if(!record.tagged)
+		record.tagged = TRUE
+		AddComponent(/datum/component/gps, "раскопка [record.serial]")
 	playsound(src, 'sound/machines/beep/twobeep.ogg', 30, TRUE)
 	var/list/reading = list()
 	if(scanner.exact)

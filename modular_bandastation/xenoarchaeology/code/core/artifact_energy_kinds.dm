@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(artifact_energy_kinds, init_artifact_energy_kinds())
 		.[kind.key] = kind
 
 /// The energy kind datum for a key, falling back to concentrated energy.
-/proc/artifact_energy_kind(key)
+/proc/artifact_energy_kind(key) as /datum/artifact_energy_kind
 	return GLOB.artifact_energy_kinds[key] || GLOB.artifact_energy_kinds[ARTIFACT_ENERGY_CONCENTRATED]
 
 /datum/artifact_energy_kind

@@ -45,3 +45,17 @@ GLOBAL_LIST_INIT(xenoarch_core_by_energy, list(
 	var/obj/item/core = new core_type(spot)
 	qdel(source)
 	return core
+
+/// TG anomaly core -> list(energy kind, effect a harvester pours from it into a battery, spending it).
+GLOBAL_LIST_INIT(xenoarch_tg_core_battery, list(
+	/obj/item/assembly/signaler/anomaly/pyro = list(ARTIFACT_ENERGY_CONCENTRATED, /datum/artifact_effect/temperature/heat),
+	/obj/item/assembly/signaler/anomaly/flux = list(ARTIFACT_ENERGY_ELECTROMAGNETIC, /datum/artifact_effect/tesla),
+	/obj/item/assembly/signaler/anomaly/grav = list(ARTIFACT_ENERGY_PARTICLE, /datum/artifact_effect/gravity),
+	/obj/item/assembly/signaler/anomaly/bluespace = list(ARTIFACT_ENERGY_BLUESPACE, /datum/artifact_effect/teleport),
+	/obj/item/assembly/signaler/anomaly/hallucination = list(ARTIFACT_ENERGY_PSIONIC, /datum/artifact_effect/hallucination),
+	/obj/item/assembly/signaler/anomaly/bioscrambler = list(ARTIFACT_ENERGY_ORGANIC, /datum/artifact_effect/bodyhorror),
+	/obj/item/assembly/signaler/anomaly/dimensional = list(ARTIFACT_ENERGY_SYNTHESIS, /datum/artifact_effect/gas),
+	/obj/item/assembly/signaler/anomaly/ectoplasm = list(ARTIFACT_ENERGY_PSIONIC, /datum/artifact_effect/poltergeist),
+	/obj/item/assembly/signaler/anomaly/weather = list(ARTIFACT_ENERGY_PARTICLE, /datum/artifact_effect/gas),
+	/obj/item/assembly/signaler/anomaly/vortex = list(ARTIFACT_ENERGY_BLUESPACE, /datum/artifact_effect/gravity_wave),
+))

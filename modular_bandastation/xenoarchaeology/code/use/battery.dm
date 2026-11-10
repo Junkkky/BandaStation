@@ -87,6 +87,16 @@
 	stored_charge = 0
 	update_appearance()
 
+/// Fills it with `amount` charge of a fresh `effect_type` of energy `kind`, poured from a core or field artefact named `source_name`.
+/obj/item/anomaly_battery/proc/fill_from(effect_type, kind, source_name, amount)
+	discard_effect()
+	held_effect = new effect_type(src, null)
+	held_effect.energy_kind = kind
+	held_effect.current_charge = 0
+	source_serial = source_name
+	stored_charge = min(amount, capacity)
+	update_appearance()
+
 /// Adds charge, up to capacity. Returns how much went in.
 /obj/item/anomaly_battery/proc/add_charge(amount)
 	if(!held_effect || amount <= 0)

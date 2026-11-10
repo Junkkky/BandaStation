@@ -330,7 +330,7 @@
 	// Research is claimed now, while the find is still locked to us, and printed with the report.
 	var/research_points = xenoarch_claim_analysis(find, src, operator)
 	if(research_points)
-		xenoarch_record_analysis(find)
+		xenoarch_record_study(find.main_effect?.energy_kind)
 	find.journal_note(operator, "Анализ: основное излучение — [find.main_effect ? find.main_effect.report_line() : "не обнаружено"]; второе — [find.second_effect ? find.second_effect.report_line() : "не обнаружено"].")
 	scan_target = null
 	scan_operator = null

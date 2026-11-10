@@ -92,8 +92,11 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 		var/obj/item/assembly/signaler/anomaly/planetary/core = find
 		if(istype(core))
 			var/core_points = core.research_paid ? 0 : core.research_points
+			if(!core.research_paid)
+				xenoarch_record_study(core.energy_kind)
+				core.journal_record?.log_observation(user, src, "Ядро каталогизировано на сканирующей площадке.")
 			core.research_paid = TRUE
-			print_catalogue(find, core_points, "")
+			print_catalogue(find, core_points, "<br>Вид энергии: [artifact_energy_kind(core.energy_kind)?.report_name]")
 			return TRUE
 		if(!istype(find, /obj/item/xenoarch_curio) && !istype(find, /obj/item/relic/excavated) && !istype(find, /obj/item/field_artefact))
 			continue
@@ -108,6 +111,7 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 			if(!paid)
 				points = artefact.research_points
 				artefact.research_paid = TRUE
+				xenoarch_record_study(artefact.energy_kind)
 				artefact.journal_record?.log_observation(user, src, "Каталогизирован на сканирующей площадке.")
 		else if(!paid)
 			for(var/listed_type in GLOB.xenoarch_curio_research_points)
@@ -118,7 +122,7 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 				curio.research_paid = TRUE
 			else
 				relic.research_paid = TRUE
-		print_catalogue(find, points, "<br>Зона происхождения: [xenoarch_find_band(find)][istype(artefact) ? "<br>Реакции: [artefact.catalogue_note]" : ""]")
+		print_catalogue(find, points, "<br>Зона происхождения: [xenoarch_find_band(find)][istype(artefact) ? "<br>Вид энергии: [artifact_energy_kind(artefact.energy_kind)?.report_name]<br>Реакции: [artefact.catalogue_note]" : ""]")
 		return TRUE
 	return FALSE
 

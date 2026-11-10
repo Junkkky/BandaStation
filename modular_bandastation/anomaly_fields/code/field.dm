@@ -48,6 +48,8 @@
 	var/item_trigger = FIELD_ITEMS_IGNORED
 	/// Artefacts it can hold, weighted.
 	var/list/artefact_types
+	/// ARTIFACT_ENERGY_* the anomaly analyser reads off it.
+	var/energy_kind = ARTIFACT_ENERGY_PARTICLE
 	/// Acting or winding up now.
 	var/active = FALSE
 	/// When it can act again.

@@ -142,7 +142,7 @@
 /** Field scanner and sample-container kit. */
 /obj/item/storage/box/stationtrauma_research
 	name = "комплект полевого исследователя"
-	desc = "Полевой сканер и четыре стерильных контейнера для экспедиционных проб."
+	desc = "Стратиграфический сканер и четыре стерильных контейнера для экспедиционных проб."
 
 /obj/item/storage/box/stationtrauma_research/PopulateContents()
 	new /obj/item/excavation/depth_scanner(src)

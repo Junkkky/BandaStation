@@ -2,6 +2,7 @@
 
 /// Lightning: strikes everything living around it and burns conductive items to ash. The detector hears its charge.
 /obj/effect/anomaly_field/electra
+	energy_kind = ARTIFACT_ENERGY_ELECTROMAGNETIC
 	name = "электра"
 	icon_state = "electra_idle"
 	activation_state = "electra_activation"
@@ -33,6 +34,7 @@
 
 /// Jet of flame: sets everything living around it alight for a few seconds and burns what lies in it.
 /obj/effect/anomaly_field/zharka
+	energy_kind = ARTIFACT_ENERGY_CONCENTRATED
 	name = "жарка"
 	icon_state = "zharka_idle"
 	activation_state = "zharka_active"
@@ -61,6 +63,7 @@
  * everything out. Small items do not wake it.
  */
 /obj/effect/anomaly_field/rvach
+	energy_kind = ARTIFACT_ENERGY_BLUESPACE
 	name = "рвач"
 	icon_state = "rvach_idle"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/rvach_activation.ogg'
@@ -129,6 +132,7 @@
 
 /// Springboard: flings whatever touches it a few tiles one way.
 /obj/effect/anomaly_field/tramplin
+	energy_kind = ARTIFACT_ENERGY_PARTICLE
 	name = "трамплин"
 	icon_state = "trampline_idle"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/tramplin.ogg'
@@ -166,6 +170,7 @@
 
 /// Flash: winds up, then blinds and dazes everyone in sight of it.
 /obj/effect/anomaly_field/vspishka
+	energy_kind = ARTIFACT_ENERGY_PARTICLE
 	name = "вспышка"
 	icon_state = "vspishka_idle"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/vspishka_activated.ogg'
@@ -215,11 +220,13 @@
 		victim.adjust_bodytemperature(temperature_step, min_temp = 200)
 
 /obj/effect/anomaly_field/thermal/heater
+	energy_kind = ARTIFACT_ENERGY_CONCENTRATED
 	name = "аномальный жар"
 	temperature_step = 20
 	artefact_types = list(/obj/item/field_artefact/zjar = 1)
 
 /obj/effect/anomaly_field/thermal/cooler
+	energy_kind = ARTIFACT_ENERGY_SYNTHESIS
 	name = "аномальный холод"
 	temperature_step = -60
 

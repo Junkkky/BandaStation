@@ -3,12 +3,14 @@
 // ===== Detector =====
 
 /**
- * Switched on, it beeps while any field is within three tiles, faster the closer it is. Used while on,
- * it listens for a few seconds and says whether anything anomalous is near, never where.
+ * The field anomaly detector. Switched on, it beeps while any field is within three tiles, faster the closer
+ * it is; used while on, it listens for a few seconds and says whether anything anomalous is near, never
+ * where. Pointed at an anomaly, artefact or core it reads its energy kind, and a living anomaly's
+ * frequency and code for a signaller.
  */
 /obj/item/field_detector
-	name = "детектор аномалий"
-	desc = "Наручный прибор с тремя лампами. Включённый, пищит рядом с аномальным полем, тем чаще, чем ближе. По нажатию прислушивается к окрестностям и сообщает, есть ли рядом аномалии. Alt-клик включает и выключает его."
+	name = "полевой детектор аномалий"
+	desc = "Наручный прибор с тремя лампами. Включённый, пищит рядом с аномальным полем, тем чаще, чем ближе; по нажатию сообщает, есть ли рядом аномалии. Приложенный к аномалии, артефакту или ядру, определяет вид энергии, а у живой аномалии — частоту и код для нейтрализации. Alt-клик включает и выключает его."
 	icon = 'modular_bandastation/anomaly_fields/icons/equipment.dmi'
 	icon_state = "detector_turned_off"
 	w_class = WEIGHT_CLASS_SMALL
@@ -80,6 +82,29 @@
 		next_beep = world.time + (0.25 SECONDS) * (nearest + 1)
 		playsound(src, 'modular_bandastation/anomaly_fields/sound/detector_peek.ogg', 40, FALSE)
 
+/obj/item/field_detector/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	var/kind_key = anomalous_energy_kind(interacting_with)
+	var/obj/effect/anomaly/anomaly = interacting_with
+	if(!kind_key && !istype(anomaly))
+		return NONE
+	var/list/lines = list("<b>[capitalize(interacting_with.name)]</b>")
+	if(kind_key)
+		var/datum/artifact_energy_kind/kind = artifact_energy_kind(kind_key)
+		lines += "Вид энергии: [kind.report_name]."
+	else
+		lines += "Вид энергии не определяется."
+	if(istype(anomaly))
+		if(anomaly.anomaly_core)
+			lines += "Поле колеблется на частоте [format_frequency(anomaly.anomaly_core.frequency)], код [anomaly.anomaly_core.code]."
+		else
+			lines += "Поле не колеблется на устойчивой частоте."
+		var/obj/effect/anomaly/pulsing/living = anomaly
+		if(istype(living) && !living.journal_record)
+			living.journal_note(user, "Обнаружена аномалия «[living.name]»: [jointext(lines.Copy(2), " ")]")
+	playsound(src, 'sound/machines/beep/twobeep.ogg', 30, TRUE)
+	to_chat(user, span_notice(jointext(lines, "<br>")))
+	return ITEM_INTERACT_SUCCESS
+
 /obj/item/field_detector/proc/scan(mob/user)
 	if(scanning)
 		return
@@ -95,6 +120,28 @@
 		to_chat(user, span_warning("[capitalize(name)] фиксирует аномальную активность поблизости."))
 	else
 		to_chat(user, span_notice("[capitalize(name)] не фиксирует аномалий поблизости."))
+
+/// ARTIFACT_ENERGY_* of an anomaly, field, field artefact or anomaly core, or null if it carries none known.
+/proc/anomalous_energy_kind(atom/thing)
+	if(istype(thing, /obj/effect/anomaly_field))
+		var/obj/effect/anomaly_field/field = thing
+		return field.energy_kind
+	if(istype(thing, /obj/item/field_artefact))
+		var/obj/item/field_artefact/artefact = thing
+		return artefact.energy_kind
+	var/core_type
+	if(istype(thing, /obj/item/assembly/signaler/anomaly))
+		core_type = thing.type
+	else if(istype(thing, /obj/effect/anomaly))
+		var/obj/effect/anomaly/anomaly = thing
+		core_type = isdatum(anomaly.anomaly_core) ? anomaly.anomaly_core.type : anomaly.anomaly_core
+	if(!core_type)
+		return null
+	if(ispath(core_type, /obj/item/assembly/signaler/anomaly/planetary))
+		var/obj/item/assembly/signaler/anomaly/planetary/planetary_core = core_type
+		return initial(planetary_core.energy_kind)
+	var/list/entry = GLOB.xenoarch_tg_core_battery[core_type]
+	return entry?[1]
 
 // ===== Bolts =====
 
@@ -182,21 +229,22 @@
 // ===== Collector =====
 
 /**
- * Holds one artefact and shuts it off. Only a collector lifts an artefact out of its field: it takes a
- * few seconds, and the field may go off as it lets go.
+ * Holds one small anomalous find (field artefact, anomaly core, strange rock or curio) and shuts it off.
+ * Only a collector lifts an artefact out of its field: it takes a few seconds, and the field may go off
+ * as it lets go.
  */
 /obj/item/field_collector
 	name = "коллектор артефактов"
-	desc = "Экранированный контейнер со щупами для одного аномального образования. Внутри артефакт не действует."
+	desc = "Экранированный контейнер со щупами для одной мелкой находки: артефакта, ядра аномалии, странного камня или древности. Внутри артефакт не действует."
 	icon = 'modular_bandastation/anomaly_fields/icons/equipment.dmi'
 	icon_state = "collector_empty"
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = SHEET_MATERIAL_AMOUNT, /datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT)
-	/// The artefact inside.
-	var/obj/item/field_artefact/stored
+	/// The find inside.
+	var/obj/item/stored
 
 /obj/item/field_collector/Destroy()
-	stored?.forceMove(drop_location()) // Artefacts are indestructible; one must not vanish with its container.
+	stored?.forceMove(drop_location()) // Finds must not vanish with their container; artefacts are indestructible.
 	return ..()
 
 /obj/item/field_collector/Exited(atom/movable/gone, direction)
@@ -206,7 +254,11 @@
 		update_appearance()
 
 /obj/item/field_collector/update_icon_state()
-	icon_state = stored ? stored.collector_state : "collector_empty"
+	var/obj/item/field_artefact/artefact = stored
+	if(istype(artefact))
+		icon_state = artefact.collector_state
+	else
+		icon_state = stored ? "collector_closed" : "collector_empty"
 	return ..()
 
 /obj/item/field_collector/examine(mob/user)
@@ -235,13 +287,14 @@
 	return TRUE
 
 /obj/item/field_collector/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
-	if(!istype(interacting_with, /obj/item/field_artefact))
+	if(!is_type_in_typecache(interacting_with, GLOB.field_collector_holdable))
 		return NONE
-	var/obj/item/field_artefact/artefact = interacting_with
+	var/obj/item/find = interacting_with
+	var/obj/item/field_artefact/artefact = find
 	if(stored)
 		balloon_alert(user, "уже занят!")
 		return ITEM_INTERACT_BLOCKING
-	if(artefact.bound)
+	if(istype(artefact) && artefact.bound)
 		balloon_alert(user, "захват...")
 		if(!do_after(user, 3 SECONDS, artefact) || stored || QDELETED(artefact) || !artefact.bound)
 			return ITEM_INTERACT_BLOCKING
@@ -249,15 +302,23 @@
 		artefact.collect(user)
 		if(field && (user.loc == field.loc || prob(50)))
 			field.provoke()
-	else if(artefact.loc == user)
-		if(!user.transferItemToLoc(artefact, src))
+	else if(find.loc == user)
+		if(!user.transferItemToLoc(find, src))
 			return ITEM_INTERACT_BLOCKING
-	if(artefact.loc != src)
-		artefact.forceMove(src)
-	stored = artefact
+	if(find.loc != src)
+		find.forceMove(src)
+	stored = find
 	playsound(src, 'modular_bandastation/anomaly_fields/sound/collector_closed.ogg', 25, FALSE)
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
+
+/// What a collector takes in.
+GLOBAL_LIST_INIT(field_collector_holdable, typecacheof(list(
+	/obj/item/field_artefact,
+	/obj/item/assembly/signaler/anomaly,
+	/obj/item/strange_rock,
+	/obj/item/xenoarch_curio,
+)))
 
 // ===== Pruzhina cell =====
 
@@ -329,8 +390,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/field_detector
-	name = "Детектор аномалий"
-	desc = "Наручный прибор, находящий невидимые аномальные поля."
+	name = "Полевой детектор аномалий"
+	desc = "Наручный прибор: находит невидимые аномальные поля и определяет вид энергии и частоту аномалий."
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = SMALL_MATERIAL_AMOUNT * 2)
 	build_path = /obj/item/field_detector

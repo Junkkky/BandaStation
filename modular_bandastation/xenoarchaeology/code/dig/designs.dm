@@ -46,7 +46,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/xenoarch_depth_scanner
-	name = "Полевой сканер"
+	name = "Стратиграфический сканер"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 3)
 	build_path = /obj/item/excavation/depth_scanner
@@ -103,7 +103,7 @@
 // ===== Research: Advanced Excavation =====
 
 /datum/design/xenoarch_scanner_advanced
-	name = "Продвинутый полевой сканер"
+	name = "Продвинутый стратиграфический сканер"
 	desc = "Прямо на месте определяет точную глубину находки и нужное поле породы."
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 3, /datum/material/gold = SMALL_MATERIAL_AMOUNT * 2, /datum/material/uranium = SMALL_MATERIAL_AMOUNT * 2)

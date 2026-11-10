@@ -1,30 +1,14 @@
 /**
- * # Specimen labeler
+ * # Find labels
  *
- * New code on BeeStation's idea (42b0625, code/modules/xenoarchaeology/tools/xenoarchaeology_labeler.dm).
- * Art: BeeStation icons/obj/xenoarchaeology/xenoartifact_tech.dmi "labeler", CC BY-SA 3.0; the
- * print animation in icons/study.dmi was drawn from it for Voidcrew.
+ * New code on BeeStation's idea (42b0625, code/modules/xenoarchaeology/tools/xenoarchaeology_labeler.dm);
+ * the BeeStation labeler is folded into the stratigraphic scanner.
  *
- * A handheld tag printer. The crew dials in three words from its fixed lists (what the find does,
- * what wakes it, its second effect or "None") and presses a printed tag onto a large find. Nothing
- * says whether the tag is right; a buyer's price is the only answer. Right-click peels a tag off.
+ * The crew dials in three words from fixed lists (what the find does, what wakes it, its second effect
+ * or "None") with Alt-click and presses a printed tag onto a large find by clicking it. Nothing says
+ * whether the tag is right. Right-click peels a tag off.
  */
-/obj/item/artifact_labeler
-	name = "маркировщик образцов"
-	desc = "Ручной принтер бирок с маленьким зелёным экраном. Список слов прошит в память и не меняется."
-	icon = 'modular_bandastation/xenoarchaeology/icons/study.dmi'
-	icon_state = "labeler"
-	inhand_icon_state = "electronic"
-	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	item_flags = NOBLUDGEON
-	w_class = WEIGHT_CLASS_SMALL
-	drop_sound = 'sound/items/handling/tape_drop.ogg'
-	pickup_sound = 'sound/items/handling/tape_pickup.ogg'
-	custom_materials = list(
-		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2,
-		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 1.5,
-	)
+/obj/item/excavation/depth_scanner
 	/// What the find does, as an effect's label word
 	var/effect_word
 	/// What wakes it, as a trigger word
@@ -33,27 +17,24 @@
 	var/second_word
 	COOLDOWN_DECLARE(print_cooldown)
 
-/obj/item/artifact_labeler/examine(mob/user)
+/obj/item/excavation/depth_scanner/examine(mob/user)
 	. = ..()
 	if(effect_word || trigger_word || second_word)
-		. += "На экране: <i>[effect_word || "..."] / [trigger_word || "..."] / [second_word || "..."]</i>"
+		. += "Бирка на экране: <i>[effect_word || "..."] / [trigger_word || "..."] / [second_word || "..."]</i>"
 
-/obj/item/artifact_labeler/attack_self(mob/user, modifiers)
-	. = ..()
-	if(.)
-		return
+/obj/item/excavation/depth_scanner/click_alt(mob/user)
 	ui_interact(user)
-	return TRUE
+	return CLICK_ACTION_SUCCESS
 
 /// Whether all three words are set.
-/obj/item/artifact_labeler/proc/is_complete()
+/obj/item/excavation/depth_scanner/proc/is_complete()
 	return effect_word && trigger_word && second_word
 
 /**
  * Dials one field to a word from its list. Returns TRUE if it changed.
  * `field` is "effect", "trigger" or "second"; a null word clears the field.
  */
-/obj/item/artifact_labeler/proc/set_word(field, word)
+/obj/item/excavation/depth_scanner/proc/set_word(field, word)
 	if(word && !(word in words_for(field)))
 		return FALSE
 	switch(field)
@@ -74,7 +55,7 @@
 	return TRUE
 
 /// The words a field may take.
-/obj/item/artifact_labeler/proc/words_for(field)
+/obj/item/excavation/depth_scanner/proc/words_for(field)
 	switch(field)
 		if("effect")
 			return artifact_effect_label_names()
@@ -85,22 +66,20 @@
 	return list()
 
 /// A label datum for the words now set, or null if any is missing.
-/obj/item/artifact_labeler/proc/make_label()
+/obj/item/excavation/depth_scanner/proc/make_label()
 	if(!is_complete())
 		return null
 	return new /datum/artifact_label(effect_word, trigger_word, second_word)
 
-/obj/item/artifact_labeler/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
-	if(!istype(interacting_with, /obj/machinery/artifact))
-		return NONE
-	var/obj/machinery/artifact/find = interacting_with
+/// Presses a tag with the words dialled in onto `find`; with words missing, opens the tag screen instead.
+/obj/item/excavation/depth_scanner/proc/label_find(obj/machinery/artifact/find, mob/living/user)
 	if(!is_complete())
 		balloon_alert(user, "бирка заполнена не полностью!")
+		ui_interact(user)
 		return ITEM_INTERACT_BLOCKING
 	if(!COOLDOWN_FINISHED(src, print_cooldown))
 		return ITEM_INTERACT_BLOCKING
 	COOLDOWN_START(src, print_cooldown, 2 SECONDS)
-	flick("labeler_print", src)
 	playsound(src, 'sound/items/taperecorder/taperecorder_print.ogg', 35, TRUE)
 	if(!do_after(user, 1 SECONDS, find))
 		return ITEM_INTERACT_BLOCKING
@@ -118,7 +97,7 @@
 	)
 	return ITEM_INTERACT_SUCCESS
 
-/obj/item/artifact_labeler/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
+/obj/item/excavation/depth_scanner/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!istype(interacting_with, /obj/machinery/artifact))
 		return NONE
 	var/obj/machinery/artifact/find = interacting_with
@@ -139,30 +118,30 @@
 
 // ===== tgui =====
 
-/obj/item/artifact_labeler/ui_state(mob/user)
+/obj/item/excavation/depth_scanner/ui_state(mob/user)
 	return GLOB.hands_state
 
-/obj/item/artifact_labeler/ui_interact(mob/user, datum/tgui/ui)
+/obj/item/excavation/depth_scanner/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "XenoarchLabeler", name)
+		ui = new(user, src, "XenoarchLabeler", "Бирка находки")
 		ui.open()
 
-/obj/item/artifact_labeler/ui_static_data(mob/user)
+/obj/item/excavation/depth_scanner/ui_static_data(mob/user)
 	return list(
 		"effects" = artifact_effect_label_names(),
 		"triggers" = artifact_trigger_label_names(),
 		"none" = ARTIFACT_LABEL_NONE,
 	)
 
-/obj/item/artifact_labeler/ui_data(mob/user)
+/obj/item/excavation/depth_scanner/ui_data(mob/user)
 	return list(
 		"effect" = effect_word,
 		"trigger" = trigger_word,
 		"second" = second_word,
 	)
 
-/obj/item/artifact_labeler/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/excavation/depth_scanner/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return

@@ -87,9 +87,11 @@
 // ===== Depth scanner =====
 
 /obj/item/excavation/depth_scanner
-	name = "полевой сканер"
-	desc = "Ручной зонд: прикалывает метку к находке и показывает её глубину и сколько уже снято. Также проводит полевое обследование экспедиционных находок перед отбором проб."
-	icon_state = "depth_scanner"
+	name = "стратиграфический сканер"
+	desc = "Ручной стратиграфический сканер. В руке подсвечивает места находок в породе вокруг; по месту находки ставит голобирку (видна по GPS) и сообщает, крупная там находка или малая; показывает глубину крупной находки и сколько уже снято. Alt-клик — набор бирки, клик по выкопанному артефакту — прижать бирку. Также проводит полевое обследование экспедиционных находок перед отбором проб."
+	icon = 'icons/obj/devices/scanner.dmi'
+	icon_state = "manual_mining"
+	color = "#ff9933"
 	inhand_icon_state = "analyzer"
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 3)
 	/// How long a sounding takes
@@ -100,9 +102,9 @@
 	var/reads_field = FALSE
 
 /obj/item/excavation/depth_scanner/advanced
-	name = "продвинутый полевой сканер"
-	desc = "Полевой зонд, прямо на раскопе определяющий точную глубину находки и нужное поле её матрицы."
-	icon_state = "depth_scanner_adv"
+	name = "продвинутый стратиграфический сканер"
+	desc = "Стратиграфический сканер, прямо на раскопе определяющий точную глубину находки и нужное поле её матрицы."
+	color = "#e0661a"
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 3, /datum/material/gold = SMALL_MATERIAL_AMOUNT * 2, /datum/material/uranium = SMALL_MATERIAL_AMOUNT * 2)
 	scan_time = 1 SECONDS
 	exact = TRUE

@@ -82,7 +82,7 @@ GLOBAL_VAR_INIT(stationtrauma_research_serial, 0)
 /** Surveyable mineral source using the native ore appearance. */
 /obj/structure/stationtrauma_research_source/mineral
 	name = "необычный минеральный нарост"
-	desc = "Кристаллические отложения в породе. Полевой сканер и контейнер позволят доставить пробу в лабораторию."
+	desc = "Кристаллические отложения в породе. Стратиграфический сканер и контейнер позволят доставить пробу в лабораторию."
 	icon = 'icons/obj/ore.dmi'
 	icon_state = "iron"
 	field_notes = "Плотный минеральный нарост с заметными кристаллическими включениями."
