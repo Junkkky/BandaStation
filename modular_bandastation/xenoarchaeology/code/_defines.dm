@@ -119,6 +119,16 @@
 
 // ===== Harvesting =====
 #define ARTIFACT_MAX_HARVESTS 3
+/// Charge an exotic battery holds. One harvest fills one battery.
+#define ARTIFACT_BATTERY_CAPACITY 200
+/// Charge per second a harvester draws on tier-1 capacitors: a full battery in 80 seconds.
+#define ARTIFACT_HARVEST_DRAW_RATE 2.5
+/// Charge per second a utilizer spends running a field or bursts: a full battery lasts 400 seconds.
+#define ARTIFACT_UTILIZER_DRAIN 0.5
+/// Charge per second a utilizer feeds a burst effect's store, twice what an artifact refills.
+#define ARTIFACT_UTILIZER_PULSE_FEED 1
+/// Charge one contact use costs: ten from a full battery.
+#define ARTIFACT_UTILIZER_TOUCH_COST 20
 
 /// do_after key for every xenoarchaeology action, so one person works one thing at a time.
 #define DOAFTER_SOURCE_XENOARCH "doafter_xenoarch"
@@ -199,3 +209,5 @@
 #define COMSIG_ARTIFACT_LABEL_CHANGED "artifact_label_changed"
 /// The artifact was stamped as dug: (band)
 #define COMSIG_ARTIFACT_STAMPED "artifact_stamped"
+/// One harvest was taken from it: (datum/artifact_effect/effect, mob/user)
+#define COMSIG_ARTIFACT_HARVESTED "artifact_harvested"

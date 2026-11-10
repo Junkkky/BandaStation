@@ -44,3 +44,9 @@ Voidcrew собрал их из NovaSector (порт TauCeti), Polaris и VORESt
 NovaSector `5ce2bd2215c0`, `modular_nova/modules/xenoarchartifacts/icons/machinery.dmi` (через TauCetiClassic,
 CC BY-SA 3.0); состояния без питания, с открытой панелью и свечения отредактированы для
 [Voidcrew PR #506](https://github.com/voidcrew/Voidcrew/pull/506). Маркировщик и ленты — Voidcrew PR #506.
+
+## Использование (`icons/use.dmi`)
+
+NovaSector `5ce2bd2215c0`, `machinery.dmi` (сборщик, `particles_battery`), CC BY-SA 3.0; маски купола и ядра
+батареи нарисованы для [Voidcrew PR #506](https://github.com/voidcrew/Voidcrew/pull/506). Луч сбора —
+обесцвеченный `drain_life` из /tg/station. Утилизатор — Voidcrew PR #506.
