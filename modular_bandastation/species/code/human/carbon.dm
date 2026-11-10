@@ -9,3 +9,6 @@
 
 /mob/living/carbon/human/species/vox
 	race = /datum/species/vox
+
+/mob/living/carbon/human/species/drask
+	race = /datum/species/drask

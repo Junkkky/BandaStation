@@ -212,6 +212,7 @@
 #define SPECIES_TAJARAN "tajaran"
 #define SPECIES_SKRELL "skrell"
 #define SPECIES_VOX "vox"
+#define SPECIES_DRASK "drask"
 /// BANDASTATION ADDITION END - Species
 
 // Like species IDs, but not specifically attached a species.

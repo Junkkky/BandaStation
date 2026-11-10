@@ -284,6 +284,16 @@ export const skrell_cloth_wrap_color: Feature<string> = {
   component: FeatureColorInput,
 };
 
+export const drask_arm_spines_color: Feature<string> = {
+  name: 'Цвет термонаростов',
+  component: FeatureColorInput,
+};
+
+export const drask_skin_tone: FeatureChoiced = {
+  name: 'Тон кожи драска',
+  component: FeatureDropdownInput,
+};
+
 export const feature_fish_tail_color: Feature<string> = {
   name: 'Fish tail color',
   component: FeatureColorInput,

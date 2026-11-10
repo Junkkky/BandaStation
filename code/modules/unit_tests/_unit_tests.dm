@@ -491,6 +491,9 @@
 #include "../../../modular_bandastation/telephones/_defines.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_tests.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_speech_tests.dm"
+#include "../../../modular_bandastation/species/tests/drask_eyes.dm"
+#include "../../../modular_bandastation/species/tests/drask_species.dm"
+#include "../../../modular_bandastation/species/tests/drask_temperature.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
