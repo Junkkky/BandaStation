@@ -111,11 +111,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
-"ap" = (
-/obj/machinery/atmospherics/components/unary/ship_engine_heater,
-/obj/structure/window/reinforced/plasma/spawner/directional/north,
-/turf/open/floor/plating/airless,
-/area/shuttle/stationtrauma_space/raven/engines)
 "aq" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Emergency Shutle Engineering";
@@ -330,20 +325,12 @@
 "aI" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/engines)
-"aJ" = (
-/obj/machinery/power/shuttle_engine/large/tritium,
-/turf/open/floor/plating/airless,
-/area/shuttle/stationtrauma_space/raven/engines)
 "aK" = (
 /turf/open/floor/plating/airless,
 /area/shuttle/stationtrauma_space/raven/engines)
 "aL" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/airlock_port_fore)
-"aM" = (
-/obj/machinery/power/shuttle_engine/propulsion/tritium,
-/turf/open/floor/plating/airless,
-/area/shuttle/stationtrauma_space/raven/engines)
 "aN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
@@ -739,6 +726,10 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_fore)
+"bA" = (
+/obj/machinery/power/shuttle_engine/large/standard,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/engines)
 "bB" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
@@ -856,6 +847,9 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_fore)
+"bS" = (
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/engines)
 "bT" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -892,6 +886,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
+"bY" = (
+/obj/machinery/power/shuttle_engine/propulsion/standard,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/engines)
 "bZ" = (
 /obj/structure/cable/layer1,
 /obj/machinery/power/terminal{
@@ -973,6 +971,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
+"cj" = (
+/obj/machinery/atmospherics/components/unary/ship_engine_heater/large,
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/engines)
+"ck" = (
+/obj/machinery/atmospherics/components/unary/ship_engine_heater,
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/raven/engines)
 "cn" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -2813,8 +2821,8 @@ bN
 fo
 aG
 hP
-aK
-aJ
+bS
+bA
 "}
 (6,1,1) = {"
 ab
@@ -2846,9 +2854,9 @@ al
 gO
 gP
 br
-ap
-aK
-aK
+cj
+bS
+bS
 "}
 (7,1,1) = {"
 gy
@@ -2880,8 +2888,8 @@ ey
 bO
 hi
 br
-ap
-aM
+ck
+bY
 ab
 "}
 (8,1,1) = {"
@@ -2914,8 +2922,8 @@ am
 am
 ah
 af
-ap
-aM
+ck
+bY
 ab
 "}
 (9,1,1) = {"
@@ -2948,9 +2956,9 @@ bP
 bP
 bG
 af
-ap
-aK
-aJ
+cj
+bS
+bA
 "}
 (10,1,1) = {"
 gy
@@ -2984,7 +2992,7 @@ bH
 af
 aE
 aK
-aK
+bS
 "}
 (11,1,1) = {"
 gy
@@ -3051,8 +3059,8 @@ bQ
 bH
 af
 aE
-aK
-aJ
+bS
+bA
 "}
 (13,1,1) = {"
 gy
@@ -3084,9 +3092,9 @@ bT
 bT
 bK
 af
-ap
-aK
-aK
+cj
+bS
+bS
 "}
 (14,1,1) = {"
 gy
@@ -3118,8 +3126,8 @@ am
 an
 ai
 ac
-ap
-aM
+ck
+bY
 ab
 "}
 (15,1,1) = {"
@@ -3152,8 +3160,8 @@ jZ
 bW
 kb
 ae
-ap
-aM
+ck
+bY
 ab
 "}
 (16,1,1) = {"
@@ -3186,9 +3194,9 @@ aq
 ko
 kp
 ae
-ap
-aK
-aJ
+cj
+bS
+bA
 "}
 (17,1,1) = {"
 ab
@@ -3221,8 +3229,8 @@ ca
 kE
 bv
 hP
-aK
-aK
+bS
+bS
 "}
 (18,1,1) = {"
 ab

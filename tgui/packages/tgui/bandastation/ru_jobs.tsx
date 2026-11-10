@@ -18,6 +18,7 @@ export const JOBS_RU = {
   'Security Officer (Engineering)': 'Офицер (Инженерия)',
   'Security Officer (Medical)': 'Офицер (Медицина)',
   'Security Officer (Science)': 'Офицер (Исследование)',
+  'Spacepod Pilot': 'Под-пилот СБ',
   'Station Engineer': 'Станционный инженер',
   'Atmospheric Technician': 'Атмосферный техник',
   'Spacepod Technician': 'Челнок-инженер',

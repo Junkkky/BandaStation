@@ -16,6 +16,8 @@
 	discovered = TRUE
 	/// Retained for admin diagnostics; navigation never publishes the generation seed.
 	var/seed
+	/// Modifier budget/difficulty used when charting, retained after the generator is released.
+	var/modifier_level = 1
 	/// Square generated surface side length in turfs.
 	var/surface_width = 128
 	/// Measured time spent preparing the physical surface, in seconds.
@@ -48,21 +50,27 @@
  *
  * Modifiers are rolled here so orbital surveys report them before anyone lands.
  * `modifier_level` sets the planet modifier budgets; sectors derive it from the distance to their arrival point.
+ * Optional selected_modifiers selects exact compatible traits for admin generation; null preserves random rolls.
  */
-/proc/create_stationtrauma_planet(seed = rand(1, 1000000), planet_id = "moon", planet_name = "Каменистая экзопланета", planet_type = /datum/stationtrauma_overmap_site/space/planet, modifier_level = 1)
+/proc/create_stationtrauma_planet(seed = rand(1, 1000000), planet_id = "moon", planet_name = "Каменистая экзопланета", planet_type = /datum/stationtrauma_overmap_site/space/planet, modifier_level = 1, list/selected_modifiers = null)
 	if(!ispath(planet_type, /datum/stationtrauma_overmap_site/space/planet))
 		CRASH("Invalid expedition planet profile [planet_type]")
 	var/datum/stationtrauma_overmap_site/space/planet/site = new planet_type
 	site.id = planet_id
 	site.name = planet_name
 	site.seed = seed
+	site.modifier_level = modifier_level
 	site.generator = new site.generator_type(seed)
 	// A large town or complex widens the surface around it; the template itself is chosen when the surface is built.
 	if(prob(site.generator.large_ruin_chance))
 		site.generator.width = site.generator.large_surface_width
 		site.generator.large_slot = TRUE
 	site.surface_width = site.generator.width
-	site.modifier_names = site.generator.apply_modifiers(modifier_level)
+	site.modifier_names = site.generator.apply_modifiers(modifier_level, selected_modifiers)
+	if(isnull(site.modifier_names))
+		QDEL_NULL(site.generator)
+		qdel(site)
+		return null
 	site.modifier_log = site.generator.modifier_log.Copy()
 	return site
 

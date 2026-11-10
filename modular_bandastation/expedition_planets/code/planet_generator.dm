@@ -436,6 +436,10 @@
 				if(!istype(tile) || tile.is_blocked_turf())
 					continue
 				var/nest_type = islist(modifier.nest_type) ? pick(modifier.nest_type) : modifier.nest_type
+				if(istype(src, /datum/map_generator/expedition_barren/dead) && ispath(nest_type, /obj/structure/spawner/stationtrauma_zombie_pit))
+					var/datum/map_generator/expedition_barren/dead/dead_profile = src
+					if(!dead_profile.in_zombie_region(tile))
+						continue
 				var/atom/nest = new nest_type(tile)
 				// Spawner dens hold their kind from the start; mines and geysers stand alone.
 				if(istype(nest, /obj/structure/spawner))
