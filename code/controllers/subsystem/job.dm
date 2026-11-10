@@ -124,6 +124,9 @@ SUBSYSTEM_DEF(job)
 	if(!new_overflow)
 		job_debug("SET_OVRFLW: Failed to set new overflow role: [new_overflow_role]")
 		CRASH("set_overflow_role failed | new_overflow_role: [isnull(new_overflow_role) ? "null" : new_overflow_role]")
+	if(new_overflow.required_donator_level)
+		log_game("Ignoring donor job [new_overflow.title] as overflow role.")
+		return
 	var/cap = CONFIG_GET(number/overflow_cap)
 
 	new_overflow.allow_bureaucratic_error = FALSE
@@ -248,15 +251,38 @@ SUBSYSTEM_DEF(job)
  * * job - The job to assign
  * * latejoin - Set to TRUE if this is a latejoin role assignment.
  * * do_eligibility_checks - Set to TRUE to conduct all job eligibility tests and reject on failure. Set to FALSE if job eligibility has been tested elsewhere and they can be safely skipped.
+ * * debug_spawn - Allows the admin full crew debug verb to create clientless dummies.
+ * * expected_slot - For latejoin, reject if the resolved slot changed since the player confirmed.
+ * * expected_roundstart_assignment - For a forced Dynamic job, the selection that must still own it.
  */
-/datum/controller/subsystem/job/proc/assign_role(mob/dead/new_player/player, datum/job/job, latejoin = FALSE, do_eligibility_checks = TRUE)
+/datum/controller/subsystem/job/proc/assign_role(mob/dead/new_player/player, datum/job/job, latejoin = FALSE, do_eligibility_checks = TRUE, debug_spawn = FALSE, expected_slot, datum/roundstart_job_changes/expected_roundstart_assignment)
 	job_debug("AR: Running, Player: [player], Job: [isnull(job) ? "null" : job], LateJoin: [latejoin]")
 	if(!player?.mind || !job)
 		job_debug("AR: Failed, player has no mind or job is null. Player: [player], Rank: [isnull(job) ? "null" : job.type]")
 		return FALSE
 
-	if(do_eligibility_checks && (check_job_eligibility(player, job, "AR", add_job_to_log = TRUE) != JOB_AVAILABLE))
+	var/client/player_client = GET_CLIENT(player)
+	var/datum/mind/player_mind = player.mind
+	if(do_eligibility_checks && (check_job_eligibility(player, job, "AR", add_job_to_log = TRUE, latejoin = latejoin) != JOB_AVAILABLE))
 		return FALSE
+	if(QDELETED(player) || player.mind != player_mind || GET_CLIENT(player) != player_client)
+		return FALSE
+	if(expected_roundstart_assignment && (SSdynamic.get_roundstart_job_changes(player_mind) != expected_roundstart_assignment || LAZYACCESS(forced_occupations, player_mind) != job.type))
+		return FALSE
+	if(!debug_spawn)
+		if(!player_client?.prefs || !job.can_access_donor_job(player_client))
+			return FALSE
+		if(latejoin)
+			if(player.spawning || !is_unassigned_job(player_mind.assigned_role) || player.get_latejoin_block_message() || !player.has_latejoin_job_capacity(job) || !job.special_check_latejoin(player_client))
+				return FALSE
+		else if(job.required_donator_level && job.spawn_positions != -1 && job.current_positions >= job.spawn_positions)
+			return FALSE
+		var/datum/job_character_selection/selection = player_client.prefs.select_job_character(job, latejoin)
+		if(selection.get_eligibility(job) != JOB_AVAILABLE || (!isnull(expected_slot) && selection.slot != expected_slot))
+			qdel(selection)
+			return FALSE
+		QDEL_NULL(player.assigned_job_character)
+		player.assigned_job_character = selection
 
 	job_debug("AR: Role now set and assigned - [player] is [job.title], JCP:[job.current_positions], JPL:[latejoin ? job.total_positions : job.spawn_positions]")
 	player.mind.set_assigned_role(job)
@@ -315,6 +341,8 @@ SUBSYSTEM_DEF(job)
 		if(job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND) //If you want a command position, select it!
 			job_debug("GRJ: Skipping command role, Player: [player], Job: [job]")
 			continue
+		if(job.required_donator_level)
+			continue
 
 		// This check handles its own output to job_debug.
 		if(check_job_eligibility(player, job, "GRJ", add_job_to_log = TRUE) != JOB_AVAILABLE)
@@ -332,6 +360,7 @@ SUBSYSTEM_DEF(job)
 	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
 		if(!player?.mind)
 			continue
+		QDEL_NULL(player.assigned_job_character)
 		player.mind.set_assigned_role(get_job_type(/datum/job/unassigned))
 	setup_occupations()
 	unassigned = list()
@@ -888,11 +917,16 @@ SUBSYSTEM_DEF(job)
 /// or making sure roles critical to round progression exist where possible every shift.
 /datum/controller/subsystem/job/proc/assign_priority_positions()
 	job_debug("APP: Assigning Dynamic ruleset forced occupations: [LAZYLEN(forced_occupations)]")
-	for(var/datum/mind/mind as anything in forced_occupations)
-		var/mob/dead/new_player = mind.current
+	for(var/datum/mind/mind as anything in forced_occupations?.Copy())
+		var/forced_job = LAZYACCESS(forced_occupations, mind)
+		if(!forced_job)
+			continue
+		var/mob/dead/new_player/player = mind.current
+		var/datum/roundstart_job_changes/selection = SSdynamic.get_roundstart_job_changes(mind)
 		// Eligibility checks already carried out as part of the dynamic ruleset trim_candidates proc.
 		// However no guarantee of game state between then and now, so don't skip eligibility checks on assign_role.
-		assign_role(new_player, get_job_type(LAZYACCESS(forced_occupations, mind)))
+		if(!assign_role(player, get_job_type(forced_job), expected_roundstart_assignment = selection) && selection)
+			SSdynamic.cancel_roundstart_assignment(mind, selection)
 
 	/// BANDASTATION REMOVAL START - Job Priority Staffing
 	// // Get JP_HIGH department Heads of Staff in place. Indirectly useful for the Revolution ruleset to have as many Heads as possible.
@@ -954,7 +988,7 @@ SUBSYSTEM_DEF(job)
  * * debug_prefix - Logging prefix for the job_debug log entries. For example, GRJ during give_random_job or DO during divide_occupations.
  * * add_job_to_log - If TRUE, appends the job type to the log entry. If FALSE, does not. Set to FALSE when check is part of iterating over players for a specific job, set to TRUE when check is part of iterating over jobs for a specific player and you don't want extra log entry spam.
  */
-/datum/controller/subsystem/job/proc/check_job_eligibility(mob/dead/new_player/player, datum/job/possible_job, debug_prefix = "", add_job_to_log = FALSE)
+/datum/controller/subsystem/job/proc/check_job_eligibility(mob/dead/new_player/player, datum/job/possible_job, debug_prefix = "", add_job_to_log = FALSE, latejoin = FALSE)
 	if(!player.mind)
 		job_debug("[debug_prefix]: Player has no mind, Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_GENERIC
@@ -972,23 +1006,25 @@ SUBSYSTEM_DEF(job)
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_PLAYTIME, possible_job.title)], Player: [player], MissingTime: [required_playtime_remaining][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_PLAYTIME
 
-	// Run the banned check last since it should be the rarest check to fail and can access the database.
+	var/client/player_client = GET_CLIENT(player)
+	var/datum/mind/player_mind = player.mind
+	// The ban lookup can sleep, so resolve the player's current profile afterward.
 	if(possible_job.is_role_banned(player.ckey))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BANNED
 
-	// Check for character age
-	var/client/player_client = GET_CLIENT(player)
-	if(isnum(possible_job.required_character_age) && possible_job.required_character_age > player_client.prefs.read_preference(/datum/preference/numeric/age))
-		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_AGE)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
-		return JOB_UNAVAILABLE_AGE
-
 	// Need to recheck the player exists after is_banned_from since it can query the DB which may sleep.
-	if(QDELETED(player))
+	if(QDELETED(player) || !player_client?.prefs || GET_CLIENT(player) != player_client || player.mind != player_mind)
 		job_debug("[debug_prefix]: Player is qdeleted, Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_GENERIC
 
-	return JOB_AVAILABLE
+	if(!possible_job.can_access_donor_job(player_client))
+		return JOB_UNAVAILABLE_DONATOR
+
+	var/datum/job_character_selection/selection = player_client.prefs.select_job_character(possible_job, latejoin)
+	var/eligibility = selection.get_eligibility(possible_job)
+	qdel(selection)
+	return eligibility
 
 /**
  * Check if the station manifest has at least a certain amount of this staff type.

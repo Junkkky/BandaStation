@@ -219,12 +219,16 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 	//Configure mode and assign player to antagonists
-	var/can_continue = FALSE
-	can_continue = SSdynamic.select_roundstart_antagonists() //Choose antagonists
+	var/list/rolled_rulesets = list()
+	var/list/rejected_rulesets = list()
+	var/can_continue = SSdynamic.select_roundstart_antagonists(rolled_rulesets, rejected_rulesets)
 	CHECK_TICK
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PRE_JOBS_ASSIGNED, src)
+	for(var/datum/station_trait/job/job_trait in SSstation.station_traits)
+		job_trait.assign_lobby_candidates()
 	can_continue = can_continue && SSjob.divide_occupations() //Distribute jobs
 	CHECK_TICK
+	SSdynamic.finish_roundstart_preparation(rolled_rulesets, rejected_rulesets, can_continue || GLOB.debugging_enabled)
 
 	if(!GLOB.debugging_enabled)
 		if(!can_continue)
@@ -463,15 +467,45 @@ SUBSYSTEM_DEF(ticker)
 		LAZYADD(round_end_events, cb)
 
 /datum/controller/subsystem/ticker/proc/create_characters()
-	for(var/i in GLOB.new_player_list)
-		var/mob/dead/new_player/player = i
+	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list.Copy())
+		if(QDELETED(player))
+			continue
 		SStitle.show_title_screen_to(player.client) // BANDASTATION ADDITION - HTML Title Screen
-		if(player.ready == PLAYER_READY_TO_PLAY && player.mind)
-			GLOB.joined_player_list += player.ckey
-			var/atom/destination = player.mind.assigned_role.get_roundstart_spawn_point()
-			if(!destination) // Failed to fetch a proper roundstart location, won't be going anywhere.
-				continue
-			player.create_character(destination)
+		var/datum/mind/spawning_mind = player.mind
+		var/datum/job/job = spawning_mind?.assigned_role
+		if(player.ready != PLAYER_READY_TO_PLAY || !job || is_unassigned_job(job))
+			CHECK_TICK
+			continue
+
+		var/player_ckey = player.ckey
+		var/previous_mind_activity = spawning_mind.active
+		var/datum/job_character_selection/selection = player.assigned_job_character
+		var/datum/roundstart_job_changes/antag_selection = SSdynamic.get_roundstart_job_changes(spawning_mind)
+		var/atom/destination = job.get_roundstart_spawn_point()
+		var/mob/living/character = destination ? player.create_character(destination) : null
+		if(!QDELETED(character))
+			if(antag_selection)
+				SSdynamic.validate_roundstart_body(spawning_mind, character, antag_selection)
+			GLOB.joined_player_list += player_ckey
+			CHECK_TICK
+			continue
+
+		if(antag_selection)
+			SSdynamic.cancel_roundstart_assignment(spawning_mind, antag_selection)
+		// Character creation can wait, so only release the vacancy held by this attempt.
+		var/still_reserved = QDELETED(player) || (player.assigned_job_character == selection && (!player.mind || player.mind == spawning_mind))
+		if(still_reserved && (QDELETED(spawning_mind) || spawning_mind.assigned_role == job))
+			job.current_positions = max(0, job.current_positions - 1)
+			if(!QDELETED(spawning_mind))
+				spawning_mind.set_assigned_role(SSjob.get_job_type(/datum/job/unassigned))
+				spawning_mind.active = previous_mind_activity
+			if(!QDELETED(player))
+				QDEL_NULL(player.assigned_job_character)
+				player.spawning = FALSE
+				player.ready = PLAYER_NOT_READY
+				if(!player.client)
+					QDEL_NULL(player.mind)
+					qdel(player)
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/collect_minds()

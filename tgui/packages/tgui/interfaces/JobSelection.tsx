@@ -1,4 +1,4 @@
-import { toMerged } from 'es-toolkit';
+import { useEffect } from 'react';
 import { Color } from 'tgui-core/color';
 import {
   Box,
@@ -22,26 +22,37 @@ import { JOB2ICON } from './common/JobToIcon';
 
 type Job = {
   unavailable_reason: string | null;
-  command: BooleanLike;
-  open_slots: number;
+  open_slots: number | '∞';
   used_slots: number;
   prioritized: BooleanLike;
-  description: string;
   jobIcon: string;
+  character_profile?: string;
+  public_title?: string;
+};
+
+type JobDetails = {
+  command: BooleanLike;
+  description: string;
+  job_icon?: string;
 };
 
 type Department = {
-  color: string;
   jobs: Record<string, Job>;
-  open_slots: number;
+  open_slots: number | '∞';
+};
+
+type DepartmentDetails = {
+  color: string;
+  jobs: Record<string, JobDetails>;
 };
 
 type Data = {
-  departments_static: Record<string, Department>;
+  departments_static: Record<string, DepartmentDetails>;
   departments: Record<string, Department>;
   alert_state: string;
   shuttle_status: string;
   disable_jobs_for_non_observers: BooleanLike;
+  edit_slot: number;
   priority: BooleanLike;
   round_duration: string;
 };
@@ -49,31 +60,33 @@ type Data = {
 type JobEntryProps = {
   jobName: string;
   job: Job;
-  department: Department;
-  jobIcon: string;
+  details?: JobDetails;
+  color: string;
+  disabled: boolean;
   onClick: () => void;
 };
 
 function JobEntry(props: JobEntryProps) {
-  const { jobName, job, department, onClick } = props;
-
-  const jobIcon = JOB2ICON[ReverseJobsRu(jobName)] || null;
+  const { jobName, job, details, color, disabled, onClick } = props;
+  const jobIcon = job.jobIcon || JOB2ICON[ReverseJobsRu(jobName)];
+  const title = job.public_title || JOBS_RU[jobName] || jobName;
+  const unavailable = disabled || !!job.unavailable_reason;
 
   return (
     <Button
       fluid
+      disabled={unavailable}
       style={{
-        // Try not to think too hard about this one.
-        backgroundColor: job.unavailable_reason
+        backgroundColor: unavailable
           ? '#949494' // Grey background
           : job.prioritized
             ? '#16fc0f' // Bright green background
-            : Color.fromHex(department.color).darken(10).toString(),
-        color: job.unavailable_reason
+            : Color.fromHex(color).darken(10).toString(),
+        color: unavailable
           ? '#616161' // Dark grey font
-          : Color.fromHex(department.color).darken(90).toString(),
+          : Color.fromHex(color).darken(90).toString(),
         fontSize: '1.1rem',
-        cursor: job.unavailable_reason ? 'initial' : 'pointer',
+        cursor: unavailable ? 'initial' : 'pointer',
       }}
       tooltip={
         job.unavailable_reason ||
@@ -82,28 +95,37 @@ function JobEntry(props: JobEntryProps) {
             <p style={{ marginTop: '0px' }}>
               <b>The HoP wants more people in this job!</b>
             </p>
-            {job.description}
+            {details?.description}
           </>
         ) : (
-          job.description
+          details?.description
         ))
       }
       tooltipPosition="top"
-      onClick={() => {
-        !job.unavailable_reason && onClick();
-      }}
+      onClick={onClick}
     >
       <Stack fill>
-        {jobIcon && (
+        {(details?.job_icon || jobIcon) && (
           <Stack.Item>
-            <Icon style={{ marginRight: '0.1em' }} name={jobIcon} />
+            {details?.job_icon ? (
+              <img
+                src={`data:image/png;base64,${details.job_icon}`}
+                alt=""
+                width={16}
+                height={16}
+                style={{ imageRendering: 'pixelated', marginRight: '0.1em' }}
+              />
+            ) : (
+              <Icon style={{ marginRight: '0.1em' }} name={jobIcon} />
+            )}
           </Stack.Item>
         )}
         <Stack.Item grow>
-          {job.command ? (
-            <b>{JOBS_RU[jobName] || jobName}</b>
-          ) : (
-            JOBS_RU[jobName] || jobName
+          {details?.command ? <b>{title}</b> : title}
+          {job.character_profile && (
+            <Box fontSize={0.8} opacity={0.75}>
+              {job.character_profile}
+            </Box>
           )}
         </Stack.Item>
         <Stack.Item>
@@ -123,11 +145,13 @@ function JobEntry(props: JobEntryProps) {
 type DepartmentEntryProps = {
   name: string;
   department: Department;
+  details: DepartmentDetails;
 };
 
 function DepartmentEntry(props: DepartmentEntryProps) {
-  const { name, department } = props;
-  const { act } = useBackend<Data>();
+  const { name, department, details } = props;
+  const { act, data } = useBackend<Data>();
+  const { color } = details;
 
   return (
     <Box minWidth="30%">
@@ -141,7 +165,7 @@ function DepartmentEntry(props: DepartmentEntryProps) {
                 whiteSpace: 'nowrap',
                 position: 'absolute',
                 right: '1em',
-                color: Color.fromHex(department.color).darken(60).toString(),
+                color: Color.fromHex(color).darken(60).toString(),
               }}
             >
               {`позиций доступно: ${department.open_slots}`}
@@ -149,17 +173,15 @@ function DepartmentEntry(props: DepartmentEntryProps) {
           </>
         }
         style={{
-          backgroundColor: department.color,
+          backgroundColor: color,
           marginBottom: '1em',
           breakInside: 'avoid-column',
         }}
         titleStyle={{
-          'border-bottom-color': Color.fromHex(department.color)
-            .darken(50)
-            .toString(),
+          borderBottomColor: Color.fromHex(color).darken(50).toString(),
         }}
         textStyle={{
-          color: Color.fromHex(department.color).darken(80).toString(),
+          color: Color.fromHex(color).darken(80).toString(),
         }}
       >
         <Stack vertical>
@@ -169,11 +191,12 @@ function DepartmentEntry(props: DepartmentEntryProps) {
                 key={name}
                 jobName={name}
                 job={job}
-                jobIcon={job.jobIcon}
-                department={department}
-                onClick={() => {
-                  act('select_job', { job: name });
-                }}
+                details={details.jobs[name]}
+                color={color}
+                disabled={!!data.disable_jobs_for_non_observers}
+                onClick={() =>
+                  act('select_job', { job: name, edit_slot: data.edit_slot })
+                }
               />
             </Stack.Item>
           ))}
@@ -185,16 +208,19 @@ function DepartmentEntry(props: DepartmentEntryProps) {
 
 export function JobSelection(props) {
   const { act, data } = useBackend<Data>();
-  if (!data?.departments_static) {
+  const ready = !!data?.departments_static && !!data.departments;
+  useEffect(() => {
+    if (ready) {
+      act('ui_mounted_with_no_bluescreen');
+    }
+  }, [act, ready]);
+
+  if (!ready) {
     return null; // Stop TGUI whitescreens with TGUI-dev!
   }
 
-  const departments: Record<string, Department> = toMerged(
-    data.departments,
-    data.departments_static,
-  );
-
-  const { shuttle_status, round_duration } = data;
+  const { departments, edit_slot, shuttle_status, round_duration } = data;
+  const disabled = !!data.disable_jobs_for_non_observers;
 
   return (
     <Window width={1012} height={shuttle_status ? 690 : 666 /* Hahahahahaha */}>
@@ -202,7 +228,8 @@ export function JobSelection(props) {
         <Section
           buttons={
             <Button
-              onClick={() => act('select_job', { job: 'Random' })}
+              disabled={disabled}
+              onClick={() => act('select_job', { job: 'Random', edit_slot })}
               tooltip="Случайно выбрать профессию. Вы можете повторно выбирать случайную профессию или отказаться от этого."
             >
               Случайная профессия!
@@ -213,6 +240,11 @@ export function JobSelection(props) {
           title={
             <>
               {shuttle_status && <NoticeBox info>{shuttle_status}</NoticeBox>}
+              {disabled && (
+                <NoticeBox danger>
+                  Вход в раунд временно отключён администрацией.
+                </NoticeBox>
+              )}
               <Box as="span" color="label">
                 It is currently {round_duration} into the shift.
               </Box>
@@ -220,13 +252,20 @@ export function JobSelection(props) {
           }
         >
           <Box style={{ columns: '20em' }}>
-            {Object.entries(departments).map(([name, department]) => (
-              <DepartmentEntry
-                key={name}
-                name={DEPARTMENTS_RU[name] || name}
-                department={department}
-              />
-            ))}
+            {Object.entries(departments).map(([name, department]) => {
+              const details = data.departments_static[name];
+              return (
+                details &&
+                Object.keys(department.jobs).length > 0 && (
+                  <DepartmentEntry
+                    key={name}
+                    name={DEPARTMENTS_RU[name] || name}
+                    department={department}
+                    details={details}
+                  />
+                )
+              );
+            })}
           </Box>
         </Section>
       </Window.Content>

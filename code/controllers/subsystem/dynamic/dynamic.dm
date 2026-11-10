@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(dynamic)
  *
  * Note: This proc can sleep (due to lazyloading of templates)!
  */
-/datum/controller/subsystem/dynamic/proc/select_roundstart_antagonists()
+/datum/controller/subsystem/dynamic/proc/select_roundstart_antagonists(list/rolled_rulesets, list/rejected_rulesets)
 	load_config()
 	SEND_SIGNAL(src, COMSIG_DYNAMIC_PRE_ROUNDSTART, dynamic_config)
 	// we start by doing a dry run of the job selection process to detect antag rollers
@@ -141,31 +141,79 @@ SUBSYSTEM_DEF(dynamic)
 	// this will even handle the case in which the tier wants 0 roundstart rulesets
 	if(!length(queued_rulesets))
 		for(var/ruleset in pick_roundstart_rulesets(antag_candidates))
-			queue_ruleset(ruleset)
+			rolled_rulesets += queue_ruleset(ruleset)
 	// we got what we needed, reset so we can do real job selection later
 	// reset only happens AFTER roundstart selection so we can verify stuff like "can we get 3 heads of staff for revs?"
 	SSjob.reset_occupations()
 	// finally, run through the queue and prepare rulesets for execution
 	// (actual execution, ie assigning antags, will happen after job assignment)
-	for(var/datum/dynamic_ruleset/roundstart/ruleset in queued_rulesets)
+	for(var/datum/dynamic_ruleset/roundstart/ruleset in queued_rulesets.Copy())
+		if(QDELETED(ruleset))
+			continue
 		// NOTE: !! THIS CAN SLEEP !!
-		if(!ruleset.prepare_execution( num_real_players, antag_candidates ))
+		var/prepared = ruleset.prepare_execution(num_real_players, antag_candidates)
+		if(QDELETED(ruleset))
+			continue
+		if(!prepared)
 			log_dynamic("Roundstart: Selected ruleset [ruleset.config_tag], but preparation failed! [ruleset.log_data]")
-			unqueue_ruleset(ruleset)
-			qdel(ruleset)
+			rejected_rulesets += ruleset
 			continue
 
 		// Just logs who was selected at roundstart
 		for(var/datum/mind/selected as anything in ruleset.selected_minds)
 			log_dynamic("Roundstart: [key_name(selected)] has been selected for [ruleset.config_tag].")
 
-		rulesets_to_spawn[ROUNDSTART] -= 1
-	// and start ticking
+	return TRUE
+
+/// Keep manually queued rulesets on an aborted start, releasing the attempt's selections.
+/datum/controller/subsystem/dynamic/proc/finish_roundstart_preparation(list/rolled_rulesets, list/rejected_rulesets, start_game)
+	var/list/discarded_rulesets = start_game ? rejected_rulesets : rolled_rulesets
+	for(var/datum/dynamic_ruleset/roundstart/ruleset as anything in discarded_rulesets & queued_rulesets)
+		unqueue_ruleset(ruleset)
+		qdel(ruleset)
+
+	if(!start_game)
+		for(var/datum/dynamic_ruleset/roundstart/ruleset in queued_rulesets)
+			ruleset.cancel_preparation()
+		return
+
+	for(var/datum/dynamic_ruleset/roundstart/ruleset in queued_rulesets)
+		rulesets_to_spawn[ROUNDSTART] = max(0, rulesets_to_spawn[ROUNDSTART] - 1)
 	COOLDOWN_START(src, light_ruleset_start, current_tier.ruleset_type_settings[LIGHT_MIDROUND][TIME_THRESHOLD])
 	COOLDOWN_START(src, heavy_ruleset_start, current_tier.ruleset_type_settings[HEAVY_MIDROUND][TIME_THRESHOLD])
 	COOLDOWN_START(src, latejoin_ruleset_start, current_tier.ruleset_type_settings[LATEJOIN][TIME_THRESHOLD])
 
-	return TRUE
+/// Returns the current selection so a pending admission can distinguish it from a later selection.
+/datum/controller/subsystem/dynamic/proc/get_roundstart_job_changes(datum/mind/candidate)
+	for(var/datum/dynamic_ruleset/roundstart/ruleset in queued_rulesets)
+		var/datum/roundstart_job_changes/changes = ruleset.get_prepared_job_changes(candidate)
+		if(changes)
+			return changes
+	return null
+
+/// Validate the body built from the final job slot without cancelling the player's crew job.
+/datum/controller/subsystem/dynamic/proc/validate_roundstart_body(datum/mind/candidate, mob/living/character, datum/roundstart_job_changes/expected_assignment)
+	if(!expected_assignment)
+		return
+	for(var/datum/dynamic_ruleset/roundstart/ruleset in queued_rulesets)
+		if(ruleset.get_prepared_job_changes(candidate) != expected_assignment)
+			continue
+		if(!ruleset.can_use_roundstart_body(character))
+			log_dynamic("Roundstart: [key_name(candidate)] does not have a suitable body for [ruleset.config_tag].")
+			cancel_roundstart_assignment(candidate, expected_assignment)
+		return
+
+/datum/controller/subsystem/dynamic/proc/cancel_roundstart_assignment(datum/mind/candidate, datum/roundstart_job_changes/expected_assignment)
+	for(var/datum/dynamic_ruleset/roundstart/ruleset in queued_rulesets.Copy())
+		if(expected_assignment && ruleset.get_prepared_job_changes(candidate) != expected_assignment)
+			continue
+		if(!ruleset.cancel_assignment(candidate))
+			continue
+		if(!length(ruleset.selected_minds))
+			unqueue_ruleset(ruleset)
+			qdel(ruleset)
+		return TRUE
+	return FALSE
 
 /datum/controller/subsystem/dynamic/proc/load_config()
 	PRIVATE_PROC(TRUE)
@@ -257,7 +305,8 @@ SUBSYSTEM_DEF(dynamic)
 /datum/controller/subsystem/dynamic/proc/pick_roundstart_rulesets(list/antag_candidates)
 	PRIVATE_PROC(TRUE)
 
-	if(rulesets_to_spawn[ROUNDSTART] <= 0)
+	var/remaining_rulesets = rulesets_to_spawn[ROUNDSTART]
+	if(remaining_rulesets <= 0)
 		return list()
 
 	var/list/rulesets_weighted = get_roundstart_rulesets(antag_candidates)
@@ -269,16 +318,16 @@ SUBSYSTEM_DEF(dynamic)
 		return list()
 
 	var/list/picked_rulesets = list()
-	while(rulesets_to_spawn[ROUNDSTART] > 0)
+	while(remaining_rulesets > 0)
 		if(!length(rulesets_weighted) || total_weight <= 0)
-			log_dynamic("Roundstart: No more rulesets to pick from with [rulesets_to_spawn[ROUNDSTART]] left!")
+			log_dynamic("Roundstart: No more rulesets to pick from with [remaining_rulesets] left!")
 			break
-		rulesets_to_spawn[ROUNDSTART] -= 1
+		remaining_rulesets--
 		var/datum/dynamic_ruleset/roundstart/picked_ruleset = pick_weight(rulesets_weighted)
 		log_dynamic("Roundstart: Ruleset [picked_ruleset.config_tag] (Chance: [round(rulesets_weighted[picked_ruleset] / total_weight * 100, 0.01)]%)")
 		if(picked_ruleset.solo)
 			log_dynamic("Roundstart: Ruleset is a solo ruleset. Cancelling other picks.")
-			QDEL_LIST(picked_rulesets)
+			picked_rulesets.Cut()
 			total_weight -= rulesets_weighted[picked_ruleset] // BANDASTATION ADDITION: Repeatable rulesets fix
 			rulesets_weighted -= picked_ruleset
 			picked_rulesets += picked_ruleset.type
@@ -540,7 +589,9 @@ SUBSYSTEM_DEF(dynamic)
 	if(!ispath(ruleset_typepath, /datum/dynamic_ruleset/latejoin) && !ispath(ruleset_typepath, /datum/dynamic_ruleset/roundstart))
 		CRASH("queue_ruleset() was called with an invalid type: [ruleset_typepath]")
 
-	queued_rulesets += new ruleset_typepath(dynamic_config)
+	var/datum/dynamic_ruleset/ruleset = new ruleset_typepath(dynamic_config)
+	queued_rulesets += ruleset
+	return ruleset
 
 /**
  * Unqueues a ruleset because it has executed
