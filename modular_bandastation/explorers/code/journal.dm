@@ -2,8 +2,13 @@
 #define EXPEDITION_JOURNAL_MAX_GOALS 100
 #define EXPEDITION_JOURNAL_GOAL_LENGTH 256
 
-/** Round-wide corps archive: it survives the loss of ships and devices, and never reads hidden properties. */
+/**
+ * The station's corps archive: it survives the loss of ships and devices, and never reads hidden properties.
+ * Journals on PDAs keep their own memory and swap entries with it while they are on the station.
+ */
 GLOBAL_DATUM_INIT(expedition_journal, /datum/expedition_journal, new)
+/// Every documented discovery by ID, whoever's journal lists it; goal reports resolve their links here.
+GLOBAL_LIST_EMPTY(expedition_records)
 
 /** A discovery documented by the corps; facts come only from completed player actions. */
 /datum/expedition_record
@@ -14,12 +19,28 @@ GLOBAL_DATUM_INIT(expedition_journal, /datum/expedition_journal, new)
 	/// Text snapshots of completed actions; never references to actors.
 	var/list/observations = list()
 
-/** Append an observed fact; the first one discloses the discovery to the corps journal. */
+/**
+ * Append an observed fact. The discovery goes into the journals the actor carries, and straight into the
+ * station archive when the fact is recorded on the station.
+ */
 /datum/expedition_record/proc/log_observation(mob/user, atom/location, text)
 	var/turf/tile = get_turf(location)
 	var/place = tile ? "[get_area(tile)] ([tile.x], [tile.y], [tile.z])" : "место не установлено"
 	observations += "[round_timestamp()] — [user?.real_name || "неизвестный оператор"] — [place]: [text]"
-	GLOB.expedition_journal.records[id] = src
+	GLOB.expedition_records[id] = src
+	for(var/datum/computer_file/program/expedition_journal/journal as anything in expedition_journals_carried_by(user))
+		journal.memory.records[id] = src
+	if(tile && is_station_level(tile.z))
+		GLOB.expedition_journal.records[id] = src
+
+/// Journal programs on the devices `user` carries.
+/proc/expedition_journals_carried_by(mob/user)
+	. = list()
+	if(!user)
+		return
+	for(var/obj/item/modular_computer/computer in user.get_all_contents())
+		for(var/datum/computer_file/program/expedition_journal/journal in computer.stored_files)
+			. += journal
 
 /** Render escaped facts without inventing results or revealing hidden rewards. */
 /datum/expedition_record/proc/report_text()
@@ -72,7 +93,7 @@ GLOBAL_DATUM_INIT(expedition_journal, /datum/expedition_journal, new)
 		"Составлен: [round_timestamp()] — [html_encode(user.real_name)]",
 	)
 	for(var/record_id in record_ids)
-		var/datum/expedition_record/record = GLOB.expedition_journal.records[record_id]
+		var/datum/expedition_record/record = GLOB.expedition_records[record_id]
 		lines += "<br>[record.report_text()]"
 	return lines.Join("<br>")
 
@@ -82,17 +103,41 @@ GLOBAL_DATUM_INIT(expedition_journal, /datum/expedition_journal, new)
 	filedesc = "Журнал экспедиции"
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
 	program_open_overlay = "research"
-	extended_desc = "Общий журнал экспедиционного корпуса: протоколы находок, цели экспедиции и личные исследовательские цели. Отчёты печатаются для отправки факсом со станции."
-	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
+	extended_desc = "Журнал экспедиционного корпуса: протоколы находок, цели экспедиции и личные исследовательские цели. Работает без сети и хранит записи в памяти устройства; на станции обменивается ими с архивом корпуса. Отчёты печатаются для отправки факсом со станции."
+	program_flags = PROGRAM_ON_NTNET_STORE
 	can_run_on_flags = PROGRAM_ALL
 	download_access = list(ACCESS_EXPLORER)
 	run_access = list(ACCESS_EXPLORER)
 	size = 4
 	program_icon = "book"
 	tgui_id = "NtosExpeditionJournal"
+	/// Records and goals in this device's memory.
+	var/datum/expedition_journal/memory
+
+/datum/computer_file/program/expedition_journal/New()
+	. = ..()
+	memory = new
+
+/**
+ * On the station, uploads this device's entries to the corps archive and takes everyone else's.
+ * Returns TRUE if the device is on the station.
+ */
+/datum/computer_file/program/expedition_journal/proc/sync_with_station()
+	var/turf/here = get_turf(computer)
+	if(!here || !is_station_level(here.z))
+		return FALSE
+	var/datum/expedition_journal/archive = GLOB.expedition_journal
+	for(var/id in memory.records)
+		archive.records[id] = memory.records[id]
+	for(var/id in memory.goals)
+		archive.goals[id] = memory.goals[id]
+	memory.records = archive.records.Copy()
+	memory.goals = archive.goals.Copy()
+	return TRUE
 
 /datum/computer_file/program/expedition_journal/ui_data(mob/user)
-	var/datum/expedition_journal/journal = GLOB.expedition_journal
+	var/connected = sync_with_station()
+	var/datum/expedition_journal/journal = memory
 	var/list/records = list()
 	for(var/id in journal.records)
 		var/datum/expedition_record/record = journal.records[id]
@@ -115,7 +160,7 @@ GLOBAL_DATUM_INIT(expedition_journal, /datum/expedition_journal, new)
 			"conclusion" = goal.conclusion,
 			"records" = goal.record_ids,
 		))
-	return list("records" = records, "goals" = goals)
+	return list("records" = records, "goals" = goals, "connected" = connected)
 
 /datum/computer_file/program/expedition_journal/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -125,7 +170,8 @@ GLOBAL_DATUM_INIT(expedition_journal, /datum/expedition_journal, new)
 	// The ID may have been removed after the program was opened.
 	if(!can_run(user, loud = TRUE))
 		return FALSE
-	var/datum/expedition_journal/journal = GLOB.expedition_journal
+	sync_with_station()
+	var/datum/expedition_journal/journal = memory
 	if(action == "add_goal")
 		var/text = istext(params["text"]) && trim(params["text"], EXPEDITION_JOURNAL_GOAL_LENGTH)
 		var/personal = !!params["personal"]
@@ -135,7 +181,8 @@ GLOBAL_DATUM_INIT(expedition_journal, /datum/expedition_journal, new)
 			to_chat(user, span_warning("Журнал заполнен."))
 			return FALSE
 		var/datum/expedition_goal/goal = new
-		goal.id = "Ц-[++journal.goal_serial]"
+		// The archive's serial keeps IDs unique across every device.
+		goal.id = "Ц-[++GLOB.expedition_journal.goal_serial]"
 		goal.text = text
 		goal.author = user.real_name
 		goal.created = round_timestamp()

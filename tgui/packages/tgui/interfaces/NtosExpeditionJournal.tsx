@@ -36,6 +36,7 @@ type Goal = {
 type Data = {
   records: JournalRecord[];
   goals: Goal[];
+  connected: boolean;
 };
 
 const STATUSES = {
@@ -45,11 +46,17 @@ const STATUSES = {
 };
 
 export const NtosExpeditionJournal = () => {
+  const { data } = useBackend<Data>();
   const [tab, setTab] = useState(1);
 
   return (
     <NtosWindow width={600} height={640}>
       <NtosWindow.Content scrollable>
+        <NoticeBox info={data.connected}>
+          {data.connected
+            ? 'Связь с архивом станции: записи синхронизированы.'
+            : 'Нет связи со станцией: записи хранятся в памяти устройства и выгрузятся на станции.'}
+        </NoticeBox>
         <Tabs>
           <Tabs.Tab
             icon="bullseye"
