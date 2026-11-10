@@ -86,9 +86,15 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 	/obj/item/relic/excavated = 60,
 ))
 
-/// Catalogues a dug small find or a field artefact lying on the scan pad. Returns TRUE if one was found there.
+/// Catalogues a dug small find, a field artefact or a planetary anomaly core lying on the scan pad. Returns TRUE if one was found there.
 /obj/machinery/artifact_analyser/proc/catalogue_small_find(mob/user)
 	for(var/obj/item/find in pad.loc)
+		var/obj/item/assembly/signaler/anomaly/planetary/core = find
+		if(istype(core))
+			var/core_points = core.research_paid ? 0 : core.research_points
+			core.research_paid = TRUE
+			print_catalogue(find, core_points, "")
+			return TRUE
 		if(!istype(find, /obj/item/xenoarch_curio) && !istype(find, /obj/item/relic/excavated) && !istype(find, /obj/item/field_artefact))
 			continue
 		if(isnull(xenoarch_find_band(find)))
@@ -112,16 +118,20 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 				curio.research_paid = TRUE
 			else
 				relic.research_paid = TRUE
-		say(points ? "Находка каталогизирована. Данные напечатаны." : "Находка уже в каталоге.")
-		playsound(src, 'sound/machines/ping.ogg', 30, FALSE)
-		var/obj/item/paper/artifact_report/report = new(drop_location())
-		report.name = "отчёт каталогизации ([find.name])"
-		report.add_raw_text("<b>Каталог находок</b><br>Объект: [html_encode(find.name)]<br>[html_encode(find.desc)]<br>Зона происхождения: [xenoarch_find_band(find)][istype(artefact) ? "<br>Реакции: [artefact.catalogue_note]" : ""]", advanced_html = TRUE)
-		report.update_appearance()
-		if(points)
-			xenoarch_print_analysis_notes(drop_location(), points)
+		print_catalogue(find, points, "<br>Зона происхождения: [xenoarch_find_band(find)][istype(artefact) ? "<br>Реакции: [artefact.catalogue_note]" : ""]")
 		return TRUE
 	return FALSE
+
+/// Announces the catalogue entry for `find` and prints its report, plus research notes worth `points`.
+/obj/machinery/artifact_analyser/proc/print_catalogue(obj/item/find, points, details)
+	say(points ? "Находка каталогизирована. Данные напечатаны." : "Находка уже в каталоге.")
+	playsound(src, 'sound/machines/ping.ogg', 30, FALSE)
+	var/obj/item/paper/artifact_report/report = new(drop_location())
+	report.name = "отчёт каталогизации ([find.name])"
+	report.add_raw_text("<b>Каталог находок</b><br>Объект: [html_encode(find.name)]<br>[html_encode(find.desc)][details]", advanced_html = TRUE)
+	report.update_appearance()
+	if(points)
+		xenoarch_print_analysis_notes(drop_location(), points)
 
 #undef ARTIFACT_RESEARCH_POINTS
 #undef ARTIFACT_RESEARCH_RARE_MULT

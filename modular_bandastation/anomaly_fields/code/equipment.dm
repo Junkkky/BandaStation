@@ -3,12 +3,12 @@
 // ===== Detector =====
 
 /**
- * Switched on, it beeps while its carrier stands in an electra's reach. Used while on, it scans for a
- * few seconds and shows its user every field around for a while.
+ * Switched on, it beeps while any field is within three tiles, faster the closer it is. Used while on,
+ * it listens for a few seconds and says whether anything anomalous is near, never where.
  */
 /obj/item/field_detector
 	name = "детектор аномалий"
-	desc = "Наручный прибор с тремя лампами. Включённый, пищит рядом с электрой, а по нажатию сканирует окрестности и подсвечивает аномалии. Alt-клик включает и выключает его."
+	desc = "Наручный прибор с тремя лампами. Включённый, пищит рядом с аномальным полем, тем чаще, чем ближе. По нажатию прислушивается к окрестностям и сообщает, есть ли рядом аномалии. Alt-клик включает и выключает его."
 	icon = 'modular_bandastation/anomaly_fields/icons/equipment.dmi'
 	icon_state = "detector_turned_off"
 	w_class = WEIGHT_CLASS_SMALL
@@ -18,12 +18,14 @@
 	var/on = FALSE
 	/// A scan is running.
 	var/scanning = FALSE
-	/// Its carrier is within an electra's reach.
+	/// A field is within beeping range.
 	var/peak = FALSE
 	/// Next beep while peaking.
 	var/next_beep = 0
+	/// Reach of the beeping, in tiles.
+	var/beep_range = 3
 	/// Reach of a scan, in tiles.
-	var/scan_range = 5
+	var/scan_range = 7
 
 /obj/item/field_detector/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
@@ -67,16 +69,15 @@
 	if(!on)
 		return PROCESS_KILL
 	var/turf/here = get_turf(src)
-	var/now_peak = FALSE
-	for(var/obj/effect/anomaly_field/electra/field in range(2, here))
-		if(get_dist(field, here) <= field.effect_range)
-			now_peak = TRUE
-			break
+	var/nearest = INFINITY
+	for(var/obj/effect/anomaly_field/field in range(beep_range, here))
+		nearest = min(nearest, get_dist(field, here))
+	var/now_peak = nearest <= beep_range
 	if(now_peak != peak)
 		peak = now_peak
 		update_appearance()
 	if(peak && world.time >= next_beep)
-		next_beep = world.time + 1 SECONDS
+		next_beep = world.time + (0.25 SECONDS) * (nearest + 1)
 		playsound(src, 'modular_bandastation/anomaly_fields/sound/detector_peek.ogg', 40, FALSE)
 
 /obj/item/field_detector/proc/scan(mob/user)
@@ -87,19 +88,13 @@
 	var/finished = do_after(user, 3 SECONDS, src)
 	scanning = FALSE
 	update_appearance()
-	if(!finished || !on || !user.client)
+	if(!finished || !on)
 		return
-	var/turf/here = get_turf(src)
-	var/list/markers = list()
-	for(var/obj/effect/anomaly_field/field in range(scan_range, here))
-		var/image/marker = image(field.icon, get_turf(field), field.detection_state)
-		SET_PLANE_EXPLICIT(marker, ABOVE_LIGHTING_PLANE, field)
-		markers += marker
-	if(!length(markers))
-		balloon_alert(user, "аномалий нет")
-		return
-	flick("detector_detected_anomalies", src)
-	flick_overlay_global(markers, list(user.client), 15 SECONDS)
+	if(locate(/obj/effect/anomaly_field) in range(scan_range, get_turf(src)))
+		flick("detector_detected_anomalies", src)
+		to_chat(user, span_warning("[capitalize(name)] фиксирует аномальную активность поблизости."))
+	else
+		to_chat(user, span_notice("[capitalize(name)] не фиксирует аномалий поблизости."))
 
 // ===== Bolts =====
 

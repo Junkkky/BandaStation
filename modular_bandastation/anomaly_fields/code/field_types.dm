@@ -5,7 +5,6 @@
 	name = "электра"
 	icon_state = "electra_idle"
 	activation_state = "electra_activation"
-	detection_state = "electra_detection"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/electra_blast.ogg'
 	preload_chance = 30
 	preload_state = "electra_preload"
@@ -37,7 +36,6 @@
 	name = "жарка"
 	icon_state = "zharka_idle"
 	activation_state = "zharka_active"
-	detection_state = "zharka_detection"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/zharka.ogg'
 	cooldown_min = 8 SECONDS
 	cooldown_max = 20 SECONDS
@@ -65,7 +63,6 @@
 /obj/effect/anomaly_field/rvach
 	name = "рвач"
 	icon_state = "rvach_idle"
-	detection_state = "rvach_detection"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/rvach_activation.ogg'
 	cooldown_min = 25 SECONDS
 	cooldown_max = 25 SECONDS
@@ -85,6 +82,10 @@
 			return FALSE
 	return ..()
 
+/obj/effect/anomaly_field/rvach/strike()
+	. = ..()
+	anomaly_field_warp(loc, 0.3, 0.08, effect_duration)
+
 /obj/effect/anomaly_field/rvach/field_effect()
 	for(var/mob/living/victim in range(effect_range, src))
 		if(field_artefact_protection(victim) & FIELD_ARTEFACT_ANCHOR)
@@ -98,6 +99,7 @@
 			step_towards(thing, src)
 
 /obj/effect/anomaly_field/rvach/end_effect()
+	anomaly_field_warp(loc, 0.08, 0.6, 0.2 SECONDS)
 	for(var/mob/living/victim in loc)
 		if(field_artefact_protection(victim) & FIELD_ARTEFACT_ANCHOR)
 			continue
@@ -129,7 +131,6 @@
 /obj/effect/anomaly_field/tramplin
 	name = "трамплин"
 	icon_state = "trampline_idle"
-	detection_state = "trampline_detection"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/tramplin.ogg'
 	cooldown_min = 3 SECONDS
 	cooldown_max = 8 SECONDS
@@ -143,6 +144,10 @@
 	. = ..()
 	throw_dir = pick(GLOB.alldirs)
 	fling_range = rand(2, 5)
+
+/obj/effect/anomaly_field/tramplin/strike()
+	. = ..()
+	anomaly_field_warp(loc, 0.05, 0.3, 0.2 SECONDS)
 
 /obj/effect/anomaly_field/tramplin/field_effect()
 	for(var/atom/movable/thing in loc)
@@ -180,18 +185,33 @@
 		if(victim.flash_act(affect_silicon = TRUE))
 			victim.adjust_confusion(5 SECONDS)
 
-/// A tile that heats or chills whoever stands in it for half a minute.
+/// For half a minute heats or chills everyone around it; the air over it shimmers while it works.
 /obj/effect/anomaly_field/thermal
 	abstract_type = /obj/effect/anomaly_field/thermal
 	cooldown_min = 30 SECONDS
 	cooldown_max = 30 SECONDS
 	effect_duration = 30 SECONDS
 	effect_tick = 1 SECONDS
+	effect_range = 2
 	/// Body temperature change per pulse.
 	var/temperature_step = 0
+	/// Shimmer over it while it works.
+	var/atom/movable/warp_effect/haze
+
+/obj/effect/anomaly_field/thermal/Destroy()
+	QDEL_NULL(haze)
+	return ..()
+
+/obj/effect/anomaly_field/thermal/strike()
+	. = ..()
+	haze = new(loc)
+	haze.transform = matrix().Scale(0.45)
+
+/obj/effect/anomaly_field/thermal/end_effect()
+	QDEL_NULL(haze)
 
 /obj/effect/anomaly_field/thermal/field_effect()
-	for(var/mob/living/victim in loc)
+	for(var/mob/living/victim in range(effect_range, src))
 		victim.adjust_bodytemperature(temperature_step, min_temp = 200)
 
 /obj/effect/anomaly_field/thermal/heater
@@ -201,18 +221,18 @@
 
 /obj/effect/anomaly_field/thermal/cooler
 	name = "аномальный холод"
-	activation_state = "colding"
 	temperature_step = -60
 
 /// Whether a field may throw this movable: an item it may affect.
 /proc/anomaly_field_throwable(atom/movable/thing)
 	return isitem(thing) && anomaly_field_can_affect(thing)
 
-/// The faint hum that gives an idle field away to a careful ear.
+/// The faint hum that gives an idle field away to a careful ear, thin air or not.
 /datum/looping_sound/anomaly_field
-	volume = 10
+	volume = 35
 	extra_range = -9
 	falloff_distance = 4
+	pressure_affected = FALSE
 
 /datum/looping_sound/anomaly_field/electra
 	mid_sounds = list('modular_bandastation/anomaly_fields/sound/electra_idle.ogg' = 1)

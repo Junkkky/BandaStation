@@ -2,8 +2,8 @@
  * # Anomaly field
  *
  * A one-tile hazard nobody can see. Something living, or a fitting item, entering its tile sets it off:
- * it shows itself while it acts, then sleeps for its cooldown and goes again if something still stands
- * in it. Long fields act every tick for a while; the rest act once. A detector or a thrown bolt finds them.
+ * a field with its own wind-up or activation sprite shows it while it acts, the rest only by their
+ * effects; then it sleeps for its cooldown and goes again if something still stands in it. Long fields act every tick for a while; the rest act once. A detector or a thrown bolt finds them.
  * Someone shaking a person caught in a field pulls them out onto their own tile.
  *
  * Adapted from the Sierra anomaly mod (SierraBay12 `mods/anomaly`), rewritten for our codebase.
@@ -17,8 +17,6 @@
 	invisibility = INVISIBILITY_OBSERVER
 	layer = ABOVE_MOB_LAYER
 	light_color = COLOR_WHITE
-	/// Marker the detector shows over this field.
-	var/detection_state = "any_anomaly"
 	/// Icon state while it acts.
 	var/activation_state
 	/// Sound when it acts.
@@ -131,8 +129,8 @@
 /obj/effect/anomaly_field/proc/activate()
 	active = TRUE
 	if(needs_preload)
-		invisibility = 0
 		if(preload_state)
+			invisibility = 0
 			icon_state = preload_state
 		if(preload_sound)
 			playsound(src, preload_sound, 100, FALSE)
@@ -141,9 +139,12 @@
 	strike()
 
 /obj/effect/anomaly_field/proc/strike()
-	invisibility = 0
 	if(activation_state)
+		invisibility = 0
 		icon_state = activation_state
+	else
+		invisibility = INVISIBILITY_OBSERVER
+		icon_state = initial(icon_state)
 	if(activation_sound)
 		playsound(src, activation_sound, 100, FALSE)
 	if(flash_range)
@@ -207,3 +208,11 @@
 	. = NONE
 	for(var/obj/item/field_artefact/artefact in victim.get_equipped_items(INCLUDE_POCKETS | INCLUDE_HELD))
 		. |= artefact.field_protection
+
+/// Bends the air over `where` from `start_scale` to `end_scale` of a supermatter warp, then fades it out.
+/proc/anomaly_field_warp(turf/where, start_scale, end_scale, grow_time, fade_time = 0.2 SECONDS)
+	var/atom/movable/warp_effect/warp = new(where)
+	warp.transform = matrix().Scale(start_scale)
+	animate(warp, transform = matrix().Scale(end_scale), time = grow_time, easing = SINE_EASING)
+	animate(alpha = 0, time = fade_time)
+	QDEL_IN(warp, grow_time + fade_time)
