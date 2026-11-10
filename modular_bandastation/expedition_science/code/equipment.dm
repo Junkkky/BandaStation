@@ -1,44 +1,3 @@
-/** Field instrument for surveying research sources. */
-/obj/item/stationtrauma_field_scanner
-	name = "полевой исследовательский сканер"
-	desc = "Обследует экспедиционные находки перед отбором проб."
-	icon = 'icons/obj/devices/scanner.dmi'
-	icon_state = "manual_mining"
-	inhand_icon_state = "analyzer"
-	worn_icon_state = "analyzer"
-	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
-	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = ITEM_SLOT_BELT
-	/// One survey per scanner at a time.
-	var/busy = FALSE
-
-/obj/item/stationtrauma_field_scanner/pre_attack(atom/target, mob/living/user, list/modifiers, list/attack_modifiers)
-	if(!istype(target, /obj/structure/stationtrauma_research_source))
-		return ..()
-	if(!busy && user.is_holding(src))
-		INVOKE_ASYNC(src, PROC_REF(survey), target, user)
-	return TRUE
-
-/** Survey a source while the operator holds the scanner. */
-/obj/item/stationtrauma_field_scanner/proc/survey(obj/structure/stationtrauma_research_source/source, mob/living/user)
-	if(busy || QDELETED(source) || !user?.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH))
-		return
-	busy = TRUE
-	var/datum/mind/operator = user.mind
-	to_chat(user, span_notice("Вы начинаете полевое обследование [source]."))
-	var/completed = do_after(user, 6 SECONDS, source)
-	if(QDELETED(src))
-		return
-	busy = FALSE
-	if(!completed || QDELETED(source) || QDELETED(user) || user.mind != operator || !user.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH))
-		return
-	var/datum/stationtrauma_research_record/record = source.research_record()
-	record.log_observation(user, source, record.surveyed ? "Повторное полевое обследование." : "Полевое обследование: [record.field_notes]")
-	record.surveyed = TRUE
-	to_chat(user, span_notice(record.specimen_text()))
-	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
-
 /** A sealed physical specimen; its discovery record is independent of this particular container. */
 /obj/item/stationtrauma_sample
 	name = "контейнер для экспедиционной пробы"
@@ -186,6 +145,6 @@
 	desc = "Полевой сканер и четыре стерильных контейнера для экспедиционных проб."
 
 /obj/item/storage/box/stationtrauma_research/PopulateContents()
-	new /obj/item/stationtrauma_field_scanner(src)
+	new /obj/item/excavation/depth_scanner(src)
 	for(var/index in 1 to 4)
 		new /obj/item/stationtrauma_sample(src)

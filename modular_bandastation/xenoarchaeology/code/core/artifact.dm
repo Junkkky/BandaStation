@@ -128,6 +128,7 @@
 	if(label && label != new_label)
 		QDEL_NULL(label)
 	label = new_label
+	journal_note(user, "Маркировка: эффект — [new_label.effect_name || "?"], триггер — [new_label.trigger_name || "?"], второй эффект — [new_label.second_name || ARTIFACT_LABEL_NONE].")
 	SEND_SIGNAL(src, COMSIG_ARTIFACT_LABEL_CHANGED, new_label, user)
 	update_appearance()
 
