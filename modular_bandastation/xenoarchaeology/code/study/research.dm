@@ -7,7 +7,7 @@
  * stay whole (Voidcrew destroyed them in the destructive analyzer).
  *
  * Every dug find carries a corps journal record: extraction, analysis, each stimulus tried on the
- * pad and its label are written there as facts.
+ * pad and its label are written there as facts. Field artefacts are catalogued here the same way.
  */
 
 /// First full analysis of a large artifact, by stamped band (green, yellow, red).
@@ -86,18 +86,24 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 	/obj/item/relic/excavated = 60,
 ))
 
-/// Catalogues a dug small find lying on the scan pad. Returns TRUE if one was found there.
+/// Catalogues a dug small find or a field artefact lying on the scan pad. Returns TRUE if one was found there.
 /obj/machinery/artifact_analyser/proc/catalogue_small_find(mob/user)
 	for(var/obj/item/find in pad.loc)
-		if(!istype(find, /obj/item/xenoarch_curio) && !istype(find, /obj/item/relic/excavated))
+		if(!istype(find, /obj/item/xenoarch_curio) && !istype(find, /obj/item/relic/excavated) && !istype(find, /obj/item/field_artefact))
 			continue
 		if(isnull(xenoarch_find_band(find)))
 			continue
 		var/obj/item/xenoarch_curio/curio = find
 		var/obj/item/relic/excavated/relic = find
-		var/paid = istype(curio) ? curio.research_paid : relic.research_paid
+		var/obj/item/field_artefact/artefact = find
+		var/paid = istype(curio) ? curio.research_paid : (istype(relic) ? relic.research_paid : artefact.research_paid)
 		var/points = 0
-		if(!paid)
+		if(istype(artefact))
+			if(!paid)
+				points = artefact.research_points
+				artefact.research_paid = TRUE
+				artefact.journal_record?.log_observation(user, src, "Каталогизирован на сканирующей площадке.")
+		else if(!paid)
 			for(var/listed_type in GLOB.xenoarch_curio_research_points)
 				if(istype(find, listed_type))
 					points = GLOB.xenoarch_curio_research_points[listed_type]
@@ -110,7 +116,7 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 		playsound(src, 'sound/machines/ping.ogg', 30, FALSE)
 		var/obj/item/paper/artifact_report/report = new(drop_location())
 		report.name = "отчёт каталогизации ([find.name])"
-		report.add_raw_text("<b>Каталог находок</b><br>Объект: [html_encode(find.name)]<br>[html_encode(find.desc)]<br>Зона происхождения: [xenoarch_find_band(find)]", advanced_html = TRUE)
+		report.add_raw_text("<b>Каталог находок</b><br>Объект: [html_encode(find.name)]<br>[html_encode(find.desc)]<br>Зона происхождения: [xenoarch_find_band(find)][istype(artefact) ? "<br>Реакции: [artefact.catalogue_note]" : ""]", advanced_html = TRUE)
 		report.update_appearance()
 		if(points)
 			xenoarch_print_analysis_notes(drop_location(), points)

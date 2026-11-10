@@ -55,6 +55,7 @@
 #include "explorers/_explorers.dme"
 #include "expedition_planets/_expedition_planets.dme"
 #include "xenoarchaeology/_xenoarchaeology.dme"
+#include "anomaly_fields/_anomaly_fields.dme"
 #include "overmap_ships/_overmap_ships.dme"
 #include "overmap_ruins/_overmap_ruins.dme"
 #include "food_and_drinks/_food_and_drinks.dme"

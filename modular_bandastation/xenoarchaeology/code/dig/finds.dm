@@ -79,6 +79,9 @@ GLOBAL_LIST_INIT(xenoarch_exosuit_wrecks, list(
 	if(istype(find, /obj/machinery/power/charged_crystal))
 		var/obj/machinery/power/charged_crystal/crystal = find
 		return crystal.origin_band
+	if(istype(find, /obj/item/field_artefact))
+		var/obj/item/field_artefact/artefact = find
+		return artefact.origin_band
 	return null
 
 // ===== Exosuit wreck =====

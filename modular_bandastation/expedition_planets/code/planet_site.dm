@@ -147,6 +147,7 @@
 	if(generator.populate_terrain(turfs, surface) != 3)
 		CRASH("Expedition planet [seed] lacks its research sources")
 	generator.place_dig_sites(turfs, surface, src, budget)
+	generator.place_anomaly_fields(turfs, surface, src, budget)
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(berth))
 	marker.site_id = id
 	marker.name = name

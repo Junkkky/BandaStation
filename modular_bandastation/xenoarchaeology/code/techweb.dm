@@ -10,11 +10,12 @@
 		/datum/design/xenoarch_depth_scanner,
 		/datum/design/xenoarch_core_sampler,
 		/datum/design/xenoarch_find_bag,
+		/datum/design/field_bolts,
 	)
 
 /datum/techweb_node/xenoarchaeology
 	display_name = "Ксеноархеология"
-	description = "Полевые стабилизаторы и спектрометр проб, чтобы извлекать крупные находки целыми, ящик для их перевозки и лабораторный анализатор с площадкой и маркировщиком."
+	description = "Полевые стабилизаторы и спектрометр проб, чтобы извлекать крупные находки целыми, ящик для их перевозки, лабораторный анализатор с площадкой и маркировщиком, детектор аномальных полей и коллектор артефактов."
 	prerequisite_nodes = list(/datum/techweb_node/fundamental_sci)
 	unlocked_designs = list(
 		/datum/design/xenoarch_stabiliser,
@@ -23,6 +24,8 @@
 		/datum/design/board/artifact_analyser,
 		/datum/design/board/artifact_scanpad,
 		/datum/design/artifact_labeler,
+		/datum/design/field_detector,
+		/datum/design/field_collector,
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
 	experiments_to_unlock = list(/datum/experiment/xenoarch_analysis)
