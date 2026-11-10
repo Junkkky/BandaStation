@@ -19,9 +19,6 @@
 	if(!species.is_vampire_compatible())
 		return FALSE
 
-/datum/dynamic_ruleset/roundstart/vampire/can_use_roundstart_body(mob/living/carbon/human/character)
-	return istype(character) && character.dna?.species?.is_vampire_compatible()
-
 /datum/dynamic_ruleset/roundstart/vampire/assign_role(datum/mind/candidate)
 	candidate.add_antag_datum(/datum/antagonist/vampire)
 

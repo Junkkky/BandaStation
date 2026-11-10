@@ -219,16 +219,14 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 	//Configure mode and assign player to antagonists
-	var/list/rolled_rulesets = list()
-	var/list/rejected_rulesets = list()
-	var/can_continue = SSdynamic.select_roundstart_antagonists(rolled_rulesets, rejected_rulesets)
+	var/can_continue = FALSE
+	can_continue = SSdynamic.select_roundstart_antagonists() //Choose antagonists
 	CHECK_TICK
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PRE_JOBS_ASSIGNED, src)
 	for(var/datum/station_trait/job/job_trait in SSstation.station_traits)
 		job_trait.assign_lobby_candidates()
 	can_continue = can_continue && SSjob.divide_occupations() //Distribute jobs
 	CHECK_TICK
-	SSdynamic.finish_roundstart_preparation(rolled_rulesets, rejected_rulesets, can_continue || GLOB.debugging_enabled)
 
 	if(!GLOB.debugging_enabled)
 		if(!can_continue)
@@ -480,18 +478,13 @@ SUBSYSTEM_DEF(ticker)
 		var/player_ckey = player.ckey
 		var/previous_mind_activity = spawning_mind.active
 		var/datum/job_character_selection/selection = player.assigned_job_character
-		var/datum/roundstart_job_changes/antag_selection = SSdynamic.get_roundstart_job_changes(spawning_mind)
 		var/atom/destination = job.get_roundstart_spawn_point()
 		var/mob/living/character = destination ? player.create_character(destination) : null
 		if(!QDELETED(character))
-			if(antag_selection)
-				SSdynamic.validate_roundstart_body(spawning_mind, character, antag_selection)
 			GLOB.joined_player_list += player_ckey
 			CHECK_TICK
 			continue
 
-		if(antag_selection)
-			SSdynamic.cancel_roundstart_assignment(spawning_mind, antag_selection)
 		// Character creation can wait, so only release the vacancy held by this attempt.
 		var/still_reserved = QDELETED(player) || (player.assigned_job_character == selection && (!player.mind || player.mind == spawning_mind))
 		if(still_reserved && (QDELETED(spawning_mind) || spawning_mind.assigned_role == job))

@@ -1,68 +1,9 @@
-/datum/roundstart_job_changes
-	var/previous_forced_job
-	var/forced_job
-	var/list/added_blocked_jobs
-	var/invader = FALSE
-
 /datum/dynamic_ruleset/roundstart
 	// We can pick multiple of a roundstart ruleset to "scale up" (spawn more of the same type of antag)
 	// Set this to FALSE if you DON'T want this ruleset to "scale up"
 	repeatable = TRUE
 	/// If TRUE, the ruleset will be the only one selected for roundstart
 	var/solo = FALSE
-	/// Changes owned by each selection until the ruleset executes.
-	VAR_PRIVATE/list/prepared_job_changes
-
-/datum/dynamic_ruleset/roundstart/prepare_job_constraints(datum/mind/candidate)
-	var/list/previous_blocked_jobs = LAZYACCESS(SSjob.prevented_occupations, candidate)
-	previous_blocked_jobs = previous_blocked_jobs?.Copy() || list()
-	var/datum/roundstart_job_changes/changes = new
-	changes.previous_forced_job = LAZYACCESS(SSjob.forced_occupations, candidate)
-	. = ..()
-	changes.forced_job = LAZYACCESS(SSjob.forced_occupations, candidate)
-	var/list/current_blocked_jobs = LAZYACCESS(SSjob.prevented_occupations, candidate) || list()
-	changes.added_blocked_jobs = current_blocked_jobs - previous_blocked_jobs
-	changes.invader = !!(ruleset_flags & RULESET_INVADER)
-	LAZYSET(prepared_job_changes, candidate, changes)
-
-/datum/dynamic_ruleset/roundstart/proc/get_prepared_job_changes(datum/mind/candidate)
-	return LAZYACCESS(prepared_job_changes, candidate)
-
-/// Some antagonists need a particular kind of body after the job's profile has been applied.
-/datum/dynamic_ruleset/roundstart/proc/can_use_roundstart_body(mob/living/character)
-	return TRUE
-
-/// Remove only the job constraints that this unexecuted selection introduced.
-/datum/dynamic_ruleset/roundstart/proc/cancel_assignment(datum/mind/candidate)
-	var/datum/roundstart_job_changes/changes = get_prepared_job_changes(candidate)
-	if(!changes)
-		return FALSE
-	LAZYREMOVEASSOC(SSjob.prevented_occupations, candidate, changes.added_blocked_jobs)
-	if(changes.previous_forced_job != changes.forced_job && LAZYACCESS(SSjob.forced_occupations, candidate) == changes.forced_job)
-		if(changes.previous_forced_job)
-			LAZYSET(SSjob.forced_occupations, candidate, changes.previous_forced_job)
-		else
-			LAZYREMOVE(SSjob.forced_occupations, candidate)
-	LAZYREMOVE(prepared_job_changes, candidate)
-	selected_minds -= candidate
-	return TRUE
-
-/datum/dynamic_ruleset/roundstart/proc/cancel_preparation()
-	for(var/datum/mind/candidate as anything in prepared_job_changes?.Copy())
-		cancel_assignment(candidate)
-
-/datum/dynamic_ruleset/roundstart/execute()
-	prepared_job_changes = null
-	return ..()
-
-/datum/dynamic_ruleset/roundstart/Destroy()
-	cancel_preparation()
-	return ..()
-
-/datum/dynamic_ruleset/roundstart/set_config_value(new_var, new_val)
-	if(new_var == NAMEOF(src, prepared_job_changes))
-		return FALSE
-	return ..()
 
 /datum/dynamic_ruleset/roundstart/is_valid_candidate(mob/candidate, client/candidate_client)
 	if(isnull(candidate.mind))
@@ -75,21 +16,18 @@
 
 /// Helpful proc - to use if your ruleset forces a job - which ensures a candidate can play the passed job typepath
 /datum/dynamic_ruleset/roundstart/proc/ruleset_forced_job_check(mob/candidate, client/candidate_client, datum/job/job_typepath)
-	var/datum/mind/candidate_mind = candidate.mind
 	// Malf AI can only go to people who want to be AI
 	if(!candidate_client.prefs.job_preferences[job_typepath::title])
 		return FALSE
 	// And only to people who can actually be AI this round
 	if(SSjob.check_job_eligibility(candidate, SSjob.get_job_type(job_typepath), "[name] Candidacy") != JOB_AVAILABLE)
 		return FALSE
-	if(QDELETED(candidate) || !candidate_client || GET_CLIENT(candidate) != candidate_client || candidate.mind != candidate_mind)
-		return FALSE
 	// (Something else forced us to play a job that isn't AI)
-	var/forced_job = LAZYACCESS(SSjob.forced_occupations, candidate_mind)
+	var/forced_job = LAZYACCESS(SSjob.forced_occupations, candidate)
 	if(forced_job && forced_job != job_typepath)
 		return FALSE
 	// (Something else forced us NOT to play AI)
-	if(job_typepath::title in LAZYACCESS(SSjob.prevented_occupations, candidate_mind))
+	if(job_typepath::title in LAZYACCESS(SSjob.prevented_occupations, candidate))
 		return FALSE
 	return TRUE
 
@@ -182,13 +120,9 @@
 
 	return !(TRAIT_NOBLOOD in species.inherent_traits)
 
-/datum/dynamic_ruleset/roundstart/blood_worm/can_use_roundstart_body(mob/living/character)
-	return ishuman(character) && CAN_HAVE_BLOOD(character)
-
 /datum/dynamic_ruleset/roundstart/blood_worm/assign_role(datum/mind/candidate)
-	if(!can_use_roundstart_body(candidate.current))
-		log_dynamic("Roundstart: [key_name(candidate)] no longer has a viable Blood Worm host.")
-		return
+	if (!CAN_HAVE_BLOOD(candidate.current))
+		CRASH("A roundstart blood worm tried to spawn into a candidate mob with no blood. This shouldn't happen, because we already checked for TRAIT_NOBLOOD in species traits.")
 
 	var/mob/living/carbon/human/host = candidate.current
 	var/mob/living/basic/blood_worm/hatchling/worm = new(get_turf(host))

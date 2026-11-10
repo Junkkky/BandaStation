@@ -3,9 +3,6 @@
 	..()
 	if(!spawning)//Here so that if they are spawning and log out, the other procs can play out and they will have a mob to come back to.
 		if(mind)
-			var/datum/roundstart_job_changes/antag_selection = SSdynamic.get_roundstart_job_changes(mind)
-			if(antag_selection)
-				SSdynamic.cancel_roundstart_assignment(mind, antag_selection)
 			var/datum/job/job = mind.assigned_role
 			if(assigned_job_character && job && !is_unassigned_job(job))
 				job.current_positions = max(0, job.current_positions - 1)

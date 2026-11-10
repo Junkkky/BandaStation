@@ -253,9 +253,8 @@ SUBSYSTEM_DEF(job)
  * * do_eligibility_checks - Set to TRUE to conduct all job eligibility tests and reject on failure. Set to FALSE if job eligibility has been tested elsewhere and they can be safely skipped.
  * * debug_spawn - Allows the admin full crew debug verb to create clientless dummies.
  * * expected_slot - For latejoin, reject if the resolved slot changed since the player confirmed.
- * * expected_roundstart_assignment - For a forced Dynamic job, the selection that must still own it.
  */
-/datum/controller/subsystem/job/proc/assign_role(mob/dead/new_player/player, datum/job/job, latejoin = FALSE, do_eligibility_checks = TRUE, debug_spawn = FALSE, expected_slot, datum/roundstart_job_changes/expected_roundstart_assignment)
+/datum/controller/subsystem/job/proc/assign_role(mob/dead/new_player/player, datum/job/job, latejoin = FALSE, do_eligibility_checks = TRUE, debug_spawn = FALSE, expected_slot)
 	job_debug("AR: Running, Player: [player], Job: [isnull(job) ? "null" : job], LateJoin: [latejoin]")
 	if(!player?.mind || !job)
 		job_debug("AR: Failed, player has no mind or job is null. Player: [player], Rank: [isnull(job) ? "null" : job.type]")
@@ -266,8 +265,6 @@ SUBSYSTEM_DEF(job)
 	if(do_eligibility_checks && (check_job_eligibility(player, job, "AR", add_job_to_log = TRUE, latejoin = latejoin) != JOB_AVAILABLE))
 		return FALSE
 	if(QDELETED(player) || player.mind != player_mind || GET_CLIENT(player) != player_client)
-		return FALSE
-	if(expected_roundstart_assignment && (SSdynamic.get_roundstart_job_changes(player_mind) != expected_roundstart_assignment || LAZYACCESS(forced_occupations, player_mind) != job.type))
 		return FALSE
 	if(!debug_spawn)
 		if(!player_client?.prefs || !job.can_access_donor_job(player_client))
@@ -917,16 +914,11 @@ SUBSYSTEM_DEF(job)
 /// or making sure roles critical to round progression exist where possible every shift.
 /datum/controller/subsystem/job/proc/assign_priority_positions()
 	job_debug("APP: Assigning Dynamic ruleset forced occupations: [LAZYLEN(forced_occupations)]")
-	for(var/datum/mind/mind as anything in forced_occupations?.Copy())
-		var/forced_job = LAZYACCESS(forced_occupations, mind)
-		if(!forced_job)
-			continue
-		var/mob/dead/new_player/player = mind.current
-		var/datum/roundstart_job_changes/selection = SSdynamic.get_roundstart_job_changes(mind)
+	for(var/datum/mind/mind as anything in forced_occupations)
+		var/mob/dead/new_player = mind.current
 		// Eligibility checks already carried out as part of the dynamic ruleset trim_candidates proc.
 		// However no guarantee of game state between then and now, so don't skip eligibility checks on assign_role.
-		if(!assign_role(player, get_job_type(forced_job), expected_roundstart_assignment = selection) && selection)
-			SSdynamic.cancel_roundstart_assignment(mind, selection)
+		assign_role(new_player, get_job_type(LAZYACCESS(forced_occupations, mind)))
 
 	/// BANDASTATION REMOVAL START - Job Priority Staffing
 	// // Get JP_HIGH department Heads of Staff in place. Indirectly useful for the Revolution ruleset to have as many Heads as possible.

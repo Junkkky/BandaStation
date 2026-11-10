@@ -219,8 +219,6 @@
 
 	// !! THIS SLEEPS !!
 	load_templates()
-	if(QDELETED(src))
-		return FALSE
 
 	// This is (mostly) redundant, buuuut the (potential) sleep above makes it iffy, so let's just be safe
 	if(!can_be_selected())
@@ -231,28 +229,18 @@
 	var/min_candidates = get_antag_cap(population_size, min_antag_cap)
 
 	var/list/selected_candidates = select_candidates(antag_candidates, max_candidates)
-	if(QDELETED(src))
-		return FALSE
-	for(var/mob/candidate as anything in selected_candidates.Copy())
-		if(QDELETED(candidate) || !GET_CLIENT(candidate))
-			selected_candidates -= candidate
 	if(length(selected_candidates) < min_candidates)
 		log_data = "Reason: Not enough eligible candidates. Have: [length(selected_candidates)], Need: [min_candidates]"
 		return FALSE
 
 	for(var/mob/candidate as anything in selected_candidates)
 		var/datum/mind/candidate_mind = get_candidate_mind(candidate)
-		prepare_job_constraints(candidate_mind)
+		prepare_for_role(candidate_mind)
+		LAZYADDASSOC(SSjob.prevented_occupations, candidate_mind, get_blacklisted_roles()) // this is what makes sure you can't roll traitor as a sec-off
 		selected_minds += candidate_mind
 		antag_candidates -= candidate
 
 	return TRUE
-
-/// Reserve or forbid jobs for this selection before any antagonist datums are assigned.
-/datum/dynamic_ruleset/proc/prepare_job_constraints(datum/mind/candidate)
-	SHOULD_NOT_SLEEP(TRUE)
-	prepare_for_role(candidate)
-	LAZYADDASSOC(SSjob.prevented_occupations, candidate, get_blacklisted_roles())
 
 /// Gets the mind of a candidate, can be overridden to return a different mind if necessary
 /datum/dynamic_ruleset/proc/get_candidate_mind(mob/dead/candidate)
@@ -300,11 +288,7 @@
 			continue
 		if(is_banned_from(candidate.ckey, list(ROLE_SYNDICATE, jobban_flag || pref_flag)))
 			continue
-		if(QDELETED(candidate) || !candidate_client || GET_CLIENT(candidate) != candidate_client)
-			continue
 		if(!is_valid_candidate(candidate, candidate_client))
-			continue
-		if(QDELETED(candidate) || !candidate_client || GET_CLIENT(candidate) != candidate_client)
 			continue
 		valid_candidates += candidate
 	return valid_candidates
