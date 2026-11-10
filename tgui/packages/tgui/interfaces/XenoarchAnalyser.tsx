@@ -459,7 +459,7 @@ export const XenoarchAnalyser = () => {
   const { powered, pad, scanning, specimen, reading, tape, kind_colors } = data;
   const channels = reading?.current ? reading.channels : [];
   const read = !!powered && !!reading?.current;
-  const canScan = !!powered && pad === 'ready' && !!specimen && !scanning;
+  const canScan = !!powered && pad === 'ready' && !scanning;
   return (
     <Window width={600} height={560} theme="ntos_darkmode">
       <Window.Content style={{ background: '#1d1f21' }}>
