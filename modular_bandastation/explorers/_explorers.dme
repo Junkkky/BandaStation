@@ -12,6 +12,7 @@
 #include "code\department.dm"
 #include "code\equipment.dm"
 #include "code\jobs.dm"
+#include "code\journal.dm"
 #include "code\mapping.dm"
 #include "code\outfits.dm"
 #include "code\pda.dm"

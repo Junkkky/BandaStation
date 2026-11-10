@@ -34,8 +34,9 @@
 	if(!completed || QDELETED(source) || QDELETED(user) || user.mind != operator || !user.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH))
 		return
 	var/datum/stationtrauma_research_record/record = source.research_record()
+	record.log_observation(user, source, record.surveyed ? "Повторное полевое обследование." : "Полевое обследование: [record.field_notes]")
 	record.surveyed = TRUE
-	to_chat(user, span_notice(record.report_text()))
+	to_chat(user, span_notice(record.specimen_text()))
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 
 /** A sealed physical specimen; its discovery record is independent of this particular container. */
@@ -71,7 +72,7 @@
 
 /obj/item/stationtrauma_sample/attack_self(mob/user)
 	if(record)
-		to_chat(user, span_notice(record.report_text(analyzed)))
+		to_chat(user, span_notice(record.specimen_text(analyzed)))
 
 /obj/item/stationtrauma_sample/pre_attack(atom/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(!istype(target, /obj/structure/stationtrauma_research_source))
@@ -106,6 +107,7 @@
 	GLOB.stationtrauma_research_serial++
 	sample_id = "S-[GLOB.stationtrauma_research_serial]"
 	collected_by = user.real_name
+	record.log_observation(user, source, "Отобрана проба [sample_id]. Осталось проб: [source.remaining_samples].")
 	name = "экспедиционная проба [sample_id]"
 	update_appearance()
 	balloon_alert(user, "проба запечатана")
@@ -161,9 +163,10 @@
 	if(!completed || operation_interrupted || !is_operational || QDELETED(sample) || QDELETED(user) || sample.record != original_record || sample.analyzed || user.mind != operator || !user.is_holding(sample) || !user.can_perform_action(src, NEED_HANDS|FORBID_TELEKINESIS_REACH))
 		return
 	sample.analyzed = TRUE
+	original_record.log_observation(user, src, "Лабораторный анализ пробы [sample.sample_id]: [original_record.laboratory_notes]")
 	var/obj/item/paper/report = new /obj/item/paper/stationtrauma_research_report(drop_location())
 	report.name = "лабораторный отчёт [sample.sample_id]"
-	report.add_raw_text("<b>Проба [html_encode(sample.sample_id)]</b><br>Отбор: [html_encode(sample.collected_by)]<br>Аналитик: [html_encode(user.real_name)]<br>[original_record.report_text(TRUE)]", advanced_html = TRUE)
+	report.add_raw_text("<b>Проба [html_encode(sample.sample_id)]</b><br>Отбор: [html_encode(sample.collected_by)]<br>Аналитик: [html_encode(user.real_name)]<br>[original_record.specimen_text(TRUE)]", advanced_html = TRUE)
 	to_chat(user, span_notice("Анализ выполнен. Отчёт напечатан; результаты также доступны при использовании пробы в руке."))
 	playsound(src, 'sound/machines/ping.ogg', 40, TRUE)
 

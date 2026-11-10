@@ -7,6 +7,7 @@
 		/datum/computer_file/program/arcade,
 		/datum/computer_file/program/skill_tracker,
 		/datum/computer_file/data/text/expedition_field_notes,
+		/datum/computer_file/program/expedition_journal,
 	)
 
 /// Editable field report template opened with the PDA's standard Notepad app.
