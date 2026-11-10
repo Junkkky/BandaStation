@@ -3,6 +3,7 @@
 	alternate_titles = list("Парикмахер", "Стилист", "Цирюльник", "Визажист")
 	description = "Стригите и брейте посетителей, подбирайте им причёски и откройте собственную парикмахерскую."
 	config_tag = "BARBER"
+	display_order = JOB_DISPLAY_ORDER_DONOR_BARBER
 	total_positions = 1
 	spawn_positions = 1
 	required_donator_level = DONATOR_TIER_1
@@ -37,6 +38,7 @@
 	alternate_titles = list("Официант", "Хост сервиса")
 	description = "Принимайте заказы, подавайте блюда и напитки и помогайте поварам и бармену обслуживать экипаж."
 	config_tag = "WAITER"
+	display_order = JOB_DISPLAY_ORDER_DONOR_WAITER
 	total_positions = 2
 	spawn_positions = 2
 	required_donator_level = DONATOR_TIER_1
@@ -80,6 +82,7 @@
 	alternate_titles = list("Сервис-администратор", "Сервис-управитель", "Сервис-менеджер")
 	description = "Помогайте главе персонала координировать отдел обслуживания, поддерживайте работу заведений и устраивайте мероприятия для экипажа."
 	config_tag = "SERVICE_ADMINISTRATOR"
+	display_order = JOB_DISPLAY_ORDER_DONOR_ADMINISTRATOR
 	total_positions = 1
 	spawn_positions = 1
 	required_donator_level = DONATOR_TIER_3
@@ -127,6 +130,7 @@
 	alternate_titles = list("Охранник сервиса", "Сторож сервиса", "Вышибала")
 	description = "Следите за порядком в баре и на кухне. Удаляйте нарушителей из заведения и вызывайте службу безопасности, если нужна её помощь."
 	config_tag = "SERVICE_GUARD"
+	display_order = JOB_DISPLAY_ORDER_DONOR_GUARD
 	total_positions = 1
 	spawn_positions = 1
 	required_donator_level = DONATOR_TIER_3
@@ -171,6 +175,7 @@
 	alternate_titles = list("Торговец", "Независимый торговец", "Барахольщик", "Коммерсант")
 	description = "Откройте торговую точку, скупайте и перепродавайте товары экипажу. Принимайте переводы через NT Pay."
 	config_tag = "DEALER"
+	display_order = JOB_DISPLAY_ORDER_DONOR_DEALER
 	total_positions = 2
 	spawn_positions = 2
 	required_donator_level = DONATOR_TIER_4
@@ -212,6 +217,7 @@
 	alternate_titles = list("Банкир", "Независимый банкир", "Корпорат", "Бизнесмен")
 	description = "Вложите стартовый капитал в своё дело. Откройте банк или мастерскую, нанимайте работников и заключайте сделки с экипажем."
 	config_tag = "BANKER"
+	display_order = JOB_DISPLAY_ORDER_DONOR_BANKER
 	total_positions = 2
 	spawn_positions = 2
 	required_donator_level = DONATOR_TIER_5

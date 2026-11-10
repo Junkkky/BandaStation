@@ -91,12 +91,16 @@
 	SSid_access.apply_trim_to_card(reprinted_card, /datum/id_trim/job/assistant)
 	TEST_ASSERT_EQUAL(reprinted_card.get_trim_assignment(), reprinted_card.trim.assignment, "Reprinting a card retained its old job variant.")
 
+/datum/unit_test/prisoner_initial_record
+	var/mob/living/carbon/human/dummy/consistent/prisoner
+
 /datum/unit_test/prisoner_initial_record/Run()
-	var/mob/living/carbon/human/dummy/consistent/prisoner = allocate(/mob/living/carbon/human/dummy/consistent)
+	var/datum/job/prisoner/prisoner_job = SSjob.get_job_type(/datum/job/prisoner)
+	TEST_ASSERT_NOTNULL(prisoner_job, "The fixture needs the canonical prisoner job.")
+	prisoner = allocate(/mob/living/carbon/human/dummy/consistent)
 	prisoner.real_name = "Prisoner Record Test"
-	prisoner.mind_initialize()
-	allocated += prisoner.mind
-	prisoner.mind.set_assigned_role(allocate(/datum/job/prisoner))
+	prisoner.mind = allocate(/datum/mind)
+	prisoner.mind.set_assigned_role(prisoner_job)
 	var/datum/prisoner_crime/selected_crime = GLOB.prisoner_crimes["Tax Evasion"]
 	TEST_ASSERT_NOTNULL(selected_crime, "The fixture crime is missing.")
 	prisoner.initial_prisoner_crime = selected_crime
@@ -122,3 +126,9 @@
 	TEST_ASSERT_EQUAL(recorded_crime.name, selected_crime.name, "The record did not use the selected crime.")
 	TEST_ASSERT_EQUAL(later_record.wanted_status, WANTED_NONE, "Ordinary injection applied the initial prisoner status.")
 	TEST_ASSERT_EQUAL(length(later_record.crimes), 0, "Ordinary injection duplicated the prisoner's crime.")
+
+/datum/unit_test/prisoner_initial_record/Destroy()
+	if(!QDELETED(prisoner))
+		prisoner.mind = null
+	prisoner = null
+	return ..()

@@ -4,6 +4,7 @@
 	description = "Осмотрите станцию как гость Транс-Солнечной Федерации, познакомьтесь с экипажем и найдите занятие по душе."
 	required_donator_level = DONATOR_TIER_2
 	config_tag = "TOURIST_TSF"
+	display_order = JOB_DISPLAY_ORDER_DONOR_TOURIST_TSF
 	total_positions = 2
 	spawn_positions = 2
 	tgui_icon = FA_ICON_PASSPORT
@@ -45,6 +46,7 @@
 	description = "Проведите отпуск на станции как гость Союза Советских Социалистических Планет и познакомьтесь с местной жизнью."
 	required_donator_level = DONATOR_TIER_2
 	config_tag = "TOURIST_USSP"
+	display_order = JOB_DISPLAY_ORDER_DONOR_TOURIST_USSP
 	total_positions = 2
 	spawn_positions = 2
 	tgui_icon = FA_ICON_PASSPORT
@@ -86,6 +88,7 @@
 	description = "Вы недавно прибыли на станцию. Подыщите работу, заведите знакомства и решите, хотите ли здесь остаться."
 	required_donator_level = DONATOR_TIER_2
 	config_tag = "MIGRANT"
+	display_order = JOB_DISPLAY_ORDER_DONOR_MIGRANT
 	total_positions = 2
 	spawn_positions = 2
 	tgui_icon = FA_ICON_SUITCASE_ROLLING
@@ -118,6 +121,7 @@
 	description = "Представляйте интересы ТСФ в переговорах с командованием станции и оформляйте достигнутые договорённости."
 	required_donator_level = DONATOR_TIER_4
 	config_tag = "REPRESENTATIVE_TSF"
+	display_order = JOB_DISPLAY_ORDER_DONOR_REPRESENTATIVE_TSF
 	total_positions = 1
 	spawn_positions = 1
 	departments_list = list(/datum/job_department/nanotrasen_representation)
@@ -156,6 +160,7 @@
 	description = "Представляйте интересы СССП в переговорах с командованием станции, принимайте обращения и ведите дипломатическую переписку."
 	required_donator_level = DONATOR_TIER_4
 	config_tag = "REPRESENTATIVE_USSP"
+	display_order = JOB_DISPLAY_ORDER_DONOR_REPRESENTATIVE_USSP
 	total_positions = 1
 	spawn_positions = 1
 	departments_list = list(/datum/job_department/nanotrasen_representation)
@@ -193,6 +198,7 @@
 	description = "Собирайте сведения для Центрального командования, ведите переписку и согласовывайте поручения с представителем Нанотрейзен и капитаном."
 	required_donator_level = DONATOR_TIER_5
 	config_tag = "NAVY_JUNIOR_OFFICER"
+	display_order = JOB_DISPLAY_ORDER_DONOR_NAVY_JUNIOR_OFFICER
 	total_positions = 1
 	spawn_positions = 1
 	departments_list = list(/datum/job_department/nanotrasen_representation)

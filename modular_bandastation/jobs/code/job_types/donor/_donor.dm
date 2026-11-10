@@ -5,7 +5,6 @@
 	supervisors = JOB_HEAD_OF_PERSONNEL_RU
 	exp_granted_type = EXP_TYPE_CREW
 	departments_list = list(/datum/job_department/service)
-	display_order = JOB_DISPLAY_ORDER_DONOR
 	paycheck = PAYCHECK_LOWER
 	paycheck_department = ACCOUNT_SRV
 	plasmaman_outfit = /datum/outfit/plasmaman
