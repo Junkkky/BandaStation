@@ -35,3 +35,20 @@
 			species.handle_body_temperature(drask, 2)
 		TEST_ASSERT_EQUAL(drask.coretemperature, species.bodytemp_normal, "External temperatures must not bypass full insulation.")
 		TEST_ASSERT_EQUAL(drask.get_fire_loss(), 0, "The insulated Drask must not receive thermal damage.")
+
+/// Burning skin must still heat the core that controls temperature damage.
+/datum/unit_test/drask_fire_heat_transfer/Run()
+	var/mob/living/carbon/human/drask = allocate(/mob/living/carbon/human/species/drask)
+	var/datum/species/drask/species = drask.dna.species
+	var/obj/structure/drask_thermal_test_chamber/chamber = allocate(/obj/structure/drask_thermal_test_chamber)
+	chamber.test_air = allocate(/datum/gas_mixture, 2500)
+	chamber.test_air.temperature = species.bodytemp_normal
+	drask.forceMove(chamber)
+	drask.set_fire_stacks(5)
+	drask.ignite_mob()
+	TEST_ASSERT(drask.on_fire, "The Drask must be burning to check skin-to-core heat transfer.")
+	// Keep the skin below the burn-wound threshold to isolate heat transfer from random wounds.
+	drask.adjust_bodytemperature(T0C + 30 - drask.bodytemperature)
+	var/core_before = drask.coretemperature
+	species.handle_body_temperature(drask, 2)
+	TEST_ASSERT(drask.coretemperature > core_before, "Burning skin did not heat the Drask's core.")

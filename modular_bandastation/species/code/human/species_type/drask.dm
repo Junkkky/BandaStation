@@ -110,12 +110,12 @@
 		var/skin_protection = thermal_protection * (sweating ? 0.7 : 1)
 		humi.adjust_bodytemperature((1 - skin_protection) * area_skin_change)
 
-	if(humi.on_fire)
-		return
-	var/efficiency = thermal_efficiency(humi)
-	var/delta = clamp((area_temp - humi.coretemperature) * (1 - thermal_protection) * (1 - efficiency) * 0.4, -40, 40)
-	var/skin_diff = humi.coretemperature + delta - humi.bodytemperature
-	humi.adjust_bodytemperature(clamp(get_temp_change_amount(skin_diff, 0.08 * seconds_per_tick), min(0, skin_diff), max(0, skin_diff)))
+	if(!humi.on_fire)
+		var/efficiency = thermal_efficiency(humi)
+		var/delta = clamp((area_temp - humi.coretemperature) * (1 - thermal_protection) * (1 - efficiency) * 0.4, -40, 40)
+		var/skin_diff = humi.coretemperature + delta - humi.bodytemperature
+		humi.adjust_bodytemperature(clamp(get_temp_change_amount(skin_diff, 0.08 * seconds_per_tick), min(0, skin_diff), max(0, skin_diff)))
+	// Burning prevents skin cooling, but its heat must still reach the core used for temperature damage.
 	var/core_skin_diff = humi.bodytemperature - humi.coretemperature
 	humi.adjust_coretemperature(clamp(get_temp_change_amount(core_skin_diff, 0.015 * seconds_per_tick), min(0, core_skin_diff), max(0, core_skin_diff)))
 

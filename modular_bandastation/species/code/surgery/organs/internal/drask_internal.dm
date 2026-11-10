@@ -20,7 +20,6 @@
 	name = "язык драска"
 	desc = "Язык, способный воспроизводить гулкие звуки орлуума."
 	say_mod = "гудит"
-	modifies_speech = TRUE
 	languages_native = list(/datum/language/orluum)
 	liked_foodtypes = DAIRY
 	toxic_foodtypes = ALCOHOL | SUGAR

@@ -9,7 +9,8 @@
 	var/datum/language/orluum/orluum = GLOB.language_datum_instances[/datum/language/orluum]
 	TEST_ASSERT_EQUAL(length(splittext(orluum.get_random_name(), "-")), 3, "A Drask name should have three parts.")
 	TEST_ASSERT_EQUAL(human.get_bloodtype().type, /datum/blood_type/drask, "A Drask has the wrong blood type.")
-	TEST_ASSERT_EQUAL(human.get_organ_slot(ORGAN_SLOT_HEART)?.zone, BODY_ZONE_HEAD, "A Drask heart must be in the head.")
+	var/obj/item/organ/heart/heart = human.get_organ_slot(ORGAN_SLOT_HEART)
+	TEST_ASSERT_EQUAL(heart?.zone, BODY_ZONE_HEAD, "A Drask heart must be in the head.")
 	TEST_ASSERT_EQUAL(drask.thermal_efficiency(human), 1, "A healthy Drask should have full temperature regulation.")
 
 	var/obj/item/organ/thermal_spine/left_spine = human.get_organ_slot(ORGAN_SLOT_ARM_SPINES_L)
@@ -36,3 +37,18 @@
 	human.set_species(/datum/species/human)
 	TEST_ASSERT(!human.has_language(/datum/language/orluum, SPOKEN_LANGUAGE), "Changing species left the Drask language behind.")
 	TEST_ASSERT_NULL(human.get_organ_slot(ORGAN_SLOT_ARM_SPINES_L), "Changing species left a spine behind.")
+
+/// A fresh character must receive the selected skin tone through the normal preference order.
+/datum/unit_test/drask_skin_tone_preferences/Run()
+	var/datum/client_interface/mock_client = allocate(/datum/client_interface)
+	var/datum/preferences/preferences = allocate(/datum/preferences, mock_client)
+	mock_client.prefs = preferences
+	preferences.value_cache[/datum/preference/choiced/species] = /datum/species/drask
+	preferences.value_cache[/datum/preference/choiced/drask_skin_tone] = "drask_dark"
+	var/mob/living/carbon/human/human = allocate(/mob/living/carbon/human/consistent)
+	preferences.apply_prefs_to(human)
+	mock_client.prefs = null
+	TEST_ASSERT(istype(human.dna.species, /datum/species/drask), "The preference pipeline did not select a Drask.")
+	TEST_ASSERT_EQUAL(human.dna.features[FEATURE_DRASK_SKIN_TONE], "drask_dark", "The preference pipeline lost the selected Drask skin tone.")
+	var/obj/item/bodypart/head/head = human.get_bodypart(BODY_ZONE_HEAD)
+	TEST_ASSERT_EQUAL(head.draw_color, get_drask_tone_color("drask_dark"), "The preference pipeline did not tint the Drask's limbs.")

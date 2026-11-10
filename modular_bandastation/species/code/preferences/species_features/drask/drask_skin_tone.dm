@@ -10,6 +10,7 @@ GLOBAL_LIST_INIT(drask_skin_tones, list(
 
 /datum/preference/choiced/drask_skin_tone
 	savefile_key = "drask_skin_tone"
+	priority = PREFERENCE_PRIORITY_BODYPARTS
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	main_feature_name = "Тон кожи (Драск)"
