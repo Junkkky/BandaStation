@@ -111,6 +111,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
+"ap" = (
+/obj/machinery/light/directional/north,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/airalarm/directional/north,
+/obj/structure/closet/secure_closet/expedition/engineer,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/life_support)
 "aq" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Emergency Shutle Engineering";
@@ -331,6 +340,10 @@
 "aL" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/airlock_port_fore)
+"aM" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "aN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
@@ -823,14 +836,11 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/life_support)
 "bO" = (
-/obj/machinery/light/directional/north,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/airalarm/directional/north,
-/obj/structure/closet/secure_closet/engineering_personal,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/life_support)
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/cable,
+/obj/machinery/suit_storage_unit/expedition,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "bP" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -981,12 +991,28 @@
 /obj/structure/window/reinforced/plasma/spawner/directional/north,
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/engines)
+"cm" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/closet/secure_closet/expedition_ship_armory,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "cn" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_aft)
+"co" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/obj/machinery/status_display/evac/directional/north,
+/obj/structure/closet/secure_closet/expedition_weapons,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "cp" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1002,11 +1028,24 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/engine_control)
+"cr" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/machinery/airalarm/directional/north,
+/obj/structure/closet/secure_closet/expedition_weapons,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "ct" = (
 /obj/machinery/power/smes/engineering,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
+"cu" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/suit_storage_unit/expedition,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "cv" = (
 /obj/structure/cable/layer1,
 /obj/structure/cable,
@@ -1019,6 +1058,17 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
+"cw" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/suit_storage_unit/expedition/pilot,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "cx" = (
 /obj/machinery/button/door/directional/south{
 	id = "raven_core_shutters";
@@ -1034,6 +1084,17 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_aft)
+"cz" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/suit_storage_unit/expedition/heavy,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 "cA" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -1041,6 +1102,27 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
+"cB" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/radio/intercom/directional/west,
+/obj/structure/closet/l3closet/expedition,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
+"cC" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/l3closet/expedition,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
+"cD" = (
+/obj/effect/turf_decal/bot_white,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/bridge)
 "cG" = (
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/stationtrauma_bluespace_drive{
@@ -1186,22 +1268,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/life_support)
-"eA" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/exile,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
-"eB" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/item/radio/intercom/directional/west,
-/obj/structure/closet/secure_closet/exile,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
 "eH" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -1252,17 +1318,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/life_support)
-"fx" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/structure/guncase,
-/obj/item/gun/ballistic/shotgun,
-/obj/item/gun/ballistic/shotgun,
-/obj/item/gun/energy/e_gun,
-/obj/item/gun/energy/e_gun,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
 "fz" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -1351,21 +1406,7 @@
 "gz" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/raven/bridge)
-"gA" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/light/directional/north,
-/obj/machinery/status_display/evac/directional/north,
-/obj/structure/closet/secure_closet/exile,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
 "gB" = (
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
-"gC" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/lethalshot,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/stationtrauma_space/raven/brig)
 "gD" = (
@@ -1530,14 +1571,6 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
-"gV" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/machinery/airalarm/directional/north,
-/obj/structure/closet/secure_closet/exile,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
 "gW" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -2100,17 +2133,6 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/bot_white,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/bridge)
-"jL" = (
-/obj/machinery/computer{
-	name = "Вспомогательная консоль";
-	icon_screen = "comm";
-	icon_keyboard = "tech_key";
-	dir = 8
-	},
-/obj/effect/turf_decal/bot_white,
-/obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
 "jM" = (
@@ -2764,8 +2786,8 @@ ab
 ab
 bu
 bD
-eA
-eB
+cC
+cB
 eH
 eI
 bD
@@ -2797,7 +2819,7 @@ ab
 ab
 ab
 bD
-fx
+cm
 fz
 fE
 fJ
@@ -2831,9 +2853,9 @@ gy
 gy
 gz
 bD
-gA
+co
 gB
-gC
+aM
 gD
 gE
 gF
@@ -2865,7 +2887,7 @@ gS
 gT
 bj
 gz
-gV
+cr
 gW
 gX
 gY
@@ -2885,7 +2907,7 @@ he
 ch
 ar
 ey
-bO
+ap
 hi
 br
 ck
@@ -3076,7 +3098,7 @@ jj
 dA
 jl
 hF
-gH
+cw
 cU
 cT
 bU
@@ -3135,7 +3157,7 @@ gy
 gy
 jJ
 jK
-jL
+cD
 gz
 jM
 jN
@@ -3144,9 +3166,9 @@ jP
 jQ
 jR
 jS
-gH
-gn
-hb
+cz
+cu
+bO
 gn
 gn
 cK
