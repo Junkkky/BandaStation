@@ -54,8 +54,8 @@ GLOBAL_LIST_INIT(xenoarch_tg_core_battery, list(
 	/obj/item/assembly/signaler/anomaly/bluespace = list(ARTIFACT_ENERGY_BLUESPACE, /datum/artifact_effect/teleport),
 	/obj/item/assembly/signaler/anomaly/hallucination = list(ARTIFACT_ENERGY_PSIONIC, /datum/artifact_effect/hallucination),
 	/obj/item/assembly/signaler/anomaly/bioscrambler = list(ARTIFACT_ENERGY_ORGANIC, /datum/artifact_effect/bodyhorror),
-	/obj/item/assembly/signaler/anomaly/dimensional = list(ARTIFACT_ENERGY_SYNTHESIS, /datum/artifact_effect/gas),
+	/obj/item/assembly/signaler/anomaly/dimensional = list(ARTIFACT_ENERGY_SYNTHESIS, /datum/artifact_effect/gas_vent/air),
 	/obj/item/assembly/signaler/anomaly/ectoplasm = list(ARTIFACT_ENERGY_PSIONIC, /datum/artifact_effect/poltergeist),
-	/obj/item/assembly/signaler/anomaly/weather = list(ARTIFACT_ENERGY_PARTICLE, /datum/artifact_effect/gas),
+	/obj/item/assembly/signaler/anomaly/weather = list(ARTIFACT_ENERGY_PARTICLE, /datum/artifact_effect/gas_vent/air),
 	/obj/item/assembly/signaler/anomaly/vortex = list(ARTIFACT_ENERGY_BLUESPACE, /datum/artifact_effect/gravity_wave),
 ))

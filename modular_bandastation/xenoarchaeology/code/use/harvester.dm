@@ -447,7 +447,6 @@
 		data["cell"] = list(
 			"fill" = round(battery.charge_fraction(), 0.01),
 			"color" = kind?.color,
-			"kind" = kind?.report_name,
 			"serial" = battery.source_serial,
 		)
 	else

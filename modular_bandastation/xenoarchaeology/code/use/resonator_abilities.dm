@@ -80,6 +80,17 @@
 /datum/action/cooldown/resonance/proc/fire(atom/target_atom)
 	return
 
+/// Tiles a beam from the owner crosses towards `target_atom`, up to the first wall, without the owner's own tile.
+/datum/action/cooldown/resonance/proc/beam_line(atom/target_atom)
+	. = list()
+	var/turf/start = get_turf(owner)
+	for(var/turf/spot as anything in get_line(start, get_turf(target_atom)))
+		if(spot == start)
+			continue
+		if(spot.density)
+			break
+		. += spot
+
 /// A living target the ability can act on, or null with a balloon.
 /datum/action/cooldown/resonance/proc/living_target(atom/target_atom)
 	if(isliving(target_atom) && target_atom != owner)
@@ -254,20 +265,15 @@
 /datum/action/cooldown/resonance/fire_beam/fire(atom/target_atom)
 	playsound(owner, 'sound/effects/magic/fireball.ogg', 60, TRUE)
 	var/list/hit = list()
-	var/turf/endpoint = get_turf(owner)
-	for(var/turf/spot as anything in get_line(get_turf(owner), get_turf(target_atom)))
-		if(spot == get_turf(owner))
-			continue
-		if(spot.density)
-			break
-		endpoint = spot
+	var/list/line = beam_line(target_atom)
+	for(var/turf/spot as anything in line)
 		new /obj/effect/hotspot(spot)
 		spot.hotspot_expose(700, 50, 1)
 		for(var/mob/living/victim in spot)
 			burn_target(victim)
 			hit += victim
-	if(endpoint != get_turf(owner))
-		owner.Beam(endpoint, icon_state = "solar_beam", time = 0.5 SECONDS)
+	if(length(line))
+		owner.Beam(line[length(line)], icon_state = "solar_beam", time = 0.5 SECONDS)
 	if(!chain)
 		return
 	var/atom/last = get_turf(target_atom)
@@ -570,19 +576,15 @@
 	fire_sound = 'sound/effects/magic/fleshtostone.ogg'
 
 /datum/action/cooldown/resonance/ice_beam/fire(atom/target_atom)
-	var/turf/endpoint = get_turf(owner)
-	for(var/turf/spot as anything in get_line(get_turf(owner), get_turf(target_atom)))
-		if(spot == get_turf(owner))
-			continue
-		if(spot.density)
-			break
-		endpoint = spot
+	var/list/line = beam_line(target_atom)
+	for(var/turf/spot as anything in line)
 		for(var/mob/living/victim in spot)
 			victim.apply_damage(15 * power, BURN)
 			victim.adjust_bodytemperature(-120, min_temp = TCMB)
 			if(prob(20))
 				victim.apply_status_effect(/datum/status_effect/freon, 5 SECONDS)
-	if(endpoint != get_turf(owner))
+	if(length(line))
+		var/turf/endpoint = line[length(line)]
 		owner.Beam(endpoint, icon_state = "b_beam", time = 0.5 SECONDS)
 		new /obj/effect/temp_visual/circle_wave/anomaly_pulse(endpoint, LIGHT_COLOR_LIGHT_CYAN, 0.8)
 

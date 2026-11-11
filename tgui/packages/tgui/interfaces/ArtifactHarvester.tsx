@@ -17,7 +17,6 @@ type Source = {
 type Cell = {
   fill: number;
   color: string | null;
-  kind: string | null;
   serial: string | null;
 };
 

@@ -219,13 +219,12 @@
 #define XENOARCH_ROCK_DEPTH_PER_TIER 8
 
 /// Curio classes, as buyers price them (design: shell 40, fossil 50, pottery 80,
-/// statuette or instrument 150, strange object 200 cr).
+/// statuette or instrument 150 cr).
 #define XENOARCH_CURIO_SHELL "shell"
 #define XENOARCH_CURIO_FOSSIL "fossil"
 #define XENOARCH_CURIO_POTTERY "pottery"
 #define XENOARCH_CURIO_STATUETTE "statuette"
 #define XENOARCH_CURIO_INSTRUMENT "instrument"
-#define XENOARCH_CURIO_STRANGE_OBJECT "strange object"
 
 /// Charged crystal: what it puts on the wire and for how long in all before it goes dull.
 #define XENOARCH_CRYSTAL_POWER (15 KILO WATTS)

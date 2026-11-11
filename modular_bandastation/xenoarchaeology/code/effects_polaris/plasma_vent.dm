@@ -5,7 +5,7 @@
 // contract asks for, so it can never become a free plasma well. Plasma air never wakes it, or it
 // would feed itself. Everyone breathing near it is logged. Not harvestable.
 //
-// Also the shared parent for gas vents with a reserve (sleeping gas uses it).
+// Also the shared parent for gas vents with a reserve (sleeping gas and the plain gas use it).
 
 /datum/artifact_effect/gas_vent
 	harvestable = FALSE
@@ -29,6 +29,7 @@
 
 // Half of what is left goes with a copy, so the reserve is shared, never doubled.
 /datum/artifact_effect/gas_vent/copy_settings_to(datum/artifact_effect/gas_vent/copy)
+	copy.gas_type = gas_type
 	copy.reserve = round(reserve / 2)
 	reserve -= copy.reserve
 	copy.max_pressure = max_pressure
