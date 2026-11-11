@@ -80,6 +80,7 @@
 	TEST_ASSERT_EQUAL(purple.melee_damage_upper, 25, "The Guardian weakened before three minutes apart.")
 	purple.Life(1)
 	TEST_ASSERT_EQUAL(purple.melee_damage_upper, 10, "The Guardian did not weaken after three minutes apart.")
+	TEST_ASSERT(purple.terror_degenerating, "The Guardian did not start degenerating after losing its bond.")
 	var/datum/action/cooldown/mob_cooldown/terror_guardian_membrane/membrane = locate() in purple.actions
 	TEST_ASSERT_NOTNULL(membrane, "The Guardian needs a membrane ability.")
 	TEST_ASSERT(membrane.Activate(), "The Guardian failed to create a membrane.")
@@ -150,6 +151,7 @@
 	TEST_ASSERT_EQUAL(hatched_role.directive, green.directive, "The antagonist role did not inherit the brood directive.")
 	TEST_ASSERT(!panel_role.can_be_owned(green.mind), "Traitor Panel should reject a duplicate terror spider role.")
 	TEST_ASSERT(QDELETED(physical_clutch), "Hatched eggs must disappear.")
+	TEST_ASSERT(!QDELETED(clutch), "Hatching deleted the spawner before it could send COMSIG_GHOSTROLE_SPAWNED.")
 
 	var/mob/living/basic/spider/giant/terror/queen/princess/princess = allocate(/mob/living/basic/spider/giant/terror/queen/princess)
 	var/datum/weakref/princess_ref = WEAKREF(princess)
@@ -182,6 +184,7 @@
 	var/obj/item/organ/terror_eggs/embryo = host.get_organ_slot(ORGAN_SLOT_PARASITE_EGG)
 	TEST_ASSERT(istype(embryo), "Infection did not put an egg in the surgical parasite slot.")
 
+	embryo.egg_progress = 120
 	embryo.Remove(host)
 	embryo.hatch_egg()
 	TEST_ASSERT_NULL(locate(/mob/living/basic/spider/growing/spiderling/terror) in run_loc_floor_bottom_left, "A removed egg must not hatch.")
@@ -189,7 +192,9 @@
 	TEST_ASSERT(host.try_implant_terror_eggs(), "The host should be infectable again after extraction.")
 	embryo = host.get_organ_slot(ORGAN_SLOT_PARASITE_EGG)
 	embryo.on_life(2)
-	TEST_ASSERT_EQUAL(embryo.eggs_hatched, 0, "The eggs emerged too early.")
+	embryo.hatch_egg()
+	TEST_ASSERT_EQUAL(embryo.eggs_hatched, 0, "The eggs emerged before maturity.")
+	embryo.egg_progress = 120
 	embryo.hatch_egg()
 	TEST_ASSERT_EQUAL(embryo.eggs_hatched, 1, "The first spiderling did not hatch from mature eggs.")
 	TEST_ASSERT_EQUAL(host.get_organ_slot(ORGAN_SLOT_PARASITE_EGG), embryo, "The clutch should remain after its first spiderling hatches.")

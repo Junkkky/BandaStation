@@ -205,7 +205,7 @@
 /datum/language/terror_hivemind
 	name = "Разум паучьего улья"
 	desc = "Общая мысль пауков террора."
-	key = "9"
+	key = "5"
 	default_priority = 100
 	flags = LANGUAGE_TONGUELESS_SPEECH | LANGUAGE_NO_STUTTER
 

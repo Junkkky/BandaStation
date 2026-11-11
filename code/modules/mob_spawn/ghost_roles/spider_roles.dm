@@ -142,8 +142,12 @@
 	. = ..()
 	if (isspider(spawned_mob))
 		spawned_mob.directive = directive
-	egg.spawner = null
-	QDEL_NULL(egg)
+	if(egg)
+		// Keep the spawner alive until create_from_ghost() signals the hatch.
+		if(loc == egg)
+			forceMove(get_turf(egg))
+		egg.spawner = null
+		QDEL_NULL(egg)
 	var/datum/antagonist/spider/spider_antag = new granted_datum(directive)
 	spawned_mob.mind.add_antag_datum(spider_antag)
 

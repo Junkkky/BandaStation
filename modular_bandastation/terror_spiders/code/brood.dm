@@ -44,6 +44,11 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	if(spider != previous_body)
 		new_owner.transfer_to(spider, force_key_move = TRUE)
 
+/// Returns the orders the next generation should inherit.
+/mob/living/basic/spider/giant/terror/proc/get_brood_directive()
+	var/datum/action/cooldown/mob_cooldown/set_spider_directive/orders = locate() in actions
+	return orders?.current_directive || directive || TERROR_SPIDER_DEFAULT_DIRECTIVE
+
 /obj/structure/spider/eggcluster/terror
 	name = "кладка пауков террора"
 	color = "#a63b46"
@@ -57,6 +62,7 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	important_text = "Следуйте директиве выводка."
 	directive = TERROR_SPIDER_DEFAULT_DIRECTIVE
 	faction = list(FACTION_TERROR_SPIDER)
+	role_ban = list(ROLE_ALIEN, ROLE_SYNDICATE)
 	cluster_type = /obj/structure/spider/eggcluster/terror
 	granted_datum = /datum/antagonist/spider/terror
 
@@ -73,11 +79,12 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	return ..()
 
 /obj/effect/mob_spawn/ghost_role/spider/terror/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	if(!QDELETED(egg))
-		egg.spawner = null
-		qdel(egg)
-	return ..()
+	var/obj/structure/spider/eggcluster/physical_egg = egg
+	// Let movable destruction remove the spawner from the clutch before deleting it.
+	. = ..()
+	if(!QDELETED(physical_egg))
+		physical_egg.spawner = null
+		qdel(physical_egg)
 
 /obj/effect/mob_spawn/ghost_role/spider/terror/special(mob/living/basic/spider/spawned_mob, mob/mob_possessor, apply_prefs)
 	. = ..()
@@ -175,6 +182,11 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 /datum/action/cooldown/mob_cooldown/lay_eggs/terror/IsAvailable(feedback = FALSE)
 	if(!..())
 		return FALSE
+	var/mob/living/basic/spider/giant/terror/egg_layer = owner
+	if(egg_layer.terror_degenerating)
+		if(feedback)
+			egg_layer.balloon_alert(egg_layer, "связь с ульем разорвана!")
+		return FALSE
 	if(get_egg_reserve() < egg_cost)
 		if(feedback)
 			owner.balloon_alert(owner, "недостаточно яиц!")
@@ -208,14 +220,13 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	if(!(batch_size in get_batch_sizes(caste_type)) || !(caste_type in get_castes(egg_layer)))
 		return FALSE
 
-	var/datum/action/cooldown/mob_cooldown/set_spider_directive/orders = locate() in egg_layer.actions
 	var/mob/living/basic/spider/giant/terror/queen/queen = egg_layer
 	var/datum/weakref/brood_queen = egg_layer.terror_queen_ref
 	if(istype(queen))
 		brood_queen = WEAKREF(queen)
 		queen.terror_eggs_laid += batch_size
 	consume_eggs(batch_size)
-	new /obj/structure/spider/eggcluster/terror/brood(egg_turf, caste_type, orders?.current_directive || egg_layer.directive || TERROR_SPIDER_DEFAULT_DIRECTIVE, brood_queen, batch_size)
+	new /obj/structure/spider/eggcluster/terror/brood(egg_turf, caste_type, egg_layer.get_brood_directive(), brood_queen, batch_size)
 	egg_layer.visible_message(span_notice("[egg_layer] откладывает кладку."))
 	build_all_button_icons(UPDATE_BUTTON_STATUS)
 	return TRUE
@@ -369,13 +380,14 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	/// Time this royal spider was created, used to unlock rarer eggs.
 	var/terror_birth_time
 	/// When the royal egg reserve next replenishes.
-	var/next_egg_charge = 160 SECONDS
+	var/next_egg_charge
 	var/egg_recharge_interval = 160 SECONDS
 	/// Total number of eggs laid by this royal spider.
 	var/terror_eggs_laid = 0
 
 /mob/living/basic/spider/giant/terror/queen/Initialize(mapload)
 	terror_birth_time = world.time
+	next_egg_charge = world.time + egg_recharge_interval
 	. = ..()
 	if(!istype(src, /mob/living/basic/spider/giant/terror/queen/princess))
 		AddElement(/datum/element/wall_smasher, ENVIRONMENT_SMASH_WALLS)
@@ -399,6 +411,9 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	if(!.)
 		return
 	var/datum/weakref/brood_queen = WEAKREF(src)
+	for(var/obj/structure/spider/eggcluster/terror/brood/clutch as anything in GLOB.terror_brood_eggs.Copy())
+		if(clutch.terror_queen_ref == brood_queen)
+			qdel(clutch)
 	for(var/mob/living/basic/spider/giant/terror/offspring in GLOB.alive_mob_list)
 		if(offspring.terror_queen_ref != brood_queen)
 			continue
@@ -446,6 +461,7 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	queen.add_movespeed_modifier(/datum/movespeed_modifier/terror_nesting)
 	var/egg_action = istype(queen, /mob/living/basic/spider/giant/terror/queen/empress) ? /datum/action/cooldown/mob_cooldown/lay_eggs/terror/royal/empress : /datum/action/cooldown/mob_cooldown/lay_eggs/terror/royal
 	queen.grant_actions_by_list(list(egg_action, /datum/action/cooldown/mob_cooldown/terror_hive_sense))
+	queen.next_egg_charge = world.time + queen.egg_recharge_interval
 	var/mob/living/basic/spider/giant/terror/queen/empress/empress = queen
 	if(istype(empress) && empress.hatched_from_empress_egg)
 		var/datum/action/cooldown/mob_cooldown/lay_eggs/terror/royal/empress/egg_ability = locate() in queen.actions
@@ -500,14 +516,14 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 
 /datum/action/cooldown/mob_cooldown/terror_empress_spawn/Activate(atom/target)
 	var/mob/living/basic/spider/giant/terror/queen/empress/empress = owner
-	if(!istype(empress) || !isturf(empress.loc))
+	if(!istype(empress) || empress.terror_degenerating || !isturf(empress.loc))
 		return FALSE
 	var/turf/spawn_turf = empress.loc
 	var/count = tgui_input_number(empress, "Сколько паучат выпустить?", "Выводок", 10, max_value = 50, min_value = 10, round_value = TRUE)
 	if(!count || QDELETED(src) || QDELETED(empress) || owner != empress || empress.loc != spawn_turf || !IsAvailable(feedback = TRUE))
 		return FALSE
 	var/chance = tgui_input_number(empress, "Доля нежизнеспособных паучат в процентах?", "Выводок", 0, max_value = 100, min_value = 0, round_value = TRUE)
-	if(isnull(chance) || QDELETED(src) || QDELETED(empress) || owner != empress || empress.loc != spawn_turf || !IsAvailable(feedback = TRUE))
+	if(isnull(chance) || QDELETED(src) || QDELETED(empress) || owner != empress || empress.terror_degenerating || empress.loc != spawn_turf || !IsAvailable(feedback = TRUE))
 		return FALSE
 	var/static/list/castes = list(
 		/mob/living/basic/spider/giant/terror/red,
@@ -516,8 +532,10 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 		/mob/living/basic/spider/giant/terror/white,
 		/mob/living/basic/spider/giant/terror/black,
 	)
+	var/brood_directive = empress.get_brood_directive()
+	var/datum/weakref/empress_ref = WEAKREF(empress)
 	for(var/index in 1 to count)
-		new /mob/living/basic/spider/growing/spiderling/terror(spawn_turf, pick(castes), empress.directive, WEAKREF(empress), prob(chance))
+		new /mob/living/basic/spider/growing/spiderling/terror(spawn_turf, pick(castes), brood_directive, empress_ref, prob(chance))
 	return TRUE
 
 /datum/action/cooldown/mob_cooldown/terror_empress_erase
@@ -540,10 +558,6 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	if(QDELETED(src) || QDELETED(empress) || owner != empress || !IsAvailable())
 		return FALSE
 	erase_terror_brood("Императрица разрывает вашу связь с ульем. Вы чувствуете, как жизнь покидает вас!", empress.terror_tier)
-	for(var/group in GLOB.mob_spawners.Copy())
-		var/list/spawners = GLOB.mob_spawners[group]
-		for(var/obj/effect/mob_spawn/ghost_role/spider/terror/founder in spawners?.Copy())
-			qdel(founder)
 	to_chat(empress, span_notice("Связь выводка с ульем оборвана."))
 	return TRUE
 
@@ -557,7 +571,12 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 		qdel(clutch)
 	for(var/mob/living/basic/spider/growing/spiderling/terror/ling in GLOB.alive_mob_list.Copy())
 		qdel(ling)
-	for(var/obj/item/organ/terror_eggs/infection as anything in GLOB.terror_active_infections.Copy())
+	for(var/obj/item/organ/terror_eggs/infection as anything in GLOB.terror_infections.Copy())
 		qdel(infection)
+	for(var/group in GLOB.mob_spawners.Copy())
+		var/list/spawners = GLOB.mob_spawners[group]
+		for(var/obj/effect/mob_spawn/ghost_role/spider/terror/founder in spawners?.Copy())
+			if(!QDELETED(founder))
+				qdel(founder)
 
 #undef TERROR_PRINCESS_BROOD_CAP

@@ -145,12 +145,12 @@
 /mob/living/basic/spider/giant/terror/prince/early_melee_attack(atom/target, list/modifiers, ignore_cooldown = FALSE)
 	. = ..()
 	var/mob/living/carbon/human/prey = target
-	if(. || !ishuman(prey) || prey.stat == DEAD || !Adjacent(prey) || !prob(10))
+	if(. || !ishuman(prey) || prey.stat == DEAD || !Adjacent(prey) || HAS_TRAIT(src, TRAIT_PACIFISM) || !prob(10))
 		return .
 	var/static/list/limb_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/list/limbs = list()
 	for(var/obj/item/bodypart/limb as anything in prey.bodyparts)
-		if(limb.body_zone in limb_zones && limb.can_dismember())
+		if((limb.body_zone in limb_zones) && limb.can_dismember())
 			limbs += limb
 	if(!length(limbs))
 		return BASIC_MOB_CONTINUE_ATTACK_CHAIN
@@ -167,6 +167,7 @@
 	return BASIC_MOB_END_ATTACK_CHAIN_COOLDOWN
 
 GLOBAL_VAR_INIT(terror_empress_egg_laid, FALSE)
+GLOBAL_VAR_INIT(terror_hive_destroyed, FALSE)
 
 /datum/action/cooldown/mob_cooldown/terror_empress_egg
 	name = "Отложить яйцо Императрицы"
@@ -205,7 +206,12 @@ GLOBAL_VAR_INIT(terror_empress_egg_laid, FALSE)
 	if(istype(egg_layer, /mob/living/basic/spider/giant/terror/prince))
 		progress = egg_layer.fed
 	else if(istype(egg_layer, /mob/living/basic/spider/giant/terror/white))
-		progress = length(GLOB.terror_active_infections)
+		progress = 0
+		for(var/obj/item/organ/terror_eggs/infection as anything in GLOB.terror_infections)
+			var/mob/living/carbon/host = infection.owner
+			var/turf/host_turf = get_turf(host)
+			if(host_turf && is_station_level(host_turf.z) && host.stat != DEAD)
+				progress++
 	var/required = round(2 + station_population / 5)
 	if(progress >= required)
 		return TRUE
@@ -223,7 +229,7 @@ GLOBAL_VAR_INIT(terror_empress_egg_laid, FALSE)
 	if(QDELETED(src) || owner != egg_layer || egg_layer.loc != egg_turf || !IsAvailable(feedback = TRUE))
 		return FALSE
 	GLOB.terror_empress_egg_laid = TRUE
-	new /obj/effect/mob_spawn/ghost_role/spider/terror/empress(egg_turf, /mob/living/basic/spider/giant/terror/queen/empress, egg_layer.directive)
+	new /obj/effect/mob_spawn/ghost_role/spider/terror/empress(egg_turf, /mob/living/basic/spider/giant/terror/queen/empress, egg_layer.get_brood_directive())
 	for(var/mob/living/basic/spider/giant/terror/spider in GLOB.alive_mob_list)
 		to_chat(spider, span_userdanger("Яйцо Императрицы отложено в [get_area_name(egg_layer)]. Защищайте его!"))
 	return TRUE
@@ -258,7 +264,8 @@ GLOBAL_VAR_INIT(terror_empress_egg_laid, FALSE)
 	qdel(mass_spawn)
 
 /obj/effect/mob_spawn/ghost_role/spider/terror/empress/Destroy()
-	if(!hatched && GLOB.terror_empress_egg_laid)
+	if(!hatched && GLOB.terror_empress_egg_laid && !GLOB.terror_hive_destroyed)
+		GLOB.terror_hive_destroyed = TRUE
 		erase_terror_brood("Яйцо Императрицы уничтожено. Вы чувствуете, как жизнь покидает вас!")
 	return ..()
 

@@ -172,6 +172,7 @@
 	var/previous_separation = queen_separation
 	queen_separation += seconds_per_tick SECONDS
 	if(previous_separation < 3 MINUTES && queen_separation >= 3 MINUTES)
+		terror_degenerating = TRUE
 		melee_damage_lower = 5
 		melee_damage_upper = 10
 		to_chat(src, span_userdanger("Связь с [queen] разорвана! Вы потеряли часть силы!"))
@@ -192,8 +193,6 @@
 		return
 	if(!queen_separation)
 		. += "Королева рядом"
-	else if(queen_separation >= 3 MINUTES)
-		. += "Критическая связь. Вернитесь к королеве: [get_area(queen)]."
 	else
 		. += "До разрыва связи с королевой [DisplayTimeText(3 MINUTES - queen_separation)]. Местоположение: [get_area(queen)]."
 

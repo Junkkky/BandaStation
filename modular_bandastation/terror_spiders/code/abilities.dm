@@ -19,7 +19,10 @@
 	for(var/obj/machinery/atmospherics/components/unary/candidate in range(1, get_turf(spider)))
 		if(!candidate.welded || (!istype(candidate, /obj/machinery/atmospherics/components/unary/vent_pump) && !istype(candidate, /obj/machinery/atmospherics/components/unary/vent_scrubber)))
 			continue
-		if(in_pipe && candidate != current_pipe && !length(pipenets & candidate.return_pipenets()))
+		if(in_pipe)
+			if(candidate != current_pipe && !length(pipenets & candidate.return_pipenets()))
+				continue
+		else if(!spider.Adjacent(candidate))
 			continue
 		vent = candidate
 		if(istype(vent, /obj/machinery/atmospherics/components/unary/vent_pump))
@@ -30,13 +33,20 @@
 
 	var/atom/start_location = spider.loc
 	playsound(get_turf(spider), 'modular_bandastation/terror_spiders/sound/ventbreak.ogg', 75, FALSE)
-	if(!do_after(spider, 4 SECONDS, target = vent, interaction_key = DOAFTER_SOURCE_SPIDER) || QDELETED(src) || spider.loc != start_location || !vent.welded)
+	if(!do_after(spider, 4 SECONDS, target = vent, interaction_key = DOAFTER_SOURCE_SPIDER))
+		return FALSE
+	if(QDELETED(src) || QDELETED(spider) || QDELETED(vent) || owner != spider || spider.loc != start_location || !vent.welded || !IsAvailable())
+		return FALSE
+	if(in_pipe)
+		if(!HAS_TRAIT(spider, TRAIT_MOVE_VENTCRAWLING) || (vent != current_pipe && !length(current_pipe.return_pipenets() & vent.return_pipenets())))
+			return FALSE
+	else if(!spider.Adjacent(vent))
 		return FALSE
 	vent.welded = FALSE
 	vent.update_appearance(UPDATE_ICON)
 	vent.pipe_vision_img = null
-	spider.forceMove(get_turf(vent))
 	if(in_pipe)
+		spider.forceMove(get_turf(vent))
 		REMOVE_TRAIT(spider, TRAIT_MOVE_VENTCRAWLING, VENTCRAWLING_TRAIT)
 		if(spider.client)
 			spider.update_pipe_vision()
@@ -116,7 +126,7 @@
 		prey.log_message("was implanted with terror spider eggs by [src] at [AREACOORD(src)].", LOG_ATTACK)
 
 /mob/living/carbon/human/proc/try_implant_terror_eggs(target_zone = BODY_ZONE_CHEST, ignore_clothing = FALSE)
-	if(QDELETED(src) || stat == DEAD || get_organ_slot(ORGAN_SLOT_PARASITE_EGG))
+	if(GLOB.terror_hive_destroyed || QDELETED(src) || stat == DEAD || get_organ_slot(ORGAN_SLOT_PARASITE_EGG))
 		return FALSE
 	var/obj/item/bodypart/bite_site = get_bodypart(target_zone)
 	if(!bite_site || !IS_ORGANIC_LIMB(bite_site) || (!ignore_clothing && !can_inject(null, bite_site, NONE)))
@@ -128,7 +138,8 @@
 	to_chat(src, span_warning("Вы чувствуете резкий укол в груди."))
 	return TRUE
 
-GLOBAL_LIST_EMPTY(terror_active_infections)
+/// Implanted clutches, including those in dead or off-station hosts.
+GLOBAL_LIST_EMPTY(terror_infections)
 
 /obj/item/organ/terror_eggs
 	name = "яйца паука Ужаса"
@@ -140,8 +151,12 @@ GLOBAL_LIST_EMPTY(terror_active_infections)
 	var/egg_progress = 0
 	/// How many spiderlings have already emerged from this host.
 	var/eggs_hatched = 0
-	/// Whether a ghost poll is in progress for the next spiderling.
+	/// Whether the poll for this hatch has already started.
+	var/poll_started = FALSE
+	/// Whether that poll still has to finish.
 	var/polling = FALSE
+	/// Ghost who accepted the invitation for this hatch, if any.
+	var/datum/weakref/reserved_ghost
 	/// Gateway infections must hatch locally.
 	var/away_infection = FALSE
 
@@ -153,24 +168,13 @@ GLOBAL_LIST_EMPTY(terror_active_infections)
 	. = ..()
 	var/turf/host_turf = get_turf(organ_owner)
 	away_infection = host_turf && is_away_level(host_turf.z)
-	if(host_turf && is_station_level(host_turf.z) && organ_owner.stat != DEAD)
-		GLOB.terror_active_infections |= src
-	RegisterSignal(organ_owner, COMSIG_MOB_STATCHANGE, PROC_REF(on_host_state_changed))
+	GLOB.terror_infections |= src
 
 /obj/item/organ/terror_eggs/on_mob_remove(mob/living/carbon/organ_owner, special, movement_flags)
 	. = ..()
-	UnregisterSignal(organ_owner, COMSIG_MOB_STATCHANGE)
-	GLOB.terror_active_infections -= src
+	GLOB.terror_infections -= src
 	if(!QDELETED(src))
 		QDEL_IN(src, 1)
-
-/obj/item/organ/terror_eggs/proc/on_host_state_changed(mob/living/carbon/host, new_stat)
-	SIGNAL_HANDLER
-	var/turf/host_turf = get_turf(host)
-	if(new_stat == DEAD)
-		GLOB.terror_active_infections -= src
-	else if(host_turf && is_station_level(host_turf.z))
-		GLOB.terror_active_infections |= src
 
 /obj/item/organ/terror_eggs/on_life(seconds_per_tick)
 	if(QDELETED(owner) || owner.stat == DEAD)
@@ -193,12 +197,12 @@ GLOBAL_LIST_EMPTY(terror_active_infections)
 	if(owner.reagents?.get_reagent_amount(/datum/reagent/medicine/salglu_solution) > 1)
 		growth += 1
 	egg_progress += growth * (seconds_per_tick / 2)
-	if(away_infection)
-		if(egg_progress > 120)
-			hatch_egg()
-	else if(!polling && egg_progress >= 90)
+	if(!away_infection && !poll_started && egg_progress >= 90)
+		poll_started = TRUE
 		polling = TRUE
 		INVOKE_ASYNC(src, PROC_REF(poll_for_hatch))
+	if(!polling && egg_progress >= 120)
+		hatch_egg()
 
 /obj/item/organ/terror_eggs/proc/poll_for_hatch()
 	var/mob/dead/observer/chosen = SSpolling.poll_ghosts_for_target(
@@ -213,13 +217,15 @@ GLOBAL_LIST_EMPTY(terror_active_infections)
 	)
 	if(QDELETED(src))
 		return
+	reserved_ghost = WEAKREF(chosen)
 	polling = FALSE
-	hatch_egg(chosen)
 
-/obj/item/organ/terror_eggs/proc/hatch_egg(mob/dead/observer/chosen)
+/obj/item/organ/terror_eggs/proc/hatch_egg()
 	var/mob/living/carbon/host = owner
 	var/turf/hatch_turf = get_turf(host)
-	if(QDELETED(host) || host.stat == DEAD || !hatch_turf)
+	if(QDELETED(host) || host.stat == DEAD || !hatch_turf || host.get_organ_slot(slot) != src)
+		return
+	if(polling || egg_progress < 120 || (organ_flags & ORGAN_FAILING) || (away_infection && !is_away_level(hatch_turf.z)))
 		return
 	var/caste
 	switch(eggs_hatched)
@@ -232,7 +238,9 @@ GLOBAL_LIST_EMPTY(terror_active_infections)
 	egg_progress -= 120
 	eggs_hatched++
 	var/mob/living/basic/spider/growing/spiderling/terror/spiderling = new(hatch_turf, caste)
-	spiderling.reserved_ghost = WEAKREF(chosen)
+	spiderling.reserved_ghost = reserved_ghost
+	reserved_ghost = null
+	poll_started = FALSE
 	to_chat(host, span_userdanger("По коже пробегает колючая дрожь, и весь мир вдруг начинает вращаться!"))
 	host.adjust_brute_loss(80)
 	host.Paralyze(20 SECONDS)
