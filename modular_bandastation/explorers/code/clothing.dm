@@ -5,7 +5,7 @@
 	worn_icon = 'modular_bandastation/explorers/icons/uniforms_worn.dmi'
 	icon_state = "greyutility"
 	worn_icon_state = "greyutility_s"
-	inhand_icon_state = "grey"
+	inhand_icon_state = "gy_suit"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/expedition/leader
@@ -57,7 +57,7 @@
 	icon = 'modular_bandastation/explorers/icons/suits.dmi'
 	worn_icon = 'modular_bandastation/explorers/icons/suits_worn.dmi'
 	icon_state = "trackjacket"
-	inhand_icon_state = "jacket"
+	inhand_icon_state = "syndicate-black"
 	body_parts_covered = CHEST|ARMS
 
 /obj/item/clothing/suit/toggle/expedition/Initialize(mapload)
@@ -80,9 +80,11 @@
 /obj/item/clothing/accessory/expedition_sheath
 	name = "набедренные ножны экспедиционного корпуса"
 	desc = "Синтетические кожаные ножны для полевого клинка. Крепятся к форме."
-	icon = 'modular_bandastation/explorers/icons/accessories.dmi'
-	worn_icon = 'modular_bandastation/explorers/icons/accessories_worn.dmi'
-	icon_state = "holster_machete"
+	icon = 'icons/obj/clothing/belts.dmi'
+	worn_icon = 'icons/mob/clothing/belt.dmi'
+	icon_state = "gladius_sheath"
+	worn_icon_state = "gladius_sheath"
+	icon_state_is_worn = FALSE
 	minimize_when_attached = FALSE
 	above_suit = FALSE
 	attachment_slot = GROIN
@@ -91,16 +93,32 @@
 	. = ..()
 	create_storage(max_slots = 1, max_specific_storage = WEIGHT_CLASS_NORMAL, max_total_storage = WEIGHT_CLASS_NORMAL, canhold = list(/obj/item/knife, /obj/item/hatchet))
 
+/obj/item/clothing/accessory/expedition_sheath/update_icon_state()
+	icon_state = "[initial(icon_state)][length(contents) ? "-full" : ""]"
+	worn_icon_state = icon_state
+	return ..()
+
+// The uniform draws this sheath, so a blade going in or out has to redraw the uniform.
+/obj/item/clothing/accessory/expedition_sheath/update_appearance(updates)
+	. = ..()
+	if(istype(loc, /obj/item/clothing/under))
+		loc.update_appearance()
+
 // The belt variant leaves the uniform's single accessory-storage slot free for webbing.
 /obj/item/storage/belt/expedition_sheath
 	name = "поясные ножны экспедиционного корпуса"
 	desc = "Синтетические кожаные ножны для полевого клинка на собственном ремне."
-	icon = 'modular_bandastation/explorers/icons/accessories.dmi'
-	worn_icon = 'modular_bandastation/explorers/icons/accessories_worn.dmi'
-	icon_state = "holster_machete"
-	worn_icon_state = "holster_machete"
-	inhand_icon_state = "utility"
+	worn_icon = 'icons/mob/clothing/belt.dmi'
+	icon_state = "gladius_sheath"
+	worn_icon_state = "gladius_sheath"
+	inhand_icon_state = "gladius_sheath"
 
 /obj/item/storage/belt/expedition_sheath/Initialize(mapload)
 	. = ..()
 	create_storage(max_slots = 1, max_specific_storage = WEIGHT_CLASS_NORMAL, max_total_storage = WEIGHT_CLASS_NORMAL, canhold = list(/obj/item/knife, /obj/item/hatchet))
+	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_BELT)
+
+/obj/item/storage/belt/expedition_sheath/update_icon_state()
+	icon_state = "[initial(icon_state)][length(contents) ? "-full" : ""]"
+	worn_icon_state = icon_state
+	return ..()

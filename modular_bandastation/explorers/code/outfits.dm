@@ -11,7 +11,7 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/explorer
 	box = /obj/item/storage/box/survival/mining
 	belt = /obj/item/modular_computer/pda/crew/explorer
-	l_pocket = /obj/item/gps
+	l_pocket = /obj/item/gps/expedition
 	r_pocket = /obj/item/flashlight
 	implants = list(/obj/item/implant/resonance)
 	backpack_contents = list(
@@ -50,7 +50,7 @@
 		/obj/item/stationtrauma_distress_beacon = 1,
 		/obj/item/storage/medkit/regular = 1,
 		/obj/item/emergency_bed = 1,
-		/obj/item/gps = 1,
+		/obj/item/gps/expedition = 1,
 	)
 
 /datum/outfit/job/explorer/engineer
@@ -68,7 +68,7 @@
 	backpack_contents = list(
 		/obj/item/stationtrauma_distress_beacon = 1,
 		/obj/item/stack/sheet/iron/fifty = 1,
-		/obj/item/gps = 1,
+		/obj/item/gps/expedition = 1,
 	)
 
 /datum/outfit/plasmaman/explorer
