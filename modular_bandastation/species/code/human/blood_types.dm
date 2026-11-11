@@ -27,3 +27,15 @@
 
 /obj/item/reagent_containers/blood/vox
 	blood_type = /datum/blood_type/vox
+
+/// The purple blood of Resomi.
+/datum/blood_type/resomi
+	name = "RS"
+	color = "#d514f7"
+	compatible_types = list(
+		/datum/blood_type/resomi,
+	)
+
+/// A blood pack for transfusions to Resomi.
+/obj/item/reagent_containers/blood/resomi
+	blood_type = /datum/blood_type/resomi
