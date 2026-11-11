@@ -144,7 +144,7 @@
 
 /mob/living/basic/spider/giant/terror/brown/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/wall_smasher, ENVIRONMENT_SMASH_RWALLS)
+	set_terror_wall_breaching(ENVIRONMENT_SMASH_RWALLS)
 
 /mob/living/basic/spider/giant/terror/purple
 	/// Time spent away from the royal that laid this spider's egg.
@@ -152,7 +152,7 @@
 
 /mob/living/basic/spider/giant/terror/purple/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/wall_smasher, ENVIRONMENT_SMASH_RWALLS)
+	set_terror_wall_breaching(ENVIRONMENT_SMASH_RWALLS)
 	RegisterSignal(src, COMSIG_HOSTILE_POST_ATTACKINGTARGET, PROC_REF(on_guardian_bite))
 
 /mob/living/basic/spider/giant/terror/purple/Life(seconds_per_tick = SSMOBS_DT)
@@ -211,4 +211,4 @@
 
 /mob/living/basic/spider/giant/terror/prince/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/wall_smasher, ENVIRONMENT_SMASH_RWALLS)
+	set_terror_wall_breaching(ENVIRONMENT_SMASH_RWALLS)

@@ -390,7 +390,7 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	next_egg_charge = world.time + egg_recharge_interval
 	. = ..()
 	if(!istype(src, /mob/living/basic/spider/giant/terror/queen/princess))
-		AddElement(/datum/element/wall_smasher, ENVIRONMENT_SMASH_WALLS)
+		set_terror_wall_breaching(ENVIRONMENT_SMASH_WALLS)
 
 /mob/living/basic/spider/giant/terror/queen/Life(seconds_per_tick)
 	. = ..()
@@ -456,8 +456,7 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 		return FALSE
 
 	REMOVE_TRAIT(queen, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
-	queen.RemoveElement(/datum/element/wall_smasher, ENVIRONMENT_SMASH_WALLS)
-	queen.AddElement(/datum/element/wall_smasher, ENVIRONMENT_SMASH_RWALLS)
+	queen.set_terror_wall_breaching(ENVIRONMENT_SMASH_RWALLS)
 	queen.add_movespeed_modifier(/datum/movespeed_modifier/terror_nesting)
 	var/egg_action = istype(queen, /mob/living/basic/spider/giant/terror/queen/empress) ? /datum/action/cooldown/mob_cooldown/lay_eggs/terror/royal/empress : /datum/action/cooldown/mob_cooldown/lay_eggs/terror/royal
 	queen.grant_actions_by_list(list(egg_action, /datum/action/cooldown/mob_cooldown/terror_hive_sense))

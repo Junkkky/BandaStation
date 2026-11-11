@@ -4,7 +4,7 @@
 
 /mob/living/basic/spider/giant/terror/red/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/wall_smasher, ENVIRONMENT_SMASH_WALLS)
+	set_terror_wall_breaching(ENVIRONMENT_SMASH_WALLS)
 
 /mob/living/basic/spider/giant/terror/red/Destroy()
 	deltimer(terror_stance_timer)

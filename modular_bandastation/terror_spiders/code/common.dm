@@ -1,3 +1,10 @@
+/// Replaces the wall-tearing element when a caste gains access to reinforced walls.
+/mob/living/basic/spider/giant/terror/proc/set_terror_wall_breaching(strength)
+	if(environment_smash >= ENVIRONMENT_SMASH_WALLS)
+		RemoveElement(/datum/element/wall_tearer, environment_smash == ENVIRONMENT_SMASH_RWALLS, 6 SECONDS, 2, /datum/element/wall_tearer)
+	environment_smash = strength
+	AddElement(/datum/element/wall_tearer, strength == ENVIRONMENT_SMASH_RWALLS, 6 SECONDS, 2, /datum/element/wall_tearer)
+
 /mob/living/basic/spider/giant/terror/Life(seconds_per_tick = SSMOBS_DT)
 	. = ..()
 	if(QDELETED(src) || stat == DEAD)

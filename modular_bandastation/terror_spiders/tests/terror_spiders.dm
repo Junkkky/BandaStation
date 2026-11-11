@@ -175,6 +175,51 @@
 	TEST_ASSERT_EQUAL(royal_spiderling.grow_as, /mob/living/basic/spider/giant/terror/purple, "The royal clutch spawned the wrong caste.")
 	TEST_ASSERT_EQUAL(royal_spiderling.directive, "Guard the princess.", "The royal spiderling did not inherit its directive.")
 
+/datum/unit_test/terror_spider_wall_breaching
+	/// Restore the shared floor even if an assertion aborts the breach.
+	var/turf/test_wall
+
+/datum/unit_test/terror_spider_wall_breaching/Destroy()
+	test_wall?.ChangeTurf(/turf/open/indestructible)
+	test_wall = null
+	return ..()
+
+/datum/unit_test/terror_spider_wall_breaching/Run()
+	test_wall = run_loc_floor_bottom_left.ChangeTurf(/turf/closed/wall)
+	var/turf/spider_turf = get_step(test_wall, EAST)
+	var/mob/living/basic/spider/giant/terror/red/knight = allocate(__IMPLIED_TYPE__, spider_turf)
+	knight.ai_controller.force_ai_off()
+	var/started_at = world.time
+	knight.UnarmedAttack(test_wall, proximity_flag = TRUE)
+	TEST_ASSERT(test_wall.density, "A Knight broke the wall immediately.")
+	TEST_ASSERT_NULL(test_wall.GetComponent(/datum/component/torn_wall), "A Knight damaged the wall without waiting for a strike.")
+	UNTIL(test_wall.GetComponent(/datum/component/torn_wall) || world.time >= started_at + 10 SECONDS)
+	var/datum/component/torn_wall/cracks = test_wall.GetComponent(/datum/component/torn_wall)
+	TEST_ASSERT_NOTNULL(cracks, "A Knight did not crack the wall after the first strike.")
+	TEST_ASSERT_EQUAL(cracks.current_stage, 0, "A Knight skipped the first damage stage.")
+	TEST_ASSERT(world.time >= started_at + 2 SECONDS, "The first strike took less than two seconds.")
+	UNTIL(!test_wall.density || world.time >= started_at + 10 SECONDS)
+	TEST_ASSERT(!test_wall.density, "A Knight did not complete the three-strike breach.")
+	TEST_ASSERT(world.time >= started_at + 6 SECONDS, "A full breach took less than six seconds.")
+
+	test_wall = test_wall.ChangeTurf(/turf/closed/wall/r_wall)
+	knight.UnarmedAttack(test_wall, proximity_flag = TRUE)
+	TEST_ASSERT(!DOING_INTERACTION(knight, /datum/element/wall_tearer), "A Knight started breaching a reinforced wall.")
+	knight.moveToNullspace()
+	var/mob/living/basic/spider/giant/terror/brown/destroyer = allocate(__IMPLIED_TYPE__, spider_turf)
+	destroyer.ai_controller.force_ai_off()
+	started_at = world.time
+	destroyer.melee_attack(test_wall)
+	TEST_ASSERT(test_wall.density, "A Destroyer broke the reinforced wall immediately.")
+	UNTIL(test_wall.GetComponent(/datum/component/torn_wall) || world.time >= started_at + 10 SECONDS)
+	cracks = test_wall.GetComponent(/datum/component/torn_wall)
+	TEST_ASSERT_NOTNULL(cracks, "A Destroyer did not crack the reinforced wall.")
+	TEST_ASSERT(world.time >= started_at + 4 SECONDS, "The first reinforced strike took less than four seconds.")
+	destroyer.forceMove(get_step(spider_turf, EAST))
+	UNTIL(!DOING_INTERACTION(destroyer, /datum/element/wall_tearer) || world.time >= started_at + 10 SECONDS)
+	TEST_ASSERT(!DOING_INTERACTION(destroyer, /datum/element/wall_tearer), "Movement did not interrupt breaching.")
+	TEST_ASSERT(test_wall.density && cracks.current_stage == 0, "The interrupted strike advanced the damage stage.")
+
 /datum/unit_test/terror_spider_parasite
 
 /datum/unit_test/terror_spider_parasite/Run()
