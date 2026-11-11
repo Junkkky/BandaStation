@@ -91,6 +91,9 @@ export type Department = {
 export type Job = {
   description: string;
   department: string;
+  donor_tier?: number;
+  job_icon?: string;
+  variant_titles?: string[];
 };
 
 export type Quirk = {
@@ -186,6 +189,8 @@ export type PreferencesMenuData = {
   content_unlocked: BooleanLike;
 
   job_bans?: string[];
+  locked_donor_jobs?: Record<string, number>;
+  donor_job_titles?: Record<string, string>;
   job_days_left?: Record<string, number>;
   job_required_experience?: Record<
     string,

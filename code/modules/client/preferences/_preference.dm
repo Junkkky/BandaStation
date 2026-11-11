@@ -279,12 +279,9 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 		else
 			value_cache[preference_type] = value
 
-	// Preserve the saved species so access returns when the subscription is renewed.
-	if (preference_type == /datum/preference/choiced/species)
-		var/datum/preference/choiced/species/species_preference = preference_entry
-		if (!species_preference.has_species_access(value, src))
-			return species_preference.create_default_value()
-
+	// Use a human until the tier is available again, while retaining the saved species.
+	if (preference_type == /datum/preference/choiced/species && !can_select_character_species(value))
+		return /datum/species/human
 	return value
 
 /// Set a /datum/preference entry.

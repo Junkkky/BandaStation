@@ -15,20 +15,15 @@
 /datum/preference/choiced/species/create_default_value()
 	return /datum/species/human
 
+/datum/preference/choiced/species/is_valid(value, datum/preferences/preferences)
+	return ..() && preferences.can_select_character_species(value)
+
 /datum/preference/choiced/species/create_random_value(datum/preferences/preferences)
 	var/list/available_species = list()
-	for(var/species_type in get_choices())
-		if(has_species_access(species_type, preferences))
+	for (var/species_type in get_choices())
+		if (preferences.can_select_character_species(species_type))
 			available_species += species_type
-	return pick(available_species)
-
-/datum/preference/choiced/species/is_valid(value, datum/preferences/preferences)
-	return ..() && has_species_access(value, preferences)
-
-/// Checks the account's current tier independently of the species stored in its save slot.
-/datum/preference/choiced/species/proc/has_species_access(species_type, datum/preferences/preferences)
-	var/datum/species/species = GLOB.species_prototypes[species_type]
-	return !species?.required_donator_level || preferences?.parent?.get_donator_level() >= species.required_donator_level
+	return length(available_species) ? pick(available_species) : create_default_value()
 
 /datum/preference/choiced/species/init_possible_values()
 	var/list/values = list()
@@ -58,7 +53,11 @@
 		data[species_id]["enabled_features"] = species.get_features()
 		data[species_id]["perks"] = species.get_species_perks()
 		data[species_id]["diet"] =  species.get_species_diet()
-		if(species.required_donator_level)
-			data[species_id]["required_donator_level"] = species.required_donator_level
+		data[species_id]["required_donator_level"] = species.required_donator_level
 
 	return data
+
+/// Checks the current account tier for a species in the character preferences catalog.
+/datum/preferences/proc/can_select_character_species(datum/species/species_type)
+	var/required_level = initial(species_type.required_donator_level)
+	return !required_level || parent?.get_donator_level() >= required_level

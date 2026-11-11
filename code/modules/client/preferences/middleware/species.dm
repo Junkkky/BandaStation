@@ -1,9 +1,6 @@
 /// Handles the assets for species icons
 /datum/preference_middleware/species
 
-/datum/preference_middleware/species/get_ui_data(mob/user)
-	return list("donator_level" = preferences.parent.get_donator_level())
-
 /datum/preference_middleware/species/get_ui_assets()
 	return list(
 		get_asset_datum(/datum/asset/spritesheet_batched/species),
