@@ -3,6 +3,7 @@
 	name = "\improper Резоми"
 	plural_form = "Резоми"
 	id = SPECIES_RESOMI
+	required_donator_level = DONATOR_TIER_4
 	inherent_traits = list(TRAIT_MUTANT_COLORS)
 	changesource_flags = MIRROR_BADMIN | RACE_SWAP
 

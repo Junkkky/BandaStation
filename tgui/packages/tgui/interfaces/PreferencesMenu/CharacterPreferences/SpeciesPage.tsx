@@ -346,10 +346,18 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
         )}
         <div ref={scrollRef} className="PreferencesMenu__Species">
           {species.map(([speciesKey, species]) => {
+            const requiredLevel = species.required_donator_level ?? 0;
+            const locked = (data.donator_level ?? 0) < requiredLevel;
             return (
               <Stack.Item key={speciesKey}>
                 <ImageButton
-                  tooltip={species.name}
+                  tooltip={
+                    locked
+                      ? `${species.name}. Для выбора нужен уровень поддержки T${requiredLevel} или выше.`
+                      : species.name
+                  }
+                  buttonsAlt={locked && <Box bold>T{requiredLevel}</Box>}
+                  disabled={locked}
                   selected={
                     data.character_preferences.misc.species === speciesKey
                   }

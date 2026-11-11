@@ -222,3 +222,25 @@
 		found_husk = TRUE
 	TEST_ASSERT(found_husk, "Husked Resomi chest did not generate its fitted layer.")
 	test_screenshot("husk", get_flat_icon_for_all_directions(resomi))
+/// Direct edits and saved slots both enforce the current account's tier.
+/datum/unit_test/resomi_subscription/Run()
+	var/datum/client_interface/mock_client = allocate(/datum/client_interface)
+	var/datum/preferences/preferences = allocate(/datum/preferences, mock_client)
+	var/datum/preference/choiced/species/species_preference = GLOB.preference_entries[/datum/preference/choiced/species]
+	mock_client.donator_level = DONATOR_TIER_3
+	TEST_ASSERT(!preferences.update_preference(species_preference, SPECIES_RESOMI), "A T3 account could select Resomi.")
+	TEST_ASSERT(!preferences.write_preference(species_preference, SPECIES_RESOMI), "A T3 account could save Resomi.")
+	TEST_ASSERT(preferences.update_preference(species_preference, SPECIES_HUMAN), "A T3 account could not select Human.")
+
+	mock_client.donator_level = DONATOR_TIER_4
+	TEST_ASSERT(preferences.update_preference(species_preference, SPECIES_RESOMI), "A T4 account could not select Resomi.")
+	TEST_ASSERT(preferences.write_preference(species_preference, SPECIES_RESOMI), "A T4 account could not save Resomi.")
+	TEST_ASSERT_EQUAL(preferences.read_preference(species_preference.type), /datum/species/resomi, "The T4 account did not get its selected species.")
+
+	mock_client.donator_level = DONATOR_TIER_3
+	TEST_ASSERT_EQUAL(preferences.read_preference(species_preference.type), /datum/species/human, "A lapsed subscription could still use the cached Resomi slot.")
+	preferences.value_cache -= species_preference.type
+	TEST_ASSERT_EQUAL(preferences.read_preference(species_preference.type), /datum/species/human, "Loading a saved Resomi slot bypassed the tier check.")
+
+	mock_client.donator_level = DONATOR_TIER_5
+	TEST_ASSERT_EQUAL(preferences.read_preference(species_preference.type), /datum/species/resomi, "The original saved species did not return when access was restored.")

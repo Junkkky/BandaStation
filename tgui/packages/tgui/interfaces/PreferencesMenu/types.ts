@@ -57,6 +57,7 @@ export type Species = {
   desc: string;
   lore: string[];
   icon: string;
+  required_donator_level?: number;
 
   use_skintones: BooleanLike;
   sexes: BooleanLike;

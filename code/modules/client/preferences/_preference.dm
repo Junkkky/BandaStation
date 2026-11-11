@@ -269,17 +269,22 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 
 		CRASH("Preference type `[preference_type]` is invalid! [extra_info]")
 
-	if (preference_type in value_cache)
-		return value_cache[preference_type]
-
-	var/value = preference_entry.read(get_save_data_for_savefile_identifier(preference_entry.savefile_identifier), src)
-	if (isnull(value))
-		value = preference_entry.create_informed_default_value(src)
-		if (write_preference(preference_entry, value))
-			return value
+	var/value = value_cache[preference_type]
+	if (!(preference_type in value_cache))
+		value = preference_entry.read(get_save_data_for_savefile_identifier(preference_entry.savefile_identifier), src)
+		if (isnull(value))
+			value = preference_entry.create_informed_default_value(src)
+			if (!write_preference(preference_entry, value))
+				CRASH("Couldn't write the default value for [preference_type] (received [value])")
 		else
-			CRASH("Couldn't write the default value for [preference_type] (received [value])")
-	value_cache[preference_type] = value
+			value_cache[preference_type] = value
+
+	// Preserve the saved species so access returns when the subscription is renewed.
+	if (preference_type == /datum/preference/choiced/species)
+		var/datum/preference/choiced/species/species_preference = preference_entry
+		if (!species_preference.has_species_access(value, src))
+			return species_preference.create_default_value()
+
 	return value
 
 /// Set a /datum/preference entry.
