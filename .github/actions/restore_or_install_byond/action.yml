@@ -37,9 +37,11 @@ runs:
       shell: bash
       run: |
         sudo dpkg --add-architecture i386
-        sudo apt-get update -qq
-        sudo cp ~/apt-cache/*.deb /var/cache/apt/archives/
-        sudo apt-get install -y --no-install-recommends libcurl4t64:i386
+        # Local packages can be installed without refreshing the Ubuntu index.
+        if ! sudo apt-get install -y --no-download --no-install-recommends "$HOME"/apt-cache/*.deb; then
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libcurl4t64:i386
+        fi
 
     - name: Find fastest APT mirror
       if: env.BYOND_MAJOR >= 516 && env.BYOND_MINOR >= 1664 && !steps.restore_libcurl_cache.outputs.cache-hit
