@@ -333,3 +333,18 @@ export const vox_body_markings_color: Feature<string> = {
   name: 'Узор груди - цвет',
   component: FeatureColorInput,
 };
+
+export const resomi_crest_color: Feature<string> = {
+  name: 'Цвет хохолка',
+  component: FeatureColorInput,
+};
+
+export const feature_resomi_markings: FeatureChoiced = {
+  name: 'Узор оперения',
+  component: FeatureDropdownInput,
+};
+
+export const resomi_markings_color: Feature<string> = {
+  name: 'Цвет узора оперения',
+  component: FeatureColorInput,
+};
