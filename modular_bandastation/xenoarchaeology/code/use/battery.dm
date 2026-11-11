@@ -35,6 +35,10 @@
 	var/datum/weakref/source_ref
 	/// Catalogue number of the find it was drawn from, stamped on its side
 	var/source_serial
+	/// Type of the core or field artefact it was poured from; null if drawn from a large find
+	var/source_type
+	/// Poured from a small source (a core or field artefact): a resonator gives a weaker passive
+	var/small_source = FALSE
 
 /obj/item/anomaly_battery/Destroy(force)
 	QDEL_NULL(held_effect)
@@ -84,12 +88,16 @@
 	held_effect = source.make_harvest_copy(src)
 	source_ref = WEAKREF(source)
 	source_serial = serial
+	source_type = null
+	small_source = FALSE
 	stored_charge = 0
 	update_appearance()
 
 /// Fills it with `amount` charge of a fresh `effect_type` of energy `kind`, poured from a core or field artefact named `source_name`.
-/obj/item/anomaly_battery/proc/fill_from(effect_type, kind, source_name, amount)
+/obj/item/anomaly_battery/proc/fill_from(effect_type, kind, source_name, amount, poured_type)
 	discard_effect()
+	source_type = poured_type
+	small_source = TRUE
 	held_effect = new effect_type(src, null)
 	held_effect.energy_kind = kind
 	held_effect.current_charge = 0

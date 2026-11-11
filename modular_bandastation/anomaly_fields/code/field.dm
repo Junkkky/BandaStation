@@ -208,8 +208,13 @@
 /// Field protections from the artefacts `victim` carries in hands, pockets and worn slots.
 /proc/field_artefact_protection(mob/living/victim)
 	. = NONE
-	for(var/obj/item/field_artefact/artefact in victim.get_equipped_items(INCLUDE_POCKETS | INCLUDE_HELD))
-		. |= artefact.field_protection
+	for(var/obj/item/thing in victim.get_equipped_items(INCLUDE_POCKETS | INCLUDE_HELD))
+		if(istype(thing, /obj/item/field_artefact))
+			var/obj/item/field_artefact/artefact = thing
+			. |= artefact.field_protection
+		else if(istype(thing, /obj/item/anomaly_resonator))
+			var/obj/item/anomaly_resonator/resonator = thing
+			. |= resonator.field_protection()
 
 /// Bends the air over `where` from `start_scale` to `end_scale` of a supermatter warp, then fades it out.
 /proc/anomaly_field_warp(turf/where, start_scale, end_scale, grow_time, fade_time = 0.2 SECONDS)

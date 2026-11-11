@@ -155,7 +155,7 @@
 			return ITEM_INTERACT_BLOCKING
 		kind = entry[1]
 		effect_type = entry[2]
-	battery.fill_from(effect_type, kind, source.name, ARTIFACT_BATTERY_SMALL_CHARGE)
+	battery.fill_from(effect_type, kind, source.name, ARTIFACT_BATTERY_SMALL_CHARGE, source.type)
 	user.visible_message(
 		span_notice("[user] вкладывает [source] под купол [src], и в батарею тянется поток света."),
 		span_notice("Вы вкладываете [source] под купол [src]: батарея наполняется."),

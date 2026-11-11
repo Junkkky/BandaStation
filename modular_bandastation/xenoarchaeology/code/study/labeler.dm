@@ -26,6 +26,10 @@
 	ui_interact(user)
 	return CLICK_ACTION_SUCCESS
 
+/// Use in hand is the scanner pulse: the tag screen opens only by Alt-click or on a find with an unfinished tag.
+/obj/item/excavation/depth_scanner/interact(mob/user)
+	return FALSE
+
 /// Whether all three words are set.
 /obj/item/excavation/depth_scanner/proc/is_complete()
 	return effect_word && trigger_word && second_word

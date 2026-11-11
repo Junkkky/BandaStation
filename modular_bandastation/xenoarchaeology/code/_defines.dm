@@ -123,6 +123,28 @@
 #define ARTIFACT_BATTERY_CAPACITY 200
 /// Charge a core or field artefact pours into an empty battery: half of what a large find gives.
 #define ARTIFACT_BATTERY_SMALL_CHARGE 100
+/// Battery charge a light resonator ability costs.
+#define RESONANCE_COST_LIGHT 20
+/// Battery charge a heavy resonator ability costs.
+#define RESONANCE_COST_HEAVY 40
+/// How far a targeted resonator ability reaches, in tiles.
+#define RESONANCE_REACH 7
+/// Damage multiplier of a large find's resonator abilities.
+#define RESONANCE_LARGE_POWER 1.25
+/// How often a resonator worn without the binding hurts its wearer.
+#define RESONANCE_PUNISH_PERIOD (30 SECONDS)
+/// Resonator passive of a flyer battery, instead of its energy kind's.
+#define RESONANCE_PASSIVE_FLIGHT "flight"
+/// Resonator passive of a melter core battery: thermal sight.
+#define RESONANCE_PASSIVE_THERMAL "thermal"
+
+// Field protections, shared by field artefacts (anomaly_fields) and the resonator.
+/// Its carrier keeps their footing: no field throws them and a gravitational field does not rip them.
+#define FIELD_ARTEFACT_ANCHOR (1<<0)
+/// Field throws carry its carrier much further.
+#define FIELD_ARTEFACT_LIFT (1<<1)
+/// Its carrier is not blinded by a flash field.
+#define FIELD_ARTEFACT_BLINDPROOF (1<<2)
 /// Charge per second a harvester draws on tier-1 capacitors: a full battery in 80 seconds.
 #define ARTIFACT_HARVEST_DRAW_RATE 2.5
 /// Charge per second a utilizer spends running a field or bursts: a full battery lasts 400 seconds.

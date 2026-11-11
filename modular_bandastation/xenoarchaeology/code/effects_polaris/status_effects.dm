@@ -25,7 +25,8 @@
 
 /datum/status_effect/artifact/refresh(mob/living/new_owner, set_duration)
 	var/dose = isnum(set_duration) ? clamp(set_duration, 1 SECONDS, max_duration) : initial(duration)
-	duration = max(duration, world.time + dose)
+	// Our status durations count down what is left; Voidcrew's held an end time, so a refresh made it last forever.
+	duration = max(duration, dose)
 
 // ===== Fortify =====
 

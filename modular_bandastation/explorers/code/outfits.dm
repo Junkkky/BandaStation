@@ -13,6 +13,7 @@
 	belt = /obj/item/modular_computer/pda/crew/explorer
 	l_pocket = /obj/item/gps
 	r_pocket = /obj/item/flashlight
+	implants = list(/obj/item/implant/resonance)
 	backpack_contents = list(
 		/obj/item/stationtrauma_distress_beacon = 1,
 		/obj/item/storage/box/stationtrauma_research = 1,

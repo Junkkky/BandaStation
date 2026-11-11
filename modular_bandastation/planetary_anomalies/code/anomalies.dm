@@ -224,6 +224,7 @@
 	light_color = LIGHT_COLOR_PURPLE
 	particles_type = /particles/smoke/steam
 	particles_color = "#c070ff"
+	COOLDOWN_DECLARE(vent_cooldown)
 
 /obj/effect/anomaly/pulsing/plasmasoul/pulse()
 	for(var/mob/living/carbon/human/victim in range(effect_range, src))
@@ -237,10 +238,14 @@
 		playsound(victim, 'sound/effects/bubbles/bubbles.ogg', 50)
 
 /obj/effect/anomaly/pulsing/plasmasoul/touched(atom/movable/bumper)
+	if(!COOLDOWN_FINISHED(src, vent_cooldown))
+		return
+	COOLDOWN_START(src, vent_cooldown, 10 SECONDS)
 	pulse()
 	var/turf/open/spot = random_spot(effect_range)
 	if(istype(spot))
-		spot.atmos_spawn_air("[GAS_PLASMA]=300;[TURF_TEMPERATURE(200)]")
+		// Shiptest vented 300 moles a touch, enough to flood a room; a small puff warns without drowning anyone.
+		spot.atmos_spawn_air("[GAS_PLASMA]=20;[TURF_TEMPERATURE(200)]")
 
 // ===== Pulsar =====
 
@@ -324,7 +329,7 @@ GLOBAL_LIST_INIT(tvstatic_sayings, list(
 /**
  * Burns into the minds of everyone around it. Someone whose mind it has burnt through may be taken:
  * they die and a new static grows over them, holding the body until it is neutralized. Mindshields,
- * deafness and research scanners keep it out.
+ * resonance binding implants, deafness and research scanners keep it out.
  */
 /obj/effect/anomaly/pulsing/tvstatic
 	name = "статика"
@@ -366,7 +371,7 @@ GLOBAL_LIST_INIT(tvstatic_sayings, list(
 
 /obj/effect/anomaly/pulsing/tvstatic/examine(mob/user)
 	. = ..()
-	if(!iscarbon(user) || HAS_TRAIT(user, TRAIT_RESEARCH_SCANNER))
+	if(!iscarbon(user) || HAS_TRAIT(user, TRAIT_RESEARCH_SCANNER) || is_resonance_bound(user) || resonance_passive_of(user) == ARTIFACT_ENERGY_PSIONIC)
 		return
 	var/mob/living/carbon/viewer = user
 	to_chat(viewer, span_userdanger("Голова раскалывается, пока вы смотрите на [src]!"))
@@ -385,10 +390,11 @@ GLOBAL_LIST_INIT(tvstatic_sayings, list(
 		playsound(src, 'sound/items/radiostatic.ogg', 50)
 		if(stored_mob && looking.stat != DEAD && prob(25))
 			say(pick(GLOB.tvstatic_sayings))
-		if(looking.stat == DEAD || HAS_TRAIT(looking, TRAIT_MINDSHIELD) || HAS_TRAIT(looking, TRAIT_RESEARCH_SCANNER) || HAS_TRAIT(looking, TRAIT_DEAF))
+		if(looking.stat == DEAD || HAS_TRAIT(looking, TRAIT_MINDSHIELD) || HAS_TRAIT(looking, TRAIT_RESEARCH_SCANNER) || HAS_TRAIT(looking, TRAIT_DEAF) || is_resonance_bound(looking))
 			continue
 		looking.adjust_organ_loss(ORGAN_SLOT_BRAIN, 10, 200)
-		looking.flash_act(intensity = 2, visual = TRUE, type = /atom/movable/screen/fullscreen/flash/static)
+		if(resonance_passive_of(looking) != ARTIFACT_ENERGY_PSIONIC)
+			looking.flash_act(intensity = 2, visual = TRUE, type = /atom/movable/screen/fullscreen/flash/static)
 		if(looking.get_organ_loss(ORGAN_SLOT_BRAIN) >= 150 && prob(20))
 			var/obj/effect/anomaly/pulsing/tvstatic/expansion = new(get_turf(looking))
 			settle_planetary_anomaly(expansion)

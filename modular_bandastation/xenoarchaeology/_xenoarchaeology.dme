@@ -64,6 +64,8 @@
 #include "code\use\battery.dm"
 #include "code\use\extraction.dm"
 #include "code\use\harvester.dm"
+#include "code\use\resonator.dm"
+#include "code\use\resonator_abilities.dm"
 #include "code\use\utilizer.dm"
 #include "code\specimen_crate.dm"
 #include "code\survey.dm"

@@ -53,6 +53,17 @@
 	)
 	required_experiments = list(/datum/experiment/xenoarch_analysis)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
+	experiments_to_unlock = list(/datum/experiment/xenoarch_analysis/five)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
+
+/// Belt power from exotic batteries, for corps members bound to it.
+/datum/techweb_node/anomalous_energy
+	display_name = "Аномальная энергетика"
+	description = "Аномальный резонатор: пояс, дающий носителю силу экзотической батареи."
+	prerequisite_nodes = list(/datum/techweb_node/xenoarch_exotic_particles)
+	unlocked_designs = list(/datum/design/anomaly_resonator)
+	required_experiments = list(/datum/experiment/xenoarch_analysis/five)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /// Finds of three different energy kinds studied on the scan pad, from any source.
@@ -71,6 +82,12 @@
 
 /datum/experiment/xenoarch_analysis/check_progress()
 	return list(EXPERIMENT_PROG_INT("Изучено видов энергии", length(kinds), required))
+
+/// The same, for five kinds: what Anomalous Energy asks for.
+/datum/experiment/xenoarch_analysis/five
+	name = "Спектр аномальной энергии"
+	description = "Изучите на сканирующей площадке находки пяти разных видов энергии: крупные артефакты, артефакты аномальных полей или ядра аномалий."
+	required = 5
 
 /// Counts a newly studied find's energy kind toward the station's open energy experiments.
 /proc/xenoarch_record_study(kind)
