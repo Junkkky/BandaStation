@@ -995,7 +995,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/obj/structure/closet/secure_closet/expedition_ship_armory,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/stationtrauma_space/raven/brig)
 "cn" = (
@@ -1010,7 +1009,6 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/machinery/status_display/evac/directional/north,
-/obj/structure/closet/secure_closet/expedition_weapons,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/stationtrauma_space/raven/brig)
 "cp" = (
@@ -1033,7 +1031,6 @@
 	dir = 5
 	},
 /obj/machinery/airalarm/directional/north,
-/obj/structure/closet/secure_closet/expedition_weapons,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/stationtrauma_space/raven/brig)
 "ct" = (

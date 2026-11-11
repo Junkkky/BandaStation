@@ -229,7 +229,6 @@
 /turf/open/floor/iron/dark,
 /area/station/maintenance/ghetto/aft)
 "aaK" = (
-/obj/structure/closet/secure_closet/expedition_weapons,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/maintenance/ghetto/aft)
 "aaL" = (

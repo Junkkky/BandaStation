@@ -75,32 +75,9 @@
 
 | Файл модуля и состояния | Исходник |
 | --- | --- |
-| `gear.dmi`: `netgun` | [launchers.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/guns/launchers.dmi) |
-| `gear.dmi`: `netshell-live`, `netshell` (в исходнике `netshell`, `netshell-spent`) | [ammo.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/weapons/ammo.dmi) |
-| `gear.dmi`: `expshotgun0/1`, `ghettexpshotgun0/1` | [explshotgun.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/torch/icons/obj/explshotgun.dmi) |
 | `gear.dmi`, `gear_worn.dmi`: `bio_anom`, `bio_anom_hood` | [obj_suit.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/clothing/obj_suit.dmi), [obj_head.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/clothing/obj_head.dmi), [onmob_suit.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/onmob_suit.dmi), [onmob_head.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/onmob_head.dmi) |
 | `gear_lefthand.dmi`, `gear_righthand.dmi` | [lefthand.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/items/lefthand.dmi), [righthand.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/items/righthand.dmi), [lefthand_hats.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/items/lefthand_hats.dmi), [righthand_hats.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/items/righthand_hats.dmi) |
 | `machete.dmi`: `machetedx` | [melee_physical.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/weapons/melee_physical.dmi) |
 
-Механика по [сетемёту](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/code/modules/projectiles/guns/launcher/net.dm), [сети](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/code/game/objects/items/weapons/weaponry.dm),
-[XP-3](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/sierra/items/explo_shotgun.dm) и [шкафчикам](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/sierra/structures/closets/exploration.dm)
-переписана на системах TG: баллистика, энергосеть ниндзя, боёк outback. Авторство SierraBay/Baystation, лицензия графики CC BY-SA 3.0.
-
-## Винтовки M20A и M4RA
-
-Спрайты и звуки из [ss220club/BandaMarines, 4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122](https://github.com/ss220club/BandaMarines/tree/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122)
-(форк CM-SS13), без изменения пикселей и звука. Авторство — команда разработки CM-SS13,
-лицензия ассетов [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) по [README источника](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/README.md#licenses).
-
-| Файл модуля | Исходник |
-| --- | --- |
-| `firearms.dmi`: `m20a`, `m20a_e` | [USCM/assault_rifles.dmi](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi) |
-| `firearms.dmi`: `m4ra`, `m4ra_e` | [USCM/marksman_rifles.dmi](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi) |
-| `firearms_worn.dmi` | спина: [assault_rifles.dmi](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/back/guns_by_type/assault_rifles.dmi), [marksman_rifles.dmi](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi) |
-| `firearms_lefthand.dmi`, `firearms_righthand.dmi` | [assault_rifles_lefthand.dmi](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/inhands/weapons/guns/assault_rifles_lefthand.dmi), [assault_rifles_righthand.dmi](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/inhands/weapons/guns/assault_rifles_righthand.dmi), [marksman_rifles_lefthand.dmi](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi), [marksman_rifles_righthand.dmi](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi) |
-| `sound/m20a_fire_1..6.ogg` | `sound/weapons/rifle_firing_sounds/gun_mk1_1..6.ogg` |
-| `sound/m4ra_fire.ogg` | `sound/weapons/gun_m4ra.ogg` |
-| `sound/l42_reload.ogg`, `sound/l42_unload.ogg` | `sound/weapons/handling/l42_reload.ogg`, `l42_unload.ogg` |
-
-Механика и урон не переносились: M20A стреляет как WT-550 и берёт его магазины,
-M4RA — как марксманская Cawil форка и берёт винтовочные магазины .40 Sol.
+Состав [шкафчиков](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/sierra/structures/closets/exploration.dm)
+по Sierra, переписан на системах TG. Авторство SierraBay/Baystation, лицензия графики CC BY-SA 3.0.

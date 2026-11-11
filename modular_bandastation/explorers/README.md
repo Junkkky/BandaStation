@@ -28,7 +28,6 @@
 | Спавн пилота | `/obj/effect/landmark/start/explorer/pilot` |
 | Спавн медика | `/obj/effect/landmark/start/explorer/medic` |
 | Спавн инженера | `/obj/effect/landmark/start/explorer/engineer` |
-| Оружейный шкаф, семь лазерных пистолетов НТ и семь мачете | `/obj/structure/closet/secure_closet/expedition_weapons` |
 | Гардероб со всей полевой одеждой | `/obj/structure/closet/wardrobe/expedition` |
 
 До размещения отдельных спавнов специалисты используют существующую точку
@@ -59,9 +58,8 @@ Sierra, кроме ножен: они используют спрайты нож
 
 ## Снаряжение и оружие
 
-- Шкафчики ролей (`/obj/structure/closet/secure_closet/expedition` и подтипы leader, pilot, medic, engineer) с набором Sierra на предметах TG; флажки заменены маячками-метками.
+- Автомат-гардероб `ExpeDrobe` (`/obj/machinery/vending/wardrobe/expedition_wardrobe`, бесплатно): формы, ботинки, перчатки, куртки, разгрузки, ножны, шлем пилота. Старый шкаф-гардероб оставлен до замены на картах.
+- Шкафчики ролей (`/obj/structure/closet/secure_closet/expedition` и подтипы leader, pilot, medic, engineer) — только то, чего нет в стартовом комплекте и гардеробе: рация, газоанализатор, бинокль, маячки, мачете (у главы — парадное) и вещи роли.
 - Шкаф антианомальной защиты (`/obj/structure/closet/l3closet/expedition`): биокостюм с рисунком Sierra.
-- Парадное мачете главы — в его шкафчике.
-- Оружейный сейф корабля (`/obj/structure/closet/secure_closet/expedition_ship_armory`, доступ корпуса): 2 M20A с 4 магазинами WT-550, M4RA с 3 магазинами .40 Sol, XP-3 с мешочными и резиновыми патронами, 2 сетемёта и сафари-бандольер.
-- Всё огнестрельное с бойком outback: на станции не стреляет. XP-3 на картечи и пулях может разорваться (50%, с трубой на стволе 10%).
-- Хранилища MOD (`/obj/machinery/suit_storage_unit/expedition`, `/pilot`, `/medic`, `/engineer`, `/heavy`). Шкафчики, сейф и хранилища на карту ставятся вручную.
+- Огнестрела у корпуса нет; энергетическое оружие — линейка Exploreverse (Mk.I–III) в RND, на станции не стреляет.
+- Хранилища MOD (`/obj/machinery/suit_storage_unit/expedition`, `/pilot`, `/medic`, `/engineer`, `/heavy`). Всё перечисленное на карту ставится вручную.

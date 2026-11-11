@@ -2,7 +2,7 @@
 /datum/unit_test/explorers_outfits
 
 /datum/unit_test/explorers_outfits/Run()
-	var/obj/structure/closet/secure_closet/expedition_weapons/armoury = allocate(/obj/structure/closet/secure_closet/expedition_weapons)
+	var/obj/structure/closet/secure_closet/expedition/leader/leader_locker = allocate(/obj/structure/closet/secure_closet/expedition/leader)
 	var/obj/structure/closet/secure_closet/laboratory = allocate(/obj/structure/closet/secure_closet)
 	laboratory.req_access = list(ACCESS_RESEARCH)
 	var/obj/machinery/computer/stationtrauma_dispatch/dispatch = allocate(/obj/machinery/computer/stationtrauma_dispatch)
@@ -15,7 +15,7 @@
 		crew.mind.set_assigned_role(job)
 		crew.dress_up_as_job(job, consistent = TRUE)
 		var/is_leader = job_path == /datum/job/explorer/leader
-		TEST_ASSERT_EQUAL(armoury.allowed(crew), is_leader, "[job.title] has incorrect access to the corps armoury.")
+		TEST_ASSERT_EQUAL(leader_locker.allowed(crew), is_leader, "[job.title] has incorrect access to the corps leader's locker.")
 		TEST_ASSERT(!laboratory.allowed(crew), "[job.title] gained access to scientific laboratories.")
 		TEST_ASSERT(dispatch.allowed(crew), "[job.title] cannot request its expedition ship without a command ID.")
 		var/obj/item/radio/headset/headset = crew.get_item_by_slot(ITEM_SLOT_EAR_RIGHT)
@@ -169,11 +169,11 @@
 /datum/unit_test/explorers_machete
 
 /datum/unit_test/explorers_machete/Run()
-	var/obj/structure/closet/secure_closet/expedition_weapons/locker = allocate(/obj/structure/closet/secure_closet/expedition_weapons, run_loc_floor_top_right)
+	var/obj/structure/closet/secure_closet/expedition/locker = allocate(/obj/structure/closet/secure_closet/expedition, run_loc_floor_top_right)
 	locker.locked = FALSE
-	TEST_ASSERT(locker.open(special_effects = FALSE), "The corps weapons locker could not open.")
+	TEST_ASSERT(locker.open(special_effects = FALSE), "The explorer locker could not open.")
 	var/obj/item/hatchet/expedition_machete/blade = locate() in locker.loc
-	TEST_ASSERT(blade, "The corps weapons locker did not supply a machete.")
+	TEST_ASSERT(blade, "The explorer locker did not supply a machete.")
 	var/mob/living/carbon/human/crew = allocate(/mob/living/carbon/human/consistent)
 	var/obj/item/clothing/under/expedition/uniform = allocate(/obj/item/clothing/under/expedition)
 	TEST_ASSERT(crew.equip_to_slot_if_possible(uniform, ITEM_SLOT_ICLOTHING), "The uniform could not be equipped.")

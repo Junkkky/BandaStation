@@ -22,13 +22,3 @@
 
 /obj/effect/landmark/start/explorer/engineer
 	name = JOB_EXPEDITION_ENGINEER
-
-/obj/structure/closet/secure_closet/expedition_weapons
-	name = "оружейный шкаф экспедиционного корпуса"
-	desc = "Лёгкое оружие для экспедиционного отряда. Выдаётся главой корпуса."
-	req_access = list(ACCESS_EXPEDITION_LEADER)
-
-/obj/structure/closet/secure_closet/expedition_weapons/PopulateContents()
-	for(var/index in 1 to 7)
-		new /obj/item/gun/energy/laser/pistol(src)
-		new /obj/item/hatchet/expedition_machete(src)
