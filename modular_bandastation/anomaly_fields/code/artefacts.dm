@@ -10,6 +10,7 @@
 /obj/item/field_artefact
 	name = "аномальное образование"
 	icon = 'modular_bandastation/anomaly_fields/icons/artefacts.dmi'
+	inhand_icon_state = "blackcube"
 	abstract_type = /obj/item/field_artefact
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = INDESTRUCTIBLE
@@ -143,7 +144,7 @@
 
 /// What a field artefact leaves after a harvester drains it: it looks the same, grey, and does nothing.
 /obj/item/field_artefact_husk
-	name = "пустая оболочка"
+	name = "истощённое образование"
 	desc = "Бывшее аномальное образование, из которого вытянули всю энергию. Теперь это просто странный серый камень."
 	icon = 'modular_bandastation/anomaly_fields/icons/artefacts.dmi'
 	w_class = WEIGHT_CLASS_SMALL
@@ -152,7 +153,7 @@
 /obj/item/field_artefact_husk/Initialize(mapload, obj/item/field_artefact/source)
 	. = ..()
 	if(source)
-		name = "пустая оболочка ([source.name])"
+		name = "истощённое образование ([source.name])"
 		icon_state = source.icon_state
 
 /// Spends charge. Returns FALSE if there is not enough.
@@ -168,7 +169,7 @@
 /obj/item/field_artefact/gravi
 	energy_kind = ARTIFACT_ENERGY_BLUESPACE
 	battery_effect = /datum/artifact_effect/gravity
-	name = "грави"
+	name = "гравитационный конденсат"
 	desc = "Стоит взять его в руку, и он упирается, будто не хочет двигаться."
 	icon_state = "gravi"
 	collector_state = "collector_gravi"
@@ -198,7 +199,7 @@
 /obj/item/field_artefact/flyer
 	energy_kind = ARTIFACT_ENERGY_PSIONIC
 	battery_effect = /datum/artifact_effect/bestow/sprint
-	name = "летун"
+	name = "левитационное образование"
 	desc = "Совершенно невесомый, словно плотный сгусток воздуха."
 	icon_state = "flyer"
 	collector_state = "collector_flyer"
@@ -235,7 +236,7 @@
 /obj/item/field_artefact/svetlyak
 	energy_kind = ARTIFACT_ENERGY_PARTICLE
 	battery_effect = /datum/artifact_effect/light
-	name = "светляк"
+	name = "фотолюминесцентное образование"
 	desc = "Безумно яркий: смотреть на него дольше пары секунд неприятно."
 	icon_state = "svetlyak"
 	collector_state = "collector_svetlyak"
@@ -287,7 +288,7 @@
 /obj/item/field_artefact/pruzhina
 	energy_kind = ARTIFACT_ENERGY_ELECTROMAGNETIC
 	battery_effect = /datum/artifact_effect/cell/charge
-	name = "пружина"
+	name = "электретное образование"
 	desc = "Мышцы руки сводит, как от слабого тока, волосы встают дыбом."
 	icon_state = "pruzhina"
 	collector_state = "collector_pruzhina"
@@ -361,7 +362,7 @@
 /obj/item/field_artefact/zjar
 	energy_kind = ARTIFACT_ENERGY_ORGANIC
 	battery_effect = /datum/artifact_effect/heal
-	name = "жар"
+	name = "пирогенное образование"
 	desc = "Тепло растекается по рукам; от одного его вида становится теплее."
 	icon_state = "fire_ball"
 	collector_state = "collector_zjar"

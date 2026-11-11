@@ -15,6 +15,7 @@
 	desc = "Кусок породы с прожилками, тяжелее, чем кажется."
 	icon = 'modular_bandastation/xenoarchaeology/icons/curios.dmi'
 	icon_state = "strange_rock_0"
+	inhand_icon_state = "minimeteor"
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 6
 	throwforce = 8

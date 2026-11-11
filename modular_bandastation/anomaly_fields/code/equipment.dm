@@ -13,6 +13,10 @@
 	desc = "Наручный прибор с тремя лампами. Включённый, пищит рядом с аномальным полем, тем чаще, чем ближе; по нажатию сообщает, есть ли рядом аномалии. Приложенный к аномалии, артефакту или ядру, определяет вид энергии, а у живой аномалии — частоту и код для нейтрализации. Alt-клик включает и выключает его."
 	icon = 'modular_bandastation/anomaly_fields/icons/equipment.dmi'
 	icon_state = "detector_turned_off"
+	worn_icon_state = "analyzer"
+	inhand_icon_state = "analyzer"
+	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_BELT
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver = SMALL_MATERIAL_AMOUNT * 2)
@@ -150,6 +154,7 @@
 	desc = "Простой стальной болт. Брошенный вперёд, будит то, чего не видно глазу."
 	icon = 'modular_bandastation/anomaly_fields/icons/equipment.dmi'
 	icon_state = "bolt"
+	inhand_icon_state = "rods"
 	w_class = WEIGHT_CLASS_TINY
 	obj_flags = CONDUCTS_ELECTRICITY
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT)
@@ -163,6 +168,9 @@
 	desc = "Плотный мешочек на десять болтов. В руке достаёт болт для броска; Alt+ПКМ переключает сбор болтов под ногами."
 	icon = 'modular_bandastation/anomaly_fields/icons/equipment.dmi'
 	icon_state = "bolt_bag"
+	inhand_icon_state = "satchel"
+	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 10)
@@ -238,6 +246,9 @@
 	desc = "Экранированный контейнер со щупами для одной мелкой находки: артефакта, ядра аномалии, странного камня или древности. Внутри артефакт не действует."
 	icon = 'modular_bandastation/anomaly_fields/icons/equipment.dmi'
 	icon_state = "collector_empty"
+	inhand_icon_state = "electronic"
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = SHEET_MATERIAL_AMOUNT, /datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT)
 	/// The find inside.
@@ -265,12 +276,12 @@
 	. = ..()
 	. += stored ? span_notice("Внутри [stored.name]. Используйте в руке, чтобы достать.") : span_notice("Пуст.")
 	if(istype(stored, /obj/item/field_artefact/pruzhina))
-		. += span_notice("Alt-клик переключает коллектор с пружиной в режим батареи.")
+		. += span_notice("Alt-клик переключает коллектор с электретным образованием в режим батареи.")
 
 /// A collector holding a pruzhina turns into a power cell charged from it.
 /obj/item/field_collector/click_alt(mob/user)
 	if(!istype(stored, /obj/item/field_artefact/pruzhina))
-		balloon_alert(user, "нужна пружина!")
+		balloon_alert(user, "нужно электретное образование!")
 		return CLICK_ACTION_BLOCKING
 	var/obj/item/stock_parts/power_store/cell/pruzhina/cell = new(drop_location())
 	cell.take_collector(src)
@@ -327,8 +338,8 @@ GLOBAL_LIST_INIT(field_collector_holdable, typecacheof(list(
  * cannot be recharged and shrugs off EMPs. Alt-click turns it back into the collector.
  */
 /obj/item/stock_parts/power_store/cell/pruzhina
-	name = "батарея-пружина"
-	desc = "Коллектор с пружиной, переключённый в режим батареи. Не заряжается, но ЭМИ ему нипочём. Alt-клик переключает обратно."
+	name = "электретная батарея"
+	desc = "Коллектор с электретным образованием, переключённый в режим батареи. Не заряжается, но ЭМИ ему нипочём. Alt-клик переключает обратно."
 	icon = 'modular_bandastation/anomaly_fields/icons/equipment.dmi'
 	icon_state = "collector_closed"
 	maxcharge = STANDARD_CELL_CHARGE * 10

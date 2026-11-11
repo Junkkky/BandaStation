@@ -24,6 +24,8 @@
 	var/power = 1
 	/// A large find's shock and fire jump on to more targets.
 	var/chain = FALSE
+	/// Only a living target other than the user will do.
+	var/needs_living = FALSE
 
 /datum/action/cooldown/resonance/New(Target, original)
 	. = ..()
@@ -40,6 +42,8 @@
 	var/obj/item/anomaly_resonator/resonator = target
 	if(click_to_activate && (!target_atom || get_dist(owner, target_atom) > RESONANCE_REACH || !(target_atom in view(RESONANCE_REACH, owner))))
 		owner.balloon_alert(owner, "слишком далеко!")
+		return FALSE
+	if(!valid_target(target_atom))
 		return FALSE
 	if(!resonator.spend(cost))
 		return FALSE
@@ -68,6 +72,10 @@
 /datum/action/cooldown/resonance/proc/anchored_target(mob/living/victim)
 	return field_artefact_protection(victim) & FIELD_ARTEFACT_ANCHOR
 
+/// Whether the ability can act on `target_atom`; checked before any charge is spent.
+/datum/action/cooldown/resonance/proc/valid_target(atom/target_atom)
+	return !needs_living || living_target(target_atom)
+
 /// What the ability does once paid for.
 /datum/action/cooldown/resonance/proc/fire(atom/target_atom)
 	return
@@ -86,11 +94,10 @@
 	desc = "Бьёт током выбранную цель."
 	button_icon_state = "zap"
 	click_to_activate = TRUE
+	needs_living = TRUE
 
 /datum/action/cooldown/resonance/shock_bolt/fire(atom/target_atom)
-	var/mob/living/victim = living_target(target_atom)
-	if(!victim)
-		return
+	var/mob/living/victim = target_atom
 	owner.Beam(victim, icon_state = "lightning[rand(1, 12)]", time = 0.5 SECONDS)
 	playsound(victim, 'sound/effects/magic/lightningbolt.ogg', 50, TRUE)
 	victim.electrocute_act(20 * power, owner, 1, SHOCK_NOGLOVES)
@@ -113,6 +120,7 @@
 	button_icon_state = "time"
 	cooldown_time = 15 SECONDS
 	fire_sound = 'sound/effects/magic/tail_swing.ogg'
+	wave_color = LIGHT_COLOR_LIGHT_CYAN
 
 /datum/action/cooldown/resonance/haste/fire(atom/target_atom)
 	var/mob/living/runner = owner
@@ -137,9 +145,12 @@
 	button_icon_state = "bonechill"
 	click_to_activate = TRUE
 	beam_state = "g_beam"
+	cooldown_time = 25 SECONDS
+	cost = RESONANCE_COST_HEAVY
 
 /datum/action/cooldown/resonance/rad_burst/fire(atom/target_atom)
 	var/turf/spot = get_turf(target_atom)
+	new /obj/effect/temp_visual/circle_wave/anomaly_pulse(spot, "#7fdd58", 3.5)
 	playsound(spot, 'sound/effects/health/slowbeat.ogg', 80)
 	radiation_pulse(spot, max_range = 3, threshold = RAD_LIGHT_INSULATION)
 	if(isliving(target_atom) && target_atom != owner)
@@ -152,13 +163,14 @@
 	button_icon_state = "telepathy"
 	click_to_activate = TRUE
 	beam_state = "sendbeam"
+	needs_living = TRUE
 
 /datum/action/cooldown/resonance/static_jam/fire(atom/target_atom)
-	var/mob/living/victim = living_target(target_atom)
-	if(!victim || resonance_passive_of(victim) == ARTIFACT_ENERGY_PSIONIC)
+	var/mob/living/victim = target_atom
+	if(resonance_passive_of(victim) == ARTIFACT_ENERGY_PSIONIC)
 		return
 	victim.flash_act(intensity = 2, visual = TRUE, type = /atom/movable/screen/fullscreen/flash/static)
-	victim.adjust_confusion(10 SECONDS)
+	victim.adjust_confusion(5 SECONDS)
 	SEND_SOUND(victim, 'sound/items/radiostatic.ogg')
 
 /datum/action/cooldown/resonance/flash_cone
@@ -179,14 +191,14 @@
 	desc = "Насылает галлюцинации на цель."
 	button_icon_state = "terrify"
 	click_to_activate = TRUE
+	needs_living = TRUE
+	cooldown_time = 25 SECONDS
 	beam_state = "curse0"
 	fire_sound = 'sound/effects/magic/curse.ogg'
 
 /datum/action/cooldown/resonance/hallucinate/fire(atom/target_atom)
-	var/mob/living/victim = living_target(target_atom)
-	if(!victim)
-		return
-	victim.adjust_hallucinations(2 MINUTES)
+	var/mob/living/victim = target_atom
+	victim.adjust_hallucinations(30 SECONDS)
 	victim.adjust_confusion(10 SECONDS)
 	victim.cause_hallucination(pick(/datum/hallucination/delusion/preset/demon, /datum/hallucination/delusion/preset/skeleton, /datum/hallucination/delusion/preset/zombie, /datum/hallucination/delusion/preset/carp), "аномальный резонатор")
 
@@ -225,6 +237,7 @@
 
 /datum/action/cooldown/resonance/emp_burst/fire(atom/target_atom)
 	var/list/spared = owner.get_all_contents()
+	new /obj/effect/temp_visual/emp/pulse(get_turf(owner))
 	playsound(owner, 'sound/effects/magic/disable_tech.ogg', 60, TRUE)
 	for(var/atom/movable/thing in range(3, owner))
 		if(!(thing in spared))
@@ -241,16 +254,20 @@
 /datum/action/cooldown/resonance/fire_beam/fire(atom/target_atom)
 	playsound(owner, 'sound/effects/magic/fireball.ogg', 60, TRUE)
 	var/list/hit = list()
+	var/turf/endpoint = get_turf(owner)
 	for(var/turf/spot as anything in get_line(get_turf(owner), get_turf(target_atom)))
 		if(spot == get_turf(owner))
 			continue
 		if(spot.density)
 			break
+		endpoint = spot
 		new /obj/effect/hotspot(spot)
 		spot.hotspot_expose(700, 50, 1)
 		for(var/mob/living/victim in spot)
 			burn_target(victim)
 			hit += victim
+	if(endpoint != get_turf(owner))
+		owner.Beam(endpoint, icon_state = "solar_beam", time = 0.5 SECONDS)
 	if(!chain)
 		return
 	var/atom/last = get_turf(target_atom)
@@ -270,7 +287,7 @@
 
 /datum/action/cooldown/resonance/fireball
 	name = "Огненный шар"
-	desc = "Слабый огненный шар в выбранную точку."
+	desc = "Огненный шар в выбранную точку: небольшой взрыв, цель загорается."
 	button_icon_state = "fireball"
 	click_to_activate = TRUE
 	fire_sound = 'sound/effects/magic/fireball.ogg'
@@ -284,12 +301,19 @@
 	ball.aim_projectile(target_atom, owner)
 	ball.fire()
 
-/// A melter core's fireball: it scorches and sets alight, but does not blow up.
+/// A melter core's fireball: a small blast that sets its target alight.
 /obj/projectile/magic/fireball/resonance
-	damage = 25
-	exp_light = 0
+	damage = 15
+	exp_light = 1
 	exp_fire = 2
 	exp_flash = 1
+
+/obj/projectile/magic/fireball/resonance/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	var/mob/living/victim = target
+	if(istype(victim))
+		victim.adjust_fire_stacks(3)
+		victim.ignite_mob()
 
 /datum/action/cooldown/resonance/telekinesis
 	name = "Телекинез"
@@ -301,16 +325,21 @@
 	beam_state = "kinesis"
 	fire_sound = 'sound/effects/magic/repulse.ogg'
 
+/datum/action/cooldown/resonance/telekinesis/valid_target(atom/target_atom)
+	var/atom/movable/thrown = target_atom
+	if(istype(thrown) && !thrown.anchored && thrown != owner)
+		return TRUE
+	owner.balloon_alert(owner, "не сдвинуть")
+	return FALSE
+
 /datum/action/cooldown/resonance/telekinesis/fire(atom/target_atom)
 	var/atom/movable/thrown = target_atom
-	if(!istype(thrown) || thrown.anchored || thrown == owner)
-		owner.balloon_alert(owner, "не сдвинуть")
-		return
 	if(isliving(thrown))
 		var/mob/living/victim = thrown
 		if(anchored_target(victim))
 			return
 		victim.Knockdown(2 SECONDS)
+	new /obj/effect/temp_visual/gravpush(get_turf(thrown))
 	var/turf/away = get_ranged_target_turf(thrown, get_dir(owner, thrown), 6)
 	thrown.throw_at(away, 6, 3, owner)
 
@@ -331,24 +360,25 @@
 		spot.rust_heretic_act(1)
 		for(var/mob/living/victim in spot)
 			victim.reagents?.add_reagent(/datum/reagent/toxin/plasma, 5)
-			victim.apply_damage(10 * power, TOX)
+			victim.apply_damage(15 * power, TOX)
 
 /datum/action/cooldown/resonance/vampirism
 	name = "Вампиризм"
 	desc = "Вытягивает кровь и жизнь цели, залечивая ваши раны."
 	button_icon_state = "exsanguinating_strike"
 	click_to_activate = TRUE
+	needs_living = TRUE
 	fire_sound = 'sound/effects/magic/enter_blood.ogg'
 	cooldown_time = 25 SECONDS
 	cost = RESONANCE_COST_HEAVY
 
 /datum/action/cooldown/resonance/vampirism/fire(atom/target_atom)
-	var/mob/living/victim = living_target(target_atom)
-	if(!victim)
-		return
+	var/mob/living/victim = target_atom
 	owner.Beam(victim, icon_state = "blood", time = 0.5 SECONDS)
 	victim.apply_damage(15 * power, BRUTE)
 	victim.bleed(30)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(victim), get_dir(owner, victim))
+	new /obj/effect/temp_visual/heal(get_turf(owner), "#b74561")
 	var/mob/living/drinker = owner
 	drinker.heal_overall_damage(brute = 10, burn = 10)
 	drinker.adjust_blood_volume(30)
@@ -358,14 +388,13 @@
 	desc = "Дважды рвёт плоть цели, выбрасывая кровь и потроха."
 	button_icon_state = "scream_for_me"
 	click_to_activate = TRUE
+	needs_living = TRUE
 	beam_state = "blood_beam"
 	cooldown_time = 25 SECONDS
 	cost = RESONANCE_COST_HEAVY
 
 /datum/action/cooldown/resonance/gut_rip/fire(atom/target_atom)
-	var/mob/living/victim = living_target(target_atom)
-	if(!victim)
-		return
+	var/mob/living/victim = target_atom
 	rip(victim)
 	addtimer(CALLBACK(src, PROC_REF(rip), victim), 0.5 SECONDS)
 
@@ -406,16 +435,23 @@
 	cooldown_time = 25 SECONDS
 	cost = RESONANCE_COST_HEAVY
 
+/datum/action/cooldown/resonance/blink/valid_target(atom/target_atom)
+	var/turf/spot = get_turf(target_atom)
+	if(spot && !spot.is_blocked_turf(exclude_mobs = TRUE))
+		return TRUE
+	owner.balloon_alert(owner, "место занято")
+	return FALSE
+
 /datum/action/cooldown/resonance/blink/fire(atom/target_atom)
 	var/turf/spot = get_turf(target_atom)
-	if(spot.is_blocked_turf(exclude_mobs = TRUE))
-		owner.balloon_alert(owner, "место занято")
-		return
-	do_teleport(owner, spot, channel = TELEPORT_CHANNEL_BLUESPACE)
+	var/turf/departure = get_turf(owner)
+	if(do_teleport(owner, spot, asoundout = 'sound/effects/magic/teleport_app.ogg', channel = TELEPORT_CHANNEL_BLUESPACE))
+		new /obj/effect/temp_visual/dir_setting/ninja/phase/out(departure, owner.dir)
+		new /obj/effect/temp_visual/dir_setting/ninja/phase(get_turf(owner), owner.dir)
 
 /datum/action/cooldown/resonance/mutate
 	name = "Искажение плоти"
-	desc = "Перекраивает конечность и орган цели."
+	desc = "Перекраивает конечность и орган цели, раня её; зверя разрывает на части, мегафауну лишь ранит."
 	button_icon_state = "mutate"
 	click_to_activate = TRUE
 	beam_state = "lichbeam"
@@ -423,10 +459,27 @@
 	cooldown_time = 25 SECONDS
 	cost = RESONANCE_COST_HEAVY
 
+/datum/action/cooldown/resonance/mutate/valid_target(atom/target_atom)
+	if(target_atom != owner && (iscarbon(target_atom) || isanimal_or_basicmob(target_atom)))
+		return TRUE
+	owner.balloon_alert(owner, "эту плоть не исказить")
+	return FALSE
+
+/// Rescrambles a person's limbs and organs, tearing them a little; a beast, simpler flesh, comes apart entirely,
+/// while megafauna is too much flesh to warp and only gets hurt.
 /datum/action/cooldown/resonance/mutate/fire(atom/target_atom)
-	var/mob/living/carbon/victim = living_target(target_atom)
-	if(istype(victim))
-		victim.bioscramble(owner)
+	if(iscarbon(target_atom))
+		var/mob/living/carbon/person = target_atom
+		person.bioscramble(owner)
+		person.apply_damage(10 * power, BRUTE)
+		return
+	var/mob/living/beast = target_atom
+	if(ismegafauna(beast))
+		beast.apply_damage(15 * power, BRUTE)
+		return
+	beast.visible_message(span_danger("Плоть [beast] выворачивается наизнанку и разлетается ошмётками!"))
+	log_combat(owner, beast, "gibbed with a resonator flesh warp")
+	beast.gib()
 
 /datum/action/cooldown/resonance/vortex_pull
 	name = "Стяжка"
@@ -450,7 +503,7 @@
 	name = "Энергетический щит"
 	desc = "На полминуты окружает вас щитом, принимающим три попадания."
 	button_icon_state = "shield"
-	cooldown_time = 30 SECONDS
+	cooldown_time = 60 SECONDS
 	cost = RESONANCE_COST_HEAVY
 	fire_sound = 'sound/effects/magic/forcewall.ogg'
 	wave_color = LIGHT_COLOR_LIGHT_CYAN
@@ -459,7 +512,7 @@
 	var/obj/item/anomaly_resonator/resonator = target
 	if(resonator.GetComponent(/datum/component/shielded))
 		return
-	var/datum/component/shielded/shield = resonator.AddComponent(/datum/component/shielded, max_charges = 3, recharge_start_delay = 0, charge_increment_delay = 0, charge_recovery = 0, starting_charges = 3)
+	var/datum/component/shielded/shield = resonator.AddComponent(/datum/component/shielded, max_charges = 3, recharge_start_delay = 0, charge_increment_delay = 0, charge_recovery = 0, starting_charges = 3, show_charge_as_alpha = TRUE)
 	QDEL_IN(shield, 30 SECONDS)
 
 /**
@@ -499,8 +552,8 @@
 		if(istype(effect, /datum/artifact_effect/temperature/cold))
 			victim.adjust_bodytemperature(-150, min_temp = TCMB)
 			victim.apply_damage(10 * power, BURN)
-			if(prob(30))
-				victim.apply_status_effect(/datum/status_effect/freon)
+			if(prob(20))
+				victim.apply_status_effect(/datum/status_effect/freon, 5 SECONDS)
 		else if(istype(effect, /datum/artifact_effect/temperature/heat))
 			victim.adjust_bodytemperature(150)
 			victim.adjust_fire_stacks(3)
@@ -514,20 +567,24 @@
 	click_to_activate = TRUE
 	cooldown_time = 25 SECONDS
 	cost = RESONANCE_COST_HEAVY
-	beam_state = "b_beam"
 	fire_sound = 'sound/effects/magic/fleshtostone.ogg'
 
 /datum/action/cooldown/resonance/ice_beam/fire(atom/target_atom)
+	var/turf/endpoint = get_turf(owner)
 	for(var/turf/spot as anything in get_line(get_turf(owner), get_turf(target_atom)))
 		if(spot == get_turf(owner))
 			continue
 		if(spot.density)
 			break
+		endpoint = spot
 		for(var/mob/living/victim in spot)
 			victim.apply_damage(15 * power, BURN)
 			victim.adjust_bodytemperature(-120, min_temp = TCMB)
-			if(prob(35))
-				victim.apply_status_effect(/datum/status_effect/freon)
+			if(prob(20))
+				victim.apply_status_effect(/datum/status_effect/freon, 5 SECONDS)
+	if(endpoint != get_turf(owner))
+		owner.Beam(endpoint, icon_state = "b_beam", time = 0.5 SECONDS)
+		new /obj/effect/temp_visual/circle_wave/anomaly_pulse(endpoint, LIGHT_COLOR_LIGHT_CYAN, 0.8)
 
 /// Damage of energy `kind` dealt by a released large find, `amount` of it.
 /proc/resonance_kind_hit(mob/living/victim, kind, amount, mob/living/user)

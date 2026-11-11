@@ -9,12 +9,14 @@
  */
 /obj/item/anomaly_resonator
 	name = "аномальный резонатор"
-	desc = "Пояс с гнездом для экзотической батареи. Надетый с заряженной батареей, даёт носителю силу её энергии. Используйте в руке, чтобы вынуть батарею."
-	icon = 'icons/obj/clothing/belts.dmi'
-	icon_state = "utility"
-	worn_icon = 'icons/mob/clothing/belt.dmi'
-	worn_icon_state = "utility"
-	color = "#6b4fa8"
+	desc = "Пояс с гнездом для экзотической батареи. Надетый с заряженной батареей, через несколько секунд настройки даёт носителю силу её энергии. Используйте в руке, чтобы вынуть батарею."
+	icon = 'modular_bandastation/xenoarchaeology/icons/resonator.dmi'
+	icon_state = "resonator_empty"
+	inhand_icon_state = "resonator_empty"
+	lefthand_file = 'modular_bandastation/xenoarchaeology/icons/resonator_left.dmi'
+	righthand_file = 'modular_bandastation/xenoarchaeology/icons/resonator_right.dmi'
+	worn_icon = 'modular_bandastation/xenoarchaeology/icons/resonator_worn.dmi'
+	worn_icon_state = "resonator_empty"
 	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_BULKY
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/silver = SHEET_MATERIAL_AMOUNT, /datum/material/plasma = SHEET_MATERIAL_AMOUNT)
@@ -30,6 +32,14 @@
 	var/list/datum/action/cooldown/resonance/abilities = list()
 	/// When its wearer put it on without the binding; the longer, the worse.
 	var/unbound_since = 0
+	/// Whether it has attuned to its wearer and battery; lost when either goes.
+	var/attuned = FALSE
+	/// Timer finishing the attunement in progress, if any.
+	var/attune_timer
+	/// Crackle drawn on the wearer while attuning.
+	var/mutable_appearance/attune_overlay
+	/// Ability type -> world.time its cooldown ends, so a battery swap or a re-wear does not reset it.
+	var/list/cooldown_ends = list()
 	COOLDOWN_DECLARE(punish_cooldown)
 
 /obj/item/anomaly_resonator/Destroy()
@@ -40,6 +50,27 @@
 /obj/item/anomaly_resonator/examine(mob/user)
 	. = ..()
 	. += battery ? span_notice("В гнезде [battery.name], заряд [battery.stored_charge] из [battery.capacity].") : span_notice("Гнездо пусто.")
+
+/obj/item/anomaly_resonator/update_icon_state()
+	icon_state = !battery ? "resonator_empty" : (battery.stored_charge > 0 ? "resonator_active" : "resonator_loaded")
+	inhand_icon_state = icon_state
+	worn_icon_state = icon_state
+	return ..()
+
+/obj/item/anomaly_resonator/update_overlays()
+	. = ..()
+	. += anomaly_core_overlays(src, "resonator_core", battery?.lit_kind(), battery?.charge_fraction() || 0)
+
+/obj/item/anomaly_resonator/worn_overlays(mutable_appearance/standing, isinhands, icon_file, bodyshape = NONE)
+	. = ..()
+	var/datum/artifact_energy_kind/kind = battery?.lit_kind()
+	if(!kind)
+		return
+	var/core_alpha = round(110 + 145 * battery.charge_fraction())
+	var/mutable_appearance/core = mutable_appearance(icon_file, "resonator_core", alpha = core_alpha)
+	core.color = kind.color
+	. += core
+	. += emissive_appearance(icon_file, "resonator_core", src, alpha = round(core_alpha * 0.7))
 
 /obj/item/anomaly_resonator/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -53,6 +84,9 @@
 	if(battery)
 		balloon_alert(user, "гнездо занято!")
 		return ITEM_INTERACT_BLOCKING
+	balloon_alert(user, "вставляем батарею...")
+	if(!do_after(user, RESONANCE_SWAP_TIME, src) || battery || !user.is_holding(tool))
+		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
 	battery = tool
@@ -64,6 +98,10 @@
 	. = ..()
 	if(. || !battery)
 		return
+	balloon_alert(user, "вынимаем батарею...")
+	var/obj/item/anomaly_battery/taken = battery
+	if(!do_after(user, RESONANCE_SWAP_TIME, src) || battery != taken)
+		return TRUE
 	user.put_in_hands(battery)
 	playsound(src, 'sound/machines/click.ogg', 40, TRUE)
 	return TRUE
@@ -92,6 +130,8 @@
 	if(!wearer)
 		return
 	clear_power()
+	stop_attunement()
+	attuned = FALSE
 	STOP_PROCESSING(SSobj, src)
 	wearer = null
 
@@ -102,7 +142,14 @@
 /// Puts the passive and ability in step with the battery.
 /obj/item/anomaly_resonator/proc/refresh()
 	clear_power()
+	update_appearance(UPDATE_ICON)
+	update_slot_icon()
 	if(!powered())
+		stop_attunement()
+		attuned = FALSE
+		return
+	if(!attuned)
+		start_attunement()
 		return
 	applied_strength = battery.small_source ? 0.5 : 1
 	applied_passive = GLOB.resonance_passive_by_source[battery.source_type] || battery.held_effect.energy_kind
@@ -121,11 +168,47 @@
 			ability.chain = TRUE
 		abilities += ability
 		ability.Grant(wearer)
+		if(cooldown_ends[ability_type] > world.time)
+			ability.StartCooldown(cooldown_ends[ability_type] - world.time)
+
+/// Starts attuning to the wearer and battery: a few seconds of crackling and a racing heartbeat before the power comes.
+/obj/item/anomaly_resonator/proc/start_attunement()
+	if(attune_timer)
+		return
+	attune_overlay = mutable_appearance('icons/effects/effects.dmi', "electricity", ABOVE_MOB_LAYER)
+	attune_overlay.color = "#a060ff"
+	wearer.add_overlay(attune_overlay)
+	playsound(wearer, 'sound/effects/health/fastbeat.ogg', 60)
+	playsound(wearer, 'sound/effects/sparks/sparks4.ogg', 50, TRUE)
+	wearer.visible_message(span_warning("По [wearer] пробегают фиолетовые разряды."), span_notice("Резонатор настраивается: сердце сбивается с ритма, по коже бегут разряды..."))
+	attune_timer = addtimer(CALLBACK(src, PROC_REF(finish_attunement)), RESONANCE_ATTUNE_TIME, TIMER_STOPPABLE | TIMER_DELETE_ME)
+
+/// Ends the attunement: the power comes if the battery and wearer are still there.
+/obj/item/anomaly_resonator/proc/finish_attunement()
+	stop_attunement()
+	if(!powered())
+		return
+	attuned = TRUE
+	playsound(wearer, 'sound/effects/magic/charge.ogg', 40, TRUE)
+	to_chat(wearer, span_notice("Резонанс установлен."))
+	refresh()
+
+/// Stops an attunement in progress and takes its crackle off the wearer.
+/obj/item/anomaly_resonator/proc/stop_attunement()
+	if(attune_timer)
+		deltimer(attune_timer)
+		attune_timer = null
+	if(attune_overlay)
+		wearer?.cut_overlay(attune_overlay)
+		attune_overlay = null
 
 /obj/item/anomaly_resonator/proc/clear_power()
 	if(applied_passive)
 		apply_passive(FALSE)
 		applied_passive = null
+	for(var/datum/action/cooldown/resonance/ability as anything in abilities)
+		if(ability.next_use_time > world.time)
+			cooldown_ends[ability.type] = ability.next_use_time
 	QDEL_LIST(abilities)
 
 /// Applies (or with `on` FALSE takes off) the state the passive changes on its wearer.
@@ -198,6 +281,8 @@
 		balloon_alert(wearer, "мало заряда!")
 		return FALSE
 	battery.use_charge(amount)
+	update_appearance(UPDATE_ICON)
+	update_slot_icon()
 	if(!is_resonance_bound(wearer))
 		punish_use()
 	if(battery?.stored_charge <= 0)
@@ -282,9 +367,27 @@
  */
 /obj/item/implant/resonance
 	name = "имплант резонансной привязки"
-	desc = "Привязывает носителя к аномальному резонатору и защищает разум от статики."
+	desc = "Привязывает носителя к аномальному резонатору и защищает разум от нейроинтерферентной аномалии."
 	actions_types = null
-	implant_info = "Активируется при установке. Позволяет безопасно пользоваться аномальным резонатором и защищает от аномалии «статика»."
+	implant_info = "Активируется при установке. Позволяет безопасно пользоваться аномальным резонатором и защищает от нейроинтерферентной аномалии."
+
+/obj/item/implant/resonance/on_implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
+	. = ..()
+	// A duplicate may be deleted instead of installed, so check where it ended up.
+	if(. && imp_in == target)
+		schedule_echo()
+
+/// Plans the next echo: on average about once an hour, so a couple of times a round.
+/obj/item/implant/resonance/proc/schedule_echo()
+	addtimer(CALLBACK(src, PROC_REF(echo)), rand(RESONANCE_ECHO_MIN, RESONANCE_ECHO_MAX), TIMER_UNIQUE | TIMER_OVERRIDE)
+
+/// The binding now and then lets the static through: hallucinations as near a supermatter.
+/obj/item/implant/resonance/proc/echo()
+	if(!imp_in)
+		return
+	schedule_echo()
+	if(!cybernetic_rejection && imp_in.stat != DEAD)
+		imp_in.adjust_hallucinations_up_to(RESONANCE_ECHO_DURATION, RESONANCE_ECHO_DURATION)
 
 /obj/item/implanter/resonance
 	name = "импланттер (резонансная привязка)"

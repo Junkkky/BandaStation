@@ -129,6 +129,15 @@
 #define RESONANCE_COST_HEAVY 40
 /// How far a targeted resonator ability reaches, in tiles.
 #define RESONANCE_REACH 7
+/// Bounds of the wait between hallucination echoes of the resonance binding implant.
+#define RESONANCE_ECHO_MIN (40 MINUTES)
+#define RESONANCE_ECHO_MAX (80 MINUTES)
+/// How long one echo makes its host hallucinate.
+#define RESONANCE_ECHO_DURATION (1 MINUTES)
+/// How long it takes to put a battery into a resonator or take it out.
+#define RESONANCE_SWAP_TIME (3 SECONDS)
+/// How long a resonator attunes to a fresh power source before it gives anything.
+#define RESONANCE_ATTUNE_TIME (5 SECONDS)
 /// Damage multiplier of a large find's resonator abilities.
 #define RESONANCE_LARGE_POWER 1.25
 /// How often a resonator worn without the binding hurts its wearer.

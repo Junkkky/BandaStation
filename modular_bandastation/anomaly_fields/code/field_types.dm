@@ -3,7 +3,7 @@
 /// Lightning: strikes everything living around it and burns conductive items to ash. The detector hears its charge.
 /obj/effect/anomaly_field/electra
 	energy_kind = ARTIFACT_ENERGY_ELECTROMAGNETIC
-	name = "электра"
+	name = "электростатическая аномалия"
 	icon_state = "electra_idle"
 	activation_state = "electra_activation"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/electra_blast.ogg'
@@ -35,7 +35,7 @@
 /// Jet of flame: sets everything living around it alight for a few seconds and burns what lies in it.
 /obj/effect/anomaly_field/zharka
 	energy_kind = ARTIFACT_ENERGY_CONCENTRATED
-	name = "жарка"
+	name = "пирогенная аномалия"
 	icon_state = "zharka_idle"
 	activation_state = "zharka_active"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/zharka.ogg'
@@ -64,7 +64,7 @@
  */
 /obj/effect/anomaly_field/rvach
 	energy_kind = ARTIFACT_ENERGY_BLUESPACE
-	name = "рвач"
+	name = "приливная гравитационная аномалия"
 	icon_state = "rvach_idle"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/rvach_activation.ogg'
 	cooldown_min = 25 SECONDS
@@ -133,7 +133,7 @@
 /// Springboard: flings whatever touches it a few tiles one way.
 /obj/effect/anomaly_field/tramplin
 	energy_kind = ARTIFACT_ENERGY_PARTICLE
-	name = "трамплин"
+	name = "репульсивная гравитационная аномалия"
 	icon_state = "trampline_idle"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/tramplin.ogg'
 	cooldown_min = 3 SECONDS
@@ -171,7 +171,7 @@
 /// Flash: winds up, then blinds and dazes everyone in sight of it.
 /obj/effect/anomaly_field/vspishka
 	energy_kind = ARTIFACT_ENERGY_PARTICLE
-	name = "вспышка"
+	name = "фотоимпульсная аномалия"
 	icon_state = "vspishka_idle"
 	activation_sound = 'modular_bandastation/anomaly_fields/sound/vspishka_activated.ogg'
 	preload_chance = 80
@@ -221,13 +221,13 @@
 
 /obj/effect/anomaly_field/thermal/heater
 	energy_kind = ARTIFACT_ENERGY_CONCENTRATED
-	name = "аномальный жар"
+	name = "экзотермическая аномалия"
 	temperature_step = 20
 	artefact_types = list(/obj/item/field_artefact/zjar = 1)
 
 /obj/effect/anomaly_field/thermal/cooler
 	energy_kind = ARTIFACT_ENERGY_SYNTHESIS
-	name = "аномальный холод"
+	name = "криогенная аномалия"
 	temperature_step = -60
 
 /// Whether a field may throw this movable: an item it may affect.

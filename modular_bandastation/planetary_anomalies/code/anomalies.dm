@@ -109,7 +109,7 @@
 
 /// Speeds up everyone around it; the closer, the longer it lasts.
 /obj/effect/anomaly/pulsing/chronograph
-	name = "хронограф"
+	name = "темпоральная аномалия"
 	desc = "Время бьётся вперёд всё быстрее и быстрее. Ускорение жизни постоянно, и здесь оно движет реальностью."
 	icon_state = "chronograph"
 	anomaly_core = /obj/item/assembly/signaler/anomaly/planetary/chrono
@@ -134,7 +134,7 @@
 
 /// Throbs with radiation; now and then it scorches a spot nearby.
 /obj/effect/anomaly/pulsing/heartbeat
-	name = "сердцебиение"
+	name = "радиационная пульсирующая аномалия"
 	desc = "Пульсирующая вершина, разносящая по миру вокруг себя опухоль."
 	icon_state = "heartbeat"
 	density = TRUE
@@ -172,7 +172,7 @@
 
 /// Eats away worn gear and loose items around it with acid.
 /obj/effect/anomaly/pulsing/melter
-	name = "плавильщик"
+	name = "коррозионная аномалия"
 	desc = "Вечно горящее зелёное пламя, готовое хлестнуть по всему, что подойдёт слишком близко."
 	icon_state = "melter"
 	anomaly_core = /obj/item/assembly/signaler/anomaly/planetary/melter
@@ -192,7 +192,7 @@
 
 /// Sends grasping hands at everyone alive around it.
 /obj/effect/anomaly/pulsing/phantom
-	name = "фантом"
+	name = "психокинетическая аномалия"
 	desc = "Знакомый силуэт. Он зовёт к себе. Он кричит вам."
 	icon_state = "phantom"
 	anomaly_core = /obj/item/assembly/signaler/anomaly/planetary/phantom
@@ -207,7 +207,7 @@
 			fire_curse_hand(victim, projectile_type = /obj/projectile/curse_hand/phantom)
 
 /obj/projectile/curse_hand/phantom
-	name = "призрачная рука"
+	name = "психокинетический сгусток"
 	damage = 15
 	paralyze = 0.5 SECONDS
 
@@ -215,7 +215,7 @@
 
 /// Seeps plasma into the blood of those around it and scorches machines; a touch vents plasma.
 /obj/effect/anomaly/pulsing/plasmasoul
-	name = "плазменная душа"
+	name = "плазмогенная аномалия"
 	desc = "Плазменная лужа. Вокруг неё растут мелкие кристаллы, прорастая в землю."
 	icon_state = "plasmasoul"
 	density = TRUE
@@ -251,7 +251,7 @@
 
 /// Throws an EMP somewhere close every so often, and at whoever touches it.
 /obj/effect/anomaly/pulsing/pulsar
-	name = "пульсар"
+	name = "электромагнитная импульсная аномалия"
 	desc = "Почти прозрачная парящая оболочка, внутри которой не стихает электромагнитная буря."
 	icon_state = "pulsar"
 	density = TRUE
@@ -274,7 +274,7 @@
 
 /// Sprays sparks around; a touch shocks and throws lightning.
 /obj/effect/anomaly/pulsing/sparkler
-	name = "искритель"
+	name = "электродуговая аномалия"
 	desc = "Рой мерцающих искр, мечущихся туда-сюда. Они пытаются разлететься, но не могут."
 	icon_state = "tesla"
 	density = TRUE
@@ -332,7 +332,7 @@ GLOBAL_LIST_INIT(tvstatic_sayings, list(
  * resonance binding implants, deafness and research scanners keep it out.
  */
 /obj/effect/anomaly/pulsing/tvstatic
-	name = "статика"
+	name = "нейроинтерферентная аномалия"
 	desc = "Дыра в мире, из которой не смолкает гул. Она что-то прячет."
 	icon_state = "static"
 	density = TRUE
@@ -413,7 +413,7 @@ GLOBAL_LIST_INIT(tvstatic_sayings, list(
 
 /// A clot of static that flickers and hisses for a moment.
 /obj/effect/temp_visual/static_blob
-	name = "сгусток помех"
+	name = "интерферентный сгусток"
 	icon = 'modular_bandastation/planetary_anomalies/icons/anomalies.dmi'
 	icon_state = "static"
 	duration = 2 SECONDS
@@ -426,7 +426,7 @@ GLOBAL_LIST_INIT(tvstatic_sayings, list(
 
 /// Draws blood from those with plenty and gives it to those running short; a touch drains a lot.
 /obj/effect/anomaly/pulsing/transfusion
-	name = "трансфузия"
+	name = "гемофагическая аномалия"
 	desc = "Пульсирующее поле в воздухе, внутри парит багровая взвесь."
 	icon_state = "transfusion"
 	density = TRUE
@@ -477,7 +477,7 @@ GLOBAL_LIST_INIT(tvstatic_sayings, list(
 
 /// Pulls blood out of the poorly armoured around it; a touch sprays gore.
 /obj/effect/anomaly/pulsing/veins
-	name = "фонтан"
+	name = "гемогенная аномалия"
 	desc = "Пульсирующие лиловые вены, обнажённая артерия мира. Она сочится в мир вокруг."
 	icon_state = "veins"
 	density = TRUE

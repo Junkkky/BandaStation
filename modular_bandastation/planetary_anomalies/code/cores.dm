@@ -23,66 +23,66 @@
 /obj/item/assembly/signaler/anomaly/planetary/chrono
 	energy_kind = ARTIFACT_ENERGY_CONCENTRATED
 	battery_effect = /datum/artifact_effect/bestow/sprint
-	name = "ядро аномалии хронографа"
-	desc = "Стабилизированное ядро хронографа. Из него сочится украденное время."
+	name = "ядро темпоральной аномалии"
+	desc = "Стабилизированное ядро темпоральной аномалии. Из него сочится украденное время."
 	icon_state = "grav_core"
 
 /obj/item/assembly/signaler/anomaly/planetary/heartbeat
 	energy_kind = ARTIFACT_ENERGY_PARTICLE
 	battery_effect = /datum/artifact_effect/radiation
-	name = "ядро аномалии сердцебиения"
-	desc = "Стабилизированное ядро сердцебиения. По оболочке пробегают тёплые толчки."
+	name = "ядро радиационной пульсирующей аномалии"
+	desc = "Стабилизированное ядро радиационной пульсирующей аномалии. По оболочке пробегают тёплые толчки."
 
 /obj/item/assembly/signaler/anomaly/planetary/melter
 	energy_kind = ARTIFACT_ENERGY_CONCENTRATED
 	battery_effect = /datum/artifact_effect/temperature/heat
-	name = "ядро аномалии плавильщика"
-	desc = "Стабилизированное ядро плавильщика. Оно шипит и потрескивает."
+	name = "ядро коррозионной аномалии"
+	desc = "Стабилизированное ядро коррозионной аномалии. Оно шипит и потрескивает."
 	icon_state = "pyro_core"
 
 /obj/item/assembly/signaler/anomaly/planetary/phantom
 	energy_kind = ARTIFACT_ENERGY_PSIONIC
 	battery_effect = /datum/artifact_effect/poltergeist
-	name = "ядро аномалии фантома"
-	desc = "Стабилизированное ядро фантома. Оно тихо кричит."
+	name = "ядро психокинетической аномалии"
+	desc = "Стабилизированное ядро психокинетической аномалии. Оно тихо кричит."
 
 /obj/item/assembly/signaler/anomaly/planetary/plasmasoul
 	energy_kind = ARTIFACT_ENERGY_SYNTHESIS
 	battery_effect = /datum/artifact_effect/gas_vent/plasma
-	name = "ядро аномалии плазменной души"
-	desc = "Стабилизированное ядро плазменной души. Воздух вокруг шипит."
+	name = "ядро плазмогенной аномалии"
+	desc = "Стабилизированное ядро плазмогенной аномалии. Воздух вокруг шипит."
 
 /obj/item/assembly/signaler/anomaly/planetary/pulsar
 	energy_kind = ARTIFACT_ENERGY_ELECTROMAGNETIC
 	battery_effect = /datum/artifact_effect/emp
-	name = "ядро аномалии пульсара"
-	desc = "Стабилизированное ядро пульсара. От него идёт электромагнитный треск."
+	name = "ядро электромагнитной импульсной аномалии"
+	desc = "Стабилизированное ядро электромагнитной импульсной аномалии. От него идёт электромагнитный треск."
 
 /obj/item/assembly/signaler/anomaly/planetary/sparkler
 	energy_kind = ARTIFACT_ENERGY_ELECTROMAGNETIC
 	battery_effect = /datum/artifact_effect/tesla
-	name = "ядро аномалии искрителя"
-	desc = "Стабилизированное ядро искрителя. С него соскакивают крошечные искры."
+	name = "ядро электродуговой аномалии"
+	desc = "Стабилизированное ядро электродуговой аномалии. С него соскакивают крошечные искры."
 
 /obj/item/assembly/signaler/anomaly/planetary/tvstatic
 	energy_kind = ARTIFACT_ENERGY_PSIONIC
 	battery_effect = /datum/artifact_effect/hallucination
-	name = "ядро аномалии статики"
-	desc = "Стабилизированное ядро статики. От одного взгляда на него болит голова."
+	name = "ядро нейроинтерферентной аномалии"
+	desc = "Стабилизированное ядро нейроинтерферентной аномалии. От одного взгляда на него болит голова."
 	research_points = 90
 
 /obj/item/assembly/signaler/anomaly/planetary/transfusion
 	energy_kind = ARTIFACT_ENERGY_ORGANIC
 	battery_effect = /datum/artifact_effect/blood/drain
-	name = "ядро аномалии трансфузии"
-	desc = "Стабилизированное ядро трансфузии. Из оболочки медленно сочится багрянец."
+	name = "ядро гемофагической аномалии"
+	desc = "Стабилизированное ядро гемофагической аномалии. Из оболочки медленно сочится багрянец."
 	icon_state = "pyro_core"
 
 /obj/item/assembly/signaler/anomaly/planetary/veins
 	energy_kind = ARTIFACT_ENERGY_ORGANIC
 	battery_effect = /datum/artifact_effect/life_drain
-	name = "ядро аномалии фонтана"
-	desc = "Стабилизированное ядро фонтана. Скользкое, как кишка."
+	name = "ядро гемогенной аномалии"
+	desc = "Стабилизированное ядро гемогенной аномалии. Скользкое, как кишка."
 
 /// Our anomalies drop a core only while its type is under the research subsystem's limit.
 /datum/controller/subsystem/research/Initialize()

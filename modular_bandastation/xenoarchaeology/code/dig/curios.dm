@@ -162,6 +162,7 @@ GLOBAL_LIST_INIT(xenoarch_site_kind_climates, list(
 
 /// tg's strange object, as dug out of a site. Only these, stamped, count as finds.
 /obj/item/relic/excavated
+	inhand_icon_state = "blackcube"
 	/// Band it was dug in, or null
 	var/origin_band
 
@@ -172,6 +173,7 @@ GLOBAL_LIST_INIT(xenoarch_site_kind_climates, list(
 	desc = "Что-то древнее, извлечённое из земли."
 	icon = 'modular_bandastation/xenoarchaeology/icons/curios.dmi'
 	icon_state = "bone"
+	inhand_icon_state = "minimeteor"
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FIRE_PROOF
 	/// XENOARCH_CURIO_*: what a buyer files it under
