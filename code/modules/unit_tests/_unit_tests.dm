@@ -491,6 +491,7 @@
 #include "../../../modular_bandastation/telephones/_defines.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_tests.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_speech_tests.dm"
+#include "../../../modular_bandastation/terror_spiders/tests/terror_spiders.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

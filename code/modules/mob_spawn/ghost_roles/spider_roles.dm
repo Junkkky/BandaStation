@@ -24,7 +24,7 @@
 /obj/structure/spider/eggcluster/examine_more(mob/user)
 	. = ..()
 
-	if(istype(user, /mob/living/basic/spider/giant/midwife))
+	if(spawner && istype(user, /mob/living/basic/spider/giant/midwife))
 		switch(spawner.amount_grown)
 			if(0 to 24)
 				. += span_info("These eggs look shrunken and dormant.")
@@ -49,9 +49,6 @@
 	icon = 'icons/mob/simple/meteor_heart.dmi'
 	icon_state = "eggs"
 	name = "bloody egg cluster"
-
-/obj/structure/spider/eggcluster/midwife
-	name = "midwife egg cluster"
 
 /obj/effect/mob_spawn/ghost_role/spider
 	name = "egg cluster"
@@ -186,17 +183,6 @@
 	)
 	flash_window = TRUE
 	granted_datum = /datum/antagonist/spider/flesh
-
-/obj/effect/mob_spawn/ghost_role/spider/midwife
-	name = "midwife egg cluster"
-	you_are_text = "You are a midwife spider."
-	flavour_text = "The crux of the spider horde. You have the ability to reproduce and create more spiders, and turn victims into special spider eggs."
-	directive = "Ensure the survival of the spider species and overtake whatever structure you find yourself in."
-	cluster_type = /obj/structure/spider/eggcluster/midwife
-	potentialspawns = list(
-		/mob/living/basic/spider/growing/spiderling/midwife, // We don't want the event to end instantly because broodmothers got a bad spawn
-	)
-	flash_window = TRUE
 
 /obj/effect/mob_spawn/ghost_role/spider/pre_ghost_take(mob/dead/observer/user)
 	var/chosen_spider = length(potentialspawns) > 1 ? get_radial_choice(user) : potentialspawns[1]
