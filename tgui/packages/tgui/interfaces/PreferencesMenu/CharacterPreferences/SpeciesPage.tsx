@@ -346,16 +346,30 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
         )}
         <div ref={scrollRef} className="PreferencesMenu__Species">
           {species.map(([speciesKey, species]) => {
+            const donatorTier = species.required_donator_level ?? 0;
+            const locked = (data.donator_level ?? 0) < donatorTier;
             return (
               <Stack.Item key={speciesKey}>
                 <ImageButton
-                  tooltip={species.name}
+                  tooltip={
+                    locked
+                      ? `${species.name} · Доступ с T${donatorTier}`
+                      : species.name
+                  }
+                  disabled={locked}
                   selected={
                     data.character_preferences.misc.species === speciesKey
                   }
                   asset={['species64x64', species.icon]}
                   assetSize={64}
                   imageSize={72}
+                  buttonsAlt={
+                    donatorTier > 0 && (
+                      <Box bold color="gold">
+                        T{donatorTier}
+                      </Box>
+                    )
+                  }
                   onClick={() => setSpecies(speciesKey)}
                 >
                   {species.name}
