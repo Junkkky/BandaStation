@@ -294,4 +294,18 @@
 /datum/dna_block/feature/vox_body_markings_color/apply_to_mob(mob/living/carbon/human/target, dna_hash)
 	target.dna.features[feature_key] = sanitize_hexcolor(get_block(dna_hash))
 
+/datum/dna_block/feature/accessory/resomi_crest
+	feature_key = FEATURE_RESOMI_CREST
+
+/datum/dna_block/feature/resomi_crest_color
+	parent_type = /datum/dna_block/feature/mutant_color
+	feature_key = FEATURE_RESOMI_CREST_COLOR
+
+/datum/dna_block/feature/accessory/resomi_markings
+	feature_key = FEATURE_RESOMI_MARKINGS
+
+/datum/dna_block/feature/resomi_markings_color
+	parent_type = /datum/dna_block/feature/mutant_color
+	feature_key = FEATURE_RESOMI_MARKINGS_COLOR
+
 // BANDASTATION ADD END - Species

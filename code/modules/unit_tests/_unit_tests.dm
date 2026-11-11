@@ -415,6 +415,7 @@
 // END_INCLUDE
 // BANDASTATION ADDITION START - Vox port regression tests
 #include "../../../modular_bandastation/species/code/tests/vox_mechanics_tests.dm"
+#include "../../../modular_bandastation/species/code/tests/resomi_species.dm"
 #include "../../../modular_bandastation/species/code/tests/vox_appearance_tests.dm"
 #include "../../../modular_bandastation/species/code/tests/vox_emote_tests.dm"
 #include "../../../modular_bandastation/species/code/tests/vox_paradise_toggle_tests.dm"
