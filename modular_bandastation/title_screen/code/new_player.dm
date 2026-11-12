@@ -41,6 +41,10 @@
 			open_interview()
 		return
 
+	if(href_list["antag_tokens"])
+		SScentral.ui_interact(src)
+		return
+
 	if(href_list["toggle_antag_roll"])
 		var/datum/preference/toggle/antag_roll/antag_roll_preference = GLOB.preference_entries[/datum/preference/toggle/antag_roll]
 		var/new_value = !client.prefs.read_preference(/datum/preference/toggle/antag_roll)
