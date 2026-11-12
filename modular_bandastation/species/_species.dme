@@ -132,3 +132,12 @@
 
 #include "code/preferences/species_features/vox/body_markings/vox_body_markings.dm"
 #include "code/preferences/species_features/vox/body_markings/vox_body_markings_color.dm"
+
+#include "code/human/species_type/resomi.dm"
+#include "code/human/resomi_abilities.dm"
+#include "code/human/sprite_accessories/resomi.dm"
+#include "code/language/schechi.dm"
+#include "code/preferences/species_features/resomi.dm"
+#include "code/surgery/bodyparts/resomi_bodyparts.dm"
+#include "code/surgery/organs/external/resomi_external.dm"
+#include "code/surgery/organs/internal/resomi_internal.dm"

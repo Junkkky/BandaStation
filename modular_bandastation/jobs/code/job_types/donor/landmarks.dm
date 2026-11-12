@@ -21,7 +21,7 @@
 
 /obj/effect/landmark/start/donor/dealer
 	name = /datum/job/donor/dealer::title
-	icon_state = JOB_CARGO_TECHNICIAN
+	icon_state = JOB_CURATOR
 
 /obj/effect/landmark/start/donor/banker
 	name = /datum/job/donor/banker::title

@@ -91,6 +91,83 @@
 	SSid_access.apply_trim_to_card(reprinted_card, /datum/id_trim/job/assistant)
 	TEST_ASSERT_EQUAL(reprinted_card.get_trim_assignment(), reprinted_card.trim.assignment, "Reprinting a card retained its old job variant.")
 
+/datum/unit_test/donor_crew_monitor/Run()
+	var/list/expected_departments = list(
+		/datum/job/donor/representative_tsf = 10,
+		/datum/job/donor/representative_ussp = 10,
+		/datum/job/donor/barber = 80,
+		/datum/job/donor/waiter = 80,
+		/datum/job/donor/administrator = 80,
+		/datum/job/donor/guard = 80,
+		/datum/job/donor/dealer = 80,
+		/datum/job/donor/banker = 80,
+		/datum/job/donor/tourist_tsf = 80,
+		/datum/job/donor/tourist_ussp = 80,
+		/datum/job/donor/migrant = 80,
+		/datum/job/donor/navy_junior_officer = 200,
+	)
+	var/list/crew = list()
+	for(var/job_type in expected_departments)
+		var/datum/job/job = SSjob.get_job_type(job_type)
+		var/mob/living/carbon/human/consistent/member = allocate(/mob/living/carbon/human/consistent, run_loc_floor_bottom_left)
+		member.job = job.title
+		member.equipOutfit(job.outfit)
+		var/obj/item/card/id/card = member.get_idcard(hand_first = FALSE)
+		var/public_title = job.alternate_titles[length(job.alternate_titles)]
+		card.job_variant_title = public_title
+		card.assignment = public_title
+		var/obj/item/clothing/under/uniform = member.w_uniform
+		uniform.set_sensor_mode(SENSOR_COORDS)
+		crew[REF(member)] = job
+
+	var/datum/crewmonitor/monitor = allocate(/datum/crewmonitor)
+	for(var/list/entry as anything in monitor.update_data(run_loc_floor_bottom_left.z))
+		var/datum/job/job = crew[entry["ref"]]
+		if(!job)
+			continue
+		var/department = expected_departments[job.type]
+		var/job_id = entry["ijob"]
+		var/department_end = department + 10
+		switch(department)
+			if(80)
+				department_end = 200
+			if(200)
+				department_end = 230
+		TEST_ASSERT_EQUAL(entry["assignment"], job.alternate_titles[length(job.alternate_titles)], "The monitor lost the chosen title for [job.title].")
+		if(job_id <= department || job_id >= department_end || !(job_id % 10))
+			TEST_FAIL("The monitor gave [job.title] an incorrect job ID: [job_id].")
+		crew -= entry["ref"]
+	TEST_ASSERT_EQUAL(length(crew), 0, "The monitor did not report every active donor sensor.")
+
+/datum/unit_test/donor_medical_record_icon/Run()
+	var/obj/machinery/computer/records/medical/console = allocate(/obj/machinery/computer/records/medical)
+	var/mob/living/carbon/human/consistent/user = allocate(/mob/living/carbon/human/consistent)
+	var/datum/record/crew/officer_record = allocate(/datum/record/crew)
+	officer_record.rank = "Младший офицер флота Нанотрейзен"
+	officer_record.trim = officer_record.rank
+	var/list/data = console.ui_data(user)
+	for(var/list/entry as anything in data["records"])
+		if(entry["crew_ref"] != REF(officer_record))
+			continue
+		TEST_ASSERT_EQUAL(entry["rank"], officer_record.rank, "The medical record lost the chosen title.")
+		TEST_ASSERT_EQUAL(entry["job_icon"], FA_ICON_ANCHOR, "The medical record lost the junior officer's icon.")
+		return
+	TEST_FAIL("The junior officer's record was missing from the medical console.")
+
+/datum/unit_test/donor_dealer_card_access/Run()
+	var/mob/living/carbon/human/dummy/consistent/dealer = allocate(/mob/living/carbon/human/dummy/consistent)
+	dealer.equipOutfit(/datum/outfit/job/donor/dealer)
+	var/obj/item/card/id/card = dealer.get_idcard(hand_first = FALSE)
+	TEST_ASSERT_NOTNULL(card, "The Dealer did not receive an ID.")
+	var/obj/machinery/door/airlock/door = allocate(/obj/machinery/door/airlock)
+	door.req_access = list(ACCESS_SERVICE)
+	if(!door.check_access(card))
+		TEST_FAIL("The Dealer could not open a service door.")
+	for(var/supply_access in list(ACCESS_CARGO, ACCESS_SHIPPING, ACCESS_MINERAL_STOREROOM))
+		door.req_access = list(supply_access)
+		if(door.check_access(card))
+			TEST_FAIL("The Dealer could open a door with [supply_access].")
+
 /datum/unit_test/prisoner_initial_record
 	var/mob/living/carbon/human/dummy/consistent/prisoner
 

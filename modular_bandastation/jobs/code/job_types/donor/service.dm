@@ -179,7 +179,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	required_donator_level = DONATOR_TIER_4
-	donor_spawn_landmark = JOB_CARGO_TECHNICIAN
+	donor_spawn_landmark = JOB_CURATOR
 	outfit = /datum/outfit/job/donor/dealer
 	job_flags = parent_type::job_flags | JOB_ANTAG_PROTECTED
 	tgui_icon = FA_ICON_STORE
@@ -210,7 +210,7 @@
 	job = /datum/job/donor/dealer
 	trim_state = "trim_dealer"
 	sechud_icon_state = "huddealer"
-	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_SHIPPING, ACCESS_CARGO, ACCESS_MINERAL_STOREROOM)
+	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_SERVICE)
 
 /datum/job/donor/banker
 	title = "Banker"
