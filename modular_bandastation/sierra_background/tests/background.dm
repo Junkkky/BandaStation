@@ -78,6 +78,7 @@
 		SPECIES_FELINE = DONATOR_TIER_5,
 		SPECIES_CERULEAN = DONATOR_TIER_5,
 		SPECIES_RESOMI = DONATOR_TIER_4,
+		SPECIES_DRASK = DONATOR_TIER_2,
 	)
 	for(var/species_id in required_tiers)
 		var/required_tier = required_tiers[species_id]

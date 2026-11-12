@@ -4,6 +4,7 @@
 	name = "\improper Драск"
 	plural_form = "Драски"
 	id = SPECIES_DRASK
+	required_donator_level = DONATOR_TIER_2
 	inherent_traits = list(TRAIT_MUTANT_COLORS, TRAIT_FIXED_MUTANT_COLORS)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
