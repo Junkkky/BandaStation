@@ -102,12 +102,10 @@
 	return ..()
 
 /obj/effect/mob_spawn/ghost_role/spider/process(seconds_per_tick)
-	amount_grown += rand(5, 15) * seconds_per_tick
+	amount_grown += growth_progress(seconds_per_tick)
 	if(amount_grown >= 100 && !ready)
 		ready = TRUE
-		var/notify_flags_to_pass = NOTIFY_CATEGORY_NOFLASH
-		if(flash_window)
-			notify_flags_to_pass &= GHOST_NOTIFY_FLASH_WINDOW
+		var/notify_flags_to_pass = flash_window ? NOTIFY_CATEGORY_DEFAULT : NOTIFY_CATEGORY_NOFLASH
 		notify_ghosts(
 			"[src] is ready to hatch!",
 			source = src,
@@ -117,6 +115,10 @@
 			notify_flags = notify_flags_to_pass,
 		)
 		STOP_PROCESSING(SSobj, src)
+
+/// Incubation progress gained during one processing interval.
+/obj/effect/mob_spawn/ghost_role/spider/proc/growth_progress(seconds_per_tick)
+	return rand(5, 15) * seconds_per_tick
 
 /obj/effect/mob_spawn/ghost_role/spider/Topic(href, href_list)
 	. = ..()

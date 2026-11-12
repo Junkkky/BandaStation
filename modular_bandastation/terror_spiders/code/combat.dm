@@ -11,30 +11,11 @@
 
 /mob/living/basic/spider/giant/terror/gray/Initialize(mapload)
 	. = ..()
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_cloak_web_changed),
-		COMSIG_ATOM_EXITED = PROC_REF(on_cloak_web_changed),
-		COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON = PROC_REF(on_cloak_web_changed),
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
-	RegisterSignals(src, list(COMSIG_MOVABLE_MOVED, COMSIG_BASICMOB_LOOK_ALIVE), PROC_REF(refresh_terror_cloak))
-	refresh_terror_cloak()
+	RegisterSignal(src, COMSIG_BASICMOB_LOOK_ALIVE, PROC_REF(refresh_terror_web))
 
-/mob/living/basic/spider/giant/terror/gray/proc/on_cloak_web_changed(datum/source, atom/movable/moved)
-	SIGNAL_HANDLER
-
-	if(istype(moved, /obj/structure/spider/stickyweb/terror))
-		refresh_terror_cloak()
-
-/mob/living/basic/spider/giant/terror/gray/proc/refresh_terror_cloak()
-	SIGNAL_HANDLER
-
-	icon_living = initial(icon_living)
-	if(isturf(loc))
-		for(var/obj/structure/spider/stickyweb/terror/web in loc)
-			if(!QDELETED(web))
-				icon_living = "terror_gray_cloaked"
-				break
+/mob/living/basic/spider/giant/terror/gray/update_terror_web_effects(on_web)
+	. = ..()
+	icon_living = on_web ? "terror_gray_cloaked" : initial(icon_living)
 	if(stat != DEAD && icon_state != icon_dead)
 		icon_state = icon_living
 

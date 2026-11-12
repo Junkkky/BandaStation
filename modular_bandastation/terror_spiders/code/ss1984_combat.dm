@@ -152,6 +152,11 @@
 	stamina = 24
 	range = 7
 
+/obj/projectile/terror_spider/widow/can_hit_target(atom/target, direct_target = FALSE, ignore_loc = FALSE, cross_failed = FALSE)
+	if(target == firer)
+		return FALSE
+	return ..()
+
 /obj/projectile/terror_spider/widow/venom/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	var/turf/impact = get_turf(target)

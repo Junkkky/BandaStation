@@ -37,6 +37,8 @@
 	var/fed = 0
 	var/datum/weakref/terror_queen_ref
 	var/terror_degenerating = FALSE
+	/// Speed modifier applied while standing on Terror Spider webbing.
+	var/web_speed_modifier = /datum/movespeed_modifier/terror_web
 
 /mob/living/basic/spider/giant/terror/Initialize(mapload)
 	. = ..()
@@ -44,6 +46,8 @@
 	if(can_ventcrawl)
 		ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_NEGATES_GRAVITY, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_PUSHIMMUNE, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_NOMOBSWAP, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_MEDICAL_HUD, INNATE_TRAIT)
 	AddElement(/datum/element/terror_hivemind)
 	RegisterSignal(src, COMSIG_MOB_AFTER_APPLY_DAMAGE, PROC_REF(play_terror_hurt))
@@ -51,6 +55,14 @@
 		grant_language(/datum/language/common)
 	if(can_wrap)
 		GRANT_ACTION(/datum/action/cooldown/mob_cooldown/wrap/terror)
+	var/static/list/web_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_terror_web_changed),
+		COMSIG_ATOM_EXITED = PROC_REF(on_terror_web_changed),
+		COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON = PROC_REF(on_terror_web_changed),
+	)
+	AddElement(/datum/element/connect_loc, web_connections)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(refresh_terror_web))
+	refresh_terror_web()
 
 /mob/living/basic/spider/giant/terror/Login()
 	. = ..()
@@ -134,6 +146,7 @@
 	web_type = null
 
 /mob/living/basic/spider/giant/terror/builder
+	web_speed_modifier = /datum/movespeed_modifier/terror_web/drone
 	name = "дрон ужаса"
 	desc = "Небольшой паук, покрытый плотной паутиной."
 	menu_description = "Быстро плетёт прочную герметичную паутину, в ней ускоряется и лечится. Замедляет добычу плевками."

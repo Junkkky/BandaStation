@@ -5,6 +5,44 @@
 	environment_smash = strength
 	AddElement(/datum/element/wall_tearer, strength == ENVIRONMENT_SMASH_RWALLS, 6 SECONDS, 2, /datum/element/wall_tearer)
 
+/datum/movespeed_modifier/terror_web
+	multiplicative_slowdown = -0.8
+
+/datum/movespeed_modifier/terror_web/drone
+	multiplicative_slowdown = -2
+
+/mob/living/basic/spider/giant/terror/get_shove_flags(mob/living/shover, obj/item/weapon)
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_PUSHIMMUNE))
+		return (. & ~(SHOVE_CAN_MOVE | SHOVE_CAN_HIT_SOMETHING)) | SHOVE_BLOCKED
+
+/// Updates web effects when a web is laid, removed, or moved under this spider.
+/mob/living/basic/spider/giant/terror/proc/on_terror_web_changed(datum/source, atom/movable/changed)
+	SIGNAL_HANDLER
+
+	if(istype(changed, /obj/structure/spider/stickyweb/terror))
+		refresh_terror_web()
+
+/// Checks webbing at the current location, including after the spider moves.
+/mob/living/basic/spider/giant/terror/proc/refresh_terror_web()
+	SIGNAL_HANDLER
+
+	if(isturf(loc))
+		for(var/obj/structure/spider/stickyweb/terror/web in loc)
+			if(!QDELETED(web))
+				update_terror_web_effects(TRUE)
+				return
+	update_terror_web_effects(FALSE)
+
+/// Applies the speed modifier and any caste-specific effects of standing on a web.
+/mob/living/basic/spider/giant/terror/proc/update_terror_web_effects(on_web)
+	SHOULD_CALL_PARENT(TRUE)
+
+	if(on_web)
+		add_movespeed_modifier(web_speed_modifier)
+	else
+		remove_movespeed_modifier(web_speed_modifier)
+
 /mob/living/basic/spider/giant/terror/Life(seconds_per_tick = SSMOBS_DT)
 	. = ..()
 	if(QDELETED(src) || stat == DEAD)
@@ -61,7 +99,10 @@
 
 /mob/living/basic/spider/giant/terror/death(gibbed)
 	. = ..()
-	if(. && !gibbed)
+	if(!.)
+		return
+	qdel(GetComponent(/datum/component/ghost_direct_control))
+	if(!gibbed)
 		notify_terror_hive("[src] погибает в [get_area(src)].")
 
 /mob/living/basic/spider/giant/terror/ObjBump(obj/obstacle)

@@ -285,3 +285,129 @@
 	TEST_ASSERT_NOTNULL(spiderling, "Mature parasite eggs did not spawn a spiderling.")
 	var/static/list/first_caste_pool = list(/mob/living/basic/spider/giant/terror/gray, /mob/living/basic/spider/giant/terror/red, /mob/living/basic/spider/giant/terror/reaper)
 	TEST_ASSERT(spiderling.grow_as in first_caste_pool, "The first parasite spiderling came from the wrong caste pool.")
+
+/datum/unit_test/terror_spider_ghost_roles
+	normal_floor_required = TRUE
+	/// Unlike the unit-test room, a reservation is not on an away level.
+	var/datum/turf_reservation/brood_room
+
+/datum/unit_test/terror_spider_ghost_roles/Destroy()
+	. = ..()
+	QDEL_NULL(brood_room)
+
+/datum/unit_test/terror_spider_ghost_roles/Run()
+	var/turf/egg_turf = run_loc_floor_bottom_left
+	var/mob/dead/observer/ghost = allocate(__IMPLIED_TYPE__)
+	var/datum/spawners_menu/menu = allocate(__IMPLIED_TYPE__, ghost)
+	var/datum/tgui/ui = allocate(__IMPLIED_TYPE__, ghost, menu, "SpawnersMenu")
+	ui.status = UI_INTERACTIVE
+
+	var/obj/effect/mob_spawn/ghost_role/spider/terror/first = allocate(__IMPLIED_TYPE__, egg_turf)
+	var/obj/effect/mob_spawn/ghost_role/spider/terror/second = allocate(__IMPLIED_TYPE__, egg_turf)
+	var/group_name = format_text(first.name)
+	first.process(20)
+	TEST_ASSERT(menu.ui_act("jump", list("name" = group_name), ui, menu.ui_state(ghost)), "A ghost could not jump to the mature clutch.")
+	TEST_ASSERT(second in GLOB.mob_spawners[group_name], "Looking up a mature clutch unregistered the immature one.")
+	TEST_ASSERT_EQUAL(menu_count(menu, ghost, group_name), 1, "The menu did not list the mature clutch.")
+	second.process(20)
+	TEST_ASSERT_EQUAL(menu_count(menu, ghost, group_name), 2, "The open menu did not reflect the second clutch becoming ready.")
+
+	var/obj/effect/mob_spawn/ghost_role/spider/terror/empress/royal_egg = allocate(__IMPLIED_TYPE__, egg_turf)
+	royal_egg.process(170)
+	TEST_ASSERT(!royal_egg.ready, "The Empress egg matured before the crew had three minutes to stop it.")
+	royal_egg.process(12)
+	TEST_ASSERT(royal_egg.ready, "The Empress egg did not mature after three minutes.")
+
+	brood_room = SSmapping.request_turf_block_reservation(2, 2, 1, turf_type_override = /turf/open/indestructible)
+	TEST_ASSERT_NOTNULL(brood_room, "Could not reserve a non-away turf for the brood.")
+	var/turf/brood_turf = brood_room.bottom_left_turfs[1]
+	var/obj/structure/spider/eggcluster/terror/brood/clutch = allocate(__IMPLIED_TYPE__, brood_turf, /mob/living/basic/spider/giant/terror/red)
+	clutch.process(60)
+	TEST_ASSERT(QDELETED(clutch), "A normal Terror clutch took more than one minute to hatch.")
+	var/mob/living/basic/spider/growing/spiderling/terror/hatchling = locate() in brood_turf
+	TEST_ASSERT_NOTNULL(hatchling, "The clutch did not produce a spiderling.")
+	hatchling.grow_up()
+	var/mob/living/basic/spider/giant/terror/red/adult = locate() in brood_turf
+	TEST_ASSERT_NOTNULL(adult, "The spiderling did not become an adult.")
+	allocated += adult
+	var/adult_group = format_text(initial(adult.name))
+	TEST_ASSERT_EQUAL(menu_count(menu, ghost, adult_group), 1, "The unoccupied adult did not appear in the spawners menu.")
+	adult.death()
+	TEST_ASSERT_EQUAL(menu_count(menu, ghost, adult_group), 0, "A dead adult stayed in the spawners menu.")
+
+/// Read the live menu payload for a particular group without requiring a client.
+/datum/unit_test/terror_spider_ghost_roles/proc/menu_count(datum/spawners_menu/menu, mob/dead/observer/ghost, group_name)
+	var/list/data = menu.ui_data(ghost)
+	for(var/list/group as anything in data?["spawners"])
+		if(group["name"] == group_name)
+			return group["amount_left"]
+	return 0
+
+/datum/unit_test/terror_spider_webs
+	normal_floor_required = TRUE
+
+/datum/unit_test/terror_spider_webs/Run()
+	var/turf/web_turf = run_loc_floor_bottom_left
+	var/turf/neighbor = get_step(web_turf, EAST)
+	web_turf.immediate_calculate_adjacent_turfs()
+	TEST_ASSERT(neighbor in web_turf.get_atmos_adjacent_turfs(), "The open test tiles must initially exchange gas.")
+	TEST_ASSERT(web_turf in neighbor.get_atmos_adjacent_turfs(), "The initial atmos connection must be bidirectional.")
+
+	var/mob/living/basic/spider/giant/terror/builder/drone = allocate(__IMPLIED_TYPE__, web_turf)
+	var/normal_delay = drone.cached_multiplicative_slowdown
+	var/datum/action/cooldown/mob_cooldown/lay_web/terror/airtight/drone/spin = locate() in drone.actions
+	TEST_ASSERT_NOTNULL(spin, "The Drone has no airtight web ability.")
+	spin.plant_web(web_turf)
+	var/obj/structure/spider/stickyweb/terror/airtight/web = locate() in web_turf
+	TEST_ASSERT_NOTNULL(web, "The ability did not create an airtight web.")
+	TEST_ASSERT(!(neighbor in web_turf.get_atmos_adjacent_turfs()), "Gas can escape through the webbed tile.")
+	TEST_ASSERT(!(web_turf in neighbor.get_atmos_adjacent_turfs()), "Gas can enter the webbed tile.")
+	TEST_ASSERT(drone.cached_multiplicative_slowdown < normal_delay - 1.4, "The newly laid web did not increase the Drone's speed enough.")
+
+	var/mob/living/basic/spider/giant/terror/red/knight = allocate(__IMPLIED_TYPE__, neighbor)
+	var/knight_normal_delay = knight.cached_multiplicative_slowdown
+	knight.forceMove(web_turf)
+	TEST_ASSERT(knight.cached_multiplicative_slowdown < knight_normal_delay, "The Knight did not speed up on the web.")
+	knight.forceMove(neighbor)
+	TEST_ASSERT_EQUAL(knight.cached_multiplicative_slowdown, knight_normal_delay, "The Knight kept the speed bonus after leaving the web.")
+	qdel(web)
+	TEST_ASSERT_EQUAL(drone.cached_multiplicative_slowdown, normal_delay, "The Drone kept the speed bonus after the web was removed.")
+	TEST_ASSERT(neighbor in web_turf.get_atmos_adjacent_turfs(), "Gas exchange did not resume after the web was removed.")
+	TEST_ASSERT(web_turf in neighbor.get_atmos_adjacent_turfs(), "The reopened atmos connection must be bidirectional.")
+
+/datum/unit_test/terror_spider_shove
+	normal_floor_required = TRUE
+
+/datum/unit_test/terror_spider_shove/Run()
+	var/turf/spider_turf = get_step(run_loc_floor_bottom_left, EAST)
+	var/mob/living/basic/spider/giant/terror/red/knight = allocate(__IMPLIED_TYPE__, spider_turf)
+	var/mob/living/carbon/human/shover = allocate(__IMPLIED_TYPE__, get_step(spider_turf, EAST))
+	shover.move_force = MOVE_FORCE_OVERPOWERING
+	knight.combat_mode = FALSE
+	TEST_ASSERT(!(knight.get_shove_flags(shover) & SHOVE_CAN_MOVE), "A strong shover can still move an adult Terror Spider.")
+	shover.disarm(knight)
+	TEST_ASSERT_EQUAL(knight.loc, spider_turf, "A right-click shove displaced an adult Terror Spider.")
+	TEST_ASSERT(!shover.can_mobswap_with(knight), "Bumping into a Terror Spider can still swap positions.")
+
+/datum/unit_test/terror_spider_widow_spit
+
+/datum/unit_test/terror_spider_widow_spit/Run()
+	var/mob/living/basic/spider/giant/terror/black/widow = allocate(__IMPLIED_TYPE__)
+	var/mob/living/carbon/human/prey = allocate(__IMPLIED_TYPE__)
+	for(var/spit_type in subtypesof(/obj/projectile/terror_spider/widow))
+		var/obj/projectile/terror_spider/widow/spit = allocate(spit_type)
+		spit.firer = widow
+		spit.ignore_source_check = TRUE // Portals normally let redirected projectiles hit their firer.
+		TEST_ASSERT(!spit.can_hit_target(widow, ignore_loc = TRUE), "A redirected Widow spit can hit the Widow that fired it.")
+		TEST_ASSERT(spit.can_hit_target(prey, ignore_loc = TRUE), "Widow spit stopped being able to hit crew.")
+
+	var/obj/projectile/terror_spider/widow/venom/venom = allocate(__IMPLIED_TYPE__)
+	venom.firer = widow
+	venom.on_hit(prey)
+	var/obj/effect/particle_effect/fluid/smoke/chem/cloud = locate() in prey.loc
+	TEST_ASSERT_NOTNULL(cloud, "The venom projectile did not create its chemical cloud.")
+	var/tox_before = widow.get_tox_loss()
+	cloud.process(1)
+	TEST_ASSERT(prey.reagents.has_reagent(/datum/reagent/toxin/terror_black_venom), "The Widow's cloud did not deliver venom to crew.")
+	TEST_ASSERT_EQUAL(widow.get_tox_loss(), tox_before, "The Widow took toxin damage from her own cloud.")
+	TEST_ASSERT(!widow.reagents?.has_reagent(/datum/reagent/toxin/terror_black_venom), "The Widow absorbed venom from her own cloud.")

@@ -196,7 +196,7 @@ GLOBAL_LIST_EMPTY(terror_infections)
 		growth -= 0.5
 	if(owner.reagents?.get_reagent_amount(/datum/reagent/medicine/salglu_solution) > 1)
 		growth += 1
-	egg_progress += growth * (seconds_per_tick / 2)
+	egg_progress += growth * seconds_per_tick
 	if(!away_infection && !poll_started && egg_progress >= 90)
 		poll_started = TRUE
 		polling = TRUE

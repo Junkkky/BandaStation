@@ -245,15 +245,12 @@ GLOBAL_VAR_INIT(terror_hive_destroyed, FALSE)
 /obj/effect/mob_spawn/ghost_role/spider/terror/empress
 	mob_type = /mob/living/basic/spider/giant/terror/queen/empress
 	cluster_type = /obj/structure/spider/eggcluster/terror/empress
+	incubation_time = 3 MINUTES
 	var/hatched = FALSE
 
 /obj/effect/mob_spawn/ghost_role/spider/terror/empress/Initialize(mapload, mob/living/basic/spider/giant/terror/caste, brood_directive)
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(announce_empress_egg)), 10 SECONDS)
-
-/obj/effect/mob_spawn/ghost_role/spider/terror/empress/process(seconds_per_tick)
-	// Native egg progress averages ten percent per second. The royal egg needs 250 growth ticks.
-	return ..(seconds_per_tick / 50)
 
 /obj/effect/mob_spawn/ghost_role/spider/terror/empress/special(mob/living/basic/spider/giant/terror/queen/empress/spawned_mob, mob/mob_possessor, apply_prefs)
 	hatched = TRUE

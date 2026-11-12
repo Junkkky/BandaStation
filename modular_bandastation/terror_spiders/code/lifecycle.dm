@@ -47,7 +47,7 @@
 		return
 	adult.terror_queen_ref = terror_queen_ref
 	adult.directive = directive
-	if(is_away_level(adult.z) || istype(adult, /mob/living/basic/spider/giant/terror/queen/empress))
+	if(adult.key || is_away_level(adult.z) || istype(adult, /mob/living/basic/spider/giant/terror/queen/empress))
 		return
 	var/datum/component/ghost_direct_control/direct_control = adult.AddComponent(\
 		/datum/component/ghost_direct_control,\

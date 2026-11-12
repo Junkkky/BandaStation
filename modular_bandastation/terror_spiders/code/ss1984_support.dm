@@ -192,23 +192,10 @@
 /mob/living/basic/spider/giant/terror/builder/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_HOSTILE_POST_ATTACKINGTARGET, PROC_REF(freeze_with_bite))
-	update_web_regeneration()
 
-/mob/living/basic/spider/giant/terror/builder/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
+/mob/living/basic/spider/giant/terror/builder/update_terror_web_effects(on_web)
 	. = ..()
-	update_web_regeneration()
-
-/mob/living/basic/spider/giant/terror/builder/Life(seconds_per_tick = SSMOBS_DT)
-	if(stat != DEAD)
-		update_web_regeneration()
-	return ..()
-
-/mob/living/basic/spider/giant/terror/builder/proc/update_web_regeneration()
-	var/on_web = isturf(loc) && (locate(/obj/structure/spider/stickyweb/terror) in loc)
 	terror_regeneration = on_web ? 3 : 0
-	var/desired_speed = initial(speed) - (on_web ? 1.4 : 0)
-	if(speed != desired_speed)
-		set_varspeed(desired_speed)
 
 /mob/living/basic/spider/giant/terror/builder/proc/freeze_with_bite(datum/source, mob/living/carbon/prey, success)
 	SIGNAL_HANDLER

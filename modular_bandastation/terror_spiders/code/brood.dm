@@ -65,6 +65,9 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	role_ban = list(ROLE_ALIEN, ROLE_SYNDICATE)
 	cluster_type = /obj/structure/spider/eggcluster/terror
 	granted_datum = /datum/antagonist/spider/terror
+	flash_window = TRUE
+	/// Time needed to mature from an empty growth bar.
+	var/incubation_time = 8 SECONDS
 
 /obj/effect/mob_spawn/ghost_role/spider/terror/Initialize(mapload, mob/living/basic/spider/giant/terror/caste, brood_directive)
 	caste = caste || mob_type
@@ -77,6 +80,9 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	if(!isnull(brood_directive))
 		directive = brood_directive
 	return ..()
+
+/obj/effect/mob_spawn/ghost_role/spider/terror/growth_progress(seconds_per_tick)
+	return 100 * (seconds_per_tick SECONDS) / incubation_time
 
 /obj/effect/mob_spawn/ghost_role/spider/terror/Destroy()
 	var/obj/structure/spider/eggcluster/physical_egg = egg
@@ -120,7 +126,7 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 	return ..()
 
 /obj/structure/spider/eggcluster/terror/brood/process(seconds_per_tick)
-	amount_grown += rand(0, 2) * (seconds_per_tick / 2)
+	amount_grown += 100 * (seconds_per_tick SECONDS) / (1 MINUTES)
 	if(amount_grown < 100)
 		return
 
@@ -129,6 +135,14 @@ GLOBAL_LIST_EMPTY(terror_brood_eggs)
 		playsound(hatch_turf, 'modular_bandastation/terror_spiders/sound/eggburst.ogg', 100)
 		for(var/index in 1 to brood_size)
 			new /mob/living/basic/spider/growing/spiderling/terror(hatch_turf, caste, directive, terror_queen_ref)
+		if((GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !is_away_level(hatch_turf.z))
+			notify_ghosts(
+				"Из кладки пауков террора вылупились паучата. После взросления их можно занять через меню спавнеров.",
+				source = hatch_turf,
+				header = "Пауки террора",
+				ignore_key = POLL_IGNORE_SPIDER,
+				notify_flags = NOTIFY_CATEGORY_NOFLASH,
+			)
 	qdel(src)
 	return PROCESS_KILL
 
