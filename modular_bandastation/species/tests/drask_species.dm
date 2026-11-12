@@ -41,6 +41,7 @@
 /// A fresh character must receive the selected skin tone through the normal preference order.
 /datum/unit_test/drask_skin_tone_preferences/Run()
 	var/datum/client_interface/mock_client = allocate(/datum/client_interface)
+	mock_client.donator_level = DONATOR_TIER_2
 	var/datum/preferences/preferences = allocate(/datum/preferences, mock_client)
 	mock_client.prefs = preferences
 	preferences.value_cache[/datum/preference/choiced/species] = /datum/species/drask
