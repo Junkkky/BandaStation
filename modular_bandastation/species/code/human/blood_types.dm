@@ -39,3 +39,10 @@
 /// A blood pack for transfusions to Resomi.
 /obj/item/reagent_containers/blood/resomi
 	blood_type = /datum/blood_type/resomi
+
+/datum/blood_type/drask
+	name = "Cryoxadone"
+	dna_string = "Drask DNA"
+	color = /datum/reagent/medicine/cryoxadone::color
+	reagent_type = /datum/reagent/medicine/cryoxadone
+	restoration_chem = /datum/reagent/medicine/cryoxadone

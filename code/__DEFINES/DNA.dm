@@ -132,6 +132,10 @@
 #define FEATURE_RESOMI_TAIL "resomi_tail"
 #define FEATURE_RESOMI_MARKINGS "resomi_markings"
 #define FEATURE_RESOMI_MARKINGS_COLOR "resomi_markings_color"
+
+#define FEATURE_DRASK_ARM_SPINES "drask_arm_spines"
+#define FEATURE_DRASK_ARM_SPINES_COLOR "drask_arm_spines_color"
+#define FEATURE_DRASK_SKIN_TONE "drask_skin_tone"
 // BANDASTATION ADDITION END - Species Features
 
 // flag for the transfer_flag argument from dna/proc/copy_dna().
@@ -191,6 +195,9 @@
 #define ORGAN_SLOT_EXTERNAL_VOX_QUILLS "vox_quills"
 #define ORGAN_SLOT_EXTERNAL_VOX_FACIAL_QUILLS "vox_facial_quills"
 #define ORGAN_SLOT_EXTERNAL_RESOMI_CREST "resomi_crest"
+#define ORGAN_SLOT_THERMAL_REGULATOR "thermal_regulator"
+#define ORGAN_SLOT_ARM_SPINES_L "arm_spines_l"
+#define ORGAN_SLOT_ARM_SPINES_R "arm_spines_r"
 /// BADNASTATION ADDITION END - Species
 
 /// Xenomorph organ slots
