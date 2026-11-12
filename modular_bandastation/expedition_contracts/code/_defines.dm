@@ -9,6 +9,8 @@
 #define EXPEDITION_CONTRACT_DECLINED "declined"
 /// Withdrawn because nobody took it in time.
 #define EXPEDITION_CONTRACT_EXPIRED "expired"
+/// The thing it was for is gone; only side tasks end this way.
+#define EXPEDITION_CONTRACT_FAILED "failed"
 
 // Pacing; starting values from the 2026-11-12 design, tune by how often offers lapse untaken.
 /// Offers opened when the round starts.
@@ -19,3 +21,5 @@
 #define EXPEDITION_CONTRACTS_MAX_OPEN 3
 /// An offer nobody takes is withdrawn after this.
 #define EXPEDITION_CONTRACT_OFFER_LIFETIME (30 MINUTES)
+/// Chance an order comes with a side task; raise it if side tasks are rare and wanted.
+#define EXPEDITION_SIDE_CHANCE 50

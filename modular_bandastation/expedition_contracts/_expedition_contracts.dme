@@ -14,5 +14,7 @@
 #include "code\customers.dm"
 #include "code\finds.dm"
 #include "code\journal.dm"
+#include "code\rewards.dm"
+#include "code\side.dm"
 #include "code\survey.dm"
 // END_INCLUDE

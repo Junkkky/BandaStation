@@ -6,6 +6,12 @@
 	var/nanotrasen = TRUE
 	/// Order types this customer places.
 	var/list/contract_types = list()
+	/// Hidden research node a corporation opens after its first fulfilled contract.
+	var/reward_node
+	/// Special cargo pack a corporation enables after its first fulfilled contract.
+	var/reward_pack
+	/// The one-time reward for the first fulfilled contract was paid.
+	var/rewarded = FALSE
 
 /// Nanotrasen's research and development division.
 /datum/expedition_customer/ntfid

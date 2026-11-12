@@ -39,12 +39,19 @@
 	var/list/atom/movable/bound = list()
 	/// Index of the step that binds finds, which the order falls back to if they are lost.
 	var/bind_step
+	/// Losing the bound thing ends the order instead of sending it back a step.
+	var/fails_on_loss = FALSE
+	/// Side task that came with this order; it is taken, turned down and withdrawn along with it.
+	var/datum/expedition_contract/side_order
+	/// ID of the order a side task came with; null for an order of its own.
+	var/parent_id
 
 /datum/expedition_contract/Destroy()
 	deltimer(offer_timer)
 	release_bound()
 	QDEL_LIST(steps)
 	customer = null
+	side_order = null
 	return ..()
 
 /// Whether `site` can be this order's destination.
@@ -94,6 +101,7 @@
 	state = EXPEDITION_CONTRACT_ACTIVE
 	decided_by = user.real_name
 	steps[current].activate()
+	side_order?.accept(user)
 	return TRUE
 
 /// Turned down while offered, or dropped once taken; costs nothing.
@@ -103,6 +111,9 @@
 	deltimer(offer_timer)
 	if(state == EXPEDITION_CONTRACT_ACTIVE)
 		steps[current].deactivate()
+	// A side task is turned down with its offer; once taken it stands on its own.
+	else if(side_order?.state == EXPEDITION_CONTRACT_OFFERED)
+		side_order.decline(user)
 	release_bound()
 	state = EXPEDITION_CONTRACT_DECLINED
 	decided_by = user.real_name
@@ -113,6 +124,7 @@
 	if(state != EXPEDITION_CONTRACT_OFFERED)
 		return
 	state = EXPEDITION_CONTRACT_EXPIRED
+	side_order?.expire()
 	GLOB.expedition_contracts.notify("Предложение снято: [summary()].")
 
 /// The live step is done at `location`: the next one goes live, or the order is fulfilled.
@@ -138,6 +150,8 @@
 	var/paid = credits()
 	if(paid > 0)
 		SSeconomy.get_dep_account(ACCOUNT_CAR)?.adjust_money(paid, "Контракт [customer.name]: [name]")
+	if(!customer.nanotrasen)
+		customer.first_contract_reward(location)
 	GLOB.expedition_contracts.notify("[customer.nanotrasen ? "Заказ" : "Контракт"] выполнен: [summary()]. [customer.name] благодарит корпус[points > 0 ? "; станции начислено [points] очков исследований" : ""][paid > 0 ? "; бюджет снабжения получил [paid] кредитов" : ""].")
 
 /// `find` now counts for this order, brought in by `step`.
@@ -152,12 +166,25 @@
 /datum/expedition_contract/proc/release_bound()
 	for(var/atom/movable/find as anything in bound)
 		UnregisterSignal(find, COMSIG_QDELETING)
+		REMOVE_TRAIT(find, TRAIT_EXPEDITION_ORDER_ITEM, EXPEDITION_ORDER_TRAIT)
 	bound.Cut()
+
+/// The thing a side task was for is gone: the task ends.
+/datum/expedition_contract/proc/fail(reason)
+	if(state != EXPEDITION_CONTRACT_ACTIVE)
+		return
+	steps[current].deactivate()
+	release_bound()
+	state = EXPEDITION_CONTRACT_FAILED
+	GLOB.expedition_contracts.notify("[summary()]: задание провалено — [reason].")
 
 /// A find this order counted on is gone: past its binding step, the order goes back to it.
 /datum/expedition_contract/proc/on_bound_lost(atom/movable/source)
 	SIGNAL_HANDLER
 	bound -= source
+	if(fails_on_loss)
+		fail("[source.name] уничтожен")
+		return
 	if(state != EXPEDITION_CONTRACT_ACTIVE || length(bound) || current <= bind_step)
 		return
 	steps[current].deactivate()
@@ -193,6 +220,7 @@
 		"reward" = research_points(),
 		"credits" = credits(),
 		"decided_by" = decided_by,
+		"parent" = parent_id,
 		"steps" = step_data,
 	)
 

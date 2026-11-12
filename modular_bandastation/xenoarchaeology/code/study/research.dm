@@ -89,6 +89,10 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 /// Catalogues a dug small find, a field artefact or a planetary anomaly core lying on the scan pad. Returns TRUE if one was found there.
 /obj/machinery/artifact_analyser/proc/catalogue_small_find(mob/user)
 	for(var/obj/item/find in pad.loc)
+		if(HAS_TRAIT(find, TRAIT_EXPEDITION_ORDER_ITEM))
+			print_catalogue(find, 0, "<br>Предмет заказа экспедиционного корпуса.")
+			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_FIND_CATALOGUED, find, user, src)
+			return TRUE
 		var/obj/item/assembly/signaler/anomaly/planetary/core = find
 		if(istype(core))
 			var/core_points = core.research_paid ? 0 : core.research_points

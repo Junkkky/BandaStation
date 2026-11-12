@@ -6,18 +6,22 @@
 	name = "Etamin Industry"
 	nanotrasen = FALSE
 	contract_types = list(/datum/expedition_contract/large_find)
+	reward_node = /datum/techweb_node/expedition_contract/etamin
 
 /// Trans-Solar Federation; buys the cores of live anomalies.
 /datum/expedition_customer/tsf
 	name = "Транс-Солнечная Федерация"
 	nanotrasen = FALSE
 	contract_types = list(/datum/expedition_contract/containment)
+	reward_node = /datum/techweb_node/expedition_contract/tsf
+	reward_pack = /datum/supply_pack/costumes_toys/tsf_uniform
 
 /// The Skrellian Empire; buys field artefacts.
 /datum/expedition_customer/skrell
 	name = "Империя скреллов"
 	nanotrasen = FALSE
 	contract_types = list(/datum/expedition_contract/field_artefact)
+	reward_node = /datum/techweb_node/expedition_contract/skrell
 
 /// The certified find, packed, handed over at the corporate trade hub; the hub terminal drives it.
 /datum/expedition_contract_step/deliver

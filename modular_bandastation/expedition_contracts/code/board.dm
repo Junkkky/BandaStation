@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(expedition_journal_programs)
 	. = 0
 	for(var/id in contracts)
 		var/datum/expedition_contract/contract = contracts[id]
-		if(contract.state == EXPEDITION_CONTRACT_OFFERED || contract.state == EXPEDITION_CONTRACT_ACTIVE)
+		if(!contract.parent_id && (contract.state == EXPEDITION_CONTRACT_OFFERED || contract.state == EXPEDITION_CONTRACT_ACTIVE))
 			.++
 
 /// Destinations of the charted far sectors: the home sector is a short hop, not an expedition.
@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY(expedition_journal_programs)
 	var/list/taken_targets = list()
 	for(var/id in contracts)
 		var/datum/expedition_contract/contract = contracts[id]
-		if(contract.state == EXPEDITION_CONTRACT_OFFERED || contract.state == EXPEDITION_CONTRACT_ACTIVE)
+		if(!contract.parent_id && (contract.state == EXPEDITION_CONTRACT_OFFERED || contract.state == EXPEDITION_CONTRACT_ACTIVE))
 			taken_targets[contract.target_id] = TRUE
 	var/list/free_sites = list()
 	for(var/datum/stationtrauma_overmap_site/space/site as anything in destinations())
@@ -82,9 +82,22 @@ GLOBAL_LIST_EMPTY(expedition_journal_programs)
 		contract.id = "З-[++serial]"
 		contracts[contract.id] = contract
 		contract.offer_timer = addtimer(CALLBACK(contract, TYPE_PROC_REF(/datum/expedition_contract, expire)), EXPEDITION_CONTRACT_OFFER_LIFETIME, TIMER_STOPPABLE)
-		notify("Новое предложение от [contract.customer.name]: [contract.summary()].")
+		if(prob(EXPEDITION_SIDE_CHANCE))
+			offer_side(contract, target)
+		notify("Новое предложение от [contract.customer.name]: [contract.summary()][contract.side_order ? ", с побочным заданием" : ""].")
 		return contract
 	return null
+
+/// Attaches a side task in `site`'s ruins to `main`, for the same customer.
+/datum/expedition_contract_board/proc/offer_side(datum/expedition_contract/main, datum/stationtrauma_overmap_site/space/site)
+	var/datum/expedition_contract/side/side_task = new
+	if(!side_task.setup(main.customer, site))
+		qdel(side_task)
+		return
+	side_task.id = "З-[++serial]"
+	side_task.parent_id = main.id
+	main.side_order = side_task
+	contracts[side_task.id] = side_task
 
 /// Whether `user` may take or turn down orders on `journal`: the corps leader, or any explorer while the corps has none.
 /datum/expedition_contract_board/proc/can_decide(mob/user, datum/computer_file/program/expedition_journal/journal)
@@ -100,7 +113,8 @@ GLOBAL_LIST_EMPTY(expedition_journal_programs)
 		return FALSE
 	switch(action)
 		if("accept_contract")
-			if(!contract.accept(user))
+			// A side task is taken with its order.
+			if(contract.parent_id || !contract.accept(user))
 				return FALSE
 			notify("[user.real_name] принимает заказ: [contract.summary()]. Задача: [contract.steps[contract.current].text].")
 			return TRUE

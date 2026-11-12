@@ -51,6 +51,7 @@ type Contract = {
   reward: number;
   credits: number;
   decided_by: string | null;
+  parent: string | null;
   steps: ContractStep[];
 };
 
@@ -68,6 +69,7 @@ const CONTRACT_STATES: Record<string, string> = {
   done: 'Выполнен',
   declined: 'Отклонён',
   expired: 'Снят',
+  failed: 'Провален',
 };
 
 const STATUSES = {
@@ -249,16 +251,20 @@ const Contracts = () => {
 const ContractSection = (props: { contract: Contract }) => {
   const { act, data } = useBackend<Data>();
   const { contract } = props;
-  const open = contract.state === 'offered' || contract.state === 'active';
+  // A side task is taken with its order, but can be dropped on its own.
+  const canAccept = contract.state === 'offered' && !contract.parent;
+  const canDrop =
+    contract.state === 'active' ||
+    (contract.state === 'offered' && !contract.parent);
 
   return (
     <Section
-      title={`${contract.id}: ${contract.name}`}
+      title={`${contract.id}: ${contract.name}${contract.parent ? ` (к ${contract.parent})` : ''}`}
       buttons={
         data.can_decide &&
-        open && (
+        canDrop && (
           <>
-            {contract.state === 'offered' && (
+            {canAccept && (
               <Button
                 icon="check"
                 color="good"

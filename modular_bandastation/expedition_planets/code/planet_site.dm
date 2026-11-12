@@ -85,6 +85,8 @@
 	failed = !build_surface()
 	QDEL_NULL(generator)
 	loading_map = FALSE
+	if(!failed)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_SITE_LOADED, src)
 
 /** Generate every level of the surface, yielding between work slices; returns whether the planet is ready for landing. */
 /datum/stationtrauma_overmap_site/space/planet/proc/build_surface()

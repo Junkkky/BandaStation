@@ -12,3 +12,5 @@
 #define COMSIG_GLOB_EXPEDITION_CORE_TAKEN "!expedition_core_taken"
 /// The spectrometer finished reading the core in a sampler: (obj/item/excavation/core_sampler/sampler, mob/user, atom/location)
 #define COMSIG_GLOB_EXPEDITION_CORE_READ "!expedition_core_read"
+/// A charted destination finished loading its map on the first approach: (datum/stationtrauma_overmap_site/space/site)
+#define COMSIG_GLOB_EXPEDITION_SITE_LOADED "!expedition_site_loaded"
