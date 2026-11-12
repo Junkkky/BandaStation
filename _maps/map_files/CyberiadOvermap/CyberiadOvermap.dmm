@@ -94,15 +94,8 @@
 /turf/open/floor/carpet/black,
 /area/station/maintenance/ghetto/fore/starboard)
 "aan" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
-/obj/effect/mapping_helpers/airlock/unres{
-	dir = 1
-	},
-/obj/machinery/door/airlock/maintenance,
-/obj/effect/mapping_helpers/airlock/autoname,
-/turf/open/floor/iron,
+/obj/machinery/vending/wardrobe/expedition_wardrobe,
+/turf/open/floor/iron/dark/smooth_large,
 /area/station/maintenance/ghetto/aft)
 "aao" = (
 /obj/item/kirbyplants/random/dead,
@@ -198,14 +191,12 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/maintenance/ghetto/aft)
 "aaF" = (
-/obj/machinery/door/airlock/maintenance{
-	req_access = list(12)
-	},
-/turf/open/floor/plating,
+/obj/structure/closet/secure_closet/expedition,
+/turf/open/floor/iron/dark/smooth_large,
 /area/station/maintenance/ghetto/aft)
 "aaG" = (
-/obj/effect/spawner/random/trash/garbage,
-/turf/open/floor/iron,
+/obj/machinery/suit_storage_unit/expedition,
+/turf/open/floor/iron/dark/smooth_large,
 /area/station/maintenance/ghetto/aft)
 "aaH" = (
 /turf/open/floor/sepia,
@@ -215,21 +206,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/station/maintenance/ghetto/aft)
-"aaJ" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
-/obj/effect/mapping_helpers/airlock/unres{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/station/maintenance/ghetto/aft)
-"aaK" = (
-/turf/open/floor/iron/dark/smooth_large,
 /area/station/maintenance/ghetto/aft)
 "aaL" = (
 /obj/structure/cable,
@@ -256,10 +232,6 @@
 /obj/structure/closet/secure_closet/expedition,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/maintenance/ghetto/aft)
-"aaQ" = (
-/obj/machinery/newscaster/directional/north,
-/turf/open/floor/iron/dark/smooth_large,
-/area/station/maintenance/ghetto/aft)
 "aaR" = (
 /obj/structure/closet/secure_closet/expedition/pilot,
 /turf/open/floor/iron/dark/smooth_large,
@@ -272,39 +244,11 @@
 /obj/structure/closet/secure_closet/expedition/engineer,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/maintenance/ghetto/aft)
-"aaU" = (
-/obj/effect/decal/cleanable/cobweb,
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/station/maintenance/ghetto/aft)
-"aaV" = (
-/obj/structure/table,
-/obj/item/reagent_containers/cup/glass/coffee{
-	pixel_x = -3;
-	pixel_y = 4
-	},
-/obj/item/radio{
-	pixel_x = 11;
-	pixel_y = 5
-	},
-/obj/machinery/newscaster/directional/north,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/area/station/maintenance/ghetto/aft)
-"aaW" = (
-/obj/structure/table,
-/obj/item/analyzer,
-/turf/open/floor/iron/dark,
-/area/station/maintenance/ghetto/aft)
 "aaX" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/cargo/lobby)
-"aaY" = (
-/obj/structure/sign/poster/contraband/random/directional/north,
-/turf/open/floor/iron/dark,
-/area/station/maintenance/ghetto/aft)
 "aaZ" = (
 /obj/machinery/holopad{
 	pixel_x = 16
@@ -313,11 +257,6 @@
 /obj/machinery/duct,
 /turf/open/floor/iron/dark,
 /area/station/medical/surgery/aft)
-"aba" = (
-/obj/machinery/airalarm/directional/north,
-/obj/structure/closet/secure_closet/expedition/leader,
-/turf/open/floor/iron/dark,
-/area/station/maintenance/ghetto/aft)
 "abb" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -346,6 +285,59 @@
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/iron/white/diagonal,
 /area/station/maintenance/ghetto/starboard)
+"abf" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron,
+/area/station/maintenance/ghetto/aft)
+"abg" = (
+/obj/machinery/light/cold/dim/directional/west,
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/maintenance/ghetto/aft)
+"abh" = (
+/obj/structure/closet/secure_closet/expedition/leader,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
+"abi" = (
+/obj/machinery/suit_storage_unit/expedition/heavy,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
+"abj" = (
+/obj/machinery/door/airlock/maintenance{
+	req_access = list(12)
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/station/maintenance/ghetto/aft)
+"abk" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
+"abl" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
+"abm" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
 "abn" = (
 /obj/effect/turf_decal/bot_white,
 /obj/structure/window/reinforced/spawner/directional/east{
@@ -356,6 +348,16 @@
 /obj/effect/spawner/armory_spawn/disablers,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/security/armory)
+"abo" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
+"abp" = (
+/obj/machinery/suit_storage_unit/expedition,
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/maintenance/ghetto/aft)
 "abq" = (
 /obj/effect/turf_decal/siding/wideplating{
 	dir = 1;
@@ -370,6 +372,27 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/station/service/bar/backroom/ghetto)
+"abr" = (
+/obj/machinery/suit_storage_unit/expedition/pilot,
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/maintenance/ghetto/aft)
+"abs" = (
+/obj/machinery/suit_storage_unit/expedition/medic,
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/maintenance/ghetto/aft)
+"abt" = (
+/obj/machinery/suit_storage_unit/expedition/engineer,
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/maintenance/ghetto/aft)
+"abu" = (
+/obj/structure/chair/office,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
+"abv" = (
+/obj/structure/cable,
+/obj/machinery/light/cold/dim/directional/west,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
 "abw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
@@ -379,6 +402,42 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
+"abx" = (
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
+"aby" = (
+/obj/machinery/light/cold/dim/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
+"abz" = (
+/obj/machinery/newscaster/directional/north,
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/maintenance/ghetto/aft)
+"abA" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/maintenance/ghetto/aft)
+"abB" = (
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
+"abC" = (
+/obj/item/reagent_containers/cup/glass/coffee{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/radio{
+	pixel_x = 11;
+	pixel_y = 5
+	},
+/obj/machinery/newscaster/directional/north,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/ghetto/aft)
 "abG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -15930,12 +15989,6 @@
 	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
-"dLc" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/maintenance/ghetto/aft)
 "dLf" = (
 /obj/machinery/power/port_gen/pacman/pre_loaded,
 /turf/open/floor/plating,
@@ -137753,11 +137806,11 @@ hdh
 ooa
 etx
 aaP
+abg
+abp
 aas
-aaK
-aas
-aas
-aas
+aaG
+abg
 aas
 etx
 ceC
@@ -138011,7 +138064,7 @@ kPe
 etx
 aaP
 aas
-aaK
+abp
 aas
 aaD
 aax
@@ -138266,9 +138319,9 @@ fif
 gFH
 qQf
 etx
-aaQ
+abz
 aas
-aas
+aan
 aas
 aas
 aax
@@ -138523,14 +138576,14 @@ fif
 gFH
 qQf
 etx
+abA
 aas
-aas
-aas
+aaF
 aas
 aas
 aat
 aat
-aan
+abf
 ucp
 ucp
 ucp
@@ -138782,7 +138835,7 @@ wfp
 etx
 aaR
 aas
-aaK
+abr
 aas
 aas
 aay
@@ -139039,7 +139092,7 @@ ebO
 etx
 aaS
 aas
-aaK
+abs
 aas
 aaE
 aay
@@ -139296,7 +139349,7 @@ vkn
 etx
 aaT
 aas
-aaK
+abt
 aas
 aas
 aas
@@ -139555,7 +139608,7 @@ etx
 etx
 etx
 fzk
-aaF
+abj
 fzk
 etx
 etx
@@ -139808,8 +139861,8 @@ fif
 hdh
 xXv
 etx
-aaU
-aaL
+abB
+abv
 aaL
 aau
 aau
@@ -140065,7 +140118,7 @@ fif
 ppz
 wfp
 etx
-aaV
+abC
 oln
 xbd
 aau
@@ -140322,7 +140375,7 @@ fif
 hdh
 vIH
 fzk
-aaW
+abk
 aaN
 xbd
 aau
@@ -140578,13 +140631,13 @@ doz
 fif
 vOU
 kPe
-etx
-aaY
+fzk
+aau
 aaO
 aaI
 aau
 aau
-aau
+abh
 etx
 aap
 etx
@@ -140836,12 +140889,12 @@ fif
 foc
 upw
 etx
-aba
+abx
 aau
 aaI
 aaI
 aau
-aau
+abi
 etx
 ucp
 etx
@@ -141096,7 +141149,7 @@ etx
 etx
 fzk
 etx
-aaJ
+abl
 etx
 etx
 etx
@@ -141348,7 +141401,7 @@ fif
 fif
 fif
 qrO
-dLc
+ucp
 ucp
 abb
 ucp
@@ -141611,7 +141664,7 @@ abc
 jBr
 rQp
 rQp
-aaG
+rQp
 rQp
 etx
 etx
@@ -141864,10 +141917,10 @@ fif
 mDG
 rQp
 abd
-fif
-fif
-fif
 etx
+etx
+etx
+abm
 etx
 etx
 etx
@@ -142121,12 +142174,12 @@ fif
 fif
 sNa
 fif
-fif
-doz
-vbK
-ceC
-doz
-ceC
+etx
+abx
+aau
+aau
+aau
+aau
 etx
 mpE
 mWc
@@ -142378,12 +142431,12 @@ ceC
 fif
 xXv
 fif
-doz
-doz
-vbK
-ceC
-doz
-ceC
+etx
+aau
+aau
+aau
+aau
+aau
 etx
 uyR
 iXB
@@ -142635,12 +142688,12 @@ doz
 fif
 kmy
 fif
-doz
-doz
-vbK
-ceC
-doz
-ceC
+etx
+aau
+abu
+abk
+aaN
+aau
 etx
 gML
 tcd
@@ -142892,12 +142945,12 @@ doz
 vbK
 jEk
 vbK
-ceC
-doz
-vbK
-ceC
-doz
-ceC
+etx
+aau
+abu
+abk
+aaN
+aau
 etx
 mpE
 mWc
@@ -143149,12 +143202,12 @@ ceC
 ceC
 ceC
 ceC
-ceC
-ceC
-ceC
-ceC
-ceC
-ceC
+etx
+aau
+abu
+abk
+aaN
+aau
 etx
 lmn
 iXB
@@ -143406,12 +143459,12 @@ doz
 vbK
 ceC
 vbK
-doz
-doz
-vbK
-ceC
-doz
-ceC
+etx
+aby
+abk
+abk
+abk
+aau
 etx
 pxn
 tcd
@@ -143663,12 +143716,12 @@ doz
 vbK
 ceC
 vbK
-doz
-doz
-vbK
-ceC
-doz
-ceC
+etx
+aau
+aau
+abo
+aau
+aau
 etx
 mpE
 mWc
@@ -143920,12 +143973,12 @@ doz
 vbK
 ceC
 doz
-doz
-doz
-vbK
-ceC
-doz
-ceC
+etx
+etx
+fzk
+fzk
+fzk
+etx
 etx
 sKi
 iXB

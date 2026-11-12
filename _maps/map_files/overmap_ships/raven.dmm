@@ -334,6 +334,13 @@
 "aI" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/engines)
+"aJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/rack/gunrack,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "aK" = (
 /turf/open/floor/plating/airless,
 /area/shuttle/stationtrauma_space/raven/engines)
@@ -836,11 +843,11 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/life_support)
 "bO" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/obj/machinery/suit_storage_unit/expedition,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/l3closet/expedition,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_port_aft)
 "bP" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -932,10 +939,13 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_fore)
 "cd" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron/white/side{
+	dir = 9
+	},
+/area/shuttle/stationtrauma_space/raven/medbay)
 "ce" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/plating,
@@ -949,12 +959,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
-"cg" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/obj/effect/turf_decal/bot,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_port_aft)
 "ch" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -991,12 +995,20 @@
 /obj/structure/window/reinforced/plasma/spawner/directional/north,
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/engines)
-"cm" = (
+"cl" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 9
+	dir = 1
 	},
+/obj/machinery/light/directional/north,
+/obj/machinery/status_display/evac/directional/north,
+/obj/structure/rack/gunrack,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/stationtrauma_space/raven/brig)
+"cm" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/l3closet/expedition,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
 "cn" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -1004,13 +1016,10 @@
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_aft)
 "co" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/light/directional/north,
-/obj/machinery/status_display/evac/directional/north,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/l3closet/expedition,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_port_fore)
 "cp" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1027,10 +1036,16 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/engine_control)
 "cr" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/l3closet/expedition,
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
+"cs" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
 /obj/machinery/airalarm/directional/north,
+/obj/structure/rack/gunrack,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/stationtrauma_space/raven/brig)
 "ct" = (
@@ -1039,10 +1054,12 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
 "cu" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/suit_storage_unit/expedition,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/radio/intercom/directional/west,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "cv" = (
 /obj/structure/cable/layer1,
 /obj/structure/cable,
@@ -1056,16 +1073,12 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
 "cw" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/suit_storage_unit/expedition/pilot,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/stationtrauma_space/raven/brig)
 "cx" = (
 /obj/machinery/button/door/directional/south{
 	id = "raven_core_shutters";
@@ -1081,17 +1094,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_port_aft)
-"cz" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/machinery/suit_storage_unit/expedition/heavy,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/raven/hallway)
 "cA" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -1099,22 +1101,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/power)
-"cB" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/item/radio/intercom/directional/west,
-/obj/structure/closet/l3closet/expedition,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
-"cC" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/l3closet/expedition,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/stationtrauma_space/raven/brig)
 "cD" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/airalarm/directional/east,
@@ -2074,17 +2060,6 @@
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
-"jy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
-/obj/machinery/sleeper{
-	dir = 4
-	},
-/turf/open/floor/iron/white/side{
-	dir = 9
-	},
-/area/shuttle/stationtrauma_space/raven/medbay)
 "jz" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -2616,16 +2591,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
-"lm" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_starboard_fore)
-"ln" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
 "lo" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -2662,9 +2627,10 @@
 "lv" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/stationtrauma_space/raven/airlock_starboard_aft)
-"nl" = (
-/obj/structure/closet/wardrobe/expedition,
+"tp" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/crate/specimen,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/hallway)
 "NP" = (
@@ -2672,6 +2638,22 @@
 /obj/effect/turf_decal/stripes/full,
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/raven/combustion)
+"QZ" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/cable,
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/item/field_collector,
+/obj/item/field_collector,
+/obj/item/storage/field_bolts,
+/obj/item/storage/field_bolts,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/raven/hallway)
 
 (1,1,1) = {"
 ab
@@ -2724,11 +2706,11 @@ bJ
 bR
 bV
 cc
-cd
+co
 aR
 ce
 bi
-cg
+bO
 cn
 cp
 cy
@@ -2783,8 +2765,8 @@ ab
 ab
 bu
 bD
-cC
-cB
+cw
+cu
 eH
 eI
 bD
@@ -2816,7 +2798,7 @@ ab
 ab
 ab
 bD
-cm
+aJ
 fz
 fE
 fJ
@@ -2850,7 +2832,7 @@ gy
 gy
 gz
 bD
-co
+cl
 gB
 aM
 gD
@@ -2884,7 +2866,7 @@ gS
 gT
 bj
 gz
-cr
+cs
 gW
 gX
 gY
@@ -2994,9 +2976,9 @@ ic
 gn
 gn
 id
-hG
+tp
 hb
-nl
+gn
 cH
 jb
 jb
@@ -3028,7 +3010,7 @@ ix
 iy
 hb
 iz
-cV
+QZ
 gI
 cS
 cJ
@@ -3062,7 +3044,7 @@ iW
 iX
 gH
 id
-hG
+tp
 hb
 gn
 cH
@@ -3095,7 +3077,7 @@ jj
 dA
 jl
 hF
-cw
+gH
 cU
 cT
 bU
@@ -3123,7 +3105,7 @@ jw
 jx
 gz
 jj
-jy
+cd
 jz
 jA
 jj
@@ -3163,9 +3145,9 @@ jP
 jQ
 jR
 jS
-cz
-cu
-bO
+gH
+gn
+hb
 gn
 gn
 cK
@@ -3336,11 +3318,11 @@ li
 lj
 lk
 ll
-lm
+cr
 kW
 ce
 kQ
-ln
+cm
 lo
 lp
 lq
