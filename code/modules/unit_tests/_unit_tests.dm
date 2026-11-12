@@ -496,6 +496,8 @@
 #include "../../../modular_bandastation/species/tests/drask_species.dm"
 #include "../../../modular_bandastation/species/tests/drask_temperature.dm"
 
+#include "../../../modular_bandastation/terror_spiders/tests/terror_spiders.dm"
+
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
 #undef TEST_ASSERT_NOTEQUAL
