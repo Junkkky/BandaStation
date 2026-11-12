@@ -10,7 +10,6 @@
 /datum/controller/subsystem/central/ui_interact(mob/user, datum/tgui/ui)
 	if(!isnewplayer(user) || !user.client || user.client.interviewee)
 		return
-	refresh_antag_tokens(user.ckey)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AntagTokens", "Антаг токены")
