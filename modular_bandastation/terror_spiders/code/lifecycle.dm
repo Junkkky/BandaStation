@@ -3,6 +3,7 @@
 	desc = "Крохотный, шустрый паук. Хочется верить, что он не вырастет."
 	speed = -1
 	melee_damage_upper = 1
+	unsuitable_heat_damage = 0
 	faction = list(FACTION_TERROR_SPIDER)
 	directive = TERROR_SPIDER_DEFAULT_DIRECTIVE
 	web_type = null
@@ -29,6 +30,10 @@
 	. = ..()
 	qdel(GetComponent(/datum/component/tameable))
 	RegisterSignal(src, COMSIG_MOB_CHANGED_TYPE, PROC_REF(on_grown))
+
+/mob/living/basic/spider/growing/spiderling/terror/on_fire_stack(seconds_per_tick, datum/status_effect/fire_handler/fire_stacks/fire_handler)
+	. = ..()
+	adjust_fire_loss(TERROR_SPIDER_FIRE_DAMAGE_PER_SECOND * seconds_per_tick, forced = TRUE)
 
 /mob/living/basic/spider/growing/spiderling/terror/grow_up()
 	if(stillborn)

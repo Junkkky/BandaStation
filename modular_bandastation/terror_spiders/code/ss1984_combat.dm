@@ -209,7 +209,7 @@
 	if(!isturf(owner.loc))
 		return FALSE
 	playsound(owner, 'modular_bandastation/terror_spiders/sound/brown_shriek.ogg', 50, TRUE)
-	explosion(owner, flame_range = 5, explosion_cause = owner)
+	explosion(owner, flame_range = 5, protect_epicenter = TRUE, explosion_cause = owner)
 	StartCooldown()
 	return TRUE
 

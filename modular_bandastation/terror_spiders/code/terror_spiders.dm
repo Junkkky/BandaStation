@@ -18,6 +18,7 @@
 	death_sound = 'modular_bandastation/terror_spiders/sound/death.ogg'
 	habitable_atmos = null
 	unsuitable_cold_damage = 0
+	unsuitable_heat_damage = 0
 	move_resist = MOVE_FORCE_STRONG
 	speed = 4
 	player_speed_modifier = -3

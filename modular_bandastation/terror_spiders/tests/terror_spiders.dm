@@ -220,6 +220,44 @@
 	TEST_ASSERT(!DOING_INTERACTION(destroyer, /datum/element/wall_tearer), "Movement did not interrupt breaching.")
 	TEST_ASSERT(test_wall.density && cracks.current_stage == 0, "The interrupted strike advanced the damage stage.")
 
+/datum/unit_test/terror_spider_heat
+	/// Captured before propagation to keep the shared test room free of hotspots.
+	var/list/ring_explosion
+
+/datum/unit_test/terror_spider_heat/Run()
+	var/mob/living/basic/spider/giant/terror/brown/destroyer = allocate(__IMPLIED_TYPE__)
+	var/mob/living/basic/spider/growing/spiderling/terror/spiderling = allocate(__IMPLIED_TYPE__)
+	destroyer.terror_regeneration = 0
+	for(var/mob/living/basic/spider/spider as anything in list(destroyer, spiderling))
+		spider.bodytemperature = 500
+		spider.Life(1)
+		TEST_ASSERT_EQUAL(spider.health, spider.maxHealth, "[spider.type] took damage from ambient heat.")
+
+		spider.set_fire_stacks(10)
+		TEST_ASSERT(spider.ignite_mob(silent = TRUE), "[spider.type] could not catch fire.")
+		var/datum/status_effect/fire_handler/fire_stacks/fire = spider.has_status_effect(/datum/status_effect/fire_handler/fire_stacks)
+		fire.deal_damage(1)
+		TEST_ASSERT_EQUAL(spider.health, spider.maxHealth - 4, "[spider.type] did not take direct damage from burning.")
+		spider.extinguish_mob()
+		TEST_ASSERT(!spider.on_fire, "[spider.type] did not stop burning.")
+		spider.bodytemperature = 500
+		spider.Life(1)
+		TEST_ASSERT_EQUAL(spider.health, spider.maxHealth - 4, "[spider.type] took residual heat damage after extinguishing.")
+
+	var/datum/action/cooldown/mob_cooldown/terror_destroyer_ignite/ignite = locate() in destroyer.actions
+	TEST_ASSERT_NOTNULL(ignite, "The Destroyer has no fire ring action.")
+	RegisterSignal(destroyer, COMSIG_ATOM_EXPLODE, PROC_REF(capture_fire_ring))
+	TEST_ASSERT(ignite.Activate(), "The Destroyer could not cast the fire ring.")
+	TEST_ASSERT_NOTNULL(ring_explosion, "The fire ring did not reach the explosion system.")
+	TEST_ASSERT(ring_explosion[EXARG_KEY_PROTECT_EPICENTER], "The fire ring did not spare the Destroyer's tile.")
+	TEST_ASSERT_EQUAL(ring_explosion[EXARG_KEY_FLAME_RANGE], 5, "Protecting the center changed the fire ring's range.")
+
+/// Capture the action's real explosion arguments without igniting any test fixtures.
+/datum/unit_test/terror_spider_heat/proc/capture_fire_ring(datum/source, list/explosion_args)
+	SIGNAL_HANDLER
+	ring_explosion = explosion_args
+	return COMSIG_CANCEL_EXPLOSION
+
 /datum/unit_test/terror_spider_parasite
 
 /datum/unit_test/terror_spider_parasite/Run()

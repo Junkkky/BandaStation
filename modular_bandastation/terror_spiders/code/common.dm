@@ -14,6 +14,11 @@
 	if(terror_degenerating)
 		adjust_brute_loss(6 * seconds_per_tick / 2, forced = TRUE)
 
+/// Apply burn damage during ignition so residual body heat cannot keep hurting the brood after extinguishing.
+/mob/living/basic/spider/giant/terror/on_fire_stack(seconds_per_tick, datum/status_effect/fire_handler/fire_stacks/fire_handler)
+	. = ..()
+	adjust_fire_loss(TERROR_SPIDER_FIRE_DAMAGE_PER_SECOND * seconds_per_tick, forced = TRUE)
+
 /mob/living/basic/spider/giant/terror/get_status_tab_items()
 	. = ..()
 	if(terror_degenerating)
