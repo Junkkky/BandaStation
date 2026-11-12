@@ -95,6 +95,7 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 			if(!core.research_paid)
 				xenoarch_record_study(core.energy_kind)
 				core.journal_record?.log_observation(user, src, "Ядро каталогизировано на сканирующей площадке.")
+				SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_FIND_CATALOGUED, core, user, src)
 			core.research_paid = TRUE
 			print_catalogue(find, core_points, "<br>Вид энергии: [artifact_energy_kind(core.energy_kind)?.report_name]")
 			return TRUE
@@ -113,6 +114,7 @@ GLOBAL_LIST_INIT(xenoarch_curio_research_points, list(
 				artefact.research_paid = TRUE
 				xenoarch_record_study(artefact.energy_kind)
 				artefact.journal_record?.log_observation(user, src, "Каталогизирован на сканирующей площадке.")
+				SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_FIND_CATALOGUED, artefact, user, src)
 		else if(!paid)
 			for(var/listed_type in GLOB.xenoarch_curio_research_points)
 				if(istype(find, listed_type))

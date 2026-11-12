@@ -123,6 +123,7 @@
 		return
 	sample.analyzed = TRUE
 	original_record.log_observation(user, src, "Лабораторный анализ пробы [sample.sample_id]: [original_record.laboratory_notes]")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_SAMPLE_ANALYZED, original_record, user, src)
 	var/obj/item/paper/report = new /obj/item/paper/stationtrauma_research_report(drop_location())
 	report.name = "лабораторный отчёт [sample.sample_id]"
 	report.add_raw_text("<b>Проба [html_encode(sample.sample_id)]</b><br>Отбор: [html_encode(sample.collected_by)]<br>Аналитик: [html_encode(user.real_name)]<br>[original_record.specimen_text(TRUE)]", advanced_html = TRUE)

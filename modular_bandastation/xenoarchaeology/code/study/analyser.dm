@@ -331,6 +331,7 @@
 	var/research_points = xenoarch_claim_analysis(find, src, operator)
 	if(research_points)
 		xenoarch_record_study(find.main_effect?.energy_kind)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_FIND_CATALOGUED, find, operator, src)
 	find.journal_note(operator, "Анализ: основное излучение — [find.main_effect ? find.main_effect.report_line() : "не обнаружено"]; второе — [find.second_effect ? find.second_effect.report_line() : "не обнаружено"].")
 	scan_target = null
 	scan_operator = null

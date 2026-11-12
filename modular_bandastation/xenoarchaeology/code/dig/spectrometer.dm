@@ -129,6 +129,7 @@
 		update_appearance()
 		return
 	print_report(sampler)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_CORE_READ, sampler, null, src)
 	sampler.clear_core()
 	eject_sampler()
 	update_appearance()

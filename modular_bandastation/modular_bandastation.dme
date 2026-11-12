@@ -57,6 +57,7 @@
 #include "xenoarchaeology/_xenoarchaeology.dme"
 #include "anomaly_fields/_anomaly_fields.dme"
 #include "planetary_anomalies/_planetary_anomalies.dme"
+#include "expedition_contracts/_expedition_contracts.dme"
 #include "overmap_ships/_overmap_ships.dme"
 #include "overmap_ruins/_overmap_ruins.dme"
 #include "food_and_drinks/_food_and_drinks.dme"

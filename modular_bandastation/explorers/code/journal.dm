@@ -59,7 +59,7 @@ GLOBAL_LIST_EMPTY(expedition_records)
 	/// Status keys accepted from the client, with their report wording.
 	var/static/list/statuses = list("open" = "открыта", "done" = "выполнена", "failed" = "не выполнена")
 
-/** A goal set by the corps for the expedition, or a character's personal research goal. */
+/** A goal the corps sets for the expedition. */
 /datum/expedition_goal
 	/// Stable round-local ID used by the client and reports.
 	var/id
@@ -69,8 +69,6 @@ GLOBAL_LIST_EMPTY(expedition_records)
 	var/author
 	/// Station time of creation.
 	var/created
-	/// Owner of a personal goal; null for a shared expedition goal.
-	var/datum/weakref/owner
 	/// Key of the journal's status list.
 	var/status = "open"
 	/// Player's editable conclusions; recorded facts stay in the linked protocols.
@@ -78,15 +76,11 @@ GLOBAL_LIST_EMPTY(expedition_records)
 	/// Linked discovery IDs, resolved through the journal.
 	var/list/record_ids = list()
 
-/** Expedition goals belong to the whole corps; a personal goal only to its author's mind. */
-/datum/expedition_goal/proc/can_edit(mob/user)
-	return !owner || owner.resolve() == user.mind
-
 /** Snapshot for the paper report: escaped player text plus the current protocols of linked finds. */
 /datum/expedition_goal/proc/report_text(mob/user)
 	var/list/lines = list(
 		"<b>Отчёт экспедиционного корпуса по цели [html_encode(id)]</b>",
-		"[owner ? "Личная исследовательская цель" : "Цель экспедиции"]: [html_encode(text)]",
+		"Цель экспедиции: [html_encode(text)]",
 		"Поставлена: [html_encode(created)] — [html_encode(author)]",
 		"Статус: [GLOB.expedition_journal.statuses[status]]",
 		"Выводы: [length(conclusion) ? html_encode(conclusion) : "не записаны"]",
@@ -103,7 +97,7 @@ GLOBAL_LIST_EMPTY(expedition_records)
 	filedesc = "Журнал экспедиции"
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
 	program_open_overlay = "research"
-	extended_desc = "Журнал экспедиционного корпуса: протоколы находок, цели экспедиции и личные исследовательские цели. Работает без сети и хранит записи в памяти устройства; на станции обменивается ими с архивом корпуса. Отчёты печатаются для отправки факсом со станции."
+	extended_desc = "Журнал экспедиционного корпуса: протоколы находок и цели экспедиции. Работает без сети и хранит записи в памяти устройства; на станции обменивается ими с архивом корпуса. Отчёты печатаются для отправки факсом со станции."
 	program_flags = PROGRAM_ON_NTNET_STORE
 	can_run_on_flags = PROGRAM_ALL
 	download_access = list(ACCESS_EXPLORER)
@@ -154,8 +148,6 @@ GLOBAL_LIST_EMPTY(expedition_records)
 			"text" = goal.text,
 			"author" = goal.author,
 			"created" = goal.created,
-			"personal" = !!goal.owner,
-			"editable" = goal.can_edit(user),
 			"status" = goal.status,
 			"conclusion" = goal.conclusion,
 			"records" = goal.record_ids,
@@ -174,8 +166,7 @@ GLOBAL_LIST_EMPTY(expedition_records)
 	var/datum/expedition_journal/journal = memory
 	if(action == "add_goal")
 		var/text = istext(params["text"]) && trim(params["text"], EXPEDITION_JOURNAL_GOAL_LENGTH)
-		var/personal = !!params["personal"]
-		if(!length(text) || (personal && !user.mind))
+		if(!length(text))
 			return FALSE
 		if(length(journal.goals) >= EXPEDITION_JOURNAL_MAX_GOALS)
 			to_chat(user, span_warning("Журнал заполнен."))
@@ -186,8 +177,6 @@ GLOBAL_LIST_EMPTY(expedition_records)
 		goal.text = text
 		goal.author = user.real_name
 		goal.created = round_timestamp()
-		if(personal)
-			goal.owner = WEAKREF(user.mind)
 		journal.goals[goal.id] = goal
 		return TRUE
 	// A non-text key would index the list by position.
@@ -198,8 +187,6 @@ GLOBAL_LIST_EMPTY(expedition_records)
 		if(!computer.print_text(goal.report_text(user), "отчёт по цели [goal.id]"))
 			to_chat(user, span_warning("В [computer] нет бумаги."))
 		return TRUE
-	if(!goal.can_edit(user))
-		return FALSE
 	var/record_id = istext(params["record"]) && params["record"]
 	switch(action)
 		if("set_status")

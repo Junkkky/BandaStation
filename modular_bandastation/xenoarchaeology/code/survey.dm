@@ -50,7 +50,10 @@
 	if(!completed || QDELETED(source) || QDELETED(user) || user.mind != operator || !user.is_holding(src) || !user.can_perform_action(source, NEED_HANDS|FORBID_TELEKINESIS_REACH))
 		return
 	var/datum/stationtrauma_research_record/record = source.research_record()
-	record.log_observation(user, source, record.surveyed ? "Повторное полевое обследование." : "Полевое обследование: [record.field_notes]")
+	var/first_survey = !record.surveyed
+	record.log_observation(user, source, first_survey ? "Полевое обследование: [record.field_notes]" : "Повторное полевое обследование.")
 	record.surveyed = TRUE
+	if(first_survey)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_SOURCE_SURVEYED, record, user, source)
 	to_chat(user, span_notice(record.specimen_text()))
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)

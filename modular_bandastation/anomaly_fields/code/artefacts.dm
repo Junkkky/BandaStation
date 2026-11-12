@@ -76,6 +76,7 @@
 	serial = xenoarch_new_serial()
 	journal_record = new(serial, src)
 	journal_record.log_observation(user, src, "[capitalize(name)] извлечён коллектором из аномального поля.")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_FIND_RECOVERED, src, user, get_turf(src))
 
 /obj/item/field_artefact/equipped(mob/living/user, slot, initial)
 	. = ..()

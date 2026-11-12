@@ -213,6 +213,7 @@
 	if(QDELETED(src) || record.settled || sampler.sample_serial)
 		return ITEM_INTERACT_BLOCKING
 	sampler.take_core(record)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_CORE_TAKEN, sampler, user, src)
 	playsound(src, 'sound/machines/click.ogg', 40, TRUE)
 	user.visible_message(
 		span_notice("[user] вгоняет [sampler] в [src] и извлекает керн породы."),
@@ -305,6 +306,7 @@
 		visible_message(span_notice("Последние остатки породы осыпаются, и из пыли показывается [find]."))
 		if(damaged)
 			visible_message(span_warning("По [find] идут трещины там, где порода отпустила находку неудачно."))
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_FIND_RECOVERED, find, user, spot)
 	xenoarch_dig_ambush(spot, band, user, site_ref?.resolve())
 	qdel(src)
 	return find

@@ -26,17 +26,48 @@ type Goal = {
   text: string;
   author: string;
   created: string;
-  personal: boolean;
-  editable: boolean;
   status: string;
   conclusion: string;
   records: string[];
 };
 
+type ContractStep = {
+  text: string;
+  progress: number;
+  required: number;
+  done: boolean;
+  current: boolean;
+};
+
+type Contract = {
+  id: string;
+  name: string;
+  customer: string;
+  nanotrasen: boolean;
+  state: string;
+  target: string;
+  x: number;
+  y: number;
+  reward: number;
+  credits: number;
+  decided_by: string | null;
+  steps: ContractStep[];
+};
+
 type Data = {
   records: JournalRecord[];
   goals: Goal[];
+  contracts: Contract[];
+  can_decide: boolean;
   connected: boolean;
+};
+
+const CONTRACT_STATES: Record<string, string> = {
+  offered: 'Предложение',
+  active: 'Выполняется',
+  done: 'Выполнен',
+  declined: 'Отклонён',
+  expired: 'Снят',
 };
 
 const STATUSES = {
@@ -47,7 +78,7 @@ const STATUSES = {
 
 export const NtosExpeditionJournal = () => {
   const { data } = useBackend<Data>();
-  const [tab, setTab] = useState(1);
+  const [tab, setTab] = useState(0);
 
   return (
     <NtosWindow width={600} height={640}>
@@ -58,6 +89,13 @@ export const NtosExpeditionJournal = () => {
             : 'Нет связи со станцией: записи хранятся в памяти устройства и выгрузятся на станции.'}
         </NoticeBox>
         <Tabs>
+          <Tabs.Tab
+            icon="clipboard-list"
+            selected={tab === 0}
+            onClick={() => setTab(0)}
+          >
+            Задания
+          </Tabs.Tab>
           <Tabs.Tab
             icon="bullseye"
             selected={tab === 1}
@@ -73,7 +111,9 @@ export const NtosExpeditionJournal = () => {
             Протоколы находок
           </Tabs.Tab>
         </Tabs>
-        {tab === 1 ? <Goals /> : <Records />}
+        {tab === 0 && <Contracts />}
+        {tab === 1 && <Goals />}
+        {tab === 2 && <Records />}
       </NtosWindow.Content>
     </NtosWindow>
   );
@@ -83,11 +123,11 @@ const Goals = () => {
   const { act, data } = useBackend<Data>();
   const [text, setText] = useState('');
 
-  const add = (personal: boolean) => {
+  const add = () => {
     if (!text.trim()) {
       return;
     }
-    act('add_goal', { text, personal });
+    act('add_goal', { text });
     setText('');
   };
 
@@ -105,10 +145,7 @@ const Goals = () => {
             />
           </Stack.Item>
           <Stack.Item>
-            <Button onClick={() => add(false)}>Цель экспедиции</Button>
-          </Stack.Item>
-          <Stack.Item>
-            <Button onClick={() => add(true)}>Личная цель</Button>
+            <Button onClick={add}>Добавить цель</Button>
           </Stack.Item>
         </Stack>
       </Section>
@@ -137,9 +174,6 @@ const GoalSection = (props: { goal: Goal }) => {
       }
     >
       <LabeledList>
-        <LabeledList.Item label="Тип">
-          {goal.personal ? 'Личная цель' : 'Цель экспедиции'}
-        </LabeledList.Item>
         <LabeledList.Item label="Поставлена">
           {goal.created} — {goal.author}
         </LabeledList.Item>
@@ -148,7 +182,6 @@ const GoalSection = (props: { goal: Goal }) => {
             <Button
               key={key}
               selected={goal.status === key}
-              disabled={!goal.editable}
               onClick={() =>
                 act('set_status', { goal: goal.id, status: key })
               }
@@ -161,8 +194,7 @@ const GoalSection = (props: { goal: Goal }) => {
           {goal.records.map((id) => (
             <Button
               key={id}
-              icon={goal.editable ? 'times' : undefined}
-              disabled={!goal.editable}
+              icon="times"
               onClick={() =>
                 act('unlink_record', { goal: goal.id, record: id })
               }
@@ -170,7 +202,7 @@ const GoalSection = (props: { goal: Goal }) => {
               {id}
             </Button>
           ))}
-          {goal.editable && unlinked.length > 0 && (
+          {unlinked.length > 0 && (
             <Dropdown
               placeholder="Привязать протокол..."
               selected=""
@@ -183,21 +215,104 @@ const GoalSection = (props: { goal: Goal }) => {
         </LabeledList.Item>
       </LabeledList>
       <Box mt={1}>
-        {goal.editable ? (
-          <TextArea
-            fluid
-            height="80px"
-            maxLength={1024}
-            placeholder="Гипотезы и выводы..."
-            value={goal.conclusion}
-            onBlur={(value) =>
-              value !== goal.conclusion &&
-              act('set_conclusion', { goal: goal.id, text: value })
-            }
-          />
-        ) : (
-          <Box preserveWhitespace>{goal.conclusion || 'Выводы не записаны.'}</Box>
+        <TextArea
+          fluid
+          height="80px"
+          maxLength={1024}
+          placeholder="Гипотезы и выводы..."
+          value={goal.conclusion}
+          onBlur={(value) =>
+            value !== goal.conclusion &&
+            act('set_conclusion', { goal: goal.id, text: value })
+          }
+        />
+      </Box>
+    </Section>
+  );
+};
+
+const Contracts = () => {
+  const { data } = useBackend<Data>();
+
+  if (data.contracts.length === 0) {
+    return <NoticeBox>Заказов пока нет.</NoticeBox>;
+  }
+  return (
+    <>
+      {data.contracts.map((contract) => (
+        <ContractSection key={contract.id} contract={contract} />
+      ))}
+    </>
+  );
+};
+
+const ContractSection = (props: { contract: Contract }) => {
+  const { act, data } = useBackend<Data>();
+  const { contract } = props;
+  const open = contract.state === 'offered' || contract.state === 'active';
+
+  return (
+    <Section
+      title={`${contract.id}: ${contract.name}`}
+      buttons={
+        data.can_decide &&
+        open && (
+          <>
+            {contract.state === 'offered' && (
+              <Button
+                icon="check"
+                color="good"
+                onClick={() =>
+                  act('accept_contract', { contract: contract.id })
+                }
+              >
+                Принять
+              </Button>
+            )}
+            <Button
+              icon="times"
+              color="bad"
+              onClick={() => act('decline_contract', { contract: contract.id })}
+            >
+              Отказаться
+            </Button>
+          </>
+        )
+      }
+    >
+      <LabeledList>
+        <LabeledList.Item label="Заказчик">
+          {contract.customer}
+          {contract.nanotrasen ? ' (заказ НТ)' : ' (контракт)'}
+        </LabeledList.Item>
+        <LabeledList.Item label="Объект">
+          {contract.target} — координаты {contract.x}, {contract.y}
+        </LabeledList.Item>
+        <LabeledList.Item label="Статус">
+          {CONTRACT_STATES[contract.state]}
+          {contract.decided_by && ` — ${contract.decided_by}`}
+        </LabeledList.Item>
+        {contract.reward > 0 && (
+          <LabeledList.Item label="Награда">
+            {contract.reward} очков исследований станции
+          </LabeledList.Item>
         )}
+        {contract.credits > 0 && (
+          <LabeledList.Item label="Награда">
+            {contract.credits} кредитов в бюджет снабжения
+          </LabeledList.Item>
+        )}
+      </LabeledList>
+      <Box mt={1}>
+        {contract.steps.map((step, index) => (
+          <Box
+            key={index}
+            color={step.done ? 'good' : step.current ? 'average' : 'label'}
+          >
+            {step.done ? '✓' : step.current ? '▶' : '•'} {step.text} (
+            {step.progress}/{step.required})
+          </Box>
+        ))}
       </Box>
     </Section>
   );

@@ -56,7 +56,11 @@
 	var/obj/item/assembly/signaler/anomaly/planetary/core = anomaly_core
 	if(istype(core))
 		core.journal_record = journal_record
-	return ..()
+	var/turf/spot = get_turf(src)
+	. = ..()
+	// Over the core cap the core never drops and goes with the anomaly.
+	if(istype(core) && !QDELETED(core) && isturf(core.loc))
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_FIND_RECOVERED, core, ismob(usr) ? usr : null, spot)
 
 /obj/effect/anomaly/pulsing/move_anomaly()
 	var/turf/next = get_step(src, pick(GLOB.alldirs))
