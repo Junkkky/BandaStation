@@ -14,6 +14,8 @@
 			return null
 	if(!species_icon)
 		return null
+	if(species_id == SPECIES_DRASK && (greyscale_config_worn || worn_x_dimension != 32 || worn_y_dimension != 32))
+		return null
 	if(species_id == SPECIES_RESOMI)
 		if(worn_y_offset && !greyscale_config_worn)
 			return null
@@ -102,14 +104,16 @@
 		SPECIES_VULPKANIN = 'icons/bandastation/mob/species/vulpkanin/clothing/modsuits.dmi',
 		SPECIES_TAJARAN = 'icons/bandastation/mob/species/tajaran/clothing/modsuits.dmi',
 		SPECIES_SKRELL = 'icons/bandastation/mob/species/skrell/clothing/modsuits.dmi',
-		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/modsuits.dmi'
+		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/modsuits.dmi',
+		SPECIES_DRASK = 'icons/bandastation/mob/species/drask/clothing/modsuits.dmi',
 	)
 
 /obj/item/clothing/suit/mod
 	worn_icon_species = list(
 		SPECIES_VULPKANIN = 'icons/bandastation/mob/species/vulpkanin/clothing/modsuits.dmi',
 		SPECIES_TAJARAN = 'icons/bandastation/mob/species/tajaran/clothing/modsuits.dmi',
-		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/modsuits.dmi'
+		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/modsuits.dmi',
+		SPECIES_DRASK = 'icons/bandastation/mob/species/drask/clothing/modsuits.dmi',
 	)
 
 /obj/item/mod/module
@@ -135,12 +139,14 @@
 		SPECIES_SKRELL = 'icons/bandastation/mob/species/skrell/clothing/head.dmi',
 		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/head.dmi',
 		SPECIES_RESOMI = 'icons/bandastation/mob/species/resomi/clothing/head.dmi',
+		SPECIES_DRASK = 'icons/bandastation/mob/species/drask/clothing/helmets.dmi',
 	)
 
 /obj/item/clothing/under
 	worn_icon_species = list(
 		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/uniform.dmi',
 		SPECIES_RESOMI = 'icons/bandastation/mob/species/resomi/clothing/uniform.dmi',
+		SPECIES_DRASK = 'icons/bandastation/mob/species/drask/clothing/uniforms.dmi',
 	)
 
 /obj/item/clothing/head/helmet
@@ -150,12 +156,14 @@
 		SPECIES_SKRELL = 'icons/bandastation/mob/species/skrell/clothing/head.dmi',
 		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/helmet.dmi',
 		SPECIES_RESOMI = 'icons/bandastation/mob/species/resomi/clothing/head.dmi',
+		SPECIES_DRASK = 'icons/bandastation/mob/species/drask/clothing/helmets.dmi',
 	)
 
 /obj/item/clothing/mask
 	worn_icon_species = list(
 		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/mask.dmi',
 		SPECIES_RESOMI = 'icons/bandastation/mob/species/resomi/clothing/mask.dmi',
+		SPECIES_DRASK = 'icons/bandastation/mob/species/drask/clothing/masks.dmi',
 	)
 
 /obj/item/cigarette
@@ -188,12 +196,14 @@
 	worn_icon_species = list(
 		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/hands.dmi',
 		SPECIES_RESOMI = 'icons/bandastation/mob/species/resomi/clothing/hands.dmi',
+		SPECIES_DRASK = 'icons/bandastation/mob/species/drask/clothing/gloves.dmi',
 	)
 
 /obj/item/clothing/shoes
 	worn_icon_species = list(
 		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/feet.dmi',
 		SPECIES_RESOMI = 'icons/bandastation/mob/species/resomi/clothing/feet.dmi',
+		SPECIES_DRASK = 'icons/bandastation/mob/species/drask/clothing/boots.dmi',
 	)
 
 /obj/item/clothing/neck
@@ -235,16 +245,19 @@
 /obj/item/mod/control
 	worn_icon_species = list(
 		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/modsuits.dmi',
+		SPECIES_DRASK = 'icons/bandastation/mob/species/drask/clothing/modsuits.dmi',
 	)
 
 /obj/item/clothing/gloves/mod
 	worn_icon_species = list(
 		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/modsuits.dmi',
+		SPECIES_DRASK = 'icons/bandastation/mob/species/drask/clothing/modsuits.dmi',
 	)
 
 /obj/item/clothing/shoes/mod
 	worn_icon_species = list(
 		SPECIES_VOX = 'icons/bandastation/mob/species/vox/clothing/modsuits.dmi',
+		SPECIES_DRASK = 'icons/bandastation/mob/species/drask/clothing/modsuits.dmi',
 	)
 
 /datum/greyscale_config/jumpsuit/worn/vox
