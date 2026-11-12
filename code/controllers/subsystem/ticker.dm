@@ -290,6 +290,7 @@ SUBSYSTEM_DEF(ticker)
 	set waitfor = FALSE
 
 	// Spawn traitors and stuff
+	SSdynamic.execute_antag_token_rulesets()
 	for(var/datum/dynamic_ruleset/roundstart/ruleset in SSdynamic.queued_rulesets)
 		ruleset.execute()
 		SSdynamic.unqueue_ruleset(ruleset)

@@ -498,6 +498,8 @@
 
 #include "../../../modular_bandastation/terror_spiders/tests/terror_spiders.dm"
 
+#include "../../../modular_bandastation/dynamic/code/antag_tokens_tests.dm"
+
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
 #undef TEST_ASSERT_NOTEQUAL
