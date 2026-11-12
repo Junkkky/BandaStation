@@ -106,30 +106,25 @@
 	TEST_ASSERT(ship_signal.data["done"], "The compact ship mainframe did not process the corps channel.")
 	TEST_ASSERT_EQUAL(ship_signal.data["frequency_name"], RADIO_CHANNEL_EXPEDITION, "The ship mainframe lost the corps channel name.")
 
-/// The full wardrobe must close with its stock and must not refill on reopening.
+/// The corps vending machine stocks every piece of corps clothing and the field kit, each with valid renders.
 /datum/unit_test/explorers_wardrobe
 
 /datum/unit_test/explorers_wardrobe/Run()
-	var/obj/structure/closet/wardrobe/expedition/wardrobe = allocate(/obj/structure/closet/wardrobe/expedition, run_loc_floor_top_right)
-	TEST_ASSERT(wardrobe.open(special_effects = FALSE), "The expedition wardrobe could not be opened.")
-	TEST_ASSERT(wardrobe.close(), "The complete clothing stock does not fit back inside its wardrobe.")
-	var/initial_count = length(wardrobe.contents)
-	TEST_ASSERT(initial_count > 0, "The expedition wardrobe is empty.")
-	TEST_ASSERT(initial_count <= wardrobe.storage_capacity, "The expedition wardrobe exceeds its capacity.")
-	var/list/clothing_by_type = list()
-	for(var/obj/item/item in wardrobe)
-		clothing_by_type[item.type] = item
-	TEST_ASSERT_EQUAL(length(clothing_by_type), 11, "The wardrobe does not contain all eleven types of corps clothing and sheaths.")
-	for(var/item_type in clothing_by_type)
-		var/obj/item/item = clothing_by_type[item_type]
+	var/obj/machinery/vending/wardrobe/expedition_wardrobe/wardrobe = allocate(/obj/machinery/vending/wardrobe/expedition_wardrobe, run_loc_floor_top_right)
+	TEST_ASSERT_EQUAL(length(wardrobe.product_records), 15, "The corps vending machine does not stock its eleven clothing types and four field tools.")
+	for(var/datum/data/vending_product/record as anything in wardrobe.product_records)
+		TEST_ASSERT(record.amount > 0, "[record.product_path] is out of stock at round start.")
+		var/obj/item/item = allocate(record.product_path)
 		var/icon/inventory_render = getFlatIcon(item)
-		TEST_ASSERT(inventory_render.Width() > 0, "[item_type] has no valid inventory render.")
-		var/image/worn_appearance = image(item.worn_icon, icon_state = item.worn_icon_state || item.icon_state)
+		TEST_ASSERT(inventory_render.Width() > 0, "[record.product_path] has no valid inventory render.")
+		if(!istype(item, /obj/item/clothing) && !istype(item, /obj/item/storage/belt))
+			continue
+		// A belt without its own worn file is drawn from the shared belt sheet, as the mob does.
+		var/worn_file = item.worn_icon || (istype(item, /obj/item/storage/belt) ? 'icons/mob/clothing/belt.dmi' : null)
+		TEST_ASSERT_NOTNULL(worn_file, "[record.product_path] has no worn icon file.")
+		var/image/worn_appearance = image(worn_file, icon_state = item.worn_icon_state || item.icon_state)
 		var/icon/worn_render = getFlatIcon(worn_appearance)
-		TEST_ASSERT(worn_render.Width() > 0, "[item_type] has no valid worn render.")
-	TEST_ASSERT(wardrobe.open(special_effects = FALSE), "The stocked wardrobe could not reopen.")
-	TEST_ASSERT(wardrobe.close(), "The reopened wardrobe could not close.")
-	TEST_ASSERT_EQUAL(length(wardrobe.contents), initial_count, "Reopening the wardrobe duplicated its clothing.")
+		TEST_ASSERT(worn_render.Width() > 0, "[record.product_path] has no valid worn render.")
 
 /// Native accessory storage must remain usable when cloned onto a worn uniform.
 /datum/unit_test/explorers_field_clothing

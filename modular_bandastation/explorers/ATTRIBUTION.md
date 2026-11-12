@@ -23,14 +23,15 @@
 | `shoes.dmi`, `shoes_worn.dmi` — служебные ботинки | [obj_feet.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/clothing/obj_feet.dmi), [onmob_feet.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/onmob_feet.dmi) |
 | `gloves.dmi`, `gloves_worn.dmi` — рабочие перчатки | [obj_hands.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/clothing/obj_hands.dmi), [onmob_hands.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/onmob_hands.dmi) |
 | `suits.dmi`, `suits_worn.dmi` — куртка | [obj_suit.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/clothing/obj_suit.dmi), [onmob_suit.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/onmob_suit.dmi) |
-| `accessories.dmi`, `accessories_worn.dmi` — разгрузка | [obj_accessories.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/clothing/obj_accessories.dmi), [onmob_accessories.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/onmob_accessories.dmi) |
+| `accessories.dmi`, `accessories_worn.dmi` — разгрузка, ножны `holster_machete` | [obj_accessories.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/clothing/obj_accessories.dmi), [onmob_accessories.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/onmob_accessories.dmi) |
 
 Авторство графики сохраняется за участниками SierraBay/Baystation. Кадры извлечены
 без перерисовки, масштабирования или перекраски; совпадение пикселей проверено.
 Изменена упаковка DMI; открытое состояние куртки переименовано из `_open` в `_t`
 для штатного переключателя TG. Карманы и хранение работают через имеющуюся систему TG.
-Ножны рисуются спрайтами ножен гладиуса TG (`gladius_sheath`, с клинком — `-full`):
-рисунок ножен Sierra на теле был тонким ремешком и не показывал клинок.
+Исключение — ножны с клинком: состояние `holster_machete-full` (предмет и четыре направления на теле)
+дорисовано поверх ножен Sierra рукоятью мачете в цветах нашего мачете (`machete.dmi`); в исходнике Sierra
+такого состояния нет. С запада ножны закрыты телом, и рукоять там не рисуется.
 
 Состав взят из [шкафов НТ-эксплореров](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/sierra/structures/closets/exploration.dm)
 и их [стартовых наборов](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/sierra/job/outfits.dm).

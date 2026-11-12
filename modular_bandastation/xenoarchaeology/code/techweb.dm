@@ -1,6 +1,6 @@
 // Research nodes of Voidcrew PR #506, in our typepath techweb format.
 
-/// The hand kit prints on an autolathe from round start.
+/// The corps' field kit prints from round start: hand tools on an autolathe, the detector, the collector and the specimen crate on a protolathe.
 /datum/techweb_node/fundamental_sci/New()
 	. = ..()
 	unlocked_designs += list(
@@ -11,20 +11,20 @@
 		/datum/design/xenoarch_core_sampler,
 		/datum/design/xenoarch_find_bag,
 		/datum/design/field_bolts,
+		/datum/design/field_detector,
+		/datum/design/field_collector,
+		/datum/design/specimen_crate,
 	)
 
 /datum/techweb_node/xenoarchaeology
 	display_name = "Ксеноархеология"
-	description = "Полевые стабилизаторы и спектрометр проб, чтобы извлекать крупные находки целыми, ящик для их перевозки, лабораторный анализатор с площадкой, детектор аномалий и коллектор артефактов."
+	description = "Полевые стабилизаторы и спектрометр проб, чтобы извлекать крупные находки целыми, и лабораторный анализатор с площадкой."
 	prerequisite_nodes = list(/datum/techweb_node/fundamental_sci)
 	unlocked_designs = list(
 		/datum/design/xenoarch_stabiliser,
 		/datum/design/board/xenoarch_spectrometer,
-		/datum/design/specimen_crate,
 		/datum/design/board/artifact_analyser,
 		/datum/design/board/artifact_scanpad,
-		/datum/design/field_detector,
-		/datum/design/field_collector,
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
 	experiments_to_unlock = list(/datum/experiment/xenoarch_analysis)

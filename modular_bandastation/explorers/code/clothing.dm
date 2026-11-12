@@ -80,10 +80,10 @@
 /obj/item/clothing/accessory/expedition_sheath
 	name = "набедренные ножны экспедиционного корпуса"
 	desc = "Синтетические кожаные ножны для полевого клинка. Крепятся к форме."
-	icon = 'icons/obj/clothing/belts.dmi'
-	worn_icon = 'icons/mob/clothing/belt.dmi'
-	icon_state = "gladius_sheath"
-	worn_icon_state = "gladius_sheath"
+	icon = 'modular_bandastation/explorers/icons/accessories.dmi'
+	worn_icon = 'modular_bandastation/explorers/icons/accessories_worn.dmi'
+	icon_state = "holster_machete"
+	worn_icon_state = "holster_machete"
 	icon_state_is_worn = FALSE
 	minimize_when_attached = FALSE
 	above_suit = FALSE
@@ -108,10 +108,11 @@
 /obj/item/storage/belt/expedition_sheath
 	name = "поясные ножны экспедиционного корпуса"
 	desc = "Синтетические кожаные ножны для полевого клинка на собственном ремне."
-	worn_icon = 'icons/mob/clothing/belt.dmi'
-	icon_state = "gladius_sheath"
-	worn_icon_state = "gladius_sheath"
-	inhand_icon_state = "gladius_sheath"
+	icon = 'modular_bandastation/explorers/icons/accessories.dmi'
+	worn_icon = 'modular_bandastation/explorers/icons/accessories_worn.dmi'
+	icon_state = "holster_machete"
+	worn_icon_state = "holster_machete"
+	inhand_icon_state = "utility"
 
 /obj/item/storage/belt/expedition_sheath/Initialize(mapload)
 	. = ..()
