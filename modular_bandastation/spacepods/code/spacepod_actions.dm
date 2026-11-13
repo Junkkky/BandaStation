@@ -83,7 +83,7 @@
 
 /datum/action/vehicle/sealed/spacepod/brakes
 	name = "Тормоз челнока"
-	desc = "Включает или отключает тормозную тягу. Для торможения нужен заряд батареи."
+	desc = "Гасит инерцию, когда отпущены клавиши движения. Встречная тяга расходует вдвое больше заряда при той же силе."
 	button_icon_state = "mech_safeties_off"
 
 /datum/action/vehicle/sealed/spacepod/brakes/Grant(mob/grant_to)
@@ -95,7 +95,7 @@
 	if(. && pod.can_control(owner) && pod.flight.toggle_brakes())
 		button_icon_state = pod.flight.brakes ? "mech_safeties_on" : "mech_safeties_off"
 		build_all_button_icons()
-		pod.balloon_alert(owner, pod.flight.brakes ? "тормоз включён" : "тормоз выключен")
+		pod.balloon_alert(owner, pod.flight.brakes ? "автотормоз включён" : "автотормоз выключен")
 
 /datum/action/vehicle/sealed/spacepod/turbo
 	name = "ТУРБО"
