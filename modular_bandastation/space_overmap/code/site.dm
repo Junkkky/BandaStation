@@ -50,6 +50,8 @@
 	failed = !map_loader.Invoke()
 	map_loader = null
 	loading_map = FALSE
+	if(!failed)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_SITE_LOADED, src)
 
 
 /** Known planets carry their chart symbol without disclosing hidden signals. */

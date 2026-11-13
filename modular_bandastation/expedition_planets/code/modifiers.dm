@@ -351,6 +351,7 @@
 		light_alpha = max(light_alpha, modifier.light_alpha)
 		megafauna ||= modifier.megafauna
 		craters ||= modifier.craters
+		anomaly_fields ||= modifier.anomaly_fields
 		if(modifier.guardian_types)
 			guardian_types = modifier.guardian_types
 		if(modifier.hive)

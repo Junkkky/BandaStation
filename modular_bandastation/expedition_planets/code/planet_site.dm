@@ -85,6 +85,8 @@
 	failed = !build_surface()
 	QDEL_NULL(generator)
 	loading_map = FALSE
+	if(!failed)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_SITE_LOADED, src)
 
 /** Generate every level of the surface, yielding between work slices; returns whether the planet is ready for landing. */
 /datum/stationtrauma_overmap_site/space/planet/proc/build_surface()
@@ -146,6 +148,9 @@
 	generator.place_craters(bottom)
 	if(generator.populate_terrain(turfs, surface) != 3)
 		CRASH("Expedition planet [seed] lacks its research sources")
+	generator.place_dig_sites(turfs, surface, src, budget)
+	generator.place_anomaly_fields(turfs, surface, src, budget)
+	generator.place_planetary_anomalies(turfs, surface, src, budget)
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(berth))
 	marker.site_id = id
 	marker.name = name
