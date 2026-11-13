@@ -3340,6 +3340,7 @@
 #include "code\modules\admin\admin_verb_panel.dm"
 #include "code\modules\admin\admin_verbs.dm"
 #include "code\modules\admin\antag_panel.dm"
+#include "code\modules\admin\antag_winloss_stats.dm"
 #include "code\modules\admin\centcom.dm"
 #include "code\modules\admin\chat_commands.dm"
 #include "code\modules\admin\check_antagonists.dm"
