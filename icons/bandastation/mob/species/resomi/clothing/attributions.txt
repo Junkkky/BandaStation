@@ -24,3 +24,16 @@ Further fitted states use native PrimeDream worn artwork for departmental
 clothes, masks, glasses, spacesuits, neckwear, backpack equipment and suit
 storage. Base sprites, active variants and overlay layers retain their original
 state names and colors.
+
+seifuku_gags.dmi adapts the school uniform layers from PrimeDream's
+icons/mob/clothing/under/costume.dmi. The same pixel mapping is applied to the
+shirt, ribbon and skirt in both worn styles to preserve their GAGS colors.
+
+The generated/ sheets use the native PrimeDream worn sprites listed in
+modular_bandastation/species/code/clothing/resomi_generated.dm. GAGS variants
+inherit the original configuration and palette layers. The generator remaps
+pixels for Resomi proportions and retains the original animation metadata.
+
+The nitrogen tank worn state combines the standard oxygen tank silhouette in
+icons/mob/clothing/back.dmi with the paint colors from the native nitrogen tank
+in modular_bandastation/species/icons/tanks/tank.dmi.
