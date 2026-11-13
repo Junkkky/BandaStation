@@ -152,7 +152,31 @@
 
 	var/obj/item/mod/control/pre_equipped/engineering/mod = allocate(/obj/item/mod/control/pre_equipped/engineering)
 	TEST_ASSERT(eva_resomi.equip_to_slot_if_possible(mod, ITEM_SLOT_BACK), "Resomi could not wear the standard engineering MOD.")
-	TEST_ASSERT_NULL(mod.get_species_worn_icon(SPECIES_RESOMI), "The standard MOD used a Resomi-only sprite.")
+	var/mutable_appearance/mod_overlay = eva_resomi.overlays_standing[BACK_LAYER]
+	TEST_ASSERT_NOTNULL(mod_overlay, "The engineering MOD did not produce a back overlay.")
+	TEST_ASSERT_NOTEQUAL(mod_overlay.icon, mod.worn_icon, "The engineering MOD did not use a fitted back sprite.")
+
+/// Exercise both styles and recoloring through the worn uniform layer.
+/datum/unit_test/resomi_seifuku/Run()
+	var/mob/living/carbon/human/resomi = allocate(/mob/living/carbon/human/dummy/consistent)
+	resomi.set_species(/datum/species/resomi)
+	resomi.dna.species.prepare_human_for_preview(resomi)
+	var/obj/item/clothing/under/costume/seifuku/uniform = allocate(/obj/item/clothing/under/costume/seifuku)
+	TEST_ASSERT(resomi.equip_to_slot_if_possible(uniform, ITEM_SLOT_ICLOTHING), "Resomi could not wear the school uniform.")
+	var/native_icon = uniform.worn_icon
+	for(var/style in list("normal", "adjusted", "recolored"))
+		if(style != "normal")
+			uniform.rolldown()
+		if(style == "recolored")
+			uniform.set_greyscale(list("#3F4453", "#BB2E2E", "#EBEBEB"))
+			uniform.update_slot_icon()
+		var/expected_state = style == "adjusted" ? "seifuku_d" : "seifuku"
+		var/mutable_appearance/worn = resomi.overlays_standing[UNIFORM_LAYER]
+		TEST_ASSERT_NOTNULL(worn, "School uniform produced no worn overlay.")
+		TEST_ASSERT_EQUAL(worn.icon_state, expected_state, "School uniform lost its current worn style.")
+		TEST_ASSERT_NOTEQUAL(worn.icon, native_icon, "Resomi used the regular uniform sheet.")
+		TEST_ASSERT_EQUAL(worn.icon, SSgreyscale.GetColoredIconByType(/datum/greyscale_config/seifuku/worn/resomi, uniform.greyscale_colors), "School uniform lost its Resomi fit or chosen colors.")
+		test_screenshot(style, get_flat_icon_for_all_directions(resomi))
 
 /// Wearing, removing and transferring underclothes preserves the item and uses the wearer's fit.
 /datum/unit_test/resomi_underclothing/Run()

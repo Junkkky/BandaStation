@@ -11,19 +11,27 @@
 		if(!worn_icon)
 			species_icon = 'icons/bandastation/mob/species/resomi/clothing/belt_mirror.dmi'
 		else if(worn_icon != 'icons/mob/clothing/back.dmi' && worn_icon != 'icons/mob/clothing/belt.dmi')
-			return null
-	if(!species_icon)
+			species_icon = null
+	if(!species_icon && species_id != SPECIES_RESOMI)
 		return null
 	if(species_id == SPECIES_DRASK && (greyscale_config_worn || worn_x_dimension != 32 || worn_y_dimension != 32))
 		return null
 	if(species_id == SPECIES_RESOMI)
-		if(worn_y_offset && !greyscale_config_worn)
-			return null
+		var/config_worn = greyscale_config_worn
+		var/colors = greyscale_colors
+		var/datum/action/item_action/chameleon/change/disguise = locate() in actions
+		if(disguise?.active_type)
+			config_worn = disguise.disguise_worn_config
+			colors = disguise.disguise_worn_colors
+			species_icon = disguise.disguise_species_icons?[SPECIES_RESOMI]
+		if(worn_y_offset && !config_worn)
+			species_icon = null
+		var/native_icon = worn_icon || (slot_id == ITEM_SLOT_SUITSTORE ? 'icons/mob/clothing/belt_mirror.dmi' : get_default_icon_by_slot(slot_id))
 		if(worn_x_dimension == 64 && worn_y_dimension == 64 && species_icon == 'icons/bandastation/mob/species/resomi/clothing/feet.dmi')
 			species_icon = 'icons/bandastation/mob/species/resomi/clothing/feet_64.dmi'
 		else if(worn_x_dimension != 32 || worn_y_dimension != 32)
-			return null
-		if(greyscale_config_worn)
+			return get_generated_resomi_worn_icon(slot_id, native_icon, state, config_worn, colors)
+		if(config_worn && colors)
 			var/static/list/resomi_greyscale_configs = list(
 				/datum/greyscale_config/jumpsuit/worn = /datum/greyscale_config/jumpsuit/worn/resomi,
 				/datum/greyscale_config/sneakers/worn = /datum/greyscale_config/sneakers/worn/resomi,
@@ -47,11 +55,13 @@
 				/datum/greyscale_config/scarf/worn = /datum/greyscale_config/scarf/worn/resomi,
 				/datum/greyscale_config/infinity_scarf/worn = /datum/greyscale_config/infinity_scarf/worn/resomi,
 				/datum/greyscale_config/buttondown_slacks/worn = /datum/greyscale_config/buttondown_slacks/worn/resomi,
+				/datum/greyscale_config/seifuku/worn = /datum/greyscale_config/seifuku/worn/resomi,
 			)
-			var/resomi_config = resomi_greyscale_configs[greyscale_config_worn]
-			if(!resomi_config)
-				return null
-			species_icon = SSgreyscale.GetColoredIconByType(resomi_config, greyscale_colors)
+			var/resomi_config = resomi_greyscale_configs[config_worn]
+			species_icon = resomi_config ? SSgreyscale.GetColoredIconByType(resomi_config, colors) : null
+		if(icon_exists(species_icon, state))
+			return species_icon
+		return get_generated_resomi_worn_icon(slot_id, native_icon, state, config_worn, colors)
 	if(species_id == SPECIES_VOX && species_icon == 'icons/bandastation/mob/species/vox/clothing/feet.dmi' && worn_x_dimension == 64 && worn_y_dimension == 64)
 		species_icon = 'icons/bandastation/mob/species/vox/clothing/feet_64.dmi'
 	if(species_id == SPECIES_VOX && greyscale_config_worn)
@@ -383,3 +393,7 @@
 /datum/greyscale_config/buttondown_slacks/worn/resomi
 	name = "Resomi button-down and slacks (Worn)"
 	icon_file = 'icons/bandastation/mob/species/resomi/clothing/uniform.dmi'
+
+/datum/greyscale_config/seifuku/worn/resomi
+	name = "Resomi school uniform (Worn)"
+	icon_file = 'icons/bandastation/mob/species/resomi/clothing/seifuku_gags.dmi'
