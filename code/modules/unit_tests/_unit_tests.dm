@@ -430,6 +430,7 @@
 // END_INCLUDE
 // BANDASTATION ADDITION START - Vox port regression tests
 #include "../../../modular_bandastation/species/code/tests/vox_mechanics_tests.dm"
+#include "../../../modular_bandastation/species/code/tests/resomi_species.dm"
 #include "../../../modular_bandastation/species/code/tests/vox_appearance_tests.dm"
 #include "../../../modular_bandastation/species/code/tests/vox_emote_tests.dm"
 #include "../../../modular_bandastation/species/code/tests/vox_paradise_toggle_tests.dm"
@@ -506,6 +507,13 @@
 #include "../../../modular_bandastation/telephones/_defines.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_tests.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_speech_tests.dm"
+#include "../../../modular_bandastation/species/tests/drask_eyes.dm"
+#include "../../../modular_bandastation/species/tests/drask_species.dm"
+#include "../../../modular_bandastation/species/tests/drask_temperature.dm"
+
+#include "../../../modular_bandastation/terror_spiders/tests/terror_spiders.dm"
+
+#include "../../../modular_bandastation/dynamic/code/antag_tokens_tests.dm"
 
 #include "../../../modular_bandastation/explorers/code/tests.dm"
 #include "../../../modular_bandastation/xenoarchaeology/code/tests.dm"
