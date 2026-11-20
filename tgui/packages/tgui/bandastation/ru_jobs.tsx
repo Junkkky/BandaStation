@@ -35,6 +35,7 @@ export const JOBS_RU = {
   Bitrunner: 'Битраннер',
   Explorer: 'Исследователь',
   Bartender: 'Бармен',
+  'Pun Pun': 'Пун-Пун',
   Botanist: 'Ботаник',
   Cook: 'Повар',
   Chef: 'Шеф',

@@ -47,10 +47,6 @@ GLOBAL_DATUM(the_one_and_only_punpun, /mob/living)
 	. = ..()
 
 	REGISTER_REQUIRED_MAP_ITEM(1, 1) // pun pun is required on maps.
-	if(mapload && (locate(/datum/station_trait/job/pun_pun) in SSstation.station_traits))
-		new /obj/effect/landmark/start/pun_pun(loc) //Pun Pun is a crewmember, and may late-join.
-		return INITIALIZE_HINT_QDEL
-
 	if(mapload && HAS_TRAIT(SSstation, STATION_TRAIT_PUN_PUN_GYM_DAY))
 		new /mob/living/basic/gorilla/bar(loc) //gym day get buff get swole
 		return INITIALIZE_HINT_QDEL

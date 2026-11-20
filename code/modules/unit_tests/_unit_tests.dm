@@ -399,6 +399,7 @@
 #include "teleporters.dm"
 #include "text.dm"
 #include "tgui_create_message.dm"
+#include "throwing.dm"
 #include "tile_replacement.dm"
 #include "timer_sanity.dm"
 #include "torn_wall.dm"

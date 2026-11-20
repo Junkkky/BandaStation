@@ -394,28 +394,23 @@
 	spawning = TRUE
 	request_mind.active = FALSE //we wish to transfer the key manually
 	var/mob/living/spawning_mob = job.get_spawn_mob(requester, destination)
+	var/reuses_body = spawning_mob == destination
 	if(QDELETED(src))
-		if(!QDELETED(spawning_mob) && !spawning_mob.client)
+		if(!reuses_body && !QDELETED(spawning_mob) && !spawning_mob.client)
 			qdel(spawning_mob)
 		return
+	var/invalid_body = QDELETED(spawning_mob)
 	if(!QDELETED(spawning_mob) && ishuman(spawning_mob))
 		var/mob/living/carbon/human/body = spawning_mob
-		if((isnum(job.required_character_age) && body.age < job.required_character_age) || !job.is_character_species_allowed(body.dna?.species?.type))
-			qdel(spawning_mob)
+		invalid_body = (isnum(job.required_character_age) && body.age < job.required_character_age) || !job.is_character_species_allowed(body.dna?.species?.type)
 
 	// AI initialization can already hand the client to the body.
 	var/client/player_client = src.client || spawning_mob?.client
-	if(!QDELETED(spawning_mob) && (player_client != requester || (!isAI(spawning_mob) && (mind != request_mind || preferences.default_slot != spawned_slot))))
-		qdel(spawning_mob)
-	if(!QDELETED(spawning_mob) && request_mind?.late_joiner && !isAI(spawning_mob) && get_latejoin_block_message())
-		qdel(spawning_mob)
-	if(QDELETED(spawning_mob))
+	if(invalid_body || player_client != requester || (!isAI(spawning_mob) && (mind != request_mind || preferences.default_slot != spawned_slot || (request_mind.late_joiner && get_latejoin_block_message()))))
+		if(!reuses_body && !QDELETED(spawning_mob))
+			qdel(spawning_mob)
 		if(client && client == requester && editing_slot != spawned_slot && preferences.default_slot == spawned_slot)
 			preferences.load_character(editing_slot)
-		return
-
-	if(isnull(player_client))
-		qdel(spawning_mob)
 		return
 
 	if(!isAI(spawning_mob)) // Unfortunately there's still snowflake AI code out there.

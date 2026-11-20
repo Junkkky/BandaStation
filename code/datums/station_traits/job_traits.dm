@@ -253,14 +253,6 @@
 	show_in_report = TRUE
 	job_to_add = /datum/job/pun_pun
 
-/datum/station_trait/job/pun_pun/New()
-	. = ..()
-	//Make sure we don't have two Pun Puns if loaded before the start of the round.
-	if(SSticker.HasRoundStarted() || !GLOB.the_one_and_only_punpun)
-		return
-	new /obj/effect/landmark/start/pun_pun(GLOB.the_one_and_only_punpun.loc)
-	qdel(GLOB.the_one_and_only_punpun)
-
 /* BANDASTATION REMOVAL - HTML Title Screen
 /datum/station_trait/job/pun_pun/on_lobby_button_update_overlays(atom/movable/screen/lobby/button/sign_up/lobby_button, list/overlays)
 	. = ..()

@@ -535,6 +535,7 @@
 
 
 /// Spawns the mob to be played as, taking into account preferences and the desired spawn point.
+/// A job that reuses a mapped mob returns spawn_point itself. The caller preserves it if the join fails.
 /datum/job/proc/get_spawn_mob(client/player_client, atom/spawn_point)
 	var/mob/living/spawn_instance
 	if(ispath(spawn_type, /mob/living/silicon/ai))
