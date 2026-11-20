@@ -1,3 +1,8 @@
 laugh_1.ogg, laugh_2.ogg, laugh_evil_1.ogg, laugh_evil_2.ogg, scream.ogg
 Supplied by the event organizer Junkkky for the spider clown's emote panel; original source not specified.
 Converted to Ogg Vorbis; laugh_evil_2.ogg was made louder for BYOND playback.
+
+bite.ogg
+"Monster Bite" by freesound_community (Pixabay, file freesound_community-monster-bite-44538.mp3),
+supplied by the event organizer Junkkky. Pixabay Content License: https://pixabay.com/service/license-summary/
+Converted to mono Ogg Vorbis.

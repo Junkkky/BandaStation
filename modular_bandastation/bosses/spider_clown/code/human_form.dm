@@ -49,6 +49,7 @@
 		/datum/action/cooldown/spider_invisibility,
 		/datum/action/cooldown/spider_disguise,
 		/datum/action/cooldown/spider_tiny,
+		/datum/action/cooldown/spider_true_form,
 		/datum/action/cooldown/spider_mimic,
 		/datum/action/cooldown/spider_voice,
 		/datum/action/cooldown/spider_voice_filter,

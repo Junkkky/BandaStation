@@ -9,7 +9,15 @@ exec-32049657-ec3e-452b-bdc3-fdbd6b228a58.png (2172x724).
 Adaptation on 2026-11-20: threshold alpha at 128, crop each direction, reduce
 with nearest-neighbor at one common scale, center/bottom-align in 96x96 cells.
 This is a reduced adaptation of the approved preview, not native 96px generation.
-tools.dmi packs idle/dirs4/frames1, in BYOND south/north/east/west order.
+The first version packed idle/dirs4/frames1, in BYOND south/north/east/west order.
 The generated adaptation follows the project's CC BY-SA 3.0 image asset license,
 subject to confirming the supplied reference's rights before publication.
 https://creativecommons.org/licenses/by-sa/3.0/
+
+Rebuilt on 2026-11-21 from the same approved preview: each view reduced to 96x96 by averaging blocks
+(slight contrast and saturation lift) with a shared 32-colour palette taken from the result, replacing the
+nearest-neighbour reduction above. Bottom row and centring are unchanged.
+idle: 10 frames; the body above the waist rises one pixel, then the mask exhales puffs of steam like the
+Etamin Ind. mask. death: 10 frames drawn over the sprite - a sword wound across the belly opens, guts spill
+to the floor, dark blood runs and pools, the head and shoulders sag. dead: the last death frame.
+Generator kept outside the repository (Documents/Codex/GateClosure/heinrich_sprite).

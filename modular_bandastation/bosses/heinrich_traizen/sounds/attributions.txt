@@ -1,0 +1,9 @@
+growl_loop.ogg
+"Monster Growl" by rickworm (Pixabay, file rickworm-monster-growl-251374.mp3), supplied by the event organizer Junkkky.
+Pixabay Content License: https://pixabay.com/service/license-summary/
+Converted to mono Ogg Vorbis; played as a continuous loop while Heinrich lives.
+
+death_growl.ogg
+"Monster Growl" by freesound_community (Pixabay, file freesound_community-monster-growl-6311.mp3),
+supplied by the event organizer Junkkky. Pixabay Content License: https://pixabay.com/service/license-summary/
+Converted to mono Ogg Vorbis; played on death.

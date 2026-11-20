@@ -3,7 +3,7 @@
 /// Player-controlled event monster with native walking and bite animations.
 /mob/living/basic/boss/spider_clown
 	name = "Паук-клоун"
-	// Loud only as the big spider; set_tiny() quiets the small one.
+	// Loud in the large bodies; set_body() quiets the small one.
 	speech_span = SPAN_COMMAND
 	desc = "Чудовищный паук с клоунским лицом и огромной зубастой пастью."
 	icon = 'modular_bandastation/bosses/spider_clown/icons/spider_clown.dmi'
@@ -34,10 +34,12 @@
 	lighting_cutoff_red = 25
 	lighting_cutoff_green = 10
 	lighting_cutoff_blue = 10
-	/// Active form: "spider" or "tiny" in this body, "clown" while the human body is controlled.
+	/// Active form: "spider", "tiny" or "true" in this body, "clown" while the human body is controlled.
 	var/form = "spider"
 	/// Whether this body currently looks like the small ventcrawling spider.
 	var/tiny = FALSE
+	/// Whether this body currently shows the clown's true form.
+	var/true_form = FALSE
 	/// Identity set by the event director, restored when returning to the spider form.
 	var/saved_name
 	/// Speech must use the current form's identity too.
@@ -46,10 +48,12 @@
 	var/saved_description
 	/// Mortal human body of the clown and mimic forms while it is controlled; gibbed when the spider leaves it.
 	var/mob/living/carbon/human/spider_clown_body/human_body
-	/// Voices chosen for the spider, tiny and clown forms, keyed by form.
+	/// Voices chosen for the spider, tiny, true and clown forms, keyed by form.
 	var/list/datum/tts_seed/form_voices = list()
 	/// Manual TTS filter shared by every form, independent of its selected voice.
 	var/growl_enabled = TRUE
+	/// One-shot animation playing now; its eye layer replaces the current state's until it ends.
+	var/eyes_animation
 
 /mob/living/basic/boss/spider_clown/Initialize(mapload)
 	. = ..()
@@ -60,6 +64,7 @@
 		/datum/action/cooldown/spell/cone/staggered/crooked_vomit_cone/event_spider,
 		/datum/action/cooldown/spider_disguise,
 		/datum/action/cooldown/spider_tiny,
+		/datum/action/cooldown/spider_true_form,
 		/datum/action/cooldown/spell/jaunt/bloodcrawl/event_spider,
 		/datum/action/cooldown/spider_invisibility,
 		/datum/action/cooldown/event_target/spider_jump,
@@ -70,6 +75,7 @@
 		/datum/action/cooldown/spider_voice,
 		/datum/action/cooldown/spider_voice_filter,
 		/datum/action/cooldown/event_target/spider_blood_brood,
+		/datum/action/cooldown/event_target/pinhead_portal,
 	))
 	// The brood shares this private faction with every body of its master.
 	add_faction(REF(src))
@@ -78,10 +84,12 @@
 	update_sight()
 	form_voices["spider"] = get_tts_seed()
 	form_voices["tiny"] = form_voices["spider"]
+	form_voices["true"] = form_voices["spider"]
 	RegisterSignal(src, COMSIG_TTS_COMPONENT_PRE_CAST_TTS, PROC_REF(filter_tts))
 	RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_MOVE_VENTCRAWLING), PROC_REF(on_vent_exit))
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(on_step))
 	RegisterSignals(src, list(COMSIG_MOB_EMOTE_SOUND("laugh"), COMSIG_MOB_EMOTE_SOUND("laughevil"), COMSIG_MOB_EMOTE_SOUND("scream")), PROC_REF(on_emote_sound))
+	update_appearance(UPDATE_OVERLAYS)
 
 /mob/living/basic/boss/spider_clown/Destroy()
 	// The controlled human body stays as an ordinary human if its spider is deleted.
@@ -89,6 +97,33 @@
 		human_body.spider = null
 		human_body = null
 	return ..()
+
+/mob/living/basic/boss/spider_clown/update_overlays()
+	. = ..()
+	// Every look of this body has an eye layer named after its living state.
+	if(stat != DEAD)
+		. += emissive_appearance(icon, "[eyes_animation || icon_state]_eyes", src)
+
+/mob/living/basic/boss/spider_clown/look_dead()
+	. = ..()
+	update_appearance(UPDATE_OVERLAYS)
+
+/mob/living/basic/boss/spider_clown/look_alive()
+	. = ..()
+	update_appearance(UPDATE_OVERLAYS)
+
+/// Flicks a one-shot animation of the big spider; its glowing eyes follow the same frames.
+/mob/living/basic/boss/spider_clown/proc/play_animation(animation, duration)
+	if(tiny || true_form)
+		return
+	flick(animation, src)
+	eyes_animation = animation
+	update_appearance(UPDATE_OVERLAYS)
+	addtimer(CALLBACK(src, PROC_REF(end_animation)), duration, TIMER_UNIQUE | TIMER_OVERRIDE)
+
+/mob/living/basic/boss/spider_clown/proc/end_animation()
+	eyes_animation = null
+	update_appearance(UPDATE_OVERLAYS)
 
 /// The full-sized spider seizes its prey aggressively from the first touch.
 /mob/living/basic/boss/spider_clown/start_pulling(atom/movable/AM, state, force = pull_force, supress_message = FALSE)
@@ -99,8 +134,7 @@
 
 /mob/living/basic/boss/spider_clown/do_attack_animation(atom/attacked_atom, visual_effect_icon, used_item, no_effect)
 	. = ..()
-	if(!tiny)
-		flick("bite", src)
+	play_animation("bite", 0.5 SECONDS)
 
 /// The native attack sound is fixed at half volume; a monster's bite must be heard.
 /mob/living/basic/boss/spider_clown/melee_attack(atom/target, list/modifiers, ignore_cooldown)
@@ -112,7 +146,7 @@
 		'sound/effects/hallucinations/growl2.ogg',
 		'sound/effects/hallucinations/growl3.ogg',
 	)
-	playsound(src, 'sound/items/weapons/bite.ogg', 100, TRUE, 4)
+	playsound(src, 'modular_bandastation/bosses/spider_clown/sounds/bite.ogg', 100, TRUE, 4)
 	playsound(src, pick(growls), 80, TRUE, 4)
 
 /// Clicking a severed arm or leg lying nearby eats it instead of attacking it.
@@ -148,52 +182,72 @@
 	form = new_form
 	if(new_form == "clown")
 		// The hidden spider always comes back full-sized.
-		set_tiny(FALSE)
+		set_body("spider")
 		enter_human(here)
 		return TRUE
 	if(old_form == "clown")
 		leave_human(here)
-	set_tiny(new_form == "tiny")
+	set_body(new_form)
 	return TRUE
 
-/// Switches this body between the full spider and the small ventcrawling spider.
-/mob/living/basic/boss/spider_clown/proc/set_tiny(make_tiny)
-	if(tiny == make_tiny)
+/// Shows this body as the full spider, the small ventcrawling spider or the clown's true form.
+/mob/living/basic/boss/spider_clown/proc/set_body(new_body)
+	var/old_body = tiny ? "tiny" : (true_form ? "true" : "spider")
+	if(old_body == new_body)
 		return
-	speech_span = make_tiny ? null : SPAN_COMMAND
-	tiny = make_tiny
-	if(tiny)
+	// The director's identity belongs to the spider; the other looks keep a copy to give back.
+	if(old_body == "spider")
 		saved_name = name
 		saved_real_name = real_name
 		saved_description = desc
-		icon = 'icons/mob/simple/arachnoid.dmi'
-		icon_state = "maint_spider"
-		icon_dead = "maint_spider_dead"
-		name = "паучок"
-		real_name = name
-		desc = "Маленький паучок. Он смотрит на вас слишком осмысленно."
-	else
-		icon = initial(icon)
-		icon_state = initial(icon_state)
-		icon_dead = initial(icon_dead)
-		name = saved_name
-		real_name = saved_real_name
-		desc = saved_description
+	var/was_tiny = tiny
+	tiny = new_body == "tiny"
+	true_form = new_body == "true"
+	speech_span = tiny ? null : SPAN_COMMAND
+	switch(new_body)
+		if("tiny")
+			icon = 'modular_bandastation/bosses/spider_clown/icons/spider_clown_tiny.dmi'
+			icon_state = "tiny"
+			icon_dead = "tiny_dead"
+			name = "паучок"
+			real_name = name
+			desc = "Маленький паучок. Он смотрит на вас слишком осмысленно."
+			pixel_x = 0
+			pixel_y = 0
+		if("true")
+			icon = 'modular_bandastation/bosses/spider_clown/icons/spider_clown_true.dmi'
+			icon_state = "idle"
+			icon_dead = "dead"
+			name = saved_name
+			real_name = saved_real_name
+			desc = "Высокая фигура в изодранном клоунском костюме. За её спиной извиваются щупальца."
+			// 64 pixels wide: the feet stand on the tile's bottom row.
+			pixel_x = -16
+			pixel_y = 0
+		else
+			icon = initial(icon)
+			icon_state = initial(icon_state)
+			icon_dead = initial(icon_dead)
+			name = saved_name
+			real_name = saved_real_name
+			desc = saved_description
+			pixel_x = initial(pixel_x)
+			pixel_y = initial(pixel_y)
 	icon_living = icon_state
-	pixel_x = tiny ? 0 : initial(pixel_x)
 	base_pixel_x = pixel_x
-	pixel_y = tiny ? 0 : initial(pixel_y)
 	base_pixel_y = pixel_y
 	// Totals with the 2.2 run delay: spider 1.7, tiny 1.95.
 	set_varspeed(tiny ? -0.25 : initial(speed))
-	// Only the full-sized spider tears walls; the boss parent adds the element with these exact arguments.
-	if(tiny)
-		RemoveElement(/datum/element/wall_tearer, tear_time = 1 SECONDS)
-		ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, REF(src))
-	else
-		AddElement(/datum/element/wall_tearer, tear_time = 1 SECONDS)
-		REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, REF(src))
-	set_voice(src, form_voices[tiny ? "tiny" : "spider"])
+	// Only the large bodies tear walls; the boss parent adds the element with these exact arguments.
+	if(tiny != was_tiny)
+		if(tiny)
+			RemoveElement(/datum/element/wall_tearer, tear_time = 1 SECONDS)
+			ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, REF(src))
+		else
+			AddElement(/datum/element/wall_tearer, tear_time = 1 SECONDS)
+			REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, REF(src))
+	set_voice(src, form_voices[new_body])
+	update_appearance(UPDATE_OVERLAYS)
 
 /// Grows a fresh mortal clown body and moves control into it; the spider waits inside, untouchable.
 /mob/living/basic/boss/spider_clown/proc/enter_human(turf/here)
@@ -262,7 +316,7 @@
 /mob/living/basic/boss/spider_clown/proc/remember_voice(mob/living/body, datum/tts_seed/seed)
 	set_voice(body, seed)
 	if(body == src)
-		form_voices[tiny ? "tiny" : "spider"] = seed
+		form_voices[tiny ? "tiny" : (true_form ? "true" : "spider")] = seed
 		return
 	var/mob/living/carbon/human/spider_clown_body/clown = body
 	if(istype(clown) && !clown.mimicking)
@@ -298,7 +352,8 @@
 	SIGNAL_HANDLER
 	if(forced || throwing || !isturf(loc))
 		return
-	if(tiny)
+	// Claw steps belong to the spider's legs only.
+	if(tiny || true_form)
 		return
 	var/static/list/claws = list(
 		'sound/effects/footstep/hardclaw1.ogg',

@@ -70,6 +70,9 @@
 /datum/action/cooldown/spell/aoe/ability_stomp/event_spider/cast(atom/cast_on)
 	. = ..()
 	new /obj/effect/temp_visual/circle_wave/spider_stomp(get_turf(cast_on))
+	var/mob/living/basic/boss/spider_clown/spider = owner
+	if(istype(spider))
+		spider.play_animation("stomp", 0.7 SECONDS)
 
 /datum/action/cooldown/spell/aoe/ability_stomp/event_spider/cast_on_thing_in_aoe(atom/victim, atom/caster)
 	if(isliving(victim))
@@ -138,14 +141,27 @@
 /datum/action/cooldown/spider_tiny
 	name = "Облик паучка / паука"
 	desc = "Превращает в маленького паучка, который может лазить по вентиляции (Alt-клик по вентиляции)."
-	button_icon = 'icons/mob/simple/arachnoid.dmi'
-	button_icon_state = "maint_spider"
+	button_icon = 'modular_bandastation/bosses/spider_clown/icons/spider_clown_tiny.dmi'
+	button_icon_state = "tiny"
 
 /datum/action/cooldown/spider_tiny/Activate(atom/target)
 	var/mob/living/basic/boss/spider_clown/spider = get_spider_clown(owner)
 	if(!spider)
 		return FALSE
 	return spider.set_form(spider.form == "tiny" ? "spider" : "tiny")
+
+/// The clown's true form: a tall tentacled figure in this same body; both directions leave gibs through the shared form change.
+/datum/action/cooldown/spider_true_form
+	name = "Истинная форма"
+	desc = "Принять истинный облик или вернуться в облик паука."
+	button_icon = 'icons/mob/actions/actions_cult.dmi'
+	button_icon_state = "horror"
+
+/datum/action/cooldown/spider_true_form/Activate(atom/target)
+	var/mob/living/basic/boss/spider_clown/spider = get_spider_clown(owner)
+	if(!spider)
+		return FALSE
+	return spider.set_form(spider.form == "true" ? "spider" : "true")
 
 /// Changeling-style copy of a crew member; the clown is always offered first.
 /datum/action/cooldown/spider_mimic
@@ -291,6 +307,10 @@
 	if(QDELETED(owner) || !isturf(owner.loc))
 		return
 	playsound(owner, 'sound/effects/meteorimpact.ogg', 60, TRUE)
+	// The landing reuses the stomp's rear-and-slam animation.
+	var/mob/living/basic/boss/spider_clown/spider = owner
+	if(istype(spider))
+		spider.play_animation("stomp", 0.7 SECONDS)
 	var/mob/living/pinned
 	if(isliving(target) && target != owner && !QDELETED(target) && get_dist(owner, target) <= 1)
 		pinned = target

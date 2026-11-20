@@ -1,23 +1,31 @@
 spider_clown.dmi
-Art direction and design reference: Junkkky.
-Shared solid geometry, native orthographic pixel rasterization and animation
-authored locally by Codex on2026-11-10. No new generation service was used.
-Visual inspiration: the demonic spider-clown form from the IT films.
-The supplied reference photographs/illustrations are not included in this asset.
-Facial texture adapted from the approved native96x96 PixelLab Pro image,
-job01b421b6-47f5-466b-a051-7da28b579c65, seed2201312, candidate3.
-Native pixel canvas: 96x96 throughout; no high-resolution source or downscaling.
-Four cardinal cameras: S/N/E/W, all using the same anatomy. Eight angular
-walking legs plus a separate pair of clawed forelimbs. The approved facial
-geometry and texture were kept fixed when thickening legs and adding claws.
-idle: one static frame per direction, copied from the approved loop's first pose.
-idle (movement=1): original16 frames at0.2s,3.2-second loop; alternating8px
-foot lifts and joint flexion. BYOND uses this variant only during movement.
-dead: same static pose, pending a separate death sprite. No new pixels added.
-Planted feet share one ground plane; near/far feet are staggered in profiles.
-bite:10 frames,1.2-second one-shot, grin/gape/snap/return.
-eyes_emissive:1 static frame per direction, white alpha mask; rear is empty.
-Emission mask follows the repository's emissive_appearance convention. It needs
-to be connected to a mob appearance separately; no world-light source is added.
-License for the generated visual asset: CC BY-SA 3.0, following the project
-asset license. https://creativecommons.org/licenses/by-sa/3.0/
+Design reference: four-view concept art of the spider clown supplied by Junkkky (event organizer).
+Rebuilt on 2026-11-20 from that concept: the body (abdomen, face, ruff, fringe) is the concept itself,
+reduced to the 96x96 canvas by averaging each block (slight contrast and saturation lift) and mapping it
+to a 32-colour palette taken from that result; no outline.
+The eight legs are drawn procedurally in the concept's colours (bone femurs, red claws) and animated
+leg by leg; each frame is composed at 8x and pixelized with the concept's own colours. The only face pixels set by hand are the
+two yellow eyes, placed where the concept has them.
+idle: 6 frames, breathing (body rises and falls) and drool from the mouth.
+idle (movement=1): 16-frame alternating-tetrapod walk.
+bite: 5 frames, lunge towards the facing direction. stomp: 5 frames, rear up and slam (stomp, jump landing).
+dead: the first idle pose turned over.
+idle_eyes, bite_eyes, stomp_eyes: emissive layers of the concept's yellow eye pixels, frame for frame with their states.
+Generator scripts kept outside the repository (Documents/Codex/GateClosure/spider_sprite).
+The previous sprite and its attribution are archived outside the repository.
+License: CC BY-SA 3.0, following the project asset license. https://creativecommons.org/licenses/by-sa/3.0/
+
+spider_clown_true.dmi
+Design reference: four-view concept art of the clown's true form supplied by Junkkky (event organizer).
+Made on 2026-11-20 from that concept: each view reduced to 64x96 by averaging blocks (slight contrast and
+saturation lift) with a shared 32-colour palette taken from the result; feet stand on the bottom tile.
+idle: 8 frames; the body above the waist (arms included) rises one pixel to breathe, tentacles sway by one pixel.
+idle_eyes: emissive layer of the concept's yellow eye pixels, frame for frame. dead: the resting pose, still.
+Generator kept outside the repository (Documents/Codex/GateClosure/clown_sprite).
+License: CC BY-SA 3.0, following the project asset license. https://creativecommons.org/licenses/by-sa/3.0/
+
+spider_clown_tiny.dmi
+Recolour of the maint_spider states from tgstation's icons/mob/simple/arachnoid.dmi (CC BY-SA 3.0) to the
+spider clown's palette; the red eyes became yellow and are repeated in the emissive tiny_eyes states.
+Generator kept outside the repository (Documents/Codex/GateClosure/tiny_spider).
+License: CC BY-SA 3.0, as the original. https://creativecommons.org/licenses/by-sa/3.0/
