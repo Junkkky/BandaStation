@@ -33,3 +33,29 @@
 	parent_type = /obj/effect/temp_visual/mech_attack_aoe_attack
 	color = COLOR_RED
 	duration = 1 SECONDS
+
+/// The final fight's stomp: a short ring that only punishes those standing next to him, marked a second ahead.
+/datum/action/cooldown/spell/aoe/ability_stomp/crooked
+	aoe_radius = 2
+	cooldown_time = 12 SECONDS
+	/// Wind-up during which the ring is marked on the floor.
+	var/windup = 1 SECONDS
+
+/datum/action/cooldown/spell/aoe/ability_stomp/crooked/before_cast(atom/cast_on)
+	. = ..()
+	if(. & SPELL_CANCEL_CAST)
+		return
+	var/turf/center = get_turf(owner)
+	for(var/turf/open/marked in range(aoe_radius, center))
+		if(marked != center)
+			new /obj/effect/temp_visual/telegraphing/crooked(marked)
+	owner.visible_message(span_danger("[owner] приседает, готовясь топнуть!"))
+	if(!crooked_windup(owner, windup, src))
+		return . | SPELL_CANCEL_CAST
+
+/datum/action/cooldown/spell/aoe/ability_stomp/crooked/cast_on_thing_in_aoe(atom/victim, atom/caster)
+	if(!isliving(victim))
+		return ..()
+	var/mob/living/living_victim = victim
+	living_victim.take_overall_damage(15)
+	living_victim.throw_at(get_edge_target_turf(living_victim, get_dir(caster, living_victim)), 2, 2)

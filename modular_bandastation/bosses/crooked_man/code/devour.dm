@@ -93,3 +93,65 @@
 		new /obj/effect/decal/cleanable/vomit(release_turf)
 		to_chat(victim, span_notice("Вас выплюнули наружу!"))
 	qdel(src)
+
+/// The final fight's devour: the jaws open a second before they close on the tile in front, and the group can
+/// free the victim by hurting him enough; otherwise the victim is spat out after a while.
+/datum/action/cooldown/spell/crooked_devour/crooked
+	cooldown_time = 30 SECONDS
+	digestion_rate = 3
+	/// Wind-up during which the tile in front is marked.
+	var/windup = 1 SECONDS
+	/// Damage the group must deal to him while he holds someone to free them.
+	var/rescue_damage = 150
+	/// How long a victim stays inside at most.
+	var/hold_time = 8 SECONDS
+	/// Damage taken since the current victim was swallowed.
+	var/damage_taken = 0
+	/// Timer that spits the current victim out.
+	var/release_timer
+
+/datum/action/cooldown/spell/crooked_devour/crooked/Remove(mob/living/remove_from)
+	stop_holding()
+	return ..()
+
+/datum/action/cooldown/spell/crooked_devour/crooked/before_cast(atom/cast_on)
+	. = ..()
+	// Spitting out needs no wind-up.
+	if((. & SPELL_CANCEL_CAST) || stomach)
+		return
+	var/turf/front = get_step(owner, owner.dir)
+	if(front)
+		new /obj/effect/temp_visual/telegraphing/crooked(front)
+	owner.visible_message(span_danger("[owner] раскрывает огромную пасть!"))
+	playsound(owner, 'sound/effects/blob/blobattack.ogg', 70, TRUE)
+	if(!crooked_windup(owner, windup, src))
+		return . | SPELL_CANCEL_CAST
+
+/datum/action/cooldown/spell/crooked_devour/crooked/cast(atom/cast_on)
+	var/was_holding = !!stomach
+	. = ..()
+	if(was_holding)
+		stop_holding()
+		return
+	if(!stomach)
+		return
+	damage_taken = 0
+	RegisterSignal(owner, COMSIG_MOB_AFTER_APPLY_DAMAGE, PROC_REF(on_owner_damaged))
+	release_timer = addtimer(CALLBACK(src, PROC_REF(release)), hold_time, TIMER_STOPPABLE)
+
+/datum/action/cooldown/spell/crooked_devour/crooked/proc/on_owner_damaged(datum/source, damage)
+	SIGNAL_HANDLER
+	damage_taken += damage
+	if(damage_taken >= rescue_damage)
+		owner.visible_message(span_danger("[owner] не выдерживает ран и изрыгает добычу!"))
+		release()
+
+/datum/action/cooldown/spell/crooked_devour/crooked/proc/release()
+	stop_holding()
+	stomach?.release_victim()
+
+/datum/action/cooldown/spell/crooked_devour/crooked/proc/stop_holding()
+	if(owner)
+		UnregisterSignal(owner, COMSIG_MOB_AFTER_APPLY_DAMAGE)
+	deltimer(release_timer)
+	release_timer = null

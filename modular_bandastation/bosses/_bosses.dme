@@ -16,6 +16,8 @@
 #include "crooked_man\code\devour.dm"
 #include "crooked_man\code\phase.dm"
 #include "crooked_man\code\stomp.dm"
+#include "crooked_man\code\targets.dm"
+#include "crooked_man\code\tentacles.dm"
 #include "crooked_man\code\vomit.dm"
 #include "gatekeeper\code\chains.dm"
 #include "gatekeeper\code\gatekeeper.dm"
