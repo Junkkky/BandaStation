@@ -83,9 +83,9 @@
 	playsound(owner, 'modular_bandastation/weapon/sound/melee/malice_guard_block.ogg', BLOCK_SOUND_VOLUME, FALSE)
 	return TRUE
 
-/datum/status_effect/malice_guard/proc/block_attack(datum/source, atom/hit_by)
+/datum/status_effect/malice_guard/proc/block_attack(datum/source, atom/hit_by, damage, attack_text, attack_type, armour_penetration, damage_type, attack_flag, atom/attack_origin)
 	SIGNAL_HANDLER
-	if(deflect(incoming_side(hit_by)))
+	if(deflect(incoming_side(attack_origin || hit_by)))
 		return SUCCESSFUL_BLOCK
 
 /datum/status_effect/malice_guard/proc/block_projectile(datum/source, obj/projectile/shot)
@@ -116,7 +116,7 @@
 /datum/status_effect/malice_guard/proc/block_directed_damage(datum/source, list/modifiers, damage, damage_type, def_zone, sharpness, attack_direction, atom/attacking_item)
 	SIGNAL_HANDLER
 	// Projectile damage passes a direction from the original firing tile, even after a ricochet.
-	var/side = attack_direction && !isprojectile(attacking_item) ? REVERSE_DIR(attack_direction) : incoming_side(attacking_item)
+	var/side = !isnull(attack_direction) && !isprojectile(attacking_item) ? REVERSE_DIR(attack_direction) : incoming_side(attacking_item)
 	if(damage > 0 && covers(side))
 		modifiers += 0
 

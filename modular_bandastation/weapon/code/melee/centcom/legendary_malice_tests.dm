@@ -463,6 +463,27 @@
 	TEST_ASSERT_EQUAL(wielder.get_brute_loss(), brute_before_crit - 10, "A critical on a bloodless target did not heal the wielder.")
 	TEST_ASSERT_NULL(locate(/datum/wound/slash/flesh/critical) in pursuer.all_wounds, "The bloodless target received a bleeding wound.")
 
+	// The shadow and its wielder are on opposite sides of a guarding target.
+	UnregisterSignal(guard, COMSIG_LIVING_CHECK_BLOCK)
+	guard.mind_initialize()
+	guard.mind.centcom_role = LEGENDARY_TEST_OFFICER_ROLE
+	var/obj/item/dualsaber/legendary_saber/guard_sword = EASY_ALLOCATE()
+	guard_sword.bond_meditation_time = sword.bond_meditation_time
+	TEST_ASSERT(guard.put_in_active_hand(guard_sword), "Could not equip the shadow's defender.")
+	guard_sword.attack_self(guard)
+	var/datum/action/cooldown/legendary_sword/malice_guard/guard_action = locate() in guard_sword.actions
+	TEST_ASSERT(guard_action.Trigger(guard), "The defender could not raise their blade against the shadow.")
+	guard.forceMove(get_step(start, EAST))
+	wielder.forceMove(get_step(guard, EAST))
+	var/obj/effect/temp_visual/decoy/echo = allocate(/obj/effect/temp_visual/decoy, start, wielder)
+	var/brute_before_shadow = guard.get_brute_loss()
+	guard.setDir(WEST)
+	shadow.shadow_strike(WEAKREF(wielder), start, WEAKREF(echo))
+	TEST_ASSERT_EQUAL(guard.get_brute_loss(), brute_before_shadow, "A shadow facing the guard bypassed it because its wielder stood behind.")
+	guard.setDir(EAST)
+	shadow.shadow_strike(WEAKREF(wielder), start, WEAKREF(echo))
+	TEST_ASSERT(guard.get_brute_loss() > brute_before_shadow, "A shadow attacking from behind was blocked because its wielder stood in front.")
+
 /datum/unit_test/legendary_sword_malice_rage/proc/block_hit()
 	SIGNAL_HANDLER
 	return SUCCESSFUL_BLOCK
@@ -610,7 +631,11 @@
 	sword.bond_meditation_time = 45 SECONDS + 90 SECONDS + 3 MINUTES - 1
 	TEST_ASSERT(!guard.Trigger(wielder), "The guard activated before reaching full bond.")
 	sword.bond_meditation_time++
+	// Exercise the ordinary attack's random flourish before raising the guard.
+	wielder.setDir(WEST)
+	sword.jedi_spin(wielder)
 	TEST_ASSERT(guard.Trigger(wielder), "The guard did not activate at full bond.")
+	TEST_ASSERT_EQUAL(wielder.dir, WEST, "The preceding sword flourish turned the guard away from its chosen facing.")
 	var/started = world.time
 	var/datum/status_effect/malice_guard/stance = wielder.has_status_effect(/datum/status_effect/malice_guard)
 	var/datum/sound_token/guard_sound = stance?.spin_sound

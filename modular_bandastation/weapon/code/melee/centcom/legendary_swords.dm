@@ -54,6 +54,12 @@
 	for(var/datum/action/cooldown/legendary_sword/ability in actions)
 		ability.build_all_button_icons(UPDATE_BUTTON_STATUS)
 
+/obj/item/dualsaber/legendary_saber/jedi_spin(mob/living/user)
+	// A cosmetic spin from an earlier hit would keep turning Malice's frontal guard.
+	if(type == /obj/item/dualsaber/legendary_saber)
+		return
+	return ..()
+
 /obj/item/dualsaber/legendary_saber/sorrow_catcher
 	name = "Sorrow Catcher"
 	desc = "\"Ловец  Скорби\" -  один из легендарных энергетических мечей Галактики. \

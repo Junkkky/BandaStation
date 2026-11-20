@@ -14,7 +14,7 @@ The five action icons in `icons/melee/legendary_abilities.dmi` were drawn for th
 
 The effects in `icons/melee/malice_rage.dmi`, `malice_critical_strike.dmi` and `malice_guard.dmi` adapt those sprites for the charged strike, its impact and the frontal guard. The spinning trails in `malice_spin.dmi` and the three directional cuts in `malice_harvest.dmi` were drawn for these abilities. The artwork follows the repository's CC BY-SA 3.0 asset license.
 
-The following mixes use recordings supplied for this build. The supplied files did not identify their original recordists or include license information.
+The supplied recordings listed below are by **konu_shi**. Permission to use these recordings, including in the mixes listed here, is limited to SS220.
 
 | Game sound in `sound/melee/` | Source recordings |
 | --- | --- |

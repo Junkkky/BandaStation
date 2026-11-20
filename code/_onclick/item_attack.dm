@@ -360,9 +360,10 @@
 	if((attacking_item.item_flags & SURGICAL_TOOL) && !user.combat_mode && HAS_TRAIT(user, TRAIT_READY_TO_OPERATE))
 		wounding = CANT_WOUND
 
+	var/atom/attack_origin = LAZYACCESS(attack_modifiers, MELEE_EFFECT_ORIGIN)
 	if(user != src)
 		// This doesn't factor in armor, or most damage modifiers (physiology). Your mileage may vary
-		if(check_block(attacking_item, final_force, "[attacking_item.declent_ru(ACCUSATIVE)]", MELEE_ATTACK, attacking_item.armour_penetration, attacking_item.damtype))
+		if(check_block(attacking_item, final_force, "[attacking_item.declent_ru(ACCUSATIVE)]", MELEE_ATTACK, attacking_item.armour_penetration, attacking_item.damtype, null, attack_origin))
 			LAZYSET(attack_modifiers, DAMAGE_DONE, 0)
 			return ATTACK_FAILED
 
@@ -384,7 +385,7 @@
 		wound_bonus = wounding,
 		exposed_wound_bonus = attacking_item.exposed_wound_bonus,
 		sharpness = attacking_item.get_sharpness(),
-		attack_direction = get_dir(user, src),
+		attack_direction = get_dir(attack_origin || user, src),
 		attacking_item = attacking_item,
 	)
 

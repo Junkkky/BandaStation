@@ -939,8 +939,8 @@
 		span_userdanger("[capitalize(shover.declent_ru(NOMINATIVE))] толкает вас[weapon ? " с помощью [weapon.declent_ru(GENITIVE)]" : ""]!"), span_hear("Вы слышите агрессивное шарканье!"), COMBAT_MESSAGE_RANGE, shover)
 	to_chat(shover, span_danger("Вы толкаете [declent_ru(ACCUSATIVE)][weapon ? " с помощью [weapon.declent_ru(GENITIVE)]" : ""]!"))
 
-/mob/living/proc/check_block(atom/hit_by, damage, attack_text = "атаку", attack_type = MELEE_ATTACK, armour_penetration = 0, damage_type = BRUTE)
-	if(SEND_SIGNAL(src, COMSIG_LIVING_CHECK_BLOCK, hit_by, damage, attack_text, attack_type, armour_penetration, damage_type) & SUCCESSFUL_BLOCK)
+/mob/living/proc/check_block(atom/hit_by, damage, attack_text = "атаку", attack_type = MELEE_ATTACK, armour_penetration = 0, damage_type = BRUTE, attack_flag, atom/attack_origin)
+	if(SEND_SIGNAL(src, COMSIG_LIVING_CHECK_BLOCK, hit_by, damage, attack_text, attack_type, armour_penetration, damage_type, attack_flag, attack_origin) & SUCCESSFUL_BLOCK)
 		return SUCCESSFUL_BLOCK
 
 	return FAILED_BLOCK
