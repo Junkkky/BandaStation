@@ -11,6 +11,8 @@
 	var/meditating = FALSE
 	/// Time of incoming damage during the active meditation.
 	var/meditation_damage_time
+	/// Last bond milestone addressed in prayer, so resuming a session does not repeat its verse.
+	var/last_prayer_milestone = 0
 	COOLDOWN_DECLARE(bond_rest)
 
 /// Checks the original wielding permissions and the individual bond, if established.
@@ -87,8 +89,15 @@
 	var/datum/callback/validate = CALLBACK(src, PROC_REF(update_meditation), user, user.loc, loc, bond_bar, start_time, user.health)
 	RegisterSignal(user, COMSIG_MOB_AFTER_APPLY_DAMAGE, PROC_REF(on_meditation_damage))
 	to_chat(user, span_notice("Вы сосредотачиваетесь на клинке."))
+	if(type == /obj/item/dualsaber/legendary_saber)
+		if(ishuman(user) && user.body_position == STANDING_UP && !user.buckled)
+			user.face_atom(src)
+		if(stage_end > last_prayer_milestone)
+			last_prayer_milestone = stage_end
+			speak_malice_prayer(user, stage_end)
 	var/completed = do_after(user, remaining_time, src, IGNORE_HELD_ITEM | IGNORE_SLOWDOWNS | DO_AFTER_CHECK_NEXT_MOVE, show_progress = FALSE, extra_checks = validate)
-	UnregisterSignal(user, COMSIG_MOB_AFTER_APPLY_DAMAGE)
+	if(user)
+		UnregisterSignal(user, COMSIG_MOB_AFTER_APPLY_DAMAGE)
 	qdel(bond_bar)
 	if(QDELETED(src))
 		return
@@ -102,6 +111,23 @@
 	if(!QDELETED(user))
 		var/bond_percent = get_legendary_bond()
 		to_chat(user, span_notice("[completed ? "Ступень медитации завершена." : "Медитация прервана."] Узы с клинком: [bond_percent]%."))
+
+/// Each stage addresses the anger sleeping in Malice, even when the wielder cannot speak aloud.
+/obj/item/dualsaber/legendary_saber/proc/speak_malice_prayer(mob/living/user, milestone)
+	var/verse
+	switch(milestone)
+		if(BOND_FIRST_STAGE)
+			verse = "Злоба, ты помнишь руку, что тебя выковала. Запомни и мою."
+		if(BOND_SECOND_STAGE)
+			verse = "Я слышу твой гнев и в погасшем клинке. Услышь и ты мой гнев, Злоба."
+		if(BOND_FULL_STAGE)
+			verse = "Когда нас разделят время и пустота, узнай мой голос, Злоба. Вернись в мою руку."
+		else
+			return
+	if(user.can_speak() && !HAS_TRAIT(user, TRAIT_SIGN_LANG))
+		user.whisper(verse)
+	else
+		to_chat(user, span_notice("Вы произносите про себя: «[verse]»"))
 
 /// Advances the displayed bond percentage while the current meditation remains valid.
 /obj/item/dualsaber/legendary_saber/proc/update_meditation(mob/living/user, turf/user_start, turf/sword_start, datum/progressbar/bond_bar, start_time, start_health)

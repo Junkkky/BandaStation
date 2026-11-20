@@ -63,6 +63,110 @@
 	TEST_ASSERT_EQUAL(sword.get_legendary_bond(), 25, "Dropping the sword lost bond progress.")
 
 
+/datum/unit_test/legendary_sword_malice_meditation
+	var/list/whispered_lines = list()
+
+/datum/unit_test/legendary_sword_malice_meditation/proc/record_whisper(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+	var/list/mods = speech_args[SPEECH_MODS]
+	if(mods[WHISPER_MODE] == MODE_WHISPER)
+		whispered_lines += speech_args[SPEECH_MESSAGE]
+
+/datum/unit_test/legendary_sword_malice_meditation/Run()
+	var/turf/start = run_loc_floor_bottom_left
+	// The consistent unit-test dummy completes timed actions immediately.
+	var/mob/living/carbon/human/wielder = allocate(/mob/living/carbon/human, start)
+	var/obj/item/dualsaber/legendary_saber/sword = allocate(/obj/item/dualsaber/legendary_saber, get_step(start, EAST))
+	wielder.mind_initialize()
+	wielder.mind.centcom_role = LEGENDARY_TEST_OFFICER_ROLE
+	wielder.setDir(WEST)
+	wielder.add_filter("unrelated_meditation_test", 1, outline_filter(size = 1, color = COLOR_WHITE))
+	var/previous_filters = json_encode(wielder.filter_data)
+	var/previous_filter_count = length(wielder.filters)
+	var/list/previous_transform = matrix(wielder.transform).tolist()
+	RegisterSignal(wielder, COMSIG_MOB_SAY, PROC_REF(record_whisper))
+
+	wielder.ClickOn(sword, "left=1;alt=1")
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(LAZYACCESS(wielder.do_afters, sword) || world.time >= deadline)
+	TEST_ASSERT(LAZYACCESS(wielder.do_afters, sword), "Alt-clicking the adjacent grounded blade did not start a timed meditation.")
+	TEST_ASSERT_EQUAL(wielder.dir, EAST, "The wielder did not turn toward the grounded sword.")
+	TEST_ASSERT_EQUAL(wielder.body_position, STANDING_UP, "The standing wielder changed posture while praying.")
+	TEST_ASSERT_EQUAL(length(wielder.filters), previous_filter_count, "Meditation changed the wielder's active filters.")
+	TEST_ASSERT_EQUAL(json_encode(wielder.filter_data), previous_filters, "Meditation changed the order or parameters of an existing filter.")
+	TEST_ASSERT(compare_list(matrix(wielder.transform).tolist(), previous_transform), "Meditation altered the standing character's transform.")
+	TEST_ASSERT_EQUAL(length(whispered_lines), 1, "Starting the first stage should produce one actual whisper.")
+	var/datum/progressbar/bar = locate() in wielder.progressbars[sword]
+	TEST_ASSERT_NOTNULL(bar, "An Alt-click meditation has no progress bar.")
+	UNTIL(bar.last_progress > 0 || world.time >= deadline)
+	TEST_ASSERT(bar.last_progress > 0, "The visible bond progress never advanced.")
+
+	wielder.forceMove(get_step(start, NORTH))
+	deadline = world.time + 5 SECONDS
+	UNTIL(!sword.meditating || world.time >= deadline)
+	TEST_ASSERT(!sword.meditating && sword.bond_meditation_time > 0, "Moving did not interrupt meditation and preserve the earned time.")
+	TEST_ASSERT_EQUAL(wielder.body_position, STANDING_UP, "Interrupting meditation changed the wielder's posture.")
+	TEST_ASSERT_EQUAL(length(wielder.filters), previous_filter_count, "Ending meditation changed the active filter count.")
+	TEST_ASSERT_EQUAL(json_encode(wielder.filter_data), previous_filters, "Ending meditation changed the order or parameters of an existing filter.")
+	TEST_ASSERT(compare_list(matrix(wielder.transform).tolist(), previous_transform), "Ending meditation changed the standing character's transform.")
+
+	// Skip only the waiting time; the click, stage transition and cooldown all run normally.
+	wielder.forceMove(start)
+	sword.bond_meditation_time = 45 SECONDS - world.tick_lag
+	wielder.ClickOn(sword, "left=1;alt=1")
+	deadline = world.time + 5 SECONDS
+	UNTIL(sword.get_legendary_bond() == 25 || world.time >= deadline)
+	TEST_ASSERT_EQUAL(sword.get_legendary_bond(), 25, "Resuming the interrupted stage did not complete it.")
+	TEST_ASSERT_EQUAL(length(whispered_lines), 1, "Resuming the same stage repeated its whisper.")
+	TEST_ASSERT(!COOLDOWN_FINISHED(sword, bond_rest), "Completing the stage skipped the rest.")
+
+	COOLDOWN_RESET(sword, bond_rest)
+	UNTIL(world.time > wielder.next_click)
+	wielder.ClickOn(sword, "left=1;alt=1")
+	deadline = world.time + 5 SECONDS
+	UNTIL(LAZYACCESS(wielder.do_afters, sword) || world.time >= deadline)
+	TEST_ASSERT(LAZYACCESS(wielder.do_afters, sword), "The second meditation did not start.")
+	TEST_ASSERT_EQUAL(length(whispered_lines), 2, "The next stage did not produce its own whisper.")
+	TEST_ASSERT_NOTEQUAL(whispered_lines[1], whispered_lines[2], "The first two stages used the same whisper.")
+	wielder.apply_damage(1, BRUTE, BODY_ZONE_CHEST, wound_bonus = CANT_WOUND)
+	UNTIL(!sword.meditating || world.time >= deadline)
+	TEST_ASSERT(!sword.meditating, "Taking damage did not interrupt the second stage.")
+
+	sword.bond_meditation_time = 45 SECONDS + 90 SECONDS
+	UNTIL(world.time > wielder.next_click)
+	wielder.ClickOn(sword, "left=1;alt=1")
+	deadline = world.time + 5 SECONDS
+	UNTIL(LAZYACCESS(wielder.do_afters, sword) || world.time >= deadline)
+	TEST_ASSERT(LAZYACCESS(wielder.do_afters, sword), "The final meditation did not start.")
+	TEST_ASSERT_EQUAL(length(whispered_lines), 3, "The final stage did not produce one whisper.")
+	TEST_ASSERT_EQUAL(length(unique_list(whispered_lines)), 3, "The three stages should have distinct whispers.")
+	qdel(sword)
+
+	// A resting mob may be unable to Alt-click. Exercise posture and speech inside the session itself.
+	var/obj/item/dualsaber/legendary_saber/second_sword = allocate(/obj/item/dualsaber/legendary_saber, get_step(start, EAST))
+	wielder.set_resting(TRUE, instant = TRUE)
+	ADD_TRAIT(wielder, TRAIT_MUTE, TRAIT_SOURCE_UNIT_TESTS)
+	INVOKE_ASYNC(second_sword, TYPE_PROC_REF(/obj/item/dualsaber/legendary_saber, meditate), wielder)
+	deadline = world.time + 5 SECONDS
+	UNTIL(LAZYACCESS(wielder.do_afters, second_sword) || world.time >= deadline)
+	TEST_ASSERT(LAZYACCESS(wielder.do_afters, second_sword), "A silent, resting owner could not meditate.")
+	TEST_ASSERT_EQUAL(wielder.body_position, LYING_DOWN, "Meditation stood a resting person up.")
+	TEST_ASSERT_EQUAL(length(whispered_lines), 3, "A mute owner sent an audible prayer.")
+	qdel(second_sword)
+
+	wielder.set_resting(FALSE, instant = TRUE)
+	var/obj/structure/chair/chair = allocate(/obj/structure/chair, start)
+	TEST_ASSERT(chair.buckle_mob(wielder, force = TRUE), "The seated wielder could not be buckled to the test chair.")
+	var/obj/item/dualsaber/legendary_saber/seated_sword = allocate(/obj/item/dualsaber/legendary_saber, get_step(start, EAST))
+	var/seated_direction = wielder.dir
+	INVOKE_ASYNC(seated_sword, TYPE_PROC_REF(/obj/item/dualsaber/legendary_saber, meditate), wielder)
+	deadline = world.time + 5 SECONDS
+	UNTIL(LAZYACCESS(wielder.do_afters, seated_sword) || world.time >= deadline)
+	TEST_ASSERT(LAZYACCESS(wielder.do_afters, seated_sword), "The seated wielder could not meditate.")
+	TEST_ASSERT_EQUAL(wielder.buckled, chair, "Meditation unbuckled the wielder.")
+	TEST_ASSERT_EQUAL(wielder.dir, seated_direction, "Meditation turned a buckled wielder away from the chair's orientation.")
+	qdel(seated_sword)
+
 /datum/unit_test/legendary_sword_malice_dance
 	/// Damage delivered by Malice before natural healing can change the target's health.
 	var/list/sword_damage = list()
@@ -487,10 +591,11 @@
 	var/mob/living/carbon/human/consistent/wielder = allocate(/mob/living/carbon/human/consistent, start)
 	var/mob/living/carbon/human/consistent/attacker = allocate(/mob/living/carbon/human/consistent, get_step(start, NORTH))
 	var/obj/item/dualsaber/legendary_saber/sword = EASY_ALLOCATE()
-	var/obj/item/crowbar/bar = EASY_ALLOCATE()
-	bar.force = 5
-	bar.wound_bonus = CANT_WOUND
-	TEST_ASSERT(attacker.put_in_active_hand(bar), "Could not equip the attacker's weapon.")
+	// A blunt blow to the chest can knock down and turn the wielder between direction checks.
+	var/obj/item/knife/weapon = EASY_ALLOCATE()
+	weapon.force = 5
+	weapon.wound_bonus = CANT_WOUND
+	TEST_ASSERT(attacker.put_in_active_hand(weapon), "Could not equip the attacker's weapon.")
 	attacker.set_combat_mode(TRUE)
 	wielder.mind_initialize()
 	wielder.mind.centcom_role = LEGENDARY_TEST_OFFICER_ROLE
@@ -519,7 +624,7 @@
 	for(var/direction in list(NORTHWEST, NORTH, NORTHEAST, EAST, WEST, SOUTHWEST, SOUTH, SOUTHEAST))
 		attacker.forceMove(get_step(start, direction))
 		var/brute_before = wielder.get_brute_loss()
-		bar.melee_attack_chain(attacker, wielder)
+		weapon.melee_attack_chain(attacker, wielder)
 		if(direction in list(NORTHWEST, NORTH, NORTHEAST))
 			TEST_ASSERT_EQUAL(wielder.get_brute_loss(), brute_before, "Melee from [dir2text(direction)] bypassed the front of the guard.")
 		else
@@ -558,7 +663,7 @@
 	TEST_ASSERT(world.time >= started + 2.7 SECONDS, "The guard ended early.")
 	attacker.forceMove(get_step(start, SOUTH))
 	var/brute_after_guard = wielder.get_brute_loss()
-	bar.melee_attack_chain(attacker, wielder)
+	weapon.melee_attack_chain(attacker, wielder)
 	TEST_ASSERT(wielder.get_brute_loss() > brute_after_guard, "Melee from the front stayed blocked after the guard ended.")
 
 	sword.block_chance = 100 // The normal saber would always reflect this laser.
