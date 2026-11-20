@@ -28,7 +28,8 @@
 /datum/element/watery_tile/proc/enter_water(atom/source, atom/movable/entered)
 	SIGNAL_HANDLER
 
-	if(QDELETED(entered) || HAS_TRAIT(entered, TRAIT_WALLMOUNTED))
+	// Only objects and mobs can get wet; lighting objects on every water tile would grow wet_dogs quadratically.
+	if(QDELETED(entered) || !(isobj(entered) || ismob(entered)) || HAS_TRAIT(entered, TRAIT_WALLMOUNTED))
 		return
 
 	if(HAS_TRAIT(entered, TRAIT_IMMERSED))

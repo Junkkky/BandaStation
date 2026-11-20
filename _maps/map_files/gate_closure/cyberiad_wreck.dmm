@@ -1652,6 +1652,10 @@
 /obj/structure/reagent_dispensers/plumbed,
 /turf/open/floor/plating,
 /area/awaymission/gate_closure/wreck)
+"FV" = (
+/obj/machinery/gateway/gate_closure/avangarde_bar,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/wreck)
 "FW" = (
 /obj/effect/landmark/gate_closure_corpse,
 /obj/structure/window/fulltile,
@@ -2042,13 +2046,6 @@
 /obj/effect/landmark/gate_closure_corpse,
 /obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/dark,
-/area/awaymission/gate_closure/wreck)
-"Ng" = (
-/obj/machinery/gateway/gate_closure/avangarde_bar{
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/turf/open/floor/plating,
 /area/awaymission/gate_closure/wreck)
 "No" = (
 /obj/effect/landmark/gate_closure_corpse,
@@ -10001,7 +9998,7 @@ tT
 RG
 fj
 no
-Ng
+no
 no
 vI
 FH
@@ -10131,7 +10128,7 @@ tT
 Fk
 CC
 no
-no
+FV
 no
 no
 no

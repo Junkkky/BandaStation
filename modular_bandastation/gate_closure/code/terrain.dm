@@ -100,3 +100,14 @@
 #undef SMOOTH_GROUP_GATE_CLOSURE_FLESH
 #undef SMOOTH_GROUP_GATE_CLOSURE_ROCK
 #undef SMOOTH_GROUP_GATE_CLOSURE_BONE
+
+/// Event snow: breathable at normal pressure and walkable at normal speed.
+/turf/open/misc/asteroid/snow/gate_closure
+	baseturfs = /turf/open/misc/asteroid/snow/gate_closure
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = FALSE
+	slowdown = 0
+
+/// Island basalt at normal pressure.
+/turf/open/misc/basalt/gate_closure
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS

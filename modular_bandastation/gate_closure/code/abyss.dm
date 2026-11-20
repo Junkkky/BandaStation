@@ -12,13 +12,30 @@ GLOBAL_LIST_EMPTY(gate_closure_island_landings)
 	canSmoothWith = null
 	baseturfs = /turf/open/chasm/gate_closure
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	// Drawn by the redspace parallax: no lighting objects for tens of thousands of tiles.
+	space_lit = TRUE
 
+/// Tens of thousands of abyss tiles are never touched; the chasm logic is only attached where something arrives.
 /turf/open/chasm/gate_closure/apply_components(mapload)
-	AddComponent(/datum/component/chasm/gate_closure, null, mapload)
+	return
+
+/turf/open/chasm/gate_closure/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+	// Entered runs before the move's abstract-entered signal, so the fresh component still sees this arrival.
+	if(!GetComponent(/datum/component/chasm))
+		AddComponent(/datum/component/chasm/gate_closure, null, TRUE)
+	return ..()
 
 /// Native chasm detection and timing, but the fall ends on a redspace island instead of oblivion.
 /datum/component/chasm/gate_closure
 	fall_message = "Вы срываетесь в багровую бездну!"
+
+/datum/component/chasm/gate_closure/Initialize(turf/target, mapload)
+	. = ..()
+	if(. == COMPONENT_INCOMPATIBLE)
+		return
+	// The abyss is not a fishing spot.
+	var/turf/abyss = parent
+	qdel(abyss.GetComponent(/datum/component/fishing_spot))
 
 /datum/component/chasm/gate_closure/drop(atom/movable/dropped_thing)
 	// Drops run asynchronously; a second one for the same fall finds the thing already gone from the edge.

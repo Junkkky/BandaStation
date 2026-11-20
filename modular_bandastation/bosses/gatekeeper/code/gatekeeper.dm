@@ -72,6 +72,7 @@
 
 /// Pinhead returns from the phase through a rift that hangs open for a few seconds.
 /datum/action/cooldown/spell/spatial_phase/pinhead
+	name = "Пространственный разрыв"
 
 /datum/action/cooldown/spell/spatial_phase/pinhead/play_phase_exit(mob/living/unjaunter)
 	new /obj/effect/portal/event_boss/opening(get_turf(unjaunter), 4 SECONDS)
