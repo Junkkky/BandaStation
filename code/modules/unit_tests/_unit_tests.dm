@@ -132,13 +132,16 @@
 #include "../../../modular_bandastation/species/code/tests/ipc_upgrade_tests.dm"
 #include "aas_configs.dm"
 #include "abductor_baton_spell.dm"
+#include "abductor_spawn.dm"
 #include "ablative_hud.dm"
 #include "achievements.dm"
+#include "ai_pathfinding.dm"
 #include "alerts.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
 #include "antag_conversion.dm"
 #include "antag_moodlets.dm"
+#include "antag_winloss_panel.dm"
 #include "area_contents.dm"
 #include "armor_verification.dm"
 #include "asset_smart_cache.dm"
@@ -169,6 +172,7 @@
 #include "cargo_crates_and_exclusions.dm"
 #include "cargo_dep_order_locations.dm"
 #include "cargo_selling.dm"
+#include "cargorilla.dm"
 #include "chain_pull_through_space.dm"
 #include "chameleon.dm"
 #include "changeling.dm"
@@ -254,6 +258,7 @@
 #include "interaction_silicon.dm"
 #include "interaction_structures.dm"
 #include "job_display_order.dm"
+#include "job_experience.dm"
 #include "job_icons.dm"
 #include "json_savefile_importing.dm"
 #include "keybinding_init.dm"
@@ -303,6 +308,7 @@
 #include "neurine_trauma_cleanup.dm"
 #include "novaflower_burn.dm"
 #include "nuke_cinematic.dm"
+#include "nutrient_paste.dm"
 #include "omnitools.dm"
 #include "operating_table.dm"
 #include "orderable_items.dm"
@@ -414,6 +420,7 @@
 // END_INCLUDE
 // BANDASTATION ADDITION START - Vox port regression tests
 #include "../../../modular_bandastation/species/code/tests/vox_mechanics_tests.dm"
+#include "../../../modular_bandastation/species/code/tests/resomi_species.dm"
 #include "../../../modular_bandastation/species/code/tests/vox_appearance_tests.dm"
 #include "../../../modular_bandastation/species/code/tests/vox_emote_tests.dm"
 #include "../../../modular_bandastation/species/code/tests/vox_paradise_toggle_tests.dm"
@@ -465,6 +472,7 @@
 #include "../../../modular_bandastation/quirks/code/tests/porphyria.dm" // BANDASTATION ADDITION - Porphyria
 
 #include "../../../modular_bandastation/bug_reports/tests/bug_reports_test.dm" // BANDASTATION ADDITION - In-game bug reports
+#include "../../../modular_bandastation/examine_panel/tests/portrait_preferences.dm"
 
 // AI EDIT START - Separate ear slots
 // BANDASTATION ADDITION START - Separate ear slots
@@ -488,6 +496,20 @@
 
 #include "../../../modular_bandastation/telephones/_defines.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_tests.dm"
+#include "../../../modular_bandastation/telephones/code/telephone_speech_tests.dm"
+#include "../../../modular_bandastation/species/tests/drask_eyes.dm"
+#include "../../../modular_bandastation/species/tests/drask_species.dm"
+#include "../../../modular_bandastation/species/tests/drask_temperature.dm"
+
+#include "../../../modular_bandastation/terror_spiders/tests/terror_spiders.dm"
+
+#include "../../../modular_bandastation/dynamic/code/antag_tokens_tests.dm"
+
+#include "../../../modular_bandastation/species/code/tests/ipc_os_tests.dm"
+#include "../../../modular_bandastation/species/code/tests/ipc_os_program_tests.dm"
+#include "../../../modular_bandastation/species/code/tests/ipc_os_illegal_tests.dm"
+#include "../../../modular_bandastation/species/code/tests/ipc_os_malware_tests.dm"
+#include "../../../modular_bandastation/species/code/tests/ipc_os_revision_tests.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

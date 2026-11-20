@@ -507,6 +507,8 @@
 	for(var/datum/quirk/candidate as anything in quirks)
 		if(from_scan && (candidate.quirk_flags & QUIRK_HIDE_FROM_SCAN))
 			continue
+		if(medical && (candidate.quirk_flags & QUIRK_NO_RECORD))
+			continue
 		switch(category)
 			if(CAT_QUIRK_MAJOR_DISABILITY)
 				if(candidate.value >= -4)
@@ -534,7 +536,8 @@
 		if(quirk.quirk_flags & QUIRK_NO_TRANSFER)
 			continue
 		quirk.remove_from_current_holder(quirk_transfer = TRUE)
-		quirk.add_to_holder(to_mob, quirk_transfer = TRUE, client_source = to_pass)
+		if(!quirk.add_to_holder(to_mob, quirk_transfer = TRUE, client_source = to_pass))
+			qdel(quirk)
 
 
 /// Helper to easily add a personality by a typepath

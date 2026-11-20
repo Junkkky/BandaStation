@@ -6,6 +6,9 @@
 #define SPACEPOD_FLIGHT_IMPACT_DAMAGE 1
 #define SPACEPOD_FLIGHT_BREACH_SPEED 5
 #define SPACEPOD_FLIGHT_REINFORCED_WALL_DAMAGE 0.5
+#define SPACEPOD_FLIGHT_BRAKE_THRUST_MULTIPLIER 3
+#define SPACEPOD_FLIGHT_STRONG_BRAKE_THRUST_MULTIPLIER 4
+#define SPACEPOD_FLIGHT_BRAKE_ENERGY_MULTIPLIER 2
 
 /**
  * Pixel flight with relative thrusters, adapted from the Yogstation/Paradise spacepod physics.
@@ -28,8 +31,12 @@
 	var/desired_heading
 	/// Clockwise degrees per second.
 	var/angular_velocity = 0
-	/// Braking uses the same finite thrusters as manual input.
+	/// Use a higher limit for automatic counter-thrust during flight.
 	var/brakes = FALSE
+	/// Reject pilot movement and stop both translation and rotation before anchoring.
+	var/parking = FALSE
+	/// The hull is stationary and held by the parking anchor.
+	var/parked = FALSE
 	/// Doubles linear thruster output and the speed limit; energy follows actual thrust.
 	var/turbo = FALSE
 	/// Relative thrust requested for the next physics tick only.
@@ -67,7 +74,7 @@
 		direction &= ~(EAST|WEST)
 	if(!direction)
 		return TRUE
-	if(!can_thrust())
+	if(parking || !can_thrust())
 		return FALSE
 	input_direction = direction
 	START_PROCESSING(SSnewtonian_movement, src)
@@ -78,13 +85,13 @@
 	if(isnull(angle))
 		desired_heading = null
 		return TRUE
-	if(!isnum(angle) || !can_thrust())
+	if(parking || !isnum(angle) || !can_thrust())
 		return FALSE
 	desired_heading = WRAP(angle, 0, 360)
 	START_PROCESSING(SSnewtonian_movement, src)
 	return TRUE
 
-/// Toggle powered counter-thrust; changing the setting itself needs no energy.
+/// Toggle stronger automatic counter-thrust; changing the setting itself needs no energy.
 /datum/spacepod_flight/proc/toggle_brakes()
 	if(QDELETED(pod) || !pod.can_control(pod.pilot))
 		return FALSE
@@ -99,6 +106,33 @@
 	turbo = !turbo
 	return TRUE
 
+/// Brake to a stop and park, or release an active parking request.
+/datum/spacepod_flight/proc/toggle_parking()
+	if(QDELETED(pod) || !isturf(pod.loc) || !pod.can_control(pod.pilot))
+		return FALSE
+	if(parking)
+		release_parking()
+		return TRUE
+	if(pod.anchored)
+		return FALSE
+	parking = TRUE
+	input_direction = NONE
+	desired_heading = null
+	START_PROCESSING(SSnewtonian_movement, src)
+	return TRUE
+
+/// Release only the anchor owned by this controller and restore the pilot's hand lock.
+/datum/spacepod_flight/proc/release_parking()
+	parking = FALSE
+	if(!parked)
+		return
+	parked = FALSE
+	if(QDELETED(pod))
+		return
+	pod.set_anchored(FALSE)
+	if(!QDELETED(pod))
+		pod.update_pilot_hands()
+
 /// Stop motion after an external relocation, restoring ordinary movement rendering.
 /datum/spacepod_flight/proc/reset_motion()
 	STOP_PROCESSING(SSnewtonian_movement, src)
@@ -109,6 +143,7 @@
 	angular_velocity = 0
 	desired_heading = null
 	input_direction = NONE
+	release_parking()
 	release_camera()
 	if(QDELETED(pod))
 		return
@@ -239,6 +274,8 @@
 	if(QDELETED(pod) || !isturf(pod.loc))
 		reset_motion()
 		return PROCESS_KILL
+	if(parked)
+		return PROCESS_KILL
 	if(seconds_per_tick <= 0)
 		return
 	pod.animate_movement = NO_STEPS
@@ -271,10 +308,13 @@
 	var/forward_thrust = 0
 	var/right_thrust = 0
 	var/thrust_multiplier = turbo ? 2 : 1
+	var/braking = parking || !relative_input
 	if(controlled)
-		if(brakes)
-			forward_thrust = clamp(-(forward_x * velocity_x + forward_y * velocity_y) / seconds_per_tick, -3 * thrust_multiplier, 4 * thrust_multiplier)
-			right_thrust = clamp(-(forward_y * velocity_x - forward_x * velocity_y) / seconds_per_tick, -3 * thrust_multiplier, 3 * thrust_multiplier)
+		if(braking)
+			var/brake_thrust_limit = brakes && !parking ? SPACEPOD_FLIGHT_STRONG_BRAKE_THRUST_MULTIPLIER : SPACEPOD_FLIGHT_BRAKE_THRUST_MULTIPLIER
+			var/brake_thrust_multiplier = thrust_multiplier * brake_thrust_limit
+			forward_thrust = clamp(-(forward_x * velocity_x + forward_y * velocity_y) / seconds_per_tick, -3 * brake_thrust_multiplier, 4 * brake_thrust_multiplier)
+			right_thrust = clamp(-(forward_y * velocity_x - forward_x * velocity_y) / seconds_per_tick, -3 * brake_thrust_multiplier, 3 * brake_thrust_multiplier)
 		else
 			if(relative_input & NORTH)
 				forward_thrust += 4 * thrust_multiplier
@@ -287,7 +327,8 @@
 	var/thrust_x = forward_thrust * forward_x + right_thrust * forward_y
 	var/thrust_y = forward_thrust * forward_y - right_thrust * forward_x
 	var/thrust_magnitude = sqrt(thrust_x ** 2 + thrust_y ** 2)
-	var/powered_thrust = thrust_magnitude && use_power(10 * SPACEPOD_ENERGY_UNIT * thrust_magnitude * seconds_per_tick)
+	var/energy_multiplier = braking ? SPACEPOD_FLIGHT_BRAKE_ENERGY_MULTIPLIER : 1
+	var/powered_thrust = thrust_magnitude && use_power(10 * SPACEPOD_ENERGY_UNIT * thrust_magnitude * seconds_per_tick * energy_multiplier)
 	if(QDELETED(src) || QDELETED(pod))
 		return PROCESS_KILL
 	if(pod.loc != previous_turf)
@@ -382,6 +423,14 @@
 		return PROCESS_KILL
 	// A final idle tick removes the flame even when the last thrust was blocked.
 	if(!moving && !angular_velocity && !pod.thruster_flame_active)
+		if(parking)
+			if(pod.anchored)
+				release_parking()
+			else
+				parked = TRUE
+				pod.set_anchored(TRUE)
+				if(!QDELETED(pod))
+					pod.update_pilot_hands()
 		return PROCESS_KILL
 
 /// Interpolate the hull and each listener from the same previous physical position.
@@ -420,3 +469,6 @@
 #undef SPACEPOD_FLIGHT_IMPACT_DAMAGE
 #undef SPACEPOD_FLIGHT_BREACH_SPEED
 #undef SPACEPOD_FLIGHT_REINFORCED_WALL_DAMAGE
+#undef SPACEPOD_FLIGHT_BRAKE_THRUST_MULTIPLIER
+#undef SPACEPOD_FLIGHT_STRONG_BRAKE_THRUST_MULTIPLIER
+#undef SPACEPOD_FLIGHT_BRAKE_ENERGY_MULTIPLIER

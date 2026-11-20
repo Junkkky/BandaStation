@@ -398,6 +398,7 @@
  * * z_move_flags: bitflags used for various checks in both this proc and can_z_move(). See __DEFINES/movement.dm.
  */
 /atom/movable/proc/zMove(dir, turf/target, z_move_flags = ZMOVE_FLIGHT_FLAGS)
+	SHOULD_CALL_PARENT(TRUE)
 	if(!target)
 		target = can_z_move(dir, get_turf(src), null, z_move_flags)
 		if(!target)
@@ -405,6 +406,12 @@
 			return FALSE
 
 	var/list/moving_movs = get_z_move_affected(z_move_flags)
+
+	// Validate the whole group before any forceMove can separate a tethered companion.
+	for(var/atom/movable/movable as anything in moving_movs)
+		if(SEND_SIGNAL(movable, COMSIG_CAN_Z_MOVE, get_turf(movable), target) & COMPONENT_CANT_Z_MOVE)
+			set_currently_z_moving(FALSE, TRUE)
+			return FALSE
 
 	for(var/atom/movable/movable as anything in moving_movs)
 		movable.currently_z_moving = currently_z_moving || CURRENTLY_Z_MOVING_GENERIC
@@ -1615,9 +1622,11 @@
 * Unless you are doing something very specific, these are the ones you want to use.
 */
 
-/// Gets or creates the relevant language holder. For mindless atoms, gets the local one. For atom with mind, gets the mind one.
-/atom/movable/proc/get_language_holder()
+/// Gets the language holder, optionally creating one if it is missing.
+/atom/movable/proc/get_language_holder(create_if_missing = TRUE)
 	RETURN_TYPE(/datum/language_holder)
+	if(!create_if_missing)
+		return language_holder
 	if(QDELING(src))
 		CRASH("get_language_holder() called on a QDELing atom, \
 			this will try to re-instantiate the language holder that's about to be deleted, which is bad.")

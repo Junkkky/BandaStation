@@ -108,6 +108,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		// 10-19: Representation
 		JOB_NANOTRASEN_REPRESENTATIVE = 10,
 		JOB_BLUESHIELD = 11,
+		/datum/job/donor/representative_tsf::title = 12,
+		/datum/job/donor/representative_ussp::title = 13,
 		// 20-29: Justice
 		JOB_MAGISTRATE = 20,
 		JOB_LAWYER = 21,
@@ -121,6 +123,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_SECURITY_OFFICER_SUPPLY = 36,
 		JOB_DETECTIVE = 37,
 		JOB_VETERAN_ADVISOR = 38,
+		JOB_SPACEPOD_PILOT = 39,
 		// 40-49: Medbay
 		JOB_CHIEF_MEDICAL_OFFICER = 40,
 		JOB_CHEMIST = 41,
@@ -136,11 +139,13 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_CHIEF_ENGINEER = 60,
 		JOB_STATION_ENGINEER = 61,
 		JOB_ATMOSPHERIC_TECHNICIAN = 62,
+		JOB_SPACEPOD_TECHNICIAN = 63,
 		// 70-79: Cargo
 		JOB_QUARTERMASTER = 70,
 		JOB_SHAFT_MINER = 71,
 		JOB_CARGO_TECHNICIAN = 72,
 		JOB_BITRUNNER = 73,
+		JOB_EXPLORER = 74,
 		// 80+: Service
 		JOB_HEAD_OF_PERSONNEL = 80,
 		JOB_BARTENDER = 81,
@@ -153,6 +158,15 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_MIME = 88,
 		JOB_JANITOR = 89,
 		JOB_PSYCHOLOGIST = 91,
+		/datum/job/donor/barber::title = 92,
+		/datum/job/donor/waiter::title = 93,
+		/datum/job/donor/administrator::title = 94,
+		/datum/job/donor/guard::title = 95,
+		/datum/job/donor/dealer::title = 96,
+		/datum/job/donor/banker::title = 97,
+		/datum/job/donor/tourist_tsf::title = 98,
+		/datum/job/donor/tourist_ussp::title = 99,
+		/datum/job/donor/migrant::title = 101,
 		// 200-229: Centcom
 		JOB_CENTCOM_ADMIRAL = 200,
 		JOB_CENTCOM = 201,
@@ -162,6 +176,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_CENTCOM_CUSTODIAN = 213,
 		JOB_CENTCOM_MEDICAL_DOCTOR = 214,
 		JOB_CENTCOM_RESEARCH_OFFICER = 215,
+		/datum/job/donor/navy_junior_officer::title = 216,
+		/datum/id_trim/centcom/intern/head::assignment = 217,
 		JOB_ERT_COMMANDER = 220,
 		JOB_ERT_OFFICER = 221,
 		JOB_ERT_ENGINEER = 222,
@@ -256,8 +272,12 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			entry["name"] = id_card.registered_name
 			entry["assignment"] = id_card.assignment
 			var/trim_assignment = job_title_ru_to_en(id_card.get_trim_assignment())
-			if (jobs[trim_assignment] != null)
-				entry["ijob"] = jobs[trim_assignment]
+			var/job_id = jobs[trim_assignment]
+			if(isnull(job_id))
+				var/datum/job/job = SSjob.get_job(trim_assignment)
+				job_id = jobs[job?.title]
+			if(!isnull(job_id))
+				entry["ijob"] = job_id
 
 		// Broken sensors show garbage data
 		if (uniform.has_sensor == BROKEN_SENSORS)

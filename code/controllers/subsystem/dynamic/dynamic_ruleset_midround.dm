@@ -21,7 +21,7 @@
 	return
 
 /datum/dynamic_ruleset/midround/spiders
-	name = "Spiders"
+	name = "Пауки террора"
 	config_tag = "Spiders"
 	midround_type = HEAVY_MIDROUND
 	false_alarm_able = TRUE
@@ -32,28 +32,49 @@
 		DYNAMIC_TIER_MEDIUMHIGH = 1,
 		DYNAMIC_TIER_HIGH = 2,
 	)
-	min_pop = 30
+	min_pop = 31
 	min_antag_cap = 0
-	/// Determines how many eggs to create - can take a formula like antag_cap
-	var/egg_count = 2
+	/// Only warn the station once at least one founder has actually hatched.
+	var/announcement_scheduled = FALSE
 
 /datum/dynamic_ruleset/midround/spiders/can_be_selected()
 	return ..() && (GLOB.ghost_role_flags & GHOSTROLE_MIDROUND_EVENT) && !isnull(find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = TRUE))
 
 /datum/dynamic_ruleset/midround/spiders/execute()
-	var/num_egg = get_antag_cap(length(GLOB.alive_player_list), egg_count)
-	while(num_egg > 0)
+	var/population = length(GLOB.alive_player_list)
+	var/list/founders = get_founders(population)
+	var/founder = pick(founders)
+	var/num_egg = founders[founder]
+	for(var/egg_number in 1 to num_egg)
 		var/turf/spawn_loc = find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = TRUE)
 		if(isnull(spawn_loc))
 			break
-		var/obj/effect/mob_spawn/ghost_role/spider/midwife/new_eggs = new(spawn_loc)
+		var/obj/effect/mob_spawn/ghost_role/spider/terror/new_eggs = new(spawn_loc, founder)
 		new_eggs.amount_grown = 98
-		num_egg--
+		RegisterSignal(new_eggs, COMSIG_GHOSTROLE_SPAWNED, PROC_REF(on_founder_hatched))
 
-	addtimer(CALLBACK(src, PROC_REF(announce_spiders)), rand(375, 600) SECONDS)
+/datum/dynamic_ruleset/midround/spiders/proc/get_founders(population)
+	if(population >= 50)
+		return list(
+			/mob/living/basic/spider/giant/terror/queen = 1,
+			/mob/living/basic/spider/giant/terror/prince = 1,
+		)
+	var/count = population >= 40 ? 3 : 2
+	return list(
+		/mob/living/basic/spider/giant/terror/white = count,
+		/mob/living/basic/spider/giant/terror/queen/princess = count,
+	)
+
+/datum/dynamic_ruleset/midround/spiders/proc/on_founder_hatched(datum/source)
+	SIGNAL_HANDLER
+	UnregisterSignal(source, COMSIG_GHOSTROLE_SPAWNED)
+	if(announcement_scheduled)
+		return
+	announcement_scheduled = TRUE
+	addtimer(CALLBACK(src, PROC_REF(announce_spiders)), rand(240, 270) SECONDS)
 
 /datum/dynamic_ruleset/midround/spiders/proc/announce_spiders()
-	priority_announce("На борту [station_name()] обнаружены неопознанные формы жизни. Перекройте все внешние шлюзы, включая трубы и вентиляции.", "Неопознанные формы жизни", ANNOUNCER_ALIENS)
+	priority_announce("На борту [station_name()] обнаружены пауки террора. Персоналу надлежит немедленно приступить к сдерживанию угрозы.", "Биологическая угроза", 'modular_bandastation/terror_spiders/sound/outbreak_terror.ogg')
 
 /datum/dynamic_ruleset/midround/spiders/false_alarm()
 	announce_spiders()
@@ -272,9 +293,14 @@
  *
  * Applies prefs to a given body. Usually that's what you want, but sometimes you don't, in which case you can override this proc.
  * Returns TRUE if prefs were applied
+ *
+ * Arguments:
+ * * body - The newly created body receiving character preferences.
+ * * do_not_apply - Preference types that this role must not inherit.
  */
-/datum/dynamic_ruleset/midround/from_ghosts/proc/apply_prefs_to_body(mob/living/carbon/human/body)
-	body.client?.prefs.safe_transfer_prefs_to(body)
+/datum/dynamic_ruleset/midround/from_ghosts/proc/apply_prefs_to_body(mob/living/carbon/human/body, list/do_not_apply)
+	var/client/body_client = GET_CLIENT(body)
+	body_client?.prefs.safe_transfer_prefs_to(body, do_not_apply = do_not_apply)
 	body.dna.remove_all_mutations()
 	body.dna.update_dna_identity()
 	return TRUE
@@ -611,6 +637,11 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/abductors/create_execute_args()
 	return list(new /datum/team/abductor_team())
+
+/// A fresh abductor must receive its species' anatomy rather than the crew character's augmentations.
+/datum/dynamic_ruleset/midround/from_ghosts/abductors/apply_prefs_to_body(mob/living/carbon/human/body, list/do_not_apply)
+	do_not_apply = do_not_apply ? (do_not_apply | list(/datum/preference/body_modifications)) : list(/datum/preference/body_modifications)
+	return ..(body, do_not_apply)
 
 /datum/dynamic_ruleset/midround/from_ghosts/abductors/assign_role(datum/mind/candidate, datum/team/abductor_team/team)
 	if(candidate == selected_minds[1])

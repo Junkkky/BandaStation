@@ -15,12 +15,6 @@
 	fabricators += fabricator
 	return fabricator
 
-/datum/unit_test/spacepod_fabricator/proc/give_engineering_card(mob/living/carbon/human/user)
-	var/obj/item/card/id/advanced/card = allocate(__IMPLIED_TYPE__, get_turf(user))
-	card.set_access(list(ACCESS_ENGINE_EQUIP), FORCE_ADD_ALL)
-	user.put_in_hands(card)
-	return card
-
 /// Research and server-side requests must keep the pod and exosuit catalogs separate.
 /datum/unit_test/spacepod_fabricator/research_filter/Run()
 	var/obj/machinery/mecha_part_fabricator/legacy = make_fabricator(/obj/machinery/mecha_part_fabricator, run_loc_floor_bottom_left)
@@ -46,8 +40,7 @@
 	TEST_ASSERT(/datum/design/spacepod_main in fabricator.cached_designs, "The pod fab does not offer its researched starter design.")
 	TEST_ASSERT(!(/datum/design/borg_suit in fabricator.cached_designs), "The pod fab offered a researched cyborg design.")
 	var/mob/living/carbon/human/consistent/user = allocate(__IMPLIED_TYPE__, get_step(run_loc_floor_top_right, SOUTH))
-	var/obj/item/card/id/advanced/card = give_engineering_card(user)
-	TEST_ASSERT(fabricator.allowed(user), "The test user did not receive real engineering fabrication access.")
+	TEST_ASSERT(fabricator.allowed(user), "A person without an ID cannot use the pod fabricator.")
 	var/list/static_data = fabricator.ui_static_data(user)
 	TEST_ASSERT_EQUAL(static_data["machine_name"], "Фабрикатор подов", "The shared native UI did not receive the dedicated fabricator's translated title.")
 	var/list/ui_designs = static_data["designs"]
@@ -66,15 +59,8 @@
 	TEST_ASSERT_EQUAL(length(fabricator.queue), 1, "A forged build request queued an unrelated or unresearched design.")
 	var/alist/queued_part = fabricator.queue[1]
 	TEST_ASSERT_EQUAL(queued_part["design"], SSresearch.techweb_designs[/datum/design/spacepod_main], "The validated request did not queue the permitted pod part.")
-	card.clear_access()
-	fabricator.ui_act("build", list("designs" = list("/datum/design/spacepod_main")), ui, ui.state)
-	TEST_ASSERT_EQUAL(length(fabricator.queue), 1, "An already-open interface queued another part after its engineering access was revoked.")
 	fabricator.ui_act("clear_queue", list(), ui, ui.state)
-	TEST_ASSERT_EQUAL(length(fabricator.queue), 1, "Revoked engineering access still allowed changing the queue.")
-	fabricator.ui_act("build_queue", list(), ui, ui.state)
-	TEST_ASSERT(!fabricator.process_queue, "Revoked engineering access still started fabrication.")
-	card.set_access(list(ACCESS_ENGINE_EQUIP), FORCE_ADD_ALL)
-	fabricator.queue.Cut()
+	TEST_ASSERT_EQUAL(length(fabricator.queue), 0, "A person without an ID could not clear the pod fabrication queue.")
 	research.remove_design(/datum/design/spacepod_main)
 	fabricator.ui_act("build", list("designs" = list("/datum/design/spacepod_main")), ui, ui.state)
 	TEST_ASSERT_EQUAL(length(fabricator.queue), 0, "A stale client request bypassed revoked research.")
@@ -88,14 +74,56 @@
 	TEST_ASSERT_EQUAL(length(fabricator.queue), 1, "Rejecting a stale researched design silently discarded its queue record.")
 	TEST_ASSERT_NULL(fabricator.being_built, "Revoked research still started a print.")
 
+/// Ordinary battery designs keep their research gate, material cost and empty-cell output.
+/datum/unit_test/spacepod_fabricator/power_cells/Run()
+	var/obj/machinery/mecha_part_fabricator/spacepod/fabricator = make_fabricator(/obj/machinery/mecha_part_fabricator/spacepod, run_loc_floor_top_right)
+	var/obj/machinery/mecha_part_fabricator/legacy = make_fabricator(/obj/machinery/mecha_part_fabricator, run_loc_floor_bottom_left)
+	var/datum/techweb/research = allocate(/datum/techweb)
+	fabricator.connect_techweb(research)
+	legacy.connect_techweb(research)
+	var/list/cell_designs = list(
+		/datum/design/basic_cell = TRUE,
+		/datum/design/high_cell = TRUE,
+		/datum/design/super_cell = FALSE,
+		/datum/design/hyper_cell = FALSE,
+		/datum/design/bluespace_cell = FALSE,
+	)
+	for(var/design_path in cell_designs)
+		var/datum/design/design = SSresearch.techweb_designs[design_path]
+		TEST_ASSERT_EQUAL(!!fabricator.can_build_design(design), cell_designs[design_path], "The pod fab bypassed or lost the normal battery research gate for [design_path].")
+		TEST_ASSERT_EQUAL(!!legacy.can_build_design(design), cell_designs[design_path], "Battery availability changed in the ordinary exosuit fabricator.")
+		if(!cell_designs[design_path])
+			TEST_ASSERT(!fabricator.add_to_queue(design), "An unresearched power cell entered the pod fabrication queue.")
+			TEST_ASSERT(research.add_design(design_path), "Could not unlock a battery in private research.")
+		fabricator.update_menu_tech()
+		TEST_ASSERT(design_path in fabricator.cached_designs, "A researched battery is missing from the pod catalog.")
+		TEST_ASSERT(legacy.can_build_design(design), "Unlocking a battery stopped it being printable by the ordinary fab.")
+		var/datum/material_container/materials = fabricator.rmat.mat_container
+		for(var/datum/material/material as anything in design.materials)
+			var/cost = OPTIMAL_COST(design.materials[material] * fabricator.component_coeff)
+			TEST_ASSERT_EQUAL(materials.insert_amount_mat(cost * 2, material), cost * 2, "Could not supply the battery's ordinary material cost.")
+		TEST_ASSERT(fabricator.add_to_queue(design), "A researched battery did not enter the pod fabrication queue.")
+		TEST_ASSERT(fabricator.build_next_in_queue(FALSE), "A researched and funded battery did not start printing.")
+		for(var/datum/material/material as anything in design.materials)
+			TEST_ASSERT_EQUAL(materials.get_material_amount(material), OPTIMAL_COST(design.materials[material] * fabricator.component_coeff), "Battery printing consumed the wrong quantity of [material].")
+		TEST_ASSERT(fabricator.dispense_built_part(design), "The printed battery could not leave the pod fabricator.")
+		var/obj/item/stock_parts/power_store/cell/printed = locate(design.build_path) in get_step(fabricator, fabricator.drop_direction)
+		TEST_ASSERT_NOTNULL(printed, "Battery printing dispensed the wrong item.")
+		allocated += printed
+		TEST_ASSERT_EQUAL(printed.charge, 0, "The pod fab created a charged cell instead of the ordinary empty design.")
+		qdel(printed)
+		for(var/datum/material/material as anything in design.materials)
+			materials.use_amount_mat(materials.get_material_amount(material), material)
+		research.remove_design(design_path)
+		TEST_ASSERT(!fabricator.add_to_queue(design), "A revoked battery design remained available for printing.")
+
 /// The inherited queue must charge real local materials and dispense the actual pod board.
 /datum/unit_test/spacepod_fabricator/printing/Run()
 	var/obj/machinery/mecha_part_fabricator/spacepod/fabricator = make_fabricator(/obj/machinery/mecha_part_fabricator/spacepod, run_loc_floor_top_right)
 	var/datum/techweb/research = allocate(/datum/techweb)
 	fabricator.connect_techweb(research)
 	var/mob/living/carbon/human/consistent/user = allocate(__IMPLIED_TYPE__, get_step(run_loc_floor_top_right, SOUTH))
-	give_engineering_card(user)
-	TEST_ASSERT(fabricator.allowed(user), "The printing test user cannot use engineering equipment.")
+	TEST_ASSERT(fabricator.allowed(user), "The printing test user cannot use the pod fabricator without an ID.")
 	var/datum/tgui/ui = allocate(/datum/tgui, user, fabricator, "ExosuitFabricator")
 	fabricator.ui_act("build", list("designs" = list("/datum/design/spacepod_main")), ui, ui.state)
 	TEST_ASSERT_EQUAL(length(fabricator.queue), 1, "The native request did not queue a pod mainboard.")
@@ -121,7 +149,7 @@
 	allocated += printed
 	TEST_ASSERT_EQUAL(materials.get_material_amount(iron), expected_cost, "Completing a print charged its materials a second time.")
 
-/// Its printable circuit must construct the dedicated machine and retain engineering access checks.
+/// Its printable circuit must construct a dedicated machine usable without an ID.
 /datum/unit_test/spacepod_fabricator/construction_access/Run()
 	var/turf/origin = run_loc_floor_top_right
 	var/mob/living/carbon/human/consistent/user = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
@@ -171,16 +199,10 @@
 	allocated += fabricator
 	fabricators += fabricator
 	TEST_ASSERT_EQUAL(fabricator.circuit, board, "The constructed pod fabricator discarded its dedicated circuit.")
-	TEST_ASSERT(!fabricator.allowed(user), "A person without an engineering ID can operate the pod fabricator.")
+	TEST_ASSERT(fabricator.allowed(user), "A person without an ID cannot operate the constructed pod fabricator.")
 	var/obj/item/card/id/advanced/card = allocate(__IMPLIED_TYPE__, origin)
 	user.put_in_hands(card)
-	card.set_access(list(ACCESS_ROBOTICS), FORCE_ADD_ALL)
-	TEST_ASSERT(!fabricator.allowed(user), "Robotics-only access bypassed the engineering equipment requirement.")
-	card.clear_access()
-	card.set_access(list(ACCESS_ENGINE_EQUIP), FORCE_ADD_ALL)
-	TEST_ASSERT(fabricator.allowed(user), "An engineering equipment ID cannot operate the dedicated pod fabricator.")
-	card.clear_access()
-	TEST_ASSERT(!fabricator.allowed(user), "Revoking engineering access left the pod fabricator unlocked.")
+	TEST_ASSERT(fabricator.allowed(user), "An ID without access locked the constructed pod fabricator.")
 
 /// Inherited EMP and blocked-output paths must keep the queue, material charge and original output.
 /datum/unit_test/spacepod_fabricator/blocked_output_emp/Run()

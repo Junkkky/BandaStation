@@ -69,11 +69,15 @@
 	SIGNAL_HANDLER
 	user.update_emote_panels()
 
-/// The shared catalog contains every species; resolve it for this mob without caching the result.
+/// Players outside a living body can configure favorites for any species.
 /datum/tgui_panel/proc/get_available_emotes()
+	var/mob/user = client?.mob
+	if(!isliving(user))
+		return all_emotes
+
 	var/list/available_emotes = list()
 	for(var/datum/emote/emote as anything in all_emotes)
-		if(get_available_emote(client?.mob, emote.key) == emote)
+		if(get_available_emote(user, emote.key) == emote)
 			available_emotes += emote
 	return available_emotes
 
@@ -172,7 +176,7 @@
 						return
 
 					var/emote_key = picked_emote.key
-					if(get_available_emote(emote_user, emote_key) != picked_emote)
+					if(isliving(emote_user) && get_available_emote(emote_user, emote_key) != picked_emote)
 						to_chat(client, span_warning("Эмоция [emote_key] недоступна этому персонажу!"))
 						return
 
@@ -189,7 +193,7 @@
 						return
 
 					var/emote_key = picked_emote.key
-					if(get_available_emote(emote_user, emote_key) != picked_emote)
+					if(isliving(emote_user) && get_available_emote(emote_user, emote_key) != picked_emote)
 						to_chat(client, span_warning("Эмоция [emote_key] недоступна этому персонажу!"))
 						return
 
@@ -222,7 +226,7 @@
 				to_chat(client, span_warning(CANCEL_EMOTE_ADDITION))
 				return
 			var/selected_emote_key = emote["type"] == TGUI_PANEL_EMOTE_TYPE_ME ? "me" : emote["key"]
-			if(!get_available_emote(emote_user, selected_emote_key))
+			if(isliving(emote_user) && !get_available_emote(emote_user, selected_emote_key))
 				to_chat(client, span_warning(CANCEL_EMOTE_ADDITION))
 				return
 
@@ -376,7 +380,7 @@
 /mob/proc/get_mob_emote_panel_entries()
 	return null
 
-/// Hide temporarily unavailable favorites without changing the saved panel or its entries.
+/// Filter favorites for living players and keep every valid entry editable outside a living body.
 /proc/get_available_emote_panel_entries(mob/user, list/saved_emotes)
 	var/list/available_emotes = list()
 	for(var/emote_name in saved_emotes)
@@ -391,7 +395,7 @@
 				emote_key = "me"
 			else
 				continue
-		if(get_available_emote(user, emote_key))
+		if(!isliving(user) || get_available_emote(user, emote_key))
 			available_emotes[emote_name] = emote.Copy()
 	return available_emotes
 

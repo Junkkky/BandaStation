@@ -31,9 +31,9 @@
 	/// This references a tgui icon, so it can be FontAwesome or a tgfont (with a tg- prefix).
 	var/icon
 	/// A lazylist of items people can receive from mail who have this quirk enabled
-	/// The base weight for the each quirk's mail goodies list to be selected is 5
-	/// then the item selected is determined by pick(selected_quirk.mail_goodies)
 	var/list/mail_goodies
+	/// Weight of this quirk's goodies in the mail selection process.
+	var/mail_weight = 5
 	/// max stat below which this quirk can process (if it has QUIRK_PROCESSES) and above which it stops.
 	/// If null, then it will process regardless of stat.
 	var/maximum_process_stat = HARD_CRIT
@@ -79,6 +79,11 @@
 
 	if(quirk_holder)
 		CRASH("Attempted to add quirk to a holder when it already has a holder.")
+
+	if(ishuman(new_holder))
+		var/mob/living/carbon/human/human_holder = new_holder
+		if(!human_holder.dna.species.can_have_quirks)
+			return FALSE
 
 	quirk_holder = new_holder
 	LAZYADD(quirk_holder.quirks, src)
@@ -200,7 +205,8 @@
 
 /// If a quirk is able to be selected for the mob's species
 /datum/quirk/proc/is_species_appropriate(datum/species/mob_species)
-	if(mob_trait in GLOB.species_prototypes[mob_species].inherent_traits)
+	var/datum/species/species = GLOB.species_prototypes[mob_species]
+	if(!species.can_have_quirks || (mob_trait in species.inherent_traits))
 		return FALSE
 	return TRUE
 
@@ -248,3 +254,7 @@
 		to_chat(quirk_holder, chat_string)
 
 	where_items_spawned = null
+
+/// Returns possible mail rewards for the quirk given the recipient's current job.
+/datum/quirk/proc/get_mail_goodies(datum/job/recipient_job)
+	return mail_goodies

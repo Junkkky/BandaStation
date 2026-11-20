@@ -30,6 +30,7 @@
 #define JOB_SECURITY_OFFICER_ENGINEERING_RU "Офицер (Инженерия)"
 #define JOB_SECURITY_OFFICER_SCIENCE_RU "Офицер (Исследование)"
 #define JOB_SECURITY_OFFICER_SUPPLY_RU "Офицер (Снабжение)"
+#define JOB_SPACEPOD_PILOT_RU "Под-пилот СБ"
 //Engineering
 #define JOB_STATION_ENGINEER_RU "Станционный инженер"
 #define JOB_ATMOSPHERIC_TECHNICIAN_RU "Атмосферный техник"
@@ -46,7 +47,7 @@
 //Supply
 #define JOB_QUARTERMASTER_RU "Квартирмейстер"
 #define JOB_CARGO_TECHNICIAN_RU "Грузчик"
-#define JOB_CARGO_GORILLA_RU "Cargo Gorilla"
+#define JOB_CARGO_GORILLA_RU "Карго-горилла"
 #define JOB_SHAFT_MINER_RU "Шахтер"
 #define JOB_BITRUNNER_RU "Битраннер"
 #define JOB_EXPLORER_RU "Исследователь"
@@ -63,6 +64,18 @@
 #define JOB_PSYCHOLOGIST_RU "Психолог"
 
 GLOBAL_LIST_INIT(job_titles_ru, list(
+	"Barber" = "Парикмахер",
+	"Waiter" = "Официант",
+	"Tourist TSF" = "Турист ТСФ",
+	"Tourist USSP" = "Турист СССП",
+	"Migrant" = "Мигрант",
+	"Administrator" = "Сервис-администратор",
+	"Guard" = "Охранник сервиса",
+	"Representative TSF" = "Представитель ТСФ",
+	"Representative USSP" = "Представитель СССП",
+	"Dealer" = "Торговец",
+	"Banker" = "Банкир",
+	"Nanotrasen Navy Junior Officer" = "Младший офицер Центрального командования",
 	//No department
 	JOB_ASSISTANT = JOB_ASSISTANT_RU,
 	JOB_PRISONER = JOB_PRISONER_RU,
@@ -94,6 +107,7 @@ GLOBAL_LIST_INIT(job_titles_ru, list(
 	JOB_SECURITY_OFFICER_ENGINEERING = JOB_SECURITY_OFFICER_ENGINEERING_RU,
 	JOB_SECURITY_OFFICER_SCIENCE = JOB_SECURITY_OFFICER_SCIENCE_RU,
 	JOB_SECURITY_OFFICER_SUPPLY = JOB_SECURITY_OFFICER_SUPPLY_RU,
+	JOB_SPACEPOD_PILOT = JOB_SPACEPOD_PILOT_RU,
 	//Engineering
 	JOB_STATION_ENGINEER = JOB_STATION_ENGINEER_RU,
 	JOB_ATMOSPHERIC_TECHNICIAN = JOB_ATMOSPHERIC_TECHNICIAN_RU,

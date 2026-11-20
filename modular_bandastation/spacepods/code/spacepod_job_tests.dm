@@ -68,3 +68,113 @@
 	TEST_ASSERT(engineering_spawn.used, "Engineering fallback did not reserve its chosen spawn.")
 	TEST_ASSERT_EQUAL(preferred_spawn, workshop_spawn, "Spacepod Technician ignored its dedicated workshop spawn.")
 	TEST_ASSERT(workshop_spawn.used, "Dedicated workshop spawn was not reserved.")
+
+/datum/unit_test/spacepod_job_security/Run()
+	var/datum/job/spacepod_pilot/job = SSjob.get_job_type(/datum/job/spacepod_pilot)
+	if(SSmapping.current_map.map_name != "Cyberiad")
+		TEST_ASSERT_NULL(job, "Spacepod Pilot was registered on a map without a security pod hangar.")
+		return
+
+	TEST_ASSERT_NOTNULL(job, "Spacepod Pilot was not registered on Cyberiad.")
+	TEST_ASSERT(job in SSjob.joinable_occupations, "Spacepod Pilot cannot be selected by players.")
+	TEST_ASSERT_EQUAL(job.spawn_positions, 1, "Cyberiad must have one roundstart pilot slot.")
+	TEST_ASSERT_EQUAL(job.total_positions, 1, "Cyberiad must have one total pilot slot.")
+	var/obj/effect/landmark/start/spacepod_pilot/spawn_point = locate() in GLOB.start_landmarks_list
+	TEST_ASSERT_NOTNULL(spawn_point, "Cyberiad is missing the pilot's roundstart landmark.")
+	TEST_ASSERT(istype(get_area(spawn_point), /area/station/security/spacepod_pilot), "The pilot landmark is outside the hangar.")
+
+	var/mob/living/carbon/human/pilot = allocate(/mob/living/carbon/human/consistent, run_loc_floor_bottom_left)
+	pilot.mind_initialize()
+	pilot.mind.set_assigned_role(job)
+	pilot.dress_up_as_job(job, consistent = TRUE)
+	var/obj/item/card/id/card = pilot.wear_id
+	TEST_ASSERT_NOTNULL(card, "Spacepod Pilot did not receive an ID card.")
+	TEST_ASSERT_EQUAL(card.assignment, JOB_SPACEPOD_PILOT_RU, "Spacepod Pilot's ID has the wrong assignment.")
+	var/obj/machinery/door/airlock/security/airlock = allocate(__IMPLIED_TYPE__)
+	airlock.req_access = list(ACCESS_SECURITY)
+	TEST_ASSERT(airlock.allowed(pilot), "Spacepod Pilot cannot enter the security hangar.")
+	TEST_ASSERT(!(ACCESS_ARMORY in card.GetAccess()), "Spacepod Pilot unexpectedly received armory access.")
+
+	var/obj/item/storage/backpack/backpack = pilot.back
+	TEST_ASSERT(istype(backpack), "Spacepod Pilot did not receive a backpack.")
+	TEST_ASSERT(locate(/obj/item/choice_beacon/weapon/security_pistol) in backpack, "Spacepod Pilot did not receive the standard security sidearm beacon.")
+	var/obj/item/spacepod_equipment/key/security/key = locate() in backpack
+	TEST_ASSERT_NOTNULL(key, "Spacepod Pilot did not receive the security pod key.")
+	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, get_step(run_loc_floor_bottom_left, NORTH))
+	pod.item_interaction(pilot, key)
+	TEST_ASSERT(!pod.unlocked, "The pilot's key did not lock the security pod.")
+	pod.item_interaction(pilot, key)
+	TEST_ASSERT(pod.unlocked, "The pilot's key did not unlock the security pod.")
+
+/// Nearby names must select one connected airlock row, with each leaf retaining its access and power checks.
+/datum/unit_test/spacepod_hangar_airlocks/Run()
+	var/turf/origin = locate(run_loc_floor_bottom_left.x + 3, run_loc_floor_bottom_left.y + 3, run_loc_floor_bottom_left.z)
+	var/obj/vehicle/sealed/spacepod/sec/pod = allocate(__IMPLIED_TYPE__, origin)
+	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
+	var/mob/living/carbon/human/consistent/passenger = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
+	TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE) && pod.mob_enter(passenger, silent = TRUE), "The hangar-control occupants could not board.")
+	var/obj/machinery/door/airlock/nearest = allocate(__IMPLIED_TYPE__, get_step(origin, WEST))
+	var/obj/machinery/door/airlock/partner = allocate(__IMPLIED_TYPE__, get_step(nearest, WEST))
+	var/obj/machinery/door/airlock/restricted = allocate(__IMPLIED_TYPE__, get_step(partner, NORTH))
+	var/obj/machinery/door/airlock/separate_row = allocate(__IMPLIED_TYPE__, locate(origin.x + 3, origin.y, origin.z))
+	var/obj/machinery/door/airlock/distant = allocate(__IMPLIED_TYPE__, locate(origin.x + 6, origin.y, origin.z))
+	var/obj/machinery/door/poddoor/other_group = allocate(__IMPLIED_TYPE__, locate(origin.x, origin.y + 3, origin.z))
+	for(var/obj/machinery/door/airlock/door as anything in list(nearest, partner, restricted, separate_row, distant))
+		door.name = "Pod hangar airlock"
+		door.req_access = list(ACCESS_ENGINE_EQUIP)
+		door.autoclose = FALSE
+		door.machine_stat &= ~NOPOWER
+	restricted.req_access = list(ACCESS_CE)
+	other_group.req_access = list(ACCESS_ENGINE_EQUIP)
+	TEST_ASSERT(!pod.toggleDoors(pilot), "The pilot remotely opened doors without either occupant having access.")
+	var/obj/item/card/id/advanced/card = allocate(__IMPLIED_TYPE__)
+	card.set_access(list(ACCESS_ENGINE_EQUIP), FORCE_ADD_ALL)
+	TEST_ASSERT(passenger.put_in_active_hand(card) && nearest.allowed(passenger), "The passenger's held ID did not provide hangar access.")
+	TEST_ASSERT(!pod.toggleDoors(passenger), "A passenger activated the pilot's hangar control.")
+	nearest.machine_stat |= NOPOWER
+	TEST_ASSERT(pod.toggleDoors(pilot), "The pilot could not use the passenger's hangar access.")
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(!partner.operating || world.time >= deadline)
+	TEST_ASSERT(!partner.operating && !partner.density, "The powered neighboring airlock did not open through the native door path.")
+	TEST_ASSERT(nearest.density, "Remote hangar control bypassed an airlock's power requirement.")
+	TEST_ASSERT(restricted.density, "The group borrowed access from another door and opened a restricted leaf.")
+	TEST_ASSERT(separate_row.density && distant.density && other_group.density, "The command opened a separate same-name row, a distant door, or a different door group.")
+	nearest.machine_stat &= ~NOPOWER
+	TEST_ASSERT(pod.toggleDoors(pilot), "The restored nearest airlock could not receive the open command.")
+	deadline = world.time + 5 SECONDS
+	UNTIL(!nearest.operating || world.time >= deadline)
+	TEST_ASSERT(!nearest.operating && !nearest.density && !partner.density, "A mixed airlock row did not converge on the nearest door's open command.")
+	TEST_ASSERT(pod.toggleDoors(pilot), "The opened airlock row could not receive the close command.")
+	deadline = world.time + 5 SECONDS
+	UNTIL((!nearest.operating && !partner.operating) || world.time >= deadline)
+	TEST_ASSERT(!nearest.operating && !partner.operating && nearest.density && partner.density, "The whole selected airlock row did not close.")
+
+/// Blast doors and shutters share a local controller ID, never the entire map or every unlinked door.
+/datum/unit_test/spacepod_hangar_blastdoors/Run()
+	var/turf/origin = locate(run_loc_floor_bottom_left.x + 3, run_loc_floor_bottom_left.y + 3, run_loc_floor_bottom_left.z)
+	var/obj/vehicle/sealed/spacepod/pod = allocate(__IMPLIED_TYPE__, origin)
+	var/mob/living/carbon/human/consistent/pilot = allocate(__IMPLIED_TYPE__, get_step(origin, SOUTH))
+	TEST_ASSERT(pod.mob_enter(pilot, silent = TRUE), "The blast-door control pilot could not board.")
+	var/obj/machinery/door/poddoor/nearest = allocate(__IMPLIED_TYPE__, get_step(origin, WEST))
+	var/obj/machinery/door/poddoor/shutters/preopen/partner = allocate(__IMPLIED_TYPE__, get_step(nearest, WEST))
+	var/obj/machinery/door/poddoor/distant = allocate(__IMPLIED_TYPE__, locate(origin.x + 6, origin.y, origin.z))
+	var/obj/machinery/door/poddoor/other_group = allocate(__IMPLIED_TYPE__, locate(origin.x, origin.y + 3, origin.z))
+	var/obj/machinery/door/poddoor/unlinked = allocate(__IMPLIED_TYPE__, get_step(partner, NORTH))
+	nearest.id = "spacepod-test-hangar"
+	partner.id = nearest.id
+	distant.id = nearest.id
+	other_group.id = "spacepod-test-other"
+	TEST_ASSERT(pod.toggleDoors(pilot), "The nearest blast-door group was not found.")
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(!nearest.operating || world.time >= deadline)
+	TEST_ASSERT(!nearest.operating && !nearest.density && !partner.density, "A mixed blast-door/shutter group toggled individual leaves instead of opening together.")
+	TEST_ASSERT(distant.density && other_group.density && unlinked.density, "Local blast-door control reached a distant, differently linked, or unlinked door.")
+	TEST_ASSERT(pod.toggleDoors(pilot), "The opened blast-door group could not receive the close command.")
+	deadline = world.time + 5 SECONDS
+	UNTIL((!nearest.operating && !partner.operating) || world.time >= deadline)
+	TEST_ASSERT(!nearest.operating && !partner.operating && nearest.density && partner.density, "The local blast door and shutter did not close together.")
+	nearest.id = null
+	TEST_ASSERT(pod.toggleDoors(pilot), "An unlinked nearest blast door could not be operated individually.")
+	deadline = world.time + 5 SECONDS
+	UNTIL(!nearest.operating || world.time >= deadline)
+	TEST_ASSERT(!nearest.operating && !nearest.density && partner.density && unlinked.density, "An empty controller ID grouped unrelated blast doors.")

@@ -94,6 +94,16 @@
 		return
 	return ..()
 
+/// Cosmetic ID fields shared by the worn-item link and its detailed examine panel.
+/mob/living/carbon/human/proc/get_id_examine_identity(obj/item/card/id/id)
+	SHOULD_CALL_PARENT(TRUE)
+	var/id_job = id.assignment
+	if(istype(id, /obj/item/card/id/advanced) && !istype(id, /obj/item/card/id/advanced/chameleon))
+		var/obj/item/card/id/advanced/advanced_id = id
+		id_job = advanced_id.trim_assignment_override || id_job
+	. = list("name" = id.registered_name, "job" = id_job, "holder" = declent_ru(GENITIVE))
+	SEND_SIGNAL(src, COMSIG_HUMAN_GET_ID_EXAMINE, id, .)
+
 /mob/living/carbon/human/Topic(href, href_list)
 
 	if(href_list["see_id"])
@@ -119,7 +129,6 @@
 
 		var/id_name = id.registered_name
 		var/id_age = id.registered_age
-		var/id_job = id.assignment
 		// Should probably be recorded on the ID, but this is easier (albiet more restrictive) on chameleon ID users
 		var/datum/record/crew/record = find_record(id_name)
 		var/id_blood_type = record?.blood_type
@@ -132,11 +141,10 @@
 			id_species ||= dna.species.name
 			id_blood_type ||= get_bloodtype()
 
-		else if(istype(id, /obj/item/card/id/advanced))
-			var/obj/item/card/id/advanced/advancedID = id
-			id_job = advancedID.trim_assignment_override || id_job
-
-		var/id_examine = span_slightly_larger(separator_hr("Это <em>ID-карта [declent_ru(GENITIVE)]</em>."))
+		var/list/id_identity = get_id_examine_identity(id)
+		id_name = id_identity["name"]
+		var/id_job = id_identity["job"]
+		var/id_examine = span_slightly_larger(separator_hr("Это <em>ID-карта [id_identity["holder"]]</em>."))
 		id_examine += "<div class='img_by_text_container'>"
 		id_examine += "[id_icon]"
 		id_examine += "<div class='img_text'>"
@@ -892,10 +900,6 @@
 		fireman_carry(M)
 		return TRUE
 
-//src is the user that will be carrying, target is the mob to be carried
-/mob/living/carbon/human/proc/can_piggyback(mob/living/carbon/target)
-	return (istype(target) && !IS_UNCONSCIOUS_OR_CRIT(target))
-
 /mob/living/carbon/human/proc/can_be_firemanned(mob/living/carbon/target)
 	return ishuman(target) && target.body_position == LYING_DOWN
 
@@ -942,22 +946,6 @@
 	mind?.adjust_experience(/datum/skill/athletics, round(experience_reward/(fitness_level || 1), 1)) //Get a bit fitter every time we fireman carry successfully. Deadlift your friends for gains!
 
 	return buckle_mob(target, TRUE, TRUE, CARRIER_NEEDS_ARM)
-
-/mob/living/carbon/human/proc/piggyback(mob/living/carbon/target)
-	if(!can_piggyback(target))
-		to_chat(target, span_warning("Вы не можете сейчас прокатиться на [declent_ru(PREPOSITIONAL)]!"))
-		return
-
-	visible_message(span_notice("[capitalize(target.declent_ru(NOMINATIVE))] начинает залазить на [declent_ru(ACCUSATIVE)]..."))
-	if(!do_after(target, 1.5 SECONDS, target = src) || !can_piggyback(target))
-		visible_message(span_warning("[capitalize(target.declent_ru(DATIVE))] не удается залезь на [target.declent_ru(ACCUSATIVE)]!"))
-		return
-
-	if(INCAPACITATED_IGNORING(target, INCAPABLE_GRAB) || INCAPACITATED_IGNORING(src, INCAPABLE_GRAB))
-		target.visible_message(span_warning("[capitalize(target.declent_ru(NOMINATIVE))] не может удержаться на [declent_ru(PREPOSITIONAL)]!"))
-		return
-
-	return buckle_mob(target, TRUE, TRUE, RIDER_NEEDS_ARMS)
 
 /mob/living/carbon/human/is_buckle_possible(mob/living/target, force, check_loc)
 	if(!HAS_TRAIT(target, TRAIT_CAN_MOUNT_HUMANS))

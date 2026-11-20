@@ -18,6 +18,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species
 	///If the game needs to manually check your race to do something not included in a proc here, it will use this.
 	var/id
+	/// Minimum donor tier to choose this species in character preferences.
+	var/required_donator_level = BASIC_DONATOR_LEVEL
 	///This is used for children, it will determine their default limb ID for use of examine. See [/mob/living/carbon/human/proc/examine].
 	var/examine_limb_id
 	///This is the fluff name. They are displayed on health analyzers and in the character setup menu. Leave them generic for other servers to customize.
@@ -30,6 +32,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	/// Whether or not the race has sexual characteristics (biological genders). At the moment this is only FALSE for skeletons and shadows
 	var/sexes = TRUE
+	/// Whether members of this species can select and receive quirks.
+	var/can_have_quirks = TRUE
 
 	///The maximum number of bodyparts this species can have.
 	var/max_bodypart_count = 6
@@ -360,6 +364,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
  */
 /datum/species/proc/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons = TRUE, replace_missing = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
+
+	if(!can_have_quirks)
+		human_who_gained_species.cleanse_quirk_datums()
 
 	human_who_gained_species.living_flags |= STOP_OVERLAY_UPDATE_BODY_PARTS //Don't call update_body_parts() for every single bodypart overlay added.
 

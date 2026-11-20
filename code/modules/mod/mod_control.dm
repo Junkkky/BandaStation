@@ -235,7 +235,7 @@
 	return ..()
 
 /obj/item/mod/control/wrench_act(mob/living/user, obj/item/wrench)
-	if(seconds_electrified && get_charge() && shock(user, 100))
+	if(seconds_electrified && get_charge() && shock(user, 125))
 		return ITEM_INTERACT_BLOCKING
 	if(open)
 		if(!core)
@@ -611,7 +611,7 @@
 		return
 	picked_module.on_select(user)
 
-/obj/item/mod/control/shock(mob/living/shocking, chance, shock_source, siemens_coeff)
+/obj/item/mod/control/shock(mob/living/shocking, chance, shock_source, siemens_coeff, allow_modifiers)
 	if(get_charge() < 1)
 		return FALSE
 	if(isnull(siemens_coeff))
@@ -838,4 +838,9 @@
 	SEND_SIGNAL(src, COMSIG_MOD_GET_VISOR_OVERLAY, standing, overrides)
 	if (length(overrides))
 		return overrides[1]
-	return mutable_appearance(worn_icon, "[skin]-helmet-visor", layer = standing.layer + 0.1)
+	var/visor_state = "[skin]-helmet-visor"
+	var/visor_icon = worn_icon
+	if(wearer?.get_bodypart(BODY_ZONE_HEAD)?.limb_id == SPECIES_RESOMI)
+		var/obj/item/helmet = get_part_from_slot(ITEM_SLOT_HEAD)
+		visor_icon = helmet?.get_species_worn_icon(SPECIES_RESOMI, visor_state, ITEM_SLOT_HEAD) || worn_icon
+	return mutable_appearance(visor_icon, visor_state, layer = standing.layer + 0.1)
