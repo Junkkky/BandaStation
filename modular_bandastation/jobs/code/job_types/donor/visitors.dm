@@ -42,8 +42,8 @@
 
 /datum/job/donor/tourist_ussp
 	title = "Tourist USSP"
-	alternate_titles = list("Турист СССП", "Посетитель СССП")
-	description = "Проведите отпуск на станции как гость Союза Советских Социалистических Планет и познакомьтесь с местной жизнью."
+	alternate_titles = list("Турист КССП", "Посетитель КССП")
+	description = "Проведите отпуск на станции как гость Коммунистического Союза Советских Планет и познакомьтесь с местной жизнью."
 	required_donator_level = DONATOR_TIER_2
 	config_tag = "TOURIST_USSP"
 	display_order = JOB_DISPLAY_ORDER_DONOR_TOURIST_USSP
@@ -55,7 +55,7 @@
 	donor_spawn_landmark = JOB_ASSISTANT
 
 /datum/outfit/job/donor/tourist_ussp
-	name = "Tourist USSP"
+	name = "Tourist CUSP"
 	jobtype = /datum/job/donor/tourist_ussp
 	id = /obj/item/card/id/advanced/ussp/donor
 	id_trim = /datum/id_trim/job/donor/tourist_ussp
@@ -69,11 +69,12 @@
 		equipped.grant_language(/datum/language/spinwarder)
 
 /obj/item/card/id/advanced/ussp/donor
+	desc = "An ID straight from CUSP."
 	trim = null
 	wildcard_slots = WILDCARD_LIMIT_GREY
 
 /datum/id_trim/job/donor/tourist_ussp
-	assignment = "Турист СССП"
+	assignment = "Турист КССП"
 	job = /datum/job/donor/tourist_ussp
 	trim_icon = 'modular_bandastation/jobs/icons/obj/card.dmi'
 	trim_state = "trim_ussp"
@@ -156,15 +157,15 @@
 
 /datum/job/donor/representative_ussp
 	title = "Representative USSP"
-	alternate_titles = list("Представитель СССП", "Дипломат СССП", "Пресс-секретарь СССП")
-	description = "Представляйте интересы СССП в переговорах с командованием станции, принимайте обращения и ведите дипломатическую переписку."
+	alternate_titles = list("Представитель КССП", "Дипломат КССП", "Пресс-секретарь КССП")
+	description = "Представляйте интересы КССП в переговорах с командованием станции, принимайте обращения и ведите дипломатическую переписку."
 	required_donator_level = DONATOR_TIER_4
 	config_tag = "REPRESENTATIVE_USSP"
 	display_order = JOB_DISPLAY_ORDER_DONOR_REPRESENTATIVE_USSP
 	total_positions = 1
 	spawn_positions = 1
 	departments_list = list(/datum/job_department/nanotrasen_representation)
-	supervisors = "дипломатической службой СССП"
+	supervisors = "дипломатической службой КССП"
 	tgui_icon = FA_ICON_HANDSHAKE
 	outfit = /datum/outfit/job/donor/representative_ussp
 	paycheck = PAYCHECK_CREW
@@ -174,7 +175,7 @@
 
 /datum/outfit/job/donor/representative_ussp
 	parent_type = /datum/outfit/job/donor/tourist_ussp
-	name = "Representative USSP"
+	name = "Representative CUSP"
 	jobtype = /datum/job/donor/representative_ussp
 	id_trim = /datum/id_trim/job/donor/representative_ussp
 	uniform = /obj/item/clothing/under/rank/ussp/official
@@ -186,7 +187,7 @@
 
 /datum/id_trim/job/donor/representative_ussp
 	parent_type = /datum/id_trim/job/donor/tourist_ussp
-	assignment = "Представитель СССП"
+	assignment = "Представитель КССП"
 	job = /datum/job/donor/representative_ussp
 	sechud_icon = DEFAULT_HUDS_DMI
 	sechud_icon_state = SECHUD_USSP
