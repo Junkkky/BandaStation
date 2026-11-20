@@ -355,7 +355,7 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 	set waitfor = FALSE
 	var/originaldir = AM.dir
 	for(var/i in list(NORTH,SOUTH,EAST,WEST,EAST,SOUTH,NORTH,SOUTH,EAST,WEST,EAST,SOUTH))
-		if(!AM)
+		if(QDELETED(AM))
 			return
 		AM.setDir(i)
 		callperrotate?.Invoke()

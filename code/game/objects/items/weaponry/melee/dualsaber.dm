@@ -134,7 +134,7 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/dualsaber/attack(mob/target, mob/living/carbon/human/user)
+/obj/item/dualsaber/attack(mob/target, mob/living/carbon/human/user, list/modifiers, list/attack_modifiers)
 	if(HAS_TRAIT(user, TRAIT_HULK))
 		to_chat(user, span_warning("You grip the blade too hard and accidentally drop it!"))
 		if(HAS_TRAIT(src, TRAIT_WIELDED))
@@ -146,6 +146,8 @@
 
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(40))
 		impale(user)
+		return
+	if(LAZYACCESS(attack_modifiers, REPLACE_MELEE_HIT_EFFECTS) && attack_modifiers[DAMAGE_DONE] > 0)
 		return
 	if(prob(50))
 		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)

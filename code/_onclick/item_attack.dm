@@ -239,11 +239,11 @@
 		to_chat(user, span_warning("Вы не хотите причинять вред другим живым существам!"))
 		return FALSE
 
-	if(!LAZYACCESS(attack_modifiers, SILENCE_HITSOUND))
-		if(!final_force && !HAS_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND))
-			playsound(src, 'sound/items/weapons/tap.ogg', get_clamped_volume(), TRUE, -1)
-		else if(hitsound)
-			playsound(src, hitsound, get_clamped_volume(), TRUE, extrarange = stealthy_audio ? SILENCED_SOUND_EXTRARANGE : -1, falloff_distance = 0)
+	var/atom/effect_origin = LAZYACCESS(attack_modifiers, MELEE_EFFECT_ORIGIN) || src
+	var/replace_hit_effects = LAZYACCESS(attack_modifiers, REPLACE_MELEE_HIT_EFFECTS)
+	var/play_hit_sound = !LAZYACCESS(attack_modifiers, SILENCE_HITSOUND)
+	if(play_hit_sound && !replace_hit_effects)
+		play_melee_hit_sound(effect_origin, final_force)
 
 	target_mob.lastattacker = user.real_name
 	target_mob.lastattackerckey = user.ckey
@@ -251,9 +251,16 @@
 	if(final_force && target_mob == user && user.client)
 		user.client.give_award(/datum/award/achievement/misc/selfouch, user)
 
-	if(get(src, /mob/living) == user) // telekinesis.
+	var/animate_swing = effect_origin == src && get(src, /mob/living) == user
+	if(animate_swing && !replace_hit_effects)
 		user.do_attack_animation(target_mob)
-	if(target_mob.attacked_by(src, user, modifiers, attack_modifiers) == ATTACK_FAILED)
+	var/attack_result = target_mob.attacked_by(src, user, modifiers, attack_modifiers)
+	if(replace_hit_effects && !(attack_modifiers[DAMAGE_DONE] > 0) && !QDELETED(src))
+		if(play_hit_sound && !QDELETED(effect_origin))
+			play_melee_hit_sound(effect_origin, final_force)
+		if(animate_swing && !QDELETED(user) && !QDELETED(target_mob))
+			user.do_attack_animation(target_mob, used_item = src)
+	if(attack_result == ATTACK_FAILED)
 		return TRUE
 
 	SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK, target_mob, user, modifiers, attack_modifiers)
@@ -263,6 +270,13 @@
 		log_combat(user, target_mob, "attacked", src.name, "(COMBAT MODE: [uppertext(user.combat_mode)]) (DAMTYPE: [uppertext(damtype)])")
 	add_fingerprint(user)
 	return FALSE // unhandled
+
+/// Plays the standard impact for a melee attack against a mob.
+/obj/item/proc/play_melee_hit_sound(atom/origin, final_force)
+	if(!final_force && !HAS_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND))
+		playsound(origin, 'sound/items/weapons/tap.ogg', get_clamped_volume(), TRUE, -1)
+	else if(hitsound)
+		playsound(origin, hitsound, get_clamped_volume(), TRUE, extrarange = stealthy_audio ? SILENCED_SOUND_EXTRARANGE : -1, falloff_distance = 0)
 
 /// The equivalent of [/obj/item/proc/attack] but for alternate attacks, AKA right clicking
 /obj/item/proc/attack_secondary(mob/living/victim, mob/living/user, list/modifiers, list/attack_modifiers)

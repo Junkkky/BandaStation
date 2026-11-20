@@ -18,6 +18,8 @@
 	var/datum/enchantment/enchant
 	/// Ckeys allowed to use this sword without the CentCom officer role.
 	var/list/ckey_whitelist = list("mooniverse")
+	/// Only swords with their own moveset can form a bond.
+	var/list/legendary_abilities
 	possible_colors = null
 	block_chance = 88
 	two_hand_force = 35
@@ -30,11 +32,27 @@
 	var/datum/component/two_handed/th = src.GetComponent(/datum/component/two_handed)
 	th.wieldsound = wieldsound
 	th.unwieldsound = unwieldsound
-	src.add_enchantment(new/datum/enchantment/dash())
+	// Malice uses the base item path; named swords are its subtypes.
+	if(type == /obj/item/dualsaber/legendary_saber)
+		legendary_abilities = list(
+			/datum/action/cooldown/legendary_sword/malice_dance,
+			/datum/action/cooldown/legendary_sword/malice_shadow,
+			/datum/action/cooldown/legendary_sword/malice_rage,
+			/datum/action/cooldown/legendary_sword/malice_omnislash,
+			/datum/action/cooldown/legendary_sword/malice_guard,
+		)
+	if(!length(legendary_abilities))
+		add_enchantment(new /datum/enchantment/dash())
+		return
+	reach = 5
+	for(var/ability_path in legendary_abilities)
+		add_item_action(ability_path)
 
 /obj/item/dualsaber/legendary_saber/update_icon_state()
 	. = ..()
 	icon_state = inhand_icon_state = HAS_TRAIT(src, TRAIT_WIELDED) ? "[saber_name]_dualsaber[saber_color][HAS_TRAIT(src, TRAIT_WIELDED)]" : "[saber_name]_dualsaber0"
+	for(var/datum/action/cooldown/legendary_sword/ability in actions)
+		ability.build_all_button_icons(UPDATE_BUTTON_STATUS)
 
 /obj/item/dualsaber/legendary_saber/sorrow_catcher
 	name = "Sorrow Catcher"
@@ -172,14 +190,53 @@
 	unwieldsound = 'modular_bandastation/weapon/sound/melee/lex_saberoff.ogg'
 	hit_wield = 'modular_bandastation/weapon/sound/melee/lex_saberhit.ogg'
 
-/obj/item/dualsaber/legendary_saber/pre_attack(atom/A, mob/living/user, params)
-	var/charged = FALSE
-	var/proximity = get_proximity(A, user)
-	if(isliving(A))
-		charged = enchant?.on_legendary_hit(A, usr, proximity, src)
-	if(!proximity && !charged)
+/obj/item/dualsaber/legendary_saber/pre_attack(atom/target, mob/living/user, list/modifiers, list/attack_modifiers)
+	if(!length(legendary_abilities))
+		var/charged = FALSE
+		var/proximity = get_proximity(target, user)
+		if(isliving(target))
+			charged = enchant?.on_legendary_hit(target, usr, proximity, src)
+		if(!proximity && !charged)
+			return COMPONENT_SKIP_ATTACK
+		return ..()
+	. = ..()
+	if(. || target.IsReachableBy(user))
+		return
+	if(!isliving(target) || !HAS_TRAIT(src, TRAIT_WIELDED) || !user.is_holding(src) || !target.IsReachableBy(user, reach))
 		return COMPONENT_SKIP_ATTACK
-	return ..()
+	var/mob/living/victim = target
+	if(victim.stat == DEAD || !isturf(victim.loc) || !isturf(user.loc) || IS_UNCONSCIOUS_OR_CRIT(user) || HAS_TRAIT(user, TRAIT_PACIFISM))
+		return COMPONENT_SKIP_ATTACK
+	var/turf/origin = user.loc
+	var/normal_block_chance = block_chance
+	block_chance = 100
+	for(var/step_index in 1 to reach)
+		if(victim.IsReachableBy(user))
+			break
+		var/turf/previous_location = user.loc
+		if(!step_to(user, victim, 1) || user.loc == previous_location)
+			break
+		var/obj/effect/temp_visual/decoy/afterimage = new(previous_location, user)
+		animate(afterimage, alpha = 0, color = light_color, time = 0.3 SECONDS)
+	block_chance = normal_block_chance
+	if(user.loc == origin)
+		return COMPONENT_SKIP_ATTACK
+	user.apply_damage(10, STAMINA)
+	if(QDELETED(victim) || !victim.IsReachableBy(user) || IS_UNCONSCIOUS_OR_CRIT(user) || HAS_TRAIT(user, TRAIT_INCAPACITATED) || !user.is_holding(src) || !HAS_TRAIT(src, TRAIT_WIELDED))
+		return COMPONENT_SKIP_ATTACK
+	for(var/datum/action/cooldown/legendary_sword/ability in actions)
+		if(can_use_legendary_ability(user, ability.required_bond))
+			ability.OnSwordDash(user, origin)
+
+/// Attempts a normal protected melee attack with an ability-specific force and reports damage inflicted.
+/obj/item/dualsaber/legendary_saber/proc/legendary_strike(mob/living/user, mob/living/victim, damage, silence_hitsound = FALSE)
+	if(!can_use_legendary_ability(user) || QDELETED(victim) || victim == user || victim.stat == DEAD)
+		return 0
+	if(!isturf(user.loc) || !isturf(victim.loc) || !victim.IsReachableBy(user) || HAS_TRAIT(user, TRAIT_PACIFISM))
+		return 0
+	var/list/attack_modifiers = list(FORCE_OVERRIDE = damage, SILENCE_HITSOUND = silence_hitsound)
+	melee_attack_chain(user, victim, attack_modifiers = attack_modifiers)
+	return LAZYACCESS(attack_modifiers, DAMAGE_DONE) || 0
 
 /obj/item/dualsaber/legendary_saber/proc/add_enchantment(datum/enchantment/E)
 	enchant = E
