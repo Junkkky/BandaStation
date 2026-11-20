@@ -38,6 +38,56 @@
 /obj/effect/light_emitter/gate_closure/red/small,
 /turf/open/floor/stone,
 /area/awaymission/gate_closure/avangarde)
+"aah" = (
+/obj/structure/fake_stairs/directional/east{
+	color = "gray"
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/avangarde)
+"aai" = (
+/obj/structure/fake_stairs/directional/east{
+	color = "gray"
+	},
+/obj/structure/cable,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/avangarde)
+"aaj" = (
+/obj/structure/fake_stairs/directional/north,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/avangarde)
+"aak" = (
+/obj/structure/fake_stairs/directional/west{
+	color = "gray"
+	},
+/obj/structure/cable,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/avangarde)
+"aal" = (
+/obj/structure/fake_stairs/directional/west{
+	color = "gray"
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/avangarde)
+"aam" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fake_stairs/directional/north{
+	color = "grey"
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/avangarde)
+"aan" = (
+/obj/structure/fake_stairs/directional/north{
+	color = "grey"
+	},
+/obj/structure/cable,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/avangarde)
+"aao" = (
+/obj/structure/fake_stairs/directional/north{
+	color = "grey"
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/avangarde)
 "abU" = (
 /obj/machinery/bookbinder,
 /obj/effect/turf_decal/siding/wood/cherry{
@@ -902,13 +952,6 @@
 "agG" = (
 /turf/open/floor/wood/parquet,
 /area/awaymission/gate_closure/avangarde)
-"agI" = (
-/obj/structure/fake_stairs/directional/east{
-	color = "gray"
-	},
-/obj/structure/cable,
-/turf/open/chasm/gate_closure,
-/area/awaymission/gate_closure/avangarde)
 "agJ" = (
 /obj/effect/turf_decal/siding/thinplating,
 /obj/effect/turf_decal/siding/thinplating{
@@ -1161,12 +1204,6 @@
 /obj/machinery/light/directional/east,
 /obj/effect/mapping_helpers/broken_machine/gate_closure,
 /turf/open/floor/iron/dark,
-/area/awaymission/gate_closure/avangarde)
-"ahQ" = (
-/obj/structure/fake_stairs/directional/east{
-	color = "gray"
-	},
-/turf/open/floor/iron/dark/small,
 /area/awaymission/gate_closure/avangarde)
 "ahT" = (
 /obj/effect/turf_decal/siding/wood/cherry{
@@ -2555,13 +2592,6 @@
 /obj/structure/window/spawner/directional/north,
 /turf/open/floor/wood/large/cherry,
 /area/awaymission/gate_closure/avangarde)
-"aqB" = (
-/obj/structure/fake_stairs/directional/east{
-	color = "gray"
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark/small,
-/area/awaymission/gate_closure/avangarde)
 "aqE" = (
 /obj/effect/spawner/random/maintenance/three,
 /turf/open/floor/iron,
@@ -3935,12 +3965,6 @@
 /obj/structure/cable,
 /turf/open/misc/dirt/dark/station,
 /area/awaymission/gate_closure/avangarde)
-"ayM" = (
-/obj/structure/fake_stairs/directional/north{
-	color = "grey"
-	},
-/turf/open/floor/iron/small,
-/area/awaymission/gate_closure/avangarde)
 "ayN" = (
 /obj/structure/railing/corner{
 	pixel_x = 0;
@@ -3980,12 +4004,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/mapping_helpers/broken_machine/gate_closure,
 /turf/open/floor/iron,
-/area/awaymission/gate_closure/avangarde)
-"ayW" = (
-/obj/structure/fake_stairs/directional/west{
-	color = "gray"
-	},
-/turf/open/chasm/gate_closure,
 /area/awaymission/gate_closure/avangarde)
 "ayY" = (
 /obj/effect/turf_decal/siding/wood/cherry{
@@ -4717,13 +4735,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/catwalk_floor/iron_white,
-/area/awaymission/gate_closure/avangarde)
-"aCY" = (
-/obj/structure/fake_stairs/directional/west{
-	color = "gray"
-	},
-/obj/structure/cable,
-/turf/open/chasm/gate_closure,
 /area/awaymission/gate_closure/avangarde)
 "aDa" = (
 /obj/structure/dresser,
@@ -5696,12 +5707,6 @@
 /obj/structure/closet/crate/bin,
 /turf/open/floor/iron/dark,
 /area/awaymission/gate_closure/avangarde)
-"aII" = (
-/obj/structure/fake_stairs/directional/east{
-	color = "gray"
-	},
-/turf/open/chasm/gate_closure,
-/area/awaymission/gate_closure/avangarde)
 "aIK" = (
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 8
@@ -6106,13 +6111,6 @@
 	dir = 4
 	},
 /turf/open/floor/stone,
-/area/awaymission/gate_closure/avangarde)
-"aKY" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/fake_stairs/directional/north{
-	color = "grey"
-	},
-/turf/open/floor/iron/small,
 /area/awaymission/gate_closure/avangarde)
 "aKZ" = (
 /obj/structure/table/wood,
@@ -7565,13 +7563,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/awaymission/gate_closure/avangarde)
-"aSV" = (
-/obj/structure/fake_stairs/directional/north{
-	color = "grey"
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/small,
-/area/awaymission/gate_closure/avangarde)
 "aSY" = (
 /obj/machinery/light/small/directional/south,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -8150,10 +8141,6 @@
 "aWC" = (
 /obj/structure/cable,
 /turf/open/floor/iron/white/smooth_large,
-/area/awaymission/gate_closure/avangarde)
-"aWF" = (
-/obj/structure/fake_stairs/directional/north,
-/turf/open/chasm/gate_closure,
 /area/awaymission/gate_closure/avangarde)
 "aWG" = (
 /obj/machinery/oven/range,
@@ -19844,7 +19831,7 @@ aOC
 aIh
 aUb
 aUb
-aWF
+aaj
 aRq
 aRq
 aRq
@@ -26651,8 +26638,8 @@ afy
 oYq
 ePy
 vhN
-ayW
-aCY
+aal
+aak
 vYc
 aZj
 afy
@@ -26663,8 +26650,8 @@ raZ
 ucO
 sAR
 dCG
-ayW
-aCY
+aal
+aak
 hec
 okj
 oPb
@@ -27535,7 +27522,7 @@ aRZ
 aJB
 aBu
 acx
-aKY
+aam
 avB
 aNN
 aNN
@@ -27687,7 +27674,7 @@ ajR
 ajR
 aDZ
 aer
-aSV
+aan
 aQZ
 azL
 aRS
@@ -28599,7 +28586,7 @@ aJB
 aJB
 aBu
 acx
-ayM
+aao
 aNN
 aYW
 aWV
@@ -28751,7 +28738,7 @@ adS
 aIY
 ajX
 acx
-aKY
+aam
 aNN
 aNN
 aNN
@@ -29651,7 +29638,7 @@ mPY
 len
 khu
 vhN
-ayW
+aal
 heU
 khu
 xUe
@@ -29992,8 +29979,8 @@ raZ
 fEV
 qsB
 rtI
-aII
-agI
+aah
+aai
 sGD
 mLj
 raZ
@@ -30012,8 +29999,8 @@ raZ
 eub
 gpN
 rtI
-agI
-aII
+aai
+aah
 sGD
 mLj
 raZ
@@ -31109,9 +31096,9 @@ aqc
 aqc
 aqc
 aXJ
-ahQ
-aqB
-ahQ
+aah
+aai
+aah
 aVG
 aqc
 aqc
