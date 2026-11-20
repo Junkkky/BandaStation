@@ -55,10 +55,15 @@
 		ability.build_all_button_icons(UPDATE_BUTTON_STATUS)
 
 /obj/item/dualsaber/legendary_saber/jedi_spin(mob/living/user)
-	// A cosmetic spin from an earlier hit would keep turning Malice's frontal guard.
-	if(type == /obj/item/dualsaber/legendary_saber)
-		return
-	return ..()
+	if(type != /obj/item/dualsaber/legendary_saber)
+		return ..()
+	var/datum/status_effect/legendary_sword_sequence/sequence = locate() in user.status_effects
+	if(istype(sequence, /datum/status_effect/malice_dance))
+		dance_rotate(user, CALLBACK(user, TYPE_PROC_REF(/mob, dance_flip)), lifetime = sequence)
+	else if(!sequence)
+		// An ordinary flourish must leave the facing chosen for the next frontal guard intact.
+		animate(user, tag = "malice_flip")
+		user.SpinAnimation(FLIP_EMOTE_DURATION, 1, tag = "malice_flip")
 
 /obj/item/dualsaber/legendary_saber/sorrow_catcher
 	name = "Sorrow Catcher"

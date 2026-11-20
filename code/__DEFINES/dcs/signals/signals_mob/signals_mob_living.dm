@@ -155,6 +155,8 @@
 #define COMSIG_LIVING_SLAPPED "living_slapped"
 ///from /obj/item/hand_item/attack(): (source=mob/living/attacker, mob/living/attacked)
 #define COMSIG_LIVING_HAND_ITEM_ATTACK "living_hand_item_attack"
+/// Sent to the target before a close unarmed attack or grab: (mob/living/attacker). Return COMPONENT_CANCEL_ATTACK_CHAIN to prevent contact.
+#define COMSIG_LIVING_PRE_UNARMED_CONTACT "living_pre_unarmed_contact"
 /// from /mob/living/*/UnarmedAttack(), before sending [COMSIG_LIVING_UNARMED_ATTACK]: (mob/living/source, atom/target, proximity, modifiers)
 /// The only reason this exists is so hulk can fire before Fists of the North Star.
 /// Note that this is called before [/mob/living/proc/can_unarmed_attack] is called, so be wary of that.

@@ -372,6 +372,8 @@
 /mob/living/proc/grab(mob/living/target)
 	if(!istype(target))
 		return GRAB_SKIP
+	if(target != src && (SEND_SIGNAL(target, COMSIG_LIVING_PRE_UNARMED_CONTACT, src) & COMPONENT_CANCEL_ATTACK_CHAIN))
+		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_LIVING_GRAB, target) & (COMPONENT_CANCEL_ATTACK_CHAIN|COMPONENT_SKIP_ATTACK))
 		return FALSE
 	if(target.check_block(src, 0, "захват [declent_ru(GENITIVE)]", UNARMED_ATTACK))

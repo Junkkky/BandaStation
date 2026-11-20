@@ -1,6 +1,6 @@
 /datum/action/cooldown/legendary_sword/malice_guard
 	name = "Заслон Злобы"
-	desc = "Три секунды вы вращаете клинок перед собой. Он блокирует атаки спереди и по передним диагоналям. Можно двигаться и поворачиваться. Бока и спина открыты."
+	desc = "Пять секунд вы вращаете клинок перед собой. Он блокирует атаки спереди и по передним диагоналям. Можно двигаться и поворачиваться. Бока и спина открыты."
 	button_icon_state = "malice_guard"
 	required_bond = 100
 	cooldown_time = 30 SECONDS
@@ -15,7 +15,7 @@
 /datum/status_effect/malice_guard
 	parent_type = /datum/status_effect/legendary_sword_sequence
 	id = "malice_sequence"
-	duration = 3 SECONDS
+	duration = 5 SECONDS
 	tick_interval = STATUS_EFFECT_NO_TICK
 	/// The animated blade replaces its resting in-hand pose for this stance.
 	var/mutable_appearance/spinning_blade
@@ -25,6 +25,7 @@
 /datum/status_effect/malice_guard/on_apply(obj/item/dualsaber/legendary_saber/saber, required_bond)
 	if(!..())
 		return FALSE
+	animate(owner, tag = "malice_flip")
 	saber.in_malice_guard = TRUE
 	RegisterSignal(saber, COMSIG_ITEM_GET_WORN_OVERLAYS, PROC_REF(hide_resting_blade))
 	RegisterSignal(owner, COMSIG_LIVING_CHECK_BLOCK, PROC_REF(block_attack))
@@ -37,7 +38,7 @@
 	spinning_blade.pixel_x = -16
 	spinning_blade.pixel_y = -16
 	owner.add_overlay(spinning_blade)
-	spin_sound = playsoundtoken(owner, 'modular_bandastation/weapon/sound/melee/malice_guard_spin.ogg', volume = 38, range = SOUND_RANGE)
+	spin_sound = new(owner, 'modular_bandastation/weapon/sound/melee/malice_guard_spin.ogg', SOUND_RANGE, 38, _repeating = TRUE)
 	owner.update_held_items()
 	owner.visible_message(span_warning("[capitalize(owner.declent_ru(NOMINATIVE))] раскручивает Злобу перед собой, прикрываясь клинком!"))
 	return TRUE
