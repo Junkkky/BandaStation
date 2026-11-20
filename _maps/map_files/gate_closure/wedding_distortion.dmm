@@ -483,6 +483,12 @@
 "du" = (
 /turf/open/floor/grass,
 /area/awaymission/gate_closure/wedding)
+"dE" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/bed/dogbed,
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/wedding)
 "dM" = (
 /obj/effect/decal/cleanable/blood/old{
 	icon_state = "vomitpurp_1"
@@ -515,6 +521,12 @@
 	icon_state = "xgib6"
 	},
 /turf/open/floor/wood/cherry,
+/area/awaymission/gate_closure/wedding)
+"em" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/red,
 /area/awaymission/gate_closure/wedding)
 "eq" = (
 /turf/open/floor/stone,
@@ -553,14 +565,6 @@
 /obj/structure/flora/bush/flowers_yw,
 /turf/open/floor/grass,
 /area/awaymission/gate_closure/wedding)
-"fQ" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/bed/dogbed,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-110"
-	},
-/area/awaymission/gate_closure/wedding)
 "hi" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/table/wood,
@@ -571,21 +575,6 @@
 	baseturf = /turf/open/misc/asteroid
 	},
 /turf/open/floor/grass,
-/area/awaymission/gate_closure/wedding)
-"hw" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-38"
-	},
-/area/awaymission/gate_closure/wedding)
-"hB" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/small,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-157"
-	},
 /area/awaymission/gate_closure/wedding)
 "ih" = (
 /obj/effect/turf_decal/siding/thinplating{
@@ -677,27 +666,11 @@
 	},
 /turf/open/floor/stone,
 /area/awaymission/gate_closure/wedding)
-"lR" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor2"
-	},
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-157"
-	},
-/area/awaymission/gate_closure/wedding)
 "mk" = (
 /obj/effect/decal/cleanable/blood/old{
 	icon_state = "xgib1-overlay"
 	},
 /turf/open/floor/grass,
-/area/awaymission/gate_closure/wedding)
-"ms" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-137"
-	},
 /area/awaymission/gate_closure/wedding)
 "mV" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -741,16 +714,17 @@
 	},
 /turf/open/floor/wood/cherry,
 /area/awaymission/gate_closure/wedding)
-"oj" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-21"
-	},
-/area/awaymission/gate_closure/wedding)
 "pe" = (
 /turf/open/floor/asphalt,
 /area/awaymission/gate_closure/wedding/mob_room)
+"pl" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "vomitnebula_3"
+	},
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/wedding)
 "pO" = (
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 5
@@ -795,6 +769,15 @@
 /obj/effect/turf_decal/siding/thinplating/corner,
 /turf/open/floor/stone,
 /area/awaymission/gate_closure/wedding)
+"rs" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/cabinet{
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/wedding)
 "rz" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/red,
@@ -812,16 +795,15 @@
 	},
 /turf/open/floor/stone,
 /area/awaymission/gate_closure/wedding)
-"sv" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-55"
-	},
-/area/awaymission/gate_closure/wedding)
 "sG" = (
 /turf/open/water/alternative/muddy/gate_closure_blood,
+/area/awaymission/gate_closure/wedding)
+"sZ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/sofa/corp/left{
+	dir = 8
+	},
+/turf/open/floor/carpet/red,
 /area/awaymission/gate_closure/wedding)
 "td" = (
 /obj/structure/mineral_door/wood,
@@ -840,16 +822,11 @@
 /obj/effect/mapping_helpers/broken_machine/gate_closure,
 /turf/open/floor/wood/cherry,
 /area/awaymission/gate_closure/wedding)
-"ts" = (
+"tv" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/closet/cabinet{
-	pixel_x = 1
-	},
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-74"
-	},
+/obj/machinery/light/small,
+/turf/open/floor/carpet/red,
 /area/awaymission/gate_closure/wedding)
 "tC" = (
 /obj/item/shrapnel/bullet{
@@ -906,15 +883,6 @@
 	},
 /turf/open/floor/stone,
 /area/awaymission/gate_closure/wedding)
-"vK" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/chair/sofa/corp/left{
-	dir = 8
-	},
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-203"
-	},
-/area/awaymission/gate_closure/wedding)
 "wr" = (
 /obj/item/shrapnel/bullet{
 	pixel_y = -9;
@@ -929,18 +897,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/cherry,
-/area/awaymission/gate_closure/wedding)
-"wR" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/chair/sofa/corp/right{
-	dir = 8
-	},
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-74"
-	},
 /area/awaymission/gate_closure/wedding)
 "wU" = (
 /obj/effect/turf_decal/siding/thinplating{
@@ -962,13 +918,6 @@
 	},
 /turf/open/floor/asphalt,
 /area/awaymission/gate_closure/wedding/mob_room)
-"xc" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-137"
-	},
-/area/awaymission/gate_closure/wedding)
 "xe" = (
 /obj/effect/decal/cleanable/blood/old{
 	icon_state = "vomitnebula_3"
@@ -987,12 +936,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/red,
 /area/awaymission/gate_closure/wedding)
-"yc" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-21"
-	},
-/area/awaymission/gate_closure/wedding)
 "zp" = (
 /obj/structure/table/wood/fancy,
 /turf/open/floor/stone,
@@ -1002,27 +945,6 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/table/wood,
 /turf/open/floor/wood/cherry,
-/area/awaymission/gate_closure/wedding)
-"AF" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/chair/comfy/black{
-	dir = 1
-	},
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-157"
-	},
-/area/awaymission/gate_closure/wedding)
-"BJ" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/chair/sofa/corp{
-	dir = 8
-	},
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-203"
-	},
 /area/awaymission/gate_closure/wedding)
 "BM" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1108,6 +1030,15 @@
 /obj/structure/bookcase/random/fiction,
 /turf/open/floor/wood/cherry,
 /area/awaymission/gate_closure/wedding)
+"Fe" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fireplace{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/wedding)
 "Fz" = (
 /obj/structure/flora/tree/pine/style_random,
 /turf/open/floor/grass,
@@ -1125,18 +1056,18 @@
 	},
 /turf/open/floor/grass,
 /area/awaymission/gate_closure/wedding)
+"Gd" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "xgib5"
+	},
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/wedding)
 "Ge" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/sink/directional,
 /turf/open/floor/wood/cherry,
-/area/awaymission/gate_closure/wedding)
-"Gp" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-55"
-	},
 /area/awaymission/gate_closure/wedding)
 "GM" = (
 /obj/effect/turf_decal/siding/thinplating{
@@ -1177,16 +1108,6 @@
 	},
 /obj/item/reagent_containers/cup/glass,
 /turf/open/floor/stone,
-/area/awaymission/gate_closure/wedding)
-"Jo" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "vomitnebula_3"
-	},
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-110"
-	},
 /area/awaymission/gate_closure/wedding)
 "JO" = (
 /obj/effect/turf_decal/siding/thinplating{
@@ -1238,20 +1159,17 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/grass,
 /area/awaymission/gate_closure/wedding)
-"Ls" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/fireplace{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-55"
-	},
-/area/awaymission/gate_closure/wedding)
 "Lx" = (
 /obj/structure/flora/bush/flowers_br,
 /turf/open/floor/grass,
+/area/awaymission/gate_closure/wedding)
+"LD" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "floor2"
+	},
+/turf/open/floor/carpet/red,
 /area/awaymission/gate_closure/wedding)
 "Mm" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1260,15 +1178,6 @@
 	dir = 4
 	},
 /turf/open/floor/wood/cherry,
-/area/awaymission/gate_closure/wedding)
-"Mn" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "xgib5"
-	},
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-38"
-	},
 /area/awaymission/gate_closure/wedding)
 "Mu" = (
 /obj/structure/chair/plastic{
@@ -1297,16 +1206,6 @@
 	},
 /turf/open/floor/grass,
 /area/awaymission/gate_closure/wedding)
-"NO" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-203"
-	},
-/area/awaymission/gate_closure/wedding)
 "NX" = (
 /obj/effect/turf_decal/siding/thinplating/corner{
 	dir = 1
@@ -1324,12 +1223,6 @@
 "Pf" = (
 /turf/open/chasm/gate_closure,
 /area/awaymission/gate_closure/wedding)
-"Pj" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/red{
-	icon_state = "carpet_red-110"
-	},
-/area/awaymission/gate_closure/wedding)
 "Pt" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1337,6 +1230,15 @@
 	icon_state = "vomitpurp_1"
 	},
 /turf/open/floor/wood/cherry,
+/area/awaymission/gate_closure/wedding)
+"Qd" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/comfy/black{
+	dir = 1
+	},
+/turf/open/floor/carpet/red,
 /area/awaymission/gate_closure/wedding)
 "Qq" = (
 /obj/structure/flora/bush/jungle,
@@ -1387,6 +1289,14 @@
 	},
 /turf/open/floor/stone,
 /area/awaymission/gate_closure/wedding)
+"Ui" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/sofa/corp{
+	dir = 8
+	},
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/wedding)
 "Uj" = (
 /obj/effect/decal/cleanable/blood/old{
 	icon_state = "gib6-overlay"
@@ -1424,6 +1334,14 @@
 "Vu" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/grass,
+/area/awaymission/gate_closure/wedding)
+"Wg" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/carpet/red,
 /area/awaymission/gate_closure/wedding)
 "Wo" = (
 /mob/living/basic/boss/victoria_olshevskaya,
@@ -1468,6 +1386,16 @@
 	icon_state = "splatter3"
 	},
 /turf/open/floor/stone,
+/area/awaymission/gate_closure/wedding)
+"YO" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/sofa/corp/right{
+	dir = 8
+	},
+/turf/open/floor/carpet/red,
 /area/awaymission/gate_closure/wedding)
 "Za" = (
 /obj/effect/turf_decal/siding/thinplating{
@@ -3099,10 +3027,10 @@ SW
 SW
 nY
 Eq
-Mn
-Ls
-Gp
-yc
+Gd
+Fe
+xG
+rz
 SW
 Ko
 Pf
@@ -3201,10 +3129,10 @@ Ae
 ag
 BM
 Or
-Pj
+rz
 mV
 rz
-hB
+tv
 SW
 Ko
 Pf
@@ -3303,10 +3231,10 @@ tj
 Eq
 wB
 Eq
-wR
-BJ
-vK
-ms
+YO
+Ui
+sZ
+rz
 SW
 Or
 Pf
@@ -3707,9 +3635,9 @@ du
 du
 du
 SW
-hw
-sv
-oj
+xG
+em
+xG
 Eq
 Pt
 Or
@@ -3809,9 +3737,9 @@ du
 du
 du
 SW
-fQ
+dE
 df
-lR
+LD
 Eq
 Or
 Or
@@ -3911,9 +3839,9 @@ Fz
 Vq
 du
 SW
-Jo
+pl
 xG
-AF
+Qd
 Eq
 Eq
 Or
@@ -4013,9 +3941,9 @@ du
 KT
 du
 SW
-ts
-NO
-xc
+rs
+Wg
+xG
 Or
 Eq
 Eq

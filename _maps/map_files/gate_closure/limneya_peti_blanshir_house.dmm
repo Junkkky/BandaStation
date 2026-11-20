@@ -1593,6 +1593,12 @@
 	},
 /turf/open/indestructible/stone,
 /area/awaymission/gate_closure/peti_house)
+"nx" = (
+/obj/machinery/computer/security/telescreen/entertainment/directional/west,
+/obj/structure/curtain/bounty,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
 "nA" = (
 /obj/structure/billboard/azik,
 /turf/open/indestructible/rockyground/limneya,
@@ -3341,15 +3347,6 @@
 /obj/structure/flora/dry_grass/style_random,
 /turf/open/indestructible/rockyground/limneya,
 /area/awaymission/gate_closure/peti_house)
-"Hn" = (
-/obj/machinery/computer/security/telescreen{
-	dir = 8;
-	pixel_x = -32
-	},
-/obj/structure/curtain/bounty,
-/obj/effect/mapping_helpers/broken_machine/gate_closure,
-/turf/open/floor/carpet,
-/area/awaymission/gate_closure/peti_house/guest_room_2)
 "Ho" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -8974,7 +8971,7 @@ Nq
 KD
 Dr
 SH
-Hn
+nx
 hE
 hE
 ce

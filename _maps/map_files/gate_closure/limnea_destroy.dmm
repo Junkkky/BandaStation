@@ -822,18 +822,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/awaymission/gate_closure/limnea)
-"dh" = (
-/obj/structure/table/reinforced/rglass,
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 5
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
-/area/awaymission/gate_closure/limnea)
 "dE" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/siding/white{
@@ -1031,18 +1019,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/large/ebonite,
 /area/awaymission/gate_closure/limnea)
-"eQ" = (
-/obj/structure/table/reinforced/rglass,
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 9
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
-/area/awaymission/gate_closure/limnea)
 "eZ" = (
 /obj/machinery/door/airlock/multi_tile/public/glass{
 	dir = 4
@@ -1230,19 +1206,6 @@
 	},
 /turf/open/floor/wood/tile,
 /area/awaymission/gate_closure/limnea)
-"hl" = (
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 5
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
-/area/awaymission/gate_closure/limnea)
 "ho" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1372,6 +1335,21 @@
 	},
 /obj/item/piggy_bank,
 /turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/limnea)
+"iL" = (
+/obj/effect/turf_decal/siding/wood/ebonite,
+/obj/effect/turf_decal/siding/wood/ebonite/end{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table_frame,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "bubblegumfoot"
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "iN" = (
 /obj/effect/turf_decal/tile/blue/opposingcorners{
@@ -1536,15 +1514,13 @@
 /obj/effect/mapping_helpers/broken_machine/gate_closure,
 /turf/open/floor/wood,
 /area/awaymission/gate_closure/limnea)
-"kv" = (
+"kn" = (
 /obj/structure/table/reinforced/rglass,
 /obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 9
+	dir = 1
 	},
 /turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
+	currentcolor = "#9B51FF"
 	},
 /area/awaymission/gate_closure/limnea)
 "kE" = (
@@ -1674,39 +1650,12 @@
 	},
 /turf/open/floor/asphalt,
 /area/awaymission/gate_closure/limnea)
-"mk" = (
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 6
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
-/area/awaymission/gate_closure/limnea)
 "mo" = (
 /obj/effect/turf_decal/siding/wood/ebonite/corner{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/large/ebonite,
-/area/awaymission/gate_closure/limnea)
-"mp" = (
-/obj/structure/table/reinforced/rglass,
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 6
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
 /area/awaymission/gate_closure/limnea)
 "mq" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1774,20 +1723,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/awaymission/gate_closure/limnea)
-"mW" = (
-/obj/effect/turf_decal/siding/wood/ebonite,
-/obj/effect/turf_decal/siding/wood/ebonite/end{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/table_frame,
-/obj/effect/decal/cleanable/glass,
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
-/area/awaymission/gate_closure/limnea)
 "mX" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/siding/white{
@@ -1849,6 +1784,15 @@
 	},
 /obj/item/modular_computer/laptop,
 /turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/limnea)
+"nC" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 10
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "nJ" = (
 /obj/machinery/light{
@@ -2099,6 +2043,18 @@
 	},
 /turf/open/misc/dirt/dark/station,
 /area/awaymission/gate_closure/limnea)
+"pP" = (
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
 "pQ" = (
 /obj/machinery/vending/cola,
 /obj/effect/mapping_helpers/broken_machine/gate_closure,
@@ -2165,17 +2121,6 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/large/ebonite,
-/area/awaymission/gate_closure/limnea)
-"rf" = (
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/siding/dark{
-	dir = 5
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
 /area/awaymission/gate_closure/limnea)
 "rl" = (
 /obj/effect/turf_decal/tile/blue/opposingcorners{
@@ -2295,18 +2240,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/neon/simple/violet,
 /area/awaymission/gate_closure/limnea)
-"sy" = (
-/obj/machinery/door/airlock/multi_tile/public/glass{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/blue/opposingcorners{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/barricade/wooden,
-/turf/open/floor/iron/cafeteria,
-/area/awaymission/gate_closure/limnea)
 "sH" = (
 /obj/effect/turf_decal/siding/wood/ebonite{
 	dir = 1
@@ -2319,6 +2252,15 @@
 	dir = 8
 	},
 /turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"sU" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "sV" = (
 /obj/effect/turf_decal/siding/wood{
@@ -2334,6 +2276,20 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"td" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 6
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "tf" = (
 /obj/structure/chair/comfy/yellow{
@@ -2399,19 +2355,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/smooth,
-/area/awaymission/gate_closure/limnea)
-"ub" = (
-/obj/machinery/coffeemaker/impressa{
-	pixel_y = 5
-	},
-/obj/structure/table,
-/obj/structure/table,
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/mapping_helpers/broken_machine/gate_closure,
-/turf/open/floor/wood,
 /area/awaymission/gate_closure/limnea)
 "uh" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -2525,6 +2468,20 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/awaymission/gate_closure/limnea)
+"vh" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
+/area/awaymission/gate_closure/limnea)
 "vj" = (
 /obj/effect/turf_decal/siding/wood/ebonite/corner{
 	dir = 8
@@ -2567,6 +2524,13 @@
 "vQ" = (
 /obj/structure/billboard/nanotrasen/defaced,
 /turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"vT" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite,
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "vU" = (
 /obj/effect/turf_decal/siding/wood/ebonite{
@@ -2650,6 +2614,11 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/smooth,
 /area/awaymission/gate_closure/limnea)
+"xa" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/limnea)
 "xi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -2666,6 +2635,16 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"xq" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/ebonite,
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "xt" = (
 /obj/structure/reagent_dispensers/keg/beer,
@@ -2731,39 +2710,12 @@
 	},
 /turf/open/floor/stone,
 /area/awaymission/gate_closure/limnea)
-"yh" = (
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 5
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
-/area/awaymission/gate_closure/limnea)
 "ym" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /obj/structure/sign/poster/contraband/donut_corp/directional/east,
 /turf/open/floor/wood/tile,
-/area/awaymission/gate_closure/limnea)
-"yq" = (
-/obj/structure/table/reinforced/rglass,
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 5
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
 /area/awaymission/gate_closure/limnea)
 "yt" = (
 /obj/item/kirbyplants/organic/plant18,
@@ -2942,39 +2894,12 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/stone,
 /area/awaymission/gate_closure/limnea)
-"Aj" = (
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 4
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
-/area/awaymission/gate_closure/limnea)
 "Am" = (
 /obj/structure/chair/sofa/corp/right{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/neon/simple/violet,
-/area/awaymission/gate_closure/limnea)
-"An" = (
-/obj/structure/table/reinforced/rglass,
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 6
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
 /area/awaymission/gate_closure/limnea)
 "Ao" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -3015,6 +2940,15 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"AL" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "AM" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -3118,17 +3052,6 @@
 /obj/structure/fake_stairs/wood/directional/east,
 /turf/open/floor/wood/large/ebonite,
 /area/awaymission/gate_closure/limnea)
-"BP" = (
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/siding/dark{
-	dir = 1
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
-/area/awaymission/gate_closure/limnea)
 "BR" = (
 /obj/item/kirbyplants/organic/plant22{
 	pixel_y = 6
@@ -3154,17 +3077,6 @@
 	dir = 8
 	},
 /turf/open/floor/carpet/green,
-/area/awaymission/gate_closure/limnea)
-"Ch" = (
-/obj/structure/table/reinforced/rglass,
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 1
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
 /area/awaymission/gate_closure/limnea)
 "Cn" = (
 /obj/effect/mapping_helpers/burnt_floor,
@@ -3192,6 +3104,18 @@
 /obj/effect/turf_decal/siding/wood/oak,
 /obj/effect/turf_decal/siding/wood/oak,
 /turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"CH" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "CN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3235,15 +3159,6 @@
 	},
 /obj/structure/sign/poster/contraband/shamblers_juice/directional/south,
 /turf/open/floor/wood/oak,
-/area/awaymission/gate_closure/limnea)
-"Dj" = (
-/obj/structure/table/reinforced/rglass,
-/obj/effect/turf_decal/siding/wood/ebonite,
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
 /area/awaymission/gate_closure/limnea)
 "Dk" = (
 /obj/machinery/jukebox,
@@ -3346,6 +3261,17 @@
 /obj/structure/closet/crate/trashcart,
 /turf/open/misc/dirt/dark/station,
 /area/awaymission/gate_closure/limnea)
+"DZ" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
+/area/awaymission/gate_closure/limnea)
 "Ea" = (
 /obj/effect/turf_decal/siding/wood/ebonite{
 	dir = 6
@@ -3446,20 +3372,6 @@
 	},
 /obj/item/modular_computer/laptop,
 /turf/open/floor/carpet/purple,
-/area/awaymission/gate_closure/limnea)
-"FB" = (
-/obj/structure/table/reinforced/rglass,
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 1
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
 /area/awaymission/gate_closure/limnea)
 "FK" = (
 /obj/structure/chair/sofa/corp/right{
@@ -3592,6 +3504,17 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/cafeteria,
 /area/awaymission/gate_closure/limnea)
+"GW" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
+/area/awaymission/gate_closure/limnea)
 "Hf" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -3617,6 +3540,18 @@
 /obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/stone,
 /area/awaymission/gate_closure/limnea)
+"HK" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
+/area/awaymission/gate_closure/limnea)
 "HM" = (
 /obj/structure/table/glass,
 /obj/effect/turf_decal/siding/wood/oak{
@@ -3639,6 +3574,17 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"Ih" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "Ii" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3773,6 +3719,16 @@
 	dir = 4
 	},
 /turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/limnea)
+"JP" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "JU" = (
 /obj/effect/turf_decal/siding/wood/oak,
@@ -4154,27 +4110,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/stone,
 /area/awaymission/gate_closure/limnea)
-"NN" = (
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 10
-	},
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 6
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
-/area/awaymission/gate_closure/limnea)
-"NP" = (
-/obj/machinery/door/airlock/hatch,
-/obj/structure/barricade/wooden,
-/turf/open/floor/carpet,
-/area/awaymission/gate_closure/limnea)
 "NT" = (
 /obj/structure/table/glass,
 /obj/effect/turf_decal/siding/wood/oak{
@@ -4209,6 +4144,18 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"OD" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "OJ" = (
 /obj/structure/chair/sofa/bench/right{
@@ -4311,17 +4258,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/stone,
 /area/awaymission/gate_closure/limnea)
-"Pw" = (
-/obj/structure/table/reinforced/rglass,
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 10
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
-/area/awaymission/gate_closure/limnea)
 "PF" = (
 /obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/siding/wood/ebonite{
@@ -4331,18 +4267,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/mapping_helpers/broken_machine/gate_closure,
 /turf/open/floor/wood/large/ebonite,
-/area/awaymission/gate_closure/limnea)
-"PR" = (
-/obj/structure/table/reinforced/rglass,
-/obj/effect/turf_decal/siding/wood/ebonite{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/wood/ebonite,
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
 /area/awaymission/gate_closure/limnea)
 "PS" = (
 /obj/structure/railing{
@@ -4637,6 +4561,15 @@
 /obj/structure/flora/bush/sparsegrass/style_random,
 /turf/open/misc/dirt/dark/station,
 /area/awaymission/gate_closure/limnea)
+"SH" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
+/area/awaymission/gate_closure/limnea)
 "SM" = (
 /obj/effect/turf_decal/siding/corner{
 	dir = 1
@@ -4646,6 +4579,18 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"SO" = (
+/obj/effect/turf_decal/siding/wood/ebonite,
+/obj/effect/turf_decal/siding/wood/ebonite/end{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table_frame,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "SP" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4686,9 +4631,27 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/awaymission/gate_closure/limnea)
+"Tt" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/dark{
+	dir = 9
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
+/area/awaymission/gate_closure/limnea)
 "Ty" = (
 /obj/structure/flora/bush/sparsegrass,
 /turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"TA" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 9
+	},
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "TF" = (
 /obj/effect/turf_decal/siding/white{
@@ -4772,23 +4735,6 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/awaymission/gate_closure/limnea)
-"UV" = (
-/obj/effect/turf_decal/siding/wood/ebonite,
-/obj/effect/turf_decal/siding/wood/ebonite/end{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/table_frame,
-/obj/effect/decal/cleanable/glass,
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "bubblegumfoot"
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
-/area/awaymission/gate_closure/limnea)
 "Vb" = (
 /obj/structure/fake_stairs/wood/directional/east,
 /obj/structure/railing{
@@ -4851,6 +4797,18 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/large/ebonite,
 /area/awaymission/gate_closure/limnea)
+"WJ" = (
+/obj/machinery/coffeemaker/impressa{
+	pixel_y = 5
+	},
+/obj/structure/table,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
 "WK" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -4858,17 +4816,6 @@
 	icon_state = "medium"
 	},
 /turf/open/misc/dirt/dark/station,
-/area/awaymission/gate_closure/limnea)
-"WV" = (
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/siding/dark{
-	dir = 9
-	},
-/turf/open/floor/light{
-	icon_state = "light_on-7";
-	state = 7;
-	light_color = "#a659ff"
-	},
 /area/awaymission/gate_closure/limnea)
 "WZ" = (
 /obj/structure/dresser,
@@ -4896,6 +4843,16 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
+/area/awaymission/gate_closure/limnea)
+"XN" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/light{
+	currentcolor = "#9B51FF"
+	},
 /area/awaymission/gate_closure/limnea)
 "XP" = (
 /obj/effect/turf_decal/tile/blue/opposingcorners{
@@ -6490,8 +6447,8 @@ uB
 mu
 mu
 mu
-NP
-NP
+xa
+xa
 mu
 mu
 YN
@@ -7560,7 +7517,7 @@ uB
 mu
 mu
 Ph
-sy
+pP
 mu
 mu
 uB
@@ -7632,9 +7589,9 @@ PT
 zv
 QW
 GO
-yh
-Aj
-NN
+vh
+GW
+td
 GO
 bS
 Td
@@ -7642,9 +7599,9 @@ mo
 ST
 MW
 QU
-hl
-Aj
-mk
+Ih
+GW
+OD
 Eg
 uB
 Sv
@@ -7690,8 +7647,8 @@ zB
 YN
 uB
 KJ
-kv
-Pw
+TA
+nC
 qb
 LP
 qb
@@ -7752,8 +7709,8 @@ rz
 uB
 uB
 wC
-yq
-mp
+AL
+DZ
 LP
 qb
 bQ
@@ -7940,7 +7897,7 @@ uB
 lx
 iE
 Et
-WV
+Tt
 OT
 sH
 Zc
@@ -7955,7 +7912,7 @@ qb
 LP
 qb
 zI
-UV
+iL
 uB
 pD
 Ug
@@ -7972,7 +7929,7 @@ Lh
 Lh
 Lh
 uB
-ub
+WJ
 ov
 dP
 dX
@@ -8002,7 +7959,7 @@ uB
 nZ
 eM
 HX
-BP
+sU
 OT
 sH
 Zc
@@ -8064,7 +8021,7 @@ uB
 jn
 eM
 eM
-BP
+sU
 OT
 sH
 LP
@@ -8126,7 +8083,7 @@ uB
 Zg
 eM
 eM
-BP
+sU
 OT
 cJ
 LP
@@ -8188,7 +8145,7 @@ uB
 MV
 eM
 eM
-BP
+sU
 OT
 cM
 Mi
@@ -8203,7 +8160,7 @@ qb
 Mi
 Ao
 Cs
-mW
+SO
 YN
 Sv
 rP
@@ -8250,7 +8207,7 @@ uB
 JY
 eM
 eM
-BP
+sU
 OT
 sH
 qb
@@ -8312,7 +8269,7 @@ uB
 ap
 eM
 eM
-BP
+sU
 OT
 sH
 qb
@@ -8374,7 +8331,7 @@ uB
 ES
 ZI
 BT
-rf
+SH
 Qz
 sH
 qb
@@ -8565,13 +8522,13 @@ uB
 sd
 qb
 iw
-eQ
-Pw
+JP
+nC
 fO
 qb
 qb
-kv
-Pw
+TA
+nC
 rb
 Vb
 uA
@@ -8627,13 +8584,13 @@ Ds
 Li
 qb
 NY
-Ch
-Dj
+kn
+vT
 Lz
 qb
 LP
-dh
-An
+XN
+CH
 qQ
 BN
 qq
@@ -8689,8 +8646,8 @@ uB
 iR
 RZ
 OQ
-FB
-PR
+HK
+xq
 El
 Mh
 Mh
