@@ -82,7 +82,7 @@
 	for(var/list/level in get_cone_turfs(get_turf(owner), owner.dir, cone_levels))
 		// Steps past the map edge come back null.
 		for(var/turf/marked in level)
-			new /obj/effect/temp_visual/telegraphing/crooked(marked)
+			new /obj/effect/temp_visual/cult/sparks/crooked/acid(marked)
 	if(!crooked_windup(owner, windup, src))
 		return . | SPELL_CANCEL_CAST
 

@@ -16,7 +16,7 @@
 	src.boss = boss
 	boss.targets += src
 	transform = matrix() * scale
-	new /obj/effect/temp_visual/telegraphing/crooked(loc)
+	new /obj/effect/temp_visual/cult/sparks/crooked(loc)
 	playsound(src, 'sound/effects/blob/blobattack.ogg', 60, TRUE)
 
 /obj/structure/crooked_target/Destroy()

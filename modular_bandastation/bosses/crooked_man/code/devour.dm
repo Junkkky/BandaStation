@@ -121,7 +121,7 @@
 		return
 	var/turf/front = get_step(owner, owner.dir)
 	if(front)
-		new /obj/effect/temp_visual/telegraphing/crooked(front)
+		new /obj/effect/temp_visual/cult/sparks/crooked(front)
 	owner.visible_message(span_danger("[owner] раскрывает огромную пасть!"))
 	playsound(owner, 'sound/effects/blob/blobattack.ogg', 70, TRUE)
 	if(!crooked_windup(owner, windup, src))

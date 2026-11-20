@@ -128,6 +128,7 @@
 		if(CROOKED_STAGE_WOMB)
 			visible_message(span_userdanger("[src] выворачивается наизнанку — из пола вырастают пульсирующие органы!"))
 			grant_ability(/datum/action/cooldown/mob_cooldown/tentacle_burst/crooked)
+			grant_ability(/datum/action/cooldown/mob_cooldown/charge/crooked)
 			spawn_targets(/obj/structure/crooked_target/organ, 3)
 		if(CROOKED_STAGE_AGONY)
 			visible_message(span_userdanger("[src] бьётся в агонии, его суставы хрустят всё быстрее!"))
@@ -181,9 +182,14 @@
 		return FALSE
 	return caster.stat != DEAD && isturf(caster.loc)
 
-/// One-second floor marker shared by the Crooked Man's announced attacks.
-/obj/effect/temp_visual/telegraphing/crooked
+/// Blood sparks marking for a second where one of the Crooked Man's announced attacks will land.
+/obj/effect/temp_visual/cult/sparks/crooked
 	duration = 1 SECONDS
+	layer = BELOW_MOB_LAYER
+
+/// Green sparks for the bile eruption.
+/obj/effect/temp_visual/cult/sparks/crooked/acid
+	color = "#4cff00"
 
 #undef CROOKED_STAGE_AWAKENING
 #undef CROOKED_STAGE_WOMB

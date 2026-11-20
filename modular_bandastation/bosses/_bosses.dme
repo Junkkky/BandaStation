@@ -12,6 +12,7 @@
 #include "code\spatial_phase.dm"
 #include "code\voices.dm"
 #include "crooked_man\code\admin.dm"
+#include "crooked_man\code\charge.dm"
 #include "crooked_man\code\crooked_man.dm"
 #include "crooked_man\code\devour.dm"
 #include "crooked_man\code\phase.dm"

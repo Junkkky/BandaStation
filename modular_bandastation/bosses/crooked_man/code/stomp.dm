@@ -48,7 +48,7 @@
 	var/turf/center = get_turf(owner)
 	for(var/turf/open/marked in range(aoe_radius, center))
 		if(marked != center)
-			new /obj/effect/temp_visual/telegraphing/crooked(marked)
+			new /obj/effect/temp_visual/cult/sparks/crooked(marked)
 	owner.visible_message(span_danger("[owner] приседает, готовясь топнуть!"))
 	if(!crooked_windup(owner, windup, src))
 		return . | SPELL_CANCEL_CAST
