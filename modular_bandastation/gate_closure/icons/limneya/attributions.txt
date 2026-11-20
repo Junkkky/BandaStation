@@ -1,0 +1,15 @@
+tall_trees.dmi, grass-sticks.dmi, furniture.dmi, misc32x64.dmi,
+wooden_fence.dmi, photo.dmi
+Source: ss220club/BandaStation Prime event assets, PR2071 (ThaumicNik)
+and identical event module in PR2520 (Fullonibus).
+https://github.com/ss220club/BandaStation/pull/2071
+https://github.com/ss220club/BandaStation/pull/2520
+Pinned source commit: e815d7e548cc7b52b0d4ef0ace4946326839ccd5.
+Original paths: modular_bandastation/event/icons/obj/{flora,misc}/.
+PR2071 attributes the artwork/content to the Prime event administration;
+original event module code credits Konu., wooden fencing credits FF.
+Adaptation: binary DMI files copied without changes, with Git blob hashes
+verified against the PR. Only resource paths and the required type declarations
+are adapted to the current event module; no source-image transformations.
+License: source project's CC BY-SA3.0 image asset license.
+https://creativecommons.org/licenses/by-sa/3.0/

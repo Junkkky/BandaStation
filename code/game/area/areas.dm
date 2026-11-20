@@ -90,6 +90,8 @@
 	var/default_gravity = ZERO_GRAVITY
 
 	var/parallax_movedir = NONE
+	/// Optional ordered parallax layers, replacing the normal space background in this area.
+	var/list/parallax_layer_types
 
 	var/ambience_index = AMBIENCE_GENERIC
 	///A list of sounds to pick from every so often to play to clients.

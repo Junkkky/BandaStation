@@ -225,7 +225,10 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 		update_appearance()
 		break
 
+/// Whether a destination may be offered by this gateway's control console.
 /obj/machinery/gateway/proc/valid_destination(datum/gateway_destination/possible_destination)
+	if(possible_destination.hidden)
+		return FALSE
 	if(possible_destination == destination)
 		return FALSE
 	if(istype(possible_destination, /datum/gateway_destination/gateway))
@@ -295,6 +298,8 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	destination_name = "Home Gateway"
 
 /obj/machinery/gateway/centerstation/Initialize(mapload)
+	if(SSmapping.current_map.map_name == "Cyberiad Gate Closure")
+		use_power = NO_POWER_USE
 	. = ..()
 	if(!GLOB.the_gateway)
 		GLOB.the_gateway = src
@@ -352,6 +357,14 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	. = ..()
 	.["gateway_present"] = G
 	.["gateway_status"] = G ? G.powered() : FALSE
+	if(G && G == GLOB.the_gateway && SSmapping.current_map.map_name == "Cyberiad Gate Closure")
+		.["event_gateway"] = TRUE
+		.["event_locked"] = GLOB.event_gateway_opening || GLOB.event_gateway_opened || GLOB.event_gateway_red || GLOB.event_gateway_disabled || !!G.target
+		for(var/datum/gateway_destination/point/point in GLOB.gateway_destinations)
+			if(point.id == AWAYSTART_BEACH && G.valid_destination(point) && point.is_available())
+				.["event_destination"] = REF(point)
+				break
+		return
 	.["current_target"] = G?.target?.get_ui_data()
 	.["gateway_mapkey"] = G.portal_visuals.assigned_map
 	var/list/destinations = list()
@@ -366,6 +379,12 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	. = ..()
 	if(.)
 		return
+	// The event station gateway never opens a route from its console: Activate turns it red instead.
+	if(G && G == GLOB.the_gateway && SSmapping.current_map.map_name == "Cyberiad Gate Closure")
+		if(action == "activate")
+			var/obj/machinery/gateway/centerstation/station_gateway = G
+			station_gateway.event_console_activation(usr)
+		return TRUE
 	switch(action)
 		if("linkup")
 			try_to_linkup()
@@ -386,10 +405,11 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 /obj/machinery/computer/gateway_control/proc/try_to_linkup()
 	G = locate(/obj/machinery/gateway) in view(7,get_turf(src))
 
+/// Revalidates the requested destination before activating the linked gateway.
 /obj/machinery/computer/gateway_control/proc/try_to_connect(datum/gateway_destination/D)
 	if(!D || !G)
 		return
-	if(!D.is_available() || G.target)
+	if(!D.is_available() || !G.valid_destination(D) || G.target)
 		return
 	G.activate(D)
 

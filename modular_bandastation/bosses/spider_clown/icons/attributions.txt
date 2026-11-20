@@ -1,0 +1,23 @@
+spider_clown.dmi
+Art direction and design reference: Junkkky.
+Shared solid geometry, native orthographic pixel rasterization and animation
+authored locally by Codex on2026-11-10. No new generation service was used.
+Visual inspiration: the demonic spider-clown form from the IT films.
+The supplied reference photographs/illustrations are not included in this asset.
+Facial texture adapted from the approved native96x96 PixelLab Pro image,
+job01b421b6-47f5-466b-a051-7da28b579c65, seed2201312, candidate3.
+Native pixel canvas: 96x96 throughout; no high-resolution source or downscaling.
+Four cardinal cameras: S/N/E/W, all using the same anatomy. Eight angular
+walking legs plus a separate pair of clawed forelimbs. The approved facial
+geometry and texture were kept fixed when thickening legs and adding claws.
+idle: one static frame per direction, copied from the approved loop's first pose.
+idle (movement=1): original16 frames at0.2s,3.2-second loop; alternating8px
+foot lifts and joint flexion. BYOND uses this variant only during movement.
+dead: same static pose, pending a separate death sprite. No new pixels added.
+Planted feet share one ground plane; near/far feet are staggered in profiles.
+bite:10 frames,1.2-second one-shot, grin/gape/snap/return.
+eyes_emissive:1 static frame per direction, white alpha mask; rear is empty.
+Emission mask follows the repository's emissive_appearance convention. It needs
+to be connected to a mob appearance separately; no world-light source is added.
+License for the generated visual asset: CC BY-SA 3.0, following the project
+asset license. https://creativecommons.org/licenses/by-sa/3.0/

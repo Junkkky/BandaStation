@@ -1,0 +1,15 @@
+heinrich_traizen.dmi
+Character concept and art direction: user-supplied Heinrich Traizen III design.
+Original reference authorship/license was not supplied; verify before external
+redistribution. No publication is part of this local event-build task.
+Selected artwork: OpenAI imagegen four-view preview, 2026-11-19, followed by an
+edit correcting the back emblem to a single Nanotrasen N with a horizontal bar.
+Source: 01a1c2d6-1d75-70a0-bf7a-b830b5abc537/
+exec-32049657-ec3e-452b-bdc3-fdbd6b228a58.png (2172x724).
+Adaptation on 2026-11-20: threshold alpha at 128, crop each direction, reduce
+with nearest-neighbor at one common scale, center/bottom-align in 96x96 cells.
+This is a reduced adaptation of the approved preview, not native 96px generation.
+tools.dmi packs idle/dirs4/frames1, in BYOND south/north/east/west order.
+The generated adaptation follows the project's CC BY-SA 3.0 image asset license,
+subject to confirming the supplied reference's rights before publication.
+https://creativecommons.org/licenses/by-sa/3.0/

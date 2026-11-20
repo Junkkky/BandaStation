@@ -1,0 +1,110 @@
+ambient_haze.dmi, ambient_dust.dmi
+Source: original procedural VFX designed with PixelLab VFX Workbench on
+2026-11-16 for Junkkky's Gate Closure event. No third-party source pixels.
+Haze effect: a7f63c05-f795-4d63-95f8-0b24ff82876a
+https://pixellab.ai/create-vfx?effect=a7f63c05-f795-4d63-95f8-0b24ff82876a
+Revised haze on 2026-11-17: separated wisps and density gaps, higher-contrast
+feathered density mask. Effect 5adab81a-c43b-41c5-8622-8e469a61bd31:
+https://pixellab.ai/create-vfx?effect=5adab81a-c43b-41c5-8622-8e469a61bd31
+Dust effect: 1f8837d3-4beb-4507-bb23-3f88d5007060
+https://pixellab.ai/create-vfx?effect=1f8837d3-4beb-4507-bb23-3f88d5007060
+Adaptation: haze luminance converted to a feathered density mask, 64 frames
+at 96x96 with an 8-second loop; dust packed at native 224x224, 120 frames,
+12-second loop. Both retain transparent backgrounds; no game processing.
+Dust repacked on 2026-11-17 from the tool image's actual 8-column layout:
+all 120 frames retained, empty out-of-bounds crops removed. The huge field
+reuses rotated copies of the same native-size grains; no additional artwork.
+License: CC BY-SA 3.0, following the project's image asset license.
+https://creativecommons.org/licenses/by-sa/3.0/
+
+weeping_angel.dmi
+Source: original animated statue concept generated with OpenAI imagegen on
+2026-11-16, following Junkkky's art direction and approved preview. Generation:
+01a1c2d6-1d75-70a0-bf7a-b830b5abc537/exec-b8766d6b-4663-42a6-8344-fbd3cacf2799.
+References: three user-supplied angel statue photographs for pose, stone and
+wings; no photograph pixels included. Cropped/downsampled to eight 32x64 frames;
+stone held static, generated blood drips/puddle animate in a 1.2-second loop.
+License: CC BY-SA 3.0, following the project's image asset license.
+https://creativecommons.org/licenses/by-sa/3.0/
+
+small_flowers.dmi
+Source: icons/obj/fluff/flora/ausflora.dmi, states ppflowers_1 through ppflowers_3.
+Original artwork: BandaStation/upstream project contributors; native asset reused.
+Adaptation: petals use the darker, cooler part of the approved event flowers
+palette; grass uses their dark blue-gray palette. Native arrangement/alpha kept;
+two additional two-pixel emissive masks. No cast light.
+License: CC BY-SA 3.0, inherited from the source image assets.
+https://creativecommons.org/licenses/by-sa/3.0/
+
+event_flowers.dmi
+Source: flower concept sheet generated with OpenAI imagegen on 2026-11-16,
+following Junkkky's art direction and approved preview. Generation:
+01a1c2d6-1d75-70a0-bf7a-b830b5abc537/exec-629c8812-8446-41c9-84b2-ba02a4d2557a.
+Visual references: native plasma_flower1, sparsegrass_3 and ppflowers_1,
+plus the user's Lycoris photograph for flower shape. No photo pixels included.
+Adaptation: three approved clumps cropped, downsampled to 32x32 frames with
+a shared 24-color palette and transparent background, packed as three DMI states.
+Two-pixel emissive masks added per style; original flower pixels unchanged.
+License: CC BY-SA 3.0, following the project's image asset license.
+https://creativecommons.org/licenses/by-sa/3.0/
+
+rusty_lever.dmi
+Source: original pixel art generated with PixelLab Pixen from Junkkky's sketch,
+2026-11-14; side-view version approved and installed on 2026-11-15.
+Generation: 0ba26062-95d3-40e8-953e-9ca1b5d658eb (left),
+c471d1e7-4399-4ab7-a37f-a26d5becfb7e (right).
+Adaptation: stationary base copied exactly between states with PixelLab pixel tools;
+native 32x32 frames packed without resampling as states "left" and "right".
+License: CC BY-SA 3.0, following the project's image asset license.
+https://creativecommons.org/licenses/by-sa/3.0/
+
+redspace.dmi
+Source: original nebula and transparent mist textures generated for this project
+with OpenAI imagegen on 2026-11-05, following Junkkky's art direction.
+No imagery from Warhammer, Eipharius or the visual reference is included.
+Adaptation: resized to the native 480x480 parallax grid and packed as two DMI states.
+License: CC BY-SA 3.0, following the project's image asset license.
+https://creativecommons.org/licenses/by-sa/3.0/
+
+crust.dmi
+Source: Neargame, icons/turf/hell.dmi, state "floor".
+https://github.com/Near-Web/Neargame/blob/dev/icons/turf/hell.dmi
+https://github.com/Near-Web/Neargame#license
+Authorship: Neargame contributors; published by Comrade Niobe in commit
+650d0974c99fc813c5c19d5944f4d38869a8dceb.
+License: AGPL-3.0, under Neargame's explicit license for its original code and assets.
+The selected state was extracted without recoloring; its source is available at the URL above.
+No assets from icons/neargame/zion362 are included.
+
+flesh.dmi
+Source: Monkestation2.0, icons/turf/floors/flesh_tile.dmi.
+https://github.com/Monkestation/Monkestation2.0/blob/master/icons/turf/floors/flesh_tile.dmi
+https://github.com/Monkestation/Monkestation2.0#license
+Authorship: Monkestation contributors.
+License: CC BY-SA 3.0.
+Adaptation: 47 centered 32x32 bitmask frames with transparency retained.
+No bloodling code or gameplay effects are included.
+
+bone.dmi, heated_rock.dmi, boulders.dmi
+Source: CM-SS13, respectively:
+icons/turf/walls/prison/bone_resin.dmi
+icons/turf/walls/cave.dmi
+icons/obj/structures/props/natural/boulder_largedark.dmi
+https://github.com/cmss13-devs/cmss13/tree/master/icons/turf/walls
+https://github.com/cmss13-devs/cmss13/blob/master/icons/obj/structures/props/natural/boulder_largedark.dmi
+Authorship: CM-SS13 active development team, as defined by the donor README.
+https://github.com/cmss13-devs/cmss13#licenses
+License: CC BY-SA 3.0.
+Adaptation: CM's directional corner sprites assembled into 47 native bitmask states;
+the rock is tinted red by its turf definition. The three boulder sprites are unchanged.
+No TGMC artwork or its CC BY-NC assets are included.
+
+suffering_configuration.dmi
+Source: tgstation/tgstation icons/mob/simple/lavaland/lavaland_elites.dmi,
+states "pandora_dead" and "pandora" (the lavaland elite Pandora), as present in
+this repository. Adaptation on 2026-11-20 for Junkkky's Gate Closure event:
+both states cropped to the lower 32x32 where the sprite is drawn; "sealed" and
+"open" keep the original pixels; the 7-frame "opening" transition is assembled
+from them (the lid lifts, a seam of light opens, the eyes brighten and flash).
+License: CC BY-SA 3.0, following the source project's image asset license.
+https://creativecommons.org/licenses/by-sa/3.0/

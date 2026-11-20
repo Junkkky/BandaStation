@@ -31,19 +31,19 @@
 		return FALSE
 	if(DOING_INTERACTION(owner, DOAFTER_SOURCE_SPIDER))
 		if (feedback)
-			owner.balloon_alert(owner, "busy!")
+			owner.balloon_alert(owner, "занят!")
 		return FALSE
 	if(!isturf(owner.loc))
 		if (feedback)
-			owner.balloon_alert(owner, "invalid location!")
+			owner.balloon_alert(owner, "здесь нельзя!")
 		return FALSE
 	if(HAS_TRAIT(owner.loc, TRAIT_SPINNING_WEB_TURF))
 		if (feedback)
-			owner.balloon_alert(owner, "already being webbed!")
+			owner.balloon_alert(owner, "здесь уже плетут!")
 		return FALSE
 	if(obstructed_by_other_web())
 		if (feedback)
-			owner.balloon_alert(owner, "already webbed!")
+			owner.balloon_alert(owner, "уже в паутине!")
 		return FALSE
 	return TRUE
 
@@ -56,14 +56,14 @@
 	var/turf/spider_turf = get_turf(owner)
 	var/obj/structure/spider/stickyweb/web = locate() in spider_turf
 	if(web)
-		owner.balloon_alert_to_viewers("sealing web...")
+		owner.balloon_alert_to_viewers("уплотняет паутину...")
 	else
-		owner.balloon_alert_to_viewers("spinning web...")
+		owner.balloon_alert_to_viewers("плетёт паутину...")
 	ADD_TRAIT(spider_turf, TRAIT_SPINNING_WEB_TURF, REF(src))
 	if(do_after(owner, webbing_time, target = spider_turf, interaction_key = DOAFTER_SOURCE_SPIDER) && owner.loc == spider_turf)
 		plant_web(spider_turf, web)
 	else
-		owner?.balloon_alert(owner, "interrupted!") // Null check because we might have been interrupted via being disintegrated
+		owner?.balloon_alert(owner, "прервано!") // Null check because we might have been interrupted via being disintegrated
 	REMOVE_TRAIT(spider_turf, TRAIT_SPINNING_WEB_TURF, REF(src))
 	build_all_button_icons()
 
@@ -165,7 +165,7 @@
 		return FALSE
 	if(!isturf(owner.loc))
 		if (feedback)
-			owner.balloon_alert(owner, "invalid location!")
+			owner.balloon_alert(owner, "здесь нельзя!")
 		return FALSE
 	return TRUE
 

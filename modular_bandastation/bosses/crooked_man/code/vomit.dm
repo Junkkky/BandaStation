@@ -1,0 +1,70 @@
+/// Four-tile acid cone with temporary, damaging puddles.
+/datum/action/cooldown/spell/cone/staggered/crooked_vomit_cone
+	name = "Извержение желчи"
+	desc = "Изрыгает конус кислоты, заливающий всё впереди."
+	button_icon = 'icons/mob/actions/actions_xeno.dmi'
+	button_icon_state = "alien_neurotoxin"
+	cooldown_time = 5 SECONDS
+	spell_requirements = NONE
+	cone_levels = 4
+	respect_density = TRUE
+	delay_between_level = 0.1 SECONDS
+	/// Colour of the plume in front of the caster.
+	var/plume_color = "#4cff00"
+	/// Sound of the eruption.
+	var/cast_sound = 'modular_bandastation/bosses/crooked_man/sounds/vomit.ogg'
+
+/datum/action/cooldown/spell/cone/staggered/crooked_vomit_cone/cast(atom/cast_on)
+	var/turf/spawn_turf = get_step(cast_on, cast_on.dir)
+	if(spawn_turf)
+		var/obj/effect/temp_visual/plume = new /obj/effect/temp_visual/dir_setting/crooked_vomit(spawn_turf, cast_on.dir)
+		plume.color = plume_color
+	playsound(cast_on, cast_sound, 80, TRUE)
+	return ..()
+
+/datum/action/cooldown/spell/cone/staggered/crooked_vomit_cone/do_turf_cone_effect(turf/target_turf, atom/caster, level)
+	if(!isopenturf(target_turf) || locate(/obj/effect/decal/cleanable/vomit/toxic/crooked) in target_turf)
+		return
+	if(prob(100 - level * 15))
+		new /obj/effect/decal/cleanable/vomit/toxic/crooked(target_turf)
+
+/datum/action/cooldown/spell/cone/staggered/crooked_vomit_cone/do_mob_cone_effect(mob/living/victim, atom/caster, level)
+	if(victim == caster || QDELETED(caster))
+		return
+	victim.apply_damage(max(7.5, 17.5 - level * 2.5), TOX)
+	victim.adjust_disgust(50)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(victim), turn(caster.dir, 180))
+	to_chat(victim, span_danger("Вас окатило зловонной желудочной кислотой!"))
+
+/// Green splash using the existing large plume animation.
+/obj/effect/temp_visual/dir_setting/crooked_vomit
+	parent_type = /obj/effect/temp_visual/dir_setting/entropic
+	color = "#4cff00"
+	duration = 0.5 SECONDS
+
+/// Acid underfoot that expires after fifteen seconds through normal qdel cleanup.
+/obj/effect/decal/cleanable/vomit/toxic/crooked
+	name = "желудочный сок"
+	desc = "Шипящая и вонючая лужа. Она разъедает даже металл."
+	color = "#4cff00"
+
+/obj/effect/decal/cleanable/vomit/toxic/crooked/Initialize(mapload)
+	. = ..()
+	var/static/list/loc_connections = list(COMSIG_ATOM_ENTERED = PROC_REF(on_entered))
+	AddElement(/datum/element/connect_loc, loc_connections)
+	QDEL_IN(src, 15 SECONDS)
+
+/obj/effect/decal/cleanable/vomit/toxic/crooked/proc/on_entered(datum/source, atom/movable/entered)
+	SIGNAL_HANDLER
+	if(!isliving(entered))
+		return
+	var/mob/living/victim = entered
+	if(victim.movement_type & MOVETYPES_NOT_TOUCHING_GROUND || !prob(85))
+		return
+	var/obj/item/bodypart/leg
+	if(ishuman(victim))
+		var/mob/living/carbon/human/human_victim = victim
+		leg = human_victim.get_bodypart(pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
+	victim.apply_damage(7.5, BURN, leg)
+	playsound(victim, 'sound/effects/wounds/splatter.ogg', 50, TRUE)
+	to_chat(victim, span_danger("Кислота обжигает ваши ноги!"))

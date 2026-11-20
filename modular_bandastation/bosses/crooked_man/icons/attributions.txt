@@ -1,0 +1,14 @@
+crooked_man.dmi
+Author: Junkkky (confirmed by the author for this port).
+Source: Junkkky/BandaStation, Katorga13-backup,
+commit d6acf22a224dae43326ac54887de14f2ca93a843,
+modular_bandastation/k13_crooked_man/icons/crooked_man.dmi.
+https://github.com/Junkkky/BandaStation/tree/d6acf22a224dae43326ac54887de14f2ca93a843/modular_bandastation/k13_crooked_man
+Copied without changes. Distributed under the source repository's
+CC BY-SA 3.0 image asset license (see README.md, Licensing).
+
+abilities.dmi
+Source: the same repository and commit,
+modular_bandastation/banshee_skills/icons/banshee_skills.dmi.
+Only the destructive_wail state was extracted; pixels unchanged.
+Authors: BandaStation contributors. CC BY-SA 3.0.

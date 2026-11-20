@@ -1,0 +1,17 @@
+pinhead_chains.ogg
+Original sound created and supplied by Junkkky for Pinhead's chain capture.
+Added 2026-11-14. Source Ogg Vorbis retained without audio processing.
+License: CC BY-SA 3.0, following the project's sound asset license.
+https://creativecommons.org/licenses/by-sa/3.0/
+
+chain_gib.ogg
+Original sound created by player Jack_Nicolson ("Chain Gibb.ogg") for Pinhead's gib and limb tearing.
+Added 2026-11-19. Converted from Ogg FLAC to mono Ogg Vorbis and raised by 14.5 dB for BYOND playback.
+License: CC BY-SA 3.0, following the project's sound asset license.
+https://creativecommons.org/licenses/by-sa/3.0/
+
+portal_open.ogg
+Original sound created by Junkkky ("portal1.ogg") for the opening of Pinhead's portals.
+Added 2026-11-20. Converted from stereo to mono Ogg Vorbis with loudness normalization for BYOND playback.
+License: CC BY-SA 3.0, following the project's sound asset license.
+https://creativecommons.org/licenses/by-sa/3.0/

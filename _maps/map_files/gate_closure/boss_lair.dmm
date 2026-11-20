@@ -1,0 +1,572 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/stone_tile/surrounding_tile,
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"b" = (
+/obj/effect/turf_decal/weather/dirt{
+	dir = 9
+	},
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"c" = (
+/obj/effect/decal/cleanable/plasma,
+/turf/open/misc/dirt/jungle/wasteland{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"d" = (
+/obj/effect/turf_decal/weather/dirt{
+	dir = 5
+	},
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"e" = (
+/obj/effect/decal/remains/human,
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"f" = (
+/obj/effect/turf_decal/weather/dirt{
+	dir = 1
+	},
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"h" = (
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"i" = (
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"j" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"l" = (
+/obj/structure/stone_tile/block/burnt{
+	dir = 1
+	},
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"m" = (
+/turf/closed/indestructible/riveted,
+/area/event_boss_room)
+"n" = (
+/obj/structure/stone_tile/block/burnt{
+	dir = 4
+	},
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"o" = (
+/obj/effect/turf_decal/weather/dirt{
+	dir = 4
+	},
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"p" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"q" = (
+/obj/effect/decal/cleanable/ash{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"r" = (
+/turf/open/misc/dirt/jungle/wasteland{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"s" = (
+/obj/structure/stone_tile/block,
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"u" = (
+/obj/structure/bonfire/prelit,
+/turf/open/misc/dirt/jungle/wasteland{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"v" = (
+/obj/effect/decal/cleanable/ash/large{
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"y" = (
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"z" = (
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"C" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"D" = (
+/obj/effect/turf_decal/weather/dirt{
+	dir = 6
+	},
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"F" = (
+/obj/structure/stone_tile/burnt,
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"G" = (
+/obj/structure/stone_tile/slab,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"I" = (
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"J" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"K" = (
+/obj/effect/turf_decal/weather/dirt,
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"L" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"M" = (
+/obj/effect/turf_decal/weather/dirt{
+	dir = 10
+	},
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"N" = (
+/turf/closed/indestructible/riveted/boss,
+/area/event_boss_room)
+"O" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"P" = (
+/obj/effect/turf_decal/weather/dirt{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"Q" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"R" = (
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 10
+	},
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"S" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/ash{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"U" = (
+/obj/effect/landmark/event_boss_room,
+/obj/effect/decal/cleanable/ash/large,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/jungle/wasteland{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"W" = (
+/obj/structure/stone_tile,
+/turf/open/misc/dirt/jungle/dark{
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"X" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/weather/dirt{
+	dir = 5
+	},
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+"Z" = (
+/obj/effect/turf_decal/weather/dirt{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/misc/ashplanet/wateryrock{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	planetary_atmos = 0;
+	slowdown = 0
+	},
+/area/event_boss_room)
+
+(1,1,1) = {"
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+"}
+(2,1,1) = {"
+m
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+m
+"}
+(3,1,1) = {"
+m
+N
+D
+z
+d
+I
+I
+I
+I
+D
+z
+d
+N
+m
+"}
+(4,1,1) = {"
+m
+N
+z
+u
+S
+C
+I
+I
+I
+W
+u
+Q
+N
+m
+"}
+(5,1,1) = {"
+m
+N
+M
+q
+Z
+I
+I
+o
+I
+M
+p
+b
+N
+m
+"}
+(6,1,1) = {"
+m
+N
+I
+I
+I
+D
+i
+i
+d
+I
+I
+I
+N
+m
+"}
+(7,1,1) = {"
+m
+N
+I
+I
+K
+j
+r
+U
+s
+f
+L
+L
+N
+m
+"}
+(8,1,1) = {"
+m
+N
+I
+I
+I
+y
+c
+r
+s
+f
+L
+I
+N
+m
+"}
+(9,1,1) = {"
+m
+N
+I
+I
+I
+M
+n
+O
+P
+I
+J
+I
+N
+m
+"}
+(10,1,1) = {"
+m
+N
+D
+e
+X
+I
+I
+R
+L
+D
+Q
+d
+N
+m
+"}
+(11,1,1) = {"
+m
+N
+z
+u
+s
+L
+l
+G
+F
+v
+u
+z
+N
+m
+"}
+(12,1,1) = {"
+m
+N
+M
+z
+b
+I
+h
+a
+I
+M
+z
+b
+N
+m
+"}
+(13,1,1) = {"
+m
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+m
+"}
+(14,1,1) = {"
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+"}

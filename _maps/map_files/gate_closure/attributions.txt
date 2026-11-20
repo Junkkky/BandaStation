@@ -1,0 +1,35 @@
+limnea_destroy.dmm, wedding_distortion.dmm
+Source: user-supplied Limnea_distroy.dmm and Wedding_distorion.dmm, 2026-11-16.
+Provided by Junkkky for this event. Original map layout and compatible objects/variable edits
+retained; original authorship and underlying repository asset licenses apply.
+Adaptation: event areas/parallax, private arrivals and route bindings on existing
+gateways. One plant in Wedding moved one tile west to clear the lever position.
+Donor-only flora uses native brown/jungle grass, pine trees and red/yellow flower
+bushes. Old beer kegs use the native beer keg. The missing statue uses Venus;
+two missing columns use decorative stone pedestals with existing statue base art.
+Missing white-cloth tables use the native fancy-cloth table. No donor art was
+included with the supplied maps; these are compatibility substitutes.
+
+katorga13.dmm
+Source: Junkkky/BandaStation, Katorga13-backup,
+commit d6acf22a224dae43326ac54887de14f2ca93a843,
+_maps/map_files/katorga13/katorga13.dmm.
+https://github.com/Junkkky/BandaStation/blob/d6acf22a224dae43326ac54887de14f2ca93a843/_maps/map_files/katorga13/katorga13.dmm
+Authors: Junkkky and BandaStation contributors. Source repository license applies.
+Adapted for editing on Primera: donor-only quest doors, access terminals,
+holodisks and ritual props use existing native counterparts; beer keg path updated;
+flare boxes replaced with empty native boxes. Old quest mechanics are not imported.
+One malformed closing quote and a duplicated titanium turf were corrected.
+User edited this map down to one level on 2026-11-16. The retained content was
+cropped from x90..156/y155..250 with a two-tile empty-space border (71x100).
+All retained turf/object variable edits are preserved. Old department areas are
+replaced by the event area; an arrival marker was added. Loaded after Wedding
+and before redspace by the Gate Closure event. Lava is harmless shallow water
+using the existing native lava artwork; authored catwalks are unchanged.
+
+boss_lair.dmm and boss_trial.dmm
+Separate copies of the Ash chamber from the checked-out TG/BandaStation map
+_maps/templates/lazy_templates/heretic_sacrifice.dmm. Original turf/prop artwork
+retained, sacrifice landmarks replaced by private event arrivals and hidden areas.
+Original map authors: tgstation and BandaStation contributors. Repository license
+and original asset attributions apply.

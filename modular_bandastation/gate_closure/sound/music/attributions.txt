@@ -1,0 +1,20 @@
+Music of the Gate Closure admin player, supplied by the event organizer Junkkky as royalty-free music.
+The licenses below were not independently verified.
+
+ambient/NN - *.ogg, combat/NN - *.ogg, situations/NN - *.ogg
+Tracks of the "White Noise - 70 tracks" ambient pack (numbering kept from the pack; 22, 35, 49, 50 and 61 left out).
+Author and license: not specified by the supplier (royalty-free per the supplier).
+Remuxed with ffmpeg (-c:a copy, metadata stripped) so the game can read their length; audio not re-encoded.
+
+ambient/A Really Dark Alley.ogg
+"A Really Dark Alley" by Loyalty Freak Music, obtained via chosic.com. License not verified.
+
+ambient/Echoes of Time.ogg
+"Echoes of Time v2", obtained via chosic.com. Author and license not verified.
+
+ambient/Unseen Horrors.ogg
+"Unseen Horrors", obtained via chosic.com. Author and license not verified.
+The three chosic tracks were converted from MP3 to Ogg Vorbis (quality 5).
+
+ambient/Space Ambient 11.ogg
+"spaceambient11.ogg", source not specified by the supplier. Remuxed without re-encoding.

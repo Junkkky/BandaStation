@@ -28,6 +28,9 @@ const GatewayContent = (props) => {
     current_target = null,
     destinations = [],
     gateway_mapkey,
+    event_gateway = false,
+    event_locked = false,
+    event_destination,
   } = data;
   if (!gateway_present) {
     return (
@@ -35,6 +38,19 @@ const GatewayContent = (props) => {
         <NoticeBox>No linked gateway</NoticeBox>
         <Button fluid onClick={() => act('linkup')}>
           Linkup
+        </Button>
+      </Section>
+    );
+  }
+  if (event_gateway) {
+    return (
+      <Section>
+        <Button
+          fluid
+          disabled={!gateway_status || event_locked || !event_destination}
+          onClick={() => act('activate', { destination: event_destination })}
+        >
+          Activate
         </Button>
       </Section>
     );

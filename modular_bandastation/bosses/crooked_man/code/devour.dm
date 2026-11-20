@@ -1,0 +1,92 @@
+/// Swallows one living victim; a second activation releases them.
+/datum/action/cooldown/spell/crooked_devour
+	name = "Поглощение"
+	desc = "Поглощает цель перед собой. Повторное использование выплюнет жертву."
+	button_icon = 'icons/mob/actions/actions_changeling.dmi'
+	button_icon_state = "absorb_dna"
+	cooldown_time = 10 SECONDS
+	spell_requirements = NONE
+	/// Owned container, released when the ability is removed or its owner is deleted.
+	var/obj/item/storage/devour_stomach/stomach
+	/// Digestion rate supplied to this ability's owned stomach.
+	var/digestion_rate = 0.75
+
+/datum/action/cooldown/spell/crooked_devour/Remove(mob/living/remove_from)
+	QDEL_NULL(stomach)
+	return ..()
+
+/datum/action/cooldown/spell/crooked_devour/cast(atom/cast_on)
+	. = ..()
+	if(stomach)
+		stomach.release_victim()
+		return
+	var/mob/living/victim
+	for(var/mob/living/candidate in get_step(owner, owner.dir))
+		if(candidate != owner && candidate.stat != DEAD)
+			victim = candidate
+			break
+	if(!victim)
+		to_chat(owner, span_warning("Перед вами нет подходящей цели!"))
+		return
+	owner.visible_message(span_danger("[owner] хватает [victim] и затягивает внутрь себя!"), span_notice("Вы поглощаете [victim]."))
+	playsound(owner, 'sound/effects/goresplat.ogg', 75, TRUE)
+	playsound(victim, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
+	stomach = new(owner, src, victim)
+	stomach.damage_per_second = digestion_rate
+	to_chat(victim, span_userdanger("Вас затягивает в искажённое пространство! Желудочный сок медленно разъедает вас изнутри!"))
+
+/// Private victim container; deletion must eject its contents instead of deleting the player.
+/obj/item/storage/devour_stomach
+	name = "искажённое пространство"
+	desc = "Вы не должны этого видеть."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "nothing"
+	/// Ability owning this container; cleared in Destroy on either teardown path.
+	var/datum/action/cooldown/spell/crooked_devour/ability
+	/// Swallowed mob; administrative relocation ends digestion.
+	var/mob/living/victim
+	/// Toxin damage per second, independent of processing frequency.
+	var/damage_per_second = 0.75
+
+/obj/item/storage/devour_stomach/Initialize(mapload, datum/action/cooldown/spell/crooked_devour/ability, mob/living/victim)
+	. = ..()
+	src.ability = ability
+	src.victim = victim
+	victim.forceMove(src)
+	START_PROCESSING(SSobj, src)
+
+/obj/item/storage/devour_stomach/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	// Container deletion must never take a swallowed player with it.
+	if(!QDELETED(victim) && victim.loc == src)
+		victim.forceMove(get_turf(src) || find_safe_turf())
+	victim = null
+	if(ability?.stomach == src)
+		ability.stomach = null
+	ability = null
+	return ..()
+
+/obj/item/storage/devour_stomach/process(seconds_per_tick)
+	if(QDELETED(victim) || QDELETED(ability) || QDELETED(ability.owner) || victim.loc != src)
+		qdel(src)
+		return PROCESS_KILL
+	if(victim.stat == DEAD)
+		addtimer(CALLBACK(src, PROC_REF(release_victim)), 10 SECONDS)
+		return PROCESS_KILL
+	victim.apply_damage(damage_per_second * seconds_per_tick, TOX)
+	to_chat(victim, span_danger("Желудочный сок разъедает ваше тело!"))
+	victim.playsound_local(get_turf(src), 'sound/effects/wounds/splatter.ogg', 30, TRUE)
+	if(victim.stat == DEAD)
+		ability.owner.visible_message(span_danger("[ability.owner] издаёт звук, похожий на смех."))
+		playsound(ability.owner, 'modular_bandastation/bosses/crooked_man/sounds/lauth.ogg', 80, TRUE)
+
+/// Spits the victim out with the original sound and vomit effect.
+/obj/item/storage/devour_stomach/proc/release_victim()
+	if(!QDELETED(victim) && victim.loc == src)
+		var/turf/release_turf = get_turf(src)
+		victim.forceMove(release_turf)
+		ability?.owner?.visible_message(span_danger("[ability.owner] изрыгает [victim]!"), span_notice("Вы выплёвываете [victim]."))
+		playsound(release_turf, 'sound/effects/goresplat.ogg', 75, TRUE)
+		new /obj/effect/decal/cleanable/vomit(release_turf)
+		to_chat(victim, span_notice("Вас выплюнули наружу!"))
+	qdel(src)

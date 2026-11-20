@@ -181,5 +181,5 @@
 
 /datum/emote/living/evil_laugh/get_sound(mob/living/carbon/human/user)
 	if(!istype(user))
-		return
+		return ..()
 	return user.dna.species.get_evil_laugh_sound(user)

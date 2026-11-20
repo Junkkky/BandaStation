@@ -1,0 +1,18 @@
+Random area background of the Gate Closure locations and the boss lair.
+All four were converted from WAV to Ogg Vorbis (quality 4) with metadata stripped; no other processing.
+
+ominous_background.ogg
+"Ominous Background" by Zat_Dude, https://freesound.org/s/402439/
+License: CC0 1.0, https://creativecommons.org/publicdomain/zero/1.0/
+
+spacecraft_hum.ogg
+"ambient spacecraft hum" by AlaskaRobotics, https://freesound.org/s/221570/
+License: CC0 1.0, https://creativecommons.org/publicdomain/zero/1.0/
+
+space_atmosphere.ogg
+"Space Atmosphere 04 Remastered" by LilMati, https://freesound.org/s/660108/
+License: CC0 1.0, https://creativecommons.org/publicdomain/zero/1.0/
+
+spaceship_ambience.ogg
+"Spaceship Ambience" by PotatokingXII, https://freesound.org/s/443499/
+License: CC0 1.0, https://creativecommons.org/publicdomain/zero/1.0/

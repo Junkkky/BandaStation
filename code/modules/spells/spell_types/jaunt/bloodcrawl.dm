@@ -40,7 +40,7 @@
 	if(find_nearby_blood(get_turf(owner)))
 		return TRUE
 	if(feedback)
-		to_chat(owner, span_warning("There must be a nearby source of blood!"))
+		to_chat(owner, span_warning("Рядом должна быть кровь!"))
 	return FALSE
 
 /datum/action/cooldown/spell/jaunt/bloodcrawl/cast(mob/living/cast_on)
@@ -68,7 +68,7 @@
 
 	if(!.)
 		reset_spell_cooldown()
-		to_chat(jaunter, span_warning("You are unable to blood crawl!"))
+		to_chat(jaunter, span_warning("Вы не можете погрузиться в кровь!"))
 
 /**
  * Attempts to enter the passed blood pool.
@@ -77,7 +77,7 @@
 /datum/action/cooldown/spell/jaunt/bloodcrawl/proc/try_enter_jaunt(obj/effect/decal/cleanable/blood, mob/living/jaunter, forced = FALSE)
 	if(!forced)
 		if(enter_blood_time > 0 SECONDS)
-			blood.visible_message(span_warning("[jaunter] starts to sink into [blood]!"))
+			blood.visible_message(span_warning("[capitalize(jaunter.declent_ru(NOMINATIVE))] начинает погружаться в [blood.declent_ru(ACCUSATIVE)]!"))
 			if(!do_after(jaunter, enter_blood_time, target = blood))
 				return FALSE
 
@@ -102,7 +102,7 @@
 		jaunter.put_in_hands(left_hand)
 		jaunter.put_in_hands(right_hand)
 
-	blood.visible_message(span_warning("[jaunter] sinks into [blood]!"))
+	blood.visible_message(span_warning("[capitalize(jaunter.declent_ru(NOMINATIVE))] погружается в [blood.declent_ru(ACCUSATIVE)]!"))
 	playsound(jaunt_turf, 'sound/effects/magic/enter_blood.ogg', 50, TRUE, -1)
 	jaunter.extinguish_mob()
 
@@ -120,14 +120,14 @@
 			return FALSE
 
 		if(exit_blood_time > 0 SECONDS)
-			blood.visible_message(span_warning("[blood] starts to bubble..."))
+			blood.visible_message(span_warning("[capitalize(blood.declent_ru(NOMINATIVE))] начинает пузыриться..."))
 			if(!do_after(jaunter, exit_blood_time, target = blood))
 				return FALSE
 
 	if(!exit_jaunt(jaunter, get_turf(blood)))
 		return FALSE
 
-	blood.visible_message(span_boldwarning("[jaunter] rises out of [blood]!"))
+	blood.visible_message(span_boldwarning("[capitalize(jaunter.declent_ru(NOMINATIVE))] поднимается из [blood.declent_ru(GENITIVE)]!"))
 	return TRUE
 
 /datum/action/cooldown/spell/jaunt/bloodcrawl/on_jaunt_exited(obj/effect/dummy/phased_mob/jaunt, mob/living/unjaunter)

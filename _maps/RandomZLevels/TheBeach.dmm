@@ -2753,6 +2753,12 @@
 	},
 /turf/open/floor/iron/white/textured_large,
 /area/awaymission/beach)
+"Id" = (
+/obj/effect/landmark/event_portal_point{
+	name = "Пляж"
+	},
+/turf/open/water/deep_beach,
+/area/awaymission/beach)
 "Ih" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/medkit/brute{
@@ -3405,11 +3411,6 @@
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/clothing/suit/jacket/miljacket,
 /turf/open/floor/wood,
-/area/awaymission/beach)
-"Qr" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/food_cart,
-/turf/open/floor/plating,
 /area/awaymission/beach)
 "Qt" = (
 /obj/item/kirbyplants/organic/plant8{
@@ -16841,7 +16842,7 @@ FF
 Ge
 SB
 SB
-Qr
+uT
 KV
 xv
 xv
@@ -30232,7 +30233,7 @@ uX
 uX
 uX
 uX
-uX
+Id
 uX
 uX
 uX

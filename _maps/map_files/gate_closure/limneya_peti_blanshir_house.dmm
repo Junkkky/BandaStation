@@ -1,0 +1,15171 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/fence{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = 10;
+	pixel_y = -5
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ab" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 8
+	},
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/peti_house)
+"ac" = (
+/obj/structure/railing/platform{
+	dir = 4
+	},
+/obj/structure/flora/tall_grass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"ad" = (
+/obj/structure/fake_stairs/wood/directional/east,
+/obj/effect/decal/cleanable/blood/trail_holder,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"ae" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
+/obj/item/kirbyplants/organic/plant12{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"af" = (
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/peti_house)
+"ag" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"ah" = (
+/obj/effect/turf_decal/siding/wood/oak/end,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/item/shrapnel/bullet{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/shrapnel/bullet{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/shrapnel/bullet{
+	pixel_x = 7;
+	pixel_y = -7
+	},
+/obj/item/shrapnel/bullet{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/item/shrapnel/bullet{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"ai" = (
+/obj/structure/chair/comfy/brown{
+	dir = 1
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"aj" = (
+/obj/structure/table,
+/obj/item/clothing/under/towel/long{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/item/clothing/under/towel/short,
+/obj/item/clothing/head/towel{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_2)
+"ak" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"am" = (
+/obj/effect/light_emitter/gate_closure,
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/peti_house)
+"an" = (
+/obj/item/shovel,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ao" = (
+/obj/effect/turf_decal/tile/neutral/tram{
+	alpha = 150;
+	dir = 4
+	},
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/peti_house)
+"ap" = (
+/obj/structure/light_fake/floor/broken,
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"aq" = (
+/obj/item/wrench,
+/obj/structure/table/wood,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house/garage)
+"ar" = (
+/obj/structure/easel,
+/obj/structure/railing{
+	dir = 4;
+	color = "#A1662F"
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
+/obj/machinery/light/broken/directional/south,
+/obj/item/canvas/nineteen_nineteen{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"as" = (
+/obj/structure/dresser{
+	pixel_x = 0;
+	pixel_y = -6
+	},
+/obj/item/bouquet/rose{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/obj/effect/turf_decal/siding/wood/oak/end{
+	dir = 8
+	},
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"at" = (
+/obj/structure/dresser,
+/obj/item/toy/cards/deck/blank/black{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/victor_room)
+"au" = (
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/victor_room)
+"av" = (
+/obj/machinery/light/broken/directional/south,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"aw" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_2)
+"ax" = (
+/obj/machinery/transport/crossing_signal,
+/obj/structure/light_fake/floor/broken,
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"ay" = (
+/obj/structure/closet/crate/large,
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/berry,
+/obj/item/seeds/berry,
+/obj/item/seeds/berry,
+/obj/item/seeds/berry,
+/obj/item/seeds/berry,
+/obj/item/seeds/eggplant,
+/obj/item/seeds/eggplant,
+/obj/item/seeds/eggplant,
+/obj/item/seeds/eggplant,
+/obj/item/seeds/grape,
+/obj/item/seeds/grape,
+/obj/item/seeds/grape,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/storage)
+"az" = (
+/obj/machinery/light/broken/directional/west,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"aA" = (
+/obj/structure/chair/comfy/corp{
+	dir = 1
+	},
+/obj/machinery/light/broken/directional/west,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/august_room)
+"aB" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/obj/machinery/light/broken/directional/west,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"aC" = (
+/obj/structure/old_tube,
+/obj/effect/light_emitter/gate_closure/red/small,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"aD" = (
+/obj/effect/light_emitter/gate_closure/red/small,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"aE" = (
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"aF" = (
+/obj/machinery/transport/crossing_signal/northwest,
+/obj/structure/light_fake/floor/broken,
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"aG" = (
+/obj/machinery/transport/crossing_signal/southwest{
+	pixel_y = 0;
+	pixel_x = -20
+	},
+/obj/structure/light_fake/floor/broken,
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"aH" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/light_fake/floodlight/broken,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"aI" = (
+/obj/effect/turf_decal/line/neutral{
+	alpha = 150
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 9
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"aJ" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/light_fake/floodlight/broken,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"aK" = (
+/obj/machinery/vending/hydroseeds{
+	slogan_delay = 700
+	},
+/obj/effect/light_emitter/gate_closure/red/small,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"aL" = (
+/obj/structure/light_fake/floodlight/broken,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"aM" = (
+/obj/structure/railing/wooden_fencing,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/structure/light_fake/floodlight/broken,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"aN" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"aO" = (
+/obj/structure/railing/platform{
+	dir = 5
+	},
+/obj/structure/flora/tall_grass/style_random,
+/obj/effect/light_emitter/gate_closure/red/small,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"aP" = (
+/obj/effect/light_emitter/gate_closure/small,
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/peti_house)
+"aQ" = (
+/obj/structure/railing/wooden_fencing,
+/obj/structure/light_fake/floodlight/broken,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"aR" = (
+/obj/structure/railing/platform{
+	dir = 9
+	},
+/obj/effect/light_emitter/gate_closure/red/small,
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"aT" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"aU" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/pantry)
+"aV" = (
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"aW" = (
+/obj/effect/turf_decal/tile/neutral/tram{
+	alpha = 150;
+	dir = 1
+	},
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/peti_house)
+"aX" = (
+/obj/effect/light_emitter/thunderdome,
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"aY" = (
+/obj/structure/railing/corner/end/flip{
+	color = "#A1662F";
+	dir = 8;
+	pixel_x = 0;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/light_emitter/gate_closure/red/small,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"aZ" = (
+/obj/effect/light_emitter/gate_closure/red/small,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"ba" = (
+/obj/structure/railing/corner/end/flip{
+	color = "#A1662F";
+	dir = 1
+	},
+/obj/machinery/light/broken/directional/east,
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"bb" = (
+/obj/machinery/light/broken/directional/west,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"bc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/mop,
+/obj/effect/light_emitter/gate_closure/red/small,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/pantry)
+"bd" = (
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"be" = (
+/obj/item/trash/semki,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bf" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_1)
+"bg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/light_emitter/gate_closure/red/small,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house/garage)
+"bh" = (
+/obj/structure/fence{
+	dir = 1
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"bi" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 1
+	},
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/peti_house)
+"bj" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/light_fake/floodlight/broken,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"bk" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/hydroponics/constructable/fullupgrade,
+/obj/effect/light_emitter/thunderdome,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"bl" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house/garage)
+"bm" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/machinery/hydroponics/constructable/fullupgrade,
+/obj/effect/light_emitter/thunderdome,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"bn" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/hydroponics/constructable/fullupgrade,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/light_emitter/thunderdome,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"bo" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/obj/structure/light_fake/floodlight/broken,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"bp" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"bq" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/structure/light_fake/floodlight/broken,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"br" = (
+/obj/structure/closet/crate/grave/fresh,
+/obj/effect/light_emitter/gate_closure/red/small,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bs" = (
+/obj/structure/light_fake/floor/broken,
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/peti_house)
+"bt" = (
+/obj/effect/light_emitter/gate_closure/small,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bu" = (
+/obj/structure/flora/tree/large_tree/style_random,
+/obj/effect/light_emitter/tendril,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bv" = (
+/obj/effect/light_emitter/tendril,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bw" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 1
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bx" = (
+/obj/structure/railing/platform/reinforced,
+/obj/structure/light_fake/floor/broken,
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"by" = (
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/line/neutral/line{
+	alpha = 150;
+	dir = 1
+	},
+/obj/structure/gate_closure_lever,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"bz" = (
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/line/neutral/line{
+	alpha = 150;
+	dir = 1
+	},
+/obj/effect/light_emitter/tendril,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"bA" = (
+/obj/machinery/gateway/gate_closure/katorga,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"bB" = (
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"bC" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe-down";
+	density = 1;
+	anchored = 1;
+	color = "gray"
+	},
+/turf/open/water/alternative/muddy/no_fishing,
+/area/awaymission/gate_closure/peti_house)
+"bD" = (
+/obj/effect/light_emitter/gate_closure/small,
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"bE" = (
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bF" = (
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"bG" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bH" = (
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bI" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bJ" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"bK" = (
+/obj/effect/landmark/awaystart/gate_closure/peti_house,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bL" = (
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"bM" = (
+/obj/structure/broken_flooring/plating/always_floorplane/directional/west,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bN" = (
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/peti_house)
+"bO" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/line/neutral/line{
+	alpha = 150;
+	dir = 8
+	},
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"bP" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bQ" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/victor_room)
+"bR" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bS" = (
+/obj/structure/fence{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bT" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"bU" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave{
+	pixel_y = 5
+	},
+/obj/machinery/light/broken/directional/south,
+/obj/effect/turf_decal/siding/wood/oak/end,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"bV" = (
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/hall)
+"bW" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"bX" = (
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"bY" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"bZ" = (
+/obj/structure/railing/wooden_fencing{
+	dir = 8
+	},
+/obj/structure/flora/rock/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"ca" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"cb" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/line/neutral/line{
+	alpha = 150;
+	dir = 8
+	},
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"cc" = (
+/obj/structure/shelf,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 0;
+	pixel_y = -5
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/pantry)
+"cd" = (
+/obj/structure/shelf/crates,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/pantry)
+"ce" = (
+/obj/structure/bookcase/random,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"cf" = (
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/neighbours)
+"cg" = (
+/obj/structure/flora/dry_grass/style_random,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ch" = (
+/obj/structure/fence/corner{
+	dir = 5
+	},
+/obj/structure/fence/corner{
+	dir = 9
+	},
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ci" = (
+/obj/structure/railing/platform/reinforced,
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"cj" = (
+/obj/effect/turf_decal/tile/neutral/tram{
+	alpha = 150;
+	dir = 1
+	},
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"cr" = (
+/obj/structure/fake_stairs/directional/north{
+	color = "gray"
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"cC" = (
+/obj/structure/broken_flooring/plating/always_floorplane/directional/east,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"cH" = (
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"cP" = (
+/obj/machinery/door/poddoor/shutters/window{
+	id = "gate";
+	dir = 4
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"cS" = (
+/obj/structure/table/wood/fancy/royalblack,
+/obj/structure/railing/corner{
+	dir = 8;
+	color = "#6e6e6e"
+	},
+/obj/machinery/light/small/directional/north,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house)
+"cT" = (
+/obj/structure/mineral_door/wood,
+/obj/effect/turf_decal/siding/wood/oak/end,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/garage)
+"cU" = (
+/obj/structure/fence/door,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"cV" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/august_room)
+"cW" = (
+/obj/item/storage/bag/trash/filled,
+/obj/item/storage/bag/trash/filled{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"cX" = (
+/obj/structure/railing{
+	color = "#A1662F"
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"dd" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
+/obj/structure/curtain/bounty,
+/obj/item/kirbyplants/organic/plant12{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"di" = (
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"dm" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"dn" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"do" = (
+/obj/structure/table/wood,
+/obj/item/access_key{
+	pixel_x = -7;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/flatcap{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"dq" = (
+/obj/structure/railing/platform/reinforced,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"dr" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"dB" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/hydroponics,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"dC" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/structure/mirror/directional/east,
+/obj/structure/sink/directional/west,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"dO" = (
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"dP" = (
+/obj/structure/toilet{
+	pixel_y = -4;
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_1)
+"ea" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"ef" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/obj/structure/railing{
+	dir = 8;
+	color = "#A1662F"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"eg" = (
+/obj/structure/sink/directional/east,
+/obj/machinery/duct,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"ej" = (
+/obj/structure/sink/oil_well,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ek" = (
+/obj/machinery/duct,
+/obj/structure/sink/directional/west,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"ew" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
+/obj/item/storage/bag/tray{
+	pixel_y = 2;
+	pixel_x = 3
+	},
+/obj/item/food/cookie{
+	pixel_x = 3;
+	pixel_y = 0
+	},
+/obj/item/food/cookie{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/structure/curtain/bounty/start_closed,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"eB" = (
+/obj/structure/bed/maint,
+/obj/structure/broken_flooring/plating/always_floorplane/directional/east,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"eP" = (
+/obj/machinery/door/window/brigdoor/left/directional/east,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"eQ" = (
+/obj/structure/hedge,
+/obj/structure/railing/corner{
+	color = "#6e6e6e"
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 5
+	},
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house)
+"fe" = (
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"fk" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"fn" = (
+/obj/structure/shelf,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 0;
+	pixel_y = -5
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/storage)
+"fs" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"fv" = (
+/obj/item/storage/bag/trash/filled{
+	pixel_x = 5;
+	pixel_y = 17
+	},
+/obj/item/storage/bag/trash/filled{
+	pixel_x = -9;
+	pixel_y = 21
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"fy" = (
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"fH" = (
+/obj/structure/fence/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"fO" = (
+/obj/machinery/washing_machine,
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_1)
+"fU" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_2)
+"gd" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/hydroponics/constructable/fullupgrade,
+/obj/item/reagent_containers/cup/watering_can{
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"ge" = (
+/obj/structure/railing/wooden_fencing{
+	dir = 4
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"gm" = (
+/obj/machinery/door/window/brigdoor/left/directional/east,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"gp" = (
+/obj/item/storage/bag/trash/filled,
+/obj/item/storage/bag/trash/filled{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/storage/bag/trash/filled{
+	pixel_x = 15;
+	pixel_y = 3
+	},
+/obj/structure/flora/dry_grass/style_random,
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"gs" = (
+/obj/item/clothing/suit/jacket/oversized{
+	pixel_x = 0;
+	pixel_y = 9
+	},
+/obj/item/clothing/suit/soundhand_olive_jacket,
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/machinery/light_switch/directional/north,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/pantry)
+"gF" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 9
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"gL" = (
+/obj/effect/landmark/event_portal_point{
+	name = "Лимнея - Пригород"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"gQ" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/obj/structure/railing{
+	dir = 4;
+	color = "#A1662F"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"gZ" = (
+/obj/structure/flora/tree/large_tree/snow/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"ha" = (
+/obj/structure/shelf,
+/obj/item/reagent_containers/condiment/enzyme{
+	pixel_y = 24;
+	pixel_x = -8
+	},
+/obj/item/kirbyplants/organic/plant15{
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/item/reagent_containers/condiment/soysauce{
+	pixel_x = -3;
+	pixel_y = 23
+	},
+/obj/item/plate/small{
+	pixel_x = -4;
+	pixel_y = -8
+	},
+/obj/item/plate/small{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/item/plate/small{
+	pixel_x = -2;
+	pixel_y = -5
+	},
+/obj/structure/shelf{
+	pixel_x = 0;
+	pixel_y = 25
+	},
+/obj/item/reagent_containers/condiment/rice{
+	pixel_x = 6;
+	pixel_y = 37
+	},
+/obj/item/reagent_containers/condiment/peppermill{
+	pixel_x = 5;
+	pixel_y = 19
+	},
+/obj/structure/railing{
+	dir = 4;
+	color = "#A1662F"
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 5
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"hc" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe-down";
+	density = 1;
+	anchored = 1;
+	color = "gray";
+	dir = 8
+	},
+/turf/open/water/alternative/muddy/no_fishing,
+/area/awaymission/gate_closure/peti_house)
+"hf" = (
+/obj/structure/flora/rock/pile,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"hl" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/hydroponics/constructable/fullupgrade,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"hv" = (
+/obj/structure/rack,
+/obj/item/shovel,
+/obj/item/shovel/spade,
+/obj/item/scythe,
+/obj/item/secateurs,
+/obj/item/cultivator,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/storage)
+"hE" = (
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"hG" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 1
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"hM" = (
+/obj/machinery/light_switch/directional/south,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"hO" = (
+/obj/machinery/door/window/brigdoor/left/directional/north,
+/obj/machinery/duct,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"hP" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/bathroom_2)
+"hR" = (
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ib" = (
+/obj/machinery/transport/crossing_signal,
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"ic" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	icon_state = "bounty-closed"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/bathroom_2)
+"ie" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/line/neutral{
+	alpha = 150;
+	dir = 8
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"if" = (
+/obj/effect/turf_decal/siding/dark,
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ij" = (
+/obj/effect/thing_acid,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"il" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/floodlight_frame/completed,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"im" = (
+/obj/structure/flora/dry_log,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house)
+"iy" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	icon_state = "bounty-closed"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"iC" = (
+/obj/effect/turf_decal/line/neutral/line{
+	alpha = 150;
+	dir = 2
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"iD" = (
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 4
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"iG" = (
+/obj/effect/landmark/awaystart/gate_closure/peti_house,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"iQ" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house)
+"iU" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/bathroom_1)
+"iV" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/garbage,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"iZ" = (
+/obj/structure/flora/grass_sticks/style_random,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"jb" = (
+/obj/structure/broken_flooring/plating/always_floorplane/directional/south,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"jk" = (
+/obj/structure/railing/wooden_fencing{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/obj/structure/flora/bush/pointy/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"jw" = (
+/obj/structure/flora/tree/stump/large_tree,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"jG" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/machinery/hydroponics/constructable/fullupgrade,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"jV" = (
+/obj/structure/fake_stairs/directional/north{
+	color = "gray";
+	dir = 2
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"jY" = (
+/obj/effect/decal/cleanable/glass,
+/obj/item/broken_bottle{
+	pixel_x = -10;
+	pixel_y = -2
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"jZ" = (
+/obj/structure/fake_stairs/directional/north{
+	color = "gray"
+	},
+/obj/structure/railing{
+	dir = 4;
+	color = "#6e6e6e"
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"kb" = (
+/obj/structure/fence{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ky" = (
+/obj/structure/bed/maint,
+/obj/item/gun/ballistic/automatic/pistol/cm23,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house)
+"kB" = (
+/obj/item/storage/briefcase{
+	pixel_x = -6;
+	pixel_y = 18
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"kE" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/victor_room)
+"kM" = (
+/obj/structure/fence{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ld" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/hydroponics/constructable/fullupgrade,
+/obj/item/reagent_containers/cup/watering_can{
+	pixel_y = 6
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"lg" = (
+/obj/effect/mapping_helpers/broken_floor,
+/obj/item/reagent_containers/syringe/contraband/fentanyl,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house)
+"li" = (
+/obj/structure/table/wood,
+/obj/item/phone{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/item/kirbyplants/organic/plant18{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"ln" = (
+/obj/structure/broken_flooring/plating/always_floorplane/directional/north,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"lx" = (
+/obj/item/reagent_containers/cup/watering_can,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"lz" = (
+/obj/structure/fence/corner{
+	dir = 5
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"lM" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"mc" = (
+/obj/machinery/door/window/brigdoor/right/directional/east,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"mj" = (
+/obj/structure/flora/tree/large_pine/style_3,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"mm" = (
+/obj/item/storage/bag/trash/filled{
+	pixel_x = 5;
+	pixel_y = 0
+	},
+/obj/item/storage/bag/trash/filled{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"mt" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/structure/fence/corner{
+	dir = 5
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"mw" = (
+/obj/structure/shipping_container/reefer,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"my" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/awaymission/gate_closure/peti_house)
+"mE" = (
+/obj/structure/table/wood,
+/obj/machinery/computer/records/security/laptop{
+	pixel_x = -4;
+	pixel_y = 11;
+	name = "laptop"
+	},
+/obj/item/reagent_containers/cup/soda_cans/volt_energy{
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/obj/effect/turf_decal/siding/wood/oak/end,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/victor_room)
+"mH" = (
+/obj/structure/chair/sofa/left/brown{
+	dir = 1
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"mJ" = (
+/obj/item/trash/ready_donk,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"mK" = (
+/obj/structure/flora/tree/stump/large_tree/snow{
+	name = "stump"
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"mP" = (
+/obj/structure/fence{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/garbage,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"mY" = (
+/obj/structure/dresser,
+/obj/item/kirbyplants/organic/plant18{
+	pixel_x = 5;
+	pixel_y = 21
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/august_room)
+"na" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"nc" = (
+/obj/structure/fence/corner{
+	dir = 8
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"nh" = (
+/obj/structure/railing/platform/reinforced/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"nj" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/hydroponics/constructable/fullupgrade,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"nl" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"nm" = (
+/obj/structure/shelf,
+/obj/item/reagent_containers/condiment/olive_oil{
+	pixel_x = -7;
+	pixel_y = 14
+	},
+/obj/item/reagent_containers/condiment/peanut_butter{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/item/rag{
+	pixel_y = -2;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
+	pixel_x = 9;
+	pixel_y = -4
+	},
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
+	pixel_x = 4;
+	pixel_y = -5
+	},
+/obj/effect/turf_decal/siding/wood/oak/end{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"no" = (
+/obj/structure/shipping_container/kahraman,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"ns" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/curtain/bounty,
+/obj/item/kirbyplants/organic/plant15{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"nu" = (
+/obj/structure/fake_stairs/directional/north{
+	color = "gray"
+	},
+/obj/structure/railing{
+	dir = 8;
+	color = "#6e6e6e"
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"nA" = (
+/obj/structure/billboard/azik,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"nF" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"nN" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"nS" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/awaymission/gate_closure/peti_house)
+"nT" = (
+/obj/structure/rack,
+/obj/item/watertank{
+	pixel_x = 0;
+	pixel_y = 7
+	},
+/obj/item/watertank,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"nU" = (
+/obj/effect/spawner/random/trash/crushed_can,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"oa" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"ob" = (
+/obj/structure/bed/double,
+/obj/item/bedsheet/hop/double,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/august_room)
+"oj" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"om" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/hall)
+"ot" = (
+/obj/structure/flora/tree/large_tree/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ow" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/obj/structure/flora/bush/pointy/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"oy" = (
+/obj/structure/railing/platform/corner,
+/obj/structure/flora/bush/lavendergrass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"oF" = (
+/obj/effect/turf_decal/line/neutral{
+	alpha = 150;
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 10
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"oG" = (
+/obj/structure/shipping_container/kosmologistika,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"oK" = (
+/obj/structure/shipping_container/conarex,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"oL" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 8
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"oQ" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/structure/flora/bush/pointy/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"pa" = (
+/obj/structure/railing/wooden_fencing,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"pd" = (
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house/garage)
+"pm" = (
+/obj/machinery/transport/crossing_signal/northwest,
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"pn" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"po" = (
+/obj/structure/curtain/bounty,
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"px" = (
+/obj/machinery/door/window/brigdoor/right/directional/west,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"pE" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"pH" = (
+/obj/item/reagent_containers/cup/glass/bottle/hooch{
+	pixel_x = -9;
+	pixel_y = 13
+	},
+/obj/item/reagent_containers/cup/glass/bottle/hooch{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/structure/table/wood,
+/obj/item/food/kebab/rat/double,
+/obj/item/food/kebab/rat/double{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"pL" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"pN" = (
+/obj/item/storage/bag/trash/filled{
+	pixel_x = 5;
+	pixel_y = 17
+	},
+/obj/item/storage/bag/trash/filled{
+	pixel_x = -9;
+	pixel_y = 21
+	},
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"pO" = (
+/obj/structure/flora/dry_grass/style_random,
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"qk" = (
+/obj/structure/railing/wooden_fencing{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"qw" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/august_room)
+"qy" = (
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"qz" = (
+/obj/structure/curtain,
+/obj/machinery/shower/directional/north,
+/obj/structure/fluff/shower_drain,
+/obj/item/soap{
+	pixel_x = 2;
+	pixel_y = -9
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_2)
+"qB" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe-down";
+	dir = 4;
+	density = 1;
+	anchored = 1
+	},
+/turf/open/water/alternative/muddy/no_fishing,
+/area/awaymission/gate_closure/peti_house)
+"qC" = (
+/obj/structure/flora/bush/lavendergrass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"qF" = (
+/obj/structure/table/wood/fancy/royalblack,
+/obj/effect/turf_decal/siding/wood/oak/end{
+	dir = 8
+	},
+/obj/item/paper_bin{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/paint_palette{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"qL" = (
+/obj/item/trash/shok_roks/citrus{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"qU" = (
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = 10;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"re" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/structure/toilet{
+	pixel_y = -4;
+	dir = 1
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"rf" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"rh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"ri" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/hydroponics,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"rp" = (
+/obj/structure/hedge,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"rB" = (
+/obj/structure/table/wood,
+/obj/machinery/computer{
+	icon_screen = "library";
+	icon_keyboard = null;
+	icon_state = "oldcomp";
+	dir = 4;
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"rH" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 8
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"rM" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	icon_state = "bounty-closed"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/victor_room)
+"rN" = (
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"rS" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/obj/structure/railing{
+	dir = 4;
+	color = "#A1662F"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"sa" = (
+/obj/item/trash/popcorn/salty,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"sg" = (
+/obj/structure/shipping_container/tiger_coop/text,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"si" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/curtain/bounty,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"ss" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/duct,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"sA" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"sC" = (
+/obj/structure/fence/cut/medium{
+	dir = 4
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"sO" = (
+/obj/structure/broken_flooring/pile/directional/west,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"sQ" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/floodlight_frame/completed,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"sR" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/curtain/bounty,
+/obj/item/toy/eightball{
+	pixel_x = 9;
+	pixel_y = 0
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"sS" = (
+/obj/structure/filingcabinet{
+	pixel_x = -10
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 0
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 10
+	},
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/august_room)
+"sU" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/structure/billboard/azik,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ta" = (
+/obj/structure/bed,
+/obj/item/bedsheet/black,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"tc" = (
+/obj/structure/fence{
+	dir = 1
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"to" = (
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house)
+"tp" = (
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"tr" = (
+/obj/structure/railing/corner{
+	color = "#A1662F"
+	},
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/machinery/light_switch/directional/east,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"ts" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 4
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"tx" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	icon_state = "bounty-closed"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"ty" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
+/obj/item/storage/dice{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/structure/curtain/bounty/start_closed,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"tz" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/item/clothing/under/towel/short{
+	pixel_x = 11;
+	pixel_y = 8
+	},
+/obj/structure/bedsheetbin{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_1)
+"tA" = (
+/obj/effect/spawner/random/trash/mess,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"tD" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"tF" = (
+/obj/structure/railing/platform/corner{
+	dir = 8
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"tO" = (
+/obj/structure/sink/directional/south{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/obj/structure/mirror/directional/north{
+	pixel_x = 0;
+	pixel_y = 34
+	},
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_2)
+"tY" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/structure/flora/grass_sticks/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"tZ" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/grown/tomato,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/grown/onion,
+/obj/item/food/grown/cabbage,
+/obj/item/food/grown/carrotlike/carrot,
+/obj/item/reagent_containers/cup/glass/bottle/wine,
+/obj/structure/railing{
+	dir = 6;
+	color = "#A1662F"
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"ud" = (
+/obj/effect/decal/cleanable/ants,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"uh" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"uj" = (
+/obj/structure/flora/dry_log,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"uk" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/neighbours)
+"uo" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"up" = (
+/obj/structure/mineral_door/wood,
+/obj/effect/turf_decal/siding/wood/oak/end,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"uv" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/machinery/vending/hydronutrients,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"uA" = (
+/obj/machinery/door/window/brigdoor/right/directional/north,
+/obj/machinery/door/window/brigdoor/right/directional/south,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"uB" = (
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"uH" = (
+/obj/structure/railing/wooden_fencing{
+	dir = 4
+	},
+/obj/structure/railing/wooden_fencing,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"uL" = (
+/obj/structure/railing/wooden_fencing,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"uM" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/structure/billboard/donk_n_go,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"uO" = (
+/obj/structure/fence/post,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"uX" = (
+/obj/structure/broken_flooring/pile/directional/north,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"vb" = (
+/obj/item/trash/ready_donk{
+	pixel_x = -2;
+	pixel_y = -20
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"vf" = (
+/obj/structure/table/reinforced,
+/obj/item/plate/oven_tray{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/kitchen/rollingpin{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"vg" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	icon_state = "bounty-closed"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"vj" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe";
+	dir = 1;
+	density = 1;
+	anchored = 1
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"vm" = (
+/obj/structure/railing/corner{
+	color = "#A1662F"
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"vq" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"vs" = (
+/obj/item/trash/semki/healthy{
+	pixel_x = -11;
+	pixel_y = 5
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"vt" = (
+/mob/living/silicon/robot/model/security,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"vu" = (
+/obj/structure/bed{
+	dir = 8
+	},
+/obj/item/bedsheet/purple{
+	dir = 8
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"vv" = (
+/obj/structure/railing/platform/corner{
+	dir = 1
+	},
+/obj/structure/flora/tall_grass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"vy" = (
+/obj/structure/railing/platform/reinforced/corner,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"vD" = (
+/obj/item/trash/energybar,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"vH" = (
+/obj/structure/railing/corner/end{
+	color = "gray";
+	dir = 1
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"vM" = (
+/obj/machinery/door/window/brigdoor/right/directional/south,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"vQ" = (
+/obj/structure/fence/post{
+	dir = 4
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"vR" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"vV" = (
+/obj/effect/turf_decal/stripes{
+	dir = 9
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"wd" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house)
+"wg" = (
+/obj/structure/railing/platform/reinforced/corner{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"wh" = (
+/obj/item/broken_bottle,
+/obj/effect/decal/cleanable/glass,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"wj" = (
+/obj/structure/railing/platform{
+	dir = 10
+	},
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"wq" = (
+/obj/structure/fence/door/opened{
+	dir = 8
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"wr" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house)
+"wt" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"ww" = (
+/obj/structure/table/wood/fancy/royalblack,
+/obj/item/reagent_containers/cup/glass/drinkingglass{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"wB" = (
+/obj/structure/table/wood,
+/obj/machinery/computer{
+	icon_screen = "library";
+	icon_keyboard = null;
+	icon_state = "oldcomp";
+	dir = 4;
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/structure/railing{
+	dir = 8;
+	color = "#A1662F"
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"wC" = (
+/obj/structure/railing/platform/corner{
+	dir = 4
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"wD" = (
+/obj/structure/table/wood/fancy/royalblack,
+/obj/machinery/computer/records/security/laptop{
+	pixel_x = 6;
+	pixel_y = 9;
+	name = "laptop"
+	},
+/obj/item/flashlight/lamp{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/august_room)
+"wE" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 4
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"wI" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/august_room)
+"wJ" = (
+/obj/structure/billboard/nanotrasen/defaced,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"wP" = (
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"wR" = (
+/mob/living/basic/regal_rat{
+	name = "Крысинный Пирог";
+	desc = "Эта огромная крыса терроризирует трущобы Лимнеи уже очень давно..."
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"wS" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 8
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"wT" = (
+/obj/structure/railing/wooden_fencing{
+	dir = 4
+	},
+/obj/structure/flora/tall_grass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"xf" = (
+/obj/structure/fence/corner{
+	dir = 5
+	},
+/obj/structure/fence/corner{
+	dir = 9
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"xk" = (
+/obj/structure/railing/platform/corner,
+/obj/structure/flora/tall_grass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"xn" = (
+/obj/structure/railing/platform/corner{
+	dir = 8
+	},
+/obj/structure/flora/tall_grass/style_random,
+/obj/structure/flora/bush/lavendergrass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"xp" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"xq" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/machinery/light_switch/directional/west,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_1)
+"xs" = (
+/obj/structure/railing{
+	dir = 8;
+	color = "#A1662F"
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"xx" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/structure/old_tube,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"xJ" = (
+/obj/effect/thing_acid,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"xL" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe";
+	dir = 1;
+	density = 1;
+	anchored = 1
+	},
+/turf/open/water/alternative/muddy/no_fishing,
+/area/awaymission/gate_closure/peti_house)
+"xN" = (
+/obj/structure/chair/sofa/right/brown{
+	dir = 1
+	},
+/obj/structure/sign/clock/directional/east,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"xO" = (
+/obj/item/broken_bottle{
+	pixel_x = -10;
+	pixel_y = -2
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"xV" = (
+/obj/structure/railing/corner/end/flip{
+	color = "gray";
+	dir = 1
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"yd" = (
+/obj/structure/bed,
+/obj/item/bedsheet/red,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"yh" = (
+/obj/structure/bed/dogbed,
+/mob/living/basic/possum{
+	dir = 4;
+	name = "Мая"
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/obj/machinery/light_switch/directional/north,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"yl" = (
+/obj/structure/chair/comfy/brown,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"yC" = (
+/obj/structure/railing/corner{
+	color = "#6e6e6e"
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house)
+"yJ" = (
+/obj/structure/railing/wooden_fencing,
+/obj/structure/flora/bush/pointy/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"za" = (
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"zi" = (
+/obj/structure/flora/grass_sticks/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"zk" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/structure/billboard/space_cola,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"zw" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/line/neutral/line{
+	alpha = 150;
+	dir = 8
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"zC" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/landmark/awaystart/gate_closure/peti_house,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"zR" = (
+/obj/structure/bonfire/dense/prelit,
+/obj/structure/broken_flooring/plating/always_floorplane/directional/west,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"zT" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/item/pen/fourcolor{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/structure/curtain/bounty,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"zW" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/item/storage/photo_album/personal{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/obj/item/camera{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/structure/curtain/bounty,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"Af" = (
+/obj/structure/curtain,
+/obj/machinery/shower/directional/south,
+/obj/structure/fluff/shower_drain,
+/obj/item/soap{
+	pixel_x = 2;
+	pixel_y = -9
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_1)
+"Ah" = (
+/obj/item/storage/bag/trash/filled,
+/obj/item/storage/bag/trash/filled{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Ai" = (
+/obj/effect/turf_decal/siding/dark/corner,
+/obj/effect/turf_decal/line/neutral/anticorner{
+	dir = 1;
+	alpha = 150
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"Am" = (
+/obj/structure/billboard/smoothies,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Aq" = (
+/obj/structure/shipping_container/sunda,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Ar" = (
+/obj/machinery/door/airlock/wood,
+/obj/effect/turf_decal/siding/wood/oak/end{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"At" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"Au" = (
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = 10;
+	pixel_y = -5
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Aw" = (
+/obj/structure/railing{
+	color = "#A1662F";
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/effect/turf_decal/siding/wood/oak/end{
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"Ax" = (
+/obj/effect/turf_decal/siding/dark,
+/obj/structure/railing/platform/reinforced{
+	dir = 1
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Az" = (
+/obj/effect/decal/cleanable/garbage,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"AB" = (
+/obj/item/light/tube/broken{
+	pixel_x = -16;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/garbage,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"AK" = (
+/obj/effect/turf_decal/siding/dark,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"AL" = (
+/obj/structure/fence/cut/large{
+	dir = 4
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"AM" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe-down";
+	density = 1;
+	anchored = 1
+	},
+/turf/open/water/alternative/muddy/no_fishing,
+/area/awaymission/gate_closure/peti_house)
+"AP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/storage)
+"AV" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Bd" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	icon_state = "bounty-closed"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/victor_room)
+"Bh" = (
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/peti_house/hall)
+"Bk" = (
+/obj/item/storage/bag/trash/filled,
+/obj/item/storage/bag/trash/filled{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/storage/bag/trash/filled{
+	pixel_x = 15;
+	pixel_y = 3
+	},
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Bt" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"Bv" = (
+/obj/structure/railing/corner/end{
+	color = "#A1662F";
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"BA" = (
+/obj/machinery/door/window/brigdoor/left/directional/west,
+/obj/machinery/duct,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"BF" = (
+/obj/structure/fence/corner{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/garbage,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"BG" = (
+/obj/structure/flora/bush/pointy/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"BK" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/structure/billboard/twenty_four_seven,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"BP" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"BR" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_1)
+"Cb" = (
+/obj/effect/spawner/random/food_or_drink/booze,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house)
+"Cj" = (
+/obj/structure/closet/crate/large,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/pantry)
+"Co" = (
+/obj/structure/fence,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Cy" = (
+/obj/machinery/door/airlock/wood,
+/obj/effect/turf_decal/siding/wood/oak/end{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"CC" = (
+/obj/machinery/oven/range,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"CF" = (
+/obj/structure/broken_flooring/pile/directional/south{
+	pixel_x = -10;
+	pixel_y = -8
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"CG" = (
+/obj/structure/railing/wooden_fencing{
+	dir = 4
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"CI" = (
+/obj/structure/fence/corner,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"CK" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/victor_room)
+"CW" = (
+/obj/structure/railing/platform{
+	dir = 6
+	},
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"Db" = (
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/august_room)
+"Dc" = (
+/obj/effect/turf_decal/siding/wood/oak/end,
+/obj/structure/flora/tree/large_pine/style_2{
+	pixel_x = -16;
+	pixel_y = 8
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"De" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe-down";
+	density = 1;
+	anchored = 1;
+	color = "gray";
+	dir = 4
+	},
+/turf/open/water/alternative/muddy/no_fishing,
+/area/awaymission/gate_closure/peti_house)
+"Df" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"Dg" = (
+/obj/structure/bed/maint,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house)
+"Dh" = (
+/obj/structure/chair/comfy/brown{
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Dl" = (
+/obj/structure/table/glass,
+/obj/structure/sign/clock/directional/north,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"Do" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
+/obj/structure/curtain/bounty,
+/obj/item/kirbyplants/organic/plant12{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Dr" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/curtain/bounty,
+/obj/item/toy/plush/lizard_plushie/green{
+	pixel_x = 5;
+	pixel_y = 0
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"Dv" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"DJ" = (
+/obj/machinery/seed_extractor,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"DM" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"DN" = (
+/obj/structure/fence/post{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"DP" = (
+/obj/structure/railing/platform{
+	dir = 1
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"DX" = (
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"DY" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
+/obj/structure/curtain/bounty/start_closed,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"DZ" = (
+/obj/structure/flora/rock/pile,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Ea" = (
+/turf/closed/indestructible/fakeglass,
+/area/awaymission/gate_closure/peti_house)
+"Ed" = (
+/obj/structure/dresser,
+/obj/item/table_clock{
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/obj/item/kirbyplants/organic/plant17{
+	pixel_x = -6;
+	pixel_y = 21
+	},
+/obj/effect/turf_decal/siding/wood/oak/end{
+	dir = 8
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"Ee" = (
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Ej" = (
+/obj/structure/billboard/roadsign/two,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Er" = (
+/obj/structure/railing/platform{
+	dir = 8
+	},
+/obj/structure/flora/tall_grass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"Ev" = (
+/obj/structure/closet/crate/trashcart/filled,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Ew" = (
+/obj/structure/flora/rock/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"ED" = (
+/obj/machinery/computer,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"EE" = (
+/obj/effect/turf_decal/tile/neutral/tram{
+	alpha = 150
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"EH" = (
+/obj/machinery/oven/range,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"EL" = (
+/obj/structure/fluff/broken_canister_frame,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"EM" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 6
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"EO" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ER" = (
+/obj/structure/railing/platform{
+	dir = 8
+	},
+/obj/structure/flora/rock/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"ET" = (
+/obj/structure/bonfire/dense/prelit,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"EW" = (
+/obj/item/reagent_containers/cup/watering_can,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"EZ" = (
+/obj/structure/closet/secure_closet/freezer/fridge/all_access,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Fc" = (
+/obj/item/light/tube/broken,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Ff" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave{
+	pixel_y = 5
+	},
+/obj/effect/turf_decal/siding/wood/oak/end,
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Fh" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house)
+"Fi" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/south,
+/obj/item/kirbyplants/organic/plant23{
+	pixel_x = 12;
+	pixel_y = 16
+	},
+/obj/item/kirbyplants/organic/plant4{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/item/pen/fourcolor{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Fk" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/garage)
+"Fm" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/obj/structure/curtain/bounty/start_closed,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"Fo" = (
+/obj/effect/turf_decal/siding/dark/corner,
+/obj/structure/railing/platform/reinforced{
+	dir = 9
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Fs" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/curtain/bounty,
+/obj/item/kirbyplants/organic/plant15{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"FB" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"FG" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"FI" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"FN" = (
+/obj/structure/railing/platform{
+	dir = 8
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"FO" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house)
+"FS" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/obj/structure/railing{
+	dir = 8;
+	color = "#A1662F"
+	},
+/obj/effect/bump_teleporter{
+	id = "peti1_up";
+	id_target = "peti1_down"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"FT" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/structure/sink/directional/east,
+/obj/structure/mirror/directional/west,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"FV" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/obj/structure/curtain/bounty/start_closed,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"FW" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"FY" = (
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Ga" = (
+/obj/effect/turf_decal/line/neutral/line{
+	alpha = 150;
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"Gc" = (
+/obj/structure/shelf,
+/obj/effect/mapping_helpers/broken_floor,
+/obj/item/reagent_containers/cup/jerrycan/robustharvest{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/cup/jerrycan/robustharvest{
+	pixel_x = 0;
+	pixel_y = -5
+	},
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/storage)
+"Gn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"Gx" = (
+/obj/structure/shelf,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 0;
+	pixel_y = -5
+	},
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house/garage)
+"Gy" = (
+/obj/structure/hedge,
+/obj/structure/railing{
+	dir = 6;
+	color = "#646d6a"
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house)
+"GA" = (
+/obj/structure/flora/grass_sticks/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"GI" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/hydroponics/constructable/fullupgrade,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"GO" = (
+/obj/structure/table/reinforced,
+/obj/machinery/processor{
+	pixel_y = 6;
+	pixel_x = -5
+	},
+/obj/item/knife/kitchen{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"Hb" = (
+/obj/effect/turf_decal/tile/neutral/tram{
+	alpha = 150;
+	dir = 1
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"Hc" = (
+/obj/structure/railing{
+	dir = 9;
+	color = "#A1662F"
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"Hf" = (
+/obj/structure/railing/platform{
+	dir = 4
+	},
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"Hl" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Hn" = (
+/obj/machinery/computer/security/telescreen{
+	dir = 8;
+	pixel_x = -32
+	},
+/obj/structure/curtain/bounty,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"Ho" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Hq" = (
+/obj/machinery/duct,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"Hs" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Ht" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
+/obj/structure/curtain/bounty,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"Hu" = (
+/obj/structure/flora/dry_grass/style_random,
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = 10;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Hx" = (
+/obj/structure/chair/pew/right,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house)
+"Hy" = (
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"HE" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"HK" = (
+/obj/structure/billboard/fortune_telling,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"HN" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"HP" = (
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house/mob_room)
+"HT" = (
+/obj/structure/old_tube,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"HU" = (
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"HW" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"HZ" = (
+/obj/item/reagent_containers/syringe/contraband/fentanyl,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house)
+"Ia" = (
+/obj/item/clothing/suit/jacket/det_suit/kim{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/jacket/blazer{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/clothing/suit/jacket/miljacket{
+	pixel_x = -3;
+	pixel_y = 0
+	},
+/obj/item/clothing/suit/jacket/bomber{
+	pixel_x = 5;
+	pixel_y = 0
+	},
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"In" = (
+/obj/structure/flora/tall_grass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"Ir" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"It" = (
+/obj/structure/table/wood/fancy/royalblack,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"Iw" = (
+/obj/structure/sink/directional/south{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/obj/structure/mirror/directional/north{
+	pixel_x = 0;
+	pixel_y = 34
+	},
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_1)
+"Iz" = (
+/obj/structure/shipping_container/nakamura,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"IF" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/machinery/computer{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"IG" = (
+/obj/effect/spawner/random/trash/crushed_can,
+/obj/effect/decal/cleanable/garbage,
+/obj/structure/broken_flooring/plating/always_floorplane/directional/north,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"IH" = (
+/obj/structure/fence{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/machinery/light/small/directional/east,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"IO" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/obj/structure/railing{
+	dir = 8;
+	color = "#A1662F"
+	},
+/obj/effect/bump_teleporter{
+	id = "peti1_down";
+	id_target = "peti1_up"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"IT" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	icon_state = "bounty-closed"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/august_room)
+"IU" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"IX" = (
+/obj/structure/railing/platform/corner{
+	dir = 8
+	},
+/obj/structure/flora/tall_grass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"IY" = (
+/obj/effect/light_emitter/podbay,
+/obj/effect/landmark/event_portal_point{
+	name = "Комната мобов - Лимнея - Пригород"
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house/mob_room)
+"Jj" = (
+/obj/structure/flora/dry_grass/style_random,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Js" = (
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Jt" = (
+/obj/item/reagent_containers/syringe/contraband/fentanyl,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Jw" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"JH" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/hydroponics/constructable/fullupgrade,
+/obj/item/reagent_containers/cup/watering_can,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"JJ" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"JV" = (
+/obj/structure/sign/clock/directional/north,
+/obj/structure/dresser,
+/obj/item/kirbyplants/organic/plant17{
+	pixel_x = 8;
+	pixel_y = 22
+	},
+/obj/item/lighter/greyscale{
+	pixel_x = -2;
+	pixel_y = 10
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"Kc" = (
+/obj/structure/fence/corner{
+	dir = 9
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Kd" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 9
+	},
+/obj/effect/turf_decal/line/neutral{
+	alpha = 150
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"Kg" = (
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"Ki" = (
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Kl" = (
+/obj/structure/shipping_container/cybersun/defaced,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Km" = (
+/obj/machinery/door/airlock/wood,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/storage)
+"Kn" = (
+/obj/structure/flora/tree/large_tree/style_random,
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Kp" = (
+/obj/structure/table/glass,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"Kq" = (
+/obj/structure/fence/cut/medium,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"KD" = (
+/obj/structure/railing/platform,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"KN" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/structure/fence/corner{
+	dir = 8
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"KW" = (
+/obj/item/storage/bag/trash/filled{
+	pixel_x = 5;
+	pixel_y = 17
+	},
+/obj/item/storage/bag/trash/filled{
+	pixel_x = -9;
+	pixel_y = 21
+	},
+/obj/effect/spawner/random/trash/crushed_can,
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"KX" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Li" = (
+/obj/structure/fence/post,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Ln" = (
+/obj/effect/spawner/random/trash/crushed_can,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Lu" = (
+/obj/structure/flora/grass_sticks/style_3,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Lv" = (
+/obj/structure/shipping_container/sunda,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Lw" = (
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/line/neutral/line{
+	alpha = 150;
+	dir = 1
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"LA" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe-down";
+	density = 1;
+	anchored = 1;
+	color = "gray";
+	dir = 1
+	},
+/turf/open/water/alternative/muddy/no_fishing,
+/area/awaymission/gate_closure/peti_house)
+"LE" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/structure/toilet,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"LJ" = (
+/obj/machinery/transport/crossing_signal/southwest{
+	pixel_y = 0;
+	pixel_x = -20
+	},
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"LM" = (
+/obj/structure/railing/corner/end/flip{
+	color = "#A1662F";
+	dir = 4;
+	pixel_x = 0;
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner,
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"LY" = (
+/obj/structure/fence/post{
+	dir = 1
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"LZ" = (
+/obj/effect/turf_decal/siding/wood/oak/corner,
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 4
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"Ml" = (
+/obj/structure/table/wood/fancy/royalblack,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"Mm" = (
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house)
+"Mn" = (
+/obj/structure/flora/dry_grass/style_random,
+/obj/structure/flora/grass_sticks/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Ms" = (
+/turf/closed/indestructible/rock,
+/area/awaymission/gate_closure/peti_house/mob_room)
+"Mt" = (
+/obj/machinery/door/window/brigdoor/right/directional/east,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"Mv" = (
+/obj/structure/railing{
+	dir = 8;
+	color = "#A1662F"
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"MQ" = (
+/obj/structure/table/wood,
+/obj/machinery/computer/records/security/laptop{
+	pixel_x = 8;
+	pixel_y = 6;
+	name = "laptop"
+	},
+/obj/item/flashlight/lamp{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"MS" = (
+/obj/effect/spawner/random/trash/crushed_can,
+/obj/structure/broken_flooring/plating/always_floorplane/directional/south,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"MT" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"MX" = (
+/obj/effect/turf_decal/siding/dark/corner,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Nb" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe-down";
+	dir = 2;
+	density = 1;
+	anchored = 1;
+	pixel_x = -12;
+	pixel_y = 0
+	},
+/obj/structure/railing/platform/corner,
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"Nc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house/garage)
+"Ng" = (
+/obj/machinery/vending/hydronutrients,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"Nj" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"Nm" = (
+/obj/structure/railing/platform/reinforced,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Nq" = (
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"NF" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"NK" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"NL" = (
+/obj/structure/flora/rock/pile,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house)
+"NM" = (
+/obj/structure/sign/calendar/directional/east,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"NN" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/machinery/vending/hydroseeds{
+	slogan_delay = 700
+	},
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"NO" = (
+/obj/structure/railing/platform,
+/obj/structure/flora/bush/lavendergrass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"NP" = (
+/obj/structure/flora/grass_sticks/style_2,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"NV" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/duct,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"Of" = (
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Oi" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/bathroom_2)
+"Ol" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/hydroponics/constructable/fullupgrade,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"Oo" = (
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"Oq" = (
+/obj/structure/flora/tree/large_tree/snow/style_random,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Ot" = (
+/obj/structure/railing/wooden_fencing{
+	dir = 8
+	},
+/obj/structure/flora/bush/pointy/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Ox" = (
+/obj/machinery/door/poddoor/shutters{
+	id = "garage"
+	},
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house/garage)
+"OE" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"OK" = (
+/obj/structure/shipping_container/defaced,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"OM" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 10
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"OO" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Ph" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe";
+	dir = 4;
+	density = 1;
+	anchored = 1
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Pp" = (
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Pr" = (
+/obj/item/light/tube/broken,
+/obj/effect/decal/cleanable/garbage,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Pt" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe";
+	dir = 4;
+	density = 1;
+	anchored = 1
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Pu" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/line/neutral/line{
+	alpha = 150;
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"PC" = (
+/obj/effect/decal/cleanable/garbage,
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"PJ" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/obj/structure/railing{
+	dir = 4;
+	color = "#A1662F"
+	},
+/obj/effect/bump_teleporter{
+	id = "peti2_up";
+	id_target = "peti2_down"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"PL" = (
+/obj/structure/flora/grass_sticks/style_4,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"PP" = (
+/obj/structure/fence{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"PQ" = (
+/obj/structure/sharlotta/victor{
+	pixel_x = -32
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"PW" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe-down";
+	dir = 1;
+	density = 1;
+	anchored = 1
+	},
+/turf/open/water/alternative/muddy/no_fishing,
+/area/awaymission/gate_closure/peti_house)
+"PZ" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/upstairs)
+"Qb" = (
+/obj/structure/fence{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Qh" = (
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Qi" = (
+/obj/structure/shipping_container/nakamura,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Ql" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house/pantry)
+"Qq" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house/garage)
+"Qr" = (
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = 10;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"QA" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/machinery/seed_extractor,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"QC" = (
+/obj/structure/chair/comfy/brown{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"QE" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"QF" = (
+/obj/structure/chair/comfy/brown{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"QH" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"QN" = (
+/obj/structure/railing/platform/corner{
+	dir = 1
+	},
+/obj/structure/flora/bush/lavendergrass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"QP" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 5
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"QR" = (
+/obj/effect/turf_decal/tile/neutral/diagonal_centre{
+	alpha = 150
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"QX" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"QZ" = (
+/obj/machinery/door/airlock/wood,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Rb" = (
+/obj/item/storage/bag/trash/filled,
+/obj/item/storage/bag/trash/filled{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/storage/bag/trash/filled{
+	pixel_x = 15;
+	pixel_y = 3
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Rh" = (
+/obj/machinery/door/window/brigdoor/right/directional/east,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Rj" = (
+/obj/structure/billboard/nanotrasen/defaced,
+/obj/effect/decal/cleanable/garbage,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Rt" = (
+/obj/machinery/button{
+	pixel_x = -32;
+	pixel_y = 5;
+	id = "garage"
+	},
+/obj/machinery/button{
+	pixel_x = -32;
+	pixel_y = -5;
+	id = "gate"
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "garage"
+	},
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/peti_house/garage)
+"Rw" = (
+/obj/structure/railing/platform{
+	dir = 8
+	},
+/obj/structure/flora/bush/lavendergrass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"RB" = (
+/obj/item/storage/bag/trash/filled{
+	pixel_x = 15;
+	pixel_y = 3
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"RC" = (
+/obj/machinery/duct,
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"RL" = (
+/obj/machinery/washing_machine,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"RX" = (
+/obj/structure/sharlotta{
+	pixel_y = 32
+	},
+/obj/structure/hedge,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"Sg" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"Ss" = (
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/line/neutral/anticorner{
+	dir = 4;
+	alpha = 150
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"St" = (
+/obj/structure/shipping_container/donk_co,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Sw" = (
+/obj/machinery/light_switch/directional/north,
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/victor_room)
+"Sx" = (
+/obj/structure/flora/dry_grass/style_random,
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"SG" = (
+/obj/item/broken_bottle,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"SH" = (
+/obj/structure/table/wood/fancy/royalblack,
+/obj/item/kirbyplants/organic/plant21{
+	pixel_x = 0;
+	pixel_y = 15
+	},
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"SJ" = (
+/obj/structure/curtain,
+/obj/structure/fluff/shower_drain,
+/obj/machinery/shower/directional/south,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"SL" = (
+/obj/structure/railing/platform{
+	dir = 5
+	},
+/obj/structure/flora/bush/lavendergrass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"SS" = (
+/obj/structure/railing/platform/corner{
+	dir = 1
+	},
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"SW" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"SX" = (
+/obj/effect/turf_decal/delivery/white,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"SZ" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"Tf" = (
+/turf/closed/wall/mineral/iron{
+	name = "stone wall"
+	},
+/area/awaymission/gate_closure/peti_house/storage)
+"Th" = (
+/obj/structure/railing/platform{
+	dir = 9
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"Tj" = (
+/obj/structure/railing{
+	dir = 10;
+	color = "#6e6e6e"
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house)
+"To" = (
+/obj/effect/spawner/random/trash/mess,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Ts" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Tt" = (
+/obj/structure/sink/kitchen/directional/east,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/oak/end{
+	dir = 4
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"Tw" = (
+/obj/item/trash/tray,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"TG" = (
+/obj/machinery/jukebox,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"TI" = (
+/obj/structure/punching_bag,
+/obj/effect/turf_decal/siding/wood/oak/end{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/victor_room)
+"TL" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/mapping_helpers/broken_machine,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"TM" = (
+/obj/item/shard,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"TP" = (
+/obj/structure/fence/post{
+	dir = 4
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"TV" = (
+/obj/machinery/door/window/brigdoor/right/directional/east,
+/obj/machinery/duct,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"TY" = (
+/obj/structure/old_tube{
+	pixel_x = -18;
+	pixel_y = -26
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Ue" = (
+/obj/structure/railing/platform{
+	dir = 8
+	},
+/obj/structure/flora/tall_grass/style_random,
+/obj/structure/flora/bush/lavendergrass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"Uf" = (
+/obj/structure/table/wood,
+/obj/structure/showcase/machinery/tv/broken{
+	pixel_x = 0;
+	pixel_y = 8
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Ui" = (
+/obj/structure/bed,
+/obj/item/bedsheet/black,
+/obj/effect/turf_decal/siding/wood/oak/end{
+	dir = 8
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/victor_room)
+"Ul" = (
+/obj/item/reagent_containers/cup/bucket{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/cup/bucket{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/dark/diagonal,
+/area/awaymission/gate_closure/peti_house)
+"Ur" = (
+/obj/structure/shipping_container/tiger_coop,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Us" = (
+/obj/machinery/door/window/brigdoor/left/directional/south,
+/obj/machinery/duct,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"UC" = (
+/obj/structure/disposalpipe/broken{
+	dir = 8
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"UI" = (
+/obj/machinery/light_switch/directional/east,
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"UJ" = (
+/obj/structure/chair/comfy/brown{
+	dir = 1
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/victor_room)
+"UK" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/machinery/light_switch/directional/south,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/august_room)
+"UO" = (
+/obj/structure/mineral_door/wood,
+/obj/effect/turf_decal/siding/wood/oak/end,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"UY" = (
+/obj/structure/flora/rock/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"UZ" = (
+/obj/structure/dresser,
+/obj/item/kirbyplants/organic/plant17{
+	pixel_x = -6;
+	pixel_y = 21
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/neighbours)
+"Vb" = (
+/obj/structure/flora/grass_sticks/style_4,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Vg" = (
+/obj/effect/turf_decal/tile/neutral/tram{
+	alpha = 150;
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"Vy" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	icon_state = "bounty-closed"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/upstairs)
+"VH" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe";
+	dir = 1;
+	density = 1;
+	anchored = 1;
+	color = "gray"
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"VL" = (
+/obj/item/trash/can{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/obj/item/trash/can{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/structure/flora/dry_grass/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"VM" = (
+/obj/structure/railing/platform{
+	dir = 4
+	},
+/obj/structure/flora/bush/lavendergrass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"VP" = (
+/obj/structure/flora/tree/large_tree/style_random,
+/obj/effect/decal/cleanable/glass,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"VQ" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Wa" = (
+/obj/structure/railing/wooden_fencing{
+	dir = 4
+	},
+/obj/structure/flora/bush/pointy/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"We" = (
+/obj/structure/flora/tree/large_tree/snow/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Wg" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe";
+	dir = 8;
+	density = 1;
+	anchored = 1;
+	color = "gray"
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Wi" = (
+/obj/machinery/light_switch/directional/east,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"WA" = (
+/obj/structure/flora/dry_log,
+/obj/structure/flora/grass_sticks/style_3,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"WD" = (
+/obj/machinery/door/window/brigdoor/right/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"WJ" = (
+/obj/item/trash/shok_roks/tropical{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"WQ" = (
+/obj/item/broken_bottle{
+	pixel_x = -12;
+	pixel_y = -20
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"WR" = (
+/obj/structure/railing/wooden_fencing{
+	dir = 4
+	},
+/obj/structure/flora/rock/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"WV" = (
+/obj/structure/billboard/roadsign/two,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Xa" = (
+/obj/structure/shipping_container/donk_co,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Xc" = (
+/obj/structure/railing/corner{
+	dir = 8;
+	color = "#A1662F"
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/charlotte_room)
+"Xk" = (
+/obj/structure/fence/corner{
+	dir = 9
+	},
+/obj/structure/fence/corner{
+	dir = 5
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Xp" = (
+/obj/structure/railing/corner{
+	dir = 8;
+	color = "#6e6e6e"
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house)
+"Xq" = (
+/obj/structure/grille/broken,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Xz" = (
+/obj/structure/railing/platform{
+	dir = 8
+	},
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"XA" = (
+/obj/structure/fence/cut/large{
+	dir = 1
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"XE" = (
+/obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/obj/machinery/light_switch/directional/west,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/peti_house/bathroom_2)
+"XF" = (
+/obj/structure/railing/wooden_fencing{
+	dir = 8
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"XL" = (
+/obj/structure/broken_flooring/plating/always_floorplane/directional/west,
+/obj/structure/flora/dry_log,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"XN" = (
+/obj/item/storage/bag/trash/filled{
+	pixel_x = 16;
+	pixel_y = -4
+	},
+/obj/item/storage/bag/trash/filled{
+	pixel_x = 7;
+	pixel_y = -1
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"XT" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe-down";
+	dir = 2;
+	density = 1;
+	anchored = 1
+	},
+/obj/structure/railing/platform/corner{
+	dir = 1
+	},
+/turf/open/indestructible/stone,
+/area/awaymission/gate_closure/peti_house)
+"XV" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/august_room)
+"XW" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"XX" = (
+/obj/structure/railing/platform/reinforced,
+/turf/open/floor/mineral/plastitanium/pod/dark,
+/area/awaymission/gate_closure/peti_house)
+"Ya" = (
+/obj/structure/railing/wooden_fencing,
+/obj/structure/flora/tree/large_tree/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Yb" = (
+/obj/effect/decal/cleanable/glass,
+/obj/item/broken_bottle{
+	pixel_x = -12;
+	pixel_y = -20
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Yk" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 1
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"Yl" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/obj/structure/railing{
+	dir = 8;
+	color = "#A1662F"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"Yq" = (
+/obj/structure/railing/wooden_fencing,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"Ys" = (
+/obj/structure/railing/corner{
+	color = "#A1662F";
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = -16
+	},
+/turf/open/floor/carpet/black,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"Yx" = (
+/obj/structure/railing/platform/reinforced/corner{
+	dir = 1
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"Yy" = (
+/obj/item/storage/bag/trash/filled,
+/obj/item/storage/bag/trash/filled{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/structure/flora/rock/style_random,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Yz" = (
+/obj/structure/railing/platform/reinforced{
+	dir = 5
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"YC" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/garbage{
+	pixel_x = -13;
+	pixel_y = -6
+	},
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"YF" = (
+/obj/structure/railing/platform{
+	dir = 10
+	},
+/obj/structure/flora/bush/lavendergrass/style_random,
+/turf/open/misc/grass{
+	color = "gray"
+	},
+/area/awaymission/gate_closure/peti_house)
+"YI" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/obj/structure/flora/bush/pointy/style_random,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"YK" = (
+/turf/open/floor/iron/dark/small,
+/area/awaymission/gate_closure/peti_house)
+"YL" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/duct,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"YP" = (
+/obj/structure/fence/corner{
+	dir = 5
+	},
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"YS" = (
+/obj/effect/turf_decal/siding/dark,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"YT" = (
+/obj/structure/chair/pew/left,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/large/oak,
+/area/awaymission/gate_closure/peti_house)
+"YY" = (
+/obj/structure/table/wood/fancy/royalblack,
+/obj/item/phone{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 2;
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/pen/fourcolor{
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/obj/item/flashlight/lamp{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"Zc" = (
+/obj/structure{
+	name = "канализационная труба";
+	icon = 'icons/obj/pipes_n_cables/disposal.dmi';
+	icon_state = "pipe-down";
+	dir = 8;
+	density = 1;
+	anchored = 1
+	},
+/turf/open/water/alternative/muddy/no_fishing,
+/area/awaymission/gate_closure/peti_house)
+"Zd" = (
+/obj/effect/decal/cleanable/garbage,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"Zi" = (
+/obj/structure/platform/iron{
+	color = "bfbfbf"
+	},
+/obj/structure/window/reinforced/survival_pod/spawner/directional/north,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	icon_state = "bounty-closed"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/august_room)
+"Zm" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"ZA" = (
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"ZH" = (
+/obj/structure/shelf,
+/obj/item/clothing/shoes/laceup{
+	pixel_x = -5;
+	pixel_y = -9
+	},
+/obj/item/clothing/head/beret{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/clothing/head/fedora/curator{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/obj/item/clothing/shoes/sneakers/black{
+	pixel_x = 5;
+	pixel_y = -9
+	},
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/hall)
+"ZI" = (
+/obj/structure/shipping_container/kosmologistika,
+/turf/open/misc/dirt/station,
+/area/awaymission/gate_closure/peti_house)
+"ZK" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_2)
+"ZL" = (
+/obj/structure/fence/post,
+/obj/machinery/light/small/directional/east,
+/turf/open/indestructible/rockyground/limneya,
+/area/awaymission/gate_closure/peti_house)
+"ZM" = (
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/duct,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+"ZN" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/obj/structure/railing{
+	dir = 4;
+	color = "#A1662F"
+	},
+/obj/effect/bump_teleporter{
+	id = "peti2_down";
+	id_target = "peti2_up"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"ZP" = (
+/obj/structure/mineral_door/wood,
+/obj/effect/turf_decal/siding/wood/oak/end,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/peti_house/bathroom_1)
+"ZR" = (
+/obj/structure/chair/wood,
+/turf/open/floor/wood/parquet/oak,
+/area/awaymission/gate_closure/peti_house/guest_room_1)
+"ZW" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/line/neutral/line{
+	alpha = 150;
+	dir = 2
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/peti_house)
+"ZX" = (
+/turf/open/water/alternative/muddy/no_fishing,
+/area/awaymission/gate_closure/peti_house)
+"ZZ" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/iron/dark/smooth_large,
+/area/awaymission/gate_closure/peti_house)
+
+(1,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(2,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(3,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(4,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+am
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(5,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Lw
+ap
+af
+af
+af
+af
+af
+af
+am
+af
+af
+af
+af
+af
+af
+af
+af
+Co
+Co
+Co
+Co
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Co
+Co
+Co
+Co
+Co
+Co
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(6,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Lw
+uB
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+tD
+af
+af
+af
+af
+am
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+tD
+tD
+tD
+tD
+tD
+tD
+tD
+tD
+tD
+tD
+tD
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+am
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(7,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Lw
+XX
+xp
+my
+hR
+OK
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+uB
+uB
+uB
+uB
+pm
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+uB
+uB
+uB
+ap
+uB
+uB
+uB
+uB
+uB
+uB
+aF
+uB
+uB
+uB
+uB
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+vq
+uB
+ZW
+af
+af
+af
+af
+af
+af
+am
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(8,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+XX
+xp
+Ur
+hR
+hR
+my
+uB
+af
+af
+af
+af
+af
+af
+af
+Pu
+Pu
+Pu
+Pu
+Pu
+SX
+Pu
+Pu
+Pu
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Pu
+Pu
+Pu
+Pu
+Pu
+Pu
+Pu
+Pu
+Pu
+Pu
+Pu
+Pu
+SX
+Pu
+Pu
+Pu
+Pu
+af
+af
+af
+am
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+xp
+vq
+uB
+ZW
+Kg
+Kg
+Kg
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(9,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Hb
+Kg
+Lw
+XX
+TP
+hR
+hR
+hR
+my
+uB
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Kg
+Kg
+SX
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+SX
+Kg
+Kg
+Kg
+Kg
+Kg
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+my
+oG
+hR
+TP
+vq
+ap
+ZW
+Kg
+Hb
+Kg
+Lw
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(10,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+my
+uB
+Kg
+af
+af
+af
+af
+af
+af
+af
+Vg
+Kg
+Vg
+Kg
+SX
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+af
+af
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+SX
+Vg
+Kg
+Vg
+Kg
+Vg
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+my
+hR
+hR
+BK
+vq
+ib
+SX
+SX
+SX
+SX
+SX
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(11,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Hb
+Kg
+Lw
+XX
+xp
+hR
+sg
+hR
+my
+uB
+Kg
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Kg
+Kg
+Kg
+SX
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+SX
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+my
+hR
+hR
+xp
+vq
+uB
+ZW
+Kg
+Hb
+Kg
+Lw
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(12,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+ZW
+Kg
+Kg
+Kg
+Lw
+bx
+xp
+hR
+hR
+hR
+my
+uB
+af
+af
+af
+af
+af
+af
+af
+zw
+zw
+zw
+zw
+cb
+SX
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+bO
+zw
+zw
+zw
+zw
+SX
+zw
+zw
+zw
+zw
+zw
+zw
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+hR
+xp
+vq
+ap
+ZW
+Kg
+Kg
+Kg
+Ss
+Pu
+Pu
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(13,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+ZW
+Kg
+Hb
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+my
+uB
+uB
+uB
+af
+af
+af
+af
+af
+af
+af
+uB
+uB
+uB
+LJ
+ap
+uB
+uB
+uB
+uB
+uB
+uB
+ap
+uB
+uB
+uB
+uB
+uB
+uB
+ap
+uB
+uB
+uB
+bL
+uB
+uB
+ap
+uB
+uB
+uB
+uB
+uB
+uB
+aG
+uB
+uB
+bL
+uB
+uB
+uB
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+xp
+vq
+uB
+ZW
+Kg
+Hb
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(14,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Kg
+Lw
+XX
+TP
+hR
+hR
+hR
+my
+my
+my
+my
+my
+af
+af
+af
+af
+af
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+bT
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+iV
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+Ir
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+hR
+TP
+vq
+uB
+ZW
+Kg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(15,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+am
+af
+Kg
+Lw
+XX
+xp
+hR
+jw
+hR
+jw
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+hG
+Kc
+tc
+Kc
+nA
+hR
+nc
+uO
+Qb
+tc
+Kc
+WV
+hR
+nc
+tc
+uO
+Qb
+tc
+tc
+tc
+uO
+Qb
+tc
+tc
+tc
+uO
+Qb
+tc
+tc
+Kc
+wJ
+hR
+nc
+tc
+uO
+Qb
+uO
+Qb
+mP
+nc
+hR
+wS
+Ir
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+hR
+uM
+vq
+ap
+ZW
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(16,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+XX
+sC
+hR
+hR
+hR
+bH
+hR
+hR
+hR
+af
+af
+af
+af
+uO
+Qb
+CI
+hR
+xp
+hR
+Of
+xp
+hR
+hR
+hR
+xp
+Zd
+Zd
+xp
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+af
+aP
+To
+hR
+hR
+hR
+hR
+xp
+hR
+Zd
+xp
+hR
+hR
+hR
+hR
+hR
+hR
+lz
+tc
+uO
+af
+af
+af
+af
+af
+am
+af
+af
+af
+af
+hR
+hR
+xp
+vq
+uB
+ie
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+zw
+af
+af
+af
+af
+af
+af
+af
+"}
+(17,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+fk
+hR
+hR
+Pp
+Pp
+hR
+dr
+dr
+af
+af
+af
+af
+hR
+hR
+hR
+hR
+xp
+hR
+Au
+xp
+hR
+hR
+hR
+xp
+Zd
+hR
+xp
+hR
+hR
+hR
+hR
+ot
+hR
+hR
+hR
+hR
+af
+af
+af
+hR
+hR
+oG
+xp
+hR
+Zd
+xp
+hR
+Iz
+hR
+hR
+hR
+DZ
+hR
+hR
+hR
+af
+af
+af
+dr
+dr
+af
+af
+af
+af
+af
+hR
+hR
+xp
+vq
+uB
+ap
+uB
+uB
+ap
+uB
+uB
+ap
+uB
+uB
+ap
+af
+af
+af
+af
+af
+af
+af
+"}
+(18,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+hR
+Pp
+hR
+tA
+hR
+hR
+af
+af
+af
+hR
+hR
+To
+hR
+hR
+lz
+Qb
+Qb
+lz
+hR
+hR
+hR
+lz
+Qb
+Qb
+lz
+hR
+hR
+bH
+hR
+GA
+hR
+dr
+hR
+hR
+VQ
+TM
+af
+af
+hR
+hR
+lz
+Qb
+Qb
+lz
+hR
+hR
+oK
+hR
+hR
+hR
+hR
+af
+af
+af
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+af
+af
+jw
+hR
+xp
+wS
+Ir
+Ir
+Ir
+Ir
+nh
+bG
+Ej
+vy
+Ir
+Ir
+Ir
+Ir
+af
+af
+af
+af
+af
+af
+"}
+(19,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+ot
+GA
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+VQ
+To
+hR
+hR
+dr
+hR
+hR
+hR
+VP
+jY
+GA
+af
+hR
+hR
+Iz
+hR
+hR
+HT
+hR
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+hR
+hR
+dr
+hR
+hR
+vb
+hR
+qL
+af
+af
+hR
+hR
+lz
+tc
+LY
+tc
+tc
+nc
+bw
+hR
+hR
+Nm
+nc
+tc
+tc
+tc
+af
+af
+af
+af
+af
+af
+"}
+(20,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+XX
+xp
+hR
+hR
+af
+af
+af
+af
+af
+af
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+bH
+hR
+hR
+hR
+dr
+dr
+dr
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+Hy
+hR
+Yb
+hR
+af
+hR
+hR
+hR
+hR
+hR
+HT
+HT
+hR
+hR
+hR
+hR
+af
+af
+af
+hR
+hR
+hR
+DZ
+hR
+hR
+bE
+hR
+vs
+af
+af
+dr
+dr
+hR
+hR
+hR
+Rj
+Zd
+xp
+Yz
+ts
+ts
+pL
+xp
+Az
+DX
+Aq
+af
+af
+af
+af
+af
+af
+"}
+(21,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+dr
+af
+af
+af
+af
+hR
+dr
+dr
+dr
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+GA
+hR
+hR
+dr
+hR
+jw
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+GA
+hR
+hR
+af
+af
+af
+hR
+hR
+hR
+hR
+hR
+Qh
+Qh
+EL
+hR
+dr
+af
+af
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+be
+hR
+hR
+dr
+af
+hR
+hR
+hR
+hR
+hR
+hR
+AB
+lz
+tc
+tc
+LY
+tc
+BF
+DX
+DX
+DX
+af
+af
+af
+af
+af
+af
+"}
+(22,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+XX
+xp
+hR
+hR
+dr
+hR
+af
+af
+af
+hR
+Pp
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+ot
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+af
+af
+hR
+aP
+af
+af
+af
+hR
+GA
+hR
+EL
+hR
+hR
+af
+af
+af
+mK
+hR
+hR
+VQ
+hR
+hR
+hR
+hR
+hR
+hR
+WJ
+af
+af
+dr
+hR
+hR
+hR
+hR
+Tw
+hR
+hR
+Pp
+VQ
+DX
+ZI
+Az
+DX
+DX
+af
+af
+af
+af
+af
+af
+"}
+(23,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Hb
+Kg
+Lw
+XX
+YC
+jw
+hR
+dr
+hR
+af
+af
+af
+hR
+hR
+hR
+hR
+jw
+hR
+hR
+dr
+dr
+dr
+hR
+hR
+hR
+GA
+GA
+GA
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+ot
+hR
+hR
+hR
+aP
+af
+hR
+Pp
+Hu
+Pp
+pO
+aP
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+hR
+hR
+hR
+hR
+VQ
+hR
+GA
+Pp
+GA
+hR
+hR
+dr
+af
+af
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+bH
+DX
+hR
+hR
+DX
+mw
+Az
+af
+af
+af
+af
+af
+af
+"}
+(24,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+XX
+TP
+hR
+hR
+Jj
+hR
+af
+af
+bE
+hR
+dr
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+VQ
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+dr
+hR
+hR
+af
+hR
+bC
+VH
+VH
+LA
+Pp
+hR
+We
+af
+af
+af
+aP
+af
+af
+hR
+hR
+hR
+hR
+Ln
+hR
+hR
+Ev
+hR
+hR
+Kn
+hR
+hR
+dr
+af
+aP
+hR
+hR
+hR
+hR
+hR
+jw
+hR
+NK
+Fc
+hR
+DX
+DX
+DX
+Az
+af
+af
+am
+af
+af
+af
+"}
+(25,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Lw
+XX
+sC
+hR
+hR
+dr
+af
+af
+bt
+dr
+dr
+dr
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+GA
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+dr
+hR
+jw
+hR
+Pp
+ZX
+ZX
+Sx
+ej
+hR
+GA
+GA
+VQ
+hR
+hR
+hR
+hR
+hR
+To
+hR
+hR
+Ln
+Ln
+hR
+HT
+Ev
+Ev
+Pp
+PL
+hR
+dr
+dr
+af
+af
+hR
+hR
+hR
+hR
+hR
+GA
+Pp
+hR
+wh
+DX
+Qi
+DX
+hR
+my
+af
+af
+af
+af
+af
+af
+"}
+(26,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+aP
+af
+af
+Lw
+bx
+xp
+hR
+hR
+af
+aP
+af
+hR
+dr
+Pp
+hR
+za
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+Pp
+Pp
+ZX
+XN
+gp
+cW
+hR
+hR
+VQ
+hR
+ud
+hR
+GA
+hR
+hR
+hR
+hR
+hR
+hR
+HT
+hR
+HT
+Bk
+fv
+hR
+hR
+dr
+hR
+hR
+af
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+WQ
+xO
+DX
+DX
+Az
+my
+af
+af
+af
+af
+af
+af
+af
+"}
+(27,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+hR
+hR
+hR
+Pp
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+Pp
+Pp
+hR
+hR
+DX
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+AM
+xL
+vj
+vj
+vj
+PW
+hR
+hR
+Kl
+hR
+hR
+We
+hR
+hR
+hR
+hR
+TY
+HT
+Ev
+Ev
+cW
+pN
+hR
+iG
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+DX
+sO
+DX
+DX
+Xa
+my
+af
+af
+af
+af
+af
+af
+af
+"}
+(28,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+XX
+af
+af
+af
+aP
+af
+hR
+hR
+hR
+hR
+Pp
+Pp
+hR
+hR
+hR
+hR
+hR
+hR
+DX
+DX
+Pp
+FY
+DX
+hR
+hR
+hR
+DX
+DX
+FY
+DX
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+Pp
+hR
+Pp
+gp
+cW
+hR
+hR
+hR
+hR
+ot
+Mn
+Pp
+ln
+jb
+hR
+To
+hR
+vt
+To
+Pp
+dr
+dr
+hR
+hR
+dr
+iG
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+FO
+FO
+CF
+DX
+Qr
+DX
+hR
+my
+af
+af
+af
+af
+af
+af
+af
+"}
+(29,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Hb
+Kg
+Lw
+XX
+xp
+hR
+af
+af
+nc
+Qb
+uO
+Qb
+Qb
+Qb
+uO
+Qb
+Qb
+Qb
+uO
+Qb
+Qb
+Qb
+Li
+PP
+PP
+PP
+Li
+PP
+PP
+PP
+Li
+PP
+IH
+Qb
+ZL
+Qb
+Qb
+nc
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+Jt
+ln
+iQ
+im
+iQ
+hR
+hR
+hR
+hR
+hR
+dr
+dr
+VQ
+hR
+dr
+zC
+hR
+hR
+iG
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+HZ
+uX
+FY
+Pr
+DX
+hR
+no
+my
+af
+af
+af
+af
+af
+af
+"}
+(30,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+xp
+hR
+ot
+hR
+Mn
+Ts
+hl
+bn
+GI
+bk
+NV
+aT
+my
+my
+my
+QA
+YL
+GI
+GI
+GI
+GI
+dn
+DX
+Tf
+Tf
+Tf
+Tf
+Tf
+ot
+xp
+hR
+hR
+hR
+hR
+dr
+dr
+dr
+dr
+dr
+hR
+hR
+hR
+UC
+Pp
+lg
+im
+bM
+Pp
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+GA
+jw
+dr
+hR
+hR
+hR
+bK
+hR
+hR
+iG
+hR
+hR
+jw
+pH
+Cb
+to
+DX
+DX
+Qi
+DX
+DX
+FY
+af
+af
+af
+af
+af
+af
+"}
+(31,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+ZW
+Kg
+cj
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+xp
+GA
+hR
+Pp
+hR
+Ts
+YK
+Gn
+Gn
+YK
+Us
+RC
+Hq
+Hq
+eg
+RC
+hO
+YK
+Gn
+Gn
+YK
+dn
+zi
+Tf
+fn
+AP
+AP
+Km
+Nq
+lz
+Qb
+nc
+hR
+hR
+hR
+hR
+hR
+hR
+Pp
+hR
+hR
+hR
+hR
+hR
+cC
+XL
+ud
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+vD
+uj
+GA
+hR
+hR
+iG
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+nS
+ky
+to
+ET
+Dg
+DX
+DX
+DX
+DX
+FY
+af
+af
+af
+af
+af
+af
+"}
+(32,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+XX
+DN
+hR
+hR
+hR
+TP
+Pp
+hR
+ot
+hR
+Ts
+YK
+YK
+Gn
+YK
+vM
+rh
+rh
+fe
+fe
+fe
+WD
+Gn
+Gn
+YK
+YK
+dn
+DX
+Tf
+Gc
+hv
+ay
+Tf
+Nq
+hR
+Pp
+sC
+hR
+hR
+hR
+hR
+hR
+hR
+Pp
+Pp
+hR
+dr
+dr
+hR
+Pp
+mK
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+GA
+uj
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+FO
+to
+nS
+nS
+DX
+DX
+DX
+FY
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(33,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Hb
+Kg
+Lw
+bx
+lz
+tc
+nc
+hR
+xp
+mj
+hR
+br
+hR
+Ts
+bm
+jG
+bm
+jG
+bj
+gm
+uv
+IF
+NN
+Mt
+aH
+jG
+jG
+jG
+jG
+dn
+DX
+Tf
+Tf
+Tf
+Tf
+Tf
+Nq
+DX
+hR
+lz
+tc
+nc
+hR
+hR
+hR
+hR
+hR
+Pp
+Pp
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+be
+hR
+hR
+hR
+WA
+hR
+hR
+dr
+Hy
+iG
+dr
+iG
+hR
+HT
+hR
+HT
+hR
+HT
+hR
+hR
+nS
+DX
+FY
+DX
+DX
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(34,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+XX
+hR
+HK
+xp
+hR
+xp
+hR
+an
+GA
+CG
+CG
+CG
+CG
+CG
+CG
+CG
+Nq
+ge
+ge
+ge
+Nq
+CG
+ge
+ge
+ge
+ge
+CG
+CG
+ge
+ge
+Pp
+aL
+DX
+DX
+DX
+DX
+DX
+hR
+AL
+DX
+FY
+FY
+DX
+DX
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+ot
+hR
+hR
+hR
+hR
+Lu
+hR
+hR
+dr
+Zd
+hR
+Xq
+dr
+dr
+hR
+ij
+ij
+hR
+hR
+hR
+hR
+hR
+hR
+FY
+FY
+Jw
+DX
+af
+am
+af
+af
+af
+am
+af
+af
+af
+"}
+(35,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Hb
+Kg
+Lw
+XX
+hR
+za
+YC
+hR
+xp
+hR
+Pp
+uH
+BG
+YI
+NF
+NF
+YI
+YI
+NF
+Nq
+YI
+YI
+NF
+Nq
+YI
+YI
+NF
+NF
+YI
+YI
+NF
+YI
+yJ
+DX
+DX
+DX
+Nq
+Nq
+Nq
+DX
+DX
+YP
+XA
+bh
+Kq
+bh
+nc
+hR
+hR
+Pp
+hR
+hR
+dr
+hR
+hR
+bH
+dr
+dr
+hR
+hR
+hR
+mK
+dr
+VQ
+VL
+VQ
+Xq
+hR
+dr
+zC
+hR
+ij
+ij
+dr
+hR
+hR
+hR
+hR
+GA
+Vb
+FY
+DX
+DX
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(36,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+aP
+af
+Kg
+Kg
+Lw
+XX
+hR
+hR
+fk
+hR
+sC
+hR
+uL
+DX
+QH
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+aX
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+pa
+DX
+DX
+DX
+OO
+OO
+OO
+OO
+DX
+DX
+OO
+OO
+OO
+OO
+AL
+DX
+DX
+hR
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+dr
+Bk
+Ah
+KW
+hR
+HT
+FO
+hR
+dr
+dr
+hR
+DZ
+dr
+hR
+hR
+hR
+hR
+We
+hR
+Rb
+Ah
+DX
+OK
+af
+af
+af
+af
+af
+af
+af
+"}
+(37,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Hb
+Kg
+Lw
+XX
+nc
+tc
+CI
+hR
+xp
+hR
+Ya
+oQ
+Nq
+Nq
+hf
+xk
+Hf
+Hf
+Hf
+VM
+Hf
+ac
+Hf
+VM
+VM
+VM
+Hf
+ac
+xn
+UY
+Nq
+Nq
+pa
+DX
+Nq
+DX
+Ol
+Gn
+YK
+nj
+wr
+wr
+Ol
+YK
+YK
+JH
+xp
+DX
+DX
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+Ln
+hR
+hR
+hR
+hR
+hR
+OK
+hR
+HT
+Zd
+FO
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+PL
+hR
+hR
+Rb
+Yy
+DX
+DX
+af
+af
+af
+af
+af
+af
+af
+"}
+(38,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+xp
+hR
+uL
+oQ
+Nq
+In
+oy
+CW
+pE
+pE
+Ht
+dd
+pE
+wt
+wt
+DY
+ty
+wt
+ew
+wt
+SL
+IX
+Nq
+Nq
+pa
+DX
+Nq
+DX
+Ol
+YK
+Gn
+nj
+ED
+rh
+Ol
+Gn
+Gn
+nj
+TP
+DX
+FY
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+IG
+Dg
+MS
+hR
+SG
+hR
+GA
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+Ew
+DX
+DX
+af
+af
+af
+af
+af
+af
+af
+"}
+(39,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+aP
+af
+Hb
+Kg
+Lw
+XX
+TP
+bH
+hR
+hR
+TP
+hR
+uL
+aN
+Nq
+hf
+KD
+pE
+pE
+pE
+YY
+QC
+ea
+wt
+ha
+GO
+vf
+Tt
+EH
+wt
+wt
+aO
+tF
+Nq
+pa
+DX
+Nq
+DX
+Ol
+lx
+Gn
+nj
+Ng
+rh
+Ol
+YK
+Gn
+nj
+xp
+FY
+FY
+hR
+hR
+hR
+hR
+GA
+DX
+DX
+DX
+FY
+hR
+jw
+hR
+hR
+hR
+hR
+eB
+zR
+hR
+hR
+dr
+hR
+We
+hR
+dr
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+DX
+DX
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(40,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+af
+af
+af
+hR
+jw
+xp
+Pp
+uL
+oQ
+Nq
+Nq
+KD
+Dr
+SH
+Hn
+hE
+hE
+ce
+wt
+ZR
+ZA
+LZ
+LM
+rH
+bU
+wt
+wt
+DP
+Nq
+pa
+DX
+Nq
+DX
+Ol
+YK
+Gn
+nj
+aK
+rh
+Ol
+YK
+YK
+nj
+xp
+DX
+DX
+hR
+hR
+hR
+hR
+We
+DX
+qB
+De
+xJ
+hR
+dr
+dr
+hR
+hR
+nS
+hR
+hR
+hR
+hR
+dr
+hR
+mJ
+dr
+GA
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+FY
+FY
+DX
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(41,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Hb
+Kg
+Lw
+XX
+af
+aP
+hR
+hR
+xp
+hR
+Yq
+BG
+ow
+Nq
+KD
+pE
+pE
+Dl
+Kp
+bd
+pE
+wt
+wt
+wt
+tZ
+ad
+Hc
+xs
+Ys
+zW
+DP
+Nq
+pa
+DX
+DX
+DX
+aH
+eP
+TV
+ss
+DJ
+fe
+aH
+eP
+TV
+ss
+xp
+DX
+hR
+hR
+hR
+hR
+hR
+hR
+aP
+Pt
+Wg
+nU
+hR
+hR
+hR
+dr
+hR
+nS
+nS
+NL
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+jw
+PL
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+FY
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(42,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Lw
+af
+af
+af
+hR
+hR
+xp
+hR
+DX
+Nq
+Nq
+Nq
+QN
+wj
+sR
+bp
+At
+ZK
+po
+PQ
+bb
+Bv
+HU
+aY
+yl
+It
+mH
+zT
+DP
+Nq
+DX
+Nq
+Nq
+DX
+uA
+rh
+Hq
+Hq
+RC
+RC
+RC
+Hq
+RC
+wr
+vQ
+DX
+hR
+hR
+hR
+hR
+bE
+af
+aP
+Pt
+Wg
+DX
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+dr
+Ho
+dr
+be
+hR
+GA
+hR
+iZ
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(43,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Lw
+XX
+aP
+af
+hR
+hR
+xp
+hR
+Yq
+ge
+oQ
+Nq
+In
+KD
+Fs
+TG
+NM
+UI
+pE
+IO
+Yl
+bY
+ak
+ag
+yl
+ww
+xN
+wt
+DP
+Nq
+pa
+DX
+DX
+DX
+aJ
+px
+BA
+ZM
+nT
+RC
+aJ
+px
+BA
+ZM
+FB
+DX
+hR
+hR
+hR
+dr
+hR
+aP
+aP
+Ph
+hc
+DX
+hR
+Pp
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+af
+af
+af
+"}
+(44,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+XX
+lz
+tc
+nc
+hR
+xp
+hR
+hR
+uL
+oQ
+Nq
+Oo
+NO
+pE
+pE
+pE
+pE
+pE
+ZN
+rS
+Bt
+aZ
+Zm
+wP
+wt
+wt
+wt
+DP
+Nq
+pa
+DX
+DX
+DX
+Ol
+YK
+YK
+nj
+fe
+RC
+Ol
+YK
+YK
+nj
+FB
+DX
+DX
+hR
+hR
+dr
+af
+af
+af
+Pt
+xJ
+Pp
+hR
+Pp
+hR
+Pp
+Pp
+Pp
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+dr
+hR
+hR
+bE
+GA
+hR
+jw
+hR
+af
+af
+af
+af
+af
+af
+af
+"}
+(45,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+aP
+af
+Hb
+Kg
+Lw
+XX
+hR
+Am
+xp
+hR
+TP
+Pp
+Pp
+uL
+aN
+Nq
+qC
+vv
+wj
+iU
+tz
+xq
+ZP
+Zm
+HU
+ba
+Wi
+aZ
+li
+wt
+cS
+Tj
+DP
+vH
+aM
+DX
+DX
+DX
+Ol
+YK
+Gn
+nj
+Ul
+RC
+Ol
+YK
+Gn
+ld
+FB
+FY
+DX
+hR
+dr
+hR
+hR
+af
+aP
+Zc
+xJ
+hR
+GA
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+iZ
+hR
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+dr
+hR
+hR
+jw
+hR
+GA
+hR
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(46,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+by
+XX
+hR
+hR
+sC
+hR
+xp
+hR
+Pp
+uL
+bq
+Nq
+Nq
+Nq
+XT
+iU
+fO
+bf
+iU
+iU
+nm
+om
+om
+ah
+om
+om
+YT
+Xp
+nu
+Nq
+pa
+DX
+Nq
+DX
+Ol
+YK
+EW
+nj
+fe
+ek
+gd
+Gn
+Gn
+nj
+vQ
+DX
+DX
+hR
+dr
+hR
+hR
+Pp
+af
+ZX
+DX
+DX
+ot
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+Oq
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+dr
+dr
+hR
+hR
+uj
+hR
+hR
+hR
+FY
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(47,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Hb
+Kg
+Lw
+bx
+hR
+hR
+xp
+hR
+hR
+hR
+hR
+uL
+Wa
+jk
+Nq
+In
+Nb
+iU
+Iw
+BR
+dP
+iU
+aU
+om
+do
+vR
+aV
+om
+Hx
+Mm
+cr
+Nq
+pa
+DX
+Nq
+hR
+Ol
+Gn
+YK
+nj
+my
+my
+Ol
+Gn
+YK
+nj
+FB
+DX
+hR
+hR
+dr
+hR
+hR
+hR
+DX
+ZX
+ZX
+DX
+hR
+hR
+sa
+hR
+hR
+dr
+hR
+hR
+hR
+NP
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+uj
+hR
+GA
+hR
+FY
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(48,1,1) = {"
+af
+af
+af
+af
+af
+af
+aP
+af
+Kg
+Kg
+bA
+bz
+XX
+nc
+tc
+CI
+hR
+hR
+hR
+bu
+hR
+hR
+uL
+Nq
+ca
+KD
+iU
+iU
+Af
+iU
+iU
+cd
+om
+JV
+kB
+Bh
+Cy
+wd
+yC
+jZ
+Nq
+pa
+DX
+Nq
+hR
+oj
+nF
+nF
+nF
+DX
+DX
+nF
+nF
+nF
+nF
+FB
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+gZ
+ZX
+ZX
+DX
+Pp
+hR
+dr
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+af
+af
+af
+am
+af
+af
+af
+"}
+(49,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Hb
+Kg
+Lw
+XX
+hR
+bv
+jw
+hR
+hR
+hR
+Pp
+hR
+hR
+uL
+Nq
+hf
+QN
+wj
+iU
+iU
+iU
+cc
+Ql
+up
+OE
+di
+hM
+bV
+eQ
+Gy
+DP
+xV
+pa
+DX
+DX
+DX
+hR
+hR
+DX
+DX
+DX
+nc
+bh
+bh
+bh
+bh
+CI
+hR
+hR
+hR
+dr
+bH
+hR
+hR
+DX
+DX
+DX
+Pp
+hR
+hR
+dr
+hR
+hR
+hR
+dr
+hR
+dr
+dr
+dr
+hR
+hR
+hR
+dr
+hR
+hR
+jw
+hR
+hR
+FY
+hR
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(50,1,1) = {"
+af
+af
+af
+af
+af
+af
+aP
+af
+af
+Kg
+Kg
+Lw
+XX
+hR
+hR
+hR
+hR
+TP
+Lv
+Pp
+uL
+bZ
+Ot
+Nq
+Nq
+qC
+SS
+Rw
+YF
+aU
+Cj
+bc
+aU
+gs
+Ia
+ZH
+om
+om
+Th
+wC
+lM
+Yq
+DX
+DX
+DX
+DX
+DX
+DX
+DX
+DX
+xp
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+Pp
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+jw
+uj
+uj
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(51,1,1) = {"
+af
+af
+af
+af
+af
+af
+aP
+af
+af
+Hb
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+xp
+hR
+Pp
+uL
+In
+DX
+Dc
+Nq
+In
+In
+Oo
+KD
+aU
+aU
+aU
+om
+om
+Fm
+om
+om
+aR
+wC
+Nq
+pa
+XF
+hR
+hR
+mj
+hR
+hR
+DX
+nc
+tc
+CI
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+GA
+hR
+hR
+hR
+hR
+hR
+FY
+hR
+hR
+FY
+af
+af
+af
+af
+af
+af
+af
+"}
+(52,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+xp
+hR
+Pp
+uL
+wT
+WR
+Nq
+Nq
+Nq
+hf
+qC
+QN
+Xz
+FN
+FN
+FN
+Ue
+Rw
+ER
+Er
+wC
+Nq
+Nq
+pa
+hR
+hR
+hR
+hR
+hR
+ot
+hR
+xp
+hR
+hR
+hR
+hR
+ot
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+af
+af
+"}
+(53,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Lw
+XX
+xp
+hR
+hR
+hR
+sC
+hR
+Pp
+Pp
+hR
+uL
+qk
+bo
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+lM
+QX
+Yq
+hR
+Pp
+hR
+Pp
+hR
+nc
+tc
+CI
+hR
+hR
+hR
+hR
+dr
+dr
+dr
+hR
+hR
+dr
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+HT
+TL
+hR
+OK
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+nc
+tc
+LY
+tc
+tc
+tc
+LY
+tc
+tc
+tc
+LY
+tc
+af
+af
+af
+af
+af
+af
+"}
+(54,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Lw
+bx
+TP
+jw
+hR
+hR
+xp
+Pp
+hR
+hR
+hR
+GA
+uL
+DX
+Fk
+Fk
+cT
+Fk
+Fk
+Fk
+QX
+DX
+QX
+QX
+QX
+QX
+DX
+aQ
+XF
+XF
+mj
+hR
+hR
+hR
+GA
+xp
+hR
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+HT
+hR
+aC
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+xp
+Fo
+tD
+tD
+tD
+tD
+tD
+tD
+tD
+tD
+tD
+tD
+af
+af
+af
+af
+af
+af
+"}
+(55,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+XX
+xp
+hR
+hR
+hR
+TP
+hR
+mj
+hR
+hR
+hR
+ot
+XF
+Fk
+Gx
+Qq
+Nc
+pd
+Rt
+hR
+DX
+DX
+hR
+hR
+DX
+Yq
+XF
+hR
+Pp
+hR
+hR
+hR
+hR
+ot
+TP
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+dr
+dr
+dr
+dr
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+ot
+hR
+HT
+hR
+hR
+Bk
+Ah
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+sU
+Ax
+uB
+ap
+uB
+uB
+ap
+uB
+uB
+ap
+uB
+uB
+af
+af
+af
+af
+af
+af
+"}
+(56,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+hR
+hR
+xp
+hR
+hR
+hR
+hR
+Pp
+hR
+GA
+Fk
+aq
+Qq
+bg
+Nc
+Ox
+hR
+hR
+DX
+DX
+DX
+DX
+uL
+hR
+hR
+GA
+Pp
+Pp
+hR
+hR
+hR
+xp
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+mK
+hR
+hR
+VQ
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+St
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+xp
+vq
+uB
+Kd
+Pu
+Pu
+Pu
+Pu
+Pu
+Pu
+Pu
+af
+af
+af
+af
+af
+af
+af
+"}
+(57,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+hR
+xp
+hR
+ot
+hR
+cg
+Pp
+hR
+hR
+Fk
+bl
+Nc
+pd
+Qq
+Ox
+hR
+hR
+hR
+DX
+DX
+hR
+uL
+hR
+hR
+hR
+ot
+hR
+hR
+Pp
+hR
+xp
+hR
+hR
+hR
+jw
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+VQ
+hR
+GA
+Pp
+GA
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+St
+wR
+hR
+hR
+hR
+hR
+GA
+hR
+GA
+dr
+hR
+hR
+xp
+vq
+ap
+ZW
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+Kg
+af
+af
+af
+af
+af
+af
+"}
+(58,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+lz
+Qb
+uO
+Qb
+Qb
+Qb
+uO
+Qb
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fh
+cP
+cP
+cP
+Fh
+wq
+Fh
+Qb
+Qb
+uO
+Qb
+Qb
+Qb
+uO
+Qb
+CI
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+Ln
+hR
+hR
+Ev
+hR
+hR
+Kn
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+qU
+hR
+hR
+hR
+GA
+aP
+hR
+hR
+TP
+vq
+uB
+ZW
+Kg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+af
+af
+af
+af
+af
+af
+af
+"}
+(59,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+am
+af
+af
+af
+af
+PL
+hR
+hR
+hR
+hR
+GA
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+DX
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+GA
+hR
+hR
+dr
+hR
+dr
+hR
+Ln
+hR
+hR
+HT
+Ev
+Ev
+Pp
+PL
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+PC
+Zd
+hR
+jw
+hR
+hR
+af
+hR
+hR
+xp
+vq
+uB
+ZW
+Kg
+Hb
+Kg
+Kg
+Kg
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(60,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+hR
+HT
+hR
+hR
+Kl
+hR
+hR
+hR
+hR
+hR
+jw
+hR
+hR
+hR
+Pp
+hR
+DX
+hR
+DX
+hR
+hR
+Pp
+Pp
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+dr
+hR
+Ln
+hR
+HT
+hR
+HT
+Bk
+fv
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+za
+hR
+hR
+hR
+hR
+af
+hR
+hR
+xp
+vq
+ap
+ZW
+Kg
+Kg
+Kg
+Ai
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(61,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Lw
+bx
+xp
+hR
+hR
+hR
+HT
+hR
+HT
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+Pp
+hR
+DX
+hR
+DX
+hR
+hR
+hR
+Pp
+hR
+hR
+GA
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+dr
+dr
+hR
+hR
+HT
+Ev
+Ev
+cW
+pN
+hR
+hR
+hR
+be
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+af
+af
+hR
+TP
+bI
+uB
+ZW
+Kg
+Hb
+Kg
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(62,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+ot
+hR
+HT
+hR
+hR
+Bk
+Ah
+hR
+hR
+GA
+hR
+hR
+hR
+hR
+hR
+hR
+DX
+hR
+DX
+hR
+DX
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+bR
+hR
+To
+hR
+hR
+To
+Pp
+hR
+hR
+dr
+dr
+af
+af
+af
+hR
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+hR
+hR
+hR
+hR
+hR
+af
+af
+hR
+zk
+vq
+uB
+ZW
+Kg
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(63,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Hb
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+hR
+hR
+hR
+PL
+hR
+OK
+hR
+GA
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+DX
+hR
+DX
+hR
+DX
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+ot
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+tp
+hR
+af
+af
+aD
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+bE
+hR
+hR
+hR
+hR
+af
+af
+af
+hR
+xp
+vq
+ax
+af
+SX
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(64,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Kg
+Lw
+XX
+TP
+hR
+hR
+hR
+hR
+PL
+hR
+ot
+hR
+hR
+hR
+hR
+GA
+ot
+hR
+hR
+hR
+GA
+hR
+hR
+DX
+hR
+DX
+hR
+DX
+hR
+hR
+hR
+hR
+hR
+hR
+jw
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+hR
+hR
+dr
+dr
+hR
+GA
+af
+af
+af
+af
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+hR
+xp
+vq
+uB
+af
+af
+af
+af
+af
+am
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(65,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+ZW
+Kg
+Hb
+Kg
+Lw
+ci
+sC
+hR
+hR
+hR
+hR
+hR
+hR
+GA
+hR
+hR
+qU
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+DX
+DX
+hR
+DX
+hR
+Pp
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+bE
+hR
+hR
+dr
+jw
+hR
+hR
+dr
+dr
+dr
+hR
+vD
+af
+af
+af
+bN
+af
+Qb
+Qb
+Qb
+Qb
+LY
+Qb
+Qb
+kM
+Qb
+LY
+Qb
+aa
+Qb
+af
+af
+af
+af
+TP
+vq
+uB
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(66,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+ZW
+Kg
+Kg
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+PC
+Zd
+hR
+jw
+hR
+jw
+hR
+hR
+hR
+Fh
+Fh
+RB
+DX
+DX
+DX
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+dr
+hR
+hR
+dr
+dr
+hR
+hR
+GA
+uj
+hR
+af
+af
+af
+af
+za
+af
+hR
+Ee
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+af
+af
+af
+hR
+xp
+vq
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(67,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+ZW
+Kg
+Hb
+Kg
+Lw
+XX
+xp
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+za
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+Fh
+Ev
+Ah
+DX
+DX
+bE
+hR
+hR
+hR
+hR
+hR
+hR
+Pp
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+Pp
+Pp
+hR
+hR
+hR
+af
+af
+af
+af
+hR
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(68,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Kg
+Lw
+bx
+TP
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+Fh
+Ev
+hR
+DX
+DX
+hR
+DX
+hR
+hR
+Pp
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+Pp
+Pp
+hR
+hR
+af
+af
+aP
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+"}
+(69,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Hb
+Kg
+Lw
+XX
+xf
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+nc
+hR
+hR
+Fh
+Ev
+mm
+DX
+DX
+hR
+DX
+hR
+hR
+Pp
+Kc
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+kb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+nc
+hR
+Pp
+Pp
+hR
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+af
+af
+af
+"}
+(70,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+XX
+xp
+EO
+EO
+EO
+Pp
+Pp
+Pp
+Pp
+hR
+hR
+uk
+uk
+ae
+uk
+hR
+xp
+hR
+hR
+Fh
+Fh
+hR
+DX
+Kg
+DX
+DX
+hR
+hR
+hR
+xp
+hR
+hR
+hR
+hR
+Pp
+hR
+hR
+hR
+Pp
+Pp
+hR
+hR
+GA
+EO
+EO
+EO
+xp
+hR
+hR
+Pp
+hR
+hR
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+oL
+oL
+oL
+oL
+oL
+wg
+Kg
+Hb
+Kg
+Yx
+oL
+oL
+oL
+oL
+oL
+oL
+oL
+oL
+ab
+af
+"}
+(71,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+XX
+xp
+ri
+af
+af
+hR
+uk
+uk
+uk
+uk
+uk
+uk
+oa
+rB
+uk
+hR
+xp
+hR
+hR
+hR
+MX
+FG
+FG
+FG
+bW
+FG
+cH
+hR
+hR
+xp
+hR
+Nq
+Fh
+Fh
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+hR
+ri
+YK
+dB
+xp
+hR
+hR
+Pp
+hR
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+am
+af
+af
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+Vg
+Kg
+ao
+af
+"}
+(72,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+uk
+LE
+KX
+UO
+Ki
+UO
+dO
+Js
+Fi
+hR
+xp
+hR
+hR
+MX
+EM
+uB
+uB
+uB
+uB
+uB
+DM
+iD
+hR
+xp
+hR
+Nq
+Fh
+Nq
+uk
+BP
+BP
+BP
+UO
+KX
+re
+uk
+hR
+ri
+YK
+dB
+xp
+hR
+hR
+hR
+dr
+hR
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+Sg
+af
+"}
+(73,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+uk
+SJ
+dC
+uk
+Ki
+uk
+ta
+UZ
+uk
+hR
+xp
+hR
+hR
+YS
+uB
+uB
+ap
+uB
+ap
+uB
+uB
+MT
+hR
+xp
+DX
+Nq
+jV
+Nq
+QZ
+Ki
+Ki
+Ki
+uk
+SJ
+dC
+uk
+hR
+ri
+YK
+dB
+xp
+hR
+hR
+hR
+dr
+hR
+xp
+af
+af
+af
+af
+af
+af
+af
+af
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+af
+af
+"}
+(74,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+hR
+hR
+uk
+uk
+uk
+uk
+Ki
+uk
+uk
+uk
+uk
+Nq
+xp
+DX
+DX
+DX
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+DX
+DX
+cU
+DX
+Nq
+uk
+uk
+uk
+uk
+RL
+Ki
+uk
+uk
+uk
+uk
+hR
+ri
+YK
+dB
+xp
+hR
+hR
+hR
+dr
+hR
+xp
+hR
+af
+af
+af
+af
+af
+af
+af
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(75,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+am
+af
+af
+Rh
+EO
+hR
+uk
+CC
+Ki
+Ki
+Ki
+Ar
+Nq
+Nq
+cr
+Nq
+cU
+DX
+hR
+AK
+uB
+uB
+gF
+fs
+OM
+uB
+uB
+MT
+Kg
+xp
+hR
+Nq
+ns
+CC
+Ki
+Ki
+Ki
+Ki
+uk
+oa
+rB
+uk
+hR
+nl
+mc
+il
+xp
+hR
+hR
+dr
+hR
+hR
+xp
+hR
+af
+af
+af
+af
+af
+af
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Ms
+Ms
+Ms
+Ms
+Ms
+my
+"}
+(76,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+YK
+sQ
+hR
+si
+Ff
+Ki
+Dh
+Ki
+uk
+uk
+Nq
+Fh
+Nq
+xp
+DX
+hR
+AK
+ap
+aI
+af
+aP
+af
+oF
+ap
+MT
+Kg
+xp
+hR
+Nq
+si
+Ff
+Ki
+Ki
+Dh
+Ki
+UO
+dO
+Js
+uk
+hR
+Hs
+hR
+hR
+xp
+hR
+dr
+dr
+hR
+hR
+xp
+hR
+af
+af
+af
+af
+af
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Ms
+HP
+HP
+HP
+Ms
+my
+"}
+(77,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+YK
+dB
+hR
+uk
+EZ
+Ki
+dm
+QF
+RL
+uk
+Nq
+Fh
+hR
+xp
+hR
+Pp
+YS
+uB
+af
+af
+af
+af
+Lw
+uB
+MT
+Kg
+xp
+hR
+Nq
+uk
+EZ
+Ki
+Uf
+dm
+QF
+uk
+ta
+UZ
+uk
+hR
+Pp
+Pp
+hR
+xp
+hR
+dr
+hR
+Pp
+hR
+TP
+af
+af
+af
+af
+af
+af
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Ms
+HP
+IY
+HP
+Ms
+my
+"}
+(78,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Lw
+XX
+af
+ri
+YK
+dB
+hR
+uk
+uk
+FV
+uk
+FV
+uk
+uk
+Fh
+Fh
+hR
+xp
+hR
+Pp
+YS
+uB
+af
+af
+aP
+QR
+Lw
+uB
+MT
+hR
+xp
+GA
+hR
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+hR
+nc
+Qb
+Qb
+CI
+hR
+dr
+Pp
+hR
+hR
+xp
+af
+af
+af
+af
+af
+af
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Ms
+HP
+HP
+HP
+Ms
+my
+"}
+(79,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Lw
+XX
+xp
+oj
+oj
+oj
+hR
+hR
+hR
+hR
+hR
+Pp
+Pp
+Pp
+hR
+hR
+hR
+xp
+aP
+af
+af
+af
+af
+af
+af
+QR
+Lw
+uB
+na
+hR
+xp
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+GA
+hR
+Pp
+Pp
+hR
+xp
+hR
+hR
+hR
+hR
+hR
+Pp
+hR
+hR
+xp
+af
+af
+af
+af
+af
+Hb
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Ms
+HP
+HP
+HP
+Ms
+my
+"}
+(80,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Lw
+XX
+xf
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+kb
+Qb
+Qb
+Qb
+Qb
+Qb
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+uB
+KN
+Qb
+lz
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+lz
+Co
+nc
+hR
+hR
+hR
+hR
+hR
+hR
+xp
+af
+af
+af
+af
+af
+Kg
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+Ms
+Ms
+Ms
+Ms
+Ms
+my
+"}
+(81,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Hb
+Kg
+Lw
+XX
+xp
+hR
+hR
+Pp
+Pp
+hR
+hR
+hR
+Pp
+Pp
+Pp
+Pp
+hR
+hR
+hR
+hR
+af
+af
+aP
+af
+af
+Kg
+Hb
+Kg
+Lw
+ap
+XW
+hR
+hR
+hR
+Pp
+Pp
+Pp
+hR
+GA
+hR
+Pp
+hR
+hR
+hR
+hR
+Pp
+Pp
+Pp
+xp
+hR
+hR
+hR
+hR
+hR
+hR
+xp
+af
+af
+af
+af
+Yk
+Hb
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+PZ
+PZ
+Vy
+Oi
+Oi
+ic
+Oi
+Oi
+Dv
+Dv
+Dv
+Dv
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(82,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Kg
+Lw
+bx
+xp
+Pp
+hR
+hR
+hR
+hR
+uk
+uk
+Do
+uk
+uk
+uk
+uk
+Fh
+Fh
+Fh
+hR
+hR
+af
+af
+af
+Kg
+Kg
+Kg
+Lw
+uB
+XW
+hR
+Nq
+Fh
+Fh
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+hR
+FW
+Rh
+EO
+hR
+xp
+hR
+Pp
+hR
+hR
+hR
+hR
+TP
+af
+af
+af
+af
+Yk
+Kg
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+iy
+aB
+pn
+hP
+XE
+fU
+qz
+Oi
+Dv
+HE
+HE
+Dv
+Dv
+my
+my
+my
+my
+my
+my
+my
+"}
+(83,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Hb
+Kg
+Lw
+XX
+TP
+af
+Hl
+Rh
+FW
+hR
+si
+UZ
+dO
+dO
+UO
+Ki
+uk
+Nq
+Nq
+Fh
+Nq
+hR
+af
+af
+af
+Kg
+Hb
+Kg
+Lw
+uB
+XW
+hR
+Nq
+Fh
+Nq
+uk
+BP
+BP
+BP
+UO
+KX
+re
+uk
+hR
+ZZ
+YK
+sQ
+hR
+xp
+hR
+Pp
+hR
+hR
+hR
+hR
+xp
+af
+af
+am
+af
+Yk
+Hb
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+PZ
+Ml
+HN
+Oi
+tO
+aw
+aj
+Oi
+Df
+fy
+fy
+qF
+tx
+my
+my
+my
+my
+my
+my
+my
+"}
+(84,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+Lw
+XX
+af
+af
+ZZ
+YK
+sQ
+hR
+uk
+ta
+dO
+oa
+uk
+Ki
+Ar
+Nq
+Nq
+cr
+Nq
+hR
+af
+uB
+ZW
+Kg
+Kg
+Kg
+Lw
+uB
+cU
+DX
+Nq
+jV
+Nq
+QZ
+Ki
+Ki
+Ki
+uk
+SJ
+dC
+uk
+hR
+ri
+YK
+dB
+hR
+xp
+hR
+Pp
+Pp
+hR
+hR
+hR
+af
+af
+af
+af
+af
+Yk
+Kg
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+iy
+uh
+pn
+Oi
+Oi
+Oi
+Oi
+Oi
+Dv
+yh
+vm
+ar
+Dv
+Dv
+my
+my
+my
+my
+my
+my
+"}
+(85,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Hb
+Kg
+Lw
+af
+af
+af
+ri
+YK
+dB
+hR
+uk
+uk
+uk
+uk
+uk
+Ki
+cf
+uk
+uk
+uk
+Nq
+DX
+cU
+uB
+ZW
+Kg
+Hb
+Kg
+Lw
+uB
+FB
+hR
+Nq
+uk
+uk
+uk
+uk
+RL
+Ki
+uk
+uk
+uk
+uk
+hR
+ri
+YK
+dB
+hR
+xp
+hR
+hR
+Pp
+hR
+hR
+hR
+af
+af
+af
+af
+af
+Yk
+Hb
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+PZ
+bJ
+pn
+az
+qy
+rf
+rN
+rN
+JJ
+Nj
+cX
+SZ
+SZ
+Dv
+my
+my
+my
+my
+my
+my
+"}
+(86,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+af
+af
+af
+af
+af
+af
+dB
+hR
+uk
+Ff
+gL
+Ki
+Ki
+Ki
+UO
+KX
+FT
+uk
+Nq
+DX
+if
+ap
+ZW
+Kg
+Kg
+Kg
+Lw
+ap
+XW
+hR
+Nq
+ns
+CC
+Ki
+Ki
+Ki
+Ki
+uk
+oa
+rB
+uk
+hR
+ri
+YK
+dB
+hR
+xp
+hR
+hR
+Pp
+hR
+hR
+hR
+af
+af
+af
+af
+uB
+Yk
+Kg
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+PZ
+bJ
+QP
+wE
+ef
+FS
+PZ
+rN
+Dv
+wB
+Aw
+MQ
+ai
+Dv
+my
+my
+my
+my
+my
+my
+"}
+(87,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Hb
+af
+af
+af
+af
+af
+af
+af
+af
+af
+bB
+bB
+bB
+Ki
+Dh
+Ki
+uk
+LE
+KX
+uk
+Nq
+hR
+if
+uB
+ZW
+Kg
+Hb
+Kg
+Lw
+uB
+XW
+hR
+hR
+si
+Ff
+Ki
+Ki
+Dh
+Ki
+UO
+dO
+Js
+uk
+hR
+ri
+YK
+dB
+hR
+xp
+hR
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+uB
+Yk
+Hb
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+PZ
+PZ
+RX
+tr
+gQ
+PJ
+PZ
+nN
+Dv
+aE
+Xc
+Mv
+bX
+tx
+my
+my
+my
+my
+my
+my
+"}
+(88,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+aP
+af
+af
+bB
+bD
+bB
+bB
+dm
+QF
+uk
+SJ
+KX
+uk
+hR
+bE
+if
+uB
+ZW
+Kg
+Kg
+Kg
+Lw
+uB
+XW
+hR
+hR
+uk
+EZ
+Ki
+Uf
+dm
+QF
+uk
+ta
+UZ
+uk
+Pp
+oj
+bP
+sA
+hR
+xp
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+af
+uB
+Yk
+Kg
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+qw
+qw
+qw
+qw
+qw
+PZ
+av
+bF
+Ed
+vu
+as
+yd
+Dv
+my
+my
+my
+my
+my
+my
+"}
+(89,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+bx
+af
+af
+sA
+af
+af
+af
+bB
+bB
+bB
+bB
+bB
+bB
+bB
+bB
+bB
+bB
+af
+Pp
+if
+uB
+ZW
+Kg
+Hb
+Kg
+Lw
+uB
+XW
+hR
+GA
+uk
+uk
+uk
+AV
+uk
+uk
+uk
+FV
+uk
+uk
+GA
+hR
+nc
+Qb
+Qb
+CI
+hR
+hR
+hR
+hR
+Pp
+af
+af
+af
+af
+af
+ap
+Yk
+Hb
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+qw
+wD
+aA
+XV
+XV
+PZ
+IU
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+my
+my
+my
+my
+my
+my
+"}
+(90,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+XX
+xp
+hR
+hR
+Pp
+Pp
+Pp
+af
+af
+af
+hR
+hR
+hR
+hR
+Pp
+af
+af
+af
+af
+if
+uB
+ZW
+Kg
+Kg
+Kg
+Lw
+uB
+XW
+hR
+Pp
+Pp
+hR
+hR
+hR
+hR
+hR
+hR
+Pp
+Pp
+hR
+hR
+hR
+xp
+hR
+hR
+hR
+bE
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+af
+af
+bi
+Kg
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+Zi
+sS
+Db
+Db
+cV
+uo
+rN
+rN
+kE
+mE
+UJ
+TI
+kE
+my
+my
+my
+my
+my
+my
+"}
+(91,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+XX
+ch
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+af
+af
+af
+ap
+af
+af
+af
+Kg
+Lw
+ap
+mt
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+Qb
+lz
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+af
+af
+bi
+Hb
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+qw
+qw
+mY
+ob
+UK
+PZ
+SW
+SW
+CK
+au
+au
+au
+rM
+my
+my
+my
+my
+my
+my
+"}
+(92,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+XX
+Xk
+Qb
+Qb
+Qb
+uO
+Qb
+Qb
+Qb
+uO
+Qb
+Qb
+Qb
+Qb
+uO
+Qb
+Qb
+af
+am
+af
+af
+af
+af
+af
+af
+Lw
+uB
+fH
+Qb
+Qb
+Qb
+bS
+uO
+Qb
+Qb
+Qb
+Qb
+uO
+Qb
+Qb
+Qb
+uO
+Qb
+Qb
+Qb
+uO
+Qb
+Qb
+Qb
+uO
+Qb
+af
+af
+af
+af
+af
+af
+bi
+Kg
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+qw
+IT
+qw
+wI
+PZ
+rp
+rp
+kE
+Sw
+at
+bQ
+kE
+my
+my
+my
+my
+my
+my
+"}
+(93,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+XX
+xp
+vV
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+af
+af
+af
+af
+af
+af
+af
+EE
+af
+Ga
+uB
+af
+af
+af
+af
+af
+af
+af
+FI
+QE
+QE
+tY
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+xx
+QE
+xx
+QE
+af
+af
+af
+af
+af
+af
+bi
+aW
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+qw
+qw
+PZ
+vg
+vg
+kE
+Ui
+kE
+kE
+kE
+my
+my
+my
+my
+my
+my
+"}
+(94,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+xp
+HW
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+af
+af
+af
+Kg
+Kg
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+Pp
+Pp
+hR
+hR
+hR
+hR
+Pp
+Pp
+hR
+hR
+hR
+GA
+hR
+hR
+HT
+HT
+hR
+af
+af
+af
+af
+af
+uB
+Yk
+Kg
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+PZ
+my
+my
+kE
+Bd
+kE
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(95,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+xp
+HW
+hR
+hR
+hR
+hR
+hR
+bH
+hR
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+af
+af
+af
+Kg
+EE
+Kg
+Ga
+af
+am
+af
+af
+af
+af
+af
+af
+af
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+af
+af
+af
+af
+af
+af
+af
+uB
+Yk
+Hb
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(96,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+my
+my
+my
+my
+Ea
+Ea
+my
+my
+my
+my
+Ea
+Ea
+my
+af
+my
+af
+uB
+af
+af
+iC
+Kg
+Kg
+Kg
+Ga
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+my
+my
+my
+Ea
+Ea
+my
+my
+my
+my
+Ea
+Ea
+my
+my
+my
+af
+af
+af
+af
+af
+af
+uB
+Yk
+Kg
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(97,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+uB
+uB
+uB
+uB
+uB
+ap
+uB
+uB
+uB
+uB
+uB
+ap
+uB
+uB
+af
+aP
+af
+bs
+af
+af
+uB
+uB
+Yk
+Hb
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(98,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+af
+uB
+af
+af
+af
+af
+uB
+uB
+uB
+af
+af
+Kg
+dq
+uB
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(99,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+am
+af
+af
+af
+oL
+oL
+oL
+oL
+oL
+oL
+af
+am
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}
+(100,1,1) = {"
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+my
+"}

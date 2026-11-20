@@ -1,0 +1,12 @@
+breathing.ogg, lauth.ogg, sinkhole_exit.ogg, step_1.ogg, step_2.ogg,
+step_3.ogg, impact_1.ogg, impact_2.ogg, impact_3.ogg, static.ogg, vomit.ogg
+
+Source: Junkkky/BandaStation, Katorga13-backup,
+commit d6acf22a224dae43326ac54887de14f2ca93a843,
+modular_bandastation/k13_crooked_man/sounds/.
+https://github.com/Junkkky/BandaStation/tree/d6acf22a224dae43326ac54887de14f2ca93a843/modular_bandastation/k13_crooked_man/sounds
+Port authorized by Junkkky, the creator of this mob.
+All eleven original audio files are preserved byte for byte;
+filenames were lowercased for case-sensitive filesystems.
+The original spelling of lauth.ogg is retained.
+License: CC BY-SA 3.0, as declared for sounds in the source README.md.

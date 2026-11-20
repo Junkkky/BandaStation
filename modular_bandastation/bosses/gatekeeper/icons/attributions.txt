@@ -1,0 +1,16 @@
+gatekeeper.dmi
+Gatekeeper design generated with OpenAI imagegen on 2026-11-06,
+following Junkkky's references and art direction; pixel adaptation by Codex.
+Design: pale organic ceremonial vestments, small head, elongated regal posture,
+facial ritual markings, no pins or headdress. Four directions, eight idle frames.
+Native canvas: 32x96 pixels, 24-color base with intermediate breathing shades,
+binary transparency.
+Adaptation: filtered proportional underlay, pixel retouch of the face and organic
+plates, fringe removal, idle assembled from one fixed pose per direction.
+BYOND state: idle; S/N/E/W, eight frames, 0.5 seconds per frame.
+dead: static first idle pose in each direction, added for the playable prototype.
+Breathing added on 2026-11-10: tapered chest light/shadow variation, maximum
+6 RGB levels. No pixel displacement; head, shoulders, hands and robe stay fixed.
+No pixels from the reference photographs or concept illustrations were copied.
+License for this original asset: CC BY-SA 3.0, following the project asset license.
+https://creativecommons.org/licenses/by-sa/3.0/

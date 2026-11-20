@@ -1,0 +1,19 @@
+victoria_olshevskaya.dmi
+Character concept and art direction: user-selected four-view design. Original
+reference authorship/license was not supplied; verify before redistribution
+outside this local event build.
+Concept reference: OpenAI imagegen preview, 01a1c2d6-1d75-70a0-bf7a-b830b5abc537/
+exec-7bd50ea9-2074-4e48-994f-a6d764731a40.png
+Replacement on 2026-11-17: PixelLab create_image_pro(width=32, height=64),
+with the actual frontal concept supplied as a labelled visual reference and
+palette reference. Job: bab3eebb-4405-4ff8-a6e8-2c9d4447f8ef, candidate 0.
+Native tooth/braid correction: 159 explicitly guarded pixel changes through
+PixelLab pixelart_workbench, image 0b035d1f-aac4-478a-b6d7-46967f30e7ec.
+Other directions: create_character v3 from that native 32x64 frame;
+character 970aec02-9e3f-4a5b-ae08-008d1793786a. South pixels retained exactly.
+No image_to_pixelart converter or agent-side source resampling in this version.
+Packing: native 32x64 cells copied without scaling or pixel changes into an idle
+state with four directions, reordered to BYOND south/north/east/west.
+The generated adaptation follows the project's CC BY-SA 3.0 image asset license,
+subject to confirming the supplied reference's rights before publication.
+https://creativecommons.org/licenses/by-sa/3.0/

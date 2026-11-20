@@ -62,6 +62,9 @@ endmap
 
 # Debug-only maps.
 
+map gate_closure
+endmap
+
 map gateway_test
 endmap
 

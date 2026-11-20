@@ -1,9 +1,12 @@
 /proc/create_portal_pair(turf/source, turf/destination, _lifespan = 300, accuracy = 0, newtype = /obj/effect/portal)
 	if(!istype(source) || !istype(destination))
 		return
-	var/turf/actual_destination = get_valid_teleport_turf(source, destination, accuracy)
-	var/obj/effect/portal/P1 = new newtype(source, _lifespan, null, FALSE, null)
-	var/obj/effect/portal/P2 = new newtype(actual_destination, _lifespan, P1, TRUE, null)
+	var/obj/effect/portal/portal_type = newtype || /obj/effect/portal
+	var/turf/actual_destination = get_valid_teleport_turf(source, destination, accuracy, skip_restrictions = initial(portal_type.force_teleport))
+	if(!actual_destination)
+		return
+	var/obj/effect/portal/P1 = new portal_type(source, _lifespan, null, FALSE, null)
+	var/obj/effect/portal/P2 = new portal_type(actual_destination, _lifespan, P1, TRUE, null)
 	if(!istype(P1) || !istype(P2))
 		return
 	playsound(P1, SFX_PORTAL_CREATED, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)

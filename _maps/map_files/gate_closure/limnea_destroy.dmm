@@ -1,0 +1,11252 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/machinery/button/door/directional/west{
+	id = "Toilet4";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4;
+	pixel_x = 24
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"ac" = (
+/obj/effect/landmark/awaystart/gate_closure/limnea,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"ad" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/limnea)
+"ae" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/limnea)
+"af" = (
+/obj/effect/turf_decal/siding/wood/oak/corner,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/limnea)
+"ag" = (
+/obj/effect/spawner/structure/window,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/curtain/bounty,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/limnea)
+"ah" = (
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/limnea)
+"ai" = (
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"aj" = (
+/obj/structure/gate_closure_lever,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"al" = (
+/obj/machinery/icecream_vat,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"am" = (
+/obj/machinery/door/airlock{
+	id_tag = "Dorm1";
+	name = "Квартира 1"
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"an" = (
+/obj/effect/turf_decal/siding/white/inner_corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"ao" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"ap" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/cup/glass/bottle/whiskey{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/cup/glass/bottle/rum/aged{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/structure/sign/poster/official/high_class_martini/directional/north,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"aq" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 10
+	},
+/obj/item/reagent_containers/cup/soda_cans/sol_dry,
+/obj/item/reagent_containers/cup/soda_cans/sol_dry,
+/obj/item/reagent_containers/cup/soda_cans/sol_dry,
+/obj/item/reagent_containers/cup/soda_cans/sol_dry,
+/obj/item/reagent_containers/cup/soda_cans/sol_dry,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"ar" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white,
+/obj/item/reagent_containers/cup/soda_cans/space_up,
+/obj/item/reagent_containers/cup/soda_cans/space_up,
+/obj/item/reagent_containers/cup/soda_cans/space_up,
+/obj/item/reagent_containers/cup/soda_cans/space_up,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"as" = (
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"at" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white,
+/obj/item/reagent_containers/cup/soda_cans/starkist,
+/obj/item/reagent_containers/cup/soda_cans/starkist,
+/obj/item/reagent_containers/cup/soda_cans/starkist,
+/obj/item/reagent_containers/cup/soda_cans/starkist,
+/obj/item/reagent_containers/cup/soda_cans/starkist,
+/obj/item/reagent_containers/cup/soda_cans/starkist,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"au" = (
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"av" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 6
+	},
+/obj/item/reagent_containers/cup/soda_cans,
+/obj/item/reagent_containers/cup/soda_cans,
+/obj/item/reagent_containers/cup/soda_cans,
+/obj/item/reagent_containers/cup/soda_cans,
+/obj/item/reagent_containers/cup/soda_cans,
+/obj/item/reagent_containers/cup/soda_cans,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aw" = (
+/obj/effect/decal/cleanable/glass,
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"ax" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 10
+	},
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"az" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white,
+/obj/item/paper/pamphlet,
+/obj/item/paper/pamphlet,
+/obj/item/paper/pamphlet,
+/obj/item/paper/pamphlet,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aA" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aB" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 9
+	},
+/obj/item/reagent_containers/cup/soda_cans/wellcheers,
+/obj/item/reagent_containers/cup/soda_cans/wellcheers,
+/obj/item/reagent_containers/cup/soda_cans/wellcheers,
+/obj/item/reagent_containers/cup/soda_cans/wellcheers,
+/obj/item/reagent_containers/cup/soda_cans/wellcheers,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aC" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/reagent_containers/cup/soda_cans/sodawater,
+/obj/item/reagent_containers/cup/soda_cans/sodawater,
+/obj/item/reagent_containers/cup/soda_cans/sodawater,
+/obj/item/reagent_containers/cup/soda_cans/sodawater,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aD" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/reagent_containers/cup/soda_cans/pwr_game,
+/obj/item/reagent_containers/cup/soda_cans/pwr_game,
+/obj/item/reagent_containers/cup/soda_cans/pwr_game,
+/obj/item/reagent_containers/cup/soda_cans/pwr_game,
+/obj/item/reagent_containers/cup/soda_cans/pwr_game,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aE" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"aF" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 9
+	},
+/obj/item/storage/toolbox/artistic,
+/obj/item/storage/toolbox/artistic,
+/obj/item/storage/toolbox/artistic,
+/obj/item/storage/toolbox/artistic,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aG" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/storage/toolbox/drone,
+/obj/item/storage/toolbox/drone,
+/obj/item/storage/toolbox/drone,
+/obj/item/storage/toolbox/drone,
+/obj/item/storage/toolbox/drone,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aH" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 5
+	},
+/obj/item/reagent_containers/spray,
+/obj/item/reagent_containers/spray,
+/obj/item/reagent_containers/spray,
+/obj/item/reagent_containers/spray,
+/obj/item/reagent_containers/spray,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aI" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 10
+	},
+/obj/item/reagent_containers/cup/soda_cans/starkist,
+/obj/item/reagent_containers/cup/soda_cans/starkist,
+/obj/item/reagent_containers/cup/soda_cans/starkist,
+/obj/item/reagent_containers/cup/soda_cans/starkist,
+/obj/item/reagent_containers/cup/soda_cans/starkist,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aJ" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white,
+/obj/item/reagent_containers/cup/soda_cans/space_up,
+/obj/item/reagent_containers/cup/soda_cans/space_up,
+/obj/item/reagent_containers/cup/soda_cans/space_up,
+/obj/item/reagent_containers/cup/soda_cans/space_up,
+/obj/item/reagent_containers/cup/soda_cans/space_up,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aK" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white,
+/obj/item/reagent_containers/cup/soda_cans/tonic,
+/obj/item/reagent_containers/cup/soda_cans/tonic,
+/obj/item/reagent_containers/cup/soda_cans/tonic,
+/obj/item/reagent_containers/cup/soda_cans/tonic,
+/obj/item/reagent_containers/cup/soda_cans/tonic,
+/obj/item/reagent_containers/cup/soda_cans/tonic,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aL" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/obj/machinery/button/door/directional/south{
+	id = "Dorm3"
+	},
+/turf/open/floor/carpet/royalblack,
+/area/awaymission/gate_closure/limnea)
+"aM" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 6
+	},
+/obj/item/reagent_containers/cup/soda_cans/volt_energy,
+/obj/item/reagent_containers/cup/soda_cans/volt_energy,
+/obj/item/reagent_containers/cup/soda_cans/volt_energy,
+/obj/item/reagent_containers/cup/soda_cans/volt_energy,
+/obj/item/reagent_containers/cup/soda_cans/volt_energy,
+/obj/item/reagent_containers/cup/soda_cans/volt_energy,
+/obj/item/reagent_containers/cup/soda_cans/volt_energy,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aN" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 10
+	},
+/obj/item/clothing/head/soft/grey,
+/obj/item/clothing/head/soft/grey,
+/obj/item/clothing/head/soft/grey,
+/obj/item/clothing/head/soft/grey,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aO" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white,
+/obj/item/clothing/head/fedora,
+/obj/item/clothing/head/fedora,
+/obj/item/clothing/head/fedora,
+/obj/item/clothing/head/fedora,
+/obj/item/clothing/head/fedora,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aP" = (
+/obj/effect/turf_decal/siding/wood/ebonite/corner,
+/obj/effect/turf_decal/siding/wood/ebonite/corner{
+	dir = 4
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"aQ" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 6
+	},
+/obj/item/clothing/head/flatcap,
+/obj/item/clothing/head/flatcap,
+/obj/item/clothing/head/flatcap,
+/obj/item/clothing/head/flatcap,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aS" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 9
+	},
+/obj/item/reagent_containers/cup/soda_cans/grey_bull,
+/obj/item/reagent_containers/cup/soda_cans/grey_bull,
+/obj/item/reagent_containers/cup/soda_cans/grey_bull,
+/obj/item/reagent_containers/cup/soda_cans/grey_bull,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aT" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/reagent_containers/cup/soda_cans/melon_soda,
+/obj/item/reagent_containers/cup/soda_cans/melon_soda,
+/obj/item/reagent_containers/cup/soda_cans/melon_soda,
+/obj/item/reagent_containers/cup/soda_cans/melon_soda,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aU" = (
+/obj/machinery/door/airlock{
+	id_tag = "Dorm3";
+	name = "Квартира 3"
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"aV" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"aW" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/reagent_containers/cup/soda_cans/lipo,
+/obj/item/reagent_containers/cup/soda_cans/lipo,
+/obj/item/reagent_containers/cup/soda_cans/lipo,
+/obj/item/reagent_containers/cup/soda_cans/lipo,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aX" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 5
+	},
+/obj/item/reagent_containers/cup/soda_cans/dr_gibb,
+/obj/item/reagent_containers/cup/soda_cans/dr_gibb,
+/obj/item/reagent_containers/cup/soda_cans/dr_gibb,
+/obj/item/reagent_containers/cup/soda_cans/dr_gibb,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aY" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 9
+	},
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/item/clothing/head/soft/black,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"aZ" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/storage/backpack/fireproof,
+/obj/item/storage/backpack/fireproof,
+/obj/item/storage/backpack/fireproof,
+/obj/item/storage/backpack/fireproof,
+/obj/item/storage/backpack/fireproof,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"ba" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"bb" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 5
+	},
+/obj/item/storage/backpack/messenger,
+/obj/item/storage/backpack/messenger,
+/obj/item/storage/backpack/messenger,
+/obj/item/storage/backpack/messenger,
+/obj/item/storage/backpack/messenger,
+/obj/item/storage/backpack/messenger,
+/obj/item/storage/backpack/messenger,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"bc" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"bd" = (
+/obj/machinery/door/airlock{
+	id_tag = "Dorm6";
+	name = "Квартира 6"
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"be" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
+/obj/item/pai_card,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"bf" = (
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"bg" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/storage/fancy/donut_box,
+/obj/item/storage/fancy/donut_box,
+/obj/item/storage/fancy/donut_box,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"bi" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/food/cornchips/red{
+	pixel_y = 2;
+	pixel_x = -5
+	},
+/obj/item/food/cornchips/red{
+	pixel_y = 2;
+	pixel_x = -3
+	},
+/obj/item/food/cornchips/red{
+	pixel_y = 2;
+	pixel_x = -1
+	},
+/obj/item/food/cornchips/red{
+	pixel_y = 2
+	},
+/obj/item/food/cornchips/red{
+	pixel_y = 2;
+	pixel_x = 1
+	},
+/obj/item/food/cornchips/red{
+	pixel_y = 2;
+	pixel_x = -1
+	},
+/obj/item/food/cornchips/red{
+	pixel_y = 2;
+	pixel_x = 6
+	},
+/obj/structure/sign/poster/contraband/starkist/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"bj" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 8
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"bk" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/light_emitter/gate_closure,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/limnea)
+"bl" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"bm" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/item/storage/wallet,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"bq" = (
+/obj/effect/abstract/mist/gate_closure,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"bs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"bO" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"bP" = (
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"bQ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"bR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"bS" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/structure/aquarium,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"bT" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"bU" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"bV" = (
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"bW" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"bX" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 5
+	},
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"bY" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/obj/item/modular_computer/laptop,
+/turf/open/floor/carpet/orange,
+/area/awaymission/gate_closure/limnea)
+"bZ" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/obj/item/paper,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"ca" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/obj/item/paper_bin,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"cb" = (
+/obj/structure/table/wood{
+	pixel_y = -8;
+	pixel_x = -4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"cc" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"ce" = (
+/obj/structure/sink/kitchen/directional/west,
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"cf" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/chair/wood{
+	dir = 1
+	},
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"cg" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table_frame/wood,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"ch" = (
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"ci" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/obj/item/newspaper,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"ck" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 5
+	},
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/limnea)
+"cl" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/limnea)
+"cm" = (
+/obj/structure/chair/sofa/corp/left,
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"cn" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/abstract/gate_closure_dust/huge,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/limnea)
+"co" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"cp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/abstract/mist/gate_closure/huge,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"cq" = (
+/obj/structure/showcase/machinery/tv/broken,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"cs" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/obj/structure/sign/poster/contraband/shamblers_juice/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"cu" = (
+/obj/effect/light_emitter/podbay,
+/obj/effect/landmark/event_portal_point{
+	name = "Комната мобов - Лимнея"
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea/mob_room)
+"cF" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"cJ" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"cM" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"cQ" = (
+/obj/item/storage/fancy/coffee_condi_display{
+	pixel_y = 10;
+	pixel_x = 1
+	},
+/obj/item/reagent_containers/cup/bottle/syrup_bottle/liqueur{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/cup/bottle/syrup_bottle/korta_nectar{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/cup/bottle/syrup_bottle/caramel{
+	pixel_x = 12;
+	pixel_y = 4
+	},
+/obj/structure/table,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"cY" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/item/kirbyplants/organic/plant22{
+	pixel_y = 6
+	},
+/obj/structure/sign/poster/contraband/tipper_cream_soda/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"dh" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"dE" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_y = 10;
+	pixel_x = -7
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_y = 10;
+	pixel_x = 2
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_y = 2;
+	pixel_x = 10
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"dG" = (
+/obj/structure/chair/comfy/purp{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"dI" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"dL" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/machinery/vending/cigarette,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"dM" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"dP" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"dS" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"dU" = (
+/obj/structure/railing{
+	dir = 8;
+	color = "#A1662F";
+	pixel_y = -2;
+	pixel_x = -1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/item/kirbyplants/organic/applebush,
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"dX" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"dY" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/limnea)
+"ea" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/tile/neutral/tram{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"eb" = (
+/obj/structure/closet/cabinet,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"ek" = (
+/obj/structure/dresser,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"el" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "xgibup1-overlay"
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"eo" = (
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"eq" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"ev" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/syndiemoth/directional/east,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"ew" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"eB" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"eC" = (
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"eH" = (
+/obj/machinery/door/airlock{
+	id_tag = "Dorm4";
+	name = "Квартира 4"
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"eM" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"eN" = (
+/obj/effect/turf_decal/siding/wood/ebonite,
+/obj/structure/chair/comfy/corp{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"eQ" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"eZ" = (
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"fb" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"fg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"fh" = (
+/obj/effect/turf_decal/siding/wood/oak/corner,
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 8
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"fx" = (
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"fz" = (
+/obj/effect/turf_decal/siding/wood/ebonite,
+/obj/machinery/light,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"fA" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/rust,
+/area/awaymission/gate_closure/limnea)
+"fD" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"fO" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"fP" = (
+/obj/structure/chair/comfy/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"fZ" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 5
+	},
+/obj/item/flashlight/lamp,
+/turf/open/floor/carpet/purple,
+/area/awaymission/gate_closure/limnea)
+"ge" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/iron,
+/area/awaymission/gate_closure/limnea)
+"gg" = (
+/obj/structure/chair/sofa/corp{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"gk" = (
+/obj/effect/turf_decal/siding/wood/ebonite,
+/obj/structure/chair/comfy/corp{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"gn" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"go" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/obj/item/phone{
+	pixel_y = 9;
+	pixel_x = 8
+	},
+/obj/item/piggy_bank,
+/obj/structure/sign/poster/contraband/vodka/directional/north,
+/turf/open/floor/carpet/purple,
+/area/awaymission/gate_closure/limnea)
+"gp" = (
+/obj/structure/sign/poster/contraband/seabiscuit/directional/east,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"gq" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/obj/item/phone{
+	pixel_y = 9;
+	pixel_x = 8
+	},
+/obj/structure/sign/poster/contraband/tipper_cream_soda/directional/north,
+/turf/open/floor/carpet/purple,
+/area/awaymission/gate_closure/limnea)
+"gx" = (
+/obj/machinery/door/airlock{
+	id_tag = "Dorm2";
+	name = "Квартира 2"
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"gy" = (
+/obj/structure/sign/calendar/directional/west,
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"gA" = (
+/turf/closed/indestructible/rock,
+/area/awaymission/gate_closure/limnea/mob_room)
+"gW" = (
+/obj/structure/broken_flooring/plating,
+/obj/structure/broken_flooring/plating{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/limnea)
+"hd" = (
+/obj/structure/chair/office/tactical{
+	dir = 8;
+	name = "Очень удобное кресло";
+	desc = "Это кресло настолько удобное, что с него не захочется встать даже при Апокалипсисе."
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/turf/open/floor/carpet/orange,
+/area/awaymission/gate_closure/limnea)
+"he" = (
+/obj/machinery/griddle,
+/obj/effect/turf_decal/siding{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"hh" = (
+/obj/structure/chair/comfy/corp{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"hi" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"hl" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"ho" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 8
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"hp" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"hq" = (
+/obj/structure/billboard/twenty_four_seven,
+/obj/effect/light_emitter,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"hu" = (
+/obj/structure/closet/cabinet,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"hF" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/item/storage/cans/sixbeer,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"hT" = (
+/obj/item/kirbyplants/organic/plant22{
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"hV" = (
+/obj/structure/fake_stairs/wood/directional/west,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"ib" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/broken_flooring/pile/directional/west,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"id" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
+/turf/open/floor/carpet/orange,
+/area/awaymission/gate_closure/limnea)
+"im" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"in" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"iw" = (
+/obj/structure/chair/sofa/corp/right,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"ix" = (
+/obj/effect/light_emitter,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"iE" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"iI" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/table/wood,
+/obj/structure/sign/poster/contraband/space_up/directional/west,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"iJ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/crate/trashcart,
+/obj/structure/sign/poster/contraband/syndicate_recruitment/directional/north,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"iK" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/obj/item/phone{
+	pixel_y = 9;
+	pixel_x = 8
+	},
+/obj/item/piggy_bank,
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/limnea)
+"iN" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"iR" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"iU" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"iX" = (
+/obj/structure/sign/poster/contraband/space_cola/directional/east,
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"jd" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/glitter,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"jg" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"jk" = (
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea/mob_room)
+"jn" = (
+/obj/structure/table/reinforced,
+/obj/machinery/chem_dispenser/drinks/beer{
+	pixel_y = 8
+	},
+/obj/machinery/computer/security/telescreen/entertainment/directional/north,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"jo" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/machinery/button/door/directional/north{
+	id = "Dorm1"
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"jp" = (
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"jr" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"jx" = (
+/obj/machinery/smartfridge/food,
+/obj/item/food/pizza/sassysage,
+/obj/item/food/pizza/sassysage,
+/obj/item/food/pizza/sassysage,
+/obj/item/food/pizza/sassysage,
+/obj/item/food/pizza/sassysage,
+/obj/item/food/pizza/sassysage,
+/obj/item/food/spaghetti/pastatomato,
+/obj/item/food/spaghetti/pastatomato,
+/obj/item/food/spaghetti/pastatomato,
+/obj/effect/turf_decal/siding{
+	dir = 6
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"jE" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"jJ" = (
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/machinery/button/door/directional/north{
+	id = "Dorm6"
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"jK" = (
+/obj/structure/chair/sofa/corp/right,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"jL" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"jO" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/chair/sofa/bench/tram/left,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"jX" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"ka" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/chair/sofa/bench/tram/right,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"kc" = (
+/obj/structure/fake_stairs/wood/directional/east,
+/obj/structure/railing{
+	color = "#A1662F";
+	pixel_y = -2
+	},
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"kj" = (
+/obj/structure/table,
+/obj/machinery/coffeemaker{
+	pixel_y = 7
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"kv" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 9
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"kE" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/structure/hedge,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 5
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"kR" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/landmark/event_portal_point{
+	name = "Лимнея"
+	},
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"kT" = (
+/obj/structure/toilet{
+	pixel_y = 3;
+	dir = 4
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/limnea)
+"kU" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"kZ" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 8
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"lb" = (
+/obj/structure/chair/office/tactical{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/floor/carpet/royalblack,
+/area/awaymission/gate_closure/limnea)
+"ld" = (
+/obj/structure/chair/sofa/corp/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"lf" = (
+/obj/effect/turf_decal/tile/neutral/tram{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"ls" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/crate/bin,
+/turf/open/floor/iron,
+/area/awaymission/gate_closure/limnea)
+"lt" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/rush_propaganda/directional/south,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"lx" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/turf_decal/siding/dark{
+	dir = 9
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"ly" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/awaymission/gate_closure/limnea)
+"lE" = (
+/obj/machinery/gateway/gate_closure/wedding,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"lM" = (
+/obj/structure/dresser,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"lV" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "gibdown1-overlay"
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"lX" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/structure/sign/poster/contraband/roroco/directional/north,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"md" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/tile/neutral/tram{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"mk" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"mo" = (
+/obj/effect/turf_decal/siding/wood/ebonite/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"mp" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"mq" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"ms" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"mt" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/turf/open/floor/carpet/purple,
+/area/awaymission/gate_closure/limnea)
+"mu" = (
+/obj/effect/spawner/structure/window,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/limnea)
+"mA" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/machinery/washing_machine,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"mE" = (
+/obj/effect/decal/cleanable/glitter,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"mF" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/machinery/washing_machine,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"mQ" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"mV" = (
+/obj/item/kirbyplants/organic/plant22{
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"mW" = (
+/obj/effect/turf_decal/siding/wood/ebonite,
+/obj/effect/turf_decal/siding/wood/ebonite/end{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table_frame,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"mX" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/storage/fancy/donut_box,
+/obj/item/storage/fancy/donut_box,
+/obj/item/storage/fancy/donut_box,
+/obj/item/storage/fancy/donut_box,
+/obj/structure/sign/poster/contraband/thunderdrome/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"ng" = (
+/obj/structure/chair/sofa/bench/left,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"nh" = (
+/obj/machinery/door/airlock/bathroom{
+	id_tag = "Toilet4"
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"nm" = (
+/obj/effect/baseturf_helper,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/tile/neutral/tram{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"nu" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"nx" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/tea_over_tizira/directional/west,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/item/reagent_containers/cup/glass/waterbottle/large/empty,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"nz" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/obj/item/modular_computer/laptop,
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/limnea)
+"nJ" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/crate/bin,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"nL" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"nT" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"nU" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"nV" = (
+/obj/structure/chair/sofa/corp{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"nZ" = (
+/obj/machinery/vending/boozeomat,
+/obj/machinery/digital_clock/directional/north,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"oc" = (
+/obj/item/grenade/chem_grenade/cleaner{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/grenade/chem_grenade/cleaner{
+	pixel_x = 2;
+	pixel_y = -4
+	},
+/obj/item/grenade/chem_grenade/cleaner{
+	pixel_x = 10;
+	pixel_y = -4
+	},
+/obj/item/storage/box/lights/mixed{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_y = 8
+	},
+/obj/item/storage/box/lights/mixed{
+	pixel_y = 8;
+	pixel_x = 8
+	},
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/awaymission/gate_closure/limnea)
+"og" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"oo" = (
+/obj/effect/light_emitter/gate_closure,
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/limnea)
+"ov" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"oz" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"oA" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/chair/sofa/bench/tram/right{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"oB" = (
+/obj/structure/fake_stairs/wood/directional/south,
+/obj/structure/railing{
+	dir = 8;
+	color = "#A1662F"
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"oD" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table_frame/wood,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "bubblegumfoot"
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"oE" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/awaymission/gate_closure/limnea)
+"oF" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/food/cornchips{
+	pixel_y = 2;
+	pixel_x = -5
+	},
+/obj/item/food/cornchips{
+	pixel_y = 2;
+	pixel_x = -3
+	},
+/obj/item/food/cornchips{
+	pixel_y = 2;
+	pixel_x = -1
+	},
+/obj/item/food/cornchips{
+	pixel_y = 2
+	},
+/obj/item/food/cornchips{
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/obj/item/food/cornchips{
+	pixel_y = 2;
+	pixel_x = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"oJ" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/chair/sofa/bench/tram/left{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"oM" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"oR" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 9
+	},
+/obj/item/storage/medkit,
+/obj/item/storage/medkit,
+/obj/item/storage/medkit,
+/obj/item/storage/medkit,
+/obj/item/storage/medkit,
+/obj/item/storage/medkit,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"pa" = (
+/obj/structure/sink/directional,
+/obj/structure/mirror/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"pi" = (
+/obj/structure/table/reinforced/plasmarglass,
+/obj/item/toy/cards/deck{
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"po" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"pA" = (
+/obj/item/mop,
+/obj/structure/mop_bucket/janitorialcart,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/awaymission/gate_closure/limnea)
+"pC" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/robust_softdrinks/directional/south,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"pD" = (
+/obj/structure/sink/directional,
+/obj/structure/mirror/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"pE" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/chair/greyscale{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"pN" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"pQ" = (
+/obj/machinery/vending/cola,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"pU" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"pY" = (
+/obj/effect/decal/cleanable/rubble,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"qb" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"qi" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/table_frame/wood,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"qq" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/railing{
+	color = "#A1662F"
+	},
+/obj/structure/stairs/wood{
+	dir = 4
+	},
+/obj/structure/fake_stairs/wood/directional/east,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"qK" = (
+/obj/effect/turf_decal/siding/wood/ebonite/corner,
+/obj/effect/turf_decal/siding/wood/ebonite/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"qQ" = (
+/obj/structure/chair/sofa/corp{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/ebonite,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"qV" = (
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"qX" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"rb" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"rf" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"rl" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/table,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"rm" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/structure/sign/poster/contraband/smoke/directional/north,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"rt" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/machinery/light/small/directional/east,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"rz" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/machinery/washing_machine,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"rP" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"rV" = (
+/obj/machinery/door/airlock/public{
+	id_tag = "vip_room2"
+	},
+/obj/structure/curtain/bounty,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"rX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"rZ" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/vomit,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"sa" = (
+/obj/structure/desk_bell{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/obj/item/rag{
+	pixel_y = 4;
+	pixel_x = 10
+	},
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"sd" = (
+/obj/machinery/vending/snack/blue,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"so" = (
+/obj/machinery/vending/snack,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"sq" = (
+/obj/structure/closet/secure_closet/freezer/empty/open{
+	req_access = null;
+	req_one_access = null
+	},
+/obj/item/food/spaghetti/raw,
+/obj/item/food/spaghetti/raw,
+/obj/item/food/spaghetti/raw,
+/obj/item/food/spaghetti/raw,
+/obj/item/food/fishmeat/carp,
+/obj/item/food/fishmeat/carp,
+/obj/item/food/fishmeat/carp,
+/obj/item/food/fishmeat/carp,
+/obj/item/food/fishmeat/carp,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/effect/turf_decal/siding,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"sr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"ss" = (
+/obj/structure/chair/sofa/corp,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"sy" = (
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/barricade/wooden,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"sH" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"sS" = (
+/obj/structure/chair/sofa/bench/left{
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"sV" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/item/kirbyplants/organic/plant6,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"sW" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"tf" = (
+/obj/structure/chair/comfy/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"ti" = (
+/obj/structure/showcase/machinery/tv/broken,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 5
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"ts" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/sign/clock/directional/east,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"tz" = (
+/obj/effect/spawner/structure/window,
+/obj/structure/curtain/bounty,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/limnea)
+"tD" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"tF" = (
+/obj/structure/toilet{
+	pixel_y = 3;
+	dir = 4
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/limnea)
+"tI" = (
+/obj/effect/mapping_helpers/broken_floor,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/limnea)
+"tO" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/awaymission/gate_closure/limnea)
+"tS" = (
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"ub" = (
+/obj/machinery/coffeemaker/impressa{
+	pixel_y = 5
+	},
+/obj/structure/table,
+/obj/structure/table,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"uh" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"ul" = (
+/obj/structure/chair/stool/bar/dark,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"uq" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 5
+	},
+/obj/item/flashlight/lamp,
+/turf/open/floor/carpet/royalblack,
+/area/awaymission/gate_closure/limnea)
+"uv" = (
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"uy" = (
+/obj/structure/chair/sofa/bench,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"uA" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/fake_stairs/wood/directional/east,
+/obj/structure/railing{
+	color = "#A1662F"
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"uB" = (
+/turf/closed/wall,
+/area/awaymission/gate_closure/limnea)
+"uD" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/starkist/directional/east,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"uM" = (
+/obj/effect/turf_decal/siding/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/corner,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"uO" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"uV" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/obj/item/modular_computer/laptop,
+/turf/open/floor/carpet/royalblack,
+/area/awaymission/gate_closure/limnea)
+"uW" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/machinery/light/small/blacklight/directional/north,
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet/any,
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"uX" = (
+/obj/effect/turf_decal/siding/white,
+/obj/machinery/light,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"ve" = (
+/obj/machinery/smartfridge/food,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/light,
+/area/awaymission/gate_closure/limnea)
+"vg" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"vj" = (
+/obj/effect/turf_decal/siding/wood/ebonite/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite/corner,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"vr" = (
+/obj/structure/fake_stairs/wood/directional/west,
+/obj/structure/railing{
+	dir = 1;
+	color = "#A1662F";
+	pixel_y = -2
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"vA" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"vE" = (
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"vM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 8
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"vN" = (
+/obj/effect/turf_decal/siding/white/corner,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"vQ" = (
+/obj/structure/billboard/nanotrasen/defaced,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"vU" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"wk" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/obj/effect/turf_decal/siding{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"wq" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table_frame,
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "xgibbl4"
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"wr" = (
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"wu" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"wx" = (
+/obj/structure/flora/bush/sparsegrass/style_random,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"wz" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"wC" = (
+/obj/structure/chair/sofa/corp/left,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"wF" = (
+/obj/structure/closet/crate/bin,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"wG" = (
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"wO" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"wS" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/limnea)
+"wW" = (
+/obj/effect/turf_decal/siding/white,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"xi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"xj" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/bed/maint,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"xk" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"xt" = (
+/obj/structure/reagent_dispensers/keg/beer,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"xG" = (
+/obj/machinery/shower/directional/south,
+/obj/structure/fluff/shower_drain,
+/obj/structure/curtain,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/limnea)
+"xI" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"xM" = (
+/obj/machinery/light/small/directional/west,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"xR" = (
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 1
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"xS" = (
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_y = 5
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"xY" = (
+/obj/machinery/door/airlock/public/glass,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/curtain/bounty,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"yg" = (
+/obj/structure/railing/platform{
+	dir = 6
+	},
+/obj/item/kirbyplants/organic/plant21{
+	pixel_y = 8
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"yh" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"ym" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/sign/poster/contraband/donut_corp/directional/east,
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"yq" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"yt" = (
+/obj/item/kirbyplants/organic/plant18,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"yz" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"yA" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/machinery/button/door/directional/south{
+	id = "Dorm2"
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"yB" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"yG" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/weather/dirt{
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"yI" = (
+/obj/structure/sink/greyscale,
+/obj/structure/mirror/directional/north,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/limnea)
+"yP" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"yS" = (
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"yV" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/limnea)
+"yY" = (
+/obj/machinery/door/airlock/grunge,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/limnea)
+"za" = (
+/obj/effect/turf_decal/siding/wood/ebonite,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"zf" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/machinery/washing_machine,
+/obj/machinery/light,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"zk" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"zn" = (
+/obj/structure/fake_stairs/wood/directional/south,
+/obj/structure/railing{
+	dir = 4;
+	color = "#A1662F"
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"zo" = (
+/obj/structure/flora/bush/sparsegrass,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"zq" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"zv" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"zz" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"zB" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/machinery/light,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"zG" = (
+/obj/structure/fake_stairs/wood/directional/west,
+/obj/structure/railing{
+	color = "#A1662F"
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"zH" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"zI" = (
+/obj/structure/chair/comfy/corp,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"zW" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/machinery/washing_machine,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"zZ" = (
+/obj/structure/bonfire,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"Ab" = (
+/obj/machinery/vending/dinnerware,
+/obj/effect/turf_decal/siding{
+	dir = 5
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"Ai" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Aj" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"Am" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"An" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"Ao" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Ar" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/tram{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"AA" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"AE" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/white,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"AG" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/structure/bed/double,
+/obj/effect/spawner/random/bedsheet/double,
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"AK" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"AM" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/chair{
+	dir = 1
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"AP" = (
+/obj/effect/turf_decal/siding/wood/ebonite/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"AR" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/obj/item/modular_computer/laptop,
+/turf/open/floor/carpet/green,
+/area/awaymission/gate_closure/limnea)
+"AS" = (
+/obj/structure/railing/platform{
+	dir = 5
+	},
+/obj/item/kirbyplants/organic/plant21,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"AT" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"AW" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/structure/closet/crate/bin,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"AX" = (
+/obj/structure/chair/stool/bar/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"Ba" = (
+/obj/effect/turf_decal/siding/wood/ebonite/corner,
+/obj/effect/turf_decal/siding/wood/ebonite/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Bh" = (
+/obj/structure/railing{
+	dir = 8;
+	color = "#A1662F"
+	},
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"Bk" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/chair,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Bp" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"BA" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/machinery/chem_dispenser/drinks{
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"BN" = (
+/obj/structure/railing{
+	dir = 1;
+	color = "#A1662F";
+	pixel_y = -2
+	},
+/obj/structure/stairs/wood{
+	dir = 4
+	},
+/obj/structure/fake_stairs/wood/directional/east,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"BP" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"BR" = (
+/obj/item/kirbyplants/organic/plant22{
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"BT" = (
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"BV" = (
+/obj/structure/chair/office/tactical{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/awaymission/gate_closure/limnea)
+"Ch" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"Cn" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/limnea)
+"Cq" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"Cs" = (
+/obj/effect/turf_decal/siding/wood/ebonite/corner,
+/obj/structure/chair/comfy/corp,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"CD" = (
+/obj/structure/chair/comfy/corp{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"CN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 8
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"CT" = (
+/obj/effect/decal/cleanable/vomit,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"CU" = (
+/obj/structure/flora/bush/sparsegrass/style_3,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"CW" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"CX" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"CY" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/turf/open/floor/carpet/green,
+/area/awaymission/gate_closure/limnea)
+"De" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/shamblers_juice/directional/south,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"Dj" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite,
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"Dk" = (
+/obj/machinery/jukebox,
+/obj/structure/sign/poster/official/high_class_martini/directional/north,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Dn" = (
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"Do" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Ds" = (
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/airlock/service,
+/obj/structure/curtain/bounty,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"DD" = (
+/obj/item/storage/box/coffeepack{
+	pixel_y = 7
+	},
+/obj/item/storage/box/coffeepack/robusta{
+	pixel_y = 6
+	},
+/obj/item/storage/box/coffeepack,
+/obj/item/storage/box/coffeepack/robusta{
+	pixel_y = 2
+	},
+/obj/item/storage/box/coffeepack{
+	pixel_y = 4
+	},
+/obj/structure/table,
+/obj/item/reagent_containers/cup/glass/ice{
+	pixel_y = 10;
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/cup/glass/ice{
+	pixel_y = 7;
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/cup/glass/ice{
+	pixel_x = -9;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/cup/glass/ice{
+	pixel_y = 1;
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/cup/glass/bottle/juice/cream{
+	pixel_y = 9;
+	pixel_x = 10
+	},
+/obj/item/reagent_containers/cup/glass/bottle/juice/cream{
+	pixel_y = 5;
+	pixel_x = 10
+	},
+/obj/item/reagent_containers/cup/glass/bottle/juice/cream{
+	pixel_y = 1;
+	pixel_x = 10
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"DI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"DJ" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"DQ" = (
+/obj/structure/sink/kitchen/directional/south,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/awaymission/gate_closure/limnea)
+"DX" = (
+/obj/structure/closet/crate/trashcart,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"Ea" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"Ef" = (
+/obj/structure/sign/poster/contraband/self_ai_liberation/directional/east,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Eg" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/kirbyplants/random/dead,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Eh" = (
+/obj/structure/chair/sofa/bench/right,
+/obj/structure/sign/poster/contraband/syndiemoth/directional/north,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"El" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"En" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"Et" = (
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"EE" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"ES" = (
+/obj/structure/table/reinforced,
+/obj/machinery/reagentgrinder{
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"Fe" = (
+/obj/structure/table/wood,
+/obj/item/newspaper,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"Ff" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"Fp" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"Fw" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/obj/item/modular_computer/laptop,
+/turf/open/floor/carpet/purple,
+/area/awaymission/gate_closure/limnea)
+"FB" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"FK" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 8
+	},
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"FM" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/sofa/corp/left{
+	dir = 4
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"FN" = (
+/obj/machinery/door/airlock/hatch,
+/turf/open/floor/iron,
+/area/awaymission/gate_closure/limnea)
+"FR" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"FX" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"Gg" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"Gn" = (
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"Gp" = (
+/obj/structure/chair/sofa/corp/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"GE" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"GG" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"GN" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"GO" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/item/kirbyplants/random/dead,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"GQ" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/food/chips/shrimp{
+	pixel_y = 2;
+	pixel_x = -5
+	},
+/obj/item/food/chips/shrimp{
+	pixel_y = 2;
+	pixel_x = -4
+	},
+/obj/item/food/chips/shrimp{
+	pixel_y = 2;
+	pixel_x = -2
+	},
+/obj/item/food/chips/shrimp{
+	pixel_y = 2
+	},
+/obj/item/food/chips/shrimp{
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/obj/item/food/chips/shrimp{
+	pixel_y = 2;
+	pixel_x = 5
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"GS" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"Hf" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/light/small/directional/north,
+/obj/structure/bed,
+/obj/effect/spawner/random/bedsheet/any,
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"Hn" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 4
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"HG" = (
+/obj/structure/chair/sofa/bench{
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"HH" = (
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"HM" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/obj/item/flashlight/lamp,
+/turf/open/floor/carpet/orange,
+/area/awaymission/gate_closure/limnea)
+"HO" = (
+/obj/structure/sign/poster/contraband/shamblers_juice/directional/east,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"HX" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"Ie" = (
+/obj/machinery/light,
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"Ii" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"Ij" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/tile/neutral/tram{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"Io" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/bonfire,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"It" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Iu" = (
+/obj/structure/chair/sofa/corp/left,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"IA" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
+/turf/open/floor/carpet/green,
+/area/awaymission/gate_closure/limnea)
+"IC" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/machinery/button/door/directional/north{
+	id = "Dorm4"
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"ID" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/siding/white/inner_corner,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"IM" = (
+/obj/structure/chair/sofa/bench/left{
+	dir = 4
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"IR" = (
+/obj/structure/dresser,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/limnea)
+"IU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"IW" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/obj/item/phone{
+	pixel_y = 9;
+	pixel_x = 8
+	},
+/obj/item/piggy_bank,
+/turf/open/floor/carpet/green,
+/area/awaymission/gate_closure/limnea)
+"IX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"Jh" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/sofa/corp/right{
+	dir = 4
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Jj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Ju" = (
+/obj/structure/sign/chalkboard_menu,
+/turf/closed/wall,
+/area/awaymission/gate_closure/limnea)
+"Jv" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
+/obj/structure/sign/poster/contraband/watching_eye/directional/east,
+/turf/open/floor/carpet/royalblack,
+/area/awaymission/gate_closure/limnea)
+"Jx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"JC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"JE" = (
+/obj/effect/light_emitter,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"JG" = (
+/obj/structure/toilet{
+	pixel_y = 8;
+	dir = 4
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/limnea)
+"JU" = (
+/obj/effect/turf_decal/siding/wood/oak,
+/obj/machinery/button/door/directional/south{
+	id = "Dorm5"
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"JX" = (
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"JY" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"Kg" = (
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 4
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"Ki" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Kk" = (
+/obj/structure/sink/directional,
+/obj/structure/mirror/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"Kv" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Kx" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/structure/hedge,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"KI" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/oven/range,
+/obj/effect/turf_decal/siding{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"KJ" = (
+/obj/structure/chair/sofa/corp,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"KP" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_y = 7
+	},
+/obj/item/pen,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"KU" = (
+/obj/effect/decal/cleanable/garbage,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"KW" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 5
+	},
+/obj/item/flashlight/lamp,
+/turf/open/floor/carpet/green,
+/area/awaymission/gate_closure/limnea)
+"KY" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/obj/item/kirbyplants/organic/plant19,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Ld" = (
+/obj/item/clothing/suit/apron/chef{
+	name = "Jim Norton's Quebecois Coffee apron"
+	},
+/obj/item/clothing/head/soft/green{
+	color = "#00a62e";
+	desc = "It's a baseball hat in a tastefull green colour.";
+	name = "Jim Norton's Quebecois Coffee cap"
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/structure/closet,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"Le" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 8
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"Lg" = (
+/obj/effect/turf_decal/weather/dirt{
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Lh" = (
+/turf/open/chasm/gate_closure,
+/area/awaymission/gate_closure/limnea)
+"Li" = (
+/obj/effect/turf_decal/siding/wood/ebonite/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/ebonite/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Ln" = (
+/obj/structure/closet/crate/bin,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"Lx" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"Ly" = (
+/obj/machinery/button/door/directional/west{
+	id = "vip_room2";
+	name = "Door Control";
+	specialfunctions = 4;
+	normaldoorcontrol = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Lz" = (
+/obj/structure/chair/sofa/corp{
+	dir = 1
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"LK" = (
+/obj/machinery/button/door/directional/west{
+	id = "Toilet5";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4;
+	pixel_x = 24
+	},
+/obj/structure/toilet{
+	pixel_y = -4;
+	dir = 1
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"LM" = (
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/item/food/meat/slab/pig,
+/obj/structure/closet/crate/freezer/food,
+/obj/effect/turf_decal/siding{
+	dir = 10
+	},
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"LO" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/machinery/vending/clothing,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"LP" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"LR" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/broken_flooring/pile,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"LY" = (
+/obj/structure/chair/office/tactical{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/limnea)
+"Mc" = (
+/obj/effect/decal/cleanable/garbage,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"Me" = (
+/obj/machinery/door/airlock/public,
+/obj/structure/curtain/bounty,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Mh" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Mi" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Ms" = (
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/oak/corner,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"Mz" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"MF" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 5
+	},
+/obj/item/phone{
+	pixel_y = 9;
+	pixel_x = 8
+	},
+/obj/item/piggy_bank,
+/turf/open/floor/carpet/orange,
+/area/awaymission/gate_closure/limnea)
+"MK" = (
+/obj/structure/closet/cabinet,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"MV" = (
+/obj/structure/table/reinforced,
+/obj/machinery/barsign/directional/north,
+/obj/item/rag{
+	pixel_y = 6
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"MW" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/item/kirbyplants/organic/plant19,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Nd" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Nk" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"Nm" = (
+/obj/structure/table/wood,
+/obj/machinery/light,
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"Nw" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/reagent_containers/cup/soda_cans/beer{
+	pixel_y = 9;
+	pixel_x = -7
+	},
+/obj/item/reagent_containers/cup/soda_cans/beer,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"NA" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"NH" = (
+/obj/structure/curtain/bounty,
+/obj/machinery/door/airlock/public,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"NJ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"NM" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"NN" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 6
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"NP" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/barricade/wooden,
+/turf/open/floor/carpet,
+/area/awaymission/gate_closure/limnea)
+"NT" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 9
+	},
+/obj/item/phone{
+	pixel_y = 9;
+	pixel_x = 8
+	},
+/obj/item/piggy_bank,
+/turf/open/floor/carpet/royalblack,
+/area/awaymission/gate_closure/limnea)
+"NY" = (
+/obj/structure/chair/sofa/corp,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Ob" = (
+/obj/effect/turf_decal/siding/white,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"OA" = (
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 1
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"OC" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"OJ" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"OL" = (
+/obj/machinery/door/airlock/public,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"OM" = (
+/obj/effect/decal/cleanable/rubble,
+/obj/effect/spawner/random/trash/hobo_squat,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"OP" = (
+/obj/structure/rack,
+/obj/item/restraints/legcuffs/beartrap{
+	pixel_y = 12
+	},
+/obj/item/restraints/legcuffs/beartrap{
+	pixel_y = 6
+	},
+/turf/open/floor/iron,
+/area/awaymission/gate_closure/limnea)
+"OQ" = (
+/obj/structure/chair/sofa/corp/left,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"OT" = (
+/obj/structure/chair/stool/bar/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/turf/open/floor/carpet/neon/simple/purple,
+/area/awaymission/gate_closure/limnea)
+"Pd" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"Pe" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/chair/stool/bar/dark{
+	dir = 4
+	},
+/obj/structure/sign/poster/contraband/your_fate/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"Pg" = (
+/obj/structure/extinguisher_cabinet/directional/west,
+/obj/effect/turf_decal/siding{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/keg/beer,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"Ph" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/barricade/wooden,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"Pp" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 4
+	},
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"Pr" = (
+/obj/effect/turf_decal/weather/dirt,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Pt" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 10
+	},
+/turf/open/floor/carpet/orange,
+/area/awaymission/gate_closure/limnea)
+"Pu" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Pw" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 10
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"PF" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"PR" = (
+/obj/structure/table/reinforced/rglass,
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/ebonite,
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"PS" = (
+/obj/structure/railing{
+	dir = 8;
+	color = "#A1662F";
+	pixel_y = 1;
+	pixel_x = -1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/item/kirbyplants/organic/applebush,
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"PT" = (
+/obj/structure/chair/sofa/corp{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"PV" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 6
+	},
+/turf/open/floor/carpet/purple,
+/area/awaymission/gate_closure/limnea)
+"Ql" = (
+/obj/structure/fake_stairs/wood/directional/east,
+/obj/structure/railing{
+	dir = 1;
+	color = "#A1662F";
+	pixel_y = -2
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Qs" = (
+/obj/machinery/smartfridge/food,
+/obj/effect/turf_decal/siding{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/light,
+/area/awaymission/gate_closure/limnea)
+"Qz" = (
+/obj/structure/chair/stool/bar/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 5
+	},
+/turf/open/floor/carpet/neon/simple/purple,
+/area/awaymission/gate_closure/limnea)
+"QA" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"QE" = (
+/obj/structure/table/reinforced/plasmarglass,
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"QI" = (
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"QJ" = (
+/obj/machinery/door/airlock{
+	id_tag = "Dorm5";
+	name = "Квартира 5"
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"QK" = (
+/obj/machinery/door/airlock/public/glass,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"QU" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/aquarium,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"QW" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Rb" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"Rc" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 4
+	},
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"Rl" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/tools/directional/north,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"Ro" = (
+/obj/structure/chair/sofa/bench{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Rq" = (
+/obj/structure/chair/comfy/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/oak,
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"Rt" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"Ry" = (
+/obj/effect/turf_decal/siding/wood/oak/corner{
+	dir = 8
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"RC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"RF" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/food/chips{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/food/chips{
+	pixel_y = 2;
+	pixel_x = -3
+	},
+/obj/item/food/chips{
+	pixel_y = 2
+	},
+/obj/item/food/chips{
+	pixel_y = 2;
+	pixel_x = 3
+	},
+/obj/item/food/chips{
+	pixel_y = 2;
+	pixel_x = 7
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"RJ" = (
+/obj/item/reagent_containers/cup/soda_cans/beer{
+	pixel_y = 9;
+	pixel_x = -7
+	},
+/obj/item/reagent_containers/cup/soda_cans/beer,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"RO" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"RP" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/weather/dirt{
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"RR" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/limnea)
+"RU" = (
+/obj/structure/chair/sofa/corp/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"RX" = (
+/obj/structure/fake_stairs/wood/directional/east,
+/turf/open/floor/wood/tile,
+/area/awaymission/gate_closure/limnea)
+"RY" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"RZ" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Sc" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"Sg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Sl" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/chair/sofa/bench/tram,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"So" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"Sp" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/structure/chair/greyscale{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"Sv" = (
+/obj/structure/closet/crate/bin,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"Sy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"SA" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/flora/bush/sparsegrass/style_random,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"SM" = (
+/obj/effect/turf_decal/siding/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"SP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/weather/dirt{
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"ST" = (
+/obj/effect/turf_decal/siding/wood/ebonite/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"SV" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/wildcat/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"Td" = (
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 8
+	},
+/obj/item/kirbyplants/organic/plant19,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Ti" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"Ty" = (
+/obj/structure/flora/bush/sparsegrass,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"TF" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 5
+	},
+/obj/machinery/vending/autodrobe,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/light_emitter/gate_closure/red/small,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"Ud" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/chair/comfy/corp{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"Ug" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"Ul" = (
+/obj/machinery/door/airlock/bathroom{
+	id_tag = "Toilet5"
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/iron/smooth,
+/area/awaymission/gate_closure/limnea)
+"Uw" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/turf/open/floor/wood/parquet,
+/area/awaymission/gate_closure/limnea)
+"Uy" = (
+/obj/effect/turf_decal/siding/wood/ebonite,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"UA" = (
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/limnea)
+"UB" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 10
+	},
+/obj/item/reagent_containers/cup/glass/waterbottle/relic,
+/obj/item/reagent_containers/cup/glass/waterbottle/relic,
+/obj/item/reagent_containers/cup/glass/waterbottle/relic,
+/obj/item/reagent_containers/cup/glass/waterbottle/relic,
+/obj/item/reagent_containers/cup/glass/waterbottle/relic,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"UG" = (
+/obj/structure/table/reinforced/plasmarglass,
+/obj/machinery/light/small/blacklight/directional/east,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"UJ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"UO" = (
+/obj/structure/chair/office/tactical{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 8
+	},
+/turf/open/floor/carpet/purple,
+/area/awaymission/gate_closure/limnea)
+"UV" = (
+/obj/effect/turf_decal/siding/wood/ebonite,
+/obj/effect/turf_decal/siding/wood/ebonite/end{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table_frame,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/blood/old{
+	icon_state = "bubblegumfoot"
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"Vb" = (
+/obj/structure/fake_stairs/wood/directional/east,
+/obj/structure/railing{
+	dir = 1;
+	color = "#A1662F";
+	pixel_y = -2
+	},
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Vf" = (
+/obj/effect/spawner/random/trash/hobo_squat,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"VG" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white,
+/obj/item/reagent_containers/cup/glass/waterbottle,
+/obj/item/reagent_containers/cup/glass/waterbottle,
+/obj/item/reagent_containers/cup/glass/waterbottle,
+/obj/item/reagent_containers/cup/glass/waterbottle,
+/obj/item/reagent_containers/cup/glass/waterbottle,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"VH" = (
+/obj/structure/signboard/holosign,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"VM" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/machinery/vending/hotdog,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/light_emitter/gate_closure/red/small,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"VY" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"Wb" = (
+/obj/structure/chair/sofa/bench{
+	dir = 4
+	},
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"WH" = (
+/obj/machinery/button/door/directional/east{
+	id = "vip_room2";
+	name = "Door Control";
+	specialfunctions = 4;
+	normaldoorcontrol = 1
+	},
+/obj/effect/turf_decal/siding/wood/ebonite{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"WK" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"WV" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/dark{
+	dir = 9
+	},
+/turf/open/floor/light{
+	icon_state = "light_on-7";
+	state = 7;
+	light_color = "#a659ff"
+	},
+/area/awaymission/gate_closure/limnea)
+"WZ" = (
+/obj/structure/dresser,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/gate_closure/limnea)
+"Xk" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/awaymission/gate_closure/limnea)
+"XC" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/misc/dirt/dark/station,
+/area/awaymission/gate_closure/limnea)
+"XJ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/chair/wood,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"XK" = (
+/obj/structure/chair/sofa/bench/tram{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/awaymission/gate_closure/limnea)
+"XP" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/cafeteria,
+/area/awaymission/gate_closure/limnea)
+"XR" = (
+/obj/effect/turf_decal/siding/wood/ebonite/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Yb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/tile/neutral/tram{
+	dir = 4
+	},
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+"Yo" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_y = 10;
+	pixel_x = -7
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_y = 10;
+	pixel_x = 2
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_y = 2;
+	pixel_x = 10
+	},
+/obj/structure/sign/poster/contraband/space_cola/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/gate_closure/limnea)
+"YC" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/item/reagent_containers/cup/glass/coffee_cup{
+	pixel_y = 13;
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/cup/glass/coffee_cup{
+	pixel_y = 10;
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/cup/glass/coffee_cup{
+	pixel_y = 6;
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/cup/glass/coffee_cup{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/cup/glass/mug{
+	pixel_y = 11;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/cup/glass/mug{
+	pixel_y = 8;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/cup/glass/mug{
+	pixel_y = 6;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/cup/glass/mug{
+	pixel_y = 2;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/cup/glass/mug{
+	pixel_y = -3;
+	pixel_x = 5
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/awaymission/gate_closure/limnea)
+"YJ" = (
+/obj/structure/chair/sofa/corp/right,
+/turf/open/floor/carpet/neon/simple/violet,
+/area/awaymission/gate_closure/limnea)
+"YN" = (
+/turf/closed/wall/rust,
+/area/awaymission/gate_closure/limnea)
+"Zc" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/large/ebonite,
+/area/awaymission/gate_closure/limnea)
+"Zg" = (
+/obj/structure/table/reinforced,
+/obj/machinery/chem_dispenser/drinks{
+	pixel_y = 8
+	},
+/obj/structure/sign/poster/official/high_class_martini/directional/north,
+/obj/effect/mapping_helpers/broken_machine/gate_closure,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"Zn" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 1
+	},
+/obj/structure/closet/crate/bin,
+/turf/open/floor/wood/oak,
+/area/awaymission/gate_closure/limnea)
+"Zp" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/random/trash/garbage,
+/turf/open/floor/stone,
+/area/awaymission/gate_closure/limnea)
+"ZI" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
+/area/awaymission/gate_closure/limnea)
+"ZJ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/asphalt,
+/area/awaymission/gate_closure/limnea)
+
+(1,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(2,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+oo
+Lh
+Lh
+Lh
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+Lh
+Lh
+Lh
+oo
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+co
+co
+Lh
+Lh
+Lh
+Lh
+Lh
+oo
+Lh
+Lh
+Lh
+"}
+(3,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+cq
+uB
+uB
+Lh
+Lh
+Lh
+Lh
+zG
+uB
+uB
+HM
+bY
+Pt
+uB
+xG
+JG
+uB
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+oo
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+co
+QI
+Ty
+Ty
+Ty
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(4,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+JX
+fP
+uB
+uB
+vr
+hV
+hV
+hV
+zG
+uB
+YN
+MF
+hd
+id
+uB
+yI
+UA
+uB
+uB
+uB
+YN
+uB
+YN
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+Lh
+Lh
+Lh
+Lh
+co
+co
+QI
+QI
+Lh
+Lh
+Lh
+mE
+QI
+QI
+QI
+QI
+QI
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(5,1,1) = {"
+Lh
+Lh
+Lh
+oo
+Lh
+Lh
+tD
+JX
+DJ
+uB
+uB
+vr
+hV
+hV
+hV
+zG
+uB
+YN
+hu
+JX
+DJ
+YN
+WZ
+wS
+uB
+uB
+oR
+hF
+dL
+BA
+VM
+nx
+UB
+uB
+pA
+tO
+OP
+uB
+QI
+Lh
+Lh
+Ty
+AA
+QI
+QI
+QI
+QI
+QI
+zo
+zo
+QI
+OM
+QI
+Pp
+Rc
+QI
+Lh
+Lh
+Lh
+Lh
+"}
+(6,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+RR
+OA
+JX
+JU
+uB
+kE
+ad
+ad
+ad
+ad
+ad
+Kx
+uB
+Rl
+JX
+fh
+yY
+UA
+UA
+uB
+uB
+mX
+rP
+rP
+rP
+rP
+Cn
+VG
+YN
+oc
+oE
+ge
+uB
+QI
+ba
+QI
+QI
+pY
+QI
+pY
+QI
+Ty
+Ty
+Ty
+QI
+QI
+QI
+QI
+ba
+RJ
+ba
+QI
+Lh
+Lh
+Lh
+"}
+(7,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+AT
+uB
+iK
+LY
+yV
+QJ
+bT
+ad
+ad
+bk
+ad
+ad
+jr
+bd
+xR
+JX
+DJ
+uB
+uB
+uB
+uB
+uB
+bg
+rP
+rP
+rP
+rP
+rP
+fD
+uB
+ly
+oE
+Xk
+uB
+QI
+QI
+vQ
+QI
+QI
+QI
+ba
+ba
+QI
+co
+QI
+QI
+Vf
+QI
+QI
+oD
+zZ
+QI
+QI
+Lh
+Lh
+Lh
+"}
+(8,1,1) = {"
+Lh
+Lh
+Lh
+uW
+Pd
+uB
+ck
+nz
+dY
+uB
+bT
+ad
+ad
+ad
+ad
+ad
+jr
+YN
+jJ
+JX
+Ms
+RR
+dS
+nu
+uB
+uB
+Rt
+oM
+rP
+fA
+rP
+rP
+fD
+uB
+DQ
+oE
+ls
+YN
+QI
+QI
+QI
+QI
+ba
+QI
+Ty
+QI
+QI
+QI
+QI
+pN
+QI
+ba
+QI
+QI
+CT
+QI
+ba
+pY
+Lh
+Lh
+"}
+(9,1,1) = {"
+Lh
+Lh
+Lh
+uB
+uB
+uB
+uB
+uB
+uB
+YN
+bT
+ad
+ad
+ad
+ad
+ad
+jr
+uB
+ti
+Fe
+be
+uB
+lM
+AG
+uB
+uB
+ve
+oM
+rP
+rP
+rP
+rP
+fD
+uB
+uB
+FN
+uB
+YN
+QI
+QI
+QI
+ba
+QI
+QI
+co
+co
+QI
+XC
+QI
+QI
+QI
+QI
+QI
+FK
+rZ
+xt
+co
+co
+Lh
+Lh
+"}
+(10,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+tF
+uB
+MK
+ci
+cq
+YN
+bT
+ad
+ad
+ad
+ad
+ad
+jr
+YN
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+ve
+rP
+rP
+rP
+pU
+rP
+wr
+Fp
+gy
+tS
+an
+YN
+QI
+Ty
+QI
+VY
+co
+QI
+co
+QI
+QI
+XC
+QI
+QI
+ac
+QI
+QI
+QI
+ba
+QI
+eo
+co
+co
+Lh
+"}
+(11,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+UA
+yY
+xR
+JX
+CD
+uB
+rm
+ad
+ad
+ad
+ad
+ad
+De
+uB
+Bp
+bZ
+cq
+uB
+xG
+JG
+uB
+YN
+ve
+rP
+oM
+rP
+rP
+oM
+rP
+rP
+rP
+oM
+Ob
+mu
+QI
+Ty
+jd
+co
+QI
+QI
+QI
+QI
+QI
+CU
+QI
+QI
+QI
+QI
+QI
+wx
+QI
+QI
+QI
+Lh
+Lh
+Lh
+"}
+(12,1,1) = {"
+Lh
+Lh
+oo
+Lh
+Lh
+uB
+tD
+JX
+DJ
+uB
+bT
+ad
+ad
+ad
+ad
+ad
+jr
+uB
+IC
+JX
+Rq
+uB
+yI
+wS
+uB
+YN
+Qs
+oM
+rP
+aS
+aI
+rP
+aB
+aq
+rP
+rP
+Ob
+mu
+pY
+QI
+QI
+QI
+QI
+QI
+XC
+QI
+Ff
+rX
+QI
+bP
+QI
+QI
+QI
+QA
+QI
+QI
+QI
+Ty
+Lh
+Lh
+"}
+(13,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+ai
+OA
+JX
+Ry
+aU
+bT
+ad
+ad
+ad
+ad
+ad
+jr
+eH
+xR
+JX
+Ms
+yY
+UA
+UA
+uB
+uB
+ve
+rP
+rP
+aT
+aJ
+rP
+aC
+ar
+rP
+rP
+Ob
+mu
+QI
+QI
+wx
+QI
+pY
+pN
+rX
+rX
+QI
+rX
+QI
+QI
+QI
+QI
+QI
+QI
+QI
+QI
+QI
+QI
+Lh
+Lh
+"}
+(14,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+AT
+uB
+NT
+lb
+aL
+uB
+bT
+ad
+ad
+cl
+ad
+ad
+jr
+YN
+hu
+JX
+DJ
+YN
+uB
+uB
+uB
+uB
+dE
+rP
+bf
+aW
+aK
+rP
+aD
+at
+oM
+KP
+AE
+uB
+Eh
+ba
+QI
+QI
+QI
+Jx
+QI
+QI
+WK
+QI
+QI
+QI
+QI
+FX
+QI
+QI
+QI
+SA
+QI
+QI
+Lh
+oo
+"}
+(15,1,1) = {"
+Lh
+Lh
+uB
+ek
+Pd
+uB
+uq
+uV
+Jv
+uB
+bT
+ad
+ad
+ad
+ad
+ad
+jr
+uB
+gq
+UO
+mt
+RR
+dS
+nu
+uB
+uB
+Yo
+oM
+rP
+aX
+aM
+rP
+bX
+av
+rP
+Dn
+ao
+YN
+uy
+QI
+wx
+QI
+wx
+wx
+co
+co
+QI
+rX
+rX
+QI
+aw
+QI
+QI
+QI
+Mc
+XC
+KU
+QI
+Lh
+Lh
+"}
+(16,1,1) = {"
+Lh
+Lh
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+YN
+bT
+ad
+ad
+ad
+ad
+ad
+jr
+uB
+fZ
+Fw
+PV
+uB
+lM
+AG
+uB
+uB
+dE
+rP
+rP
+rP
+rP
+rP
+tI
+rP
+rP
+wG
+Ob
+uB
+ng
+QI
+QI
+XC
+QI
+QI
+wx
+QI
+ba
+rX
+Sy
+QI
+QI
+QI
+QI
+QI
+QI
+QI
+wx
+QI
+Lh
+Lh
+"}
+(17,1,1) = {"
+Lh
+Lh
+uB
+xG
+kT
+uB
+MK
+ci
+cq
+uB
+bT
+ad
+ad
+ad
+ad
+ad
+lt
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+RF
+rP
+tI
+rP
+rP
+rP
+rP
+rP
+rP
+rP
+Ob
+mu
+Ln
+QI
+QI
+pY
+wx
+QI
+QI
+wx
+ba
+rX
+Sy
+QI
+QI
+QI
+co
+wx
+QI
+QI
+SA
+co
+Lh
+Lh
+"}
+(18,1,1) = {"
+Lh
+Lh
+uB
+IR
+UA
+yY
+xR
+JX
+dG
+uB
+bT
+ad
+ad
+ad
+ad
+ad
+jr
+YN
+Bp
+ca
+cq
+uB
+xG
+JG
+uB
+uB
+oF
+oM
+Ug
+aY
+aN
+rP
+aF
+ax
+rP
+rP
+Ob
+mu
+QI
+QI
+QI
+wx
+QI
+QI
+QI
+QI
+ba
+rX
+Sy
+QI
+QI
+QI
+co
+QI
+QI
+Mc
+co
+co
+Lh
+Lh
+"}
+(19,1,1) = {"
+Lh
+Lh
+uB
+yI
+UA
+uB
+Uw
+JX
+Ms
+gx
+bT
+ad
+ad
+cn
+ad
+ad
+jr
+am
+Kg
+JX
+tf
+uB
+yI
+wS
+uB
+uB
+bi
+rP
+rP
+aZ
+aO
+rP
+aG
+az
+rP
+oM
+Ob
+mu
+Ty
+Ty
+QI
+QI
+pY
+ba
+wx
+pY
+pY
+QI
+ba
+QI
+pN
+QI
+QI
+QI
+QI
+QI
+QI
+pY
+Lh
+Lh
+"}
+(20,1,1) = {"
+Lh
+oo
+uB
+uB
+uB
+uB
+tD
+JX
+yA
+uB
+lX
+ad
+ad
+ad
+ad
+ad
+pC
+YN
+jo
+JX
+fh
+yY
+UA
+UA
+uB
+uB
+GQ
+oM
+oM
+bb
+aQ
+rP
+aH
+aA
+rP
+Ug
+uX
+uB
+DX
+QI
+QI
+mE
+QI
+pY
+QI
+pN
+rX
+QI
+ba
+QI
+QI
+QI
+co
+QI
+QA
+QI
+co
+Ty
+Lh
+Lh
+"}
+(21,1,1) = {"
+Lh
+Lh
+uB
+eb
+nu
+RR
+OA
+JX
+DJ
+YN
+bT
+ad
+ad
+ad
+ad
+ad
+jr
+uB
+hu
+JX
+DJ
+YN
+uB
+uB
+uB
+uB
+Nk
+oM
+rP
+oM
+rP
+rP
+rP
+rP
+oM
+oM
+Ob
+uB
+iJ
+co
+VY
+jg
+QI
+Ty
+XC
+co
+QI
+QI
+QI
+QI
+ba
+QI
+QI
+QI
+QI
+QI
+QI
+QI
+Lh
+Lh
+"}
+(22,1,1) = {"
+Lh
+Lh
+uB
+Hf
+AT
+uB
+IW
+BV
+CY
+uB
+bT
+ad
+ad
+ad
+ad
+ad
+jr
+uB
+go
+UO
+mt
+RR
+dS
+nu
+uB
+uB
+LO
+Ug
+rP
+oz
+oM
+oz
+rP
+rP
+rP
+bW
+wW
+uB
+hq
+QI
+co
+co
+aE
+co
+co
+co
+wx
+QI
+QI
+co
+QI
+Ty
+Mc
+QI
+QI
+pY
+QI
+Ty
+Lh
+Lh
+"}
+(23,1,1) = {"
+Lh
+Lh
+uB
+ek
+Pd
+uB
+KW
+AR
+IA
+uB
+AW
+ae
+ae
+ah
+af
+ae
+Zn
+uB
+fZ
+Fw
+PV
+YN
+lM
+AG
+uB
+uB
+TF
+qX
+qX
+bc
+qX
+qX
+iX
+uv
+vN
+qX
+ID
+uB
+ix
+co
+QI
+co
+wx
+QI
+jg
+co
+wx
+QI
+QI
+SA
+wx
+QI
+QI
+Ty
+Ty
+QI
+QI
+QI
+Lh
+Lh
+"}
+(24,1,1) = {"
+Lh
+Lh
+uB
+uB
+uB
+uB
+YN
+uB
+uB
+uB
+mu
+mu
+mu
+NP
+NP
+mu
+mu
+YN
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+YN
+mu
+mu
+YN
+mu
+mu
+uB
+rP
+fx
+mu
+mu
+uB
+JE
+co
+co
+SA
+co
+co
+QI
+wx
+wx
+QI
+wx
+QI
+QI
+pY
+wx
+QI
+QI
+QI
+co
+QI
+Lh
+Lh
+"}
+(25,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+wF
+IM
+Wb
+mQ
+vE
+Mz
+vE
+vE
+vE
+vE
+vE
+vE
+vE
+Mz
+vE
+so
+pQ
+Ki
+vE
+nJ
+IM
+Wb
+Hn
+vE
+vE
+vE
+vE
+Kv
+al
+vE
+vE
+vE
+vE
+Pr
+QI
+QI
+QI
+co
+QI
+QI
+QI
+wx
+QI
+co
+QI
+QI
+QI
+co
+co
+QI
+co
+pY
+QI
+co
+Lh
+Lh
+"}
+(26,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+vE
+vE
+GE
+GE
+Jj
+Jj
+vE
+vE
+jE
+GE
+vE
+vE
+GE
+GE
+GE
+bs
+vE
+vE
+Jj
+vE
+Lh
+vE
+vE
+vE
+GE
+vE
+HH
+zH
+GE
+vE
+HH
+vE
+vE
+vE
+yG
+yG
+SP
+SP
+Lg
+Lg
+SP
+SP
+Lg
+Lg
+Lg
+yG
+Lg
+yG
+RP
+yG
+RP
+yG
+Lg
+Lg
+Lh
+oo
+"}
+(27,1,1) = {"
+Lh
+oo
+Lh
+Lh
+vE
+vE
+Jj
+Jj
+vE
+Jj
+Jj
+vE
+Jj
+vE
+vE
+Ai
+Jj
+jE
+bs
+bs
+Ai
+Ai
+Jj
+Lh
+Lh
+Jj
+Jj
+GE
+It
+Ai
+po
+vE
+GE
+GE
+vE
+vE
+po
+bU
+vE
+vE
+vE
+GE
+po
+vE
+vE
+vE
+Jj
+vE
+jp
+GE
+GE
+HH
+vE
+vE
+Zp
+GE
+vE
+vE
+Lh
+Lh
+"}
+(28,1,1) = {"
+Lh
+Lh
+Lh
+wz
+wz
+wz
+wz
+wz
+wz
+RY
+cF
+Do
+RY
+wz
+cF
+cF
+wz
+wz
+wz
+wz
+RY
+cF
+cF
+Lh
+Lh
+oo
+Lh
+wz
+wz
+cF
+Do
+RY
+wz
+zq
+wz
+wz
+wz
+wz
+cF
+cF
+RY
+wz
+cF
+RY
+RY
+Pu
+wz
+wz
+wz
+wz
+RY
+RY
+RY
+wz
+cF
+cF
+wz
+RY
+wz
+Lh
+"}
+(29,1,1) = {"
+Lh
+Lh
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+ho
+bj
+kZ
+bj
+bj
+kZ
+kZ
+bj
+kZ
+kZ
+kZ
+kZ
+kZ
+bj
+kZ
+Lh
+Lh
+Lh
+kZ
+bj
+kZ
+kZ
+vM
+kZ
+bj
+kZ
+kZ
+bj
+kZ
+bj
+bj
+vM
+kZ
+kZ
+kZ
+vM
+Le
+bj
+bj
+bj
+bj
+kZ
+bj
+kZ
+vM
+CN
+kZ
+kZ
+kZ
+ho
+Lh
+"}
+(30,1,1) = {"
+Lh
+Lh
+Gn
+Gn
+Gn
+fg
+Gn
+fg
+Sc
+og
+Gn
+Gn
+Gn
+Sc
+fg
+fg
+Gn
+Gn
+Gn
+Gn
+Gn
+fg
+fg
+Gn
+Lh
+Lh
+Lh
+Gn
+Sc
+Gn
+Gn
+fg
+Gn
+Sc
+Gn
+Gn
+og
+Gn
+Ii
+Sc
+Sc
+Gn
+Sc
+Sc
+fg
+aV
+Sc
+Gn
+Gn
+Gn
+bO
+Sc
+Gn
+fg
+IU
+Sc
+Gn
+Gn
+Lh
+Lh
+"}
+(31,1,1) = {"
+Lh
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+fg
+Gn
+Sc
+Gn
+Gn
+Gn
+cp
+Gn
+Gn
+fg
+Gn
+Gn
+Gn
+Gn
+Gn
+Sc
+Gn
+fg
+Sc
+Lh
+Gn
+Gn
+Gn
+IU
+fg
+Sc
+Gn
+Sc
+Sc
+Sc
+fg
+Gn
+Gn
+Gn
+Sc
+Gn
+Sc
+Ii
+wO
+og
+Sc
+Gn
+Gn
+Sc
+wO
+fg
+Gn
+Gn
+Gn
+Gn
+Gn
+Lh
+Lh
+"}
+(32,1,1) = {"
+Lh
+Gn
+aj
+Gn
+Gn
+Gn
+Gn
+Gn
+fg
+wO
+Sc
+Sc
+Sc
+Sc
+Gn
+Gn
+fg
+Gn
+Gn
+Sc
+Gn
+Gn
+Gn
+Gn
+fg
+Sc
+Ii
+fg
+fg
+fg
+Sc
+bO
+Sc
+Gn
+fg
+fg
+Gn
+Gn
+Gn
+Gn
+fg
+Gn
+Sc
+fg
+fg
+Sc
+Sc
+Sc
+Gn
+Sc
+Sc
+og
+Gn
+Gn
+Gn
+Gn
+bq
+Gn
+Sc
+Lh
+"}
+(33,1,1) = {"
+Lh
+lE
+Gn
+lf
+Gn
+lf
+Gn
+lf
+Sc
+md
+Gn
+lf
+Sc
+lf
+og
+ea
+Sc
+md
+Sc
+md
+aV
+Ar
+Sc
+Ij
+Sc
+lf
+IU
+lf
+Gn
+lf
+Gn
+md
+aV
+lf
+fg
+lf
+Gn
+lf
+Gn
+lf
+Gn
+lf
+fg
+Yb
+Sc
+nm
+Sc
+lf
+Gn
+md
+Gn
+md
+Gn
+lf
+Gn
+lf
+Gn
+lf
+Gn
+Lh
+"}
+(34,1,1) = {"
+Lh
+Gn
+Gn
+Gn
+Gn
+Gn
+fg
+Gn
+Sc
+ch
+Gn
+Gn
+Gn
+Sc
+Sc
+Gn
+Sc
+fg
+fg
+aV
+fg
+Ii
+Ii
+Ii
+fg
+Gn
+fg
+Gn
+Gn
+Gn
+Sc
+Gn
+fg
+Gn
+Gn
+Gn
+Sc
+Sc
+Sc
+Gn
+Gn
+Gn
+Gn
+Sc
+Sc
+Sc
+ZJ
+Sc
+og
+Gn
+Gn
+Sc
+Gn
+Gn
+Sc
+Ii
+xi
+Gn
+Gn
+Lh
+"}
+(35,1,1) = {"
+Lh
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+aV
+Sc
+Sc
+Sc
+Gn
+Gn
+bV
+Gn
+Gn
+fg
+Gn
+Gn
+Gn
+Gn
+Gn
+fg
+Gn
+Gn
+Gn
+bq
+Sc
+Gn
+Sc
+Gn
+Sc
+Sc
+Sc
+Gn
+Sc
+Sc
+Sc
+aV
+xk
+fg
+Gn
+Sc
+Sc
+aV
+fg
+fg
+Gn
+Gn
+Gn
+Lh
+"}
+(36,1,1) = {"
+Lh
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+aV
+Gn
+Gn
+fg
+Gn
+Gn
+Gn
+Gn
+aV
+Gn
+Gn
+Gn
+Gn
+Lh
+fg
+Lh
+Gn
+Gn
+Gn
+Gn
+aV
+aV
+Gn
+Gn
+Gn
+Gn
+Sc
+Gn
+Ii
+Sc
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+bR
+Sc
+og
+wO
+aV
+fg
+Gn
+aV
+fg
+Gn
+Gn
+Gn
+Gn
+Gn
+Gn
+Lh
+"}
+(37,1,1) = {"
+Lh
+Lh
+CW
+CW
+CW
+IX
+IX
+IX
+nT
+CW
+CW
+IX
+CW
+CW
+nT
+nT
+nT
+DI
+nT
+nT
+Lh
+Lh
+Lh
+Lh
+CW
+CW
+CW
+EE
+NJ
+nT
+nT
+CW
+nT
+kU
+CW
+CW
+nT
+nT
+nT
+nT
+CW
+CW
+nT
+nT
+CW
+nT
+nT
+nT
+CW
+IX
+CW
+EE
+sr
+IX
+IX
+IX
+sr
+IX
+CW
+Lh
+"}
+(38,1,1) = {"
+Lh
+Lh
+Lh
+vA
+vA
+vA
+vA
+hp
+yB
+vA
+vA
+vA
+vA
+vA
+zk
+So
+zk
+vA
+zk
+zk
+Lh
+Lh
+Lh
+Lh
+Lh
+So
+GG
+OC
+zk
+zk
+zk
+zk
+zk
+OC
+vA
+vA
+vA
+vA
+vA
+zk
+hp
+zk
+OC
+zk
+vA
+vA
+OC
+vA
+vA
+hp
+vA
+vA
+hp
+hp
+hp
+hp
+NM
+hp
+Lh
+Lh
+"}
+(39,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+vE
+vE
+vE
+vE
+vE
+vE
+GE
+GE
+GE
+GE
+GE
+po
+po
+GE
+GE
+GE
+Lh
+Lh
+Lh
+Lh
+po
+zH
+GE
+po
+po
+GE
+GE
+GE
+vE
+vE
+vE
+vE
+vE
+Sg
+Jj
+vE
+vE
+vE
+vE
+po
+AK
+GE
+vE
+vE
+vE
+vE
+vE
+vE
+vE
+vE
+vE
+vE
+vE
+vE
+Lh
+Lh
+"}
+(40,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+so
+pQ
+Ki
+wF
+uD
+HG
+sS
+vE
+vE
+VH
+vE
+vE
+vE
+vE
+vE
+GE
+GE
+oo
+Lh
+OJ
+Ro
+sS
+vE
+vE
+vE
+vE
+vE
+vE
+Kv
+ev
+Ro
+sS
+wF
+vE
+gp
+vE
+vE
+GE
+vE
+HO
+Nd
+vE
+Jj
+RC
+Ef
+jE
+GE
+GE
+Nd
+OJ
+HG
+sS
+Nd
+Lh
+Lh
+Lh
+"}
+(41,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+uB
+uB
+uB
+YN
+nU
+eZ
+uB
+uB
+yg
+Ql
+RX
+kc
+AS
+uB
+Lh
+Lh
+Lh
+uB
+uB
+mu
+mu
+Ph
+sy
+mu
+mu
+uB
+uB
+uB
+uB
+uB
+YN
+uB
+tz
+tz
+tz
+YN
+YN
+YN
+as
+eC
+YN
+uB
+ag
+ag
+ag
+uB
+YN
+uB
+YN
+YN
+Lh
+Lh
+Lh
+"}
+(42,1,1) = {"
+Lh
+oo
+Lh
+Lh
+Lh
+Lh
+uB
+mV
+ul
+bm
+AX
+in
+NA
+BR
+YN
+dU
+qV
+qV
+qV
+PS
+uB
+Lh
+Lh
+Lh
+uB
+rz
+Lx
+rl
+Lx
+jL
+Lx
+rl
+uB
+uB
+RU
+PT
+zv
+QW
+GO
+yh
+Aj
+NN
+GO
+bS
+Td
+mo
+ST
+MW
+QU
+hl
+Aj
+mk
+Eg
+uB
+Sv
+Lh
+Lh
+oo
+Lh
+oo
+"}
+(43,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+YN
+kR
+gn
+wu
+yz
+nU
+nU
+cf
+YN
+Rb
+qV
+qV
+qV
+dM
+uB
+Lh
+Lh
+Lh
+YN
+mF
+Lx
+jL
+dI
+gW
+jL
+zB
+YN
+uB
+KJ
+kv
+Pw
+qb
+LP
+qb
+qb
+qb
+qb
+qb
+qb
+LP
+LP
+LP
+qb
+qb
+qb
+LP
+za
+uB
+rP
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(44,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+uB
+NH
+uB
+Pe
+mq
+mq
+cg
+uB
+cc
+qV
+qV
+qV
+Nm
+uB
+Lh
+Lh
+Lh
+uB
+rz
+jL
+ib
+Lx
+jL
+Lx
+rz
+uB
+uB
+wC
+yq
+mp
+LP
+qb
+bQ
+qb
+qb
+Ao
+qb
+qb
+Ao
+qb
+qb
+qb
+qb
+qb
+Bk
+vj
+OL
+oM
+Ug
+Lh
+Lh
+Lh
+Lh
+"}
+(45,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+Ld
+En
+YN
+bl
+nU
+XJ
+qi
+uB
+hi
+uO
+yP
+ym
+ms
+uB
+Lh
+Lh
+Lh
+YN
+rz
+Lx
+oJ
+iU
+ka
+jL
+rz
+uB
+uB
+yt
+Mh
+aP
+Mh
+XR
+qb
+Mi
+Ao
+UJ
+qb
+qb
+UJ
+LP
+qb
+UJ
+qb
+qb
+qb
+Uy
+uB
+im
+oM
+Lh
+Lh
+Lh
+Lh
+"}
+(46,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+oo
+Lh
+uB
+cQ
+nL
+dP
+dX
+uh
+nU
+ov
+YN
+uB
+uB
+QK
+uB
+uB
+uB
+Lh
+Lh
+Lh
+uB
+rz
+Lx
+XK
+iU
+Sl
+Lx
+rz
+YN
+uB
+uB
+YN
+xY
+uB
+cs
+AP
+qb
+qb
+qb
+Ao
+qb
+qb
+qb
+qb
+qb
+LP
+qb
+qb
+eN
+uB
+pD
+oM
+Lh
+Lh
+Lh
+Lh
+"}
+(47,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Ju
+kj
+ov
+sa
+dX
+JC
+nU
+nU
+hT
+iI
+Ud
+vg
+Ti
+ld
+uB
+Lh
+Lh
+Lh
+uB
+zW
+Lx
+oA
+GN
+jO
+jL
+rz
+uB
+uB
+lx
+iE
+Et
+WV
+OT
+sH
+Zc
+qb
+qb
+qb
+AM
+qb
+qb
+UJ
+qb
+LP
+qb
+zI
+UV
+uB
+pD
+Ug
+uB
+uB
+Lh
+Lh
+"}
+(48,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+ub
+ov
+dP
+dX
+nU
+nU
+nU
+nU
+hh
+nU
+nU
+cb
+FR
+uB
+Lh
+Lh
+Lh
+uB
+mF
+XP
+Lx
+Lx
+Lx
+iN
+zf
+uB
+uB
+nZ
+eM
+HX
+BP
+OT
+sH
+Zc
+qb
+eB
+qb
+qb
+LP
+UJ
+qb
+qb
+qb
+qb
+qb
+gk
+uB
+pa
+oz
+nh
+ab
+Lh
+Lh
+"}
+(49,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+YN
+xS
+ov
+eq
+dX
+nU
+nU
+nU
+nU
+nU
+nU
+nU
+nU
+Ie
+YN
+Lh
+Lh
+Lh
+uB
+rz
+Lx
+jL
+Lx
+LR
+jL
+mA
+uB
+uB
+jn
+eM
+eM
+BP
+OT
+sH
+LP
+qb
+qb
+FM
+Jh
+Mi
+qb
+bQ
+LP
+qb
+qb
+LP
+fz
+uB
+Kk
+Ug
+uB
+uB
+uB
+Lh
+"}
+(50,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+DD
+ov
+YN
+SV
+jK
+yS
+yS
+xI
+nU
+nU
+nU
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+rz
+jL
+Sp
+pE
+Sp
+Lx
+mA
+uB
+uB
+Zg
+eM
+eM
+BP
+OT
+cJ
+LP
+LP
+qb
+lV
+el
+qb
+qb
+qb
+LP
+LP
+qb
+qb
+eN
+uB
+pD
+rP
+Ul
+LK
+uB
+Lh
+"}
+(51,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+YC
+rt
+uB
+cY
+Iu
+CX
+CX
+Gg
+sV
+ts
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+uB
+uB
+uB
+YN
+uB
+YN
+uB
+uB
+uB
+MV
+eM
+eM
+BP
+OT
+cM
+Mi
+qb
+qb
+Io
+wq
+qb
+UJ
+qb
+qb
+Mi
+Ao
+Cs
+mW
+YN
+Sv
+rP
+uB
+uB
+uB
+Lh
+"}
+(52,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+uB
+uB
+uB
+uB
+uB
+YN
+uB
+uB
+uB
+YN
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+JY
+eM
+eM
+BP
+OT
+sH
+qb
+qb
+qb
+qb
+qb
+qb
+LP
+qb
+Ao
+qb
+qb
+Uy
+YN
+uB
+YN
+uB
+uB
+YN
+uB
+Lh
+"}
+(53,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+oo
+Lh
+Lh
+Lh
+Lh
+uB
+ap
+eM
+eM
+BP
+OT
+sH
+qb
+qb
+LP
+Nw
+xj
+LP
+qb
+qb
+qb
+qb
+Mi
+Ba
+Me
+Ea
+QW
+QW
+xM
+QW
+jX
+Lh
+"}
+(54,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+oo
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+ES
+ZI
+BT
+rf
+Qz
+sH
+qb
+LP
+qb
+qb
+qb
+qb
+Zc
+sW
+KY
+Mh
+Mh
+vU
+YN
+zz
+qK
+WH
+Mh
+Mh
+Lh
+Lh
+"}
+(55,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+uB
+YN
+Ds
+uB
+uB
+Dk
+LP
+LP
+qb
+qb
+qb
+qb
+qb
+qb
+oB
+oB
+Bh
+Bh
+uB
+uB
+rV
+uB
+uB
+Lh
+Lh
+Lh
+"}
+(56,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+wk
+Pg
+SM
+LM
+uB
+PF
+qb
+qb
+qb
+qb
+qb
+qb
+LP
+qb
+zn
+zn
+au
+au
+uB
+qb
+qb
+Ly
+uB
+Lh
+oo
+Lh
+"}
+(57,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+KI
+RO
+RO
+sq
+uB
+sd
+qb
+iw
+eQ
+Pw
+fO
+qb
+qb
+kv
+Pw
+rb
+Vb
+uA
+uB
+YJ
+QE
+Cq
+uB
+Lh
+Lh
+Lh
+"}
+(58,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+he
+fb
+RO
+uM
+Ds
+Li
+qb
+NY
+Ch
+Dj
+Lz
+qb
+LP
+dh
+An
+qQ
+BN
+qq
+uB
+ss
+pi
+gg
+uB
+Lh
+Lh
+Lh
+"}
+(59,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+Ab
+ce
+GS
+jx
+uB
+iR
+RZ
+OQ
+FB
+PR
+El
+Mh
+Mh
+ew
+nV
+Gp
+Lh
+Lh
+uB
+cm
+UG
+Am
+uB
+Lh
+Lh
+Lh
+"}
+(60,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+uB
+Lh
+oo
+uB
+uB
+uB
+uB
+uB
+Lh
+Lh
+Lh
+"}
+(61,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(62,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(63,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+oo
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(64,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(65,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(66,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(67,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(68,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(69,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(70,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(71,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(72,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(73,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(74,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(75,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(76,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(77,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(78,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(79,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(80,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(81,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(82,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(83,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(84,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(85,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(86,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(87,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(88,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(89,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(90,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(91,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(92,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(93,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(94,1,1) = {"
+Lh
+gA
+gA
+gA
+gA
+gA
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(95,1,1) = {"
+Lh
+gA
+jk
+jk
+jk
+gA
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(96,1,1) = {"
+Lh
+gA
+jk
+cu
+jk
+gA
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(97,1,1) = {"
+Lh
+gA
+jk
+jk
+jk
+gA
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(98,1,1) = {"
+Lh
+gA
+jk
+jk
+jk
+gA
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(99,1,1) = {"
+Lh
+gA
+gA
+gA
+gA
+gA
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}
+(100,1,1) = {"
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+Lh
+"}

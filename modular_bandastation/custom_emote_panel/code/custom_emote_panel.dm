@@ -103,22 +103,25 @@
 			if(!emote_name || !istext(emote_name) || !length(emote_name))
 				return
 
-			if(isnull(client.prefs.custom_emote_panel[emote_name]))
+			// The current body's own entries are shown first, so they also win on execution.
+			var/list/mob_emotes = client.mob?.get_mob_emote_panel_entries()
+			var/list/entry = mob_emotes?[emote_name] || client.prefs.custom_emote_panel[emote_name]
+			if(!islist(entry))
 				to_chat(client, span_warning("Эмоции [emote_name] нет в вашей панели!"))
 				return FALSE
 
-			if(isnull(client.prefs.custom_emote_panel[emote_name]["type"]))
+			if(isnull(entry["type"]))
 				to_chat(client, span_warning("Эмоция [emote_name] не имеет типа!"))
 				return FALSE
 
-			var/emote_type = client.prefs.custom_emote_panel[emote_name]["type"]
+			var/emote_type = entry["type"]
 			if(!isliving(client.mob))
 				return TRUE
 
 			var/mob/living/living = client.mob
 			switch (emote_type)
 				if(TGUI_PANEL_EMOTE_TYPE_DEFAULT)
-					var/emote_key = client.prefs.custom_emote_panel[emote_name]["key"]
+					var/emote_key = entry["key"]
 					if(!get_available_emote(living, emote_key, status_check = TRUE))
 						return TRUE
 					living.emote(emote_key, intentional = TRUE)
@@ -129,10 +132,10 @@
 						to_chat(living, span_warning("Не так быстро!"))
 						return TRUE
 
-					var/emote_key = client.prefs.custom_emote_panel[emote_name]["key"]
+					var/emote_key = entry["key"]
 					if(!get_available_emote(living, emote_key, status_check = TRUE))
 						return TRUE
-					var/message_override = client.prefs.custom_emote_panel[emote_name]["message_override"]
+					var/message_override = entry["message_override"]
 					living.emote(emote_key, intentional = TRUE, message_override = message_override)
 					handle_panel_cooldown(living, message_override)
 
@@ -141,7 +144,7 @@
 						to_chat(living, span_warning("Не так быстро!"))
 						return TRUE
 
-					var/message = client.prefs.custom_emote_panel[emote_name]["message"]
+					var/message = entry["message"]
 					living.emote("me", intentional = TRUE, message = message)
 					handle_panel_cooldown(living, message)
 
@@ -362,8 +365,16 @@
 /datum/tgui_panel/proc/emotes_send_list()
 	if(!client?.prefs || !window)
 		return
-	var/list/payload = get_available_emote_panel_entries(client.mob, client.prefs.custom_emote_panel)
+	var/list/payload = get_available_emote_panel_entries(client.mob, client.mob?.get_mob_emote_panel_entries())
+	var/list/saved = get_available_emote_panel_entries(client.mob, client.prefs.custom_emote_panel)
+	for(var/emote_name in saved)
+		if(!(emote_name in payload))
+			payload[emote_name] = saved[emote_name]
 	window.send_message("emotes/setList", payload)
+
+/// Panel entries that belong to this body and are shown without being saved in the player's preferences.
+/mob/proc/get_mob_emote_panel_entries()
+	return null
 
 /// Hide temporarily unavailable favorites without changing the saved panel or its entries.
 /proc/get_available_emote_panel_entries(mob/user, list/saved_emotes)

@@ -99,8 +99,12 @@
 	parallax_movedir = new_parallax_movedir
 	return TRUE
 
+/// Starts directional looping, or cancels it immediately when a Z-level change stops scrolling.
 /atom/movable/screen/parallax_home/proc/update_parallax_motionblur(atom/movable/screen/parallax_layer/layer, new_parallax_movedir, matrix/new_transform)
 	parallax_animate_timers -= layer
+	if(new_parallax_movedir == NONE)
+		animate(layer, transform = matrix(), time = 0, flags = ANIMATION_END_NOW)
+		return
 	// If we are moving in a direction, we used the QUAD_EASING function with EASE_IN
 	// This means our position function is x^2. This is always LESS then the linear we're using here
 	// But if we just used the same time delay, our rate of change would mismatch. f'(1) = 2x for quad easing, rather then the 1 we get for linear
@@ -131,7 +135,9 @@
 	var/offset_x = viewing_from.x - current_turf.x
 	var/offset_y = viewing_from.y - current_turf.y
 
-	var/glide_rate = round(ICON_SIZE_ALL / perspective.glide_size * world.tick_lag, world.tick_lag)
+	var/glide_rate = 0
+	if(ismovable(perspective) && perspective.glide_size)
+		glide_rate = round(ICON_SIZE_ALL / perspective.glide_size * world.tick_lag, world.tick_lag)
 	current_turf = viewing_from
 
 	var/largest_change = max(abs(offset_x), abs(offset_y))
@@ -280,14 +286,18 @@
 	check_parallax()
 	update_parallax()
 
+/// Updates area signals and rebuilds the background when entering a different layer palette.
 /atom/movable/screen/parallax_home/proc/set_perspective_area(area/new_area)
 	if(perspective_area == new_area)
 		return
+	var/list/old_layers = perspective_area?.parallax_layer_types
 	if(perspective_area)
 		UnregisterSignal(perspective_area, COMSIG_AREA_PARALLAX_DIR_CHANGED)
 
 	perspective_area = new_area
 	RegisterSignal(perspective_area, COMSIG_AREA_PARALLAX_DIR_CHANGED, PROC_REF(area_parallax_dir_changed))
+	if(old_layers != new_area.parallax_layer_types)
+		regenerate_layers()
 
 /atom/movable/screen/parallax_home/proc/area_parallax_dir_changed(datum/source)
 	SIGNAL_HANDLER
@@ -315,7 +325,14 @@
 	src.draw_old_space = draw_old_space
 	regenerate_layers()
 
+/// Creates a preference-selected background layer from the area's palette or normal space.
 /atom/movable/screen/parallax_home/proc/generate_space_layer(index)
+	var/list/custom_layers = perspective_area?.parallax_layer_types
+	if(length(custom_layers))
+		if(index > length(custom_layers))
+			return
+		var/layer_type = custom_layers[index]
+		return new layer_type(null, null, src)
 	switch(index)
 		if(1)
 			return new /atom/movable/screen/parallax_layer/layer_1(null, null, src)
@@ -333,6 +350,8 @@
 				return new /atom/movable/screen/parallax_layer/layer_3(null, null, src)
 
 /atom/movable/screen/parallax_home/proc/regenerate_layers()
+	// New layers need their own animation even when the area's direction did not change.
+	set_parallax_movedir(NONE, TRUE)
 	clear_layers()
 	if(layers_to_draw == 0 && !draw_old_space)
 		return
@@ -347,6 +366,7 @@
 		parallax_layers_cached += new /atom/movable/screen/parallax_layer/old(null, null, src)
 
 	display_layers()
+	set_parallax_movedir(perspective_area?.parallax_movedir || NONE, TRUE)
 
 /atom/movable/screen/parallax_home/proc/clear_layers()
 	hide_layers()
