@@ -14,3 +14,13 @@ Breathing added on 2026-11-10: tapered chest light/shadow variation, maximum
 No pixels from the reference photographs or concept illustrations were copied.
 License for this original asset: CC BY-SA 3.0, following the project asset license.
 https://creativecommons.org/licenses/by-sa/3.0/
+
+Replaced on 2026-11-21. New four-view concept render of the gatekeeper supplied by Junkkky (event organizer).
+Each view cut out of the concept's dark backdrop and reduced to 64x96 by averaging blocks (slight contrast and
+saturation lift) with a shared 32-colour palette taken from the result; the figure is centred on its tile.
+Hand fixes: one nose pixel in profile, a wider neck in front; front and back made symmetric with the back of
+the head given the front's outline; west is the east view mirrored.
+idle: 12 frames; the chest and arms rise one pixel to breathe while chains with hooks writhe up from the floor
+on both sides (drawn procedurally). dead: the bare standing pose.
+Generator kept outside the repository (Documents/Codex/GateClosure/pinhead_sprite).
+License: CC BY-SA 3.0, following the project asset license. https://creativecommons.org/licenses/by-sa/3.0/

@@ -17,3 +17,7 @@ state with four directions, reordered to BYOND south/north/east/west.
 The generated adaptation follows the project's CC BY-SA 3.0 image asset license,
 subject to confirming the supplied reference's rights before publication.
 https://creativecommons.org/licenses/by-sa/3.0/
+
+Refined on 2026-11-21 without changing the design: lone pixels that barely differ from their surroundings take
+their neighbours' colour, stray edge pixels removed, colours spread about 18% around the mean brightness.
+Script kept outside the repository (Documents/Codex/GateClosure/bride_sprite/refine).

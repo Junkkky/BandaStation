@@ -1,6 +1,6 @@
 /// Player-controlled Pinhead event character using the approved gatekeeper sprite.
 /mob/living/basic/boss/gatekeeper
-	name = "Пинхед"
+	name = "Привратник"
 	// Loud bold speech, a step smaller than the other bosses.
 	speech_span = SPAN_SOAPBOX
 	desc = "Высокая фигура в бледном церемониальном облачении."
@@ -8,6 +8,9 @@
 	icon_state = "idle"
 	icon_living = "idle"
 	icon_dead = "dead"
+	// 64 pixels wide: the robe stands on the centre of its tile.
+	pixel_x = -16
+	base_pixel_x = -16
 	maxHealth = 1000
 	health = 1000
 	melee_damage_lower = 20
