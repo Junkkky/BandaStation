@@ -54,7 +54,7 @@
 
 /turf/open/misc/gate_closure/flesh/Initialize(mapload)
 	. = ..()
-	underlays += mutable_appearance('modular_bandastation/gate_closure/icons/crust.dmi', "crust", layer = LOWER_FLOOR_LAYER, offset_spokesman = src)
+	underlays += mutable_appearance('modular_bandastation/gate_closure/icons/crust.dmi', "crust", layer = LOWER_FLOOR_LAYER, offset_spokesman = src, plane = FLOOR_PLANE)
 
 /// Sculpted rock masses; their apparent heat does not create hundreds of light sources or fires.
 /turf/closed/indestructible/gate_closure_growth

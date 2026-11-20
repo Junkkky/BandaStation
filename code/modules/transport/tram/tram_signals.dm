@@ -296,7 +296,7 @@
 	// degraded signal operating conditions of any type show blue
 	var/idle_aspect = operating_status == TRANSPORT_SYSTEM_NORMAL ? XING_STATE_GREEN : XING_STATE_MALF
 	var/datum/transport_controller/linear/tram/tram = transport_ref?.resolve()
-	if(tram.controller_status & COMM_ERROR)
+	if(tram?.controller_status & COMM_ERROR)
 		idle_aspect = XING_STATE_MALF
 
 	// Check for stopped states. Will kill the process since tram starting up will restart process.

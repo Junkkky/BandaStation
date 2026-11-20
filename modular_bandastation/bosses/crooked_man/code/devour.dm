@@ -52,6 +52,9 @@
 	. = ..()
 	src.ability = ability
 	src.victim = victim
+	// Only the ability creates a working stomach; a bare one has nobody to digest.
+	if(isnull(victim))
+		return
 	victim.forceMove(src)
 	START_PROCESSING(SSobj, src)
 

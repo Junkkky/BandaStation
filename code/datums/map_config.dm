@@ -71,6 +71,8 @@
 
 	/// Boolean that tells SSmapping to load all away missions in the codebase.
 	var/load_all_away_missions = FALSE
+	/// Whether the configured random away mission may load at roundstart on this map.
+	var/random_away_mission = TRUE
 
 	// BANDASTATION ADDITION START - Underfloor Blobs
 	/// Main floor of the map. Null as default, if not specified in json
@@ -235,6 +237,9 @@
 
 	if ("load_all_away_missions" in json)
 		load_all_away_missions = json["load_all_away_missions"]
+
+	if ("random_away_mission" in json)
+		random_away_mission = json["random_away_mission"]
 
 	if ("give_players_hooks" in json)
 		give_players_hooks = json["give_players_hooks"]

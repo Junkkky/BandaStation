@@ -153,7 +153,7 @@ SUBSYSTEM_DEF(mapping)
 			CRASH("Ice wilds failed to load!")
 
 	// Pick a random away mission.
-	if(CONFIG_GET(flag/roundstart_away))
+	if(CONFIG_GET(flag/roundstart_away) && current_map.random_away_mission)
 		createRandomZlevel(prob(CONFIG_GET(number/config_gateway_chance)))
 
 	else if (SSmapping.current_map.load_all_away_missions) // we're likely in a local testing environment, so punch it.
