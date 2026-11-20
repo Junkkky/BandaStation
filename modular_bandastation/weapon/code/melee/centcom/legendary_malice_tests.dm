@@ -1,5 +1,8 @@
 // The fork's role defines are loaded after the base unit-test includes.
 #define LEGENDARY_TEST_OFFICER_ROLE "centcom_role_officer"
+#define MALICE_TEST_TIME_TO_25_PERCENT (22.5 SECONDS)
+#define MALICE_TEST_TIME_TO_50_PERCENT (67.5 SECONDS)
+#define MALICE_TEST_TIME_TO_FULL_BOND (157.5 SECONDS)
 
 /datum/unit_test/legendary_sword_malice_registry/Run()
 	var/list/bond_by_icon = list(
@@ -36,15 +39,15 @@
 	other_officer.mind.centcom_role = LEGENDARY_TEST_OFFICER_ROLE
 	TEST_ASSERT(sword.can_use_legendary_ability(wielder, require_wielded = FALSE), "Officer could not start an unbound sword.")
 	TEST_ASSERT(!sword.can_use_legendary_ability(wielder), "Grounded sword could use abilities.")
-	TEST_ASSERT_EQUAL(sword.get_legendary_bond(45 SECONDS), 25, "First stage has the wrong progress.")
-	TEST_ASSERT_EQUAL(sword.get_legendary_bond(45 SECONDS + 90 SECONDS - 1), 49, "Second tier unlocked early.")
-	TEST_ASSERT_EQUAL(sword.get_legendary_bond(45 SECONDS + 90 SECONDS), 50, "Second tier was not unlocked.")
-	TEST_ASSERT_EQUAL(sword.get_legendary_bond(45 SECONDS + 90 SECONDS + 3 MINUTES), 100, "Final tier was not unlocked.")
+	TEST_ASSERT_EQUAL(sword.get_legendary_bond(MALICE_TEST_TIME_TO_25_PERCENT), 25, "First stage has the wrong progress.")
+	TEST_ASSERT_EQUAL(sword.get_legendary_bond(MALICE_TEST_TIME_TO_50_PERCENT - 1), 49, "Second tier unlocked early.")
+	TEST_ASSERT_EQUAL(sword.get_legendary_bond(MALICE_TEST_TIME_TO_50_PERCENT), 50, "Second tier was not unlocked.")
+	TEST_ASSERT_EQUAL(sword.get_legendary_bond(MALICE_TEST_TIME_TO_FULL_BOND), 100, "Final tier was not unlocked.")
 
-	sword.bond_meditation_time = 45 SECONDS - world.tick_lag
+	sword.bond_meditation_time = MALICE_TEST_TIME_TO_25_PERCENT - world.tick_lag
 	sword.meditate(wielder)
 	TEST_ASSERT_EQUAL(sword.get_legendary_bond(), 25, "Meditating next to the inactive sword did not complete the stage.")
-	TEST_ASSERT(sword.bond_rest > world.time, "Completing a stage did not start the rest interval.")
+	TEST_ASSERT_EQUAL(COOLDOWN_TIMELEFT(sword, bond_rest), 30 SECONDS, "Completing a stage should start a thirty-second rest.")
 	TEST_ASSERT_EQUAL(sword.bonded_mind.resolve(), wielder.mind, "Meditation did not bind the sword to the owner.")
 	TEST_ASSERT(!sword.has_legendary_bond_access(other_officer), "A second officer inherited someone else's bond.")
 
@@ -112,7 +115,7 @@
 
 	// Skip only the waiting time; the click, stage transition and cooldown all run normally.
 	wielder.forceMove(start)
-	sword.bond_meditation_time = 45 SECONDS - world.tick_lag
+	sword.bond_meditation_time = MALICE_TEST_TIME_TO_25_PERCENT - world.tick_lag
 	wielder.ClickOn(sword, "left=1;alt=1")
 	deadline = world.time + 5 SECONDS
 	UNTIL(sword.get_legendary_bond() == 25 || world.time >= deadline)
@@ -132,7 +135,7 @@
 	UNTIL(!sword.meditating || world.time >= deadline)
 	TEST_ASSERT(!sword.meditating, "Taking damage did not interrupt the second stage.")
 
-	sword.bond_meditation_time = 45 SECONDS + 90 SECONDS
+	sword.bond_meditation_time = MALICE_TEST_TIME_TO_50_PERCENT
 	UNTIL(world.time > wielder.next_click)
 	wielder.ClickOn(sword, "left=1;alt=1")
 	deadline = world.time + 5 SECONDS
@@ -166,6 +169,27 @@
 	TEST_ASSERT_EQUAL(wielder.buckled, chair, "Meditation unbuckled the wielder.")
 	TEST_ASSERT_EQUAL(wielder.dir, seated_direction, "Meditation turned a buckled wielder away from the chair's orientation.")
 	qdel(seated_sword)
+
+/datum/malice_test_flips
+	var/animations = 0
+	var/somersaults = 0
+	var/direction_changes = 0
+
+/datum/malice_test_flips/New(mob/living/wielder)
+	..()
+	RegisterSignal(wielder, COMSIG_ATOM_SPIN_ANIMATION, PROC_REF(record_flip))
+	RegisterSignal(wielder, COMSIG_ATOM_POST_DIR_CHANGE, PROC_REF(record_turn))
+
+/datum/malice_test_flips/proc/record_flip(datum/source, speed, loops, segments, angle)
+	SIGNAL_HANDLER
+	animations++
+	if(speed == FLIP_EMOTE_DURATION && loops == 1 && abs(segments * angle) == 360)
+		somersaults++
+
+/datum/malice_test_flips/proc/record_turn(datum/source, old_dir, new_dir)
+	SIGNAL_HANDLER
+	if(old_dir != new_dir)
+		direction_changes++
 
 /datum/unit_test/legendary_sword_malice_dance
 	/// Damage delivered by Malice before natural healing can change the target's health.
@@ -210,8 +234,26 @@
 	for(var/mob/living/participant as anything in list(behind, alongside, ahead, wielder))
 		sword_damage[participant] = 0
 		RegisterSignal(participant, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(record_sword_damage))
+	var/datum/malice_test_flips/flips = allocate(/datum/malice_test_flips, wielder)
 	var/datum/action/cooldown/legendary_sword/malice_dance/dance = locate() in sword.actions
+	sword.block_chance = 0
+	behind.grab(wielder)
+	TEST_ASSERT_EQUAL(wielder.pulledby, behind, "The attacker could not grab the wielder before the dance.")
 	TEST_ASSERT(dance?.Trigger(wielder), "The first ability could not be activated with zero bond.")
+	TEST_ASSERT_NULL(behind.pulling, "Starting the dance left the attacker holding the wielder.")
+	TEST_ASSERT(behind.grab(wielder) != GRAB_SUCCESS, "The attacker could grab the spinning wielder.")
+	TEST_ASSERT(!behind.start_pulling(wielder), "The attacker could pull the spinning wielder directly.")
+	TEST_ASSERT_NULL(wielder.pulledby, "A blocked grab left the spinning wielder attached to a puller.")
+	behind.UnarmedAttack(wielder, TRUE, list(RIGHT_CLICK = TRUE))
+	TEST_ASSERT_EQUAL(wielder.loc, start, "An empty-handed shove moved the spinning wielder.")
+	var/obj/item/knife/knife = EASY_ALLOCATE()
+	knife.force = 1
+	knife.wound_bonus = CANT_WOUND
+	TEST_ASSERT(behind.put_in_active_hand(knife), "Could not equip the attacker's knife.")
+	behind.set_combat_mode(TRUE)
+	knife.melee_attack_chain(behind, wielder)
+	TEST_ASSERT(wielder.get_brute_loss() > 0, "The dance prevented an incoming weapon hit.")
+	behind.dropItemToGround(knife)
 	var/datum/status_effect/malice_dance/spin = wielder.has_status_effect(/datum/status_effect/malice_dance)
 	var/datum/sound_token/spin_sound = spin?.dance_sound
 	TEST_ASSERT_EQUAL(spin_sound?.source, wielder, "The spin sound should follow the wielder.")
@@ -246,18 +288,25 @@
 	TEST_ASSERT_EQUAL(sword_damage[wielder], 0, "The wielder was hit by their own spin.")
 	UNTIL(QDELETED(spin_sound) || world.time >= deadline)
 	TEST_ASSERT(QDELETED(spin_sound), "The sound channel remained active after the recording finished.")
+	behind.forceMove(start)
+	behind.grab(wielder)
+	TEST_ASSERT_EQUAL(wielder.pulledby, behind, "The wielder still resisted grabs after the dance expired.")
+	behind.stop_pulling()
+	behind.forceMove(run_loc_floor_bottom_left)
 
 	sword_damage[alongside] = 0
 	sword_damage[ahead] = 0
 	alongside.impact_origins.Cut()
 	alongside.impact_times.Cut()
 	sword.two_hand_force = 70
-	sword.bond_meditation_time = 45 SECONDS + 90 SECONDS + 3 MINUTES
+	sword.bond_meditation_time = MALICE_TEST_TIME_TO_FULL_BOND
 	wielder.set_tox_loss(70)
 	var/datum/action/cooldown/legendary_sword/malice_rage/rage = locate() in sword.actions
 	TEST_ASSERT(rage?.Trigger(wielder), "Could not prime a critical strike for the second spin.")
 	wielder.forceMove(get_ranged_target_turf(next_tile, NORTH, 3))
 	dance.ResetCooldown()
+	var/flips_before_empty_sweep = flips.animations
+	var/turns_before_empty_sweep = flips.direction_changes
 	TEST_ASSERT(dance.Trigger(wielder), "The spin could not be used again after its cooldown.")
 	spin = wielder.has_status_effect(/datum/status_effect/malice_dance)
 	spin_sound = spin?.dance_sound
@@ -265,6 +314,8 @@
 	deadline = world.time + 4 SECONDS
 	UNTIL(spin.spin_time >= 0.5 SECONDS || world.time >= deadline)
 	TEST_ASSERT_EQUAL(length(alongside.impact_origins), 0, "An empty sweep played an impact.")
+	TEST_ASSERT_EQUAL(flips.animations, flips_before_empty_sweep, "The dance started a somersault without attacking anyone.")
+	TEST_ASSERT(flips.direction_changes > turns_before_empty_sweep, "The wielder stopped rotating the blade when no targets were nearby.")
 	wielder.forceMove(next_tile)
 	for(var/mob/living/defender as anything in list(alongside, ahead))
 		RegisterSignal(defender, COMSIG_LIVING_CHECK_BLOCK, PROC_REF(block_hit))
@@ -283,8 +334,40 @@
 	wielder.dropItemToGround(sword)
 	TEST_ASSERT_NULL(wielder.has_status_effect(/datum/status_effect/malice_dance), "Dropping the sword left the spin active.")
 	TEST_ASSERT(QDELETED(spin_sound), "Dropping the sword left its recording playing.")
-	sleep(0.6 SECONDS)
+	var/flips_at_stop = flips.animations
+	sleep(1.1 SECONDS)
+	TEST_ASSERT_EQUAL(flips.animations, flips_at_stop, "The interrupted dance started another body rotation.")
 	TEST_ASSERT_EQUAL(sword_damage[alongside] + sword_damage[ahead], 60, "A queued pulse hit after the sword was dropped.")
+	behind.forceMove(start)
+	behind.UnarmedAttack(wielder, TRUE, list(RIGHT_CLICK = TRUE))
+	TEST_ASSERT_EQUAL(wielder.loc, get_step(next_tile, EAST), "Dropping the saber did not restore empty-handed shoves.")
+
+	TEST_ASSERT(wielder.put_in_active_hand(sword), "Could not reequip Malice to check its dance flourish.")
+	sword.attack_self(wielder)
+	wielder.forceMove(get_ranged_target_turf(next_tile, NORTH, 3))
+	dance.ResetCooldown()
+	TEST_ASSERT(dance.Trigger(wielder), "Could not restart the dance for an isolated flourish.")
+	// Enter the same branch as a successful flourish roll, with no targets to roll additional flourishes.
+	var/expected_flips = flips.somersaults + 2
+	sword.jedi_spin(wielder)
+	deadline = world.time + 3 SECONDS
+	UNTIL(flips.somersaults >= expected_flips || world.time >= deadline)
+	sleep(0.4 SECONDS) // Let the two steps after the second flip complete before starting another flourish.
+	TEST_ASSERT_EQUAL(flips.somersaults, expected_flips, "The saber flourish should play a flip on both west-facing steps.")
+
+	sword.jedi_spin(wielder)
+	wielder.dropItemToGround(sword)
+	TEST_ASSERT(wielder.put_in_active_hand(sword), "Could not reequip Malice after interrupting the flourish.")
+	sword.attack_self(wielder)
+	var/datum/action/cooldown/legendary_sword/malice_guard/guard = locate() in sword.actions
+	wielder.setDir(WEST)
+	TEST_ASSERT(guard.Trigger(wielder), "Could not raise the guard immediately after interrupting the dance.")
+	var/turns_at_guard = flips.direction_changes
+	var/flips_at_guard = flips.animations
+	sleep(1.3 SECONDS) // Outlast all twelve steps of the interrupted flourish.
+	TEST_ASSERT_EQUAL(flips.direction_changes, turns_at_guard, "A pending dance step turned the raised guard.")
+	TEST_ASSERT_EQUAL(flips.animations, flips_at_guard, "A pending dance step made the guarding wielder flip.")
+	TEST_ASSERT_EQUAL(wielder.dir, WEST, "The guard lost its chosen facing after the dance.")
 
 /datum/unit_test/legendary_sword_malice_dance/proc/record_sword_damage(datum/source, damage, damagetype, def_zone, blocked, wound_bonus, exposed_wound_bonus, sharpness, attack_direction, atom/attacking_item)
 	SIGNAL_HANDLER
@@ -319,7 +402,7 @@
 	var/obj/item/dualsaber/legendary_saber/sword = EASY_ALLOCATE()
 	wielder.mind_initialize()
 	wielder.mind.centcom_role = LEGENDARY_TEST_OFFICER_ROLE
-	sword.bond_meditation_time = 45 SECONDS + 90 SECONDS + 3 MINUTES
+	sword.bond_meditation_time = MALICE_TEST_TIME_TO_FULL_BOND
 	TEST_ASSERT(wielder.put_in_active_hand(sword), "Could not equip Malice.")
 	sword.attack_self(wielder)
 	wielder.set_combat_mode(TRUE)
@@ -476,6 +559,7 @@
 	guard.forceMove(get_step(start, EAST))
 	wielder.forceMove(get_step(guard, EAST))
 	var/obj/effect/temp_visual/decoy/echo = allocate(/obj/effect/temp_visual/decoy, start, wielder)
+	var/datum/malice_test_flips/shadow_flips = allocate(/datum/malice_test_flips, wielder)
 	var/brute_before_shadow = guard.get_brute_loss()
 	guard.setDir(WEST)
 	shadow.shadow_strike(WEAKREF(wielder), start, WEAKREF(echo))
@@ -483,6 +567,7 @@
 	guard.setDir(EAST)
 	shadow.shadow_strike(WEAKREF(wielder), start, WEAKREF(echo))
 	TEST_ASSERT(guard.get_brute_loss() > brute_before_shadow, "A shadow attacking from behind was blocked because its wielder stood in front.")
+	TEST_ASSERT_EQUAL(shadow_flips.animations, 0, "The shadow's projected melee hit made the wielder somersault.")
 
 /datum/unit_test/legendary_sword_malice_rage/proc/block_hit()
 	SIGNAL_HANDLER
@@ -519,7 +604,7 @@
 	var/datum/action/cooldown/legendary_sword/malice_dance/dance = locate() in sword.actions
 	var/datum/action/cooldown/legendary_sword/malice_rage/rage = locate() in sword.actions
 	TEST_ASSERT_NOTNULL(ultimate, "Malice did not grant its fourth action.")
-	sword.bond_meditation_time = 45 SECONDS + 90 SECONDS + 3 MINUTES - 1
+	sword.bond_meditation_time = MALICE_TEST_TIME_TO_FULL_BOND - 1
 	TEST_ASSERT_EQUAL(sword.get_legendary_bond(), 99, "Invalid pre-unlock bond for the test.")
 	TEST_ASSERT(!ultimate.Trigger(wielder, target = first), "The ultimate activated before full bond.")
 	sword.bond_meditation_time++
@@ -628,14 +713,18 @@
 	var/datum/action/cooldown/legendary_sword/malice_dance/dance = locate() in sword.actions
 	TEST_ASSERT_NOTNULL(guard, "Malice did not grant its guard action.")
 	TEST_ASSERT_EQUAL(guard.button_icon_state, "malice_guard", "Malice's guard uses the wrong icon.")
-	sword.bond_meditation_time = 45 SECONDS + 90 SECONDS + 3 MINUTES - 1
+	sword.bond_meditation_time = MALICE_TEST_TIME_TO_FULL_BOND - 1
 	TEST_ASSERT(!guard.Trigger(wielder), "The guard activated before reaching full bond.")
 	sword.bond_meditation_time++
 	// Exercise the ordinary attack's random flourish before raising the guard.
+	var/datum/malice_test_flips/flips = allocate(/datum/malice_test_flips, wielder)
 	wielder.setDir(WEST)
 	sword.jedi_spin(wielder)
+	TEST_ASSERT_EQUAL(flips.somersaults, 1, "The ordinary Malice flourish did not play a complete body flip.")
 	TEST_ASSERT(guard.Trigger(wielder), "The guard did not activate at full bond.")
 	TEST_ASSERT_EQUAL(wielder.dir, WEST, "The preceding sword flourish turned the guard away from its chosen facing.")
+	sword.jedi_spin(wielder)
+	TEST_ASSERT_EQUAL(flips.animations, 1, "The raised guard allowed another attack flourish.")
 	var/started = world.time
 	var/datum/status_effect/malice_guard/stance = wielder.has_status_effect(/datum/status_effect/malice_guard)
 	var/datum/sound_token/guard_sound = stance?.spin_sound
@@ -681,12 +770,17 @@
 	wielder.projectile_hit(laser, BODY_ZONE_CHEST)
 	TEST_ASSERT(wielder.get_fire_loss() > 0, "Turning away from the laser did not expose the back.")
 
-	var/deadline = started + 4 SECONDS
+	UNTIL(world.time >= started + 4 SECONDS)
+	TEST_ASSERT(!QDELETED(guard_sound) && guard_sound.sound.repeat, "The rotation sound stopped before the fifth second of the guard.")
+	attacker.forceMove(get_step(start, SOUTH))
+	var/brute_before_late_hit = wielder.get_brute_loss()
+	weapon.melee_attack_chain(attacker, wielder)
+	TEST_ASSERT_EQUAL(wielder.get_brute_loss(), brute_before_late_hit, "The guard stopped blocking frontal attacks before five seconds.")
+	var/deadline = started + 6 SECONDS
 	UNTIL(!wielder.has_status_effect(/datum/status_effect/malice_guard) || world.time >= deadline)
 	TEST_ASSERT_NULL(wielder.has_status_effect(/datum/status_effect/malice_guard), "The guard did not expire.")
 	TEST_ASSERT(QDELETED(guard_sound), "The rotation sound continued after the guard expired.")
-	TEST_ASSERT(world.time >= started + 2.7 SECONDS, "The guard ended early.")
-	attacker.forceMove(get_step(start, SOUTH))
+	TEST_ASSERT(world.time >= started + 4.7 SECONDS, "The guard ended early.")
 	var/brute_after_guard = wielder.get_brute_loss()
 	weapon.melee_attack_chain(attacker, wielder)
 	TEST_ASSERT(wielder.get_brute_loss() > brute_after_guard, "Melee from the front stayed blocked after the guard ended.")
@@ -709,3 +803,6 @@
 	TEST_ASSERT(wielder.check_reflect(BODY_ZONE_CHEST), "The saber lost its ordinary reflection after the guard ended.")
 
 #undef LEGENDARY_TEST_OFFICER_ROLE
+#undef MALICE_TEST_TIME_TO_25_PERCENT
+#undef MALICE_TEST_TIME_TO_50_PERCENT
+#undef MALICE_TEST_TIME_TO_FULL_BOND

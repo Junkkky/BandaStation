@@ -149,7 +149,7 @@
 		return
 	if(LAZYACCESS(attack_modifiers, REPLACE_MELEE_HIT_EFFECTS) && attack_modifiers[DAMAGE_DONE] > 0)
 		return
-	if(prob(50))
+	if(!LAZYACCESS(attack_modifiers, MELEE_EFFECT_ORIGIN) && prob(50))
 		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 
 /obj/item/dualsaber/proc/jedi_spin(mob/living/user)

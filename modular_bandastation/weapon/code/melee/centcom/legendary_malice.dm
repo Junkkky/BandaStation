@@ -1,6 +1,6 @@
 /datum/action/cooldown/legendary_sword/malice_dance
 	name = "Танец Злобы"
-	desc = "Пять секунд вы можете двигаться, вращая Злобу. Каждые полсекунды все в пределах одной клетки, включая союзников, получают удар силой в 2/7 от базового урона раскрытого меча."
+	desc = "Пять секунд вы можете двигаться, вращая Злобу. Танец срывает чужой захват. Пока клинок вращается, вас нельзя схватить, толкнуть или ударить голыми руками. Каждые полсекунды все в пределах одной клетки, включая союзников, получают удар силой в 2/7 от базового урона раскрытого меча."
 	button_icon_state = "malice_dance"
 	cooldown_time = 12 SECONDS
 
@@ -25,6 +25,11 @@
 /datum/status_effect/malice_dance/on_apply(obj/item/dualsaber/legendary_saber/saber, required_bond)
 	if(!..())
 		return FALSE
+	RegisterSignal(owner, COMSIG_LIVING_PRE_UNARMED_CONTACT, PROC_REF(block_hand_contact))
+	RegisterSignal(owner, COMSIG_ATOM_CAN_BE_PULLED, PROC_REF(block_pull))
+	RegisterSignal(owner, COMSIG_LIVING_PRE_MOB_BUMP, PROC_REF(block_bump))
+	if(isliving(owner.pulledby))
+		owner.pulledby.stop_pulling()
 	start_direction = owner.dir
 	blade_trail = mutable_appearance('modular_bandastation/weapon/icons/melee/malice_spin.dmi', "malice_spin", ABOVE_MOB_LAYER)
 	blade_trail.pixel_x = -16
@@ -36,11 +41,26 @@
 	return TRUE
 
 /datum/status_effect/malice_dance/on_remove()
+	UnregisterSignal(owner, list(COMSIG_LIVING_PRE_UNARMED_CONTACT, COMSIG_ATOM_CAN_BE_PULLED, COMSIG_LIVING_PRE_MOB_BUMP))
 	QDEL_NULL(dance_sound)
 	if(blade_trail)
 		owner.cut_overlay(blade_trail)
 		blade_trail = null
 	return ..()
+
+/datum/status_effect/malice_dance/proc/block_hand_contact(datum/source, mob/living/attacker)
+	SIGNAL_HANDLER
+	owner.balloon_alert(attacker, "клинок не даёт подступиться!")
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/datum/status_effect/malice_dance/proc/block_pull(datum/source, atom/movable/puller)
+	SIGNAL_HANDLER
+	if(isliving(puller))
+		return COMSIG_ATOM_CANT_PULL
+
+/datum/status_effect/malice_dance/proc/block_bump()
+	SIGNAL_HANDLER
+	return COMPONENT_LIVING_BLOCK_PRE_MOB_BUMP
 
 /datum/status_effect/malice_dance/proc/advance_spin()
 	if(!can_continue())

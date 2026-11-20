@@ -34,6 +34,9 @@
 	return TRUE
 
 /mob/living/UnarmedAttack(atom/attack_target, proximity_flag, list/modifiers)
+	if(proximity_flag && isliving(attack_target) && attack_target != src && (SEND_SIGNAL(attack_target, COMSIG_LIVING_PRE_UNARMED_CONTACT, src) & COMPONENT_CANCEL_ATTACK_CHAIN))
+		return TRUE
+
 	// The sole reason for this signal needing to exist is making FotNS incompatible with Hulk.
 	// Note that it is send before [proc/can_unarmed_attack] is called, keep this in mind.
 	var/sigreturn = SEND_SIGNAL(src, COMSIG_LIVING_EARLY_UNARMED_ATTACK, attack_target, proximity_flag, modifiers)

@@ -1,6 +1,6 @@
-#define BOND_FIRST_STAGE (45 SECONDS)
-#define BOND_SECOND_STAGE (BOND_FIRST_STAGE + 90 SECONDS)
-#define BOND_FULL_STAGE (BOND_SECOND_STAGE + 3 MINUTES)
+#define BOND_FIRST_STAGE (22.5 SECONDS)
+#define BOND_SECOND_STAGE (BOND_FIRST_STAGE + 45 SECONDS)
+#define BOND_FULL_STAGE (BOND_SECOND_STAGE + 90 SECONDS)
 
 /obj/item/dualsaber/legendary_saber
 	/// Mind that first meditated with this sword.
@@ -107,7 +107,7 @@
 	meditation_damage_time = null
 	meditating = FALSE
 	if(completed)
-		COOLDOWN_START(src, bond_rest, 1 MINUTES)
+		COOLDOWN_START(src, bond_rest, 30 SECONDS)
 	if(!QDELETED(user))
 		var/bond_percent = get_legendary_bond()
 		to_chat(user, span_notice("[completed ? "Ступень медитации завершена." : "Медитация прервана."] Узы с клинком: [bond_percent]%."))
