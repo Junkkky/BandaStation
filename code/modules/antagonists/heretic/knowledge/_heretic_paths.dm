@@ -87,7 +87,8 @@ GLOBAL_LIST_INIT(heretic_path_datums, init_heretic_path_datums())
 		our_heretic.get_knowledge_data(knowledge_tier4, power_info, category = category),
 	)
 
-	var/datum/status_effect/heretic_passive/passive = new start.eldritch_passive()
+	var/passive_type = initial(start.eldritch_passive)
+	var/datum/status_effect/heretic_passive/passive = new passive_type()
 	data["passive"] = list(
 		"name" = initial(passive.name),
 		"description" = passive.passive_descriptions.Copy(),
