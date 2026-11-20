@@ -296,6 +296,7 @@
 
 /obj/effect/temp_visual/malice_rage
 	icon = 'modular_bandastation/weapon/icons/melee/malice_critical_strike.dmi'
+	icon_state = "strike"
 	randomdir = FALSE
 	vis_flags = VIS_INHERIT_PLANE
 	pixel_x = -32
@@ -312,7 +313,6 @@
 	flick(icon_state, src)
 
 /obj/effect/temp_visual/malice_rage/release
-	icon_state = "strike"
 	/// The moving blade replaces only this item's in-hand appearance during the swing.
 	var/obj/item/dualsaber/legendary_saber/swing_saber
 
