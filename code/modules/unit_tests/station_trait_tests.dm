@@ -65,6 +65,9 @@
 		/datum/job/donor/representative_tsf = /obj/item/card/id/advanced/tsf/donor,
 		/datum/job/donor/tourist_ussp = /obj/item/card/id/advanced/ussp/donor,
 		/datum/job/donor/representative_ussp = /obj/item/card/id/advanced/ussp/donor,
+		/datum/job/donor/representative_skrell = /obj/item/card/id/advanced/donor_representative/skrell,
+		/datum/job/donor/representative_elysium = /obj/item/card/id/advanced/donor_representative/elysium,
+		/datum/job/donor/representative_free_sectors = /obj/item/card/id/advanced/donor_representative/free_sectors,
 	)
 	for(var/datum/job/job as anything in SSjob.all_occupations)
 		if(!job.required_donator_level)
@@ -95,6 +98,9 @@
 	var/list/expected_departments = list(
 		/datum/job/donor/representative_tsf = 10,
 		/datum/job/donor/representative_ussp = 10,
+		/datum/job/donor/representative_skrell = 10,
+		/datum/job/donor/representative_elysium = 10,
+		/datum/job/donor/representative_free_sectors = 10,
 		/datum/job/donor/barber = 80,
 		/datum/job/donor/waiter = 80,
 		/datum/job/donor/administrator = 80,
