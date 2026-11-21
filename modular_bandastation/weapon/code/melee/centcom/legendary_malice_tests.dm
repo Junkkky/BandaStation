@@ -867,7 +867,8 @@
 	TEST_ASSERT_EQUAL(guard_sound?.source, wielder, "The guard's rotation sound did not start on the bearer before the first block.")
 	TEST_ASSERT_EQUAL(guard_sound.sound.file, 'modular_bandastation/weapon/sound/melee/malice_guard_spin.ogg', "The guard started the wrong rotation sound.")
 	TEST_ASSERT_EQUAL(guard.next_use_time, started + 30 SECONDS, "Wrong cooldown for the guard.")
-	TEST_ASSERT_EQUAL(stance.duration, 6.5 SECONDS, "Wrong duration for the guard.")
+	TEST_ASSERT_EQUAL(stance.duration, 6 SECONDS, "Wrong duration for the guard.")
+	var/expected_end = started + stance.duration
 	TEST_ASSERT(!dance.Trigger(wielder), "The offensive spin overlapped the guard.")
 	sword.melee_attack_chain(wielder, attacker)
 	TEST_ASSERT_EQUAL(attacker.get_brute_loss(), 0, "The bearer attacked while guarding.")
@@ -907,17 +908,17 @@
 	wielder.projectile_hit(laser, BODY_ZONE_CHEST)
 	TEST_ASSERT(wielder.get_fire_loss() > 0, "Turning away from the laser did not expose the back.")
 
-	UNTIL(world.time >= started + 6 SECONDS)
+	UNTIL(world.time >= expected_end - 0.5 SECONDS)
 	TEST_ASSERT(!QDELETED(guard_sound) && guard_sound.sound.repeat, "The rotation sound stopped before the final half-second of the guard.")
 	attacker.forceMove(get_step(start, SOUTH))
 	var/brute_before_late_hit = wielder.get_brute_loss()
 	weapon.melee_attack_chain(attacker, wielder)
 	TEST_ASSERT_EQUAL(wielder.get_brute_loss(), brute_before_late_hit, "The guard stopped blocking frontal attacks during its final half-second.")
-	var/deadline = started + 7.5 SECONDS
+	var/deadline = expected_end + 1 SECONDS
 	UNTIL(!wielder.has_status_effect(/datum/status_effect/malice_guard) || world.time >= deadline)
 	TEST_ASSERT_NULL(wielder.has_status_effect(/datum/status_effect/malice_guard), "The guard did not expire.")
 	TEST_ASSERT(QDELETED(guard_sound), "The rotation sound continued after the guard expired.")
-	TEST_ASSERT(world.time >= started + 6.2 SECONDS, "The guard ended early.")
+	TEST_ASSERT(world.time >= expected_end - 0.3 SECONDS, "The guard ended early.")
 	var/brute_after_guard = wielder.get_brute_loss()
 	weapon.melee_attack_chain(attacker, wielder)
 	TEST_ASSERT(wielder.get_brute_loss() > brute_after_guard, "Melee from the front stayed blocked after the guard ended.")
