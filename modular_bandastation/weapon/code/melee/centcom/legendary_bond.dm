@@ -108,6 +108,10 @@
 	meditating = FALSE
 	if(completed)
 		COOLDOWN_START(src, bond_rest, 30 SECONDS)
+		if(type == /obj/item/dualsaber/legendary_saber && !recall && user?.mind && bonded_mind.resolve() == user.mind)
+			recall = new(user.mind, src)
+			recall.Grant(user)
+			to_chat(user, span_notice("Теперь вы можете призвать Злобу, даже выпустив её из рук."))
 	if(!QDELETED(user))
 		var/bond_percent = get_legendary_bond()
 		to_chat(user, span_notice("[completed ? "Ступень медитации завершена." : "Медитация прервана."] Узы с клинком: [bond_percent]%."))

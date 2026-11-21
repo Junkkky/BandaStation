@@ -20,6 +20,8 @@
 	var/list/ckey_whitelist = list("mooniverse")
 	/// Only swords with their own moveset can form a bond.
 	var/list/legendary_abilities
+	/// The bonded mind keeps this action when the item leaves its hands.
+	var/datum/action/cooldown/malice_recall/recall
 	possible_colors = null
 	block_chance = 88
 	two_hand_force = 35
@@ -51,8 +53,20 @@
 /obj/item/dualsaber/legendary_saber/update_icon_state()
 	. = ..()
 	icon_state = inhand_icon_state = HAS_TRAIT(src, TRAIT_WIELDED) ? "[saber_name]_dualsaber[saber_color][HAS_TRAIT(src, TRAIT_WIELDED)]" : "[saber_name]_dualsaber0"
+	if(recall?.in_flight)
+		icon_state = "[saber_name]_dualsaber[saber_color]1"
 	for(var/datum/action/cooldown/legendary_sword/ability in actions)
 		ability.build_all_button_icons(UPDATE_BUTTON_STATUS)
+
+/obj/item/dualsaber/legendary_saber/Destroy()
+	QDEL_NULL(recall)
+	return ..()
+
+/obj/item/dualsaber/legendary_saber/get_sharpness()
+	return recall?.in_flight ? sharpness : ..()
+
+/obj/item/dualsaber/legendary_saber/Process_Spacemove(movement_dir, continuous_move)
+	return recall?.in_flight || ..()
 
 /obj/item/dualsaber/legendary_saber/jedi_spin(mob/living/user)
 	if(type != /obj/item/dualsaber/legendary_saber)

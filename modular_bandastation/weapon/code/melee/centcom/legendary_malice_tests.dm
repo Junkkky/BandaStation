@@ -66,6 +66,112 @@
 	TEST_ASSERT_EQUAL(sword.get_legendary_bond(), 25, "Dropping the sword lost bond progress.")
 
 
+/datum/unit_test/legendary_sword_malice_recall
+	var/list/spinning_icons_by_turf = list()
+	var/spinning = FALSE
+	var/spoken_lines = 0
+
+/datum/unit_test/legendary_sword_malice_recall/proc/record_move(obj/item/sword)
+	SIGNAL_HANDLER
+	if(spinning && isturf(sword.loc))
+		spinning_icons_by_turf[sword.loc] = sword.icon_state
+
+/datum/unit_test/legendary_sword_malice_recall/proc/record_spin(datum/source, speed, loops, segments, angle)
+	SIGNAL_HANDLER
+	spinning = speed > 0 && loops == -1 && abs(segments * angle) == 360
+
+/datum/unit_test/legendary_sword_malice_recall/proc/record_speech()
+	SIGNAL_HANDLER
+	spoken_lines++
+
+/datum/unit_test/legendary_sword_malice_recall/Run()
+	var/turf/destination = run_loc_floor_bottom_left
+	var/turf/source = get_ranged_target_turf(destination, EAST, 4)
+	var/turf/crossing = get_step(source, WEST)
+	var/mob/living/carbon/human/consistent/wielder = allocate(/mob/living/carbon/human/consistent, destination)
+	var/mob/living/carbon/human/consistent/holder = allocate(/mob/living/carbon/human/consistent, source)
+	var/mob/living/carbon/human/consistent/bystander = allocate(/mob/living/carbon/human/consistent, crossing)
+	var/mob/living/carbon/human/consistent/second_bystander = allocate(/mob/living/carbon/human/consistent, crossing)
+	var/obj/item/dualsaber/legendary_saber/sword = allocate(/obj/item/dualsaber/legendary_saber, destination)
+	wielder.mind_initialize()
+	wielder.mind.centcom_role = LEGENDARY_TEST_OFFICER_ROLE
+	holder.mind_initialize()
+	holder.mind.centcom_role = LEGENDARY_TEST_OFFICER_ROLE
+	TEST_ASSERT(!(locate(/datum/action/cooldown/malice_recall) in wielder.actions), "An unbound officer already had Malice's recall.")
+	sword.bond_meditation_time = MALICE_TEST_TIME_TO_25_PERCENT - world.tick_lag
+	sword.meditate(wielder)
+	var/datum/action/cooldown/malice_recall/recall = locate() in wielder.actions
+	TEST_ASSERT_NOTNULL(recall, "The first completed meditation did not grant the recall action.")
+	TEST_ASSERT(holder.put_in_active_hand(sword), "Another eligible officer could not hold the saber.")
+	TEST_ASSERT(!(locate(/datum/action/cooldown/malice_recall) in holder.actions), "Picking up someone else's saber granted its recall.")
+	TEST_ASSERT(!recall.Trigger(holder), "A different officer could invoke the owner's recall.")
+	RegisterSignal(wielder, COMSIG_MOB_SAY, PROC_REF(record_speech))
+	RegisterSignal(sword, COMSIG_MOVABLE_MOVED, PROC_REF(record_move))
+	RegisterSignal(sword, COMSIG_ATOM_SPIN_ANIMATION, PROC_REF(record_spin))
+	var/started = world.time
+	TEST_ASSERT(recall.Trigger(wielder), "An unarmed owner could not recall their saber.")
+	TEST_ASSERT_EQUAL(recall.next_use_time, started + 30 SECONDS, "The recall started the wrong cooldown.")
+	var/deadline = world.time + 5 SECONDS
+	UNTIL(spinning_icons_by_turf[crossing] || world.time >= deadline)
+	var/datum/sound_token/flight_sound = recall.flight_sound
+	TEST_ASSERT_EQUAL(flight_sound?.source, sword, "The rotation sound should follow the flying saber.")
+	TEST_ASSERT(flight_sound.sound.repeat && flight_sound.volume > 0, "The airborne saber should play an audible loop.")
+	var/turf/moving_destination = get_step(destination, NORTH)
+	TEST_ASSERT(!wielder.is_holding(sword) && wielder.Move(moving_destination, NORTH), "Could not move the owner while the blade was in flight.")
+	UNTIL(wielder.is_holding(sword) || world.time >= deadline)
+	TEST_ASSERT(wielder.is_holding(sword) && HAS_TRAIT(sword, TRAIT_WIELDED), "Two free hands did not catch the opened saber.")
+	TEST_ASSERT(QDELETED(flight_sound), "Catching the saber left its rotation sound playing.")
+	TEST_ASSERT(moving_destination in spinning_icons_by_turf, "The blade did not follow its moving owner to the new tile.")
+	TEST_ASSERT(!holder.is_holding(sword), "The previous holder retained the recalled saber.")
+	TEST_ASSERT_EQUAL(spinning_icons_by_turf[crossing], "mid_dualsabermidnight1", "The actual saber must cross the intervening tile with its open sprite and a continuous full rotation.")
+	TEST_ASSERT_EQUAL(bystander.get_brute_loss() + bystander.get_fire_loss(), sword.two_hand_force, "An intervening unarmored target should take exactly one base hit.")
+	TEST_ASSERT_EQUAL(second_bystander.get_brute_loss() + second_bystander.get_fire_loss(), sword.two_hand_force, "A second target on the same tile should also take exactly one base hit.")
+	TEST_ASSERT_EQUAL(wielder.get_brute_loss() + wielder.get_fire_loss(), 0, "The returning saber struck its owner.")
+	TEST_ASSERT_EQUAL(spoken_lines, 0, "Recalling Malice made the owner speak.")
+
+	wielder.forceMove(destination)
+	wielder.dropItemToGround(sword)
+	TEST_ASSERT(recall in wielder.actions, "Dropping Malice removed the owner's recall.")
+	TEST_ASSERT(!recall.Trigger(wielder), "A disarm bypassed the recall cooldown.")
+	var/obj/item/pen/first_pen = EASY_ALLOCATE()
+	TEST_ASSERT(wielder.put_in_active_hand(first_pen), "Could not occupy the owner's active hand.")
+	recall.ResetCooldown()
+	TEST_ASSERT(recall.Trigger(wielder), "The owner could not recall a saber lying at their feet.")
+	deadline = world.time + 5 SECONDS
+	UNTIL(wielder.is_holding(sword) || world.time >= deadline)
+	TEST_ASSERT(wielder.is_holding(sword) && !HAS_TRAIT(sword, TRAIT_WIELDED), "One free hand should catch the folded hilt.")
+	recall.ResetCooldown()
+	TEST_ASSERT(!recall.Trigger(wielder) && recall.next_use_time <= world.time, "Recalling a held hilt spent the cooldown.")
+
+	wielder.dropItemToGround(sword)
+	var/obj/item/pen/second_pen = EASY_ALLOCATE()
+	TEST_ASSERT(wielder.put_in_inactive_hand(second_pen), "Could not occupy the owner's remaining hand.")
+	var/obj/item/storage/backpack/bag = allocate(/obj/item/storage/backpack, source)
+	TEST_ASSERT(bag.atom_storage.attempt_insert(sword, messages = FALSE), "Could not stow the hilt for recall.")
+	var/turf/wall = get_step(crossing, WEST)
+	var/original_turf_type = wall.type
+	wall.ChangeTurf(/turf/closed/wall)
+	var/launched = recall.Trigger(wielder)
+	deadline = world.time + 5 SECONDS
+	UNTIL(sword.loc == crossing || world.time >= deadline)
+	flight_sound = recall.flight_sound
+	var/sound_before_wall = !QDELETED(flight_sound)
+	sleep(1 SECONDS)
+	var/atom/stopped_at = sword.loc
+	wall.ChangeTurf(original_turf_type)
+	TEST_ASSERT(launched && stopped_at == crossing, "A wall should stop the saber on the last open tile.")
+	TEST_ASSERT(sound_before_wall && QDELETED(flight_sound), "The saber should stop its flight loop when it hits a wall.")
+	TEST_ASSERT_EQUAL(sword.icon_state, initial(sword.icon_state), "Hitting a wall left the saber's deployed sprite on the ground.")
+	TEST_ASSERT_EQUAL(bag.loc, source, "Calling the stowed saber moved its container.")
+	recall.ResetCooldown()
+	TEST_ASSERT(recall.Trigger(wielder), "A stopped saber could not be recalled again.")
+	deadline = world.time + 5 SECONDS
+	UNTIL(sword.loc == destination || world.time >= deadline)
+	TEST_ASSERT_EQUAL(sword.loc, destination, "The saber did not land at the feet of an owner with full hands.")
+	TEST_ASSERT(!HAS_TRAIT(sword, TRAIT_WIELDED) && wielder.is_holding(first_pen) && wielder.is_holding(second_pen), "Landing the hilt displaced an item or left the saber open.")
+	qdel(sword)
+	TEST_ASSERT(QDELETED(recall) && !(recall in wielder.actions), "Destroying the bound saber left an orphan recall button.")
+
 /datum/unit_test/legendary_sword_malice_meditation
 	var/list/whispered_lines = list()
 
