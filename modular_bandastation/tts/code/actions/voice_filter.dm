@@ -2,11 +2,16 @@
 #define TTS_VOICE_FILTER_MAX_STAGES 6
 
 /// Applies a configurable audio filter to the owner's TTS speech.
-/datum/action/voice_filter
+/datum/action/cooldown/mob_cooldown/voice_filter
 	name = "Фильтр голоса"
 	desc = "ЛКМ включает или выключает фильтр TTS.<br>ПКМ открывает настройки FFmpeg."
 	button_icon = 'modular_bandastation/tts/icons/voice_filter.dmi'
 	button_icon_state = "voice_filter_off"
+	check_flags = NONE
+	cooldown_time = 0
+	text_cooldown = FALSE
+	click_to_activate = FALSE
+	shared_cooldown = NONE
 
 	/// Validated graph to apply before the standard TTS effects.
 	VAR_PRIVATE/filter_arguments = "highpass=f=500,lowpass=f=3500"
@@ -14,14 +19,25 @@
 	VAR_PRIVATE/filter_enabled = FALSE
 	/// Identifies the open input and invalidates it if the action is removed.
 	VAR_PRIVATE/list/configuration_prompt
+	/// Routes a secondary click through the cooldown action's activation checks.
+	VAR_PRIVATE/configure_on_activate = FALSE
 
-/datum/action/voice_filter/Trigger(mob/clicker, trigger_flags)
-	clicker ||= owner
-	if(clicker != owner || !..())
+/datum/action/cooldown/mob_cooldown/voice_filter/Trigger(mob/clicker, trigger_flags, atom/target)
+	if(clicker && clicker != owner)
 		return FALSE
 
-	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
-		return configure_filter(clicker)
+	var/previous_configure_on_activate = configure_on_activate
+	configure_on_activate = !!(trigger_flags & TRIGGER_SECONDARY_ACTION)
+	. = ..()
+	configure_on_activate = previous_configure_on_activate
+
+/datum/action/cooldown/mob_cooldown/voice_filter/Activate(atom/target)
+	if(QDELETED(owner) || target != owner)
+		return FALSE
+
+	if(configure_on_activate)
+		INVOKE_ASYNC(src, PROC_REF(configure_filter), owner)
+		return TRUE
 
 	filter_enabled = !filter_enabled
 	if(filter_enabled)
@@ -33,19 +49,19 @@
 	build_all_button_icons(UPDATE_BUTTON_ICON)
 	return TRUE
 
-/datum/action/voice_filter/Remove(mob/removed_from)
+/datum/action/cooldown/mob_cooldown/voice_filter/Remove(mob/removed_from)
 	UnregisterSignal(removed_from, COMSIG_TTS_COMPONENT_PRE_CAST_TTS)
 	filter_enabled = FALSE
 	button_icon_state = initial(button_icon_state)
 	configuration_prompt = null
 	return ..()
 
-/datum/action/voice_filter/proc/add_voice_filter(datum/source, list/tts_args)
+/datum/action/cooldown/mob_cooldown/voice_filter/proc/add_voice_filter(datum/source, list/tts_args)
 	SIGNAL_HANDLER
 
 	tts_args[TTS_CAST_VOICE_FILTER] = filter_arguments
 
-/datum/action/voice_filter/proc/configure_filter(mob/user)
+/datum/action/cooldown/mob_cooldown/voice_filter/proc/configure_filter(mob/user)
 	var/client/editor = user.client
 	if(configuration_prompt || !editor)
 		return FALSE

@@ -240,4 +240,3 @@
 /mob/living/silicon/Initialize(mapload)
 	. = ..()
 	GRANT_ACTION(/datum/action/innate/voice_change/genderless/robotic)
-	GRANT_ACTION(/datum/action/voice_filter)
