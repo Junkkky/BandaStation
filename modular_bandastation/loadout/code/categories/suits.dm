@@ -128,6 +128,11 @@
 	item_path = /obj/item/clothing/suit/hooded/wintercoat
 
 // MARK: Tier 1
+/datum/loadout_item/suits/subscription_woodcutter_shirt
+	name = "Клетчатая рубашка лесоруба"
+	item_path = /obj/item/clothing/suit/costume/subscription/woodcutter_shirt
+	donator_level = DONATOR_TIER_1
+
 /datum/loadout_item/suits/primera_bubba
 	name = "Фартук Буббы"
 	item_path = /obj/item/clothing/suit/costume/primera/bubba
@@ -222,6 +227,16 @@
 	donator_level = DONATOR_TIER_4
 
 // MARK: Tier 5
+/datum/loadout_item/suits/subscription_spongebob_mascot
+	name = "Ростовой костюм Губки Боба"
+	item_path = /obj/item/clothing/suit/costume/subscription/mascot/spongebob
+	donator_level = DONATOR_TIER_5
+
+/datum/loadout_item/suits/subscription_patrick_mascot
+	name = "Ростовой костюм Патрика"
+	item_path = /obj/item/clothing/suit/costume/subscription/mascot/patrick
+	donator_level = DONATOR_TIER_5
+
 /datum/loadout_item/suits/soundhand_white_jacket
 	name = "Серебристая куртка Арии"
 	item_path = /obj/item/clothing/suit/soundhand_white_jacket/tag
