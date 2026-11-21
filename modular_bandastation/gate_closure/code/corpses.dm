@@ -146,7 +146,7 @@
 	outfit = /datum/outfit/gate_closure_centcom/hel
 	corpse_gender = FEMALE
 	facial_hairstyle = "Shaved"
-	hairstyle = "Braided Front"
+	hairstyle = "Ponytail (Spiky)"
 	haircolor = "#C8501E"
 	corpse_wounds = list(BODY_ZONE_CHEST = /datum/wound/pierce/bleed/critical)
 
@@ -162,7 +162,7 @@
 	outfit = /datum/outfit/gate_closure_centcom/maria
 	corpse_gender = FEMALE
 	facial_hairstyle = "Shaved"
-	hairstyle = "Braid (High)"
+	hairstyle = "Beehive"
 	haircolor = "#C8C8C8"
 	corpse_wounds = list(
 		BODY_ZONE_CHEST = /datum/wound/slash/flesh/critical,

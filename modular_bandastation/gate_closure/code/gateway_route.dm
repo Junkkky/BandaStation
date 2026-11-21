@@ -41,7 +41,6 @@ SUBSYSTEM_DEF(gate_closure)
 		replacement.setDir(beach_gate.dir)
 		qdel(beach_gate)
 
-	var/rain_level
 	if(length(GLOB.gate_closure_island_landings))
 		var/turf/island = GLOB.gate_closure_island_landings[1]
 		event_levels |= island.z
@@ -62,13 +61,6 @@ SUBSYSTEM_DEF(gate_closure)
 				var/turf/arrival = point.target_turfs[1]
 				SSredspace.enable_z_level(arrival.z)
 				event_levels |= arrival.z
-				if(point.id == "gate_closure_peti_house")
-					rain_level = arrival.z
-
-	// It always rains on the suburb streets, never inside the houses.
-	var/area/suburb = GLOB.areas_by_type[/area/awaymission/gate_closure/peti_house]
-	if(rain_level && suburb)
-		SSweather.run_weather(/datum/weather/particle/rain_storm/gate_closure, rain_level, list(WEATHER_FORCED_AREAS = list(suburb)))
 
 	// No access checks anywhere in the scenes; most of them live in object types, out of reach of map edits.
 	for(var/z_level in event_levels)

@@ -123,16 +123,6 @@
 /area/awaymission/gate_closure/peti_house/neighbours
 	name = "GC: Лимнея - Соседний дом"
 
-/// Endless quiet rain over the suburb streets: no thunder, no warnings, wet neither floors nor people.
-/datum/weather/particle/rain_storm/gate_closure
-	telegraph_duration = 0
-	telegraph_message = null
-	weather_message = null
-	end_message = null
-	probability = 0
-	// Indoors only so the forced street area passes the outdoors check; the rooms are never in the forced list.
-	weather_flags = WEATHER_ENDLESS | WEATHER_INDOORS
-
 /// A void boundary rather than a lethal chasm on the expedition's walking route.
 /turf/closed/indestructible/redspace_void
 	name = "бездна"

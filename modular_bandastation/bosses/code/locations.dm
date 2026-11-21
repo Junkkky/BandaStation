@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(event_portal_points)
 	var/destination_name = "Логово боссов"
 
 /datum/action/cooldown/event_target/pinhead_portal/proc/destination_names()
-	return list("Логово боссов") + sort_list(assoc_to_keys(GLOB.event_portal_points))
+	return list("Логово боссов", "Кибериада") + sort_list(assoc_to_keys(GLOB.event_portal_points))
 
 /datum/action/cooldown/event_target/pinhead_portal/proc/choose_destination(mob/user)
 	var/choice = tgui_input_list(user, "Куда ведёт портал?", name, destination_names())
@@ -83,7 +83,15 @@ GLOBAL_LIST_EMPTY(event_portal_points)
 	if(!QDELETED(entrance))
 		QDEL_NULL(entrance)
 		return TRUE
-	var/turf/destination = destination_name == "Логово боссов" ? event_boss_room("lair") : GLOB.event_portal_points[destination_name]
+	var/turf/destination
+	switch(destination_name)
+		if("Логово боссов")
+			destination = event_boss_room("lair")
+		// The same corridor outside the bridge where the event's last gateway drops everyone.
+		if("Кибериада")
+			destination = GLOB.event_station_return.get_target_turf()
+		else
+			destination = GLOB.event_portal_points[destination_name]
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(target) || target.z != owner.z || !(target in view(owner)))
 		return FALSE
 	var/turf/start = get_turf(target)

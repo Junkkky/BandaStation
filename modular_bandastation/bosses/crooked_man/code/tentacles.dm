@@ -12,15 +12,6 @@
 	. = ..()
 	transform = CROOKED_SPIKE_MATRIX
 
-/obj/effect/goliath_tentacle/drag/crooked
-	name = "костяной шип"
-	icon = 'modular_bandastation/bosses/crooked_man/icons/spikes.dmi'
-	grapple_time = 3 SECONDS
-
-/obj/effect/goliath_tentacle/drag/crooked/Initialize(mapload, mob/living/goliath)
-	. = ..()
-	transform = CROOKED_SPIKE_MATRIX
-
 /// Spikes under a chosen spot and around it.
 /datum/action/cooldown/mob_cooldown/goliath_tentacles/crooked
 	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
@@ -70,9 +61,9 @@
 		return
 	for(var/turf/open/spot in view(ring, owner))
 		if(get_dist(owner, spot) == ring && !isgroundlessturf(spot))
-			new /obj/effect/goliath_tentacle/drag/crooked(spot, owner)
+			new /obj/effect/goliath_tentacle/crooked(spot, owner)
 
-/// A line of spikes running out to the chosen spot.
+/// A line of spikes running out to the chosen spot; they hold in place like the other spikes instead of dragging to him.
 /datum/action/cooldown/mob_cooldown/tentacle_grasp/crooked
 	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
 	button_icon_state = "crooked_trail"
@@ -86,7 +77,7 @@
 	return TRUE
 
 /obj/effect/temp_visual/effect_trail/burrowed_tentacle/crooked
-	spawned_effect = /obj/effect/goliath_tentacle/drag/crooked
+	spawned_effect = /obj/effect/goliath_tentacle/crooked
 
 #undef CROOKED_SPIKE_SCALE
 #undef CROOKED_SPIKE_MATRIX
