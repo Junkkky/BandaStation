@@ -116,23 +116,27 @@
 	sechud_icon_state = "hudmigrant"
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 
-/datum/job/donor/representative_tsf
-	title = "Representative TSF"
-	alternate_titles = list("Представитель ТСФ", "Дипломат ТСФ", "Публицист ТСФ")
-	description = "Представляйте интересы ТСФ в переговорах с командованием станции и оформляйте достигнутые договорённости."
+/datum/job/donor/representative
+	abstract_type = /datum/job/donor/representative
 	required_donator_level = DONATOR_TIER_4
-	config_tag = "REPRESENTATIVE_TSF"
-	display_order = JOB_DISPLAY_ORDER_DONOR_REPRESENTATIVE_TSF
 	total_positions = 1
 	spawn_positions = 1
 	departments_list = list(/datum/job_department/nanotrasen_representation)
-	supervisors = "дипломатической службой ТСФ"
 	tgui_icon = FA_ICON_HANDSHAKE
-	outfit = /datum/outfit/job/donor/representative_tsf
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_CIV
 	job_flags = parent_type::job_flags | JOB_ANTAG_PROTECTED
 	donor_spawn_landmark = JOB_ASSISTANT
+
+/datum/job/donor/representative_tsf
+	parent_type = /datum/job/donor/representative
+	title = "Representative TSF"
+	alternate_titles = list("Представитель ТСФ", "Дипломат ТСФ", "Публицист ТСФ")
+	description = "Представляйте интересы ТСФ в переговорах с командованием станции и оформляйте достигнутые договорённости."
+	config_tag = "REPRESENTATIVE_TSF"
+	display_order = JOB_DISPLAY_ORDER_DONOR_REPRESENTATIVE_TSF
+	supervisors = "дипломатической службой ТСФ"
+	outfit = /datum/outfit/job/donor/representative_tsf
 
 /datum/outfit/job/donor/representative_tsf
 	parent_type = /datum/outfit/job/donor/tourist_tsf
@@ -153,25 +157,17 @@
 	job = /datum/job/donor/representative_tsf
 	sechud_icon = DEFAULT_HUDS_DMI
 	sechud_icon_state = SECHUD_TSF
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_COMMAND, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
+	minimal_access = DONOR_REPRESENTATIVE_ACCESS
 
 /datum/job/donor/representative_ussp
+	parent_type = /datum/job/donor/representative
 	title = "Representative USSP"
 	alternate_titles = list("Представитель КССП", "Дипломат КССП", "Пресс-секретарь КССП")
 	description = "Представляйте интересы КССП в переговорах с командованием станции, принимайте обращения и ведите дипломатическую переписку."
-	required_donator_level = DONATOR_TIER_4
 	config_tag = "REPRESENTATIVE_USSP"
 	display_order = JOB_DISPLAY_ORDER_DONOR_REPRESENTATIVE_USSP
-	total_positions = 1
-	spawn_positions = 1
-	departments_list = list(/datum/job_department/nanotrasen_representation)
 	supervisors = "дипломатической службой КССП"
-	tgui_icon = FA_ICON_HANDSHAKE
 	outfit = /datum/outfit/job/donor/representative_ussp
-	paycheck = PAYCHECK_CREW
-	paycheck_department = ACCOUNT_CIV
-	job_flags = parent_type::job_flags | JOB_ANTAG_PROTECTED
-	donor_spawn_landmark = JOB_ASSISTANT
 
 /datum/outfit/job/donor/representative_ussp
 	parent_type = /datum/outfit/job/donor/tourist_ussp
@@ -191,7 +187,87 @@
 	job = /datum/job/donor/representative_ussp
 	sechud_icon = DEFAULT_HUDS_DMI
 	sechud_icon_state = SECHUD_USSP
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_COMMAND, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
+	minimal_access = DONOR_REPRESENTATIVE_ACCESS
+
+/datum/job/donor/representative_skrell
+	parent_type = /datum/job/donor/representative
+	title = "Skrell Empire Representative"
+	alternate_titles = list("Представитель Империи Скреллов", "Посол Империи")
+	description = "Представляйте Империю Скреллов на переговорах с командованием станции. Принимайте обращения её подданных и помогайте им уладить споры с Нанотрейзен."
+	config_tag = "REPRESENTATIVE_SKRELL"
+	display_order = JOB_DISPLAY_ORDER_DONOR_REPRESENTATIVE_SKRELL
+	supervisors = "дипломатической службой Империи Скреллов"
+	outfit = /datum/outfit/job/donor/representative_skrell
+
+/datum/outfit/job/donor/representative_skrell
+	name = "Skrell Empire Representative"
+	jobtype = /datum/job/donor/representative_skrell
+	id = /obj/item/card/id/advanced/donor_representative/skrell
+	id_trim = /datum/id_trim/job/donor/representative_skrell
+	uniform = /obj/item/clothing/under/diplomatic/skrell
+	suit = /obj/item/clothing/suit/diplomatic/skrell
+	ear_right = /obj/item/radio/headset/headset_com
+	shoes = /obj/item/clothing/shoes/laceup
+	l_hand = /obj/item/storage/briefcase
+	backpack_contents = list(/obj/item/stamp/skrell_empire = 1)
+
+/datum/outfit/job/donor/representative_skrell/post_equip(mob/living/carbon/human/equipped, visuals_only = FALSE)
+	. = ..()
+	if(!visuals_only)
+		equipped.grant_language(/datum/language/qurvolious)
+
+/datum/job/donor/representative_elysium
+	parent_type = /datum/job/donor/representative
+	title = "Elysium Dominion Representative"
+	alternate_titles = list("Представитель Доминиона Элизиум", "Посол Элизиума")
+	description = "Ведите переговоры от имени Доминиона Элизиум. Обсуждайте с командованием условия сотрудничества и оформляйте соглашения для обеих сторон."
+	config_tag = "REPRESENTATIVE_ELYSIUM"
+	display_order = JOB_DISPLAY_ORDER_DONOR_REPRESENTATIVE_ELYSIUM
+	supervisors = "дипломатической службой Доминиона Элизиум"
+	outfit = /datum/outfit/job/donor/representative_elysium
+
+/datum/outfit/job/donor/representative_elysium
+	name = "Elysium Dominion Representative"
+	jobtype = /datum/job/donor/representative_elysium
+	id = /obj/item/card/id/advanced/donor_representative/elysium
+	id_trim = /datum/id_trim/job/donor/representative_elysium
+	uniform = /obj/item/clothing/under/diplomatic/elysium
+	suit = /obj/item/clothing/suit/diplomatic/elysium
+	head = /obj/item/clothing/head/elysium_diplomatic_cap
+	ear_right = /obj/item/radio/headset/headset_com
+	shoes = /obj/item/clothing/shoes/laceup
+	l_hand = /obj/item/storage/briefcase
+	backpack_contents = list(
+		/obj/item/stamp/elysium = 1,
+		/obj/item/clothing/suit/diplomatic/elysium/ceremonial = 1,
+	)
+
+/datum/outfit/job/donor/representative_elysium/post_equip(mob/living/carbon/human/equipped, visuals_only = FALSE)
+	. = ..()
+	if(!visuals_only)
+		equipped.grant_language(/datum/language/gutter)
+
+/datum/job/donor/representative_free_sectors
+	parent_type = /datum/job/donor/representative
+	title = "Free Sectors Representative"
+	alternate_titles = list("Представитель Вольных Секторов", "Посол Вольников")
+	description = "Передавайте командованию обращения из Вольных Секторов. Помогайте независимым экипажам договариваться со станцией о поставках и условиях захода в порт."
+	config_tag = "REPRESENTATIVE_FREE_SECTORS"
+	display_order = JOB_DISPLAY_ORDER_DONOR_REPRESENTATIVE_FREE_SECTORS
+	supervisors = "общинами Вольных Секторов, которые вас направили"
+	outfit = /datum/outfit/job/donor/representative_free_sectors
+
+/datum/outfit/job/donor/representative_free_sectors
+	name = "Free Sectors Representative"
+	jobtype = /datum/job/donor/representative_free_sectors
+	id = /obj/item/card/id/advanced/donor_representative/free_sectors
+	id_trim = /datum/id_trim/job/donor/representative_free_sectors
+	uniform = /obj/item/clothing/under/diplomatic/free_sectors
+	suit = /obj/item/clothing/suit/diplomatic/free_sectors
+	ear_right = /obj/item/radio/headset/headset_com
+	shoes = /obj/item/clothing/shoes/laceup
+	l_hand = /obj/item/storage/briefcase
+	backpack_contents = list(/obj/item/stamp/free_sectors = 1)
 
 /datum/job/donor/navy_junior_officer
 	title = "Nanotrasen Navy Junior Officer"

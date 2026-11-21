@@ -289,6 +289,9 @@
 		/datum/job/donor/migrant = /obj/item/organ/heart/cybernetic,
 		/datum/job/donor/representative_tsf = /obj/item/organ/cyberimp/arm/toolkit/paperwork,
 		/datum/job/donor/representative_ussp = /obj/item/organ/cyberimp/arm/toolkit/paperwork,
+		/datum/job/donor/representative_skrell = /obj/item/organ/cyberimp/arm/toolkit/paperwork,
+		/datum/job/donor/representative_elysium = /obj/item/organ/cyberimp/arm/toolkit/paperwork,
+		/datum/job/donor/representative_free_sectors = /obj/item/organ/cyberimp/arm/toolkit/paperwork,
 		/datum/job/donor/navy_junior_officer = /obj/item/organ/cyberimp/arm/toolkit/paperwork,
 		/datum/job/geneticist = /obj/item/organ/fly, //we don't care about implants, we have cancer.
 		/datum/job/head_of_personnel = /obj/item/organ/eyes/robotic,

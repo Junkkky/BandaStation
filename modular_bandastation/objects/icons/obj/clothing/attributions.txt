@@ -15,3 +15,6 @@ Inventory icons and worn sprites from the supplied SetLodaut.dmi. Artist not ide
 
 ../../mob/inhands/subscription_costumes_{left,right}.dmi and ../../mob/clothing/subscription/*.dmi:
 Held sprites and species fits derived from the supplied SetLodaut.dmi. Resomi fitting uses the project's tools/resomi/fit_clothing.py.
+
+representative_clothing.dmi was provided for SS220 PRIMERA as SetState.dmi.
+The original inventory and worn sprites for all three diplomatic outfits are preserved.
