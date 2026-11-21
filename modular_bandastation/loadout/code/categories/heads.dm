@@ -53,3 +53,9 @@
 	name = "Байкерский шлем"
 	item_path = /obj/item/clothing/head/helmet/biker_helmet/replica
 	donator_level = DONATOR_TIER_2
+
+// MARK: Tier 3
+/datum/loadout_item/head/subscription_black_cap
+	name = "Чёрная кепка"
+	item_path = /obj/item/clothing/head/costume/subscription_black_cap
+	donator_level = DONATOR_TIER_3

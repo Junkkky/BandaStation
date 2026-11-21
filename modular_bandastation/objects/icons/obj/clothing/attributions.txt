@@ -9,3 +9,9 @@ Original inventory frames are preserved; missing icons and held views reuse the 
 Species and leg-shape adaptations derived from Fridhelm's original SS220 PRIMERA sprites.
 Source pixels and palette fitted to PrimeDream's existing body and clothing templates.
 Resomi fitting uses the project's tools/resomi/fit_clothing.py.
+
+subscription_costumes.dmi and ../../mob/clothing/subscription_costumes.dmi:
+Inventory icons and worn sprites from the supplied SetLodaut.dmi. Artist not identified.
+
+../../mob/inhands/subscription_costumes_{left,right}.dmi and ../../mob/clothing/subscription/*.dmi:
+Held sprites and species fits derived from the supplied SetLodaut.dmi. Resomi fitting uses the project's tools/resomi/fit_clothing.py.
