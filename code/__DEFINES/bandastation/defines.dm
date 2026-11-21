@@ -6,6 +6,8 @@
 	#define TTS_CAST_LOCATION "tts_location"
 	#define TTS_CAST_LOCAL "tts_local"
 	#define TTS_CAST_EFFECTS "tts_effect"
+	/// Validated custom audio filter to pass to TTS processing.
+	#define TTS_CAST_VOICE_FILTER "tts_voice_filter"
 	#define TTS_CAST_TRAITS "tts_traits"
 	#define TTS_CAST_PRE_SFX "tts_preSFX"
 	#define TTS_CAST_POST_SFX "tts_postSFX"

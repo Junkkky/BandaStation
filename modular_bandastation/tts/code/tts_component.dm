@@ -215,7 +215,8 @@
 		.[TTS_CAST_TRAITS],
 		.[TTS_CAST_PRE_SFX],
 		.[TTS_CAST_POST_SFX],
-		.[TTS_CHANNEL_OVERRIDE]
+		.[TTS_CHANNEL_OVERRIDE],
+		.[TTS_CAST_VOICE_FILTER],
 	)
 
 /datum/component/tts_component/proc/tts_effects_add(atom/user, list/new_sound_effects)
@@ -239,3 +240,4 @@
 /mob/living/silicon/Initialize(mapload)
 	. = ..()
 	GRANT_ACTION(/datum/action/innate/voice_change/genderless/robotic)
+	GRANT_ACTION(/datum/action/voice_filter)

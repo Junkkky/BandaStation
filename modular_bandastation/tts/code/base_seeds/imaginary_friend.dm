@@ -8,3 +8,4 @@
 /mob/eye/imaginary_friend/Initialize(mapload)
 	. = ..()
 	GRANT_ACTION(/datum/action/innate/voice_change/genderless)
+	GRANT_ACTION(/datum/action/voice_filter)
