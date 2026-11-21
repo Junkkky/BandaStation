@@ -6,34 +6,19 @@
 #define SHELLEO_ERR ".err"
 #define SHELLEO_OUT ".out"
 
-/proc/apply_sound_effects(list/effects, filename_input, filename_output)
-	if(!length(effects))
-		CRASH("Invalid sound effect chosen.")
-
-	var/list/ffmpeg_arguments = list()
-	var/complex = FALSE
-	for(var/datum/singleton/sound_effect/effect as anything in effects)
-		if(effect.complex)
-			ffmpeg_arguments = list(effect.ffmpeg_arguments)
-			complex = TRUE
-			break
-
-		ffmpeg_arguments |= effect.ffmpeg_arguments
-
+/// Runs FFmpeg with the trusted command arguments prepared for a TTS processing request.
+/proc/apply_sound_effects(filter_arguments, filename_input, filename_output)
 	var/taskset = CONFIG_GET(string/ffmpeg_cpuaffinity) ? "taskset -ac [CONFIG_GET(string/ffmpeg_cpuaffinity)]" : ""
-	var/filter_part = complex ? ffmpeg_arguments.Join() : {"-filter:a "[ffmpeg_arguments.Join(", ")]""}
-
-	var/command = {"[taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] [filter_part] [filename_output]"}
+	var/command = {"[taskset] ffmpeg -y -hide_banner -loglevel error -i [filename_input] [filter_arguments] [filename_output]"}
 	var/list/output = world.shelleo(command)
 
 	var/errorlevel = output[SHELLEO_ERRORLEVEL]
 	var/stdout = output[SHELLEO_STDOUT]
 	var/stderr = output[SHELLEO_STDERR]
 	if(errorlevel)
-		var/effect_types = effects.Join("; ")
-		log_runtime("Error: apply_sound_effects([effect_types], [filename_input], [filename_output]) - See debug logs.")
-		logger.Log(LOG_CATEGORY_DEBUG, "apply_sound_effects([effect_types], [filename_input], [filename_output]) STDOUT: [stdout]")
-		logger.Log(LOG_CATEGORY_DEBUG, "apply_sound_effects([effect_types], [filename_input], [filename_output]) STDERR: [stderr]")
+		log_runtime("Error: apply_sound_effects([filename_input], [filename_output]) - See debug logs.")
+		logger.Log(LOG_CATEGORY_DEBUG, "apply_sound_effects([filename_input], [filename_output]) STDOUT: [stdout]")
+		logger.Log(LOG_CATEGORY_DEBUG, "apply_sound_effects([filename_input], [filename_output]) STDERR: [stderr]")
 		return FALSE
 
 	return TRUE

@@ -54,6 +54,8 @@ SUBSYSTEM_DEF(tts220)
 	VAR_PRIVATE/list/tts_queue = list()
 	/// Ffmpeg queue. Is an assoc list. Each entry is a filename mapped to the list of sound processing requests which require it.
 	VAR_PRIVATE/list/tts_effects_queue = list()
+	/// Playbacks waiting for files FFmpeg is currently writing.
+	VAR_PRIVATE/list/tts_effects_processing = list()
 	/// Lazy list of request that need to performed to TTS provider API
 	VAR_PRIVATE/list/tts_requests_queue
 
@@ -173,6 +175,7 @@ SUBSYSTEM_DEF(tts220)
 	var/queue_position = 1
 	while(LAZYLEN(tts_effects_queue) >= queue_position)
 		var/filename = tts_effects_queue[queue_position++]
+		tts_effects_processing[filename] = tts_effects_queue[filename]
 		INVOKE_ASYNC(src, PROC_REF(process_filename_sound_effect_requests), filename)
 
 		if(MC_TICK_CHECK)
@@ -180,11 +183,17 @@ SUBSYSTEM_DEF(tts220)
 
 	LAZYCUT(tts_effects_queue, 1, queue_position)
 
+/// Completes a queued render and delivers it to the listeners that joined while it ran.
 /datum/controller/subsystem/tts220/proc/process_filename_sound_effect_requests(filename)
-	var/list/filename_requests = tts_effects_queue[filename]
+	var/list/filename_requests = tts_effects_processing[filename]
 	var/datum/sound_effects_request/request = filename_requests[1]
 
-	if(!apply_sound_effects(request.effects, request.original_filename, request.output_filename))
+	var/rendered = apply_sound_effects(request.filter_arguments, request.original_filename, request.output_filename)
+	tts_effects_processing -= filename
+	if(!rendered)
+		fdel(request.output_filename)
+		for(var/datum/sound_effects_request/adjacent_request as anything in filename_requests)
+			adjacent_request.on_filter_failure?.InvokeAsync()
 		return
 	if(!CONFIG_GET(flag/tts_cache_enabled))
 		addtimer(CALLBACK(src, PROC_REF(cleanup_tts_file), request.output_filename), FILE_CLEANUP_DELAY)
@@ -230,6 +239,7 @@ SUBSYSTEM_DEF(tts220)
 	LAZYADD(tts_requests_queue, list(list(text, seed, proc_callback)))
 	return TRUE
 
+/// Gets speech from the cache or provider, carrying the optional custom filter to playback.
 /datum/controller/subsystem/tts220/proc/get_tts(
 	atom/speaker,
 	listener,
@@ -241,6 +251,7 @@ SUBSYSTEM_DEF(tts220)
 	preSFX = null,
 	postSFX = null,
 	channel_override,
+	voice_filter,
 )
 	set waitfor = FALSE
 
@@ -296,11 +307,11 @@ SUBSYSTEM_DEF(tts220)
 	if(fexists("[filename].ogg"))
 		tts_reused++
 		tts_rrps_counter++
-		play_tts(speaker, valid_listeners, filename, is_local, effect_singletons, preSFX, postSFX, channel_override)
+		play_tts(speaker, valid_listeners, filename, is_local, effect_singletons, preSFX, postSFX, channel_override, voice_filter)
 		return
 
 	var/datum/callback/play_tts_cb = CALLBACK(\
-		src, PROC_REF(play_tts), speaker, valid_listeners, filename, is_local, effect_singletons, preSFX, postSFX, channel_override
+		src, PROC_REF(play_tts), speaker, valid_listeners, filename, is_local, effect_singletons, preSFX, postSFX, channel_override, voice_filter
 	)
 
 	if(LAZYLEN(tts_queue[filename]))
@@ -354,13 +365,18 @@ SUBSYSTEM_DEF(tts220)
 
 	tts_queue -= filename
 
+/// Groups playbacks waiting for the same filtered waveform.
 /datum/controller/subsystem/tts220/proc/queue_sound_effect_processing(
-	pure_filename, list/effects, processed_filename, datum/callback/output_tts_cb
+	pure_filename, filter_arguments, processed_filename, datum/callback/output_tts_cb, datum/callback/on_filter_failure
 )
-
-	var/datum/sound_effects_request/request = new("[pure_filename].ogg", processed_filename, output_tts_cb, effects)
+	var/datum/sound_effects_request/request = new("[pure_filename].ogg", processed_filename, filter_arguments, output_tts_cb, on_filter_failure)
+	var/list/processing_requests = tts_effects_processing[processed_filename]
+	if(processing_requests)
+		processing_requests += request
+		return
 	LAZYADD(tts_effects_queue[processed_filename], request)
 
+/// Plays cached speech or queues processing using the same filter graph that identifies its output.
 /datum/controller/subsystem/tts220/proc/play_tts(
 	atom/speaker,
 	list/listeners,
@@ -370,28 +386,53 @@ SUBSYSTEM_DEF(tts220)
 	preSFX = null,
 	postSFX = null,
 	channel_override = null,
+	voice_filter,
 )
 	if(!length(listeners))
 		return
 
+	if(!length(effects) && !voice_filter)
+		output_tts(speaker, listeners, "[pure_filename].ogg", is_local, preSFX, postSFX, channel_override)
+		return
+
 	var/list/filename_suffixes = list()
+	var/list/ffmpeg_arguments = list()
+	var/datum/singleton/sound_effect/complex_effect
 	for(var/datum/singleton/sound_effect/effect as anything in effects)
 		if(effect.complex)
-			filename_suffixes = list(effect.suffix)
+			complex_effect = effect
 			break
 
 		filename_suffixes |= effect.suffix
+		ffmpeg_arguments |= effect.ffmpeg_arguments
 
-	sortTim(filename_suffixes, GLOBAL_PROC_REF(cmp_text_asc))
+	var/filter_arguments
+	var/filename_suffix
+	var/custom_filter_applied = voice_filter && !complex_effect
+	if(complex_effect)
+		filter_arguments = complex_effect.ffmpeg_arguments
+		filename_suffix = complex_effect.suffix
+	else
+		if(custom_filter_applied)
+			ffmpeg_arguments.Insert(1, voice_filter)
+		var/filter_chain = ffmpeg_arguments.Join(", ")
+		filter_arguments = {"-filter:a "[filter_chain]""}
+		if(custom_filter_applied)
+			filename_suffix = "_voice_[md5(filter_chain)]"
+		else
+			sortTim(filename_suffixes, GLOBAL_PROC_REF(cmp_text_asc))
+			filename_suffix = filename_suffixes.Join()
 
-	var/filename2play = "[pure_filename][filename_suffixes.Join()].ogg"
-
-	if(!length(effects) || fexists(filename2play))
+	var/filename2play = "[pure_filename][filename_suffix].ogg"
+	if(!tts_effects_processing[filename2play] && fexists(filename2play))
 		output_tts(speaker, listeners, filename2play, is_local, preSFX, postSFX, channel_override)
 		return
 
 	var/datum/callback/output_tts_cb = CALLBACK(src, PROC_REF(output_tts), speaker, listeners, filename2play, is_local, preSFX, postSFX, channel_override)
-	queue_sound_effect_processing(pure_filename, effects, filename2play, output_tts_cb)
+	var/datum/callback/on_filter_failure
+	if(custom_filter_applied)
+		on_filter_failure = CALLBACK(src, PROC_REF(play_tts), speaker, listeners, pure_filename, is_local, effects, preSFX, postSFX, channel_override)
+	queue_sound_effect_processing(pure_filename, filter_arguments, filename2play, output_tts_cb, on_filter_failure)
 
 /datum/controller/subsystem/tts220/proc/get_volume_preference_for_channel(channel_override)
 	var/static/alist/channel_to_preference = alist(
@@ -639,18 +680,25 @@ SUBSYSTEM_DEF(tts220)
 	var/match = SStts220.tts_acronym_replacements[LOWER_TEXT(word)]
 	return match || word
 
+/// One playback waiting on a processed TTS file.
 /datum/sound_effects_request
+	/// Original TTS audio file.
 	var/original_filename
+	/// Processed audio file, which also identifies the request in the processing queue.
 	var/output_filename
+	/// FFmpeg arguments captured when the processed filename was chosen.
+	var/filter_arguments
+	/// Plays the processed file for this request's listeners.
 	var/datum/callback/cb
-	var/list/effects = list()
+	/// Replays the speech without the custom filter if processing fails.
+	var/datum/callback/on_filter_failure
 
-/datum/sound_effects_request/New(original_filename, output_filename, datum/callback/cb, list/effects)
+/datum/sound_effects_request/New(original_filename, output_filename, filter_arguments, datum/callback/cb, datum/callback/on_filter_failure)
 	src.original_filename = original_filename
 	src.output_filename = output_filename
+	src.filter_arguments = filter_arguments
 	src.cb = cb
-	if(length(effects))
-		src.effects |= effects
+	src.on_filter_failure = on_filter_failure
 
 #undef TTS_REPLACEMENTS_FILE_PATH
 #undef TTS_ACRONYM_REPLACEMENTS
