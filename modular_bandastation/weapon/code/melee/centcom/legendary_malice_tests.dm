@@ -68,6 +68,7 @@
 
 /datum/unit_test/legendary_sword_malice_recall
 	var/list/spinning_icons_by_turf = list()
+	var/list/hit_damage_by_target = list()
 	var/spinning = FALSE
 	var/spoken_lines = 0
 	var/mob/living/carbon/human/consistent/malice_audio_listener/holder
@@ -89,6 +90,11 @@
 /datum/unit_test/legendary_sword_malice_recall/proc/record_speech()
 	SIGNAL_HANDLER
 	spoken_lines++
+
+/datum/unit_test/legendary_sword_malice_recall/proc/record_hit(datum/source, damage_dealt, damagetype, def_zone, blocked, wound_bonus, exposed_wound_bonus, sharpness, attack_direction, atom/attacking_item)
+	SIGNAL_HANDLER
+	if(istype(attacking_item, /obj/item/dualsaber/legendary_saber))
+		hit_damage_by_target[source] += damage_dealt
 
 /datum/unit_test/legendary_sword_malice_recall/Run()
 	var/turf/destination = run_loc_floor_bottom_left
@@ -114,6 +120,9 @@
 	holder.impact_sound = sword.wieldsound
 	holder.ordinary_hit_sound = 'modular_bandastation/weapon/sound/melee/malice_recall_launch.ogg'
 	holder.enable_client_mobs_in_contents()
+	for(var/mob/living/participant as anything in list(bystander, second_bystander, wielder))
+		hit_damage_by_target[participant] = list()
+		RegisterSignal(participant, COMSIG_MOB_AFTER_APPLY_DAMAGE, PROC_REF(record_hit))
 	RegisterSignal(wielder, COMSIG_MOB_SAY, PROC_REF(record_speech))
 	RegisterSignal(sword, COMSIG_MOVABLE_MOVED, PROC_REF(record_move))
 	RegisterSignal(sword, COMSIG_ATOM_SPIN_ANIMATION, PROC_REF(record_spin))
@@ -135,9 +144,11 @@
 	TEST_ASSERT(moving_destination in spinning_icons_by_turf, "The blade did not follow its moving owner to the new tile.")
 	TEST_ASSERT(!holder.is_holding(sword), "The previous holder retained the recalled saber.")
 	TEST_ASSERT_EQUAL(spinning_icons_by_turf[crossing], "mid_dualsabermidnight1", "The actual saber must cross the intervening tile with its open sprite and a continuous full rotation.")
-	TEST_ASSERT_EQUAL(bystander.get_brute_loss() + bystander.get_fire_loss(), sword.two_hand_force, "An intervening unarmored target should take exactly one base hit.")
-	TEST_ASSERT_EQUAL(second_bystander.get_brute_loss() + second_bystander.get_fire_loss(), sword.two_hand_force, "A second target on the same tile should also take exactly one base hit.")
-	TEST_ASSERT_EQUAL(wielder.get_brute_loss() + wielder.get_fire_loss(), 0, "The returning saber struck its owner.")
+	for(var/mob/living/victim as anything in list(bystander, second_bystander))
+		var/list/hits = hit_damage_by_target[victim]
+		TEST_ASSERT_EQUAL(length(hits), 1, "Each intervening target should be struck exactly once.")
+		TEST_ASSERT_EQUAL(hits[1], sword.two_hand_force, "Each unarmored target should take the full base damage.")
+	TEST_ASSERT_EQUAL(length(hit_damage_by_target[wielder]), 0, "The returning saber struck its owner.")
 	TEST_ASSERT_EQUAL(spoken_lines, 0, "Recalling Malice made the owner speak.")
 
 	wielder.forceMove(destination)
@@ -856,7 +867,7 @@
 	TEST_ASSERT_EQUAL(guard_sound?.source, wielder, "The guard's rotation sound did not start on the bearer before the first block.")
 	TEST_ASSERT_EQUAL(guard_sound.sound.file, 'modular_bandastation/weapon/sound/melee/malice_guard_spin.ogg', "The guard started the wrong rotation sound.")
 	TEST_ASSERT_EQUAL(guard.next_use_time, started + 30 SECONDS, "Wrong cooldown for the guard.")
-	TEST_ASSERT_EQUAL(stance.duration, 8 SECONDS, "Wrong duration for the guard.")
+	TEST_ASSERT_EQUAL(stance.duration, 6.5 SECONDS, "Wrong duration for the guard.")
 	TEST_ASSERT(!dance.Trigger(wielder), "The offensive spin overlapped the guard.")
 	sword.melee_attack_chain(wielder, attacker)
 	TEST_ASSERT_EQUAL(attacker.get_brute_loss(), 0, "The bearer attacked while guarding.")
@@ -896,17 +907,17 @@
 	wielder.projectile_hit(laser, BODY_ZONE_CHEST)
 	TEST_ASSERT(wielder.get_fire_loss() > 0, "Turning away from the laser did not expose the back.")
 
-	UNTIL(world.time >= started + 7 SECONDS)
-	TEST_ASSERT(!QDELETED(guard_sound) && guard_sound.sound.repeat, "The rotation sound stopped before the eighth second of the guard.")
+	UNTIL(world.time >= started + 6 SECONDS)
+	TEST_ASSERT(!QDELETED(guard_sound) && guard_sound.sound.repeat, "The rotation sound stopped before the final half-second of the guard.")
 	attacker.forceMove(get_step(start, SOUTH))
 	var/brute_before_late_hit = wielder.get_brute_loss()
 	weapon.melee_attack_chain(attacker, wielder)
-	TEST_ASSERT_EQUAL(wielder.get_brute_loss(), brute_before_late_hit, "The guard stopped blocking frontal attacks during its eighth second.")
-	var/deadline = started + 9 SECONDS
+	TEST_ASSERT_EQUAL(wielder.get_brute_loss(), brute_before_late_hit, "The guard stopped blocking frontal attacks during its final half-second.")
+	var/deadline = started + 7.5 SECONDS
 	UNTIL(!wielder.has_status_effect(/datum/status_effect/malice_guard) || world.time >= deadline)
 	TEST_ASSERT_NULL(wielder.has_status_effect(/datum/status_effect/malice_guard), "The guard did not expire.")
 	TEST_ASSERT(QDELETED(guard_sound), "The rotation sound continued after the guard expired.")
-	TEST_ASSERT(world.time >= started + 7.7 SECONDS, "The guard ended early.")
+	TEST_ASSERT(world.time >= started + 6.2 SECONDS, "The guard ended early.")
 	var/brute_after_guard = wielder.get_brute_loss()
 	weapon.melee_attack_chain(attacker, wielder)
 	TEST_ASSERT(wielder.get_brute_loss() > brute_after_guard, "Melee from the front stayed blocked after the guard ended.")
