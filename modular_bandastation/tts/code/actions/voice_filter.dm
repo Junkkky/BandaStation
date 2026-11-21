@@ -116,7 +116,7 @@
 
 	var/list/normalized_stages = list()
 	var/has_tempo = FALSE
-	for(var/stage as anything in stages)
+	for(var/stage in stages)
 		var/assignment = findtext(stage, "=")
 		if(!assignment)
 			return null
@@ -129,7 +129,7 @@
 
 		var/list/seen_options = list()
 		var/list/normalized_options = list()
-		for(var/option as anything in splittext(copytext(stage, assignment + 1), ":"))
+		for(var/option in splittext(copytext(stage, assignment + 1), ":"))
 			var/option_assignment = findtext(option, "=")
 			var/option_name = option_assignment ? trim(copytext(option, 1, option_assignment)) : allowed_options[1]
 			var/list/bounds = allowed_options[option_name]
