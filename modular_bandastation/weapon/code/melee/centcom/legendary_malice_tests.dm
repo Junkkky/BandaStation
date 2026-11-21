@@ -70,6 +70,12 @@
 	var/list/spinning_icons_by_turf = list()
 	var/spinning = FALSE
 	var/spoken_lines = 0
+	var/mob/living/carbon/human/consistent/malice_audio_listener/holder
+
+/datum/unit_test/legendary_sword_malice_recall/Destroy()
+	holder?.clear_important_client_contents()
+	holder = null
+	return ..()
 
 /datum/unit_test/legendary_sword_malice_recall/proc/record_move(obj/item/sword)
 	SIGNAL_HANDLER
@@ -89,7 +95,7 @@
 	var/turf/source = get_ranged_target_turf(destination, EAST, 4)
 	var/turf/crossing = get_step(source, WEST)
 	var/mob/living/carbon/human/consistent/wielder = allocate(/mob/living/carbon/human/consistent, destination)
-	var/mob/living/carbon/human/consistent/holder = allocate(/mob/living/carbon/human/consistent, source)
+	holder = allocate(/mob/living/carbon/human/consistent/malice_audio_listener, source)
 	var/mob/living/carbon/human/consistent/bystander = allocate(/mob/living/carbon/human/consistent, crossing)
 	var/mob/living/carbon/human/consistent/second_bystander = allocate(/mob/living/carbon/human/consistent, crossing)
 	var/obj/item/dualsaber/legendary_saber/sword = allocate(/obj/item/dualsaber/legendary_saber, destination)
@@ -105,6 +111,9 @@
 	TEST_ASSERT(holder.put_in_active_hand(sword), "Another eligible officer could not hold the saber.")
 	TEST_ASSERT(!(locate(/datum/action/cooldown/malice_recall) in holder.actions), "Picking up someone else's saber granted its recall.")
 	TEST_ASSERT(!recall.Trigger(holder), "A different officer could invoke the owner's recall.")
+	holder.impact_sound = sword.wieldsound
+	holder.ordinary_hit_sound = 'modular_bandastation/weapon/sound/melee/malice_recall_launch.ogg'
+	holder.enable_client_mobs_in_contents()
 	RegisterSignal(wielder, COMSIG_MOB_SAY, PROC_REF(record_speech))
 	RegisterSignal(sword, COMSIG_MOVABLE_MOVED, PROC_REF(record_move))
 	RegisterSignal(sword, COMSIG_ATOM_SPIN_ANIMATION, PROC_REF(record_spin))
@@ -120,6 +129,8 @@
 	TEST_ASSERT(!wielder.is_holding(sword) && wielder.Move(moving_destination, NORTH), "Could not move the owner while the blade was in flight.")
 	UNTIL(wielder.is_holding(sword) || world.time >= deadline)
 	TEST_ASSERT(wielder.is_holding(sword) && HAS_TRAIT(sword, TRAIT_WIELDED), "Two free hands did not catch the opened saber.")
+	TEST_ASSERT_EQUAL(holder.ordinary_impacts, 1, "Recalling a held saber should play its usual launch sound once.")
+	TEST_ASSERT_EQUAL(length(holder.impact_origins), 0, "Catching the opened saber replayed its ignition.")
 	TEST_ASSERT(QDELETED(flight_sound), "Catching the saber left its rotation sound playing.")
 	TEST_ASSERT(moving_destination in spinning_icons_by_turf, "The blade did not follow its moving owner to the new tile.")
 	TEST_ASSERT(!holder.is_holding(sword), "The previous holder retained the recalled saber.")
@@ -137,9 +148,13 @@
 	TEST_ASSERT(wielder.put_in_active_hand(first_pen), "Could not occupy the owner's active hand.")
 	recall.ResetCooldown()
 	TEST_ASSERT(recall.Trigger(wielder), "The owner could not recall a saber lying at their feet.")
+	TEST_ASSERT_EQUAL(length(holder.impact_origins), 1, "Recalling the grounded saber should immediately play its regular ignition once.")
+	TEST_ASSERT_EQUAL(holder.impact_origins[1], destination, "The ignition should come from the grounded saber.")
 	deadline = world.time + 5 SECONDS
 	UNTIL(wielder.is_holding(sword) || world.time >= deadline)
 	TEST_ASSERT(wielder.is_holding(sword) && !HAS_TRAIT(sword, TRAIT_WIELDED), "One free hand should catch the folded hilt.")
+	TEST_ASSERT_EQUAL(length(holder.impact_origins), 1, "The ground recall played a second ignition on catch.")
+	TEST_ASSERT_EQUAL(holder.ordinary_impacts, 1, "Ground recall layered the usual launch mix over the ignition.")
 	recall.ResetCooldown()
 	TEST_ASSERT(!recall.Trigger(wielder) && recall.next_use_time <= world.time, "Recalling a held hilt spent the cooldown.")
 
@@ -165,6 +180,8 @@
 	TEST_ASSERT_EQUAL(bag.loc, source, "Calling the stowed saber moved its container.")
 	recall.ResetCooldown()
 	TEST_ASSERT(recall.Trigger(wielder), "A stopped saber could not be recalled again.")
+	TEST_ASSERT_EQUAL(length(holder.impact_origins), 2, "Recalling the loose saber a second time should play one new ignition.")
+	TEST_ASSERT_EQUAL(holder.impact_origins[2], crossing, "A distant ground ignition should sound at the saber's tile.")
 	deadline = world.time + 5 SECONDS
 	UNTIL(sword.loc == destination || world.time >= deadline)
 	TEST_ASSERT_EQUAL(sword.loc, destination, "The saber did not land at the feet of an owner with full hands.")
@@ -634,23 +651,18 @@
 	sword.attack_self(wielder)
 	TEST_ASSERT(charge in wielder.vis_contents, "Reopening the charged blade did not restore the animation.")
 	sleep(5.1 SECONDS)
-	TEST_ASSERT_NULL(locate(/obj/effect/dummy/lighting_obj/moblight/malice_rage) in wielder.vis_contents, "The charge animation outlasted its five-second window.")
+	TEST_ASSERT(charge in wielder.vis_contents, "The unused charge vanished while waiting for a hit.")
+	rage.ResetCooldown()
+	TEST_ASSERT(!rage.Trigger(wielder), "An unused charge could be activated again after cooldown.")
 	TEST_ASSERT(QDELETED(release) && QDELETED(impact), "The critical's transient animations did not finish.")
 	brute_before_crit = wielder.get_brute_loss()
-	sword.melee_attack_chain(wielder, pursuer)
-	TEST_ASSERT_EQUAL(length(hits), 3, "The strike after the expired window did not land once.")
-	TEST_ASSERT_EQUAL(hits[3], 17.5, "The critical bonus survived the five-second window.")
-	TEST_ASSERT_EQUAL(wielder.get_brute_loss(), brute_before_crit, "An expired charge healed the wielder.")
-	TEST_ASSERT_EQUAL(pursuer.get_bleed_rate(), 0, "An expired charge inflicted bleeding.")
-
 	ADD_TRAIT(pursuer, TRAIT_NOBLOOD, TRAIT_SOURCE_UNIT_TESTS)
-	rage.ResetCooldown()
-	TEST_ASSERT(rage.Trigger(wielder), "Last Rage failed to prime against a bloodless target.")
 	sword.melee_attack_chain(wielder, pursuer)
-	TEST_ASSERT_EQUAL(length(hits), 4, "The bloodless target did not receive a single critical strike.")
-	TEST_ASSERT_EQUAL(hits[4], 35, "A bloodless target lost the double-damage critical.")
+	TEST_ASSERT_EQUAL(length(hits), 3, "The delayed strike should land once.")
+	TEST_ASSERT_EQUAL(hits[3], 35, "The delayed strike lost its double damage against a bloodless target.")
 	TEST_ASSERT_EQUAL(wielder.get_brute_loss(), brute_before_crit - 10, "A critical on a bloodless target did not heal the wielder.")
 	TEST_ASSERT_NULL(locate(/datum/wound/slash/flesh/critical) in pursuer.all_wounds, "The bloodless target received a bleeding wound.")
+	TEST_ASSERT(QDELETED(charge), "The delayed critical left its charge active.")
 
 	// The shadow and its wielder are on opposite sides of a guarding target.
 	UnregisterSignal(guard, COMSIG_LIVING_CHECK_BLOCK)
@@ -674,6 +686,12 @@
 	shadow.shadow_strike(WEAKREF(wielder), start, WEAKREF(echo))
 	TEST_ASSERT(guard.get_brute_loss() > brute_before_shadow, "A shadow attacking from behind was blocked because its wielder stood in front.")
 	TEST_ASSERT_EQUAL(shadow_flips.animations, 0, "The shadow's projected melee hit made the wielder somersault.")
+
+	rage.ResetCooldown()
+	TEST_ASSERT(rage.Trigger(wielder), "Could not charge the saber before disarm.")
+	charge = rage.rage_charge
+	wielder.dropItemToGround(sword)
+	TEST_ASSERT(QDELETED(charge) && !rage.rage_charge, "Dropping the saber left its charge active.")
 
 /datum/unit_test/legendary_sword_malice_rage/proc/block_hit()
 	SIGNAL_HANDLER
@@ -735,7 +753,8 @@
 	ADD_TRAIT(first, TRAIT_NODISMEMBER, TRAIT_SOURCE_UNIT_TESTS)
 	RegisterSignal(first, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(record_strike))
 	TEST_ASSERT(rage.Trigger(wielder), "Could not prepare Last Rage before the ultimate.")
-	var/original_rage_deadline = rage.rage_until
+	var/obj/effect/dummy/lighting_obj/moblight/malice_rage/charge = rage.rage_charge
+	TEST_ASSERT_NOTNULL(charge, "Last Rage did not create a charge before the ultimate.")
 	TEST_ASSERT(ultimate.Trigger(wielder, target = first), "A reachable target four tiles away could not be selected.")
 	TEST_ASSERT_EQUAL(ultimate.next_use_time, world.time + 120 SECONDS, "Wrong ultimate cooldown.")
 	TEST_ASSERT_EQUAL(length(victims), 1, "The first cut did not land immediately.")
@@ -759,7 +778,7 @@
 	TEST_ASSERT(locate(/obj/effect/temp_visual/malice_rage/harvest/finish) in first.vis_contents, "The tenth cut did not show the finisher on the target.")
 	for(var/damage in strike_damage)
 		TEST_ASSERT_EQUAL(damage, 4, "An automatic cut did not use the current blade force and target resistance.")
-	TEST_ASSERT_EQUAL(rage.rage_until, original_rage_deadline, "An automatic cut consumed the prepared Last Rage.")
+	TEST_ASSERT(!QDELETED(charge) && rage.rage_charge == charge, "An automatic cut consumed the prepared Last Rage.")
 
 	victims.Cut()
 	first.set_brute_loss(0)
@@ -837,6 +856,7 @@
 	TEST_ASSERT_EQUAL(guard_sound?.source, wielder, "The guard's rotation sound did not start on the bearer before the first block.")
 	TEST_ASSERT_EQUAL(guard_sound.sound.file, 'modular_bandastation/weapon/sound/melee/malice_guard_spin.ogg', "The guard started the wrong rotation sound.")
 	TEST_ASSERT_EQUAL(guard.next_use_time, started + 30 SECONDS, "Wrong cooldown for the guard.")
+	TEST_ASSERT_EQUAL(stance.duration, 8 SECONDS, "Wrong duration for the guard.")
 	TEST_ASSERT(!dance.Trigger(wielder), "The offensive spin overlapped the guard.")
 	sword.melee_attack_chain(wielder, attacker)
 	TEST_ASSERT_EQUAL(attacker.get_brute_loss(), 0, "The bearer attacked while guarding.")
@@ -876,17 +896,17 @@
 	wielder.projectile_hit(laser, BODY_ZONE_CHEST)
 	TEST_ASSERT(wielder.get_fire_loss() > 0, "Turning away from the laser did not expose the back.")
 
-	UNTIL(world.time >= started + 4 SECONDS)
-	TEST_ASSERT(!QDELETED(guard_sound) && guard_sound.sound.repeat, "The rotation sound stopped before the fifth second of the guard.")
+	UNTIL(world.time >= started + 7 SECONDS)
+	TEST_ASSERT(!QDELETED(guard_sound) && guard_sound.sound.repeat, "The rotation sound stopped before the eighth second of the guard.")
 	attacker.forceMove(get_step(start, SOUTH))
 	var/brute_before_late_hit = wielder.get_brute_loss()
 	weapon.melee_attack_chain(attacker, wielder)
-	TEST_ASSERT_EQUAL(wielder.get_brute_loss(), brute_before_late_hit, "The guard stopped blocking frontal attacks before five seconds.")
-	var/deadline = started + 6 SECONDS
+	TEST_ASSERT_EQUAL(wielder.get_brute_loss(), brute_before_late_hit, "The guard stopped blocking frontal attacks during its eighth second.")
+	var/deadline = started + 9 SECONDS
 	UNTIL(!wielder.has_status_effect(/datum/status_effect/malice_guard) || world.time >= deadline)
 	TEST_ASSERT_NULL(wielder.has_status_effect(/datum/status_effect/malice_guard), "The guard did not expire.")
 	TEST_ASSERT(QDELETED(guard_sound), "The rotation sound continued after the guard expired.")
-	TEST_ASSERT(world.time >= started + 4.7 SECONDS, "The guard ended early.")
+	TEST_ASSERT(world.time >= started + 7.7 SECONDS, "The guard ended early.")
 	var/brute_after_guard = wielder.get_brute_loss()
 	weapon.melee_attack_chain(attacker, wielder)
 	TEST_ASSERT(wielder.get_brute_loss() > brute_after_guard, "Melee from the front stayed blocked after the guard ended.")

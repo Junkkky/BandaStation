@@ -37,6 +37,7 @@
 	if(!origin || !isturf(user.loc) || origin.z != user.z)
 		user.balloon_alert(user, "меч слишком далеко!")
 		return FALSE
+	var/from_ground = saber.loc == origin && !saber.throwing
 	if(!release_blade(origin))
 		user.balloon_alert(user, "мечу что-то мешает!")
 		return FALSE
@@ -48,8 +49,11 @@
 	saber.set_light_on(TRUE)
 	saber.SpinAnimation(0.45 SECONDS, tag = "malice_recall")
 	new /obj/effect/temp_visual/malice_recall_departure(origin)
-	playsound(origin, 'modular_bandastation/weapon/sound/melee/malice_recall_launch.ogg', 44, FALSE)
-	flight_sound = new(saber, 'modular_bandastation/weapon/sound/melee/malice_recall_flight.ogg', SOUND_RANGE, 34, _repeating = TRUE)
+	if(from_ground)
+		playsound(origin, saber.wieldsound, 17.5, FALSE)
+	else
+		playsound(origin, 'modular_bandastation/weapon/sound/melee/malice_recall_launch.ogg', 31, FALSE)
+	flight_sound = new(saber, 'modular_bandastation/weapon/sound/melee/malice_recall_flight.ogg', SOUND_RANGE, 24, _repeating = TRUE)
 	StartCooldown()
 	INVOKE_ASYNC(src, PROC_REF(fly_to_owner), user, origin)
 	return TRUE
@@ -103,7 +107,7 @@
 			if(QDELETED(src) || QDELETED(saber) || QDELETED(user) || saber.loc != current)
 				break
 			if(modifiers[DAMAGE_DONE] > 0)
-				impact_delay = play_malice_sweep_hit(current, impact_delay, 'modular_bandastation/weapon/sound/melee/malice_recall_hit.ogg', 46)
+				impact_delay = play_malice_sweep_hit(current, impact_delay, 'modular_bandastation/weapon/sound/melee/malice_recall_hit.ogg', 33)
 		if(!advanced || current != next || QDELETED(user) || current == user.loc)
 			break
 	if(QDELETED(src) || QDELETED(saber))
@@ -114,7 +118,7 @@
 	new /obj/effect/temp_visual/malice_recall_arrival(user.loc)
 	if(HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !length(user.get_empty_held_indexes()) || !user.put_in_hands(saber))
 		return
-	playsound(user, 'modular_bandastation/weapon/sound/melee/malice_recall_catch.ogg', 39, FALSE)
+	playsound(user, 'modular_bandastation/weapon/sound/melee/malice_recall_catch.ogg', 28, FALSE)
 	if(iscarbon(user) && user.get_active_held_item() == saber && !user.get_inactive_held_item())
 		var/datum/component/two_handed/grip = saber.GetComponent(/datum/component/two_handed)
 		grip.wield(user, play_sound = FALSE)

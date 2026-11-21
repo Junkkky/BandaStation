@@ -158,37 +158,37 @@
 
 /datum/action/cooldown/legendary_sword/malice_rage
 	name = "Последняя ярость"
-	desc = "На 5 секунд заряжает Злобу. Первое успешное попадание наносит двойной урон, лечит до 10 ед. физического урона и возвращает до 15 ед. выносливости. Попадание по плоти вызывает сильное кровотечение."
+	desc = "Заряжает Злобу до следующего успешного удара по живой цели. Удар наносит двойной урон, лечит до 10 ед. физического урона и возвращает до 15 ед. выносливости. Попадание по плоти вызывает сильное кровотечение. Если выпустить меч из рук, заряд исчезнет."
 	button_icon_state = "malice_rage"
 	required_bond = 100
 	cooldown_time = 45 SECONDS
-	/// Deadline for the follow-up hit.
-	var/rage_until = 0
+	/// The charge stays with this wielder until a successful strike or loss of the sword.
+	var/obj/effect/dummy/lighting_obj/moblight/malice_rage/rage_charge
 	/// Keep a counterattack triggered inside this swing from claiming the same charge.
 	var/resolving_critical = FALSE
 	/// Actual limb hit by this swing after melee accuracy and damage resolution.
 	var/obj/item/bodypart/critical_limb
-	/// Red glow for the short window during which rage can be discharged.
-	var/datum/weakref/rage_light_ref
+
+/datum/action/cooldown/legendary_sword/malice_rage/IsAvailable(feedback = FALSE)
+	return ..() && QDELETED(rage_charge)
 
 /datum/action/cooldown/legendary_sword/malice_rage/Activate(atom/target)
 	var/mob/living/user = owner
-	rage_until = world.time + 5 SECONDS
-	rage_light_ref = WEAKREF(new /obj/effect/dummy/lighting_obj/moblight/malice_rage(user, saber))
-	playsoundtoken(user, 'modular_bandastation/weapon/sound/melee/malice_rage_cry.ogg', volume = 50, range = SOUND_RANGE)
+	rage_charge = new(user, saber)
+	playsoundtoken(user, 'modular_bandastation/weapon/sound/melee/malice_rage_cry.ogg', volume = 62.5, range = SOUND_RANGE)
 	user.visible_message(span_warning("Злоба в руках [user.declent_ru(GENITIVE)] вспыхивает багровым светом."), span_notice("Следующее попадание Злобы будет критическим!"))
 	StartCooldown()
 	return TRUE
 
 /datum/action/cooldown/legendary_sword/malice_rage/Remove(mob/removed_from)
-	clear_rage()
+	QDEL_NULL(rage_charge)
 	return ..()
 
 /// Only a swing by the wielder enters the melee chain; the shadow attacks separately.
 /obj/item/dualsaber/legendary_saber/melee_attack_chain(mob/user, atom/target, list/modifiers, list/attack_modifiers = list())
 	var/datum/action/cooldown/legendary_sword/malice_rage/rage = locate() in actions
 	var/mob/living/victim = target
-	if(!rage || world.time >= rage.rage_until || rage.resolving_critical || rage.owner != user || !istype(victim) || victim == user || victim.stat == DEAD || !can_use_legendary_ability(user, rage.required_bond))
+	if(QDELETED(rage?.rage_charge) || rage.resolving_critical || rage.owner != user || !istype(victim) || victim == user || victim.stat == DEAD || !can_use_legendary_ability(user, rage.required_bond))
 		return ..()
 
 	attack_modifiers ||= list()
@@ -218,7 +218,8 @@
 	var/obj/item/bodypart/limb = rage.critical_limb
 	rage.critical_limb = null
 	if(attack_modifiers[DAMAGE_DONE] > 0)
-		rage.clear_rage()
+		QDEL_NULL(rage.rage_charge)
+		rage.build_all_button_icons(UPDATE_BUTTON_STATUS)
 		var/mob/living/wielder = user
 		if(!QDELETED(victim))
 			impact_turf = get_turf(victim) || impact_turf
@@ -228,7 +229,7 @@
 			play_fov_effect(victim, 5, "attack")
 		if(impact_turf && !attack_modifiers[SILENCE_HITSOUND])
 			// Frame four of the critical strike is the instant the blade makes contact.
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), impact_turf, 'modular_bandastation/weapon/sound/melee/malice_rage_hit.ogg', 80, FALSE), 0.15 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), impact_turf, 'modular_bandastation/weapon/sound/melee/malice_rage_hit.ogg', 100, FALSE), 0.15 SECONDS)
 		if(!QDELETED(wielder) && wielder.stat != DEAD)
 			new /obj/effect/temp_visual/malice_rage/release(wielder, strike_direction, src)
 			wielder.adjust_brute_loss(-10)
@@ -245,13 +246,6 @@
 	if(damage_dealt > 0 && attacking_item == saber && isbodypart(def_zone))
 		critical_limb = def_zone
 
-/// Removes the telegraph as soon as the prepared strike is used or the sword leaves the owner.
-/datum/action/cooldown/legendary_sword/malice_rage/proc/clear_rage()
-	rage_until = 0
-	var/obj/effect/dummy/lighting_obj/glow = rage_light_ref?.resolve()
-	rage_light_ref = null
-	qdel(glow)
-
 /obj/effect/dummy/lighting_obj/moblight/malice_rage
 	icon = 'modular_bandastation/weapon/icons/melee/malice_rage.dmi'
 	icon_state = "charge"
@@ -263,7 +257,7 @@
 	var/turf/ripple_origin
 
 /obj/effect/dummy/lighting_obj/moblight/malice_rage/Initialize(mapload, obj/item/dualsaber/legendary_saber/saber)
-	. = ..(mapload, 2, 1, LIGHT_COLOR_INTENSE_RED, 5 SECONDS)
+	. = ..(mapload, 2, 1, LIGHT_COLOR_INTENSE_RED)
 	if(. == INITIALIZE_HINT_QDEL || !saber)
 		return INITIALIZE_HINT_QDEL
 	var/mob/wielder = loc
