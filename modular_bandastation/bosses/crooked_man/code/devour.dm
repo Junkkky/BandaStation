@@ -97,6 +97,8 @@
 /// The final fight's devour: the jaws open a second before they close on the tile in front, and the group can
 /// free the victim by hurting him enough; otherwise the victim is spat out after a while.
 /datum/action/cooldown/spell/crooked_devour/crooked
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "crooked_devour"
 	cooldown_time = 30 SECONDS
 	digestion_rate = 3
 	/// Wind-up during which the tile in front is marked.

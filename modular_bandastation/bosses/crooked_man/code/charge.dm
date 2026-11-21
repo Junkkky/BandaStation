@@ -1,6 +1,8 @@
 /// Bubblegum's charge: his landing shadow marks where the Crooked Man will rush, and the first one in the way
 /// takes the hit, so whoever holds him can step in front of the others.
 /datum/action/cooldown/mob_cooldown/charge/crooked
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "crooked_charge"
 	name = "Рывок"
 	desc = "Короткая пауза — и стремительный рывок к выбранному месту. Сбивает первого, кто окажется на пути."
 	cooldown_time = 15 SECONDS

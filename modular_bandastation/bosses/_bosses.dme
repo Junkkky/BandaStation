@@ -8,6 +8,7 @@
 // BEGIN_INCLUDE
 #include "_bosses.dm"
 #include "code\event_boss.dm"
+#include "code\gore.dm"
 #include "code\locations.dm"
 #include "code\spatial_phase.dm"
 #include "code\voices.dm"

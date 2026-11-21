@@ -51,24 +51,58 @@ GLOBAL_DATUM_INIT(gate_closure_music, /datum/gate_closure_music, new)
 	var/channel_a
 	var/channel_b
 
+/// One track from a file in a folder on the server, or null if it is not a sound or its length cannot be read.
+/proc/gate_closure_make_track(folder, file_name, list/unreadable)
+	var/sound_file = file("[folder][file_name]")
+	if(!IS_SOUND_FILE_SAFE(sound_file))
+		return null
+	var/datum/gate_closure_track/track = new
+	track.file = sound_file
+	track.name = replacetext(strip_filepath_extension(file_name, SSsounds.safe_formats), "_", " ")
+	track.length = SSsounds.get_sound_length(sound_file)
+	if(!(track.length > 0))
+		unreadable += "[folder][file_name]"
+		return null
+	return track
+
+/// Tracks of one folder in name order. Files whose length cannot be read cannot be scheduled; their names go to `unreadable`.
+/proc/gate_closure_read_tracks(folder, list/unreadable)
+	. = list()
+	for(var/file_name in sort_list(flist(folder)))
+		var/datum/gate_closure_track/track = gate_closure_make_track(folder, file_name, unreadable)
+		if(track)
+			. += track
+
+/**
+ * Asks an admin for an .ogg on their own computer and saves it into a player's folder on the server,
+ * the way the jukebox upload does. Returns the new track, or null if nothing usable arrived.
+ */
+/proc/gate_closure_upload_track(mob/user, folder, list/unreadable)
+	var/upload = input(user, "Выберите .ogg на своём компьютере.", "Загрузка звука") as sound|null
+	// The file dialog waits for the admin; their rights are checked again once it closes.
+	if(!upload || !check_rights_for(user?.client, R_SOUND))
+		return null
+	if(!IS_OGG_FILE(upload))
+		to_chat(user, span_warning("Нужен файл .ogg."), confidential = TRUE)
+		return null
+	var/file_name = SANITIZE_FILENAME("[upload]")
+	if(fexists("[folder][file_name]"))
+		to_chat(user, span_warning("[file_name] уже есть в папке."), confidential = TRUE)
+		return null
+	fcopy(upload, "[folder][file_name]")
+	log_admin("[key_name(user)] uploaded [folder][file_name] for the Gate Closure players.")
+	message_admins("[key_name_admin(user)] загрузил звук [file_name] в [folder].")
+	var/datum/gate_closure_track/track = gate_closure_make_track(folder, file_name, unreadable)
+	if(!track)
+		to_chat(user, span_warning("Не удалось прочитать длину [file_name]; перепакуйте его: ffmpeg -i in.ogg -c:a copy out.ogg."), confidential = TRUE)
+	return track
+
 /// Reads the three folders; files dropped in during the round appear after a rescan.
 /datum/gate_closure_music/proc/load_tracks()
-	tracks = list(GATE_MUSIC_AMBIENT = list(), GATE_MUSIC_COMBAT = list(), GATE_MUSIC_SITUATIONS = list())
+	tracks = list()
 	unreadable.Cut()
-	for(var/category in tracks)
-		var/folder = "[GATE_MUSIC_FOLDER][category]/"
-		for(var/file_name in sort_list(flist(folder)))
-			var/sound_file = file("[folder][file_name]")
-			if(!IS_SOUND_FILE_SAFE(sound_file))
-				continue
-			var/datum/gate_closure_track/track = new
-			track.file = sound_file
-			track.name = replacetext(strip_filepath_extension(file_name, SSsounds.safe_formats), "_", " ")
-			track.length = SSsounds.get_sound_length(sound_file)
-			if(!(track.length > 0))
-				unreadable += "[category]/[file_name]"
-				continue
-			tracks[category] += track
+	for(var/category in list(GATE_MUSIC_AMBIENT, GATE_MUSIC_COMBAT, GATE_MUSIC_SITUATIONS))
+		tracks[category] = gate_closure_read_tracks("[GATE_MUSIC_FOLDER][category]/", unreadable)
 	queue.Cut()
 
 /datum/gate_closure_music/proc/play_playlist(category)
@@ -284,6 +318,15 @@ GLOBAL_DATUM_INIT(gate_closure_music, /datum/gate_closure_music, new)
 			volume = clamp(round(new_volume), 0, 100)
 			if(current)
 				set_level(current_channel, current_level)
+			return TRUE
+		if("upload")
+			var/category = params["category"]
+			if(!(category in tracks))
+				return
+			var/datum/gate_closure_track/track = gate_closure_upload_track(usr, "[GATE_MUSIC_FOLDER][category]/", unreadable)
+			if(track)
+				tracks[category] += track
+			update_static_data_for_all_viewers()
 			return TRUE
 		if("rescan")
 			if(mode)

@@ -75,6 +75,8 @@
 
 /// Pinhead returns from the phase through a rift that hangs open for a few seconds.
 /datum/action/cooldown/spell/spatial_phase/pinhead
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "pin_rupture"
 	name = "Пространственный разрыв"
 
 /datum/action/cooldown/spell/spatial_phase/pinhead/play_phase_exit(mob/living/unjaunter)

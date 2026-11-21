@@ -57,9 +57,9 @@ GLOBAL_LIST_EMPTY(event_portal_points)
 /// Native hardlinked portal pair; closing either removes its partner.
 /// Pressing the button asks where the portal leads, then the click picks where it opens.
 /datum/action/cooldown/event_target/pinhead_portal
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "common_portal"
 	name = "Открыть / закрыть портал"
-	button_icon = 'icons/mob/actions/actions_ecult.dmi'
-	button_icon_state = "void_rift"
 	/// Owned entrance; the native portal owns its linked return entrance.
 	var/obj/effect/portal/entrance
 	/// Point picked from the list, used by the next click; automatic use without a pick still leads to the lair.

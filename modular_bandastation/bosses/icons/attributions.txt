@@ -1,0 +1,3 @@
+action_buttons.dmi
+Original pixel art drawn for BandaStation's Gate Closure event.
+Distributed under the repository's image asset license.

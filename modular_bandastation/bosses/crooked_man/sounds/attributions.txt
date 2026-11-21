@@ -10,3 +10,8 @@ All eleven original audio files are preserved byte for byte;
 filenames were lowercased for case-sensitive filesystems.
 The original spelling of lauth.ogg is retained.
 License: CC BY-SA 3.0, as declared for sounds in the source README.md.
+
+death_scream.ogg
+"Monster screaming in a cave" by qubodup, Freesound sound 188827 (https://freesound.org/s/188827/),
+supplied by the event organizer Junkkky. License as published on Freesound; not verified here.
+Converted to mono Ogg Vorbis; played when the Crooked Man dies.

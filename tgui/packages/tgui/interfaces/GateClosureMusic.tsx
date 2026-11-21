@@ -160,6 +160,11 @@ export const GateClosureMusic = () => {
                     </Button>
                   )}
                   <Button
+                    icon="upload"
+                    tooltip="Загрузить .ogg со своего компьютера в эту вкладку"
+                    onClick={() => act('upload', { category: tab })}
+                  />
+                  <Button
                     icon="rotate"
                     tooltip="Перечитать папки с треками (когда музыка остановлена)"
                     disabled={!!data.mode}

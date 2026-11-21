@@ -1,5 +1,7 @@
 /// Independently granted administrative ability reusing only the Crooked Man's phase mechanics.
 /datum/action/cooldown/spell/spatial_phase
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "common_phase"
 	parent_type = /datum/action/cooldown/spell/crooked_phase
 	name = "Пространственная фаза"
 	desc = "Переход в фазу с фиолетовой вспышкой. Повторное нажатие вернёт вас в реальность."

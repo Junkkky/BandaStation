@@ -12,3 +12,19 @@ Source: the same repository and commit,
 modular_bandastation/banshee_skills/icons/banshee_skills.dmi.
 Only the destructive_wail state was extracted; pixels unchanged.
 Authors: BandaStation contributors. CC BY-SA 3.0.
+
+spikes.dmi
+Frames of the single spike from tgstation's icons/mob/simple/lavaland/lavaland_monsters.dmi (CC BY-SA 3.0),
+rearranged into the goliath tentacle's spawn, wiggle and retract states (empty emissive layers added) so the
+tentacle logic draws as bone spikes. License: CC BY-SA 3.0, as the original. https://creativecommons.org/licenses/by-sa/3.0/
+
+death_chunks.dmi
+Twelve white masks splitting the 96x96 sprite into ragged chunks for the death animation, generated from the
+silhouette of crooked_man.dmi (script outside the repository: Documents/Codex/GateClosure/crooked_death/chunks.py).
+License: CC BY-SA 3.0, following the project asset license. https://creativecommons.org/licenses/by-sa/3.0/
+
+crooked_man.dmi, stage looks (changed 2026-11-21)
+The eye, maw and tentacles of the organizer's (Junkkky's) three-stage concept, reduced to the sprite's scale, cut out
+by colour masks and laid over the original idle frames: the base state gains a blinking eye, "womb" adds the maw and
+"agony" the tentacles, which writhe. Generator outside the repository: Documents/Codex/GateClosure/crooked_stages/.
+License: CC BY-SA 3.0, following the project asset license.

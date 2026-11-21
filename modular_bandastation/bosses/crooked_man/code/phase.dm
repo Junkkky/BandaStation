@@ -1,10 +1,10 @@
 /// Free, indefinite phasing on any terrain, with the boss's original bloody entrance.
 /datum/action/cooldown/spell/crooked_phase
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "crooked_phase"
 	parent_type = /datum/action/cooldown/spell/jaunt
 	name = "Фаза Искажения"
 	desc = "Позволяет перемещаться сквозь стены. Повторное нажатие вернёт вас в реальность."
-	button_icon = 'icons/mob/actions/actions_ecult.dmi'
-	button_icon_state = "space_crawl"
 	cooldown_time = 2 SECONDS
 	spell_requirements = NONE
 	jaunt_type = /obj/effect/dummy/phased_mob/spell_jaunt/k13

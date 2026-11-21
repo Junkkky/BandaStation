@@ -62,6 +62,7 @@
 		/datum/action/cooldown/mob_cooldown/wrap/event_spider,
 		/datum/action/cooldown/mob_cooldown/lay_web/event_spider,
 		/datum/action/cooldown/spell/cone/staggered/crooked_vomit_cone/event_spider,
+		/datum/action/cooldown/spider_big_form,
 		/datum/action/cooldown/spider_disguise,
 		/datum/action/cooldown/spider_tiny,
 		/datum/action/cooldown/spider_true_form,
@@ -352,8 +353,11 @@
 	SIGNAL_HANDLER
 	if(forced || throwing || !isturf(loc))
 		return
-	// Claw steps belong to the spider's legs only.
-	if(tiny || true_form)
+	if(tiny)
+		return
+	// The tall true form treads heavily; the claws belong to the spider's legs.
+	if(true_form)
+		playsound(src, pick('sound/effects/footstep/heavy1.ogg', 'sound/effects/footstep/heavy2.ogg'), 90, TRUE, 4)
 		return
 	var/static/list/claws = list(
 		'sound/effects/footstep/hardclaw1.ogg',

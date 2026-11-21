@@ -59,10 +59,10 @@
 
 /// The same switch is granted to the spider and to its replaceable human body.
 /datum/action/cooldown/spider_voice_filter
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_growl"
 	name = "Голос: гроул"
 	desc = "Включить или выключить многослойный демонический голос со скрипучим призвуком. Настройка сохраняется при смене формы и голоса."
-	button_icon = 'icons/mob/actions/actions_ai.dmi'
-	button_icon_state = "voice_changer"
 	cooldown_time = 0
 
 /datum/action/cooldown/spider_voice_filter/Activate(atom/target)

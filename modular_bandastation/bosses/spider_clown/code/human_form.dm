@@ -47,6 +47,7 @@
 	for(var/action_type in list(
 		/datum/action/cooldown/spell/spatial_phase,
 		/datum/action/cooldown/spider_invisibility,
+		/datum/action/cooldown/spider_big_form,
 		/datum/action/cooldown/spider_disguise,
 		/datum/action/cooldown/spider_tiny,
 		/datum/action/cooldown/spider_true_form,

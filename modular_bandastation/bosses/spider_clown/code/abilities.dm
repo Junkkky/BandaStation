@@ -1,5 +1,7 @@
 /// Native wrapping interaction, with living containment instead of the spider's lethal feeding.
 /datum/action/cooldown/mob_cooldown/wrap/event_spider
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_cocoon"
 	name = "Оплести в кокон"
 	desc = "Оплетает выбранного человека рядом живым коконом. Кокон можно разорвать."
 	/// Owned containers release their occupants when the action or boss is removed.
@@ -31,6 +33,8 @@
 
 /// Native web spinning with an audible chitter when it starts.
 /datum/action/cooldown/mob_cooldown/lay_web/event_spider
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_web"
 	webbing_time = 1 SECONDS
 
 /datum/action/cooldown/mob_cooldown/lay_web/event_spider/Activate(atom/target)
@@ -39,11 +43,15 @@
 
 /// Gentle digestion reuses the original owned stomach and safe ejection.
 /datum/action/cooldown/spell/crooked_devour/event_spider
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_devour"
 	name = "Проглотить / выплюнуть"
 	digestion_rate = 0.25
 
 /// Area EMP using the native pulse implementation.
 /datum/action/cooldown/spell/emp/event_spider
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_emp"
 	name = "Электромагнитный импульс"
 	spell_requirements = NONE
 	emp_heavy = 3
@@ -61,6 +69,8 @@
 
 /// Knocks people back across the room and smashes furniture and machines next to the spider; walls and floors hold.
 /datum/action/cooldown/spell/aoe/ability_stomp/event_spider
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_stomp"
 	name = "Топот паука"
 	desc = "Бьёт и отбрасывает стоящих рядом и ломает предметы обстановки вокруг."
 	stomp_visual = /obj/effect/temp_visual/spider_stomp_dust
@@ -105,10 +115,10 @@
 
 /// The Crooked Man's vomit cone, leaving persistent blood pools usable for blood crawling.
 /datum/action/cooldown/spell/cone/staggered/crooked_vomit_cone/event_spider
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_spit"
 	name = "Плевок токсичной кровью"
 	desc = "Изрыгает конус токсичной крови, заливающий всё впереди."
-	button_icon = 'icons/mob/actions/actions_blood_worm.dmi'
-	button_icon_state = "spit_blood"
 	plume_color = BLOOD_COLOR_RED
 	cast_sound = 'sound/effects/wounds/splatter.ogg'
 
@@ -125,50 +135,62 @@
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(victim), turn(caster.dir, 180))
 	to_chat(victim, span_danger("Вас окатило токсичной кровью!"))
 
-/// Clown body and back; both directions leave gibs through the shared form change.
-/datum/action/cooldown/spider_disguise
-	name = "Облик клоуна / паука"
-	button_icon = 'icons/mob/actions/actions_spells.dmi'
-	button_icon_state = "shapeshift"
-
-/datum/action/cooldown/spider_disguise/Activate(atom/target)
-	var/mob/living/basic/boss/spider_clown/spider = get_spider_clown(owner)
+/// One button per form: each turns the spider clown straight into its form from any other, leaving gibs on the way.
+/proc/spider_clown_take_form(mob/living/body, new_form)
+	var/mob/living/basic/boss/spider_clown/spider = get_spider_clown(body)
 	if(!spider)
 		return FALSE
-	return spider.set_form(spider.form == "clown" ? "spider" : "clown")
+	if(spider.form == new_form)
+		body.balloon_alert(body, "уже в этом облике")
+		return FALSE
+	return spider.set_form(new_form)
+
+/// The full-sized spider.
+/datum/action/cooldown/spider_big_form
+	button_icon = 'icons/mob/simple/arachnoid.dmi'
+	button_icon_state = "guard"
+	name = "Облик паука"
+	desc = "Принять облик большого паука из любой другой формы."
+
+/datum/action/cooldown/spider_big_form/Activate(atom/target)
+	return spider_clown_take_form(owner, "spider")
+
+/// The mortal clown body.
+/datum/action/cooldown/spider_disguise
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_disguise"
+	name = "Облик клоуна"
+	desc = "Вырастить смертное тело клоуна и перейти в него из любой другой формы."
+
+/datum/action/cooldown/spider_disguise/Activate(atom/target)
+	return spider_clown_take_form(owner, "clown")
 
 /// Small ventcrawling spider form; vent exits leave gibs through the spider's own trait signal.
 /datum/action/cooldown/spider_tiny
-	name = "Облик паучка / паука"
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_tiny"
+	name = "Облик паучка"
 	desc = "Превращает в маленького паучка, который может лазить по вентиляции (Alt-клик по вентиляции)."
-	button_icon = 'modular_bandastation/bosses/spider_clown/icons/spider_clown_tiny.dmi'
-	button_icon_state = "tiny"
 
 /datum/action/cooldown/spider_tiny/Activate(atom/target)
-	var/mob/living/basic/boss/spider_clown/spider = get_spider_clown(owner)
-	if(!spider)
-		return FALSE
-	return spider.set_form(spider.form == "tiny" ? "spider" : "tiny")
+	return spider_clown_take_form(owner, "tiny")
 
-/// The clown's true form: a tall tentacled figure in this same body; both directions leave gibs through the shared form change.
+/// The clown's true form: a tall tentacled figure in this same body.
 /datum/action/cooldown/spider_true_form
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_true_form"
 	name = "Истинная форма"
-	desc = "Принять истинный облик или вернуться в облик паука."
-	button_icon = 'icons/mob/actions/actions_cult.dmi'
-	button_icon_state = "horror"
+	desc = "Принять истинный облик из любой другой формы."
 
 /datum/action/cooldown/spider_true_form/Activate(atom/target)
-	var/mob/living/basic/boss/spider_clown/spider = get_spider_clown(owner)
-	if(!spider)
-		return FALSE
-	return spider.set_form(spider.form == "true" ? "spider" : "true")
+	return spider_clown_take_form(owner, "true")
 
 /// Changeling-style copy of a crew member; the clown is always offered first.
 /datum/action/cooldown/spider_mimic
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_mimic"
 	name = "Перевоплощение"
 	desc = "Принять облик члена экипажа или вернуть облик клоуна."
-	button_icon = 'icons/mob/actions/actions_changeling.dmi'
-	button_icon_state = "transform"
 
 /datum/action/cooldown/spider_mimic/Activate(atom/target)
 	INVOKE_ASYNC(src, PROC_REF(choose_shape), owner)
@@ -203,10 +225,10 @@
 
 /// Picks the TTS voice for whichever form this body currently shows.
 /datum/action/cooldown/spider_voice
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_voice"
 	name = "Голос этой формы"
 	desc = "Выбрать голос TTS для текущей формы. Копия члена экипажа говорит его голосом, пока не выбран другой."
-	button_icon = 'icons/mob/actions/actions_changeling.dmi'
-	button_icon_state = "mimic_voice"
 
 /datum/action/cooldown/spider_voice/Activate(atom/target)
 	INVOKE_ASYNC(src, PROC_REF(choose_voice), owner)
@@ -225,6 +247,8 @@
 
 /// Native demon blood crawl, ignoring only the boss's own teleport immunity.
 /datum/action/cooldown/spell/jaunt/bloodcrawl/event_spider
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_bloodcrawl"
 	name = "Раствориться в крови"
 	desc = "Погружается в лужу крови рядом и выходит из другой."
 
@@ -241,6 +265,8 @@
 
 /// Melee limb tearing with the body-zone doll, independent of Pinhead's chains.
 /datum/action/cooldown/event_target/chain_operation/dismember/event_spider
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_limb"
 	name = "Оторвать конечность"
 	desc = "Отрывает выбранную на кукле руку или ногу у стоящего рядом."
 	needs_chains = FALSE
@@ -253,6 +279,8 @@
 
 /// The clown's hands keep what they tear off; clicking oneself with it eats it.
 /datum/action/cooldown/event_target/chain_operation/dismember/event_spider/clown
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_clown_limb"
 	desc = "Отрывает выбранную на кукле руку или ногу у стоящего рядом. Конечность остаётся в руке; кликните ею по себе, чтобы сожрать."
 
 /datum/action/cooldown/event_target/chain_operation/dismember/event_spider/clown/operate(mob/living/carbon/human/victim, datum/status_effect/pinhead_chains/held)
@@ -263,9 +291,9 @@
 
 /// Invisibility has its own source so removing it never removes another effect.
 /datum/action/cooldown/spider_invisibility
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_invisibility"
 	name = "Невидимость"
-	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
-	button_icon_state = "ninja_cloak"
 	/// This action's toggle, independent of external invisibility sources.
 	var/hidden = FALSE
 
@@ -286,9 +314,9 @@
 
 /// Physical jump based on the zombie hunter's scoped throw, adapted to a basic mob.
 /datum/action/cooldown/event_target/spider_jump
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_jump"
 	name = "Прыжок"
-	button_icon = 'icons/mob/actions/actions_elites.dmi'
-	button_icon_state = "legionnaire_charge"
 	cooldown_time = 2 SECONDS
 
 /datum/action/cooldown/event_target/spider_jump/Activate(atom/target)
@@ -369,10 +397,10 @@
 
 /// Raises blood spiders from a clicked pool of blood; they serve every body of their master.
 /datum/action/cooldown/event_target/spider_blood_brood
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "spider_brood"
 	name = "Кровавый выводок"
 	desc = "Поднимает кровавого паука из лужи крови. Одновременно живут не больше шести."
-	button_icon = 'icons/mob/actions/actions_animal.dmi'
-	button_icon_state = "lay_enriched_eggs"
 	/// Living spawned spiders, so repeated clicks cannot raise an army.
 	var/list/datum/weakref/brood = list()
 	/// Most spiders alive at once.

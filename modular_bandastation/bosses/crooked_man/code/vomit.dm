@@ -71,6 +71,8 @@
 
 /// The final fight's eruption: the cone is marked before it comes, so whoever holds him can turn him away.
 /datum/action/cooldown/spell/cone/staggered/crooked_vomit_cone/crooked
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "crooked_bile"
 	cooldown_time = 10 SECONDS
 	/// Wind-up during which the cone is marked on the floor.
 	var/windup = 0.6 SECONDS

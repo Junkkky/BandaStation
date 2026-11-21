@@ -36,6 +36,8 @@
 
 /// The final fight's stomp: a short ring that only punishes those standing next to him, marked a second ahead.
 /datum/action/cooldown/spell/aoe/ability_stomp/crooked
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "crooked_stomp"
 	aoe_radius = 2
 	cooldown_time = 12 SECONDS
 	/// Wind-up during which the ring is marked on the floor.
@@ -54,6 +56,9 @@
 		return . | SPELL_CANCEL_CAST
 
 /datum/action/cooldown/spell/aoe/ability_stomp/crooked/cast_on_thing_in_aoe(atom/victim, atom/caster)
+	// The eyes and organs that shield him are spared.
+	if(istype(victim, /obj/structure/crooked_target))
+		return
 	if(!isliving(victim))
 		return ..()
 	var/mob/living/living_victim = victim

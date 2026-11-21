@@ -12,6 +12,7 @@
 #include "code/corpses.dm"
 #include "code/suffering_configuration.dm"
 #include "code/music_player.dm"
+#include "code/station_music.dm"
 #include "code/katorga_areas.dm"
 #include "code/levers.dm"
 #include "code/trials.dm"

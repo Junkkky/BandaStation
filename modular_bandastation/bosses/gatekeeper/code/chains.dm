@@ -81,9 +81,9 @@
 
 /// Large targeted capture; the single-target subtype shares the exact same status.
 /datum/action/cooldown/event_target/chains
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "pin_field"
 	name = "Цепи: область"
-	button_icon = 'icons/mob/actions/actions_ecult.dmi'
-	button_icon_state = "voidpull"
 	/// Radius around the clicked point; walls restrict the native view.
 	var/radius = 10
 
@@ -101,9 +101,9 @@
 
 /// Capture one selected person instead of everyone in the area.
 /datum/action/cooldown/event_target/chains/single
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "pin_single"
 	name = "Цепи: выбранная цель"
-	button_icon = 'icons/mob/actions/actions_cult.dmi'
-	button_icon_state = "cuff"
 
 /datum/action/cooldown/event_target/chains/single/Activate(atom/target)
 	if(!ishuman(target) || target == owner)
@@ -133,9 +133,9 @@
 
 /// Releases a single prisoner.
 /datum/action/cooldown/event_target/chain_operation/release
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "pin_release"
 	name = "Отпустить выбранного"
-	button_icon = 'icons/mob/actions/actions_ecult.dmi'
-	button_icon_state = "uncuff"
 
 /datum/action/cooldown/event_target/chain_operation/release/operate(mob/living/carbon/human/victim, datum/status_effect/pinhead_chains/held)
 	qdel(held)
@@ -143,9 +143,9 @@
 
 /// Tears the selected arm or leg off a held prisoner.
 /datum/action/cooldown/event_target/chain_operation/dismember
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "pin_limb"
 	name = "Оторвать конечность"
-	button_icon = 'icons/mob/actions/actions_ecult.dmi'
-	button_icon_state = "cleave"
 
 /datum/action/cooldown/event_target/chain_operation/dismember/operate(mob/living/carbon/human/victim, datum/status_effect/pinhead_chains/held)
 	var/zone = check_zone(owner.zone_selected)
@@ -162,8 +162,9 @@
 
 /// Execution with chains.
 /datum/action/cooldown/event_target/chain_operation/gib
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "pin_bound_burst"
 	name = "Разорвать цепями"
-	button_icon_state = "gib"
 
 /datum/action/cooldown/event_target/chain_operation/gib/operate(mob/living/carbon/human/victim, datum/status_effect/pinhead_chains/held)
 	log_combat(owner, victim, "gibbed with event power")
@@ -173,15 +174,16 @@
 
 /// Direct execution, independent of chain capture.
 /datum/action/cooldown/event_target/chain_operation/gib/direct
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "pin_direct_burst"
 	name = "Гиб выбранной цели"
-	button_icon_state = "exsanguinating_strike"
 	needs_chains = FALSE
 
 /// Releases all prisoners owned by this Pinhead.
 /datum/action/cooldown/release_chains
+	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
+	button_icon_state = "pin_release_all"
 	name = "Отпустить всех"
-	button_icon = 'icons/mob/actions/actions_spells.dmi'
-	button_icon_state = "repulse"
 
 /datum/action/cooldown/release_chains/Activate(atom/target)
 	var/mob/living/basic/boss/gatekeeper/captor = owner
