@@ -1,6 +1,6 @@
 /datum/action/cooldown/legendary_sword/malice_guard
 	name = "Заслон Злобы"
-	desc = "Пять секунд вы вращаете клинок перед собой. Он блокирует атаки спереди и по передним диагоналям. Можно двигаться и поворачиваться. Бока и спина открыты."
+	desc = "Вы вращаете клинок перед собой 6 секунд. Он блокирует атаки спереди и по передним диагоналям. Можно двигаться и поворачиваться. Бока и спина открыты."
 	button_icon_state = "malice_guard"
 	required_bond = 100
 	cooldown_time = 30 SECONDS
@@ -15,7 +15,7 @@
 /datum/status_effect/malice_guard
 	parent_type = /datum/status_effect/legendary_sword_sequence
 	id = "malice_sequence"
-	duration = 5 SECONDS
+	duration = 6 SECONDS
 	tick_interval = STATUS_EFFECT_NO_TICK
 	/// The animated blade replaces its resting in-hand pose for this stance.
 	var/mutable_appearance/spinning_blade
