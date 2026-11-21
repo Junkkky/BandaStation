@@ -85,9 +85,9 @@
 		dance_sound = null
 		qdel(src)
 
-/// Staggers the sound, but never the damage, when two blades sweep through a group.
-/proc/play_malice_sweep_hit(turf/victim_turf, delay)
-	var/datum/callback/impact = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), victim_turf, 'modular_bandastation/weapon/sound/melee/malice_dance_hit.ogg', 40, FALSE)
+/// Staggers the sound, but never the damage, when the blade sweeps through a group.
+/proc/play_malice_sweep_hit(turf/victim_turf, delay, impact_sound = 'modular_bandastation/weapon/sound/melee/malice_dance_hit.ogg', volume = 40)
+	var/datum/callback/impact = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), victim_turf, impact_sound, volume, FALSE)
 	if(delay)
 		addtimer(impact, delay)
 	else

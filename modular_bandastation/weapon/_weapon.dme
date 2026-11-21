@@ -13,6 +13,8 @@
 #include "code/melee/centcom/legendary_malice.dm"
 #include "code/melee/centcom/legendary_malice_guard.dm"
 #include "code/melee/centcom/legendary_malice_omnislash.dm"
+#include "code/melee/centcom/legendary_malice_recall.dm"
+#include "code/melee/centcom/legendary_malice_recall_vfx.dm"
 #include "code/melee/centcom/rapier.dm"
 
 // MARK: Crafting

@@ -14,6 +14,8 @@ The five action icons in `icons/melee/legendary_abilities.dmi` were drawn for th
 
 The effects in `icons/melee/malice_rage.dmi`, `malice_critical_strike.dmi` and `malice_guard.dmi` adapt those sprites for the charged strike, its impact and the frontal guard. The spinning trails in `malice_spin.dmi` and the three directional cuts in `malice_harvest.dmi` were drawn for these abilities. The artwork follows the repository's CC BY-SA 3.0 asset license.
 
+`icons/melee/malice_recall.dmi` contains original pixel animations for the blade opening and sparks at the catch. Its action icon shows the open Malice item sprite credited above arcing toward a gloved hand. The icon uses the same CC BY-SA 3.0 license.
+
 The supplied recordings listed below are by **konu_shi**. Permission to use these recordings, including in the mixes listed here, is limited to SS220.
 
 | Game sound in `sound/melee/` | Source recordings |
@@ -27,6 +29,10 @@ The supplied recordings listed below are by **konu_shi**. Permission to use thes
 | `malice_harvest_hit3.ogg` | `mid_saberhit.ogg`, `kylohit3.mp3`, `kylobounce2.mp3` and `kylohup3.mp3` |
 | `malice_guard_spin.ogg` | `kylohup1 (1).mp3` (rotation) |
 | `malice_guard_block.ogg` | `kylohup1 (1).mp3` and `kyloblock1.mp3` (parry) |
+| `malice_recall_launch.ogg` | The existing `mid_saberon.ogg` and `kylohup3.mp3` |
+| `malice_recall_flight.ogg` | `kylohup1.mp3`, `kylohup2.mp3` and `kylohup3.mp3` |
+| `malice_recall_hit.ogg` | The existing `mid_saberhit.ogg`, `kylohit3.mp3` and `kylobounce2.mp3` |
+| `malice_recall_catch.ogg` | `kyloblock1.mp3` and `kylohup1.mp3` |
 
 # Legacy display revolvers
 
