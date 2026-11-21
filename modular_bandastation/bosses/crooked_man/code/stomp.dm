@@ -36,6 +36,7 @@
 
 /// The final fight's stomp: a short ring that only punishes those standing next to him, marked a second ahead.
 /datum/action/cooldown/spell/aoe/ability_stomp/crooked
+	name = "Сокрушительный топот"
 	button_icon = 'modular_bandastation/bosses/icons/action_buttons.dmi'
 	button_icon_state = "crooked_stomp"
 	aoe_radius = 2

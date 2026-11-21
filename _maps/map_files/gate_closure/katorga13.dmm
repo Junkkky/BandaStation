@@ -10,6 +10,10 @@
 /obj/effect/gibspawner/human,
 /turf/open/floor/plating/rust,
 /area/awaymission/gate_closure/katorga)
+"aab" = (
+/obj/effect/mob_spawn/corpse/human/gate_closure_vagrant/dismembered,
+/turf/open/water/gate_closure_lava,
+/area/awaymission/gate_closure/katorga)
 "aae" = (
 /obj/effect/gibspawner/human,
 /turf/open/misc/asteroid/basalt,
@@ -4587,7 +4591,7 @@ gOK
 gOK
 xEA
 xEA
-aau
+aar
 gNf
 gNf
 gNf
@@ -4608,7 +4612,7 @@ gNf
 gNf
 gNf
 gNf
-aaf
+aar
 aae
 gNf
 gNf
@@ -4705,7 +4709,7 @@ pIn
 aap
 aaf
 gNf
-gNf
+aab
 gNf
 gNf
 gNf
@@ -4895,7 +4899,7 @@ gOK
 gOK
 xEA
 xEA
-aas
+aag
 xEA
 gNf
 gNf
@@ -5305,13 +5309,13 @@ rSi
 xEA
 aae
 aam
-aag
+aap
 aae
 pIn
 xEA
 gNf
 gNf
-aas
+aar
 aae
 xEA
 xEA
@@ -5424,7 +5428,7 @@ gNf
 gNf
 gNf
 gNf
-aag
+aar
 gNf
 gNf
 gNf
@@ -5709,7 +5713,7 @@ xEA
 xEA
 xEA
 gNf
-gNf
+aab
 gNf
 xEA
 xEA

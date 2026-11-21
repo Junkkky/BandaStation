@@ -1,4 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/structure/table/wood{
+	color = "#996633"
+	},
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/mob_spawn/corpse/human/gate_closure/centcom/edward,
+/turf/open/floor/wood/large,
+/area/awaymission/gate_closure/centcom)
 "aab" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2,
@@ -57,6 +69,24 @@
 /turf/open/floor/iron/dark/textured_half{
 	dir = 1
 	},
+/area/awaymission/gate_closure/centcom)
+"aaj" = (
+/obj/structure/table/wood{
+	color = "#996633"
+	},
+/obj/item/lighter{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/item/cigarette/cigar/premium{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 1
+	},
+/obj/effect/mob_spawn/corpse/human/gate_closure/centcom/austin,
+/turf/open/floor/wood/large,
 /area/awaymission/gate_closure/centcom)
 "aak" = (
 /obj/effect/turf_decal/line/dark_blue/line{
@@ -277,6 +307,14 @@
 /obj/effect/turf_decal/siding/wood/end,
 /turf/open/floor/wood/large,
 /area/awaymission/gate_closure/centcom)
+"aaK" = (
+/obj/structure/table/wood{
+	color = "#996633"
+	},
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/mob_spawn/corpse/human/gate_closure/centcom/maria,
+/turf/open/floor/carpet/red,
+/area/awaymission/gate_closure/centcom)
 "aaL" = (
 /obj/structure/table/wood{
 	color = "#996633"
@@ -325,17 +363,6 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/carpet/black,
 /area/awaymission/gate_closure/centcom)
-"aaR" = (
-/obj/structure/table/wood{
-	color = "#996633"
-	},
-/obj/effect/turf_decal/siding/wood/end{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/wood/large,
-/area/awaymission/gate_closure/centcom)
 "aaS" = (
 /obj/effect/turf_decal/tile/dark_blue/full,
 /obj/structure/cable/layer3,
@@ -345,11 +372,12 @@
 	dir = 1
 	},
 /area/awaymission/gate_closure/centcom)
-"aaU" = (
+"aaT" = (
 /obj/structure/table/wood{
 	color = "#996633"
 	},
 /obj/effect/decal/cleanable/blood/old,
+/obj/effect/mob_spawn/corpse/human/gate_closure/centcom/hel,
 /turf/open/floor/carpet/red,
 /area/awaymission/gate_closure/centcom)
 "aaV" = (
@@ -724,13 +752,6 @@
 	},
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/iron/dark/smooth_large,
-/area/awaymission/gate_closure/centcom)
-"abR" = (
-/obj/structure/table/wood{
-	color = "#996633"
-	},
-/obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/carpet/red,
 /area/awaymission/gate_closure/centcom)
 "abS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer1,
@@ -1148,23 +1169,6 @@
 "baa" = (
 /obj/structure/sink/directional/east,
 /turf/open/floor/iron/white,
-/area/awaymission/gate_closure/centcom)
-"bbX" = (
-/obj/structure/table/wood{
-	color = "#996633"
-	},
-/obj/item/lighter{
-	pixel_x = -7;
-	pixel_y = 7
-	},
-/obj/item/cigarette/cigar/premium{
-	pixel_x = -1;
-	pixel_y = 4
-	},
-/obj/effect/turf_decal/siding/wood/end{
-	dir = 1
-	},
-/turf/open/floor/wood/large,
 /area/awaymission/gate_closure/centcom)
 "bdr" = (
 /obj/machinery/computer/communications,
@@ -11154,8 +11158,8 @@ aIJ
 xOg
 myG
 aaX
-abR
-aaR
+aaK
+aaa
 aaO
 aaO
 aaJ
@@ -11232,7 +11236,7 @@ aIJ
 uuM
 aaz
 aaY
-aaU
+aaT
 lkh
 aaP
 fRk
@@ -11311,7 +11315,7 @@ kLF
 myG
 iKp
 sCd
-bbX
+aaj
 aaO
 aaO
 aaL
