@@ -98,8 +98,11 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 	var/turf/T
 	var/mob/body = loc
+	var/admin_body = FALSE
 	if(ismob(body))
 		T = get_turf(body) //Where is the body located?
+		// The body still holds the client here; admins stay where they ghosted, even on a secret level.
+		admin_body = !!body.client?.holder
 
 		gender = body.gender
 		if(body.mind && body.mind.name)
@@ -116,7 +119,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 	update_appearance()
 
-	if(!T || is_secret_level(T.z))
+	if(!T || (is_secret_level(T.z) && !admin_body))
 		var/list/turfs = get_area_turfs(/area/shuttle/arrival)
 		if(length(turfs))
 			T = pick(turfs)

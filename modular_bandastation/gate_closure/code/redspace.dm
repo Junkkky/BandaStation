@@ -88,6 +88,25 @@
 /area/awaymission/gate_closure/islands
 	name = "GC: Острова редспейса"
 
+// One area per island so admins can jump between them; numbered top to bottom, left to right.
+/area/awaymission/gate_closure/islands/island_1
+	name = "GC: Острова редспейса - Остров 1"
+
+/area/awaymission/gate_closure/islands/island_2
+	name = "GC: Острова редспейса - Остров 2"
+
+/area/awaymission/gate_closure/islands/island_3
+	name = "GC: Острова редспейса - Остров 3"
+
+/area/awaymission/gate_closure/islands/island_4
+	name = "GC: Острова редспейса - Остров 4"
+
+/area/awaymission/gate_closure/islands/island_5
+	name = "GC: Острова редспейса - Остров 5"
+
+/area/awaymission/gate_closure/islands/island_6
+	name = "GC: Острова редспейса - Остров 6"
+
 /// The small stone rooms in a corner of each location where admins keep mobs until they are needed.
 /area/awaymission/gate_closure/mob_room
 	name = "GC: Комната мобов - Редспейс"
