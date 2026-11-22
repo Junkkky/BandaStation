@@ -180,21 +180,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 				return TRUE
 		if("look_evidence")
 			var/datum/case/case = locate(params["case_ref"]) in cases
+			if(!case)
+				return FALSE
 			var/datum/evidence/evidence = locate(params["evidence_ref"]) in case.evidences
-			if(evidence.evidence_type == EVIDENCE_TYPE_PHOTO)
-				var/obj/item/photo/item = evidence.item
-				item.show(user)
+			var/obj/item/item = evidence?.item
+			if(QDELETED(item) || item.loc != src)
+				return FALSE
+			if(istype(item, /obj/item/photo))
+				var/obj/item/photo/photo = item
+				photo.show(user)
 				return TRUE
-
-			var/obj/item/paper/paper = evidence.item
-			var/paper_text = ""
-			for(var/datum/paper_input/text_input as anything in paper.raw_text_inputs)
-				paper_text += text_input.get_raw_text()
-			user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[paper.name]</title></head>" \
-				+ "<body style='overflow:hidden;padding:5px'>" \
-				+ "[paper_text]" \
-				+ "</body></html>", "window=photo_showing;size=480x608")
-			onclose(user, "[name]")
+			if(istype(item, /obj/item/paper))
+				item.ui_interact(user)
+				return TRUE
 		if("remove_evidence")
 			var/datum/case/case = cases[current_case]
 			var/datum/evidence/evidence = locate(params["evidence_ref"]) in case.evidences
