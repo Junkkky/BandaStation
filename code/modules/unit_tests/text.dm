@@ -37,3 +37,19 @@
 	TEST_ASSERT_EQUAL(capitalize("\improper аварийный лом"), "Аварийный лом", "A translated item name lost Cyrillic capitalization.")
 	TEST_ASSERT_EQUAL(full_capitalize("\proper test name"), "\proper Test Name", "Full capitalization corrupted the proper macro.")
 	TEST_ASSERT_EQUAL(full_capitalize("\improper test name"), "\improper Test Name", "Full capitalization corrupted the improper macro.")
+
+/// A permissive name can contain ordinary punctuation, but must remain a single line without angle brackets.
+/datum/unit_test/permissive_names/Run()
+	TEST_ASSERT_EQUAL(permissive_sanitize_name("Ada & Bea"), "Ada & Bea", "An ampersand should remain valid in a permissive name.")
+	TEST_ASSERT_NULL(permissive_sanitize_name("Ada < Bea"), "An opening angle bracket should be rejected.")
+	TEST_ASSERT_NULL(permissive_sanitize_name("Ada > Bea"), "A closing angle bracket should be rejected.")
+	TEST_ASSERT_NULL(permissive_sanitize_name("Ada\nBea"), "A newline should be rejected.")
+	TEST_ASSERT_NULL(permissive_sanitize_name("Ada\tBea"), "A tab should be rejected.")
+
+/// Admin HTML needs escaped names, while raw output remains suitable for plain text.
+/datum/unit_test/admin_name_escaping/Run()
+	var/mob/subject = allocate(/mob/living/carbon/human/consistent)
+	subject.real_name = "Ada & Bea"
+
+	TEST_ASSERT(findtext(key_name_admin(subject), "Ada &amp; Bea"), "The HTML formatter should escape a name even when no PM link can be made.")
+	TEST_ASSERT(findtext(key_name(subject), "Ada & Bea"), "The plain-text formatter should preserve the name.")
