@@ -70,7 +70,7 @@
 	configuration_prompt = prompt
 	var/input = tgui_input_text(
 		user,
-		"Введите цепочку фильтров через запятую, например highpass=f=500, lowpass=f=3500, acrusher=bits=8:mix=0.7. Доступны highpass, lowpass, equalizer, volume, atempo, acrusher, tremolo и vibrato.",
+		"Введите цепочку фильтров через запятую, например asetrate=21000, acrusher=0.4:1:15:0:log, volume=5. Доступны highpass, lowpass, equalizer, volume, atempo, asetrate, acrusher, aecho, tremolo и vibrato.",
 		name,
 		default = filter_arguments,
 		max_length = TTS_VOICE_FILTER_MAX_LENGTH,
@@ -86,26 +86,39 @@
 
 	var/normalized_filter = normalize_tts_voice_filter(input)
 	if(!normalized_filter)
-		to_chat(user, span_warning("Не удалось сохранить фильтр. Проверьте названия фильтров и числовые параметры."))
+		to_chat(user, span_warning("Не удалось сохранить фильтр. Проверьте названия фильтров и значения параметров."))
 		return FALSE
 
 	filter_arguments = normalized_filter
 	to_chat(user, span_notice("Настройки фильтра голоса сохранены."))
 	return TRUE
 
-/// Builds an audio-only FFmpeg graph using supported filters and bounded numeric options.
+/// Builds an audio-only FFmpeg graph using supported filters and validated options.
 /proc/normalize_tts_voice_filter(input)
 	if(!istext(input) || !length(input) || length(input) > TTS_VOICE_FILTER_MAX_LENGTH)
 		return null
 
-	// The first option in each list is the positional shorthand for this action.
+	// acrusher and aecho options are ordered as FFmpeg expects them in positional chains.
 	var/static/list/supported_filters = list(
 		"highpass" = list("f" = list(20, 10000)),
 		"lowpass" = list("f" = list(20, 10000)),
 		"equalizer" = list("f" = list(20, 10000), "g" = list(-20, 10), "w" = list(0.1, 10)),
-		"volume" = list("volume" = list(0, 2)),
+		"volume" = list("volume" = list(0, 10)),
 		"atempo" = list("tempo" = list(0.5, 2)),
-		"acrusher" = list("bits" = list(2, 16), "mix" = list(0, 1)),
+		"asetrate" = list("sample_rate" = list(16000, 48000)),
+		"acrusher" = list(
+			"level_in" = list(0.016, 4),
+			"level_out" = list(0.016, 4),
+			"bits" = list(1, 64),
+			"mix" = list(0, 1),
+			"mode" = list("lin", "log"),
+		),
+		"aecho" = list(
+			"in_gain" = list(0, 1),
+			"out_gain" = list(0, 1),
+			"delays" = list(1, 1000),
+			"decays" = list(0.001, 1),
+		),
 		"tremolo" = list("f" = list(0.1, 20), "d" = list(0, 1)),
 		"vibrato" = list("f" = list(0.1, 10), "d" = list(0, 1)),
 	)
@@ -127,18 +140,42 @@
 		if(filter_name == "atempo")
 			has_tempo = TRUE
 
+		var/list/options = splittext(copytext(stage, assignment + 1), ":")
+		var/use_positional_order = filter_name == "aecho"
+		// A single unnamed acrusher value was shorthand for bit depth before positional chains were supported.
+		var/shorthand_option = filter_name == "acrusher" ? "bits" : allowed_options[1]
+		if(filter_name == "acrusher" && length(options) >= 2)
+			use_positional_order = !findtext(options[1], "=") && !findtext(options[2], "=")
+
+		var/positional_index = 1
 		var/list/seen_options = list()
 		var/list/normalized_options = list()
-		for(var/option in splittext(copytext(stage, assignment + 1), ":"))
+		for(var/option in options)
 			var/option_assignment = findtext(option, "=")
-			var/option_name = option_assignment ? trim(copytext(option, 1, option_assignment)) : allowed_options[1]
-			var/list/bounds = allowed_options[option_name]
-			var/value = trim(copytext(option, option_assignment + 1))
-			if(!number_option.Find(value) || number_option.match != value)
+			var/option_name = shorthand_option
+			if(option_assignment)
+				option_name = trim(copytext(option, 1, option_assignment))
+			else if(use_positional_order)
+				if(positional_index > length(allowed_options))
+					return null
+				option_name = allowed_options[positional_index++]
+
+			if(filter_name == "asetrate" && option_name == "r")
+				option_name = "sample_rate"
+			var/list/allowed_values = allowed_options[option_name]
+			if(!allowed_values || (option_name in seen_options))
 				return null
 
-			var/numeric_value = text2num(value)
-			if(!bounds || (option_name in seen_options) || numeric_value < bounds[1] || numeric_value > bounds[2])
+			var/value = trim(copytext(option, option_assignment + 1))
+			if(isnum(allowed_values[1]))
+				if(!number_option.Find(value) || number_option.match != value)
+					return null
+				var/numeric_value = text2num(value)
+				if(numeric_value < allowed_values[1] || numeric_value > allowed_values[2])
+					return null
+				if(option_name == "sample_rate" && numeric_value != round(numeric_value))
+					return null
+			else if(!(value in allowed_values))
 				return null
 
 			seen_options += option_name
@@ -146,7 +183,8 @@
 
 		normalized_stages += "[filter_name]=[normalized_options.Join(":")]"
 
-	return normalized_stages.Join(",")
+	var/normalized_graph = normalized_stages.Join(",")
+	return length(normalized_graph) <= TTS_VOICE_FILTER_MAX_LENGTH ? normalized_graph : null
 
 #undef TTS_VOICE_FILTER_MAX_LENGTH
 #undef TTS_VOICE_FILTER_MAX_STAGES
