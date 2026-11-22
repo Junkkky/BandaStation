@@ -204,6 +204,7 @@
 #include "dcs_get_id_from_elements.dm"
 #include "death_moodlets.dm"
 #include "designs.dm"
+#include "detomatix.dm"
 #include "dismemberment.dm"
 #include "dna_infusion.dm"
 #include "door_access.dm"

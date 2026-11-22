@@ -58,37 +58,64 @@
 
 /**
  * Detomatix virus
- * Sends a false message, and blows the PDA up if the target responds to it (or opens their messenger before a timer)
+ * Detonates a PDA remotely or attaches a trap to a forged message.
  */
 /obj/item/disk/computer/virus/detomatix
 	name = "\improper D.E.T.O.M.A.T.I.X. disk"
-	charges = 6
+	charges = 4
 
-/obj/item/disk/computer/virus/detomatix/send_virus(obj/item/modular_computer/pda/source, obj/item/modular_computer/pda/target, mob/living/user, message)
-	. = ..()
-	if(!.)
+/obj/item/disk/computer/virus/detomatix/proc/can_target(obj/item/modular_computer/pda/source, obj/item/modular_computer/pda/target, mob/living/user)
+	if(QDELETED(source) || QDELETED(target) || source == target || source.inserted_disk != src || !user.can_perform_action(source, ALLOW_RESTING | ALLOW_PAI))
+		return FALSE
+	var/datum/computer_file/program/messenger/receiver = locate() in target.stored_files
+	if(!receiver?.sending_and_receiving || !(REF(receiver) in GLOB.pda_messengers))
+		to_chat(user, span_warning("КПК получателя не принимает сообщения."))
+		return FALSE
+	var/mob/living/holder = get_atom_on_turf(target, /mob/living)
+	if(target.detomatix_proof || IS_TRAITOR(holder) || IS_NUKE_OP(holder) || (SEND_SIGNAL(target, COMSIG_TABLET_CHECK_DETONATE) & COMPONENT_TABLET_NO_DETONATE))
+		to_chat(user, span_warning("КПК защищён от подрыва. Заряд сохранён."))
+		return FALSE
+	return TRUE
+
+/obj/item/disk/computer/virus/detomatix/send_virus(obj/item/modular_computer/pda/source, obj/item/modular_computer/pda/target, mob/living/user, message, direct = FALSE)
+	if(!..() || !can_target(source, target, user))
 		return FALSE
 
-	var/difficulty = target.get_detomatix_difficulty()
-	if(SEND_SIGNAL(target, COMSIG_TABLET_CHECK_DETONATE) & COMPONENT_TABLET_NO_DETONATE || prob(difficulty * 15))
-		user.show_message(span_danger("ERROR: Target could not be bombed."), MSG_VISUAL)
+	if(prob(target.get_detomatix_difficulty() * 15))
 		charges--
-		return
+		if(direct && prob(50))
+			to_chat(user, span_userdanger("Защита цели перенаправила вирус на ваш КПК!"))
+			log_bomber(user, "had a Detomatix command backfire on", source, "while targeting [target.saved_identification]")
+			source.detonate()
+		else
+			to_chat(user, span_warning("Защита цели заблокировала вирус. Заряд потрачен."))
+		return TRUE
 
-	var/original_host = source
+	if(direct)
+		charges--
+		to_chat(user, span_notice("Команда подрыва выполнена. Осталось зарядов: [charges]."))
+		log_bomber(user, "remotely detonated", target, "registered to [target.saved_identification] with Detomatix")
+		target.detonate()
+		return TRUE
+
 	var/fakename = sanitize_name(tgui_input_text(user, "Enter a name for the rigged message.", "Forge Message", max_length = MAX_NAME_LEN), allow_numbers = TRUE)
-	if(!fakename || source != original_host || !user.can_perform_action(source))
+	if(!fakename || QDELETED(source) || source.inserted_disk != src || !user.can_perform_action(source))
 		return
 	var/fakejob = sanitize_name(tgui_input_text(user, "Enter a job for the rigged message.", "Forge Message", max_length = MAX_NAME_LEN), allow_numbers = TRUE)
-	if(!fakejob || source != original_host || !user.can_perform_action(source))
+	if(!fakejob || QDELETED(source) || source.inserted_disk != src || !user.can_perform_action(source))
 		return
 	var/attach_fake_photo = tgui_alert(user, "Attach a fake photo?", "Forge Message", list("Yes", "No")) == "Yes"
 
+	if(!charges || !can_target(source, target, user))
+		return FALSE
 	var/datum/computer_file/program/messenger/app = locate() in source.stored_files
 	var/datum/computer_file/program/messenger/target_app = locate() in target.stored_files
-	if(!app || charges <= 0 || !app.send_rigged_message(user, message, list(target_app), fakename, fakejob, attach_fake_photo))
+	if(!app?.sending_and_receiving)
 		return FALSE
 	charges--
+	if(!app.send_rigged_message(user, message, list(target_app), fakename, fakejob, attach_fake_photo))
+		charges++
+		return FALSE
 	user.show_message(span_notice("Success!"))
 	var/reference = REF(src)
 	target.add_traits(list(TRAIT_PDA_CAN_EXPLODE, TRAIT_PDA_MESSAGE_MENU_RIGGED), reference)

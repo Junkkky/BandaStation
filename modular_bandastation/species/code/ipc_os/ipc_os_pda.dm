@@ -32,6 +32,7 @@
 /// Narrow human-compatible embedded PDA: reuse applications without IDs, money, pAI or a second cell.
 /obj/item/modular_computer/pda/ipc_os
 	name = "Digital PDA"
+	detomatix_proof = TRUE
 	icon = 'icons/obj/devices/modular_pda.dmi'
 	icon_state = "pda-silicon-human"
 	post_init_icon_state = null

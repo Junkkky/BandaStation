@@ -18,6 +18,7 @@ import type { NtMessage, NtMessenger, NtPicture } from './types';
 type ChatScreenProps = {
   canReply: BooleanLike;
   chatRef?: string;
+  hasDetomatix?: BooleanLike;
   isSilicon: BooleanLike;
   messages: NtMessage[];
   recipient: NtMessenger;
@@ -165,6 +166,7 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
     const { act } = useBackend();
     const {
       canReply,
+      hasDetomatix,
       messages,
       recipient,
       chatRef,
@@ -267,10 +269,27 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
 
       const buttons = canReply ? (
         <>
+          {!!hasDetomatix && (
+            <Stack.Item>
+              <Button
+                icon="bomb"
+                color="bad"
+                onClick={() =>
+                  act('PDA_detonate', { ref: chatRef || recipient.ref })
+                }
+              >
+                Подорвать КПК
+              </Button>
+            </Stack.Item>
+          )}
           <Stack.Item>{attachmentButton}</Stack.Item>
           <Stack.Item>
             <Button
-              tooltip="Send"
+              tooltip={
+                hasDetomatix && sendingVirus
+                  ? 'Отправить сообщение-ловушку'
+                  : 'Send'
+              }
               icon="arrow-right"
               onClick={this.handleSendMessage}
               disabled={!canSend}

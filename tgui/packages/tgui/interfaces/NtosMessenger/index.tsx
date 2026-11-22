@@ -36,6 +36,7 @@ type NtosMessengerData = {
   selected_photo_path?: string;
   on_spam_cooldown: BooleanLike;
   virus_attach: BooleanLike;
+  has_detomatix?: BooleanLike;
   sending_virus: BooleanLike;
 };
 
@@ -68,6 +69,7 @@ export const NtosMessenger = (props) => {
           selectedPhoto={selected_photo_path}
           isSilicon={is_silicon}
           sendingVirus={sending_virus}
+          hasDetomatix={data.has_detomatix}
           canReply={openChat ? openChat.can_reply : !!temporaryRecipient}
           messages={openChat ? openChat.messages : []}
           recipient={openChat ? openChat.recipient : temporaryRecipient}

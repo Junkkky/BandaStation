@@ -40,6 +40,8 @@
 
 	///Whether the PDA should have 'pda_programs' apps installed on Initialize.
 	var/has_pda_programs = TRUE
+	/// Whether the device itself rejects incoming Detomatix commands.
+	var/detomatix_proof = FALSE
 	///Static list of default PDA apps to install on Initialize.
 	var/static/list/datum/computer_file/pda_programs = list(
 		/datum/computer_file/program/messenger,
@@ -204,13 +206,16 @@
 		playsound(src, 'sound/machines/pda_button/pda_button1.ogg', 50, TRUE)
 
 /obj/item/modular_computer/pda/proc/explode(mob/target, mob/bomber, from_message_menu = FALSE)
-	var/turf/current_turf = get_turf(src)
-
 	if(from_message_menu)
 		log_bomber(null, null, target, "'s tablet exploded as [target.p_they()] tried to open their tablet message menu because of a recent tablet bomb.")
 	else
 		log_bomber(bomber, "successfully tablet-bombed", target, "as [target.p_they()] tried to reply to a rigged tablet message [bomber?.is_antag() ? "" : "(SENT BY NON-ANTAG)"]")
 
+	target.client?.give_award(/datum/award/achievement/misc/clickbait, target)
+	detonate(amplified = istype(inserted_disk, /obj/item/disk/computer/virus/detomatix))
+
+/// The forged-message trap can amplify the blast when a second Detomatix is in the victim's PDA.
+/obj/item/modular_computer/pda/proc/detonate(amplified = FALSE)
 	if (ismob(loc))
 		var/mob/loc_mob = loc
 		loc_mob.show_message(
@@ -222,11 +227,10 @@
 	else
 		visible_message(span_danger("[declent_ru(NOMINATIVE)] взрывается!"), span_warning("Вы слышите громкий хлопок!"))
 
-	target.client?.give_award(/datum/award/achievement/misc/clickbait, target)
-
+	var/turf/current_turf = get_turf(src)
 	if(current_turf)
 		current_turf.hotspot_expose(700,125)
-		if(istype(inserted_disk, /obj/item/disk/computer/virus/detomatix))
+		if(amplified)
 			explosion(src, devastation_range = -1, heavy_impact_range = 1, light_impact_range = 3, flash_range = 4)
 		else
 			explosion(src, devastation_range = -1, heavy_impact_range = -1, light_impact_range = 2, flash_range = 3)
@@ -276,6 +280,7 @@
  */
 /obj/item/modular_computer/pda/nukeops
 	name = "nuclear pda"
+	detomatix_proof = TRUE
 	icon_state = "/obj/item/modular_computer/pda/nukeops"
 	device_theme = PDA_THEME_SYNDICATE
 	comp_light_luminosity = 6.3 //matching a flashlight
@@ -316,6 +321,7 @@
  */
 /obj/item/modular_computer/pda/silicon
 	name = "modular interface"
+	detomatix_proof = TRUE
 	icon = 'icons/obj/devices/modular_pda.dmi'
 	icon_state = "tablet-silicon"
 	post_init_icon_state = null
