@@ -71,3 +71,15 @@
 	TEST_ASSERT(!QDELETED(resistant), "The direct command destroyed a fully resistant target.")
 	TEST_ASSERT_EQUAL(disk.charges, 0, "A resisted command should spend one charge.")
 	TEST_ASSERT_EQUAL(!!blast, !!QDELETED(source), "Only a backfire should explode the sender's PDA.")
+
+/datum/unit_test/detomatix/traitor_uplink/Run()
+	var/mob/living/carbon/human/consistent/buyer = EASY_ALLOCATE()
+	var/obj/item/modular_computer/pda/pda = EASY_ALLOCATE()
+	var/datum/component/uplink/uplink = pda.AddComponent(/datum/component/uplink, enabled = TRUE, starting_tc = 6)
+	var/datum/tgui/ui = allocate(/datum/tgui, buyer, uplink, "Uplink")
+	ui.status = UI_INTERACTIVE
+	uplink.ui_act("buy", list("path" = "[/datum/uplink_item/explosives/detomatix]"), ui, ui.state)
+	var/obj/item/disk/computer/virus/detomatix/disk = buyer.get_active_held_item()
+	TEST_ASSERT(istype(disk), "The standard traitor PDA uplink should issue a Detomatix cartridge.")
+	TEST_ASSERT_EQUAL(uplink.uplink_handler.telecrystals, 0, "A traitor should pay exactly 6 TC for Detomatix.")
+	TEST_ASSERT_EQUAL(pda.computer_disk_act(buyer, disk), ITEM_INTERACT_SUCCESS, "The cartridge should fit the traitor's own PDA.")
