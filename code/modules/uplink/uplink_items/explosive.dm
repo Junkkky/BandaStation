@@ -47,10 +47,10 @@
 	purchasable_from = ~UPLINK_ALL_SYNDIE_OPS //nukies get a whole box of these at once at a considerable discount.
 
 /datum/uplink_item/explosives/detomatix
-	name = "Detomatix disk"
-	desc = "When inserted into a tablet, this cartridge gives you four opportunities to \
-			detonate tablets of crewmembers who have their message feature enabled. \
-			The concussive effect from the explosion will knock the recipient out for a short period, and deafen them for longer."
+	name = "Detomatix Cartridge"
+	desc = "Вставьте картридж в КПК и откройте контакт в мессенджере. Команда «Подорвать КПК» сразу взрывает устройство получателя. \
+			Защитные программы цели могут заблокировать вирус или перенаправить его на ваш КПК. При попытке подрыва КПК другого агента заряд сохраняется. \
+			Также можно прикрепить вирус к поддельному сообщению и дождаться реакции получателя. Всего четыре заряда."
 	item = /obj/item/disk/computer/virus/detomatix
 	cost = 6
 	restricted = TRUE

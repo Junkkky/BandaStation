@@ -257,7 +257,7 @@
 
 			return TRUE
 
-		if("PDA_sendMessage")
+		if("PDA_sendMessage", "PDA_detonate")
 			if(!sending_and_receiving)
 				to_chat(usr, span_notice("ERROR: This device has sending disabled."))
 				return FALSE
@@ -275,8 +275,8 @@
 			else
 				return FALSE
 
-			if(sending_virus)
-				var/obj/item/disk/computer/virus/disk = computer.inserted_disk
+			var/obj/item/disk/computer/virus/disk = computer.inserted_disk
+			if(action == "PDA_detonate" || (sending_virus && istype(disk)))
 				if(!istype(disk))
 					return FALSE
 
@@ -291,6 +291,11 @@
 				else if(istype(target, /datum/computer_file/program/messenger))
 					target_messenger = target
 
+				if(action == "PDA_detonate")
+					var/obj/item/disk/computer/virus/detomatix/detonator = disk
+					if(!istype(detonator))
+						return FALSE
+					return detonator.send_virus(computer, target_messenger.computer, ui.user, direct = TRUE)
 				return disk.send_virus(computer, target_messenger.computer, usr, params["message"])
 
 			return send_message(usr, params["message"], list(target))
@@ -380,6 +385,7 @@
 	if(istype(disk))
 		data["virus_attach"] = TRUE
 		data["sending_virus"] = sending_virus
+		data["has_detomatix"] = istype(disk, /obj/item/disk/computer/virus/detomatix)
 	return data
 
 /datum/computer_file/program/messenger/ui_assets(mob/user)

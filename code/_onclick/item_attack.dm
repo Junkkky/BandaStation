@@ -343,14 +343,7 @@
 	if(!LAZYACCESS(attack_modifiers, SILENCE_DEFAULT_MESSAGES))
 		send_item_attack_message(attacking_item, user, targeting_human_readable, targeting)
 
-	var/armor_block = min(run_armor_check(
-			def_zone = targeting,
-			attack_flag = MELEE,
-			absorb_text = span_notice("Ваша броня защитила вашу [targeting_human_readable]!"),
-			soften_text = span_warning("Ваша броня смягчила удар, нанесённый в вашу [targeting_human_readable]!"),
-			armour_penetration = attacking_item.armour_penetration,
-			weak_against_armour = attacking_item.weak_against_armour,
-		), ARMOR_MAX_BLOCK)
+	var/armor_block = min(attacking_item.get_melee_armor_block(src, targeting, targeting_human_readable), ARMOR_MAX_BLOCK)
 
 	var/final_force = CALCULATE_FORCE(attacking_item, attack_modifiers)
 	if(mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_SKELETAL)) // this should probably check hit bodypart for humanoids
@@ -393,6 +386,17 @@
 	attack_effects(damage_done, targeting, armor_block, attacking_item, user)
 
 	return damage_done
+
+/// Armor at the struck zone after this weapon's melee penetration.
+/obj/item/proc/get_melee_armor_block(mob/living/target, hit_zone, zone_name)
+	return target.run_armor_check(
+		def_zone = hit_zone,
+		attack_flag = MELEE,
+		absorb_text = span_notice("Ваша броня защитила вашу [zone_name]!"),
+		soften_text = span_warning("Ваша броня смягчила удар, нанесённый в вашу [zone_name]!"),
+		armour_penetration = armour_penetration,
+		weak_against_armour = weak_against_armour,
+	)
 
 /**
  * Called when we take damage, used to cause effects such as a blood splatter.
