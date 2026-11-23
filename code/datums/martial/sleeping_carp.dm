@@ -86,7 +86,7 @@
 		span_userdanger("[capitalize(attacker.declent_ru(NOMINATIVE))] яростно выкручивает вам [affecting.declent_ru(ACCUSATIVE)]!"),
 		span_hear("Вы слышите мерзкий звук ломающейся кости!"), null, attacker)
 	to_chat(attacker, span_danger("Вы яростно выкручиваете [affecting.declent_ru(ACCUSATIVE)] [defender.declent_ru(GENITIVE)]!"))
-	playsound(defender, 'sound/items/weapons/punch1.ogg', 25, TRUE, -1)
+	playsound(defender, 'sound/items/weapons/punch1.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	log_combat(attacker, defender, "wrist wrenched (Sleeping Carp)")
 	defender.apply_damage(20, BRUTE, affecting, wound_bonus = 30)
 	defender.drop_all_held_items()
@@ -102,7 +102,7 @@
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
-	playsound(attacker, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
+	playsound_quiet_impact(attacker, 'sound/effects/hit_kick.ogg', 50)
 	var/atom/throw_target = get_edge_target_turf(defender, attacker.dir)
 	defender.throw_at(throw_target, 7, 4, attacker)
 	defender.apply_damage(15, attacker.get_attack_type(), BODY_ZONE_CHEST, wound_bonus = CANT_WOUND)
@@ -112,7 +112,7 @@
 /// Keelhaul: Disarm Disarm combo, knocks people down and deals substantial stamina damage, and also discombobulates them. Knocks objects out of their hands if they're already on the ground.
 /datum/martial_art/the_sleeping_carp/proc/drop_kick(mob/living/attacker, mob/living/defender)
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_KICK)
-	playsound(attacker, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
+	playsound_quiet_impact(attacker, 'sound/effects/hit_kick.ogg', 50)
 	if(defender.body_position == STANDING_UP)
 		defender.Knockdown(4 SECONDS)
 		defender.visible_message(span_warning("[capitalize(attacker.declent_ru(NOMINATIVE))] пинает [defender.declent_ru(ACCUSATIVE)] в голову, швыряя [defender.ru_p_them()] лицом в пол!"), \
@@ -134,7 +134,7 @@
 /// Kraken Wrack: Grab Harm combo, causes them to be silenced and briefly stunned, as well as doing a moderate amount of stamina damage.
 /datum/martial_art/the_sleeping_carp/proc/knee_stomach(mob/living/attacker, mob/living/defender)
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_KICK)
-	playsound(attacker, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
+	playsound_quiet_impact(attacker, 'sound/effects/hit_kick.ogg', 50)
 	defender.visible_message(
 		span_warning("[capitalize(attacker.declent_ru(NOMINATIVE))] яростно бьёт коленом [defender.declent_ru(ACCUSATIVE)]!"),
 		span_userdanger("Вы бьёте [defender.declent_ru(ACCUSATIVE)] коленом!"),
@@ -163,7 +163,7 @@
 
 	var/grab_log_description = "grabbed"
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_PUNCH)
-	playsound(defender, 'sound/items/weapons/punch1.ogg', 25, TRUE, -1)
+	playsound_quiet_impact(defender, 'sound/items/weapons/punch1.ogg', 25)
 	if(!IS_UNCONSCIOUS(defender) && defender.get_stamina_loss() >= 80) //We put our target to sleep.
 		defender.visible_message(
 			span_danger("[capitalize(attacker.declent_ru(NOMINATIVE))] аккуратно бьёт по нерву на шее [defender.declent_ru(GENITIVE)], вырубая [defender.ru_p_them()]!"),
@@ -183,7 +183,7 @@
 	)
 		var/obj/item/bodypart/head = defender.get_bodypart(BODY_ZONE_HEAD)
 		if(!isnull(head))
-			playsound(defender, 'sound/effects/wounds/crack1.ogg', 100)
+			playsound(defender, 'sound/effects/wounds/crack1.ogg', 100, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 			defender.visible_message(
 				span_danger("[capitalize(attacker.declent_ru(NOMINATIVE))] сворачивает шею [defender.declent_ru(ACCUSATIVE)]!"),
 				span_userdanger("[capitalize(attacker.declent_ru(NOMINATIVE))] свернул вашу шею!"),
@@ -218,7 +218,7 @@
 		return MARTIAL_ATTACK_SUCCESS
 
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_PUNCH)
-	playsound(defender, 'sound/items/weapons/punch1.ogg', 25, TRUE, -1)
+	playsound_quiet_impact(defender, 'sound/items/weapons/punch1.ogg', 25)
 	defender.apply_damage(20, STAMINA)
 	log_combat(attacker, defender, "disarmed (Sleeping Carp)")
 	return MARTIAL_ATTACK_INVALID // normal disarm
@@ -301,7 +301,7 @@
 		span_danger("[capitalize(carp_user.declent_ru(NOMINATIVE))] чисто уворачивается от [attack_text] с невероятной скоростью!"),
 		span_userdanger("Вы уворачиваетесь от [attack_text]"),
 	)
-	playsound(carp_user.loc, 'sound/items/weapons/punchmiss.ogg', 25, TRUE, -1)
+	playsound_quiet_impact(carp_user.loc, 'sound/items/weapons/punchmiss.ogg', 25)
 	return SUCCESSFUL_BLOCK
 
 /* Determines how 'carp-y' or how 'martial arts-y' we are, granting us the ability to avoid attacks.
@@ -448,7 +448,7 @@
 		H.visible_message(span_warning("[user.declent_ru(NOMINATIVE)] [pick(fluffmessages)] [H.declent_ru(ACCUSATIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]!"), \
 						span_userdanger("[user.declent_ru(NOMINATIVE)] [pick(fluffmessages)] вас с помощью [src.declent_ru(INSTRUMENTAL)]!"), span_hear("Вы слышите противный звук удара плоти о плоть!"), null, user)
 		to_chat(user, span_danger("Вы [pick(fluffmessages)]е [H.declent_ru(ACCUSATIVE)] с помощью [src.declent_ru(INSTRUMENTAL)]!"))
-		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, TRUE, -1)
+		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		H.adjust_stamina_loss(rand(13,20))
 		if(prob(10))
 			H.visible_message(span_warning("[H.declent_ru(NOMINATIVE)] падает!"), \

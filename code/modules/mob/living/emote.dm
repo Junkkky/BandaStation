@@ -111,6 +111,7 @@
 	cooldown = (15 SECONDS)
 	can_use_flags = EMOTE_CANUSE_UNCONSCIOUS | EMOTE_CANUSE_HARDCRIT | EMOTE_CANUSE_SOFTCRIT
 	sound_wall_ignore = TRUE
+	sound_extra_range = SHORT_RANGE_SOUND_EXTRARANGE
 	vary = TRUE
 	sound_volume = 200
 
@@ -444,6 +445,7 @@ BANDASTATION REMOVAL - END */
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	mob_type_blacklist_typecache = list(/mob/living/brain)
 	sound_wall_ignore = TRUE
+	sound_extra_range = SHORT_RANGE_SOUND_EXTRARANGE
 	use_sound_tokens = TRUE
 	manual_specific_emote_audio_cooldown = 10 SECONDS
 	forced_specific_emote_audio_cooldown = 4 SECONDS

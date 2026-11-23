@@ -872,7 +872,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			miss_chance = clamp(UNARMED_MISS_CHANCE_BASE - limb_accuracy + (puncher_brute_and_burn / 2), 0, UNARMED_MISS_CHANCE_MAX) //Limb miss chance + various damage. capped at 80 so there is at least a chance to land a hit.
 
 	if(!damage || !affecting || prob(miss_chance))//future-proofing for species that have 0 damage/weird cases where no zone is targeted
-		playsound(target.loc, attacking_bodypart.unarmed_miss_sound, 25, TRUE, -1)
+		playsound_quiet_impact(target.loc, attacking_bodypart.unarmed_miss_sound, 25)
 		target.visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb(atk_verb, GLOB.ru_attack_verbs_unarmed)] и промахивается по [target.declent_ru(DATIVE)]!"), \
 						span_danger("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb(atk_verb, GLOB.ru_attack_verbs_unarmed)] и промахивается по вам!"), span_hear("Вы слышите свист!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_warning("Вы [ru_attack_verb(atk_verb, GLOB.ru_attack_verbs_unarmed)]е и промахиваетесь по [target.declent_ru(DATIVE)]!"))
@@ -921,7 +921,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(smack_attack && attack_type == BRUTE && (affecting.bodytype & BODYTYPE_ROBOTIC))
 		smack_sound = 'sound/effects/bang.ogg'
 
-	playsound(target, smack_sound, atk_effect == ATTACK_EFFECT_SMASH ? 33 : 25, TRUE, -1)
+	playsound_quiet_impact(target, smack_sound, atk_effect == ATTACK_EFFECT_SMASH ? 33 : 25)
 
 	if(kicking || grappled) //kicks and punches when grappling bypass armor slightly.
 		if(damage >= 12 || (damage >= 9 && prob(66)))

@@ -278,7 +278,7 @@
 			blocked = TRUE
 			return SUCCESSFUL_BLOCK
 		else
-			playsound(loc, 'sound/items/weapons/genhit.ogg', 50, TRUE, -1) //Item sounds are handled in the item itself
+			playsound(loc, 'sound/items/weapons/genhit.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE) //Item sounds are handled in the item itself
 			if(!isvendor(AM) && !iscarbon(AM)) //Vendors have special interactions, while carbon mobs already generate visible messages!
 				visible_message(span_danger("[capitalize(AM.declent_ru(NOMINATIVE))] врезается в [(declent_ru(ACCUSATIVE))]!"), \
 							span_userdanger("В вас врезается [AM.declent_ru(NOMINATIVE)]!"))
@@ -413,7 +413,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.dna.species.grab_sound)
 			sound_to_play = H.dna.species.grab_sound
-	playsound(src.loc, sound_to_play, 50, TRUE, -1)
+	playsound(src.loc, sound_to_play, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 	if(user.grab_state) //only the first upgrade is instantaneous
 		var/old_grab_state = user.grab_state
@@ -487,7 +487,7 @@
 		return FALSE
 
 	if(user.attack_sound)
-		playsound(src, user.attack_sound, 50, TRUE, TRUE)
+		playsound(src, user.attack_sound, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 	user.do_attack_animation(src)
 	visible_message(
@@ -550,7 +550,7 @@
 	user.do_attack_animation(src, ATTACK_EFFECT_BITE)
 	if (HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER) || prob(75))
 		log_combat(user, src, "attacked")
-		playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, -1)
+		playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] кусает [declent_ru(ACCUSATIVE)]!"), \
 						span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] кусает вас!"), span_hear("Вы слышите кусание!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("Вы кусаете [declent_ru(ACCUSATIVE)]!"))
@@ -577,7 +577,7 @@
 			visible_message(span_danger("[capitalize(L.declent_ru(NOMINATIVE))] кусает [declent_ru(ACCUSATIVE)]!"), \
 							span_userdanger("[capitalize(L.declent_ru(NOMINATIVE))] кусает вас!"), span_hear("Вы слышите кусание!"), COMBAT_MESSAGE_RANGE, L)
 			to_chat(L, span_danger("Вы кусаете [declent_ru(ACCUSATIVE)]!"))
-			playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, -1)
+			playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 			return TRUE
 		else
 			visible_message(span_danger("Укус [L.declent_ru(GENITIVE)] промахивается по [declent_ru(DATIVE)]!"), \
@@ -840,10 +840,10 @@
 	var/shove_flags = target.get_shove_flags(src, weapon)
 	if(weapon)
 		do_attack_animation(target, used_item = weapon)
-		playsound(target, 'sound/effects/glass/glassbash.ogg', 50, TRUE, -1)
+		playsound(target, 'sound/effects/glass/glassbash.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	else
 		do_attack_animation(target, ATTACK_EFFECT_DISARM)
-		playsound(target, 'sound/items/weapons/shove.ogg', 50, TRUE, -1)
+		playsound(target, 'sound/items/weapons/shove.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	if (ishuman(target) && isnull(weapon))
 		var/mob/living/carbon/human/human_target = target
 		human_target.w_uniform?.add_fingerprint(src)

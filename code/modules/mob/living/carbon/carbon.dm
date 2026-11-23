@@ -89,7 +89,7 @@
 		log_combat(src, victim, "crashed into")
 
 	if(oof_noise)
-		playsound(src,'sound/items/weapons/punch1.ogg',50,TRUE)
+		playsound(src, 'sound/items/weapons/punch1.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /mob/living/carbon/proc/canBeHandcuffed()
 	return FALSE

@@ -52,7 +52,7 @@
 	if(!.)
 		return
 	adjust_brute_loss(rand(10, 15))
-	playsound(loc, SFX_PUNCH, 25, TRUE, -1)
+	playsound_quiet_impact(loc, SFX_PUNCH, 25)
 	visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] бьет [declent_ru(ACCUSATIVE)]!"), \
 					span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] бьет вас!"), null, COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_danger("Вы бьете [declent_ru(ACCUSATIVE)]!"))
@@ -71,7 +71,7 @@
 		return TRUE
 	if(user.combat_mode)
 		user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
-		playsound(src.loc, 'sound/effects/bang.ogg', 10, TRUE)
+		playsound_quiet_impact(src.loc, 'sound/effects/bang.ogg', 10)
 		visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] бьет [declent_ru(ACCUSATIVE)], но не оставляет и вмятины!"), \
 						span_warning("[capitalize(user.declent_ru(NOMINATIVE))] бьет вас, но не оставляет и вмятины!"), null, COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("Вы бьете [declent_ru(ACCUSATIVE)], но не оставляете и вмятины!"))
@@ -87,7 +87,7 @@
 	if(. == SUCCESSFUL_BLOCK)
 		return SUCCESSFUL_BLOCK
 	if(damage_type == BRUTE && attack_type == UNARMED_ATTACK && attack_flag == MELEE && damage <= 10)
-		playsound(src, 'sound/effects/bang.ogg', 10, TRUE)
+		playsound_quiet_impact(src, 'sound/effects/bang.ogg', 10)
 		visible_message(span_danger("[capitalize(declent_ru(NOMINATIVE))] не получает и вмятины - корпус останавливает [attack_text]!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		return SUCCESSFUL_BLOCK
 	return FAILED_BLOCK

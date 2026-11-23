@@ -112,6 +112,7 @@ GAME_VERB_PROC(/mob/living/carbon/human, open_ipc_emote_panel, "Панель э�
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	trait_required = TRAIT_SILICON_EMOTES_ALLOWED
 	sound = 'sound/mobs/non-humanoids/cyborg/harmalarm.ogg'
+	sound_extra_range = SHORT_RANGE_SOUND_EXTRARANGE
 	manual_specific_emote_audio_cooldown = 10 SECONDS
 	forced_specific_emote_audio_cooldown = 4 SECONDS
 

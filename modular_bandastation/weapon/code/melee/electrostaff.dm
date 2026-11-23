@@ -90,7 +90,7 @@
 	if(!has_power())
 		target.apply_damage(depleted_stamina_damage, STAMINA)
 		target.Knockdown(knockdown_time)
-		playsound(src, depleted_hit_sound, 75, TRUE)
+		playsound(src, depleted_hit_sound, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		return TRUE
 
 	var/baton_effect_success = ..()

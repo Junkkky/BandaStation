@@ -67,7 +67,7 @@
 				attacker,
 			)
 			to_chat(attacker, span_danger("You [atk_verb] [defender]!"))
-			playsound(defender, 'sound/items/weapons/punch1.ogg', 40, TRUE, -1)
+			playsound_quiet_impact(defender, 'sound/items/weapons/punch1.ogg', 40)
 			defender.apply_damage(defender_damage, attacker.get_attack_type(), BODY_ZONE_HEAD)
 			attacker.apply_damage(rand(5, 10), attacker.get_attack_type(), BODY_ZONE_HEAD)
 			if(iscarbon(defender))
@@ -93,7 +93,7 @@
 			)
 			to_chat(attacker, span_danger("You [atk_verb] [defender] with such inhuman strength that it sends [defender.p_them()] flying backwards!"))
 			defender.apply_damage(rand(15, 30), attacker.get_attack_type())
-			playsound(defender, 'sound/effects/meteorimpact.ogg', 25, TRUE, -1)
+			playsound(defender, 'sound/effects/meteorimpact.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 			var/throwtarget = get_edge_target_turf(attacker, get_dir(attacker, get_step_away(defender, attacker)))
 			defender.throw_at(throwtarget, 4, 2, attacker)//So stuff gets tossed around at the same time.
 			defender.Paralyze(6 SECONDS)

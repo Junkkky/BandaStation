@@ -239,7 +239,7 @@
 /obj/item/melee/baton/proc/finalize_baton_attack(mob/living/target, mob/living/user, clumsy = FALSE)
 	COOLDOWN_START(src, cooldown_check, cooldown)
 	if(on_stun_sound)
-		playsound(src, on_stun_sound, on_stun_volume, TRUE, -1)
+		playsound(src, on_stun_sound, on_stun_volume, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	if(baton_effect(target, user, null, clumsy) && user)
 		set_batoned(target, user, cooldown)
 		log_combat(user, target, "stunned", src.name)
