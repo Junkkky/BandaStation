@@ -202,7 +202,7 @@
 
 	held_thing.melee_attack_chain(user, src, params2list(params))
 	user.changeNext_move(held_thing.attack_speed)
-	playsound(user, held_thing.hitsound || 'sound/effects/blob/attackblob.ogg', held_thing.get_clamped_volume(), TRUE, extrarange = held_thing.stealthy_audio ? SILENCED_SOUND_EXTRARANGE : -1, falloff_distance = 0)
+	held_thing.play_melee_impact_sound(user, held_thing.hitsound || 'sound/effects/blob/attackblob.ogg', held_thing.get_clamped_volume())
 
 /obj/item/restraints/legcuffs/goliath_tentacle/play_attack_sound(damage_amount, damage_type, damage_flag)
 	return

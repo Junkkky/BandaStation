@@ -56,7 +56,7 @@
 		return
 
 	item.add_fingerprint(user)
-	playsound(item, item.hitsound, 30, TRUE, -1)
+	item.play_melee_impact_sound(item, item.hitsound, 30)
 	user.do_attack_animation(target)
 	if (target == user)
 		user.visible_message(

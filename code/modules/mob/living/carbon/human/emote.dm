@@ -80,6 +80,7 @@
 	message = "screeches!"
 	message_mime = "screeches silently."
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	sound_extra_range = SHORT_RANGE_SOUND_EXTRARANGE
 	manual_specific_emote_audio_cooldown = 10 SECONDS
 	vary = FALSE
 

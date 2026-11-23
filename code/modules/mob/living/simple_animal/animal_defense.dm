@@ -24,7 +24,7 @@
 		visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb(response_harm_continuous)] [declent_ru(ACCUSATIVE)]!"),\
 						span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb(response_harm_continuous)] вас!"), null, COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("Вы [ru_attack_verb(response_harm_simple)] [declent_ru(ACCUSATIVE)]!"))
-		playsound(loc, attacked_sound, 25, TRUE, -1)
+		playsound_quiet_impact(loc, attacked_sound, 25)
 		apply_damage(harm_intent_damage)
 		log_combat(user, src, "attacked")
 		return TRUE
@@ -46,7 +46,7 @@
 	. = ..()
 	if(!.)
 		return
-	playsound(loc, SFX_PUNCH, 25, TRUE, -1)
+	playsound_quiet_impact(loc, SFX_PUNCH, 25)
 	visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] бьет [declent_ru(ACCUSATIVE)]!"), \
 					span_userdanger("Вас бьет [user.declent_ru(NOMINATIVE)]!"), null, COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_danger("Вы бьете [declent_ru(ACCUSATIVE)]!"))

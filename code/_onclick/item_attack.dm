@@ -274,9 +274,15 @@
 /// Plays the standard impact for a melee attack against a mob.
 /obj/item/proc/play_melee_hit_sound(atom/origin, final_force)
 	if(!final_force && !HAS_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND))
-		playsound(origin, 'sound/items/weapons/tap.ogg', get_clamped_volume(), TRUE, -1)
+		play_melee_impact_sound(origin, 'sound/items/weapons/tap.ogg', get_clamped_volume())
 	else if(hitsound)
-		playsound(origin, hitsound, get_clamped_volume(), TRUE, extrarange = stealthy_audio ? SILENCED_SOUND_EXTRARANGE : -1, falloff_distance = 0)
+		play_melee_impact_sound(origin, hitsound, get_clamped_volume())
+
+/// Plays the impact sample for this item at the location of the attack.
+/obj/item/proc/play_melee_impact_sound(atom/origin, impact_sound, volume)
+	if(quiet_melee_hit || tool_behaviour == TOOL_KNIFE)
+		return playsound_quiet_impact(origin, impact_sound, volume)
+	return playsound(origin, impact_sound, volume, TRUE, extrarange = stealthy_audio ? SILENCED_SOUND_EXTRARANGE : SHORT_RANGE_SOUND_EXTRARANGE)
 
 /// The equivalent of [/obj/item/proc/attack] but for alternate attacks, AKA right clicking
 /obj/item/proc/attack_secondary(mob/living/victim, mob/living/user, list/modifiers, list/attack_modifiers)

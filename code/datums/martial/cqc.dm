@@ -114,7 +114,7 @@
 		attacker,
 	)
 	to_chat(attacker, span_danger("Вы швыряете [defender.declent_ru(ACCUSATIVE)] на землю!"))
-	playsound(attacker, 'sound/items/weapons/slam.ogg', 50, TRUE, -1)
+	playsound(attacker, 'sound/items/weapons/slam.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	defender.apply_damage(10, BRUTE)
 	defender.Paralyze(12 SECONDS)
 	log_combat(attacker, defender, "slammed (CQC)")
@@ -135,7 +135,7 @@
 			attacker,
 		)
 		to_chat(attacker, span_danger("Вы пинаете голову [defender.declent_ru(GENITIVE)], выводя [defender.ru_p_them()] из сознания!"))
-		playsound(attacker, 'sound/items/weapons/genhit1.ogg', 50, TRUE, -1)
+		playsound_quiet_impact(attacker, 'sound/items/weapons/genhit1.ogg', 50)
 
 		var/helmet_protection = defender.run_armor_check(BODY_ZONE_HEAD, MELEE)
 		defender.apply_effect(20 SECONDS, EFFECT_KNOCKDOWN, helmet_protection)
@@ -151,7 +151,7 @@
 			attacker,
 		)
 		to_chat(attacker, span_danger("Вы отбрасываете [defender.declent_ru(ACCUSATIVE)] назад!"))
-		playsound(attacker, 'sound/items/weapons/cqchit1.ogg', 50, TRUE, -1)
+		playsound(attacker, 'sound/items/weapons/cqchit1.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		var/atom/throw_target = get_edge_target_turf(defender, attacker.dir)
 		defender.throw_at(throw_target, 1, 14, attacker)
 		defender.apply_damage(10, attacker.get_attack_type())
@@ -173,7 +173,7 @@
 	)
 	to_chat(attacker, span_danger("Вы бьёте [defender.declent_ru(ACCUSATIVE)] в шею!"))
 	defender.adjust_stamina_loss(60)
-	playsound(attacker, 'sound/items/weapons/cqchit1.ogg', 50, TRUE, -1)
+	playsound_quiet_impact(attacker, 'sound/items/weapons/cqchit1.ogg', 50)
 	return TRUE
 
 /datum/martial_art/cqc/proc/Restrain(mob/living/attacker, mob/living/defender)
@@ -211,7 +211,7 @@
 		attacker,
 	)
 	to_chat(attacker, span_danger("Вы наносите последовательные удары по животу, шее и спине [defender.declent_ru(DATIVE)]!"))
-	playsound(defender, 'sound/items/weapons/cqchit2.ogg', 50, TRUE, -1)
+	playsound_quiet_impact(defender, 'sound/items/weapons/cqchit2.ogg', 50)
 	var/obj/item/held_item = defender.get_active_held_item()
 	if(held_item && defender.temporarilyRemoveItemFromInventory(held_item))
 		attacker.put_in_hands(held_item)
@@ -255,7 +255,7 @@
 	)
 		var/obj/item/bodypart/head = defender.get_bodypart(BODY_ZONE_HEAD)
 		if(!isnull(head))
-			playsound(defender, 'sound/effects/wounds/crack1.ogg', 100)
+			playsound(defender, 'sound/effects/wounds/crack1.ogg', 100, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 			defender.visible_message(
 				span_danger("[attacker.declent_ru(NOMINATIVE)] сворачивает шею [defender.declent_ru(DATIVE)]!"),
 				span_userdanger("[capitalize(attacker.declent_ru(NOMINATIVE))] [genderize_ru(attacker.gender,"свернул","свернула","свернуло","свернули")] вашу шею!"),
@@ -282,7 +282,7 @@
 			attacker,
 		)
 		to_chat(attacker, span_danger("Вы делаете подсечку [defender.declent_ru(DATIVE)]!"))
-		playsound(attacker, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
+		playsound_quiet_impact(attacker, 'sound/effects/hit_kick.ogg', 50)
 		attacker.do_attack_animation(defender)
 		defender.apply_damage(10, BRUTE)
 		defender.Knockdown(5 SECONDS)
@@ -301,7 +301,7 @@
 		picked_hit_type = pick("пинать", "топтать")
 	defender.apply_damage(bonus_damage, BRUTE)
 
-	playsound(defender, (picked_hit_type == "пинать" || picked_hit_type == "топтать") ? 'sound/items/weapons/cqchit2.ogg' : 'sound/items/weapons/cqchit1.ogg', 50, TRUE, -1)
+	playsound_quiet_impact(defender, (picked_hit_type == "пинать" || picked_hit_type == "топтать") ? 'sound/items/weapons/cqchit2.ogg' : 'sound/items/weapons/cqchit1.ogg', 50)
 	switch(picked_hit_type)
 		if ("пинать")
 			defender.visible_message(
@@ -369,7 +369,7 @@
 			attacker,
 		)
 		to_chat(attacker, span_danger("Вы бьёте в челюсть [defender.declent_ru(ACCUSATIVE)],[disarmed_item ? " выбивая из [defender.ru_p_them()] рук [disarmed_item.declent_ru(ACCUSATIVE)] и" : ""] оставляя [defender.ru_p_them()] дезориентированным!"))
-		playsound(defender, 'sound/items/weapons/cqchit1.ogg', 50, TRUE, -1)
+		playsound_quiet_impact(defender, 'sound/items/weapons/cqchit1.ogg', 50)
 		defender.set_jitter_if_lower(4 SECONDS)
 		defender.apply_damage(5, attacker.get_attack_type())
 		log_combat(attacker, defender, "disarmed (CQC)", addition = disarmed_item ? "(disarmed of [disarmed_item])" : null)
@@ -383,7 +383,7 @@
 		attacker,
 	)
 	to_chat(attacker, span_warning("У вас не выходит разоружить [defender.declent_ru(ACCUSATIVE)]!"))
-	playsound(defender, 'sound/items/weapons/punchmiss.ogg', 25, TRUE, -1)
+	playsound_quiet_impact(defender, 'sound/items/weapons/punchmiss.ogg', 25)
 	log_combat(attacker, defender, "failed to disarm (CQC)")
 	return MARTIAL_ATTACK_FAIL
 

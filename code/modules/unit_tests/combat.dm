@@ -196,3 +196,26 @@
 	// AI EDIT END
 	victim.soundbang_act(intensity = SOUNDBANG_NORMAL, deafen_pwr = 20 SECONDS)
 	TEST_ASSERT(!HAS_TRAIT_FROM(victim, TRAIT_DEAF, EAR_DAMAGE), "victim has been deafened despite wearing earmuffs")
+
+/datum/unit_test/melee_door_sound/Run()
+	var/turf/west_turf = run_loc_floor_bottom_left
+	var/turf/door_turf = get_step(west_turf, EAST)
+	var/turf/east_turf = get_step(door_turf, EAST)
+	var/turf/north_turf = get_step(door_turf, NORTH)
+	var/obj/machinery/door/airlock/glass/airlock = allocate(/obj/machinery/door/airlock/glass, door_turf)
+	TEST_ASSERT(quiet_impact_path_is_blocked(west_turf, east_turf), "A closed glass airlock let melee sounds through")
+	airlock.set_density(FALSE)
+	TEST_ASSERT(!quiet_impact_path_is_blocked(west_turf, east_turf), "An open glass airlock blocked melee sounds")
+
+	var/obj/machinery/door/window/windoor = allocate(/obj/machinery/door/window, door_turf, EAST)
+	TEST_ASSERT(quiet_impact_path_is_blocked(door_turf, east_turf), "A closed windoor let melee sounds out through its edge")
+	TEST_ASSERT(quiet_impact_path_is_blocked(east_turf, door_turf), "A closed windoor let melee sounds in through its edge")
+	TEST_ASSERT(!quiet_impact_path_is_blocked(door_turf, north_turf), "A closed windoor blocked melee sounds across an unobstructed edge")
+	windoor.set_density(FALSE)
+	TEST_ASSERT(!quiet_impact_path_is_blocked(door_turf, east_turf), "An open windoor blocked melee sounds")
+
+	var/floor_type = door_turf.type
+	var/turf/wall = door_turf.ChangeTurf(/turf/closed/wall)
+	var/blocks_sound = quiet_impact_path_is_blocked(west_turf, east_turf)
+	wall.ChangeTurf(floor_type)
+	TEST_ASSERT(blocks_sound, "A wall let melee sounds through")

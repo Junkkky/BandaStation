@@ -104,6 +104,8 @@
 	var/sound_vary = FALSE
 	///Whether or not we use stealthy audio levels for this item's attack sounds
 	var/stealthy_audio = FALSE
+	/// Whether melee impacts should be blocked by walls and closed doors.
+	var/quiet_melee_hit = FALSE
 	///Sound which is produced when blocking an attack
 	var/block_sound
 
@@ -696,9 +698,9 @@ GAME_VERB_SRC(/obj/item, move_to_top, oview(1), "Move To Top", null)
 		return TRUE
 	return FALSE
 
-/obj/item/proc/sound_chain(sound_to_play, volume = HALFWAY_SOUND_VOLUME, target = src)
+/obj/item/proc/sound_chain(sound_to_play, volume = HALFWAY_SOUND_VOLUME, target = src, extra_range = 0)
 	if(sound_to_play)
-		playsound(target, sound_to_play, volume, sound_vary, ignore_walls = FALSE)
+		playsound(target, sound_to_play, volume, sound_vary, extrarange = extra_range, ignore_walls = FALSE)
 		return TRUE
 	return FALSE
 
@@ -716,11 +718,11 @@ GAME_VERB_SRC(/obj/item, move_to_top, oview(1), "Move To Top", null)
 
 /// plays the mob throw hit sound
 /obj/item/proc/play_mob_throw_hit_sound(target, volume = DROP_SOUND_VOLUME)
-	return sound_chain(mob_throw_hit_sound, volume, target)
+	return sound_chain(mob_throw_hit_sound, volume, target, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /// plays when a mob is hit with this item
 /obj/item/proc/play_hit_sound(target, volume = HALFWAY_SOUND_VOLUME)
-	return sound_chain(hitsound, volume, target)
+	return sound_chain(hitsound, volume, target, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /obj/item/proc/play_equip_sound(volume = EQUIP_SOUND_VOLUME)
 	return sound_chain(equip_sound, volume)
@@ -915,7 +917,7 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 	if (throwforce > 0 || HAS_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND))
 		mob_throw_hit_sound_chain(hit_atom, volume)
 	else
-		playsound(hit_atom, 'sound/items/weapons/throwtap.ogg', volume, TRUE, -1)
+		playsound(hit_atom, 'sound/items/weapons/throwtap.ogg', volume, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE, quickstart = TRUE, throw_type_path = /datum/thrownthing)
 	if(HAS_TRAIT(src, TRAIT_NODROP))

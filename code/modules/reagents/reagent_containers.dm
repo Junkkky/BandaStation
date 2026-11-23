@@ -363,20 +363,20 @@
 
 	. += filling
 
-/obj/item/reagent_containers/proc/reagent_container_sound_chain(filled_sound, empty_sound, target, volume)
+/obj/item/reagent_containers/proc/reagent_container_sound_chain(filled_sound, empty_sound, target, volume, extra_range = 0)
 	if(reagents.total_volume <= round((reagents.maximum_volume * 0.2), 1))
 		if(empty_sound)
-			playsound(target, empty_sound, volume, vary = sound_vary, ignore_walls = FALSE)
+			playsound(target, empty_sound, volume, vary = sound_vary, extrarange = extra_range, ignore_walls = FALSE)
 			return TRUE
 		return FALSE
 
 	if(reagent_container_liquid_sound)
-		playsound(target, reagent_container_liquid_sound, LIQUID_SLOSHING_SOUND_VOLUME, vary = TRUE, ignore_walls = FALSE)
+		playsound(target, reagent_container_liquid_sound, LIQUID_SLOSHING_SOUND_VOLUME, vary = TRUE, extrarange = extra_range, ignore_walls = FALSE)
 	if(filled_sound)
-		playsound(target, filled_sound, volume, vary = sound_vary, ignore_walls = FALSE)
+		playsound(target, filled_sound, volume, vary = sound_vary, extrarange = extra_range, ignore_walls = FALSE)
 		return TRUE
 	if(empty_sound)
-		playsound(target, empty_sound, volume, vary = sound_vary, ignore_walls = FALSE)
+		playsound(target, empty_sound, volume, vary = sound_vary, extrarange = extra_range, ignore_walls = FALSE)
 		return TRUE
 	return FALSE
 
@@ -390,10 +390,10 @@
 	return reagent_container_sound_chain(filled_throw_drop_sound, throw_drop_sound, src, volume)
 
 /obj/item/reagent_containers/play_mob_throw_hit_sound(target, volume = DROP_SOUND_VOLUME)
-	return reagent_container_sound_chain(filled_throw_hit_sound, mob_throw_hit_sound, target, volume)
+	return reagent_container_sound_chain(filled_throw_hit_sound, mob_throw_hit_sound, target, volume, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /obj/item/reagent_containers/play_hit_sound(target, volume = HALFWAY_SOUND_VOLUME)
-	return reagent_container_sound_chain(filled_hitsound, filled_hitsound, target, volume)
+	return reagent_container_sound_chain(filled_hitsound, filled_hitsound, target, volume, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /obj/item/reagent_containers/play_equip_sound(volume = EQUIP_SOUND_VOLUME)
 	return reagent_container_sound_chain(filled_equip_sound, equip_sound, src, volume)

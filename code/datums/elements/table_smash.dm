@@ -153,7 +153,7 @@
 	if (pushed_mob.loc != table.loc) //Something prevented the tabling
 		return
 
-	playsound(pushed_mob, 'sound/effects/tableslam.ogg', 90, TRUE)
+	playsound(pushed_mob, 'sound/effects/tableslam.ogg', 90, TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 	pushed_mob.visible_message(span_danger("[user] slams [pushed_mob] onto \the [table]!"), \
 		span_userdanger("[user] slams you onto \the [table]!"))
 	log_combat(user, pushed_mob, "tabled", null, "onto [table]")
@@ -169,7 +169,7 @@
 /// Even more aggressively smash a single part of a mob onto the table
 /datum/element/table_smash/proc/tablelimbsmash(mob/living/user, mob/living/pushed_mob, obj/structure/table/table)
 	var/obj/item/bodypart/banged_limb = pushed_mob.get_bodypart(user.zone_selected) || pushed_mob.get_bodypart(BODY_ZONE_HEAD)
-	playsound(pushed_mob, 'sound/effects/bang.ogg', 90, TRUE)
+	playsound(pushed_mob, 'sound/effects/bang.ogg', 90, TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 	pushed_mob.visible_message(span_danger("[user] smashes [pushed_mob]'s [banged_limb.plaintext_zone] against \the [table]!"),
 		span_userdanger("[user] smashes your [banged_limb.plaintext_zone] against \the [table]"))
 	log_combat(user, pushed_mob, "head slammed", null, "against [table]")
