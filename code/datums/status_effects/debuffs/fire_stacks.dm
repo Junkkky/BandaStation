@@ -232,6 +232,10 @@
 	if (!(HAS_TRAIT(victim, TRAIT_RESISTHEAT)))
 		victim.add_mood_event("on_fire", /datum/mood_event/on_fire)
 		victim.add_mob_memory(/datum/memory/was_burning)
+		if(victim.stat == DEAD)
+			var/turf/open/lava/lava = victim.loc
+			if(!istype(lava) || !lava.is_burning_occupant(victim))
+				victim.advance_cremation(seconds_per_tick)
 
 /**
  * Handles mob ignition, should be the only way to set on_fire to TRUE

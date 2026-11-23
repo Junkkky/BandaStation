@@ -92,6 +92,14 @@
 /// Husked from zombification
 #define HUSKED_ZOMBIE 2
 
+/// Successive stages of a corpse exposed to fire or hot lava.
+#define CREMATION_HUSK 1
+#define CREMATION_CHARRED 2
+#define CREMATION_SKELETON 3
+#define CREMATION_ASH 4
+/// Total exposure from a fresh corpse, including the time already represented by an existing burn husk.
+#define CREMATION_HUSK_TIME (2 MINUTES)
+
 // Flags for the head_flags var on /obj/item/bodypart/head
 /// Head can have hair
 #define HEAD_HAIR (1<<0)

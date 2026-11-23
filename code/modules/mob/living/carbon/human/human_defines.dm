@@ -94,6 +94,11 @@
 	///Exposure to damaging heat levels increases stacks, stacks clean over time when temperatures are lower. Stack is consumed to add a wound.
 	var/heat_exposure_stacks = 0
 
+	/// Cumulative cremation time in deciseconds.
+	var/cremation_exposure = 0
+	/// Burn damage already accounted for by cremation when above the ordinary husking threshold.
+	var/deferred_husk_damage = 0
+
 	/// When an braindead player has their equipment fiddled with, we log that info here for when they come back so they know who took their ID while they were DC'd for 30 seconds
 	var/list/afk_thefts
 

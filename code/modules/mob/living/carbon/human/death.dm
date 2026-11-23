@@ -1,9 +1,52 @@
 GLOBAL_LIST_EMPTY(dead_players_during_shift)
+
+/// Whether this body can go through the organic, humanoid cremation stages.
+/mob/living/carbon/human/proc/has_crematable_body()
+	return (bodytype & BODYTYPE_ORGANIC) && (bodyshape & BODYSHAPE_HUMANOID)
+
+/mob/living/carbon/human/should_husk_from_burn_damage(total_burn)
+	if(!..())
+		deferred_husk_damage = 0
+		return FALSE
+	if(!has_crematable_body())
+		return TRUE
+	var/turf/open/lava/lava = loc
+	var/still_overheated = cremation_exposure && coretemperature > get_body_temp_heat_damage_limit()
+	// After rescue, health updates can still see the old burns or residual heat from the fire.
+	if(on_fire || still_overheated || (istype(lava) && lava.is_burning_occupant(src)) || total_burn <= deferred_husk_damage)
+		deferred_husk_damage = total_burn
+		return FALSE
+	return TRUE
+
+/// Called only for sustained fire or direct lava exposure. Extinguishing pauses the current stage.
+/mob/living/carbon/human/proc/advance_cremation(seconds_per_tick)
+	if(stat != DEAD || cremation_stage == CREMATION_ASH || !has_crematable_body())
+		return
+	if(HAS_TRAIT(src, TRAIT_GODMODE) || HAS_TRAIT(src, TRAIT_UNHUSKABLE) || HAS_TRAIT(src, TRAIT_STASIS))
+		return
+
+	cremation_exposure += seconds_per_tick SECONDS
+	if(cremation_stage == NONE && cremation_exposure >= CREMATION_HUSK_TIME)
+		become_husk(BURN)
+	if(cremation_stage == CREMATION_HUSK && cremation_exposure >= 5 MINUTES)
+		cremation_stage = CREMATION_CHARRED
+		update_body_parts()
+	if(cremation_stage == CREMATION_CHARRED && cremation_exposure >= 10 MINUTES)
+		cremation_stage = CREMATION_SKELETON
+		update_body_parts()
+	if(cremation_stage == CREMATION_SKELETON && cremation_exposure >= 12 MINUTES)
+		cremation_stage = CREMATION_ASH
+		visible_message(span_warning("Обгоревшие кости рассыпаются в пепел."))
+		dust(just_ash = TRUE, drop_items = TRUE, give_moodlet = FALSE)
+
 /mob/living/carbon/human/gib_animation()
 	new /obj/effect/temp_visual/gib_animation(loc, dna.species.gib_anim)
 
 /mob/living/carbon/human/spawn_dust(just_ash)
 	if(just_ash)
+		if(cremation_stage == CREMATION_ASH && islava(loc))
+			new /obj/effect/decal/cleanable/ash/floating(loc)
+			return
 		return ..()
 
 	var/bone_type = /obj/effect/decal/remains/human
@@ -21,6 +64,9 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 /mob/living/carbon/human/death(gibbed)
 	if(stat == DEAD)
 		return
+	if(cremation_stage == NONE)
+		cremation_exposure = 0
+		deferred_husk_damage = 0
 	stop_sound_channel(CHANNEL_HEARTBEAT)
 	var/obj/item/organ/heart/human_heart = get_organ_slot(ORGAN_SLOT_HEART)
 	human_heart?.beat = BEAT_NONE
