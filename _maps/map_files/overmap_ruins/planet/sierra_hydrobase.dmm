@@ -2155,12 +2155,12 @@
 /obj/structure/closet/crate/secure/weapon{
 	desc = "A heavy-duty crate with a suite of firearms safety instructions plastered on the side. The ID scanner is unlike anything you've seen before."
 	},
-/obj/effect/spawner/random/weapon/full_gun,
+/obj/effect/spawner/random/weapon/full_gun/ruin,
 /obj/item/knife/combat,
 /obj/item/stack/spacecash/c100,
 /obj/effect/spawner/random/maintenance,
 /obj/effect/spawner/random/maintenance,
-/obj/effect/spawner/random/weapon/full_gun,
+/obj/effect/spawner/random/weapon/full_gun/ruin,
 /obj/item/stack/sheet/mineral/diamond{
 	amount = 10
 	},

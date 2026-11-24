@@ -275,7 +275,7 @@
 	dir = 10;
 	initialize_directions = 10
 	},
-/obj/effect/spawner/random/weapon/full_gun,
+/obj/effect/spawner/random/weapon/full_gun/ruin,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_shuttle/crashed_shuttle/graysontug)
 "xa" = (
