@@ -9,7 +9,6 @@ type Data = {
   transmitting: BooleanLike;
   callsign: string | null;
   faction: string | null;
-  can_name_ship?: BooleanLike;
 };
 
 export const ShipTransponder = () => {
@@ -37,16 +36,6 @@ export const ShipTransponder = () => {
           >
             {data.enabled ? 'Отключить передачу' : 'Включить передачу'}
           </Button>
-          {!!data.can_name_ship && (
-            <Button
-              mt={2}
-              ml={1}
-              icon="pen"
-              onClick={() => act('name_ship')}
-            >
-              Назвать судно
-            </Button>
-          )}
         </Section>
       </Window.Content>
     </Window>

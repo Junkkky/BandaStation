@@ -231,13 +231,13 @@
 		QDEL_NULL(mind)
 		qdel(src)
 
-/mob/dead/new_player/proc/AttemptLateSpawn(rank)
+/mob/dead/new_player/proc/AttemptLateSpawn(rank, away_target)
 	var/client/requester = client
 	var/datum/mind/request_mind = mind
 	var/editing_slot = requester?.prefs?.default_slot
 	var/datum/job/job = istext(rank) ? SSjob.get_job(rank) : null
 	var/is_away_job = istype(job, /datum/job/away_mission)
-	if(!job || !check_latejoin_request(requester, request_mind, editing_slot, skip_arrivals_checks = is_away_job))
+	if(!job || (!isnull(away_target) && (!is_away_job || !istext(away_target))) || !check_latejoin_request(requester, request_mind, editing_slot, skip_arrivals_checks = is_away_job))
 		return FALSE
 	var/datum/job_character_selection/selection = requester.prefs.select_job_character(job, latejoin = TRUE)
 	var/selected_slot = selection?.slot
@@ -285,7 +285,7 @@
 	if(is_away_job)
 		spawning = TRUE // Keep the vacancy reserved across map loading and logout.
 		var/datum/job/away_mission/away_job = job
-		destination = prepare_away_latejoin_spawn(away_job, requester, request_mind, editing_slot)
+		destination = prepare_away_latejoin_spawn(away_job, requester, request_mind, editing_slot, away_target)
 	else
 		destination = job.get_latejoin_spawn_point()
 	var/mob/living/character = destination ? create_character(destination) : null
@@ -295,10 +295,6 @@
 			var/spawn_failure = is_away_job && !destination ? "Корабль или точка у криокапсулы сейчас недоступны. Попробуйте присоединиться снова." : "Не удалось создать персонажа. Выберите профессию повторно."
 			to_chat(src, span_warning(get_latejoin_block_message(skip_arrivals_checks = is_away_job) || spawn_failure))
 		return FALSE
-
-	if(is_away_job)
-		var/datum/job/away_mission/away_job = job
-		away_job.note_away_latejoin(request_mind)
 
 	SSticker.queued_players -= src
 	SSticker.queue_delay = 4
@@ -419,6 +415,11 @@
 	if(!QDELETED(spawning_mob) && ishuman(spawning_mob))
 		var/mob/living/carbon/human/body = spawning_mob
 		invalid_body = (isnum(job.required_character_age) && body.age < job.required_character_age) || !job.is_character_species_allowed(body.dna?.species?.type)
+	if(!invalid_body && request_mind?.late_joiner && istype(job, /datum/job/away_mission))
+		var/datum/job/away_mission/away_job = job
+		var/datum/roundstart_away_mission/mission = away_job.get_away_mission()
+		var/obj/docking_port/mobile/stationtrauma_space/vessel = request_mind.away_mission_ship?.resolve()
+		invalid_body = !mission?.get_instance_limit() || !vessel?.is_in_shuttle_bounds(spawning_mob) || !vessel.shuttle_areas[get_area(spawning_mob)]
 
 	// AI initialization can already hand the client to the body.
 	var/client/player_client = src.client || spawning_mob?.client

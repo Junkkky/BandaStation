@@ -6,7 +6,7 @@
 	var/map_path
 	/// Map of job type to the minimum number of players in that job.
 	var/list/minimum_crew
-	/// Role allowed to name a ship when its holder is in the first crew.
+	/// Role in command of the crew.
 	var/commander_job
 	/// Short registration names suitable for this class of ship.
 	var/list/ship_names = list()
@@ -232,7 +232,6 @@
 		job_spawns.Cut(job.spawn_positions + 1)
 		shuffle_inplace(job_spawns)
 
-	var/datum/mind/commander
 	for(var/mob/dead/new_player/required_player as anything in required_crew)
 		var/datum/job/away_mission/job = required_crew[required_player]
 		assign_seats(job, list(required_player), spawns[job.type], assigned, allow_all, vessel)
@@ -246,10 +245,7 @@
 				player.mind.set_assigned_role(SSjob.get_job_type(/datum/job/unassigned))
 				SSjob.unassigned += player
 			return FALSE
-		if(job.type == commander_job)
-			commander = required_player.mind
 
-	vessel.note_first_away_boarding(commander)
 	if(isnull(optional_assignments))
 		fill_optional_seats(candidates, spawns, allow_all, vessel)
 	else
@@ -294,14 +290,18 @@
 	/// Hull that owns this player's mission vacancy, independent of their physical location.
 	var/datum/weakref/away_mission_ship
 
-/// Return whether this hull has a vacancy for the requested crew role.
-/obj/docking_port/mobile/stationtrauma_space/proc/has_away_vacancy(datum/job/away_mission/job)
+/// Count occupied and reserved seats for this role on this particular hull.
+/obj/docking_port/mobile/stationtrauma_space/proc/count_away_crew(datum/job/away_mission/job)
 	var/occupied = 0
 	for(var/datum/weakref/mind_ref as anything in away_crew)
 		var/datum/mind/occupant = mind_ref.resolve()
 		if(occupant?.assigned_role == job)
 			occupied++
-	return occupied < initial(job.total_positions)
+	return occupied
+
+/// Return whether this hull has a vacancy for the requested crew role.
+/obj/docking_port/mobile/stationtrauma_space/proc/has_away_vacancy(datum/job/away_mission/job)
+	return count_away_crew(job) < initial(job.total_positions)
 
 /// Record the same reservation on the hull and the mind so rollback or cryo can release it.
 /obj/docking_port/mobile/stationtrauma_space/proc/record_away_crew(datum/mind/crew_mind)
@@ -329,8 +329,17 @@
 				return destination
 	return null
 
-/// Reserve a vacancy on an existing hull, or load another copy when all its seats are occupied.
-/mob/dead/new_player/proc/prepare_away_latejoin_spawn(datum/job/away_mission/job, client/requester, datum/mind/request_mind, editing_slot)
+/// Resolve the exact offered hull, or the first boardable hull for an automatic request.
+/datum/roundstart_away_mission/proc/find_boardable_ship(datum/job/away_mission/job, list/vessels, away_target)
+	for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in vessels)
+		if(!isnull(away_target) && REF(vessel) != away_target)
+			continue
+		if(vessel.has_away_vacancy(job) && find_latejoin_spawn(vessel))
+			return vessel
+	return null
+
+/// Reserve a vacancy on the requested hull, or load a new one when no existing hull can board the role.
+/mob/dead/new_player/proc/prepare_away_latejoin_spawn(datum/job/away_mission/job, client/requester, datum/mind/request_mind, editing_slot, away_target)
 	var/datum/roundstart_away_mission/mission = job.get_away_mission()
 	if(!mission?.get_instance_limit())
 		return null
@@ -340,9 +349,15 @@
 		return null
 	var/list/destination = list()
 	var/list/vessels = mission.get_loaded_ships()
-	for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in vessels)
-		if(validate_away_latejoin(job, mission, requester, request_mind, editing_slot, destination, vessel))
+	if(away_target == REF(mission))
+		if(mission.find_boardable_ship(job, vessels))
+			return null
+	else
+		var/obj/docking_port/mobile/stationtrauma_space/vessel = mission.find_boardable_ship(job, vessels, away_target)
+		if(vessel && validate_away_latejoin(job, mission, requester, request_mind, editing_slot, destination, vessel))
 			return destination[1]
+		if(!isnull(away_target))
+			return null
 	if(length(vessels) >= mission.get_instance_limit())
 		return null
 	var/datum/callback/validate_claim = CALLBACK(src, PROC_REF(validate_away_latejoin), job, mission, requester, request_mind, editing_slot, destination)

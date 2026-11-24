@@ -91,6 +91,11 @@
 		var/obj/item/circuitboard/computer/stationtrauma_transponder/second_board = second_transponder?.circuit
 		TEST_ASSERT(first_board?.callsign && second_board?.callsign && first_board.callsign != second_board.callsign, "Uncrewed copies must start with different registered callsigns")
 		TEST_ASSERT_EQUAL(ship.name, "ОКН «[first_board.callsign]»", "The hull name must agree with its registered callsign")
+		var/registered_name = ship.name
+		var/registered_callsign = first_board.callsign
+		ship.draw_away_ship_name(list("Вымпел"))
+		TEST_ASSERT_EQUAL(ship.name, registered_name, "The latejoin name must stay fixed after registration")
+		TEST_ASSERT_EQUAL(first_board.callsign, registered_callsign, "The transponder must keep the original callsign")
 		TEST_ASSERT_NULL(SSstationtrauma_space_voyage.load_ship_template(mission.map_path, arrival_check, new_instance = TRUE), "A third copy must not exceed the configured limit")
 	else
 		template = allocate(/datum/map_template/stationtrauma_space/ship, mission.map_path, mission.name)
@@ -246,24 +251,20 @@
 	TEST_ASSERT(!ship.has_away_vacancy(commander), "A filled commander position must be closed on its own hull")
 	if(second_ship)
 		TEST_ASSERT(second_ship.has_away_vacancy(commander), "The same position must stay open on the other hull")
+		var/list/rows = list()
+		rows[commander] = list()
+		var/list/first_destination = GLOB.latejoin_menu.get_away_destination(mission, ship, rows, list(), list())
+		var/list/second_destination = GLOB.latejoin_menu.get_away_destination(mission, second_ship, rows, list(), list())
+		TEST_ASSERT_EQUAL(first_destination["name"], ship.name, "The latejoin menu must use the hull's registered name")
+		TEST_ASSERT_EQUAL(first_destination["open_slots"], 0, "The first hull has no commander vacancy")
+		TEST_ASSERT_EQUAL(second_destination["open_slots"], 1, "The second hull has a commander vacancy")
+		var/list/vessels = mission.get_loaded_ships()
+		TEST_ASSERT_NULL(mission.find_boardable_ship(commander, vessels, REF(ship)), "An occupied named hull must not fall back to an open copy")
+		TEST_ASSERT_EQUAL(mission.find_boardable_ship(commander, vessels, REF(second_ship)), second_ship, "The open named hull must resolve to the exact ship")
+		TEST_ASSERT_NULL(mission.find_boardable_ship(commander, vessels, REF(src)), "A stale or unrelated target must not fall back to a ship")
 		TEST_ASSERT_EQUAL(commander.total_positions, 2, "Latejoin capacity must include both configured hulls")
-		TEST_ASSERT(!ship.rename_away_ship(commander_player.mind, "Вымпел"), "An ordinary crewmember cannot rename the ship")
-		TEST_ASSERT(!ship.rename_away_ship(medic_player.mind, uppertext(second_ship.away_ship_name)), "A reserved name cannot be reused even with different letter case")
-		TEST_ASSERT(ship.rename_away_ship(medic_player.mind, "Вымпел"), "The roundstart commander may register the ship name")
-		TEST_ASSERT_EQUAL(ship.name, "ОКН «Вымпел»", "A commander rename must update the hull name")
-		TEST_ASSERT(!ship.rename_away_ship(medic_player.mind, "Вымпел-2"), "A commander can rename the ship only once")
-
-		// A medic first aboard fixes the fallback name, even when the commander boards next.
-		second_ship.record_away_crew(commander_player.mind)
-		medic.note_away_latejoin(commander_player.mind)
 		second_ship.record_away_crew(medic_player.mind)
-		commander.note_away_latejoin(medic_player.mind)
-		TEST_ASSERT(!second_ship.rename_away_ship(medic_player.mind, "Вымпел-3"), "A commander arriving after another crewmember may not rename an already crewed ship")
 		TEST_ASSERT(!second_ship.has_away_vacancy(commander), "The second commander reservation must belong to the second hull")
-		// Reuse the fixture to model a fresh hull where the commander is the first latejoin.
-		second_ship.away_crew_boarded = FALSE
-		commander.note_away_latejoin(medic_player.mind)
-		TEST_ASSERT(second_ship.rename_away_ship(medic_player.mind, "Вымпел-2"), "The commander first aboard in latejoin may name their own ship")
 		SSjob.free_job_position(commander.title, medic_player.mind)
 		TEST_ASSERT(second_ship.has_away_vacancy(commander), "Freeing the commander must release the position on the correct hull")
 
