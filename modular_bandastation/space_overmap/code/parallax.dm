@@ -192,7 +192,10 @@
 
 /atom/movable/screen/parallax_layer/bluespace_tunnel/update_o(new_view)
 	var/list/view_size = getviewsize(new_view)
-	transform = matrix().Scale(max(view_size[1], view_size[2]) * ICON_SIZE_ALL / 480).Turn(dir2angle(dir))
+	var/matrix/fitted = matrix()
+	fitted.Scale(max(view_size[1], view_size[2]) * ICON_SIZE_ALL / 480)
+	fitted.Turn(dir2angle(dir))
+	transform = fitted
 
 /** Preserve native quality settings without inheriting the round-wide random asteroid/gas layer. */
 /atom/movable/screen/parallax_home/generate_space_layer(index)
