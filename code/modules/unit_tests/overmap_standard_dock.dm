@@ -251,6 +251,17 @@
 	station_objects += list(traveller, loose_item)
 	var/obj/docking_port/stationary/moored_berth = ship.get_docked()
 	var/turf/flight_anchor = get_turf(navigation.flight_berth)
+	// Pocket Rocket has this non-dense air barrier on the same tile as its docking hatch.
+	var/obj/structure/fans/tiny/fan = allocate(/obj/structure/fans/tiny, get_turf(hatch))
+	var/obj/item/wrench/hatch_obstruction = allocate(/obj/item/wrench, get_turf(hatch))
+	TEST_ASSERT(!navigation.depart(instant = TRUE), "A loose item on the hatch tile must prevent departure")
+	TEST_ASSERT_EQUAL(ship.get_docked(), moored_berth, "The blocked ship must stay docked")
+	if(!findtext(navigation.status, "Корабельный шлюз") || !findtext(navigation.status, hatch_obstruction.name))
+		Fail("The helm must identify the obstructed hatch and the item: [navigation.status]", __FILE__, __LINE__)
+	qdel(hatch_obstruction)
+	deadline = world.time + 5 SECONDS
+	UNTIL((!hatch.density && !hatch.operating && !wall.density && !wall.operating) || world.time >= deadline)
+	TEST_ASSERT(!hatch.density && !hatch.operating && !wall.density && !wall.operating, "The bridge must reopen once departure is cancelled")
 	ship.preflight_action = CALLBACK(src, PROC_REF(block_flight_during_preflight), flight_anchor)
 	var/departed = navigation.depart(instant = TRUE)
 	TEST_ASSERT_NOTNULL(late_flight_blocker, "The obstruction must be added during the real native departure preflight")
@@ -309,6 +320,7 @@
 	TEST_ASSERT_EQUAL(get_turf(traveller), restored_vacuum, "The traveller must remain in place when the bridge becomes vacuum")
 	TEST_ASSERT_EQUAL(get_turf(loose_item), restored_vacuum, "The loose item must remain in place when the bridge becomes vacuum")
 	TEST_ASSERT(hatch.density && wall.density, "Both endpoints must be closed after departure")
+	TEST_ASSERT_EQUAL(get_turf(fan), get_turf(hatch), "The installed fan must remain on the hatch tile when the hull departs")
 
 /** Obstruct the return berth after native docking has begun its departure preflight. */
 /datum/unit_test/overmap_standard_dock/preserve_orientation/proc/block_flight_during_preflight(turf/flight_anchor)
@@ -854,6 +866,7 @@
 	UNTIL((!hatch.gangway.busy && !second_hatch.gangway.busy && !hatch.density && !first_wall.density && !second_hatch.density && !second_wall.density) || world.time >= deadline)
 	TEST_ASSERT(!hatch.gangway.busy && !second_hatch.gangway.busy && !hatch.density && !first_wall.density && !second_hatch.density && !second_wall.density, "Both passages must reopen after the blocked departure")
 	TEST_ASSERT(navigation.depart(instant = TRUE), "The M hull must depart with both gangways attached")
+	TEST_ASSERT_EQUAL(navigation.status, "Расстыковка завершена", "Successful instant departure must replace the previous failure status")
 	TEST_ASSERT_EQUAL(get_turf(ship), flight_anchor, "Departure must physically return the M hull to flight")
 	TEST_ASSERT(isspaceturf(first_bridge) && isspaceturf(second_bridge), "Departure must retract both gangways to vacuum")
 	QDEL_NULL(first_controller)

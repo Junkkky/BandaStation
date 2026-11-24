@@ -256,7 +256,7 @@
 	TEST_ASSERT_EQUAL(SSshuttle.get_containing_shuttle(cabin_item), ship, "Equipment in the child must still resolve the child after compound movement")
 	var/turf/carried_bridge = get_turf(traveller)
 	var/turf/host_position = get_turf(host_ship)
-	TEST_ASSERT(gangway.clear_tile(get_turf(hatch), hatch) && gangway.clear_tile(get_turf(wall), wall), "Native transport must leave both endpoint doorways clear before normal closure")
+	TEST_ASSERT(!gangway.tile_obstruction(get_turf(hatch), hatch, closing = TRUE) && !gangway.tile_obstruction(get_turf(wall), wall, closing = TRUE), "Native transport must leave both endpoint doorways clear before normal closure")
 	TEST_ASSERT(navigation.depart(instant = TRUE), "A carried guest must still depart through the normal native path. Status: [navigation.status]")
 	TEST_ASSERT_EQUAL(ship.get_docked(), navigation.flight_berth, "Departure must return the child to its independent flight berth")
 	TEST_ASSERT_EQUAL(get_turf(host_ship), host_position, "The guest's departure must leave its carrier in place")

@@ -372,13 +372,13 @@
 			stop("Расстыковка прервана: орбитальная стоянка перекрыта")
 			return FALSE
 		preparing = TRUE
-		var/ready_to_retract = standard_berth.prepare_retraction(instant)
+		var/retraction_failure = standard_berth.prepare_retraction(instant)
 		if(QDELETED(src))
 			return FALSE
-		if(!ready_to_retract)
+		if(retraction_failure)
 			preparing = FALSE
 			end_approach()
-			stop("Расстыковка прервана: шлюзы не закрылись")
+			stop("Расстыковка прервана: [retraction_failure]")
 			return FALSE
 		var/ready_to_move = TRUE
 		if(!instant)
@@ -443,6 +443,8 @@
 		return FALSE
 	throttle = 50
 	. = sail()
+	if(instant && .)
+		status = launching ? "Взлёт завершён" : "Расстыковка завершена"
 	end_approach()
 
 /** Release the passages and jolt the hull only after native preflight accepts the move. */

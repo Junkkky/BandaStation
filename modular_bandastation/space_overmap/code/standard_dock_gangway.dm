@@ -148,32 +148,39 @@
 	/// All passages on this berth belong to the current departure attempt.
 	var/retraction_prepared = FALSE
 
-/** Close and animate all passages together before authorizing any of them to fold. */
+/** Prepare every passage in parallel, returning a failure reason or null when all are ready to fold. */
 /obj/docking_port/stationary/stationtrauma_space_site/standard/proc/prepare_retraction(instant)
-	if(retraction_prepared || !length(gangways))
-		return FALSE
+	if(retraction_prepared)
+		return "трап уже готовится к уборке"
+	if(!length(gangways))
+		return "стыковочный трап недоступен"
 	var/list/attempt = list("pending" = length(gangways))
 	for(var/datum/stationtrauma_dock_gangway/gangway as anything in gangways)
-		if(QDELETED(gangway) || gangway.busy || (gangway in attempt))
-			return FALSE
+		if(QDELETED(gangway) || (gangway in attempt))
+			return "изменилась конфигурация стыковочного трапа"
+		if(gangway.busy)
+			return "стыковочный трап занят другой операцией"
 		attempt[gangway] = FALSE
 	// The typed loop selects gangways from the snapshot and skips the pending count.
 	for(var/datum/stationtrauma_dock_gangway/gangway in attempt)
 		INVOKE_ASYNC(gangway, TYPE_PROC_REF(/datum/stationtrauma_dock_gangway, prepare_group_retraction), instant, attempt)
 	UNTIL(!attempt["pending"])
 	attempt -= "pending"
-	var/ready = !QDELETED(src) && length(gangways) == length(attempt)
+	var/retraction_failure
 	for(var/datum/stationtrauma_dock_gangway/gangway as anything in attempt)
-		if(!attempt[gangway] || QDELETED(gangway) || !(gangway in gangways) || !gangway.can_fold_for_departure())
-			ready = FALSE
+		if(attempt[gangway])
+			retraction_failure = attempt[gangway]
 			break
-	if(!ready)
+		if(QDELETED(src) || length(gangways) != length(attempt) || QDELETED(gangway) || !(gangway in gangways) || !gangway.can_fold_for_departure())
+			retraction_failure = "стыковочный трап потерял блокировку"
+			break
+	if(retraction_failure)
 		for(var/datum/stationtrauma_dock_gangway/gangway as anything in attempt)
-			if(attempt[gangway] && !QDELETED(gangway))
+			if(!attempt[gangway] && !QDELETED(gangway))
 				gangway.cancel_retraction()
-		return FALSE
+		return retraction_failure
 	retraction_prepared = TRUE
-	return TRUE
+	return null
 
 /** Validate every interlock before removing the temporary passage. */
 /obj/docking_port/stationary/stationtrauma_space_site/standard/proc/fold_for_departure()
@@ -278,7 +285,7 @@
 	var/turf/cursor = get_turf(wall_endpoint)
 	var/datum/stationtrauma_overmap/space/host = stationtrauma_carrier_at(wall_endpoint)
 	for(var/turf/tile as anything in path)
-		if(get_step(cursor, direction) != tile || !stationtrauma_standard_dock_surface(tile) || (!restoring && !clear_tile(tile)))
+		if(get_step(cursor, direction) != tile || !stationtrauma_standard_dock_surface(tile) || (!restoring && tile_obstruction(tile)))
 			return FALSE
 		var/obj/docking_port/mobile/owner = SSshuttle.get_containing_shuttle(tile)
 		if((owner && owner != host?.vessel) || (host && isfloorturf(tile) && owner != host.vessel && !(restoring && temporary?[tile])))
@@ -404,17 +411,19 @@
 	qdel(total_air)
 	return TRUE
 
-/** Close the doors and play the retraction animation before the native departure commits. */
+/** Close the doors and play the retraction animation. Return a failure reason or null on success. */
 /datum/stationtrauma_dock_gangway/proc/prepare_retraction(instant)
-	if(QDELETED(src) || busy)
-		return FALSE
-	busy = TRUE
-	var/closed = close_endpoints(use_ship_power = TRUE)
 	if(QDELETED(src))
-		return FALSE
-	if(!closed)
+		return "стыковочный трап недоступен"
+	if(busy)
+		return "стыковочный трап занят другой операцией"
+	busy = TRUE
+	var/close_failure = close_endpoints(use_ship_power = TRUE)
+	if(QDELETED(src))
+		return "стыковочный трап недоступен"
+	if(close_failure)
 		cancel_retraction()
-		return FALSE
+		return close_failure
 	if(!instant && length(floors))
 		var/duration = 1.5 SECONDS
 		var/list/effects = list()
@@ -422,7 +431,7 @@
 			effects += new /obj/effect/constructing_effect/stationtrauma_gangway(floor, duration, RCD_DECONSTRUCT)
 		sleep(duration)
 		QDEL_LIST(effects)
-	return !QDELETED(src)
+	return QDELETED(src) ? "стыковочный трап недоступен" : null
 
 /** Report completion to the berth even if a passage fails while a door is closing. */
 /datum/stationtrauma_dock_gangway/proc/prepare_group_retraction(instant, list/attempt)
@@ -431,6 +440,7 @@
 		attempt[src] = prepare_retraction(instant)
 	catch(var/exception/failure)
 		preparation_failure = failure
+		attempt[src] = "сбой при подготовке стыковочного трапа"
 	attempt["pending"]--
 	if(preparation_failure)
 		if(!QDELETED(src))
@@ -473,26 +483,76 @@
 	remove_passage()
 	busy = FALSE
 
-/** Close both ends before retracting the passage or sealing a breach. Ship power is available to the wall only during departure. */
+/**
+ * Close both ends before retracting the passage or sealing a breach.
+ * Ship power is available to the wall only during departure. Return the first failure, or null if both ends closed.
+ */
 /datum/stationtrauma_dock_gangway/proc/close_endpoints(use_ship_power = FALSE)
-	var/closed = TRUE
+	var/close_failure
 	for(var/obj/machinery/door/airlock/stationtrauma_docking/endpoint as anything in list(ship, wall))
+		if(QDELETED(src))
+			return "стыковочный трап недоступен"
 		if(QDELETED(endpoint))
 			continue
-		var/close_mode = DEFAULT_DOOR_CHECKS
-		if(use_ship_power && endpoint == wall && (endpoint.machine_stat & NOPOWER))
-			close_mode = ST_DOCK_CLOSE_ON_SHIP_POWER
-		if(endpoint.operating || (!endpoint.density && (!endpoint.safe || !clear_tile(get_turf(endpoint), endpoint) || !endpoint.close(close_mode))))
-			closed = FALSE
-	return closed
+		var/endpoint_label = endpoint == ship ? "Корабельный шлюз" : "Секция стыковочной стены"
+		var/reason
+		if(endpoint.operating)
+			reason = "дверь уже движется"
+		else if(endpoint.density)
+			continue
+		else if(!endpoint.safe)
+			reason = "отключена защита от защемления"
+		else
+			var/atom/movable/obstruction = tile_obstruction(get_turf(endpoint), endpoint, closing = TRUE)
+			if(obstruction)
+				reason = isliving(obstruction) ? "в проёме кто-то находится" : "проём занят ([obstruction.name])"
+			else
+				var/close_mode = DEFAULT_DOOR_CHECKS
+				if(use_ship_power && endpoint == wall && (endpoint.machine_stat & NOPOWER))
+					close_mode = ST_DOCK_CLOSE_ON_SHIP_POWER
+				if(!endpoint.close(close_mode))
+					reason = endpoint_close_failure(endpoint, close_mode)
+		if(reason && !close_failure)
+			close_failure = "[endpoint_label] — [reason]"
+	return close_failure
 
-/datum/stationtrauma_dock_gangway/proc/clear_tile(turf/tile, atom/movable/ignored)
+/** Explain why the native airlock refused a safely requested close. */
+/datum/stationtrauma_dock_gangway/proc/endpoint_close_failure(obj/machinery/door/airlock/stationtrauma_docking/endpoint, close_mode)
+	if(QDELETED(endpoint))
+		return "дверь недоступна"
+	if(endpoint.welded)
+		return "дверь заварена"
+	if(endpoint.locked)
+		return "опущены болты"
+	if(endpoint.seal)
+		return "дверь заблокирована"
+	if(endpoint.obj_flags & EMAGGED)
+		return "повреждена электроника управления"
+	if(endpoint.wires.is_cut(WIRE_BOLTS))
+		return "перерезан провод управления болтами"
+	if(endpoint.remaining_main_outage() && endpoint.remaining_backup_outage())
+		return "отключены обе цепи питания двери"
+	if(close_mode == ST_DOCK_CLOSE_ON_SHIP_POWER)
+		if(breached)
+			return "узел обесточен, трап повреждён"
+		if(QDELETED(ship) || !ship.hasPower())
+			return "узел обесточен, бортовое питание недоступно"
+		return "узел обесточен, секция не получила питание от корабля"
+	if(!endpoint.hasPower())
+		return "нет питания"
+	return "привод не смог закрыть дверь"
+
+/** Find a physical blocker in the passage or doorway. */
+/datum/stationtrauma_dock_gangway/proc/tile_obstruction(turf/tile, atom/movable/ignored, closing = FALSE)
 	for(var/atom/movable/occupant in tile)
 		if(occupant == ignored || (occupant in seals))
 			continue
+		// A fitted air barrier shares the hatch tile without obstructing the door.
+		if(closing && istype(occupant, /obj/structure/fans/tiny) && occupant.anchored && !occupant.density)
+			continue
 		if(occupant.density || isliving(occupant) || (isobj(occupant) && !iseffect(occupant)))
-			return FALSE
-	return TRUE
+			return occupant
+	return null
 
 /** A changed floor or seal must never authorize another opening. */
 /datum/stationtrauma_dock_gangway/proc/on_breach()
