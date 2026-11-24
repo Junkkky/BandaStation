@@ -127,7 +127,7 @@
 	var/list/scrubbers = list()
 	for(var/turf/tile as anything in ship.return_turfs())
 		for(var/obj/machinery/door/airlock/stationtrauma_docking/ship/hatch in tile)
-			if(slot.hatch_available(ship, hatch))
+			if(!slot.hatch_problem(ship, hatch))
 				hatches_ready++
 		for(var/obj/machinery/power/smes/ship/storage in tile)
 			power_storage += storage

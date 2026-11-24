@@ -88,7 +88,8 @@
 		return FALSE
 	if(istype(target, /obj/docking_port/stationary/stationtrauma_space_site/standard))
 		var/obj/docking_port/stationary/stationtrauma_space_site/standard/berth = target
-		if(!berth.route_clear(src))
+		berth.preflight_problem = berth.route_problem(src)
+		if(berth.preflight_problem)
 			return FALSE
 	var/datum/stationtrauma_carrier_movement/movement = overmap?.carrier_relocation
 	if(movement?.root.vessel == src)

@@ -72,6 +72,10 @@
 		if(WEST)
 			outward_direction = "на запад"
 	. += span_notice("Стыковочная сторона направлена [outward_direction]. Герметичное помещение должно находиться с противоположной стороны.")
+	if(gangway?.breached)
+		. += span_warning("Стыковочный трап повреждён.")
+	else if(gangway?.opening_problem)
+		. += span_warning("Последняя попытка открыть трап: [gangway.opening_problem].")
 
 /obj/machinery/door/airlock/stationtrauma_docking/update_overlays()
 	. = ..()
@@ -227,6 +231,8 @@
 	var/list/folded_temporary
 	/// Only this endpoint may open during the current operation.
 	var/obj/machinery/door/airlock/stationtrauma_docking/opening_endpoint
+	/// Reason shown on the endpoints after an unsuccessful opening attempt.
+	var/opening_problem
 	/// An endpoint is currently animating as part of an operation.
 	var/busy = FALSE
 	/// A participant in this passage moved, changed direction, or was replaced.
@@ -259,12 +265,16 @@
 	if(breached)
 		INVOKE_ASYNC(src, PROC_REF(seal_breach))
 
-/** Install the airless corridor only after the actual hull and port are in position. */
+/** Assemble the reserved gangway, returning a reason if the passage cannot be built. */
 /datum/stationtrauma_dock_gangway/proc/deploy(obj/machinery/door/airlock/stationtrauma_docking/ship/ship_endpoint, obj/machinery/door/airlock/stationtrauma_docking/wall/wall_endpoint, list/path, direction)
-	if(ship || wall || QDELETED(ship_endpoint) || QDELETED(wall_endpoint) || ship_endpoint.gangway || wall_endpoint.gangway)
-		return FALSE
+	if(ship || wall)
+		return "трап уже подключён"
+	if(QDELETED(ship_endpoint) || ship_endpoint.gangway)
+		return "корабельный шлюз недоступен"
+	if(QDELETED(wall_endpoint) || wall_endpoint.gangway)
+		return "секция стыковочной стены недоступна"
 	if(!path_available(ship_endpoint, wall_endpoint, path, direction))
-		return FALSE
+		return "путь трапа изменился или перекрыт"
 	ship = ship_endpoint
 	wall = wall_endpoint
 	ship.gangway = wall.gangway = src
@@ -272,8 +282,8 @@
 	RegisterSignals(wall, watched_signals, PROC_REF(on_breach))
 	if(!install_floors(path, direction))
 		remove_passage()
-		return FALSE
-	return TRUE
+		return "не удалось развернуть настил трапа"
+	return null
 
 /datum/stationtrauma_dock_gangway/proc/path_available(obj/machinery/door/airlock/stationtrauma_docking/ship/ship_endpoint, obj/machinery/door/airlock/stationtrauma_docking/wall/wall_endpoint, list/path, direction, restoring = FALSE, list/temporary)
 	if(QDELETED(ship_endpoint) || QDELETED(wall_endpoint))
@@ -329,16 +339,26 @@
  * After a cancelled departure, reopen the ship hatch if the closed wall has lost its area power.
  */
 /datum/stationtrauma_dock_gangway/proc/open_passage(recover_ship_access = FALSE)
-	if(busy || breached || QDELETED(ship) || QDELETED(wall))
+	if(busy)
+		return FALSE
+	opening_problem = null
+	if(breached || QDELETED(ship) || QDELETED(wall))
+		opening_problem = "трап повреждён или отсоединён"
 		return FALSE
 	var/wall_unpowered = wall.density && (wall.machine_stat & NOPOWER)
 	if(wall_unpowered && !recover_ship_access)
+		opening_problem = "секция стыковочной стены обесточена"
 		return FALSE
 	if(!ship.density && !wall.density && !ship.operating && !wall.operating)
 		return TRUE
 	var/both_endpoints_closed = ship.density && wall.density
-	if(ship.operating || wall.operating || (both_endpoints_closed && !equalize_pressure(ship_only = wall_unpowered)))
+	if(ship.operating || wall.operating)
+		opening_problem = "дождитесь завершения движения шлюзов"
 		return FALSE
+	if(both_endpoints_closed)
+		opening_problem = equalize_pressure(ship_only = wall_unpowered)
+		if(opening_problem)
+			return FALSE
 	busy = TRUE
 	var/opened = TRUE
 	for(var/obj/machinery/door/airlock/stationtrauma_docking/endpoint as anything in list(wall, ship))
@@ -350,7 +370,10 @@
 		if(!endpoint_pressure_matches(endpoint))
 			// Room air can restore ship pressure during the wall's opening animation.
 			var/recheck_pressure = endpoint == ship && both_endpoints_closed && !wall.density && !wall.operating
-			if(!recheck_pressure || !equalize_pressure() || !endpoint_pressure_matches(endpoint))
+			if(recheck_pressure)
+				opening_problem = equalize_pressure()
+			if(!recheck_pressure || opening_problem || !endpoint_pressure_matches(endpoint))
+				opening_problem ||= "давление по сторонам шлюза небезопасно"
 				opened = FALSE
 				break
 		opening_endpoint = endpoint
@@ -358,13 +381,32 @@
 		if(QDELETED(src))
 			return FALSE
 		if(!opened)
+			var/label = endpoint == ship ? "Корабельный шлюз" : "Секция стыковочной стены"
+			opening_problem = "[label] — [endpoint_open_problem(endpoint)]"
 			break
 	opening_endpoint = null
 	if(!opened || breached || QDELETED(ship) || QDELETED(wall))
+		opening_problem ||= "трап повреждён или отсоединён"
 		close_endpoints()
 		opened = FALSE
 	busy = FALSE
 	return opened
+
+/** Explain a rejection by the native airlock opening checks. */
+/datum/stationtrauma_dock_gangway/proc/endpoint_open_problem(obj/machinery/door/airlock/stationtrauma_docking/endpoint)
+	if(QDELETED(endpoint))
+		return "дверь недоступна"
+	if(endpoint.welded)
+		return "дверь заварена"
+	if(endpoint.locked)
+		return "опущены болты"
+	if(endpoint.seal)
+		return "дверь заблокирована"
+	if(!endpoint.hasPower())
+		return "нет питания"
+	if(endpoint.wires.is_cut(WIRE_OPEN) || (endpoint.obj_flags & EMAGGED))
+		return "повреждена электроника управления"
+	return "привод не смог открыть дверь"
 
 /datum/stationtrauma_dock_gangway/proc/endpoint_pressure_matches(obj/machinery/door/airlock/stationtrauma_docking/endpoint)
 	var/turf/open/floor/inside = get_step(endpoint, REVERSE_DIR(endpoint.dir))
@@ -375,41 +417,43 @@
 	var/outside_pressure = outside.air.return_pressure()
 	return abs(inside_pressure - outside_pressure) <= ST_DOCK_MAX_PRESSURE_DELTA && min(inside_pressure, outside_pressure) > HAZARD_LOW_PRESSURE && max(inside_pressure, outside_pressure) < HAZARD_HIGH_PRESSURE
 
-/** Draw on the air in the passage and its connected compartments, excluding the sealed dock side during recovery. */
+/** Equalize with the connected compartments, returning the reason if the air cannot be shared safely. */
 /datum/stationtrauma_dock_gangway/proc/equalize_pressure(ship_only = FALSE)
 	var/turf/open/floor/ship_inside = get_step(ship, REVERSE_DIR(ship.dir))
 	if(!isfloorturf(ship_inside) || !ship_inside.air)
-		return FALSE
+		return "повреждён отсек за корабельным шлюзом"
 	var/ship_pressure = ship_inside.air.return_pressure()
 	if(ship_pressure <= HAZARD_LOW_PRESSURE || ship_pressure >= HAZARD_HIGH_PRESSURE)
-		return FALSE
+		return "небезопасное давление на корабле"
 	var/list/turf/open/floor/volume_tiles = floors + list(get_turf(ship), ship_inside)
 	if(!ship_only)
 		var/turf/open/floor/wall_inside = get_step(wall, REVERSE_DIR(wall.dir))
 		if(!isfloorturf(wall_inside) || !wall_inside.air)
-			return FALSE
+			return "повреждён коридор за стыковочной стеной"
 		var/wall_pressure = wall_inside.air.return_pressure()
-		if(abs(ship_pressure - wall_pressure) > ST_DOCK_MAX_PRESSURE_DELTA || wall_pressure <= HAZARD_LOW_PRESSURE || wall_pressure >= HAZARD_HIGH_PRESSURE)
-			return FALSE
+		if(wall_pressure <= HAZARD_LOW_PRESSURE || wall_pressure >= HAZARD_HIGH_PRESSURE)
+			return "небезопасное давление на причале"
+		if(abs(ship_pressure - wall_pressure) > ST_DOCK_MAX_PRESSURE_DELTA)
+			return "слишком велик перепад давления между кораблём и причалом"
 		volume_tiles += list(get_turf(wall), wall_inside)
 	var/datum/gas_mixture/total_air = new
 	var/total_volume = 0
 	for(var/turf/open/floor/tile as anything in volume_tiles)
 		if(!isfloorturf(tile) || !tile.air)
 			qdel(total_air)
-			return FALSE
+			return "повреждён настил трапа"
 		total_air.merge(tile.air)
 		total_volume += tile.air.volume
 	total_air.volume = total_volume
 	var/pressure = total_air.return_pressure()
 	if(pressure <= HAZARD_LOW_PRESSURE || pressure >= HAZARD_HIGH_PRESSURE)
 		qdel(total_air)
-		return FALSE
+		return "после выравнивания давление в трапе было бы небезопасным"
 	for(var/turf/open/floor/tile as anything in volume_tiles)
 		tile.air.copy_from_ratio(total_air, tile.air.volume / total_volume)
 		tile.air_update_turf(FALSE, FALSE)
 	qdel(total_air)
-	return TRUE
+	return null
 
 /** Close the doors and play the retraction animation. Return a failure reason or null on success. */
 /datum/stationtrauma_dock_gangway/proc/prepare_retraction(instant)

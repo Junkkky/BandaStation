@@ -555,6 +555,7 @@
 	var/revision = control_revision
 	preparing = TRUE
 	var/datum/stationtrauma_work_budget/budget = new
+	var/list/diagnostic = list()
 	var/ready = FALSE
 	var/physical_docking = site.landing || site.physical_docking
 	var/obj/docking_port/stationary/target_berth = site.berth
@@ -564,7 +565,7 @@
 	var/obj/docking_port/stationary/stationtrauma_space_site/standard/standard_berth
 	try
 		if(slot)
-			standard_berth = slot.prepare_berth(vessel)
+			standard_berth = slot.prepare_berth(vessel, diagnostic)
 			target_berth = standard_berth
 		var/approached = (!slot || target_berth) && ((site.physical_docking && instant) || approach(site, revision))
 		if(!slot && !QDELETED(site))
@@ -575,15 +576,20 @@
 				if(slot.active_berth?.ship == vessel)
 					standard_berth = slot.active_berth
 				else if(approached)
-					standard_berth = slot.prepare_berth(vessel)
+					standard_berth = slot.prepare_berth(vessel, diagnostic)
 				target_berth = standard_berth
+		if(!approached && standard_berth && !QDELETED(slot) && !slot.accepts(vessel))
+			diagnostic["reason"] = "причал стал недоступен во время сближения"
 		if(approached && target_berth)
 			connection.direction = !physical_docking && site.ruin_id ? REVERSE_DIR(target_berth.dir) : WEST
 			if(physical_docking)
 				ready = relocate(target_berth, before_takeoff)
+				if(!ready)
+					diagnostic["reason"] = standard_berth?.preflight_problem || "перемещение к месту стыковки не выполнено"
 			else
 				ready = connection.connect(target_berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
 	catch(var/exception/failure)
+		diagnostic["reason"] = "ошибка при выполнении манёвра"
 		stack_trace("Space prototype docking failed: [failure]")
 	if(QDELETED(src))
 		return FALSE
@@ -608,8 +614,13 @@
 				status = "Посадка в ангар отменена: площадка занята или перекрыта"
 			else if(site.landing && slot && !standard_berth)
 				status = "Посадка отменена: площадка перекрыта"
+			else if(site.landing)
+				status = "Посадка прервана"
+			else if(slot)
+				var/reason = diagnostic["reason"] || "сближение прервано"
+				status = "Стыковка [slot.dock_class] отменена: [reason]"
 			else
-				status = site.landing ? "Посадка прервана" : slot ? "Стыковка [slot.dock_class] отменена: нет свободного пути для трапа" : "Стыковка не выполнена: переход перекрыт"
+				status = "Стыковка не выполнена: переход перекрыт"
 		return FALSE
 	docked = site
 	if(site.host)
@@ -628,9 +639,12 @@
 			slot.show_hangar_glow(src)
 	else
 		if(standard_berth)
-			var/deployed = standard_berth.deploy_gangways()
+			var/deployed = standard_berth.deploy_gangways(diagnostic)
 			if(deployed < length(standard_berth.routes))
-				status = deployed ? "Корабль пришвартован, часть проходов перекрыта" : "Корабль пришвартован, проходы перекрыты"
+				status = deployed ? "Корабль пришвартован, часть трапов не развёрнута" : "Корабль пришвартован, трапы не развёрнуты"
+				var/reason = diagnostic["reason"]
+				if(reason)
+					status += " — [reason]"
 		play_maneuver_audio(target_berth)
 	refresh_engine_audio()
 	update_parallax()
