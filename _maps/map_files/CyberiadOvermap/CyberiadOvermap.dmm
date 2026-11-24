@@ -7555,8 +7555,8 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/security/prison/ghetto)
 "bPP" = (
-/obj/machinery/computer/cargo,
 /obj/machinery/airalarm/directional/north,
+/obj/machinery/modular_computer/preset/id,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/qm)
 "bPR" = (
@@ -10593,6 +10593,7 @@
 "cCm" = (
 /obj/machinery/light/directional/north,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron,
 /area/station/cargo/storage/ghetto)
 "cCu" = (
@@ -20093,6 +20094,11 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/iron,
 /area/station/engineering/spacepods/hangar)
+"eQV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/station/maintenance/ghetto/port)
 "eQX" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -22133,6 +22139,7 @@
 /area/station/maintenance/ghetto/starboard)
 "fqv" = (
 /obj/machinery/light/directional/north,
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron,
 /area/station/cargo/storage/ghetto)
 "fqw" = (
@@ -40120,6 +40127,13 @@
 "jFh" = (
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+"jFi" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
 "jFl" = (
 /obj/machinery/button/door/directional/west{
 	id = "Toilet3";
@@ -45810,6 +45824,23 @@
 "kUM" = (
 /turf/closed/wall,
 /area/station/maintenance/disposal)
+"kUQ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/airlock/research/expedition,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/preopen{
+	id = "expedition_lockdown";
+	name = "Expedition Lockdown Blast Doors"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/expedition/storage)
 "kUU" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/field/generator,
@@ -48560,6 +48591,13 @@
 	},
 /turf/open/floor/grass,
 /area/station/maintenance/ghetto/garden)
+"lBW" = (
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance,
+/turf/open/floor/plating,
+/area/station/cargo/storage/ghetto)
 "lCe" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -56239,6 +56277,7 @@
 /area/station/science/xenobiology)
 "ntS" = (
 /obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/maintenance,
 /obj/effect/spawner/random/maintenance,
 /obj/effect/spawner/random/maintenance,
 /obj/effect/spawner/random/maintenance,
@@ -65007,7 +65046,6 @@
 /turf/open/floor/iron,
 /area/station/security/courtroom)
 "pzH" = (
-/obj/machinery/modular_computer/preset/id,
 /obj/machinery/light/directional/north,
 /obj/machinery/camera/directional/north{
 	c_tag = "Cargo - QM's Office";
@@ -72173,11 +72211,10 @@
 /turf/open/floor/plating,
 /area/station/engineering/storage)
 "rnA" = (
-/obj/effect/spawner/random/maintenance,
-/obj/effect/spawner/random/maintenance,
-/obj/effect/turf_decal/bot,
+/obj/machinery/light/directional/south,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron,
-/area/station/cargo/storage/ghetto)
+/area/station/cargo/storage)
 "rnD" = (
 /obj/machinery/hydroponics/soil,
 /obj/effect/decal/cleanable/dirt,
@@ -77933,9 +77970,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "sHc" = (
-/obj/machinery/computer/cargo/request{
-	dir = 4
-	},
 /obj/item/radio/intercom/directional/north,
 /obj/structure/sign/departments/cargo/directional/west,
 /turf/open/floor/iron,
@@ -92659,6 +92693,14 @@
 /obj/effect/turf_decal/tile/purple,
 /turf/open/floor/iron/white,
 /area/station/science/lower)
+"wqY" = (
+/obj/machinery/firealarm/directional/north,
+/obj/machinery/camera/directional/north{
+	c_tag = "Cargo - Bay Lower Floor";
+	network = list("ss13","cargo")
+	},
+/turf/open/floor/iron,
+/area/station/cargo/storage/ghetto)
 "wrk" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8
@@ -100751,21 +100793,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/robotics/lab)
-"aaa" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 5
-	},
-/obj/machinery/computer/sector_trade_monitor,
-/turf/open/floor/wood/tile,
-/area/station/command/heads_quarters/qm)
-"aab" = (
-/obj/effect/turf_decal/tile/brown{
-	dir = 4
-	},
-/obj/machinery/light/directional/east,
-/obj/machinery/computer/sector_trade_monitor,
-/turf/open/floor/iron,
-/area/station/command/bridge)
 
 (1,1,1) = {"
 doz
@@ -113256,7 +113283,7 @@ hOc
 aYm
 nol
 oJB
-aec
+jAr
 rmU
 doz
 doz
@@ -113489,7 +113516,7 @@ iUu
 iUu
 oah
 kPY
-oqm
+wot
 oqm
 mQU
 xWL
@@ -113511,7 +113538,7 @@ ceC
 ceC
 ceC
 mBX
-aec
+jAr
 aec
 aec
 rmU
@@ -113770,7 +113797,7 @@ ceC
 mBX
 aec
 aec
-aec
+jAr
 rmU
 doz
 doz
@@ -114261,8 +114288,8 @@ iUu
 oah
 mQU
 wot
-pLM
-mQU
+tWQ
+fRc
 tWQ
 doz
 doz
@@ -114283,7 +114310,7 @@ doz
 doz
 rmU
 aec
-aec
+jAr
 fns
 rmU
 doz
@@ -114518,9 +114545,9 @@ iUu
 oah
 mQU
 wot
-wot
-pLM
-tWQ
+eHR
+mQU
+aoJ
 doz
 doz
 doz
@@ -114775,8 +114802,8 @@ oah
 oah
 mQU
 mQU
-wot
-mQU
+tWQ
+tWQ
 tWQ
 doz
 qSS
@@ -114797,7 +114824,7 @@ doz
 doz
 doz
 rmU
-aec
+jAr
 agM
 rmU
 rmU
@@ -115055,7 +115082,7 @@ doz
 doz
 rmU
 ohN
-aec
+jAr
 rmU
 wYC
 ePk
@@ -115289,12 +115316,12 @@ ceC
 tWQ
 ctk
 oqm
+mQU
+rgO
 tWQ
-fRc
-tWQ
-doz
-cFj
-oBo
+xWL
+rQU
+wqY
 uhI
 oBo
 oBo
@@ -115545,13 +115572,13 @@ xWL
 tWQ
 tWQ
 mQU
+eQV
+rgO
 mQU
-eHR
+rgO
 mQU
-aoJ
-doz
-cFj
-rnA
+lBW
+oBo
 fNt
 bCN
 kRR
@@ -115806,8 +115833,8 @@ mLL
 tWQ
 tWQ
 tWQ
-doz
-cFj
+xWL
+rQU
 ntS
 oBo
 bCN
@@ -116854,7 +116881,7 @@ doz
 doz
 mBX
 kej
-aec
+jAr
 rmU
 gBJ
 fns
@@ -117882,7 +117909,7 @@ doz
 doz
 rmU
 eVz
-edm
+cZM
 xeU
 tlF
 tlF
@@ -118140,7 +118167,7 @@ doz
 rmU
 rxh
 aec
-xeU
+fQZ
 edm
 tlF
 rmU
@@ -180321,7 +180348,7 @@ gPr
 vRs
 uAa
 bIX
-tYD
+xGA
 xPx
 kOv
 xzU
@@ -180578,7 +180605,7 @@ vRs
 gpb
 lLN
 bIX
-tYD
+xGA
 xPx
 lUw
 qGi
@@ -181600,15 +181627,15 @@ cfd
 gpb
 hwp
 fCJ
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
 tYD
 tYD
 tYD
@@ -181857,15 +181884,15 @@ vRs
 vRs
 obs
 fCJ
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
 tYD
 tYD
 tYD
@@ -182114,15 +182141,15 @@ ivT
 mmm
 tlX
 fCJ
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
 tYD
 tYD
 tYD
@@ -182371,15 +182398,15 @@ oSt
 cfd
 pCd
 fCJ
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
 tYD
 tYD
 tYD
@@ -182628,15 +182655,15 @@ xPx
 bhR
 snj
 fCJ
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
 tYD
 tYD
 tYD
@@ -182885,15 +182912,15 @@ xPx
 vRs
 hxF
 fCJ
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
 tYD
 tYD
 tYD
@@ -183142,15 +183169,15 @@ xPx
 aRB
 tLK
 fCJ
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
-tYD
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
+xGA
 tYD
 tYD
 tYD
@@ -183659,7 +183686,7 @@ xPx
 sWW
 htD
 jFh
-jFh
+hsX
 jFh
 jFh
 jFh
@@ -183918,9 +183945,9 @@ htD
 jFh
 jFh
 pIJ
+hsX
 jFh
-jFh
-foq
+rnA
 jJz
 apZ
 ifO
@@ -184172,7 +184199,7 @@ bpR
 xPx
 tOM
 htD
-jFh
+hsX
 jFh
 jFh
 jFh
@@ -184686,7 +184713,7 @@ bsm
 fXg
 aSC
 kBN
-uts
+jFi
 uts
 uts
 uts
@@ -184945,7 +184972,7 @@ cIg
 kGz
 jFh
 jFh
-jFh
+hsX
 jFh
 jFh
 jFh
@@ -185202,10 +185229,10 @@ rtU
 kGz
 jFh
 jFh
-jFh
+hsX
 pIJ
 jFh
-jFh
+hsX
 jFh
 jFh
 hsX
@@ -187763,7 +187790,7 @@ luq
 fXG
 tiH
 qyl
-aaa
+qWd
 sPI
 msp
 lDb
@@ -196750,7 +196777,7 @@ lmV
 tYD
 pvq
 jbs
-aab
+xfc
 fQC
 nYn
 kzO
@@ -217046,13 +217073,13 @@ tYD
 tYD
 tYD
 tYD
-upb
-obL
-obL
-cWf
-obL
-obL
-obL
+nNb
+hgS
+hgS
+kUQ
+hgS
+hgS
+hgS
 hgS
 hgS
 hgS
