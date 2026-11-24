@@ -32,9 +32,15 @@
 /datum/preference_middleware/jobs/proc/set_job_to_profile(list/params, mob/user)
 	var/job_title = params["job"]
 	var/profile_slot = params["profile"]
-	var/datum/job/job = SSjob.get_job(job_title)
-	if (!job || job.faction != FACTION_STATION || !isnum(profile_slot))
+	if (!istext(job_title) || !isnum(profile_slot))
 		return FALSE
+	var/datum/job/job = SSjob.get_job(job_title)
+	if (!job)
+		return FALSE
+	if (job.faction != FACTION_STATION)
+		var/datum/job/away_mission/away_job = job
+		if (!istype(away_job) || !SSmapping.current_map?.space_overmap || !away_job.get_away_mission())
+			return FALSE
 	if (profile_slot == -1)
 		LAZYREMOVE(preferences.job_assigned_profiles, job_title)
 		LAZYREMOVE(preferences.pref_job_slots, job_title)

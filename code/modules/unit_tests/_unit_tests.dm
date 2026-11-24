@@ -323,6 +323,7 @@
 #include "overmap_argos.dm"
 #include "overmap_docking.dm"
 #include "overmap_generator.dm"
+#include "overmap_nt_patrol.dm"
 #include "overmap_standard_dock.dm"
 #include "overmap_propulsion.dm"
 #include "overmap_plasma.dm"

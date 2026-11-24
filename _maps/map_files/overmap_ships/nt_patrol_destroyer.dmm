@@ -1,0 +1,1421 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/space/basic,
+/area/space)
+"ai" = (
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"an" = (
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
+"ax" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
+"aH" = (
+/obj/machinery/telecomms/allinone/ship,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"aO" = (
+/obj/machinery/computer/stationtrauma_transponder/nt_patrol,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"aR" = (
+/obj/machinery/computer/stationtrauma_space_navigation,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"aS" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"bc" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/warning/radiation/directional/north,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"bh" = (
+/obj/machinery/computer/stationtrauma_bluespace,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"bm" = (
+/obj/machinery/holopad/ship,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"bs" = (
+/obj/effect/landmark/away_mission/nt_patrol_officer,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"bO" = (
+/obj/structure/bed,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"bQ" = (
+/obj/machinery/airalarm/directional/south{
+	req_access = list()
+	},
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"bU" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"ci" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"cI" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/power/apc/auto_name/directional/north{
+	start_charge = 100;
+	req_access = list()
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"di" = (
+/obj/structure/cable/layer1,
+/obj/machinery/power/terminal{
+	dir = 8;
+	cable_layer = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/hidden/layer5{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"dn" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/power/apc/auto_name/directional/north{
+	start_charge = 100;
+	req_access = list()
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"dQ" = (
+/obj/machinery/airalarm/directional/south{
+	req_access = list()
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"ev" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"eN" = (
+/obj/structure/sign/nanotrasen/directional/west,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"fl" = (
+/obj/machinery/suit_storage_unit/spaceruin,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 2
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"fJ" = (
+/obj/structure/cable/layer1,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"gg" = (
+/obj/effect/landmark/away_mission/nt_patrol_officer,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 2
+	},
+/obj/machinery/light/warm/dim/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"gl" = (
+/obj/effect/landmark/away_mission/nt_patrol_officer,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/airalarm/directional/south{
+	req_access = list()
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"gm" = (
+/obj/machinery/door/airlock/security{
+	dir = 4;
+	name = "Оружейная";
+	req_access = list("nt_patrol_armory")
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"gn" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/red/fourcorners,
+/obj/item/shield/riot{
+	pixel_x = -10
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = 10
+	},
+/obj/machinery/power/apc/auto_name/directional/north{
+	start_charge = 100;
+	req_access = list()
+	},
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"gs" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 9
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"gC" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
+	dir = 4
+	},
+/obj/machinery/power/apc/auto_name/directional/north{
+	start_charge = 100;
+	req_access = list()
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"gJ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
+"gK" = (
+/obj/structure/table,
+/obj/machinery/airalarm/directional/north{
+	req_access = list()
+	},
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
+"iU" = (
+/obj/machinery/recharger,
+/obj/effect/turf_decal/tile/red/fourcorners,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"jO" = (
+/obj/structure/cable,
+/obj/machinery/power/smes/ship{
+	input_level = 80000;
+	output_level = 80000
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/hidden/layer5{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"jW" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"kg" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"ko" = (
+/obj/structure/cable/layer1,
+/obj/machinery/atmospherics/components/unary/heat_exchanger/nt_patrol_coolant{
+	dir = 4
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"lb" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"lk" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"lm" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/nt_patrol_coolant{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"mR" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"mV" = (
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"mZ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 6
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"ni" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 2
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"oh" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"os" = (
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"oz" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"oQ" = (
+/obj/machinery/door/airlock{
+	dir = 1;
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"pB" = (
+/obj/structure/cable/layer1,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden/layer5,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"qo" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"qv" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/iron/fifty,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"qD" = (
+/obj/structure/table,
+/obj/item/storage/medkit/regular,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"re" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/power/apc/auto_name/directional/east{
+	start_charge = 100;
+	req_access = list()
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"rh" = (
+/obj/machinery/light/cold/dim/directional/west,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"rm" = (
+/obj/machinery/computer/stationtrauma_engine_console{
+	dir = 2
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"rp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 10
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"rq" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"rw" = (
+/obj/effect/landmark/away_mission/nt_patrol_commander,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"rz" = (
+/obj/structure/cable,
+/obj/machinery/airalarm/directional/north{
+	req_access = list()
+	},
+/obj/effect/turf_decal/tile/red/fourcorners,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"sa" = (
+/obj/machinery/door/airlock/external{
+	dir = 4;
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"se" = (
+/obj/machinery/door/airlock/stationtrauma_docking/ship{
+	dir = 8;
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"ss" = (
+/obj/machinery/power/shuttle_engine/propulsion/standard,
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
+"sv" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/obj/machinery/computer/cryopod,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"sV" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south{
+	start_charge = 100;
+	req_access = list()
+	},
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"tm" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"tn" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"tJ" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"tL" = (
+/obj/structure/cable,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"uJ" = (
+/obj/machinery/airalarm/directional/west{
+	req_access = list()
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"uX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core{
+	active = 1
+	},
+/obj/structure/cable/layer1,
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"vd" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"vE" = (
+/obj/machinery/light/cold/directional/north,
+/obj/effect/turf_decal/tile/red/fourcorners,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"vF" = (
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"vN" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"wh" = (
+/obj/structure/table,
+/obj/item/storage/medkit/regular,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"wJ" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"wS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/north{
+	req_access = list()
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"wZ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"xR" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 2
+	},
+/obj/effect/landmark/away_mission/nt_patrol_engineer,
+/obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"yd" = (
+/obj/machinery/door/airlock{
+	dir = 4;
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"yw" = (
+/obj/machinery/door/airlock/stationtrauma_docking/ship{
+	dir = 4;
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"yT" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"yW" = (
+/obj/machinery/light/small/red/dim/directional/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"zn" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 4
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"zz" = (
+/obj/effect/turf_decal/stripes/box,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"zZ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 5
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"AS" = (
+/obj/machinery/atmospherics/components/tank/tritium{
+	dir = 8;
+	name = "топливный бак (тритий)";
+	starting_pressure_percent = 0.05
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"AX" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/power/apc/auto_name/directional/north{
+	start_charge = 100;
+	req_access = list()
+	},
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
+"Bp" = (
+/obj/effect/landmark/away_mission/nt_patrol_officer,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"BF" = (
+/obj/effect/landmark/away_mission/nt_patrol_officer,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south{
+	start_charge = 100;
+	req_access = list()
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"BI" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"BX" = (
+/obj/docking_port/mobile/stationtrauma_space{
+	name = "Патрульный эсминец НТ";
+	shuttle_id = "nt_patrol_destroyer";
+	ship_class = "medium";
+	area_type = /area/shuttle/stationtrauma_space/nt_patrol;
+	dir = 1;
+	preferred_direction = 1;
+	overmap_x = 380;
+	overmap_y = -120
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"CM" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/engineering{
+	dir = 1;
+	name = "Реакторный отсек";
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/stripes/box,
+/obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"Dl" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"DO" = (
+/obj/machinery/door/airlock{
+	dir = 1;
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"Ei" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 2
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Er" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/hidden/layer5{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"Et" = (
+/obj/machinery/atmospherics/components/binary/pump/on/layer4{
+	dir = 8;
+	target_pressure = 506.625
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"EQ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"Gg" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"HE" = (
+/obj/effect/landmark/away_mission/nt_patrol_officer,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"HL" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"IC" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/departments/bar/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
+"IK" = (
+/obj/structure/bed,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"Js" = (
+/obj/machinery/airalarm/directional/east{
+	req_access = list()
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"JQ" = (
+/obj/machinery/atmospherics/components/unary/ship_engine_heater,
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
+"JR" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"LN" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/warm/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
+"Mb" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"Mj" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"MW" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"NW" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"OE" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"OK" = (
+/obj/structure/closet/radiation,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"OL" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"OV" = (
+/obj/machinery/door/airlock{
+	dir = 4;
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"Pb" = (
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/eguns,
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"Qo" = (
+/obj/structure/cable/layer1,
+/obj/machinery/atmospherics/components/tank/nitrogen/nt_patrol_coolant{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"QL" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/computer/stationtrauma_fusion_monitor{
+	dir = 2
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"QR" = (
+/obj/machinery/atmospherics/components/tank/air/layer2{
+	dir = 8;
+	starting_pressure_percent = 0;
+	name = "waste gas tank"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"Rr" = (
+/obj/effect/landmark/away_mission/nt_patrol_officer,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/departments/security/directional/south,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"RI" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
+	dir = 4
+	},
+/obj/machinery/stationtrauma_bluespace_drive{
+	charges = 2
+	},
+/obj/machinery/light/warm/dim/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"RY" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"Tp" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"Tq" = (
+/obj/structure/bed/medical/anchored,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"TL" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"TO" = (
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"Uc" = (
+/obj/machinery/cryopod/away_mission{
+	dir = 4
+	},
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"Ul" = (
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/disablers,
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"Uz" = (
+/obj/machinery/atmospherics/components/tank/air/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"UP" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"UX" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
+"Vg" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/departments/medbay/directional/south,
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"Vj" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"Vn" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"Wm" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"XH" = (
+/obj/effect/landmark/away_mission/nt_patrol_medic,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/cold/directional/south,
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"XK" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"XR" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4;
+	req_access = list();
+	req_one_access = list()
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/box,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"XX" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
+"Yx" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"Zg" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
+"Zq" = (
+/obj/machinery/suit_storage_unit/spaceruin,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"Zw" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/departments/security/directional/north,
+/obj/effect/turf_decal/tile/red/fourcorners,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"ZP" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"ZV" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+
+(1,1,1) = {"
+aa
+aa
+aa
+yT
+yT
+yT
+kg
+kg
+kg
+kg
+se
+mR
+Zg
+Zg
+Zg
+mR
+Mb
+sa
+Mb
+Mb
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+yT
+ai
+jW
+kg
+Tq
+Uc
+kg
+rq
+vF
+Zg
+XX
+an
+mR
+mV
+zz
+mV
+Mb
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+yT
+ai
+ev
+lb
+kg
+Tq
+bQ
+kg
+oh
+vF
+Zg
+gK
+UX
+mR
+mV
+XR
+mV
+mV
+tJ
+tJ
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+yT
+ai
+ev
+ai
+kg
+wh
+sV
+kg
+EQ
+vF
+Zg
+AX
+ax
+mR
+Zq
+mV
+OK
+Yx
+vN
+JQ
+ss
+"}
+(5,1,1) = {"
+aa
+yT
+rh
+ai
+ai
+ai
+kg
+qD
+XH
+kg
+EQ
+vF
+Zg
+LN
+gJ
+mR
+fl
+wZ
+qo
+dQ
+vN
+JQ
+ss
+"}
+(6,1,1) = {"
+aa
+yT
+ai
+ai
+aH
+ai
+kg
+sv
+Vg
+kg
+EQ
+vF
+Zg
+IC
+an
+mR
+wJ
+re
+qo
+mV
+vN
+JQ
+ss
+"}
+(7,1,1) = {"
+tm
+eN
+ai
+aO
+ai
+ai
+mR
+mR
+yd
+mR
+cI
+vF
+mR
+yd
+mR
+mR
+OV
+MW
+tJ
+tJ
+rp
+zZ
+aa
+"}
+(8,1,1) = {"
+tm
+ai
+aR
+aS
+ai
+ai
+mR
+vF
+UP
+uJ
+TL
+tn
+vd
+UP
+vF
+mR
+NW
+MW
+yW
+os
+bU
+zn
+aa
+"}
+(9,1,1) = {"
+yT
+dn
+Ei
+rw
+Mj
+Mj
+oQ
+JR
+JR
+JR
+XK
+BX
+JR
+JR
+JR
+DO
+Tp
+CM
+ZV
+uX
+Gg
+vN
+aa
+"}
+(10,1,1) = {"
+tm
+ai
+bh
+aS
+ai
+ai
+mR
+vF
+UP
+RY
+EQ
+Vn
+vF
+UP
+vF
+mR
+xR
+bc
+HL
+fJ
+bU
+zn
+aa
+"}
+(11,1,1) = {"
+tm
+Js
+ai
+bm
+ai
+ai
+mR
+mR
+yd
+mR
+Dl
+vF
+mR
+gm
+mR
+mR
+wS
+QL
+tL
+ko
+mZ
+gs
+aa
+"}
+(12,1,1) = {"
+aa
+yT
+ai
+ai
+ai
+ai
+BI
+Wm
+Rr
+BI
+EQ
+vF
+OE
+Zw
+OL
+mR
+gC
+ZP
+jO
+pB
+vN
+JQ
+ss
+"}
+(13,1,1) = {"
+aa
+yT
+ai
+ai
+ai
+ai
+BI
+gg
+bs
+BI
+EQ
+vF
+OE
+gn
+Vj
+mR
+RI
+ci
+di
+Qo
+vN
+JQ
+ss
+"}
+(14,1,1) = {"
+aa
+aa
+yT
+ai
+ev
+lb
+BI
+HE
+gl
+BI
+EQ
+vF
+OE
+rz
+Ul
+mR
+AS
+ci
+Er
+lm
+vN
+JQ
+ss
+"}
+(15,1,1) = {"
+aa
+aa
+yT
+ai
+ev
+lb
+BI
+Bp
+BF
+BI
+oh
+vF
+OE
+vE
+Ul
+mR
+ni
+QR
+TO
+Et
+tJ
+tJ
+aa
+"}
+(16,1,1) = {"
+aa
+aa
+aa
+yT
+ai
+lk
+BI
+IK
+bO
+BI
+rq
+vF
+OE
+iU
+Pb
+mR
+rm
+oz
+qv
+Uz
+tJ
+aa
+aa
+"}
+(17,1,1) = {"
+aa
+aa
+aa
+yT
+yT
+yT
+BI
+BI
+BI
+BI
+yw
+mR
+OE
+OE
+OE
+mR
+tJ
+tJ
+tJ
+tJ
+aa
+aa
+aa
+"}

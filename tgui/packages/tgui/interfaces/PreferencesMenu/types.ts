@@ -170,6 +170,7 @@ export type CharacterPreferencesData = {
   misc: {
     gender: Gender;
     joblessrole: JoblessRole;
+    away_mission_role?: Record<string, JobPriority>;
     species: string;
     loadout_list: LoadoutList;
     job_clothes: BooleanLike;
@@ -200,6 +201,11 @@ export type PreferencesMenuData = {
     }
   >;
   job_preferences: JobPreference[];
+  away_missions?: {
+    name: string;
+    color: string;
+    roles: { title: string; description: string; slots: number }[];
+  }[];
 
   keybindings: Record<string, string[]>;
   overflow_role: string;

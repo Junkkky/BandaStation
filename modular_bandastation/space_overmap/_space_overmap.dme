@@ -50,6 +50,8 @@
 #include "code/console.dm"
 #include "code/admin.dm"
 #include "code/startup.dm"
+#include "code/away_missions.dm"
+#include "code/nt_patrol_ship.dm"
 #include "code/parallax.dm"
 #include "code/exterior_drift.dm"
 #include "code/trade_hub.dm"

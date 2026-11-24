@@ -4,15 +4,24 @@
 
 GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
+/// The off-station group participates in the latejoin selector only.
+/datum/latejoin_menu/proc/get_departments()
+	if(SSmapping.current_map?.space_overmap && SSstationtrauma_space_voyage.initialized)
+		return SSjob.joinable_departments + SSjob.get_away_mission_department()
+	return SSjob.joinable_departments
+
 /// The native selector uses the same availability and spawn path as the TGUI menu.
 /datum/latejoin_menu/proc/fallback_ui(mob/dead/new_player/user)
 	var/client/requester = user?.client
 	var/datum/mind/request_mind = user?.mind
 	var/editing_slot = requester?.prefs?.default_slot
-	if(!user?.check_latejoin_request(requester, request_mind, editing_slot))
+	if(!user?.check_latejoin_request(requester, request_mind, editing_slot, skip_arrivals_checks = TRUE))
 		return
 	var/list/jobs = list()
-	for(var/datum/job/job as anything in SSjob.joinable_occupations)
+	var/list/role_choices = SSjob.joinable_occupations.Copy()
+	for(var/datum/job_department/away_missions/away in get_departments())
+		role_choices |= away.department_jobs
+	for(var/datum/job/job as anything in role_choices)
 		var/availability = user.IsJobUnavailable(job.title, latejoin = TRUE)
 		if(!user?.is_latejoin_request_current(requester, request_mind, editing_slot))
 			return
@@ -76,7 +85,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 		if(prioritized_job.current_positions >= prioritized_job.total_positions)
 			SSjob.prioritized_jobs -= prioritized_job
 
-	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
+	for(var/datum/job_department/department as anything in get_departments())
 		var/list/department_jobs = list()
 		var/list/department_data = list(
 			"jobs" = department_jobs,
@@ -124,7 +133,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 	var/static/list/premium_job_icons = list()
 	var/list/departments = list()
 
-	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
+	for(var/datum/job_department/department as anything in get_departments())
 		var/list/department_jobs = list()
 		var/list/department_data = list(
 			"jobs" = department_jobs,
@@ -170,9 +179,9 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			var/client/requester = owner.client
 			var/datum/mind/request_mind = owner.mind
 			var/editing_slot = requester.prefs.default_slot
-			if(params["edit_slot"] != editing_slot || !owner.check_latejoin_request(requester, request_mind, editing_slot))
-				return TRUE
 			var/job_title = params["job"]
+			if(params["edit_slot"] != editing_slot || !owner.check_latejoin_request(requester, request_mind, editing_slot, skip_arrivals_checks = job_title != "Random"))
+				return TRUE
 			if(job_title == "Random")
 				job_title = get_random_job(owner)
 			if(istext(job_title) && owner?.is_latejoin_request_current(requester, request_mind, editing_slot))

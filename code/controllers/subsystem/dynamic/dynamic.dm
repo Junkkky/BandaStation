@@ -114,6 +114,8 @@ SUBSYSTEM_DEF(dynamic)
 	// anyone who was readied up and NOT unassigned is a potential candidate (even those who have no antag preferences)
 	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list - SSjob.unassigned)
 		if(player.ready == PLAYER_READY_TO_PLAY && player.mind)
+			if(is_unassigned_job(player.mind.assigned_role) && player.client?.prefs.has_away_job_preferences())
+				continue
 			antag_candidates += player
 
 	// anyone unassigned are potential antag rollers, so we need to warn them

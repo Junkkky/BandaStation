@@ -34,6 +34,7 @@ type PriorityButtonProps = {
   name: string;
   position: number;
   modifier?: string;
+  accessibleName?: string;
   selected: boolean;
   onClick: () => void;
 };
@@ -43,6 +44,11 @@ function PriorityButton(props: PriorityButtonProps) {
   const positionVariable = {
     '--button-position': props.position,
   } as CSSProperties;
+  const accessibility = {
+    role: 'button',
+    'aria-label': props.accessibleName,
+    'aria-pressed': props.selected,
+  };
 
   return (
     <Button
@@ -52,6 +58,7 @@ function PriorityButton(props: PriorityButtonProps) {
         props.selected && 'selected',
       ])}
       style={positionVariable}
+      {...accessibility}
       onClick={props.onClick}
     >
       {props.name}
@@ -95,12 +102,15 @@ function createCreateSetPriorityFromName(jobName: string): CreateSetPriority {
 
 type PriorityButtonsProps = {
   createSetPriority: CreateSetPriority;
-  isOverflow: boolean;
+  isOverflow?: boolean;
+  jobTitle?: string;
   priority: JobPriority | null;
 };
 
-function PriorityButtons(props: PriorityButtonsProps) {
-  const { createSetPriority, isOverflow, priority } = props;
+export function PriorityButtons(props: PriorityButtonsProps) {
+  const { createSetPriority, isOverflow, jobTitle, priority } = props;
+  const priorityName = (level: string) =>
+    jobTitle ? `${jobTitle} — ${level}` : undefined;
 
   return (
     <Stack className="PreferencesMenu__Priority">
@@ -128,6 +138,7 @@ function PriorityButtons(props: PriorityButtonsProps) {
             name="Откл."
             modifier="off"
             position={3}
+            accessibleName={priorityName('Отключено')}
             selected={!priority}
             onClick={createSetPriority(null)}
           />
@@ -136,6 +147,7 @@ function PriorityButtons(props: PriorityButtonsProps) {
             name="Низк."
             modifier="low"
             position={2}
+            accessibleName={priorityName('Низкий приоритет')}
             selected={priority === JobPriority.Low}
             onClick={createSetPriority(JobPriority.Low)}
           />
@@ -144,6 +156,7 @@ function PriorityButtons(props: PriorityButtonsProps) {
             name="Сред."
             modifier="mid"
             position={1}
+            accessibleName={priorityName('Средний приоритет')}
             selected={priority === JobPriority.Medium}
             onClick={createSetPriority(JobPriority.Medium)}
           />
@@ -152,6 +165,7 @@ function PriorityButtons(props: PriorityButtonsProps) {
             name="Выс."
             modifier="high"
             position={0}
+            accessibleName={priorityName('Высокий приоритет')}
             selected={priority === JobPriority.High}
             onClick={createSetPriority(JobPriority.High)}
           />

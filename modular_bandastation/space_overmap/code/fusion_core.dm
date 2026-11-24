@@ -1,3 +1,8 @@
+/// Maximum cooling of a connected, cold secondary loop, in percentage points of core heat per second.
+#define ST_CORE_COOLING_RATE 0.65
+/// Thermal energy sent to the coolant for each percentage point taken from the core.
+#define ST_CORE_COOLING_JOULES 8000
+
 /** Circuit board for the ship fusion core. */
 /obj/item/circuitboard/machine/stationtrauma_fusion_core
 	name = "термоядерное ядро"
@@ -250,6 +255,10 @@
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/examine(mob/user)
 	. = ..()
 	. += span_notice(connection_description)
+	var/obj/machinery/atmospherics/components/unary/heat_exchanger/exchanger = find_coolant_exchanger()
+	if(exchanger)
+		var/datum/gas_mixture/coolant = exchanger.airs[1]
+		. += span_notice(coolant.total_moles() ? "Температура теплоносителя: [round(coolant.temperature - T0C, 0.1)] °C. Для отвода тепла нужен теплоноситель холоднее 20 °C." : "В контуре охлаждения нет теплоносителя.")
 
 /** Hand the outlet line's converters to this core and pair each with its nozzle; called on hookup and start, never per tick. */
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/proc/bind_converters()
@@ -292,7 +301,10 @@
 	var/heating = max(0, output - 1) * ST_CORE_OVERLOAD_HEATING
 	if(overdrive_active())
 		heating += 100 / ST_CORE_OVERDRIVE_ENDURANCE
-	heat = clamp(heat + (heating || -50 / ST_CORE_OVERDRIVE_ENDURANCE) * seconds_per_tick, 0, ST_CORE_MELTDOWN_HEAT)
+	var/pending_heat = max(0, heat + (heating || -50 / ST_CORE_OVERDRIVE_ENDURANCE) * seconds_per_tick)
+	if(pending_heat > 0)
+		pending_heat -= cool_core(pending_heat, seconds_per_tick)
+	heat = min(pending_heat, ST_CORE_MELTDOWN_HEAT)
 	if(heat >= 100 && interlock && !tripped)
 		trip()
 	else if(tripped && heat <= 0)
@@ -315,6 +327,30 @@
 	if(ship?.engines_running && overdrive_active() && ship.overmap?.commanded_thrust() > 0)
 		rumble_crew(ship)
 	refresh_effects()
+
+/// A lateral exchanger faces away from the casing and stays on the secondary coolant layer when the hull rotates.
+/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/proc/find_coolant_exchanger()
+	for(var/side in list(turn(dir, 90), turn(dir, -90)))
+		var/turf/port = get_ranged_target_turf(src, side, port_reach)
+		for(var/obj/machinery/atmospherics/components/unary/heat_exchanger/exchanger in port)
+			if(exchanger.dir == side && exchanger.piping_layer == PIPING_LAYER_MAX && exchanger.anchored && !QDELETED(exchanger))
+				return exchanger
+	return null
+
+/// Transfer the corresponding energy into the real pipe gas, limited by the coolant's remaining thermal capacity.
+/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/proc/cool_core(available_heat, seconds_per_tick)
+	var/obj/machinery/atmospherics/components/unary/heat_exchanger/exchanger = find_coolant_exchanger()
+	var/datum/pipeline/loop = exchanger?.parents[1]
+	if(!loop || (loop in parents))
+		return 0
+	var/datum/gas_mixture/coolant = exchanger.airs[1]
+	var/capacity = coolant.heat_capacity()
+	if(capacity <= 0 || coolant.temperature >= T20C)
+		return 0
+	var/removed = min(available_heat, ST_CORE_COOLING_RATE * seconds_per_tick, (T20C - coolant.temperature) * capacity / ST_CORE_COOLING_JOULES)
+	coolant.temperature += removed * ST_CORE_COOLING_JOULES / capacity
+	exchanger.update_parents()
+	return removed
 
 /** Neutron reach of the current reaction in tiles; an overheated core reaches further. */
 /obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/proc/radiation_range()

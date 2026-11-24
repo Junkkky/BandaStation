@@ -130,11 +130,12 @@
  * * networks - Pipelines feeding the drive; the list is extended while walking
  * * gases - Gas type to crew-facing name
  *
- * Returns a list of gauges: name, amount in moles and the nominal fill of the connected canisters of that gas.
+ * Returns a list of gauges: name, amount in moles and the nominal fill of the connected storage of that gas.
  */
 /proc/stationtrauma_fuel_gauges(list/networks, list/gases)
 	var/list/mixtures = list()
 	var/list/canisters = list()
+	var/list/tanks = list()
 	for(var/index = 1; index <= length(networks); index++)
 		var/datum/pipeline/network = networks[index]
 		if(!network)
@@ -146,6 +147,8 @@
 			if(istype(component, /obj/machinery/atmospherics/components/binary/pump))
 				if(component.parents[2] == network && component.parents[1])
 					networks |= component.parents[1]
+			else if(istype(component, /obj/machinery/atmospherics/components/tank))
+				tanks |= component
 			else if(istype(component, /obj/machinery/atmospherics/components/unary/portables_connector))
 				var/obj/machinery/atmospherics/components/unary/portables_connector/connector = component
 				if(istype(connector.connected_device, /obj/machinery/portable_atmospherics/canister))
@@ -160,6 +163,9 @@
 		for(var/obj/machinery/portable_atmospherics/canister/canister as anything in canisters)
 			if(canister.gas_type == gas)
 				capacity += canister.maximum_pressure * canister.filled * canister.air_contents.volume / (R_IDEAL_GAS_EQUATION * T20C)
+		for(var/obj/machinery/atmospherics/components/tank/tank as anything in tanks)
+			if(tank.gas_type == gas)
+				capacity += tank.max_pressure * tank.starting_pressure_percent * tank.volume / (R_IDEAL_GAS_EQUATION * T20C)
 		gauges += list(list("name" = gases[gas], "amount" = round(amount, 0.1), "capacity" = round(capacity, 0.1)))
 	return gauges
 

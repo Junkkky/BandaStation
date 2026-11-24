@@ -270,7 +270,7 @@ SUBSYSTEM_DEF(job)
 		if(!player_client?.prefs || !job.can_access_donor_job(player_client))
 			return FALSE
 		if(latejoin)
-			if(player.spawning || !is_unassigned_job(player_mind.assigned_role) || player.get_latejoin_block_message() || !player.has_latejoin_job_capacity(job) || !job.special_check_latejoin(player_client))
+			if(player.spawning || !is_unassigned_job(player_mind.assigned_role) || player.get_latejoin_block_message(skip_arrivals_checks = istype(job, /datum/job/away_mission)) || !player.has_latejoin_job_capacity(job) || !job.special_check_latejoin(player_client))
 				return FALSE
 		else if(job.required_donator_level && job.spawn_positions != -1 && job.current_positions >= job.spawn_positions)
 			return FALSE
@@ -480,6 +480,15 @@ SUBSYSTEM_DEF(job)
 	assign_priority_positions()
 	job_debug("DO: Priority assignment complete")
 
+	var/list/pending_away_templates
+	if(!pure)
+		pending_away_templates = list()
+		assign_roundstart_away_missions(allow_all, pending_away_templates)
+		for(var/mob/dead/new_player/player as anything in unassigned)
+			if(QDELETED(player) || !player.client || !player.is_ready_to_play())
+				unassigned -= player
+				initial_players_to_assign--
+
 	// The overflow role has limitless slots, plus having the Overflow box ticked in prefs should (with one exception) set the priority to JP_HIGH.
 	// So everyone with overflow enabled will get that job. Thus we can assign it immediately to all players that have it enabled.
 	job_debug("DO: Assigning early overflow roles")
@@ -564,9 +573,13 @@ SUBSYSTEM_DEF(job)
 			if(!assign_role(player, get_job_type(overflow_role))) //If everything is already filled, make them an assistant
 				job_debug("DO: Forced antagonist could not be assigned any random job or the overflow role. divide_occupations failed.")
 				job_debug("---------------------------------------------------")
+				for(var/datum/map_template/stationtrauma_space/ship/template as anything in pending_away_templates)
+					template.discard_loaded_ship()
+					qdel(template)
 				run_divide_occupation_pure = FALSE
 				return FALSE //Living on the edge, the forced antagonist couldn't be assigned to overflow role (bans, client age) - just reroll
 	job_debug("DO: Ending handle unrejectable unassigned")
+	QDEL_LIST(pending_away_templates)
 
 	job_debug("All divide occupations tasks completed.")
 	job_debug("---------------------------------------------------")

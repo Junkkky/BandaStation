@@ -9,7 +9,7 @@
 	/// Native centered footprint captured before loading can yield or expand the world.
 	var/loaded_min_x
 	var/loaded_min_y
-	/// Ordered single-deck hulls can reuse a cleaned staging level after a rejected arrival.
+	/// Validated single-deck hulls can reuse a cleaned staging level after a rejected load.
 	var/reuse_dispatch_level = FALSE
 
 /datum/map_template/stationtrauma_space/ship/Destroy()
@@ -35,6 +35,7 @@
 	loaded_min_x = round((world.maxx - width) / 2) + 1
 	loaded_min_y = round((world.maxy - height) / 2) + 1
 	var/datum/space_level/first_level
+	var/reused_deck = FALSE
 	for(var/deck in 1 to depth)
 		var/list/traits = secret ? ZTRAITS_AWAY_SECRET : ZTRAITS_AWAY
 		if(deck > 1)
@@ -46,6 +47,8 @@
 		if(reuse_dispatch_level && depth == 1 && SSstationtrauma_space_voyage.dispatch_staging_level)
 			level = SSmapping.get_level(SSstationtrauma_space_voyage.dispatch_staging_level)
 			SSstationtrauma_space_voyage.dispatch_staging_level = null
+			reused_deck = TRUE
+			clear_atmos_for_load(locate(loaded_min_x, loaded_min_y, level.z_value))
 		else
 			level = SSmapping.add_new_zlevel(level_name, traits, contain_turfs = FALSE)
 		loaded_levels += level.z_value
@@ -62,7 +65,7 @@
 		first_level.z_value,
 		no_changeturf = (SSatoms.initialized == INITIALIZATION_INSSATOMS),
 		place_on_top = should_place_on_top,
-		new_z = TRUE,
+		new_z = !reused_deck,
 	)
 	var/list/bounds = parsed?.bounds
 	if(!bounds)
@@ -142,9 +145,9 @@
 	require_area_resort()
 
 /** Keep loading and optional midround sector attachment inside the same rejected-template cleanup boundary. */
-/proc/load_stationtrauma_space_ship(map_path, attach_to_sector = FALSE, datum/callback/place_ship)
+/proc/load_stationtrauma_space_ship(map_path, attach_to_sector = FALSE, datum/callback/place_ship, datum/callback/validate_ship, list/pending_templates)
 	var/datum/map_template/stationtrauma_space/ship/template = new(map_path, "Overmap ship")
-	template.reuse_dispatch_level = !!place_ship
+	template.reuse_dispatch_level = !!(place_ship || validate_ship)
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
 	try
 		vessel = template.load_ship()
@@ -167,6 +170,10 @@
 				if(!(vessel.z in template.loaded_levels))
 					template.reuse_dispatch_level = FALSE
 				vessel = null
+		if(vessel && validate_ship && !validate_ship.Invoke(vessel))
+			if(!(vessel.z in template.loaded_levels))
+				template.reuse_dispatch_level = FALSE
+			vessel = null
 	catch(var/exception/failure)
 		if(vessel && !(vessel.z in template.loaded_levels))
 			template.reuse_dispatch_level = FALSE
@@ -175,7 +182,10 @@
 		throw failure
 	if(!vessel)
 		template.discard_loaded_ship()
-	qdel(template)
+	if(vessel && pending_templates)
+		pending_templates += template
+	else
+		qdel(template)
 	return vessel
 
 /datum/controller/subsystem/stationtrauma_space_voyage
@@ -194,7 +204,7 @@
 	return choices
 
 /** Reuse a live template instance or load and attach it after sectors are ready. */
-/datum/controller/subsystem/stationtrauma_space_voyage/proc/load_ship_template(map_path)
+/datum/controller/subsystem/stationtrauma_space_voyage/proc/load_ship_template(map_path, datum/callback/validate_ship, list/pending_templates)
 	var/allowed = FALSE
 	var/list/choices = ship_template_choices()
 	for(var/label in choices)
@@ -207,7 +217,9 @@
 		if(vessel.source_template == map_path)
 			var/datum/stationtrauma_overmap/space/navigation = vessel.overmap
 			var/datum/stationtrauma_overmap_sector/space/sector = navigation?.sector
-			return !QDELETED(navigation) && navigation.is_operational() && sector?.ready && sector.ships[vessel.shuttle_id] == navigation ? vessel : null
+			if(QDELETED(navigation) || !navigation.is_operational() || !sector?.ready || sector.ships[vessel.shuttle_id] != navigation)
+				return null
+			return !validate_ship || validate_ship.Invoke(vessel) ? vessel : null
 	for(var/id in sectors)
 		var/datum/stationtrauma_overmap_sector/space/sector = sectors[id]
 		if(!sector.ready)
@@ -215,7 +227,7 @@
 	loading_ship_template = TRUE
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
 	try
-		vessel = load_stationtrauma_space_ship(map_path, attach_to_sector = TRUE)
+		vessel = load_stationtrauma_space_ship(map_path, attach_to_sector = TRUE, validate_ship = validate_ship, pending_templates = pending_templates)
 	catch(var/exception/failure)
 		loading_ship_template = FALSE
 		throw failure

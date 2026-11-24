@@ -319,7 +319,8 @@
 		var/break_counter = 0
 		output += "<div class='row'>"
 
-		for(var/datum/job_department/department as anything in SSjob.joinable_departments)
+		var/list/jobban_departments = SSjob.joinable_departments + SSjob.get_away_mission_department()
+		for(var/datum/job_department/department as anything in jobban_departments)
 			var/label_class = department.get_label_class()
 			var/department_name = department.department_name
 			output += "<div class='column'><label class='rolegroup [label_class]' style='background-color: [department.ui_color];'><input type='checkbox' name='[label_class]' class='hidden' onClick='header_click_all_checkboxes(this)'> \

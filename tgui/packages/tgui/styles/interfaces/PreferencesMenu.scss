@@ -435,6 +435,38 @@
 
 // MARK: JobPage
 .PreferencesMenu {
+  &__JobTabs.Tabs {
+    --tabs-container-background: var(--comp-background);
+    --tab-background: transparent;
+    --tab-background-hover: var(--comp-border);
+    --tab-background-selected: var(--button-background-default);
+    --tab-color: var(--color-text-translucent-light);
+    --tab-color-selected: var(--color-white);
+
+    display: inline-flex;
+    max-width: 100%;
+    gap: var(--space-xs);
+    padding: var(--space-xs);
+    border: var(--border-thickness-tiny) solid var(--comp-border);
+    border-radius: var(--border-radius-medium);
+
+    .Tab {
+      min-height: 2.25em;
+      padding: 0 var(--space-s);
+      border-radius: var(--border-radius-small);
+      font-weight: 600;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  & &__JobTabs .Tab:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: -2px;
+  }
+
   &__Department {
     --text-shadow: 1px 1px 2px hsla(0, 0%, 0%, 0.75);
     --head-color: oklch(from var(--department-color) calc(l * 0.85) c h);
@@ -612,6 +644,150 @@
     }
   }
 
+  &__AwayMission.Section {
+    --department-color: color-mix(
+      in srgb,
+      var(--comp-background),
+      var(--mission-color) 10%
+    );
+
+    background-color: var(--department-color);
+    border: var(--border-thickness-tiny) solid var(--comp-border);
+    border-radius: var(--border-radius-medium);
+
+    .Section__title {
+      padding: var(--space-m) var(--space-ml);
+      background-color: color-mix(
+        in srgb,
+        var(--department-color),
+        var(--mission-color) 20%
+      );
+      border-bottom-color: color-mix(
+        in srgb,
+        var(--comp-border),
+        var(--mission-color) 55%
+      );
+      border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+    }
+  }
+
+  &__AwayRoleList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__AwayRole.PreferencesMenu__Department {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 5.5rem auto;
+    align-items: center;
+    gap: var(--space-ml);
+    padding: var(--space-ml);
+    border: 0;
+    border-radius: 0;
+
+    & + & {
+      border-top: var(--border-thickness-tiny) solid var(--comp-border);
+    }
+
+    &:last-child {
+      border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
+    }
+
+    .options {
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      max-width: none;
+      min-width: calc(4 * (var(--button-width) + var(--button-gap)) + 2.1em);
+      padding: 0;
+    }
+
+    .PreferencesMenu__Priority {
+      flex-wrap: wrap;
+      gap: var(--button-gap);
+    }
+
+    .options .Button--color--default {
+      &::after {
+        background-color: color-mix(
+          in srgb,
+          var(--department-color),
+          var(--comp-border) 65%
+        );
+        outline-color: var(--comp-border);
+      }
+
+      &:hover:not(.selected)::after {
+        background-color: var(--comp-border);
+      }
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--space-s) var(--space-m);
+
+      .options {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+        min-width: 0;
+      }
+    }
+  }
+
+  &__AwayRoleDetails {
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+
+    strong {
+      font-size: 1.083em;
+    }
+
+    p {
+      margin: var(--space-xs) 0 0;
+      color: var(--color-text-translucent-light);
+    }
+  }
+
+  &__AwayRoleSlots,
+  &__AwayRoleRestricted,
+  &__AwayHint {
+    color: var(--color-text-translucent-light);
+  }
+
+  &__AwayRoleSlots {
+    align-self: start;
+    padding-top: var(--space-xs);
+    white-space: nowrap;
+  }
+
+  &__AwayRoleRestricted {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-s);
+  }
+
+  &__AwayHint {
+    max-width: 72ch;
+    padding: var(--space-xs) var(--space-ml);
+    line-height: 1.45;
+  }
+
+  &__AwayMissions .options &__PriorityButton {
+    &:focus-visible::after {
+      outline: 2px solid var(--color-white);
+      outline-offset: -2px;
+    }
+
+    &[aria-pressed='true'] {
+      text-decoration: underline;
+
+      &.mid,
+      &.high {
+        color: var(--color-black);
+      }
+    }
+  }
+
   &__Priority {
     position: relative;
 
@@ -658,7 +834,8 @@
   }
 }
 
-:root:has(.PreferencesMenu__PremiumJobs) .Dropdown__menu--wrapper {
+:root:has(.PreferencesMenu__PremiumJobs, .PreferencesMenu__AwayMissions)
+  .Dropdown__menu--wrapper {
   max-width: calc(100vw - 1rem);
 
   .Dropdown__menu--entry {
