@@ -61,14 +61,14 @@ GLOBAL_DATUM_INIT(help_ui_handler, /datum/help_ui_handler, new)
 
 	switch(action)
 		if("create_ticket")
-			var/ticket_message = trim(params["message"], MAX_MESSAGE_LEN)
+			var/ticket_message = trim(sanitize_text(params["message"]), MAX_MESSAGE_LEN)
 			if(!ticket_message)
 				return FALSE
 
 			var/client/user_client = ui.user.client
 			var/ticket_type_id = params["ticketType"]
 			if(ticket_type_id != TICKET_TYPE_ADMIN && ticket_type_id != TICKET_TYPE_MENTOR)
-				CRASH("Invalid ticket type created by [user_client]. Ticket type: [ticket_type_id]")
+				return FALSE
 
 			if(!isnull(user_client.persistent_client.current_help_ticket))
 				var/active_ticket_id = user_client.persistent_client.current_help_ticket.id

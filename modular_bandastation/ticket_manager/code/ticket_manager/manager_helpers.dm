@@ -1,11 +1,13 @@
 /// Returns `/datum/help_ticket` by id from `all_tickets`
 /datum/ticket_manager/proc/get_help_ticket_by_id(help_ticket_id)
-	if(!help_ticket_id)
+	if(!isnum(help_ticket_id))
 		return null
 
 	return all_tickets[help_ticket_id]
 
 /datum/ticket_manager/proc/can_send_message(client/user, datum/help_ticket/needed_ticket)
+	if(!needed_ticket?.has_user_access(user))
+		return FALSE
 	if(needed_ticket.state != TICKET_OPEN)
 		to_chat(
 			user,
@@ -117,16 +119,17 @@
 /// Will send chat message about new ticket message to admin, if reply from ticket initiator
 /// and message to player if replies someone from admins
 /datum/ticket_manager/proc/add_ticket_message(client/sender, datum/help_ticket/needed_ticket, message)
-	if(!sender || !message || !needed_ticket)
-		CRASH("Invalid arguments passed to ticket_manager add_ticket_message()!")
+	message = trim(sanitize_text(message), MAX_MESSAGE_LEN)
+	if(!message || !can_send_message(sender, needed_ticket))
+		return FALSE
 
-	if(sender.holder)
+	if(needed_ticket.has_staff_access(sender))
 		link_admin_to_ticket(sender, needed_ticket)
 	else
 		COOLDOWN_START(sender, ticket_response, TICKET_REPLY_COOLDOWN)
 
 	var/client/initiator = needed_ticket.get_initiator_client()
-	if(sender.key != initiator.key && !needed_ticket.admin_replied)
+	if(sender != initiator && !needed_ticket.admin_replied)
 		needed_ticket.admin_replied = TRUE
 
 	if(sender == initiator)
@@ -144,8 +147,8 @@
 	deltimer(needed_ticket.ticket_autoclose_timer_id)
 	if(needed_ticket.ticket_type_hidden != TICKET_TYPE_HIDDEN_PM)
 		needed_ticket.ticket_autoclose_timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/ticket_manager, autoclose_ticket), needed_ticket), TICKET_AUTOCLOSE_TIMER, TIMER_STOPPABLE)
-
 	SStgui.update_uis(src)
+	return TRUE
 
 /// Changes ticket state. Allowed new states: TICKET_OPEN, TICKET_CLOSED, TICKET_RESOLVED
 /datum/ticket_manager/proc/set_ticket_state(client/admin, datum/help_ticket/needed_ticket, new_state)
@@ -183,7 +186,7 @@
 	else
 		if(initiator.current_help_ticket)
 			if(admin)
-				to_chat(admin, span_danger("[key_name(initiator.ckey)] уже имеет открытый тикет!"), MESSAGE_TYPE_ADMINPM)
+				to_chat(admin, span_danger("[html_encode(key_name(initiator.ckey))] уже имеет открытый тикет!"), MESSAGE_TYPE_ADMINPM)
 			return
 
 		deltimer(needed_ticket.ticket_autoclose_timer_id)
@@ -260,7 +263,7 @@
 
 /// Send admin ticket reply to player, if he's online. And make some logs for other admins
 /datum/ticket_manager/proc/send_chat_message_to_player(client/admin, datum/help_ticket/needed_ticket, raw_message)
-	var/message = emoji_parse(raw_message)
+	var/message = emoji_parse(check_rights_for(admin, R_SERVER | R_DEBUG) ? raw_message : html_encode(raw_message))
 	var/id = needed_ticket.id
 	var/is_pm = needed_ticket.ticket_type_hidden == TICKET_TYPE_HIDDEN_PM
 
@@ -309,8 +312,8 @@
 	if(is_pm)
 		title = span_class(needed_ticket.get_text_span_class(), ("Ответ на личное сообщение"))
 
-	var/client/linked_admin = needed_ticket.linked_admin.client
-	var/admin_key = needed_ticket.linked_admin.ckey
+	var/client/linked_admin = needed_ticket.linked_admin?.client
+	var/admin_key = needed_ticket.linked_admin?.ckey
 	var/player_key = key_name(player, TRUE, FALSE)
 	if(linked_admin)
 		admin_key = key_name(linked_admin, TRUE, FALSE)
@@ -329,22 +332,22 @@
 	var/log_message = "[message]"
 
 	for(var/client/admin as anything in GLOB.admins)
-		if((linked_admin.key == admin.key) || !needed_ticket.has_user_access(admin))
+		if(linked_admin == admin || !needed_ticket.has_user_access(admin))
 			continue
 
 		to_chat(admin, span_notice("[span_bold(log_prefix)] [log_message]"), MESSAGE_TYPE_ADMINPM)
 
 	log_admin_private("[log_prefix] [log_message]")
 	SEND_SIGNAL(needed_ticket, COMSIG_ADMIN_HELP_REPLIED)
-	SSblackbox.LogAhelp(id, TICKET_AHELP_ACTION_REPLY, message, needed_ticket.linked_admin.ckey, player.ckey)
+	SSblackbox.LogAhelp(id, TICKET_AHELP_ACTION_REPLY, message, needed_ticket.linked_admin?.ckey, player.ckey)
 
 /// Checking existing user ticket, and send message to it IF staff has written something
 /datum/ticket_manager/proc/open_ticket(client/staff, datum/help_ticket/target_ticket, message)
 	if(!target_ticket?.has_user_access(staff))
 		return FALSE
 
-	if(message)
-		add_ticket_message(staff, target_ticket, message)
+	if(message && !add_ticket_message(staff, target_ticket, message))
+		return FALSE
 
 	staff.ticket_to_open = target_ticket.id
 	ui_interact(staff.mob)

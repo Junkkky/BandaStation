@@ -177,3 +177,27 @@
 		remaining_areas -= other_area
 		ASYNC
 			crawl_area(other_area)
+
+/// Threshold edits from the air alarm UI accept numeric values, including the disable sentinel.
+/datum/unit_test/air_alarm_threshold_input/Run()
+	var/obj/machinery/airalarm/alarm = allocate(/obj/machinery/airalarm)
+	alarm.buildstage = AIR_ALARM_BUILD_COMPLETE
+	alarm.locked = FALSE
+	var/mob/living/carbon/human/operator = allocate(/mob/living/carbon/human/consistent)
+	var/datum/tgui/ui = allocate(/datum/tgui, operator, alarm, "AirAlarm")
+	var/datum/tlv/pressure = alarm.tlv_collection["pressure"]
+	var/list/settings = list("threshold" = "pressure", "threshold_type" = TLV_VAR_WARNING_MIN, "value" = 12.5)
+	alarm.ui_act("set_threshold", settings, ui)
+	TEST_ASSERT_EQUAL(pressure.warning_min, 12.5, "A numeric threshold should be applied.")
+	settings["value"] = "offline"
+	alarm.ui_act("set_threshold", settings, ui)
+	TEST_ASSERT_EQUAL(pressure.warning_min, 12.5, "Text should leave the current threshold intact.")
+	settings["threshold_type"] = "unknown"
+	alarm.ui_act("reset_threshold", settings, ui)
+	TEST_ASSERT_EQUAL(pressure.warning_min, 12.5, "An unknown threshold selector should be ignored.")
+	settings["threshold_type"] = TLV_VAR_ALL
+	settings["value"] = TLV_VALUE_IGNORE
+	alarm.ui_act("set_threshold", settings, ui)
+	TEST_ASSERT_EQUAL(pressure.hazard_max, TLV_VALUE_IGNORE, "Disabling all thresholds should include the high hazard limit.")
+	alarm.ui_act("reset_threshold", settings, ui)
+	TEST_ASSERT_EQUAL(pressure.warning_min, initial(pressure.warning_min), "Reset should restore the original pressure threshold.")

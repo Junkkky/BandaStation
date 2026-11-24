@@ -17,7 +17,7 @@ GLOBAL_PROTECT(player_antag_episodes_cache)
 		return 0
 
 	var/alist/cache = GLOB.player_antag_episodes_cache;
-	var/cache_key = jointext(sort_list(tracked_antagonists), ",")
+	var/cache_key = json_encode(sort_list(tracked_antagonists))
 	cache[cache_key] = (cache_key in cache) ? cache[cache_key] : alist()
 	cache[cache_key][days_back] = (days_back in cache[cache_key]) ? cache[cache_key][days_back] : alist()
 
@@ -28,9 +28,14 @@ GLOBAL_PROTECT(player_antag_episodes_cache)
 	if(!SSdbcore.Connect())
 		return 0
 
+	var/list/arguments = list("ckey" = ckey, "days_back" = days_back)
 	var/tracked_antagonists_clause = "TRUE"
 	if(length(tracked_antagonists))
-		tracked_antagonists_clause = "antagonist.antagonist_type IN (\"[jointext(tracked_antagonists, "\", \"")]\")"
+		var/list/role_parameters = list()
+		for(var/i in 1 to length(tracked_antagonists))
+			arguments["role[i]"] = tracked_antagonists[i]
+			role_parameters += ":role[i]"
+		tracked_antagonists_clause = "antagonist.antagonist_type IN ([role_parameters.Join(", ")])"
 
 	var/datum/db_query/query = SSdbcore.NewQuery({"
 		SELECT COUNT(*) as role_count
@@ -46,10 +51,7 @@ GLOBAL_PROTECT(player_antag_episodes_cache)
 			AND f.datetime >= NOW() - INTERVAL :days_back DAY
 			AND antagonist.ckey_field = :ckey
 			AND [tracked_antagonists_clause]
-	"}, list(
-		"days_back" = days_back,
-		"ckey" = ckey
-	))
+	"}, arguments)
 
 	if(!query.Execute())
 		qdel(query)

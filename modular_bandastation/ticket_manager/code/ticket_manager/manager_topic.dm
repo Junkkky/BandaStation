@@ -40,7 +40,8 @@
 		remove_from_ticket_writers(user, needed_ticket)
 		return
 
-	add_ticket_message(user, needed_ticket, message)
+	if(!add_ticket_message(user, needed_ticket, message))
+		remove_from_ticket_writers(user, needed_ticket)
 
 /datum/ticket_manager/proc/topic_resolve_ticket(client/user, ticket_id)
 	close_or_resolve_ticket(user, ticket_id, resolve = TRUE)
@@ -55,7 +56,7 @@
 
 	if(!needed_ticket.has_staff_access(user))
 		to_chat(user, "Вы не можете изменять статус этого тикета!")
-		message_admins("[key_name(user)] попытался закрыть/решить тикет #[ticket_id], с которым не имеет права взаимодействовать. Возможен href эксплоит!")
+		message_admins("[key_name_admin(user)] попытался закрыть/решить тикет #[ticket_id], с которым не имеет права взаимодействовать. Возможен href эксплоит!")
 		stack_trace("Possible HREF exploit attempt by [key_name(user)]! Tried to interact with ticket #[ticket_id].")
 		return
 
@@ -75,7 +76,7 @@
 
 	if(!needed_ticket.has_user_access(user.client))
 		to_chat(user, custom_boxed_message("red_box", "Вы не можете взаимодействовать с этим тикетом!"))
-		message_admins("[key_name(user)] попытался взаимодействовать с тикетом #[ticket_id]], с которым не имеет права взаимодействовать. Возможен href эксплоит!")
+		message_admins("[key_name_admin(user)] попытался взаимодействовать с тикетом #[ticket_id], с которым не имеет права взаимодействовать. Возможен href эксплоит!")
 		return FALSE
 
 	return TRUE

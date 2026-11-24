@@ -237,6 +237,7 @@
 #include "greyscale_config.dm"
 #include "hallucination_icons.dm"
 #include "held_slowdown.dm"
+#include "help_ticket.dm"
 #include "heretic_knowledge.dm"
 #include "heretic_rituals.dm"
 #include "high_five.dm"

@@ -192,7 +192,10 @@ GLOBAL_PROTECT(href_token)
 	if (!SSdbcore.IsConnected())
 		return null
 
-	var/datum/db_query/feedback_query = SSdbcore.NewQuery("SELECT feedback FROM [format_table_name(CONFIG_GET(string/admin_table))] WHERE ckey = '[owner.ckey]'") // BANDASTATION EDIT - Prime Admins
+	var/datum/db_query/feedback_query = SSdbcore.NewQuery(
+		"SELECT feedback FROM [format_table_name(CONFIG_GET(string/admin_table))] WHERE ckey = :ckey",
+		list("ckey" = owner.ckey),
+	)
 
 	if(!feedback_query.Execute())
 		log_sql("Error retrieving feedback link for [src]")

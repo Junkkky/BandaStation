@@ -53,3 +53,9 @@
 
 	TEST_ASSERT(findtext(key_name_admin(subject), "Ada &amp; Bea"), "The HTML formatter should escape a name even when no PM link can be made.")
 	TEST_ASSERT(findtext(key_name(subject), "Ada & Bea"), "The plain-text formatter should preserve the name.")
+
+/// Existing investigation records keep their readable formatting in the admin browser.
+/datum/unit_test/investigation_log_formatting/Run()
+	var/record = "<b>Station</b><br><span class='warning'>Запись &amp; архив</span><a href='#note'> note</a>"
+	var/rendered = sanitize_investigation_log(record)
+	TEST_ASSERT_EQUAL(rendered, "<b>Station</b><br><span class=\"warning\">Запись &amp; архив</span> note", "Only log formatting and the visible link label should survive.")
