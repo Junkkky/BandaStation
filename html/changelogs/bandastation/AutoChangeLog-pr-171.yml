@@ -1,0 +1,4 @@
+author: "Fullonibus"
+delete-after: True
+changes:
+  - admin: "Через Give Mob Action можно выдать настраиваемый фильтр голоса для TTS."

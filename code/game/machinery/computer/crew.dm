@@ -110,6 +110,9 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_BLUESHIELD = 11,
 		/datum/job/donor/representative_tsf::title = 12,
 		/datum/job/donor/representative_ussp::title = 13,
+		/datum/job/donor/representative_skrell::title = 14,
+		/datum/job/donor/representative_elysium::title = 15,
+		/datum/job/donor/representative_free_sectors::title = 16,
 		// 20-29: Justice
 		JOB_MAGISTRATE = 20,
 		JOB_LAWYER = 21,

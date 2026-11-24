@@ -1,3 +1,44 @@
+/// Observe throw attempts at the real melee boundary, even if a short throw finishes in the same tick.
+/datum/unit_test/baseball_bat_knockback
+	/// Number of throw attempts made against the struck mob.
+	var/throw_attempts = 0
+
+/datum/unit_test/baseball_bat_knockback/proc/on_throw(datum/source, list/throw_args)
+	SIGNAL_HANDLER
+	throw_attempts++
+
+/datum/unit_test/baseball_bat_knockback/Run()
+	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)
+	ADD_TRAIT(user, TRAIT_PERFECT_ATTACKER, TRAIT_SOURCE_UNIT_TESTS)
+	user.set_combat_mode(TRUE)
+	for(var/bat_type in list(/obj/item/melee/baseball_bat, /obj/item/melee/baseball_bat/ablative, /obj/item/melee/baseball_bat/homerun))
+		var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent, get_step(run_loc_floor_bottom_left, EAST))
+		ADD_TRAIT(patient, TRAIT_NEVER_WOUNDED, TRAIT_SOURCE_UNIT_TESTS)
+		RegisterSignal(patient, COMSIG_MOVABLE_PRE_THROW, PROC_REF(on_throw))
+		var/obj/item/melee/baseball_bat/bat = allocate(bat_type)
+		user.put_in_active_hand(bat)
+		click_wrapper(user, patient)
+		TEST_ASSERT(patient.get_brute_loss() > 0, "[bat_type] stopped dealing melee damage.")
+		TEST_ASSERT_EQUAL(throw_attempts, 0, "[bat_type] still threw its melee victim.")
+		user.dropItemToGround(bat)
+
+/// CC's expanded bat must retain its actual throw, not only a configured homerun flag.
+/datum/unit_test/baseball_bat_knockback/centcom/Run()
+	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)
+	user.mind_initialize()
+	user.mind.centcom_role = TRUE
+	ADD_TRAIT(user, TRAIT_PERFECT_ATTACKER, TRAIT_SOURCE_UNIT_TESTS)
+	user.set_combat_mode(TRUE)
+	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human/consistent, get_step(run_loc_floor_bottom_left, EAST))
+	ADD_TRAIT(patient, TRAIT_NEVER_WOUNDED, TRAIT_SOURCE_UNIT_TESTS)
+	RegisterSignal(patient, COMSIG_MOVABLE_PRE_THROW, PROC_REF(on_throw))
+	var/obj/item/melee/baseball_bat/homerun/centcom/bat = allocate(/obj/item/melee/baseball_bat/homerun/centcom)
+	user.put_in_active_hand(bat)
+	bat.attack_self(user)
+	click_wrapper(user, patient)
+	TEST_ASSERT(patient.get_brute_loss() > 0, "CC's expanded bat stopped dealing damage.")
+	TEST_ASSERT(throw_attempts > 0, "CC's expanded bat lost its homerun throw.")
+
 /datum/unit_test/harm_punch/Run()
 	var/mob/living/carbon/human/puncher = allocate(/mob/living/carbon/human/consistent)
 	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
@@ -155,3 +196,26 @@
 	// AI EDIT END
 	victim.soundbang_act(intensity = SOUNDBANG_NORMAL, deafen_pwr = 20 SECONDS)
 	TEST_ASSERT(!HAS_TRAIT_FROM(victim, TRAIT_DEAF, EAR_DAMAGE), "victim has been deafened despite wearing earmuffs")
+
+/datum/unit_test/melee_door_sound/Run()
+	var/turf/west_turf = run_loc_floor_bottom_left
+	var/turf/door_turf = get_step(west_turf, EAST)
+	var/turf/east_turf = get_step(door_turf, EAST)
+	var/turf/north_turf = get_step(door_turf, NORTH)
+	var/obj/machinery/door/airlock/glass/airlock = allocate(/obj/machinery/door/airlock/glass, door_turf)
+	TEST_ASSERT(quiet_impact_path_is_blocked(west_turf, east_turf), "A closed glass airlock let melee sounds through")
+	airlock.set_density(FALSE)
+	TEST_ASSERT(!quiet_impact_path_is_blocked(west_turf, east_turf), "An open glass airlock blocked melee sounds")
+
+	var/obj/machinery/door/window/windoor = allocate(/obj/machinery/door/window, door_turf, EAST)
+	TEST_ASSERT(quiet_impact_path_is_blocked(door_turf, east_turf), "A closed windoor let melee sounds out through its edge")
+	TEST_ASSERT(quiet_impact_path_is_blocked(east_turf, door_turf), "A closed windoor let melee sounds in through its edge")
+	TEST_ASSERT(!quiet_impact_path_is_blocked(door_turf, north_turf), "A closed windoor blocked melee sounds across an unobstructed edge")
+	windoor.set_density(FALSE)
+	TEST_ASSERT(!quiet_impact_path_is_blocked(door_turf, east_turf), "An open windoor blocked melee sounds")
+
+	var/floor_type = door_turf.type
+	var/turf/wall = door_turf.ChangeTurf(/turf/closed/wall)
+	var/blocks_sound = quiet_impact_path_is_blocked(west_turf, east_turf)
+	wall.ChangeTurf(floor_type)
+	TEST_ASSERT(blocks_sound, "A wall let melee sounds through")

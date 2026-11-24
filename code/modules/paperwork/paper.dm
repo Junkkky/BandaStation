@@ -296,6 +296,8 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 		return UI_CLOSE
 	if(!user.can_read(src))
 		return UI_CLOSE
+	if(istype(loc, /obj/structure/detectiveboard))
+		return min(GLOB.physical_state.can_use_topic(loc, user), UI_UPDATE)
 	if(ismovable(loc) && loc.IsContainedAtomAccessible(src, user))
 		return UI_INTERACTIVE
 	return ..()
@@ -501,6 +503,8 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 		ui_interact(user)
 
 /obj/item/paper/proc/get_viewer_writing_implement_details(mob/living/user)
+	if(istype(loc, /obj/structure/detectiveboard))
+		return null
 	if(istype(loc, /obj/structure/noticeboard))
 		var/obj/structure/noticeboard/noticeboard = loc
 		if(!noticeboard.allowed(user))
@@ -597,8 +601,8 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 
 /obj/item/paper/ui_act(action, params, datum/tgui/ui)
 	. = ..()
-	if(.)
-		return
+	if(. || istype(loc, /obj/structure/detectiveboard))
+		return TRUE
 
 	var/mob/user = ui.user
 
@@ -676,11 +680,19 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 			// Safe to assume there are writing implement details as user.can_write(...) fails with an invalid writing implement.
 			var/writing_implement_data = holding.get_writing_implement_details()
 
-			var/datum/paper_input/target_paper_input = locate(params["paper_input_ref"])
-			var/field_id = text2num(params["field_id"])
-
 			var/successful_input = FALSE
-			if(istype(target_paper_input) && field_id)
+			var/input_ref = params["paper_input_ref"]
+			if(!isnull(input_ref) || !isnull(params["field_id"]))
+				var/field_id = text2num(params["field_id"])
+				if(!istext(input_ref) || !isnum(field_id) || field_id < 1 || !ISINTEGER(field_id))
+					return FALSE
+				var/datum/paper_input/target_paper_input
+				for(var/datum/paper_input/root as anything in raw_text_inputs)
+					target_paper_input = root.find_input_by_ref(input_ref)
+					if(target_paper_input)
+						break
+				if(!target_paper_input)
+					return FALSE
 				successful_input = add_raw_text_to_input_field(target_paper_input, field_id, paper_input, writing_implement_data, user)
 			else
 				successful_input = add_raw_text(
@@ -795,6 +807,16 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 		UNTYPED_LIST_ADD(children_as_lists, child.to_list(include_ref))
 
 	return children_as_lists
+
+/// Finds an input by ref within this paper's input tree.
+/datum/paper_input/proc/find_input_by_ref(input_ref)
+	if(REF(src) == input_ref)
+		return src
+	for(var/datum/paper_input/child as anything in children)
+		var/datum/paper_input/match = child.find_input_by_ref(input_ref)
+		if(match)
+			return match
+	return null
 
 /datum/paper_input/proc/add_child_to_field(datum/paper_input/new_child, input_field_id)
 	var/regex/input_field_regex = new(@"\[input_field(?:\]|\s+autofill_type=\w+\])", "gm")

@@ -144,7 +144,7 @@
 		attacker,
 	)
 	to_chat(attacker, span_danger("You [sweeping_language] sweep [defender]!"))
-	playsound(attacker, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
+	playsound_quiet_impact(attacker, 'sound/effects/hit_kick.ogg', 50)
 
 	if(tail_sweeping)
 		attacker.emote("spin")
@@ -164,7 +164,7 @@
 		attacker,
 	)
 	to_chat(attacker, span_danger("You pound [defender] on the chest!"))
-	playsound(attacker, 'sound/effects/hit_punch.ogg', 50, TRUE, -1)
+	playsound_quiet_impact(attacker, 'sound/effects/hit_punch.ogg', 50)
 	if(defender.losebreath <= 10)
 		defender.losebreath = clamp(defender.losebreath + 5, 0, 10)
 	defender.adjust_oxy_loss(10)
@@ -183,7 +183,7 @@
 		attacker,
 	)
 	to_chat(attacker, span_danger("You karate chop [defender]'s neck, rendering [defender.p_them()] unable to speak!"))
-	playsound(attacker, 'sound/effects/hit_punch.ogg', 50, TRUE, -1)
+	playsound_quiet_impact(attacker, 'sound/effects/hit_punch.ogg', 50)
 	defender.apply_damage(10, attacker.get_attack_type(), BODY_ZONE_HEAD)
 	defender.adjust_silence_up_to(20 SECONDS, 20 SECONDS)
 	log_combat(attacker, defender, "neck chopped")
@@ -214,7 +214,7 @@
 			attacker,
 		)
 		to_chat(attacker, span_danger("You disarm [defender]!"))
-		playsound(defender, 'sound/items/weapons/thudswoosh.ogg', 50, TRUE, -1)
+		playsound(defender, 'sound/items/weapons/thudswoosh.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		log_combat(attacker, defender, "disarmed (Kaza Ruk)", addition = "(disarmed of [stuff_in_hand])")
 	return MARTIAL_ATTACK_INVALID // normal shove
 
@@ -256,7 +256,7 @@
 	)
 	if(tail_usage)
 		source.emote(kicking ? "flip" : "spin")
-	playsound(source, 'sound/effects/hit_punch.ogg', 50, TRUE, -1)
+	playsound_quiet_impact(source, 'sound/effects/hit_punch.ogg', 50)
 	source.do_attack_animation(target, ATTACK_EFFECT_KICK)
 	target.apply_damage(round(damage/3,1), attack_type, affecting, final_armor_block, wound_bonus = damage) //Ostensibly, apply a third of our damage again // We're not being too fussy about limb bonuses for this
 	log_combat(source, target, "auto-followup strike (Kaza Ruk)")

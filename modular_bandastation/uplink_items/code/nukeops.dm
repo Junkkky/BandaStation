@@ -11,3 +11,13 @@
 	item = /obj/item/storage/toolbox/guncase/syndiesledge
 	purchasable_from = UPLINK_ALL_SYNDIE_OPS
 	surplus = 0
+
+/datum/uplink_item/dangerous/syndicate_chainsaw
+	name = "Syndicate Chainsaw"
+	desc = "Двуручная боевая бензопила. Заведённая пила сбивает жертву с ног, а её владелец на пять секунд получает эффект «Резня», \
+		который защищает от оглушения, снижает входящий урон и помогает блокировать удары в ближнем бою. Заглушите двигатель, чтобы выпустить пилу из рук."
+	item = /obj/item/chainsaw/syndie
+	cost = 18
+	purchasable_from = UPLINK_NUKE_OPS
+	cant_discount = TRUE
+	surplus = 0

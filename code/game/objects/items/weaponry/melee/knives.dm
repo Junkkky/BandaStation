@@ -21,6 +21,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 10
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
+	quiet_melee_hit = TRUE
 	throw_speed = 3
 	throw_range = 6
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 6)
@@ -382,6 +383,7 @@
 	custom_materials = null
 
 /obj/item/switchblade
+	quiet_melee_hit = TRUE
 	name = "switchblade"
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "switchblade"
@@ -452,6 +454,7 @@
 	start_extended = TRUE
 
 /obj/item/boxcutter
+	quiet_melee_hit = TRUE
 	name = "boxcutter"
 	desc = "A tool for cutting boxes, or throats."
 	icon = 'icons/obj/tools.dmi'

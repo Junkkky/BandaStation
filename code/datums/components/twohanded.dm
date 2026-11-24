@@ -220,8 +220,9 @@
  *
  * vars:
  * * user The mob/living/carbon that is wielding the item
+ * * play_sound Whether to play the item's wield sound.
  */
-/datum/component/two_handed/proc/wield(mob/living/carbon/user)
+/datum/component/two_handed/proc/wield(mob/living/carbon/user, play_sound = TRUE)
 	if(wielded)
 		return
 
@@ -274,7 +275,7 @@
 		to_chat(user, span_notice("Вы хватаете [parent.declent_ru(ACCUSATIVE)] двумя руками."))
 
 	// Play sound if one is set
-	if(wieldsound)
+	if(play_sound && wieldsound)
 		playsound(parent_item.loc, wieldsound, 50, TRUE)
 
 	// Let's reserve the other hand

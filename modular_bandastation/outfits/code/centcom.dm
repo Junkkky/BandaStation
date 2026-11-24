@@ -193,7 +193,8 @@
 	// By making it TRUE on init, we don't give it roundstart nuke disk safety measures, etc.
 	// So, this disk is just good for making bomb go boom
 	fake = FALSE
-	SSpoints_of_interest.make_point_of_interest(src)
+	if(!get(src, /mob/living/carbon/human/dummy))
+		SSpoints_of_interest.make_point_of_interest(src)
 
 /obj/item/storage/box/survival/centcom
 	mask_type = /obj/item/clothing/mask/gas/sechailer
@@ -202,6 +203,7 @@
 // SpecOps Operatives
 /datum/outfit/centcom/specops
 	name = "NT SpecOps - Operative (Base)"
+	mental_conditioning = TRUE
 	id = /obj/item/card/id/advanced/black
 	id_trim = /datum/id_trim/centcom/specops
 	uniform = /obj/item/clothing/under/rank/centcom/military
@@ -288,7 +290,7 @@
 		/obj/item/storage/box/survival/centcom/specops,
 		/obj/item/clothing/head/beret/ert/specops,
 		/obj/item/storage/medkit/tactical = 2,
-		/obj/item/defibrillator/compact/combat/loaded/nanotrasen,
+		/obj/item/defibrillator/compact/combat/nanotrasen,
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/gun/medbeam,
 		/obj/item/ammo_box/magazine/c762x39mm/ap,

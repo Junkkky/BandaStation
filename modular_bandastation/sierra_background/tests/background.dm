@@ -148,6 +148,17 @@
 	TEST_ASSERT_EQUAL(selection.get_eligibility(job), JOB_AVAILABLE, "Latejoin checked a different profile while using the current slot.")
 	qdel(selection)
 
+/datum/unit_test/donor_job_legacy_kssp_titles
+	parent_type = /datum/unit_test/sierra_background_fixture
+
+/datum/unit_test/donor_job_legacy_kssp_titles/Run()
+	var/datum/preferences/preferences = make_preferences()
+	var/datum/preference/title = GLOB.preference_entries[/datum/preference/donor_job_titles]
+	var/list/save_data = list(title.savefile_key = list("Representative USSP" = "Дипломат СССП", "Tourist USSP" = "Посетитель СССП"))
+	var/list/titles = title.read(save_data, preferences)
+	TEST_ASSERT_EQUAL(titles["Representative USSP"], "Дипломат КССП", "The saved diplomat title did not carry over to the renamed faction.")
+	TEST_ASSERT_EQUAL(titles["Tourist USSP"], "Посетитель КССП", "The saved visitor title did not carry over to the renamed faction.")
+
 /// Every native species needs four valid defaults without inheriting human-only lore.
 /datum/unit_test/sierra_background_defaults
 	parent_type = /datum/unit_test/sierra_background_fixture

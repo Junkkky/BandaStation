@@ -132,6 +132,7 @@
 #include "../../../modular_bandastation/species/code/tests/ipc_upgrade_tests.dm"
 #include "aas_configs.dm"
 #include "abductor_baton_spell.dm"
+#include "abductor_spawn.dm"
 #include "ablative_hud.dm"
 #include "achievements.dm"
 #include "ai_pathfinding.dm"
@@ -140,6 +141,7 @@
 #include "anonymous_themes.dm"
 #include "antag_conversion.dm"
 #include "antag_moodlets.dm"
+#include "antag_winloss_panel.dm"
 #include "area_contents.dm"
 #include "armor_verification.dm"
 #include "asset_smart_cache.dm"
@@ -202,6 +204,7 @@
 #include "dcs_get_id_from_elements.dm"
 #include "death_moodlets.dm"
 #include "designs.dm"
+#include "detomatix.dm"
 #include "dismemberment.dm"
 #include "dna_infusion.dm"
 #include "door_access.dm"
@@ -308,6 +311,7 @@
 #include "neurine_trauma_cleanup.dm"
 #include "novaflower_burn.dm"
 #include "nuke_cinematic.dm"
+#include "nutrient_paste.dm"
 #include "omnitools.dm"
 #include "operating_table.dm"
 #include "orderable_items.dm"
@@ -415,6 +419,7 @@
 #include "teleporters.dm"
 #include "text.dm"
 #include "tgui_create_message.dm"
+#include "throwing.dm"
 #include "tile_replacement.dm"
 #include "timer_sanity.dm"
 #include "torn_wall.dm"
@@ -503,6 +508,7 @@
 
 #include "../../../modular_bandastation/weapon/code/ranged/weapon_choice_tests.dm" // BANDASTATION ADDITION - HoS and Blueshield sidearms
 #include "../../../modular_bandastation/weapon/code/ranged/weapon_choice_ui_tests.dm"
+#include "../../../modular_bandastation/weapon/code/melee/centcom/legendary_malice_tests.dm"
 
 #include "../../../modular_bandastation/underclothing/code/tests.dm" // BANDASTATION ADDITION - Removable underclothing
 
@@ -520,6 +526,12 @@
 #include "../../../modular_bandastation/terror_spiders/tests/terror_spiders.dm"
 
 #include "../../../modular_bandastation/dynamic/code/antag_tokens_tests.dm"
+
+#include "../../../modular_bandastation/species/code/tests/ipc_os_tests.dm"
+#include "../../../modular_bandastation/species/code/tests/ipc_os_program_tests.dm"
+#include "../../../modular_bandastation/species/code/tests/ipc_os_illegal_tests.dm"
+#include "../../../modular_bandastation/species/code/tests/ipc_os_malware_tests.dm"
+#include "../../../modular_bandastation/species/code/tests/ipc_os_revision_tests.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

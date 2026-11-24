@@ -144,7 +144,7 @@
 
 	// Similar to a normal punch, should we have a value of 0 for our lower force, we simply miss outright.
 	if(!lower_force)
-		playsound(defender.loc, active_arm.unarmed_miss_sound, 25, TRUE, -1)
+		playsound_quiet_impact(defender.loc, active_arm.unarmed_miss_sound, 25)
 		defender.visible_message(span_warning("[attacker]'s punch misses [defender]!"), \
 			span_danger("You avoid [attacker]'s punch!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, attacker)
 		to_chat(attacker, span_warning("Your punch misses [defender]!"))
@@ -227,7 +227,7 @@
 
 	var/armor_block = defender.run_armor_check(affecting, MELEE, armour_penetration = base_unarmed_effectiveness)
 
-	playsound(defender, attack_sound, 25, TRUE, -1)
+	playsound_quiet_impact(defender, attack_sound, 25)
 
 	defender.visible_message(
 		span_danger("[capitalize(attacker.declent_ru(NOMINATIVE))] наносит [current_atk_verb] по [defender.declent_ru(DATIVE)]!"),
@@ -268,7 +268,7 @@
 
 	experience_earned *= 2 //Double our experience gain on a crit hit
 
-	playsound(defender, 'sound/effects/coin2.ogg', 40, TRUE)
+	playsound(defender, 'sound/effects/coin2.ogg', 40, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	new /obj/effect/temp_visual/crit(get_turf(defender))
 	skill_experience_adjustment(attacker, defender, experience_earned) //double experience for a successful crit
 
@@ -370,7 +370,7 @@
 		span_userdanger("Вы [block_text]е [attack_text]!"),
 	)
 	if(block_text == "избегает")
-		playsound(boxer.loc, active_arm.unarmed_miss_sound, 25, TRUE, -1)
+		playsound_quiet_impact(boxer.loc, active_arm.unarmed_miss_sound, 25)
 
 	return SUCCESSFUL_BLOCK
 

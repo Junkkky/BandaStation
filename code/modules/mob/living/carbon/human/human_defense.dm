@@ -112,7 +112,7 @@
 	if(check_block(user, 15, "крушащий удар", attack_type = UNARMED_ATTACK))
 		return
 	var/obj/item/bodypart/arm/active_arm = user.get_active_hand()
-	playsound(loc, active_arm.unarmed_attack_sound, 25, TRUE, -1)
+	playsound_quiet_impact(loc, active_arm.unarmed_attack_sound, 25)
 	visible_message(span_danger("[capitalize(user.declent_ru(NOMINATIVE))] [hulk_verb] [declent_ru(ACCUSATIVE)]!"), \
 					span_userdanger("[capitalize(user.declent_ru(NOMINATIVE))] [hulk_verb] [declent_ru(ACCUSATIVE)]!"), span_hear("Вы слышите противный звук удара плоти о плоть!"), null, user)
 	to_chat(user, span_danger("Вы [hulk_verb]е [declent_ru(ACCUSATIVE)]!"))

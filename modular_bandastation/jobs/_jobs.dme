@@ -62,3 +62,4 @@
 #include "code/job_types/donor/service.dm"
 #include "code/job_types/donor/musician.dm"
 #include "code/job_types/donor/visitors.dm"
+#include "code/job_types/donor/representative_ids.dm"

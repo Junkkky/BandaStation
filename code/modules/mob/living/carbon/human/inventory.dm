@@ -22,10 +22,10 @@
 		return FALSE
 	// BANDASTATION ADDITION END
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_EQUIPPING_ITEM, equip_target, slot) & COMPONENT_BLOCK_EQUIP)
-		return FALSE
+		return inventory_rejected("Другая вещь блокирует этот слот.")
 	// BANDASTATION ADDITION START - Let the candidate validate all required slots, even when dressing another mob.
 	if(SEND_SIGNAL(equip_target, COMSIG_ITEM_EQUIP_CHECK, src, slot) & COMPONENT_BLOCK_EQUIP)
-		return FALSE
+		return inventory_rejected("Предмет не может занять нужные ему слоты.")
 	// BANDASTATION ADDITION END
 	// AI EDIT END
 	if(HAS_TRAIT(equip_target, TRAIT_NODROP) && is_holding(equip_target))
@@ -422,7 +422,7 @@
 /mob/living/carbon/human/toggle_externals(obj/item/tank)
 	return toggle_internals(tank, TRUE)
 
-/mob/living/carbon/human/proc/equipOutfit(outfit, visuals_only = FALSE)
+/mob/living/carbon/human/proc/equipOutfit(outfit, visuals_only = FALSE, apply_mental_conditioning = TRUE)
 	var/datum/outfit/O = null
 
 	if(ispath(outfit))
@@ -434,11 +434,11 @@
 	if(!O)
 		return 0
 
-	return O.equip(src, visuals_only)
+	return O.equip(src, visuals_only, apply_mental_conditioning)
 
 
 ///A version of equipOutfit that overrides passed in outfits with their entry on the species' outfit override registry
-/mob/living/carbon/human/proc/equip_species_outfit(outfit, visuals_only = FALSE)
+/mob/living/carbon/human/proc/equip_species_outfit(outfit, visuals_only = FALSE, apply_mental_conditioning = TRUE)
 	var/datum/outfit/outfit_to_equip
 
 	var/override_outfit_path = dna?.species.outfit_override_registry[outfit]
@@ -451,7 +451,7 @@
 	if(isnull(outfit_to_equip))
 		return FALSE
 
-	return outfit_to_equip.equip(src, visuals_only)
+	return outfit_to_equip.equip(src, visuals_only, apply_mental_conditioning)
 
 
 //delete all equipment without dropping anything

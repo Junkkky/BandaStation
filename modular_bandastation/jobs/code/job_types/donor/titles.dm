@@ -11,8 +11,11 @@
 	if(islist(input))
 		for(var/job_title in input)
 			var/datum/job/donor/job = SSjob.get_job(job_title)
-			if(istype(job) && (input[job_title] in job.alternate_titles))
-				titles[job_title] = input[job_title]
+			var/selected_title = input[job_title]
+			if((istype(job, /datum/job/donor/representative_ussp) || istype(job, /datum/job/donor/tourist_ussp)) && istext(selected_title))
+				selected_title = replacetextEx(selected_title, " СССП", " КССП")
+			if(istype(job) && (selected_title in job.alternate_titles))
+				titles[job_title] = selected_title
 	return titles
 
 /datum/preference/donor_job_titles/is_valid(value, datum/preferences/preferences)

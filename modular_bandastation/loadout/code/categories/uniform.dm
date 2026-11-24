@@ -185,6 +185,11 @@
 	item_path = /obj/item/clothing/under/rank/civilian/purple_bartender
 
 // MARK: Tier 1
+/datum/loadout_item/uniforms/subscription_woodcutter
+	name = "Одежда лесоруба"
+	item_path = /obj/item/clothing/under/costume/subscription/woodcutter_uniform
+	donator_level = DONATOR_TIER_1
+
 /datum/loadout_item/uniforms/primera_villager
 	name = "Костюм деревенского жителя"
 	item_path = /obj/item/clothing/under/costume/primera/villager
@@ -221,6 +226,26 @@
 	donator_level = DONATOR_TIER_1
 
 // MARK: Tier 2
+/datum/loadout_item/uniforms/subscription_black_scarlet_dress
+	name = "Чёрно-алое платье"
+	item_path = /obj/item/clothing/under/costume/subscription/black_scarlet_dress
+	donator_level = DONATOR_TIER_2
+
+/datum/loadout_item/uniforms/subscription_black_strap_dress
+	name = "Чёрное платье на бретелях"
+	item_path = /obj/item/clothing/under/costume/subscription/black_strap_dress
+	donator_level = DONATOR_TIER_2
+
+/datum/loadout_item/uniforms/subscription_anime_dress
+	name = "Аниме платье"
+	item_path = /obj/item/clothing/under/costume/subscription/anime_dress
+	donator_level = DONATOR_TIER_2
+
+/datum/loadout_item/uniforms/subscription_gothic_dress
+	name = "Готическое платье"
+	item_path = /obj/item/clothing/under/costume/subscription/gothic_dress
+	donator_level = DONATOR_TIER_2
+
 /datum/loadout_item/uniforms/primera_mel
 	name = "Платье Мэл"
 	item_path = /obj/item/clothing/under/costume/primera/mel
@@ -237,6 +262,21 @@
 	donator_level = DONATOR_TIER_2
 
 // MARK: Tier 3
+/datum/loadout_item/uniforms/subscription_spongebob
+	name = "Форма Губки Боба"
+	item_path = /obj/item/clothing/under/costume/subscription/spongebob_uniform
+	donator_level = DONATOR_TIER_3
+
+/datum/loadout_item/uniforms/subscription_patrick
+	name = "Шорты Патрика"
+	item_path = /obj/item/clothing/under/costume/subscription/patrick_shorts
+	donator_level = DONATOR_TIER_3
+
+/datum/loadout_item/uniforms/subscription_black_tracksuit
+	name = "Чёрный спортивный костюм"
+	item_path = /obj/item/clothing/under/costume/subscription/black_tracksuit
+	donator_level = DONATOR_TIER_3
+
 /datum/loadout_item/uniforms/primera_jinx
 	name = "Костюм Джинкс"
 	item_path = /obj/item/clothing/under/costume/primera/jinx

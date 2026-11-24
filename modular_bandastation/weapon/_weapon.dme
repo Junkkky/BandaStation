@@ -9,6 +9,12 @@
 #include "code/melee/centcom/_enchantment_datum.dm"
 #include "code/melee/centcom/baseball_bat.dm"
 #include "code/melee/centcom/legendary_swords.dm"
+#include "code/melee/centcom/legendary_bond.dm"
+#include "code/melee/centcom/legendary_malice.dm"
+#include "code/melee/centcom/legendary_malice_guard.dm"
+#include "code/melee/centcom/legendary_malice_omnislash.dm"
+#include "code/melee/centcom/legendary_malice_recall.dm"
+#include "code/melee/centcom/legendary_malice_recall_vfx.dm"
 #include "code/melee/centcom/rapier.dm"
 
 // MARK: Crafting

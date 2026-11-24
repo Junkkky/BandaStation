@@ -239,11 +239,11 @@
 		to_chat(user, span_warning("Вы не хотите причинять вред другим живым существам!"))
 		return FALSE
 
-	if(!LAZYACCESS(attack_modifiers, SILENCE_HITSOUND))
-		if(!final_force && !HAS_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND))
-			playsound(src, 'sound/items/weapons/tap.ogg', get_clamped_volume(), TRUE, -1)
-		else if(hitsound)
-			playsound(src, hitsound, get_clamped_volume(), TRUE, extrarange = stealthy_audio ? SILENCED_SOUND_EXTRARANGE : -1, falloff_distance = 0)
+	var/atom/effect_origin = LAZYACCESS(attack_modifiers, MELEE_EFFECT_ORIGIN) || src
+	var/replace_hit_effects = LAZYACCESS(attack_modifiers, REPLACE_MELEE_HIT_EFFECTS)
+	var/play_hit_sound = !LAZYACCESS(attack_modifiers, SILENCE_HITSOUND)
+	if(play_hit_sound && !replace_hit_effects)
+		play_melee_hit_sound(effect_origin, final_force)
 
 	target_mob.lastattacker = user.real_name
 	target_mob.lastattackerckey = user.ckey
@@ -251,9 +251,16 @@
 	if(final_force && target_mob == user && user.client)
 		user.client.give_award(/datum/award/achievement/misc/selfouch, user)
 
-	if(get(src, /mob/living) == user) // telekinesis.
+	var/animate_swing = effect_origin == src && get(src, /mob/living) == user
+	if(animate_swing && !replace_hit_effects)
 		user.do_attack_animation(target_mob)
-	if(target_mob.attacked_by(src, user, modifiers, attack_modifiers) == ATTACK_FAILED)
+	var/attack_result = target_mob.attacked_by(src, user, modifiers, attack_modifiers)
+	if(replace_hit_effects && !(attack_modifiers[DAMAGE_DONE] > 0) && !QDELETED(src))
+		if(play_hit_sound && !QDELETED(effect_origin))
+			play_melee_hit_sound(effect_origin, final_force)
+		if(animate_swing && !QDELETED(user) && !QDELETED(target_mob))
+			user.do_attack_animation(target_mob, used_item = src)
+	if(attack_result == ATTACK_FAILED)
 		return TRUE
 
 	SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK, target_mob, user, modifiers, attack_modifiers)
@@ -263,6 +270,19 @@
 		log_combat(user, target_mob, "attacked", src.name, "(COMBAT MODE: [uppertext(user.combat_mode)]) (DAMTYPE: [uppertext(damtype)])")
 	add_fingerprint(user)
 	return FALSE // unhandled
+
+/// Plays the standard impact for a melee attack against a mob.
+/obj/item/proc/play_melee_hit_sound(atom/origin, final_force)
+	if(!final_force && !HAS_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND))
+		play_melee_impact_sound(origin, 'sound/items/weapons/tap.ogg', get_clamped_volume())
+	else if(hitsound)
+		play_melee_impact_sound(origin, hitsound, get_clamped_volume())
+
+/// Plays the impact sample for this item at the location of the attack.
+/obj/item/proc/play_melee_impact_sound(atom/origin, impact_sound, volume)
+	if(quiet_melee_hit || tool_behaviour == TOOL_KNIFE)
+		return playsound_quiet_impact(origin, impact_sound, volume)
+	return playsound(origin, impact_sound, volume, TRUE, extrarange = stealthy_audio ? SILENCED_SOUND_EXTRARANGE : SHORT_RANGE_SOUND_EXTRARANGE)
 
 /// The equivalent of [/obj/item/proc/attack] but for alternate attacks, AKA right clicking
 /obj/item/proc/attack_secondary(mob/living/victim, mob/living/user, list/modifiers, list/attack_modifiers)
@@ -329,14 +349,7 @@
 	if(!LAZYACCESS(attack_modifiers, SILENCE_DEFAULT_MESSAGES))
 		send_item_attack_message(attacking_item, user, targeting_human_readable, targeting)
 
-	var/armor_block = min(run_armor_check(
-			def_zone = targeting,
-			attack_flag = MELEE,
-			absorb_text = span_notice("Ваша броня защитила вашу [targeting_human_readable]!"),
-			soften_text = span_warning("Ваша броня смягчила удар, нанесённый в вашу [targeting_human_readable]!"),
-			armour_penetration = attacking_item.armour_penetration,
-			weak_against_armour = attacking_item.weak_against_armour,
-		), ARMOR_MAX_BLOCK)
+	var/armor_block = min(attacking_item.get_melee_armor_block(src, targeting, targeting_human_readable), ARMOR_MAX_BLOCK)
 
 	var/final_force = CALCULATE_FORCE(attacking_item, attack_modifiers)
 	if(mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_SKELETAL)) // this should probably check hit bodypart for humanoids
@@ -346,9 +359,10 @@
 	if((attacking_item.item_flags & SURGICAL_TOOL) && !user.combat_mode && HAS_TRAIT(user, TRAIT_READY_TO_OPERATE))
 		wounding = CANT_WOUND
 
+	var/atom/attack_origin = LAZYACCESS(attack_modifiers, MELEE_EFFECT_ORIGIN)
 	if(user != src)
 		// This doesn't factor in armor, or most damage modifiers (physiology). Your mileage may vary
-		if(check_block(attacking_item, final_force, "[attacking_item.declent_ru(ACCUSATIVE)]", MELEE_ATTACK, attacking_item.armour_penetration, attacking_item.damtype))
+		if(check_block(attacking_item, final_force, "[attacking_item.declent_ru(ACCUSATIVE)]", MELEE_ATTACK, attacking_item.armour_penetration, attacking_item.damtype, null, attack_origin))
 			LAZYSET(attack_modifiers, DAMAGE_DONE, 0)
 			return ATTACK_FAILED
 
@@ -370,7 +384,7 @@
 		wound_bonus = wounding,
 		exposed_wound_bonus = attacking_item.exposed_wound_bonus,
 		sharpness = attacking_item.get_sharpness(),
-		attack_direction = get_dir(user, src),
+		attack_direction = get_dir(attack_origin || user, src),
 		attacking_item = attacking_item,
 	)
 
@@ -378,6 +392,17 @@
 	attack_effects(damage_done, targeting, armor_block, attacking_item, user)
 
 	return damage_done
+
+/// Armor at the struck zone after this weapon's melee penetration.
+/obj/item/proc/get_melee_armor_block(mob/living/target, hit_zone, zone_name)
+	return target.run_armor_check(
+		def_zone = hit_zone,
+		attack_flag = MELEE,
+		absorb_text = span_notice("Ваша броня защитила вашу [zone_name]!"),
+		soften_text = span_warning("Ваша броня смягчила удар, нанесённый в вашу [zone_name]!"),
+		armour_penetration = armour_penetration,
+		weak_against_armour = weak_against_armour,
+	)
 
 /**
  * Called when we take damage, used to cause effects such as a blood splatter.

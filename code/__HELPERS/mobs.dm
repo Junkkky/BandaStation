@@ -351,16 +351,17 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 	var/mob/living/spawned_mob = new chosen(spawn_location)
 	return spawned_mob
 
-/proc/dance_rotate(atom/movable/AM, datum/callback/callperrotate, set_original_dir=FALSE)
+/// A temporary move can supply its lifetime so its pending turns end with the move.
+/proc/dance_rotate(atom/movable/AM, datum/callback/callperrotate, set_original_dir=FALSE, datum/lifetime = AM)
 	set waitfor = FALSE
 	var/originaldir = AM.dir
 	for(var/i in list(NORTH,SOUTH,EAST,WEST,EAST,SOUTH,NORTH,SOUTH,EAST,WEST,EAST,SOUTH))
-		if(!AM)
+		if(QDELETED(AM) || QDELETED(lifetime))
 			return
 		AM.setDir(i)
 		callperrotate?.Invoke()
 		sleep(0.1 SECONDS)
-	if(set_original_dir)
+	if(set_original_dir && !QDELETED(AM) && !QDELETED(lifetime))
 		AM.setDir(originaldir)
 
 ///////////////////////

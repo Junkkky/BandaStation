@@ -5,3 +5,7 @@ https://github.com/PhantornRU/BandaStation/tree/43e0d44ff2242393b7170d123c7841b3
 The donor art comes from Paradise-SS220 under CC BY-SA 3.0:
 https://github.com/ss220club/Paradise-SS220/tree/0fffca1f1f29a63aff49d9b56524813eedf82c6d
 https://creativecommons.org/licenses/by-sa/3.0/
+
+The Skrell Empire, Elysium and Free Sectors card and HUD emblems are pixel interpretations
+of the Imperium, Elysium and Freedom symbols on the SS220 Political Map:
+https://github.com/SpaceStation220/SS220-Political-Map/tree/master/public/logo

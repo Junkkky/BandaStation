@@ -47,6 +47,18 @@
 	name = /datum/job/donor/representative_ussp::title
 	icon_state = JOB_HEAD_OF_PERSONNEL
 
+/obj/effect/landmark/start/donor/representative_skrell
+	name = /datum/job/donor/representative_skrell::title
+	icon_state = JOB_HEAD_OF_PERSONNEL
+
+/obj/effect/landmark/start/donor/representative_elysium
+	name = /datum/job/donor/representative_elysium::title
+	icon_state = JOB_HEAD_OF_PERSONNEL
+
+/obj/effect/landmark/start/donor/representative_free_sectors
+	name = /datum/job/donor/representative_free_sectors::title
+	icon_state = JOB_HEAD_OF_PERSONNEL
+
 /obj/effect/landmark/start/donor/navy_junior_officer
 	name = /datum/job/donor/navy_junior_officer::title
 	icon_state = JOB_CAPTAIN

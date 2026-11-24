@@ -8,6 +8,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/melee/cultblade/dagger
+	quiet_melee_hit = TRUE
 	name = "ritual dagger"
 	desc = "A strange dagger said to be used by sinister groups for \"preparing\" a corpse before sacrificing it to their dark gods."
 	icon = 'icons/obj/weapons/khopesh.dmi'
@@ -85,6 +86,7 @@ Striking a noncultist, however, will tear their flesh."}
 
 /obj/item/melee/cultblade
 	name = "eldritch longsword"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "A sword humming with unholy energy. It glows with a dim red light."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "cultblade"
@@ -122,7 +124,6 @@ Striking a noncultist, however, will tear their flesh."}
 	alt_continuous = string_list(alt_continuous)
 	alt_simple = string_list(alt_simple)
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, alt_continuous, alt_simple, -5)
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/melee/cultblade/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(attack_type == OVERWHELMING_ATTACK)
@@ -583,6 +584,7 @@ Striking a noncultist, however, will tear their flesh."}
 
 /obj/item/reagent_containers/cup/beaker/unholywater
 	name = "flask of unholy water"
+	contraband_type_categories = CONTRABAND_CATEGORY_UNCLASSIFIED
 	desc = "Toxic to nonbelievers; reinvigorating to the faithful - this flask may be sipped or thrown."
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "unholyflask"
@@ -591,10 +593,6 @@ Striking a noncultist, however, will tear their flesh."}
 	righthand_file = 'icons/mob/inhands/items/drinks_righthand.dmi'
 	list_reagents = list(/datum/reagent/fuel/unholywater = 50)
 	can_lid = FALSE
-
-/obj/item/reagent_containers/cup/beaker/unholywater/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 ///if the max number of shuttle curses are used within this duration, the entire cult gets an achievement
 #define SHUTTLE_CURSE_OMFG_TIMESPAN (10 SECONDS)

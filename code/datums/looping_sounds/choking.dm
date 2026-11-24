@@ -4,6 +4,7 @@
 	mid_length_vary = 0.3 SECONDS
 	each_once = TRUE
 	volume = 90
+	extra_range = SHORT_RANGE_SOUND_EXTRARANGE
 	// We want you to be hard to hear far away
 	falloff_exponent = 12
 	pressure_affected = TRUE

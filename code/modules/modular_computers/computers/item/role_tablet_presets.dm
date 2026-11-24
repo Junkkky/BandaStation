@@ -534,6 +534,7 @@
  */
 /obj/item/modular_computer/pda/syndicate
 	name = "military PDA"
+	detomatix_proof = TRUE
 	greyscale_colors = "#891417#80FF80"
 	saved_identification = "John Doe"
 	saved_job = "Citizen"

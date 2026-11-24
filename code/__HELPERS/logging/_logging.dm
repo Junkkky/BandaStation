@@ -165,6 +165,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 /* Helper procs for building detailed log lines */
 /proc/key_name(whom, include_link = null, include_name = TRUE)
+	var/html_output = include_link
 	var/mob/M
 	var/client/C
 	var/key
@@ -211,7 +212,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		if(!swhom)
 			swhom = "*invalid*"
 
-		return "\[[swhom]\]"
+		return "\[[html_output ? html_encode(swhom) : swhom]\]"
 
 	. = ""
 
@@ -226,7 +227,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		else
 			if(include_link)
 				. += "<a href='byond://?priv_msg=[ckey]'>"
-			. += key
+			. += html_output ? html_encode(key) : key
 		if(!C)
 			. += "\[DC\]"
 
@@ -236,13 +237,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		. += "*no key*"
 
 	if(include_name)
-		if(M)
-			if(M.real_name)
-				. += "/([M.real_name])"
-			else if(M.name)
-				. += "/([M.name])"
-		else if(fallback_name)
-			. += "/([fallback_name])"
+		var/display_name = M ? (M.real_name || M.name) : fallback_name
+		if(display_name)
+			. += "/([html_output ? html_encode(display_name) : display_name])"
 
 	return .
 

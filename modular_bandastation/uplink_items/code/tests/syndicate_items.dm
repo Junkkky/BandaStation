@@ -1,3 +1,56 @@
+/datum/unit_test/security_equipment_contraband/Run()
+	var/obj/item/inspector/scanner = allocate(/obj/item/inspector)
+	var/obj/item/service_pistol = allocate(/obj/item/gun/ballistic/automatic/pistol/gp9/sec)
+	TEST_ASSERT(!scanner.contraband_scan(service_pistol), "Scanner flagged a standard security GP-9.")
+	TEST_ASSERT_EQUAL(service_pistol.get_contraband_categories(), NONE, "A clean service pistol has a contraband category.")
+
+	var/obj/item/detective_revolver = allocate(/obj/item/gun/ballistic/revolver/c38/detective)
+	TEST_ASSERT(!scanner.contraband_scan(detective_revolver), "Scanner flagged the detective's service revolver.")
+
+	var/obj/item/assault_belt = allocate(/obj/item/storage/belt/military/assault)
+	TEST_ASSERT(!scanner.contraband_scan(assault_belt), "Scanner flagged the assault belt issued in the security crate.")
+
+	var/obj/item/ert_belt = allocate(/obj/item/storage/belt/military/assault/ert)
+	TEST_ASSERT(!scanner.contraband_scan(ert_belt), "Scanner flagged the ERT subtype of the standard assault belt.")
+
+	var/obj/item/fisher_belt = allocate(/obj/item/storage/belt/military/assault/fisher)
+	TEST_ASSERT(scanner.contraband_scan(fisher_belt), "The Syndicate belt failed to re-enable catalog detection.")
+	TEST_ASSERT(!HAS_TRAIT(fisher_belt, TRAIT_CONTRABAND), "Catalog-only detection gave the belt an instance trait.")
+	TEST_ASSERT_EQUAL(fisher_belt.get_contraband_categories(), CONTRABAND_CATEGORY_UNCLASSIFIED, "Catalog detection lost the unclassified category.")
+
+	var/obj/item/corporate_defib = allocate(/obj/item/defibrillator/compact/combat/nanotrasen)
+	TEST_ASSERT(!scanner.contraband_scan(corporate_defib), "Scanner flagged the Nanotrasen combat defibrillator.")
+
+	var/obj/item/makarov = allocate(/obj/item/gun/ballistic/automatic/pistol)
+	TEST_ASSERT(scanner.contraband_scan(makarov), "Scanner missed a Makarov listed in the uplink.")
+
+	var/obj/item/syndicate_defib = allocate(/obj/item/defibrillator/compact/combat/loaded)
+	TEST_ASSERT(scanner.contraband_scan(syndicate_defib), "Scanner missed the Syndicate combat defibrillator.")
+
+	var/datum/bounty/item/contraband/bounty = allocate(/datum/bounty/item/contraband)
+	var/obj/item/energy_sword = allocate(/obj/item/melee/energy/sword/saber)
+	TEST_ASSERT(bounty.applies_to(energy_sword), "The energy sword did not inherit its family's innate trait.")
+
+	var/obj/item/chaplain_sword = allocate(/obj/item/melee/energy/sword/nullrod)
+	TEST_ASSERT(!bounty.applies_to(chaplain_sword), "The chaplain's sword inherited the innate trait despite opting out.")
+	TEST_ASSERT(!scanner.contraband_scan(chaplain_sword), "Scanner flagged the chaplain's sword.")
+
+	ADD_TRAIT(service_pistol, TRAIT_CONTRABAND, TRAIT_GENERIC)
+	TEST_ASSERT(scanner.contraband_scan(service_pistol), "Scanner ignored the explicit marker on a GP-9.")
+	TEST_ASSERT_EQUAL(service_pistol.get_contraband_categories(), CONTRABAND_CATEGORY_UNCLASSIFIED, "The explicit marker did not supply the unclassified category.")
+	TEST_ASSERT(bounty.applies_to(service_pistol), "The contraband bounty missed an explicitly marked GP-9.")
+
+	REMOVE_TRAIT(service_pistol, TRAIT_CONTRABAND, TRAIT_GENERIC)
+	TEST_ASSERT(!scanner.contraband_scan(service_pistol), "Scanner still flagged the GP-9 after removing its instance trait.")
+
+	var/obj/item/classified_sword = allocate(/obj/item/melee/energy/sword/nullrod/contraband_category_test)
+	TEST_ASSERT_EQUAL(classified_sword.get_contraband_categories(), (1<<1) | (1<<2), "The subtype lost one or more configured contraband categories.")
+	TEST_ASSERT(scanner.contraband_scan(classified_sword), "Scanner missed an item with specific contraband categories.")
+	TEST_ASSERT(bounty.applies_to(classified_sword), "A categorized item lost its innate contraband marker.")
+
+/obj/item/melee/energy/sword/nullrod/contraband_category_test
+	contraband_type_categories = (1<<1) | (1<<2)
+
 /datum/unit_test/syndicate_items_contraband/Run()
 	var/obj/item/inspector/scanner = allocate(/obj/item/inspector)
 	scanner.scans_correctly = TRUE
@@ -29,6 +82,82 @@
 		var/obj/item/organ/implant = allocate(implant_type)
 		TEST_ASSERT(implant.Insert(host), "Could not install [implant_type].")
 		TEST_ASSERT(scanner.contraband_scan(host), "Scanner missed installed [implant_type].")
+
+/datum/unit_test/syndicate_chainsaw_uplink/Run()
+	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)
+	var/datum/uplink_handler/handler = allocate(/datum/uplink_handler)
+	var/datum/uplink_item/entry = SStraitor.uplink_items_by_type[/datum/uplink_item/dangerous/syndicate_chainsaw]
+	TEST_ASSERT_NOTNULL(entry, "The operative chainsaw is missing from the uplink catalog.")
+	handler.telecrystals = 18
+	handler.uplink_flag = UPLINK_TRAITORS
+	TEST_ASSERT(!handler.purchase_item(user, entry, user), "A traitor purchased the operative chainsaw.")
+	handler.uplink_flag = UPLINK_NUKE_OPS
+	handler.telecrystals = 17
+	TEST_ASSERT(!handler.purchase_item(user, entry, user), "An operative purchased the chainsaw for less than 18 TC.")
+	handler.telecrystals = 18
+	TEST_ASSERT(handler.purchase_item(user, entry, user), "An operative could not buy the chainsaw for 18 TC.")
+	TEST_ASSERT_EQUAL(handler.telecrystals, 0, "Purchasing the chainsaw did not deduct exactly 18 TC.")
+	TEST_ASSERT(istype(user.get_active_held_item(), /obj/item/chainsaw/syndie), "The uplink issued the wrong item.")
+
+/datum/unit_test/syndicate_chainsaw_combat
+	var/observed_block_chance
+
+/datum/unit_test/syndicate_chainsaw_combat/proc/record_block_chance(obj/item/source, mob/living/owner, atom/movable/hitby, attack_text, final_block_chance)
+	SIGNAL_HANDLER
+	observed_block_chance = final_block_chance
+
+/datum/unit_test/syndicate_chainsaw_combat/Run()
+	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human/consistent)
+	var/obj/item/chainsaw/syndie/saw = allocate(/obj/item/chainsaw/syndie)
+	user.put_in_active_hand(saw)
+	user.set_combat_mode(TRUE)
+	user.zone_selected = BODY_ZONE_CHEST
+	ADD_TRAIT(user, TRAIT_PERFECT_ATTACKER, TRAIT_SOURCE_UNIT_TESTS)
+	ADD_TRAIT(victim, TRAIT_NEVER_WOUNDED, TRAIT_SOURCE_UNIT_TESTS)
+	victim.add_inner_armor(get_armor_by_type(/datum/armor/armor_riot))
+	victim.forceMove(get_step(user, EAST))
+	saw.attack_self(user)
+	TEST_ASSERT_EQUAL(saw.force, 40, "Starting the operative chainsaw did not bring it to full power.")
+	TEST_ASSERT(!user.dropItemToGround(saw), "A running operative chainsaw could be dropped.")
+	var/obj/item/shield/riot/shield = allocate(/obj/item/shield/riot)
+	shield.block_chance = INFINITY
+	victim.put_in_active_hand(shield)
+	click_wrapper(user, victim)
+	TEST_ASSERT(!user.has_status_effect(/datum/status_effect/chainsaw_slaying), "A blocked attack granted Slaying.")
+	TEST_ASSERT(!victim.IsKnockdown(), "A blocked attack knocked the defender down.")
+	victim.dropItemToGround(shield)
+	click_wrapper(user, victim)
+	TEST_ASSERT_EQUAL(victim.get_brute_loss(), 34, "A 40-damage hit against 50 melee armor should deal 34 damage.")
+	TEST_ASSERT_EQUAL(victim.AmountKnockdown(), 12 SECONDS, "A successful hit did not knock the target down for twelve seconds.")
+	var/datum/status_effect/chainsaw_slaying/slaying = user.has_status_effect(/datum/status_effect/chainsaw_slaying)
+	TEST_ASSERT_NOTNULL(slaying, "A successful hit did not grant Slaying.")
+	RegisterSignal(saw, COMSIG_ITEM_HIT_REACT, PROC_REF(record_block_chance))
+	user.check_block(victim, 20, attack_type = MELEE_ATTACK)
+	TEST_ASSERT_EQUAL(observed_block_chance, 80, "Slaying should supply an 80% passive melee block.")
+	TEST_ASSERT_NOTNULL(saw.block_sound, "A successful saw block must be able to play its impact sound.")
+	user.check_block(victim, 20, attack_type = PROJECTILE_ATTACK)
+	TEST_ASSERT(observed_block_chance <= 0, "Slaying should not block projectiles.")
+	slaying.process(3)
+	click_wrapper(user, victim)
+	TEST_ASSERT_EQUAL(slaying.duration, 5 SECONDS, "A second hit did not refresh Slaying to five seconds.")
+	user.Stun(1 SECONDS)
+	TEST_ASSERT(!user.IsStun(), "Slaying failed to absorb a stun.")
+	user.apply_damage(10, BRUTE, BODY_ZONE_CHEST)
+	TEST_ASSERT_EQUAL(user.get_brute_loss(), 8, "Slaying did not reduce brute damage by 20%.")
+	slaying.process(5)
+	user.Stun(1 SECONDS)
+	TEST_ASSERT(user.IsStun(), "The stun protection outlasted Slaying.")
+	user.SetStun(0)
+	user.apply_damage(10, BRUTE, BODY_ZONE_CHEST)
+	TEST_ASSERT_EQUAL(user.get_brute_loss(), 18, "Slaying left damage resistance behind.")
+	victim.death()
+	var/obj/item/organ/brain/brain = victim.get_organ_slot(ORGAN_SLOT_BRAIN)
+	TEST_ASSERT_NOTNULL(brain, "Test victim had no brain.")
+	click_wrapper(user, victim)
+	TEST_ASSERT(QDELETED(victim) && QDELETED(brain), "Sawing the corpse left a body or a recoverable brain.")
+	saw.attack_self(user)
+	TEST_ASSERT(user.dropItemToGround(saw), "The holder could not release a stopped operative chainsaw.")
 
 /datum/unit_test/syndicate_garrote/Run()
 	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human/consistent)

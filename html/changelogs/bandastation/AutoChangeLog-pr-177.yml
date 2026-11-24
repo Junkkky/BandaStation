@@ -1,0 +1,4 @@
+author: "Fullonibus"
+delete-after: True
+changes:
+  - admin: "Фильтр голоса TTS теперь принимает настройку частоты, эхо и позиционные параметры биткрашера."

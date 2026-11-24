@@ -15,8 +15,9 @@
  * * falloff_distance - Distance at which falloff begins. Sound is at peak volume (in regards to falloff) aslong as it is in this range.
  * * volume_preference - Optional: Will be checked to modify the volume of the sound for each listener.
  * * min_volume - minimum volume the sound can reach at max_range.
+ * * block_closed_doors - Also check closed transparent doors for sounds that respect walls.
  */
-/proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff_exponent = SOUND_FALLOFF_EXPONENT, frequency = null, channel = 0, pressure_affected = TRUE, ignore_walls = TRUE, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, use_reverb = TRUE, datum/preference/numeric/volume/volume_preference = null, min_volume = 3)
+/proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff_exponent = SOUND_FALLOFF_EXPONENT, frequency = null, channel = 0, pressure_affected = TRUE, ignore_walls = TRUE, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, use_reverb = TRUE, datum/preference/numeric/volume/volume_preference = null, min_volume = 3, block_closed_doors = FALSE)
 	if(isarea(source))
 		CRASH("playsound(): source is an area")
 
@@ -65,17 +66,52 @@
 
 		if(below_turf && istransparentturf(turf_source))
 			listeners += get_hearers_in_view(maxdistance, below_turf, RECURSIVE_CONTENTS_CLIENT_MOBS, TRUE)
-		for(var/mob/listening_ghost as anything in SSmobs.dead_players_by_zlevel[source_z])
-			listeners += listening_ghost
+		if(!block_closed_doors)
+			for(var/mob/listening_ghost as anything in SSmobs.dead_players_by_zlevel[source_z])
+				listeners += listening_ghost
 
 	for(var/mob/listening_mob in listeners)//had nulls sneak in here, hence the typecheck
 		var/turf/mob_turf = get_turf(listening_mob)
 		if(!mob_turf)
 			continue
 		if(get_dist_euclidean(mob_turf, turf_source) <= maxdistance)
+			if(block_closed_doors)
+				var/turf/path_origin = turf_source
+				if(mob_turf.z != source_z)
+					path_origin = locate(turf_source.x, turf_source.y, mob_turf.z)
+				if(quiet_impact_path_is_blocked(path_origin, mob_turf))
+					continue
 			listening_mob.playsound_local(turf_source, soundin, vol, vary, frequency, falloff_exponent, channel, pressure_affected, S, maxdistance, falloff_distance, 1, use_reverb, volume_preference)
 
 	return listeners
+
+/// Plays a knife or unarmed impact that cannot carry past walls or closed doors.
+/proc/playsound_quiet_impact(atom/source, soundin, volume, vary = TRUE)
+	return playsound(source, soundin, volume, vary, extrarange = SILENCED_SOUND_EXTRARANGE, ignore_walls = FALSE, block_closed_doors = TRUE)
+
+/// Checks walls and closed doors along a sound's route on the listener's level.
+/proc/quiet_impact_path_is_blocked(turf/source, turf/listener)
+	if(source == listener)
+		return FALSE
+
+	var/list/turf/path = get_line(source, listener)
+	for(var/index in 1 to length(path))
+		var/turf/path_turf = path[index]
+		if(isclosedturf(path_turf))
+			return TRUE
+		var/crossed_directions = NONE
+		if(index > 1)
+			crossed_directions |= get_dir(path_turf, path[index - 1])
+		if(index < length(path))
+			crossed_directions |= get_dir(path_turf, path[index + 1])
+		for(var/obj/obstacle in path_turf)
+			if(!obstacle.density)
+				continue
+			if(!istype(obstacle, /obj/machinery/door) && !istype(obstacle, /obj/structure/mineral_door) && !istype(obstacle, /obj/structure/fluff/airlock_filler))
+				continue
+			if(!(obstacle.flags_1 & ON_BORDER_1) || (obstacle.dir & crossed_directions))
+				return TRUE
+	return FALSE
 
 /**
  * Plays a sound with a specific point of origin for src mob

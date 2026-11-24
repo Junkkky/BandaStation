@@ -100,7 +100,7 @@
 	var/boxed_message_class = get_boxed_message_class()
 
 	var/title = span_class(text_span_class, "Тикет #[id]")
-	var/body = "[TICKET_REPLY_LINK(id, initiator)]\n\n[span_class(get_text_span_class(), (sanitize(trim(message))))]"
+	var/body = "[TICKET_REPLY_LINK(id, html_encode(initiator))]\n\n[span_class(get_text_span_class(), (sanitize(trim(message))))]"
 	for(var/client/admin as anything in GLOB.admins)
 		if(!has_user_access(admin))
 			continue

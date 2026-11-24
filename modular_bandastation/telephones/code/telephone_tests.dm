@@ -211,12 +211,19 @@
 	impacts++
 
 /datum/unit_test/telephone/z_transition/Run()
-	phone_reservation = SSmapping.request_turf_block_reservation(3, 3, 2, turf_type_override = /turf/open/indestructible)
+	// Split one reservation into two virtual decks so the upper exit is physically within cord range.
+	phone_reservation = SSmapping.request_turf_block_reservation(3, 7, turf_type_override = /turf/open/indestructible)
 	TEST_ASSERT_NOTNULL(phone_reservation, "Could not reserve two floors for telephone transport.")
-	var/turf/lower_corner = phone_reservation.bottom_left_turfs[2]
+	var/turf/upper_corner = phone_reservation.bottom_left_turfs[1]
+	var/turf/lower_corner = locate(upper_corner.x, upper_corner.y + 4, upper_corner.z)
+	phone_reservation.bottom_left_turfs += lower_corner
+	phone_reservation.top_right_turfs.Insert(1, locate(upper_corner.x + 2, upper_corner.y + 2, upper_corner.z))
+	phone_reservation.height = 3
+	phone_reservation.z_size = 2
 	var/turf/origin = locate(lower_corner.x + 1, lower_corner.y + 1, lower_corner.z)
 	var/turf/destination = get_step(GET_TURF_ABOVE(origin), NORTH)
-	TEST_ASSERT_NOTNULL(destination, "The telephone fixture must expose its native upper floor.")
+	TEST_ASSERT_NOTNULL(destination, "The telephone fixture must expose its virtual upper floor.")
+	TEST_ASSERT(origin.z == destination.z && get_dist(origin, destination) <= PHONE_MAX_RANGE, "The upper exit must share the physical Z-level and be within the handset's range.")
 	calling_phone.forceMove(origin)
 	calling_user.forceMove(origin)
 	calling_phone.set_anchored(FALSE)
@@ -387,3 +394,37 @@
 	payphone.end_call()
 	receiving_phone.recall_phone()
 	TEST_ASSERT(!payphone.start_call(calling_user, receiving_phone.phone_id), "Another call must require a new payment.")
+
+/// A mobile handset must ring while held, then shut down both ends when its battery runs out.
+/datum/unit_test/telephone/mobile_battery/Run()
+	var/obj/structure/transmitter/command/wired_phone = allocate(/obj/structure/transmitter/command)
+	var/obj/item/telephone/mobile/magistrate/mobile_phone = allocate(/obj/item/telephone/mobile/magistrate)
+	var/obj/item/stock_parts/power_store/battery = mobile_phone.get_cell()
+	TEST_ASSERT_NOTNULL(battery, "A mobile phone must have a rechargeable battery.")
+	var/obj/structure/transmitter/mobile_line = mobile_phone.attached_to
+	TEST_ASSERT_NOTNULL(mobile_line, "The mobile phone must have a station telephone line.")
+	TEST_ASSERT(calling_user.put_in_hands(wired_phone.handset), "The caller must hold the wired handset.")
+	TEST_ASSERT(receiving_user.put_in_hands(mobile_phone), "The recipient must hold the mobile phone.")
+
+	mobile_phone.process(60)
+	TEST_ASSERT(battery.charge < battery.maxcharge, "A phone in standby must use charge.")
+	TEST_ASSERT(battery.percent() > 98, "A minute of standby should make a small dent in the battery.")
+	battery.give(battery.maxcharge)
+
+	TEST_ASSERT(wired_phone.start_call(calling_user, mobile_line.phone_id), "The wired phone must be able to ring a mobile phone already in hand.")
+	mobile_phone.attack_self(receiving_user)
+	TEST_ASSERT_EQUAL(wired_phone.status, PHONE_CONNECTED, "Using a ringing mobile phone in hand must answer the call.")
+	for(var/tick in 1 to 145)
+		mobile_phone.process(2)
+	TEST_ASSERT_EQUAL(wired_phone.status, PHONE_CONNECTED, "A fresh battery should support almost five minutes of talking.")
+	for(var/tick in 1 to 5)
+		mobile_phone.process(2)
+	TEST_ASSERT_EQUAL(battery.charge, 0, "Five minutes of connected talk must exhaust a fresh battery.")
+	TEST_ASSERT_NULL(wired_phone.current_call, "Power loss must release the remote line.")
+	TEST_ASSERT_NULL(mobile_line.current_call, "Power loss must release the mobile line.")
+	TEST_ASSERT(!wired_phone.start_call(calling_user, mobile_line.phone_id), "A discharged mobile phone must not ring.")
+
+	battery.give(battery.maxcharge)
+	TEST_ASSERT(wired_phone.start_call(calling_user, mobile_line.phone_id), "Recharging must make the mobile phone reachable again.")
+	wired_phone.recall_phone()
+	TEST_ASSERT(mobile_line.start_call(receiving_user, wired_phone.phone_id), "The recharged mobile phone must also be able to call the wired line.")

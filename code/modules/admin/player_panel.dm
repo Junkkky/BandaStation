@@ -62,25 +62,25 @@
 
 				function expand(data_id,target_id){
 
-					job = document.getElementById(data_id+"_job").textContent
-					name = document.getElementById(data_id+"_name").textContent
-					real_name = document.getElementById(data_id+"_rname").textContent
-					old_names = document.getElementById(data_id+"_prevnames").textContent
-					key = document.getElementById(data_id+"_key").textContent
-					ip = document.getElementById(data_id+"_lastip").textContent
-					antagonist = document.getElementById(data_id+"_isantag").textContent
-					ref = document.getElementById(data_id+"_ref").textContent
+					var job = document.getElementById(data_id+"_job").textContent;
+					var name = document.getElementById(data_id+"_name").textContent;
+					var real_name = document.getElementById(data_id+"_rname").textContent;
+					var old_names = document.getElementById(data_id+"_prevnames").textContent;
+					var key = document.getElementById(data_id+"_key").textContent;
+					var ip = document.getElementById(data_id+"_lastip").textContent;
+					var antagonist = document.getElementById(data_id+"_isantag").textContent;
+					var ref = document.getElementById(data_id+"_ref").textContent;
 
 					clearAll();
 
 					var span = document.getElementById(target_id);
 					var ckey = key.toLowerCase().replace(/\[^a-z@0-9\]+/g,"");
 
-					body = "<table><tr><td>";
+					var body = "<table><tr><td>";
 
 					body += "</td><td align='center'>";
 
-					body += "<font size='2'><b>"+job+" "+name+"</b><br><b>Real name "+real_name+"</b><br><b>Played by "+key+" ("+ip+")</b><br><b>Old names: "+old_names+"</b></font>";
+					body += "<font size='2' class='player-details'><b></b><br><b></b><br><b></b><br><b></b></font>";
 
 					body += "</td><td align='center'>";
 
@@ -101,7 +101,12 @@
 					body += "</td></tr></table>";
 
 
-					span.innerHTML = body
+					span.innerHTML = body;
+					var details = span.querySelectorAll(".player-details b");
+					details\[0\].textContent = job+" "+name;
+					details\[1\].textContent = "Real name "+real_name;
+					details\[2\].textContent = "Played by "+key+" ("+ip+")";
+					details\[3\].textContent = "Old names: "+old_names;
 				}
 
 				function clearAll(){
@@ -279,10 +284,11 @@
 					M_job = "Ghost"
 
 			var/M_key = html_encode(M.key)
-			var/M_ip_address = isnull(M.lastKnownIP) ? "+localhost+" : M.lastKnownIP
+			var/M_ip_address = html_encode(isnull(M.lastKnownIP) ? "+localhost+" : M.lastKnownIP)
 			var/M_name = html_encode(M.name)
 			var/M_rname = html_encode(M.real_name)
 			var/M_rname_as_key = html_encode(ckey(M.real_name)) // so you can ignore punctuation
+			M_job = html_encode(M_job)
 			if(M_rname == M_rname_as_key)
 				M_rname_as_key = null
 

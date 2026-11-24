@@ -80,6 +80,10 @@
 	///Item flags for the item
 	var/item_flags = NONE
 
+	/// Inherited contraband categories. A nonzero bitfield grants TRAIT_CONTRABAND on initialization.
+	/// NONE uses only the instance trait. Null also allows catalog matching.
+	var/contraband_type_categories
+
 	///Sound played when you hit something with the item
 	var/hitsound
 	///Played when the item is used, for example tools
@@ -100,6 +104,8 @@
 	var/sound_vary = FALSE
 	///Whether or not we use stealthy audio levels for this item's attack sounds
 	var/stealthy_audio = FALSE
+	/// Whether melee impacts should be blocked by walls and closed doors.
+	var/quiet_melee_hit = FALSE
 	///Sound which is produced when blocking an attack
 	var/block_sound
 
@@ -292,6 +298,9 @@
 			hitsound = 'sound/items/tools/welder.ogg'
 		if(damtype == BRUTE)
 			hitsound = SFX_SWING_HIT
+
+	if(contraband_type_categories)
+		ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_ITEM, src)
 
@@ -689,9 +698,9 @@ GAME_VERB_SRC(/obj/item, move_to_top, oview(1), "Move To Top", null)
 		return TRUE
 	return FALSE
 
-/obj/item/proc/sound_chain(sound_to_play, volume = HALFWAY_SOUND_VOLUME, target = src)
+/obj/item/proc/sound_chain(sound_to_play, volume = HALFWAY_SOUND_VOLUME, target = src, extra_range = 0)
 	if(sound_to_play)
-		playsound(target, sound_to_play, volume, sound_vary, ignore_walls = FALSE)
+		playsound(target, sound_to_play, volume, sound_vary, extrarange = extra_range, ignore_walls = FALSE)
 		return TRUE
 	return FALSE
 
@@ -709,11 +718,11 @@ GAME_VERB_SRC(/obj/item, move_to_top, oview(1), "Move To Top", null)
 
 /// plays the mob throw hit sound
 /obj/item/proc/play_mob_throw_hit_sound(target, volume = DROP_SOUND_VOLUME)
-	return sound_chain(mob_throw_hit_sound, volume, target)
+	return sound_chain(mob_throw_hit_sound, volume, target, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /// plays when a mob is hit with this item
 /obj/item/proc/play_hit_sound(target, volume = HALFWAY_SOUND_VOLUME)
-	return sound_chain(hitsound, volume, target)
+	return sound_chain(hitsound, volume, target, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /obj/item/proc/play_equip_sound(volume = EQUIP_SOUND_VOLUME)
 	return sound_chain(equip_sound, volume)
@@ -908,7 +917,7 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 	if (throwforce > 0 || HAS_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND))
 		mob_throw_hit_sound_chain(hit_atom, volume)
 	else
-		playsound(hit_atom, 'sound/items/weapons/throwtap.ogg', volume, TRUE, -1)
+		playsound(hit_atom, 'sound/items/weapons/throwtap.ogg', volume, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE, quickstart = TRUE, throw_type_path = /datum/thrownthing)
 	if(HAS_TRAIT(src, TRAIT_NODROP))
@@ -1948,19 +1957,24 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 		SEND_SIGNAL(loc, COMSIG_ATOM_CONTENTS_WEIGHT_CLASS_CHANGED, src, old_w_class, new_w_class)
 	return TRUE
 
-/**
- * Used to determine if an item should be considered contraband by N-spect scanners or scanner gates.
- * Returns true when an item has the contraband trait, or is included in the traitor uplink.
- */
+/// Returns whether an N-spect scanner should detect this item as contraband.
 /obj/item/proc/is_contraband()
+	return get_contraband_categories() != NONE
+
+/**
+ * Returns the detectable contraband categories as a bitfield, or NONE.
+ * Instance markers use the configured categories when present. Other hits are unclassified.
+ */
+/obj/item/proc/get_contraband_categories()
 	if(HAS_TRAIT(src, TRAIT_CONTRABAND))
-		return TRUE
+		return contraband_type_categories ? contraband_type_categories : CONTRABAND_CATEGORY_UNCLASSIFIED
+	if(!isnull(contraband_type_categories))
+		return NONE
+
 	for(var/datum/uplink_item/traitor_item as anything in SStraitor.uplink_items)
 		if(istype(src, traitor_item.item))
-			if(!(traitor_item.uplink_item_flags & SYNDIE_TRIPS_CONTRABAND))
-				return FALSE
-			return TRUE
-	return FALSE
+			return (traitor_item.uplink_item_flags & SYNDIE_TRIPS_CONTRABAND) ? CONTRABAND_CATEGORY_UNCLASSIFIED : NONE
+	return NONE
 
 /obj/item/apply_main_material_effects(datum/material/main_material, amount, multiplier)
 	. = ..()

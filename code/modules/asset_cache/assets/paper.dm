@@ -21,7 +21,10 @@
 		"stamp-magistrate" = 'modular_bandastation/objects/icons/stamp_icons/large_stamp-magistrate.png',
 		"stamp-nanotrasen_representative" = 'modular_bandastation/objects/icons/stamp_icons/large_stamp-nanotrasen_representative.png',
 		"stamp-tsf" = 'modular_bandastation/objects/icons/stamp_icons/large_stamp-tsf.png',
-		"stamp-ussp" = 'modular_bandastation/objects/icons/stamp_icons/large_stamp-ussp.png'
+		"stamp-ussp" = 'modular_bandastation/objects/icons/stamp_icons/large_stamp-ussp.png',
+		"stamp-skrell_empire" = 'modular_bandastation/objects/icons/stamp_icons/large_stamp-skrell_empire.png',
+		"stamp-elysium" = 'modular_bandastation/objects/icons/stamp_icons/large_stamp-elysium.png',
+		"stamp-free_sectors" = 'modular_bandastation/objects/icons/stamp_icons/large_stamp-free_sectors.png',
 		// BANDASTATION EDIT END
 	)
 

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Box, Button, Flex, Stack } from 'tgui-core/components';
 
 import { useBackend } from '../../backend';
+import { processedText } from '../../process';
 import type { Coordinates } from '../common/Connections';
 import { Pin } from './Pin';
 import type { DataEvidence, EvidenceFn } from './types';
@@ -170,7 +171,9 @@ export function Evidence(props: Props) {
               {evidence.type === 'photo' ? (
                 <img className="Evidence__Icon" src={evidence.photo_url} />
               ) : (
-                <div dangerouslySetInnerHTML={{ __html: evidence.text }} />
+                <div
+                  dangerouslySetInnerHTML={processedText(evidence.text ?? '')}
+                />
               )}
             </Box>
 
