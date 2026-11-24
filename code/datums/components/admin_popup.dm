@@ -114,12 +114,12 @@
 /// Tries to give the target an admin popup.
 /// If it fails, will send the error to the passed admin.
 /proc/give_admin_popup(client/target, client/admin, message)
-	log_admin("[key_name(admin)] sent an admin popup to [key_name(target)].")
-
 	var/datum/help_ticket/current_ticket = target.persistent_client.current_help_ticket // BANDASTATION EDIT: Original - target.current_ticket
 	if (!current_ticket)
-		to_chat(admin, span_warning("[key_name(target)] had no active ahelp, aborting."))
+		to_chat(admin, span_warning("[html_encode(key_name(target))] had no active ahelp, aborting."))
 		return
 
-	GLOB.ticket_manager.add_ticket_message(admin, current_ticket, message)  // BANDASTATION EDIT: Original - admin.cmd_admin_pm(target, message)
+	if(!current_ticket.has_staff_access(admin) || !GLOB.ticket_manager.add_ticket_message(admin, current_ticket, message))
+		return
+	log_admin("[key_name(admin)] sent an admin popup to [key_name(target)].")
 	target.AddComponent(/datum/component/admin_popup, current_ticket)

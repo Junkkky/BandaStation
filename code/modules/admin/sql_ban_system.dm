@@ -943,7 +943,8 @@
 	)
 	var/where
 	if(text2num(mirror_edit))
-		var/list/wherelist = list("bantime = '[bantime]'")
+		var/list/wherelist = list("bantime = :bantime")
+		arguments["bantime"] = bantime
 		if(old_key)
 			wherelist += "ckey = :old_ckey"
 			arguments["old_ckey"] = ckey(old_key)

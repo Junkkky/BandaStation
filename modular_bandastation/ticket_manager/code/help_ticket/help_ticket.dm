@@ -274,7 +274,7 @@
 	if(!isnull(linked_admin))
 		return FALSE
 
-	if(!has_user_access(admin))
+	if(!has_staff_access(admin))
 		message_admins(
 			"[key_name_admin(admin)] попытался взять тикет #[id], не имея прав доступа к нему!"
 		)
@@ -326,11 +326,12 @@
 
 /// Checks if the ticket can be viewed and interacted by passed `target`
 /datum/help_ticket/proc/has_user_access(client/target)
-	return check_rights_for(target, get_ticket_type()?.required_permissions) || initiator_key == target.key
+	return target && (target == get_initiator_client() || has_staff_access(target))
 
 /// Checks if the ticket can be converted by passed `target`
 /datum/help_ticket/proc/has_staff_access(client/target)
-	return check_rights_for(target, get_ticket_type()?.required_permissions)
+	var/required_permissions = get_ticket_type()?.required_permissions
+	return required_permissions && check_rights_for(target, required_permissions)
 
 /// Returns type this help ticket can be converted to
 /datum/help_ticket/proc/type_to_convert_to()

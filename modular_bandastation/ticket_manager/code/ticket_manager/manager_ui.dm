@@ -52,15 +52,11 @@ GLOBAL_VAR_INIT(ticket_manager_ref, REF(GLOB.ticket_manager))
 		return
 
 	var/client/user = ui.user.client
-	var/ticket_id = params["ticketId"]
-	if(!ticket_id)
-		CRASH("Called ticket_manager ui_act() without a ticket number!")
+	var/datum/help_ticket/needed_ticket = get_help_ticket_by_id(params["ticketId"])
+	if(!needed_ticket?.has_user_access(user))
+		return FALSE
 
-	var/datum/help_ticket/needed_ticket = get_help_ticket_by_id(ticket_id)
-	if(!needed_ticket)
-		CRASH("Requested ticket not found in all tickets list!")
-
-	// Can be used by anyone
+	// Available to both the ticket owner and authorized staff.
 	switch(action)
 		if("start_writing")
 			if(!can_send_message(user, needed_ticket))
@@ -74,18 +70,7 @@ GLOBAL_VAR_INIT(ticket_manager_ref, REF(GLOB.ticket_manager))
 			return TRUE
 
 		if("reply")
-			if(!can_send_message(user, needed_ticket))
-				return FALSE
-
-			if(!params["message"])
-				return FALSE
-
-			var/trimmed_message = trim(params["message"], MAX_MESSAGE_LEN)
-			if(!trimmed_message)
-				return
-
-			add_ticket_message(user, needed_ticket, trimmed_message)
-			return TRUE
+			return add_ticket_message(user, needed_ticket, params["message"])
 
 	if(!needed_ticket.has_staff_access(user))
 		return FALSE
@@ -162,11 +147,16 @@ GLOBAL_VAR_INIT(ticket_manager_ref, REF(GLOB.ticket_manager))
 				remove_from_ticket_writers(user, needed_ticket)
 				return FALSE
 
-			if(!needed_ticket.get_initiator_client())
+			ticket_holder = needed_ticket.get_initiator_client()
+			if(!ticket_holder)
+				remove_from_ticket_writers(user, needed_ticket)
 				to_chat(user, span_notice("Кажется игрок покинул сервер..."))
 				return FALSE
+			if(ticket_holder.persistent_client.current_help_ticket != needed_ticket || !needed_ticket.has_staff_access(user))
+				remove_from_ticket_writers(user, needed_ticket)
+				return FALSE
 
-			give_admin_popup(needed_ticket.get_initiator_client(), user, message)
+			give_admin_popup(ticket_holder, user, message)
 			return TRUE
 
 	return FALSE
