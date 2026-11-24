@@ -489,7 +489,7 @@
 
 
 /// Returns an atom where the mob should spawn in.
-/datum/job/proc/get_roundstart_spawn_point()
+/datum/job/proc/get_roundstart_spawn_point(mob/dead/new_player/player)
 	if(random_spawns_possible)
 		if(HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS))
 			return get_latejoin_spawn_point()

@@ -479,7 +479,7 @@ SUBSYSTEM_DEF(ticker)
 		var/player_ckey = player.ckey
 		var/previous_mind_activity = spawning_mind.active
 		var/datum/job_character_selection/selection = player.assigned_job_character
-		var/atom/destination = job.get_roundstart_spawn_point()
+		var/atom/destination = job.get_roundstart_spawn_point(player)
 		var/mob/living/character = destination ? player.create_character(destination) : null
 		if(!QDELETED(character))
 			GLOB.joined_player_list += player_ckey
@@ -491,6 +491,7 @@ SUBSYSTEM_DEF(ticker)
 		if(still_reserved && (QDELETED(spawning_mind) || spawning_mind.assigned_role == job))
 			job.current_positions = max(0, job.current_positions - 1)
 			if(!QDELETED(spawning_mind))
+				spawning_mind.release_away_mission_seat()
 				spawning_mind.set_assigned_role(SSjob.get_job_type(/datum/job/unassigned))
 				spawning_mind.active = previous_mind_activity
 			if(!QDELETED(player))

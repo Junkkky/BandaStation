@@ -219,6 +219,7 @@
 /mob/dead/new_player/proc/release_latejoin_assignment(datum/job/job, datum/mind/request_mind, previous_mind_activity)
 	job.current_positions = max(0, job.current_positions - 1)
 	if(!QDELETED(request_mind) && request_mind.assigned_role == job)
+		request_mind.release_away_mission_seat()
 		request_mind.set_assigned_role(SSjob.get_job_type(/datum/job/unassigned))
 		request_mind.late_joiner = FALSE
 		request_mind.active = previous_mind_activity
@@ -294,6 +295,10 @@
 			var/spawn_failure = is_away_job && !destination ? "Корабль или точка у криокапсулы сейчас недоступны. Попробуйте присоединиться снова." : "Не удалось создать персонажа. Выберите профессию повторно."
 			to_chat(src, span_warning(get_latejoin_block_message(skip_arrivals_checks = is_away_job) || spawn_failure))
 		return FALSE
+
+	if(is_away_job)
+		var/datum/job/away_mission/away_job = job
+		away_job.note_away_latejoin(request_mind)
 
 	SSticker.queued_players -= src
 	SSticker.queue_delay = 4

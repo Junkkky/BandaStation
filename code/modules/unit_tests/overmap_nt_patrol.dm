@@ -1,7 +1,13 @@
 /// Verify the actual patrol hull and the all-or-nothing transition from lobby seats to mapped spawns.
 /datum/unit_test/overmap_nt_patrol
+	/// Original registry, isolated from test names.
+	var/list/original_ship_names
+	/// Original round's mission selection.
+	var/list/original_mission_limits
 	/// Physical template footprint retained for teardown.
 	var/datum/map_template/stationtrauma_space/ship/template
+	/// Additional physical hull retained for teardown.
+	var/datum/map_template/stationtrauma_space/ship/second_template
 	/// Original native port counters.
 	var/list/original_ports
 	/// Native stationary port counters, including the temporary flight berth.
@@ -29,6 +35,9 @@
 
 /// Exercise the same sector attachment that prepares the native flight berth and hull layers.
 /datum/unit_test/overmap_nt_patrol/proc/exercise_patrol()
+	original_ship_names = GLOB.used_away_ship_names
+	GLOB.used_away_ship_names = list()
+	original_mission_limits = SSjob.away_mission_limits
 	original_ports = SSshuttle.assoc_mobile.Copy()
 	original_stationary_ports = SSshuttle.assoc_stationary.Copy()
 	original_staging_level = SSstationtrauma_space_voyage.dispatch_staging_level
@@ -39,6 +48,7 @@
 	var/datum/roundstart_away_mission/nt_patrol/mission = locate() in roundstart_away_missions()
 	TEST_ASSERT_NOTNULL(mission, "The patrol destroyer must be available from the mission pool")
 	var/obj/docking_port/mobile/stationtrauma_space/ship
+	var/obj/docking_port/mobile/stationtrauma_space/second_ship
 	if(original_overmap && SSstationtrauma_space_voyage.initialized && length(SSstationtrauma_space_voyage.sectors))
 		for(var/obj/docking_port/mobile/stationtrauma_space/existing in SSshuttle.mobile_docking_ports)
 			TEST_ASSERT_NOTEQUAL(existing.source_template, mission.map_path, "The patrol destroyer must stay out of an empty roundstart fleet")
@@ -57,6 +67,31 @@
 		TEST_ASSERT_EQUAL(ship.z, staging_level, "The next claim must reuse the rejected load's deck")
 		TEST_ASSERT_EQUAL(SSstationtrauma_space_voyage.load_ship_template(mission.map_path, arrival_check, loaded_templates), ship, "A second arrival must reuse the same loaded hull")
 		TEST_ASSERT_EQUAL(length(loaded_templates), 1, "Rejoining must not allocate another ship template")
+
+		// Explicit additional hulls must go through the same native loader and have independent decks.
+		SSjob.away_mission_limits = list()
+		SSjob.update_away_job_capacity()
+		TEST_ASSERT_NULL(SSstationtrauma_space_voyage.load_ship_template(mission.map_path, arrival_check), "Disabling missions must prevent boarding an existing hull")
+		TEST_ASSERT_NULL(SSstationtrauma_space_voyage.load_ship_template(mission.map_path, arrival_check, new_instance = TRUE), "Disabling missions must prevent manual launches")
+		SSjob.away_mission_limits = list(/datum/roundstart_away_mission/nt_patrol = 2)
+		SSjob.update_away_job_capacity()
+		second_ship = SSstationtrauma_space_voyage.load_ship_template(mission.map_path, arrival_check, loaded_templates, new_instance = TRUE)
+		if(length(loaded_templates) > 1)
+			second_template = loaded_templates[2]
+			allocated += second_template
+		TEST_ASSERT(second_ship && second_ship != ship, "An explicitly requested second patrol ship must load a separate hull")
+		TEST_ASSERT_NOTEQUAL(second_ship.shuttle_id, ship.shuttle_id, "Every copy needs a distinct native shuttle ID")
+		TEST_ASSERT_EQUAL(length(second_ship.shuttle_areas & ship.shuttle_areas), 0, "Copies must keep their machinery in separate areas")
+		var/turf/second_arrival = mission.find_latejoin_spawn(second_ship)
+		TEST_ASSERT(second_arrival && second_arrival.z != ship.z, "Each copy needs its own cryopod arrival")
+		TEST_ASSERT_NOTEQUAL(second_ship.overmap.pos_y, ship.overmap.pos_y, "Copies must have different overmap coordinates")
+		var/obj/machinery/computer/stationtrauma_transponder/nt_patrol/first_transponder = locate() in ship.transponders
+		var/obj/machinery/computer/stationtrauma_transponder/nt_patrol/second_transponder = locate() in second_ship.transponders
+		var/obj/item/circuitboard/computer/stationtrauma_transponder/first_board = first_transponder?.circuit
+		var/obj/item/circuitboard/computer/stationtrauma_transponder/second_board = second_transponder?.circuit
+		TEST_ASSERT(first_board?.callsign && second_board?.callsign && first_board.callsign != second_board.callsign, "Uncrewed copies must start with different registered callsigns")
+		TEST_ASSERT_EQUAL(ship.name, "ОКН «[first_board.callsign]»", "The hull name must agree with its registered callsign")
+		TEST_ASSERT_NULL(SSstationtrauma_space_voyage.load_ship_template(mission.map_path, arrival_check, new_instance = TRUE), "A third copy must not exceed the configured limit")
 	else
 		template = allocate(/datum/map_template/stationtrauma_space/ship, mission.map_path, mission.name)
 		ship = template.load_ship()
@@ -155,7 +190,7 @@
 	var/datum/job/away_mission/medic = SSjob.get_job_type(/datum/job/away_mission/nt_patrol_medic)
 	var/mob/dead/new_player/medic_player = candidates[medic][1]
 	medic_player.ready = PLAYER_NOT_READY
-	TEST_ASSERT(!mission.seat_crew(candidates, TRUE, ship), "A crew that loses its only medic during loading must fall back")
+	TEST_ASSERT(!mission.seat_crew(candidates, TRUE, null, ship), "A crew that loses its only medic during loading must fall back")
 	TEST_ASSERT_EQUAL(length(SSjob.unassigned), 11, "The rejected hull must release every reserved station candidate")
 	for(var/mob/dead/new_player/player as anything in SSjob.unassigned)
 		TEST_ASSERT(is_unassigned_job(player.mind.assigned_role), "A failed launch must roll back each job assignment")
@@ -192,18 +227,45 @@
 	TEST_ASSERT(!latejoin_profile.error && latejoin_profile.slot == profile_slot, "Off-station latejoin must honor the assigned profile when enabled")
 	qdel(latejoin_profile)
 
-	TEST_ASSERT(mission.seat_crew(candidates, TRUE, ship), "The full crew must be found even when the first commander candidate is the only medic")
+	var/list/optional_assignments = list()
+	TEST_ASSERT(mission.seat_crew(candidates, TRUE, optional_assignments, ship), "The full crew must be found even when the first commander candidate is the only medic")
+	TEST_ASSERT_EQUAL(length(SSjob.unassigned), 7, "Reserve only essential positions until other hulls have picked their crews")
+	var/datum/callback/fill_seats = optional_assignments[ship]
+	fill_seats.Invoke()
 	TEST_ASSERT_EQUAL(commander_player.assigned_job_character?.slot, profile_slot, "Roundstart must reserve the assigned character instead of the editing slot")
 	TEST_ASSERT_EQUAL(commander_player.mind.assigned_role, medic, "Reserve the only medic before filling commander with an alternative volunteer")
 	TEST_ASSERT_EQUAL(medic_player.mind.assigned_role, commander, "The alternative volunteer must take the commander position")
 	TEST_ASSERT_EQUAL(length(SSjob.unassigned), 1, "Crew capacity must reserve ten volunteers and leave one available to the station")
 	var/list/destinations = list()
 	for(var/datum/job/away_mission/job as anything in candidates)
-		for(var/index in 1 to job.current_positions)
-			var/turf/tile = job.get_roundstart_spawn_point()
+		for(var/mob/dead/new_player/player as anything in job.roundstart_spawns?.Copy())
+			var/turf/tile = job.get_roundstart_spawn_point(player)
 			TEST_ASSERT(tile && ship.is_in_shuttle_bounds(tile) && !(tile in destinations), "Every admitted player needs a distinct spawn inside the real hull")
 			destinations += tile
 	TEST_ASSERT_EQUAL(length(destinations), 10, "The complete roster must consume ten distinct role landmarks")
+	TEST_ASSERT(!ship.has_away_vacancy(commander), "A filled commander position must be closed on its own hull")
+	if(second_ship)
+		TEST_ASSERT(second_ship.has_away_vacancy(commander), "The same position must stay open on the other hull")
+		TEST_ASSERT_EQUAL(commander.total_positions, 2, "Latejoin capacity must include both configured hulls")
+		TEST_ASSERT(!ship.rename_away_ship(commander_player.mind, "Вымпел"), "An ordinary crewmember cannot rename the ship")
+		TEST_ASSERT(!ship.rename_away_ship(medic_player.mind, uppertext(second_ship.away_ship_name)), "A reserved name cannot be reused even with different letter case")
+		TEST_ASSERT(ship.rename_away_ship(medic_player.mind, "Вымпел"), "The roundstart commander may register the ship name")
+		TEST_ASSERT_EQUAL(ship.name, "ОКН «Вымпел»", "A commander rename must update the hull name")
+		TEST_ASSERT(!ship.rename_away_ship(medic_player.mind, "Вымпел-2"), "A commander can rename the ship only once")
+
+		// A medic first aboard fixes the fallback name, even when the commander boards next.
+		second_ship.record_away_crew(commander_player.mind)
+		medic.note_away_latejoin(commander_player.mind)
+		second_ship.record_away_crew(medic_player.mind)
+		commander.note_away_latejoin(medic_player.mind)
+		TEST_ASSERT(!second_ship.rename_away_ship(medic_player.mind, "Вымпел-3"), "A commander arriving after another crewmember may not rename an already crewed ship")
+		TEST_ASSERT(!second_ship.has_away_vacancy(commander), "The second commander reservation must belong to the second hull")
+		// Reuse the fixture to model a fresh hull where the commander is the first latejoin.
+		second_ship.away_crew_boarded = FALSE
+		commander.note_away_latejoin(medic_player.mind)
+		TEST_ASSERT(second_ship.rename_away_ship(medic_player.mind, "Вымпел-2"), "The commander first aboard in latejoin may name their own ship")
+		SSjob.free_job_position(commander.title, medic_player.mind)
+		TEST_ASSERT(second_ship.has_away_vacancy(commander), "Freeing the commander must release the position on the correct hull")
 
 /// Verify the mapped power source and propellant route using only the fuel on board.
 /datum/unit_test/overmap_nt_patrol/proc/check_reactor(obj/docking_port/mobile/stationtrauma_space/ship, obj/machinery/power/smes/ship/storage, datum/pipeline/supply, datum/pipeline/waste)
@@ -297,6 +359,7 @@
 
 /// Map cleanup yields, so perform it before the no-sleep datum teardown.
 /datum/unit_test/overmap_nt_patrol/proc/discard_test_hull()
+	second_template?.discard_loaded_ship()
 	if(!template)
 		return
 	var/list/levels = template.loaded_levels.Copy()
@@ -317,6 +380,9 @@
 		SSjob.unassigned = original_unassigned
 		SSmapping.current_map.space_overmap = original_overmap
 		SSsound_loops.can_fire = original_sound_processing
+		GLOB.used_away_ship_names = original_ship_names
+		SSjob.away_mission_limits = original_mission_limits
+		SSjob.update_away_job_capacity()
 	for(var/datum/job/away_mission/job as anything in original_jobs)
 		var/list/original_job = original_jobs[job]
 		job.current_positions = original_job[1]

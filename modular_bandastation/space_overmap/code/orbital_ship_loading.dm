@@ -145,14 +145,18 @@
 	require_area_resort()
 
 /** Keep loading and optional midround sector attachment inside the same rejected-template cleanup boundary. */
-/proc/load_stationtrauma_space_ship(map_path, attach_to_sector = FALSE, datum/callback/place_ship, datum/callback/validate_ship, list/pending_templates)
+/proc/load_stationtrauma_space_ship(map_path, attach_to_sector = FALSE, datum/callback/place_ship, datum/callback/validate_ship, list/pending_templates, away_instance_slot = 0)
 	var/datum/map_template/stationtrauma_space/ship/template = new(map_path, "Overmap ship")
 	template.reuse_dispatch_level = !!(place_ship || validate_ship)
+	var/datum/roundstart_away_mission/mission = away_instance_slot ? away_mission_for_template(map_path) : null
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
 	try
 		vessel = template.load_ship()
 		if(vessel)
 			vessel.source_template = map_path
+			vessel.away_instance_slot = away_instance_slot
+			if(away_instance_slot > 1)
+				vessel.overmap_y += (away_instance_slot - 1) * ST_SPACE_DOCK_RANGE
 		if(vessel && attach_to_sector)
 			var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors[vessel.overmap_sector]
 			// Registration can suffix an ID even after its previous owner has been deleted.
@@ -170,7 +174,7 @@
 				if(!(vessel.z in template.loaded_levels))
 					template.reuse_dispatch_level = FALSE
 				vessel = null
-		if(vessel && validate_ship && !validate_ship.Invoke(vessel))
+		if(vessel && ((mission && away_instance_slot > mission.get_instance_limit()) || (validate_ship && !validate_ship.Invoke(vessel))))
 			if(!(vessel.z in template.loaded_levels))
 				template.reuse_dispatch_level = FALSE
 			vessel = null
@@ -182,6 +186,8 @@
 		throw failure
 	if(!vessel)
 		template.discard_loaded_ship()
+	else if(mission)
+		vessel.draw_away_ship_name(mission.ship_names)
 	if(vessel && pending_templates)
 		pending_templates += template
 	else
@@ -204,7 +210,7 @@
 	return choices
 
 /** Reuse a live template instance or load and attach it after sectors are ready. */
-/datum/controller/subsystem/stationtrauma_space_voyage/proc/load_ship_template(map_path, datum/callback/validate_ship, list/pending_templates)
+/datum/controller/subsystem/stationtrauma_space_voyage/proc/load_ship_template(map_path, datum/callback/validate_ship, list/pending_templates, new_instance = FALSE)
 	var/allowed = FALSE
 	var/list/choices = ship_template_choices()
 	for(var/label in choices)
@@ -213,13 +219,37 @@
 			break
 	if(!allowed || loading_ship_template || !initialized || loading || !length(sectors))
 		return null
-	for(var/obj/docking_port/mobile/stationtrauma_space/vessel in SSshuttle.mobile_docking_ports)
-		if(vessel.source_template == map_path)
-			var/datum/stationtrauma_overmap/space/navigation = vessel.overmap
-			var/datum/stationtrauma_overmap_sector/space/sector = navigation?.sector
-			if(QDELETED(navigation) || !navigation.is_operational() || !sector?.ready || sector.ships[vessel.shuttle_id] != navigation)
-				return null
-			return !validate_ship || validate_ship.Invoke(vessel) ? vessel : null
+	var/datum/roundstart_away_mission/mission = away_mission_for_template(map_path)
+	var/instance_slot = 0
+	if(mission)
+		var/limit = mission.get_instance_limit()
+		if(!limit)
+			return null
+		var/list/vessels = mission.get_loaded_ships()
+		if(!new_instance && length(vessels))
+			for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in vessels)
+				if(!validate_ship || validate_ship.Invoke(vessel))
+					return vessel
+			return null
+		if(length(vessels) >= limit)
+			return null
+		var/list/occupied_slots = list()
+		for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in vessels)
+			occupied_slots |= vessel.away_instance_slot || 1
+		for(var/slot in 1 to limit)
+			if(!(slot in occupied_slots))
+				instance_slot = slot
+				break
+	else
+		if(new_instance)
+			return null
+		for(var/obj/docking_port/mobile/stationtrauma_space/vessel in SSshuttle.mobile_docking_ports)
+			if(vessel.source_template == map_path)
+				var/datum/stationtrauma_overmap/space/navigation = vessel.overmap
+				var/datum/stationtrauma_overmap_sector/space/sector = navigation?.sector
+				if(QDELETED(navigation) || !navigation.is_operational() || !sector?.ready || sector.ships[vessel.shuttle_id] != navigation)
+					return null
+				return !validate_ship || validate_ship.Invoke(vessel) ? vessel : null
 	for(var/id in sectors)
 		var/datum/stationtrauma_overmap_sector/space/sector = sectors[id]
 		if(!sector.ready)
@@ -227,7 +257,7 @@
 	loading_ship_template = TRUE
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
 	try
-		vessel = load_stationtrauma_space_ship(map_path, attach_to_sector = TRUE, validate_ship = validate_ship, pending_templates = pending_templates)
+		vessel = load_stationtrauma_space_ship(map_path, attach_to_sector = TRUE, validate_ship = validate_ship, pending_templates = pending_templates, away_instance_slot = instance_slot)
 	catch(var/exception/failure)
 		loading_ship_template = FALSE
 		throw failure

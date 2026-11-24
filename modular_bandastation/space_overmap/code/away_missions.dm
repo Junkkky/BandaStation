@@ -6,10 +6,16 @@
 	var/map_path
 	/// Map of job type to the minimum number of players in that job.
 	var/list/minimum_crew
+	/// Role allowed to name a ship when its holder is in the first crew.
+	var/commander_job
+	/// Short registration names suitable for this class of ship.
+	var/list/ship_names = list()
 
 /datum/roundstart_away_mission/nt_patrol
 	name = "Патрульный эсминец НТ"
 	map_path = "_maps/map_files/overmap_ships/nt_patrol_destroyer.dmm"
+	commander_job = /datum/job/away_mission/nt_patrol_commander
+	ship_names = list("Брут", "Степь", "Рубеж", "Форпост", "Гранит", "Сапсан", "Дозорный", "Меридиан")
 	minimum_crew = list(
 		/datum/job/away_mission/nt_patrol_commander = 1,
 		/datum/job/away_mission/nt_patrol_engineer = 1,
@@ -22,30 +28,85 @@
 	var/static/list/missions = init_subtypes(/datum/roundstart_away_mission)
 	return missions
 
+/datum/controller/subsystem/job
+	/// Null means automatic selection. Otherwise only missions with a positive limit may launch.
+	var/list/away_mission_limits
+
+/// Set the available crew positions across all permitted copies of each mission.
+/datum/controller/subsystem/job/proc/update_away_job_capacity()
+	for(var/datum/job/away_mission/job in all_occupations)
+		var/datum/roundstart_away_mission/mission = job.get_away_mission()
+		job.total_positions = initial(job.total_positions) * (mission?.get_instance_limit() || 0)
+
+/// Return how many independent copies of this mission the round can host.
+/datum/roundstart_away_mission/proc/get_instance_limit()
+	if(isnull(SSjob.away_mission_limits))
+		return 1
+	return SSjob.away_mission_limits[type] || 0
+
+/// Return the registered copies still available to their crews.
+/datum/roundstart_away_mission/proc/get_loaded_ships()
+	var/list/vessels = list()
+	for(var/obj/docking_port/mobile/stationtrauma_space/vessel in SSshuttle.mobile_docking_ports)
+		if(vessel.source_template != map_path)
+			continue
+		var/datum/stationtrauma_overmap/space/navigation = vessel.overmap
+		var/datum/stationtrauma_overmap_sector/space/sector = navigation?.sector
+		if(!QDELETED(navigation) && navigation.is_operational() && sector?.ready && sector.ships[vessel.shuttle_id] == navigation)
+			vessels += vessel
+	return vessels
+
+/// Resolve a registered mission's trusted map file.
+/proc/away_mission_for_template(map_path)
+	for(var/datum/roundstart_away_mission/mission as anything in roundstart_away_missions())
+		if(mission.map_path == map_path)
+			return mission
+	return null
+
 /// Draw from the crewable mission pool after reserving priority station positions.
 /datum/controller/subsystem/job/proc/assign_roundstart_away_missions(allow_all, list/pending_templates)
 	if(!SSmapping.current_map?.space_overmap || !SSstationtrauma_space_voyage.initialized)
 		return
+	update_away_job_capacity()
+	var/list/mission_pool = list()
+	var/automatic = isnull(away_mission_limits)
+	for(var/datum/roundstart_away_mission/mission as anything in roundstart_away_missions())
+		for(var/copy in 1 to mission.get_instance_limit())
+			mission_pool += mission
+	if(!length(mission_pool))
+		return
+	if(automatic)
+		shuffle_inplace(mission_pool)
+	var/missions_remaining = automatic ? 2 : length(mission_pool)
 	var/list/antagonist_minds = list()
 	for(var/datum/dynamic_ruleset/roundstart/ruleset as anything in SSdynamic.queued_rulesets | SSdynamic.antag_token_rulesets)
 		antagonist_minds |= ruleset.selected_minds
-	var/missions_remaining = 2
-	for(var/datum/roundstart_away_mission/mission as anything in shuffle(roundstart_away_missions()))
+	var/list/optional_assignments = list()
+	for(var/datum/roundstart_away_mission/mission as anything in mission_pool)
 		var/list/candidates = mission.find_crew(antagonist_minds)
 		if(!candidates)
 			continue
-		var/datum/callback/seat_crew = CALLBACK(mission, TYPE_PROC_REF(/datum/roundstart_away_mission, seat_crew), candidates, allow_all)
+		var/datum/callback/seat_crew = CALLBACK(mission, TYPE_PROC_REF(/datum/roundstart_away_mission, seat_crew), candidates, allow_all, optional_assignments)
 		var/obj/docking_port/mobile/stationtrauma_space/vessel
-		try
-			vessel = SSstationtrauma_space_voyage.load_ship_template(mission.map_path, seat_crew, pending_templates)
-		catch(var/exception/load_error)
-			log_mapping("Roundstart away mission [mission.name] failed to load: [load_error]")
+		for(var/obj/docking_port/mobile/stationtrauma_space/existing as anything in mission.get_loaded_ships())
+			if(!optional_assignments[existing] && seat_crew.Invoke(existing))
+				vessel = existing
+				break
+		if(!vessel)
+			try
+				vessel = SSstationtrauma_space_voyage.load_ship_template(mission.map_path, seat_crew, pending_templates, new_instance = TRUE)
+			catch(var/exception/load_error)
+				log_mapping("Roundstart away mission [mission.name] failed to load: [load_error]")
 		if(!vessel)
 			continue
-		log_game("Roundstart away mission staffed: [mission.name]")
+		log_game("Roundstart away mission staffed: [mission.name] ([vessel.shuttle_id])")
 		missions_remaining--
 		if(!missions_remaining)
 			break
+	// Do not fill optional positions on one ship while another still needs its minimum crew.
+	for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in optional_assignments)
+		var/datum/callback/fill_seats = optional_assignments[vessel]
+		fill_seats.Invoke()
 
 /// Find eligible volunteers before allocating a level. The assignment is checked again after loading.
 /datum/roundstart_away_mission/proc/find_crew(list/antagonist_minds)
@@ -156,7 +217,7 @@
 	return spawns
 
 /// Reserve all essential seats together. Returning false discards a newly loaded template.
-/datum/roundstart_away_mission/proc/seat_crew(list/candidates, allow_all, obj/docking_port/mobile/stationtrauma_space/vessel)
+/datum/roundstart_away_mission/proc/seat_crew(list/candidates, allow_all, list/optional_assignments, obj/docking_port/mobile/stationtrauma_space/vessel)
 	var/list/ranked = rank_crew_candidates(candidates)
 	var/list/required_crew = match_required_crew(ranked)
 	if(!required_crew)
@@ -168,34 +229,48 @@
 		if(length(job_spawns) < job.spawn_positions)
 			log_mapping("Roundstart away mission [name] lacks crew spawn points for [job.title]")
 			return FALSE
-	for(var/datum/job/away_mission/job as anything in candidates)
-		job.roundstart_spawns = shuffle(spawns[job.type])
+		job_spawns.Cut(job.spawn_positions + 1)
+		shuffle_inplace(job_spawns)
 
-	// Seat the minimum crew before optional seats can use up the population budget.
+	var/datum/mind/commander
 	for(var/mob/dead/new_player/required_player as anything in required_crew)
 		var/datum/job/away_mission/job = required_crew[required_player]
-		assign_seats(job, list(required_player), job.current_positions + 1, assigned, allow_all)
+		assign_seats(job, list(required_player), spawns[job.type], assigned, allow_all, vessel)
 		if(!(required_player in assigned))
 			for(var/mob/dead/new_player/player as anything in assigned)
 				var/datum/job/away_mission/assigned_job = player.mind.assigned_role
 				assigned_job.current_positions--
+				assigned_job.roundstart_spawns -= player
+				player.mind.release_away_mission_seat()
 				QDEL_NULL(player.assigned_job_character)
 				player.mind.set_assigned_role(SSjob.get_job_type(/datum/job/unassigned))
 				SSjob.unassigned += player
-			for(var/datum/job/away_mission/mission_job as anything in candidates)
-				mission_job.roundstart_spawns = null
 			return FALSE
+		if(job.type == commander_job)
+			commander = required_player.mind
 
+	vessel.note_first_away_boarding(commander)
+	if(isnull(optional_assignments))
+		fill_optional_seats(candidates, spawns, allow_all, vessel)
+	else
+		optional_assignments[vessel] = CALLBACK(src, PROC_REF(fill_optional_seats), candidates, spawns, allow_all, vessel)
+	return TRUE
+
+/// Fill any remaining positions after the other hulls have reserved their essential crew.
+/datum/roundstart_away_mission/proc/fill_optional_seats(list/candidates, list/spawns, allow_all, obj/docking_port/mobile/stationtrauma_space/vessel)
+	if(QDELETED(vessel))
+		return
+	var/list/ranked = rank_crew_candidates(candidates)
+	var/list/assigned = list()
 	for(var/priority in JP_HIGH to JP_LOW step -1)
 		for(var/datum/job/away_mission/job as anything in ranked)
 			var/list/levels = ranked[job]
-			assign_seats(job, levels[priority], job.spawn_positions, assigned, allow_all)
-	return TRUE
+			assign_seats(job, levels[priority], spawns[job.type], assigned, allow_all, vessel)
 
 /// The ban check already ran in find_crew. Recheck readiness and the live profile without yielding here.
-/datum/roundstart_away_mission/proc/assign_seats(datum/job/away_mission/job, list/volunteers, count, list/assigned, allow_all)
+/datum/roundstart_away_mission/proc/assign_seats(datum/job/away_mission/job, list/volunteers, list/spawns, list/assigned, allow_all, obj/docking_port/mobile/stationtrauma_space/vessel)
 	for(var/mob/dead/new_player/player as anything in volunteers)
-		if(job.current_positions >= count || (!allow_all && SSjob.popcap_reached()))
+		if(!length(spawns) || (!allow_all && SSjob.popcap_reached()))
 			break
 		if(QDELETED(player) || player.ready != PLAYER_READY_TO_PLAY || !is_unassigned_job(player.mind?.assigned_role) || !(player in SSjob.unassigned))
 			continue
@@ -205,6 +280,41 @@
 			continue
 		if(SSjob.assign_role(player, job, do_eligibility_checks = FALSE))
 			assigned += player
+			LAZYSET(job.roundstart_spawns, player, spawns[length(spawns)])
+			spawns.len--
+			vessel.record_away_crew(player.mind)
+
+/obj/docking_port/mobile/stationtrauma_space
+	/// Formation slot used by this instance of an away mission template.
+	var/away_instance_slot
+	/// Weak mind references to reservations aboard this hull, indexed by mind.
+	var/list/away_crew
+
+/datum/mind
+	/// Hull that owns this player's mission vacancy, independent of their physical location.
+	var/datum/weakref/away_mission_ship
+
+/// Return whether this hull has a vacancy for the requested crew role.
+/obj/docking_port/mobile/stationtrauma_space/proc/has_away_vacancy(datum/job/away_mission/job)
+	var/occupied = 0
+	for(var/datum/weakref/mind_ref as anything in away_crew)
+		var/datum/mind/occupant = mind_ref.resolve()
+		if(occupant?.assigned_role == job)
+			occupied++
+	return occupied < initial(job.total_positions)
+
+/// Record the same reservation on the hull and the mind so rollback or cryo can release it.
+/obj/docking_port/mobile/stationtrauma_space/proc/record_away_crew(datum/mind/crew_mind)
+	crew_mind.release_away_mission_seat()
+	LAZYOR(away_crew, WEAKREF(crew_mind))
+	crew_mind.away_mission_ship = WEAKREF(src)
+
+/// Release this mind's own hull position even if they entered a cryopod elsewhere.
+/datum/mind/proc/release_away_mission_seat()
+	var/obj/docking_port/mobile/stationtrauma_space/vessel = away_mission_ship?.resolve()
+	if(vessel)
+		LAZYREMOVE(vessel.away_crew, WEAKREF(src))
+	away_mission_ship = null
 
 /// Find a walkable arrival tile on the same hull as its mapped cryopod.
 /datum/roundstart_away_mission/proc/find_latejoin_spawn(obj/docking_port/mobile/stationtrauma_space/vessel)
@@ -219,19 +329,25 @@
 				return destination
 	return null
 
-/// Load on demand only after a vacancy is reserved. The loader reuses an existing hull.
+/// Reserve a vacancy on an existing hull, or load another copy when all its seats are occupied.
 /mob/dead/new_player/proc/prepare_away_latejoin_spawn(datum/job/away_mission/job, client/requester, datum/mind/request_mind, editing_slot)
 	var/datum/roundstart_away_mission/mission = job.get_away_mission()
-	if(!mission)
+	if(!mission?.get_instance_limit())
 		return null
-	// Another accepted claim may still be preparing this hull, or discarding a rejected load.
+	// Another accepted claim may still be preparing or rejecting a copy.
 	UNTIL(!SSstationtrauma_space_voyage.loading_ship_template || !is_latejoin_request_current(requester, request_mind, editing_slot) || !SSticker.IsRoundInProgress())
 	if(!is_away_latejoin_claim_current(job, requester, request_mind, editing_slot))
 		return null
 	var/list/destination = list()
+	var/list/vessels = mission.get_loaded_ships()
+	for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in vessels)
+		if(validate_away_latejoin(job, mission, requester, request_mind, editing_slot, destination, vessel))
+			return destination[1]
+	if(length(vessels) >= mission.get_instance_limit())
+		return null
 	var/datum/callback/validate_claim = CALLBACK(src, PROC_REF(validate_away_latejoin), job, mission, requester, request_mind, editing_slot, destination)
 	try
-		if(SSstationtrauma_space_voyage.load_ship_template(mission.map_path, validate_claim))
+		if(SSstationtrauma_space_voyage.load_ship_template(mission.map_path, validate_claim, new_instance = TRUE))
 			return destination[1]
 	catch(var/exception/load_error)
 		log_mapping("Latejoin away mission [mission.name] failed to load: [load_error]")
@@ -243,11 +359,12 @@
 
 /// Validate the original claim after mapping yields. A failed claim discards a freshly loaded hull.
 /mob/dead/new_player/proc/validate_away_latejoin(datum/job/away_mission/job, datum/roundstart_away_mission/mission, client/requester, datum/mind/request_mind, editing_slot, list/destination, obj/docking_port/mobile/stationtrauma_space/vessel)
-	if(!is_away_latejoin_claim_current(job, requester, request_mind, editing_slot))
+	if(!is_away_latejoin_claim_current(job, requester, request_mind, editing_slot) || !mission.get_instance_limit() || !vessel.has_away_vacancy(job))
 		return FALSE
 	var/turf/arrival = mission.find_latejoin_spawn(vessel)
 	if(!arrival)
 		return FALSE
+	vessel.record_away_crew(request_mind)
 	destination += arrival
 	return TRUE
 
@@ -257,9 +374,11 @@
 	ui_color = "#6681a5"
 
 /// Build the off-station group from the same server-owned mission pool used for staging.
-/datum/controller/subsystem/job/proc/get_away_mission_department()
+/datum/controller/subsystem/job/proc/get_away_mission_department(available_only = FALSE)
 	var/datum/job_department/away_missions/department = new
 	for(var/datum/roundstart_away_mission/mission as anything in roundstart_away_missions())
+		if(available_only && !mission.get_instance_limit())
+			continue
 		for(var/job_type in mission.minimum_crew)
 			var/datum/job/away_mission/job = get_job_type(job_type)
 			if(job)
@@ -310,7 +429,17 @@
 
 /// Whether the current profile volunteers for any off-station job on this map.
 /datum/preferences/proc/has_away_job_preferences()
-	return SSmapping.current_map?.space_overmap && length(read_preference(/datum/preference/away_mission_job_priorities))
+	if(!SSmapping.current_map?.space_overmap)
+		return FALSE
+	var/list/priorities = read_preference(/datum/preference/away_mission_job_priorities)
+	for(var/title in priorities)
+		var/datum/job/away_mission/job = SSjob.get_job(title)
+		if(!istype(job))
+			continue
+		var/datum/roundstart_away_mission/mission = job.get_away_mission()
+		if(mission?.get_instance_limit())
+			return TRUE
+	return FALSE
 
 /// Off-station priority of the current profile for a particular crew job.
 /datum/preferences/proc/get_away_job_priority(datum/job/away_mission/job)
@@ -365,7 +494,7 @@
 	allow_bureaucratic_error = FALSE
 	spawn_positions = 1
 	total_positions = 1
-	/// The exact board positions set by successful mission assignment.
+	/// Exact board positions indexed by the lobby player assigned to them.
 	var/list/roundstart_spawns
 
 /datum/job/away_mission/config_check()
@@ -379,13 +508,12 @@
 	return null
 
 /datum/job/away_mission/special_check_latejoin(client/latejoin)
-	return ..() && SSmapping.current_map?.space_overmap && SSstationtrauma_space_voyage.initialized && get_away_mission()
+	var/datum/roundstart_away_mission/mission = get_away_mission()
+	return ..() && SSmapping.current_map?.space_overmap && SSstationtrauma_space_voyage.initialized && mission?.get_instance_limit()
 
-/datum/job/away_mission/get_roundstart_spawn_point()
-	if(!length(roundstart_spawns))
-		return null
-	var/turf/destination = roundstart_spawns[length(roundstart_spawns)]
-	roundstart_spawns.len--
+/datum/job/away_mission/get_roundstart_spawn_point(mob/dead/new_player/player)
+	var/turf/destination = LAZYACCESS(roundstart_spawns, player)
+	LAZYREMOVE(roundstart_spawns, player)
 	return destination
 
 /datum/job/away_mission/get_spawn_message_information()

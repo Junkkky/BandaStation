@@ -7,7 +7,10 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 /// The off-station group participates in the latejoin selector only.
 /datum/latejoin_menu/proc/get_departments()
 	if(SSmapping.current_map?.space_overmap && SSstationtrauma_space_voyage.initialized)
-		return SSjob.joinable_departments + SSjob.get_away_mission_department()
+		var/datum/job_department/away_missions/department = SSjob.get_away_mission_department(available_only = TRUE)
+		if(length(department.department_jobs))
+			return SSjob.joinable_departments + department
+		qdel(department)
 	return SSjob.joinable_departments
 
 /// The native selector uses the same availability and spawn path as the TGUI menu.
