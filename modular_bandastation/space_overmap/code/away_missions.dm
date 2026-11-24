@@ -581,16 +581,27 @@
 /obj/effect/landmark/away_mission/nt_patrol_officer
 	job_type = /datum/job/away_mission/nt_patrol_officer
 
-/// Patrol identity without station department access.
+/// Patrol credentials have the station and CentCom access shared by ERT field teams.
 /datum/id_trim/nt_patrol
 	assignment = "Патрульный эсминец НТ"
 	trim_state = "trim_assistant"
+
+/datum/id_trim/nt_patrol/New()
+	. = ..()
+	access |= list(ACCESS_CENT_GENERAL, ACCESS_CENT_SPECOPS, ACCESS_CENT_LIVING) | (SSid_access.get_region_access_list(list(REGION_ALL_STATION)) - ACCESS_CHANGE_IDS)
+
+/datum/id_trim/nt_patrol/engineer
+	access = list(ACCESS_CENT_STORAGE)
+
+/datum/id_trim/nt_patrol/medic
+	access = list(ACCESS_CENT_MEDICAL)
 
 /// Standard patrol uniform and protective gear.
 /datum/outfit/job/nt_patrol
 	name = "Патрульный НТ"
 	jobtype = /datum/job/away_mission/nt_patrol_officer
 	id_trim = /datum/id_trim/nt_patrol/armory
+	ear_right = /obj/item/radio/headset/nt_patrol
 	uniform = /obj/item/clothing/under/rank/security/officer
 	shoes = /obj/item/clothing/shoes/jackboots
 	head = /obj/item/clothing/head/helmet
@@ -607,7 +618,7 @@
 /datum/outfit/job/nt_patrol/engineer
 	name = "Бортинженер патруля НТ"
 	jobtype = /datum/job/away_mission/nt_patrol_engineer
-	id_trim = /datum/id_trim/nt_patrol
+	id_trim = /datum/id_trim/nt_patrol/engineer
 	uniform = /obj/item/clothing/under/rank/engineering/engineer
 	head = /obj/item/clothing/head/utility/hardhat/welding/up
 	suit = null
@@ -616,7 +627,7 @@
 /datum/outfit/job/nt_patrol/medic
 	name = "Фельдшер патруля НТ"
 	jobtype = /datum/job/away_mission/nt_patrol_medic
-	id_trim = /datum/id_trim/nt_patrol
+	id_trim = /datum/id_trim/nt_patrol/medic
 	uniform = /obj/item/clothing/under/rank/medical/doctor
 	head = null
 	suit = null

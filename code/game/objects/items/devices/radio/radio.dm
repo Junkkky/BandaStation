@@ -346,9 +346,15 @@
 		freq = LAZYACCESS(secure_radio_connections, channel)
 		if (!channels[channel]) // if the channel is turned off, don't broadcast
 			return
+	else if(channel == RADIO_CHANNEL_NT_PATROL)
+		return
 	else
 		freq = frequency
 		channel = null
+
+	var/independent_channel_flag = get_independent_radio_flag(freq)
+	if(freq == FREQ_NT_PATROL && !(special_channels & independent_channel_flag))
+		return
 
 	// Nearby active jammers prevent the message from transmitting
 	if(is_within_radio_jammer_range(src, freq)) // BANDASTATION EDIT - Jammer whitelisted channels: added `freq`
@@ -360,8 +366,8 @@
 	// Construct the signal
 	var/datum/signal/subspace/vocal/signal = new(src, freq, speaker, language, radio_message, spans, message_mods)
 
-	// Independent radios, on the CentCom frequency, reach all independent radios
-	if ((special_channels & RADIO_SPECIAL_CENTCOM) && (freq == FREQ_CENTCOM || freq == FREQ_STATUS_DISPLAYS))
+	// Superspace reaches all radios with a key for this independent frequency.
+	if(special_channels & independent_channel_flag)
 		signal.data["compression"] = 0
 		signal.transmission_method = TRANSMISSION_SUPERSPACE
 		signal.levels = list(0)
@@ -437,6 +443,8 @@
 			return FALSE
 
 	if (input_frequency == FREQ_SYNDICATE && !(special_channels & RADIO_SPECIAL_SYNDIE))
+		return FALSE
+	if (input_frequency == FREQ_NT_PATROL && !(special_channels & RADIO_SPECIAL_NT_PATROL))
 		return FALSE
 
 	// allow checks: are we listening on that frequency?

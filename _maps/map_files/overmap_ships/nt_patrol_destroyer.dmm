@@ -9,9 +9,8 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
 "ax" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
+/obj/structure/table/wood,
+/obj/item/storage/box/donkpockets,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
 "aH" = (
@@ -19,32 +18,35 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "aO" = (
-/obj/machinery/computer/stationtrauma_transponder/nt_patrol,
+/obj/machinery/light/cold/directional/west,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "aR" = (
-/obj/machinery/computer/stationtrauma_space_navigation,
+/obj/structure/closet/wall/nanotrasen/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "aS" = (
-/obj/structure/chair/comfy/shuttle,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/dark_blue/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "bc" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/sign/warning/radiation/directional/north,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+/obj/structure/sign/nanotrasen/directional/north,
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
 "bh" = (
-/obj/machinery/computer/stationtrauma_bluespace,
+/obj/effect/turf_decal/tile/dark_blue/full,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "bm" = (
-/obj/machinery/holopad/ship,
+/obj/machinery/computer/stationtrauma_bluespace,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "bs" = (
@@ -52,10 +54,17 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/warm/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"bM" = (
+/obj/structure/table/reinforced,
+/obj/item/binoculars,
+/obj/effect/turf_decal/tile/dark_blue/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "bO" = (
-/obj/structure/bed,
+/obj/effect/landmark/away_mission/nt_patrol_officer,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/barracks)
 "bQ" = (
@@ -97,15 +106,18 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"dl" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 2
+	},
+/obj/structure/closet/wall/medical/directional/north,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "dn" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 2
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/power/apc/auto_name/directional/north{
-	start_charge = 100;
-	req_access = list()
-	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
@@ -113,14 +125,18 @@
 /obj/machinery/airalarm/directional/south{
 	req_access = list()
 	},
+/obj/structure/closet/firecloset/full,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/eva)
 "ev" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+/obj/structure/table/optable,
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "eN" = (
-/obj/structure/sign/nanotrasen/directional/west,
+/obj/structure/table/reinforced,
+/obj/machinery/light/cold/directional/east,
+/obj/item/megaphone/sec,
+/obj/effect/turf_decal/tile/dark_blue/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "fl" = (
@@ -135,11 +151,11 @@
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "gg" = (
-/obj/effect/landmark/away_mission/nt_patrol_officer,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 2
 	},
-/obj/machinery/light/warm/dim/directional/north,
+/obj/machinery/light/warm/directional/north,
+/obj/structure/bed,
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/barracks)
 "gl" = (
@@ -153,31 +169,27 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/barracks)
 "gm" = (
-/obj/machinery/door/airlock/security{
+/obj/machinery/door/airlock/highsecurity{
 	dir = 4;
 	name = "Оружейная";
-	req_access = list("nt_patrol_armory")
+	req_access = list("cent_specops")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/nt_patrol/passage)
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
 "gn" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/red/fourcorners,
-/obj/item/shield/riot{
-	pixel_x = -10
-	},
-/obj/item/storage/box/handcuffs{
-	pixel_x = 10
-	},
 /obj/machinery/power/apc/auto_name/directional/north{
 	start_charge = 100;
 	req_access = list()
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
 "gs" = (
@@ -205,22 +217,49 @@
 	dir = 1
 	},
 /obj/structure/chair/comfy/shuttle{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
 "gK" = (
-/obj/structure/table,
-/obj/machinery/airalarm/directional/north{
-	req_access = list()
-	},
+/obj/machinery/light/warm/directional/north,
+/obj/effect/landmark/away_mission/nt_patrol_officer,
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
+"hu" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/stack/sheet/iron/fifty{
+	pixel_x = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"ix" = (
+/obj/structure/table,
+/obj/machinery/coffeemaker,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
+"iM" = (
+/obj/machinery/light/cold/no_nightlight/directional/south,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "iU" = (
-/obj/machinery/recharger,
-/obj/effect/turf_decal/tile/red/fourcorners,
+/obj/structure/closet/wall/security/directional/east,
+/obj/item/storage/box/handcuffs,
+/obj/item/holosign_creator/security,
+/obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
+"jC" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/red/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
 "jO" = (
 /obj/structure/cable,
 /obj/machinery/power/smes/ship{
@@ -233,9 +272,8 @@
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "jW" = (
-/obj/machinery/light/small/directional/west,
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "kg" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
@@ -250,10 +288,11 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
+/obj/effect/turf_decal/tile/dark_blue/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "lk" = (
-/obj/machinery/light/small/directional/east,
+/obj/structure/sign/nanotrasen/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "lm" = (
@@ -263,12 +302,25 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"lZ" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"mP" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
 "mR" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "mV" = (
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/eva)
+"mX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "mZ" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
 	dir = 6
@@ -281,23 +333,36 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"nK" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"nO" = (
+/obj/structure/closet/wall/nanotrasen/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
 "oh" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/light/small/directional/north,
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "os" = (
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
-"oz" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/toolbox/mechanical,
-/turf/open/floor/iron/dark/textured,
-/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"ov" = (
+/obj/structure/chair/comfy/shuttle/tactical{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
 "oQ" = (
-/obj/machinery/door/airlock{
+/obj/machinery/door/airlock/highsecurity{
 	dir = 1;
-	req_access = list();
+	name = "Мостик";
+	req_access = list("cent_specops");
 	req_one_access = list()
 	},
 /obj/structure/cable,
@@ -311,26 +376,41 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden/layer5,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"pW" = (
+/obj/machinery/door/airlock/highsecurity{
+	dir = 1;
+	name = "Операционная";
+	req_access = list("cent_specops");
+	req_one_access = list()
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "qo" = (
-/obj/structure/closet/firecloset,
-/turf/open/floor/iron/dark/textured,
-/area/shuttle/stationtrauma_space/nt_patrol/eva)
+/obj/machinery/computer/stationtrauma_engine_console{
+	dir = 2
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "qv" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/sheet/iron/fifty,
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "qD" = (
-/obj/structure/table,
-/obj/item/storage/medkit/regular,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 2
 	},
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 2
 	},
+/obj/machinery/stasis,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"ra" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
 "re" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -342,15 +422,13 @@
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/eva)
 "rh" = (
-/obj/machinery/light/cold/dim/directional/west,
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+/area/shuttle/stationtrauma_space/nt_patrol/mess)
 "rm" = (
-/obj/machinery/computer/stationtrauma_engine_console{
-	dir = 2
-	},
-/turf/open/floor/iron/dark/textured,
-/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "rp" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
 	dir = 10
@@ -367,6 +445,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/holopad/ship,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "rz" = (
@@ -374,13 +453,16 @@
 /obj/machinery/airalarm/directional/north{
 	req_access = list()
 	},
-/obj/effect/turf_decal/tile/red/fourcorners,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
 "sa" = (
 /obj/machinery/door/airlock/external{
 	dir = 4;
-	req_access = list();
+	req_access = list("cent_specops");
 	req_one_access = list()
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -395,8 +477,9 @@
 "se" = (
 /obj/machinery/door/airlock/stationtrauma_docking/ship{
 	dir = 8;
-	req_access = list();
-	req_one_access = list()
+	req_access = list("cent_specops");
+	req_one_access = list();
+	require_gangway_access = 1
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -411,10 +494,11 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 2
 	},
-/obj/machinery/computer/cryopod,
+/obj/machinery/computer/cryopod/directional/north,
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 2
 	},
+/obj/structure/bed/medical/anchored,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "sV" = (
@@ -423,6 +507,8 @@
 	start_charge = 100;
 	req_access = list()
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "tm" = (
@@ -435,6 +521,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
+"tA" = (
+/obj/structure/sign/warning/radiation/directional/south,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "tJ" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
@@ -445,6 +535,9 @@
 "uJ" = (
 /obj/machinery/airalarm/directional/west{
 	req_access = list()
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
@@ -458,12 +551,12 @@
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "vd" = (
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "vE" = (
 /obj/machinery/light/cold/directional/north,
-/obj/effect/turf_decal/tile/red/fourcorners,
+/obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
 "vF" = (
@@ -473,12 +566,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"vP" = (
+/obj/effect/turf_decal/arrows/white{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
 "wh" = (
-/obj/structure/table,
-/obj/item/storage/medkit/regular,
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 2
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "wJ" = (
@@ -487,6 +586,16 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/eva)
+"wL" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"wM" = (
+/obj/structure/table,
+/obj/effect/spawner/surgery_tray/full/deployed,
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "wS" = (
 /obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
 	dir = 4
@@ -496,6 +605,13 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"wV" = (
+/obj/machinery/fax{
+	name = "Факс патруля НТ";
+	fax_name = "Патруль НТ — мостик"
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "wZ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -509,12 +625,14 @@
 /obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
 	dir = 4
 	},
+/obj/structure/sign/warning/radiation/directional/south,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "yd" = (
-/obj/machinery/door/airlock{
+/obj/machinery/door/airlock/highsecurity{
 	dir = 4;
-	req_access = list();
+	name = "Кают-компания";
+	req_access = list("cent_specops");
 	req_one_access = list()
 	},
 /obj/structure/cable,
@@ -525,8 +643,9 @@
 "yw" = (
 /obj/machinery/door/airlock/stationtrauma_docking/ship{
 	dir = 4;
-	req_access = list();
-	req_one_access = list()
+	req_access = list("cent_specops");
+	req_one_access = list();
+	require_gangway_access = 1
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -537,7 +656,7 @@
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "yW" = (
-/obj/machinery/light/small/red/dim/directional/north,
+/obj/machinery/light/red/directional/north,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -556,6 +675,22 @@
 /obj/effect/turf_decal/stripes/box,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/eva)
+"zB" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/highsecurity{
+	dir = 4;
+	name = "Казарма";
+	req_access = list("cent_specops");
+	req_one_access = list()
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+"zN" = (
+/obj/structure/sign/nanotrasen/directional/north,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
 "zZ" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
 	dir = 5
@@ -573,17 +708,17 @@
 "AX" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/power/apc/auto_name/directional/north{
 	start_charge = 100;
 	req_access = list()
 	},
+/obj/structure/chair/comfy/shuttle,
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
 "Bp" = (
-/obj/effect/landmark/away_mission/nt_patrol_officer,
-/turf/open/floor/iron/dark/small,
-/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+/obj/machinery/computer/stationtrauma_transponder/nt_patrol,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "BF" = (
 /obj/effect/landmark/away_mission/nt_patrol_officer,
 /obj/structure/cable,
@@ -617,10 +752,10 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/engineering{
+/obj/machinery/door/airlock/highsecurity{
 	dir = 1;
 	name = "Реакторный отсек";
-	req_access = list();
+	req_access = list("cent_specops");
 	req_one_access = list()
 	},
 /obj/effect/turf_decal/stripes/box,
@@ -630,16 +765,17 @@
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "Dl" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/light/small/directional/north,
+/obj/machinery/light/cold/directional/east,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "DO" = (
-/obj/machinery/door/airlock{
+/obj/machinery/door/airlock/highsecurity{
 	dir = 1;
-	req_access = list();
+	name = "Машинное отделение";
+	req_access = list("cent_specops");
 	req_one_access = list()
 	},
 /obj/structure/cable,
@@ -674,10 +810,20 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"EO" = (
+/obj/machinery/computer/operating,
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "EQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"Fh" = (
+/obj/effect/turf_decal/arrows/white{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "Gg" = (
@@ -687,11 +833,19 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"GK" = (
+/obj/structure/closet/wall/emergency/directional/south,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"Hq" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
 "HE" = (
-/obj/effect/landmark/away_mission/nt_patrol_officer,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 2
 	},
+/obj/structure/bed,
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/barracks)
 "HL" = (
@@ -716,11 +870,13 @@
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/barracks)
 "Js" = (
-/obj/machinery/airalarm/directional/east{
-	req_access = list()
-	},
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"Jz" = (
+/obj/machinery/light/cold/no_nightlight/directional/east,
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "JQ" = (
 /obj/machinery/atmospherics/components/unary/ship_engine_heater,
 /turf/open/floor/engine/airless,
@@ -732,12 +888,27 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
-"LN" = (
-/obj/structure/chair/comfy/shuttle,
+"Lw" = (
+/obj/machinery/door/airlock/highsecurity{
+	dir = 4;
+	name = "Медотсек";
+	req_access = list("cent_specops");
+	req_one_access = list()
+	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/light/warm/directional/north,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
+"LN" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/airalarm/directional/north{
+	req_access = list()
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
 "Mb" = (
@@ -757,39 +928,40 @@
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "NW" = (
-/obj/machinery/light/small/directional/north,
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"NZ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
 "OE" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
 "OK" = (
-/obj/structure/closet/radiation,
-/turf/open/floor/iron/dark/textured,
-/area/shuttle/stationtrauma_space/nt_patrol/eva)
+/obj/effect/landmark/away_mission/nt_patrol_officer,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
 "OL" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
+/obj/structure/closet/secure_closet{
+	name = "Патрульное снаряжение";
+	icon_state = "armory";
+	req_access = list("nt_patrol_armory")
 	},
+/obj/item/shield/riot,
+/obj/item/clothing/head/helmet/toggleable/riot,
+/obj/item/clothing/suit/armor/riot,
+/obj/effect/spawner/random/armory/barrier_grenades/six,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
-"OV" = (
-/obj/machinery/door/airlock{
-	dir = 4;
-	req_access = list();
-	req_one_access = list()
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "Pb" = (
 /obj/structure/rack/gunrack,
-/obj/effect/spawner/armory_spawn/eguns,
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
 	},
+/obj/effect/spawner/armory_spawn/ember_armory,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
 "Qo" = (
@@ -835,13 +1007,17 @@
 /obj/machinery/stationtrauma_bluespace_drive{
 	charges = 2
 	},
-/obj/machinery/light/warm/dim/directional/north,
+/obj/machinery/light/warm/directional/north,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "RY" = (
-/obj/machinery/light/small/directional/east,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/nt_patrol/passage)
+/obj/machinery/computer/stationtrauma_space_navigation,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"SF" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
 "Tp" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -849,13 +1025,16 @@
 /obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
 	dir = 6
 	},
+/obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "Tq" = (
-/obj/structure/bed/medical/anchored,
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 2
 	},
+/obj/item/storage/medkit/brute,
+/obj/item/storage/medkit/regular,
+/obj/structure/table/reinforced,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "TL" = (
@@ -875,13 +1054,11 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "Ul" = (
-/obj/structure/rack/gunrack,
-/obj/effect/spawner/armory_spawn/disablers,
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 1
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
 	},
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/armory)
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/nt_patrol/passage)
 "Uz" = (
 /obj/machinery/atmospherics/components/tank/air/layer4{
 	dir = 8
@@ -892,11 +1069,12 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/brown/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "UX" = (
 /obj/structure/chair/comfy/shuttle{
-	dir = 1
+	dir = 4
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
@@ -908,9 +1086,8 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "Vj" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
 "Vn" = (
@@ -920,9 +1097,29 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "Wm" = (
-/obj/structure/chair/comfy/shuttle,
-/turf/open/floor/iron/dark/small,
-/area/shuttle/stationtrauma_space/nt_patrol/barracks)
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Wx" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/machinery/airalarm/directional/east{
+	req_access = list()
+	},
+/obj/effect/turf_decal/tile/dark_blue/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Xs" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "XH" = (
 /obj/effect/landmark/away_mission/nt_patrol_medic,
 /obj/structure/cable,
@@ -939,10 +1136,17 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
+"XO" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/white/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "XR" = (
-/obj/machinery/door/airlock/maintenance{
+/obj/machinery/door/airlock/highsecurity{
 	dir = 4;
-	req_access = list();
+	name = "Внутренний шлюз ВКД";
+	req_access = list("cent_specops");
 	req_one_access = list()
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -960,7 +1164,8 @@
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
 "Yx" = (
-/obj/machinery/light/small/directional/south,
+/obj/machinery/light/directional/south,
+/obj/structure/closet/radiation,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/eva)
 "Zg" = (
@@ -975,7 +1180,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/sign/departments/security/directional/north,
-/obj/effect/turf_decal/tile/red/fourcorners,
+/obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
 "ZP" = (
@@ -998,18 +1203,18 @@
 aa
 aa
 aa
-yT
-yT
-yT
+aa
+aa
+aa
 kg
-kg
-kg
+Xs
+Xs
 kg
 se
 mR
 Zg
-Zg
-Zg
+rh
+rh
 mR
 Mb
 sa
@@ -1023,48 +1228,48 @@ aa
 aa
 aa
 aa
-yT
-ai
-jW
+kg
+Xs
+kg
 kg
 Tq
 Uc
 kg
 rq
-vF
+GK
 Zg
 XX
-an
+ix
 mR
-mV
+mP
 zz
 mV
 Mb
-aa
+Mb
 aa
 aa
 "}
 (3,1,1) = {"
 aa
 aa
-yT
-ai
-ev
-lb
+rm
+jW
+jW
+iM
 kg
-Tq
+dl
 bQ
 kg
 oh
-vF
+vP
 Zg
 gK
 UX
 mR
-mV
+Mb
 XR
-mV
-mV
+Hq
+Mb
 tJ
 tJ
 aa
@@ -1072,23 +1277,23 @@ aa
 (4,1,1) = {"
 aa
 aa
-yT
-ai
+rm
+EO
 ev
-ai
-kg
+mX
+pW
 wh
 sV
 kg
 EQ
-vF
+ov
 Zg
 AX
 ax
 mR
 Zq
 mV
-OK
+mV
 Yx
 vN
 JQ
@@ -1096,24 +1301,24 @@ ss
 "}
 (5,1,1) = {"
 aa
-yT
-rh
-ai
-ai
-ai
+tm
+kg
+wM
+Jz
+XO
 kg
 qD
 XH
 kg
 EQ
-vF
+ov
 Zg
 LN
 gJ
 mR
 fl
 wZ
-qo
+mV
 dQ
 vN
 JQ
@@ -1121,11 +1326,11 @@ ss
 "}
 (6,1,1) = {"
 aa
+tm
+ai
 yT
-ai
-ai
-aH
-ai
+yT
+yT
 kg
 sv
 Vg
@@ -1138,30 +1343,30 @@ an
 mR
 wJ
 re
-qo
 mV
+lZ
 vN
 JQ
 ss
 "}
 (7,1,1) = {"
 tm
-eN
+Bp
 ai
 aO
 ai
-ai
+lk
 mR
 mR
-yd
+Lw
 mR
 cI
 vF
 mR
 yd
+ra
 mR
-mR
-OV
+NW
 MW
 tJ
 tJ
@@ -1171,22 +1376,22 @@ aa
 "}
 (8,1,1) = {"
 tm
-ai
-aR
+RY
+bh
 aS
 ai
-ai
+wL
 mR
-vF
-UP
+bc
+nK
 uJ
 TL
 tn
 vd
 UP
-vF
+OK
 mR
-NW
+tA
 MW
 yW
 os
@@ -1195,11 +1400,11 @@ zn
 aa
 "}
 (9,1,1) = {"
-yT
+tm
 dn
 Ei
 rw
-Mj
+Wm
 Mj
 oQ
 JR
@@ -1221,23 +1426,23 @@ aa
 "}
 (10,1,1) = {"
 tm
-ai
+bm
 bh
 aS
 ai
 ai
 mR
+zN
+NZ
 vF
-UP
-RY
 EQ
 Vn
-vF
-UP
-vF
+Dl
+jC
+Ul
 mR
 xR
-bc
+MW
 HL
 fJ
 bU
@@ -1246,21 +1451,21 @@ aa
 "}
 (11,1,1) = {"
 tm
-Js
-ai
-bm
+qo
 ai
 ai
+ai
+lk
 mR
+BI
+zB
 mR
-yd
-mR
-Dl
+EQ
 vF
 mR
 gm
 mR
-mR
+tJ
 wS
 QL
 tL
@@ -1271,13 +1476,13 @@ aa
 "}
 (12,1,1) = {"
 aa
-yT
+tm
 ai
 ai
 ai
-ai
+aR
 BI
-Wm
+nO
 Rr
 BI
 EQ
@@ -1296,17 +1501,17 @@ ss
 "}
 (13,1,1) = {"
 aa
-yT
+tm
 ai
 ai
-ai
+aH
 ai
 BI
 gg
 bs
 BI
 EQ
-vF
+ov
 OE
 gn
 Vj
@@ -1322,19 +1527,19 @@ ss
 (14,1,1) = {"
 aa
 aa
-yT
+tm
 ai
-ev
+bM
 lb
 BI
 HE
 gl
 BI
 EQ
-vF
+ov
 OE
 rz
-Ul
+Pb
 mR
 AS
 ci
@@ -1347,19 +1552,19 @@ ss
 (15,1,1) = {"
 aa
 aa
-yT
-ai
-ev
-lb
+tm
+wV
+eN
+Wx
 BI
-Bp
+IK
 BF
 BI
 oh
-vF
+Fh
 OE
 vE
-Ul
+Pb
 mR
 ni
 QR
@@ -1374,20 +1579,20 @@ aa
 aa
 aa
 yT
-ai
-lk
+yT
+yT
 BI
 IK
 bO
 BI
 rq
-vF
+GK
 OE
 iU
 Pb
 mR
-rm
-oz
+hu
+TO
 qv
 Uz
 tJ
@@ -1398,24 +1603,24 @@ aa
 aa
 aa
 aa
-yT
-yT
-yT
+aa
+aa
+aa
 BI
-BI
-BI
+SF
+SF
 BI
 yw
 mR
 OE
 OE
-OE
+Js
 mR
 tJ
 tJ
 tJ
 tJ
-aa
+tJ
 aa
 aa
 "}

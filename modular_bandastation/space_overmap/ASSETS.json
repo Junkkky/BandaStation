@@ -11,6 +11,14 @@
 			"changes": "Original 480-pixel bluespace parallax with longitudinal blue streaks and dark moving clouds."
 		},
 		{
+			"path": "modular_bandastation/space_overmap/icons/nt_patrol_areas.dmi",
+			"sha256": "7eabfbc11064776f41135835879b5624c2ce73e46b4c6dca443f165a77412087",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors"],
+			"source": null,
+			"changes": "Original mapper icons for the NT patrol destroyer's compartments."
+		},
+		{
 			"path": "modular_bandastation/space_overmap/icons/wallcloset.dmi",
 			"sha256": "70fa787e8b6d1f5cbe18ca8dbbc8e3e5228e697c8b842226a5781f85066d159c",
 			"license": "CC-BY-SA-3.0",

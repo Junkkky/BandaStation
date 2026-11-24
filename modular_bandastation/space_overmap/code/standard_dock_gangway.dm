@@ -26,6 +26,8 @@
 	icon_state = "closed"
 	overlays_file = 'modular_bandastation/space_overmap/icons/ship_hatch.dmi'
 	generate_map_preview = FALSE
+	/// Require authorization at the ship hatch before either endpoint opens the passage.
+	var/require_gangway_access = FALSE
 
 /** The outward direction points from the dock wall into the slot. */
 /obj/machinery/door/airlock/stationtrauma_docking/wall
@@ -89,7 +91,7 @@
 	if(gangway?.opening_endpoint == src)
 		return ..()
 	if(opener && forced == DEFAULT_DOOR_CHECKS && !QDELETED(gangway))
-		return gangway.open_passage()
+		return gangway.open_passage(opener = opener)
 	return FALSE
 
 /obj/machinery/door/airlock/stationtrauma_docking/close(forced = DEFAULT_DOOR_CHECKS, force_crush = FALSE)
@@ -338,12 +340,16 @@
  * Equalize the corridor and open the interlocked doors.
  * After a cancelled departure, reopen the ship hatch if the closed wall has lost its area power.
  */
-/datum/stationtrauma_dock_gangway/proc/open_passage(recover_ship_access = FALSE)
+/datum/stationtrauma_dock_gangway/proc/open_passage(recover_ship_access = FALSE, mob/living/opener)
 	if(busy)
 		return FALSE
 	opening_problem = null
 	if(breached || QDELETED(ship) || QDELETED(wall))
 		opening_problem = "трап повреждён или отсоединён"
+		return FALSE
+	// Either endpoint can request a cycle. Automatic deployment must honor the ship's lock too.
+	if(ship.require_gangway_access && (!opener || !ship.allowed(opener)))
+		opening_problem = "требуется допуск корабельного шлюза"
 		return FALSE
 	var/wall_unpowered = wall.density && (wall.machine_stat & NOPOWER)
 	if(wall_unpowered && !recover_ship_access)
