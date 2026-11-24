@@ -3,6 +3,14 @@
 	"scope": "Non-audio maps, imported icons and generated previews introduced or modified by space-overmap modules. Embedded code and existing referenced assets retain their original notices.",
 	"assets": [
 		{
+			"path": "modular_bandastation/space_overmap/icons/bluespace_tunnel.dmi",
+			"sha256": "df523197a38ef86a28dcfb9f53fc884dc736a0f0a67396dd775300d1eb844917",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["BandaStation contributors"],
+			"source": null,
+			"changes": "Original 480-pixel bluespace parallax with longitudinal blue streaks and dark moving clouds."
+		},
+		{
 			"path": "modular_bandastation/space_overmap/icons/wallcloset.dmi",
 			"sha256": "70fa787e8b6d1f5cbe18ca8dbbc8e3e5228e697c8b842226a5781f85066d159c",
 			"license": "CC-BY-SA-3.0",

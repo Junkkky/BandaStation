@@ -3,6 +3,16 @@
 	var/space_parallax_background
 	/// Optional fixed orbital planet layer, independent of the moving space background.
 	var/space_parallax_planet
+	/// Bluespace visual phase shared by all eyes in the area.
+	var/space_bluespace_stage = NONE
+	/// Direction of travel, retained as the tunnel fades out.
+	var/space_bluespace_heading = NORTH
+	/// Starting opacity and timing of the current transition.
+	var/space_bluespace_from = 0
+	var/space_bluespace_at = 0
+	var/space_bluespace_duration = 0
+	/// Opacity once the current transition finishes.
+	var/space_bluespace_target = 0
 
 /area/shuttle/stationtrauma_space
 	space_parallax_background = /atom/movable/screen/parallax_layer/layer_3
@@ -31,13 +41,39 @@
 	var/space_parallax_background
 
 /** Select an explicit native layer and notify subscribed viewers on change. */
-/area/proc/set_space_parallax_background(background, planet)
+/area/proc/set_space_parallax_background(background, planet, bluespace_stage = NONE, bluespace_heading = NORTH)
 	SHOULD_CALL_PARENT(TRUE)
-	if(space_parallax_background == background && space_parallax_planet == planet)
+	if(!bluespace_stage)
+		bluespace_heading = space_bluespace_heading
+	if(space_parallax_background == background && space_parallax_planet == planet && space_bluespace_stage == bluespace_stage \
+		&& space_bluespace_heading == bluespace_heading)
 		return
 	space_parallax_background = background
 	space_parallax_planet = planet
+	space_bluespace_heading = bluespace_heading
+	if(space_bluespace_stage != bluespace_stage)
+		space_bluespace_from = space_bluespace_opacity()
+		space_bluespace_stage = bluespace_stage
+		space_bluespace_at = world.time
+		switch(bluespace_stage)
+			if(HYPERSPACE_WARMUP)
+				space_bluespace_target = ST_SPACE_JUMP_WARMUP_ALPHA
+				space_bluespace_duration = ST_SPACE_JUMP_WARMUP
+			if(HYPERSPACE_LAUNCH)
+				space_bluespace_target = 255
+				space_bluespace_duration = ST_SPACE_JUMP_REVEAL
+			else
+				space_bluespace_target = 0
+				space_bluespace_duration = ST_SPACE_JUMP_FADE
 	SEND_SIGNAL(src, COMSIG_AREA_SPACE_PARALLAX_CHANGED)
+
+/// Evaluate the same fade for late viewers and jumps cancelled mid-transition.
+/area/proc/space_bluespace_opacity()
+	if(!space_bluespace_duration)
+		return space_bluespace_target
+	var/progress = clamp((world.time - space_bluespace_at) / space_bluespace_duration, 0, 1)
+	var/weight = (1 - cos(progress * 180)) / 2
+	return round(space_bluespace_from + (space_bluespace_target - space_bluespace_from) * weight)
 
 /** Explicit area profiles take precedence over the ship level's station trait. */
 /proc/stationtrauma_space_parallax(atom/viewpoint)
@@ -62,6 +98,8 @@
 	var/space_background
 	/// Last orbital layer type, so a biome change refreshes the planet without changing the star field.
 	var/space_planet
+	/// The jump effect is composited above space but stays outside the native scroll list.
+	var/atom/movable/screen/parallax_layer/bluespace_tunnel/bluespace_tunnel
 
 /atom/movable/screen/parallax_home/set_perspective_area(area/new_area)
 	if(perspective_area == new_area)
@@ -101,7 +139,60 @@
 				vis_contents -= old_planet
 				vis_contents |= new_planet
 			qdel(old_planet)
-	return ..()
+	. = ..()
+	update_bluespace_tunnel(location)
+
+/// Attach a single client-side loop and update its fade only when the perspective or stage changes.
+/atom/movable/screen/parallax_home/proc/update_bluespace_tunnel(area/location)
+	var/remaining = location ? max(0, location.space_bluespace_at + location.space_bluespace_duration - world.time) : 0
+	var/target = location?.space_bluespace_target || 0
+	if(!displaying_layers || (!target && (!remaining || !location?.space_bluespace_from)))
+		if(bluespace_tunnel)
+			vis_contents -= bluespace_tunnel
+		QDEL_NULL(bluespace_tunnel)
+		return
+	if(!bluespace_tunnel)
+		bluespace_tunnel = new(null, null, src)
+	vis_contents |= bluespace_tunnel
+	if(bluespace_tunnel.dir != location.space_bluespace_heading)
+		bluespace_tunnel.setDir(location.space_bluespace_heading)
+		bluespace_tunnel.update_o(owner?.view || world.view)
+	if(bluespace_tunnel.animation_area == location && bluespace_tunnel.animation_at == location.space_bluespace_at \
+		&& bluespace_tunnel.animation_stage == location.space_bluespace_stage && bluespace_tunnel.animated == animate_parallax)
+		return
+	var/start_state = location.space_bluespace_stage == HYPERSPACE_WARMUP && world.time - location.space_bluespace_at <= world.tick_lag
+	var/state = animate_parallax ? (start_state ? "entry" : "flight") : "still"
+	// Keep the running frame sequence when fading out over the destination.
+	if(target || bluespace_tunnel.animation_area != location || bluespace_tunnel.animated != animate_parallax)
+		bluespace_tunnel.icon_state = state
+	bluespace_tunnel.animation_area = location
+	bluespace_tunnel.animation_at = location.space_bluespace_at
+	bluespace_tunnel.animation_stage = location.space_bluespace_stage
+	bluespace_tunnel.animated = animate_parallax
+	animate(bluespace_tunnel, alpha = location.space_bluespace_opacity(), time = 0, flags = ANIMATION_END_NOW)
+	animate(alpha = target, time = remaining, easing = SINE_EASING | EASE_IN | EASE_OUT)
+	if(!target)
+		addtimer(CALLBACK(src, PROC_REF(update_parallax)), remaining + world.tick_lag, TIMER_UNIQUE | TIMER_OVERRIDE)
+
+/atom/movable/screen/parallax_layer/bluespace_tunnel
+	icon = 'modular_bandastation/space_overmap/icons/bluespace_tunnel.dmi'
+	icon_state = "still"
+	appearance_flags = APPEARANCE_UI
+	blend_mode = BLEND_OVERLAY
+	alpha = 0
+	layer = 40
+	absolute = TRUE
+	dir = NORTH
+	/// Area and transition timestamp last applied by the viewing client.
+	var/area/animation_area
+	var/animation_at
+	var/animation_stage
+	/// Last applied parallax preference.
+	var/animated
+
+/atom/movable/screen/parallax_layer/bluespace_tunnel/update_o(new_view)
+	var/list/view_size = getviewsize(new_view)
+	transform = matrix().Scale(max(view_size[1], view_size[2]) * ICON_SIZE_ALL / 480).Turn(dir2angle(dir))
 
 /** Preserve native quality settings without inheriting the round-wide random asteroid/gas layer. */
 /atom/movable/screen/parallax_home/generate_space_layer(index)
@@ -130,6 +221,9 @@
 	var/space_background
 	/// Last orbital planet layer type published to the hull and its flight level.
 	var/space_planet
+	/// Last jump effect sent to viewers.
+	var/published_bluespace_stage = NONE
+	var/published_bluespace_heading = NONE
 
 /**
  * A single world drawn over the native space layers without tiling.

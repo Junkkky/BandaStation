@@ -549,6 +549,38 @@
 	observer_window.process_status()
 	TEST_ASSERT_EQUAL(observer_window.status, UI_CLOSE, "An observer on a different deck should not keep a helm window open")
 
+/// The jump effect follows the native drive phases without using the fast star field.
+/datum/unit_test/overmap_docking/bluespace_parallax/Run()
+	ship.preferred_direction = EAST
+	navigation.speed = 1
+	navigation.update_parallax()
+	TEST_ASSERT_EQUAL(hull_area.parallax_movedir, ship.preferred_direction, "Ordinary movement must scroll the stars")
+	var/destination = "unit_test_jump"
+	var/revision = navigation.control_revision
+	navigation.jump_target = destination
+	TEST_ASSERT(navigation.set_jump_phase(HYPERSPACE_WARMUP, destination, revision), "The drive must start warming up")
+	TEST_ASSERT_EQUAL(hull_area.parallax_movedir, NONE, "The tunnel must not inherit the star scroll")
+	TEST_ASSERT_EQUAL(exterior.space_bluespace_stage, HYPERSPACE_WARMUP, "An outside viewer must share the jump phase")
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_heading, EAST, "Streaks must follow the direction of travel")
+	hull_area.space_bluespace_at -= hull_area.space_bluespace_duration / 2
+	var/mid_warmup = hull_area.space_bluespace_opacity()
+	TEST_ASSERT(mid_warmup > 0 && mid_warmup < hull_area.space_bluespace_target, "The tunnel must fade in gradually during warmup")
+	TEST_ASSERT(navigation.set_jump_phase(HYPERSPACE_LAUNCH, destination, revision), "The warmed drive must enter bluespace")
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_from, mid_warmup, "Launch must blend continuously from the current opacity")
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_target, 255, "Flight must cover the normal stars")
+	hull_area.space_bluespace_at -= hull_area.space_bluespace_duration
+	var/launch_at = hull_area.space_bluespace_at
+	TEST_ASSERT(navigation.set_jump_phase(HYPERSPACE_END, destination, revision), "The drive must begin its final effects")
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_at, launch_at, "The exit audio must not restart the tunnel")
+	navigation.cancel_jump()
+	TEST_ASSERT_EQUAL(exterior.space_bluespace_heading, EAST, "Fading streaks must retain their last heading")
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_opacity(), 255, "Leaving bluespace must start with the fully visible tunnel")
+	hull_area.space_bluespace_at -= hull_area.space_bluespace_duration / 2
+	var/mid_fade = hull_area.space_bluespace_opacity()
+	TEST_ASSERT(mid_fade > 0 && mid_fade < 255, "The tunnel must fade over the restored star field")
+	hull_area.space_bluespace_at -= hull_area.space_bluespace_duration
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_opacity(), 0, "The tunnel must disappear after the fade")
+
 /// Exercise one landing and launch at a cardinally rotated berth through native movement.
 /datum/unit_test/overmap_docking/planet_flight_picture/Run()
 	var/datum/landing_view_piece/sample = allocate(/datum/landing_view_piece)

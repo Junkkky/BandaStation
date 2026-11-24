@@ -41,7 +41,7 @@
 	preparing = TRUE
 	jump_target = id
 	set_jump_phase(HYPERSPACE_WARMUP, id, control_revision)
-	jump_effect_timers += addtimer(CALLBACK(src, PROC_REF(set_jump_phase), HYPERSPACE_LAUNCH, id, control_revision), 4 SECONDS, TIMER_STOPPABLE)
+	jump_effect_timers += addtimer(CALLBACK(src, PROC_REF(set_jump_phase), HYPERSPACE_LAUNCH, id, control_revision), ST_SPACE_JUMP_WARMUP, TIMER_STOPPABLE)
 	jump_effect_timers += addtimer(CALLBACK(src, PROC_REF(set_jump_phase), HYPERSPACE_END, id, control_revision), ST_SPACE_JUMP_TIME - HYPERSPACE_END_TIME, TIMER_STOPPABLE)
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(finish_jump), id, control_revision), ST_SPACE_JUMP_TIME, TIMER_STOPPABLE)
 	return TRUE
@@ -53,7 +53,7 @@
 	jump_phase = phase
 	vessel.remove_ripples()
 	if(phase != HYPERSPACE_LAUNCH)
-		vessel.create_ripples(flight_berth, phase == HYPERSPACE_WARMUP ? 4 SECONDS : HYPERSPACE_END_TIME)
+		vessel.create_ripples(flight_berth, phase == HYPERSPACE_WARMUP ? ST_SPACE_JUMP_WARMUP : HYPERSPACE_END_TIME)
 	vessel.hyperspace_sound(phase, vessel.shuttle_areas)
 	if(phase != HYPERSPACE_WARMUP)
 		for(var/mob/crew as anything in SSmobs.clients_by_zlevel[vessel.z])

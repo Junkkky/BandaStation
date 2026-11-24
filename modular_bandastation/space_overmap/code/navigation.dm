@@ -658,25 +658,23 @@
 	// Spooling up does not move the hull; departure flight starts only after the physical release.
 	var/moving = speed > ST_NAV_STOPPED_SPEED || (approach_started && !approach_departing) || (helm_engaged && (approach_departing || throttle > 0)) || jump_phase >= HYPERSPACE_LAUNCH
 	var/direction = !moored && moving ? vessel.preferred_direction : NONE
-	// Bluespace flight streaks the stars past the hull.
-	var/rush = jump_phase == HYPERSPACE_LAUNCH ? ST_SPACE_JUMP_PARALLAX_RUSH : 1
-	// Keep real drift and star scrolling independent while the planet supplies the motion.
+	// Keep real drift independent of the camera effect shown during landings and jumps.
 	parallax_direction = direction
-	var/visual_direction = (planet_hover || planet_flight || planet_ascent) ? NONE : direction
-	var/motion_changed = visual_direction != published_parallax_direction || rush != parallax_rush
-	if(!motion_changed && background == space_background && planet == space_planet)
+	var/visual_direction = (jump_phase || planet_hover || planet_flight || planet_ascent) ? NONE : direction
+	var/bluespace_stage = min(jump_phase, HYPERSPACE_LAUNCH)
+	var/bluespace_heading = bluespace_stage ? vessel.preferred_direction : NONE
+	var/motion_changed = visual_direction != published_parallax_direction
+	if(!motion_changed && background == space_background && planet == space_planet && bluespace_stage == published_bluespace_stage \
+		&& bluespace_heading == published_bluespace_heading)
 		return
 	space_background = background
 	space_planet = planet
 	published_parallax_direction = visual_direction
-	parallax_rush = rush
+	published_bluespace_stage = bluespace_stage
+	published_bluespace_heading = bluespace_heading
 	for(var/area/ship_area as anything in vessel.shuttle_areas)
-		ship_area.set_space_parallax_background(background, planet)
+		ship_area.set_space_parallax_background(background, planet, bluespace_stage, bluespace_heading)
 		if(motion_changed)
-			ship_area.parallax_rush = rush
-			// Viewers restart their loop only on a direction change, so a new speed in the same direction passes through a stop.
-			if(ship_area.parallax_movedir == visual_direction)
-				ship_area.set_parallax_movedir(NONE)
 			ship_area.set_parallax_movedir(visual_direction)
-	exterior?.set_space_parallax_background(background, planet)
+	exterior?.set_space_parallax_background(background, planet, bluespace_stage, bluespace_heading)
 	exterior?.set_parallax_movedir(NONE)
