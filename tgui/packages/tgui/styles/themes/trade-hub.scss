@@ -214,4 +214,145 @@
     clip-path: inset(50%);
     white-space: nowrap;
   }
+
+  .SectorTradeMonitor {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text);
+    font-variant-numeric: tabular-nums;
+
+    button, input {
+      box-sizing: border-box;
+      min-height: 2.35rem;
+      min-width: 0;
+      padding: 0.35rem 0.65rem;
+      font: inherit;
+      color: inherit;
+      border: 1px solid var(--color-primary);
+      border-radius: 2px;
+    }
+
+    button {
+      background: var(--color-primary);
+      cursor: pointer;
+
+      &:hover:not(:disabled) {
+        background: var(--color-secondary);
+      }
+
+      &:disabled {
+        color: var(--color-label);
+        background: var(--color-base);
+        cursor: default;
+      }
+    }
+
+    input {
+      flex: 1 1 100%;
+      background: var(--color-base);
+
+      &::placeholder {
+        color: var(--color-label);
+      }
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--trade-hub-phosphor);
+      outline-offset: 1px;
+    }
+  }
+
+  .SectorTradeMonitor__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.65rem 1rem;
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--color-primary);
+  }
+
+  .SectorTradeMonitor__sector,
+  .SectorTradeMonitor__refresh {
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .SectorTradeMonitor__sector > strong {
+    font-size: 1.25rem;
+  }
+
+  .SectorTradeMonitor__muted {
+    color: var(--color-label);
+  }
+
+  .SectorTradeMonitor__body {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+
+    > p {
+      margin: 0;
+      padding: 1rem 0.8rem;
+      color: var(--color-label);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 0.48rem 0.8rem;
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--color-base);
+      color: var(--color-label);
+    }
+
+    tr > :not(:first-child) {
+      text-align: right;
+    }
+
+    tr > :last-child:not(:first-child) {
+      width: 1%;
+      white-space: nowrap;
+    }
+
+    tbody tr:not(.SectorTradeMonitor__hub) th {
+      font-weight: normal;
+    }
+
+    tbody tr:nth-child(even) {
+      background: var(--candystripe-odd);
+    }
+
+    small {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.92rem;
+      font-weight: normal;
+    }
+  }
+
+  .SectorTradeMonitor__hub th {
+    background: var(--titlebar-background);
+    border-block: 1px solid var(--color-primary);
+
+    small {
+      color: var(--color-bad);
+    }
+  }
+
+  .SectorTradeMonitor__premium {
+    color: var(--trade-hub-phosphor);
+  }
 }

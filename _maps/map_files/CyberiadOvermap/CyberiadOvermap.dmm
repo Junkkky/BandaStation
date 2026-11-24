@@ -100751,6 +100751,21 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/robotics/lab)
+"aaa" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/machinery/computer/sector_trade_monitor,
+/turf/open/floor/wood/tile,
+/area/station/command/heads_quarters/qm)
+"aab" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/machinery/light/directional/east,
+/obj/machinery/computer/sector_trade_monitor,
+/turf/open/floor/iron,
+/area/station/command/bridge)
 
 (1,1,1) = {"
 doz
@@ -187748,7 +187763,7 @@ luq
 fXG
 tiH
 qyl
-qWd
+aaa
 sPI
 msp
 lDb
@@ -196735,7 +196750,7 @@ lmV
 tYD
 pvq
 jbs
-xfc
+aab
 fQC
 nYn
 kzO
