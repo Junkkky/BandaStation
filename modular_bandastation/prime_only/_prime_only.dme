@@ -5,6 +5,9 @@
 #include "code/midnight_cloak.dm"
 #include "code/mod_delta_817.dm"
 #include "code/mod_midnight.dm"
+#include "code/normandy_iron_grip.dm"
+#include "code/normandy_power_punch.dm"
+#include "code/normandy_stomp.dm"
 #include "code/normandy_suit_storage.dm"
 // AI EDIT START - Compile Prime regression tests only when their module and test harness are enabled.
 #if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
