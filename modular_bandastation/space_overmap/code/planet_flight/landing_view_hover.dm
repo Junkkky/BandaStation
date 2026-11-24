@@ -16,6 +16,8 @@
 #define HOVER_LEAVE (2 SECONDS)
 /// How often the view checks that the ship and its hull are still where it thinks they are
 #define HOVER_CHECK (2 SECONDS)
+/// How long the planet takes to catch up with an orbital approach that is already under way
+#define HOVER_APPROACH_CATCH_UP (3 SECONDS)
 
 /// The view of the planet this ship is flying over, if it is over one
 /datum/landing_view/hover
@@ -34,6 +36,8 @@
 	/// Where the hull's port stood when this was made: a hull that has moved needs a new view
 	var/turf/port_turf
 	var/next_check = 0
+	/// TRUE once the orbital approach has been planned (see plan_approach())
+	var/approach_planned = FALSE
 
 /**
  * * hull_turfs - the hull's turfs in transit
@@ -71,8 +75,11 @@
 	port_turf = null
 	return ..()
 
-/// Moves the planet from one size and opacity to another over [time]
-/datum/landing_view/hover/proc/play(from_size, to_size, from_opacity, to_opacity, time, curve = LANDING_CURVE_LINEAR)
+/**
+ * Moves the planet from one size and opacity to another over [time]
+ * * then - further list(world.time, size) keys after that, in order
+ */
+/datum/landing_view/hover/proc/play(from_size, to_size, from_opacity, to_opacity, time, curve = LANDING_CURVE_LINEAR, list/then)
 	var/now = world.time
 	size.times = list()
 	size.values = list()
@@ -93,6 +100,8 @@
 			air.alpha.mark(now + time - 0.2 SECONDS, from_opacity * 0.92)
 			opacity.mark(now + time, to_opacity)
 			air.alpha.mark(now + time, to_opacity * 0.92)
+	for(var/list/key as anything in then)
+		size.mark(key[1], key[2])
 	for(var/list/grain as anything in grains)
 		for(var/datum/landing_view_piece/sheet as anything in grain)
 			sheet.alpha = new
@@ -101,11 +110,29 @@
 	show(shade)
 	show(air)
 
-/// Continue from the actual displayed size so a new step never resets the approach.
-/datum/landing_view/hover/proc/approach_scale(target_size, duration)
-	var/current_size = size.at(world.time)
-	if(current_size < target_size)
-		play(current_size, target_size, opacity.at(world.time), 255, duration)
+/**
+ * The planet grows under a ship on its orbital approach: steadily for [duration] from [started], then ever more slowly
+ * until the descent takes over. Planned once: clients play it by their own clock, which runs ahead of world.time under
+ * time dilation, and restarting it every few seconds threw the planet back each time.
+ */
+/datum/landing_view/hover/proc/plan_approach(started, duration)
+	if(approach_planned || leaving || ended)
+		return
+	approach_planned = TRUE
+	var/now = world.time
+	var/current = size.at(now)
+	var/list/keys = list()
+	var/catch_up = now + HOVER_APPROACH_CATCH_UP
+	// the first key is where the approach should be by catch_up; the rest are shares of [duration] past it
+	for(var/share in list((catch_up - started) / duration, 1, 1.25, 1.5, 2, 3))
+		var/when = length(keys) ? started + duration * share : catch_up
+		if(length(keys) && when <= catch_up)
+			continue
+		var/extra = max(0, share - 1)
+		keys += list(list(when, max(current, LANDING_HOVER_SIZE + 2.4 * min(1, share) + 0.75 * extra / (extra + 0.3125))))
+	var/list/first = keys[1]
+	keys.Cut(1, 2)
+	play(current, first[2], opacity.at(now), 255, first[1] - now, then = keys)
 
 /datum/landing_view/hover/proc/settle_after_approach()
 	if(size.at(size.end_time()) > LANDING_HOVER_SIZE)

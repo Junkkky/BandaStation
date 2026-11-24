@@ -668,13 +668,6 @@
 			continue
 		give_picture(viewer, piece, replay)
 
-/// A picture handed out ahead of time (see held_back) starts to move, for everyone who holds it
-/datum/landing_view/proc/reveal(datum/landing_view_piece/piece)
-	if(ended || !piece.held_back)
-		return
-	piece.held_back = FALSE
-	show(piece)
-
 /// [piece] is out of sight for good: nobody holds its images any more
 /datum/landing_view/proc/take_back(datum/landing_view_piece/piece)
 	if(ended || !piece.shown)
