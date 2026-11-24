@@ -298,7 +298,7 @@
 	},
 /obj/structure/closet/toolcloset,
 /obj/item/storage/box/lights/mixed,
-/obj/effect/spawner/random/weapon/full_gun,
+/obj/effect/spawner/random/weapon/full_gun/ruin,
 /obj/effect/spawner/random/clothing/costume,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)

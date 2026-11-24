@@ -799,7 +799,7 @@
 	},
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/weapon/full_gun,
+/obj/effect/spawner/random/weapon/full_gun/ruin,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
 "sL" = (
@@ -1494,7 +1494,7 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_transshipment/transshipment/old_snz)
 "Mh" = (
 /obj/structure/table,
-/obj/effect/spawner/random/weapon/full_gun,
+/obj/effect/spawner/random/weapon/full_gun/ruin,
 /obj/item/paper{
 	default_raw_text = "ntt<p>Nicky, this is fucked up! I hope you don't have to read this, cause if you do then that means I'm DEAD!!</p>ntt<p>While we were flying this hunk of scrap to the target, something hit us as we were entering orbit.</p>ntt<p>Engines are dying, the hull is torn open, and we're not gonna be able to leave until we patch damn thing up.</p>ntt<p>If something happens to me, my father is gonna tear you a new one!!!</p>ntt"
 	},

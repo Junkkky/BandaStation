@@ -337,9 +337,9 @@
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
 "uJ" = (
 /obj/structure/closet/crate,
-/obj/effect/spawner/random/weapon/full_gun,
-/obj/effect/spawner/random/weapon/full_gun,
-/obj/effect/spawner/random/weapon/full_gun,
+/obj/effect/spawner/random/weapon/full_gun/ruin,
+/obj/effect/spawner/random/weapon/full_gun/ruin,
+/obj/effect/spawner/random/weapon/full_gun/ruin,
 /obj/item/pickaxe,
 /obj/item/pickaxe,
 /obj/item/pickaxe,

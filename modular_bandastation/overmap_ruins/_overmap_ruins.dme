@@ -1,6 +1,7 @@
 #include "_overmap_ruins.dm"
 #include "code/ruin_areas.dm"
 #include "code/research_sources.dm"
+#include "code/ruin_loot.dm"
 #include "code/icarus.dm"
 #include "code/waste.dm"
 #include "code/scav_mining.dm"
