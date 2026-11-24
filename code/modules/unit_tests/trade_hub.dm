@@ -995,3 +995,84 @@
 	terminal.ui_act("buy", purchase, ui)
 	TEST_ASSERT(terminal.ui_data(seller)["receipt"]["success"] && QDELETED(proceeds), "The exact holochip payment did not issue the crate and consume the chip.")
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, balance, "Private trading changed cargo's balance.")
+
+/** A stale or altered quote cannot consume a cube, and a confirmed sale pays the existing profit share once. */
+/datum/unit_test/trade_hub/reward_market_bounty/Run()
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(core)
+	var/mob/living/carbon/human/consistent/seller = allocate(/mob/living/carbon/human/consistent, get_turf(input_pad))
+	var/datum/tgui/ui = create_session(seller, terminal)
+	var/datum/bank_account/holder = allocate(/datum/bank_account, "Bounty holder", null, 1, FALSE)
+	var/obj/item/bounty_cube/cube = allocate(/obj/item/bounty_cube, get_turf(input_pad))
+	cube.bounty_value = 1000
+	cube.AddComponent(/datum/component/pricetag, list(holder), BOUNTY_CUT_STANDARD, FALSE)
+
+	var/list/market = terminal.ui_data(seller)["reward_market"]
+	var/list/quotes = market?["quotes"]
+	TEST_ASSERT_EQUAL(length(quotes), 2, "Expected independent rates for the two rewards.")
+	var/list/quote = quotes[1]
+	TEST_ASSERT_EQUAL(quote["id"], "bounty_cube", "Expected a bounty cube quote.")
+	TEST_ASSERT(quote["rate"] >= 50 && quote["rate"] <= 150, "Bounty rate must be within 50–150%.")
+	var/gross = 12 * quote["rate"]
+	TEST_ASSERT_EQUAL(quote["gross"], gross, "The quote lost the base bounty or its active speed bonus.")
+	var/list/params = list("id" = "bounty_cube", "payment" = "cash", "cycle" = market["cycle"] - 1, "count" = 1, "gross" = gross)
+	terminal.ui_act("sell_reward", params, ui)
+	TEST_ASSERT(!QDELETED(cube) && !terminal.ui_data(seller)["receipt"]["success"], "A stale cycle consumed a cube.")
+	params["cycle"] = market["cycle"]
+	params["gross"] = gross + 1
+	terminal.ui_act("sell_reward", params, ui)
+	TEST_ASSERT(!QDELETED(cube) && !terminal.ui_data(seller)["receipt"]["success"], "An altered price consumed a cube.")
+
+	var/holder_balance = holder.account_balance
+	var/cargo_balance = cargo_account.account_balance
+	params["gross"] = gross
+	terminal.ui_act("sell_reward", params, ui)
+	TEST_ASSERT(QDELETED(cube) && terminal.ui_data(seller)["receipt"]["success"], "A valid cube was not sold.")
+	var/cut = round(gross * BOUNTY_CUT_STANDARD)
+	TEST_ASSERT_EQUAL(holder.account_balance, holder_balance + cut, "The holder did not receive their share of the scaled price.")
+	var/obj/item/holochip/proceeds = seller.get_active_held_item()
+	TEST_ASSERT(istype(proceeds) && proceeds.credits == gross - cut, "The seller did not receive the remaining credits.")
+	terminal.ui_act("sell_reward", params, ui)
+	TEST_ASSERT(!terminal.ui_data(seller)["receipt"]["success"], "The same cube paid twice.")
+	TEST_ASSERT_EQUAL(holder.account_balance, holder_balance + cut, "The repeat sale paid a duplicate holder share.")
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, cargo_balance, "A cash sale changed cargo's balance.")
+
+/** Sell a genuine closed cache with its loot, while rejecting a reopened or synthetic cache. */
+/datum/unit_test/trade_hub/reward_market_cache/Run()
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(core)
+	var/mob/living/carbon/human/consistent/seller = allocate(/mob/living/carbon/human/consistent, get_turf(input_pad))
+	var/datum/tgui/ui = create_session(seller, terminal)
+	var/obj/item/card/id/advanced/id = allocate(/obj/item/card/id/advanced)
+	id.set_access(list(ACCESS_CARGO), FORCE_ADD_ALL)
+	TEST_ASSERT(seller.put_in_active_hand(id), "Could not present cargo credentials.")
+
+	var/datum/lazy_template/virtual_domain/ash_drake/domain = GLOB.lazy_templates["ash_drake"]
+	TEST_ASSERT(istype(domain), "Expected the registered Ash Drake domain.")
+	var/turf/pad_tile = get_turf(input_pad)
+	var/obj/structure/closet/crate/secure/bitrunning/decrypted/cache = allocate(/obj/structure/closet/crate/secure/bitrunning/decrypted, pad_tile, domain)
+	var/obj/structure/closet/crate/secure/bitrunning/decrypted/opened_cache = allocate(/obj/structure/closet/crate/secure/bitrunning/decrypted, get_turf(output_pad), domain)
+	TEST_ASSERT(opened_cache.open(seller, force = TRUE), "Could not open the fixture cache.")
+	TEST_ASSERT(opened_cache.close(seller), "Could not reclose the fixture cache.")
+	opened_cache.forceMove(pad_tile)
+	var/obj/structure/closet/crate/secure/bitrunning/decrypted/empty = allocate(/obj/structure/closet/crate/secure/bitrunning/decrypted, pad_tile)
+	var/obj/item/stack/ore/iron/loot = locate() in cache
+	TEST_ASSERT_NOTNULL(loot, "The genuine cache must have exportable loot.")
+
+	var/list/market = terminal.ui_data(seller)["reward_market"]
+	var/list/quotes = market?["quotes"]
+	TEST_ASSERT_EQUAL(length(quotes), 2, "Expected reward market quotes.")
+	var/list/quote = quotes[2]
+	TEST_ASSERT_EQUAL(quote["id"], "decrypted_cache", "Expected a decrypted cache quote.")
+	TEST_ASSERT_EQUAL(quote["count"], 1, "A reopened or synthetic cache was quoted.")
+	var/datum/export_report/base_report = export_item_and_contents(cache, apply_elastic = FALSE, dry_run = TRUE)
+	var/base_price = 0
+	for(var/datum/export/export as anything in base_report.total_value)
+		base_price += base_report.total_value[export]
+	qdel(base_report)
+	TEST_ASSERT(base_price > CARGO_CRATE_VALUE, "Expected the station export estimate to include the contents.")
+	var/gross = ROUND_UP(base_price * quote["rate"] / 100)
+	TEST_ASSERT_EQUAL(quote["gross"], gross, "Cache quote differs from the ordinary export value scaled by the local rate.")
+	var/cargo_balance = cargo_account.account_balance
+	terminal.ui_act("sell_reward", list("id" = "decrypted_cache", "payment" = "cargo", "cycle" = market["cycle"], "count" = 1, "gross" = gross), ui)
+	TEST_ASSERT(QDELETED(cache) && QDELETED(loot), "The handover must consume the original cache and its contents.")
+	TEST_ASSERT(!QDELETED(opened_cache) && !QDELETED(empty), "The sale consumed an ineligible cache.")
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, cargo_balance + gross, "Cargo did not receive the exact quoted price.")

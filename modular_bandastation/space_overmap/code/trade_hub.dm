@@ -650,6 +650,8 @@
 	)
 	if(!catalogue_ready)
 		return data
+	var/obj/machinery/trade_hub_pad/input = input_reason ? null : core.find_pad(/obj/machinery/trade_hub_pad/input)
+	data["reward_market"] = core.reward_market_data(get_turf(input))
 	var/list/personal_access = trade_hub_cash_access(user)
 	for(var/pack_type in core.stock)
 		var/datum/supply_pack/pack = SSshuttle.supply_packs[pack_type]
@@ -684,7 +686,7 @@
 /obj/machinery/computer/trade_hub/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
-	if(action != "buy" && action != "accept")
+	if(action != "buy" && action != "accept" && action != "sell_reward")
 		return FALSE
 	var/mob/user = ui.user
 	var/id = istext(params["id"]) ? params["id"] : null
@@ -697,7 +699,14 @@
 	if(reason || !can_interact(user))
 		return transaction_result(user, action, id, FALSE, reason || "Не удаётся воспользоваться терминалом.")
 	var/list/result = list()
-	var/success = action == "buy" ? core.buy(id, user, result, src, cash) : core.accept(id, result, user, cash ? src : null)
+	var/success
+	switch(action)
+		if("buy")
+			success = core.buy(id, user, result, src, cash)
+		if("accept")
+			success = core.accept(id, result, user, cash ? src : null)
+		if("sell_reward")
+			success = core.sell_rewards(id, params, result, user, cash ? src : null)
 	if(QDELETED(ui) || ui.closing)
 		return TRUE
 	return transaction_result(user, action, id, success, result["message"])

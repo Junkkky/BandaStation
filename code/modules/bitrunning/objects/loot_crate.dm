@@ -30,6 +30,8 @@
 	name = "decrypted cache"
 	desc = "Скомпилированная из виртуального домена. Награда за успешное прохождение битрана."
 	locked = FALSE
+	/// Only an authentic reward whose contents have never been unpacked is eligible for buyback.
+	var/trade_reward_intact = FALSE
 
 /obj/structure/closet/crate/secure/bitrunning/decrypted/Initialize(
 	mapload,
@@ -43,6 +45,11 @@
 		return
 
 	PopulateContents(completed_domain.reward_points, completed_domain.completion_loot, rewards_multiplier)
+	trade_reward_intact = TRUE
+
+/obj/structure/closet/crate/secure/bitrunning/decrypted/dump_contents()
+	trade_reward_intact = FALSE
+	return ..()
 
 /obj/structure/closet/crate/secure/bitrunning/decrypted/PopulateContents(reward_points, list/completion_loot, rewards_multiplier)
 	. = ..()

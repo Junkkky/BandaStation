@@ -156,6 +156,21 @@
     }
   }
 
+  .TradeHub__reward-table {
+    tr > :nth-child(2) {
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    tr > :nth-child(4) {
+      width: 1%;
+    }
+
+    button, tr > :nth-child(4) {
+      white-space: nowrap;
+    }
+  }
+
   #trade-panel-buy .TradeHub__table {
     :is(th, td):nth-child(2) {
       width: 4.5rem;

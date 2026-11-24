@@ -37,6 +37,16 @@
 				"unit_reward" = request.unit_reward,
 				"high_demand" = request.high_demand,
 			))
+		var/list/reward_market = core.reward_market_data()
+		for(var/list/quote as anything in reward_market["quotes"])
+			requests += list(list(
+				"id" = quote["id"],
+				"name" = quote["name"],
+				"status" = "open",
+				"quantity" = null,
+				"rate_percent" = quote["rate"],
+				"rate_seconds_left" = reward_market["seconds_left"],
+			))
 		hubs += list(list(
 			"id" = REF(core),
 			"name" = outpost_name,

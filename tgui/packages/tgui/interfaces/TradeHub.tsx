@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { Box, Icon, ProgressBar, Section } from 'tgui-core/components';
 import { formatMoney } from 'tgui-core/format';
-import type { BooleanLike } from 'tgui-core/react';
+import { type BooleanLike, classes } from 'tgui-core/react';
 import { createSearch } from 'tgui-core/string';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -22,7 +22,22 @@ type Receipt = {
   sequence: number;
 };
 
+type RewardQuote = {
+  id: string;
+  name: string;
+  rate: number;
+  count: number;
+  gross: number;
+};
+
+type RewardMarketData = {
+  cycle: number;
+  seconds_left: number;
+  quotes: RewardQuote[];
+};
+
 type Data = {
+  reward_market?: RewardMarketData;
   name: string;
   specialization: string;
   connected: BooleanLike;
@@ -89,7 +104,7 @@ type TradeRequest = Data['requests'][number];
 
 export function TradeHub() {
   const { act, data } = useBackend<Data>();
-  const { requests = [], contracts = [] } = data;
+  const { requests = [], contracts = [], reward_market } = data;
   const [payment, setPayment] = useState<'cash' | 'cargo'>(
     data.cargo_access ? 'cargo' : 'cash',
   );
@@ -112,14 +127,14 @@ export function TradeHub() {
     focused: boolean;
   } | null>(null);
   const lastSequence = useRef(receipt?.sequence);
-  const submitTrade: SubmitTrade = (action, id, button) => {
+  const submitTrade: SubmitTrade = (action, id, button, quote) => {
     lastAction.current = {
       action,
       id,
       button,
       focused: document.activeElement === button,
     };
-    act(action, { id, payment });
+    act(action, { id, payment, ...quote });
   };
   function selectTab(next: Tab) {
     if (next !== tab) lastAction.current = null;
@@ -139,6 +154,8 @@ export function TradeHub() {
         filtered.some((offer) => offer.id === receipt.id)
       : (receipt.action === 'accept' &&
           requests.some((request) => request.id === receipt.id)) ||
+        (receipt.action === 'sell_reward' &&
+          reward_market?.quotes.some((quote) => quote.id === receipt.id)) ||
         (!cash &&
           receipt.action === 'deliver_contract' &&
           contracts.some((contract) => contract.id === receipt.id)));
@@ -367,6 +384,14 @@ export function TradeHub() {
                         receipt={receipt}
                       />
                     )}
+                    {reward_market && (
+                      <RewardMarket
+                        market={reward_market}
+                        reason={sharedReason}
+                        submitTrade={submitTrade}
+                        receipt={receipt}
+                      />
+                    )}
                     <Section title="Местные потребности">
                       <Box mb={1}>
                         Положите товар на общую площадку приёма отдельно или в
@@ -423,13 +448,15 @@ function TradeTable({
   name,
   headings,
   children,
+  className,
 }: {
   name: string;
   headings: string[];
   children: ReactNode;
+  className?: string;
 }) {
   return (
-    <table className="TradeHub__table" aria-label={name}>
+    <table className={classes(['TradeHub__table', className])} aria-label={name}>
       <thead>
         <tr>
           {headings.map((heading) => (
@@ -526,17 +553,89 @@ function ReceiptRow({
   );
 }
 
-type TradeCommand = 'buy' | 'accept' | 'deliver_contract';
+type TradeCommand = 'buy' | 'accept' | 'deliver_contract' | 'sell_reward';
 type SubmitTrade = (
   action: TradeCommand,
   id: string,
   button: HTMLButtonElement,
+  quote?: { cycle: number; count: number; gross: number },
 ) => void;
 type TradeListProps = {
   reason: string | null;
   receipt?: Receipt | null;
   submitTrade: SubmitTrade;
 };
+
+function RewardMarket({
+  market,
+  reason,
+  receipt,
+  submitTrade,
+}: TradeListProps & { market: RewardMarketData }) {
+  const padInstructionId = useId();
+  const minutes = Math.floor(market.seconds_left / 60);
+  const seconds = String(market.seconds_left % 60).padStart(2, '0');
+  return (
+    <Section
+      title="Выкуп наград"
+      buttons={<Box color="label">Смена курса через {minutes}:{seconds}</Box>}
+    >
+      <Box id={padInstructionId} mb={1}>
+        Положите баунти-кубы и неоткрытые кэши прямо на площадку приёма.
+        Курс применяется к базовой цене экспорта. Кэш сдаётся с содержимым.
+      </Box>
+      <TradeTable
+        name="Выкуп наград"
+        className="TradeHub__reward-table"
+        headings={['Награда', 'Курс', 'Оценка груза', 'Действие']}
+      >
+        {market.quotes.map((quote) => (
+          <tbody key={quote.id}>
+            <tr>
+              <th scope="row">{quote.name}</th>
+              <td>{quote.rate}%</td>
+              <td>
+                {quote.count ? (
+                  <>
+                    <strong>{formatMoney(quote.gross)} кр.</strong>
+                    <small>
+                      {quote.count} шт.
+                      {quote.id === 'bounty_cube' && ' · до выплаты долей'}
+                    </small>
+                  </>
+                ) : (
+                  <Box color="label">Нет на площадке</Box>
+                )}
+              </td>
+              <td>
+                <TradeAction
+                  action="sell_reward"
+                  id={quote.id}
+                  name={quote.name}
+                  label="Продать"
+                  reason={quote.count ? null : 'Нет на площадке.'}
+                  describedBy={padInstructionId}
+                  sharedReason={reason}
+                  submitTrade={(action, id, button) =>
+                    submitTrade(action, id, button, {
+                      cycle: market.cycle,
+                      count: quote.count,
+                      gross: quote.gross,
+                    })
+                  }
+                />
+              </td>
+            </tr>
+            {receipt?.action === 'sell_reward' && receipt.id === quote.id && (
+              <ReceiptRow receipt={receipt} columns={4} />
+            )}
+          </tbody>
+        ))}
+      </TradeTable>
+    </Section>
+  );
+}
+
 
 function OffersTable({
   offers,

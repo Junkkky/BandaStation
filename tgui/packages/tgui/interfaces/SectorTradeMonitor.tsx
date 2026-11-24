@@ -10,8 +10,10 @@ type TradeRequest = {
   name: string;
   status: 'open' | 'restocking' | 'renewing';
   quantity: number | null;
-  unit_reward: number;
-  high_demand: BooleanLike;
+  unit_reward?: number;
+  high_demand?: BooleanLike;
+  rate_percent?: number;
+  rate_seconds_left?: number;
 };
 
 type TradeHub = {
@@ -113,8 +115,8 @@ export function SectorTradeMonitor() {
               <thead>
                 <tr>
                   <th scope="col">Товар</th>
-                  <th scope="col">К приёму</th>
-                  <th scope="col">Кр. за ед.</th>
+                  <th scope="col">К приёму</th>
+                  <th scope="col">Выплата</th>
                 </tr>
               </thead>
               {matchingHubs.map((hub) => (
@@ -136,7 +138,18 @@ export function SectorTradeMonitor() {
                         )}
                       </th>
                       <td>{acceptance(request, !!hub.problem)}</td>
-                      <td>{formatMoney(request.unit_reward)}</td>
+                      <td>
+                        {request.rate_percent === undefined ? (
+                          formatMoney(request.unit_reward ?? 0) + ' кр./ед.'
+                        ) : (
+                          <>
+                            {request.rate_percent}%
+                            {age_seconds >= (request.rate_seconds_left ?? 0) && (
+                              <small>Курс истёк</small>
+                            )}
+                          </>
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
