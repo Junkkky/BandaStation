@@ -39,6 +39,13 @@
 /obj/structure/railing/wooden_fence,
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"aD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/sofa/middle{
+	dir = 2
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "aE" = (
 /obj/structure/flora/rock/pile/style_random,
 /obj/structure/railing/wooden_fence{
@@ -235,6 +242,12 @@
 	},
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"cR" = (
+/obj/structure/chair/sofa/right{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "cY" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/wood,
@@ -334,12 +347,6 @@
 /obj/structure/bookcase/manuals,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
-"dR" = (
-/obj/structure/chair/sofa{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/textured,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "dS" = (
 /obj/structure/chair/wood{
 	pixel_x = 13;
@@ -361,6 +368,12 @@
 /obj/structure/table/wood/fancy/green,
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"eb" = (
+/obj/structure/chair/sofa/left{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "ed" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed,
@@ -530,6 +543,12 @@
 /obj/item/grenade/syndieminibomb,
 /turf/closed/mineral,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"gb" = (
+/obj/structure/chair/sofa/left{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "gd" = (
 /obj/structure/closet/toolcloset,
 /turf/open/floor/wood,
@@ -582,14 +601,6 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
-"gy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/chair/sofa{
-	dir = 2
-	},
-/obj/machinery/light/directional/north,
-/turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "gA" = (
 /obj/structure/table/wood,
 /obj/item/knife/kitchen,
@@ -601,6 +612,13 @@
 /obj/item/crowbar,
 /turf/open/floor/concrete/slab_3,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"gU" = (
+/obj/structure/chair/sofa/middle{
+	dir = 2
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "hb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/contraband/random/directional/north,
@@ -649,6 +667,14 @@
 /obj/structure/reagent_dispensers/plumbed,
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"hv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/sofa/right{
+	dir = 2
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "hR" = (
 /obj/structure/sign/poster/contraband/random/directional/east,
 /turf/template_noop,
@@ -1164,6 +1190,12 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"nw" = (
+/obj/structure/chair/sofa/middle{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "nx" = (
 /obj/machinery/light/directional/south,
 /turf/open/water/jungle,
@@ -1625,6 +1657,12 @@
 /obj/structure/sign/poster/contraband/random/directional/north,
 /turf/open/floor/concrete/slab_4,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"uw" = (
+/obj/structure/chair/sofa/middle{
+	dir = 2
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "uz" = (
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
@@ -1749,6 +1787,12 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"wx" = (
+/obj/structure/chair/sofa/corner{
+	dir = 2
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "wy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/wood,
@@ -1783,12 +1827,6 @@
 /obj/effect/decal/cleanable/ash,
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
-"wU" = (
-/obj/structure/chair/sofa{
-	dir = 2
-	},
-/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "wX" = (
 /obj/structure/table/wood/fancy/red,
@@ -1853,9 +1891,9 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
-"xO" = (
-/obj/structure/chair/sofa{
-	dir = 8
+"xS" = (
+/obj/structure/chair/sofa/left{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
@@ -1964,6 +2002,13 @@
 	pixel_x = 1;
 	pixel_y = 0
 	},
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"zm" = (
+/obj/structure/chair/sofa/left{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/random/directional/west,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "zv" = (
 /obj/structure/curtain/cloth/fancy{
@@ -2110,6 +2155,12 @@
 /obj/item/clothing/shoes/workboots,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"AP" = (
+/obj/structure/chair/sofa/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "AU" = (
 /obj/structure/table/wood/fancy,
 /obj/item/lighter{
@@ -2140,6 +2191,12 @@
 /obj/item/clothing/head/soft/black,
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
+"Bm" = (
+/obj/structure/chair/sofa/middle{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "Bq" = (
 /obj/structure/chair/wood{
 	pixel_x = 13;
@@ -2178,6 +2235,13 @@
 /obj/structure/curtain/cloth/fancy,
 /obj/machinery/light/small/directional/east,
 /obj/effect/mob_spawn/corpse/human/damaged,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"BS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/sofa/corner{
+	dir = 2
+	},
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "Ci" = (
@@ -2240,12 +2304,6 @@
 /obj/item/storage/toolbox/mechanical,
 /obj/structure/table/greyscale,
 /turf/open/floor/concrete/slab_1,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
-"CJ" = (
-/obj/structure/chair/sofa{
-	dir = 8
-	},
-/turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "CR" = (
 /obj/structure/table/wood/fancy/green,
@@ -2390,12 +2448,6 @@
 	},
 /turf/open/floor/concrete/slab_3,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
-"EJ" = (
-/obj/structure/chair/sofa{
-	dir = 2
-	},
-/turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "EM" = (
 /obj/structure/closet/cabinet,
 /obj/item/cultivator/rake,
@@ -2554,12 +2606,6 @@
 	},
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
-"Gu" = (
-/obj/structure/chair/sofa{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "Gz" = (
 /obj/structure/table/wood,
 /obj/item/wrench,
@@ -2650,6 +2696,12 @@
 /obj/item/food/grown/cannabis,
 /obj/item/clothing/head/soft/black,
 /turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Hk" = (
+/obj/structure/chair/sofa/middle{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "Hl" = (
 /obj/effect/turf_decal/sand/plating,
@@ -2809,6 +2861,12 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Jh" = (
+/obj/structure/chair/sofa/middle{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "Jj" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/carpet/green,
@@ -2820,6 +2878,12 @@
 /obj/structure/table/wood,
 /obj/item/clothing/head/soft/black,
 /turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"JK" = (
+/obj/structure/chair/sofa/right{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "JV" = (
 /obj/effect/turf_decal/sand/plating,
@@ -2994,13 +3058,6 @@
 /obj/item/clothing/shoes/sandal,
 /turf/open/floor/concrete/slab_1,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
-"LM" = (
-/obj/structure/chair/sofa{
-	dir = 2
-	},
-/obj/machinery/light/directional/north,
-/turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "LO" = (
 /obj/structure/reagent_dispensers/cooking_oil,
 /obj/effect/mapping_helpers/broken_floor,
@@ -3079,15 +3136,15 @@
 /obj/structure/reagent_dispensers/plumbed,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"MT" = (
+/obj/structure/chair/sofa/left{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "MU" = (
 /obj/structure/bookcase/manuals/engineering,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
-"MV" = (
-/obj/structure/chair/sofa{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "Na" = (
 /obj/structure/curtain/cloth/fancy{
@@ -3249,6 +3306,12 @@
 /obj/item/food/grown/cannabis,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"Pi" = (
+/obj/structure/chair/sofa/corner{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "Pj" = (
 /obj/structure/curtain/cloth/fancy{
 	pixel_y = -32
@@ -3319,15 +3382,6 @@
 /obj/item/clothing/head/soft/black,
 /turf/open/floor/concrete/slab_3,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/exterior)
-"QI" = (
-/obj/structure/chair/sofa{
-	dir = 2
-	},
-/obj/structure/curtain/cloth/fancy{
-	pixel_y = 32
-	},
-/turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "QJ" = (
 /obj/structure/chair/wood{
 	pixel_x = 4;
@@ -3577,6 +3631,15 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"TJ" = (
+/obj/structure/chair/sofa/right{
+	dir = 2
+	},
+/obj/structure/curtain/cloth/fancy{
+	pixel_y = 32
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "Ub" = (
 /obj/structure/table/wood,
 /obj/item/gun/ballistic/automatic/wt550,
@@ -3632,13 +3695,6 @@
 	},
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
-"Uz" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/chair/sofa{
-	dir = 8
-	},
-/turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "UD" = (
 /obj/structure/closet/cabinet,
 /obj/structure/curtain/cloth/fancy{
@@ -3657,6 +3713,12 @@
 	pixel_x = 2
 	},
 /turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"UH" = (
+/obj/structure/chair/sofa/right{
+	dir = 2
+	},
+/turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "UJ" = (
 /obj/structure/curtain/cloth/fancy{
@@ -3790,12 +3852,6 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
-"Vq" = (
-/obj/structure/chair/sofa{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "Vr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/wood,
@@ -3885,13 +3941,6 @@
 /obj/structure/reagent_dispensers/cooking_oil,
 /turf/open/floor/concrete/slab_1,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
-"Wi" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/chair/sofa{
-	dir = 2
-	},
-/turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "Wm" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/wood,
@@ -3917,6 +3966,12 @@
 "WI" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"WJ" = (
+/obj/structure/chair/sofa/right{
+	dir = 2
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "WL" = (
 /obj/structure/chair/wood{
@@ -4114,13 +4169,6 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
-"YL" = (
-/obj/structure/chair/sofa{
-	dir = 1
-	},
-/obj/structure/sign/poster/contraband/random/directional/west,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "YM" = (
 /obj/structure/fluff/paper/stack,
 /obj/effect/decal/cleanable/dirt,
@@ -4175,6 +4223,13 @@
 /obj/item/weldingtool/largetank,
 /obj/structure/table/greyscale,
 /turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
+"ZO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/sofa/left{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_el_town/ruin/beach/bunker/office)
 "ZR" = (
 /obj/structure/bookcase/random,
@@ -6260,7 +6315,7 @@ kB
 KK
 GR
 rO
-QI
+TJ
 uz
 uz
 oj
@@ -6337,7 +6392,7 @@ KK
 KK
 KK
 QM
-LM
+gU
 zH
 uz
 oj
@@ -6414,7 +6469,7 @@ kB
 KK
 KK
 QM
-EJ
+uw
 IV
 Vl
 oj
@@ -6491,8 +6546,8 @@ Pl
 KK
 KK
 QM
-EJ
-CJ
+wx
+eb
 uz
 oj
 KK
@@ -8608,7 +8663,7 @@ KK
 KK
 oj
 di
-YL
+zm
 oj
 GR
 GR
@@ -8685,7 +8740,7 @@ oj
 oj
 oj
 rS
-MV
+Hk
 oj
 KK
 KK
@@ -8762,7 +8817,7 @@ oj
 MK
 LW
 Vl
-MV
+JK
 oj
 KK
 KK
@@ -8835,7 +8890,7 @@ ag
 ag
 oj
 oj
-wU
+WJ
 jb
 jx
 Ex
@@ -8912,9 +8967,9 @@ ag
 ag
 oj
 oj
-wU
-xO
-Vq
+Pi
+nw
+gb
 uz
 uQ
 oj
@@ -9877,7 +9932,7 @@ RF
 KK
 oj
 PA
-EJ
+UH
 US
 Vl
 Rk
@@ -9954,7 +10009,7 @@ KK
 KK
 rO
 Xc
-Wi
+aD
 Dg
 Ex
 KY
@@ -10031,7 +10086,7 @@ KK
 KK
 rO
 Xc
-Wi
+aD
 xs
 sa
 KY
@@ -10067,9 +10122,9 @@ GR
 KK
 zl
 zl
-Gu
-Gu
-dR
+AP
+Jh
+cR
 Vl
 uQ
 oj
@@ -10108,9 +10163,9 @@ KK
 KK
 rO
 ba
-Wi
-CJ
-Uz
+BS
+Bm
+ZO
 Jj
 oj
 KK
@@ -10144,7 +10199,7 @@ KK
 KK
 zl
 zl
-wU
+MT
 jb
 jx
 Vl
@@ -10225,7 +10280,7 @@ zl
 MK
 sZ
 uz
-MV
+xS
 oj
 KK
 KK
@@ -10302,7 +10357,7 @@ zl
 zl
 zl
 rS
-MV
+Hk
 oj
 KK
 KK
@@ -10379,7 +10434,7 @@ GR
 KK
 oj
 di
-MV
+JK
 oj
 KK
 KK
@@ -12239,7 +12294,7 @@ ag
 ag
 cc
 oj
-gy
+hv
 aZ
 oj
 KK
@@ -12316,8 +12371,8 @@ ag
 ag
 ag
 ag
-EJ
-CJ
+wx
+eb
 oj
 GR
 GR

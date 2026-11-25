@@ -1014,6 +1014,12 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
+"hR" = (
+/obj/structure/chair/sofa/right{
+	dir = 4
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
 "hW" = (
 /obj/machinery/telecomms/relay,
 /turf/open/floor/circuit,
@@ -1457,6 +1463,11 @@
 	dir = 6
 	},
 /turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
+"lz" = (
+/obj/structure/chair/sofa/middle,
+/mob/living/basic/trooper/syndicate/ranged,
+/turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
 "lF" = (
 /obj/effect/turf_decal/caution/stand_clear{
@@ -1911,10 +1922,6 @@
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating/rust,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/exterior)
-"oL" = (
-/obj/structure/chair/sofa,
-/turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
 "oS" = (
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 9
@@ -2106,6 +2113,12 @@
 /obj/effect/decal/cleanable/vomit/old,
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/exterior)
+"qd" = (
+/obj/structure/chair/sofa/middle{
+	dir = 4
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
 "qh" = (
 /obj/item/stack/ore/uranium,
 /turf/open/misc/asteroid/airless,
@@ -4154,12 +4167,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
-"GN" = (
-/obj/structure/chair/sofa{
-	dir = 4
-	},
-/turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
 "GP" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 8
@@ -4697,6 +4704,10 @@
 /obj/structure/stationtrauma_nuclear_waste/leaking,
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/exterior)
+"Ky" = (
+/obj/structure/chair/sofa/middle,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
 "KA" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 8
@@ -4973,11 +4984,6 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /turf/open/floor/concrete,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/exterior)
-"MX" = (
-/obj/structure/chair/sofa,
-/mob/living/basic/trooper/syndicate/ranged,
-/turf/open/floor/carpet/green,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
 "Na" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -5222,6 +5228,11 @@
 /obj/effect/decal/cleanable/plasma,
 /turf/open/floor/concrete,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/exterior)
+"OO" = (
+/obj/structure/closet/wall/directional/east,
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/secure_claw/engineering)
 "OS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -5416,6 +5427,10 @@
 	},
 /turf/open/floor/concrete,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/exterior)
+"QC" = (
+/obj/structure/chair/sofa/left,
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
 "QD" = (
 /obj/structure/table,
 /obj/item/stack/spacecash/c10{
@@ -6096,15 +6111,6 @@
 /obj/item/reagent_containers/cup/glass/bottle/beer,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
-"VA" = (
-/obj/structure/closet/cabinet{
-	dir = 8;
-	pixel_y = 0;
-	pixel_x = 27
-	},
-/obj/machinery/firealarm/directional/south,
-/turf/open/floor/iron/dark/textured_large,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/secure_claw/engineering)
 "VC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -6370,6 +6376,12 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
+"Xz" = (
+/obj/structure/chair/sofa/corner{
+	dir = 4
+	},
+/turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_recyclebay/ruin/wasteplanet/tradepost/center)
 "XB" = (
 /turf/open/floor/iron/freezer,
@@ -7580,7 +7592,7 @@ Nv
 qo
 eZ
 Cc
-VA
+OO
 QH
 Dc
 zE
@@ -8992,9 +9004,9 @@ zE
 sx
 sx
 eK
-GN
-GN
-GN
+Xz
+qd
+hR
 jz
 AW
 jz
@@ -9069,7 +9081,7 @@ zE
 sx
 sx
 eK
-oL
+Ky
 bY
 pt
 OJ
@@ -9146,7 +9158,7 @@ zE
 ne
 sx
 VK
-MX
+lz
 ix
 EV
 oy
@@ -9223,7 +9235,7 @@ zE
 sx
 sx
 VK
-oL
+QC
 Wc
 EV
 bn

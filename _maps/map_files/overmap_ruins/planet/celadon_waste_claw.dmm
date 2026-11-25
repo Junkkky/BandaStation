@@ -30,12 +30,6 @@
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
-"bh" = (
-/obj/structure/chair/sofa{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/small,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
 "bD" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
@@ -2232,6 +2226,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/engineering)
+"OJ" = (
+/obj/structure/chair/sofa/middle{
+	dir = 2
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
 "OK" = (
 /obj/structure/toilet{
 	dir = 4;
@@ -2330,6 +2330,12 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/control)
+"Qs" = (
+/obj/structure/chair/sofa/left{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
 "Qw" = (
 /obj/effect/mine/shrapnel,
 /turf/open/floor/concrete/slab_1,
@@ -2696,12 +2702,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ship/bridge)
-"Wq" = (
-/obj/structure/chair/sofa{
-	dir = 2
-	},
-/turf/open/floor/iron/dark/small,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_claw/ruin/wasteplanet/secure_claw/dorm)
 "WD" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/siding/thinplating_new/dark{
@@ -5962,7 +5962,7 @@ ub
 Jc
 Jc
 Px
-Wq
+OJ
 fT
 OR
 Xh
@@ -6014,7 +6014,7 @@ Jc
 Jc
 Jc
 Px
-Wq
+OJ
 rO
 bW
 xc
@@ -6067,7 +6067,7 @@ Jc
 Jc
 Px
 AI
-bh
+Qs
 Gl
 VX
 OR

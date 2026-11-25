@@ -20,7 +20,7 @@
 		},
 		{
 			"path": "modular_bandastation/space_overmap/icons/wallcloset.dmi",
-			"sha256": "70fa787e8b6d1f5cbe18ca8dbbc8e3e5228e697c8b842226a5781f85066d159c",
+			"sha256": "9132119f3fd1a353365f7d6f0d633106d940510f4d3ba8a7c59d4a7b7789c8e7",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["Aliceee2ch and Voidcrew contributors"],
 			"source": {
@@ -31,7 +31,7 @@
 				"sha256": "d4020c0d52036f1a883cf225f56b2419f8b5964063d8cc422ee08c7edbb83616",
 				"license_policy_url": "https://github.com/voidcrew/Voidcrew/blob/779fd6d0889cc6e372b4a3355f9c385ea51de6da/README.md#license"
 			},
-			"changes": "Preserved all original frames and added named four-direction body states for the atmospherics, botany and janitor variants using existing cabinet bodies.",
+			"changes": "Preserved all original frames and added named four-direction body states for the atmospherics, botany and janitor variants using existing cabinet bodies. Added fire, fire_open, fire_back and fire_door: the emergency frames recoloured red, the oxygen mark cleared from the door.",
 			"byte_identical": false
 		},
 		{
