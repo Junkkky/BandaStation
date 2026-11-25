@@ -83806,7 +83806,8 @@
 	pixel_x = 1;
 	id = "expedition_lockdown";
 	name = "Expedition Lockdown";
-	pixel_y = -25
+	pixel_y = -25;
+	req_access = list("expedition_leader")
 	},
 /obj/effect/turf_decal/trimline/purple/line{
 	dir = 10
