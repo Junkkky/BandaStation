@@ -7,6 +7,11 @@
 	vend_reply = "Удачной экспедиции!"
 	all_products_free = TRUE
 	products = list(
+		/obj/item/clothing/under/expedition/corps = 3,
+		/obj/item/clothing/under/expedition/corps/leader = 3,
+		/obj/item/clothing/under/expedition/corps/pilot = 3,
+		/obj/item/clothing/under/expedition/corps/medic = 3,
+		/obj/item/clothing/under/expedition/corps/engineer = 3,
 		/obj/item/clothing/under/expedition = 3,
 		/obj/item/clothing/under/expedition/leader = 3,
 		/obj/item/clothing/under/expedition/pilot = 3,

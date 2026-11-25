@@ -99,3 +99,17 @@
 `signs.dmi`, `expedition` — рамка таблички TG `icons/obj/signs.dmi`, `xenobio2`,
 с оригинальной пиксельной эмблемой компаса со звездой и надписью EXP, Primera, 2026-11-14.
 Лицензия графики CC BY-SA 3.0.
+
+## Полевая форма корпуса
+
+`uniforms.dmi` и `uniforms_worn.dmi`, состояния `corps_*`: спрайты BandaMarines (CM-SS13, CC BY-SA 3.0), перекрашенные в палитру полевого МОДа корпуса (графит и фиолетовый; у медика синие вставки):
+
+| Роль | Источник |
+| --- | --- |
+| Исследователь (`corps_explorer`) | `kutjevo_drysuit`: [onmob](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi), [obj](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/uniforms/misc_ert_colony.dmi) |
+| Глава (`corps_leader`, `_d`) | `crewchief_flightsuit`: [onmob](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi), [obj](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi) |
+| Пилот (`corps_pilot`, `_d`) | `pilot_flightsuit_alt` и `_dj`: [onmob](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi), [obj](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi) |
+| Медик (`corps_medic`, `_d`) | `marine_medic_field`: [onmob](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi), [obj](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi) |
+| Инженер (`corps_engineer`, `_d`) | `engineer_jumpsuit`: [onmob](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi), [obj](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi) |
+
+Мод пилота: самые яркие фиолетовые детали затемнены до тонов полевого МОДа.
