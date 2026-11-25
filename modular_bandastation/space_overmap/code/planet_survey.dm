@@ -214,7 +214,20 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
 	covered_at = world.time
 	efficient = coverage >= SURVEY_GOAL
 	flights.Cut()
+	addtimer(CALLBACK(src, PROC_REF(chime_when_mapped)), GLOB.stationtrauma_survey_mapping_timer ? SURVEY_MAPPING_TIME : 1, TIMER_DELETE_ME)
 	return TRUE
+
+/// The console chimes once mapping is done; the planet may still be generating when its time is up
+/datum/stationtrauma_planet_survey/proc/chime_when_mapped()
+	if(!mapped())
+		if(!QDELETED(planet) && !planet.failed)
+			addtimer(CALLBACK(src, PROC_REF(chime_when_mapped)), 2 SECONDS, TIMER_DELETE_ME)
+		return
+	var/obj/machinery/computer/stationtrauma_planet_survey/console = console_ref?.resolve()
+	if(QDELETED(console))
+		return
+	playsound(console, 'sound/machines/chime.ogg', 50, FALSE)
+	console.say("Картографирование завершено: схема поверхности и посадочные площадки готовы.")
 
 /// What the survey tells of the planet, as far as the ground read goes
 /datum/stationtrauma_planet_survey/proc/facts()
