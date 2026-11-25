@@ -401,9 +401,7 @@
 /obj/effect/turf_decal/trimline/purple/line{
 	dir = 1
 	},
-/obj/machinery/camera/directional/north{
-	c_tag = "Arrivals Lounge"
-	},
+/obj/machinery/light/cold/dim/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/expedition/common)
 "agg" = (
@@ -8342,8 +8340,8 @@
 	dir = 8
 	},
 /obj/machinery/light_switch/directional/south,
-/obj/machinery/light/cold/dim/directional/south,
 /obj/effect/turf_decal/trimline/purple/line,
+/obj/machinery/light/cold/dim/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/expedition/common)
 "cak" = (
@@ -10464,6 +10462,13 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/maintenance/department/electrical/ghetto)
+"czl" = (
+/obj/effect/turf_decal/trimline/purple/line{
+	dir = 4
+	},
+/obj/machinery/light/cold/dim/directional/east,
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/expedition/common)
 "czs" = (
 /obj/machinery/atmospherics/pipe/smart/simple/general{
 	dir = 5
@@ -18107,6 +18112,7 @@
 /area/station/maintenance/starboard/upper)
 "epU" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/machinery/power/port_gen/pacman/pre_loaded,
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
 "epV" = (
@@ -19810,7 +19816,6 @@
 /turf/open/floor/wood,
 /area/station/security/detectives_office)
 "eMP" = (
-/obj/machinery/light/cold/dim/directional/east,
 /obj/effect/turf_decal/trimline/purple/line{
 	dir = 4
 	},
@@ -22047,9 +22052,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/machinery/airalarm/directional/north,
-/obj/machinery/light/cold/dim/directional/north,
 /obj/effect/turf_decal/trimline/purple/line{
 	dir = 1
+	},
+/obj/machinery/camera/directional/north{
+	c_tag = "Arrivals Lounge"
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/expedition/common)
@@ -75222,6 +75229,7 @@
 "rYq" = (
 /obj/machinery/vending/wardrobe/expedition_wardrobe,
 /obj/effect/turf_decal/trimline/purple/line,
+/obj/machinery/light/cold/dim/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/expedition/storage)
 "rYA" = (
@@ -80856,7 +80864,6 @@
 /area/station/maintenance/ghetto/port)
 "trX" = (
 /obj/structure/extinguisher_cabinet/directional/south,
-/obj/machinery/light/cold/dim/directional/south,
 /obj/effect/turf_decal/trimline/purple/line,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/expedition/storage)
@@ -179377,7 +179384,7 @@ oXc
 xRt
 xRt
 xRt
-tYD
+xRt
 tYD
 tYD
 tYD
@@ -179633,8 +179640,8 @@ oXj
 oXc
 spZ
 spZ
+spZ
 xRt
-tYD
 tYD
 tYD
 tYD
@@ -179887,11 +179894,11 @@ hgM
 wtP
 qsj
 oXj
+kAy
 hbO
 kAy
 jUs
 xRt
-tYD
 tYD
 tYD
 tYD
@@ -180144,7 +180151,7 @@ qxs
 qxs
 iAX
 oXj
-oXc
+kAy
 oXc
 oXc
 oXc
@@ -180387,7 +180394,7 @@ fkS
 kuN
 sPe
 gqw
-vZX
+czl
 oBx
 eMP
 aip
@@ -180401,7 +180408,7 @@ rPY
 dFy
 fcT
 oXj
-tAF
+kAy
 oXc
 wfn
 wfn
