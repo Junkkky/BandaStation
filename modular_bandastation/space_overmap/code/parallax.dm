@@ -100,6 +100,9 @@
 	var/space_background
 	/// Last orbital layer type, so a biome change refreshes the planet without changing the star field.
 	var/space_planet
+	// A backdrop: its layers (the jump tunnel, a planet) reach well past the screen, and an untiled screen object that
+	// does makes the client widen its map and shove the game view into a corner. Tile-bound, it never sizes the map.
+	appearance_flags = APPEARANCE_UI | TILE_BOUND
 	/// Jump layers scroll independently from the regular space background.
 	var/list/atom/movable/screen/parallax_layer/bluespace_tunnel/bluespace_layers
 	/// Last fade applied to the jump layers.

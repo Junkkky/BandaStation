@@ -250,6 +250,8 @@
 	icon = null
 	screen_loc = "CENTER-7,CENTER-7"
 	plane = LANDING_VIEW_PLANE
+	// its sky is drawn many times the screen's size; tile-bound, it never makes the client widen its map
+	appearance_flags = APPEARANCE_UI | TILE_BOUND
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /// A piece of sky, drawn by the home it is in
