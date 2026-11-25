@@ -49,6 +49,7 @@ export type LibraryConsoleData = {
   inventory_page_count: number;
   inventory_page: number;
   inventory: InventoryEntry[];
+  max_print_run: number;
   our_page: number;
   page_count: number;
   pages: Page[];

@@ -75,6 +75,7 @@ WORKDIR /tgstation
 
 RUN apt-get install -y --no-install-recommends \
         libssl1.0.0:i386 \
+        python3-pil \
         zlib1g:i386
 
 COPY --from=build /deploy ./

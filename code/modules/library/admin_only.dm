@@ -154,7 +154,7 @@
 		return
 
 	var/datum/db_query/query_library_view = SSdbcore.NewQuery(
-		"SELECT * FROM [format_table_name("library")] WHERE id=:id",
+		"SELECT id, author, title, content, category, ckey, datetime, deleted, round_id_created, pages FROM [format_table_name("library")] WHERE id=:id",
 		list("id" = id)
 	)
 	if(!query_library_view.Execute())
@@ -173,6 +173,11 @@
 		viewer.creation_time = query_library_view.item[7]
 		viewer.deleted = query_library_view.item[8]
 		viewer.creation_round = query_library_view.item[9]
+		if(query_library_view.item[10])
+			var/datum/book_info/edition = new(viewer.title, viewer.author, viewer.content)
+			if(edition.load_pages(query_library_view.item[10]))
+				viewer.pages = edition.get_pages()
+				viewer.cover_image = edition.cover_image
 		viewer.history = get_book_history(id)
 		viewer.ui_interact(show_to)
 		break
@@ -314,6 +319,10 @@
 	var/title
 	/// The full text of the book, stored raw
 	var/content
+	/// Illustrations and their associated page text for the rendered archive preview.
+	var/list/pages
+	/// Archived cover illustration, if present.
+	var/cover_image
 	/// Category the book falls into, see SSlibrary.search_categories
 	var/category
 	/// The ckey of the user who triggered the upload request
@@ -351,6 +360,8 @@
 	data["author"] = author
 	data["title"] = title
 	data["content"] = content
+	data["pages"] = pages
+	data["coverImage"] = cover_image
 	data["category"] = category
 	data["author_ckey"] = author_ckey
 	data["creation_time"] = creation_time
