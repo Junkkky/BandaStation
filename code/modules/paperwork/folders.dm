@@ -13,6 +13,7 @@
 	/// A typecache of the objects that can be inserted into a folder
 	var/static/list/folder_insertables = typecacheof(list(
 		/obj/item/paper,
+		/obj/item/paper_bundle,
 		/obj/item/photo,
 		/obj/item/documents,
 		/obj/item/paperwork,
