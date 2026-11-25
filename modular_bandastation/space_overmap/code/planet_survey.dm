@@ -13,21 +13,24 @@
 
 /// Probe ballistics, also sent to the console's aim preview (see ui_static_data()).
 /**
- * The ship orbits in front of the planet, the launcher circling the disc: a probe leaves from wherever the ship is, so
- * it goes where gravity and the throw take it, not where the cursor points. Weak throws fall short by the ship, strong
- * ones carry over the rim or past the planet.
+ * The ship's orbit is tilted towards the viewer, passing in front of the planet below it and behind it above; the
+ * launcher hangs at the orbit's lowest point, but a probe leaves it moving along the orbit with the ship: the throw at
+ * the cursor adds to that, and gravity bends the sum round the planet. A probe thrown straight at the middle drifts
+ * along the orbit before it strikes; one thrown weak swings far round, over the top of the planet; one thrown hard and
+ * forward flies past.
  */
 #define SURVEY_ORBIT_RADIUS 2
-#define SURVEY_LAUNCH_Z 2
-/// One turn of the orbit
-#define SURVEY_ORBIT_PERIOD (45 SECONDS)
+/// How far the orbit is tilted towards the viewer, in degrees
+#define SURVEY_ORBIT_TILT 30
 #define SURVEY_GRAVITY 1.2
+/// Share of the ship's orbital speed a probe keeps as it leaves the launcher
+#define SURVEY_DRIFT 0.75
 #define SURVEY_STEP 0.02
 #define SURVEY_STEPS 900
 /// A probe this far from the planet's centre is lost in space
 #define SURVEY_ESCAPE 8
-#define SURVEY_SPEED_MIN 0.5
-#define SURVEY_SPEED_MAX 1.3
+#define SURVEY_SPEED_MIN 0.2
+#define SURVEY_SPEED_MAX 1.6
 /// The furthest from the planet's centre a probe may be aimed, in planet radii
 #define SURVEY_AIM_LIMIT 2.4
 /// Every this many steps a point of a flight is kept for the screen
@@ -51,7 +54,7 @@
 #define SURVEY_DISK_COOLDOWN (20 SECONDS)
 /// Points the coverage is measured on, spread evenly over the sphere
 #define SURVEY_SAMPLES 600
-#define SURVEY_MAPPING_TIME (2 MINUTES)
+#define SURVEY_MAPPING_TIME (1 MINUTES)
 
 /// Whether mapping takes its full time; an admin can switch it off for the round
 GLOBAL_VAR_INIT(stationtrauma_survey_mapping_timer, TRUE)
@@ -67,26 +70,23 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
 		var/ring = sqrt(1 - y * y)
 		. += list(list(ring * cos(turn * index), y, ring * sin(turn * index)))
 
-/// Where the ship is on its orbit now, in degrees anticlockwise from the right of the disc
-/proc/stationtrauma_survey_orbit_angle()
-	return (world.time % SURVEY_ORBIT_PERIOD) / SURVEY_ORBIT_PERIOD * 360
-
 /**
- * Flies one probe launched from [angle] of the orbit, aimed at [aim_x], [aim_y] on the planet's face with [power] (0-1),
- * as seen from the front. Returns list(path, steps, impact): the kept points of the flight, each list(x, y, z), how many
- * steps it took, and the point on the sphere it struck, or null if it missed.
+ * Flies one probe thrown from the launcher at [aim_x], [aim_y] on the planet's face with [power] (0-1), as seen from the
+ * front. Returns list(path, steps, impact): the kept points of the flight, each list(x, y, z), how many steps it took, and
+ * the point on the sphere it struck, or null if it missed.
  */
-/proc/stationtrauma_survey_flight(angle, aim_x, aim_y, power)
-	var/x = SURVEY_ORBIT_RADIUS * cos(angle)
-	var/y = SURVEY_ORBIT_RADIUS * sin(angle)
-	var/z = SURVEY_LAUNCH_Z
+/proc/stationtrauma_survey_flight(aim_x, aim_y, power)
+	var/x = 0
+	var/y = -SURVEY_ORBIT_RADIUS * cos(SURVEY_ORBIT_TILT)
+	var/z = SURVEY_ORBIT_RADIUS * sin(SURVEY_ORBIT_TILT)
 	// aimed at the point of the face under the cursor, or at the planet's plane past its rim
 	var/aim_z = sqrt(max(0, 1 - aim_x * aim_x - aim_y * aim_y))
 	var/dx = aim_x - x
 	var/dy = aim_y - y
 	var/dz = aim_z - z
 	var/speed = (SURVEY_SPEED_MIN + power * (SURVEY_SPEED_MAX - SURVEY_SPEED_MIN)) / sqrt(dx * dx + dy * dy + dz * dz)
-	var/vx = dx * speed
+	// the probe keeps part of the ship's motion along its orbit, which at the bottom runs to the right
+	var/vx = dx * speed + SURVEY_DRIFT * sqrt(SURVEY_GRAVITY / SURVEY_ORBIT_RADIUS)
 	var/vy = dy * speed
 	var/vz = dz * speed
 	var/list/path = list(list(x, y, z))
@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
 	probes++
 	if(planet.awaits_map() && !planet.loading_map)
 		INVOKE_ASYNC(planet, TYPE_PROC_REF(/datum/stationtrauma_overmap_site/space, load_map))
-	var/list/flight = stationtrauma_survey_flight(stationtrauma_survey_orbit_angle(), aim_x, aim_y, power)
+	var/list/flight = stationtrauma_survey_flight(aim_x, aim_y, power)
 	var/list/path = flight[1]
 	var/list/impact = flight[3]
 	if(back_side)
@@ -377,7 +377,7 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
 	LAZYSET(chosen_pads, planet.id, number)
 	return TRUE
 
-ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер картографирования", "Включить или выключить двухминутное картографирование планет после сканирования.", ADMIN_CATEGORY_EVENTS)
+ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер картографирования", "Включить или выключить минутное картографирование планет после сканирования.", ADMIN_CATEGORY_EVENTS)
 	GLOB.stationtrauma_survey_mapping_timer = !GLOB.stationtrauma_survey_mapping_timer
 	var/state = GLOB.stationtrauma_survey_mapping_timer ? "включил" : "выключил"
 	message_admins("[key_name_admin(user)] [state] таймер картографирования планет.")
@@ -428,7 +428,7 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 
 /obj/machinery/computer/stationtrauma_planet_survey/ui_static_data(mob/user)
 	return list("physics" = list(
-		"orbit_radius" = SURVEY_ORBIT_RADIUS, "launch_z" = SURVEY_LAUNCH_Z, "orbit_period" = SURVEY_ORBIT_PERIOD / (1 SECONDS), "gravity" = SURVEY_GRAVITY,
+		"orbit_radius" = SURVEY_ORBIT_RADIUS, "orbit_tilt" = SURVEY_ORBIT_TILT, "drift" = SURVEY_DRIFT, "gravity" = SURVEY_GRAVITY,
 		"step" = SURVEY_STEP, "steps" = SURVEY_STEPS, "escape" = SURVEY_ESCAPE,
 		"speed_min" = SURVEY_SPEED_MIN, "speed_max" = SURVEY_SPEED_MAX, "aim_limit" = SURVEY_AIM_LIMIT,
 		"footprint" = SURVEY_FOOTPRINT, "goal" = SURVEY_GOAL, "land" = SURVEY_TIER_LAND, "probe_limit" = SURVEY_PROBE_LIMIT,
@@ -480,7 +480,6 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 		"hits" = survey?.hits || list(),
 		"flights" = flights,
 		"reload" = survey ? max(0, survey.next_launch - world.time) / (1 SECONDS) : 0,
-		"orbit_angle" = stationtrauma_survey_orbit_angle(),
 		"covered" = !!survey?.covered_at,
 		"mapping" = survey ? survey.mapping_progress() : 0,
 		"mapped" = !!survey?.mapped(),
@@ -489,6 +488,12 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 		"facts" = survey ? survey.facts() : list(),
 	)
 	return data
+
+/** The console's keys press as the navigation console's do; a launch is heard as the probe leaving, not as a key. */
+/obj/machinery/computer/stationtrauma_planet_survey/play_ui_sound(action, list/params)
+	if(action == "launch")
+		return
+	playsound(src, 'modular_bandastation/space_overmap/sound/navigation_button.wav', ST_CONSOLE_BUTTON_VOLUME, FALSE, FALSE)
 
 /obj/machinery/computer/stationtrauma_planet_survey/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -562,8 +567,8 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 		. += span_notice("[record["name"]]: покрытие [round(record["coverage"] * 100)]%.")
 
 #undef SURVEY_ORBIT_RADIUS
-#undef SURVEY_LAUNCH_Z
-#undef SURVEY_ORBIT_PERIOD
+#undef SURVEY_DRIFT
+#undef SURVEY_ORBIT_TILT
 #undef SURVEY_GRAVITY
 #undef SURVEY_STEP
 #undef SURVEY_STEPS

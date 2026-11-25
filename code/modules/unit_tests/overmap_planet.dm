@@ -94,7 +94,37 @@
 	planet.load_map()
 	TEST_ASSERT(!planet.failed && !planet.loading_map && !planet.awaits_map() && planet.berth, "The replacement must still build a real surface through the normal first-landing path.")
 	TEST_ASSERT(SSmapping.level_trait(planet.berth.z, ZTRAIT_DOWN) && SSmapping.level_trait(planet.berth.z - 1, ZTRAIT_UP), "The chosen cave system must have real connected native levels.")
-	TEST_ASSERT_EQUAL(length(planet.pads), 1, "The planet must chart one extra landing pad")
+	// Only the ground around the pads is built before a landing; the rest waits for the crew.
+	var/datum/expedition_surface/lazy_surface = planet.surface_chunks
+	TEST_ASSERT_NOTNULL(lazy_surface, "The rest of the surface must be left to its builder.")
+	TEST_ASSERT(0 in lazy_surface.stages, "Ground nobody is near must not be built before the landing.")
+	// Pictures from above draw unbuilt ground as planned: every planned look must be a state its icon has.
+	var/list/states_of = list()
+	var/unbuilt = 0
+	for(var/y in 1 to planet.surface_width)
+		for(var/x in 1 to planet.surface_width)
+			var/list/look = lazy_surface.planned_look(x, y)
+			if(!look)
+				continue
+			unbuilt++
+			states_of[look[1]] ||= icon_states(look[1])
+			TEST_ASSERT(look[2] in states_of[look[1]], "Unbuilt ground at [x], [y] would be drawn with [look[1]] state [look[2]], which it lacks.")
+			var/obj/structure/flora/plant = look[4]
+			if(plant)
+				states_of[initial(plant.icon)] ||= icon_states(initial(plant.icon))
+				TEST_ASSERT(initial(plant.icon_state) in states_of[initial(plant.icon)], "A planned [plant] would be drawn with a state its icon lacks.")
+	TEST_ASSERT(unbuilt, "Some ground must be left unbuilt to draw as planned.")
+	// the rest stands once the background build is through
+	UNTIL(QDELETED(lazy_surface))
+	// The surface is laid a chunk at a time: a seam left between chunks would show as the empty z-level's space.
+	var/surface_left = round((world.maxx - planet.surface_width) / 2) + 1
+	var/surface_bottom = round((world.maxy - planet.surface_width) / 2) + 1
+	var/holes = 0
+	for(var/turf/tile as anything in block(surface_left, surface_bottom, planet.berth.z, surface_left + planet.surface_width - 1, surface_bottom + planet.surface_width - 1, planet.berth.z))
+		if(isspaceturf(tile))
+			holes++
+	TEST_ASSERT_EQUAL(holes, 0, "Every tile of the surface square must be laid, the chunk seams included.")
+	TEST_ASSERT_EQUAL(length(planet.pads), 2, "The planet must chart its two extra landing pads (ST_PLANET_EXTRA_PADS)")
 	var/datum/stationtrauma_overmap_site/space/extra_pad = planet.pads[1]
 	TEST_ASSERT(extra_pad.berth && extra_pad.berth != planet.berth && extra_pad.berth.z == planet.berth.z, "The camp must clear a second landing pad beside the first")
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/planet_pad/second_slot = extra_pad.berth
@@ -179,6 +209,33 @@
 	TEST_ASSERT_EQUAL(clearing_center.type, /turf/open/misc/asteroid/basalt/expedition_volcanic, "The cave connector opens directly onto lava instead of solid volcanic ground.")
 	TEST_ASSERT_EQUAL(clearing_edge.type, /turf/open/misc/asteroid/basalt/expedition_volcanic, "The edge of the cave connector clearing must also be solid ground.")
 	TEST_ASSERT_EQUAL(natural_lava.type, /turf/open/lava/smooth/expedition_volcanic, "Making a connector clearing safe must preserve the surrounding lava biome.")
+
+/// A surface whose side is not a whole number of chunks is still cut into chunks covering every tile exactly once.
+/datum/unit_test/overmap_planet_chunks
+
+/datum/unit_test/overmap_planet_chunks/Run()
+	var/datum/stationtrauma_overmap_site/space/planet/dead/planet = create_stationtrauma_planet(1, "chunk_test", "Chunk test", /datum/stationtrauma_overmap_site/space/planet/dead, selected_modifiers = list())
+	allocated += planet
+	allocated += planet.generator
+	planet.generator.width = 120
+	planet.generator.budget = new
+	var/datum/expedition_surface/surface = new(planet, null, locate(1, 1, run_loc_floor_bottom_left.z), null, list())
+	allocated += surface
+	var/list/first = surface.chunk_bounds(1)
+	var/list/last = surface.chunk_bounds(length(surface.stages))
+	TEST_ASSERT((last[3] - last[1]) < (first[3] - first[1]), "The fixture must leave a partial chunk at the north-east corner.")
+	var/list/seen = list()
+	var/laid = 0
+	for(var/chunk in 1 to length(surface.stages))
+		var/list/bounds = surface.chunk_bounds(chunk)
+		for(var/y in bounds[2] to bounds[4])
+			for(var/x in bounds[1] to bounds[3])
+				seen["[x],[y]"] = TRUE
+				laid++
+				TEST_ASSERT_EQUAL(surface.chunk_at(x, y), chunk, "A tile must belong to the chunk whose bounds hold it.")
+	TEST_ASSERT_EQUAL(laid, 120 * 120, "The chunks must hold as many tiles as the square.")
+	TEST_ASSERT_EQUAL(length(seen), laid, "No tile may belong to two chunks.")
+	TEST_ASSERT(seen["120,120"] && !seen["121,1"], "The chunks must end at the square's edge.")
 
 /// Profiles populate the real ground with their own fauna, without multiplying summoners into whole packs.
 /datum/unit_test/overmap_planet_fauna

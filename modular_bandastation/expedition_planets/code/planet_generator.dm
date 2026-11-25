@@ -178,8 +178,15 @@
 	return band
 
 /datum/map_generator/expedition_barren/generate_terrain(list/turfs, area/generate_in)
+	seed_veins(lay_terrain(turfs, generate_in))
+
+/**
+ * Lays the ground and rock of [turfs] in [generate_in], without ore. On the surface every tile comes from the plan alone,
+ * so the surface can be laid a chunk at a time in any order. Returns the rock laid, for seed_veins().
+ */
+/datum/map_generator/expedition_barren/proc/lay_terrain(list/turfs, area/generate_in)
 	budget ||= new
-	var/list/turf/closed/mineral/rocks = list()
+	. = list()
 	var/whole_surface = !cave_level && !isnull(surface_open_percent)
 	var/planned_surface = !cave_level && surface_terrain
 	var/cave_grid = planned_surface ? null : cave_system_grid(cave_level ? 42 : surface_open_percent)
@@ -210,10 +217,16 @@
 		var/turf/generated = tile.ChangeTurf(terrain, floor_type, CHANGETURF_IGNORE_AIR)
 		if(ismineralturf(generated))
 			prepare_rock(generated)
-			rocks += generated
+			. += generated
 		else if(biome)
 			LAZYADDASSOCLIST(biome_turfs, biome, generated)
-	// Veins spread into neighbouring rock, so they start only once the whole mountain exists.
+
+/**
+ * Seeds ore veins in [rocks]. A vein spreads into the rock laid around it so far: the whole level, or for a chunk of the
+ * surface, whatever of the chunks around is laid.
+ */
+/datum/map_generator/expedition_barren/proc/seed_veins(list/rocks)
+	budget ||= new
 	// The deeper cave level seeds half again as many veins.
 	var/vein_chance = cave_level ? mineral_chance * 1.5 : mineral_chance
 	// The typed loop skips tiles changed while the budget slept.
@@ -269,7 +282,7 @@
  * Whether a feature fits at relative coordinates: clear of reserved terrain, the camp's fauna clearance
  * and earlier features, and mostly open so it does not vanish inside a mountain.
  */
-/datum/map_generator/expedition_barren/proc/feature_fits(x, y, datum/map_template/template, list/placed, z)
+/datum/map_generator/expedition_barren/proc/feature_fits(x, y, datum/map_template/template, list/placed)
 	var/right = x + template.width - 1
 	var/top = y + template.height - 1
 	// Features may carry hostile fauna, so surface features stay outside the camp's fauna clearance.
@@ -283,20 +296,20 @@
 		for(var/tile_y in y to top)
 			if(cave_level ? in_clearing(tile_x, tile_y, 6) : is_reserved(tile_x, tile_y))
 				return FALSE
-			var/turf/tile = locate(origin_x + tile_x - 1, origin_y + tile_y - 1, z)
-			if(!tile)
+			if(!plan_free(tile_x, tile_y))
 				return FALSE
-			if(dry_surface_type(tile.type))
+			var/terrain = terrain_at(tile_x, tile_y)
+			if(dry_surface_type(terrain))
 				open++
-			else if(!ismineralturf(tile))
+			else if(!ispath(terrain, /turf/closed/mineral))
 				return FALSE
 	// Cave features carve their own rooms into the mountain, so a third of open floor is enough there.
 	if(cave_level)
 		return open * 3 >= template.width * template.height
 	return open * 4 >= template.width * template.height * 3
 
-/** Load small features from `maps` at random free spots of the level at `bottom`; returns how many were placed. */
-/datum/map_generator/expedition_barren/proc/place_features(turf/bottom, area/surface, list/maps = feature_maps, count = feature_count)
+/** Plan small features from `maps` at random free spots of the level being decorated; returns how many were planned. */
+/datum/map_generator/expedition_barren/proc/place_features(area/surface, list/maps = feature_maps, count = feature_count)
 	var/static/list/templates = list()
 	var/list/placed = list()
 	for(var/attempt in 1 to count * 5)
@@ -309,18 +322,25 @@
 			templates[map] = template
 		var/x = rand(4, width - 3 - template.width)
 		var/y = rand(4, width - 3 - template.height)
-		if(!feature_fits(x, y, template, placed, bottom.z))
+		if(!feature_fits(x, y, template, placed))
 			continue
-		var/turf/origin = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
-		if(!template.load(origin))
-			continue
-		var/list/covered = template.get_affected_turfs(origin)
-		adapt_template_turfs(covered, surface)
-		for(var/turf/tile as anything in covered)
-			LAZYSET(feature_turfs, tile, TRUE)
-		placed += list(list(x, y, x + template.width - 1, y + template.height - 1))
-		budget?.yield()
+		var/right = x + template.width - 1
+		var/top = y + template.height - 1
+		for(var/tile_y in y to top)
+			for(var/tile_x in x to right)
+				plan_take(tile_x, tile_y)
+		plan_work(x, y, right, top, CALLBACK(src, PROC_REF(load_feature), template, level_turf(x, y), surface))
+		placed += list(list(x, y, right, top))
 	return length(placed)
+
+/// Loads a planned feature with its south-west corner at [origin]
+/datum/map_generator/expedition_barren/proc/load_feature(datum/map_template/template, turf/origin, area/surface)
+	if(!template.load(origin))
+		return
+	var/list/covered = template.get_affected_turfs(origin)
+	adapt_template_turfs(covered, surface)
+	for(var/turf/tile as anything in covered)
+		LAZYSET(feature_turfs, tile, TRUE)
 
 /** Whether relative cave-level coordinates lie in the clearing beneath a surface ladder or drop. */
 /datum/map_generator/expedition_barren/proc/in_clearing(x, y, radius = 2)
@@ -360,12 +380,17 @@
 	cave_level = TRUE
 	var/list/cave_turfs = block(bottom, locate(bottom.x + width - 1, bottom.y + width - 1, bottom.z))
 	generate_terrain(cave_turfs, caves_area)
-	place_features(bottom, caves_area, cave_feature_maps, cave_feature_count)
+	// The cave level is laid whole, so each pass places at once on what earlier ones left.
+	begin_decoration(bottom)
+	place_features(caves_area, cave_feature_maps, cave_feature_count)
+	run_planned_work()
 	for(var/datum/biome/biome as anything in biome_turfs)
 		biome.fauna_density *= cave_fauna_multiplier
 	populate_biomes()
-	place_nests(bottom)
-	place_dig_sites(cave_turfs, caves_area, planet, budget, rand(4, 6), rand(2, 3))
+	place_nests()
+	run_planned_work()
+	place_dig_sites(caves_area, planet, rand(4, 6), rand(2, 3))
+	run_planned_work()
 	// Research sources wait in open pockets away from the connectors and features.
 	var/list/pockets = list()
 	for(var/turf/open/tile in cave_turfs)
@@ -392,10 +417,11 @@
 		var/list/near_camp = list()
 		var/list/wild = list()
 		for(var/turf/tile as anything in biome_turfs[biome])
-			if(LAZYACCESS(feature_turfs, tile))
-				continue
 			var/x = tile.x - origin_x + 1
 			var/y = tile.y - origin_y + 1
+			// flora and fauna keep off features and off whatever was planned to stand on the ground
+			if(LAZYACCESS(feature_turfs, tile) || plan_taken?[plan_cell(x, y)])
+				continue
 			if(cave_level ? in_clearing(x, y, 6) : in_camp_clearance(x, y))
 				near_camp += tile
 			else
@@ -407,41 +433,51 @@
 		biome.populate_turfs(wild, flora_allowed = TRUE, features_allowed = TRUE, fauna_allowed = FALSE)
 		wild_by_biome[biome] = wild
 	biome_turfs = null
-	place_packs(wild_by_biome)
+	place_packs(wild_by_biome, pack_anchors)
 
 /datum/map_generator/expedition_barren/populate_terrain(list/turfs, area/generate_in)
 	populate_biomes()
-	var/sources = 0
+
+/// Plans up to five research sources on the routes of the surface being decorated, apart from one another; returns how many.
+/datum/map_generator/expedition_barren/proc/place_sources()
 	var/target = rand(0, 5)
 	if(!target)
-		return sources
-	var/list/candidates = shuffle(turfs)
+		return 0
+	var/list/cells = list()
+	for(var/cell in 1 to width * width)
+		cells += cell
 	var/list/placed = list()
-	for(var/turf/tile as anything in candidates)
+	for(var/cell in shuffle(cells))
 		budget?.yield()
-		if(surface_routes && !surface_routes[(tile.y - origin_y) * width + tile.x - origin_x + 1])
+		if(surface_routes && !surface_routes[cell])
 			continue
-		if(!dig_site_ground_ok(tile, generate_in) || LAZYACCESS(feature_turfs, tile))
+		var/x = (cell - 1) % width + 1
+		var/y = round((cell - 1) / width) + 1
+		if(!plan_ground(x, y))
 			continue
 		var/near_sample = FALSE
-		for(var/turf/other as anything in placed)
-			if(get_dist(other, tile) < 8)
+		for(var/list/other as anything in placed)
+			if(max(abs(other[1] - x), abs(other[2] - y)) < 8)
 				near_sample = TRUE
 				break
 		if(near_sample)
 			continue
-		new source_type(tile)
-		placed += tile
-		sources++
-		if(sources >= target)
+		plan_take(x, y)
+		plan_work(x, y, x, y, CALLBACK(src, PROC_REF(set_source), level_turf(x, y)))
+		placed += list(list(x, y))
+		if(length(placed) >= target)
 			break
-	return sources
+	return length(placed)
+
+/// Sets a planned research source on [tile]
+/datum/map_generator/expedition_barren/proc/set_source(turf/tile)
+	new source_type(tile)
 
 /** Celadon planetary biome; its open turf must carry the atmosphere of every planet that uses it. */
 /datum/biome/expedition
 
 /** Place each rolled modifier's objects on free open ground, outside the camp's fauna clearance and its access corridors. */
-/datum/map_generator/expedition_barren/proc/place_nests(turf/bottom)
+/datum/map_generator/expedition_barren/proc/place_nests()
 	for(var/datum/expedition_planet_modifier/modifier as anything in nests)
 		var/list/patch
 		for(var/count in 1 to rand(modifier.nest_count[1], modifier.nest_count[2]))
@@ -453,21 +489,26 @@
 				// Underground, the clearing beneath a ladder or drop must stay free to arrive in.
 				if(cave_level && in_clearing(x, y, 6))
 					continue
-				var/turf/open/misc/tile = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
-				if(!istype(tile) || tile.is_blocked_turf())
+				if(!ispath(terrain_at(x, y), /turf/open/misc) || !plan_free(x, y))
 					continue
 				var/nest_type = islist(modifier.nest_type) ? pick(modifier.nest_type) : modifier.nest_type
 				if(istype(src, /datum/map_generator/expedition_barren/dead) && ispath(nest_type, /obj/structure/spawner/stationtrauma_zombie_pit))
 					var/datum/map_generator/expedition_barren/dead/dead_profile = src
-					if(!dead_profile.in_zombie_region(tile))
+					if(!dead_profile.in_zombie_region(x, y))
 						continue
-				var/atom/nest = new nest_type(tile)
-				// Spawner dens hold their kind from the start; mines and geysers stand alone.
-				if(istype(nest, /obj/structure/spawner))
-					raise_lair(nest)
+				plan_take(x, y)
+				// a den's garrison stands up to three tiles around it
+				plan_work(x - 3, y - 3, x + 3, y + 3, CALLBACK(src, PROC_REF(set_nest), level_turf(x, y), nest_type), life = ispath(nest_type, /obj/structure/spawner) ? 3 : 0)
 				if(modifier.nest_cluster && !patch)
 					patch = list(x, y)
 				break
+
+/// Sets a planned nest on [tile]
+/datum/map_generator/expedition_barren/proc/set_nest(turf/tile, nest_type)
+	var/atom/nest = new nest_type(tile)
+	// Spawner dens hold their kind from the start; mines and geysers stand alone.
+	if(istype(nest, /obj/structure/spawner))
+		raise_lair(nest)
 
 /// Xenomorph egg cluster hatching hunters, drones and sentinels until it is torn down.
 /obj/structure/spawner/stationtrauma_xeno_hive

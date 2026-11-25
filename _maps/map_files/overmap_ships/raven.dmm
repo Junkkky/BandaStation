@@ -828,7 +828,7 @@
 	id = "spaceproto_raven_escape_cockpit_windows";
 	name = "Cockpit Window Blast Doors";
 	pixel_x = -7;
-	req_access = list("command")
+	req_one_access = list("command","explorer")
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/raven/bridge)
@@ -1398,7 +1398,7 @@
 	id = "spaceproto_raven_escape_cockpit_blast";
 	name = "Cockpit Airlock Blast Doors";
 	pixel_y = -26;
-	req_access = list("command")
+	req_one_access = list("command","explorer")
 	},
 /obj/effect/turf_decal/raven/two,
 /obj/machinery/light/floor,

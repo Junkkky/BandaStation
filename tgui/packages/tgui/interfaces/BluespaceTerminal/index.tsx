@@ -5,7 +5,6 @@ import type { BooleanLike } from 'tgui-core/react';
 import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
 import { SegmentedProgress } from '../SpaceNavigation/SegmentedProgress';
-import { POPULATED, RINGS, STARS } from './galaxy';
 
 /** A charted system of ours: Epsilon Eridani or a frontier system */
 type System = {
@@ -31,7 +30,24 @@ type Data = {
   drive?: BooleanLike;
   /** Whether the ship is at one of its system's jump points */
   at_jump_point?: BooleanLike;
+  /** The map's fixed geography, read by the server from its CSV files */
+  galaxy?: Galaxy;
 };
+
+/**
+ * The galaxy map after the SS220 political map (https://github.com/SpaceStation220/SS220-Political-Map): map units, Sol
+ * at 512, 512, y down.
+ */
+type Galaxy = {
+  /** Every charted star: name, x, y */
+  stars: [string, number, number][];
+  /** Outline of the populated systems; everything outside it is uncharted space */
+  populated: [number, number][];
+  /** The rings about Sol: radius and name */
+  rings: [number, string][];
+};
+
+const NO_GALAXY: Galaxy = { stars: [], populated: [], rings: [] };
 
 type Selection = { system: string } | { star: string } | null;
 
@@ -46,7 +62,9 @@ export const BluespaceTerminal = () => {
   const here = systems.find((system) => system.id === data.sector);
   const target = systems.find((system) => system.id === data.target);
   const jumping = typeof data.progress === 'number';
-  const corridor = here && target ? corridorOf(here, target) : null;
+  const galaxy = data.galaxy || NO_GALAXY;
+  const corridor =
+    here && target ? corridorOf(here, target, galaxy.stars) : null;
   const chosen =
     selection && 'system' in selection
       ? systems.find((system) => system.id === selection.system)
@@ -79,9 +97,11 @@ export const BluespaceTerminal = () => {
               >
                 <polygon
                   className="populated"
-                  points={POPULATED.map(([x, y]) => `${x},${y}`).join(' ')}
+                  points={galaxy.populated
+                    .map(([x, y]) => `${x},${y}`)
+                    .join(' ')}
                 />
-                {RINGS.map(([radius, label]) => (
+                {galaxy.rings.map(([radius, label]) => (
                   <g key={label} className="ring">
                     <circle cx={512} cy={512} r={radius} />
                     <text x={512} y={512 - radius - 8} textAnchor="middle">
@@ -100,7 +120,7 @@ export const BluespaceTerminal = () => {
                 >
                   НЕИЗВЕДАННЫЙ КОСМОС
                 </text>
-                {STARS.map(([name, x, y]) => (
+                {galaxy.stars.map(([name, x, y]) => (
                   <circle
                     key={name + x + y}
                     className={`star ${selection && 'star' in selection && selection.star === name ? 'is-selected' : ''}`}
@@ -293,12 +313,16 @@ function Selected({
  * The corridor a jump follows: from the system the ship left to its target through the stars lying near the course,
  * in order along it.
  */
-function corridorOf(from: System, to: System): [number, number][] {
+function corridorOf(
+  from: System,
+  to: System,
+  stars: Galaxy['stars'],
+): [number, number][] {
   const dx = to.x - from.x;
   const dy = to.y - from.y;
   const length = Math.hypot(dx, dy) || 1;
   const steps: [number, number, number][] = [];
-  for (const [, x, y] of STARS) {
+  for (const [, x, y] of stars) {
     const along = ((x - from.x) * dx + (y - from.y) * dy) / (length * length);
     if (along <= 0.08 || along >= 0.92) continue;
     const aside = Math.abs((x - from.x) * dy - (y - from.y) * dx) / length;

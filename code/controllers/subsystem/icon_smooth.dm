@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(icon_smooth)
 		smooth_queue_cache.len--
 		if(QDELETED(smoothing_atom) || !(smoothing_atom.smoothing_flags & SMOOTH_QUEUED))
 			continue
-		if(smoothing_atom.flags_1 & INITIALIZED_1)
+		if((smoothing_atom.flags_1 & INITIALIZED_1) && !beside_unloaded(smoothing_atom))
 			smoothing_atom.smooth_icon()
 		else
 			deferred += smoothing_atom
@@ -40,6 +40,17 @@ SUBSYSTEM_DEF(icon_smooth)
 			deferred = smooth_queue_cache
 		else if (!held_pools)
 			can_fire = FALSE
+
+/**
+ * Whether a turf next to [thing] is still loading: a map loader that yields halfway leaves the turfs it has placed
+ * uninitialised, their smoothing groups not yet parsed, and smoothing against them reads garbage.
+ */
+/datum/controller/subsystem/icon_smooth/proc/beside_unloaded(atom/thing)
+	for(var/direction in GLOB.alldirs)
+		var/turf/neighbor = get_step(thing, direction)
+		if(neighbor?.smoothing_groups && !(neighbor.flags_1 & INITIALIZED_1))
+			return TRUE
+	return FALSE
 
 /datum/controller/subsystem/icon_smooth/Initialize()
 	var/list/queue = smooth_queue

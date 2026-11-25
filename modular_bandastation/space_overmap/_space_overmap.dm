@@ -6,6 +6,8 @@
 #define ST_FUEL_CACHE_SPACE_CHANCE 35
 /// Percent chance that a planet ruin holds a fuel cache; planets already offer ore and supply crates.
 #define ST_FUEL_CACHE_PLANET_CHANCE 25
+/// Volume of the ship consoles' key presses.
+#define ST_CONSOLE_BUTTON_VOLUME 15
 /// Landing pads of a planet besides its own berth, each a choice on the survey and a berth for another hull.
 #define ST_PLANET_EXTRA_PADS 2
 /// Flight of a called ship to its station berth.

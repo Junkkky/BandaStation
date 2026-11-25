@@ -1,9 +1,10 @@
 /** Probe ballistics from the server (planet_survey.dm); the server's flight is the one that counts. */
 export type Physics = {
   orbit_radius: number;
-  launch_z: number;
-  /** Seconds for one turn of the orbit */
-  orbit_period: number;
+  /** How far the orbit is tilted towards the viewer, degrees */
+  orbit_tilt: number;
+  /** Share of the ship's orbital speed a probe keeps as it leaves the launcher */
+  drift: number;
   gravity: number;
   step: number;
   steps: number;
@@ -22,29 +23,28 @@ export type Physics = {
 
 export type Vector = [number, number, number];
 
-/** Where the ship is on its orbit at [angle] degrees, in screen units */
-export function orbitPoint(physics: Physics, angle: number): [number, number] {
-  const turn = (angle * Math.PI) / 180;
+/** The launcher, at the lowest point of the tilted orbit, in front of the planet */
+export function launcherPoint(physics: Physics): Vector {
+  const tilt = (physics.orbit_tilt * Math.PI) / 180;
   return [
-    physics.orbit_radius * Math.cos(turn),
-    physics.orbit_radius * Math.sin(turn),
+    0,
+    -physics.orbit_radius * Math.cos(tilt),
+    physics.orbit_radius * Math.sin(tilt),
   ];
 }
 
 /**
- * The same flight the server works out, launched from [angle] of the orbit and aimed at [aimX], [aimY] on the
- * planet's face with [power] (0-1): every step's point, ending on the planet, past the escape distance or when the
- * steps run out.
+ * The same flight the server works out, thrown from the launcher at [aimX], [aimY] on the planet's face with [power]
+ * (0-1), keeping part of the ship's motion along the orbit: every step's point, ending on the planet, past the escape
+ * distance or when the steps run out.
  */
 export function simulateFlight(
   physics: Physics,
-  angle: number,
   aimX: number,
   aimY: number,
   power: number,
 ): Vector[] {
-  let [x, y] = orbitPoint(physics, angle);
-  let z = physics.launch_z;
+  let [x, y, z] = launcherPoint(physics);
   const aimZ = Math.sqrt(Math.max(0, 1 - aimX * aimX - aimY * aimY));
   const dx = aimX - x;
   const dy = aimY - y;
@@ -52,7 +52,9 @@ export function simulateFlight(
   const speed =
     (physics.speed_min + power * (physics.speed_max - physics.speed_min)) /
     Math.hypot(dx, dy, dz);
-  let vx = dx * speed;
+  let vx =
+    dx * speed +
+    physics.drift * Math.sqrt(physics.gravity / physics.orbit_radius);
   let vy = dy * speed;
   let vz = dz * speed;
   const points: Vector[] = [[x, y, z]];

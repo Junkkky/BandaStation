@@ -1,7 +1,7 @@
 /**
  * # Field clusters
  *
- * A pass after dig sites on planets that rolled the anomalous zone modifier: three or four clusters plus
+ * A pass planned after dig sites on planets that rolled the anomalous zone modifier: three or four clusters plus
  * one per danger band step (green 4-5, red 6-7). Each cluster is one kind of field, picked by band, except
  * that anomalous heat grows among zharkas and a sparkler sits at the heart of electras. Most
  * are a scatter with one or two artefacts; about one in three is a dense barrier to walk around or bolt
@@ -39,6 +39,8 @@
 /datum/map_generator/expedition_barren
 	/// Whether the anomalous zone modifier put field clusters on this planet.
 	var/anomaly_fields = FALSE
+	/// Relative centres and reach of the field clusters and anomalies planned on the surface, each list(x, y, reach)
+	var/list/anomaly_spots = list()
 
 /// Field kinds a cluster may be made of, by danger band, weighted.
 GLOBAL_LIST_INIT(anomaly_field_weights, list(
@@ -65,46 +67,56 @@ GLOBAL_LIST_INIT(anomaly_field_weights, list(
 	),
 ))
 
-/// Places the planet's field clusters on `surface`. Returns how many were placed.
-/datum/map_generator/expedition_barren/proc/place_anomaly_fields(list/turfs, area/surface, datum/stationtrauma_overmap_site/space/planet/planet, datum/stationtrauma_work_budget/budget)
-	if(!anomaly_fields || !length(turfs) || !planet)
+/// Plans the planet's field clusters on `surface`, each grown once its ground is laid. Returns how many were planned.
+/datum/map_generator/expedition_barren/proc/place_anomaly_fields(area/surface, datum/stationtrauma_overmap_site/space/planet/planet)
+	if(!anomaly_fields || !planet)
 		return 0
 	var/band = XENOARCH_BAND_INDEX(xenoarch_band_for_level(planet.modifier_level))
-	var/list/centres = list()
+	var/planned = 0
 	for(var/i in 1 to rand(3, 4) + band)
-		var/turf/centre = find_field_cluster_centre(turfs, surface, centres, budget)
+		var/list/centre = find_field_cluster_centre()
 		if(!centre)
 			break
-		if(prob(FIELD_BARRIER_CHANCE))
-			build_field_cluster(centre, surface, band, FIELD_BARRIER_RADIUS, rand(FIELD_BARRIER_SIZE_MIN, FIELD_BARRIER_SIZE_MAX), 1)
-		else
-			build_field_cluster(centre, surface, band, FIELD_CLUSTER_RADIUS, rand(FIELD_CLUSTER_SIZE_MIN, FIELD_CLUSTER_SIZE_MAX), rand(1, 2))
-		centres += centre
-	return length(centres)
+		var/barrier = prob(FIELD_BARRIER_CHANCE)
+		var/radius = barrier ? FIELD_BARRIER_RADIUS : FIELD_CLUSTER_RADIUS
+		var/size = barrier ? rand(FIELD_BARRIER_SIZE_MIN, FIELD_BARRIER_SIZE_MAX) : rand(FIELD_CLUSTER_SIZE_MIN, FIELD_CLUSTER_SIZE_MAX)
+		var/artefacts = barrier ? 1 : rand(1, 2)
+		plan_take(centre[1], centre[2])
+		anomaly_spots += list(list(centre[1], centre[2], radius))
+		plan_work(centre[1] - radius, centre[2] - radius, centre[1] + radius, centre[2] + radius, CALLBACK(src, PROC_REF(build_field_cluster), level_turf(centre[1], centre[2]), surface, band, radius, size, artefacts))
+		planned++
+	return planned
 
-/// Open ground clear of reserved tiles, dig sites and other clusters, or null.
-/datum/map_generator/expedition_barren/proc/find_field_cluster_centre(list/turfs, area/surface, list/centres, datum/stationtrauma_work_budget/budget)
+/// Relative open ground clear of reserved tiles, dig sites and other clusters, or null.
+/datum/map_generator/expedition_barren/proc/find_field_cluster_centre()
 	var/reach = max(FIELD_BARRIER_RADIUS + 1, /obj/effect/anomaly/pulsing/sparkler::drift_radius + /obj/effect/anomaly/pulsing/sparkler::effect_range * 2)
 	for(var/attempt in 1 to FIELD_CLUSTER_ATTEMPTS)
 		budget?.yield()
-		var/turf/candidate = pick(turfs)
-		if(!dig_site_ground_ok(candidate, surface) || !anomaly_route_clear(candidate, reach))
+		var/x = rand(1, width)
+		var/y = rand(1, width)
+		if(!plan_ground(x, y) || !anomaly_route_clear(x, y, reach))
 			continue
 		var/too_close = FALSE
-		for(var/turf/taken as anything in centres)
-			if(get_dist(candidate, taken) < XENOARCH_SITE_SPACING)
+		for(var/list/spot as anything in anomaly_spots)
+			if(max(abs(spot[1] - x), abs(spot[2] - y)) < XENOARCH_SITE_SPACING)
 				too_close = TRUE
 				break
-		if(too_close || (locate(/obj/structure/xenoarch_stake) in range(FIELD_BARRIER_RADIUS + 3, candidate)))
+		// a site's stakes stand around its anchor
+		for(var/list/anchor as anything in dig_anchors)
+			if(max(abs(anchor[1] - x), abs(anchor[2] - y)) <= FIELD_BARRIER_RADIUS + 3)
+				too_close = TRUE
+				break
+		if(too_close)
 			continue
-		return candidate
+		return list(x, y)
 	return null
 
 /** Keep both hazards and their active range off landing clearings and all preserved approaches. */
-/datum/map_generator/expedition_barren/proc/anomaly_route_clear(turf/centre, reach)
-	for(var/turf/tile as anything in RANGE_TURFS(reach, centre))
-		if(is_reserved(tile.x - origin_x + 1, tile.y - origin_y + 1))
-			return FALSE
+/datum/map_generator/expedition_barren/proc/anomaly_route_clear(x, y, reach)
+	for(var/near_y in max(1, y - reach) to min(width, y + reach))
+		for(var/near_x in max(1, x - reach) to min(width, x + reach))
+			if(is_reserved(near_x, near_y))
+				return FALSE
 	return TRUE
 
 /// Scatters `size` fields of one kind within `radius` of `centre` and grows up to `artefacts` artefacts in them, nearest the centre first.
