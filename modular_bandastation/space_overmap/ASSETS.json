@@ -4,11 +4,11 @@
 	"assets": [
 		{
 			"path": "modular_bandastation/space_overmap/icons/bluespace_tunnel.dmi",
-			"sha256": "df523197a38ef86a28dcfb9f53fc884dc736a0f0a67396dd775300d1eb844917",
+			"sha256": "6a930708ab31418e937924ddddd0fa5e7b808f891509e90fecb906f8321d19f2",
 			"license": "CC-BY-SA-3.0",
 			"authors": ["BandaStation contributors"],
 			"source": null,
-			"changes": "Original 480-pixel bluespace parallax with longitudinal blue streaks and dark moving clouds."
+			"changes": "Original seamless 960-pixel layers for dark nebulae, translucent mist, stars, and longitudinal bluespace streaks."
 		},
 		{
 			"path": "modular_bandastation/space_overmap/icons/nt_patrol_areas.dmi",

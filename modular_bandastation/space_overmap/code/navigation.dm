@@ -25,6 +25,8 @@
 	return ..()
 
 /datum/stationtrauma_overmap/space/Destroy()
+	QDEL_LIST_ASSOC_VAL(planet_surveys)
+	chosen_pads = null
 	QDEL_NULL(planet_flight)
 	QDEL_NULL(planet_ascent)
 	QDEL_NULL(planet_hover)
@@ -478,6 +480,14 @@
 		return assigned_station_berth(site)
 	if(site?.docking_owner == src)
 		return site
+	// A surveyed planet takes the pad the pilot chose on its chart, and only that one.
+	var/datum/stationtrauma_overmap_site/space/planet/planet = site
+	if(istype(planet))
+		for(var/datum/stationtrauma_overmap_site/space/pad as anything in planet.pads)
+			if(pad.docking_owner == src)
+				return pad
+		var/datum/stationtrauma_overmap_site/space/chosen = planet_pad_site(planet, LAZYACCESS(chosen_pads, planet.id))
+		return chosen && pad_available(chosen) ? chosen : null
 	var/datum/stationtrauma_overmap_site/space/pad = free_pad(site)
 	if(pad)
 		return pad
@@ -499,10 +509,7 @@
 	for(var/datum/stationtrauma_overmap_site/space/pad as anything in site.pads)
 		if(pad.docking_owner || pad.failed)
 			continue
-		if(pad.awaits_map())
-			return pad
-		var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = pad.berth
-		if(istype(slot) ? (!slot.active_berth && slot.accepts(vessel)) : (pad.berth && !pad.berth.get_docked()))
+		if(pad.awaits_map() || pad_available(pad))
 			return pad
 	return null
 
@@ -512,6 +519,10 @@
 	if(!selected || (site != selected && site?.docking_target != selected && site?.pad_parent != selected) || !carrier_arrival_ready(site) || carrier_busy())
 		return FALSE
 	if(site?.landing && (!vessel.engines_running || engine_fraction() <= 0))
+		return FALSE
+	// A planet is landed on only once this ship has surveyed and mapped it.
+	var/datum/stationtrauma_overmap_site/space/planet/planet = site?.pad_parent || site
+	if(istype(planet) && !surveyed(planet))
 		return FALSE
 	if(site?.host && sqrt((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2) > ST_SPACE_DOCK_RANGE)
 		return FALSE

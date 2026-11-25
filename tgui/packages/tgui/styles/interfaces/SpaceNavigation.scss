@@ -1311,4 +1311,340 @@
     outline-offset: 2px;
     border-radius: 3px;
   }
+
+  // Segmented progress shared by the ship consoles: jumps, terrain mapping.
+  &__progress {
+    padding: 10px 12px;
+    color: var(--nav-phosphor);
+  }
+  &__progress-title {
+    margin-bottom: 6px;
+    font-size: 11px;
+    letter-spacing: 1.6px;
+    text-shadow: 0 0 6px rgb(169 217 203 / 45%);
+  }
+  &__progress-track {
+    display: flex;
+    gap: 3px;
+    padding: 4px;
+    background: #071012;
+    border: 1px solid var(--nav-phosphor);
+    border-radius: 2px;
+    box-shadow:
+      0 0 8px rgb(169 217 203 / 25%),
+      inset 0 0 6px #000;
+    span {
+      flex: 1;
+      height: 18px;
+      border-radius: 1px;
+      background: #13221f;
+    }
+    span.is-lit {
+      background: linear-gradient(180deg, #d4f2e6, var(--nav-phosphor));
+      box-shadow: 0 0 6px rgb(169 217 203 / 60%);
+    }
+  }
+  &__progress-foot {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 5px;
+    color: #a5bfb3;
+    font-size: 10px;
+    letter-spacing: 1px;
+    span:last-child {
+      color: var(--nav-ink);
+    }
+  }
+  &__jump {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 44px;
+    background: rgb(9 15 16 / 90%);
+    border: 1px solid #364a46;
+    border-radius: 3px;
+  }
+  &__pad {
+    cursor: pointer;
+    rect {
+      fill: rgb(228 191 121 / 25%);
+      stroke: var(--nav-amber);
+      stroke-width: 1.2;
+    }
+    text {
+      fill: var(--nav-amber);
+      font-size: 11px;
+    }
+    &.is-chosen rect {
+      fill: var(--nav-amber);
+    }
+    &.is-taken {
+      cursor: default;
+      rect {
+        fill: none;
+        stroke: #6d7a74;
+      }
+      text {
+        fill: #6d7a74;
+      }
+    }
+    &:focus-visible {
+      outline: none;
+      rect {
+        stroke: #fff2cf;
+        stroke-width: 2;
+      }
+    }
+  }
+
+  // Terrain survey console
+  &__survey {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 10px;
+    flex: 1;
+    min-height: 0;
+  }
+  &__field {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    cursor: crosshair;
+    user-select: none;
+  }
+  &__field.is-idle {
+    cursor: default;
+  }
+  // Ground read by probes, merged: drawn solid and faded as a whole
+  &__cap {
+    fill: var(--nav-phosphor);
+    opacity: 0.28;
+  }
+  // and on the face turned away, seen through the planet: the same phosphor, dimmed
+  &__cap.is-far {
+    opacity: 0.1;
+  }
+  &__meter {
+    display: grid;
+    grid-template-columns: 74px minmax(0, 1fr) 40px;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+  &__meter-bar {
+    position: relative;
+    height: 8px;
+    background: #13221f;
+    border: 1px solid #364a46;
+    span {
+      position: absolute;
+      inset: 0 auto 0 0;
+      background: var(--nav-phosphor);
+    }
+    i {
+      position: absolute;
+      top: -3px;
+      bottom: -3px;
+      width: 1px;
+      background: var(--nav-amber);
+    }
+  }
+  // Seven keys in two rows under the survey screens
+  &__survey-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 12px 4px;
+  }
+  &__survey-keys .Button {
+    width: 58px;
+    height: 52px;
+  }
+  // A screen whose body keeps one height whatever it shows: a line is one line, long text is cut and kept in its tooltip
+  &__screen-body {
+    // content height, the same with or without the screen's own bezel
+    box-sizing: content-box;
+    height: 88px;
+    overflow: hidden;
+    &.is-tall {
+      height: 162px;
+    }
+    dd {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  &__locked {
+    color: #8a8068;
+    .Icon {
+      font-size: 8px;
+    }
+  }
+  &__schematic {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    padding: 8px 24px;
+    filter: drop-shadow(0 0 2px #91b78955);
+    // the same near-monochrome as the compartment schematic
+    .rock {
+      fill: #33483b;
+      stroke: #c1caa0;
+      stroke-width: 0.13;
+    }
+    .ground {
+      fill: #17382c;
+      stroke: #83ad8d;
+      stroke-width: 0.1;
+    }
+    .liquid {
+      fill: #10302f;
+      stroke: #6f9f95;
+      stroke-width: 0.1;
+    }
+    .cave {
+      fill: #c1caa0;
+    }
+    .structure {
+      fill: none;
+      stroke: #c1caa0;
+      stroke-dasharray: 1.5 1;
+    }
+    .organic {
+      fill: rgb(198 180 136 / 10%);
+      stroke: #c6b488;
+      stroke-dasharray: 1 1;
+    }
+  }
+  &__schematic &__pad {
+    rect {
+      stroke-width: 0.5;
+    }
+    text {
+      font-size: 3px;
+    }
+  }
+  &__galaxy {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    .populated {
+      fill: rgb(169 217 203 / 4%);
+      stroke: #364a46;
+      stroke-width: 1.5;
+    }
+    .ring circle {
+      fill: none;
+      stroke: var(--nav-amber);
+      stroke-opacity: 0.35;
+      stroke-width: 1.5;
+      stroke-dasharray: 8 8;
+    }
+    .ring text {
+      fill: #a5bfb3;
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+    .uncharted {
+      fill: #6d7a74;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+    .star {
+      fill: #6d7a74;
+      cursor: pointer;
+      &:hover,
+      &.is-selected {
+        fill: var(--nav-ink);
+      }
+    }
+    .system {
+      cursor: pointer;
+      circle {
+        fill: none;
+        stroke: var(--nav-phosphor);
+        stroke-width: 2;
+      }
+      text {
+        fill: var(--nav-phosphor);
+        font-size: 16px;
+      }
+      .here {
+        stroke-dasharray: 4 4;
+      }
+    }
+    .system.is-open {
+      circle {
+        fill: var(--nav-amber);
+        stroke: var(--nav-amber);
+        stroke-width: 3;
+      }
+      text {
+        fill: var(--nav-amber);
+        font-weight: bold;
+      }
+    }
+    .system.is-selected circle {
+      stroke: #fff2cf;
+      stroke-width: 4;
+    }
+    .corridor {
+      polyline {
+        fill: none;
+        stroke: var(--nav-amber);
+        stroke-width: 2.5;
+        stroke-dasharray: 10 8;
+      }
+      .waypoint {
+        fill: none;
+        stroke: var(--nav-amber);
+        stroke-width: 2;
+      }
+      .ship {
+        fill: var(--nav-ink);
+      }
+    }
+  }
+  // Bluespace jump point on the helm chart: a blue eddy round a dark heart
+  &__jump-point .arms {
+    fill: none;
+    stroke: #7aa6ff;
+    stroke-opacity: 0.8;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+  }
+  &__jump-range {
+    fill: none;
+    stroke: #5b8fe8;
+    stroke-opacity: 0.35;
+    stroke-dasharray: 3 4;
+  }
+  // The survey scope with nothing in its sights
+  &__standby {
+    fill: none;
+    stroke: var(--nav-phosphor);
+    stroke-opacity: 0.35;
+    stroke-width: 0.01;
+    stroke-dasharray: 0.05 0.04;
+  }
+  &__standby-title {
+    fill: var(--nav-amber);
+    font-size: 0.13px;
+    letter-spacing: 0.03px;
+  }
+  &__standby-reason {
+    fill: #a5bfb3;
+    font-size: 0.08px;
+    letter-spacing: 0.015px;
+  }
+  &__terminal {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
 }

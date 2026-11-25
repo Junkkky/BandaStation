@@ -155,7 +155,7 @@ ADMIN_VERB(stationtrauma_planet_system, R_DEBUG, "Overmap - Планеты си�
 	planet.discovered = previous.discovered
 	remove_pads(previous)
 	sites[planet.id] = planet
-	add_pads(planet, 1)
+	add_pads(planet, ST_PLANET_EXTRA_PADS)
 	for(var/ship_id in ships)
 		var/datum/stationtrauma_overmap/space/navigation = ships[ship_id]
 		if(navigation.prepared_site == previous)

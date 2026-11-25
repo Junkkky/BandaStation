@@ -11,6 +11,7 @@ import { ZoomKnob } from './DisplayArt';
 import { Docking } from './Docking';
 import { AnalogDial, FuelGauges } from './Fuel';
 import { Scanner } from './Scanner';
+import { SegmentedProgress } from './SegmentedProgress';
 import { distanceLabel, type NavigationData, speedLabel } from './types';
 import { useHelm } from './useHelm';
 
@@ -75,6 +76,18 @@ function Navigation({ data }: { data: NavigationData }) {
       : 'Запросить стыковку с выбранным объектом';
     if (pending) {
       clearanceStatus = dockTooltip;
+    }
+  }
+  // A planet is landed on only once surveyed, and on the pad chosen on the chart.
+  if (focusedContact === null && data.landing && data.survey) {
+    if (data.survey.failed) {
+      dockTooltip = 'Поверхность не поддаётся съёмке';
+    } else if (!data.survey.mapped) {
+      dockTooltip = data.survey.covered
+        ? 'Идёт картографирование местности'
+        : 'Требуется сканирование местности';
+    } else if (!data.survey.pads?.some((pad) => pad.chosen)) {
+      dockTooltip = 'Выберите площадку на карте (масштаб 4×)';
     }
   }
   if (clearanceStatus && typeof stationDocking?.expiresIn === 'number') {
@@ -253,7 +266,17 @@ function Navigation({ data }: { data: NavigationData }) {
                 setPanel('scanner');
               }}
               onSite={selectSite}
+              onPad={(number) => act('landing_pad', { value: number })}
             />
+          )}
+          {typeof data.jump_progress === 'number' && (
+            <div className="SpaceNavigation__jump">
+              <SegmentedProgress
+                title="БЛЮСПЕЙС-ПЕРЕХОД"
+                caption={data.status}
+                value={data.jump_progress}
+              />
+            </div>
           )}
           <div className="SpaceNavigation__legend">
             <span title="При сохранении текущей тяги и команды курса">

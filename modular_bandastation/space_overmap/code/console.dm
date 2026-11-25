@@ -165,9 +165,23 @@
 				"ascent_cloud" = liftoff ? (liftoff + ST_PLANET_ASCENT_CLOUD - map.approach_started) / (1 SECONDS) : null,
 				"ascent_orbit" = liftoff ? (liftoff + ST_PLANET_ASCENT_ORBIT - map.approach_started) / (1 SECONDS) : null,
 			)
-	if(istype(target, /datum/stationtrauma_overmap_site/space/planet) && map.knows_site(target))
-		var/datum/stationtrauma_overmap_site/space/planet/planet = target
-		data["planet"] = planet.survey_data()
+	// A planet is unknown ground until this ship's probes have covered it; its pads appear once it is mapped.
+	var/datum/stationtrauma_overmap_site/space/planet/planet = target
+	if(istype(planet))
+		var/datum/stationtrauma_planet_survey/survey = map.planet_survey(planet)
+		data["survey"] = list(
+			"covered" = !!survey?.covered_at,
+			"mapping" = survey ? survey.mapping_progress() : 0,
+			"mapped" = !!survey?.mapped(),
+			"failed" = !!planet.failed,
+			"pads" = map.landing_pad_data(planet),
+		)
+		// as much as this ship's probes have read
+		var/list/facts = survey?.facts()
+		if(length(facts))
+			data["planet"] = facts
+	data["jump_progress"] = map.jump_progress()
+	data["jump_point_range"] = ST_JUMP_POINT_RANGE
 	return data
 
 /** Validate and dispatch a helm command. */
@@ -240,6 +254,8 @@
 			if(map.station_clearance_required(target) && (isnull(value) || !map.assigned_station_berth(target)))
 				return FALSE
 			INVOKE_ASYNC(map, TYPE_PROC_REF(/datum/stationtrauma_overmap/space, dock))
+		if("landing_pad")
+			return map.choose_landing_pad(value)
 		else
 			return FALSE
 	return TRUE

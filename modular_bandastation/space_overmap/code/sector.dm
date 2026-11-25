@@ -34,6 +34,16 @@
 	var/star_name
 	/// Chart radius of the central star symbol.
 	var/star_radius = 10
+	/// Planets and ruins this system charts: frontier systems differ in size
+	var/planet_count = 5
+	var/ruin_count = 6
+	/// Crew-facing size of the system on the jump terminal
+	var/size_name = "Крупная"
+	/// Place on the galaxy map of the jump terminal (SS220 political map units, Sol at 512, 512)
+	var/galaxy_x = 0
+	var/galaxy_y = 0
+	/// Keys of the gateway away maps charted in this system; see GLOB.stationtrauma_away_sites
+	var/list/away_sites = list()
 
 /datum/stationtrauma_overmap_sector/space/Destroy()
 	for(var/ship_id in station_docking_requests.Copy())
@@ -48,7 +58,10 @@
 	name = "Эпсилон Эридана"
 	star_name = "Эпсилон"
 	star_radius = 18
-	jump_routes = list("frontier")
+	// every frontier system is charted from here; see load_sectors()
+	jump_routes = list()
+	galaxy_x = 436
+	galaxy_y = 559
 	celestial_bodies = list(
 		list("name" = "Лазис Ардакс", "x" = 1000, "y" = -240, "radius" = 22, "kind" = "lava", "orbit_x" = 0, "orbit_y" = 0),
 		list("name" = "Эгир", "x" = 1320, "y" = -400, "radius" = 7, "kind" = "moon", "orbit_x" = 1000, "orbit_y" = -240),
@@ -202,6 +215,7 @@
 			controller.search_for_connected()
 			controller.set_panels(SSsun.azimuth)
 		taken_positions = list()
+		chart_jump_points()
 		var/station_site_id = SSmapping.current_map.space_overmap?["station_id"]
 		var/obj/docking_port/stationary/stationtrauma_space_station/main_berth
 		for(var/obj/docking_port/stationary/stationtrauma_space_station/port in SSshuttle.stationary_docking_ports)
@@ -257,14 +271,20 @@
 		return ready
 	// Every round charts a new system: its name, and where its planets, ruins and hazards lie.
 	name = "[pick("HD ", "HIP ", "Gliese ", "Kepler-", "TOI-", "Wolf ", "Ross ", "LHS ")][rand(100, 9999)]"
-	taken_positions = list(list(entry_x, entry_y))
+	taken_positions = list()
+	chart_jump_points()
+	// crews arrive at the jump point facing Epsilon Eridani; the planets grow more dangerous away from it
+	var/list/entry = arrival_point(SSstationtrauma_space_voyage.sectors["epsilon_eridani"])
+	if(entry)
+		entry_x = entry[1]
+		entry_y = entry[2]
 	var/list/belt = random_position(1100, 1700, 600)
 	belt_x = belt[1]
 	belt_y = belt[2]
 	var/list/cargo = random_position(600, 1200, 350)
 	var/list/locations = list(
-		list("asteroid_field", "Астероидное поле", belt_x, belt_y, 'modular_bandastation/space_overmap/maps/asteroid_field.dmm', /atom/movable/screen/parallax_layer/random/asteroids, "asteroids"),
-		list("drift_cargo", "Дрейфующий груз", cargo[1], cargo[2], 'modular_bandastation/space_overmap/maps/drift_cargo.dmm', /atom/movable/screen/parallax_layer/layer_3, "cargo"),
+		list("[id]_asteroid_field", "Астероидное поле", belt_x, belt_y, 'modular_bandastation/space_overmap/maps/asteroid_field.dmm', /atom/movable/screen/parallax_layer/random/asteroids, "asteroids"),
+		list("[id]_drift_cargo", "Дрейфующий груз", cargo[1], cargo[2], 'modular_bandastation/space_overmap/maps/drift_cargo.dmm', /atom/movable/screen/parallax_layer/layer_3, "cargo"),
 	)
 	for(var/list/location as anything in locations)
 		var/datum/stationtrauma_overmap_site/space/site = new
@@ -278,7 +298,7 @@
 		site.map_loader = CALLBACK(src, PROC_REF(load_location), site, location[5], location[6])
 		sites[site.id] = site
 	var/list/positions = list()
-	for(var/index in 1 to 5)
+	for(var/index in 1 to planet_count)
 		positions += list(random_position(700, 2000, 450))
 	var/list/profiles = shuffle(list(
 		/datum/stationtrauma_overmap_site/space/planet,
@@ -295,7 +315,8 @@
 	// Planets farther from the arrival point roll stronger dangers and rewards.
 	var/list/levels = list()
 	for(var/index in 1 to length(positions))
-		levels += sqrt((positions[index][1] - entry_x) ** 2 + (positions[index][2] - entry_y) ** 2) / 500
+		// out at the edge the arrival point lies further from the planets: the same spread of dangers as from the old central entry
+		levels += sqrt((positions[index][1] - entry_x) ** 2 + (positions[index][2] - entry_y) ** 2) / 880
 	// Whatever the rolls, the two farthest worlds with wildlife hold anomaly fields and dangerous fauna; the farther one is overrun.
 	var/overrun
 	var/infested
@@ -316,15 +337,17 @@
 			required = list(/datum/expedition_planet_modifier/anomaly_zone, /datum/expedition_planet_modifier/horde)
 		else if(index == infested)
 			required = list(/datum/expedition_planet_modifier/anomaly_zone, /datum/expedition_planet_modifier/predators)
-		var/datum/stationtrauma_overmap_site/space/planet/planet = create_stationtrauma_planet(seed = first_seed + index - 1, planet_id = "planet_[index]", planet_name = "[name] [planet_letters[index]]", planet_type = profile, modifier_level = levels[index], required_modifiers = required)
+		var/datum/stationtrauma_overmap_site/space/planet/planet = create_stationtrauma_planet(seed = first_seed + index - 1, planet_id = "[id]_planet_[index]", planet_name = "[name] [planet_letters[index]]", planet_type = profile, modifier_level = levels[index], required_modifiers = required)
 		if(!planet)
 			return FALSE
 		planet.pos_x = positions[index][1]
 		planet.pos_y = positions[index][2]
 		sites[planet.id] = planet
-		// A second clearing beside the first lets two S or M hulls stand on the surface at once.
-		add_pads(planet, 1)
-	if(!load_ruin_sector())
+		// Clearings beside the first: the survey offers a choice of where to land, and several hulls stand there at once.
+		add_pads(planet, ST_PLANET_EXTRA_PADS)
+	for(var/key in away_sites)
+		chart_away_site(key)
+	if(!load_ruin_sector(ruin_count))
 		return null
 	build_encounters()
 	ready = TRUE

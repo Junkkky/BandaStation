@@ -44,7 +44,8 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 		candidates -= key
 		GLOB.stationtrauma_charted_ruins[key] = TRUE
 		var/datum/stationtrauma_overmap_site/space/site = new
-		site.id = "expedition_[index]"
+		// prefixed: site IDs stay unique across systems, which share research markers and contracts
+		site.id = "[id]_expedition_[index]"
 		site.name = approved[template.type]
 		var/list/position = random_position(600, 1700, 350)
 		site.pos_x = position[1]
@@ -73,6 +74,14 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 		return FALSE
 	stationtrauma_space_vacuum(level.z_value)
 	var/list/ruin_tiles = block(origin, locate(origin.x + placed.width - 1, origin.y + placed.height - 1, origin.z))
+	return berth_beside(site, level, ruin_tiles, placed.id)
+
+/**
+ * Berths an approach beside the structure standing on [ruin_tiles] of [level]: level with the entrance airlock that
+ * opens onto clear space furthest east, with separate moorings around it. The structure's bounds are those tiles
+ * that are not open space.
+ */
+/datum/stationtrauma_overmap_sector/space/proc/berth_beside(datum/stationtrauma_overmap_site/space/site, datum/space_level/level, list/ruin_tiles, ruin_id)
 	stationtrauma_fuel_cache(ruin_tiles, ST_FUEL_CACHE_SPACE_CHANCE)
 	var/left = INFINITY
 	var/bottom = INFINITY
@@ -110,7 +119,7 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 				approach_x = door.x
 				approach_y = door.y
 				approach_side = direction
-	site.ruin_id = placed.id
+	site.ruin_id = ruin_id
 	switch(approach_side)
 		if(EAST)
 			approach_x = right + 1
@@ -120,12 +129,12 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 			approach_y = top + 1
 		if(SOUTH)
 			approach_y = bottom - 1
-	site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(approach_x, approach_y, origin.z))
+	site.berth = new /obj/docking_port/stationary/stationtrauma_space_site(locate(approach_x, approach_y, level.z_value))
 	site.berth.setDir(approach_side)
 	// Every border loops onto the ruin's level.
 	for(var/side in GLOB.cardinals)
 		stationtrauma_set_edge(level.z_value, side, level.z_value)
-	place_ruin_pads(site, left, bottom, right, top, origin.z, approach_side)
+	place_ruin_pads(site, left, bottom, right, top, level.z_value, approach_side)
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(site.berth))
 	marker.site_id = site.id
 	marker.name = site.name
@@ -218,3 +227,45 @@ GLOBAL_LIST_EMPTY(stationtrauma_charted_ruins)
 /// Oxygen left behind on a ruin: a partly emptied canister.
 /obj/machinery/portable_atmospherics/canister/oxygen/cache
 	filled = 0.35
+
+/**
+ * Gateway away maps reached by ship instead, the station having no gateway: key -> list(map file, chart name, area type of
+ * the structure the approach berths beside). Each is charted in one frontier system a round (see load_sectors()).
+ */
+GLOBAL_LIST_INIT(stationtrauma_away_sites, list(
+	"research" = list("_maps/RandomZLevels/research.dmm", "Исследовательский комплекс", /area/awaymission/research/interior),
+))
+
+/** Chart the away map [key] as an unidentified signal of this system; its first approach loads it. */
+/datum/stationtrauma_overmap_sector/space/proc/chart_away_site(key)
+	var/list/entry = GLOB.stationtrauma_away_sites[key]
+	if(!entry)
+		return
+	var/datum/stationtrauma_overmap_site/space/site = new
+	site.id = "[id]_away_[key]"
+	site.name = entry[2]
+	var/list/position = random_position(600, 1700, 350)
+	site.pos_x = position[1]
+	site.pos_y = position[2]
+	site.discovered = FALSE
+	site.needs_scan = TRUE
+	site.map_loader = CALLBACK(src, PROC_REF(load_away_site), site, entry[1], entry[3])
+	sites[site.id] = site
+	add_pads(site, 4)
+
+/** Load a whole away map onto its own level and berth beside the station standing in it, as beside a ruin. */
+/datum/stationtrauma_overmap_sector/space/proc/load_away_site(datum/stationtrauma_overmap_site/space/site, map_path, structure_area)
+	var/datum/map_template/stationtrauma_space/template = new(map_path, site.name)
+	var/datum/space_level/level = template.load_new_z()
+	qdel(template)
+	if(!level)
+		return FALSE
+	// the map is strewn with wreckage; the approach is judged by the station itself
+	var/list/structure = list()
+	for(var/turf/tile as anything in block(1, 1, level.z_value, world.maxx, world.maxy, level.z_value))
+		if(istype(tile.loc, structure_area))
+			structure += tile
+	if(!length(structure))
+		stack_trace("Away site [map_path] has no [structure_area] to berth beside")
+		return FALSE
+	return berth_beside(site, level, structure)

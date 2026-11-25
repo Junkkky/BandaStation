@@ -44,10 +44,41 @@
 	var/list/modifier_log = list()
 	/// Charted generator awaiting the first landing; null once the surface is built or has failed.
 	var/datum/map_generator/expedition_barren/generator
+	/// Survey lines on the caves and the ore, read off the generator when charted
+	var/cave_survey = "Не обнаружены"
+	var/ore_survey = "Низкая"
+	/// The survey's schematic of the built surface; see survey_schematic()
+	var/list/survey_map
 
 /** Serialize environment observations without exposing the planet generation seed. */
 /datum/stationtrauma_overmap_site/space/planet/proc/survey_data()
-	return list("biome" = biome, "atmosphere" = atmosphere, "temperature" = surface_temperature, "breathable" = breathable, "modifiers" = modifier_names)
+	return list("biome" = biome, "atmosphere" = atmosphere, "temperature" = surface_temperature, "breathable" = breathable, "modifiers" = modifier_names, "caves" = cave_survey, "ore" = ore_survey)
+
+/// The look of this planet on the consoles' displays
+/datum/stationtrauma_overmap_site/space/planet/proc/glyph_kind()
+	switch(parallax_layer)
+		if(/atom/movable/screen/parallax_layer/expedition_planet/lava)
+			return "lava"
+		if(/atom/movable/screen/parallax_layer/expedition_planet/arid)
+			return "arid"
+		if(/atom/movable/screen/parallax_layer/expedition_planet/frozen)
+			return "frozen"
+		if(/atom/movable/screen/parallax_layer/expedition_planet/lush)
+			return "lush"
+	return "barren"
+
+/// Reads the caves and the ore off the charted generator, for the survey to report before the surface exists
+/datum/stationtrauma_overmap_site/space/planet/proc/read_survey_facts()
+	var/list/systems = list()
+	if(generator.underground)
+		systems += "глубинный пещерный ярус"
+	if(!isnull(generator.surface_open_percent))
+		systems += "туннели по всей поверхности"
+	else if(generator.mountain_height < 1)
+		systems += "полости в горных массивах"
+	if(length(systems))
+		cave_survey = capitalize(jointext(systems, ", "))
+	ore_survey = generator.mineral_chance >= 12 ? "Высокая" : generator.mineral_chance >= 7 ? "Средняя" : "Низкая"
 
 /**
  * Chart a planet without building it; the first landing generates its surface.
@@ -78,6 +109,7 @@
 		qdel(site)
 		return null
 	site.modifier_log = site.generator.modifier_log.Copy()
+	site.read_survey_facts()
 	return site
 
 /**
@@ -202,6 +234,7 @@
 		cave_marker.name = name
 	SSmapping.reg_in_areas_in_z(list(surface))
 	smooth_zlevel(level.z_value)
+	survey_map = survey_schematic(bottom, ruins, budget)
 	// Storm traits are registered only once the surface is complete; SSweather then alternates storms with calm periods.
 	// The endless storm starts once and is never scheduled, so periodic storms never stack on top of it.
 	if(generator.endless_storm)
@@ -211,6 +244,105 @@
 	generation_seconds = ((REALTIMEOFDAY - start_time + MIDNIGHT_ROLLOVER) % MIDNIGHT_ROLLOVER) / 10
 	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [generation_seconds]s, features: [features], modifiers: [jointext(modifier_log, ", ")]")
 	return TRUE
+
+/// Most cells a side of the survey schematic has: finer is more to send and nothing more to see
+#define SURVEY_SCHEMATIC_CELLS 80
+/// Side of the squares life is counted in, in tiles, and how many creatures or dens make one show
+#define SURVEY_LIFE_CELL 16
+#define SURVEY_LIFE_COUNT 2
+/// How near a pad a ruin or a cave entrance has to lie to be named in the pad's label, in tiles
+#define SURVEY_PAD_NEAR_RUIN 30
+#define SURVEY_PAD_NEAR_CAVE 25
+
+/**
+ * The survey's schematic of the built surface. Places are shares of the generated square from its south-west corner (0-1).
+ * * rows - terrain codes, north row first: "#" rock, "." ground, "~" lava, water, chasms and drops, " " nothing
+ * * pads - each list(west, south, east, north, near a ruin, near a cave entrance), in the order of the planet's berths
+ * * caves - cave entrances, each list(x, y)
+ * * structures - ruins, each list(west, south, east, north)
+ * * organic - where creatures and their dens gather, each list(x, y, radius)
+ */
+/datum/stationtrauma_overmap_site/space/planet/proc/survey_schematic(turf/bottom, list/ruins, datum/stationtrauma_work_budget/budget)
+	var/side = generator.width
+	var/grain = CEILING(side / SURVEY_SCHEMATIC_CELLS, 1)
+	var/cells = CEILING(side / grain, 1)
+	var/list/rows = list()
+	for(var/cell_y = cells, cell_y >= 1, cell_y--)
+		var/list/row = list()
+		for(var/cell_x in 1 to cells)
+			var/list/counts = list()
+			for(var/y in (cell_y - 1) * grain + 1 to min(side, cell_y * grain))
+				for(var/x in (cell_x - 1) * grain + 1 to min(side, cell_x * grain))
+					var/code = survey_terrain_code(locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z))
+					counts[code] = (counts[code] || 0) + 1
+			var/best = " "
+			for(var/code in counts)
+				if(counts[code] > (counts[best] || 0))
+					best = code
+			row += best
+		rows += row.Join("")
+		budget.yield()
+	var/list/structures = list()
+	var/list/ruin_centres = list()
+	for(var/list/placement as anything in ruins)
+		var/datum/map_template/template = placement[1]
+		structures += list(list((placement[2] - 1) / side, (placement[3] - 1) / side, (placement[2] - 1 + template.width) / side, (placement[3] - 1 + template.height) / side))
+		ruin_centres += list(list(placement[2] + template.width / 2, placement[3] + template.height / 2))
+	var/list/caves = list()
+	for(var/list/point as anything in generator.connector_points)
+		caves += list(list((point[1] - 0.5) / side, (point[2] - 0.5) / side))
+	var/list/pads = list()
+	for(var/list/rect as anything in generator.landing_pads)
+		var/middle_x = (rect[1] + rect[3]) / 2
+		var/middle_y = (rect[2] + rect[4]) / 2
+		var/near_ruin = FALSE
+		for(var/list/centre as anything in ruin_centres)
+			if(max(abs(centre[1] - middle_x), abs(centre[2] - middle_y)) <= SURVEY_PAD_NEAR_RUIN)
+				near_ruin = TRUE
+				break
+		var/near_cave = FALSE
+		for(var/list/point as anything in generator.connector_points)
+			if(max(abs(point[1] - middle_x), abs(point[2] - middle_y)) <= SURVEY_PAD_NEAR_CAVE)
+				near_cave = TRUE
+				break
+		pads += list(list((rect[1] - 1) / side, (rect[2] - 1) / side, rect[3] / side, rect[4] / side, near_ruin, near_cave))
+	// creatures and dens by square of the surface
+	var/squares = CEILING(side / SURVEY_LIFE_CELL, 1)
+	var/list/life = new /list(squares * squares)
+	for(var/y in 1 to side)
+		for(var/x in 1 to side)
+			var/turf/tile = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
+			for(var/atom/movable/thing as anything in tile)
+				var/mob/living/creature = thing
+				if(istype(creature) ? !!creature.client : !istype(thing, /obj/structure/spawner))
+					continue
+				var/square = round((y - 1) / SURVEY_LIFE_CELL) * squares + round((x - 1) / SURVEY_LIFE_CELL) + 1
+				life[square] = (life[square] || 0) + 1
+		budget.yield()
+	var/list/organic = list()
+	for(var/square in 1 to length(life))
+		if(life[square] < SURVEY_LIFE_COUNT)
+			continue
+		var/square_x = (square - 1) % squares
+		var/square_y = round((square - 1) / squares)
+		organic += list(list((square_x + 0.5) * SURVEY_LIFE_CELL / side, (square_y + 0.5) * SURVEY_LIFE_CELL / side, SURVEY_LIFE_CELL * 0.75 / side))
+	return list("rows" = rows, "pads" = pads, "caves" = caves, "structures" = structures, "organic" = organic)
+
+/// The schematic's code for [tile]; see survey_schematic()
+/proc/survey_terrain_code(turf/tile)
+	if(!tile || isspaceturf(tile) || istype(tile, /turf/cordon))
+		return " "
+	if(isclosedturf(tile))
+		return "#"
+	if(islava(tile) || istype(tile, /turf/open/water) || istype(tile, /turf/open/chasm) || istype(tile, /turf/open/openspace))
+		return "~"
+	return "."
+
+#undef SURVEY_SCHEMATIC_CELLS
+#undef SURVEY_LIFE_CELL
+#undef SURVEY_LIFE_COUNT
+#undef SURVEY_PAD_NEAR_RUIN
+#undef SURVEY_PAD_NEAR_CAVE
 
 /**
  * Fits an M hull even if the planet is generated before that ship is commissioned.

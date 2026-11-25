@@ -104,35 +104,71 @@
 
 /** Resolve the overmap of the physical hull containing this terminal. */
 /obj/machinery/computer/stationtrauma_bluespace/proc/navigation()
+	RETURN_TYPE(/datum/stationtrauma_overmap/space)
 	var/obj/docking_port/mobile/stationtrauma_space/ship = SSshuttle.get_containing_shuttle(src)
 	return istype(ship) && ship.is_in_shuttle_bounds(src) ? ship.overmap : null
 
 /obj/machinery/computer/stationtrauma_bluespace/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	if(!can_interact(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)))
+	open_overmap_console(user, ui, "BluespaceTerminal")
+
+/obj/machinery/computer/stationtrauma_bluespace/ui_status(mob/user, datum/ui_state/state)
+	if(QDELETED(navigation()) || (!isobserver(user) && !can_interact(user)))
+		return UI_CLOSE
+	return overmap_console_status(user, ..())
+
+/obj/machinery/computer/stationtrauma_bluespace/ui_data(mob/user)
+	var/datum/stationtrauma_overmap/space/map = navigation()
+	if(!map)
+		return list()
+	var/datum/stationtrauma_overmap_sector/space/here = map.sector
+	var/datum/stationtrauma_overmap_sector/space/target = map.jump_target ? SSstationtrauma_space_voyage.sectors[map.jump_target] : null
+	// every charted system on the galaxy map; those a jump from here can be flown to
+	var/list/systems = list()
+	for(var/id in SSstationtrauma_space_voyage.sectors)
+		var/datum/stationtrauma_overmap_sector/space/system = SSstationtrauma_space_voyage.sectors[id]
+		if(!system.ready)
+			continue
+		systems += list(list(
+			"id" = id,
+			"name" = system.name,
+			"x" = system.galaxy_x,
+			"y" = system.galaxy_y,
+			"size" = istype(system, /datum/stationtrauma_overmap_sector/space/home) ? null : system.size_name,
+			"planets" = istype(system, /datum/stationtrauma_overmap_sector/space/home) ? null : system.planet_count,
+			"route" = (id in here?.jump_routes),
+			"available" = !map.jump_target && map.jump_ready(id),
+		))
+	return list(
+		"vessel_name" = map.vessel.name,
+		"sector" = here?.id,
+		"sector_name" = here?.name,
+		"systems" = systems,
+		"target" = target?.id,
+		"target_name" = target?.name,
+		"progress" = map.jump_progress(),
+		"drive" = !!map.jump_drive(),
+		"at_jump_point" = map.at_jump_point(),
+	)
+
+/obj/machinery/computer/stationtrauma_bluespace/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(. || panel_open || (machine_stat & (NOPOWER|BROKEN)))
 		return
 	var/datum/stationtrauma_overmap/space/map = navigation()
 	if(QDELETED(map))
 		return
-	// The dialog sleeps, so only the hull ID and helm revision survive it; the overmap is resolved again afterwards.
-	var/vessel_id = map.vessel.shuttle_id
-	var/revision = map.control_revision
-	var/list/choices = list()
-	if(map.jump_target)
-		choices["Отмена перехода"] = "cancel"
-	else
-		for(var/list/route as anything in map.jump_data())
-			choices[route["name"]] = route["id"]
-	map = null
-	var/datum/ui_state/overmap_console_prompt/prompt_state = new(src)
-	var/choice = tgui_input_list(user, "Система назначения", name, choices, timeout = 30 SECONDS, ui_state = prompt_state)
-	qdel(prompt_state)
-	if(QDELETED(src) || !can_interact(user) || panel_open || (machine_stat & (NOPOWER|BROKEN)) || !(choice in choices))
-		return
-	map = navigation()
-	if(QDELETED(map) || map.vessel.shuttle_id != vessel_id || revision != map.control_revision)
-		return
-	if(choices[choice] == "cancel")
-		map.request_brake()
-	else if(!map.request_jump(choices[choice]))
-		to_chat(user, span_warning(map.jump_drive() ? "Переход недоступен. Освободите причал и дождитесь завершения текущего манёвра." : "Переход недоступен: блюспейс-привод не заряжен или обесточен."))
+	switch(action)
+		if("cancel")
+			if(!map.jump_target)
+				return
+			map.request_brake()
+			return TRUE
+		if("jump")
+			var/id = params["id"]
+			if(!istext(id) || map.jump_target)
+				return
+			if(!map.request_jump(id))
+				to_chat(ui.user, span_warning(map.jump_drive() ? "Переход недоступен. Освободите причал и дождитесь завершения текущего манёвра." : "Переход недоступен: блюспейс-привод не заряжен или обесточен."))
+				return
+			return TRUE

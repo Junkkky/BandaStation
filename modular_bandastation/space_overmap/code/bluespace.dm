@@ -27,12 +27,12 @@
 	for(var/id in current?.jump_routes)
 		var/datum/stationtrauma_overmap_sector/space/target = SSstationtrauma_space_voyage.sectors[id]
 		if(!QDELETED(target) && target.ready)
-			routes += list(list("id" = id, "name" = target.name, "available" = can_jump(id)))
+			routes += list(list("id" = id, "name" = target.name, "available" = jump_ready(id)))
 	return routes
 
 /** Reserve a valid inter-sector jump and start its stoppable hyperspace effect sequence. */
 /datum/stationtrauma_overmap/space/proc/request_jump(id)
-	if(!can_jump(id))
+	if(!jump_ready(id))
 		return FALSE
 	command_course(ordered_course)
 	braking = FALSE
@@ -93,6 +93,7 @@
 		return FALSE
 	cancel_jump()
 	var/datum/stationtrauma_overmap_sector/space/target = SSstationtrauma_space_voyage.sectors[id]
+	var/list/arrival = target.arrival_point(sector)
 	clear_encounters()
 	if(!transfer_carrier_sector(target))
 		stop("Блюспейс-прыжок не выполнен")
@@ -103,8 +104,8 @@
 	prepared_site = null
 	ship_observations.Cut()
 	last_ping = null
-	pos_x = encounter_x = target.entry_x
-	pos_y = encounter_y = target.entry_y
+	pos_x = encounter_x = arrival ? arrival[1] : target.entry_x
+	pos_y = encounter_y = arrival ? arrival[2] : target.entry_y
 	trip_distance = travelled = 0
 	stop("Блюспейс-переход завершён: [target.name]")
 	sync_carrier()
@@ -196,3 +197,8 @@
 /obj/machinery/stationtrauma_bluespace_drive/proc/spend_charge()
 	charges = max(0, charges - 1)
 	update_appearance(UPDATE_ICON_STATE)
+
+/// How far the current jump has got, 0-1, or null outside one
+/datum/stationtrauma_overmap/space/proc/jump_progress()
+	var/left = jump_timer ? timeleft(jump_timer) : null
+	return isnull(left) ? null : clamp(1 - left / ST_SPACE_JUMP_TIME, 0, 1)

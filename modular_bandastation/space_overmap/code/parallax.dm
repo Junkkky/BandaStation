@@ -1,3 +1,5 @@
+#define ST_BLUESPACE_TEXTURE_SIZE 960
+
 /area
 	/// Null retains the native background; expedition areas choose a native layer explicitly.
 	var/space_parallax_background
@@ -98,8 +100,17 @@
 	var/space_background
 	/// Last orbital layer type, so a biome change refreshes the planet without changing the star field.
 	var/space_planet
-	/// The jump effect is composited above space but stays outside the native scroll list.
-	var/atom/movable/screen/parallax_layer/bluespace_tunnel/bluespace_tunnel
+	// A backdrop: its layers (the jump tunnel, a planet) reach well past the screen, and an untiled screen object that
+	// does makes the client widen its map and shove the game view into a corner. Tile-bound, it never sizes the map.
+	appearance_flags = APPEARANCE_UI | TILE_BOUND
+	/// Jump layers scroll independently from the regular space background.
+	var/list/atom/movable/screen/parallax_layer/bluespace_tunnel/bluespace_layers
+	/// Last fade applied to the jump layers.
+	var/area/bluespace_animation_area
+	var/bluespace_animation_at
+	var/bluespace_animation_stage
+	/// Last applied parallax preference.
+	var/bluespace_animated
 
 /atom/movable/screen/parallax_home/set_perspective_area(area/new_area)
 	if(perspective_area == new_area)
@@ -142,60 +153,113 @@
 	. = ..()
 	update_bluespace_tunnel(location)
 
-/// Attach a single client-side loop and update its fade only when the perspective or stage changes.
+/// Blend in the jump layers while their client-side motion continues independently.
 /atom/movable/screen/parallax_home/proc/update_bluespace_tunnel(area/location)
 	var/remaining = location ? max(0, location.space_bluespace_at + location.space_bluespace_duration - world.time) : 0
 	var/target = location?.space_bluespace_target || 0
 	if(!displaying_layers || (!target && (!remaining || !location?.space_bluespace_from)))
-		if(bluespace_tunnel)
-			vis_contents -= bluespace_tunnel
-		QDEL_NULL(bluespace_tunnel)
+		if(length(bluespace_layers))
+			vis_contents -= bluespace_layers
+			QDEL_LIST(bluespace_layers)
+		bluespace_animation_area = null
 		return
-	if(!bluespace_tunnel)
-		bluespace_tunnel = new(null, null, src)
-	vis_contents |= bluespace_tunnel
-	if(bluespace_tunnel.dir != location.space_bluespace_heading)
-		bluespace_tunnel.setDir(location.space_bluespace_heading)
-		bluespace_tunnel.update_o(owner?.view || world.view)
-	if(bluespace_tunnel.animation_area == location && bluespace_tunnel.animation_at == location.space_bluespace_at \
-		&& bluespace_tunnel.animation_stage == location.space_bluespace_stage && bluespace_tunnel.animated == animate_parallax)
+	if(!length(bluespace_layers))
+		var/static/list/layer_types = list(
+			/atom/movable/screen/parallax_layer/bluespace_tunnel,
+			/atom/movable/screen/parallax_layer/bluespace_tunnel/mist,
+			/atom/movable/screen/parallax_layer/bluespace_tunnel/stars,
+			/atom/movable/screen/parallax_layer/bluespace_tunnel/streaks,
+		)
+		bluespace_layers = list()
+		for(var/layer_type in layer_types)
+			bluespace_layers += new layer_type(null, null, src, location.space_bluespace_heading, FALSE)
+			bluespace_layers += new layer_type(null, null, src, location.space_bluespace_heading, TRUE)
+		bluespace_animated = animate_parallax
+	var/atom/movable/screen/parallax_layer/bluespace_tunnel/nebula = bluespace_layers[1]
+	if(!(nebula in vis_contents))
+		vis_contents |= bluespace_layers
+	if(nebula.dir != location.space_bluespace_heading || bluespace_animated != animate_parallax)
+		for(var/atom/movable/screen/parallax_layer/bluespace_tunnel/jump_layer as anything in bluespace_layers)
+			jump_layer.setDir(location.space_bluespace_heading)
+			jump_layer.update_o(owner?.view || world.view)
+		bluespace_animated = animate_parallax
+	if(bluespace_animation_area == location && bluespace_animation_at == location.space_bluespace_at \
+		&& bluespace_animation_stage == location.space_bluespace_stage)
 		return
-	var/start_state = location.space_bluespace_stage == HYPERSPACE_WARMUP && world.time - location.space_bluespace_at <= world.tick_lag
-	var/state = animate_parallax ? (start_state ? "entry" : "flight") : "still"
-	// Keep the running frame sequence when fading out over the destination.
-	if(target || bluespace_tunnel.animation_area != location || bluespace_tunnel.animated != animate_parallax)
-		bluespace_tunnel.icon_state = state
-	bluespace_tunnel.animation_area = location
-	bluespace_tunnel.animation_at = location.space_bluespace_at
-	bluespace_tunnel.animation_stage = location.space_bluespace_stage
-	bluespace_tunnel.animated = animate_parallax
-	animate(bluespace_tunnel, alpha = location.space_bluespace_opacity(), time = 0, flags = ANIMATION_END_NOW)
-	animate(alpha = target, time = remaining, easing = SINE_EASING | EASE_IN | EASE_OUT)
+	bluespace_animation_area = location
+	bluespace_animation_at = location.space_bluespace_at
+	bluespace_animation_stage = location.space_bluespace_stage
+	var/start_opacity = location.space_bluespace_opacity()
+	for(var/atom/movable/screen/parallax_layer/bluespace_tunnel/jump_layer as anything in bluespace_layers)
+		animate(jump_layer, alpha = start_opacity, time = 0, flags = ANIMATION_END_NOW, tag = "bluespace_fade")
+		animate(alpha = target, time = remaining, easing = SINE_EASING | EASE_IN | EASE_OUT)
 	if(!target)
 		addtimer(CALLBACK(src, PROC_REF(update_parallax)), remaining + world.tick_lag, TIMER_UNIQUE | TIMER_OVERRIDE)
 
 /atom/movable/screen/parallax_layer/bluespace_tunnel
 	icon = 'modular_bandastation/space_overmap/icons/bluespace_tunnel.dmi'
-	icon_state = "still"
+	icon_state = "nebula"
 	appearance_flags = APPEARANCE_UI
 	blend_mode = BLEND_OVERLAY
 	alpha = 0
 	layer = 40
 	absolute = TRUE
 	dir = NORTH
-	/// Area and transition timestamp last applied by the viewing client.
-	var/area/animation_area
-	var/animation_at
-	var/animation_stage
-	/// Last applied parallax preference.
-	var/animated
+	/// Time for one seamless pass of the texture.
+	var/scroll_period = 16 SECONDS
+	/// The second tile fills the area behind the first as it scrolls.
+	var/trailing_tile = FALSE
+
+/atom/movable/screen/parallax_layer/bluespace_tunnel/mist
+	icon_state = "mist"
+	layer = 41
+	scroll_period = 8 SECONDS
+
+/atom/movable/screen/parallax_layer/bluespace_tunnel/stars
+	icon_state = "stars"
+	layer = 42
+	scroll_period = 6 SECONDS
+
+/atom/movable/screen/parallax_layer/bluespace_tunnel/streaks
+	icon_state = "streaks"
+	layer = 43
+	scroll_period = 1 SECONDS
+
+/atom/movable/screen/parallax_layer/bluespace_tunnel/Initialize(mapload, datum/hud/hud_owner, atom/movable/screen/parallax_home/home, heading, trailing)
+	dir = heading
+	trailing_tile = trailing
+	return ..(mapload, hud_owner, home)
 
 /atom/movable/screen/parallax_layer/bluespace_tunnel/update_o(new_view)
 	var/list/view_size = getviewsize(new_view)
+	var/rotation = dir2angle(dir)
+	var/heading_x = sin(rotation)
+	var/heading_y = cos(rotation)
+	var/projected_view = max(view_size[1], view_size[2]) * (abs(heading_x) + abs(heading_y))
+	var/side = max(ST_BLUESPACE_TEXTURE_SIZE, projected_view * ICON_SIZE_ALL)
+	// The parallax home is positioned for the native 15-tile texture.
+	var/center_offset = (ICON_SIZE_ALL * 15 - ST_BLUESPACE_TEXTURE_SIZE) / 2
 	var/matrix/fitted = matrix()
-	fitted.Scale(max(view_size[1], view_size[2]) * ICON_SIZE_ALL / 480)
-	fitted.Turn(dir2angle(dir))
+	fitted.Scale(side / ST_BLUESPACE_TEXTURE_SIZE)
+	fitted.Turn(rotation)
+	fitted.Translate(center_offset, center_offset)
+	animate(src, tag = "bluespace_scroll")
+	if(!home.animate_parallax)
+		if(trailing_tile)
+			fitted.Translate(-side * heading_x, -side * heading_y)
+		transform = fitted
+		return
+	var/matrix/shifted = matrix(fitted)
+	if(trailing_tile)
+		fitted.Translate(-side * heading_x, -side * heading_y)
+	else
+		shifted.Translate(side * heading_x, side * heading_y)
 	transform = fitted
+	// As in shuttle transit, resetting by one tile introduces no visible seam.
+	animate(src, transform = shifted, time = 0, loop = -1, flags = ANIMATION_END_NOW, tag = "bluespace_scroll")
+	animate(transform = fitted, time = scroll_period)
+
+#undef ST_BLUESPACE_TEXTURE_SIZE
 
 /** Preserve native quality settings without inheriting the round-wide random asteroid/gas layer. */
 /atom/movable/screen/parallax_home/generate_space_layer(index)

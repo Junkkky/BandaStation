@@ -52,6 +52,16 @@ export type Compartment = {
   /** Hull tiles open to space. */
   breaches: number;
 };
+/** A landing pad of a surveyed planet; x and y are its share of the surface square from the south-west */
+export type LandingPad = {
+  number: number;
+  x: number;
+  y: number;
+  label: string;
+  free: BooleanLike;
+  chosen: BooleanLike;
+};
+
 export type NavigationData = Position & {
   board?: {
     jumps: { id: string; name: string; available: BooleanLike }[];
@@ -63,6 +73,10 @@ export type NavigationData = Position & {
   sector: string;
   sector_name: string;
   jumping: BooleanLike;
+  /** Share of the current bluespace jump flown, 0-1, or null outside one */
+  jump_progress: number | null;
+  /** How close the hull has to be to a jump point to start a jump */
+  jump_point_range?: number;
   star: Position & { name: string | null; radius: number };
   celestial_bodies: CelestialBody[];
   vx: number;
@@ -132,12 +146,23 @@ export type NavigationData = Position & {
   })[];
   terrain: (Position & { end_x: number; end_y: number })[];
   ship_contacts: Contact[];
+  /** What the survey has read of the selected planet; a field is missing until enough of the planet is covered */
   planet?: {
-    biome: string;
-    atmosphere: string;
-    temperature: number;
-    breathable: BooleanLike;
-    modifiers: string[];
+    biome?: string;
+    atmosphere?: string;
+    temperature?: number;
+    breathable?: BooleanLike;
+    modifiers?: string[];
+    caves?: string;
+    ore?: string;
+  };
+  /** This ship's survey of the selected planet */
+  survey?: {
+    covered: BooleanLike;
+    mapping: number;
+    mapped: BooleanLike;
+    failed: BooleanLike;
+    pads: LandingPad[] | null;
   };
   approach: {
     elapsed: number;

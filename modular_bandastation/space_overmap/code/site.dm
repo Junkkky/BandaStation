@@ -91,9 +91,9 @@
 		// A distress point exists on the chart only while someone transmits there.
 		if(istype(site, /datum/stationtrauma_overmap_site/space/distress) && !sos)
 			continue
-		record["kind"] = istype(site, /datum/stationtrauma_overmap_site/space/planet) ? "planet" : (is_docking_target || site.physical_docking) ? "station" : "signal"
+		record["kind"] = istype(site, /datum/stationtrauma_overmap_site/space/planet) ? "planet" : istype(site, /datum/stationtrauma_overmap_site/space/jump_point) ? "jump" : (is_docking_target || site.physical_docking) ? "station" : "signal"
 		record["name"] = site_label(site)
-		record["type"] = record["kind"] == "signal" ? site_structure(site) : record["kind"] == "planet" ? "Планета" : site.host ? "Носитель" : "Станция"
+		record["type"] = record["kind"] == "signal" ? site_structure(site) : record["kind"] == "planet" ? "Планета" : record["kind"] == "jump" ? "Блюспейс-переход" : site.host ? "Носитель" : "Станция"
 		record["sos"] = sos
 		// A remembered carrier contact is a measurement, not a live position tracker.
 		if(site.host && !(src in site.host.carrier_tree()))
@@ -111,7 +111,7 @@
 	var/list/distress = site.distress_callsigns()
 	if(length(distress))
 		return "SOS · [jointext(distress, "; ")]"
-	return site.landing || site.physical_docking || istype(site, /datum/stationtrauma_overmap_site/space/docking_target) ? site.name : "???"
+	return site.landing || site.physical_docking || istype(site, /datum/stationtrauma_overmap_site/space/docking_target) || istype(site, /datum/stationtrauma_overmap_site/space/jump_point) ? site.name : "???"
 
 /** Kind of structure a space object reads as on sensors, from its approach schematic; wrecks and stations stay unidentified. */
 /datum/stationtrauma_overmap/space/proc/site_structure(datum/stationtrauma_overmap_site/space/site)
