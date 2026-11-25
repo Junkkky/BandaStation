@@ -3,7 +3,8 @@
  *
  * A planet's surface, planned whole and built a chunk at a time. Before the first landing only the ground around the
  * landing pads is built; after it the chunks around the living crew are built as they walk, then the ruins, then the
- * cave level, then the rest of the surface outwards from the pads, until the whole planet stands.
+ * cave level, then the rest of the surface outwards from the pads, until the whole planet stands. The cave level is
+ * planned once the ruins stand and built the same way, a chunk at a time, by a surface of its own.
  *
  * A chunk goes through three stages: its ground and rock are laid; its ore is seeded; then whatever was planned over
  * it is built once every chunk under that is seeded, and its flora and fauna settle. A vein stops at ground not laid
@@ -52,8 +53,12 @@ GLOBAL_LIST_EMPTY(expedition_surfaces)
 	var/list/ruin_chunks = list()
 	/// Whether ruins are still to be built; the destination counts as loaded once they stand
 	var/ruins_pending = TRUE
-	/// Cave level still to be built, if the planet has one
+	/// Cave level still to be planned, if the planet has one
 	var/datum/space_level/caves
+	/// The cave level being built, once planned
+	var/datum/expedition_surface/cave_chunks
+	/// The generator's state for this level, set while a chunk of it is built: see enter_level()
+	var/list/level_state
 	/// Work slice shared with the generator
 	var/datum/stationtrauma_work_budget/budget
 	/// Whether the background build is running
@@ -63,9 +68,9 @@ GLOBAL_LIST_EMPTY(expedition_surfaces)
 	/// Biome of each unbuilt cell, worked out when a picture first needs it
 	var/list/planned_biomes
 
-/datum/expedition_surface/New(datum/stationtrauma_overmap_site/space/planet/planet, area/surface, turf/bottom, datum/space_level/caves, list/ruins)
+/datum/expedition_surface/New(datum/stationtrauma_overmap_site/space/planet/planet, area/surface, turf/bottom, datum/space_level/caves, list/ruins, datum/map_generator/expedition_barren/generator = planet.generator)
 	src.planet = planet
-	generator = planet.generator
+	src.generator = generator
 	budget = generator.budget
 	src.surface = surface
 	src.bottom = bottom
@@ -92,9 +97,14 @@ GLOBAL_LIST_EMPTY(expedition_surfaces)
 	for(var/reach in 0 to side)
 		for(var/chunk in chunks_around(first, reach))
 			rest_order |= chunk
+	level_state = list(generator.cave_level, generator.level_bottom, generator.plan_taken, generator.dig_anchors, generator.pack_anchors)
 	GLOB.expedition_surfaces["[bottom.z]"] = src
 
 /datum/expedition_surface/Destroy()
+	// the cave level shares the surface's generator, which the surface releases
+	if(cave_chunks)
+		cave_chunks.generator = null
+		QDEL_NULL(cave_chunks)
 	if(GLOB.expedition_surfaces["[bottom?.z]"] == src)
 		GLOB.expedition_surfaces -= "[bottom.z]"
 	if(planet?.surface_chunks == src)
@@ -107,6 +117,7 @@ GLOBAL_LIST_EMPTY(expedition_surfaces)
 	surface = null
 	bottom = null
 	caves = null
+	level_state = null
 	chunk_rocks = null
 	chunk_biomes = null
 	chunk_work = null
@@ -152,7 +163,7 @@ GLOBAL_LIST_EMPTY(expedition_surfaces)
 
 /**
  * How the tile at relative [x], [y] will look once built, for pictures of the planet from above while it is not:
- * list(icon, icon_state, colour, flora type or null). Null once its chunk is laid. The flora is a likely one rather than
+ * list(icon, icon_state, colour, flora type or null, the area it will be in). Null once its chunk is laid. The flora is a likely one rather than
  * the one that will grow there; nobody looks that closely from a descending hull.
  */
 /datum/expedition_surface/proc/planned_look(x, y)
@@ -175,7 +186,7 @@ GLOBAL_LIST_EMPTY(expedition_surfaces)
 		var/roll = (x * 7919 + y * 104729 + generator.seed % 9973) % 10007
 		if(length(biome.flora_types) && roll * 100 < biome.flora_density * 10007)
 			flora = biome.flora_types[(roll * 31 + 17) % length(biome.flora_types) + 1]
-	return list(initial(terrain.icon), state, colour, flora)
+	return list(initial(terrain.icon), state, colour, flora, surface)
 
 /// How an unbuilt expedition surface tile at [x], [y], [z] will look; see /datum/expedition_surface/proc/planned_look()
 /proc/expedition_planned_look(x, y, z)
@@ -198,6 +209,8 @@ GLOBAL_LIST_EMPTY(expedition_surfaces)
 				continue
 			var/turf/edge = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
 			if(isspaceturf(edge))
+				// the level's own area first: the space area's lighting predates the planet's levels and lacks their plane offsets
+				edge.change_area(edge.loc, surface)
 				edge.ChangeTurf(SURFACE_UNBUILT_WALL, null, CHANGETURF_IGNORE_AIR)
 		budget.yield()
 
@@ -218,6 +231,7 @@ GLOBAL_LIST_EMPTY(expedition_surfaces)
 	if(stages[chunk] >= SURFACE_CHUNK_DONE)
 		return TRUE
 	. = TRUE
+	var/list/previous = enter_level()
 	seed(chunk)
 	for(var/list/work as anything in chunk_work[chunk])
 		if(work[8])
@@ -236,7 +250,28 @@ GLOBAL_LIST_EMPTY(expedition_surfaces)
 	stages[chunk] = SURFACE_CHUNK_DONE
 	generator.biome_turfs = chunk_biomes[chunk]
 	chunk_biomes[chunk] = null
+	// cave pockets breed denser life than the same biome above
+	var/list/densities = list()
+	if(generator.cave_level)
+		for(var/datum/biome/biome as anything in generator.biome_turfs)
+			densities[biome] = biome.fauna_density
+			biome.fauna_density *= generator.cave_fauna_multiplier
 	generator.populate_biomes()
+	for(var/datum/biome/biome as anything in densities)
+		biome.fauna_density = densities[biome]
+	enter_level(previous)
+
+/**
+ * Sets the generator to this level's state, or to [state] if given, for building a chunk of it; returns the state it
+ * had, to set back after. The surface and the cave level share one generator.
+ */
+/datum/expedition_surface/proc/enter_level(list/state = level_state)
+	. = list(generator.cave_level, generator.level_bottom, generator.plan_taken, generator.dig_anchors, generator.pack_anchors)
+	generator.cave_level = state[1]
+	generator.level_bottom = state[2]
+	generator.plan_taken = state[3]
+	generator.dig_anchors = state[4]
+	generator.pack_anchors = state[5]
 
 /// Builds the chunks under and around the landing pads, before anyone lands; returns FALSE if critical work there failed
 /datum/expedition_surface/proc/prepare_landing()
@@ -286,31 +321,24 @@ GLOBAL_LIST_EMPTY(expedition_surfaces)
 			return chunk
 	return null
 
-/// Builds the cave level, once the surface it opens onto is built
-/datum/expedition_surface/proc/build_caves()
+/// Plans the cave level, once the surface over its entrances is built, and builds the ground around them
+/datum/expedition_surface/proc/plan_caves()
 	var/datum/space_level/level = caves
 	caves = null
 	for(var/list/point as anything in generator.connector_points)
 		finish(chunk_at(point[1], point[2]))
-	// the cave pass decorates its own level and breeds denser caves; the surface keeps its own when it goes on after
-	var/turf/surface_bottom = generator.level_bottom
-	var/list/surface_taken = generator.plan_taken
-	var/list/surface_anchors = generator.dig_anchors
-	var/list/surface_packs = generator.pack_anchors
-	var/list/densities = list()
-	for(var/biome_type in generator.biomes)
-		var/datum/biome/biome = generator.biomes[biome_type]
-		densities[biome] = biome.fauna_density
-	generator.generate_underground(bottom, level, planet)
-	generator.cave_level = FALSE
-	generator.level_bottom = surface_bottom
-	generator.plan_taken = surface_taken
-	generator.dig_anchors = surface_anchors
-	generator.pack_anchors = surface_packs
-	for(var/datum/biome/biome as anything in densities)
-		biome.fauna_density = densities[biome]
+	var/turf/cave_bottom = locate(bottom.x, bottom.y, level.z_value)
+	var/area/caves_area = generator.plan_underground(bottom, cave_bottom, planet)
+	// the planet has handed its generator to the surface by now
+	cave_chunks = new(planet, caves_area, cave_bottom, null, list(), generator)
+	// the cave level stands for no ruins
+	cave_chunks.ruins_pending = FALSE
+	enter_level()
+	for(var/list/point as anything in generator.connector_points)
+		cave_chunks.finish(cave_chunks.chunk_at(point[1], point[2]))
+	SSmapping.reg_in_areas_in_z(list(caves_area))
 	// Specimens resolve their site per level, so the caves carry the surface's site marker too.
-	var/obj/effect/landmark/stationtrauma_research_site/cave_marker = new(locate(bottom.x, bottom.y, level.z_value))
+	var/obj/effect/landmark/stationtrauma_research_site/cave_marker = new(cave_bottom)
 	cave_marker.site_id = planet.id
 	cave_marker.name = planet.name
 
@@ -321,15 +349,21 @@ GLOBAL_LIST_EMPTY(expedition_surfaces)
 		return
 	building = TRUE
 	while(!QDELETED(src) && !QDELETED(planet))
+		var/datum/expedition_surface/level = src
 		var/chunk = next_chunk()
+		if(!chunk && cave_chunks)
+			level = cave_chunks
+			chunk = cave_chunks.next_chunk() || cave_chunks.next_rest_chunk()
 		if(!chunk && caves)
-			build_caves()
+			plan_caves()
 			continue
-		chunk ||= next_rest_chunk()
+		if(!chunk)
+			level = src
+			chunk = next_rest_chunk()
 		if(!chunk)
 			qdel(src)
 			return
-		finish(chunk)
+		level.finish(chunk)
 	building = FALSE
 
 #undef SURFACE_CHUNK_LAID

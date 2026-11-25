@@ -68,8 +68,10 @@
 	var/sky_color = "#d8e0ff"
 	/// Base light alpha of the open surface from modifiers; zero keeps TG's dark planetary surface.
 	var/light_alpha = 0
-	/// Set while [/datum/map_generator/expedition_barren/proc/generate_terrain] fills the cave level instead of the surface.
+	/// Set while the cave level is planned or built instead of the surface.
 	var/cave_level = FALSE
+	/// Planned terrain of the cave level, as surface_terrain is the surface's: see plan_caves()
+	var/list/cave_terrain
 	/// Open space carrying this profile's atmosphere, used for drops into the cave level.
 	var/turf/open/openspace/hole_type = /turf/open/openspace/airless/planetary
 	/// Relative coordinates of surface ladders and drops; the cave level keeps a clearing beneath each.
@@ -181,39 +183,23 @@
 	seed_veins(lay_terrain(turfs, generate_in))
 
 /**
- * Lays the ground and rock of [turfs] in [generate_in], without ore. On the surface every tile comes from the plan alone,
- * so the surface can be laid a chunk at a time in any order. Returns the rock laid, for seed_veins().
+ * Lays the ground and rock of [turfs] in [generate_in], without ore. Every tile comes from the level's plan alone, so a
+ * level can be laid a chunk at a time in any order. Returns the rock laid, for seed_veins().
  */
 /datum/map_generator/expedition_barren/proc/lay_terrain(list/turfs, area/generate_in)
 	budget ||= new
 	. = list()
-	var/whole_surface = !cave_level && !isnull(surface_open_percent)
-	var/planned_surface = !cave_level && surface_terrain
-	var/cave_grid = planned_surface ? null : cave_system_grid(cave_level ? 42 : surface_open_percent)
+	var/list/planned = cave_level ? (cave_terrain || plan_caves()) : surface_terrain
 	for(var/turf/tile as anything in turfs)
 		budget.yield()
 		tile.change_area(get_area(tile), generate_in)
 		var/x = tile.x - origin_x + 1
 		var/y = tile.y - origin_y + 1
+		var/terrain = planned[plan_cell(x, y)]
 		var/datum/biome/biome
-		var/terrain = floor_type
-		// The opaque rim bounds this surface within its otherwise empty z-level.
-		if(x <= 2 || y <= 2 || x > width - 2 || y > width - 2)
-			terrain = /turf/closed/indestructible/rock
-		else if(planned_surface)
-			terrain = surface_terrain[(y - 1) * width + x]
-			if(!is_reserved(x, y) && dry_surface_type(terrain))
-				biome = biome_at(x, y, FALSE)
-		else if(!is_reserved(x, y))
-			// The cave level is one mountain; its own pocket noise keeps it from mirroring surface caves.
-			var/mountain = cave_level || (!whole_surface && text2num(rustg_noise_get_at_coordinates("[seed]", "[x / biome_zoom]", "[y / biome_zoom]")) > mountain_height)
-			biome = biome_at(x, y, mountain)
-			terrain = biome.open_turf_type
-			// Noisy cliffs inside the rim replace its straight edge.
-			var/edge = max(abs(x - width / 2), abs(y - width / 2)) / (width / 2) + text2num(rustg_noise_get_at_coordinates("[seed + 4000000]", "[x / 16]", "[y / 16]")) * edge_roughness
-			// Rock around the tunnel system keeps the mountain mineable.
-			if(edge > 1 || ((mountain || whole_surface) && cave_grid[width * (y - 1) + x] != "1"))
-				terrain = rock_type
+		// wildlife keeps off the clearings kept for the camp, its routes, the ruins and the cave entrances
+		if(!is_reserved(x, y) && (cave_level ? !ispath(terrain, /turf/closed) : dry_surface_type(terrain)))
+			biome = biome_at(x, y, cave_level)
 		var/turf/generated = tile.ChangeTurf(terrain, floor_type, CHANGETURF_IGNORE_AIR)
 		if(ismineralturf(generated))
 			prepare_rock(generated)
@@ -238,6 +224,33 @@
 		rock.change_ore(ore_type)
 		if(prob(ore_type::spread_chance))
 			rock.spread_vein(ore_type)
+
+/**
+ * Plans the cave level's ground and rock: one mountain of tunnels with open rooms beneath the surface entrances, kept
+ * from mirroring the surface caves by its own grid. Returns the plan.
+ */
+/datum/map_generator/expedition_barren/proc/plan_caves()
+	var/cave_grid = cave_system_grid(42)
+	cave_terrain = new /list(width * width)
+	for(var/y in 1 to width)
+		budget?.yield()
+		for(var/x in 1 to width)
+			var/cell = plan_cell(x, y)
+			// The opaque rim bounds the level within its otherwise empty z-level.
+			if(x <= 2 || y <= 2 || x > width - 2 || y > width - 2)
+				cave_terrain[cell] = /turf/closed/indestructible/rock
+				continue
+			if(in_clearing(x, y))
+				cave_terrain[cell] = floor_type
+				continue
+			// Noisy cliffs inside the rim replace its straight edge; rock around the tunnels keeps the mountain mineable.
+			var/edge = max(abs(x - width / 2), abs(y - width / 2)) / (width / 2) + surface_noise(4000000, x, y, 16) * edge_roughness
+			if(edge > 1 || cave_grid[cell] != "1")
+				cave_terrain[cell] = rock_type
+				continue
+			var/datum/biome/biome = biome_at(x, y, TRUE)
+			cave_terrain[cell] = biome.open_turf_type
+	return cave_terrain
 
 /**
  * Native rust-g cave system carved into mountains: BSP rooms joined by MST corridors with some loops, smoothed by cellular automata.
@@ -372,43 +385,47 @@
 			ruin_interiors[cell] = TRUE
 			refresh_surface_routes()
 
-/** Build a cave beneath the planned entrances. Every cave has at least one ladder back. */
-/datum/map_generator/expedition_barren/proc/generate_underground(turf/surface_bottom, datum/space_level/caves, datum/stationtrauma_overmap_site/space/planet/planet)
-	var/turf/bottom = locate(surface_bottom.x, surface_bottom.y, caves.z_value)
+/**
+ * Plans a cave beneath the planned entrances whose south-west turf is [bottom], to be built a chunk at a time as the
+ * surface is; returns its area. Every cave has at least one ladder back.
+ */
+/datum/map_generator/expedition_barren/proc/plan_underground(turf/surface_bottom, turf/bottom, datum/stationtrauma_overmap_site/space/planet/planet)
 	var/area/expedition_planet/barren/caves_area = new
 	caves_area.name = "[planet.name]: пещеры"
 	cave_level = TRUE
-	var/list/cave_turfs = block(bottom, locate(bottom.x + width - 1, bottom.y + width - 1, bottom.z))
-	generate_terrain(cave_turfs, caves_area)
-	// The cave level is laid whole, so each pass places at once on what earlier ones left.
+	plan_caves()
 	begin_decoration(bottom)
 	place_features(caves_area, cave_feature_maps, cave_feature_count)
-	run_planned_work()
-	for(var/datum/biome/biome as anything in biome_turfs)
-		biome.fauna_density *= cave_fauna_multiplier
-	populate_biomes()
 	place_nests()
-	run_planned_work()
 	place_dig_sites(caves_area, planet, rand(4, 6), rand(2, 3))
-	run_planned_work()
-	// Research sources wait in open pockets away from the connectors and features.
+	// Research sources wait in open pockets away from the entrances and features.
 	var/list/pockets = list()
-	for(var/turf/open/tile in cave_turfs)
-		if(tile.loc == caves_area && dry_surface_type(tile.type) && !LAZYACCESS(feature_turfs, tile) && !in_clearing(tile.x - origin_x + 1, tile.y - origin_y + 1, 6) && !tile.is_blocked_turf(TRUE))
-			pockets += tile
+	for(var/cell in 1 to width * width)
+		var/x = (cell - 1) % width + 1
+		var/y = round((cell - 1) / width) + 1
+		if(dry_surface_type(cave_terrain[cell]) && !in_clearing(x, y, 6) && plan_free(x, y))
+			pockets += cell
 	for(var/index in 1 to min(rand(0, cave_source_count), length(pockets)))
-		new source_type(pick_n_take(pockets))
+		var/cell = pick_n_take(pockets)
+		var/x = (cell - 1) % width + 1
+		var/y = round((cell - 1) / width) + 1
+		plan_take(x, y)
+		plan_work(x, y, x, y, CALLBACK(src, PROC_REF(set_source), level_turf(x, y)))
 	for(var/index in 1 to length(connector_points))
 		var/list/point = connector_points[index]
-		var/turf/upper = locate(origin_x + point[1] - 1, origin_y + point[2] - 1, surface_bottom.z)
-		if(index <= cave_ladders)
-			var/obj/structure/ladder/unbreakable/lower_ladder = new(locate(upper.x, upper.y, caves.z_value))
-			new /obj/structure/ladder/unbreakable(upper, null, lower_ladder)
-		else
-			upper.ChangeTurf(hole_type, hole_type, CHANGETURF_IGNORE_AIR)
-	SSmapping.reg_in_areas_in_z(list(caves_area))
-	smooth_zlevel(caves.z_value)
-	return length(connector_points)
+		plan_take(point[1], point[2])
+		var/turf/upper = locate(surface_bottom.x + point[1] - 1, surface_bottom.y + point[2] - 1, surface_bottom.z)
+		plan_work(point[1], point[2], point[1], point[2], CALLBACK(src, PROC_REF(open_cave_entrance), upper, level_turf(point[1], point[2]), index <= cave_ladders))
+	return caves_area
+
+/// Opens a planned way down from [upper] on the built surface to [lower] in the caves: a [ladder], or else a drop
+/datum/map_generator/expedition_barren/proc/open_cave_entrance(turf/upper, turf/lower, ladder)
+	if(ladder)
+		var/obj/structure/ladder/unbreakable/lower_ladder = new(lower)
+		new /obj/structure/ladder/unbreakable(upper, null, lower_ladder)
+	else
+		upper.ChangeTurf(hole_type, hole_type, CHANGETURF_IGNORE_AIR)
+	return TRUE
 
 /** Populate the generated biomes with flora, then settle their fauna in packs; fauna never starts near the camp or on placed features. */
 /datum/map_generator/expedition_barren/proc/populate_biomes()

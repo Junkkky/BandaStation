@@ -2,9 +2,8 @@
  * # Planned work
  *
  * Everything placed on a level is first chosen against what lies there, then built as work over the rectangle it
- * touches. On the surface the choice reads the plan, so the whole surface is decorated on paper before its ground is
- * laid, and each piece of work can wait for the chunks under it. The cave level is laid whole first, so there the
- * choice reads the laid turfs and the work runs at once.
+ * touches. The choice reads the level's plan, so a whole level is decorated on paper before its ground is laid, and
+ * each piece of work can wait for the chunks under it.
  */
 /datum/map_generator/expedition_barren
 	/// South-west turf of the level being decorated: see begin_decoration()
@@ -31,24 +30,16 @@
 /datum/map_generator/expedition_barren/proc/level_turf(x, y)
 	return locate(level_bottom.x + x - 1, level_bottom.y + y - 1, level_bottom.z)
 
-/// What lies at relative [x], [y]: the planned terrain on the surface, the laid turf's type in the caves. Null outside the square.
+/// The planned terrain at relative [x], [y] of the level being decorated. Null outside the square.
 /datum/map_generator/expedition_barren/proc/terrain_at(x, y)
 	if(x < 1 || y < 1 || x > width || y > width)
 		return null
-	if(!cave_level && surface_terrain)
-		return surface_terrain[plan_cell(x, y)]
-	var/turf/tile = level_turf(x, y)
-	return tile?.type
+	var/list/planned = cave_level ? cave_terrain : surface_terrain
+	return planned[plan_cell(x, y)]
 
-/// Whether nothing is planned yet at relative [x], [y], nor, on the laid cave level, standing there already
+/// Whether nothing is planned yet at relative [x], [y]
 /datum/map_generator/expedition_barren/proc/plan_free(x, y)
-	if(x < 1 || y < 1 || x > width || y > width || plan_taken[plan_cell(x, y)])
-		return FALSE
-	if(cave_level)
-		var/turf/tile = level_turf(x, y)
-		// rock is dense by nature; only what stands on open ground takes it
-		return !isopenturf(tile) || !tile.is_blocked_turf()
-	return TRUE
+	return x >= 1 && y >= 1 && x <= width && y <= width && !plan_taken[plan_cell(x, y)]
 
 /// Marks relative [x], [y] as taken by something planned there
 /datum/map_generator/expedition_barren/proc/plan_take(x, y)
@@ -75,18 +66,3 @@
  */
 /datum/map_generator/expedition_barren/proc/plan_work(west, south, east, north, datum/callback/work, critical = FALSE, life = 0)
 	planned_work += list(list(west, south, east, north, work, critical, life))
-
-/**
- * Runs the planned work in planning order; returns FALSE if a critical piece failed.
- * ponytail: runs all of it at once, the level being laid whole; per chunk once the chunk scheduler lays the surface lazily.
- */
-/datum/map_generator/expedition_barren/proc/run_planned_work()
-	var/list/work_list = planned_work
-	planned_work = list()
-	for(var/list/planned as anything in work_list)
-		var/datum/callback/work = planned[5]
-		var/done = work.Invoke()
-		if(planned[6] && !done)
-			return FALSE
-		budget?.yield()
-	return TRUE

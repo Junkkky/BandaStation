@@ -664,6 +664,8 @@
 					var/left = plant.pixel_w - ICON_SIZE_X / 2
 					var/bottom = plant.pixel_z - ICON_SIZE_Y / 2
 					reach = max(reach, -left, left + plant_size[1], -bottom, bottom + plant_size[2])
+				// the storm already rages over the surface area the ground will join
+				storm_parts += landing_view_storm_over(planned[5], weather_by_area, offset_w, offset_z)
 				continue
 			if(!ground || isspaceturf(ground))
 				continue
@@ -706,15 +708,7 @@
 					var/left = offset_w + thing.pixel_x + thing.pixel_w - ICON_SIZE_X / 2
 					var/bottom = offset_z + thing.pixel_y + thing.pixel_z - ICON_SIZE_Y / 2
 					reach = max(reach, -left, left + size[1], -bottom, bottom + size[2])
-			var/list/storm = weather_by_area[ground_area]
-			if(isnull(storm))
-				storm = landing_view_weather(ground_area)
-				weather_by_area[ground_area] = storm
-			for(var/mutable_appearance/falling as anything in storm)
-				var/mutable_appearance/over_tile = new(falling)
-				over_tile.pixel_w = offset_w
-				over_tile.pixel_z = offset_z
-				storm_parts += over_tile
+			storm_parts += landing_view_storm_over(ground_area, weather_by_area, offset_w, offset_z)
 	if(!found)
 		return null
 	// over everything standing there, as the world draws weather
@@ -742,6 +736,19 @@
 		size = list(sheet.Width(), sheet.Height())
 		known["[icon_file]"] = size
 	return size
+
+/// The weather over [ground_area] as looks for one tile shifted by [offset_w], [offset_z]; areas met are kept in [weather_by_area]
+/proc/landing_view_storm_over(area/ground_area, list/weather_by_area, offset_w, offset_z)
+	. = list()
+	var/list/storm = weather_by_area[ground_area]
+	if(isnull(storm))
+		storm = landing_view_weather(ground_area)
+		weather_by_area[ground_area] = storm
+	for(var/mutable_appearance/falling as anything in storm)
+		var/mutable_appearance/over_tile = new(falling)
+		over_tile.pixel_w = offset_w
+		over_tile.pixel_z = offset_z
+		. += over_tile
 
 /// The weather falling on every tile of [ground_area] right now, as looks for a ground picture (none: an empty list)
 /proc/landing_view_weather(area/ground_area)

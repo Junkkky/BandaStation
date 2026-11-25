@@ -124,6 +124,15 @@
 		if(isspaceturf(tile))
 			holes++
 	TEST_ASSERT_EQUAL(holes, 0, "Every tile of the surface square must be laid, the chunk seams included.")
+	// The cave level is laid a chunk at a time as well, and its ladders back up stand once the ground under them does.
+	var/ladders = 0
+	for(var/turf/tile as anything in block(surface_left, surface_bottom, planet.berth.z - 1, surface_left + planet.surface_width - 1, surface_bottom + planet.surface_width - 1, planet.berth.z - 1))
+		if(isspaceturf(tile))
+			holes++
+		if(locate(/obj/structure/ladder/unbreakable) in tile)
+			ladders++
+	TEST_ASSERT_EQUAL(holes, 0, "Every tile of the cave square must be laid, the chunk seams included.")
+	TEST_ASSERT(ladders, "The cave level must have a ladder back to the surface.")
 	TEST_ASSERT_EQUAL(length(planet.pads), 2, "The planet must chart its two extra landing pads (ST_PLANET_EXTRA_PADS)")
 	var/datum/stationtrauma_overmap_site/space/extra_pad = planet.pads[1]
 	TEST_ASSERT(extra_pad.berth && extra_pad.berth != planet.berth && extra_pad.berth.z == planet.berth.z, "The camp must clear a second landing pad beside the first")
