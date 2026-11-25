@@ -30,10 +30,6 @@
 	name = "Эсминец НТ: оружейная"
 	icon_state = "armory"
 
-/// Only the commander and patrol officers may open the special equipment locker.
-/datum/id_trim/nt_patrol/armory
-	access = list("nt_patrol_armory")
-
 /obj/item/encryptionkey/nt_patrol
 	name = "NT patrol encryption key"
 	flags_1 = parent_type::flags_1 | NO_NEW_GAGS_PREVIEW_1

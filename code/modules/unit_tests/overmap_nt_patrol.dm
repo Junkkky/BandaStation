@@ -371,28 +371,34 @@
 /datum/unit_test/overmap_nt_patrol/proc/check_armory(obj/docking_port/mobile/stationtrauma_space/ship)
 	var/obj/machinery/door/airlock/highsecurity/armory_hatch
 	var/obj/structure/closet/secure_closet/gear_locker
-	var/disablers = 0
-	var/energy_guns = 0
+	var/obj/structure/closet/crate/secure/weapon/ammo_crate
+	var/obj/item/gun/energy/disabler/smg/disabler
+	var/obj/item/gun/ballistic/automatic/laser/laser_rifle
 	var/rechargers = 0
 	for(var/turf/tile as anything in ship.return_turfs())
 		if(!istype(get_area(tile), /area/shuttle/stationtrauma_space/nt_patrol/armory))
 			continue
 		armory_hatch ||= locate(/obj/machinery/door/airlock/highsecurity) in tile
 		gear_locker ||= locate(/obj/structure/closet/secure_closet) in tile
-		for(var/obj/item/gun/energy/weapon in tile)
-			if(istype(weapon, /obj/item/gun/energy/disabler))
-				disablers++
-			else if(istype(weapon, /obj/item/gun/energy/e_gun))
-				energy_guns++
+		ammo_crate ||= locate(/obj/structure/closet/crate/secure/weapon) in tile
+		if(locate(/obj/structure/rack/gunrack) in tile)
+			disabler ||= locate(/obj/item/gun/energy/disabler/smg) in tile
+			laser_rifle ||= locate(/obj/item/gun/ballistic/automatic/laser) in tile
 		if(locate(/obj/machinery/recharger) in tile)
 			rechargers++
 	var/datum/id_trim/nt_patrol/armory/trim = allocate(/datum/id_trim/nt_patrol/armory)
 	TEST_ASSERT(armory_hatch?.check_access_list(trim.access), "The patrol officer's ID must open the armory")
 	TEST_ASSERT(gear_locker?.locked && gear_locker.check_access_list(trim.access) && !gear_locker.check_access_list(list()), "The patrol armory ID must unlock the equipment locker")
 	TEST_ASSERT((locate(/obj/item/shield/riot) in gear_locker) && (locate(/obj/item/clothing/suit/armor/riot) in gear_locker), "The patrol shield and armor must load inside the locker")
-	TEST_ASSERT_EQUAL(disablers, 3, "The three armory racks must each stock one disabler")
-	TEST_ASSERT_EQUAL(energy_guns, 3, "The armory must stock three energy guns")
+	TEST_ASSERT(disabler && laser_rifle && disabler.loc != laser_rifle.loc, "The Amber and Red weapons must load onto separate racks")
 	TEST_ASSERT_EQUAL(rechargers, 1, "The armory must provide a recharger")
+	TEST_ASSERT(ammo_crate?.locked && ammo_crate.check_access_list(list(ACCESS_CENT_SPECOPS)) && !ammo_crate.check_access_list(list()), "Patrol crew must be able to unlock the ammunition reserve")
+	for(var/obj/machinery/stationtrauma_autocannon/gun as anything in ship.ship_autocannons)
+		var/rounds = 0
+		for(var/obj/item/stack/stationtrauma_autocannon_shell/ammo in ammo_crate)
+			if(ammo.merge_type == gun.ammo_type)
+				rounds += ammo.get_amount()
+		TEST_ASSERT_EQUAL(rounds, 2 * gun.feed_capacity, "The armory crate must hold two full reloads for [gun]")
 
 /// Simulate the claim becoming invalid during the native loader's yielding work.
 /datum/unit_test/overmap_nt_patrol/proc/reject_patrol_arrival()

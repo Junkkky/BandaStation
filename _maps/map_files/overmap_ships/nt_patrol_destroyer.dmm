@@ -956,6 +956,8 @@
 /obj/item/clothing/head/helmet/toggleable/riot,
 /obj/item/clothing/suit/armor/riot,
 /obj/effect/spawner/random/armory/barrier_grenades/six,
+/obj/item/clothing/head/helmet/marine/security,
+/obj/item/clothing/suit/armor/vest/marine/security,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
 "Pb" = (
@@ -1289,6 +1291,35 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"ac" = (
+/obj/structure/rack/gunrack,
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
+	},
+/obj/effect/spawner/armory_spawn/red_armory,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"ad" = (
+/obj/structure/closet/crate/secure/weapon{
+	name = "Боезапас патрульного эсминца";
+	req_access = list("cent_specops")
+	},
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
+	},
+/obj/item/stack/stationtrauma_autocannon_shell{
+	amount = 18
+	},
+/obj/item/stack/stationtrauma_autocannon_shell/heavy{
+	amount = 8
+	},
+/obj/item/ammo_box/magazine/recharge,
+/obj/item/ammo_box/magazine/recharge,
+/obj/item/ammo_box/magazine/cm5,
+/obj/item/ammo_box/magazine/wt550m9,
+/obj/item/storage/box/beanbag,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
 
 (1,1,1) = {"
 aa
@@ -1670,7 +1701,7 @@ oh
 Fh
 OE
 vE
-Pb
+ac
 mR
 ni
 QR
@@ -1696,7 +1727,7 @@ rq
 GK
 OE
 iU
-Pb
+ad
 mR
 hu
 Zm

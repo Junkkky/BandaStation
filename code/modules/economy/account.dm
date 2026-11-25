@@ -236,10 +236,14 @@
 	if(amount_of_paychecks <= 0)
 		return FALSE
 
-	var/money_to_transfer = round(account_job.paycheck * payday_modifier * amount_of_paychecks)
-	if(amount_of_paychecks == 1)
-		money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_CREW) //We want to limit single, passive paychecks to regular crew income.
-	if(free)
+	var/money_to_transfer
+	if(account_job.externally_funded_paycheck)
+		money_to_transfer = account_job.paycheck * amount_of_paychecks
+	else
+		money_to_transfer = round(account_job.paycheck * payday_modifier * amount_of_paychecks)
+		if(amount_of_paychecks == 1)
+			money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_CREW)
+	if(free || account_job.externally_funded_paycheck)
 		adjust_money(money_to_transfer, "Нанотрейзен: Оплата смены")
 		SSblackbox.record_feedback("amount", "free_income", money_to_transfer)
 		SSeconomy.station_target += money_to_transfer

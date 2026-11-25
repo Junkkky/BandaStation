@@ -8,6 +8,8 @@
 	var/list/minimum_crew
 	/// Role in command of the crew.
 	var/commander_job
+	/// Key memory issued to the crew and shown in chat when they take their posts.
+	var/datum/memory/briefing_type
 	/// Short registration names suitable for this class of ship.
 	var/list/ship_names = list()
 
@@ -15,6 +17,7 @@
 	name = "Патрульный эсминец НТ"
 	map_path = "_maps/map_files/overmap_ships/nt_patrol_destroyer.dmm"
 	commander_job = /datum/job/away_mission/nt_patrol_commander
+	briefing_type = /datum/memory/key/nt_patrol_orders
 	ship_names = list("Брут", "Степь", "Рубеж", "Форпост", "Гранит", "Сапсан", "Дозорный", "Меридиан")
 	minimum_crew = list(
 		/datum/job/away_mission/nt_patrol_commander = 1,
@@ -535,9 +538,31 @@
 	. = ..()
 	.[1] = "<b>Ваша роль на борту: [title].</b>\n"
 
+/datum/job/away_mission/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	var/datum/roundstart_away_mission/mission = get_away_mission()
+	if(mission?.briefing_type)
+		var/datum/memory/briefing = spawned.add_mob_memory(mission.briefing_type)
+		if(briefing)
+			to_chat(player_client || spawned, boxed_message(span_notice(briefing.name)))
+
+/datum/memory/key/nt_patrol_orders
+	memory_flags = MEMORY_FLAG_NOMOOD | MEMORY_FLAG_NOLOCATION | MEMORY_FLAG_NOPERSISTENCE | MEMORY_SKIP_UNCONSCIOUS | MEMORY_NO_STORY
+
+/datum/memory/key/nt_patrol_orders/get_names()
+	var/orders = "Патрулируйте сектор. Выполняйте приказы Центрального командования и согласовывайте с ним действия эсминца."
+	var/datum/job/job = memorizer_mind.assigned_role
+	if(istype(job, /datum/job/away_mission/nt_patrol_commander))
+		orders += " Вы распоряжаетесь бюджетом на содержание эсминца. Нанотрейзен перечисляет на счёт вашей ID-карты \
+			[STARTING_PAYCHECKS * job.paycheck] кредитов при вступлении в должность и по [job.paycheck] каждые [SSeconomy.wait / (1 MINUTES)] минут. \
+			Закупайте на эти средства боеприпасы, материалы для ремонта и другие корабельные припасы."
+	return list(orders)
+
 /datum/job/away_mission/nt_patrol_commander
 	title = "Командир патруля НТ"
-	description = "Ведёт корабль и координирует действия экипажа."
+	description = "Ведёт корабль, координирует экипаж и закупает припасы на довольствие от Нанотрейзен."
+	paycheck = 1000
+	externally_funded_paycheck = TRUE
 	outfit = /datum/outfit/job/nt_patrol/commander
 
 /datum/job/away_mission/nt_patrol_engineer
@@ -581,55 +606,123 @@
 /obj/effect/landmark/away_mission/nt_patrol_officer
 	job_type = /datum/job/away_mission/nt_patrol_officer
 
+/// Patrol cards use the CentCom casing and take their credentials from the crew job.
+/obj/item/card/id/advanced/nt_patrol
+	desc = "Служебная ID-карта экипажа патрульного эсминца Нанотрейзен."
+	icon_state = "card_centcom"
+	assigned_icon_state = "assigned_centcom"
+
 /// Patrol credentials have the station and CentCom access shared by ERT field teams.
 /datum/id_trim/nt_patrol
 	assignment = "Патрульный эсминец НТ"
-	trim_state = "trim_assistant"
+	trim_state = "trim_centcom"
+	department_color = COLOR_CENTCOM_BLUE
+	subdepartment_color = COLOR_CENTCOM_BLUE
 
 /datum/id_trim/nt_patrol/New()
 	. = ..()
 	access |= list(ACCESS_CENT_GENERAL, ACCESS_CENT_SPECOPS, ACCESS_CENT_LIVING) | (SSid_access.get_region_access_list(list(REGION_ALL_STATION)) - ACCESS_CHANGE_IDS)
 
+/// The commander and patrol officers share access to the special equipment locker.
+/datum/id_trim/nt_patrol/armory
+	assignment = /datum/job/away_mission/nt_patrol_officer::title
+	trim_state = "trim_securityofficer"
+	subdepartment_color = COLOR_SECURITY_RED
+	sechud_icon_state = SECHUD_SECURITY_RESPONSE_OFFICER
+	access = list("nt_patrol_armory")
+
+/datum/id_trim/nt_patrol/armory/commander
+	assignment = /datum/job/away_mission/nt_patrol_commander::title
+	trim_state = "trim_ert_commander"
+	subdepartment_color = COLOR_CENTCOM_BLUE
+	sechud_icon_state = SECHUD_EMERGENCY_RESPONSE_TEAM_COMMANDER
+
 /datum/id_trim/nt_patrol/engineer
+	assignment = /datum/job/away_mission/nt_patrol_engineer::title
+	trim_state = "trim_stationengineer"
+	subdepartment_color = COLOR_ENGINEERING_ORANGE
+	sechud_icon_state = SECHUD_ENGINEERING_RESPONSE_OFFICER
 	access = list(ACCESS_CENT_STORAGE)
 
 /datum/id_trim/nt_patrol/medic
+	assignment = /datum/job/away_mission/nt_patrol_medic::title
+	trim_state = "trim_medicaldoctor"
+	subdepartment_color = COLOR_MEDICAL_BLUE
+	sechud_icon_state = SECHUD_MEDICAL_RESPONSE_OFFICER
 	access = list(ACCESS_CENT_MEDICAL)
 
 /// Standard patrol uniform and protective gear.
 /datum/outfit/job/nt_patrol
 	name = "Патрульный НТ"
 	jobtype = /datum/job/away_mission/nt_patrol_officer
+	id = /obj/item/card/id/advanced/nt_patrol
 	id_trim = /datum/id_trim/nt_patrol/armory
 	ear_right = /obj/item/radio/headset/nt_patrol
-	uniform = /obj/item/clothing/under/rank/security/officer
-	shoes = /obj/item/clothing/shoes/jackboots
-	head = /obj/item/clothing/head/helmet
-	suit = /obj/item/clothing/suit/armor/vest
-	backpack_contents = list(/obj/item/flashlight = 1, /obj/item/melee/baton/security/loaded = 1)
+	uniform = /obj/item/clothing/under/rank/centcom/military/ert
+	shoes = /obj/item/clothing/shoes/combat/swat
+	gloves = /obj/item/clothing/gloves/combat
+	mask = /obj/item/clothing/mask/gas/sechailer/swat
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	head = /obj/item/clothing/head/helmet/marine/security
+	suit = /obj/item/clothing/suit/armor/vest/marine/security
+	suit_store = /obj/item/gun/ballistic/automatic/laser
+	belt = /obj/item/storage/belt/military/assault/ert/full_red_security
+	l_pocket = /obj/item/modular_computer/pda/crew
+	pda_slot = ITEM_SLOT_LPOCKET
+	r_pocket = /obj/item/flashlight/seclite
+	backpack = /obj/item/storage/backpack/ert/security
+	box = /obj/item/storage/box/survival/centcom
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/hos = 1,
+		/obj/item/storage/box/handcuffs = 1,
+	)
 
 /datum/outfit/job/nt_patrol/commander
 	name = "Командир патруля НТ"
 	jobtype = /datum/job/away_mission/nt_patrol_commander
-	head = null
-	suit = null
-	backpack_contents = list(/obj/item/flashlight = 1)
+	id_trim = /datum/id_trim/nt_patrol/armory/commander
+	head = /obj/item/clothing/head/helmet/marine
+	suit = /obj/item/clothing/suit/armor/vest/marine
+	suit_store = /obj/item/gun/energy/e_gun/nuclear
+	belt = /obj/item/storage/belt/military/assault/ert/full_red_commander
+	backpack = /obj/item/storage/backpack/ert
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/hos = 1,
+		/obj/item/clothing/head/beret/ert/red = 1,
+	)
 
 /datum/outfit/job/nt_patrol/engineer
 	name = "Бортинженер патруля НТ"
 	jobtype = /datum/job/away_mission/nt_patrol_engineer
 	id_trim = /datum/id_trim/nt_patrol/engineer
-	uniform = /obj/item/clothing/under/rank/engineering/engineer
-	head = /obj/item/clothing/head/utility/hardhat/welding/up
-	suit = null
-	backpack_contents = list(/obj/item/storage/toolbox/mechanical = 1)
+	uniform = /obj/item/clothing/under/rank/centcom/military/eng/ert
+	head = /obj/item/clothing/head/helmet/swat/nanotrasen
+	suit = /obj/item/clothing/suit/armor/swat/ert
+	suit_store = /obj/item/gun/energy/disabler/smg
+	glasses = /obj/item/clothing/glasses/welding/up
+	belt = /obj/item/storage/belt/utility/full/powertools
+	r_pocket = /obj/item/rcd_ammo/large
+	backpack = /obj/item/storage/backpack/ert/engineer
+	backpack_contents = list(
+		/obj/item/construction/rcd/loaded = 1,
+		/obj/item/pipe_dispenser = 1,
+	)
+	skillchips = list(/obj/item/skillchip/job/engineer)
 
 /datum/outfit/job/nt_patrol/medic
 	name = "Фельдшер патруля НТ"
 	jobtype = /datum/job/away_mission/nt_patrol_medic
 	id_trim = /datum/id_trim/nt_patrol/medic
 	uniform = /obj/item/clothing/under/rank/medical/doctor
-	head = null
-	suit = null
-	glasses = /obj/item/clothing/glasses/hud/health
-	backpack_contents = list(/obj/item/storage/medkit/regular = 1)
+	head = /obj/item/clothing/head/helmet/swat/nanotrasen
+	suit = /obj/item/clothing/suit/armor/swat/ert
+	suit_store = /obj/item/gun/energy/disabler
+	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
+	belt = /obj/item/storage/belt/medical/paramedic
+	r_pocket = /obj/item/healthanalyzer/advanced
+	backpack = /obj/item/storage/backpack/ert/medical
+	backpack_contents = list(
+		/obj/item/storage/medkit/regular = 1,
+		/obj/item/storage/medkit/surgery = 1,
+	)
+	skillchips = list(/obj/item/skillchip/entrails_reader)

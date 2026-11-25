@@ -65,6 +65,9 @@
 	max_amount = 30
 	w_class = WEIGHT_CLASS_NORMAL
 
+/obj/item/stack/stationtrauma_autocannon_shell/full
+	amount = /obj/item/stack/stationtrauma_autocannon_shell::max_amount
+
 /obj/item/stack/stationtrauma_autocannon_shell/heavy
 	name = "тяжёлые кинетические снаряды"
 	singular_name = "тяжёлый кинетический снаряд"
@@ -72,6 +75,9 @@
 	icon = 'modular_bandastation/space_combat/icons/patrol_heavy_ammunition.dmi'
 	merge_type = /obj/item/stack/stationtrauma_autocannon_shell/heavy
 	max_amount = 8
+
+/obj/item/stack/stationtrauma_autocannon_shell/heavy/full
+	amount = /obj/item/stack/stationtrauma_autocannon_shell/heavy::max_amount
 
 /obj/item/stack/stationtrauma_autocannon_shell/update_icon_state()
 	. = ..()
