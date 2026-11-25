@@ -103,6 +103,15 @@
 /datum/component/examine_panel/ui_state(mob/user)
 	return GLOB.always_state
 
+/datum/component/examine_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(. || action != "set_tattoo_saved" || !ishuman(parent) || ui.user != parent)
+		return
+	var/mob/living/carbon/human/wearer = parent
+	if(!wearer.set_visible_tattoo_saved(ui.user, params["id"], params["save"]))
+		to_chat(wearer, span_warning("Не удалось изменить сохранение этой татуировки."))
+	return TRUE
+
 /datum/component/examine_panel/ui_close(mob/user)
 	user.client.clear_map(examine_panel_screen.assigned_map)
 
@@ -144,6 +153,7 @@
 		var/mob/living/carbon/human/holder_human = parent
 		obscured = holder_human.is_face_obscured()
 		tgui_flavor_text = obscured ? "Скрывает лицо" : flavor_text
+		data["tattoos"] = holder_human.get_visible_drawn_tattoos(user)
 		if(!obscured)
 			data["portrait_urls"] = get_portrait_urls(holder_human)
 

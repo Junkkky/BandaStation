@@ -43,6 +43,7 @@ export const JOBS_RU = {
   Clown: 'Клоун',
   Mime: 'Мим',
   Curator: 'Куратор',
+  'Tattoo Artist': 'Тату-мастер',
   Lawyer: 'Агент внутренних дел',
   Chaplain: 'Священник',
   Psychologist: 'Психолог',

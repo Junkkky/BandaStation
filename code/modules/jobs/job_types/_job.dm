@@ -623,6 +623,8 @@
 			)
 	dna.update_dna_identity()
 	updateappearance()
+	if(!fully_randomize && !randomise_job_slot)
+		bind_tattoo_character(player_client.prefs, player_client.prefs.default_slot)
 	return TRUE
 
 /mob/living/silicon/ai/apply_prefs_job(client/player_client, datum/job/job)
