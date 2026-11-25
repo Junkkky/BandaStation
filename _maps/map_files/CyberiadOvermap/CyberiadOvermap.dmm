@@ -29508,6 +29508,7 @@
 /obj/effect/turf_decal/trimline/white/warning{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "hcl" = (
@@ -32211,6 +32212,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
+"hGR" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "hGS" = (
 /obj/item/kirbyplants/random,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -47705,6 +47711,12 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/station/service/bar/backroom/ghetto)
+"lqw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "lqy" = (
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/security/entrance,
@@ -66763,6 +66775,14 @@
 /obj/machinery/door/firedoor/heavy,
 /turf/open/floor/iron/dark,
 /area/station/science/server)
+"pSs" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/trimline/white/warning{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "pSx" = (
 /obj/structure/table/glass,
 /obj/item/storage/bag/trash,
@@ -85552,6 +85572,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
+"uxL" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/port/aft)
 "uxN" = (
 /obj/structure/table,
 /obj/item/soap{
@@ -91854,6 +91883,12 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/drone_bay/ghetto)
+"waN" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "wba" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -172907,9 +172942,9 @@ tYD
 tYD
 pop
 kQu
+vQu
 xmL
-xmL
-oWh
+pSs
 qWz
 tYD
 tYD
@@ -174192,9 +174227,9 @@ kJd
 kJd
 hbD
 ciU
-kYz
+hGR
 xmL
-oWh
+pSs
 qWz
 tYD
 tYD
@@ -174706,7 +174741,7 @@ tYD
 tYD
 pop
 uWq
-otq
+waN
 xmL
 oWh
 qWz
@@ -174963,7 +174998,7 @@ tYD
 tYD
 hbD
 eoS
-otq
+waN
 xmL
 oWh
 qWz
@@ -175222,7 +175257,7 @@ pop
 xRO
 cRK
 xNf
-oWh
+pSs
 qWz
 tYD
 tYD
@@ -175991,8 +176026,8 @@ tYD
 tYD
 pop
 uWq
-otq
-xmL
+waN
+vQu
 oWh
 qWz
 tYD
@@ -176507,7 +176542,7 @@ hbD
 ciU
 otq
 xmL
-oWh
+pSs
 qWz
 tYD
 tYD
@@ -177019,7 +177054,7 @@ tYD
 tYD
 hbD
 uYz
-otq
+waN
 xmL
 oWh
 qWz
@@ -177534,7 +177569,7 @@ tYD
 pop
 lbO
 otq
-xmL
+vQu
 oWh
 qWz
 tYD
@@ -178561,7 +178596,7 @@ rUn
 vQu
 dQR
 xmL
-otq
+waN
 xmL
 oWh
 qWz
@@ -178819,7 +178854,7 @@ olE
 jUs
 olE
 otq
-xmL
+vQu
 oWh
 qWz
 tYD
@@ -179075,7 +179110,7 @@ olE
 xFk
 jAy
 fZu
-xmL
+lqw
 eZo
 oWh
 qWz
@@ -179866,7 +179901,7 @@ oXj
 xRt
 xRt
 xRt
-xRt
+spZ
 xRt
 tYD
 tYD
@@ -180123,7 +180158,7 @@ oXj
 xRt
 xRt
 xRt
-xRt
+uxL
 xRt
 tYD
 tYD
@@ -180377,7 +180412,7 @@ qxs
 lDP
 iAX
 oXj
-oXc
+kAy
 oXc
 oXc
 oXc

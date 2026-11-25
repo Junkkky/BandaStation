@@ -1366,6 +1366,19 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/southwing)
+"kB" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 9
+	},
+/obj/structure/chair/sofa/left{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/cobweb,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/crew)
 "kD" = (
 /obj/structure/platform{
 	dir = 4
@@ -3393,18 +3406,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/exterior)
-"Ad" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 8
-	},
-/obj/structure/chair/sofa{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/textured_large,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/crew)
 "As" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8
@@ -4866,6 +4867,18 @@
 	},
 /turf/open/floor/plating/rust,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/eastbay)
+"MC" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/structure/chair/sofa/right{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/crew)
 "MJ" = (
 /turf/closed/wall/rust,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/crew)
@@ -5447,19 +5460,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
-	},
-/turf/open/floor/iron/textured_large,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/crew)
-"RL" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 9
-	},
-/obj/structure/chair/sofa{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/cobweb,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 6
 	},
 /turf/open/floor/iron/textured_large,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_facility/ruin/wasteplanet/facility/crew)
@@ -8545,8 +8545,8 @@ wa
 CG
 QZ
 pK
-RL
-Ad
+kB
+MC
 lC
 Gv
 iU

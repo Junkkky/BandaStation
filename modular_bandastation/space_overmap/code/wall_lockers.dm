@@ -46,6 +46,18 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/wall/engineering/atmospherics,
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/wall/medical, 32)
 
+/obj/structure/closet/wall/medical/doctor
+	name = "настенный шкафчик врача"
+	secure = TRUE
+	locked = TRUE
+	req_access = list(ACCESS_SURGERY)
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/wall/medical/doctor, 32)
+
+/obj/structure/closet/wall/medical/doctor/PopulateContents()
+	..()
+	populate_doctor_supplies()
+
 /obj/structure/closet/wall/medical/chemistry
 	name = "настенный шкафчик химика"
 	icon_door = "chem"
@@ -103,6 +115,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/wall/emergency, 32)
 /obj/structure/closet/wall/emergency/PopulateContents()
 	..()
 	populate_emergency_supplies()
+
+/obj/structure/closet/wall/fire
+	name = "настенный пожарный шкафчик"
+	icon_state = "fire"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/closet/wall/fire, 32)
+
+/obj/structure/closet/wall/fire/PopulateContents()
+	..()
+	populate_fire_supplies()
 
 /obj/structure/closet/wall/nanotrasen
 	name = "настенный шкафчик НаноТрейзен"

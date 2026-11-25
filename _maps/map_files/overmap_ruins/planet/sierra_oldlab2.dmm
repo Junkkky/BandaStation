@@ -936,17 +936,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab2/oldlab2/hall)
-"fQ" = (
-/obj/structure/table,
-/obj/structure/closet/secure_closet/medical3{
-	pixel_x = -28
-	},
-/obj/effect/spawner/random/medical/minor_healing,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
-	initialize_directions = 3
-	},
-/turf/open/floor/iron/white,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab2/oldlab2/medical)
 "fS" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
@@ -5574,6 +5563,15 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab2/oldlab2/test2)
+"EQ" = (
+/obj/structure/table,
+/obj/structure/closet/wall/medical/doctor/directional/west,
+/obj/effect/spawner/random/medical/minor_healing,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	initialize_directions = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab2/oldlab2/medical)
 "EU" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/machinery/atmospherics/components/unary/portables_connector{
@@ -7499,7 +7497,7 @@
 "Pm" = (
 /obj/item/paper{
 	name = "полевой журнал: Заброшенный научный комплекс";
-	 default_raw_text = "Объект: Заброшенный научный комплекс. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	default_raw_text = "Объект: Заброшенный научный комплекс. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
 /obj/machinery/computer/monitor{
 	dir = 8
@@ -7699,6 +7697,10 @@
 "Qk" = (
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab2/oldlab2/recandlockers)
+"Qm" = (
+/obj/machinery/mech_bay_recharge_port,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab2/oldlab2/Airlock)
 "Qn" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
@@ -7758,11 +7760,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab2/oldlab2/server)
-"QB" = (
-/obj/vehicle/sealed/mecha/ripley,
-/obj/machinery/mech_bay_recharge_port,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab2/oldlab2/Airlock)
 "QC" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	dir = 4;
@@ -10006,7 +10003,7 @@ IP
 mn
 lM
 Up
-fQ
+EQ
 TQ
 mL
 PQ
@@ -10923,7 +10920,7 @@ Qo
 tZ
 qp
 EK
-QB
+Qm
 Lu
 UI
 Gc
