@@ -185,7 +185,6 @@
 	desc = "A standard cloak bearing the Wolf's Doom colors."
 	icon = 'modular_bandastation/prime_only/icons/centcom/normandy_items.dmi'
 	icon_state = "cloak_standard"
-	inhand_icon_state = "qmcloak"
 	worn_icon = 'modular_bandastation/prime_only/icons/centcom/normandy_suit.dmi'
 	worn_icon_state = "cloak_standart"
 	worn_x_dimension = 32
