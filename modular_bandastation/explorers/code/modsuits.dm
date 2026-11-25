@@ -20,7 +20,8 @@
 			/obj/item/clothing/head/mod = list(
 				UNSEALED_CLOTHING = SNUG_FIT|THICKMATERIAL,
 				SEALED_CLOTHING = STOPSPRESSUREDAMAGE|HEADINTERNALS,
-				UNSEALED_INVISIBILITY = HIDEFACIALHAIR|HIDEEARS|HIDEHAIR|HIDESNOUT,
+				// the open helmet is a frame round the head: hair and face show through
+				UNSEALED_INVISIBILITY = HIDEEARS,
 				SEALED_INVISIBILITY = HIDEMASK|HIDEEYES|HIDEFACE,
 				SEALED_COVER = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF,
 				UNSEALED_MESSAGE = HELMET_UNSEAL_MESSAGE,
@@ -74,6 +75,8 @@
 
 /datum/mod_theme/expedition/pilot/New()
 	variants = list("expedition_pilot" = variants["expedition"])
+	// its helmet is a solid shell even open
+	variants["expedition_pilot"][/obj/item/clothing/head/mod][UNSEALED_INVISIBILITY] = HIDEFACIALHAIR|HIDEEARS|HIDEHAIR|HIDESNOUT
 	return ..()
 
 /// The leader's heavy suit, the A-Unit hardsuit of SierraBay.
@@ -88,6 +91,8 @@
 
 /datum/mod_theme/expedition/heavy/New()
 	variants = list("expedition_heavy" = variants["expedition"])
+	// its helmet is a solid shell even open
+	variants["expedition_heavy"][/obj/item/clothing/head/mod][UNSEALED_INVISIBILITY] = HIDEFACIALHAIR|HIDEEARS|HIDEHAIR|HIDESNOUT
 	return ..()
 
 /datum/armor/mod_theme_expedition_pilot
@@ -144,6 +149,8 @@
 
 /datum/mod_theme/expedition/engineer/New()
 	variants = list("expedition_engineer" = variants["expedition"])
+	// its helmet is a solid shell even open
+	variants["expedition_engineer"][/obj/item/clothing/head/mod][UNSEALED_INVISIBILITY] = HIDEFACIALHAIR|HIDEEARS|HIDEHAIR|HIDESNOUT
 	return ..()
 
 /obj/item/mod/control/pre_equipped/expedition
