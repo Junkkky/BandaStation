@@ -647,6 +647,9 @@
 	pos_x = site.pos_x
 	pos_y = site.pos_y
 	status = (site.landing || hangar) ? "Посадка: [site.name]" : "Стыковка: [site.name]"
+	// the station hears which berth a hull has come to; ships set at their berths before the round are not news
+	if(slot && is_station_level(slot.z) && SSticker.HasRoundStarted())
+		minor_announce("«[vessel.name]» прибыл к причалу «[site.name]».", "Диспетчерская станции")
 	if(hangar)
 		if(!QDELETED(slot))
 			slot.show_hangar_glow(src)
