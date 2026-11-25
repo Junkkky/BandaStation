@@ -56,7 +56,7 @@
 	aloud_page = page_number
 	aloud_revision = revision
 	aloud_phrases = phrases
-	RegisterSignal(user, list(COMSIG_MOB_LOGOUT, COMSIG_QDELETING), PROC_REF(stop_reading_aloud))
+	RegisterSignals(user, list(COMSIG_MOB_LOGOUT, COMSIG_QDELETING), PROC_REF(stop_reading_aloud))
 	TIMER_COOLDOWN_START(user, COOLDOWN_BOOK_READING, 1 SECONDS)
 	// Timers created by this callback retain the speaker as usr for IC slow mode and filters.
 	world.push_usr(user, CALLBACK(src, PROC_REF(read_next_phrase)))
