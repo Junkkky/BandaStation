@@ -20869,7 +20869,7 @@
 /obj/machinery/computer/stationtrauma_dock_controller/medium{
 	dir = 8;
 	dock_name = "Кибериада прибытие М";
-	site_id = "cyberiad2"
+	site_id = "cyberiad"
 	},
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/bot,

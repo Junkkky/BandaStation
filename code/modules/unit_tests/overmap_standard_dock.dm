@@ -924,7 +924,7 @@
 	TEST_ASSERT_EQUAL(ship.get_docked(), bay.active_berth, "Native movement must finish at the technical M berth")
 	TEST_ASSERT_EQUAL(ship.width, hull_width, "The native berth must keep the small hull's width")
 	TEST_ASSERT_EQUAL(hatch.gangway?.wall, wall, "The small hull must deploy a gangway to the M wall")
-/// The prepared station M dock must be available when the live sector has finished loading.
+/// Confirm Cyberiad starts with a standard station berth and its cargo ship docked.
 /datum/unit_test/overmap_controller_roundstart
 	test_flags = UNIT_TEST_MAP_TEST
 
@@ -932,22 +932,22 @@
 	if(SSmapping.current_map.space_overmap?["station_id"] != "cyberiad")
 		return
 	var/datum/stationtrauma_overmap_sector/space/home = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
-	TEST_ASSERT(home?.ready, "Cyberiad Overmap must start with a ready home sector")
+	TEST_ASSERT(home?.ready && SSstationtrauma_space_voyage.initialized, "Cyberiad Overmap must finish initializing its fleet")
 	var/datum/stationtrauma_overmap_site/space/station_site = home.sites["cyberiad"]
-	var/obj/docking_port/stationary/stationtrauma_space_station/service_berth = station_site?.berth
-	TEST_ASSERT(istype(service_berth), "The station controller must publish the native service berth before guests are placed")
-	var/obj/docking_port/stationary/evacuation = SSshuttle.getDock("emergency_home")
-	TEST_ASSERT_NOTNULL(evacuation, "The native evacuation port must remain present")
-	TEST_ASSERT_EQUAL(get_turf(service_berth), get_turf(evacuation), "The service and evacuation berths must still share the same anchor")
-	TEST_ASSERT(service_berth.width == 21 && service_berth.height == 32 && service_berth.dir == NORTH && service_berth.dwidth == 0 && service_berth.dheight == 16, "The service berth must preserve the original native docking geometry")
-	var/datum/stationtrauma_overmap_site/space/site = home.sites["cyberiad_m_dock"]
-	TEST_ASSERT_NOTNULL(site, "Cyberiad's prepared M dock must be available immediately after startup")
-	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/berth = site.berth
-	TEST_ASSERT(istype(berth), "The destination must be a controller-owned native berth")
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/berth = station_site?.berth
+	TEST_ASSERT(istype(berth), "Cyberiad's station ID must resolve to a standard controller-owned berth")
 	var/obj/machinery/computer/stationtrauma_dock_controller/medium/controller = berth.controller_ref?.resolve()
 	TEST_ASSERT(istype(controller) && controller.owned_slot == berth, "The mapped controller must own the only berth")
 	TEST_ASSERT_EQUAL(berth.x, 49, "The M berth must keep its existing X coordinate")
 	TEST_ASSERT_EQUAL(berth.y, 99, "The M berth must keep its existing Y coordinate")
+	TEST_ASSERT_NOTNULL(SSshuttle.getDock("emergency_home"), "The native evacuation port must remain present")
+	var/datum/stationtrauma_overmap_site/space/cargo_site = home.sites["cyberiad_cargo_s_dock_2"]
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/cargo_slot = cargo_site?.berth
+	TEST_ASSERT(istype(cargo_slot) && cargo_slot.active_berth, "Cargo S #2 must have a native berth for the starting ship")
+	var/datum/stationtrauma_overmap/space/cargo = home.ships["overmap_cargo_s"]
+	TEST_ASSERT_EQUAL(cargo?.docked, cargo_site, "The cargo ship must start docked at Cargo S #2")
+	TEST_ASSERT_EQUAL(cargo.vessel.get_docked(), cargo_slot.active_berth, "The cargo ship must be physically at Cargo S #2")
+	TEST_ASSERT_EQUAL(length(cargo_slot.active_berth.gangways), 1, "The cargo ship must have a gangway to the station")
 	var/datum/stationtrauma_overmap_site/space/industrial = home.sites["trade_industrial_m"]
 	TEST_ASSERT_NOTNULL(industrial, "The converted trade controller must publish the previous berth ID")
 	TEST_ASSERT(industrial.docking_target?.automatic, "The trade outpost must still handle docking requests automatically")

@@ -81,7 +81,7 @@
 	overmap_x = 1000;
 	ship_class = "small";
 	shuttle_id = "overmap_cargo_s";
-	starting_dock = "cyberiad_cargo_s_dock"
+	starting_dock = "cyberiad_cargo_s_dock_2"
 	},
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
