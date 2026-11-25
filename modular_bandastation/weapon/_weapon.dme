@@ -15,6 +15,11 @@
 #include "code/melee/centcom/legendary_malice_omnislash.dm"
 #include "code/melee/centcom/legendary_malice_recall.dm"
 #include "code/melee/centcom/legendary_malice_recall_vfx.dm"
+#include "code/melee/centcom/legendary_sister.dm"
+#include "code/melee/centcom/legendary_sister_dome_barrier.dm"
+#include "code/melee/centcom/legendary_sister_dome_visuals.dm"
+#include "code/melee/centcom/legendary_sister_sting.dm"
+#include "code/melee/centcom/legendary_sister_dawn_visuals.dm"
 #include "code/melee/centcom/rapier.dm"
 
 // MARK: Crafting
