@@ -1347,10 +1347,9 @@
 /area/shuttle/stationtrauma_space/raven/storage)
 "hD" = (
 /obj/machinery/door/airlock/security/glass{
-	name = "Holding Area";
-	req_access = list();
-	req_one_access = list()
+	name = "Holding Area"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
