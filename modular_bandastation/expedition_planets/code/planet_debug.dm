@@ -115,6 +115,12 @@ ADMIN_VERB(stationtrauma_planet_system, R_DEBUG, "Overmap - Планеты си�
 	planet.load_map()
 	if(QDELETED(planet))
 		return
+	// the admin looks at the whole planet, not only at the ground around its pads: its builder finishes it in the background
+	var/datum/expedition_surface/surface = planet.surface_chunks
+	if(surface)
+		UNTIL(QDELETED(surface))
+	if(QDELETED(planet))
+		return
 	log_admin("Advance surface generation [planet_id]: [planet.failed ? "FAILED" : "ready"], [planet.generation_seconds]s")
 	if(check_rights_for(user, R_DEBUG))
 		to_chat(user, planet.debug_report(), confidential = TRUE)

@@ -8,6 +8,7 @@
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/lush
 	biome = "Густые джунгли, топкие низины и озёра"
 	has_atmosphere = TRUE
+	oxygen_atmosphere = TRUE
 	surface_temperature = T20C
 
 /** Seeded jungle terrain with flora and wildlife excluded from reserved paths and ruins. */

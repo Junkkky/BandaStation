@@ -628,11 +628,14 @@
 	var/datum/stationtrauma_planet_flight/flight = navigation.planet_flight
 	TEST_ASSERT_NOTNULL(navigation.planet_hover, "The disk must already be visible when the map is still loading")
 	TEST_ASSERT(!flight.descent && !navigation.entry_heat(), "Atmospheric entry must wait for the terrain")
-	// the orbital zoom is planned once: it grows, then stands still where the descent takes over
+	// the orbital zoom is planned once: it grows, then barely creeps on while the descent waits to take over
 	var/datum/landing_track/zoom = navigation.planet_hover.size
 	var/opening_scale = zoom.at(world.time)
 	TEST_ASSERT(zoom.at(world.time + 14 SECONDS) > opening_scale, "The planet must grow on the orbital approach")
-	TEST_ASSERT_EQUAL(zoom.at(world.time + 20 SECONDS), zoom.at(world.time + 2 MINUTES), "The approach zoom must settle, so the descent takes over a still planet")
+	var/settled = zoom.at(world.time + 20 SECONDS)
+	var/later = zoom.at(world.time + 50 SECONDS)
+	TEST_ASSERT(later > settled, "The ship must not hang still while the descent waits for its ground")
+	TEST_ASSERT((later - settled) / 30 < 0.02, "The planet must close in too slowly for the descent's handover to jerk")
 	navigation.approach_started -= 2 MINUTES
 	flight.next_zoom = 0
 	TEST_ASSERT(!flight.update(), "Passing the estimated load time cannot start atmosphere against an unbuilt planet")
@@ -717,18 +720,19 @@
 
 /// Probes fly the server's ballistics and cover both faces; the planet is mapped only once built, and a landing waits for the pilot's pad.
 /datum/unit_test/overmap_docking/planet_survey/Run()
-	// launched from the bottom of the orbit at the middle of the face
-	var/list/centre = stationtrauma_survey_flight(270, 0, 0, 0.5)
+	// thrown from the launcher at the bottom of the orbit at the middle of the face
+	var/list/centre = stationtrauma_survey_flight(0, 0, 0.5)
 	var/list/impact = centre[3]
 	TEST_ASSERT_NOTNULL(impact, "A probe aimed at the middle of the face must strike the planet")
-	TEST_ASSERT(impact[3] > 0, "A probe launched at the front face must strike the front face")
+	TEST_ASSERT(impact[3] > 0, "A probe thrown at the front face must strike the front face")
 	TEST_ASSERT(abs(impact[1] ** 2 + impact[2] ** 2 + impact[3] ** 2 - 1) < 0.001, "A probe must strike the planet's surface")
-	var/list/weak = stationtrauma_survey_flight(270, 0, 0, 0)
-	var/list/strong = stationtrauma_survey_flight(270, 0, 0, 1)
+	TEST_ASSERT(impact[1] > 0.1, "A probe must drift along the orbit, to the right of where it was thrown, before it strikes")
+	var/list/weak = stationtrauma_survey_flight(0, 0, 0)
+	var/list/strong = stationtrauma_survey_flight(0, 0, 1)
 	var/list/weak_impact = weak[3]
 	var/list/strong_impact = strong[3]
-	TEST_ASSERT(weak_impact && strong_impact && strong_impact[2] - weak_impact[2] > 0.1, "A stronger throw must carry the probe further from the ship")
-	var/list/wide = stationtrauma_survey_flight(270, 2.4, 2.4, 1)
+	TEST_ASSERT(weak_impact && strong_impact && weak_impact[1] - strong_impact[1] > 0.1, "A weaker throw must drift further along the orbit")
+	var/list/wide = stationtrauma_survey_flight(2.4, 2.4, 1)
 	TEST_ASSERT_NULL(wide[3], "A full-power probe thrown wide of the planet must miss")
 
 	var/datum/stationtrauma_overmap_site/space/planet/lava/planet = allocate(/datum/stationtrauma_overmap_site/space/planet/lava)

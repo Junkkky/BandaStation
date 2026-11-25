@@ -40,10 +40,8 @@
 	)
 	cave_biome_table = /datum/biome/expedition/dead/cave
 
-/** Compass district in the outer thirds of the generated square; the middle district has no zombies. */
-/datum/map_generator/expedition_barren/dead/proc/zombie_region_at(turf/tile)
-	var/x = tile.x - origin_x + 1
-	var/y = tile.y - origin_y + 1
+/** Compass district of relative [x], [y] in the outer thirds of the generated square; the middle district has no zombies. */
+/datum/map_generator/expedition_barren/dead/proc/zombie_region_at(x, y)
 	if(x < 1 || y < 1 || x > width || y > width)
 		return NONE
 	var/region = NONE
@@ -58,8 +56,8 @@
 	return region
 
 /** The first viable zombie encounter chooses the district; later encounters keep that same geography. */
-/datum/map_generator/expedition_barren/dead/proc/in_zombie_region(turf/tile)
-	var/region = zombie_region_at(tile)
+/datum/map_generator/expedition_barren/dead/proc/in_zombie_region(x, y)
+	var/region = zombie_region_at(x, y)
 	if(!region)
 		return FALSE
 	if(!zombie_region)
@@ -68,7 +66,7 @@
 
 /** Fewer, larger ambient groups, with one finite pack budget shared by surface and caves. */
 /datum/map_generator/expedition_barren/dead/proc/next_zombie_pack_size(turf/tile, available_ground)
-	if(available_ground < 6 || !in_zombie_region(tile))
+	if(available_ground < 6 || !in_zombie_region(tile.x - origin_x + 1, tile.y - origin_y + 1))
 		return 0
 	if(!zombie_pack_limit)
 		zombie_pack_limit = max(1, round(rand(3, 4) * fauna_multiplier))

@@ -34,6 +34,8 @@
 	var/surface_temperature = TCMB
 	/// Whether the profile has an atmosphere at all; which gases it holds is rolled per planet, not fixed by the profile.
 	var/has_atmosphere = FALSE
+	/// Whether the profile's atmosphere always holds breathable oxygen instead of a rolled one: living worlds of plants.
+	var/oxygen_atmosphere = FALSE
 	/// Whether the rolled atmosphere supports unprotected human breathing.
 	var/breathable = FALSE
 	/// Gas string every natural turf of this planet's levels breathes, whatever its own type defines.
@@ -47,8 +49,10 @@
 	/// Survey lines on the caves and the ore, read off the generator when charted
 	var/cave_survey = "Не обнаружены"
 	var/ore_survey = "Низкая"
-	/// The survey's schematic of the built surface; see survey_schematic()
+	/// The survey's schematic of the planned surface; see survey_schematic()
 	var/list/survey_map
+	/// The surface while it is still being built a chunk at a time
+	var/datum/expedition_surface/surface_chunks
 
 /** Serialize environment observations without exposing the planet generation seed. */
 /datum/stationtrauma_overmap_site/space/planet/proc/survey_data()
@@ -113,8 +117,8 @@
 	return site
 
 /**
- * Pick this planet's air from its seed: oxygen is as likely on a frozen or arid world as on a lush one.
- * The profile only says whether there is an atmosphere and how hot it is.
+ * Pick this planet's air from its seed: oxygen is as likely on a frozen world as on an arid one. The profile says
+ * whether there is an atmosphere and how hot it is; a profile of plant life always breathes oxygen.
  */
 /datum/stationtrauma_overmap_site/space/planet/proc/roll_atmosphere()
 	if(!has_atmosphere)
@@ -125,7 +129,7 @@
 		list(list(GAS_N2 = 82, GAS_CO2 = 22), "Азот и углекислый газ; кислорода нет", FALSE),
 		list(list(GAS_CO2 = 60, GAS_N2 = 30), "Углекислый газ и азот; кислорода нет", FALSE),
 	)
-	var/list/composition = compositions[seed % 2 ? 1 : 2 + round(seed / 2) % 2]
+	var/list/composition = compositions[(oxygen_atmosphere || seed % 2) ? 1 : 2 + round(seed / 2) % 2]
 	var/list/gases = composition[1]
 	var/list/parts = list()
 	var/moles = 0
@@ -147,12 +151,15 @@
 	failed = !build_surface()
 	QDEL_NULL(generator)
 	loading_map = FALSE
-	if(!failed)
-		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPEDITION_SITE_LOADED, src)
+
+/datum/stationtrauma_overmap_site/space/planet/Destroy()
+	QDEL_NULL(surface_chunks)
+	return ..()
 
 /** Generate every level of the surface, yielding between work slices; returns whether the planet is ready for landing. */
 /datum/stationtrauma_overmap_site/space/planet/proc/build_surface()
-	var/start_time = REALTIMEOFDAY
+	// When each step of the build ended, in order: logged, to see where the time goes
+	var/list/marks = list("start" = REALTIMEOFDAY)
 	var/datum/stationtrauma_work_budget/budget = new
 	// Landings generate beside live gameplay; a quarter of each tick builds the surface within the descent.
 	budget.allowance = 25
@@ -163,11 +170,13 @@
 	var/hull_height = dims[2]
 	if(!generator.plan_surface(hull_width, hull_height, length(pads)))
 		return FALSE
+	marks["surface plan"] = REALTIMEOFDAY
 	var/list/ruins = prepare_ruins(generator)
 	if(!ruins)
 		return FALSE
 	if(generator.underground)
 		generator.reserve_cave_connectors()
+	marks["ruin plan"] = REALTIMEOFDAY
 	// Whatever is stripped down to the bottom (ruin plating, scraped ground) shows this planet's ground, not space.
 	var/list/traits = ZTRAITS_AWAY + list(ZTRAIT_BASETURF = generator.floor_type)
 	// The storm trait also drives weather sounds, so the endless storm keeps it.
@@ -185,7 +194,6 @@
 	generator.origin_x = round((world.maxx - generator.width) / 2) + 1
 	generator.origin_y = round((world.maxy - generator.width) / 2) + 1
 	var/turf/bottom = locate(generator.origin_x, generator.origin_y, level.z_value)
-	var/list/turfs = block(bottom, locate(bottom.x + generator.width - 1, bottom.y + generator.width - 1, bottom.z))
 	var/area/expedition_planet/barren/surface = new
 	surface.name = "[name]: поверхность"
 	// Storms only reach outdoor areas, the landing clearing included; ruins and landed vessels keep their own sheltered areas.
@@ -193,7 +201,27 @@
 	// Only the open surface is lit; ruins, landed vessels and the cave level keep their own areas and lighting.
 	if(generator.light_alpha)
 		surface.set_base_lighting(generator.sky_color, generator.light_alpha)
-	generator.generate_terrain(turfs, surface)
+	marks["levels"] = REALTIMEOFDAY
+	// Everything that will stand on the surface is placed on the plan first, then built once its ground is laid.
+	generator.begin_decoration(bottom)
+	plan_ruins(ruins, surface)
+	generator.plan_hive(surface)
+	var/features = generator.place_features(surface)
+	generator.place_nests()
+	generator.place_megafauna()
+	generator.place_craters()
+	generator.place_sources()
+	generator.place_ruin_patrols(ruins, surface)
+	generator.place_dig_sites(surface, src)
+	generator.place_anomaly_fields(surface, src)
+	generator.place_planetary_anomalies(src)
+	marks["placement"] = REALTIMEOFDAY
+	// Only the ground around the landing pads is built now; the rest is built behind the crew.
+	surface_chunks = new(src, surface, bottom, caves, ruins)
+	if(!surface_chunks.prepare_landing())
+		QDEL_NULL(surface_chunks)
+		return FALSE
+	marks["landing ground"] = REALTIMEOFDAY
 	var/list/ports = list()
 	for(var/list/rect as anything in generator.landing_pads)
 		var/obj/docking_port/stationary/stationtrauma_space_station/standard/planet_pad/pad = new(locate(bottom.x + rect[1] - 1, bottom.y + rect[2] - 1, bottom.z))
@@ -209,40 +237,31 @@
 			pad_site.berth = ports[index + 1]
 		else
 			pad_site.failed = TRUE
-	budget.yield()
-	if(!load_ruins(ruins, bottom, surface, budget))
-		return FALSE
-	generator.build_hive(bottom, surface)
-	var/features = generator.place_features(bottom, surface)
-	generator.place_nests(bottom)
-	generator.place_megafauna(bottom)
-	generator.place_craters(bottom)
-	generator.populate_terrain(turfs, surface)
-	generator.place_ruin_patrols(ruins, bottom, surface)
-	generator.place_dig_sites(turfs, surface, src, budget)
-	generator.place_anomaly_fields(turfs, surface, src, budget)
-	generator.place_planetary_anomalies(turfs, surface, src, budget)
 	var/obj/effect/landmark/stationtrauma_research_site/marker = new(get_turf(berth))
 	marker.site_id = id
 	marker.name = name
-	budget.yield()
-	if(caves)
-		generator.generate_underground(bottom, caves, src)
-		// Specimens resolve their site per level, so the caves carry the surface's site marker too.
-		var/obj/effect/landmark/stationtrauma_research_site/cave_marker = new(locate(bottom.x, bottom.y, caves.z_value))
-		cave_marker.site_id = id
-		cave_marker.name = name
 	SSmapping.reg_in_areas_in_z(list(surface))
 	smooth_zlevel(level.z_value)
-	survey_map = survey_schematic(bottom, ruins, budget)
+	survey_map = survey_schematic(ruins, budget)
+	marks["schematic"] = REALTIMEOFDAY
 	// Storm traits are registered only once the surface is complete; SSweather then alternates storms with calm periods.
 	// The endless storm starts once and is never scheduled, so periodic storms never stack on top of it.
 	if(generator.endless_storm)
 		SSweather.run_weather(generator.endless_storm_type, level.z_value)
 	else
 		SSweather.update_z_level(level)
-	generation_seconds = ((REALTIMEOFDAY - start_time + MIDNIGHT_ROLLOVER) % MIDNIGHT_ROLLOVER) / 10
-	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [generation_seconds]s, features: [features], modifiers: [jointext(modifier_log, ", ")]")
+	var/list/steps = list()
+	var/previous = marks["start"]
+	for(var/step in marks)
+		if(step == "start")
+			continue
+		steps += "[step] [((marks[step] - previous + MIDNIGHT_ROLLOVER) % MIDNIGHT_ROLLOVER) / 10]s"
+		previous = marks[step]
+	generation_seconds = ((REALTIMEOFDAY - marks["start"] + MIDNIGHT_ROLLOVER) % MIDNIGHT_ROLLOVER) / 10
+	log_mapping("Expedition planet ready: seed [seed], [generator.width]x[generator.width], z [level.z_value], [generation_seconds]s ([jointext(steps, ", ")]), features: [features], modifiers: [jointext(modifier_log, ", ")]")
+	// the surface's builder keeps the generator now
+	generator = null
+	surface_chunks.build_on()
 	return TRUE
 
 /// Most cells a side of the survey schematic has: finer is more to send and nothing more to see
@@ -255,14 +274,14 @@
 #define SURVEY_PAD_NEAR_CAVE 25
 
 /**
- * The survey's schematic of the built surface. Places are shares of the generated square from its south-west corner (0-1).
+ * The survey's schematic of the planned surface, ready before any of it is built. Places are shares of the generated square from its south-west corner (0-1).
  * * rows - terrain codes, north row first: "#" rock, "." ground, "~" lava, water, chasms and drops, " " nothing
  * * pads - each list(west, south, east, north, near a ruin, near a cave entrance), in the order of the planet's berths
  * * caves - cave entrances, each list(x, y)
  * * structures - ruins, each list(west, south, east, north)
  * * organic - where creatures and their dens gather, each list(x, y, radius)
  */
-/datum/stationtrauma_overmap_site/space/planet/proc/survey_schematic(turf/bottom, list/ruins, datum/stationtrauma_work_budget/budget)
+/datum/stationtrauma_overmap_site/space/planet/proc/survey_schematic(list/ruins, datum/stationtrauma_work_budget/budget)
 	var/side = generator.width
 	var/grain = CEILING(side / SURVEY_SCHEMATIC_CELLS, 1)
 	var/cells = CEILING(side / grain, 1)
@@ -273,7 +292,7 @@
 			var/list/counts = list()
 			for(var/y in (cell_y - 1) * grain + 1 to min(side, cell_y * grain))
 				for(var/x in (cell_x - 1) * grain + 1 to min(side, cell_x * grain))
-					var/code = survey_terrain_code(locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z))
+					var/code = survey_terrain_code(generator.terrain_at(x, y))
 					counts[code] = (counts[code] || 0) + 1
 			var/best = " "
 			for(var/code in counts)
@@ -306,19 +325,32 @@
 				near_cave = TRUE
 				break
 		pads += list(list((rect[1] - 1) / side, (rect[2] - 1) / side, rect[3] / side, rect[4] / side, near_ruin, near_cave))
-	// creatures and dens by square of the surface
+	// creatures and dens by square of the surface, as planned: the dens, bosses and patrols planned on it, and the packs
+	// its wild ground is likely to hold
 	var/squares = CEILING(side / SURVEY_LIFE_CELL, 1)
 	var/list/life = new /list(squares * squares)
+	var/list/no_pack = new /list(squares * squares)
+	for(var/index in 1 to length(no_pack))
+		no_pack[index] = 1
+	var/pack_size = (generator.fauna_pack_size[1] + generator.fauna_pack_size[2]) / 2 + generator.pack_bonus
 	for(var/y in 1 to side)
 		for(var/x in 1 to side)
-			var/turf/tile = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
-			for(var/atom/movable/thing as anything in tile)
-				var/mob/living/creature = thing
-				if(istype(creature) ? !!creature.client : !istype(thing, /obj/structure/spawner))
-					continue
+			if(!generator.plan_ground(x, y) || generator.in_camp_clearance(x, y))
+				continue
+			var/datum/biome/biome = generator.biome_at(x, y, FALSE)
+			var/density = biome.fauna_density > 0 && length(biome.fauna_types) ? biome.fauna_density : 0
+			if(density)
 				var/square = round((y - 1) / SURVEY_LIFE_CELL) * squares + round((x - 1) / SURVEY_LIFE_CELL) + 1
-				life[square] = (life[square] || 0) + 1
+				no_pack[square] *= 1 - density / 100
 		budget.yield()
+	for(var/index in 1 to length(life))
+		life[index] = (1 - no_pack[index]) * pack_size
+	for(var/list/work as anything in surface_chunks.all_work())
+		if(!work[7])
+			continue
+		var/square = round((work[2] + work[4]) / 2 / SURVEY_LIFE_CELL) * squares + round((work[1] + work[3]) / 2 / SURVEY_LIFE_CELL) + 1
+		if(square >= 1 && square <= length(life))
+			life[square] += work[7]
 	var/list/organic = list()
 	for(var/square in 1 to length(life))
 		if(life[square] < SURVEY_LIFE_COUNT)
@@ -328,13 +360,13 @@
 		organic += list(list((square_x + 0.5) * SURVEY_LIFE_CELL / side, (square_y + 0.5) * SURVEY_LIFE_CELL / side, SURVEY_LIFE_CELL * 0.75 / side))
 	return list("rows" = rows, "pads" = pads, "caves" = caves, "structures" = structures, "organic" = organic)
 
-/// The schematic's code for [tile]; see survey_schematic()
-/proc/survey_terrain_code(turf/tile)
-	if(!tile || isspaceturf(tile) || istype(tile, /turf/cordon))
+/// The schematic's code for a tile of [terrain] type; see survey_schematic()
+/proc/survey_terrain_code(terrain)
+	if(!terrain || ispath(terrain, /turf/open/space) || ispath(terrain, /turf/cordon))
 		return " "
-	if(isclosedturf(tile))
+	if(ispath(terrain, /turf/closed))
 		return "#"
-	if(islava(tile) || istype(tile, /turf/open/water) || istype(tile, /turf/open/chasm) || istype(tile, /turf/open/openspace))
+	if(ispath(terrain, /turf/open/lava) || ispath(terrain, /turf/open/water) || ispath(terrain, /turf/open/chasm) || ispath(terrain, /turf/open/openspace))
 		return "~"
 	return "."
 

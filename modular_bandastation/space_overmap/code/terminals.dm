@@ -117,6 +117,42 @@
 		return UI_CLOSE
 	return overmap_console_status(user, ..())
 
+/// The galaxy map's fixed geography, read once from its CSV files: see stationtrauma_load_galaxy_map()
+GLOBAL_LIST_INIT(stationtrauma_galaxy_map, stationtrauma_load_galaxy_map())
+
+/**
+ * Reads the galaxy map from modular_bandastation/space_overmap/data: the charted stars as list(name, x, y), the outline of
+ * the populated systems as list(x, y) and the rings about Sol as list(radius, name), in map units with Sol at 512, 512.
+ */
+/proc/stationtrauma_load_galaxy_map()
+	. = list("stars" = list(), "populated" = list(), "rings" = list())
+	for(var/list/row as anything in stationtrauma_read_csv("modular_bandastation/space_overmap/data/galaxy_stars.csv", 3))
+		.["stars"] += list(list(row[1], text2num(row[2]), text2num(row[3])))
+	for(var/list/row as anything in stationtrauma_read_csv("modular_bandastation/space_overmap/data/galaxy_populated.csv", 2))
+		.["populated"] += list(list(text2num(row[1]), text2num(row[2])))
+	for(var/list/row as anything in stationtrauma_read_csv("modular_bandastation/space_overmap/data/galaxy_rings.csv", 2))
+		.["rings"] += list(list(text2num(row[1]), row[2]))
+
+/// The rows of a CSV file below its header, each a list of its [fields] fields; a row with too few fields is reported and left out
+/proc/stationtrauma_read_csv(path, fields)
+	. = list()
+	if(!fexists(path))
+		stack_trace("Missing data file [path]")
+		return
+	var/list/lines = splittext(file2text(path), "\n")
+	for(var/index in 2 to length(lines))
+		var/line = trim(lines[index])
+		if(!line)
+			continue
+		var/list/row = splittext(line, ",")
+		if(length(row) < fields)
+			stack_trace("[path], line [index]: expected [fields] fields, got [length(row)]")
+			continue
+		. += list(row)
+
+/obj/machinery/computer/stationtrauma_bluespace/ui_static_data(mob/user)
+	return list("galaxy" = GLOB.stationtrauma_galaxy_map)
+
 /obj/machinery/computer/stationtrauma_bluespace/ui_data(mob/user)
 	var/datum/stationtrauma_overmap/space/map = navigation()
 	if(!map)
@@ -150,6 +186,10 @@
 		"drive" = !!map.jump_drive(),
 		"at_jump_point" = map.at_jump_point(),
 	)
+
+/** The terminal's keys press as the navigation console's do. */
+/obj/machinery/computer/stationtrauma_bluespace/play_ui_sound(action, list/params)
+	playsound(src, 'modular_bandastation/space_overmap/sound/navigation_button.wav', ST_CONSOLE_BUTTON_VOLUME, FALSE, FALSE)
 
 /obj/machinery/computer/stationtrauma_bluespace/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

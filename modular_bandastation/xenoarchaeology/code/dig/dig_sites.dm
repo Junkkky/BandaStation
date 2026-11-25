@@ -1,7 +1,8 @@
 /**
  * # Dig sites
  *
- * A pass after the surface is populated, once per planet. Each site is a short run of mountain
+ * A pass once per level, chosen on what lies there (the plan, on the surface) and built once its ground
+ * is laid, before flora and fauna, which keep off it. Each site is a short run of mountain
  * wall facing open ground. Survey stakes and a spoil heap mark those sites, while a buried site lies
  * in solid rock without surface signs. Both use the same scannable veins. Random
  * draws first, then an exhaustive scan, keeping off the camp, its corridors and ruins, and spacing
@@ -16,13 +17,20 @@
 #define DIG_SITE_REACH 3
 /// Maximum number of mineable walls on the route from open ground to a buried find.
 #define DIG_SITE_BURIED_REACH 6
+/// Step along a direction across the plan's columns and rows
+#define DIG_STEP_X(dir) ((dir & EAST) ? 1 : ((dir & WEST) ? -1 : 0))
+#define DIG_STEP_Y(dir) ((dir & NORTH) ? 1 : ((dir & SOUTH) ? -1 : 0))
+
+/datum/map_generator/expedition_barren
+	/// Relative anchors of the dig sites planned on the level being decorated
+	var/list/dig_anchors
 
 /**
- * Places the planet's dig sites on `surface`. Records go to `planet`, which owns them for the round.
- * Returns how many were placed.
+ * Plans the dig sites of the level being decorated on `surface`; each is built once its ground is laid. Records go to
+ * `planet`, which owns them for the round. Returns how many were planned.
  */
-/datum/map_generator/expedition_barren/proc/place_dig_sites(list/turfs, area/surface, datum/stationtrauma_overmap_site/space/planet/planet, datum/stationtrauma_work_budget/budget, surface_sites = XENOARCH_SITES_PER_PLANET, buried_sites = 1)
-	if(!length(turfs) || !planet)
+/datum/map_generator/expedition_barren/proc/place_dig_sites(area/surface, datum/stationtrauma_overmap_site/space/planet/planet, surface_sites = XENOARCH_SITES_PER_PLANET, buried_sites = 1)
+	if(!planet)
 		return 0
 	var/band = xenoarch_band_for_level(planet.modifier_level)
 	var/list/fauna = list()
@@ -31,53 +39,123 @@
 		if(biome.fauna_density > 0)
 			fauna |= biome.fauna_types
 	planet.dig_sites ||= list()
-	var/initial_count = length(planet.dig_sites)
-	var/list/placed_at = list()
-	for(var/i in 1 to surface_sites)
+	dig_anchors ||= list()
+	var/planned = 0
+	for(var/i in 1 to surface_sites + buried_sites)
+		var/buried = i > surface_sites
 		var/datum/dig_site_record/site = new(band, xenoarch_pick_site_kind(planet.type))
 		site.ambush_fauna = fauna
-		var/list/spot = find_dig_site_spot(turfs, surface, site, placed_at, budget)
-		if(!spot)
+		if(buried)
+			site.large_left = 1
+			site.small_left = prob(50)
+		var/list/anchor = find_dig_site_spot(site, buried)
+		if(!anchor)
 			qdel(site)
 			continue
-		build_dig_site(site, spot[1], spot[2])
-		planet.dig_sites += site
-		placed_at += spot[1]
-	for(var/i in 1 to buried_sites)
-		var/datum/dig_site_record/buried_site = new(band, xenoarch_pick_site_kind(planet.type))
-		buried_site.ambush_fauna = fauna
-		buried_site.large_left = 1
-		buried_site.small_left = prob(50)
-		var/list/buried_spot = find_dig_site_spot(turfs, surface, buried_site, placed_at, budget, buried = TRUE)
-		if(buried_spot)
-			build_dig_site(buried_site, null, buried_spot[2])
-			planet.dig_sites += buried_site
-			placed_at += buried_spot[1]
-		else
-			qdel(buried_site)
-	return length(planet.dig_sites) - initial_count
+		dig_anchors += list(anchor)
+		plan_take(anchor[1], anchor[2])
+		var/reach = buried ? DIG_SITE_BURIED_REACH : DIG_SITE_REACH + 1
+		plan_work(anchor[1] - reach, anchor[2] - reach, anchor[1] + reach, anchor[2] + reach, CALLBACK(src, PROC_REF(build_planned_dig_site), site, level_turf(anchor[1], anchor[2]), surface, planet, buried))
+		planned++
+	return planned
 
-/// Finds an anchor (the open tile a site is worked from) and its walls. Returns list(anchor, walls) or null.
-/datum/map_generator/expedition_barren/proc/find_dig_site_spot(list/turfs, area/surface, datum/dig_site_record/site, list/placed_at, datum/stationtrauma_work_budget/budget, buried = FALSE)
+/// Builds a planned site worked from [anchor] on the laid ground; a site whose rock turned out to hold ore is given up.
+/datum/map_generator/expedition_barren/proc/build_planned_dig_site(datum/dig_site_record/site, turf/anchor, area/surface, datum/stationtrauma_overmap_site/space/planet/planet, buried)
 	var/needed = max(site.large_left + site.small_left, 1)
-	for(var/attempt in 1 to DIG_SITE_RANDOM_ATTEMPTS + length(turfs))
+	var/list/walls = buried ? collect_buried_dig_site_walls(anchor, surface, needed) : collect_dig_site_walls(anchor, surface, needed)
+	if(!walls)
+		qdel(site)
+		return
+	// flora grows after the sites and keeps off their stakes and spoil, as the dressing would have cleared it
+	for(var/atom/dressing as anything in build_dig_site(site, buried ? null : anchor, walls))
+		LAZYSET(feature_turfs, get_turf(dressing), TRUE)
+	planet.dig_sites += site
+
+/// Finds the relative anchor (the open tile a site is worked from) for [site] on the level being decorated, or null.
+/datum/map_generator/expedition_barren/proc/find_dig_site_spot(datum/dig_site_record/site, buried = FALSE)
+	var/needed = max(site.large_left + site.small_left, 1)
+	var/cells = width * width
+	for(var/attempt in 1 to DIG_SITE_RANDOM_ATTEMPTS + cells)
 		budget?.yield()
-		var/turf/candidate = attempt <= DIG_SITE_RANDOM_ATTEMPTS ? pick(turfs) : turfs[attempt - DIG_SITE_RANDOM_ATTEMPTS]
-		var/list/walls = dig_site_walls_at(candidate, surface, needed, placed_at, buried)
-		if(walls)
-			return list(candidate, walls)
+		var/cell = attempt <= DIG_SITE_RANDOM_ATTEMPTS ? rand(1, cells) : attempt - DIG_SITE_RANDOM_ATTEMPTS
+		var/x = (cell - 1) % width + 1
+		var/y = round((cell - 1) / width) + 1
+		if(plan_dig_site_ok(x, y, needed, buried))
+			return list(x, y)
 	return null
 
-/// The walls a site anchored on `anchor` would use, or null if the spot is no good.
-/datum/map_generator/expedition_barren/proc/dig_site_walls_at(turf/anchor, area/surface, needed, list/placed_at, buried)
-	if(!dig_site_ground_ok(anchor, surface))
-		return null
-	for(var/turf/taken as anything in placed_at)
-		if(get_dist(anchor, taken) < XENOARCH_SITE_SPACING)
-			return null
-	if(!dig_site_clear(anchor, surface))
-		return null
-	return buried ? collect_buried_dig_site_walls(anchor, surface, needed) : collect_dig_site_walls(anchor, surface, needed)
+/**
+ * Whether a site anchored at relative [x], [y] fits, judged on what lies there: open ground spaced from other sites, clear
+ * of reserved ground, with [needed] usable walls in reach. Whether a wall holds ore is learnt only once it is laid.
+ */
+/datum/map_generator/expedition_barren/proc/plan_dig_site_ok(x, y, needed, buried)
+	if(!plan_ground(x, y))
+		return FALSE
+	for(var/list/taken as anything in dig_anchors)
+		if(max(abs(taken[1] - x), abs(taken[2] - y)) < XENOARCH_SITE_SPACING)
+			return FALSE
+	for(var/near_y in y - DIG_SITE_CLEARANCE to y + DIG_SITE_CLEARANCE)
+		for(var/near_x in x - DIG_SITE_CLEARANCE to x + DIG_SITE_CLEARANCE)
+			if(near_x < 1 || near_y < 1 || near_x > width || near_y > width || is_reserved(near_x, near_y))
+				return FALSE
+	var/list/queue = list()
+	var/list/depths = list()
+	var/found = 0
+	if(buried)
+		queue += plan_cell(x, y)
+		depths["[plan_cell(x, y)]"] = 0
+	else
+		for(var/direction in GLOB.cardinals)
+			var/cell = plan_cell(x + DIG_STEP_X(direction), y + DIG_STEP_Y(direction))
+			if(plan_dig_wall_ok(x + DIG_STEP_X(direction), y + DIG_STEP_Y(direction)) && isnull(depths["[cell]"]))
+				queue += cell
+				depths["[cell]"] = 0
+	for(var/index = 1; index <= length(queue) && found < needed; index++)
+		var/here = queue[index]
+		var/here_x = (here - 1) % width + 1
+		var/here_y = round((here - 1) / width) + 1
+		var/depth = depths["[here]"]
+		if(buried)
+			if(depth >= 2 && plan_buried_wall_ok(here_x, here_y))
+				found++
+			if(depth >= DIG_SITE_BURIED_REACH)
+				continue
+		else
+			found++
+		for(var/direction in (buried ? GLOB.cardinals : GLOB.alldirs))
+			var/next_x = here_x + DIG_STEP_X(direction)
+			var/next_y = here_y + DIG_STEP_Y(direction)
+			if(next_x < 1 || next_y < 1 || next_x > width || next_y > width)
+				continue
+			var/next = plan_cell(next_x, next_y)
+			if(!isnull(depths["[next]"]))
+				continue
+			if(buried ? (!plan_mineable(next_x, next_y) || is_reserved(next_x, next_y)) : (max(abs(next_x - x), abs(next_y - y)) > DIG_SITE_REACH || !plan_dig_wall_ok(next_x, next_y)))
+				continue
+			depths["[next]"] = depth + 1
+			queue += next
+	return found >= needed
+
+/// Mineable rock at relative [x], [y], as dig_site_mineable_rock() judges a laid wall
+/datum/map_generator/expedition_barren/proc/plan_mineable(x, y)
+	var/terrain = terrain_at(x, y)
+	return ispath(terrain, /turf/closed/mineral) && !ispath(terrain, /turf/closed/mineral/gibtonite) && !ispath(terrain, /turf/closed/mineral/strong) && plan_free(x, y)
+
+/// Rock at relative [x], [y] facing open ground, as dig_site_wall_ok() judges a laid wall
+/datum/map_generator/expedition_barren/proc/plan_dig_wall_ok(x, y)
+	if(!plan_mineable(x, y))
+		return FALSE
+	for(var/direction in GLOB.cardinals)
+		if(plan_ground(x + DIG_STEP_X(direction), y + DIG_STEP_Y(direction)))
+			return TRUE
+	return FALSE
+
+/// Rock at relative [x], [y] with rock on all four faces, as buried_dig_site_wall_ok() judges a laid wall
+/datum/map_generator/expedition_barren/proc/plan_buried_wall_ok(x, y)
+	for(var/direction in GLOB.cardinals)
+		if(!plan_mineable(x + DIG_STEP_X(direction), y + DIG_STEP_Y(direction)))
+			return FALSE
+	return TRUE
 
 /// Open surface ground: not water, lava or chasm, nor reserved for the camp, its corridors or a ruin.
 /datum/map_generator/expedition_barren/proc/dig_site_ground_ok(turf/ground, area/surface)
@@ -158,13 +236,6 @@
 		return FALSE
 	for(var/direction in GLOB.cardinals)
 		if(!dig_site_mineable_rock(get_step(wall, direction), surface))
-			return FALSE
-	return TRUE
-
-/// Nothing within DIG_SITE_CLEARANCE is reserved ground or outside the surface.
-/datum/map_generator/expedition_barren/proc/dig_site_clear(turf/anchor, area/surface)
-	for(var/turf/near as anything in RANGE_TURFS(DIG_SITE_CLEARANCE, anchor))
-		if(near.loc != surface || is_reserved(near.x - origin_x + 1, near.y - origin_y + 1))
 			return FALSE
 	return TRUE
 
@@ -309,3 +380,5 @@
 #undef DIG_SITE_CLEARANCE
 #undef DIG_SITE_REACH
 #undef DIG_SITE_BURIED_REACH
+#undef DIG_STEP_X
+#undef DIG_STEP_Y

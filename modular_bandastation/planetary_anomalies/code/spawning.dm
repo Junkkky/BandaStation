@@ -40,11 +40,11 @@ GLOBAL_LIST_INIT(planetary_anomaly_weights, list(
 ))
 
 /**
- * On a planet with the anomalous zone modifier, attempts one drifting anomaly per danger band
+ * On a planet with the anomalous zone modifier, plans one drifting anomaly per danger band
  * step on open ground away from the camp, ruins, dig sites, field clusters and each other. Returns how many.
  */
-/datum/map_generator/expedition_barren/proc/place_planetary_anomalies(list/turfs, area/surface, datum/stationtrauma_overmap_site/space/planet/planet, datum/stationtrauma_work_budget/budget)
-	if(!anomaly_fields || !length(turfs) || !planet)
+/datum/map_generator/expedition_barren/proc/place_planetary_anomalies(datum/stationtrauma_overmap_site/space/planet/planet)
+	if(!anomaly_fields || !planet)
 		return 0
 	var/band = XENOARCH_BAND_INDEX(xenoarch_band_for_level(planet.modifier_level))
 	. = 0
@@ -52,33 +52,45 @@ GLOBAL_LIST_INIT(planetary_anomaly_weights, list(
 		var/obj/effect/anomaly/pulsing/anomaly_type = pick_weight(GLOB.planetary_anomaly_weights[band])
 		// Some pulses can start at an offset before applying their own area of effect.
 		var/reach = initial(anomaly_type.drift_radius) + initial(anomaly_type.effect_range) * 2
-		var/turf/spot = find_planetary_anomaly_spot(turfs, surface, budget, reach)
+		var/list/spot = find_planetary_anomaly_spot(reach)
 		if(!spot)
 			continue
-		var/obj/effect/anomaly/anomaly = new anomaly_type(spot)
-		settle_planetary_anomaly(anomaly)
-		if(istype(anomaly, /obj/effect/anomaly/pulsing/tvstatic) && prob(25))
-			new /obj/effect/mob_spawn/corpse/human/legioninfested(spot)
-			var/mob/living/carbon/human/body = locate() in spot
-			if(body)
-				var/obj/effect/anomaly/pulsing/tvstatic/tvstatic = anomaly
-				tvstatic.hold_body(body)
+		plan_take(spot[1], spot[2])
+		anomaly_spots += list(list(spot[1], spot[2], 0))
+		plan_work(spot[1], spot[2], spot[1], spot[2], CALLBACK(src, PROC_REF(set_planetary_anomaly), level_turf(spot[1], spot[2]), anomaly_type))
 		.++
 
-/// Open ground clear of reserved tiles and of fields, anomalies and dig sites nearby, or null.
-/datum/map_generator/expedition_barren/proc/find_planetary_anomaly_spot(list/turfs, area/surface, datum/stationtrauma_work_budget/budget, reach)
+/// Sets a planned anomaly of [anomaly_type] on [spot]
+/datum/map_generator/expedition_barren/proc/set_planetary_anomaly(turf/spot, anomaly_type)
+	var/obj/effect/anomaly/anomaly = new anomaly_type(spot)
+	settle_planetary_anomaly(anomaly)
+	if(istype(anomaly, /obj/effect/anomaly/pulsing/tvstatic) && prob(25))
+		new /obj/effect/mob_spawn/corpse/human/legioninfested(spot)
+		var/mob/living/carbon/human/body = locate() in spot
+		if(body)
+			var/obj/effect/anomaly/pulsing/tvstatic/tvstatic = anomaly
+			tvstatic.hold_body(body)
+
+/// Relative open ground clear of reserved tiles and of fields, anomalies and dig sites nearby, or null.
+/datum/map_generator/expedition_barren/proc/find_planetary_anomaly_spot(reach)
 	for(var/attempt in 1 to PLANETARY_ANOMALY_ATTEMPTS)
 		budget?.yield()
-		var/turf/candidate = pick(turfs)
-		if(!dig_site_ground_ok(candidate, surface) || !anomaly_route_clear(candidate, reach))
+		var/x = rand(1, width)
+		var/y = rand(1, width)
+		if(!plan_ground(x, y) || !anomaly_route_clear(x, y, reach))
 			continue
 		var/crowded = FALSE
-		for(var/atom/movable/thing in range(PLANETARY_ANOMALY_SPACING, candidate))
-			if(istype(thing, /obj/effect/anomaly_field) || istype(thing, /obj/effect/anomaly) || istype(thing, /obj/structure/xenoarch_stake))
+		// a cluster's fields lie up to its reach from its centre
+		for(var/list/taken as anything in anomaly_spots)
+			if(max(abs(taken[1] - x), abs(taken[2] - y)) <= PLANETARY_ANOMALY_SPACING + taken[3])
+				crowded = TRUE
+				break
+		for(var/list/anchor as anything in dig_anchors)
+			if(max(abs(anchor[1] - x), abs(anchor[2] - y)) <= PLANETARY_ANOMALY_SPACING + 2)
 				crowded = TRUE
 				break
 		if(!crowded)
-			return candidate
+			return list(x, y)
 	return null
 
 #undef PLANETARY_ANOMALY_ATTEMPTS

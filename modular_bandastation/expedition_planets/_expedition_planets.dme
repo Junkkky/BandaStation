@@ -1,6 +1,8 @@
 #include "_expedition_planets.dm"
 #include "code/planet_site.dm"
 #include "code/planet_generator.dm"
+#include "code/planned_work.dm"
+#include "code/surface_chunks.dm"
 #include "code/surface_plan.dm"
 #include "code/geography.dm"
 #include "code/barren.dm"

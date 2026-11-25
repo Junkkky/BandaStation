@@ -1,5 +1,6 @@
-import { type MouseEvent, useEffect, useRef, useState } from 'react';
+import { type MouseEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Icon } from 'tgui-core/components';
+import { clamp01 } from 'tgui-core/math';
 import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../../backend';
@@ -10,7 +11,7 @@ import {
   behindPlanet,
   footprintOutline,
   type Physics,
-  orbitPoint,
+  launcherPoint,
   simulateFlight,
   toView,
   type Vector,
@@ -53,8 +54,6 @@ type Survey = {
   hits: Vector[];
   flights: Flight[];
   reload: number;
-  /** Where the ship was on its orbit when this data was sent, degrees */
-  orbit_angle: number;
   covered: BooleanLike;
   mapping: number;
   mapped: BooleanLike;
@@ -228,7 +227,10 @@ export const PlanetSurvey = () => {
                   icon="circle-half-stroke"
                   selected={screen === 'front'}
                   tooltip="Лицевая сторона планеты"
-                  onClick={() => setScreen('front')}
+                  onClick={() => {
+                    setScreen('front');
+                    act('interface_click');
+                  }}
                 >
                   <span className="SpaceNavigation__key-label">ЛИЦ</span>
                 </Button>
@@ -236,7 +238,10 @@ export const PlanetSurvey = () => {
                   icon="rotate"
                   selected={screen === 'back'}
                   tooltip="Обратная сторона планеты"
-                  onClick={() => setScreen('back')}
+                  onClick={() => {
+                    setScreen('back');
+                    act('interface_click');
+                  }}
                 >
                   <span className="SpaceNavigation__key-label">ОБР</span>
                 </Button>
@@ -244,7 +249,10 @@ export const PlanetSurvey = () => {
                   icon="map"
                   selected={onMap}
                   tooltip="Архив карт местности"
-                  onClick={() => setScreen('map')}
+                  onClick={() => {
+                    setScreen('map');
+                    act('interface_click');
+                  }}
                 >
                   <span className="SpaceNavigation__key-label">СХЕМА</span>
                 </Button>
@@ -395,6 +403,10 @@ function Meter({ value, marks }: { value: number; marks: number[] }) {
 const LANDING_FLASH = 900;
 /** Seconds a full sweep of the launch power takes, up and back down */
 const POWER_SWEEP = 3;
+/** How long the launcher kicks back and flashes as it throws a probe, ms */
+const LAUNCH_KICK = 350;
+/** How long a lost probe's mark stays where it left the screen, ms */
+const LOST_MARK = 1400;
 
 /** The planet with the ground read so far, the probes in flight and the aim. */
 function ProbeField({
@@ -415,7 +427,37 @@ function ProbeField({
   const received = useRef(Date.now());
   useEffect(() => {
     received.current = Date.now();
-  }, [survey.flights, survey.orbit_angle]);
+  }, [survey.flights]);
+  // the launcher's kick back from its last throw, against the throw
+  const [kick, setKick] = useState<{ at: number; x: number; y: number }>({
+    at: 0,
+    x: 0,
+    y: 0,
+  });
+  // where probes that missed were last seen, as the viewer sees them
+  const [lost, setLost] = useState<{ x: number; y: number; at: number }[]>([]);
+  const lastFlights = useRef<Flight[]>(survey.flights);
+  const lastHits = useRef(survey.hits.length);
+  useEffect(() => {
+    const ids = new Set(survey.flights.map((flight) => flight.id));
+    const gone = lastFlights.current.filter((flight) => !ids.has(flight.id));
+    const struck = survey.hits.length - lastHits.current;
+    // flights that ended beyond the ones that struck the ground were lost
+    const missed = gone.length - Math.max(0, struck);
+    if (missed > 0) {
+      const at = Date.now();
+      const fresh = gone.slice(0, missed).map((flight) => {
+        const [x, y] = toView(flight.path[flight.path.length - 1], back);
+        return { x, y, at };
+      });
+      setLost((old) => [
+        ...old.filter((mark) => at - mark.at < LOST_MARK),
+        ...fresh,
+      ]);
+    }
+    lastFlights.current = survey.flights;
+    lastHits.current = survey.hits.length;
+  }, [survey.flights, survey.hits.length]);
   // a flash where each new probe reads the ground
   const [landings, setLandings] = useState<{ index: number; at: number }[]>([]);
   const seenHits = useRef(survey.hits.length);
@@ -435,8 +477,14 @@ function ProbeField({
   }, [survey.hits.length]);
   const ready =
     !survey.covered && !survey.failed && survey.probes < physics.probe_limit;
-  // the ship moves along its orbit all the while, so the field keeps redrawing
-  const animating = ready || chargeStart !== null || survey.flights.length > 0;
+  // redrawn only while something on the field moves
+  const settled = Date.now();
+  const animating =
+    chargeStart !== null ||
+    survey.flights.length > 0 ||
+    settled - kick.at < LAUNCH_KICK ||
+    lost.some((mark) => settled - mark.at < LOST_MARK) ||
+    landings.some((landing) => settled - landing.at < LANDING_FLASH);
   useEffect(() => {
     if (!animating) return;
     let frame = requestAnimationFrame(function tick() {
@@ -447,12 +495,25 @@ function ProbeField({
   }, [animating]);
   const power =
     chargeStart === null ? lastPower : sweep((now - chargeStart) / 1000);
+  // the ground read changes only as probes strike or the view turns, not with every frame of a flight
+  const caps = useMemo(
+    () =>
+      [true, false].map((far) =>
+        survey.hits
+          .map((hit) => footprintOutline(hit, back, physics.footprint, far))
+          .filter((outline): outline is [number, number][] => !!outline)
+          .map((outline) => outline.map(([x, y]) => `${x},${y}`).join(' ')),
+      ),
+    [survey.hits, back, physics.footprint],
+  );
   const sinceData = (now - received.current) / 1000;
-  const angle = survey.orbit_angle + (360 * sinceData) / physics.orbit_period;
-  const ship = orbitPoint(physics, angle);
-  const preview = aim
-    ? simulateFlight(physics, angle, aim[0], aim[1], power)
-    : null;
+  const launcher = launcherPoint(physics);
+  const preview = aim ? simulateFlight(physics, aim[0], aim[1], power) : null;
+  // the tilted orbit seen from the front: an ellipse, its upper half behind the planet
+  const orbitHeight =
+    physics.orbit_radius * Math.cos((physics.orbit_tilt * Math.PI) / 180);
+  const kickShare = Math.min(1, (now - kick.at) / LAUNCH_KICK);
+  const recoil = (1 - kickShare) ** 2 * 0.06;
 
   const pointer = (event: MouseEvent): [number, number] | null => {
     const matrix = svg.current?.getScreenCTM();
@@ -470,6 +531,12 @@ function ProbeField({
     const launched = sweep((Date.now() - chargeStart) / 1000);
     setChargeStart(null);
     setLastPower(launched);
+    const reach = Math.hypot(aim[0] - launcher[0], aim[1] - launcher[1]) || 1;
+    setKick({
+      at: Date.now(),
+      x: (aim[0] - launcher[0]) / reach,
+      y: (aim[1] - launcher[1]) / reach,
+    });
     act('launch', { x: aim[0], y: aim[1], power: launched, back });
   };
 
@@ -490,6 +557,15 @@ function ProbeField({
       }}
       onMouseUp={release}
     >
+      {/* the far half of the orbit, behind the planet */}
+      <path
+        d={`M${-physics.orbit_radius} 0A${physics.orbit_radius} ${orbitHeight} 0 0 1 ${physics.orbit_radius} 0`}
+        fill="none"
+        stroke="#527e6e"
+        strokeOpacity={0.45}
+        strokeWidth={0.01}
+        strokeDasharray="0.05 0.08"
+      />
       <g style={{ color: '#a9d9cb' }} transform="scale(1)">
         <PlanetGlyph radius={1} kind={survey.kind} />
       </g>
@@ -499,17 +575,9 @@ function ProbeField({
           key={far ? 'far' : 'near'}
           className={`SpaceNavigation__cap ${far ? 'is-far' : ''}`}
         >
-          {survey.hits.map((hit, index) => {
-            const outline = footprintOutline(hit, back, physics.footprint, far);
-            return (
-              outline && (
-                <polygon
-                  key={index}
-                  points={outline.map(([x, y]) => `${x},${y}`).join(' ')}
-                />
-              )
-            );
-          })}
+          {caps[far ? 0 : 1].map((points, index) => (
+            <polygon key={index} points={points} />
+          ))}
         </g>
       ))}
       {survey.hits.map((hit, index) => {
@@ -538,14 +606,24 @@ function ProbeField({
           />
         );
       })}
-      <circle
-        r={physics.orbit_radius}
+      {/* the near half of the orbit, in front of the planet, with the ship holding the launcher at its lowest point */}
+      <path
+        d={`M${physics.orbit_radius} 0A${physics.orbit_radius} ${orbitHeight} 0 0 1 ${-physics.orbit_radius} 0`}
         fill="none"
         stroke="#527e6e"
         strokeWidth={0.01}
         strokeDasharray="0.05 0.08"
       />
-      <g transform={`translate(${ship[0]} ${-ship[1]}) rotate(${-90 - angle})`}>
+      {/* which way the orbit carries the probes */}
+      <path
+        d={`M0.17 ${orbitHeight - 0.035}L0.23 ${orbitHeight}L0.17 ${orbitHeight + 0.035}M0.26 ${orbitHeight - 0.035}L0.32 ${orbitHeight}L0.26 ${orbitHeight + 0.035}`}
+        fill="none"
+        stroke="#7fae9b"
+        strokeWidth={0.012}
+      />
+      <g
+        transform={`translate(${launcher[0] - kick.x * recoil} ${-launcher[1] + kick.y * recoil}) rotate(90)`}
+      >
         <path
           d="M0 -0.09L0.07 0.07L0 0.03L-0.07 0.07Z"
           fill="#1d2b28"
@@ -553,20 +631,48 @@ function ProbeField({
           strokeWidth={0.012}
         />
       </g>
+      {kickShare < 1 && (
+        <circle
+          cx={launcher[0]}
+          cy={-launcher[1]}
+          r={0.05 + 0.22 * kickShare}
+          fill="none"
+          stroke="#e4bf79"
+          strokeWidth={0.015}
+          strokeOpacity={1 - kickShare}
+        />
+      )}
+      {lost.map((mark) => {
+        const share = (now - mark.at) / LOST_MARK;
+        if (share >= 1) return null;
+        // where it left the screen, pulled inside so the mark can be read
+        const x = Math.max(-2.2, Math.min(2.2, mark.x));
+        const y = Math.max(-2.1, Math.min(2.1, -mark.y));
+        return (
+          <text
+            key={`lost${mark.at}${mark.x}`}
+            x={x}
+            y={y}
+            textAnchor="middle"
+            fontSize={0.09}
+            fill="#e0533f"
+            fillOpacity={1 - share}
+          >
+            ЗОНД ПОТЕРЯН
+          </text>
+        );
+      })}
       {survey.flights.map((flight) => (
         <FlightTrace
           key={flight.id}
           flight={flight}
           back={back}
-          share={Math.min(1, (flight.elapsed + sinceData) / flight.duration)}
+          share={clamp01((flight.elapsed + sinceData) / flight.duration)}
         />
       ))}
       {ready && preview && (
         <polyline
-          points={preview
-            .slice(0, Math.ceil(preview.length / 3))
-            .map(([x, y]) => `${x},${-y}`)
-            .join(' ')}
+          points={preview.map(([x, y]) => `${x},${-y}`).join(' ')}
           fill="none"
           stroke="#e4bf79"
           strokeWidth={0.012}

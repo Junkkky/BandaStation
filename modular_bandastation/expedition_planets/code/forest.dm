@@ -5,6 +5,7 @@
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/lush
 	biome = "Хвойные леса, тёмная почва, ручьи и лесные озёра"
 	has_atmosphere = TRUE
+	oxygen_atmosphere = TRUE
 	surface_temperature = T0C + 15
 	ruin_biome = "lush"
 
@@ -13,7 +14,7 @@
 	wildlife = TRUE
 	mountain_height = 0.84
 	source_type = /obj/structure/stationtrauma_research_source/expedition_lush
-	cave_biome_table = /datum/biome/expedition/lunar/rocky
+	cave_biome_table = /datum/biome/expedition/woodland/cave
 
 /datum/map_generator/expedition_barren/forest/biome_at(x, y, mountain)
 	if(mountain)
@@ -36,3 +37,11 @@
 /datum/biome/expedition/woodland/dense
 	open_turf_type = /turf/open/misc/dirt/dark
 	flora_density = 52
+
+/** Mountain hollows and caves of the woodland: the same dark soil as its thickets, bare but for fallen stone. */
+/datum/biome/expedition/woodland/cave
+	open_turf_type = /turf/open/misc/dirt/dark
+	flora_density = 6
+	flora_types = list(/obj/structure/flora/rock/pile/style_random = 1)
+	fauna_density = 0
+	fauna_types = list()

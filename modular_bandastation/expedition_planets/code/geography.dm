@@ -53,6 +53,15 @@
 	var/river_length = width * (seed % 4 ? 0.91 : 0.32 + (round(seed / 7) % 3) / 18)
 	var/river_width = 2 + round(seed / 17) % 4
 	var/channel_curvature = 4 + round(seed / 43) % 12
+	// a field of small craters, each list(x, y, radius, sinkhole); a large surface has larger ones
+	var/list/crater_field = list()
+	if(form == "craters")
+		var/small_seed = seed % 9973
+		for(var/index in 1 to 3 + small_seed % 3)
+			var/radius = (8 + (small_seed * (index + 1)) % 9) * width / 128
+			var/crater_x = round(width * (0.14 + ((small_seed * (index + 2) * 37) % 72) / 100))
+			var/crater_y = round(width * (0.14 + ((small_seed * (index + 5) * 53) % 72) / 100))
+			crater_field += list(list(crater_x, crater_y, radius, (small_seed + index) % 3 == 0))
 	for(var/y in 3 to width - 2)
 		budget?.yield()
 		var/dy = y - cy
@@ -82,13 +91,23 @@
 						deviation = abs((deviation + 4) % 13 - 6)
 					if(abs(along) < width * (0.42 + middle_noise * 0.16) && deviation < (form == "dunes" ? 2 : 7) + edge * 8)
 						terrain = rock_type
-				if("craters", "lakes", "frozen_lake", "oasis")
+				if("craters")
+					// a crater is a small bowl of the planet's own ground, flora and all, in a ring of rock; a few
+					// have a sinkhole at the bottom
+					for(var/list/crater as anything in crater_field)
+						var/reach = sqrt((x - crater[1]) ** 2 + (y - crater[2]) ** 2) / crater[3] - edge * 0.4
+						if(reach >= 1.05)
+							continue
+						if(reach < 0.3 && crater[4])
+							terrain = rift_type
+						else if(reach >= 0.8)
+							terrain = rock_type
+						break
+				if("lakes", "frozen_lake", "oasis")
 					var/secondary = ((along + rx) / (rx * 0.6)) ** 2 + ((across - ry) / (ry * 0.52)) ** 2
-					var/size = form == "oasis" ? 0.25 : form == "craters" ? 0.58 : 0.79
+					var/size = form == "oasis" ? 0.25 : 0.79
 					if(min(distance, secondary) < size + edge * 0.65)
-						terrain = form == "craters" ? rift_type : liquid
-					else if(form == "craters" && min(distance, secondary) < size + 0.2 + edge)
-						terrain = rock_type
+						terrain = liquid
 				if("caldera")
 					if(distance < 1.28 + edge && distance > 0.18 + edge * 0.35)
 						terrain = liquid

@@ -167,6 +167,8 @@
 	var/list/turf/occupied = list()
 	// tiles whose own icon reaches past them (grass and its fringe) -> list(its tones, cells it is drawn right, cells up)
 	var/list/fringed = list()
+	// plants likely to grow on ground still unbuilt, each list(x, y, flora type)
+	var/list/planned_flora = list()
 	for(var/tile_y = mid_y + reach - 1, tile_y >= low_y, tile_y--)
 		var/cell_y = (tile_y - low_y) * grain
 		for(var/tile_x in low_x to mid_x + reach - 1)
@@ -175,7 +177,16 @@
 			// how far the icon is drawn from the tile's corner, in pixels
 			var/off_x = 0
 			var/off_y = 0
-			if(ground && !istype(ground, /turf/cordon) && !isspaceturf(ground))
+			// a planet's ground not built yet is drawn as it is planned
+			var/list/planned = expedition_planned_look(tile_x, tile_y, z)
+			if(planned)
+				tones = landing_view_tones(planned[1], planned[2], SOUTH, planned[3], unlit, grain)
+				var/list/size = landing_view_icon_size(planned[1])
+				off_x = (ICON_SIZE_X - size[1]) / 2
+				off_y = (ICON_SIZE_Y - size[2]) / 2
+				if(planned[4])
+					planned_flora += list(list(tile_x, tile_y, planned[4]))
+			else if(ground && !istype(ground, /turf/cordon) && !isspaceturf(ground))
 				var/turf/bare = under_hull[ground] ? landing_view_ground_under(ground) : null
 				if(bare)
 					tones = landing_view_tones(initial(bare.icon), initial(bare.icon_state), SOUTH, null, unlit, grain)
@@ -240,6 +251,13 @@
 		budget.yield()
 		if(ended)
 			return null
+	for(var/list/plant as anything in planned_flora)
+		var/obj/structure/flora/kind = plant[3]
+		var/list/tones = landing_view_tones(initial(kind.icon), initial(kind.icon_state), SOUTH, null, unlit, grain)
+		landing_view_stamp(cells, side, tones, (plant[1] - low_x) * grain + round(initial(kind.pixel_x) * grain / ICON_SIZE_X, 1), (plant[2] - low_y) * grain + round(initial(kind.pixel_y) * grain / ICON_SIZE_Y, 1))
+	budget.yield()
+	if(ended)
+		return null
 	var/path = "data/landing_view/[z]_[mid_x]_[mid_y]_[grain].png"
 	if(!fexists("data/landing_view/made"))
 		text2file("", "data/landing_view/made") // makes the folder
@@ -624,13 +642,36 @@
 	for(var/tile_x in low_x to low_x + LANDING_VIEW_CHUNK)
 		for(var/tile_y in low_y to low_y + LANDING_VIEW_CHUNK)
 			var/turf/ground = locate(tile_x, tile_y, z)
+			var/offset_w = (tile_x - centre_x) * ICON_SIZE_X
+			var/offset_z = (tile_y - centre_y) * ICON_SIZE_Y
+			// a planet's ground not built yet is drawn as it is planned
+			var/list/planned = expedition_planned_look(tile_x, tile_y, z)
+			if(planned)
+				found = TRUE
+				var/list/size = landing_view_icon_size(planned[1])
+				var/mutable_appearance/look = mutable_appearance(planned[1], planned[2])
+				look.color = planned[3]
+				look.pixel_w = offset_w + (ICON_SIZE_X - size[1]) / 2
+				look.pixel_z = offset_z + (ICON_SIZE_Y - size[2]) / 2
+				plane_parts[1] += look
+				var/obj/structure/flora/kind = planned[4]
+				if(kind)
+					var/mutable_appearance/plant = mutable_appearance(initial(kind.icon), initial(kind.icon_state), initial(kind.layer))
+					plant.pixel_w = offset_w + initial(kind.pixel_x)
+					plant.pixel_z = offset_z + initial(kind.pixel_y)
+					plane_parts[clamp(PLANE_TO_TRUE(initial(kind.plane)), FLOOR_PLANE, ABOVE_GAME_PLANE) - FLOOR_PLANE + 1] += plant
+					var/list/plant_size = landing_view_icon_size(initial(kind.icon))
+					var/left = plant.pixel_w - ICON_SIZE_X / 2
+					var/bottom = plant.pixel_z - ICON_SIZE_Y / 2
+					reach = max(reach, -left, left + plant_size[1], -bottom, bottom + plant_size[2])
+				// the storm already rages over the surface area the ground will join
+				storm_parts += landing_view_storm_over(planned[5], weather_by_area, offset_w, offset_z)
+				continue
 			if(!ground || isspaceturf(ground))
 				continue
 			if(istype(ground, /turf/cordon) && (tile_x < cordon_box[1] || tile_y < cordon_box[2] || tile_x > cordon_box[3] || tile_y > cordon_box[4]))
 				continue
 			found = TRUE
-			var/offset_w = (tile_x - centre_x) * ICON_SIZE_X
-			var/offset_z = (tile_y - centre_y) * ICON_SIZE_Y
 			var/datum/stationtrauma_dock_surface/saved = hidden_ground?[ground]
 			var/area/ground_area = saved?.surface_area || ground.loc
 			if(saved)
@@ -667,15 +708,7 @@
 					var/left = offset_w + thing.pixel_x + thing.pixel_w - ICON_SIZE_X / 2
 					var/bottom = offset_z + thing.pixel_y + thing.pixel_z - ICON_SIZE_Y / 2
 					reach = max(reach, -left, left + size[1], -bottom, bottom + size[2])
-			var/list/storm = weather_by_area[ground_area]
-			if(isnull(storm))
-				storm = landing_view_weather(ground_area)
-				weather_by_area[ground_area] = storm
-			for(var/mutable_appearance/falling as anything in storm)
-				var/mutable_appearance/over_tile = new(falling)
-				over_tile.pixel_w = offset_w
-				over_tile.pixel_z = offset_z
-				storm_parts += over_tile
+			storm_parts += landing_view_storm_over(ground_area, weather_by_area, offset_w, offset_z)
 	if(!found)
 		return null
 	// over everything standing there, as the world draws weather
@@ -703,6 +736,19 @@
 		size = list(sheet.Width(), sheet.Height())
 		known["[icon_file]"] = size
 	return size
+
+/// The weather over [ground_area] as looks for one tile shifted by [offset_w], [offset_z]; areas met are kept in [weather_by_area]
+/proc/landing_view_storm_over(area/ground_area, list/weather_by_area, offset_w, offset_z)
+	. = list()
+	var/list/storm = weather_by_area[ground_area]
+	if(isnull(storm))
+		storm = landing_view_weather(ground_area)
+		weather_by_area[ground_area] = storm
+	for(var/mutable_appearance/falling as anything in storm)
+		var/mutable_appearance/over_tile = new(falling)
+		over_tile.pixel_w = offset_w
+		over_tile.pixel_z = offset_z
+		. += over_tile
 
 /// The weather falling on every tile of [ground_area] right now, as looks for a ground picture (none: an empty list)
 /proc/landing_view_weather(area/ground_area)

@@ -275,4 +275,4 @@
 /obj/machinery/computer/stationtrauma_space_navigation/play_ui_sound(action, list/params)
 	if(action == "throttle" && params?["button"] != TRUE)
 		return ..()
-	playsound(src, 'modular_bandastation/space_overmap/sound/navigation_button.wav', 10, FALSE, FALSE)
+	playsound(src, 'modular_bandastation/space_overmap/sound/navigation_button.wav', ST_CONSOLE_BUTTON_VOLUME, FALSE, FALSE)

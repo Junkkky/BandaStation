@@ -65,17 +65,25 @@
 		size = list(template.width, template.height)
 	hive_spot = reserve_ruin(size[1], size[2])
 
+/// Plans the reserved hive on the surface being decorated
+/datum/map_generator/expedition_barren/proc/plan_hive(area/surface)
+	if(!hive_spot)
+		return
+	var/list/size = EXPEDITION_GROWN_HIVE_SIZE
+	var/datum/map_template/template = hive_template()
+	if(template)
+		size = list(template.width, template.height)
+	// the clutch may settle up to three tiles off the hive's middle
+	plan_work(hive_spot[1] - 3, hive_spot[2] - 3, hive_spot[1] + size[1] + 2, hive_spot[2] + size[2] + 2, CALLBACK(src, PROC_REF(build_hive), level_turf(hive_spot[1], hive_spot[2]), surface), life = 6)
+
 /**
- * Build the reserved hive on the finished surface: a mapped nest with an egg clutch, or a grown resin chamber.
+ * Build the reserved hive: a mapped nest with an egg clutch, or a grown resin chamber.
  *
  * Arguments:
- * * bottom - Southwest turf of the surface
+ * * origin - Southwest turf of the hive
  * * surface - Planet surface area the hive ground joins
  */
-/datum/map_generator/expedition_barren/proc/build_hive(turf/bottom, area/surface)
-	if(!hive_spot)
-		return FALSE
-	var/turf/origin = locate(bottom.x + hive_spot[1] - 1, bottom.y + hive_spot[2] - 1, bottom.z)
+/datum/map_generator/expedition_barren/proc/build_hive(turf/origin, area/surface)
 	var/datum/map_template/template = hive_template()
 	if(template)
 		if(!template.load(origin))
@@ -167,21 +175,25 @@
 		var/obj/structure/spawner/hive = new /obj/structure/spawner/stationtrauma_xeno_hive(spot)
 		hive.AddElement(/datum/element/stationtrauma_help_spawner)
 
-/** Set the rolled boss on open ground at least 40 turfs from the camp, with room around it; returns the boss or null. */
-/datum/map_generator/expedition_barren/proc/place_megafauna(turf/bottom)
+/** Plan the rolled boss on open ground at least 40 turfs from the camp, with room around it; returns whether it found a place. */
+/datum/map_generator/expedition_barren/proc/place_megafauna()
 	if(!megafauna || !length(megafauna_types))
-		return null
+		return FALSE
 	for(var/attempt in 1 to 60)
 		var/x = rand(8, width - 8)
 		var/y = rand(8, width - 8)
 		if(is_reserved(x, y) || in_camp_clearance(x, y, clearance = 40))
 			continue
-		var/turf/spot = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
-		if(length(standing_ground(spot, 3)) < 30)
+		if(plan_standing_ground(x, y, 3) < 30)
 			continue
-		var/boss_type = pick_weight(megafauna_types)
-		return new boss_type(spot)
-	return null
+		plan_take(x, y)
+		plan_work(x, y, x, y, CALLBACK(src, PROC_REF(set_megafauna), level_turf(x, y), pick_weight(megafauna_types)), life = 3)
+		return TRUE
+	return FALSE
+
+/// Sets the planned boss on [spot]
+/datum/map_generator/expedition_barren/proc/set_megafauna(turf/spot, boss_type)
+	new boss_type(spot)
 
 /** Free open ground within `radius` of `centre` where a creature or remains can stand. */
 /datum/map_generator/expedition_barren/proc/standing_ground(turf/centre, radius)
@@ -217,8 +229,8 @@
  * Arguments:
  * * wild_by_biome - Biome -> its turfs outside the camp clearance and features
  */
-/datum/map_generator/expedition_barren/proc/place_packs(list/wild_by_biome)
-	var/list/anchors = list()
+/datum/map_generator/expedition_barren/proc/place_packs(list/wild_by_biome, list/anchors)
+	anchors ||= list()
 	for(var/datum/biome/biome as anything in wild_by_biome)
 		var/list/kinds = biome.fauna_density > 0 ? biome.fauna_types : list()
 		var/density = length(kinds) ? biome.fauna_density : (length(guardian_types) ? EXPEDITION_GUARDIAN_DENSITY : 0)
@@ -248,8 +260,8 @@
 /datum/map_generator/expedition_barren/proc/ruin_patrol_biome(x, y)
 	return biome_at(x, y, FALSE)
 
-/** Put local fauna around authored ruins, away from the camp and outside the ruins themselves. */
-/datum/map_generator/expedition_barren/proc/place_ruin_patrols(list/ruins, turf/bottom, area/surface)
+/** Plan local fauna around authored ruins, away from the camp and outside the ruins themselves. */
+/datum/map_generator/expedition_barren/proc/place_ruin_patrols(list/ruins, area/surface)
 	if(!wildlife && !length(guardian_types))
 		return
 	var/placed = 0
@@ -260,8 +272,8 @@
 			continue
 		var/x = ruin[4]
 		var/y = ruin[5]
-		var/turf/approach = locate(bottom.x + x - 1, bottom.y + y - 1, bottom.z)
-		if(!approach || get_area(approach) != surface || approach.density || islava(approach) || isgroundlessturf(approach))
+		var/terrain = terrain_at(x, y)
+		if(!ispath(terrain, /turf/open) || ispath(terrain, /turf/open/lava) || ispath(terrain, /turf/open/chasm) || ispath(terrain, /turf/open/openspace) || !plan_standing_ground(x, y, 2))
 			continue
 		var/datum/biome/biome = ruin_patrol_biome(x, y)
 		var/list/kinds = biome.fauna_density > 0 ? biome.fauna_types : null
@@ -272,14 +284,18 @@
 			kind = isnum(kinds[kinds[1]]) ? pick_weight(kinds) : pick(kinds)
 		if(!kind)
 			continue
-		var/list/ground = standing_ground(approach, 2)
-		for(var/turf/tile as anything in ground.Copy())
-			var/local_x = tile.x - bottom.x + 1
-			var/local_y = tile.y - bottom.y + 1
-			if(get_area(tile) != surface || LAZYACCESS(feature_turfs, tile) || in_camp_clearance(local_x, local_y))
-				ground -= tile
-		if(spawn_fauna_pack(kind, approach, ground))
-			placed++
+		plan_work(x - 2, y - 2, x + 2, y + 2, CALLBACK(src, PROC_REF(set_ruin_patrol), level_turf(x, y), kind, surface), life = 2)
+		placed++
+
+/// Sets a planned patrol of [kind] around a ruin's [approach]
+/datum/map_generator/expedition_barren/proc/set_ruin_patrol(turf/approach, kind, area/surface)
+	if(get_area(approach) != surface || approach.density)
+		return
+	var/list/ground = standing_ground(approach, 2)
+	for(var/turf/tile as anything in ground.Copy())
+		if(get_area(tile) != surface || LAZYACCESS(feature_turfs, tile) || in_camp_clearance(tile.x - origin_x + 1, tile.y - origin_y + 1))
+			ground -= tile
+	spawn_fauna_pack(kind, approach, ground)
 
 /** Spawn a biome pack on usable tiles, keeping heavy creatures solitary and honoring the dead planet's pack budget. */
 /datum/map_generator/expedition_barren/proc/spawn_fauna_pack(kind, turf/anchor, list/ground)
