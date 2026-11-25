@@ -9,6 +9,7 @@ import {
   LabeledList,
   Modal,
   NoticeBox,
+  NumberInput,
   Section,
   Stack,
 } from 'tgui-core/components';
@@ -27,10 +28,12 @@ export function Upload(props) {
     cooldown_string,
     has_cache,
     has_scanner,
+    max_print_run,
   } = data;
 
   const { uploadToDBState } = useLibraryContext();
   const [uploadToDB, setUploadToDB] = uploadToDBState;
+  const [copies, setCopies] = useState(1);
 
   if (!has_scanner) {
     return (
@@ -113,7 +116,25 @@ export function Upload(props) {
           </Stack>
         </Stack.Item>
         <Stack.Item>
-          <Stack>
+          <Stack align="center">
+            <Stack.Item>
+              <NumberInput
+                value={copies}
+                minValue={1}
+                maxValue={max_print_run}
+                step={1}
+                unit="экз."
+                onChange={setCopies}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="print"
+                onClick={() => act('print_scan', { copies })}
+              >
+                Печать тиража
+              </Button>
+            </Stack.Item>
             <Stack.Item grow>
               <Button
                 disabled={!active_newscaster_cooldown}

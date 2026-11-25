@@ -256,6 +256,7 @@
 #include "icons_missing.dm"
 #include "id_access.dm"
 #include "id_card.dm"
+#include "illustrated_books.dm"
 #include "interaction_door.dm"
 #include "interaction_silicon.dm"
 #include "interaction_structures.dm"

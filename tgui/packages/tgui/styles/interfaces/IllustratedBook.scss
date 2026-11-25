@@ -1,0 +1,495 @@
+.IllustratedBook__window {
+  display: flex;
+  flex-direction: column;
+}
+
+.IllustratedBook__reading {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px;
+  background-color: #30231f;
+  color: #f2e2c7;
+}
+
+.IllustratedBook {
+  --ink: #35291f;
+  --gold: #cfb083;
+  --serif: Georgia, 'Times New Roman', serif;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 18px;
+  overflow: auto;
+  color: #f2e2c7;
+  background: radial-gradient(ellipse at top, #543b31, #2d211e 80%);
+}
+
+@each $name, $color in (
+  'green': #395846,
+  'red': #793738,
+  'amber': #825629,
+  'blue': #344f71,
+  'purple': #604568,
+  'black': #363639
+) {
+  [data-book-binding='#{$name}'] {
+    --binding-color: #{$color};
+  }
+}
+
+.IllustratedBook[data-book-binding]:not(.IllustratedBook--closed) {
+  background: radial-gradient(ellipse at top, transparent, #0007 80%), var(--binding-color);
+}
+
+.IllustratedBook__binding {
+  position: relative;
+  flex: none;
+  padding: 11px 0 10px;
+  text-align: center;
+  font-family: var(--serif);
+}
+
+.IllustratedBook--closed {
+  background: radial-gradient(ellipse at 50% 40%, #644937, #30231f 70%, #241b19);
+}
+
+.IllustratedBook__coverLayout,
+.IllustratedBook__coverShelf,
+.IllustratedBook__openBook {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.IllustratedBook__coverLayout {
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: auto;
+  padding: 16px 0;
+}
+
+.IllustratedBook__coverShelf,
+.IllustratedBook__openBook {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.IllustratedBook__openBook {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+  }
+  &:hover .IllustratedBook__openHint {
+    color: #fff1ce;
+    text-decoration: underline;
+  }
+}
+
+.IllustratedBook__openHint {
+  margin-top: 4px;
+  color: #e3cba0;
+  font: italic 15px var(--serif);
+}
+
+.IllustratedBook__coverFace {
+  display: flex;
+  width: min(345px, 78vw, 58vh);
+  aspect-ratio: 3 / 4;
+  padding: clamp(12px, 3vh, 20px) clamp(12px, 2.6vh, 18px) clamp(12px, 3vh, 20px) clamp(24px, 5.6vh, 36px);
+  border: 1px solid #292621;
+  border-radius: 6px 3px 3px 6px;
+  color: #f2d797;
+  background:
+    linear-gradient(90deg, #0009 0%, #fff1 3%, #0004 6%, #0009 7%, #fff2 9%, transparent 10%),
+    repeating-linear-gradient(31deg, transparent 0 2px, #a0aa7810 2px 3px),
+    repeating-linear-gradient(123deg, transparent 0 2px, #031c171c 2px 3px),
+    linear-gradient(125deg, #fff1, #0001 54%, #0004),
+    var(--binding-color, #395846);
+  box-shadow:
+    inset 0 0 8px #0007,
+    2px 2px #c2ac81,
+    3px 4px #725e46,
+    5px 5px #deceaa,
+    6px 7px var(--binding-color, #395846),
+    9px 13px 16px #1c1514;
+  font-family: var(--serif);
+  text-align: center;
+}
+
+.IllustratedBook__coverFrame {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 8px;
+  min-width: 0;
+  padding: 6% 5%;
+  border: 3px double #c4a568;
+  outline: 1px solid #c4a56880;
+  outline-offset: 4px;
+}
+
+.IllustratedBook__coverTitle,
+.IllustratedBook__coverAuthor {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-shadow: 0 1px 1px #15251a;
+}
+
+.IllustratedBook__coverTitle {
+  font-size: clamp(19px, 4.5vh, 32px);
+  line-height: 1.1;
+}
+
+.IllustratedBook__coverAuthor {
+  font: italic clamp(13px, 2.7vh, 17px)/1.15 var(--serif);
+}
+
+.IllustratedBook__coverImage {
+  min-height: 0;
+  height: min(26vh, 160px);
+  max-width: 92%;
+  object-fit: contain;
+  box-shadow: 0 0 0 1px #bda270, 0 0 0 4px var(--binding-color, #395846), 0 0 0 5px #bda270;
+}
+
+.IllustratedBook__coverStamp {
+  display: grid;
+  width: 2.2em;
+  height: 2.2em;
+  place-items: center;
+  border: 3px double #bca369;
+  outline: 1px solid #bca36966;
+  outline-offset: 4px;
+  transform: rotate(45deg);
+  color: #d7bd81;
+  font-size: clamp(18px, 4vh, 27px);
+
+  i {
+    transform: rotate(-45deg);
+  }
+}
+
+.IllustratedBook__coverEditor {
+  width: min(240px, 85vw);
+  padding: 16px;
+  border: 1px solid #ab9471;
+  background: #f2e6ce;
+  color: var(--ink);
+
+  h2 {
+    margin: 0 0 10px;
+    color: #694430;
+    font: 20px var(--serif);
+  }
+  p {
+    margin: 4px 0 8px;
+  }
+  .IllustratedBook__tools {
+    justify-content: flex-start;
+  }
+}
+
+.IllustratedBook__title {
+  font-size: 22px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.IllustratedBook__palette {
+  margin: 0 0 12px;
+  padding: 0;
+  border: 0;
+
+  legend {
+    margin-bottom: 5px;
+    padding: 0;
+    font-weight: bold;
+  }
+
+  div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  input {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    margin: 3px;
+    border: 1px solid #0005;
+    border-radius: 3px;
+    background: var(--binding-color);
+    cursor: pointer;
+
+    &:checked {
+      background: radial-gradient(circle, #fff6d8 25%, transparent 30%), var(--binding-color);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 1px;
+    }
+  }
+}
+
+.IllustratedBook__author {
+  color: var(--gold);
+  font-size: 14px;
+  font-style: italic;
+  overflow-wrap: anywhere;
+}
+
+.IllustratedBook__metadata {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  margin-top: 3px;
+}
+
+.IllustratedBook__spread {
+  display: flex;
+  flex: 1;
+  min-height: 150px;
+  border: 1px solid #a07d53;
+  border-radius: 4px 4px 8px 8px;
+  overflow: hidden;
+  box-shadow:
+    0 2px #9c825e,
+    0 4px #d0bd9a,
+    0 6px #7f6c54,
+    0 10px 15px #1e1512;
+}
+
+.IllustratedBook__leaf {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 23px 26px 10px;
+  color: var(--ink);
+  background: linear-gradient(90deg, #e1cba5, #f4e8cf 7%, #f7edd8 88%, #e6d3ae 97%, #b89d76);
+
+  &:nth-child(2) {
+    background: linear-gradient(90deg, #b89d76, #e8d7b8 4%, #f7edd8 13%, #f2e5ca 93%, #decaab);
+  }
+}
+
+.IllustratedBook__prose,
+.IllustratedBook__input {
+  flex: 1;
+  min-height: 0;
+  color: var(--ink);
+  font: 17px/1.55 var(--serif);
+  user-select: text;
+  overflow-wrap: anywhere;
+}
+
+.IllustratedBook__leaf--bookmarked {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 3px;
+    width: 9px;
+    height: 28px;
+    pointer-events: none;
+    background: linear-gradient(90deg, #682e31, #a04c4f 45%, #733137);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+    content: '';
+  }
+}
+
+.IllustratedBook__prose {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ad9878 transparent;
+
+  p {
+    margin: 0 0 0.7em;
+  }
+
+  pre {
+    white-space: pre-wrap;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #773c2e;
+    line-height: 1.25;
+  }
+}
+
+.IllustratedBook__figure {
+  margin: 2px auto 12px;
+  text-align: center;
+
+  figcaption {
+    margin-top: 5px;
+    color: #65513b;
+    font: italic 15px/1.3 var(--serif);
+  }
+}
+
+.IllustratedBook__illustration {
+  display: block;
+  width: 85%;
+  max-height: 235px;
+  margin: auto;
+  object-fit: contain;
+  border: 3px solid #fff5df;
+  outline: 1px solid #af9875;
+  image-rendering: pixelated;
+}
+
+.IllustratedBook__number,
+.IllustratedBook__running {
+  color: #785c40;
+  text-align: center;
+  font: italic 14px var(--serif);
+}
+
+.IllustratedBook__number {
+  padding-top: 5px;
+  border-top: 1px solid #c7b18f;
+}
+
+.IllustratedBook__running {
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #c7b18f;
+}
+
+.IllustratedBook__input {
+  width: 100%;
+  min-height: 4em;
+  padding: 8px;
+  border: 1px solid #ae9978;
+  border-radius: 2px;
+  background: #fbf3df;
+  resize: none;
+}
+
+.IllustratedBook__leaf--editor {
+  overflow-y: auto;
+}
+
+.IllustratedBook__formatting {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-bottom: 5px;
+
+  button {
+    min-width: 30px;
+    padding: 3px 6px;
+    border: 1px solid #b5a07f;
+    border-radius: 2px;
+    background: #f4e7ce;
+    color: var(--ink);
+    font: bold 14px/18px var(--serif);
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      background: #e7d4ad;
+      outline: 1px solid #73553b;
+    }
+  }
+}
+
+.IllustratedBook__count {
+  margin-top: 4px;
+  color: #6a553e;
+  text-align: right;
+  font-size: 11px;
+}
+
+.IllustratedBook__caption {
+  margin: 5px 0;
+  color: #65513b;
+  font-size: 12px;
+
+  input {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    padding: 5px;
+    border: 1px solid #ae9978;
+    color: var(--ink);
+    background: #fbf3df;
+  }
+}
+
+.IllustratedBook__notice {
+  margin: 3px 0;
+  color: #813722;
+}
+
+.IllustratedBook__tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+
+  &:empty {
+    display: none;
+  }
+  &:not(:empty) {
+    padding: 5px 0;
+  }
+}
+
+.IllustratedBook__newPage {
+  margin: auto;
+}
+
+.IllustratedBook__navigation {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 8px;
+  padding: 14px 0 8px;
+  color: var(--gold);
+  font: italic 14px var(--serif);
+}
+
+.IllustratedBook .Button {
+  --button-background-default: #785a43;
+  --button-color: #fff3de;
+  --button-background-disabled: #5a4b42;
+
+  font: normal 12px/24px var(--font-family);
+}
+
+@media (max-width: 600px) {
+  .IllustratedBook {
+    padding: 0 6px;
+  }
+
+  .IllustratedBook__leaf {
+    padding: 12px 9px 6px;
+  }
+}
