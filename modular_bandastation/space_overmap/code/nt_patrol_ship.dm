@@ -1,47 +1,68 @@
 /// Powered compartments of the standard M patrol destroyer.
 /area/shuttle/stationtrauma_space/nt_patrol
 	name = "Патрульный эсминец НТ"
+	icon = 'modular_bandastation/space_overmap/icons/nt_patrol_areas.dmi'
+	icon_state = "hull"
 	requires_power = TRUE
 
 /// Bridge and communications.
 /area/shuttle/stationtrauma_space/nt_patrol/bridge
 	name = "Эсминец НТ: мостик"
+	icon_state = "bridge"
 
 /// Treatment and medical supplies.
 /area/shuttle/stationtrauma_space/nt_patrol/medbay
 	name = "Эсминец НТ: медотсек"
+	icon_state = "medbay"
 
 /// Patrol muster and bunks.
 /area/shuttle/stationtrauma_space/nt_patrol/barracks
 	name = "Эсминец НТ: казарма"
+	icon_state = "barracks"
 
 /// Shared crew mess.
 /area/shuttle/stationtrauma_space/nt_patrol/mess
 	name = "Эсминец НТ: кают-компания"
+	icon_state = "mess"
 
 /// Patrol equipment kept behind the armory airlock.
 /area/shuttle/stationtrauma_space/nt_patrol/armory
 	name = "Эсминец НТ: оружейная"
+	icon_state = "armory"
 
-/// Armory access is local to the patrol and grants no other clearance.
+/// Only the commander and patrol officers may open the special equipment locker.
 /datum/id_trim/nt_patrol/armory
 	access = list("nt_patrol_armory")
+
+/obj/item/encryptionkey/nt_patrol
+	name = "NT patrol encryption key"
+	flags_1 = parent_type::flags_1 | NO_NEW_GAGS_PREVIEW_1
+	channels = list(RADIO_CHANNEL_NT_PATROL = 1)
+	special_channels = RADIO_SPECIAL_NT_PATROL
+
+/obj/item/radio/headset/nt_patrol
+	name = "NT patrol headset"
+	keyslot = /obj/item/encryptionkey/nt_patrol
 
 /// Crew movement and standard boarding hatches.
 /area/shuttle/stationtrauma_space/nt_patrol/passage
 	name = "Эсминец НТ: коридор"
+	icon_state = "passage"
 
 /// Power, atmosphere and drive machinery.
 /area/shuttle/stationtrauma_space/nt_patrol/engineering
 	name = "Эсминец НТ: машинное отделение"
+	icon_state = "engineering"
 
 /// EVA storage and the separate surface airlock.
 /area/shuttle/stationtrauma_space/nt_patrol/eva
 	name = "Эсминец НТ: шлюз"
+	icon_state = "eva"
 
 /// Exterior engine mounts travel with the hull and remain in vacuum.
 /area/shuttle/stationtrauma_space/nt_patrol/exterior
 	name = "Эсминец НТ: наружная обшивка"
+	icon_state = "exterior"
 	requires_power = FALSE
 	monitored_compartment = FALSE
 	vacuum_by_design = TRUE

@@ -110,7 +110,9 @@
 	var/turf/arrival = mission.find_latejoin_spawn(ship)
 	TEST_ASSERT_NOTNULL(arrival, "The loaded ship must provide a walkable cryopod arrival tile")
 	var/obj/machinery/cryopod/away_mission/cryopod = locate() in get_step(arrival, WEST)
-	TEST_ASSERT(cryopod && cryopod.get_linked_control_computer(), "The arrival tile must be in front of a cryopod with its own control console")
+	var/obj/machinery/computer/cryopod/cryo_console = cryopod?.get_linked_control_computer()
+	TEST_ASSERT_NOTNULL(cryo_console, "The arrival tile must be in front of a cryopod with its own control console")
+	TEST_ASSERT(isclosedturf(get_turf_pixel(cryo_console)), "The cryopod console must be displayed on a wall")
 	var/obj/structure/closet/obstruction = allocate(/obj/structure/closet, arrival)
 	TEST_ASSERT_NULL(mission.find_latejoin_spawn(ship), "A blocked cryopod arrival tile must not be offered")
 	qdel(obstruction)
@@ -122,12 +124,21 @@
 	TEST_ASSERT(slot.accepts(ship), "The real hull must fit a standard M slot")
 	var/hatches_ready = 0
 	var/bridge_windows = 0
+	var/obj/machinery/stasis/stasis_bed
+	var/obj/machinery/computer/operating/surgery_monitor
+	var/obj/machinery/fax/bridge_fax
 	var/list/power_storage = list()
 	var/list/vents = list()
 	var/list/scrubbers = list()
 	for(var/turf/tile as anything in ship.return_turfs())
+		for(var/obj/machinery/door/airlock/hull_airlock in tile)
+			TEST_ASSERT(hull_airlock.check_access_list(list(ACCESS_CENT_SPECOPS)) && !hull_airlock.check_access_list(list(ACCESS_CENT_GENERAL)), "Ship airlocks must require the ERT clearance")
+		if(istype(get_area(tile), /area/shuttle/stationtrauma_space/nt_patrol/medbay))
+			stasis_bed ||= locate(/obj/machinery/stasis) in tile
+			surgery_monitor ||= locate(/obj/machinery/computer/operating) in tile
 		for(var/obj/machinery/door/airlock/stationtrauma_docking/ship/hatch in tile)
-			if(slot.hatch_available(ship, hatch))
+			TEST_ASSERT(hatch.require_gangway_access, "The dock must check ERT access at both endpoints")
+			if(!slot.hatch_problem(ship, hatch))
 				hatches_ready++
 		for(var/obj/machinery/power/smes/ship/storage in tile)
 			power_storage += storage
@@ -141,10 +152,15 @@
 			var/datum/component/atom_mounted/mount = machine.GetComponent(/datum/component/atom_mounted)
 			TEST_ASSERT(isclosedturf(mount?.hanging_support_atom), "[machine] at [COORD(tile)] must be secured to a wall")
 		if(istype(get_area(tile), /area/shuttle/stationtrauma_space/nt_patrol/bridge))
+			bridge_fax ||= locate(/obj/machinery/fax) in tile
 			for(var/obj/structure/window/reinforced/plasma/plastitanium/pane in tile)
 				TEST_ASSERT(!CANATMOSPASS(pane, get_step(tile, NORTH), FALSE), "The bridge window at [COORD(tile)] must seal the hull")
 				bridge_windows++
-	TEST_ASSERT_EQUAL(bridge_windows, 4, "The bow must have four armored observation panes")
+	TEST_ASSERT_EQUAL(bridge_windows, 11, "The stepped bow must have eleven armored observation panes")
+	var/centcom_fax_id = bridge_fax?.special_networks["nanotrasen"]?["fax_id"]
+	TEST_ASSERT(bridge_fax?.is_operational && bridge_fax.visible_to_network && centcom_fax_id && centcom_fax_id != bridge_fax.fax_id, "The bridge fax must reach CentCom under its own return address")
+	TEST_ASSERT(stasis_bed?.stasis_running(), "The patrol medbay must start with a working stasis bed")
+	TEST_ASSERT(surgery_monitor?.is_operational && surgery_monitor.table?.computer == surgery_monitor, "The operating room needs a powered monitor paired with its table")
 	TEST_ASSERT_EQUAL(hatches_ready, 2, "Both long sides must offer a clear native gangway hatch")
 	TEST_ASSERT_EQUAL(length(power_storage), 1, "The patrol hull needs one initialized SMES")
 	var/obj/machinery/power/smes/ship/storage = power_storage[1]
@@ -333,14 +349,16 @@
 
 /// Verify the loaded stock and the armory's ship-specific access.
 /datum/unit_test/overmap_nt_patrol/proc/check_armory(obj/docking_port/mobile/stationtrauma_space/ship)
-	var/obj/machinery/door/airlock/security/armory_hatch
+	var/obj/machinery/door/airlock/highsecurity/armory_hatch
+	var/obj/structure/closet/secure_closet/gear_locker
 	var/disablers = 0
 	var/energy_guns = 0
 	var/rechargers = 0
 	for(var/turf/tile as anything in ship.return_turfs())
-		armory_hatch ||= locate(/obj/machinery/door/airlock/security) in tile
 		if(!istype(get_area(tile), /area/shuttle/stationtrauma_space/nt_patrol/armory))
 			continue
+		armory_hatch ||= locate(/obj/machinery/door/airlock/highsecurity) in tile
+		gear_locker ||= locate(/obj/structure/closet/secure_closet) in tile
 		for(var/obj/item/gun/energy/weapon in tile)
 			if(istype(weapon, /obj/item/gun/energy/disabler))
 				disablers++
@@ -349,8 +367,10 @@
 		if(locate(/obj/machinery/recharger) in tile)
 			rechargers++
 	var/datum/id_trim/nt_patrol/armory/trim = allocate(/datum/id_trim/nt_patrol/armory)
-	TEST_ASSERT(armory_hatch && armory_hatch.check_access_list(trim.access) && !armory_hatch.check_access_list(list()), "Only authorized patrol crew may open the armory")
-	TEST_ASSERT_EQUAL(disablers, 6, "The armory must stock six disablers")
+	TEST_ASSERT(armory_hatch?.check_access_list(trim.access), "The patrol officer's ID must open the armory")
+	TEST_ASSERT(gear_locker?.locked && gear_locker.check_access_list(trim.access) && !gear_locker.check_access_list(list()), "The patrol armory ID must unlock the equipment locker")
+	TEST_ASSERT((locate(/obj/item/shield/riot) in gear_locker) && (locate(/obj/item/clothing/suit/armor/riot) in gear_locker), "The patrol shield and armor must load inside the locker")
+	TEST_ASSERT_EQUAL(disablers, 3, "The three armory racks must each stock one disabler")
 	TEST_ASSERT_EQUAL(energy_guns, 3, "The armory must stock three energy guns")
 	TEST_ASSERT_EQUAL(rechargers, 1, "The armory must provide a recharger")
 

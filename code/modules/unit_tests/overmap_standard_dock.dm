@@ -364,10 +364,36 @@
 	station_objects += blocker
 	TEST_ASSERT(navigation.select_site(site.id), "The dock remains selectable before the pilot attempts docking")
 	TEST_ASSERT(!navigation.dock(instant = TRUE), "An obstructed gap must prevent docking even when the hull footprint is clear")
+	TEST_ASSERT(findtext(navigation.status, "полоса трапа перекрыта"), "The helm must identify the blocked gangway: [navigation.status]")
 	TEST_ASSERT_EQUAL(get_turf(ship), departure, "The ship must remain at its departure point when the bridge is blocked")
 	TEST_ASSERT_EQUAL(get_turf(blocker), gap, "A failed approach must leave the obstruction intact")
 	TEST_ASSERT(isspaceturf(gap), "The failed approach must leave the gap as vacuum")
 	TEST_ASSERT_NULL(site.docking_owner, "The aborted approach must release the site's reservation")
+
+/// A ready ship must get a dock-side reason when its only aligned wall section is missing or reversed.
+/datum/unit_test/overmap_standard_dock/damaged_wall/Run()
+	TEST_ASSERT_NOTNULL(site, "The real dock fixture must finish setup")
+	var/turf/wall_tile = locate(bay.x + 8, bay.y + 3, bay.z)
+	var/obj/machinery/door/airlock/stationtrauma_docking/wall/wall = locate() in wall_tile
+	TEST_ASSERT_NOTNULL(wall, "The aligned wall should be present before damage")
+	TEST_ASSERT(navigation.select_site(site.id), "The registered berth should remain selectable")
+
+	wall.setDir(EAST)
+	TEST_ASSERT(!navigation.dock(instant = TRUE), "A reversed wall cannot connect")
+	TEST_ASSERT(findtext(navigation.status, "секция стыковочной стены развёрнута"), "The helm must identify the reversed wall section: [navigation.status]")
+
+	wall.setDir(WEST)
+	var/obj/structure/girder/corridor_blocker = allocate(/obj/structure/girder, get_step(wall, EAST))
+	station_objects += corridor_blocker
+	TEST_ASSERT(!navigation.dock(instant = TRUE), "A blocked dock corridor cannot connect")
+	TEST_ASSERT(findtext(navigation.status, "коридор за секцией стыковочной стены перекрыт"), "The helm must identify the blocked dock corridor: [navigation.status]")
+	qdel(corridor_blocker)
+
+	qdel(wall)
+	TEST_ASSERT(!navigation.dock(instant = TRUE), "A missing wall cannot connect")
+	TEST_ASSERT(findtext(navigation.status, "нет секции стыковочной стены"), "The helm must identify the missing wall section: [navigation.status]")
+	TEST_ASSERT_NULL(bay.active_berth, "A failed approach must release the physical berth")
+	TEST_ASSERT_NULL(site.docking_owner, "A failed approach must release the overmap site")
 
 /// A passage blocked during the yielding native preflight must still stop the hull before movement.
 /datum/unit_test/overmap_standard_dock/late_blocked_passage
@@ -383,6 +409,7 @@
 	var/arrived = navigation.dock(instant = TRUE)
 	TEST_ASSERT_NOTNULL(late_blocker, "The real native preflight must run before the passage is blocked")
 	TEST_ASSERT(!arrived, "The final check must reject the newly obstructed passage")
+	TEST_ASSERT(findtext(navigation.status, "полоса трапа перекрыта"), "Native preflight must report the changed passage: [navigation.status]")
 	TEST_ASSERT_EQUAL(get_turf(ship), departure, "Rejection during preflight must leave the hull at departure")
 	TEST_ASSERT_EQUAL(get_turf(late_blocker), gap, "The last-minute obstruction must remain in place")
 	TEST_ASSERT(isspaceturf(gap), "The obstructed gap must remain vacuum")

@@ -255,8 +255,8 @@
 	icon = 'icons/map_icons/items/encryptionkey.dmi'
 	icon_state = "/obj/item/encryptionkey/headset_cent"
 	post_init_icon_state = "cypherkey_centcom"
-	special_channels = RADIO_SPECIAL_CENTCOM
-	channels = list(RADIO_CHANNEL_CENTCOM = 1)
+	special_channels = RADIO_SPECIAL_CENTCOM | RADIO_SPECIAL_NT_PATROL
+	channels = list(RADIO_CHANNEL_CENTCOM = 1, RADIO_CHANNEL_NT_PATROL = 1)
 	greyscale_config = /datum/greyscale_config/encryptionkey_centcom
 	greyscale_colors = "#24a157#dca01b"
 

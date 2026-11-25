@@ -10,6 +10,15 @@
 	if(. == FREQ_SYNDICATE && !syndie) // Prevents people from picking (or rounding up) into the syndie frequency
 		. = FREQ_COMMON
 
+/// Returns the radio key flag required to send and receive superspace traffic on this frequency.
+/proc/get_independent_radio_flag(frequency)
+	switch(frequency)
+		if(FREQ_CENTCOM, FREQ_STATUS_DISPLAYS)
+			return RADIO_SPECIAL_CENTCOM
+		if(FREQ_NT_PATROL)
+			return RADIO_SPECIAL_NT_PATROL
+	return NONE
+
 /// Format frequency by moving the decimal.
 /proc/format_frequency(frequency)
 	frequency = text2num(frequency)

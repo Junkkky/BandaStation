@@ -90,7 +90,7 @@
 				regulators += machine
 	TEST_ASSERT_EQUAL(length(hatches), 2, "Both side docking hatches must survive map initialization")
 	for(var/obj/machinery/door/airlock/stationtrauma_docking/ship/hatch as anything in hatches)
-		TEST_ASSERT(bay.hatch_available(ship, hatch), "Each mapped docking hatch needs unobstructed interior floor and clear space outside at [COORD(hatch)]")
+		TEST_ASSERT_NULL(bay.hatch_problem(ship, hatch), "Each mapped docking hatch needs unobstructed interior floor and clear space outside at [COORD(hatch)]")
 	TEST_ASSERT_EQUAL(length(helms), 1, "The actual bridge needs one navigation console")
 	var/obj/machinery/computer/stationtrauma_space_navigation/helm = helms[1]
 	TEST_ASSERT_EQUAL(helm.vessel, ship, "Sector attachment must bind the mapped helm to Argos")
@@ -246,6 +246,7 @@
 	UNTIL((!gangway.busy && !gangway.ship.density) || world.time >= deadline)
 	TEST_ASSERT(!gangway.busy && !gangway.ship.density && wall.density && !wall.hasPower(), "The cancelled departure must reopen a way back aboard while the wall remains sealed")
 	TEST_ASSERT(!gangway.open_passage() && !gangway.ship.density, "Requesting the full passage during the outage must leave the return hatch open")
+	TEST_ASSERT(findtext(gangway.opening_problem, "секция стыковочной стены обесточена"), "The closed gangway must identify the loss of dock-side power")
 	TEST_ASSERT(navigation.depart(instant = TRUE), "Argos must depart through native relocation even when the dock wall has lost power: [navigation.status]")
 	TEST_ASSERT(wall.density && !wall.operating && !wall.hasPower(), "Departure must leave the unpowered wall closed")
 	TEST_ASSERT_EQUAL(get_turf(ship), flight_anchor, "Departure must return the actual Argos hull to its original flight anchor")
