@@ -179,6 +179,7 @@
 		if(survey?.covered_at)
 			data["planet"] = planet.survey_data()
 	data["jump_progress"] = map.jump_progress()
+	data["jump_point_range"] = ST_JUMP_POINT_RANGE
 	return data
 
 /** Validate and dispatch a helm command. */

@@ -1416,9 +1416,14 @@
   &__field.is-idle {
     cursor: default;
   }
+  // Ground read by probes, merged: drawn solid and faded as a whole
   &__cap {
     fill: var(--nav-phosphor);
-    opacity: 0.25;
+    opacity: 0.28;
+  }
+  // and on the face turned away, seen through the planet: the same phosphor, dimmed
+  &__cap.is-far {
+    opacity: 0.1;
   }
   &__meter {
     display: grid;
@@ -1579,6 +1584,38 @@
         fill: var(--nav-ink);
       }
     }
+  }
+  // Bluespace jump point on the helm chart: a blue eddy round a dark heart
+  &__jump-point .arms {
+    fill: none;
+    stroke: #7aa6ff;
+    stroke-opacity: 0.8;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+  }
+  &__jump-range {
+    fill: none;
+    stroke: #5b8fe8;
+    stroke-opacity: 0.35;
+    stroke-dasharray: 3 4;
+  }
+  // The survey scope with nothing in its sights
+  &__standby {
+    fill: none;
+    stroke: var(--nav-phosphor);
+    stroke-opacity: 0.35;
+    stroke-width: 0.01;
+    stroke-dasharray: 0.05 0.04;
+  }
+  &__standby-title {
+    fill: var(--nav-amber);
+    font-size: 0.13px;
+    letter-spacing: 0.03px;
+  }
+  &__standby-reason {
+    fill: #a5bfb3;
+    font-size: 0.08px;
+    letter-spacing: 0.015px;
   }
   &__terminal {
     flex: 1;

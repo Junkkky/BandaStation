@@ -71,13 +71,15 @@ export function behindPlanet([x, y, z]: Vector) {
 }
 
 /**
- * Outline of the ground a probe striking [hit] reads, seen by the viewer of [back], in screen units: points on the far
- * side are laid on the rim. Null if none of it can be seen.
+ * Outline of the ground a probe striking [hit] reads, seen by the viewer of [back], in screen units: its part on the
+ * near face, or with [far] its part on the face turned away, seen through the planet. Points on the other face are
+ * laid on the rim. Null if it has no part on that face.
  */
 export function footprintOutline(
   hit: Vector,
   back: boolean,
   footprint: number,
+  far = false,
 ): [number, number][] | null {
   const centre = toView(hit, back);
   const helper: Vector = Math.abs(centre[0]) < 0.9 ? [1, 0, 0] : [0, 1, 0];
@@ -94,7 +96,7 @@ export function footprintOutline(
         Math.sin(angle) *
           (Math.cos(turn) * first[axis] + Math.sin(turn) * second[axis]),
     ) as Vector;
-    if (point[2] >= 0) {
+    if (far ? point[2] < 0 : point[2] >= 0) {
       seen = true;
       outline.push([point[0], -point[1]]);
     } else {

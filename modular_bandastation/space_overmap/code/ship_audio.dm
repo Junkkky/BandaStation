@@ -18,6 +18,8 @@
 	var/datum/sound_token/stationtrauma_engine_exterior/exterior_thrust
 	/// Hull-only roar of atmospheric flight, independent of the drive.
 	var/datum/sound_token/stationtrauma_ship_interior/engine/entry_roar
+	/// Hull-only hum of bluespace flight, from launch to the exit, independent of the drive.
+	var/datum/sound_token/stationtrauma_ship_interior/engine/jump_hum
 	/// Whether the drive is audibly lit.
 	var/running = FALSE
 	/// Smoothed idle level from 0 to 1.
@@ -32,8 +34,13 @@
 	var/entry_level = 0
 	/// Roar level last sent to listeners.
 	var/sent_entry = -1
+	/// Smoothed bluespace hum level from 0 to 1, and the level last sent
+	var/jump_level = 0
+	var/sent_jump = -1
 	/// Loop heard aboard through atmospheric flight.
 	var/entry_roar_sound = 'sound/runtime/hyperspace/hyperspace_progress.ogg'
+	/// Loop heard aboard through bluespace flight.
+	var/jump_hum_sound = 'sound/runtime/hyperspace/hyperspace_progress.ogg'
 	/// Clip heard aboard when the drive lights.
 	var/interior_start_sound = 'modular_bandastation/space_overmap/sound/engine/engine_interior_start.ogg'
 	/// Loop heard aboard while the drive idles.
@@ -81,11 +88,13 @@
 	var/idle_target = lit ? 0.4 + 0.6 * available : 0
 	var/thrust_target = lit ? map.commanded_thrust() * available : 0
 	var/entry_target = map.entry_heat()
+	var/jump_target = map.jump_phase == HYPERSPACE_LAUNCH ? 1 : 0
 	var/step = ST_ENGINE_SOUND_GLIDE * seconds_per_tick
 	idle_level += clamp(idle_target - idle_level, -step, step)
 	thrust_level += clamp(thrust_target - thrust_level, -step, step)
 	entry_level += clamp(entry_target - entry_level, -step, step)
-	if(!running && idle_level <= 0 && thrust_level <= 0 && entry_level <= 0)
+	jump_level += clamp(jump_target - jump_level, -step, step)
+	if(!running && idle_level <= 0 && thrust_level <= 0 && entry_level <= 0 && jump_level <= 0)
 		release()
 		return
 	if(running)
@@ -97,6 +106,13 @@
 		sent_entry = entry_level
 		// The roar deepens as the air thickens around the hull.
 		set_layer(entry_roar, 75 * entry_level, 0.75 + 0.15 * entry_level)
+	if(jump_level > 0 && QDELETED(jump_hum))
+		jump_hum = new(map.vessel, jump_hum_sound, map.radius * 2 + 2, 1, _repeating = TRUE)
+		sent_jump = -1
+	if(abs(jump_level - sent_jump) >= ST_ENGINE_SOUND_STEP || (jump_level == jump_target && jump_level != sent_jump))
+		sent_jump = jump_level
+		// lower than the atmospheric roar, so the two never sound alike
+		set_layer(jump_hum, 45 * jump_level, 0.6)
 	// Small changes wait for the next threshold step, but a settled level is always sent exactly.
 	var/idle_due = abs(idle_level - sent_idle) >= ST_ENGINE_SOUND_STEP || (idle_level == idle_target && idle_level != sent_idle)
 	var/thrust_due = abs(thrust_level - sent_thrust) >= ST_ENGINE_SOUND_STEP || (thrust_level == thrust_target && thrust_level != sent_thrust)
@@ -167,14 +183,15 @@
 	QDEL_NULL(exterior_idle)
 	QDEL_NULL(exterior_thrust)
 	QDEL_NULL(entry_roar)
-	sent_idle = sent_thrust = sent_entry = -1
+	QDEL_NULL(jump_hum)
+	sent_idle = sent_thrust = sent_entry = sent_jump = -1
 
 /** Cut the drive sound at once, with its stop clip when it was running; for a hull leaving processing. */
 /datum/stationtrauma_engine_sound/proc/silence()
 	if(running)
 		running = FALSE
 		play_once(interior_stop_sound, exterior_stop_sound)
-	idle_level = thrust_level = entry_level = 0
+	idle_level = thrust_level = entry_level = jump_level = 0
 	release()
 
 /// Engine loops start muted, so the first send already plays them and later updates only unmute.

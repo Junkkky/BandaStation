@@ -33,6 +33,7 @@
 #include "code/dock_controller.dm"
 #include "code/ship_core.dm"
 #include "code/bluespace.dm"
+#include "code/jump_points.dm"
 #include "code/encounters.dm"
 #include "code/asteroids.dm"
 #include "code/landing.dm"

@@ -64,8 +64,17 @@ type Survey = {
 type Data = {
   vessel_name: string | null;
   planet: Survey | null;
-  reason?: string;
+  /** Why nothing is held: no planet in range, carrier moving, carrier moored, no link */
+  standby?: 'range' | 'unstable' | 'landed' | 'offline';
   physics: Physics;
+};
+
+/** Standby lines of the scope, as an instrument puts them */
+const STANDBY: Record<string, string> = {
+  range: 'ДАЛЬНОСТЬ ВНЕ РАБОЧЕГО ДИАПАЗОНА',
+  unstable: 'НОСИТЕЛЬ НЕ СТАБИЛИЗИРОВАН',
+  landed: 'НОСИТЕЛЬ НА СТОЯНКЕ',
+  offline: 'НЕТ СВЯЗИ С НОСИТЕЛЕМ',
 };
 
 export const PlanetSurvey = () => {
@@ -85,7 +94,7 @@ export const PlanetSurvey = () => {
           {data.planet ? (
             <SurveyBody survey={data.planet} physics={data.physics} />
           ) : (
-            <p className="SpaceNavigation__help">{data.reason}</p>
+            <StandbyBody reason={STANDBY[data.standby || 'range']} />
           )}
         </main>
       </Window.Content>
@@ -218,6 +227,76 @@ function SurveyBody({ survey, physics }: { survey: Survey; physics: Physics }) {
   );
 }
 
+/** The console with nothing in its sights: the scope on standby, the panels empty */
+function StandbyBody({ reason }: { reason: string }) {
+  return (
+    <div className="SpaceNavigation__survey">
+      <section className="SpaceNavigation__plot">
+        <div className="SpaceNavigation__screen-label">
+          <span>НЕТ ЦЕЛИ</span>
+          <span className="SpaceNavigation__mode">STANDBY</span>
+        </div>
+        <svg
+          className="SpaceNavigation__field is-idle"
+          viewBox="-2.2 -1.55 4.4 3.1"
+          role="img"
+          aria-label="Режим ожидания"
+        >
+          <g className="SpaceNavigation__standby">
+            <circle r={1} />
+            <circle r={0.5} />
+            <path d="M-1.3 0H-0.15M0.15 0H1.3M0 -1.3V-0.15M0 0.15V1.3" />
+          </g>
+          <text
+            className="SpaceNavigation__standby-title"
+            y={-1.35}
+            textAnchor="middle"
+          >
+            ОБЪЕКТ НЕ ЗАХВАЧЕН
+          </text>
+          <text
+            className="SpaceNavigation__standby-reason"
+            y={1.45}
+            textAnchor="middle"
+          >
+            {reason}
+          </text>
+        </svg>
+      </section>
+      <aside className="SpaceNavigation__telemetry" aria-label="Сканирование">
+        <div className="SpaceNavigation__engraving">
+          <span>ПОКРЫТИЕ ПОВЕРХНОСТИ</span>
+          <span>01</span>
+        </div>
+        <div className="SpaceNavigation__flight-screen">
+          <div className="SpaceNavigation__screen-label">
+            <span>ЗОНДЫ</span>
+            <span>—</span>
+          </div>
+        </div>
+        <div className="SpaceNavigation__engraving">
+          <span>КАРТОГРАФИРОВАНИЕ</span>
+          <span>02</span>
+        </div>
+        <div className="SpaceNavigation__flight-screen">
+          <div className="SpaceNavigation__screen-label">
+            <span>ОЖИДАНИЕ</span>
+          </div>
+        </div>
+        <div className="SpaceNavigation__engraving">
+          <span>ДАННЫЕ ПЛАНЕТЫ</span>
+          <span>03</span>
+        </div>
+        <div className="SpaceNavigation__flight-screen">
+          <div className="SpaceNavigation__screen-label">
+            <span>НЕТ ДАННЫХ</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  );
+}
+
 function Meter({
   label,
   value,
@@ -316,20 +395,25 @@ function ProbeField({
       <g style={{ color: '#a9d9cb' }} transform="scale(1)">
         <PlanetGlyph radius={1} kind={survey.kind} />
       </g>
-      {/* drawn solid and faded as one, so overlapping footprints merge into one read area */}
-      <g className="SpaceNavigation__cap">
-        {survey.hits.map((hit, index) => {
-          const outline = footprintOutline(hit, back, physics.footprint);
-          return (
-            outline && (
-              <polygon
-                key={index}
-                points={outline.map(([x, y]) => `${x},${y}`).join(' ')}
-              />
-            )
-          );
-        })}
-      </g>
+      {/* ground read on the face turned away, seen through the planet, then on the near face; each merged into one area */}
+      {[true, false].map((far) => (
+        <g
+          key={far ? 'far' : 'near'}
+          className={`SpaceNavigation__cap ${far ? 'is-far' : ''}`}
+        >
+          {survey.hits.map((hit, index) => {
+            const outline = footprintOutline(hit, back, physics.footprint, far);
+            return (
+              outline && (
+                <polygon
+                  key={index}
+                  points={outline.map(([x, y]) => `${x},${y}`).join(' ')}
+                />
+              )
+            );
+          })}
+        </g>
+      ))}
       {survey.hits.map((hit, index) => {
         const [x, y, z] = toView(hit, back);
         return (

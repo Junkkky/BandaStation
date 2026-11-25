@@ -1,4 +1,5 @@
 import {
+  JumpPointGlyph,
   PlanetGlyph,
   RuinGlyph,
   ShipGlyph,
@@ -130,6 +131,10 @@ export function Scanner({ data, focusedContact }: Props) {
             ) : site?.kind === 'station' ? (
               <g transform="scale(2.8)">
                 <StationGlyph />
+              </g>
+            ) : site?.kind === 'jump' ? (
+              <g transform="scale(3)">
+                <JumpPointGlyph />
               </g>
             ) : site?.type === 'Астероиды' ? (
               <ZoneArt kind="asteroids" radius={48} />

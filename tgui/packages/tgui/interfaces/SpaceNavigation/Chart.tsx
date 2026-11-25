@@ -3,6 +3,7 @@ import { Button } from 'tgui-core/components';
 
 import { useApproachClock } from './Descent';
 import {
+  JumpPointGlyph,
   PlanetGlyph,
   ShipGlyph,
   StationGlyph,
@@ -363,6 +364,14 @@ export function Chart({
                   />
                 ) : site.kind === 'station' ? (
                   <StationGlyph />
+                ) : site.kind === 'jump' ? (
+                  <>
+                    <circle
+                      className="SpaceNavigation__jump-range"
+                      r={(data.jump_point_range || 0) * scale}
+                    />
+                    <JumpPointGlyph />
+                  </>
                 ) : (
                   <g>
                     <path d="M0-8L8 0L0 8L-8 0Z" fill="#10221d" />

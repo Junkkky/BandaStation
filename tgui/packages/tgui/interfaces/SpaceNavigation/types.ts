@@ -75,6 +75,8 @@ export type NavigationData = Position & {
   jumping: BooleanLike;
   /** Share of the current bluespace jump flown, 0-1, or null outside one */
   jump_progress: number | null;
+  /** How close the hull has to be to a jump point to start a jump */
+  jump_point_range?: number;
   star: Position & { name: string | null; radius: number };
   celestial_bodies: CelestialBody[];
   vx: number;

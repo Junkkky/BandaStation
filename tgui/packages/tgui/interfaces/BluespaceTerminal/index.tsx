@@ -29,6 +29,8 @@ type Data = {
   target_name?: string | null;
   progress?: number | null;
   drive?: BooleanLike;
+  /** Whether the ship is at one of its system's jump points */
+  at_jump_point?: BooleanLike;
 };
 
 type Selection = { system: string } | { star: string } | null;
@@ -166,6 +168,7 @@ export const BluespaceTerminal = () => {
                   selection={selection}
                   system={chosen}
                   here={data.sector}
+                  atJumpPoint={!!data.at_jump_point}
                 />
               </div>
               <div className="SpaceNavigation__engraving">
@@ -232,10 +235,12 @@ function Selected({
   selection,
   system,
   here,
+  atJumpPoint,
 }: {
   selection: Selection;
   system: System | undefined;
   here?: string;
+  atJumpPoint: boolean;
 }) {
   if (!selection) {
     return <p className="SpaceNavigation__help">Цель не выбрана.</p>;
@@ -269,7 +274,9 @@ function Selected({
           : system.available
             ? 'Маршрут доступен'
             : system.route
-              ? 'Привод не готов или манёвр не завершён'
+              ? atJumpPoint
+                ? 'Привод не готов или манёвр не завершён'
+                : 'Выйдите к точке перехода'
               : 'Блюспейс-переход недоступен'}
       </dd>
     </dl>

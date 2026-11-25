@@ -332,7 +332,15 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 	var/list/data = list("vessel_name" = map?.vessel.name, "planet" = null)
 	var/datum/stationtrauma_overmap_site/space/planet/planet = map?.survey_target()
 	if(!planet)
-		data["reason"] = !map ? "Нет связи с кораблём" : (map.docked ? "Корабль на стоянке" : "Нет планеты в зоне захода или корабль в движении")
+		// why nothing is held, as an instrument would put it
+		if(!map)
+			data["standby"] = "offline"
+		else if(map.docked)
+			data["standby"] = "landed"
+		else if(map.approach_started || map.relocating || map.preparing || map.jump_target || map.speed > ST_NAV_STOPPED_SPEED)
+			data["standby"] = "unstable"
+		else
+			data["standby"] = "range"
 		return data
 	var/datum/stationtrauma_planet_survey/survey = map.planet_survey(planet)
 	var/list/flights = list()
@@ -384,7 +392,7 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 		survey = new(map, planet)
 		LAZYSET(map.planet_surveys, planet.id, survey)
 	if(survey.launch(clamp(aim_x, -SURVEY_AIM_LIMIT, SURVEY_AIM_LIMIT), clamp(aim_y, -SURVEY_AIM_LIMIT, SURVEY_AIM_LIMIT), clamp(power, 0, 1), !!params["back"]))
-		playsound(src, 'sound/items/weapons/gun/general/grenade_launch.ogg', 35, TRUE, -3)
+		playsound(src, 'sound/effects/gravhit.ogg', 35, TRUE, -3)
 		return TRUE
 
 #undef SURVEY_LAUNCH_Y

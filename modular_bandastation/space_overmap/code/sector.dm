@@ -215,6 +215,7 @@
 			controller.search_for_connected()
 			controller.set_panels(SSsun.azimuth)
 		taken_positions = list()
+		chart_jump_points()
 		var/station_site_id = SSmapping.current_map.space_overmap?["station_id"]
 		var/obj/docking_port/stationary/stationtrauma_space_station/main_berth
 		for(var/obj/docking_port/stationary/stationtrauma_space_station/port in SSshuttle.stationary_docking_ports)
@@ -270,7 +271,13 @@
 		return ready
 	// Every round charts a new system: its name, and where its planets, ruins and hazards lie.
 	name = "[pick("HD ", "HIP ", "Gliese ", "Kepler-", "TOI-", "Wolf ", "Ross ", "LHS ")][rand(100, 9999)]"
-	taken_positions = list(list(entry_x, entry_y))
+	taken_positions = list()
+	chart_jump_points()
+	// crews arrive at the jump point facing Epsilon Eridani; the planets grow more dangerous away from it
+	var/list/entry = arrival_point(SSstationtrauma_space_voyage.sectors["epsilon_eridani"])
+	if(entry)
+		entry_x = entry[1]
+		entry_y = entry[2]
 	var/list/belt = random_position(1100, 1700, 600)
 	belt_x = belt[1]
 	belt_y = belt[2]
@@ -308,7 +315,8 @@
 	// Planets farther from the arrival point roll stronger dangers and rewards.
 	var/list/levels = list()
 	for(var/index in 1 to length(positions))
-		levels += sqrt((positions[index][1] - entry_x) ** 2 + (positions[index][2] - entry_y) ** 2) / 500
+		// out at the edge the arrival point lies further from the planets: the same spread of dangers as from the old central entry
+		levels += sqrt((positions[index][1] - entry_x) ** 2 + (positions[index][2] - entry_y) ** 2) / 880
 	// Whatever the rolls, the two farthest worlds with wildlife hold anomaly fields and dangerous fauna; the farther one is overrun.
 	var/overrun
 	var/infested

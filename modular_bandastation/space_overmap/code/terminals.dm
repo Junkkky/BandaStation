@@ -137,7 +137,7 @@
 			"size" = istype(system, /datum/stationtrauma_overmap_sector/space/home) ? null : system.size_name,
 			"planets" = istype(system, /datum/stationtrauma_overmap_sector/space/home) ? null : system.planet_count,
 			"route" = (id in here?.jump_routes),
-			"available" = !map.jump_target && map.can_jump(id),
+			"available" = !map.jump_target && map.jump_ready(id),
 		))
 	return list(
 		"vessel_name" = map.vessel.name,
@@ -148,6 +148,7 @@
 		"target_name" = target?.name,
 		"progress" = map.jump_progress(),
 		"drive" = !!map.jump_drive(),
+		"at_jump_point" = map.at_jump_point(),
 	)
 
 /obj/machinery/computer/stationtrauma_bluespace/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
