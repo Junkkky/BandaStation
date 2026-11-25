@@ -35,8 +35,8 @@
 /** Wolf's Doom armor with an attached helmet and a source-owned visual offset. */
 /obj/item/clothing/suit/armor/normandy
 	name = "Wolf's Doom armor"
-	desc = "A heavy combat armor set with an unusually tall silhouette."
-	icon = 'icons/obj/clothing/suits/armor.dmi'
+	desc = "A towering suit of insulated combat armor. Deploy the helmet to seal the suit for space and connect a breathing tank to its air supply."
+	icon = 'modular_bandastation/prime_only/icons/centcom/normandy_items.dmi'
 	icon_state = "armor"
 	worn_icon = 'modular_bandastation/prime_only/icons/centcom/normandy_suit.dmi'
 	worn_icon_state = "armor"
@@ -46,11 +46,17 @@
 	// The tall upper section of Wolf's Doom must render over its helmet.
 	alternate_worn_layer = HEAD_LAYER - 0.1
 	armor_type = /datum/armor/mod_theme_corporate
+	clothing_flags = parent_type::clothing_flags | STOPSPRESSUREDAMAGE
+	resistance_flags = FIRE_PROOF
+	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	actions_types = list(/datum/action/cooldown/normandy_iron_grip, /datum/action/cooldown/normandy_power_punch, /datum/action/cooldown/normandy_stomp)
 	clothing_traits = list(TRAIT_NODISMEMBER, TRAIT_GRABRESISTANCE)
 	user_vars_to_edit = list("move_resist" = MOVE_FORCE_OVERPOWERING)
 
 /obj/item/clothing/suit/armor/normandy/Initialize(mapload)
 	. = ..()
+	allowed = allowed + /obj/item/tank/internals
 	AddComponent(/datum/component/toggle_attached_clothing,\
 		deployable_type = /obj/item/clothing/head/helmet/normandy,\
 		equipped_slot = ITEM_SLOT_HEAD,\
@@ -75,7 +81,8 @@
 /obj/item/clothing/gloves/combat/normandy
 	name = "Wolf's Doom gloves"
 	desc = "Armored combat gloves from the Wolf's Doom suit."
-	icon_state = "black"
+	icon = 'modular_bandastation/prime_only/icons/centcom/normandy_items.dmi'
+	icon_state = "gloves"
 	worn_icon = 'modular_bandastation/prime_only/icons/centcom/normandy_suit.dmi'
 	worn_icon_state = "gloves"
 	worn_x_dimension = 32
@@ -83,6 +90,12 @@
 	worn_y_offset = NORMANDY_WORN_Y_OFFSET
 	body_parts_covered = HANDS|ARMS
 	armor_type = /datum/armor/mod_theme_corporate
+	clothing_flags = parent_type::clothing_flags | STOPSPRESSUREDAMAGE
+	resistance_flags = FIRE_PROOF
+	cold_protection = HANDS|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
+	heat_protection = HANDS|ARMS
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 
 /obj/item/clothing/gloves/combat/normandy/visual_equipped(mob/user, slot, initial = FALSE)
 	. = ..()
@@ -99,7 +112,8 @@
 /obj/item/clothing/shoes/combat/normandy
 	name = "Wolf's Doom boots"
 	desc = "Armored combat boots from the Wolf's Doom suit."
-	icon_state = "jackboots"
+	icon = 'modular_bandastation/prime_only/icons/centcom/normandy_items.dmi'
+	icon_state = "boots"
 	worn_icon = 'modular_bandastation/prime_only/icons/centcom/normandy_suit.dmi'
 	worn_icon_state = "boots"
 	worn_x_dimension = 32
@@ -107,6 +121,12 @@
 	worn_y_offset = NORMANDY_WORN_Y_OFFSET
 	clothing_traits = list(TRAIT_NO_SLIP_ALL, TRAIT_SILENT_FOOTSTEPS)
 	armor_type = /datum/armor/mod_theme_corporate
+	clothing_flags = parent_type::clothing_flags | STOPSPRESSUREDAMAGE
+	resistance_flags = FIRE_PROOF
+	cold_protection = FEET|LEGS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
+	heat_protection = FEET|LEGS
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 
 /obj/item/clothing/shoes/combat/normandy/Initialize(mapload)
 	. = ..()
@@ -115,7 +135,8 @@
 /** Retractable Wolf's Doom helmet that applies the CentCom voice effect. */
 /obj/item/clothing/head/helmet/normandy
 	name = "Wolf's Doom helmet"
-	desc = "A sealed combat helmet from the Wolf's Doom suit."
+	desc = "A retractable, insulated helmet for the Wolf's Doom suit. Its breathing port accepts a separate air tank."
+	icon = 'modular_bandastation/prime_only/icons/centcom/normandy_items.dmi'
 	icon_state = "helmet"
 	base_icon_state = "helmet"
 	worn_icon = 'modular_bandastation/prime_only/icons/centcom/normandy_suit.dmi'
@@ -124,6 +145,11 @@
 	worn_y_dimension = 40
 	worn_y_offset = NORMANDY_WORN_Y_OFFSET
 	armor_type = /datum/armor/normandy_helmet
+	clothing_flags = parent_type::clothing_flags | STOPSPRESSUREDAMAGE | HEADINTERNALS
+	flags_cover = parent_type::flags_cover | HEADCOVERSMOUTH
+	resistance_flags = FIRE_PROOF
+	min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	/// Whether this helmet added its voice effect in the head slot.
 	var/tts_effect_active = FALSE
 
@@ -157,7 +183,8 @@
 /obj/item/clothing/neck/cloak/normandy
 	name = "Wolf's Doom standard cloak"
 	desc = "A standard cloak bearing the Wolf's Doom colors."
-	icon_state = "qmcloak"
+	icon = 'modular_bandastation/prime_only/icons/centcom/normandy_items.dmi'
+	icon_state = "cloak_standard"
 	worn_icon = 'modular_bandastation/prime_only/icons/centcom/normandy_suit.dmi'
 	worn_icon_state = "cloak_standart"
 	worn_x_dimension = 32
@@ -166,11 +193,13 @@
 	// The cloak must render above the armor overlay.
 	alternate_worn_layer = HEAD_LAYER - 0.2
 	armor_type = /datum/armor/mod_theme_corporate
+	resistance_flags = FIRE_PROOF
 
 /** Wolf-patterned variant of the standard armored cloak. */
 /obj/item/clothing/neck/cloak/normandy/wolf
 	name = "Wolf's Doom wolf cloak"
 	desc = "A wolf-themed alternative cloak for the Wolf's Doom suit."
+	icon_state = "cloak_wolf"
 	worn_icon_state = "cloak_wolf"
 
 /** CentCom outfit containing the complete Wolf's Doom kit. */
