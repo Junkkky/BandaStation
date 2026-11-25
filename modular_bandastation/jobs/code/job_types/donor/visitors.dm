@@ -296,6 +296,10 @@
 	head = /obj/item/clothing/head/hats/intern
 	shoes = /obj/item/clothing/shoes/laceup
 	l_hand = /obj/item/storage/briefcase
+	backpack_contents = list(
+		/obj/item/gun/ballistic/automatic/pistol/deagle/gold = 1,
+		/obj/item/ammo_box/magazine/m50 = 1,
+	)
 	implants = list(/obj/item/implant/mindshield)
 
 /obj/item/card/id/advanced/nanotrasen_official/navy_junior_officer
