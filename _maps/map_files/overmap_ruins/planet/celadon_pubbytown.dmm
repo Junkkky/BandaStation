@@ -25,24 +25,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
-"ar" = (
-/obj/effect/mob_spawn/corpse/human/damaged,
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
-"au" = (
-/obj/effect/turf_decal/siding/wood{
-	color = "#543C30";
-	dir = 4
-	},
-/obj/effect/mob_spawn/corpse/human/damaged,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
-	dir = 1
-	},
-/turf/open/floor/wood/large,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
 "aw" = (
 /turf/closed/mineral,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/cargo)
@@ -439,6 +421,12 @@
 	},
 /turf/open/floor/concrete,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"gD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
 "gH" = (
 /obj/machinery/camera/autoname/directional/south,
 /obj/structure/extinguisher_cabinet/directional/west,
@@ -505,14 +493,6 @@
 /obj/machinery/light/dim/directional/east,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
-"hm" = (
-/obj/effect/mob_spawn/corpse/human/damaged,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
-	dir = 5
-	},
-/turf/open/floor/carpet/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
 "hp" = (
 /obj/structure/railing,
 /turf/open/floor/concrete/pavement,
@@ -780,6 +760,11 @@
 /obj/machinery/light/dim/directional/east,
 /turf/open/floor/carpet/red,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"lH" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
 "lN" = (
 /obj/structure/cable,
 /obj/structure/railing{
@@ -1030,6 +1015,12 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"oV" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
 "pg" = (
 /obj/structure/railing{
 	dir = 8
@@ -1131,10 +1122,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
-"qo" = (
-/obj/effect/mob_spawn/corpse/human/damaged,
-/turf/open/floor/carpet/blue,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
 "qt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/chair/plastic{
@@ -1301,14 +1288,6 @@
 	},
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
-"sO" = (
-/obj/effect/mob_spawn/corpse/human/damaged,
-/obj/item/clothing/head/soft/black{
-	pixel_x = 0;
-	pixel_y = 9
-	},
-/turf/open/misc/asteroid/airless,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
 "sP" = (
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
@@ -1610,6 +1589,15 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
+"vT" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/mob_spawn/corpse/human/damaged,
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
 "wc" = (
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood/large,
@@ -1768,6 +1756,14 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/guard)
+"yw" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
 "yB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/office/light{
@@ -2003,6 +1999,18 @@
 /obj/structure/cable,
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/exterior)
+"BF" = (
+/obj/effect/turf_decal/siding/wood{
+	color = "#543C30";
+	dir = 4
+	},
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 1
+	},
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/wood/large,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
 "BG" = (
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
@@ -2287,6 +2295,11 @@
 	},
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
+"Ev" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
 "EB" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 9
@@ -2369,11 +2382,6 @@
 	},
 /turf/open/floor/concrete,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
-"Fx" = (
-/obj/effect/mob_spawn/corpse/human/damaged,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/carpet/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/shop)
 "Fz" = (
 /obj/structure/platform{
 	dir = 8
@@ -2500,11 +2508,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/engine)
-"HK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/mob_spawn/corpse/human/damaged,
-/turf/open/floor/carpet/blue,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
 "HW" = (
 /obj/item/flashlight/lantern{
 	pixel_x = -12;
@@ -2925,10 +2928,6 @@
 /obj/structure/cable,
 /turf/open/floor/concrete,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
-"Ne" = (
-/obj/effect/mob_spawn/corpse/human/damaged,
-/turf/open/floor/carpet/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
 "Ni" = (
 /obj/effect/turf_decal/siding/wood{
 	color = "#543C30";
@@ -2987,6 +2986,11 @@
 	},
 /turf/open/floor/plating/rust,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
+"NS" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
 "NU" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -3115,6 +3119,15 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/clinic)
+"Pn" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 5
+	},
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
 "Pq" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/large,
@@ -3263,14 +3276,6 @@
 /obj/item/stack/ore/iron,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
-"RE" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/wood/corner,
-/obj/effect/mob_spawn/corpse/human/damaged,
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/study)
 "RI" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
@@ -3419,10 +3424,6 @@
 /obj/structure/cable,
 /turf/open/floor/plastic,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
-"TO" = (
-/obj/effect/mob_spawn/corpse/human/damaged,
-/turf/open/floor/carpet/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/house)
 "TQ" = (
 /obj/structure/platform,
 /obj/structure/cable,
@@ -3696,6 +3697,15 @@
 	},
 /turf/open/floor/plastic,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/canteen)
+"Xa" = (
+/obj/effect/mob_spawn/corpse/human/damaged,
+/obj/item/clothing/head/soft/black{
+	pixel_x = 0;
+	pixel_y = 9
+	},
+/mob/living/basic/trooper/pirate/melee,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown)
 "Xe" = (
 /turf/open/floor/plating/rust,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_pubbytown/ruin/whitesands/pubbytown/wreck)
@@ -4340,7 +4350,7 @@ Rm
 Rm
 Fb
 ra
-TO
+lH
 KL
 Nv
 mm
@@ -4718,8 +4728,8 @@ Jn
 Rm
 ad
 hH
-RE
-ar
+vT
+yw
 ad
 Fb
 Fb
@@ -5167,7 +5177,7 @@ qg
 Jn
 We
 aQ
-hm
+Pn
 GC
 ng
 Rm
@@ -5199,7 +5209,7 @@ Fb
 Fb
 Fb
 Fb
-qo
+Ev
 kT
 aH
 NH
@@ -5246,7 +5256,7 @@ Fb
 Fb
 in
 PL
-HK
+gD
 vg
 in
 fw
@@ -5467,7 +5477,7 @@ Fb
 Fb
 Fb
 UJ
-sO
+Xa
 Cx
 Cx
 Cx
@@ -5998,7 +6008,7 @@ Fk
 sB
 sB
 el
-Ne
+NS
 Fb
 Fb
 my
@@ -6089,7 +6099,7 @@ Hp
 gh
 Sf
 sB
-Ne
+NS
 tW
 Fb
 Fb
@@ -6256,7 +6266,7 @@ XO
 Fa
 eZ
 ag
-Fx
+oV
 eZ
 eZ
 eZ
@@ -6347,7 +6357,7 @@ Rm
 Rm
 Ah
 DC
-au
+BF
 Ni
 hU
 gC

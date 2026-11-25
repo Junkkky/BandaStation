@@ -38,12 +38,15 @@
 
 /obj/structure/closet/secure_closet/medical3/PopulateContents()
 	..()
+	populate_doctor_supplies()
+
+/// A medical doctor's kit for both floor and wall lockers.
+/obj/structure/closet/proc/populate_doctor_supplies()
 	new /obj/item/radio/headset/headset_med(src)
 	new /obj/item/defibrillator/loaded(src)
 	new /obj/item/clothing/gloves/latex/nitrile(src)
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/clothing/glasses/hud/health(src)
-	return
 
 /obj/structure/closet/secure_closet/psychology
 	name = "psychology locker"

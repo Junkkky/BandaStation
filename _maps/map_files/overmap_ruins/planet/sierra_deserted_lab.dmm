@@ -76,6 +76,12 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/iron/textured,
 /area/expedition_planet/barren)
+"ra" = (
+/obj/effect/decal/cleanable/vomit,
+/obj/item/paint/paint_remover,
+/obj/structure/closet/wall/emergency/directional/north,
+/turf/open/floor/carpet/blue,
+/area/expedition_planet/barren)
 "sT" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/medical/medkit,
@@ -99,14 +105,6 @@
 /obj/effect/spawner/random/exotic/technology,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/textured,
-/area/expedition_planet/barren)
-"xA" = (
-/obj/effect/decal/cleanable/vomit,
-/obj/item/paint/paint_remover,
-/obj/structure/closet/emcloset{
-	pixel_y = 32
-	},
-/turf/open/floor/carpet/blue,
 /area/expedition_planet/barren)
 "xE" = (
 /obj/structure/extinguisher_cabinet{
@@ -161,7 +159,7 @@
 "GO" = (
 /obj/item/paper{
 	name = "полевой журнал: Покинутая полевая лаборатория";
-	 default_raw_text = "Объект: Покинутая полевая лаборатория. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	default_raw_text = "Объект: Покинутая полевая лаборатория. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
 /obj/structure/sign/warning/biohazard{
 	pixel_y = -32
@@ -418,7 +416,7 @@ Gu
 va
 iy
 Ju
-xA
+ra
 Of
 FT
 QE

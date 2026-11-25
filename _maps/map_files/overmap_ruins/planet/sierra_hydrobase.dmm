@@ -224,14 +224,6 @@
 /obj/structure/lattice/catwalk,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
-"mi" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/closet/firecloset{
-	pixel_y = 32
-	},
-/obj/structure/table/reinforced,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
 "ml" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -808,6 +800,12 @@
 /obj/item/seeds/ambrosia/deus,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/growD)
+"yI" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/closet/wall/fire/directional/north,
+/obj/structure/table/reinforced,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_hydrobase/hydrobase/station/processing)
 "yS" = (
 /obj/structure/cable,
 /obj/structure/sign/warning/no_smoking{
@@ -1321,7 +1319,7 @@
 "JB" = (
 /obj/item/paper{
 	name = "полевой журнал: Заброшенная гидропонная станция";
-	 default_raw_text = "Объект: Заброшенная гидропонная станция. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	default_raw_text = "Объект: Заброшенная гидропонная станция. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
 /obj/structure/cable,
 /obj/structure/lattice/catwalk,
@@ -3155,7 +3153,7 @@ xA
 ZK
 Oz
 Xr
-mi
+yI
 mC
 BX
 EQ

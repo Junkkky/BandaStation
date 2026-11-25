@@ -270,6 +270,17 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
+"ef" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
+	dir = 6;
+	initialize_directions = 6
+	},
+/obj/structure/closet/wall/fire/directional/north,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "eo" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
 	initialize_directions = 3
@@ -532,6 +543,17 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"jx" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/structure/closet/wall/fire/directional/west,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "jD" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
@@ -1202,19 +1224,6 @@
 /obj/machinery/light,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
-"wX" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/structure/closet/firecloset{
-	pixel_x = -32
-	},
-/turf/open/floor/iron/white,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
 "xd" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
 	initialize_directions = 3
@@ -1619,6 +1628,14 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/solars)
+"Fr" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/spawner/random/exotic/technology,
+/obj/structure/closet/wall/fire/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "FD" = (
 /obj/machinery/button{
 	name = "отключённая панель шлюза";
@@ -1958,19 +1975,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
-"Ka" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
-	dir = 6;
-	initialize_directions = 6
-	},
-/obj/structure/closet/firecloset{
-	pixel_y = 32
-	},
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/northairlockatmos)
 "Kp" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -2323,16 +2327,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/living)
-"Sq" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/spawner/random/exotic/technology,
-/obj/structure/closet/firecloset{
-	pixel_x = -32
-	},
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/southairlock)
 "Sv" = (
 /obj/machinery/light{
 	dir = 1
@@ -2376,18 +2370,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/breakroom)
-"To" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
-	initialize_directions = 3
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 9
-	},
-/obj/structure/closet/firecloset{
-	pixel_x = -32
-	},
-/turf/open/floor/iron/white,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
 "Tx" = (
 /obj/structure/cable,
 /obj/machinery/power/terminal{
@@ -2494,7 +2476,7 @@
 "UI" = (
 /obj/item/paper{
 	name = "полевой журнал: Лаборатория с нарушенным карантином";
-	 default_raw_text = "Объект: Лаборатория с нарушенным карантином. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	default_raw_text = "Объект: Лаборатория с нарушенным карантином. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
@@ -2573,6 +2555,16 @@
 	dir = 4;
 	initialize_directions = 12
 	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
+"WT" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	initialize_directions = 3
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/structure/closet/wall/fire/directional/west,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_oldlab/oldlab/station/hall)
 "Xg" = (
@@ -3231,7 +3223,7 @@ gS
 jv
 Ib
 le
-Sq
+Fr
 fC
 BT
 Ag
@@ -3248,7 +3240,7 @@ gQ
 kJ
 kj
 DJ
-Ka
+ef
 PK
 ls
 fS
@@ -3385,7 +3377,7 @@ JQ
 ay
 ht
 yX
-To
+WT
 mU
 eo
 Uf
@@ -3395,7 +3387,7 @@ oj
 vv
 Uf
 ht
-To
+WT
 yX
 Uf
 oJ
@@ -3475,7 +3467,7 @@ CU
 nt
 Vd
 Xt
-wX
+jx
 Tx
 FK
 Vd

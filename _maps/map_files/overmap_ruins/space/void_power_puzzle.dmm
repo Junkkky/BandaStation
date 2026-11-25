@@ -215,6 +215,12 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/power1)
+"ql" = (
+/obj/structure/chair/sofa/middle{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
 "qG" = (
 /obj/structure/closet/syndicate/resources{
 	name = "Resource storage"
@@ -310,12 +316,6 @@
 /obj/structure/cable,
 /turf/closed/indestructible/reinforced,
 /area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central2)
-"vV" = (
-/obj/structure/chair/sofa{
-	dir = 4
-	},
-/turf/open/floor/carpet,
-/area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/materials3)
 "wE" = (
 /obj/effect/decal/cleanable/blood/footprints{
 	dir = 1;
@@ -376,7 +376,7 @@
 "zk" = (
 /obj/item/paper{
 	name = "полевой журнал: Обесточенное хранилище";
-	 default_raw_text = "Объект: Обесточенное хранилище. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	default_raw_text = "Объект: Обесточенное хранилище. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_void_power_puzzle/ruin/space/has_grav/storage/central)
@@ -1054,7 +1054,7 @@ ja
 vC
 no
 yP
-vV
+ql
 Ww
 YH
 OP
