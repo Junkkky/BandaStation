@@ -36,6 +36,7 @@
 #include "code/encounters.dm"
 #include "code/asteroids.dm"
 #include "code/landing.dm"
+#include "code/planet_survey.dm"
 #include "code/planet_flight/defines.dm"
 #include "code/planet_flight/landing_animation.dm"
 #include "code/planet_flight/landing_view.dm"

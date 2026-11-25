@@ -605,8 +605,14 @@
 	site.landing = TRUE
 	var/datum/stationtrauma_overmap_site/space/planet/lava/planet = allocate(/datum/stationtrauma_overmap_site/space/planet/lava)
 	site.pad_parent = planet
+	planet.id = "unit_test_planet"
 	TEST_ASSERT(navigation.set_engines_running(TRUE), "The fixture needs main propulsion to land")
 	navigation.pos_x = site.pos_x + 150
+	TEST_ASSERT(!navigation.can_dock(site, navigation.control_revision), "A planet must not be landed on before this ship has surveyed it")
+	var/datum/stationtrauma_planet_survey/survey = new(navigation, planet)
+	LAZYSET(navigation.planet_surveys, planet.id, survey)
+	// covered and mapped long enough ago; never zero, which reads as not covered
+	survey.covered_at = (world.time - 3 MINUTES) || -1
 	TEST_ASSERT(navigation.can_dock(site, navigation.control_revision), "A landing must be available on the helm ring")
 	navigation.pos_x++
 	TEST_ASSERT(!navigation.can_dock(site, navigation.control_revision), "A landing past the helm ring must be out of range")
@@ -622,12 +628,13 @@
 	var/datum/stationtrauma_planet_flight/flight = navigation.planet_flight
 	TEST_ASSERT_NOTNULL(navigation.planet_hover, "The disk must already be visible when the map is still loading")
 	TEST_ASSERT(!flight.descent && !navigation.entry_heat(), "Atmospheric entry must wait for the terrain")
-	var/initial_scale = navigation.planet_hover.size.at(navigation.planet_hover.size.end_time())
+	// the orbital zoom is planned once for the whole approach, so it is read at moments ahead
+	var/initial_scale = navigation.planet_hover.size.at(world.time + 3 SECONDS)
 	TEST_ASSERT(initial_scale < 0.7, "First generation must keep the opening zoom small")
 	navigation.approach_started -= 2 MINUTES
 	flight.next_zoom = 0
 	TEST_ASSERT(!flight.update(), "Passing the estimated load time cannot start atmosphere against an unbuilt planet")
-	TEST_ASSERT(navigation.planet_hover.size.at(navigation.planet_hover.size.end_time()) > initial_scale, "The orbit must continue to zoom during a late generation")
+	TEST_ASSERT(navigation.planet_hover.size.at(world.time + 2 MINUTES) > initial_scale, "The orbit must continue to zoom during a late generation")
 	site.berth = clearing
 	site.loading_map = FALSE
 	flight.update()
@@ -658,7 +665,9 @@
 	navigation.begin_approach(site, 2 MINUTES)
 	descent = navigation.planet_flight?.descent
 	TEST_ASSERT_NOTNULL(descent, "A second approach needs its own scene")
-	deadline = world.time + 8 SECONDS
+	// The ground pictures are built in a tenth of each tick beside the game: about 25 seconds on a test runner, not a contract.
+	var/picture_wait = 60 SECONDS
+	deadline = world.time + picture_wait
 	UNTIL(!descent.inside_view.ground_jobs || world.time >= deadline)
 	TEST_ASSERT(!descent.inside_view.ground_jobs, "Atmospheric entry must have its complete view ready")
 	navigation.approach_started -= 14 SECONDS
@@ -681,7 +690,7 @@
 	TEST_ASSERT_NOTNULL(ascent, "Ascent must prepare the real terrain beside the hull")
 	var/turf/covered = ascent.berth_turfs[1]
 	TEST_ASSERT(isfloorturf(covered) && ship.docking_surfaces[covered], "The rotated berth must conceal real ground beneath the hull")
-	deadline = world.time + 8 SECONDS
+	deadline = world.time + picture_wait
 	UNTIL(!ascent.ground_jobs || world.time >= deadline)
 	TEST_ASSERT(!ascent.ground_jobs, "The full launch picture must be ready while the hull is still on the ground")
 	TEST_ASSERT(navigation.relocate(navigation.flight_berth), "The real hull must be able to depart the photographed berth")
@@ -704,3 +713,52 @@
 	UNTIL(QDELETED(ascent) || world.time >= deadline)
 	TEST_ASSERT(QDELETED(ascent), "Ascent must release its flight pictures after the animation")
 	TEST_ASSERT(isnull(navigation.planet_ascent), "The completed animation must clear its navigation reference")
+
+/// Probes fly the server's ballistics and cover both faces; the planet is mapped only once built, and a landing waits for the pilot's pad.
+/datum/unit_test/overmap_docking/planet_survey/Run()
+	var/list/centre = stationtrauma_survey_flight(0, 0, 0.5)
+	var/list/impact = centre[3]
+	TEST_ASSERT_NOTNULL(impact, "A probe aimed at the middle of the face must strike the planet")
+	TEST_ASSERT(impact[3] > 0, "A probe launched at the front face must strike the front face")
+	TEST_ASSERT(abs(impact[1] ** 2 + impact[2] ** 2 + impact[3] ** 2 - 1) < 0.001, "A probe must strike the planet's surface")
+	var/list/wide = stationtrauma_survey_flight(1.6, 1.6, 1)
+	TEST_ASSERT_NULL(wide[3], "A full-power probe aimed past the rim must miss")
+
+	var/datum/stationtrauma_overmap_site/space/planet/lava/planet = allocate(/datum/stationtrauma_overmap_site/space/planet/lava)
+	planet.id = "unit_test_survey"
+	planet.pos_x = navigation.pos_x
+	planet.pos_y = navigation.pos_y
+	navigation.sites[planet.id] = planet
+	TEST_ASSERT_EQUAL(navigation.survey_target(), planet, "A stopped ship beside a charted planet must be able to survey it")
+	var/datum/stationtrauma_planet_survey/survey = new(navigation, planet)
+	LAZYSET(navigation.planet_surveys, planet.id, survey)
+	TEST_ASSERT(survey.launch(0, 0, 0.5, FALSE), "The launcher must fire")
+	TEST_ASSERT(!survey.launch(0, 0, 0.5, FALSE), "The launcher must reload between probes")
+	// one probe on each axis and each octant reads the whole sphere
+	for(var/x in -1 to 1)
+		for(var/y in -1 to 1)
+			for(var/z in -1 to 1)
+				if(x || y || z)
+					var/norm = sqrt(x * x + y * y + z * z)
+					survey.land("unit_test", list(x / norm, y / norm, z / norm))
+	TEST_ASSERT(survey.coverage >= 0.9, "Probes all round must cover the planet")
+	TEST_ASSERT(survey.covered_at && survey.efficient, "Covering both faces within the probe budget must start an efficient mapping")
+	TEST_ASSERT(!survey.mapped(), "Mapping must take its time")
+	survey.covered_at = (world.time - 3 MINUTES) || -1
+	planet.loading_map = TRUE
+	TEST_ASSERT(!survey.mapped(), "Mapping cannot finish before the planet is built")
+	planet.loading_map = FALSE
+	TEST_ASSERT(survey.mapped(), "Mapping must finish once its time has passed on a built planet")
+
+	planet.berth = bay
+	planet.survey_map = list("pads" = list(list(0.1, 0.1, 0.2, 0.2, FALSE, TRUE)))
+	navigation.selected_destination = planet.id
+	TEST_ASSERT_NULL(navigation.selected_docking_site(), "A surveyed planet must wait for the pilot to choose a pad")
+	TEST_ASSERT(!navigation.choose_landing_pad(2), "A pad the planet does not have cannot be chosen")
+	TEST_ASSERT(navigation.choose_landing_pad(1), "The pilot must be able to choose a free pad")
+	TEST_ASSERT_EQUAL(navigation.selected_docking_site(), planet, "The chosen pad must be the landing site")
+	var/list/pads = navigation.landing_pad_data(planet)
+	TEST_ASSERT(length(pads) == 1 && pads[1]["chosen"], "The helm must show the chosen pad")
+	TEST_ASSERT_EQUAL(pads[1]["label"], "у входа в пещеры", "A pad beside a cave entrance must say so")
+	planet.berth = null
+	navigation.selected_destination = site.id

@@ -196,3 +196,8 @@
 /obj/machinery/stationtrauma_bluespace_drive/proc/spend_charge()
 	charges = max(0, charges - 1)
 	update_appearance(UPDATE_ICON_STATE)
+
+/// How far the current jump has got, 0-1, or null outside one
+/datum/stationtrauma_overmap/space/proc/jump_progress()
+	var/left = jump_timer ? timeleft(jump_timer) : null
+	return isnull(left) ? null : clamp(1 - left / ST_SPACE_JUMP_TIME, 0, 1)

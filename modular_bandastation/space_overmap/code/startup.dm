@@ -24,10 +24,36 @@ SUBSYSTEM_DEF(stationtrauma_space_voyage)
 				return FALSE
 		return TRUE
 	loading = TRUE
-	for(var/sector_type in list(/datum/stationtrauma_overmap_sector/space/home, /datum/stationtrauma_overmap_sector/space))
-		var/datum/stationtrauma_overmap_sector/space/sector = new sector_type
-		sectors[sector.id] = sector
-		if(!sector.load_locations())
+	var/datum/stationtrauma_overmap_sector/space/home/home = new
+	sectors[home.id] = home
+	if(!home.load_locations())
+		return FALSE
+	// Three unexplored systems a jump from Epsilon Eridani, one large and two smaller, out in the uncharted space of the galaxy map.
+	var/list/sizes = shuffle(list(list(5, 6, "Крупная"), list(4, 4, "Средняя"), list(3, 3, "Малая")))
+	// each gateway away map is charted in one of them
+	var/list/away_homes = list()
+	for(var/key in GLOB.stationtrauma_away_sites)
+		away_homes[key] = rand(1, length(sizes))
+	var/list/places = shuffle(list(
+		list(95, 110), list(150, 60), list(330, 75), list(60, 250), list(110, 340),
+		list(900, 720), list(980, 640), list(860, 880), list(760, 960), list(990, 860),
+	))
+	for(var/index in 1 to length(sizes))
+		var/datum/stationtrauma_overmap_sector/space/frontier = new
+		frontier.id = index == 1 ? "frontier" : "frontier_[index]"
+		var/list/size = sizes[index]
+		frontier.planet_count = size[1]
+		frontier.ruin_count = size[2]
+		frontier.size_name = size[3]
+		var/list/place = places[index]
+		frontier.galaxy_x = place[1]
+		frontier.galaxy_y = place[2]
+		for(var/key in away_homes)
+			if(away_homes[key] == index)
+				frontier.away_sites += key
+		sectors[frontier.id] = frontier
+		home.jump_routes += frontier.id
+		if(!frontier.load_locations())
 			return FALSE
 	loading = FALSE
 	return TRUE

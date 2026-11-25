@@ -11,6 +11,7 @@ import {
 } from './DisplayArt';
 import {
   distanceLabel,
+  type LandingPad,
   type NavigationData,
   type Position,
   VECTOR_SECONDS,
@@ -53,6 +54,7 @@ type Props = {
   focusedContact: number | null;
   onContact: (id: number) => void;
   onSite: (id: string) => void;
+  onPad: (number: number) => void;
 };
 
 export function Chart({
@@ -60,6 +62,7 @@ export function Chart({
   focusedContact,
   onContact,
   onSite,
+  onPad,
   zoom,
   hoveredTarget,
 }: Props) {
@@ -399,6 +402,29 @@ export function Chart({
             </g>
           );
         })}
+        {zoom >= PAD_ZOOM &&
+          data.survey?.pads &&
+          data.routes
+            .filter(
+              (site) =>
+                site.kind === 'planet' &&
+                site.id === data.selected &&
+                focusedContact === null,
+            )
+            .map((site) => (
+              <LandingPads
+                key={site.id}
+                at={point(site.x, site.y)}
+                pads={data.survey?.pads || []}
+                kind={
+                  bodies.find(
+                    (body) => Math.hypot(body.x - site.x, body.y - site.y) < 1,
+                  )?.kind || 'barren'
+                }
+                disabled={disabled}
+                onPad={onPad}
+              />
+            ))}
         {data.ship_contacts.map((contact) => {
           const p = point(contact.x, contact.y);
           return (
@@ -557,5 +583,65 @@ function Velocity({
       strokeWidth={2}
       markerEnd="url(#velocity-arrow)"
     />
+  );
+}
+
+/** Chart zoom at which a surveyed planet shows its landing pads */
+const PAD_ZOOM = 4;
+/** Radius of the planet drawn with its pads */
+const PAD_PLANET_RADIUS = 80;
+
+/**
+ * A surveyed planet drawn large with its landing pads, each where it lies on the survey schematic: the generated
+ * square of the surface is inscribed in the disc.
+ */
+function LandingPads({
+  at,
+  pads,
+  kind,
+  disabled,
+  onPad,
+}: {
+  at: Position;
+  pads: LandingPad[];
+  kind: string;
+  disabled: boolean;
+  onPad: (number: number) => void;
+}) {
+  const half = PAD_PLANET_RADIUS / Math.SQRT2;
+  return (
+    <g transform={`translate(${at.x} ${at.y})`}>
+      <g style={{ color: '#e7c689' }}>
+        <circle r={PAD_PLANET_RADIUS + 4} fill="#090f10" />
+        <PlanetGlyph radius={PAD_PLANET_RADIUS} kind={kind} />
+      </g>
+      {pads.map((pad) => {
+        const x = (pad.x - 0.5) * 2 * half;
+        const y = (0.5 - pad.y) * 2 * half;
+        const usable = !disabled && !!pad.free;
+        return (
+          <g
+            key={pad.number}
+            transform={`translate(${x} ${y})`}
+            className={`SpaceNavigation__pad ${pad.chosen ? 'is-chosen' : ''} ${usable ? '' : 'is-taken'}`}
+            role="button"
+            tabIndex={usable ? 0 : -1}
+            aria-label={`Площадка ${pad.number}: ${pad.label}`}
+            aria-disabled={!usable}
+            onClick={() => usable && onPad(pad.number)}
+            onKeyDown={(event) =>
+              event.key === 'Enter' && usable && onPad(pad.number)
+            }
+          >
+            <title>{`Площадка ${pad.number}: ${pad.label}${pad.free ? '' : ' · занята'}`}</title>
+            <circle r={9} fill="transparent" stroke="none" />
+            <rect x={-5} y={-5} width={10} height={10} />
+            <text x={9} y={4}>
+              {pad.number}
+            </text>
+          </g>
+        );
+      })}
+    </g>
   );
 }

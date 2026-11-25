@@ -67,6 +67,12 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"ah" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/suit_storage_unit/engine,
+/obj/effect/turf_decal/stripes/full,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/pocketrocket/cargo)
 "ai" = (
 /obj/machinery/power/shuttle_engine/propulsion/standard{
 	dir = 8
@@ -116,6 +122,24 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"an" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/effect/turf_decal/stripes/full,
+/turf/open/floor/iron,
+/area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"ao" = (
+/obj/machinery/airalarm/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/computer/stationtrauma_ship_core{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "ap" = (
 /obj/machinery/firealarm{
 	pixel_y = 25
@@ -129,6 +153,11 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
+"aq" = (
+/obj/machinery/airalarm/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet/black,
+/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "ar" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
@@ -149,6 +178,22 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/wood,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
+"au" = (
+/obj/machinery/computer/stationtrauma_planet_survey{
+	dir = 8
+	},
+/turf/open/floor/carpet/black,
+/area/shuttle/stationtrauma_space/pocketrocket/bridge)
+"av" = (
+/obj/machinery/computer/stationtrauma_transponder/pocketrocket{
+	dir = 2
+	},
+/turf/open/floor/carpet/black,
+/area/shuttle/stationtrauma_space/pocketrocket/bridge)
+"aw" = (
+/obj/machinery/computer/stationtrauma_bluespace,
+/turf/open/floor/carpet/black,
+/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "ax" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/power/port_gen/pacman,
@@ -205,11 +250,6 @@
 	},
 /turf/open/floor/carpet/black,
 /area/shuttle/stationtrauma_space/pocketrocket/bridge)
-"aG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron,
-/area/shuttle/stationtrauma_space/pocketrocket/cargo)
 "aH" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 9
@@ -281,17 +321,6 @@
 	},
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
-"aO" = (
-/obj/machinery/airalarm/directional/west,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/stationtrauma_fusion_monitor{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 10
-	},
-/turf/open/floor/plating,
-/area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
 "aP" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -339,16 +368,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/wood,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
-"aV" = (
-/obj/effect/turf_decal/stripes/full,
-/obj/machinery/suit_storage_unit/engine,
-/turf/open/floor/carpet/black,
-/area/shuttle/stationtrauma_space/pocketrocket/bridge)
-"aW" = (
-/obj/effect/turf_decal/stripes/full,
-/obj/machinery/suit_storage_unit/standard_unit,
-/turf/open/floor/carpet/black,
-/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "bi" = (
 /turf/open/space/basic,
 /area/space)
@@ -631,12 +650,6 @@
 "KO" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/stationtrauma_space/pocketrocket/cargo)
-"Nw" = (
-/obj/machinery/airalarm/directional/west,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/stationtrauma_bluespace,
-/turf/open/floor/carpet/black,
-/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 "Qd" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/stationtrauma_space/pocketrocket/maintenance/central)
@@ -662,12 +675,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/shuttle/stationtrauma_space/pocketrocket/crew/canteen)
-"ZT" = (
-/obj/machinery/computer/stationtrauma_transponder/pocketrocket{
-	dir = 8
-	},
-/turf/open/floor/carpet/black,
-/area/shuttle/stationtrauma_space/pocketrocket/bridge)
 
 (1,1,1) = {"
 bi
@@ -697,7 +704,7 @@ KO
 bi
 bU
 ax
-aO
+ao
 ar
 aK
 wH
@@ -738,7 +745,7 @@ bU
 bU
 wH
 ym
-aE
+ah
 KO
 "}
 (7,1,1) = {"
@@ -750,7 +757,7 @@ at
 hS
 mI
 QX
-aG
+an
 wH
 "}
 (8,1,1) = {"
@@ -803,8 +810,8 @@ bi
 "}
 (12,1,1) = {"
 JW
-aV
-Nw
+av
+aq
 cW
 JW
 BZ
@@ -815,7 +822,7 @@ bi
 "}
 (13,1,1) = {"
 JW
-aW
+aw
 nu
 ac
 JW
@@ -840,7 +847,7 @@ bi
 (15,1,1) = {"
 bi
 JW
-ZT
+au
 fr
 JW
 bi

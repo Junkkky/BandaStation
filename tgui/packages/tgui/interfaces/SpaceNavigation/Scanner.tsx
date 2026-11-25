@@ -83,6 +83,9 @@ export function Scanner({ data, focusedContact }: Props) {
       );
       if (data.planet.modifiers.length)
         rows.push(['ОСОБ', data.planet.modifiers.join(', ')]);
+      rows.push(['ПЕЩ', data.planet.caves], ['РУДА', data.planet.ore]);
+    } else if (site.kind === 'planet') {
+      rows.push(['СКАН', 'Не исследована']);
     }
     if (site.failed) rows.push(['СИГНАЛ', 'Потерян']);
   }
