@@ -81286,6 +81286,11 @@
 /obj/effect/spawner/random/mod/maint,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/ghetto/aft)
+"twP" = (
+/obj/structure/chair/office,
+/obj/effect/landmark/start/scientist,
+/turf/open/floor/engine,
+/area/station/science/lower)
 "twT" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
@@ -85326,11 +85331,6 @@
 /obj/machinery/light/warm/directional/east,
 /turf/open/floor/wood/parquet,
 /area/station/hallway/secondary/service)
-"uyx" = (
-/obj/structure/chair/office,
-/obj/effect/landmark/start/scientist,
-/turf/open/floor/engine,
-/area/station/science/lower)
 "uyA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -216161,7 +216161,7 @@ jqC
 hHd
 alZ
 jNa
-uyx
+twP
 nCb
 qhM
 qhM
