@@ -273,7 +273,7 @@ GLOBAL_LIST_INIT(book_binding_icons, list(
 	if(!islist(records) || !length(records) || length(records) > 2 * MAX_LIBRARY_ARCHIVE_TEXT_BYTES / MAX_LIBRARY_PAGE_LENGTH + 2)
 		return FALSE
 	var/list/new_pages = list()
-	for(var/entry as anything in records)
+	for(var/entry in records)
 		if(!islist(entry))
 			return FALSE
 		var/list/page = entry
