@@ -1709,8 +1709,9 @@
 		cached_bleed_rate += surgery_bloodloss
 
 	for(var/obj/item/embeddies as anything in embedded_objects)
-		if(!embeddies.get_embed().is_harmless())
-			cached_bleed_rate += 0.25
+		var/datum/embedding/embed = embeddies.get_embed()
+		if(!embed.is_harmless())
+			cached_bleed_rate += embed.embedded_bleed_rate
 
 	for(var/datum/wound/iter_wound as anything in wounds)
 		cached_bleed_rate += iter_wound.blood_flow

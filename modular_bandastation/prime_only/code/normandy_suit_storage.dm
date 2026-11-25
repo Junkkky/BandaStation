@@ -84,6 +84,17 @@
 	body_parts_covered = HANDS|ARMS
 	armor_type = /datum/armor/mod_theme_corporate
 
+/obj/item/clothing/gloves/combat/normandy/visual_equipped(mob/user, slot, initial = FALSE)
+	. = ..()
+	if(slot == ITEM_SLOT_GLOVES && user.is_holding_item_of_type(/obj/item/dualsaber/legendary_saber/sister))
+		user.update_held_items()
+
+/obj/item/clothing/gloves/combat/normandy/dropped(mob/user, silent = FALSE)
+	. = ..()
+	// The item has lost IN_INVENTORY, but the wearer still has it in the glove slot here.
+	if(!QDELETED(user) && user.get_item_by_slot(ITEM_SLOT_GLOVES) == src && user.is_holding_item_of_type(/obj/item/dualsaber/legendary_saber/sister))
+		user.update_held_items()
+
 /** Armored Wolf's Doom boots with their own movement sounds. */
 /obj/item/clothing/shoes/combat/normandy
 	name = "Wolf's Doom boots"
