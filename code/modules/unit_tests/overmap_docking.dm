@@ -726,12 +726,15 @@
 	TEST_ASSERT_NOTNULL(impact, "A probe aimed at the middle of the face must strike the planet")
 	TEST_ASSERT(impact[3] > 0, "A probe thrown at the front face must strike the front face")
 	TEST_ASSERT(abs(impact[1] ** 2 + impact[2] ** 2 + impact[3] ** 2 - 1) < 0.001, "A probe must strike the planet's surface")
-	TEST_ASSERT(impact[1] > 0.1, "A probe must drift along the orbit, to the right of where it was thrown, before it strikes")
+	TEST_ASSERT(impact[3] > 0.99, "A probe thrown at half power must strike where it was aimed")
+	var/list/path = centre[1]
+	var/list/midway = path[round(length(path) / 2)]
+	TEST_ASSERT(midway[1] > 0.1, "A probe's flight must bend along the orbit, to the right of a straight throw")
 	var/list/weak = stationtrauma_survey_flight(0, 0, 0)
 	var/list/strong = stationtrauma_survey_flight(0, 0, 1)
 	var/list/weak_impact = weak[3]
 	var/list/strong_impact = strong[3]
-	TEST_ASSERT(weak_impact && strong_impact && weak_impact[1] - strong_impact[1] > 0.1, "A weaker throw must drift further along the orbit")
+	TEST_ASSERT(weak_impact && strong_impact && strong_impact[2] - weak_impact[2] > 0.1, "A weaker throw must fall short of the aim and a stronger one carry past it")
 	var/list/wide = stationtrauma_survey_flight(2.4, 2.4, 1)
 	TEST_ASSERT_NULL(wide[3], "A full-power probe thrown wide of the planet must miss")
 
