@@ -1,5 +1,6 @@
 import { type MouseEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Icon } from 'tgui-core/components';
+import { clamp01 } from 'tgui-core/math';
 import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../../backend';
@@ -666,15 +667,12 @@ function ProbeField({
           key={flight.id}
           flight={flight}
           back={back}
-          share={Math.min(1, (flight.elapsed + sinceData) / flight.duration)}
+          share={clamp01((flight.elapsed + sinceData) / flight.duration)}
         />
       ))}
       {ready && preview && (
         <polyline
-          points={preview
-            .slice(0, Math.ceil(preview.length / 2))
-            .map(([x, y]) => `${x},${-y}`)
-            .join(' ')}
+          points={preview.map(([x, y]) => `${x},${-y}`).join(' ')}
           fill="none"
           stroke="#e4bf79"
           strokeWidth={0.012}

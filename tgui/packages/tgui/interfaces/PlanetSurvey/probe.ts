@@ -3,12 +3,14 @@ export type Physics = {
   orbit_radius: number;
   /** How far the orbit is tilted towards the viewer, degrees */
   orbit_tilt: number;
-  /** Share of the ship's orbital speed a probe keeps as it leaves the launcher */
-  drift: number;
-  gravity: number;
-  step: number;
-  steps: number;
+  /** How far a throw at no or full power lands short of or past the aim, degrees */
+  power_spread: number;
+  /** How far the ship's motion bends a flight along the orbit, planet radii */
+  drift_bend: number;
+  /** Aimed further than this from the centre a probe misses */
+  miss_reach: number;
   escape: number;
+  path_points: number;
   speed_min: number;
   speed_max: number;
   aim_limit: number;
@@ -34,9 +36,9 @@ export function launcherPoint(physics: Physics): Vector {
 }
 
 /**
- * The same flight the server works out, thrown from the launcher at [aimX], [aimY] on the planet's face with [power]
- * (0-1), keeping part of the ship's motion along the orbit: every step's point, ending on the planet, past the escape
- * distance or when the steps run out.
+ * The same flight the server works out (planet_survey.dm), thrown from the launcher at [aimX], [aimY] on the planet's
+ * face with [power] (0-1): an arc bent along the orbit, striking the aim at half power, short of it weaker and past it
+ * stronger; aimed well wide of the planet, it misses. Ends on the planet or, missing, out in space.
  */
 export function simulateFlight(
   physics: Physics,
@@ -44,38 +46,65 @@ export function simulateFlight(
   aimY: number,
   power: number,
 ): Vector[] {
-  let [x, y, z] = launcherPoint(physics);
-  const aimZ = Math.sqrt(Math.max(0, 1 - aimX * aimX - aimY * aimY));
-  const dx = aimX - x;
-  const dy = aimY - y;
-  const dz = aimZ - z;
-  const speed =
-    (physics.speed_min + power * (physics.speed_max - physics.speed_min)) /
-    Math.hypot(dx, dy, dz);
-  let vx =
-    dx * speed +
-    physics.drift * Math.sqrt(physics.gravity / physics.orbit_radius);
-  let vy = dy * speed;
-  let vz = dz * speed;
-  const points: Vector[] = [[x, y, z]];
-  for (let step = 1; step <= physics.steps; step++) {
-    const reach = Math.hypot(x, y, z);
-    const pull = physics.gravity / (reach * reach * reach);
-    vx -= x * pull * physics.step;
-    vy -= y * pull * physics.step;
-    vz -= z * pull * physics.step;
-    x += vx * physics.step;
-    y += vy * physics.step;
-    z += vz * physics.step;
-    const now = Math.hypot(x, y, z);
-    if (now <= 1) {
-      points.push([x / now, y / now, z / now]);
-      return points;
+  const start = launcherPoint(physics);
+  const startDir = start.map((value) => value / physics.orbit_radius) as Vector;
+  const reach = Math.hypot(aimX, aimY);
+  let end: Vector;
+  if (reach > physics.miss_reach) {
+    end = [
+      (aimX * physics.escape) / reach,
+      (aimY * physics.escape) / reach,
+      0,
+    ];
+  } else {
+    const aim: Vector =
+      reach > 1
+        ? [aimX / reach, aimY / reach, 0]
+        : [aimX, aimY, Math.sqrt(1 - reach * reach)];
+    const toward = dot(startDir, aim);
+    let back = startDir.map((value, axis) => value - toward * aim[axis]);
+    let backLength = Math.hypot(...back);
+    if (backLength < 0.001) {
+      back = [0, -1, 0];
+      backLength = 1;
     }
-    points.push([x, y, z]);
-    if (now > physics.escape) return points;
+    const turn = ((power - 0.5) * physics.power_spread * Math.PI) / 180;
+    end = aim.map(
+      (value, axis) =>
+        value * Math.cos(turn) - (back[axis] / backLength) * Math.sin(turn),
+    ) as Vector;
   }
+  const endLength = Math.hypot(...end);
+  const middle = startDir.map((value, axis) => value + end[axis] / endLength);
+  const middleLength = Math.max(0.001, Math.hypot(...middle));
+  const height =
+    1.5 +
+    (Math.acos(Math.max(-1, Math.min(1, dot(startDir, end) / endLength))) *
+      180) /
+      Math.PI /
+      150;
+  const control = middle.map(
+    (value, axis) =>
+      (value / middleLength) * height + (axis === 0 ? physics.drift_bend : 0),
+  );
+  const points: Vector[] = [start];
+  for (let index = 1; index < physics.path_points; index++) {
+    const share = index / physics.path_points;
+    points.push(
+      [0, 1, 2].map(
+        (axis) =>
+          (1 - share) ** 2 * start[axis] +
+          2 * (1 - share) * share * control[axis] +
+          share ** 2 * end[axis],
+      ) as Vector,
+    );
+  }
+  points.push(end);
   return points;
+}
+
+function dot(a: Vector, b: Vector) {
+  return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 }
 
 /** A point of the planet's frame as the viewer of [back] sees it: the back face is turned half round */

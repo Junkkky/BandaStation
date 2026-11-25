@@ -6,36 +6,35 @@
  * The first probe starts generating the planet, so the generation is hidden inside the survey and the landing
  * itself is short.
  *
- * Probes fly a real ballistic path, worked out here; the console only draws it. The planet is a unit sphere at the
+ * Probes fly a path worked out here; the console draws the same path for its aim. The planet is a unit sphere at the
  * origin, its front face towards the viewer (+z). Seen from the back the same picture is turned half round the
  * vertical axis.
  */
 
-/// Probe ballistics, also sent to the console's aim preview (see ui_static_data()).
 /**
- * The ship's orbit is tilted towards the viewer, passing in front of the planet below it and behind it above; the
- * launcher hangs at the orbit's lowest point, but a probe leaves it moving along the orbit with the ship: the throw at
- * the cursor adds to that, and gravity bends the sum round the planet. A probe thrown straight at the middle drifts
- * along the orbit before it strikes; one thrown weak swings far round, over the top of the planet; one thrown hard and
- * forward flies past.
+ * The ship's orbit is tilted towards the viewer and the launcher hangs at its lowest point. A probe arcs out from it,
+ * bent along the orbit by the ship's motion, and strikes where it was aimed when thrown at half power; a weaker throw
+ * falls short of the aim, a stronger one carries past it. A throw aimed well wide of the planet misses.
  */
 #define SURVEY_ORBIT_RADIUS 2
 /// How far the orbit is tilted towards the viewer, in degrees
 #define SURVEY_ORBIT_TILT 30
-#define SURVEY_GRAVITY 1.2
-/// Share of the ship's orbital speed a probe keeps as it leaves the launcher
-#define SURVEY_DRIFT 0.75
-#define SURVEY_STEP 0.02
-#define SURVEY_STEPS 900
-/// A probe this far from the planet's centre is lost in space
-#define SURVEY_ESCAPE 8
-#define SURVEY_SPEED_MIN 0.2
+/// How far a throw at no or full power lands short of or past the aim, in degrees of the planet
+#define SURVEY_POWER_SPREAD 60
+/// How far the ship's motion bends a flight along the orbit, in planet radii
+#define SURVEY_DRIFT_BEND 0.8
+/// Aimed further than this from the planet's centre, in planet radii, a probe misses; aimed between it and the rim, it strikes the rim
+#define SURVEY_MISS_REACH 1.15
+/// A missing probe is followed this far from the planet's centre
+#define SURVEY_ESCAPE 3
+/// Points kept of a flight for the screen
+#define SURVEY_PATH_POINTS 30
+/// Flight speed at no and full power, in planet radii per unit of time
+#define SURVEY_SPEED_MIN 0.8
 #define SURVEY_SPEED_MAX 1.6
 /// The furthest from the planet's centre a probe may be aimed, in planet radii
 #define SURVEY_AIM_LIMIT 2.4
-/// Every this many steps a point of a flight is kept for the screen
-#define SURVEY_PATH_STRIDE 10
-/// Real time per unit of simulated flight: flights take three to nine seconds
+/// Real time per unit of flight: flights take five to ten seconds
 #define SURVEY_TIME_SCALE (2.5 SECONDS)
 #define SURVEY_RELOAD (3 SECONDS)
 /// Most probes in flight at once
@@ -72,43 +71,51 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
 
 /**
  * Flies one probe thrown from the launcher at [aim_x], [aim_y] on the planet's face with [power] (0-1), as seen from the
- * front. Returns list(path, steps, impact): the kept points of the flight, each list(x, y, z), how many steps it took, and
+ * front. Returns list(path, time, impact): the kept points of the flight, each list(x, y, z), how long it flies, and
  * the point on the sphere it struck, or null if it missed.
  */
 /proc/stationtrauma_survey_flight(aim_x, aim_y, power)
-	var/x = 0
-	var/y = -SURVEY_ORBIT_RADIUS * cos(SURVEY_ORBIT_TILT)
-	var/z = SURVEY_ORBIT_RADIUS * sin(SURVEY_ORBIT_TILT)
-	// aimed at the point of the face under the cursor, or at the planet's plane past its rim
-	var/aim_z = sqrt(max(0, 1 - aim_x * aim_x - aim_y * aim_y))
-	var/dx = aim_x - x
-	var/dy = aim_y - y
-	var/dz = aim_z - z
-	var/speed = (SURVEY_SPEED_MIN + power * (SURVEY_SPEED_MAX - SURVEY_SPEED_MIN)) / sqrt(dx * dx + dy * dy + dz * dz)
-	// the probe keeps part of the ship's motion along its orbit, which at the bottom runs to the right
-	var/vx = dx * speed + SURVEY_DRIFT * sqrt(SURVEY_GRAVITY / SURVEY_ORBIT_RADIUS)
-	var/vy = dy * speed
-	var/vz = dz * speed
-	var/list/path = list(list(x, y, z))
-	for(var/step in 1 to SURVEY_STEPS)
-		var/reach = sqrt(x * x + y * y + z * z)
-		var/pull = SURVEY_GRAVITY / (reach * reach * reach)
-		vx -= x * pull * SURVEY_STEP
-		vy -= y * pull * SURVEY_STEP
-		vz -= z * pull * SURVEY_STEP
-		x += vx * SURVEY_STEP
-		y += vy * SURVEY_STEP
-		z += vz * SURVEY_STEP
-		reach = sqrt(x * x + y * y + z * z)
-		if(reach <= 1)
-			var/list/impact = list(x / reach, y / reach, z / reach)
-			path += list(impact)
-			return list(path, step, impact)
-		if(!(step % SURVEY_PATH_STRIDE))
-			path += list(list(x, y, z))
-		if(reach > SURVEY_ESCAPE)
-			return list(path, step, null)
-	return list(path, SURVEY_STEPS, null)
+	var/list/start = list(0, -SURVEY_ORBIT_RADIUS * cos(SURVEY_ORBIT_TILT), SURVEY_ORBIT_RADIUS * sin(SURVEY_ORBIT_TILT))
+	var/list/start_dir = list(start[1] / SURVEY_ORBIT_RADIUS, start[2] / SURVEY_ORBIT_RADIUS, start[3] / SURVEY_ORBIT_RADIUS)
+	var/reach = sqrt(aim_x * aim_x + aim_y * aim_y)
+	var/list/impact
+	var/list/end
+	if(reach > SURVEY_MISS_REACH)
+		end = list(aim_x * SURVEY_ESCAPE / reach, aim_y * SURVEY_ESCAPE / reach, 0)
+	else
+		var/list/aim = reach > 1 ? list(aim_x / reach, aim_y / reach, 0) : list(aim_x, aim_y, sqrt(1 - reach * reach))
+		// off half power the probe lands along the great circle from the launcher through the aim: short of it or past it
+		var/toward = start_dir[1] * aim[1] + start_dir[2] * aim[2] + start_dir[3] * aim[3]
+		var/list/back = list(start_dir[1] - toward * aim[1], start_dir[2] - toward * aim[2], start_dir[3] - toward * aim[3])
+		var/back_length = sqrt(back[1] ** 2 + back[2] ** 2 + back[3] ** 2)
+		if(back_length < 0.001)
+			back = list(0, -1, 0)
+			back_length = 1
+		var/turn = (power - 0.5) * SURVEY_POWER_SPREAD
+		impact = list()
+		for(var/axis in 1 to 3)
+			impact += aim[axis] * cos(turn) - back[axis] / back_length * sin(turn)
+		end = impact
+	// the arc rises higher the further round the planet it reaches, and leans along the orbit
+	var/end_length = sqrt(end[1] ** 2 + end[2] ** 2 + end[3] ** 2)
+	var/list/middle = list()
+	for(var/axis in 1 to 3)
+		middle += start_dir[axis] + end[axis] / end_length
+	var/middle_length = max(0.001, sqrt(middle[1] ** 2 + middle[2] ** 2 + middle[3] ** 2))
+	var/height = 1.5 + arccos(clamp((start_dir[1] * end[1] + start_dir[2] * end[2] + start_dir[3] * end[3]) / end_length, -1, 1)) / 150
+	var/list/control = list(middle[1] / middle_length * height + SURVEY_DRIFT_BEND, middle[2] / middle_length * height, middle[3] / middle_length * height)
+	var/list/path = list(start)
+	var/distance = 0
+	for(var/index in 1 to SURVEY_PATH_POINTS)
+		var/share = index / SURVEY_PATH_POINTS
+		var/list/point = index == SURVEY_PATH_POINTS ? end : list()
+		if(index < SURVEY_PATH_POINTS)
+			for(var/axis in 1 to 3)
+				point += (1 - share) ** 2 * start[axis] + 2 * (1 - share) * share * control[axis] + share ** 2 * end[axis]
+		var/list/last = path[length(path)]
+		distance += sqrt((point[1] - last[1]) ** 2 + (point[2] - last[2]) ** 2 + (point[3] - last[3]) ** 2)
+		path += list(point)
+	return list(path, distance / (SURVEY_SPEED_MIN + power * (SURVEY_SPEED_MAX - SURVEY_SPEED_MIN)), impact)
 
 /// One ship's survey of one planet
 /datum/stationtrauma_planet_survey
@@ -167,7 +174,7 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
 			point[1] = -point[1]
 			point[3] = -point[3]
 		// the impact is the last point of the path, already turned
-	var/duration = max(1, round(flight[2] * SURVEY_STEP * SURVEY_TIME_SCALE))
+	var/duration = max(1, round(flight[2] * SURVEY_TIME_SCALE))
 	var/id = "[++flight_count]"
 	flights[id] = list("path" = path, "launched" = world.time, "duration" = duration)
 	addtimer(CALLBACK(src, PROC_REF(land), id, impact), duration, TIMER_DELETE_ME)
@@ -428,8 +435,8 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 
 /obj/machinery/computer/stationtrauma_planet_survey/ui_static_data(mob/user)
 	return list("physics" = list(
-		"orbit_radius" = SURVEY_ORBIT_RADIUS, "orbit_tilt" = SURVEY_ORBIT_TILT, "drift" = SURVEY_DRIFT, "gravity" = SURVEY_GRAVITY,
-		"step" = SURVEY_STEP, "steps" = SURVEY_STEPS, "escape" = SURVEY_ESCAPE,
+		"orbit_radius" = SURVEY_ORBIT_RADIUS, "orbit_tilt" = SURVEY_ORBIT_TILT, "power_spread" = SURVEY_POWER_SPREAD,
+		"drift_bend" = SURVEY_DRIFT_BEND, "miss_reach" = SURVEY_MISS_REACH, "escape" = SURVEY_ESCAPE, "path_points" = SURVEY_PATH_POINTS,
 		"speed_min" = SURVEY_SPEED_MIN, "speed_max" = SURVEY_SPEED_MAX, "aim_limit" = SURVEY_AIM_LIMIT,
 		"footprint" = SURVEY_FOOTPRINT, "goal" = SURVEY_GOAL, "land" = SURVEY_TIER_LAND, "probe_limit" = SURVEY_PROBE_LIMIT,
 		"tiers" = list(SURVEY_TIER_BASIC, SURVEY_TIER_LAND, SURVEY_TIER_DEEP, SURVEY_GOAL),
@@ -567,16 +574,15 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 		. += span_notice("[record["name"]]: покрытие [round(record["coverage"] * 100)]%.")
 
 #undef SURVEY_ORBIT_RADIUS
-#undef SURVEY_DRIFT
 #undef SURVEY_ORBIT_TILT
-#undef SURVEY_GRAVITY
-#undef SURVEY_STEP
-#undef SURVEY_STEPS
+#undef SURVEY_POWER_SPREAD
+#undef SURVEY_DRIFT_BEND
+#undef SURVEY_MISS_REACH
+#undef SURVEY_PATH_POINTS
 #undef SURVEY_ESCAPE
 #undef SURVEY_SPEED_MIN
 #undef SURVEY_SPEED_MAX
 #undef SURVEY_AIM_LIMIT
-#undef SURVEY_PATH_STRIDE
 #undef SURVEY_TIME_SCALE
 #undef SURVEY_RELOAD
 #undef SURVEY_MAX_FLIGHTS
