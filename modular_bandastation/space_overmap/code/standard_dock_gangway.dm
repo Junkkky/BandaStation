@@ -28,6 +28,8 @@
 	generate_map_preview = FALSE
 	/// Require authorization at the ship hatch before either endpoint opens the passage.
 	var/require_gangway_access = FALSE
+	/// Physical collar to another ship. Each endpoint keeps its ordinary access checks.
+	var/datum/stationtrauma_dock_gangway/ship_to_ship/ship_collar
 
 /** The outward direction points from the dock wall into the slot. */
 /obj/machinery/door/airlock/stationtrauma_docking/wall
@@ -88,6 +90,10 @@
 		. += get_airlock_overlay("lights_[AIRLOCK_LIGHT_BOLTS]", overlays_file, src, em_block = FALSE)
 
 /obj/machinery/door/airlock/stationtrauma_docking/open(forced = DEFAULT_DOOR_CHECKS, mob/living/opener)
+	// A ship-to-ship collar joins live hulls; each crew still controls its own door and access checks.
+	var/obj/machinery/door/airlock/stationtrauma_docking/ship/hatch = src
+	if(istype(hatch) && hatch.ship_collar && !hatch.ship_collar.busy && !hatch.ship_collar.breached)
+		return ..()
 	if(gangway?.opening_endpoint == src)
 		return ..()
 	if(opener && forced == DEFAULT_DOOR_CHECKS && !QDELETED(gangway))
@@ -442,6 +448,10 @@
 		if(abs(ship_pressure - wall_pressure) > ST_DOCK_MAX_PRESSURE_DELTA)
 			return "слишком велик перепад давления между кораблём и причалом"
 		volume_tiles += list(get_turf(wall), wall_inside)
+	return stationtrauma_equalize_gangway_air(volume_tiles)
+
+/** Share only the gas already present in the connected volumes, including the sealed passage. */
+/proc/stationtrauma_equalize_gangway_air(list/turf/open/floor/volume_tiles)
 	var/datum/gas_mixture/total_air = new
 	var/total_volume = 0
 	for(var/turf/open/floor/tile as anything in volume_tiles)
@@ -656,3 +666,79 @@
 #undef ST_DOCK_CLOSE_ON_SHIP_POWER
 #undef ST_DOCK_WALL_CLOSE_ENERGY
 #undef ST_DOCK_MAX_PRESSURE_DELTA
+
+/** A physical pressure collar uses the dock's native plating, side windows and breach signals. */
+/datum/stationtrauma_dock_gangway/ship_to_ship
+	var/list/doors = list()
+
+/datum/stationtrauma_dock_gangway/ship_to_ship/proc/fit(obj/machinery/door/airlock/guest, obj/machinery/door/airlock/host, outward)
+	var/turf/gap = get_step(host, outward)
+	if(QDELETED(guest) || QDELETED(host) || !isspaceturf(gap) || get_step(gap, outward) != get_turf(guest) || gap.is_blocked_turf())
+		return FALSE
+	if(!install_floors(list(gap), outward))
+		return FALSE
+	for(var/obj/machinery/door/airlock/door as anything in list(guest, host))
+		doors += door
+		RegisterSignals(door, watched_signals, TYPE_PROC_REF(/datum/stationtrauma_dock_gangway, on_breach))
+		var/obj/machinery/door/airlock/stationtrauma_docking/ship/hatch = door
+		if(istype(hatch))
+			hatch.ship_collar = src
+	// Tiny fans isolate some doorway tiles. Include the floor on the cabin side of each door.
+	opening_problem = stationtrauma_equalize_gangway_air(floors + list(get_turf(guest), get_step(guest, outward), get_turf(host), get_step(host, REVERSE_DIR(outward))))
+	return TRUE
+
+/datum/stationtrauma_dock_gangway/ship_to_ship/Destroy()
+	for(var/obj/machinery/door/airlock/door as anything in doors)
+		if(QDELETED(door))
+			continue
+		UnregisterSignal(door, watched_signals)
+		var/obj/machinery/door/airlock/stationtrauma_docking/ship/hatch = door
+		if(istype(hatch) && hatch.ship_collar == src)
+			hatch.ship_collar = null
+	doors.Cut()
+	return ..()
+
+/datum/stationtrauma_dock_gangway/ship_to_ship/proc/doorway_occupied(obj/machinery/door/airlock/door)
+	for(var/atom/movable/occupant in get_turf(door))
+		if(occupant != door && (isliving(occupant) || occupant.density))
+			return TRUE
+	return FALSE
+
+/datum/stationtrauma_dock_gangway/ship_to_ship/proc/passage_occupied()
+	for(var/turf/tile as anything in floors)
+		if(tile_obstruction(tile))
+			return TRUE
+	return FALSE
+
+/** Close intact hatches before either the passage or a hull moves. An occupied collar stays in place. */
+/datum/stationtrauma_dock_gangway/ship_to_ship/proc/seal_for_release()
+	if(busy)
+		return "шлюзы заняты"
+	busy = TRUE
+	if(passage_occupied())
+		return "освободите стыковочный трап"
+	for(var/obj/machinery/door/airlock/door as anything in doors)
+		if(QDELETED(door))
+			continue
+		if(door.operating || doorway_occupied(door))
+			return "проём шлюза [door.name] занят"
+		if(!door.density && (!door.safe || !door.close()))
+			return "не удалось закрыть шлюз [door.name]"
+	return null
+
+/datum/stationtrauma_dock_gangway/ship_to_ship/proc/clear_for_release()
+	if(!busy || passage_occupied())
+		return FALSE
+	for(var/obj/machinery/door/airlock/door as anything in doors)
+		if(!QDELETED(door) && (!door.density || door.operating || doorway_occupied(door)))
+			return FALSE
+	return TRUE
+
+/datum/stationtrauma_dock_gangway/ship_to_ship/seal_breach()
+	if(busy)
+		return
+	busy = TRUE
+	for(var/obj/machinery/door/airlock/door as anything in doors)
+		if(!QDELETED(door) && !door.density && door.safe && !doorway_occupied(door))
+			door.close()
+	busy = FALSE

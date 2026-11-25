@@ -1,0 +1,147 @@
+.ShipCombatPower {
+  height: auto;
+  min-height: 100%;
+  gap: 9px;
+
+  &.SpaceNavigation > header {
+    display: flex;
+    gap: 14px;
+    margin: 0;
+
+    strong {
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+  }
+
+  &__input {
+    display: grid;
+    flex-shrink: 0;
+    text-align: right;
+    gap: 2px;
+
+    span {
+      color: var(--nav-muted);
+      font-size: 9px;
+    }
+
+    strong {
+      color: var(--nav-phosphor);
+    }
+  }
+
+  &__panel {
+    flex-shrink: 0;
+  }
+
+  &__circuits,
+  &__readout {
+    padding: 8px 10px;
+  }
+
+  &__circuit,
+  &__actions,
+  &__thrust {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: space-between;
+    padding: 7px 0;
+    border-bottom: 1px solid #284039;
+  }
+
+  &__circuit-label {
+    flex: 0 0 7.5em;
+    color: var(--nav-phosphor);
+  }
+
+  &__share {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+
+    input {
+      flex: 1;
+      min-width: 0;
+      height: 24px;
+      margin: 0;
+      accent-color: var(--nav-phosphor);
+      color-scheme: dark;
+      cursor: pointer;
+
+      &:focus-visible {
+        outline: 2px solid var(--nav-amber);
+        outline-offset: 1px;
+      }
+    }
+
+    span {
+      min-width: 4ch;
+      color: var(--nav-phosphor);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  .Button {
+    min-height: 24px;
+    padding: 3px 8px;
+    border: 1px solid #547267;
+    border-radius: 2px;
+    background: #152925;
+    color: var(--nav-phosphor);
+  }
+
+  .Button--selected {
+    background: #bed3b0;
+    color: #20362a;
+  }
+
+  .Button:hover:not(.Button--disabled) {
+    filter: brightness(1.18);
+  }
+
+  &__watts {
+    min-width: 72px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__actions [data-invalid='true'] {
+    color: var(--nav-amber);
+  }
+
+  &__presets,
+  &__readout {
+    display: flex;
+    gap: 7px;
+  }
+
+  &__presets {
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__readout {
+    flex-direction: column;
+  }
+
+  &__readouts {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  &__thrust strong,
+  [data-raised='true'] {
+    color: var(--nav-phosphor);
+  }
+
+  @media (max-width: 475px) {
+    &__readouts {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -384,7 +384,10 @@ All ShuttleMove procs go here
 
 /obj/structure/cable/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
-	cut_cable_from_powernet(FALSE)
+	// An overmap move can still be vetoed on available thrust. Its committed takeoff disconnects the grid.
+	var/obj/docking_port/mobile/stationtrauma_space/ship = moving_dock
+	if(!istype(ship) || !ship.overmap?.docking_relocation)
+		cut_cable_from_powernet(FALSE)
 
 /obj/structure/cable/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()

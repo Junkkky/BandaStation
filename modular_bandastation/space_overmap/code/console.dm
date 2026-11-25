@@ -67,15 +67,41 @@
 		return ..()
 	return overmap_console_status(user, ..())
 
+/** The ship's sensor chart, shared by the helm and fire-control stations. */
+/datum/stationtrauma_overmap/space/proc/navigation_chart_data()
+	var/datum/stationtrauma_overmap_sector/space/chart_sector = sector
+	return list(
+		"vessel_name" = vessel.name,
+		"au_scale" = ST_SPACE_AU_SCALE,
+		"sector" = chart_sector?.id, "sector_name" = chart_sector?.name,
+		"star" = list("x" = 0, "y" = 0, "name" = chart_sector?.star_name, "radius" = chart_sector?.star_radius || 10),
+		"celestial_bodies" = chart_sector?.celestial_bodies,
+		"x" = pos_x, "y" = pos_y,
+		"vx" = velocity_x, "vy" = velocity_y, "trajectory" = predict_trajectory(),
+		"course" = course,
+		"preparing" = preparing, "relocating" = relocating,
+		"routes" = known_sites(helm = TRUE), "path" = autopilot_path,
+		"zones" = encounter_data(), "terrain" = terrain_data(),
+		"ship_contacts" = ship_echo_data(),
+		"kinetic_shots" = kinetic_echo_data(),
+		"drop_pods" = drop_pod_echo_data(),
+		"impact_waves" = kinetic_impact_data(),
+		"shield_up" = vessel.combat_shield_active(),
+		"sensor_range" = sensor_range, "dock_range" = ST_SPACE_DOCK_RANGE, "jump_point_range" = ST_JUMP_POINT_RANGE,
+		"interference" = round(interference, 0.05),
+		"scan_age" = isnull(last_ping) ? null : (world.time - last_ping) / (1 SECONDS),
+	)
+
 /obj/machinery/computer/stationtrauma_space_navigation/ui_data(mob/user)
 	var/datum/stationtrauma_overmap/space/map = vessel?.overmap
 	if(!map)
 		return list()
 	var/obj/machinery/atmospherics/components/binary/stationtrauma_fusion_core/reactor = vessel.fusion_core?.resolve()
 	var/engine_fraction = map.engine_fraction()
-	var/engine_fault = reactor ? reactor.tripped : engine_fraction <= 0
+	var/hardware_fraction = map.engine_fraction(regulated = FALSE)
+	var/engine_fault = reactor ? reactor.tripped : hardware_fraction <= 0
 	if(reactor?.output && !engine_fault)
-		engine_fault = engine_fraction <= 0 || vessel.current_engine_power < vessel.initial_engine_power
+		engine_fault = hardware_fraction <= 0 || vessel.current_engine_power < vessel.initial_engine_power
 		for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
 			if(engine_fault)
 				break
@@ -83,23 +109,19 @@
 				continue
 			var/obj/machinery/atmospherics/components/unary/ship_engine_heater/feed = engine.combustion_feed?.resolve()
 			engine_fault = !feed || !!feed.unavailable_reason()
-	var/datum/stationtrauma_overmap_sector/space/sector = map.sector
 	var/datum/stationtrauma_overmap_site/space/target = map.sites[map.selected_destination]
 	if(!map.knows_site(target))
 		target = null
 	var/datum/stationtrauma_overmap_site/space/dock_target = map.selected_docking_site()
 	var/distance = target ? map.distance_to(target) : 0
-	var/list/data = list(
-		"vessel_name" = vessel.name,
-		"au_scale" = ST_SPACE_AU_SCALE,
+	var/datum/stationtrauma_ship_docking/boarding/capture = map.ship_docking
+	if(!istype(capture))
+		capture = null
+	var/list/data = map.navigation_chart_data()
+	data += list(
 		"status" = map.status,
-		"sector" = sector?.id, "sector_name" = sector?.name,
 		"jumping" = !!map.jump_target,
-		"star" = list("x" = 0, "y" = 0, "name" = sector?.star_name, "radius" = sector?.star_radius || 10),
-		"celestial_bodies" = sector?.celestial_bodies,
-		"x" = map.pos_x, "y" = map.pos_y,
-		"vx" = map.velocity_x, "vy" = map.velocity_y, "trajectory" = map.predict_trajectory(),
-		"course" = map.course, "ordered_course" = map.ordered_course,
+		"ordered_course" = map.ordered_course,
 		"speed" = map.speed, "throttle" = map.approach_started ? round(100 * map.commanded_thrust()) * vessel.engines_running : map.throttle, "speed_scale" = ST_SPACE_MAX_SPEED,
 		"maneuver_direction" = map.maneuver_direction,
 		"braking" = map.braking, "braking_distance" = map.get_braking_distance(),
@@ -115,25 +137,26 @@
 		"engine_fault" = engine_fault,
 		"can_start_engines" = engine_fraction > 0,
 		"helm" = map.helm_engaged, "autopilot" = map.autopilot,
-		"preparing" = map.preparing, "planning" = map.planning,
-		"relocating" = map.relocating, "landed" = !!map.docked?.landing,
+		"planning" = map.planning,
+		"landed" = !!map.docked?.landing,
 		"selected" = target?.docking_target?.id || target?.id, "docked" = map.docked?.docking_target?.id || map.docked?.pad_parent?.id || map.docked?.id,
 		"coupled" = !!map.ship_docking,
 		"docking_request" = map.ship_docking_request_data(),
 		"station_docking" = map.station_docking_data(target),
 		"can_request_ship_dock" = map.available_for_ship_docking(),
 		"dockable_contacts" = map.dockable_ship_contacts(),
+		"boardable_contacts" = map.boardable_contacts(),
+		"boarding" = map.boarding_attempt?.display_data(map),
+		"boarding_connected" = !!capture,
+		"boarding_release_ready" = capture?.can_start_release(map),
+		"boarding_release_eta" = capture?.release_helm ? max(0, capture.release_at - world.time) / (1 SECONDS) : null,
+		"can_cancel_release" = capture && !capture.closing && capture.release_helm == map,
 		"landing" = target?.landing, "distance" = distance,
 		"eta" = target && map.get_target_speed() > 0 ? max(0, distance - map.radius - target.radius) / map.get_target_speed() : null,
 		"scan_ready" = !map.preparing && !map.relocating && map.is_operational() && world.time >= map.next_scan && !panel_open && !(machine_stat & (NOPOWER|BROKEN)),
 		"can_dock" = !map.preparing && !map.docked && !map.helm_engaged && map.speed <= ST_NAV_STOPPED_SPEED \
 			&& (!map.station_clearance_required(dock_target) || map.has_station_clearance(dock_target)) && map.can_dock(dock_target, map.control_revision),
-		"routes" = map.known_sites(helm = TRUE), "path" = map.autopilot_path,
-		"zones" = map.encounter_data(), "terrain" = map.terrain_data(),
-		"ship_contacts" = map.ship_echo_data(),
-		"encounter" = map.encounter_status, "sensor_range" = map.sensor_range, "dock_range" = ST_SPACE_DOCK_RANGE,
-		"interference" = round(map.interference, 0.05),
-		"scan_age" = isnull(map.last_ping) ? null : (world.time - map.last_ping) / (1 SECONDS),
+		"encounter" = map.encounter_status,
 		"approach" = null,
 	)
 	var/list/hull = vessel.compartment_report()
@@ -181,7 +204,6 @@
 		if(length(facts))
 			data["planet"] = facts
 	data["jump_progress"] = map.jump_progress()
-	data["jump_point_range"] = ST_JUMP_POINT_RANGE
 	return data
 
 /** Validate and dispatch a helm command. */
@@ -198,6 +220,22 @@
 		return FALSE
 	map.advance()
 	switch(action)
+		if("board_ship")
+			return map.request_boarding(value)
+		if("cancel_boarding")
+			if(map.boarding_attempt?.attacker != map)
+				return FALSE
+			qdel(map.boarding_attempt)
+			return TRUE
+		if("release_boarding")
+			var/datum/stationtrauma_ship_docking/boarding/boarding_link = map.ship_docking
+			if(!istype(boarding_link) || !boarding_link.can_start_release(map))
+				return FALSE
+			INVOKE_ASYNC(boarding_link, TYPE_PROC_REF(/datum/stationtrauma_ship_docking, release), map)
+			return TRUE
+		if("cancel_boarding_release")
+			var/datum/stationtrauma_ship_docking/boarding/boarding_link = map.ship_docking
+			return istype(boarding_link) && boarding_link.cancel_release(map)
 		if("ship_dock")
 			return map.request_ship_docking(value)
 		if("accept_ship_dock", "decline_ship_dock")

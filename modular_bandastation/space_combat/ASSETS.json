@@ -1,0 +1,81 @@
+{
+	"version": 1,
+	"scope": "Ship combat world sprites.",
+	"assets": [
+		{
+			"path": "modular_bandastation/space_combat/icons/patrol_consoles.dmi",
+			"sha256": "9854ad912777338503551486cbc2bcec9cbc10c51642c3d7804ab88b6cbbe84b",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"tgstation and BandaStation contributors (computer chassis, keyboard and damaged monitor)",
+				"StationTrauma / BandaStation contributors (screen artwork and keyboard palette)"
+			],
+			"source": {
+				"path": "icons/obj/machines/computer.dmi",
+				"sha256": "03845daf2e8105b09c9d155d330d99e8b4d8e798033b9f036bbb5ce96a78b825",
+				"repository": "SpaceStation220/Primera"
+			},
+			"changes": "Three original four-direction pixel displays and mapper composites. Retains the native computer, broken monitor and keyboard geometry with a muted powered keyboard."
+		},
+		{
+			"path": "modular_bandastation/space_combat/icons/patrol_machines.dmi",
+			"sha256": "495a948d2a7e3f60187a4d8af0c5bff4b0b4121dafad0b3b01646eb1782b457e",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"StationTrauma / BandaStation contributors"
+			],
+			"source": null,
+			"changes": "Original native-grid pixel artwork for the directional kinetic mount, feed tray, field generator, distribution cabinet and capsule launch cradle."
+		},
+		{
+			"path": "modular_bandastation/space_combat/icons/patrol_pod.dmi",
+			"sha256": "1244ce7d92b648865db8051f50b0f075856a224e11349a8ea51b802c45c743c0",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"StationTrauma / BandaStation contributors"
+			],
+			"source": null,
+			"changes": "Original pixel artwork for a two-seat capsule cabin and its separate hatch."
+		},
+		{
+			"path": "modular_bandastation/space_combat/icons/patrol_ammunition.dmi",
+			"sha256": "106b31afe05e0ef9b0d5ee4707681be6f3a3ae6839558c6845cd6b4290c85277",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"StationTrauma / BandaStation contributors"
+			],
+			"source": null,
+			"changes": "Original 32x32 kinetic shell and feed cassette with three fill levels."
+		},
+		{
+			"path": "modular_bandastation/space_combat/icons/patrol_heavy_gun.dmi",
+			"sha256": "2c82eecebe7b06ece4397fb14f3ba90580a2dbb98dde1bfd522f1a2a9794897f",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"StationTrauma / BandaStation contributors"
+			],
+			"source": null,
+			"changes": "Original contiguous two-tile mount and compact eight-round loader, four directions."
+		},
+		{
+			"path": "modular_bandastation/space_combat/icons/patrol_tracers.dmi",
+			"sha256": "bea0a5b32b599a28729ca9777cfd8626d5d040eef852ee273fef30e6852935d8",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"StationTrauma / BandaStation contributors"
+			],
+			"source": null,
+			"changes": "Original light and heavy kinetic tracer silhouettes, oriented by the projectile engine."
+		},
+		{
+			"path": "modular_bandastation/space_combat/icons/patrol_heavy_ammunition.dmi",
+			"sha256": "a3f94caacd9c16868826cd8528ec7af2fdc488dde281e0eb0eebe85ef6f6a316",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"StationTrauma / BandaStation contributors"
+			],
+			"source": null,
+			"changes": "Original 32x32 heavy kinetic shell and amber-striped eight-round cassette in three fill states."
+		}
+	]
+}

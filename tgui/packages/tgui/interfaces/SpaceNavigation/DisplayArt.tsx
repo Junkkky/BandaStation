@@ -95,25 +95,29 @@ export function StationGlyph() {
   );
 }
 
+const navigationZoomLevels = [0.5, 1, 2, 4] as const;
+
 export function ZoomKnob({
   zoom,
   onChange,
   disabled = false,
+  levels = navigationZoomLevels,
 }: {
   zoom: number;
   onChange: (value: number) => void;
   disabled?: boolean;
+  levels?: readonly [number, number, number, number];
 }) {
-  const levels = [0.5, 1, 2, 4];
   const value = levels.indexOf(zoom);
   return (
     <div className="SpaceNavigation__zoom-hardware">
       <span className="SpaceNavigation__zoom-label">МАСШТАБ</span>
       <div className="SpaceNavigation__zoom-knob">
-        <span className="zoom-mark zoom-mark-0">0.5</span>
-        <span className="zoom-mark zoom-mark-1">1</span>
-        <span className="zoom-mark zoom-mark-2">2</span>
-        <span className="zoom-mark zoom-mark-3">4</span>
+        {levels.map((level, index) => (
+          <span className={`zoom-mark zoom-mark-${index}`} key={level}>
+            {level}
+          </span>
+        ))}
         <div
           className="SpaceNavigation__rotary"
           style={{ transform: `rotate(${-120 + value * 80}deg)` }}

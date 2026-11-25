@@ -40,6 +40,7 @@
 			qdel(docked)
 	docking_request = null
 	approach_site = null
+	QDEL_NULL(boarding_attempt)
 	QDEL_NULL(ship_docking)
 	QDEL_NULL(interior_audio)
 	QDEL_NULL(engine_sound)
@@ -102,7 +103,7 @@
 /** Passive ship observations within sensor range, refreshed every two seconds. */
 /datum/stationtrauma_overmap/space/proc/listen()
 	next_listen = world.time + 2 SECONDS
-	observe_ships(sensor_range, passive = TRUE)
+	observe_ships(sensor_range, passive = TRUE, tracked_reach = fire_control_sensor_range())
 
 /** Nominal drive load distinguishes powered manoeuvres from unpowered drift. */
 /datum/stationtrauma_overmap/space/detection_signature()
@@ -118,10 +119,10 @@
 	return !QDELETED(vessel)
 
 /** Available fraction of the native engine registry's nominal power. */
-/datum/stationtrauma_overmap/space/proc/engine_fraction()
+/datum/stationtrauma_overmap/space/proc/engine_fraction(regulated = TRUE)
 	var/power = 0
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
-		power += engine.engine_power * engine_output(engine)
+		power += engine.engine_power * engine_output(engine, regulated)
 	return clamp(power / max(1, vessel.initial_engine_power), 0, 1)
 
 /** Engine power actually delivered per hull tile: the heavier the hull, the weaker the same engines. */
@@ -139,13 +140,14 @@
 	return ST_NAV_TURN_RATE * clamp(sqrt(ST_SPACE_REFERENCE_MASS / max(1, vessel.hull_mass)), 0.5, 2)
 
 /** Share of one intact engine's nominal power; gas-fed nozzles depend on their delivered feed. */
-/datum/stationtrauma_overmap/space/proc/engine_output(obj/machinery/power/shuttle_engine/engine)
+/datum/stationtrauma_overmap/space/proc/engine_output(obj/machinery/power/shuttle_engine/engine, regulated = TRUE)
 	if(QDELETED(engine) || !engine.crew_enabled || !engine.anchored || engine.engine_state != initial(engine.engine_state) || (engine.machine_stat & BROKEN) || engine.get_integrity() <= 0)
 		return 0
+	var/limit = regulated ? vessel.combat_engine_limit(available = !vessel.engines_running) : 1
 	if(!engine.requires_combustion)
-		return 1
+		return limit
 	var/obj/machinery/atmospherics/components/unary/ship_engine_heater/feed = engine.combustion_feed?.resolve()
-	return feed?.propulsion_fraction() || 0
+	return (feed?.propulsion_fraction() || 0) * limit
 
 /datum/stationtrauma_overmap/space/propulsion_available()
 	return !preparing && !ship_docking && vessel.engines_running && engine_fraction() > 0

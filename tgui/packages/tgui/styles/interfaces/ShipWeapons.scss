@@ -1,0 +1,246 @@
+.ShipWeapons {
+  --gun-bank: 288px;
+  --gun-gap: 10px;
+
+  &--offline {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.SpaceNavigation > header {
+    display: flex;
+    gap: 12px;
+
+    .SpaceNavigation__zoom-hardware {
+      flex-shrink: 0;
+    }
+  }
+
+  &__body,
+  &__instruments {
+    display: grid;
+    min-height: 0;
+    gap: var(--gun-gap);
+  }
+
+  &__body {
+    flex: 1;
+    grid-template-columns: minmax(0, 1fr) var(--gun-bank);
+  }
+
+  &__instruments {
+    grid-template-rows: minmax(108px, auto) minmax(0, 1fr);
+  }
+
+  &__mounts {
+    max-height: 220px;
+  }
+
+  .SpaceNavigation__routes {
+    scrollbar-color: var(--nav-border) var(--nav-screen);
+  }
+
+  &__mount {
+    padding-bottom: 7px;
+    border-bottom: 1px solid #243632;
+
+    .Button {
+      border-bottom: 0;
+    }
+
+    .Button__content > span:first-child {
+      color: inherit;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__mount + &__mount {
+    margin-top: 3px;
+  }
+
+  &__mount-reading,
+  &__reload {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin: 3px 8px 0 9px;
+    font-size: 11px;
+    color: var(--nav-muted);
+  }
+
+  &__mount-reading [data-state='ready'] {
+    color: var(--nav-phosphor);
+  }
+
+  &__mount-reading [data-state='reload'],
+  &__mount-reading [data-state='firing'] {
+    color: var(--nav-amber);
+  }
+
+  &__ammo {
+    flex-shrink: 0;
+  }
+
+  &__ammo b {
+    color: var(--nav-ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__reload {
+    min-height: 16px;
+    color: var(--nav-amber);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__reload progress {
+    flex: 1;
+    min-width: 0;
+    height: 6px;
+    border: 1px solid #665638;
+    background: #302820;
+    appearance: none;
+
+    &::-webkit-progress-bar {
+      background: #302820;
+    }
+
+    &::-webkit-progress-value {
+      background: var(--nav-amber);
+    }
+  }
+
+  .SpaceNavigation__chart:focus-visible {
+    outline: 2px solid var(--nav-amber);
+    outline-offset: -3px;
+  }
+
+  &__legend span {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+    gap: 6px;
+  }
+
+  &__legend span:nth-child(2) {
+    color: var(--nav-muted);
+  }
+
+  &__sector-swatch,
+  &__shot-swatch {
+    flex-shrink: 0;
+    width: 10px;
+    height: 7px;
+  }
+
+  &__sector-swatch {
+    border: 1px dashed var(--nav-amber);
+    background: #e4bf792b;
+  }
+
+  &__shot-swatch {
+    height: 2px;
+    background: #ffbb82;
+  }
+
+  &__command {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 56px 104px;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-top: var(--gun-gap);
+    padding: 6px 8px 9px;
+    overflow: visible;
+
+    .Button {
+      height: 48px;
+    }
+
+    .Button--disabled {
+      opacity: 0.62;
+    }
+  }
+
+  &__command &__fire-key {
+    width: 100%;
+    --key-face: #d9946c;
+    --key-edge: #f3c6a1;
+
+    &.Button--disabled {
+      --key-face: #aa9687;
+      --key-edge: #ccb7a7;
+    }
+  }
+
+  &__solution {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 14px;
+    min-height: 48px;
+    padding: 5px 9px;
+  }
+
+  &__target,
+  &__distance {
+    display: grid;
+    min-width: 0;
+    gap: 2px;
+  }
+
+  &__target strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__distance {
+    text-align: right;
+  }
+
+  &__fire-status {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: var(--nav-amber);
+    line-height: 1.25;
+  }
+
+  &__fire-status[data-ready='true'] {
+    color: var(--nav-phosphor);
+  }
+
+  @media (max-width: 850px) {
+    --gun-bank: minmax(205px, 34%);
+    --gun-gap: 7px;
+
+    .SpaceNavigation__nameplate strong {
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+  }
+
+  @media (max-width: 690px) {
+    --gun-bank: minmax(172px, 36%);
+
+    &__command {
+      grid-template-columns: minmax(0, 1fr) 54px 76px;
+    }
+  }
+
+  @media (max-width: 540px) {
+    overflow-y: auto;
+
+    &__body {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: minmax(225px, 1fr) 112px;
+      flex: 1 0 auto;
+    }
+
+    &__instruments {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: minmax(0, 1fr);
+    }
+  }
+}

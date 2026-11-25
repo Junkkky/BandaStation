@@ -68,20 +68,38 @@
 /datum/stationtrauma_overmap/proc/transponder_identity()
 	return null
 
+/** An overmap object normally leaves the chart while its destination is prepared. */
+/datum/stationtrauma_overmap/proc/sensor_observable()
+	return !preparing
+
 /** Measurements retain sampled motion and copied registration, never live target references. */
-/datum/stationtrauma_overmap/proc/observe_ships(reach, passive = FALSE)
+/datum/stationtrauma_overmap/proc/observe_ships(reach, passive = FALSE, tracked_reach = 0)
 	if(!sector)
 		return 0
 	var/found = 0
 	for(var/id in sector.ships)
 		var/datum/stationtrauma_overmap/other = sector.ships[id]
-		if(other == src || !other.is_operational() || other.preparing)
+		if(other == src || !other.is_operational() || !other.sensor_observable())
 			continue
-		var/detection_range = passive ? reach * other.detection_signature() : reach
+		var/detection_range = reach
+		if(passive)
+			var/signature = other.detection_signature()
+			detection_range *= signature
+			if(signature > 0 && tracked_reach > detection_range && ship_sensor_observation(id))
+				detection_range = tracked_reach
 		if(detection_range <= 0 || (other.pos_x - pos_x) ** 2 + (other.pos_y - pos_y) ** 2 > detection_range ** 2)
 			continue
 		found += record_ship_observation(id, other, passive ? "passive" : "active")
 	return found
+
+/** Last unexpired sensor fix. A radio packet alone cannot acquire or maintain a track. */
+/datum/stationtrauma_overmap/proc/ship_sensor_observation(id)
+	var/list/record = ship_observations[id]
+	if(record && record["mode"] != "active" && record["mode"] != "passive")
+		record = record["sensor_sample"]
+	if(!record || world.time - record["seen"] >= ST_NAV_SHIP_MEMORY)
+		return null
+	return record
 
 /** Record a sensor or radio observation under its crew-local contact number. */
 /datum/stationtrauma_overmap/proc/record_ship_observation(id, datum/stationtrauma_overmap/other, mode)
@@ -98,6 +116,11 @@
 		number = next_contact_number
 	var/list/observation = list("id" = number, "x" = other.pos_x, "y" = other.pos_y, "seen" = world.time, "mode" = mode)
 	if(previous)
+		if(mode != "active" && mode != "passive")
+			if(previous["mode"] == "active" || previous["mode"] == "passive")
+				observation["sensor_sample"] = previous
+			else if(previous["sensor_sample"])
+				observation["sensor_sample"] = previous["sensor_sample"]
 		var/seconds = (world.time - previous["seen"]) / (1 SECONDS)
 		if(seconds > 0)
 			observation["vx"] = (other.pos_x - previous["x"]) / seconds

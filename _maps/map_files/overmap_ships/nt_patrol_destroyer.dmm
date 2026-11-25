@@ -14,7 +14,9 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
 "aH" = (
-/obj/machinery/telecomms/allinone/ship,
+/obj/machinery/computer/stationtrauma_drop_pod_console,
+/obj/machinery/light/cold/directional/east,
+/obj/effect/turf_decal/tile/dark_red/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "aO" = (
@@ -28,7 +30,7 @@
 "aS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/dark_blue/full,
+/obj/effect/turf_decal/tile/blue/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "bc" = (
@@ -39,14 +41,17 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "bh" = (
-/obj/effect/turf_decal/tile/dark_blue/full,
-/obj/structure/chair/comfy/shuttle{
-	dir = 1
+/obj/structure/table/reinforced,
+/obj/machinery/fax{
+	name = "Факс патруля НТ";
+	fax_name = "Патруль НТ — мостик";
+	pixel_y = 11
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "bm" = (
 /obj/machinery/computer/stationtrauma_bluespace,
+/obj/effect/turf_decal/tile/brown/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "bs" = (
@@ -57,12 +62,6 @@
 /obj/machinery/light/warm/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/barracks)
-"bM" = (
-/obj/structure/table/reinforced,
-/obj/item/binoculars,
-/obj/effect/turf_decal/tile/dark_blue/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "bO" = (
 /obj/effect/landmark/away_mission/nt_patrol_officer,
 /turf/open/floor/iron/dark/smooth_large,
@@ -125,20 +124,12 @@
 /obj/machinery/airalarm/directional/south{
 	req_access = list()
 	},
-/obj/structure/closet/firecloset/full,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/eva)
 "ev" = (
 /obj/structure/table/optable,
 /turf/open/floor/iron/white/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
-"eN" = (
-/obj/structure/table/reinforced,
-/obj/machinery/light/cold/directional/east,
-/obj/item/megaphone/sec,
-/obj/effect/turf_decal/tile/dark_blue/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "fl" = (
 /obj/machinery/suit_storage_unit/spaceruin,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -342,6 +333,7 @@
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "nO" = (
 /obj/structure/closet/wall/nanotrasen/directional/north,
+/obj/machinery/telecomms/allinone/ship,
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/barracks)
 "oh" = (
@@ -391,6 +383,7 @@
 /obj/machinery/computer/stationtrauma_engine_console{
 	dir = 2
 	},
+/obj/effect/turf_decal/tile/brown/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "qv" = (
@@ -446,6 +439,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/holopad/ship,
+/obj/effect/turf_decal/tile/blue/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "rz" = (
@@ -589,6 +583,9 @@
 "wL" = (
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "wM" = (
@@ -606,10 +603,7 @@
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "wV" = (
-/obj/machinery/fax{
-	name = "Факс патруля НТ";
-	fax_name = "Патруль НТ — мостик"
-	},
+/obj/effect/turf_decal/tile/dark_blue/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "wZ" = (
@@ -717,6 +711,7 @@
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
 "Bp" = (
 /obj/machinery/computer/stationtrauma_transponder/nt_patrol,
+/obj/effect/turf_decal/tile/dark_blue/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "BF" = (
@@ -735,6 +730,7 @@
 /obj/docking_port/mobile/stationtrauma_space{
 	name = "Патрульный эсминец НТ";
 	shuttle_id = "nt_patrol_destroyer";
+	combat_power_managed = 1;
 	ship_class = "medium";
 	area_type = /area/shuttle/stationtrauma_space/nt_patrol;
 	dir = 1;
@@ -808,6 +804,7 @@
 	dir = 8;
 	target_pressure = 506.625
 	},
+/obj/machinery/stationtrauma_combat_power,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "EO" = (
@@ -858,6 +855,11 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"Ix" = (
+/obj/machinery/computer/stationtrauma_weapon_console,
+/obj/effect/turf_decal/tile/dark_red/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "IC" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1012,6 +1014,7 @@
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "RY" = (
 /obj/machinery/computer/stationtrauma_space_navigation,
+/obj/effect/turf_decal/tile/dark_blue/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "SF" = (
@@ -1104,18 +1107,32 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
+/obj/effect/turf_decal/tile/blue/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "Wx" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 1
-	},
 /obj/machinery/airalarm/directional/east{
 	req_access = list()
 	},
-/obj/effect/turf_decal/tile/dark_blue/full,
+/obj/effect/turf_decal/tile/dark_red/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Xg" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Xh" = (
+/obj/machinery/stationtrauma_drop_launcher{
+	launcher_number = 2
+	},
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"Xi" = (
+/obj/structure/closet/radiation,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
 "Xs" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/iron/white/smooth_large,
@@ -1165,12 +1182,29 @@
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
 "Yx" = (
 /obj/machinery/light/directional/south,
-/obj/structure/closet/radiation,
+/obj/machinery/stationtrauma_drop_launcher,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/eva)
 "Zg" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/nt_patrol/mess)
+"Zk" = (
+/obj/machinery/computer/stationtrauma_combat_power_console{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Zl" = (
+/obj/structure/sign/nanotrasen/directional/south,
+/obj/item/binoculars,
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Zm" = (
+/obj/machinery/stationtrauma_ship_shield,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "Zq" = (
 /obj/machinery/suit_storage_unit/spaceruin,
 /turf/open/floor/iron/dark/textured,
@@ -1198,8 +1232,66 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"ZX" = (
+/obj/machinery/stationtrauma_autocannon{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
+"ZY" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/dark_red/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"ZZ" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Lm" = (
+/obj/machinery/stationtrauma_autocannon_loader,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Ln" = (
+/obj/item/stack/stationtrauma_autocannon_shell{
+	amount = 30
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Hv" = (
+/obj/machinery/stationtrauma_autocannon/heavy{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
+"Hw" = (
+/obj/structure/stationtrauma_autocannon_barrel{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
+"Hx" = (
+/obj/machinery/stationtrauma_autocannon_loader/compact,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Hz" = (
+/obj/item/stack/stationtrauma_autocannon_shell/heavy{
+	amount = 8
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 
 (1,1,1) = {"
+aa
 aa
 aa
 aa
@@ -1228,6 +1320,7 @@ aa
 aa
 aa
 aa
+aa
 kg
 Xs
 kg
@@ -1250,6 +1343,7 @@ aa
 aa
 "}
 (3,1,1) = {"
+aa
 aa
 aa
 rm
@@ -1277,6 +1371,7 @@ aa
 (4,1,1) = {"
 aa
 aa
+aa
 rm
 EO
 ev
@@ -1293,13 +1388,14 @@ ax
 mR
 Zq
 mV
-mV
+Xh
 Yx
 vN
 JQ
 ss
 "}
 (5,1,1) = {"
+aa
 aa
 tm
 kg
@@ -1326,8 +1422,9 @@ ss
 "}
 (6,1,1) = {"
 aa
+aa
 tm
-ai
+wV
 yT
 yT
 yT
@@ -1343,19 +1440,20 @@ an
 mR
 wJ
 re
-mV
+Xi
 lZ
 vN
 JQ
 ss
 "}
 (7,1,1) = {"
+aa
 tm
 Bp
-ai
+lb
 aO
-ai
-lk
+Xg
+Zl
 mR
 mR
 Lw
@@ -1375,11 +1473,12 @@ zZ
 aa
 "}
 (8,1,1) = {"
+aa
 tm
 RY
-bh
-aS
 ai
+aS
+bh
 wL
 mR
 bc
@@ -1400,8 +1499,9 @@ zn
 aa
 "}
 (9,1,1) = {"
+ZX
 tm
-dn
+Lm
 Ei
 rw
 Wm
@@ -1425,9 +1525,10 @@ vN
 aa
 "}
 (10,1,1) = {"
+aa
 tm
 bm
-bh
+Ln
 aS
 ai
 ai
@@ -1450,9 +1551,10 @@ zn
 aa
 "}
 (11,1,1) = {"
+aa
 tm
 qo
-ai
+ZZ
 ai
 ai
 lk
@@ -1476,8 +1578,9 @@ aa
 "}
 (12,1,1) = {"
 aa
+aa
 tm
-ai
+Zk
 ai
 ai
 aR
@@ -1500,11 +1603,12 @@ JQ
 ss
 "}
 (13,1,1) = {"
-aa
+Hw
+Hv
 tm
+Hx
+Hz
 ai
-ai
-aH
 ai
 BI
 gg
@@ -1527,10 +1631,11 @@ ss
 (14,1,1) = {"
 aa
 aa
+aa
 tm
+Ix
 ai
-bM
-lb
+ai
 BI
 HE
 gl
@@ -1552,9 +1657,10 @@ ss
 (15,1,1) = {"
 aa
 aa
+aa
 tm
-wV
-eN
+aH
+ZY
 Wx
 BI
 IK
@@ -1578,6 +1684,7 @@ aa
 aa
 aa
 aa
+aa
 yT
 yT
 yT
@@ -1592,7 +1699,7 @@ iU
 Pb
 mR
 hu
-TO
+Zm
 qv
 Uz
 tJ
@@ -1600,6 +1707,7 @@ aa
 aa
 "}
 (17,1,1) = {"
+aa
 aa
 aa
 aa

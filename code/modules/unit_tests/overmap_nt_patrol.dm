@@ -119,7 +119,27 @@
 	TEST_ASSERT_EQUAL(mission.find_latejoin_spawn(ship), arrival, "Clearing the arrival tile must reopen the same spawn")
 	TEST_ASSERT_EQUAL(length(ship.owned_z_levels), 1, "The patrol destroyer must use exactly one deck")
 	TEST_ASSERT_EQUAL(ship.width, 17, "Native hull width including machinery")
-	TEST_ASSERT_EQUAL(ship.height, 23, "Native hull length including engines")
+	TEST_ASSERT_EQUAL(ship.height, 24, "Native hull length including engines and the exterior gun mount")
+	TEST_ASSERT_EQUAL(length(ship.ship_autocannons), 2, "Both bow mounts must register with the native hull")
+	var/obj/machinery/stationtrauma_autocannon/heavy/heavy = locate() in ship.ship_autocannons
+	TEST_ASSERT_NOTNULL(heavy, "The second mount is a heavy autocannon")
+	var/list/light_mounts = ship.ship_autocannons - heavy
+	var/obj/machinery/stationtrauma_autocannon/gun = light_mounts[1]
+	var/obj/structure/stationtrauma_autocannon_barrel/barrel = locate() in get_step(heavy, heavy.dir)
+	TEST_ASSERT(barrel && heavy.firing_muzzle() == get_step(barrel, heavy.dir), "The projectile clears both physical tiles of the heavy mount")
+	var/obj/machinery/stationtrauma_autocannon_loader/compact/tray = heavy.interior_loader()
+	TEST_ASSERT(istype(get_area(gun), /area/shuttle/stationtrauma_space/nt_patrol/exterior), "The gun must be on the exterior bow")
+	TEST_ASSERT_NOTNULL(gun.firing_muzzle(), "The gun's outward muzzle must be clear")
+	var/turf/bow_window = get_step(gun, SOUTH)
+	TEST_ASSERT(locate(/obj/structure/window/reinforced/plasma/plastitanium) in bow_window, "The bow window must remain intact")
+	var/obj/machinery/stationtrauma_autocannon_loader/loader = locate() in get_step(bow_window, SOUTH)
+	TEST_ASSERT_EQUAL(gun.interior_loader(), loader, "The gun links through the bow to its interior loading tray")
+	TEST_ASSERT_NOTNULL(loader, "The bridge contains a loading tray")
+	TEST_ASSERT(istype(tray) && tray.mounted_gun() == heavy && tray.reserve_capacity < loader.reserve_capacity, "The heavy mount has its own small interior feed")
+	var/obj/machinery/computer/stationtrauma_weapon_console/controls = locate() in get_area(loader)
+	TEST_ASSERT_EQUAL(controls?.current_vessel(), ship, "The bridge controls must link to their own hull")
+	TEST_ASSERT(ship.combat_power_managed && ship.combat_power_ref?.resolve(), "The patrol hull must have a linked combat distributor")
+	TEST_ASSERT_NOTNULL(ship.combat_shield_ref?.resolve(), "The patrol hull must have a linked shield generator")
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = allocate(/obj/docking_port/stationary/stationtrauma_space_station/standard_m)
 	TEST_ASSERT(slot.accepts(ship), "The real hull must fit a standard M slot")
 	var/hatches_ready = 0
@@ -308,7 +328,7 @@
 		var/obj/machinery/atmospherics/components/unary/ship_engine_heater/feed = nozzle.combustion_feed?.resolve()
 		TEST_ASSERT(feed && feed.core?.resolve() == reactor && feed.parents[1] == exhaust, "The nozzle at [COORD(nozzle)] needs a converter on the core exhaust line")
 		feed.process_atmos(1)
-		TEST_ASSERT(ship.overmap.engine_output(nozzle) > 0, "The connected nozzle at [COORD(nozzle)] must deliver thrust")
+		TEST_ASSERT(ship.overmap.engine_output(nozzle, regulated = FALSE) > 0, "The connected nozzle at [COORD(nozzle)] must deliver thrust")
 	ship.engines_running = FALSE
 	check_cooling(reactor, supply, waste)
 

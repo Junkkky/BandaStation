@@ -125,6 +125,12 @@ export type NavigationData = Position & {
   };
   can_request_ship_dock: BooleanLike;
   dockable_contacts: number[];
+  boardable_contacts?: number[];
+  boarding?: { incoming: BooleanLike; eta: number } | null;
+  boarding_connected?: BooleanLike;
+  boarding_release_ready?: BooleanLike;
+  boarding_release_eta?: number | null;
+  can_cancel_release?: BooleanLike;
   landing: BooleanLike;
   distance: number;
   eta: number | null;
@@ -146,6 +152,17 @@ export type NavigationData = Position & {
   })[];
   terrain: (Position & { end_x: number; end_y: number })[];
   ship_contacts: Contact[];
+  kinetic_shots?: (Position & {
+    id: number;
+    heading?: number;
+    finished: BooleanLike;
+  })[];
+  shield_up?: BooleanLike;
+  drop_pods?: (Position & { id: number })[];
+  impact_waves?: (
+    | { id: number; kind: 'ship' | 'shield'; contact: number | null }
+    | (Position & { id: number; kind: 'terrain' })
+  )[];
   /** What the survey has read of the selected planet; a field is missing until enough of the planet is covered */
   planet?: {
     biome?: string;
@@ -185,6 +202,45 @@ export type NavigationData = Position & {
   compartments: Compartment[];
   /** Hull silhouette rows, north first: space outside, `#` wall, `!` breach, otherwise the compartment code. */
   hull: string[];
+};
+
+/** Data rendered by the shared chart, without helm or docking controls. */
+export type ChartData = Pick<
+  NavigationData,
+  | 'x'
+  | 'y'
+  | 'sector'
+  | 'sector_name'
+  | 'vessel_name'
+  | 'au_scale'
+  | 'course'
+  | 'star'
+  | 'celestial_bodies'
+  | 'preparing'
+  | 'relocating'
+  | 'routes'
+  | 'path'
+  | 'zones'
+  | 'terrain'
+  | 'ship_contacts'
+  | 'kinetic_shots'
+  | 'drop_pods'
+  | 'impact_waves'
+  | 'shield_up'
+  | 'trajectory'
+  | 'sensor_range'
+  | 'dock_range'
+  | 'jump_point_range'
+  | 'survey'
+  | 'interference'
+  | 'scan_age'
+> & { selected?: NavigationData['selected'] };
+
+export type FiringSector = {
+  heading: number;
+  arc: number;
+  range: number;
+  min_range: number;
 };
 
 export function compartmentDamaged(room: Compartment) {

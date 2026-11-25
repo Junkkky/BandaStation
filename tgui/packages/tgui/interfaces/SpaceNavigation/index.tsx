@@ -43,6 +43,14 @@ function Navigation({ data }: { data: NavigationData }) {
   const contact = data.ship_contacts.find(
     (record) => record.id === focusedContact,
   );
+  const boarding = data.boarding;
+  const releaseEta = data.boarding_release_eta;
+  const releasing = releaseEta != null;
+  const boardingStatus = releasing
+    ? `Размыкание захватов · ${Math.ceil(releaseEta)} с`
+    : boarding
+      ? `${boarding.incoming ? 'Входящий абордаж' : 'Подготовка абордажа'} · ${Math.ceil(boarding.eta)} с`
+      : '';
   const stationDocking =
     focusedContact === null && data.station_docking?.required
       ? data.station_docking
@@ -621,6 +629,7 @@ function Navigation({ data }: { data: NavigationData }) {
                 tooltip={data.landed ? 'Взлёт' : 'Отстыковка'}
                 disabled={
                   !moored ||
+                  !!data.boarding_connected ||
                   !data.engines_running ||
                   data.preparing ||
                   data.relocating ||
@@ -684,9 +693,71 @@ function Navigation({ data }: { data: NavigationData }) {
         </aside>
       </div>
       <div className="SpaceNavigation__status-bank">
-        <footer role="status" title={clearanceStatus || data.status}>
+        <footer
+          role="status"
+          title={boardingStatus || clearanceStatus || data.status}
+          data-boarding={!!boarding}
+        >
           <span className="SpaceNavigation__status-dot" />
-          {clearanceStatus || data.status}
+          <span>{boardingStatus || clearanceStatus || data.status}</span>
+          {(contact || boarding || data.boarding_connected) && (
+            <div className="SpaceNavigation__boarding">
+              {boarding?.incoming ? (
+                <div className="SpaceNavigation__boarding-warning" role="alert">
+                  Разгон выше 1 км/с сорвёт захват
+                </div>
+              ) : (
+                <Button
+                  icon={
+                    data.boarding_connected
+                      ? 'link-slash'
+                      : 'triangle-exclamation'
+                  }
+                  disabled={
+                    data.boarding_connected
+                      ? !(releasing
+                          ? data.can_cancel_release
+                          : data.boarding_release_ready)
+                      : !boarding &&
+                        (!contact ||
+                          !data.boardable_contacts?.includes(contact.id))
+                  }
+                  tooltip={
+                    data.boarding_connected
+                      ? releasing
+                        ? 'Отменить подготовку можно с мостика, который её начал'
+                        : 'Для размыкания удерживайте тягу 90 секунд'
+                      : boarding
+                        ? undefined
+                        : 'Подойдите на дистанцию стыковки. Скорость обоих бортов должна быть не выше 1 км/с'
+                  }
+                  onClick={() => {
+                    if (data.boarding_connected) {
+                      act(
+                        releasing
+                          ? 'cancel_boarding_release'
+                          : 'release_boarding',
+                      );
+                    } else if (boarding) {
+                      act('cancel_boarding');
+                    } else if (contact) {
+                      act('board_ship', { value: contact.id });
+                    }
+                  }}
+                >
+                  {data.boarding_connected
+                    ? releasing
+                      ? data.can_cancel_release
+                        ? 'Отменить отстыковку'
+                        : 'Идёт расстыковка'
+                      : 'Разомкнуть захват'
+                    : boarding
+                      ? 'Отменить абордаж'
+                      : 'Принудительная стыковка'}
+                </Button>
+              )}
+            </div>
+          )}
         </footer>
         <div
           className="SpaceNavigation__mode-screen"

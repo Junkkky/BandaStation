@@ -87,11 +87,14 @@
 			discover_site(site)
 			navigation_notice("Обнаружен контакт — [site_label(site)].")
 
-/** Notify everyone aboard the vessel. */
-/datum/stationtrauma_overmap/space/proc/navigation_notice(message)
+/** Notify the crew. Optional shipboard alarms play in the vessel's own compartments. */
+/datum/stationtrauma_overmap/space/proc/navigation_notice(message, alarm_sound)
 	for(var/mob/crew as anything in GLOB.player_list)
-		if(vessel.is_in_shuttle_bounds(crew))
-			to_chat(crew, span_warning("Навигация: [message]"))
+		if(!vessel.is_in_shuttle_bounds(crew))
+			continue
+		to_chat(crew, span_warning("Навигация: [message]"))
+		if(alarm_sound && vessel.shuttle_areas[get_area(crew)])
+			crew.playsound_local(get_turf(crew), alarm_sound, 60, pressure_affected = FALSE, use_reverb = FALSE)
 
 /** Both regions and close terrain are charted, without exposing undiscovered salvage. */
 /datum/stationtrauma_overmap/space/proc/encounter_data()

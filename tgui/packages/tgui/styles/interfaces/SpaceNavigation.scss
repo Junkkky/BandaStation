@@ -749,6 +749,31 @@
     --key-face: #bc9c8b;
     --key-edge: #e7cbb1;
   }
+  &__boarding {
+    flex-shrink: 0;
+    margin-left: auto;
+
+    .Button,
+    &-warning {
+      box-sizing: border-box;
+      padding: 3px 8px;
+      border: 1px solid #aa795b;
+      border-radius: 2px;
+      background: #352821;
+      color: #f2d0a7;
+      font: inherit;
+      font-size: 10px;
+    }
+
+    .Button:hover:not(.Button--disabled) {
+      background: #524032;
+    }
+  }
+
+  footer[data-boarding='true'] {
+    color: #ffcea3;
+  }
+
   &__annunciator {
     display: grid;
     grid-template-columns: repeat(6, 58px);
@@ -834,6 +859,32 @@
 
 .SpaceNavigation__sos {
   pointer-events: none;
+}
+
+.SpaceNavigation__impact-wave {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: space-navigation-impact 780ms ease-out both;
+}
+
+@keyframes space-navigation-impact {
+  from {
+    transform: scale(0.28);
+    opacity: 0.95;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .SpaceNavigation__impact-wave {
+    animation: none;
+    transform: scale(0.65);
+    opacity: 0.75;
+  }
 }
 
 .SpaceNavigation {

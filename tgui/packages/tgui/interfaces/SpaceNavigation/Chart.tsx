@@ -11,9 +11,10 @@ import {
   ZoneArt,
 } from './DisplayArt';
 import {
+  type ChartData,
   distanceLabel,
+  type FiringSector,
   type LandingPad,
-  type NavigationData,
   type Position,
   VECTOR_SECONDS,
 } from './types';
@@ -48,19 +49,34 @@ function ScanWave(props: {
   );
 }
 
+const aimKeys: Partial<Record<string, Position>> = {
+  ArrowUp: { x: 0, y: 10 },
+  ArrowRight: { x: 10, y: 0 },
+  ArrowDown: { x: 0, y: -10 },
+  ArrowLeft: { x: -10, y: 0 },
+};
+
 type Props = {
-  data: NavigationData;
+  data: ChartData;
   zoom: number;
+  firingSector?: FiringSector;
+  aimPoint?: Position | null;
+  aimValid?: boolean;
+  onAim?: (position: Position) => void;
   hoveredTarget: string | null;
   focusedContact: number | null;
   onContact: (id: number) => void;
-  onSite: (id: string) => void;
-  onPad: (number: number) => void;
+  onSite?: (id: string) => void;
+  onPad?: (number: number) => void;
 };
 
 export function Chart({
+  aimPoint,
+  aimValid,
   data,
+  firingSector,
   focusedContact,
+  onAim,
   onContact,
   onSite,
   onPad,
@@ -79,6 +95,7 @@ export function Chart({
     y: height / 2 - (y - centre.y) * scale,
   });
   const own = point(data.x, data.y);
+  const aim = aimPoint && point(aimPoint.x, aimPoint.y);
   const disabled = !!(data.preparing || data.relocating);
 
   useEffect(() => {
@@ -121,6 +138,10 @@ export function Chart({
   )
     rows.push(y);
   const bodies = data.celestial_bodies || [];
+  const radius = (firingSector?.range ?? 0) * scale;
+  const radians = ((firingSector?.arc ?? 0) * Math.PI) / 180;
+  const edgeX = radius * Math.sin(radians);
+  const edgeY = -radius * Math.cos(radians);
 
   return (
     <div className="SpaceNavigation__chart-stage">
@@ -140,7 +161,58 @@ export function Chart({
         height={height}
         viewBox={`0 0 ${width} ${height}`}
         className="SpaceNavigation__chart"
-        aria-label="Карта контактов. Выбор левой кнопкой, перемещение правой."
+        aria-label={
+          onAim
+            ? 'Карта наведения. ЛКМ выбирает точку, стрелки двигают прицел, ПКМ перемещает карту.'
+            : 'Карта контактов. Выбор левой кнопкой, перемещение правой.'
+        }
+        tabIndex={onAim ? 0 : undefined}
+        onClick={
+          onAim &&
+          ((event) => {
+            const chart = event.currentTarget;
+            const matrix = chart.getScreenCTM();
+            if (!matrix) return;
+            const cursor = chart.createSVGPoint();
+            cursor.x = event.clientX;
+            cursor.y = event.clientY;
+            const chartPoint = cursor.matrixTransform(matrix.inverse());
+            if (
+              !(
+                chartPoint.x >= 0 &&
+                chartPoint.x <= width &&
+                chartPoint.y >= 0 &&
+                chartPoint.y <= height
+              )
+            )
+              return;
+            onAim({
+              x: centre.x + (chartPoint.x - width / 2) / scale,
+              y: centre.y - (chartPoint.y - height / 2) / scale,
+            });
+          })
+        }
+        onKeyDown={
+          onAim &&
+          ((event) => {
+            const step = aimKeys[event.key];
+            if (
+              !step ||
+              !firingSector ||
+              event.target !== event.currentTarget
+            ) {
+              return;
+            }
+            event.preventDefault();
+            const angle = (firingSector.heading * Math.PI) / 180;
+            const distance = (firingSector.range + firingSector.min_range) / 2;
+            const origin = aimPoint || {
+              x: data.x + Math.sin(angle) * distance,
+              y: data.y + Math.cos(angle) * distance,
+            };
+            onAim({ x: origin.x + step.x, y: origin.y + step.y });
+          })
+        }
         onContextMenu={(event) => event.preventDefault()}
         onMouseDown={(event) => {
           if (event.button !== 2) return;
@@ -317,6 +389,19 @@ export function Chart({
               .join(' ')}
           />
         )}
+        {firingSector && (
+          <path
+            aria-label="Сектор обстрела выбранного орудия"
+            d={`M0 0 L${-edgeX} ${edgeY} A${radius} ${radius} 0 0 1 ${edgeX} ${edgeY} Z`}
+            fill="#e9a14a"
+            fillOpacity={0.18}
+            stroke="#e9a14a"
+            strokeOpacity={0.85}
+            strokeDasharray="4 3"
+            transform={`translate(${own.x} ${own.y}) rotate(${firingSector.heading})`}
+            pointerEvents="none"
+          />
+        )}
         {data.routes.map((site, siteIndex) => {
           const p = point(site.x, site.y);
           const selected = focusedContact === null && site.id === data.selected;
@@ -325,15 +410,20 @@ export function Chart({
               key={site.id}
               transform={`translate(${p.x} ${p.y})`}
               className={`SpaceNavigation__marker ${selected ? 'is-selected' : ''} ${hoveredTarget === `site:${site.id}` ? 'is-hovered' : ''}`}
-              role="button"
-              tabIndex={0}
+              role={onSite ? 'button' : undefined}
+              tabIndex={onSite ? 0 : undefined}
               aria-label={site.name}
-              aria-disabled={disabled || !!site.failed}
-              onClick={() => !disabled && !site.failed && onSite(site.id)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' && !disabled && !site.failed)
-                  onSite(site.id);
-              }}
+              aria-disabled={onSite ? disabled || !!site.failed : undefined}
+              onClick={
+                onSite && (() => !disabled && !site.failed && onSite(site.id))
+              }
+              onKeyDown={
+                onSite &&
+                ((event) => {
+                  if (event.key === 'Enter' && !disabled && !site.failed)
+                    onSite(site.id);
+                })
+              }
               stroke={selected ? '#edc587' : site.sos ? '#e0533f' : '#7b9c86'}
             >
               <title>{site.name}</title>
@@ -411,7 +501,8 @@ export function Chart({
             </g>
           );
         })}
-        {zoom >= PAD_ZOOM &&
+        {onPad &&
+          zoom >= PAD_ZOOM &&
           data.survey?.pads &&
           data.routes
             .filter(
@@ -442,11 +533,16 @@ export function Chart({
               className={`SpaceNavigation__marker ${contact.id === focusedContact ? 'is-selected' : ''} ${hoveredTarget === `contact:${contact.id}` ? 'is-hovered' : ''}`}
               role="button"
               tabIndex={0}
-              aria-label={`Контакт ${contact.id}`}
+              aria-label={`Контакт ${contact.id} · ${contact.identity?.callsign || 'Неопознанное судно'}`}
+              aria-pressed={contact.id === focusedContact}
               onClick={() => onContact(contact.id)}
-              onKeyDown={(event) =>
-                event.key === 'Enter' && onContact(contact.id)
-              }
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  onContact(contact.id);
+                  onAim?.({ x: contact.x, y: contact.y });
+                }
+              }}
             >
               <title>{`К${contact.id} · ${contact.identity?.callsign || 'Неопознанное судно'} · ${Math.floor(contact.age)} с`}</title>
               <circle cx={p.x} cy={p.y} r={13} fill="transparent" />
@@ -538,10 +634,115 @@ export function Chart({
           >
             <title>Дальность стыковки и посадки</title>
           </circle>
+          {!!data.shield_up && (
+            <circle
+              r={18}
+              fill="none"
+              stroke="#8bcfdc"
+              strokeWidth={1}
+              opacity={0.8}
+            >
+              <title>Щит поднят</title>
+            </circle>
+          )}
           <g transform={`rotate(${data.course})`}>
             <ShipGlyph />
           </g>
         </g>
+        {aim && (
+          <g
+            aria-label="Точка прицеливания"
+            pointerEvents="none"
+            fill="none"
+            stroke={aimValid ? '#d5edb1' : '#eb9b79'}
+          >
+            <line
+              x1={own.x}
+              y1={own.y}
+              x2={aim.x}
+              y2={aim.y}
+              strokeDasharray="4 4"
+              opacity={0.8}
+            />
+            <g transform={`translate(${aim.x} ${aim.y})`}>
+              <circle r={7} fill="#0b1514" />
+              <path d="M-11 0h8m6 0h8M0-11v8m0 6v8" />
+            </g>
+          </g>
+        )}
+        {data.impact_waves?.map((impact) => {
+          const location =
+            impact.kind === 'terrain'
+              ? impact
+              : impact.contact === null
+                ? data
+                : data.ship_contacts.find(
+                    (contact) => contact.id === impact.contact,
+                  );
+          if (!location) return null;
+          const center = point(location.x, location.y);
+          return (
+            <circle
+              key={impact.id}
+              className="SpaceNavigation__impact-wave"
+              cx={center.x}
+              cy={center.y}
+              r={22}
+              stroke={impact.kind === 'shield' ? '#87deef' : '#fb776b'}
+              strokeWidth={1.6}
+              fill="none"
+              vectorEffect="non-scaling-stroke"
+              pointerEvents="none"
+              aria-hidden="true"
+            />
+          );
+        })}
+        {data.drop_pods?.map((pod) => {
+          const p = point(pod.x, pod.y);
+          return (
+            <g
+              key={pod.id}
+              transform={`translate(${p.x} ${p.y})`}
+              pointerEvents="none"
+            >
+              <title>Дроп-под</title>
+              <path
+                d="M0 -5 L4 0 L0 5 L-4 0 Z"
+                fill="#a1e6ee"
+                stroke="#246171"
+              />
+              <path d="M-7 0 H-4 M4 0 H7" stroke="#a1e6ee" />
+            </g>
+          );
+        })}
+        {data.kinetic_shots?.map((shot) => {
+          const p = point(shot.x, shot.y);
+          return (
+            <g
+              key={shot.id}
+              opacity={shot.finished ? 0.45 : 1}
+              pointerEvents="none"
+            >
+              <title>Кинетический снаряд</title>
+              {!shot.finished && shot.heading !== undefined && (
+                <path
+                  d="M0 0 V12"
+                  transform={`translate(${p.x} ${p.y}) rotate(${shot.heading})`}
+                  stroke="#ff9f59"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                />
+              )}
+              <circle
+                cx={p.x}
+                cy={p.y}
+                r={3.5}
+                fill="#fff1ba"
+                stroke="#ad6237"
+              />
+            </g>
+          );
+        })}
         <g fill="#718870" stroke="#718870">
           <text x={12} y={54} stroke="none">
             N ↑

@@ -110,13 +110,26 @@
 	TEST_ASSERT_EQUAL(navigation.ship_docking, link, "The guest must retain its occupied docking link")
 	TEST_ASSERT_EQUAL(host_navigation.ship_docking, link, "The host must retain the same occupied docking link")
 	TEST_ASSERT(!navigation.preparing && !host_navigation.preparing, "A completed arrival must release both preparation locks")
+	TEST_ASSERT_EQUAL(length(link.collar?.floors), 1, "A voluntary pair must deploy a sealed native gangway")
+	var/obj/item/obstruction = allocate(/obj/item/crowbar, link.collar.floors[1])
+	TEST_ASSERT(navigation.set_engines_running(TRUE), "Restore thrust before testing the occupied gangway")
+	TEST_ASSERT(!link.release(navigation, instant = TRUE) && link.collar && !link.collar.busy, "An occupied voluntary gangway must remain usable")
+	qdel(obstruction)
 	qdel(flight_blocker)
 	flight_blocker = null
+	var/obj/structure/cable/wire = allocate(/obj/structure/cable, get_turf(ship))
+	var/datum/powernet/powernet = allocate(/datum/powernet)
+	powernet.add_cable(wire)
+	TEST_ASSERT(!navigation.relocate(navigation.flight_berth, CALLBACK(src, PROC_REF(veto_departure))), "A final movement interlock may still reject the departure")
+	TEST_ASSERT(wire.powernet == powernet && !QDELETED(powernet), "A vetoed departure must leave the real ship powernet connected")
 	TEST_ASSERT(navigation.set_engines_running(TRUE), "The stopped engine must be restartable after arrival")
 	TEST_ASSERT(link.release(navigation, instant = TRUE), "The retained pair must still support normal native departure once its home is clear")
 	TEST_ASSERT_EQUAL(ship.get_docked(), navigation.flight_berth, "Departure must physically return the guest to its flight berth")
 	TEST_ASSERT_NULL(navigation.ship_docking, "Departure must release the guest's docking link")
 	TEST_ASSERT_NULL(host_navigation.ship_docking, "Departure must release the host's docking link")
+
+/datum/unit_test/overmap_docking/committed_ship_docking/proc/veto_departure()
+	return FALSE
 
 /** Reproduce an engineer's shutdown and an EVA item entering the footprint after the hull physically moved. */
 /datum/unit_test/overmap_docking/committed_ship_docking/proc/stop_after_native_move(obj/docking_port/mobile/source, turf/old_tile)
@@ -196,3 +209,45 @@
 	TEST_ASSERT(host_navigation.respond_ship_docking(token + 1, FALSE), "The new real request must remain answerable")
 	TEST_ASSERT(!console.navigation_command("ship_dock", contact["id"]), "The allowed request must start the next cooldown")
 	TEST_ASSERT_EQUAL(host_navigation.docking_request_sequence, token + 1, "A second immediate repeat must not publish another token")
+
+/** Boarding between ordinary exterior airlocks must leave both hulls walkable on a single level. */
+/datum/unit_test/overmap_docking/physical_boarding
+	parent_type = /datum/unit_test/overmap_docking/ship_pair
+
+/datum/unit_test/overmap_docking/physical_boarding/Run()
+	navigation.record_ship_observation(host_ship.shuttle_id, host_navigation, "active")
+	var/list/contact = navigation.ship_sensor_observation(host_ship.shuttle_id)
+	TEST_ASSERT(navigation.request_boarding(contact["id"]), "Start capture through a real sensor contact")
+	var/deadline = navigation.boarding_attempt.end_time + 10 SECONDS
+	UNTIL((!navigation.boarding_attempt && !navigation.preparing) || world.time >= deadline)
+	TEST_ASSERT_EQUAL(ship.z, host_ship.z, "The whole guest hull must reach the host level")
+	var/datum/stationtrauma_ship_docking/boarding/link = navigation.ship_docking
+	TEST_ASSERT(istype(link) && link.flush && length(link.collar?.floors) == 1, "One physical collar must bridge the hatches")
+	var/turf/passage = link.collar.floors[1]
+	var/obj/machinery/computer/stationtrauma_space_navigation/initiator = allocate(/obj/machinery/computer/stationtrauma_space_navigation, get_turf(ship))
+	var/obj/machinery/computer/stationtrauma_space_navigation/peer = allocate(/obj/machinery/computer/stationtrauma_space_navigation, get_turf(host_ship))
+	initiator.vessel = ship
+	peer.vessel = host_ship
+	TEST_ASSERT(!peer.navigation_command("release_boarding"), "A powerless hull cannot release a hostile collar")
+	TEST_ASSERT(initiator.navigation_command("release_boarding"), "A powered helm starts preparation")
+	TEST_ASSERT_EQUAL(link.release_at - world.time, (90 SECONDS), "The full countdown starts while the real collar remains in place")
+	TEST_ASSERT(!peer.navigation_command("cancel_boarding_release"), "Cancellation requires taking the initiating helm")
+	TEST_ASSERT(initiator.navigation_command("cancel_boarding_release"), "Anyone operating the initiating helm can countermand its order")
+	TEST_ASSERT(initiator.navigation_command("release_boarding"), "Immediately restarting must create a new independent order")
+	sleep(2 SECONDS)
+	TEST_ASSERT(link.release_helm == navigation && ship.z == host_ship.z, "The cancelled worker cannot clear the replacement timer")
+	TEST_ASSERT(navigation.set_engines_running(FALSE), "Cut thrust mid-preparation")
+	sleep(2 SECONDS)
+	TEST_ASSERT(!link.release_helm && !link.closing && link.collar, "Losing thrust aborts the order and leaves the gangway in place")
+	TEST_ASSERT(navigation.set_engines_running(TRUE), "Restore thrust")
+	var/obj/item/obstruction = allocate(/obj/item/crowbar, passage)
+	TEST_ASSERT(initiator.navigation_command("release_boarding"), "Movement across the gangway remains possible during preparation")
+	link.release_at = world.time // Exercise the final obstruction check without another 90-second wait.
+	sleep(2 SECONDS)
+	TEST_ASSERT(!link.release_helm && link.collar && !link.collar.busy, "An occupied gangway blocks the final release")
+	obstruction.forceMove(run_loc_floor_bottom_left)
+	var/started = world.time
+	TEST_ASSERT(link.release(navigation), "A powered hull with a clear gangway can complete the entire countdown")
+	TEST_ASSERT(world.time >= started + (90 SECONDS), "The hull cannot separate before ninety seconds")
+	TEST_ASSERT_EQUAL(ship.get_docked(), navigation.flight_berth, "The guest returns to its own native berth")
+	TEST_ASSERT(isspaceturf(passage) && !host_navigation.ship_docking, "The host regains open space at the hatch")
