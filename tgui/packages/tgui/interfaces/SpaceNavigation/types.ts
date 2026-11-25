@@ -146,14 +146,15 @@ export type NavigationData = Position & {
   })[];
   terrain: (Position & { end_x: number; end_y: number })[];
   ship_contacts: Contact[];
+  /** What the survey has read of the selected planet; a field is missing until enough of the planet is covered */
   planet?: {
-    biome: string;
-    atmosphere: string;
-    temperature: number;
-    breathable: BooleanLike;
-    modifiers: string[];
-    caves: string;
-    ore: string;
+    biome?: string;
+    atmosphere?: string;
+    temperature?: number;
+    breathable?: BooleanLike;
+    modifiers?: string[];
+    caves?: string;
+    ore?: string;
   };
   /** This ship's survey of the selected planet */
   survey?: {

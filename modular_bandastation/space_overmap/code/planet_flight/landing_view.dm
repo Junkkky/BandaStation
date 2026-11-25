@@ -606,6 +606,8 @@
 	ground_jobs = 3
 	// Run the three layers in one work slice so they cannot each spend a tick's budget.
 	var/datum/stationtrauma_work_budget/budget = new
+	// a quarter of each tick, as the planet itself is built: at a tenth the crew hung in orbit for half a minute
+	budget.allowance = 25
 	budget.yield()
 	if(ended)
 		return

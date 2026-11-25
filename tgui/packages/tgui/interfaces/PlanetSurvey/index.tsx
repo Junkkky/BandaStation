@@ -1,5 +1,5 @@
 import { type MouseEvent, useEffect, useRef, useState } from 'react';
-import { Button } from 'tgui-core/components';
+import { Button, Icon } from 'tgui-core/components';
 import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../../backend';
@@ -10,6 +10,7 @@ import {
   behindPlanet,
   footprintOutline,
   type Physics,
+  orbitPoint,
   simulateFlight,
   toView,
   type Vector,
@@ -23,17 +24,18 @@ type Flight = {
   duration: number;
 };
 
+/** What a survey tells of its planet; a field is missing until enough of the planet is read */
 type Facts = {
-  biome: string;
-  atmosphere: string;
-  temperature: number;
-  breathable: BooleanLike;
-  modifiers: string[];
-  caves: string;
-  ore: string;
+  biome?: string;
+  atmosphere?: string;
+  temperature?: number;
+  breathable?: BooleanLike;
+  caves?: string;
+  ore?: string;
+  modifiers?: string[];
 };
 
-/** Places are shares of the surface square from its south-west corner */
+/** Places are shares of the surface square from its south-west corner; "?" marks ground the probes did not read */
 type Schematic = {
   rows: string[];
   pads: { rect: number[]; label: string }[];
@@ -51,14 +53,22 @@ type Survey = {
   hits: Vector[];
   flights: Flight[];
   reload: number;
+  /** Where the ship was on its orbit when this data was sent, degrees */
+  orbit_angle: number;
   covered: BooleanLike;
-  efficient: BooleanLike;
   mapping: number;
   mapped: BooleanLike;
   generating: BooleanLike;
   failed: BooleanLike;
-  facts?: Facts;
-  schematic?: Schematic;
+  facts: Facts;
+};
+
+/** A saved map of the archive */
+type SavedMap = {
+  name: string;
+  coverage: number;
+  facts: Facts;
+  schematic: Schematic | null;
 };
 
 type Data = {
@@ -66,11 +76,15 @@ type Data = {
   planet: Survey | null;
   /** Why nothing is held: no planet in range, carrier moving, carrier moored, no link */
   standby?: 'range' | 'unstable' | 'landed' | 'offline';
+  archive_count: number;
+  archive_index: number;
+  archive?: SavedMap;
+  disk_ready: BooleanLike;
   physics: Physics;
 };
 
 /** Standby lines of the scope, as an instrument puts them */
-const STANDBY: Record<string, string> = {
+const STANDBY: { [reason: string]: string } = {
   range: 'ДАЛЬНОСТЬ ВНЕ РАБОЧЕГО ДИАПАЗОНА',
   unstable: 'НОСИТЕЛЬ НЕ СТАБИЛИЗИРОВАН',
   landed: 'НОСИТЕЛЬ НА СТОЯНКЕ',
@@ -78,7 +92,11 @@ const STANDBY: Record<string, string> = {
 };
 
 export const PlanetSurvey = () => {
-  const { data } = useBackend<Data>();
+  const { act, data } = useBackend<Data>();
+  const [screen, setScreen] = useState<'front' | 'back' | 'map'>('front');
+  const survey = data.planet;
+  const onMap = screen === 'map';
+  const shownFacts = onMap ? data.archive?.facts : survey?.facts;
   return (
     <Window width={1100} height={720}>
       <Window.Content>
@@ -91,233 +109,290 @@ export const PlanetSurvey = () => {
               <span>СКАНИРОВАНИЕ МЕСТНОСТИ / SRV–01</span>
             </div>
           </header>
-          {data.planet ? (
-            <SurveyBody survey={data.planet} physics={data.physics} />
-          ) : (
-            <StandbyBody reason={STANDBY[data.standby || 'range']} />
-          )}
+          <div className="SpaceNavigation__survey">
+            <section className="SpaceNavigation__plot">
+              <div className="SpaceNavigation__screen-label">
+                <span>
+                  {onMap
+                    ? data.archive
+                      ? `АРХИВ ${data.archive_index} / ${data.archive_count} · ${data.archive.name.toUpperCase()}`
+                      : 'АРХИВ ПУСТ'
+                    : survey
+                      ? survey.name.toUpperCase()
+                      : 'НЕТ ЦЕЛИ'}
+                </span>
+                <span className="SpaceNavigation__mode">
+                  {onMap
+                    ? data.archive
+                      ? `ПОКРЫТИЕ ${Math.floor(data.archive.coverage * 100)}%`
+                      : ''
+                    : survey
+                      ? screen === 'back'
+                        ? 'ОБРАТНАЯ СТОРОНА'
+                        : 'ЛИЦЕВАЯ СТОРОНА'
+                      : 'STANDBY'}
+                </span>
+              </div>
+              {onMap ? (
+                data.archive?.schematic ? (
+                  <SchematicView schematic={data.archive.schematic} />
+                ) : (
+                  <Standby
+                    title="НЕТ СОХРАНЁННЫХ КАРТ"
+                    reason="КАРТОГРАФИРУЙТЕ ПЛАНЕТУ"
+                  />
+                )
+              ) : survey ? (
+                <ProbeField
+                  survey={survey}
+                  physics={data.physics}
+                  back={screen === 'back'}
+                />
+              ) : (
+                <Standby
+                  title="ОБЪЕКТ НЕ ЗАХВАЧЕН"
+                  reason={STANDBY[data.standby || 'range']}
+                />
+              )}
+            </section>
+            <aside
+              className="SpaceNavigation__telemetry"
+              aria-label="Сканирование"
+            >
+              <div className="SpaceNavigation__engraving">
+                <span>ПОКРЫТИЕ ПОВЕРХНОСТИ</span>
+                <span>01</span>
+              </div>
+              <div className="SpaceNavigation__flight-screen">
+                <div className="SpaceNavigation__screen-label">
+                  <span>ЗОНДЫ</span>
+                  <span>
+                    {survey
+                      ? `${data.physics.probe_limit - survey.probes} / ${data.physics.probe_limit}`
+                      : '—'}
+                  </span>
+                </div>
+                <Meter
+                  value={survey?.coverage || 0}
+                  marks={data.physics.tiers}
+                />
+              </div>
+              <div className="SpaceNavigation__engraving">
+                <span>КАРТОГРАФИРОВАНИЕ</span>
+                <span>02</span>
+              </div>
+              <div className="SpaceNavigation__flight-screen SpaceNavigation__screen-body">
+                {survey?.failed ? (
+                  <p className="SpaceNavigation__help">
+                    Картографирование не удалось: поверхность не поддаётся
+                    съёмке.
+                  </p>
+                ) : (
+                  <SegmentedProgress
+                    title="КАРТОГРАФИРОВАНИЕ"
+                    segments={20}
+                    caption={
+                      !survey
+                        ? 'Нет цели'
+                        : survey.mapped
+                          ? 'Схема готова'
+                          : !survey.covered
+                            ? survey.coverage >= data.physics.land
+                              ? 'Можно картографировать'
+                              : 'Ожидание покрытия'
+                            : survey.mapping >= 1
+                              ? 'Обработка данных…'
+                              : survey.generating
+                                ? 'Съёмка рельефа'
+                                : 'Обработка снимков'
+                    }
+                    value={
+                      survey?.mapped ? 1 : Math.min(survey?.mapping || 0, 0.99)
+                    }
+                  />
+                )}
+              </div>
+              <div className="SpaceNavigation__engraving">
+                <span>{onMap ? 'ДАННЫЕ АРХИВА' : 'ДАННЫЕ ПЛАНЕТЫ'}</span>
+                <span>03</span>
+              </div>
+              <div className="SpaceNavigation__flight-screen SpaceNavigation__screen-body is-tall">
+                <FactList facts={shownFacts} tiers={data.physics.tiers} />
+              </div>
+              <div className="SpaceNavigation__engraving">
+                <span>УПРАВЛЕНИЕ</span>
+                <span>04</span>
+              </div>
+              <div className="SpaceNavigation__engine-control SpaceNavigation__survey-keys">
+                <Button
+                  icon="circle-half-stroke"
+                  selected={screen === 'front'}
+                  tooltip="Лицевая сторона планеты"
+                  onClick={() => setScreen('front')}
+                >
+                  <span className="SpaceNavigation__key-label">ЛИЦ</span>
+                </Button>
+                <Button
+                  icon="rotate"
+                  selected={screen === 'back'}
+                  tooltip="Обратная сторона планеты"
+                  onClick={() => setScreen('back')}
+                >
+                  <span className="SpaceNavigation__key-label">ОБР</span>
+                </Button>
+                <Button
+                  icon="map"
+                  selected={onMap}
+                  tooltip="Архив карт местности"
+                  onClick={() => setScreen('map')}
+                >
+                  <span className="SpaceNavigation__key-label">СХЕМА</span>
+                </Button>
+                <Button
+                  icon="satellite-dish"
+                  disabled={
+                    !survey ||
+                    !!survey.covered ||
+                    survey.coverage < data.physics.land
+                  }
+                  tooltip="Закончить зондирование и картографировать"
+                  onClick={() => act('map')}
+                >
+                  <span className="SpaceNavigation__key-label">КАРТ</span>
+                </Button>
+                <Button
+                  icon="backward-step"
+                  disabled={data.archive_count < 2}
+                  tooltip="Предыдущая карта архива"
+                  onClick={() => {
+                    setScreen('map');
+                    act('archive_previous');
+                  }}
+                >
+                  <span className="SpaceNavigation__key-label">НАЗАД</span>
+                </Button>
+                <Button
+                  icon="forward-step"
+                  disabled={data.archive_count < 2}
+                  tooltip="Следующая карта архива"
+                  onClick={() => {
+                    setScreen('map');
+                    act('archive_next');
+                  }}
+                >
+                  <span className="SpaceNavigation__key-label">ВПЕРЁД</span>
+                </Button>
+                <Button
+                  icon="microchip"
+                  disabled={!data.disk_ready}
+                  tooltip="Извлечь данные на диск"
+                  onClick={() => act('extract')}
+                >
+                  <span className="SpaceNavigation__key-label">ИЗВЛ</span>
+                </Button>
+              </div>
+            </aside>
+          </div>
         </main>
       </Window.Content>
     </Window>
   );
 };
 
-function SurveyBody({ survey, physics }: { survey: Survey; physics: Physics }) {
-  const [back, setBack] = useState(false);
-  const [screen, setScreen] = useState<'probes' | 'map'>('probes');
-  const showMap = screen === 'map' && !!survey.schematic;
+/** The scope with nothing to show on it */
+function Standby({ title, reason }: { title: string; reason: string }) {
   return (
-    <div className="SpaceNavigation__survey">
-      <section className="SpaceNavigation__plot">
-        <div className="SpaceNavigation__screen-label">
-          <span>{survey.name.toUpperCase()}</span>
-          <div className="SpaceNavigation__sides">
-            <Button
-              selected={!showMap && !back}
-              onClick={() => {
-                setScreen('probes');
-                setBack(false);
-              }}
-            >
-              ЛИЦЕВАЯ
-            </Button>
-            <Button
-              selected={!showMap && back}
-              onClick={() => {
-                setScreen('probes');
-                setBack(true);
-              }}
-            >
-              ОБРАТНАЯ
-            </Button>
-            <Button
-              selected={showMap}
-              disabled={!survey.schematic}
-              onClick={() => setScreen('map')}
-            >
-              СХЕМА
-            </Button>
-          </div>
-        </div>
-        {showMap && survey.schematic ? (
-          <SchematicView schematic={survey.schematic} />
-        ) : (
-          <ProbeField survey={survey} physics={physics} back={back} />
-        )}
-      </section>
-      <aside className="SpaceNavigation__telemetry" aria-label="Сканирование">
-        <div className="SpaceNavigation__engraving">
-          <span>ПОКРЫТИЕ ПОВЕРХНОСТИ</span>
-          <span>01</span>
-        </div>
-        <div className="SpaceNavigation__flight-screen">
-          <div className="SpaceNavigation__screen-label">
-            <span>ЗОНДЫ</span>
-            <span>
-              {survey.probes} / ЦЕЛЬ {physics.efficient}
-            </span>
-          </div>
-          <Meter label="ПЛАНЕТА" value={survey.coverage} goal={physics.goal} />
-        </div>
-        <div className="SpaceNavigation__engraving">
-          <span>КАРТОГРАФИРОВАНИЕ</span>
-          <span>02</span>
-        </div>
-        <div className="SpaceNavigation__flight-screen">
-          {survey.failed ? (
-            <p className="SpaceNavigation__help">
-              Картографирование не удалось: поверхность не поддаётся съёмке.
-            </p>
-          ) : (
-            <SegmentedProgress
-              title="КАРТОГРАФИРОВАНИЕ"
-              segments={20}
-              caption={
-                survey.mapped
-                  ? 'Схема готова'
-                  : !survey.covered
-                    ? 'Ожидание покрытия'
-                    : survey.mapping >= 1
-                      ? 'Обработка данных…'
-                      : survey.generating
-                        ? 'Съёмка рельефа'
-                        : 'Обработка снимков'
-              }
-              value={survey.mapped ? 1 : Math.min(survey.mapping, 0.99)}
-            />
-          )}
-        </div>
-        <div className="SpaceNavigation__engraving">
-          <span>ДАННЫЕ ПЛАНЕТЫ</span>
-          <span>03</span>
-        </div>
-        <div className="SpaceNavigation__flight-screen">
-          <div className="SpaceNavigation__screen-label">
-            <span>СВОДКА</span>
-          </div>
-          {survey.facts ? (
-            <dl>
-              <dt>СРЕДА</dt>
-              <dd>{survey.facts.biome}</dd>
-              <dt>АТМОСФЕРА</dt>
-              <dd>{survey.facts.atmosphere}</dd>
-              <dt>ТЕМПЕРАТУРА</dt>
-              <dd>{Math.round(survey.facts.temperature - 273.15)} °C</dd>
-              <dt>ДЫХАНИЕ</dt>
-              <dd>{survey.facts.breathable ? 'Пригодна' : 'EVA'}</dd>
-              <dt>ПЕЩЕРЫ</dt>
-              <dd>{survey.facts.caves}</dd>
-              <dt>РУДА</dt>
-              <dd>{survey.facts.ore}</dd>
-              {survey.facts.modifiers.length > 0 && (
-                <>
-                  <dt>ОСОБЕННОСТИ</dt>
-                  <dd>{survey.facts.modifiers.join(', ')}</dd>
-                </>
-              )}
-            </dl>
-          ) : (
-            <p className="SpaceNavigation__help">
-              Покройте зондами обе стороны планеты.
-            </p>
-          )}
-        </div>
-      </aside>
-    </div>
+    <svg
+      className="SpaceNavigation__field is-idle"
+      viewBox="-2.5 -2.5 5 5"
+      role="img"
+      aria-label={title}
+    >
+      <g className="SpaceNavigation__standby">
+        <circle r={1} />
+        <circle r={0.5} />
+        <path d="M-1.3 0H-0.15M0.15 0H1.3M0 -1.3V-0.15M0 0.15V1.3" />
+      </g>
+      <text
+        className="SpaceNavigation__standby-title"
+        y={-1.5}
+        textAnchor="middle"
+      >
+        {title}
+      </text>
+      <text
+        className="SpaceNavigation__standby-reason"
+        y={1.65}
+        textAnchor="middle"
+      >
+        {reason}
+      </text>
+    </svg>
   );
 }
 
-/** The console with nothing in its sights: the scope on standby, the panels empty */
-function StandbyBody({ reason }: { reason: string }) {
+/** The planet's data, a line for each fact; facts not yet read show the coverage they need */
+function FactList({ facts, tiers }: { facts?: Facts; tiers: number[] }) {
+  const locked = (tier: number) => (
+    <span className="SpaceNavigation__locked">
+      <Icon name="lock" /> {Math.round(tiers[tier] * 100)}%
+    </span>
+  );
+  const read = facts || {};
   return (
-    <div className="SpaceNavigation__survey">
-      <section className="SpaceNavigation__plot">
-        <div className="SpaceNavigation__screen-label">
-          <span>НЕТ ЦЕЛИ</span>
-          <span className="SpaceNavigation__mode">STANDBY</span>
-        </div>
-        <svg
-          className="SpaceNavigation__field is-idle"
-          viewBox="-2.2 -1.55 4.4 3.1"
-          role="img"
-          aria-label="Режим ожидания"
-        >
-          <g className="SpaceNavigation__standby">
-            <circle r={1} />
-            <circle r={0.5} />
-            <path d="M-1.3 0H-0.15M0.15 0H1.3M0 -1.3V-0.15M0 0.15V1.3" />
-          </g>
-          <text
-            className="SpaceNavigation__standby-title"
-            y={-1.35}
-            textAnchor="middle"
-          >
-            ОБЪЕКТ НЕ ЗАХВАЧЕН
-          </text>
-          <text
-            className="SpaceNavigation__standby-reason"
-            y={1.45}
-            textAnchor="middle"
-          >
-            {reason}
-          </text>
-        </svg>
-      </section>
-      <aside className="SpaceNavigation__telemetry" aria-label="Сканирование">
-        <div className="SpaceNavigation__engraving">
-          <span>ПОКРЫТИЕ ПОВЕРХНОСТИ</span>
-          <span>01</span>
-        </div>
-        <div className="SpaceNavigation__flight-screen">
-          <div className="SpaceNavigation__screen-label">
-            <span>ЗОНДЫ</span>
-            <span>—</span>
-          </div>
-        </div>
-        <div className="SpaceNavigation__engraving">
-          <span>КАРТОГРАФИРОВАНИЕ</span>
-          <span>02</span>
-        </div>
-        <div className="SpaceNavigation__flight-screen">
-          <div className="SpaceNavigation__screen-label">
-            <span>ОЖИДАНИЕ</span>
-          </div>
-        </div>
-        <div className="SpaceNavigation__engraving">
-          <span>ДАННЫЕ ПЛАНЕТЫ</span>
-          <span>03</span>
-        </div>
-        <div className="SpaceNavigation__flight-screen">
-          <div className="SpaceNavigation__screen-label">
-            <span>НЕТ ДАННЫХ</span>
-          </div>
-        </div>
-      </aside>
-    </div>
+    <dl>
+      <dt>СРЕДА</dt>
+      <dd title={read.biome}>{read.biome ?? locked(0)}</dd>
+      <dt>АТМОСФЕРА</dt>
+      <dd title={read.atmosphere}>{read.atmosphere ?? locked(0)}</dd>
+      <dt>ТЕМПЕРАТУРА</dt>
+      <dd>
+        {read.temperature !== undefined
+          ? `${Math.round(read.temperature - 273.15)} °C`
+          : locked(1)}
+      </dd>
+      <dt>ДЫХАНИЕ</dt>
+      <dd>
+        {read.breathable !== undefined
+          ? read.breathable
+            ? 'Пригодна'
+            : 'EVA'
+          : locked(1)}
+      </dd>
+      <dt>ПЕЩЕРЫ</dt>
+      <dd title={read.caves}>{read.caves ?? locked(1)}</dd>
+      <dt>РУДА</dt>
+      <dd title={read.ore}>{read.ore ?? locked(2)}</dd>
+      <dt>ОСОБЕННОСТИ</dt>
+      <dd title={read.modifiers?.join(', ')}>
+        {read.modifiers
+          ? read.modifiers.length
+            ? read.modifiers.join(', ')
+            : 'Нет'
+          : locked(2)}
+      </dd>
+    </dl>
   );
 }
 
-function Meter({
-  label,
-  value,
-  goal,
-}: {
-  label: string;
-  value: number;
-  goal: number;
-}) {
+/** Coverage of the whole planet, with a mark at each share that tells more */
+function Meter({ value, marks }: { value: number; marks: number[] }) {
   return (
     <div className="SpaceNavigation__meter">
-      <span>{label}</span>
+      <span>ПОКРЫТИЕ</span>
       <div className="SpaceNavigation__meter-bar">
         <span style={{ width: `${Math.round(value * 100)}%` }} />
-        <i style={{ left: `${goal * 100}%` }} />
+        {marks.map((mark) => (
+          <i key={mark} style={{ left: `${mark * 100}%` }} />
+        ))}
       </div>
       <span>{Math.floor(value * 100)}%</span>
     </div>
   );
 }
 
+/** How long the flash where a probe reads the ground lasts, ms */
+const LANDING_FLASH = 900;
 /** Seconds a full sweep of the launch power takes, up and back down */
 const POWER_SWEEP = 3;
 
@@ -340,8 +415,28 @@ function ProbeField({
   const received = useRef(Date.now());
   useEffect(() => {
     received.current = Date.now();
-  }, [survey.flights]);
-  const animating = chargeStart !== null || survey.flights.length > 0;
+  }, [survey.flights, survey.orbit_angle]);
+  // a flash where each new probe reads the ground
+  const [landings, setLandings] = useState<{ index: number; at: number }[]>([]);
+  const seenHits = useRef(survey.hits.length);
+  useEffect(() => {
+    const count = survey.hits.length;
+    if (count > seenHits.current) {
+      const at = Date.now();
+      const fresh: { index: number; at: number }[] = [];
+      for (let index = seenHits.current; index < count; index++) {
+        fresh.push({ index, at });
+      }
+      setLandings((old) =>
+        [...old, ...fresh].filter((landing) => at - landing.at < LANDING_FLASH),
+      );
+    }
+    seenHits.current = count;
+  }, [survey.hits.length]);
+  const ready =
+    !survey.covered && !survey.failed && survey.probes < physics.probe_limit;
+  // the ship moves along its orbit all the while, so the field keeps redrawing
+  const animating = ready || chargeStart !== null || survey.flights.length > 0;
   useEffect(() => {
     if (!animating) return;
     let frame = requestAnimationFrame(function tick() {
@@ -350,10 +445,14 @@ function ProbeField({
     });
     return () => cancelAnimationFrame(frame);
   }, [animating]);
-  const ready = !survey.covered && !survey.failed;
   const power =
     chargeStart === null ? lastPower : sweep((now - chargeStart) / 1000);
-  const preview = aim ? simulateFlight(physics, aim[0], aim[1], power) : null;
+  const sinceData = (now - received.current) / 1000;
+  const angle = survey.orbit_angle + (360 * sinceData) / physics.orbit_period;
+  const ship = orbitPoint(physics, angle);
+  const preview = aim
+    ? simulateFlight(physics, angle, aim[0], aim[1], power)
+    : null;
 
   const pointer = (event: MouseEvent): [number, number] | null => {
     const matrix = svg.current?.getScreenCTM();
@@ -374,12 +473,11 @@ function ProbeField({
     act('launch', { x: aim[0], y: aim[1], power: launched, back });
   };
 
-  const sinceData = (now - received.current) / 1000;
   return (
     <svg
       ref={svg}
       className={`SpaceNavigation__field ${ready ? '' : 'is-idle'}`}
-      viewBox="-2.2 -1.55 4.4 3.1"
+      viewBox="-2.5 -2.5 5 5"
       onMouseMove={(event) => setAim(pointer(event))}
       onMouseLeave={() => {
         setAim(null);
@@ -422,6 +520,39 @@ function ProbeField({
           )
         );
       })}
+      {landings.map(({ index, at }) => {
+        const hit = survey.hits[index];
+        const share = (now - at) / LANDING_FLASH;
+        if (!hit || share >= 1) return null;
+        const [x, y, z] = toView(hit, back);
+        return (
+          <circle
+            key={`flash${index}`}
+            cx={x}
+            cy={-y}
+            r={0.04 + 0.3 * share}
+            fill="none"
+            stroke="#e4bf79"
+            strokeWidth={0.02}
+            strokeOpacity={(1 - share) * (z >= 0 ? 1 : 0.35)}
+          />
+        );
+      })}
+      <circle
+        r={physics.orbit_radius}
+        fill="none"
+        stroke="#527e6e"
+        strokeWidth={0.01}
+        strokeDasharray="0.05 0.08"
+      />
+      <g transform={`translate(${ship[0]} ${-ship[1]}) rotate(${-90 - angle})`}>
+        <path
+          d="M0 -0.09L0.07 0.07L0 0.03L-0.07 0.07Z"
+          fill="#1d2b28"
+          stroke="#d7d6c8"
+          strokeWidth={0.012}
+        />
+      </g>
       {survey.flights.map((flight) => (
         <FlightTrace
           key={flight.id}
@@ -452,7 +583,7 @@ function ProbeField({
         </g>
       )}
       {ready && (
-        <g transform="translate(-0.5 1.3)">
+        <g transform="translate(-0.5 2.3)">
           <rect
             width={1}
             height={0.05}
@@ -464,7 +595,7 @@ function ProbeField({
         </g>
       )}
       {survey.reload > 0 && ready && (
-        <text x={0} y={1.45} textAnchor="middle" fontSize={0.08} fill="#a5bfb3">
+        <text x={0} y={2.25} textAnchor="middle" fontSize={0.09} fill="#a5bfb3">
           ПЕРЕЗАРЯДКА
         </text>
       )}
@@ -527,7 +658,7 @@ const TERRAIN_CLASS: Record<string, string> = {
   '~': 'liquid',
 };
 
-/** The mapped surface: terrain, landing pads, cave entrances and, for an efficient survey, structures and life */
+/** The mapped surface: terrain, landing pads, cave entrances and, for a thorough survey, structures and life; unread ground is fogged */
 function SchematicView({ schematic }: { schematic: Schematic }) {
   const size = schematic.rows.length;
   const runs: Run[] = [];
@@ -548,10 +679,48 @@ function SchematicView({ schematic }: { schematic: Schematic }) {
   return (
     <svg
       className="SpaceNavigation__schematic"
-      viewBox={`-2 -2 ${size + 4} ${size + 4}`}
+      viewBox={`-3 -3 ${size + 6} ${size + 6}`}
+      shapeRendering="geometricPrecision"
       role="img"
       aria-label="Схема местности"
     >
+      <defs>
+        <pattern
+          id="survey-ground-grid"
+          width="1"
+          height="1"
+          patternUnits="userSpaceOnUse"
+        >
+          <path
+            d="M1 0H0V1"
+            fill="none"
+            stroke="#b6c9a0"
+            strokeOpacity=".3"
+            strokeWidth=".08"
+          />
+        </pattern>
+      </defs>
+      <g fill="none" stroke="#6c9d87" strokeWidth=".08" strokeOpacity=".5">
+        <path
+          d={`M${size / 2} -3V${size + 3}M-3 ${size / 2}H${size + 3}`}
+          strokeDasharray=".4 .7"
+        />
+        <path
+          d={`M-2 2V-2H2M${size - 2} -2H${size + 2}V2M${size + 2} ${size - 2}V${size + 2}H${size - 2}M2 ${size + 2}H-2V${size - 2}`}
+        />
+      </g>
+      {/* the depth under the read ground; unread ground ("?") is left dark */}
+      <g
+        transform="translate(.6 .8)"
+        fill="#081410"
+        stroke="#9db99a"
+        strokeOpacity=".35"
+        strokeWidth=".12"
+      >
+        {runs.map((run, index) => (
+          <rect key={index} x={run.x} y={run.y} width={run.length} height={1} />
+        ))}
+      </g>
       {runs.map((run, index) => (
         <rect
           key={index}
@@ -560,6 +729,16 @@ function SchematicView({ schematic }: { schematic: Schematic }) {
           y={run.y}
           width={run.length}
           height={1}
+        />
+      ))}
+      {runs.map((run, index) => (
+        <rect
+          key={`grid${index}`}
+          x={run.x}
+          y={run.y}
+          width={run.length}
+          height={1}
+          fill="url(#survey-ground-grid)"
         />
       ))}
       {schematic.organic?.map(([x, y, radius], index) => {

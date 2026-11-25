@@ -139,22 +139,26 @@ export const BluespaceTerminal = () => {
                   <span>СОСТОЯНИЕ</span>
                   <span>{data.drive ? 'ЗАРЯЖЕН' : 'НЕ ГОТОВ'}</span>
                 </div>
-                {jumping ? (
-                  <SegmentedProgress
-                    title="БЛЮСПЕЙС-ПЕРЕХОД"
-                    caption={data.target_name || ''}
-                    value={data.progress || 0}
-                  />
-                ) : (
-                  <dl>
-                    <dt>СИСТЕМА</dt>
-                    <dd>{data.sector_name || '—'}</dd>
-                    <dt>МАРШРУТЫ</dt>
-                    <dd>
-                      {systems.filter((system) => system.available).length}
-                    </dd>
-                  </dl>
-                )}
+                <div className="SpaceNavigation__screen-body">
+                  {jumping ? (
+                    <SegmentedProgress
+                      title="БЛЮСПЕЙС-ПЕРЕХОД"
+                      caption={data.target_name || ''}
+                      value={data.progress || 0}
+                    />
+                  ) : (
+                    <dl>
+                      <dt>СИСТЕМА</dt>
+                      <dd title={data.sector_name || ''}>
+                        {data.sector_name || '—'}
+                      </dd>
+                      <dt>МАРШРУТЫ</dt>
+                      <dd>
+                        {systems.filter((system) => system.available).length}
+                      </dd>
+                    </dl>
+                  )}
+                </div>
               </div>
               <div className="SpaceNavigation__engraving">
                 <span>ЦЕЛЬ ПЕРЕХОДА</span>
@@ -164,12 +168,14 @@ export const BluespaceTerminal = () => {
                 <div className="SpaceNavigation__screen-label">
                   <span>ВЫБРАННАЯ ТОЧКА</span>
                 </div>
-                <Selected
-                  selection={selection}
-                  system={chosen}
-                  here={data.sector}
-                  atJumpPoint={!!data.at_jump_point}
-                />
+                <div className="SpaceNavigation__screen-body">
+                  <Selected
+                    selection={selection}
+                    system={chosen}
+                    here={data.sector}
+                    atJumpPoint={!!data.at_jump_point}
+                  />
+                </div>
               </div>
               <div className="SpaceNavigation__engraving">
                 <span>УПРАВЛЕНИЕ</span>
@@ -258,7 +264,7 @@ function Selected({
   return (
     <dl>
       <dt>СИСТЕМА</dt>
-      <dd>{system.name}</dd>
+      <dd title={system.name}>{system.name}</dd>
       {system.size && (
         <>
           <dt>РАЗМЕР</dt>

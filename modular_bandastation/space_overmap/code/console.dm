@@ -176,8 +176,10 @@
 			"failed" = !!planet.failed,
 			"pads" = map.landing_pad_data(planet),
 		)
-		if(survey?.covered_at)
-			data["planet"] = planet.survey_data()
+		// as much as this ship's probes have read
+		var/list/facts = survey?.facts()
+		if(length(facts))
+			data["planet"] = facts
 	data["jump_progress"] = map.jump_progress()
 	data["jump_point_range"] = ST_JUMP_POINT_RANGE
 	return data

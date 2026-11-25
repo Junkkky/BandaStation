@@ -76,15 +76,17 @@ export function Scanner({ data, focusedContact }: Props) {
       ['ДИСТ', distance(site.distance)],
       ['ПЕЛ', bearing(data, site.x, site.y)],
     );
-    if (site.kind === 'planet' && data.planet) {
-      rows.push(
-        ['АТМ', data.planet.atmosphere],
-        ['ТЕМП', `${Math.round(data.planet.temperature - 273.15)} °C`],
-        ['СРЕДА', data.planet.breathable ? 'Пригодна' : 'EVA'],
-      );
-      if (data.planet.modifiers.length)
-        rows.push(['ОСОБ', data.planet.modifiers.join(', ')]);
-      rows.push(['ПЕЩ', data.planet.caves], ['РУДА', data.planet.ore]);
+    const planet = data.planet;
+    if (site.kind === 'planet' && planet) {
+      if (planet.atmosphere) rows.push(['АТМ', planet.atmosphere]);
+      if (planet.temperature !== undefined)
+        rows.push(['ТЕМП', `${Math.round(planet.temperature - 273.15)} °C`]);
+      if (planet.breathable !== undefined)
+        rows.push(['СРЕДА', planet.breathable ? 'Пригодна' : 'EVA']);
+      if (planet.modifiers?.length)
+        rows.push(['ОСОБ', planet.modifiers.join(', ')]);
+      if (planet.caves) rows.push(['ПЕЩ', planet.caves]);
+      if (planet.ore) rows.push(['РУДА', planet.ore]);
     } else if (site.kind === 'planet') {
       rows.push(['СКАН', 'Не исследована']);
     }

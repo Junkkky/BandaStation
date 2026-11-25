@@ -1452,47 +1452,71 @@
       background: var(--nav-amber);
     }
   }
-  &__sides {
-    display: flex;
-    gap: 6px;
-    .Button {
-      padding: 2px 8px;
-      font-size: 9px;
-      letter-spacing: 1px;
-      background: transparent;
-      border: 1px solid #364a46;
-      color: #a5bfb3;
+  // Seven keys in two rows under the survey screens
+  &__survey-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 12px 4px;
+  }
+  &__survey-keys .Button {
+    width: 58px;
+    height: 52px;
+  }
+  // A screen whose body keeps one height whatever it shows: a line is one line, long text is cut and kept in its tooltip
+  &__screen-body {
+    // content height, the same with or without the screen's own bezel
+    box-sizing: content-box;
+    height: 88px;
+    overflow: hidden;
+    &.is-tall {
+      height: 162px;
     }
-    .Button--selected {
-      color: #e0efcf;
-      background: #19332c;
-      border-color: #9cceba;
+    dd {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  &__locked {
+    color: #8a8068;
+    .Icon {
+      font-size: 8px;
     }
   }
   &__schematic {
     flex: 1;
     min-height: 0;
     width: 100%;
+    padding: 8px 24px;
+    filter: drop-shadow(0 0 2px #91b78955);
+    // the same near-monochrome as the compartment schematic
     .rock {
-      fill: rgb(169 217 203 / 42%);
+      fill: #33483b;
+      stroke: #c1caa0;
+      stroke-width: 0.13;
     }
     .ground {
-      fill: rgb(169 217 203 / 12%);
+      fill: #17382c;
+      stroke: #83ad8d;
+      stroke-width: 0.1;
     }
     .liquid {
-      fill: rgb(228 191 121 / 32%);
+      fill: #10302f;
+      stroke: #6f9f95;
+      stroke-width: 0.1;
     }
     .cave {
-      fill: var(--nav-phosphor);
+      fill: #c1caa0;
     }
     .structure {
       fill: none;
-      stroke: var(--nav-ink);
+      stroke: #c1caa0;
       stroke-dasharray: 1.5 1;
     }
     .organic {
-      fill: rgb(224 83 63 / 14%);
-      stroke: #e0533f;
+      fill: rgb(198 180 136 / 10%);
+      stroke: #c6b488;
       stroke-dasharray: 1 1;
     }
   }

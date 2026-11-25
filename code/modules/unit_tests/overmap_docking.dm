@@ -628,13 +628,14 @@
 	var/datum/stationtrauma_planet_flight/flight = navigation.planet_flight
 	TEST_ASSERT_NOTNULL(navigation.planet_hover, "The disk must already be visible when the map is still loading")
 	TEST_ASSERT(!flight.descent && !navigation.entry_heat(), "Atmospheric entry must wait for the terrain")
-	// the orbital zoom is planned once for the whole approach, so it is read at moments ahead
-	var/initial_scale = navigation.planet_hover.size.at(world.time + 3 SECONDS)
-	TEST_ASSERT(initial_scale < 0.7, "First generation must keep the opening zoom small")
+	// the orbital zoom is planned once: it grows, then stands still where the descent takes over
+	var/datum/landing_track/zoom = navigation.planet_hover.size
+	var/opening_scale = zoom.at(world.time)
+	TEST_ASSERT(zoom.at(world.time + 14 SECONDS) > opening_scale, "The planet must grow on the orbital approach")
+	TEST_ASSERT_EQUAL(zoom.at(world.time + 20 SECONDS), zoom.at(world.time + 2 MINUTES), "The approach zoom must settle, so the descent takes over a still planet")
 	navigation.approach_started -= 2 MINUTES
 	flight.next_zoom = 0
 	TEST_ASSERT(!flight.update(), "Passing the estimated load time cannot start atmosphere against an unbuilt planet")
-	TEST_ASSERT(navigation.planet_hover.size.at(world.time + 2 MINUTES) > initial_scale, "The orbit must continue to zoom during a late generation")
 	site.berth = clearing
 	site.loading_map = FALSE
 	flight.update()
@@ -716,13 +717,19 @@
 
 /// Probes fly the server's ballistics and cover both faces; the planet is mapped only once built, and a landing waits for the pilot's pad.
 /datum/unit_test/overmap_docking/planet_survey/Run()
-	var/list/centre = stationtrauma_survey_flight(0, 0, 0.5)
+	// launched from the bottom of the orbit at the middle of the face
+	var/list/centre = stationtrauma_survey_flight(270, 0, 0, 0.5)
 	var/list/impact = centre[3]
 	TEST_ASSERT_NOTNULL(impact, "A probe aimed at the middle of the face must strike the planet")
 	TEST_ASSERT(impact[3] > 0, "A probe launched at the front face must strike the front face")
 	TEST_ASSERT(abs(impact[1] ** 2 + impact[2] ** 2 + impact[3] ** 2 - 1) < 0.001, "A probe must strike the planet's surface")
-	var/list/wide = stationtrauma_survey_flight(1.6, 1.6, 1)
-	TEST_ASSERT_NULL(wide[3], "A full-power probe aimed past the rim must miss")
+	var/list/weak = stationtrauma_survey_flight(270, 0, 0, 0)
+	var/list/strong = stationtrauma_survey_flight(270, 0, 0, 1)
+	var/list/weak_impact = weak[3]
+	var/list/strong_impact = strong[3]
+	TEST_ASSERT(weak_impact && strong_impact && strong_impact[2] - weak_impact[2] > 0.1, "A stronger throw must carry the probe further from the ship")
+	var/list/wide = stationtrauma_survey_flight(270, 2.4, 2.4, 1)
+	TEST_ASSERT_NULL(wide[3], "A full-power probe thrown wide of the planet must miss")
 
 	var/datum/stationtrauma_overmap_site/space/planet/lava/planet = allocate(/datum/stationtrauma_overmap_site/space/planet/lava)
 	planet.id = "unit_test_survey"
@@ -749,6 +756,24 @@
 	TEST_ASSERT(!survey.mapped(), "Mapping cannot finish before the planet is built")
 	planet.loading_map = FALSE
 	TEST_ASSERT(survey.mapped(), "Mapping must finish once its time has passed on a built planet")
+
+	// a ship has only so many probes for a planet
+	var/datum/stationtrauma_planet_survey/spent = new(navigation, planet)
+	for(var/shot in 1 to 14)
+		spent.next_launch = 0
+		spent.flights.Cut()
+		TEST_ASSERT(spent.launch(0, 0, 0.5, FALSE), "Probe [shot] of fourteen must launch")
+	spent.next_launch = 0
+	spent.flights.Cut()
+	TEST_ASSERT(!spent.launch(0, 0, 0.5, FALSE), "A fifteenth probe must not launch")
+	// what a partial survey tells, and when it may be mapped
+	spent.coverage = 0.4
+	var/list/partial = spent.facts()
+	TEST_ASSERT(partial["atmosphere"] && !partial["ore"], "Two fifths of the planet must show its air but not its ore")
+	TEST_ASSERT(!spent.begin_mapping(), "Two fifths of the planet must be too little to map")
+	spent.coverage = 0.5
+	TEST_ASSERT(spent.begin_mapping(), "Half the planet must be enough to map")
+	qdel(spent)
 
 	planet.berth = bay
 	planet.survey_map = list("pads" = list(list(0.1, 0.1, 0.2, 0.2, FALSE, TRUE)))

@@ -12,33 +12,45 @@
  */
 
 /// Probe ballistics, also sent to the console's aim preview (see ui_static_data()).
-/// The launcher sits almost on the viewer's line of sight, so a probe goes near where it is aimed and only bends with gravity
-#define SURVEY_LAUNCH_Y -0.3
-#define SURVEY_LAUNCH_Z 8
-#define SURVEY_GRAVITY 1
+/**
+ * The ship orbits in front of the planet, the launcher circling the disc: a probe leaves from wherever the ship is, so
+ * it goes where gravity and the throw take it, not where the cursor points. Weak throws fall short by the ship, strong
+ * ones carry over the rim or past the planet.
+ */
+#define SURVEY_ORBIT_RADIUS 2
+#define SURVEY_LAUNCH_Z 2
+/// One turn of the orbit
+#define SURVEY_ORBIT_PERIOD (45 SECONDS)
+#define SURVEY_GRAVITY 1.2
 #define SURVEY_STEP 0.02
 #define SURVEY_STEPS 900
 /// A probe this far from the planet's centre is lost in space
-#define SURVEY_ESCAPE 12
-#define SURVEY_SPEED_MIN 0.8
-#define SURVEY_SPEED_MAX 2
+#define SURVEY_ESCAPE 8
+#define SURVEY_SPEED_MIN 0.5
+#define SURVEY_SPEED_MAX 1.3
 /// The furthest from the planet's centre a probe may be aimed, in planet radii
-#define SURVEY_AIM_LIMIT 1.6
+#define SURVEY_AIM_LIMIT 2.4
 /// Every this many steps a point of a flight is kept for the screen
 #define SURVEY_PATH_STRIDE 10
 /// Real time per unit of simulated flight: flights take three to nine seconds
-#define SURVEY_TIME_SCALE (1 SECONDS)
-#define SURVEY_RELOAD (1.5 SECONDS)
+#define SURVEY_TIME_SCALE (2.5 SECONDS)
+#define SURVEY_RELOAD (3 SECONDS)
 /// Most probes in flight at once
 #define SURVEY_MAX_FLIGHTS 6
-/// Angular radius of the ground a probe reads, in degrees: an ideal survey of the whole planet takes about six probes
-#define SURVEY_FOOTPRINT 50
-/// Share of the planet that has to be covered
+/// Angular radius of the ground a probe reads, in degrees: an ideal survey of the whole planet takes about eleven probes
+#define SURVEY_FOOTPRINT 35
+/// Shares of the planet read at which the survey tells more: the biome and air; then the climate and caves, and enough
+/// to map and land; then the ore and the planet's peculiarities; then everything, structures and life included
+#define SURVEY_TIER_BASIC 0.3
+#define SURVEY_TIER_LAND 0.5
+#define SURVEY_TIER_DEEP 0.7
 #define SURVEY_GOAL 0.9
+/// Probes a ship has for one planet
+#define SURVEY_PROBE_LIMIT 14
+/// Time between two data disks written by one console
+#define SURVEY_DISK_COOLDOWN (20 SECONDS)
 /// Points the coverage is measured on, spread evenly over the sphere
 #define SURVEY_SAMPLES 600
-/// A survey done in this many probes also finds structures and life on the schematic
-#define SURVEY_EFFICIENT_PROBES 10
 #define SURVEY_MAPPING_TIME (2 MINUTES)
 
 /// Whether mapping takes its full time; an admin can switch it off for the round
@@ -55,14 +67,18 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
 		var/ring = sqrt(1 - y * y)
 		. += list(list(ring * cos(turn * index), y, ring * sin(turn * index)))
 
+/// Where the ship is on its orbit now, in degrees anticlockwise from the right of the disc
+/proc/stationtrauma_survey_orbit_angle()
+	return (world.time % SURVEY_ORBIT_PERIOD) / SURVEY_ORBIT_PERIOD * 360
+
 /**
- * Flies one probe aimed at [aim_x], [aim_y] on the planet's face with [power] (0-1), as seen from the front.
- * Returns list(path, steps, impact): the kept points of the flight, each list(x, y, z), how many steps it took, and the
- * point on the sphere it struck, or null if it missed.
+ * Flies one probe launched from [angle] of the orbit, aimed at [aim_x], [aim_y] on the planet's face with [power] (0-1),
+ * as seen from the front. Returns list(path, steps, impact): the kept points of the flight, each list(x, y, z), how many
+ * steps it took, and the point on the sphere it struck, or null if it missed.
  */
-/proc/stationtrauma_survey_flight(aim_x, aim_y, power)
-	var/x = 0
-	var/y = SURVEY_LAUNCH_Y
+/proc/stationtrauma_survey_flight(angle, aim_x, aim_y, power)
+	var/x = SURVEY_ORBIT_RADIUS * cos(angle)
+	var/y = SURVEY_ORBIT_RADIUS * sin(angle)
 	var/z = SURVEY_LAUNCH_Z
 	// aimed at the point of the face under the cursor, or at the planet's plane past its rim
 	var/aim_z = sqrt(max(0, 1 - aim_x * aim_x - aim_y * aim_y))
@@ -110,10 +126,14 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
 	var/list/flights = list()
 	var/flight_count = 0
 	var/next_launch = 0
-	/// world.time both faces were covered and mapping began; zero before
+	/// world.time mapping began, the probing over; zero before
 	var/covered_at = 0
-	/// Covered within SURVEY_EFFICIENT_PROBES
+	/// Mapped from a full survey: the schematic shows structures and life
 	var/efficient = FALSE
+	/// The schematic as this survey saw it, cut to the ground its probes read; made once mapping is done
+	var/list/schematic
+	/// The console that launched the last probe, which pings when a probe reads the ground
+	var/datum/weakref/console_ref
 
 /datum/stationtrauma_planet_survey/New(datum/stationtrauma_overmap/space/navigation, datum/stationtrauma_overmap_site/space/planet/planet)
 	src.navigation = navigation
@@ -125,6 +145,7 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
 	navigation = null
 	planet = null
 	flights = null
+	schematic = null
 	return ..()
 
 /**
@@ -132,13 +153,13 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
  * planet's generation going. Returns FALSE if the launcher is not ready.
  */
 /datum/stationtrauma_planet_survey/proc/launch(aim_x, aim_y, power, back_side)
-	if(covered_at || world.time < next_launch || length(flights) >= SURVEY_MAX_FLIGHTS)
+	if(covered_at || probes >= SURVEY_PROBE_LIMIT || world.time < next_launch || length(flights) >= SURVEY_MAX_FLIGHTS)
 		return FALSE
 	next_launch = world.time + SURVEY_RELOAD
 	probes++
 	if(planet.awaits_map() && !planet.loading_map)
 		INVOKE_ASYNC(planet, TYPE_PROC_REF(/datum/stationtrauma_overmap_site/space, load_map))
-	var/list/flight = stationtrauma_survey_flight(aim_x, aim_y, power)
+	var/list/flight = stationtrauma_survey_flight(stationtrauma_survey_orbit_angle(), aim_x, aim_y, power)
 	var/list/path = flight[1]
 	var/list/impact = flight[3]
 	if(back_side)
@@ -155,9 +176,20 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
 /// A probe reaches the end of its flight: it reads the ground if it struck it and the ship is still on station
 /datum/stationtrauma_planet_survey/proc/land(id, list/impact)
 	flights -= id
-	if(!impact || covered_at || QDELETED(navigation) || navigation.survey_target() != planet)
+	if(covered_at)
 		return
+	if(impact && !QDELETED(navigation) && navigation.survey_target() == planet)
+		read_ground(impact)
+	// mapping starts by itself on a full survey, or once the last probe is down with enough of the planet read
+	if(coverage >= SURVEY_GOAL || (probes >= SURVEY_PROBE_LIMIT && !length(flights) && coverage >= SURVEY_TIER_LAND))
+		begin_mapping()
+
+/// A probe struck [impact]: the ground around it is read
+/datum/stationtrauma_planet_survey/proc/read_ground(list/impact)
 	hits += list(impact)
+	var/obj/machinery/computer/stationtrauma_planet_survey/console = console_ref?.resolve()
+	if(console)
+		playsound(console, 'sound/machines/sonar-ping.ogg', 30, FALSE, -3)
 	var/reach = cos(SURVEY_FOOTPRINT)
 	var/list/samples = GLOB.stationtrauma_survey_samples
 	var/read = 0
@@ -167,10 +199,81 @@ GLOBAL_LIST_INIT(stationtrauma_survey_samples, stationtrauma_survey_samples())
 			covered[index] = TRUE
 		read += !!covered[index]
 	coverage = read / length(samples)
-	if(coverage >= SURVEY_GOAL)
-		covered_at = world.time
-		efficient = probes <= SURVEY_EFFICIENT_PROBES
-		flights.Cut()
+
+/// End the probing and map what was read. FALSE if too little of the planet is read to map it.
+/datum/stationtrauma_planet_survey/proc/begin_mapping()
+	if(covered_at || coverage < SURVEY_TIER_LAND)
+		return FALSE
+	covered_at = world.time
+	efficient = coverage >= SURVEY_GOAL
+	flights.Cut()
+	return TRUE
+
+/// What the survey tells of the planet, as far as the ground read goes
+/datum/stationtrauma_planet_survey/proc/facts()
+	var/list/all = planet.survey_data()
+	. = list()
+	if(coverage >= SURVEY_TIER_BASIC)
+		.["biome"] = all["biome"]
+		.["atmosphere"] = all["atmosphere"]
+	if(coverage >= SURVEY_TIER_LAND)
+		.["temperature"] = all["temperature"]
+		.["breathable"] = all["breathable"]
+		.["caves"] = all["caves"]
+	if(coverage >= SURVEY_TIER_DEEP)
+		.["ore"] = all["ore"]
+		.["modifiers"] = all["modifiers"]
+
+/**
+ * The planet's schematic as this survey saw it: the surface square lies inscribed in the front face, so a cell shows
+ * only where the probes read the ground over it ("?" elsewhere). Cave entrances in the dark are left out, structures
+ * and life are shown only for a full survey; the landing pads are always shown. Made once, when mapping is done.
+ */
+/datum/stationtrauma_planet_survey/proc/survey_schematic()
+	if(schematic || !mapped() || !planet.survey_map)
+		return schematic
+	var/list/full = planet.survey_map
+	var/list/rows = full["rows"]
+	var/cells = length(rows)
+	var/reach = cos(SURVEY_FOOTPRINT)
+	var/list/seen_rows = list()
+	for(var/row_index in 1 to cells)
+		var/row = rows[row_index]
+		var/list/seen = list()
+		for(var/cell in 1 to length(row))
+			seen += survey_reads(cell / cells - 0.5 / cells, 1 - (row_index - 0.5) / cells, reach) ? copytext(row, cell, cell + 1) : "?"
+		seen_rows += seen.Join("")
+	var/list/caves = list()
+	for(var/list/cave as anything in full["caves"])
+		if(survey_reads(cave[1], cave[2], reach))
+			caves += list(cave)
+	var/list/pads = list()
+	for(var/list/pad as anything in full["pads"])
+		pads += list(list("rect" = pad.Copy(1, 5), "label" = survey_pad_label(pad, efficient)))
+	schematic = list("rows" = seen_rows, "pads" = pads, "caves" = caves)
+	if(efficient)
+		schematic["structures"] = full["structures"]
+		schematic["organic"] = full["organic"]
+	return schematic
+
+/// Whether the probes read the ground at [x], [y] of the surface square (shares from its south-west corner)
+/datum/stationtrauma_planet_survey/proc/survey_reads(x, y, reach)
+	var/u = (x - 0.5) * sqrt(2)
+	var/v = (y - 0.5) * sqrt(2)
+	var/w = sqrt(max(0, 1 - u * u - v * v))
+	for(var/list/hit as anything in hits)
+		if(u * hit[1] + v * hit[2] + w * hit[3] >= reach)
+			return TRUE
+	return FALSE
+
+/// A saved map for the archive and the data disks: what this survey learned of its planet
+/datum/stationtrauma_planet_survey/proc/record()
+	return list(
+		"name" = navigation?.site_label(planet) || planet.name,
+		"coverage" = coverage,
+		"facts" = facts(),
+		"schematic" = survey_schematic(),
+	)
 
 /// How far mapping has got, 0-1
 /datum/stationtrauma_planet_survey/proc/mapping_progress()
@@ -289,6 +392,10 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 	icon_keyboard = "tech_key"
 	use_power = NO_POWER_USE
 	circuit = /obj/item/circuitboard/computer/stationtrauma_planet_survey
+	/// The saved map shown, by its place in the archive
+	var/archive_index = 1
+	/// When the console may write another data disk
+	var/next_disk = 0
 
 /obj/item/circuitboard/computer/stationtrauma_planet_survey
 	name = "консоль сканирования местности"
@@ -321,15 +428,33 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 
 /obj/machinery/computer/stationtrauma_planet_survey/ui_static_data(mob/user)
 	return list("physics" = list(
-		"launch_y" = SURVEY_LAUNCH_Y, "launch_z" = SURVEY_LAUNCH_Z, "gravity" = SURVEY_GRAVITY,
+		"orbit_radius" = SURVEY_ORBIT_RADIUS, "launch_z" = SURVEY_LAUNCH_Z, "orbit_period" = SURVEY_ORBIT_PERIOD / (1 SECONDS), "gravity" = SURVEY_GRAVITY,
 		"step" = SURVEY_STEP, "steps" = SURVEY_STEPS, "escape" = SURVEY_ESCAPE,
 		"speed_min" = SURVEY_SPEED_MIN, "speed_max" = SURVEY_SPEED_MAX, "aim_limit" = SURVEY_AIM_LIMIT,
-		"footprint" = SURVEY_FOOTPRINT, "goal" = SURVEY_GOAL, "efficient" = SURVEY_EFFICIENT_PROBES,
+		"footprint" = SURVEY_FOOTPRINT, "goal" = SURVEY_GOAL, "land" = SURVEY_TIER_LAND, "probe_limit" = SURVEY_PROBE_LIMIT,
+		"tiers" = list(SURVEY_TIER_BASIC, SURVEY_TIER_LAND, SURVEY_TIER_DEEP, SURVEY_GOAL),
 	))
+
+/// This ship's mapped surveys, as the console's archive lists them
+/obj/machinery/computer/stationtrauma_planet_survey/proc/archive(datum/stationtrauma_overmap/space/map)
+	. = list()
+	for(var/id in map?.planet_surveys)
+		var/datum/stationtrauma_planet_survey/survey = map.planet_surveys[id]
+		if(survey.mapped())
+			. += survey
 
 /obj/machinery/computer/stationtrauma_planet_survey/ui_data(mob/user)
 	var/datum/stationtrauma_overmap/space/map = navigation()
 	var/list/data = list("vessel_name" = map?.vessel.name, "planet" = null)
+	// the saved maps, one shown at a time
+	var/list/saved = archive(map)
+	archive_index = length(saved) ? clamp(archive_index, 1, length(saved)) : 0
+	data["archive_count"] = length(saved)
+	data["archive_index"] = archive_index
+	if(archive_index)
+		var/datum/stationtrauma_planet_survey/shown = saved[archive_index]
+		data["archive"] = shown.record()
+	data["disk_ready"] = world.time >= next_disk && length(saved) > 0
 	var/datum/stationtrauma_overmap_site/space/planet/planet = map?.survey_target()
 	if(!planet)
 		// why nothing is held, as an instrument would put it
@@ -355,48 +480,90 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 		"hits" = survey?.hits || list(),
 		"flights" = flights,
 		"reload" = survey ? max(0, survey.next_launch - world.time) / (1 SECONDS) : 0,
+		"orbit_angle" = stationtrauma_survey_orbit_angle(),
 		"covered" = !!survey?.covered_at,
-		"efficient" = !!survey?.efficient,
 		"mapping" = survey ? survey.mapping_progress() : 0,
 		"mapped" = !!survey?.mapped(),
 		"generating" = !!(survey && planet.loading_map),
 		"failed" = !!planet.failed,
+		"facts" = survey ? survey.facts() : list(),
 	)
-	if(survey?.covered_at)
-		data["planet"]["facts"] = planet.survey_data()
-	if(survey?.mapped() && planet.survey_map)
-		var/list/schematic = planet.survey_map.Copy()
-		var/list/pads = list()
-		for(var/list/pad as anything in schematic["pads"])
-			pads += list(list("rect" = pad.Copy(1, 5), "label" = survey_pad_label(pad, survey.efficient)))
-		schematic["pads"] = pads
-		if(!survey.efficient)
-			schematic -= "structures"
-			schematic -= "organic"
-		data["planet"]["schematic"] = schematic
 	return data
 
 /obj/machinery/computer/stationtrauma_planet_survey/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	if(. || action != "launch" || panel_open || (machine_stat & (NOPOWER|BROKEN)))
+	if(. || panel_open || (machine_stat & (NOPOWER|BROKEN)))
 		return
 	var/datum/stationtrauma_overmap/space/map = navigation()
-	var/datum/stationtrauma_overmap_site/space/planet/planet = map?.survey_target()
-	var/aim_x = params["x"]
-	var/aim_y = params["y"]
-	var/power = params["power"]
-	if(!planet || !isnum(aim_x) || !isnum(aim_y) || !isnum(power))
+	if(!map)
+		return
+	switch(action)
+		if("archive_previous", "archive_next")
+			var/count = length(archive(map))
+			if(!count)
+				return
+			archive_index = (archive_index - 1 + (action == "archive_next" ? 1 : -1) + count) % count + 1
+			return TRUE
+		if("extract")
+			var/list/saved = archive(map)
+			if(!length(saved) || world.time < next_disk)
+				return
+			next_disk = world.time + SURVEY_DISK_COOLDOWN
+			var/obj/item/stationtrauma_survey_disk/disk = new(drop_location())
+			for(var/datum/stationtrauma_planet_survey/survey as anything in saved)
+				disk.records += list(survey.record())
+			ui.user.put_in_hands(disk)
+			playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 40, TRUE)
+			return TRUE
+	var/datum/stationtrauma_overmap_site/space/planet/planet = map.survey_target()
+	if(!planet)
 		return
 	var/datum/stationtrauma_planet_survey/survey = map.planet_survey(planet)
-	if(!survey)
-		survey = new(map, planet)
-		LAZYSET(map.planet_surveys, planet.id, survey)
-	if(survey.launch(clamp(aim_x, -SURVEY_AIM_LIMIT, SURVEY_AIM_LIMIT), clamp(aim_y, -SURVEY_AIM_LIMIT, SURVEY_AIM_LIMIT), clamp(power, 0, 1), !!params["back"]))
-		playsound(src, 'sound/effects/gravhit.ogg', 35, TRUE, -3)
-		return TRUE
+	switch(action)
+		if("map")
+			if(survey?.begin_mapping())
+				playsound(src, 'sound/machines/terminal/terminal_prompt_confirm.ogg', 30, FALSE)
+				return TRUE
+		if("launch")
+			var/aim_x = params["x"]
+			var/aim_y = params["y"]
+			var/power = params["power"]
+			if(!isnum(aim_x) || !isnum(aim_y) || !isnum(power))
+				return
+			if(!survey)
+				survey = new(map, planet)
+				LAZYSET(map.planet_surveys, planet.id, survey)
+			survey.console_ref = WEAKREF(src)
+			if(survey.launch(clamp(aim_x, -SURVEY_AIM_LIMIT, SURVEY_AIM_LIMIT), clamp(aim_y, -SURVEY_AIM_LIMIT, SURVEY_AIM_LIMIT), clamp(power, 0, 1), !!params["back"]))
+				playsound(src, 'sound/effects/gravhit.ogg', 35, TRUE, -3)
+				return TRUE
 
-#undef SURVEY_LAUNCH_Y
+/// A data disk: copies of the survey maps of a ship, carried off its console
+/obj/item/stationtrauma_survey_disk
+	name = "диск картографических данных"
+	desc = "Диск с копиями карт местности, снятых консолью сканирования."
+	icon = 'icons/obj/devices/floppy_disks.dmi'
+	icon_state = "datadisk4"
+	inhand_icon_state = "card-id"
+	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
+	drop_sound = 'sound/items/handling/disk_drop.ogg'
+	pickup_sound = 'sound/items/handling/disk_pickup.ogg'
+	w_class = WEIGHT_CLASS_TINY
+	/// Saved maps, each as /datum/stationtrauma_planet_survey/proc/record() makes them
+	var/list/records = list()
+
+/obj/item/stationtrauma_survey_disk/examine(mob/user)
+	. = ..()
+	if(!length(records))
+		. += span_notice("Диск пуст.")
+		return
+	for(var/list/record as anything in records)
+		. += span_notice("[record["name"]]: покрытие [round(record["coverage"] * 100)]%.")
+
+#undef SURVEY_ORBIT_RADIUS
 #undef SURVEY_LAUNCH_Z
+#undef SURVEY_ORBIT_PERIOD
 #undef SURVEY_GRAVITY
 #undef SURVEY_STEP
 #undef SURVEY_STEPS
@@ -411,5 +578,9 @@ ADMIN_VERB(stationtrauma_survey_timer, R_ADMIN, "Overmap - Таймер карт
 #undef SURVEY_FOOTPRINT
 #undef SURVEY_GOAL
 #undef SURVEY_SAMPLES
-#undef SURVEY_EFFICIENT_PROBES
+#undef SURVEY_TIER_BASIC
+#undef SURVEY_TIER_LAND
+#undef SURVEY_TIER_DEEP
+#undef SURVEY_PROBE_LIMIT
+#undef SURVEY_DISK_COOLDOWN
 #undef SURVEY_MAPPING_TIME

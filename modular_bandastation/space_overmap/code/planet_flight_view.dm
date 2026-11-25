@@ -66,7 +66,8 @@
 	if(world.time >= next_zoom)
 		next_zoom = world.time + ST_PLANET_ZOOM_STEP
 		navigation.update_planet_hover()
-		navigation.planet_hover?.plan_approach(navigation.approach_started, orbit_duration)
+		// the zoom settles by the earliest the descent can start
+		navigation.planet_hover?.plan_approach(navigation.approach_started, ST_PLANET_APPROACH_MIN)
 	if(!descent && !site.loading_map && !planet.loading_map && !site.awaits_map())
 		var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
 		if(istype(slot))
