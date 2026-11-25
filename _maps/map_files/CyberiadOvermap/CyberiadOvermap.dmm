@@ -3608,7 +3608,7 @@
 "aSC" = (
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	name = "Eva Chamber";
-	req_one_access = list("gateway","mining","cargo","medical");
+	req_one_access = list("explorer");
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -15427,7 +15427,7 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	name = "Eva Chamber";
-	req_one_access = list("gateway","mining","cargo","medical");
+	req_one_access = list("explorer");
 	dir = 8
 	},
 /turf/open/floor/iron/dark/smooth_large,
@@ -21102,7 +21102,7 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	name = "Eva Chamber";
-	req_one_access = list("gateway","mining","cargo","medical");
+	req_one_access = list("explorer");
 	dir = 8
 	},
 /turf/open/floor/iron/dark/smooth_large,
@@ -51540,7 +51540,7 @@
 "mlh" = (
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	name = "Eva Chamber";
-	req_one_access = list("gateway","mining","cargo","medical");
+	req_one_access = list("explorer");
 	dir = 8
 	},
 /obj/effect/landmark/start/explorer/pilot,
@@ -59236,7 +59236,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/expedition/common)
@@ -74122,7 +74122,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/expedition/common)
@@ -74657,7 +74657,7 @@
 	},
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	name = "Eva Chamber";
-	req_one_access = list("gateway","mining","cargo","medical");
+	req_one_access = list("explorer");
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
