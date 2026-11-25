@@ -144,8 +144,10 @@
 /datum/mod_theme/expedition/engineer
 	name = "expedition engineer"
 	desc = "Полевой МОД инженера экспедиционного корпуса: защита полевого скафандра и место под инженерные модули."
-	extended_desc = "Скафандр полевого инженера экспедиционного корпуса. Защищает не хуже полевого и держит сварку, сканер труб и защиту от радиации."
+	extended_desc = "Скафандр полевого инженера экспедиционного корпуса. Защищает не хуже полевого, изолирует от тока и держит сварку, сканер труб и защиту от радиации."
 	default_skin = "expedition_engineer"
+	// insulated like the station engineers' suit
+	siemens_coefficient = 0
 
 /datum/mod_theme/expedition/engineer/New()
 	variants = list("expedition_engineer" = variants["expedition"])
