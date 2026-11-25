@@ -140,7 +140,7 @@
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 
-/// A ship calling the station's holopads: the bridge hears it ring and the command channel is told who calls
+/// A ship calling the station's holopads: the command and expedition channels are told who calls
 /datum/holocall/New(mob/living/call_source, obj/machinery/holopad/calling_pad, list/callees, elevated_access = FALSE)
 	. = ..()
 	if(QDELETED(src) || QDELETED(calling_pad))
@@ -152,13 +152,12 @@
 	for(var/obj/machinery/holopad/dialed as anything in dialed_holopads)
 		if(is_station_level(dialed.z))
 			station_pad = dialed
-			playsound(dialed, 'sound/machines/beep/triple_beep.ogg', 100, FALSE, 6)
 	if(!station_pad)
 		return
 	aas_config_announce(/datum/aas_config_entry/stationtrauma_ship_holocall, list(
 		"SHIP" = ship.name,
 		"LOCATION" = get_area_name(station_pad, TRUE),
-	), station_pad, list(RADIO_CHANNEL_COMMAND))
+	), station_pad, list(RADIO_CHANNEL_COMMAND, RADIO_CHANNEL_EXPEDITION))
 
 /datum/aas_config_entry/stationtrauma_ship_holocall
 	name = "Command Alert: Ship Holocall"
