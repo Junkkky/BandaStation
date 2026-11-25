@@ -23,6 +23,45 @@
 	icon_state = "tanutility"
 	worn_icon_state = "tanutility_s"
 
+/// The corps' own field uniforms, one cut per role; the older utility suits stay in the ExpeDrobe
+/obj/item/clothing/under/expedition/corps
+	name = "полевой комбинезон экспедиционного корпуса"
+	desc = "Герметичный полевой комбинезон исследователя экспедиционного корпуса с фиолетовыми вставками."
+	icon_state = "corps_explorer"
+	worn_icon_state = "corps_explorer"
+
+/obj/item/clothing/under/expedition/corps/leader
+	name = "лётный комбинезон главы экспедиционного корпуса"
+	desc = "Лётный комбинезон главы экспедиционного корпуса. Верх можно опустить."
+	icon_state = "corps_leader"
+	worn_icon_state = "corps_leader"
+	can_adjust = TRUE
+	alt_covers_chest = TRUE
+
+/obj/item/clothing/under/expedition/corps/pilot
+	name = "лётный комбинезон пилота экспедиционного корпуса"
+	desc = "Лётный комбинезон пилота экспедиционного корпуса. Куртку можно снять до пояса."
+	icon_state = "corps_pilot"
+	worn_icon_state = "corps_pilot"
+	can_adjust = TRUE
+	alt_covers_chest = TRUE
+
+/obj/item/clothing/under/expedition/corps/medic
+	name = "полевая форма медика экспедиционного корпуса"
+	desc = "Полевая форма медика экспедиционного корпуса с синими вставками. Верх можно опустить."
+	icon_state = "corps_medic"
+	worn_icon_state = "corps_medic"
+	can_adjust = TRUE
+	alt_covers_chest = TRUE
+
+/obj/item/clothing/under/expedition/corps/engineer
+	name = "рабочий комбинезон инженера экспедиционного корпуса"
+	desc = "Рабочий комбинезон полевого инженера экспедиционного корпуса. Верх можно опустить."
+	icon_state = "corps_engineer"
+	worn_icon_state = "corps_engineer"
+	can_adjust = TRUE
+	alt_covers_chest = TRUE
+
 /obj/item/clothing/shoes/jackboots/expedition
 	name = "служебные ботинки экспедиционного корпуса"
 	desc = "Начищенные служебные ботинки из синтетической кожи."
