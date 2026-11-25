@@ -46677,6 +46677,20 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/expedition/common)
+"lcI" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/leader,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/airlock/research/expedition,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/preopen{
+	id = "expedition_lockdown";
+	name = "Expedition Lockdown Blast Doors"
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/expedition/common)
 "lcK" = (
 /obj/machinery/papershredder,
 /obj/machinery/firealarm/directional/west,
@@ -180221,7 +180235,7 @@ vEu
 ixA
 ouA
 bIX
-lcH
+lcI
 rVl
 bpp
 dIB
