@@ -33,7 +33,9 @@ export function Scanner({ data, focusedContact }: Props) {
       : undefined;
   const site =
     focusedContact === null
-      ? data.routes.find((route) => route.id === data.selected)
+      ? data.routes.find(
+          (route) => route.id === (data.inspected || data.selected),
+        )
       : undefined;
   const rows: [string, string][] = [];
   if (contact) {

@@ -197,7 +197,8 @@ function Navigation({ data }: { data: NavigationData }) {
                           : site.name
                       }
                       selected={
-                        focusedContact === null && site.id === data.selected
+                        focusedContact === null &&
+                        site.id === (data.inspected || data.selected)
                       }
                       disabled={
                         site.failed || data.preparing || data.relocating
