@@ -37,8 +37,8 @@
 #define RADIO_COLOR_SUPPLY "#b88646"
 
 #define RADIO_CHANNEL_EXPEDITION "Экспедиция"
-#define RADIO_KEY_EXPEDITION "x"
-#define RADIO_TOKEN_EXPEDITION ":x"
+#define RADIO_KEY_EXPEDITION "h"
+#define RADIO_TOKEN_EXPEDITION ":h"
 #define RADIO_COLOR_EXPEDITION "#a964c1"
 
 #define RADIO_CHANNEL_SERVICE "Обслуживание"
