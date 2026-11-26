@@ -42,7 +42,9 @@
 	 * This is used for the paper displayed on the clipboard's icon
 	 * and it is the one attacked, when attacking the clipboard.
 	 */
-	var/obj/item/paper/top_paper
+	var/obj/item/top_paper
+	/// Paperwork types that can be clipped onto this clipboard.
+	var/static/list/clipboard_paperwork = typecacheof(list(/obj/item/paper, /obj/item/paper_bundle))
 
 /obj/item/clipboard/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] begins putting [user.p_their()] head into the clip of \the [src]! Кажется, [user.ru_p_they()] пытается совершить самоубийство!"))
@@ -67,8 +69,8 @@
 		. += span_notice("Right-click to remove [top_paper].")
 
 /// Take out the topmost paper
-/obj/item/clipboard/proc/remove_paper(obj/item/paper/paper, mob/user)
-	if(!istype(paper))
+/obj/item/clipboard/proc/remove_paper(obj/item/paper, mob/user)
+	if(!paper || paper.loc != src || !is_type_in_typecache(paper, clipboard_paperwork))
 		return
 	paper.forceMove(user.loc)
 	user.put_in_hands(paper)
@@ -90,9 +92,22 @@
 	if (gone != top_paper)
 		return
 
-	UnregisterSignal(top_paper, COMSIG_ATOM_UPDATED_ICON)
-	top_paper = locate(/obj/item/paper) in src
-	update_icon()
+	var/obj/item/replacement
+	for(var/obj/item/item in contents)
+		if(is_type_in_typecache(item, clipboard_paperwork))
+			replacement = item
+			break
+	set_top_paper(replacement)
+
+/// Keep the clipboard appearance in sync with the paperwork on top.
+/obj/item/clipboard/proc/set_top_paper(obj/item/paper)
+	if(top_paper != paper)
+		if(top_paper)
+			UnregisterSignal(top_paper, COMSIG_ATOM_UPDATED_ICON)
+		top_paper = paper
+		if(top_paper)
+			RegisterSignal(top_paper, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_top_paper_change))
+	update_appearance()
 
 /obj/item/clipboard/update_overlays()
 	. = ..()
@@ -122,16 +137,12 @@
 	. = ..()
 
 /obj/item/clipboard/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(istype(tool, /obj/item/paper))
+	if(is_type_in_typecache(tool, clipboard_paperwork))
 		//Add paper into the clipboard
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
-		if(top_paper)
-			UnregisterSignal(top_paper, COMSIG_ATOM_UPDATED_ICON)
-		RegisterSignal(tool, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_top_paper_change))
-		top_paper = tool
+		set_top_paper(tool)
 		to_chat(user, span_notice("You clip [tool] onto [src]."))
-		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/pen) && !pen)
@@ -177,8 +188,8 @@
 
 	data["paper"] = list()
 	data["paper_ref"] = list()
-	for(var/obj/item/paper/paper in src)
-		if(paper == top_paper)
+	for(var/obj/item/paper in contents)
+		if(paper == top_paper || !is_type_in_typecache(paper, clipboard_paperwork))
 			continue
 		data["paper"] += "[paper]"
 		data["paper_ref"] += "[REF(paper)]"
@@ -204,29 +215,33 @@
 				. = TRUE
 		// Take paper out
 		if("remove_paper")
-			var/obj/item/paper/paper = locate(params["ref"]) in src
-			if(istype(paper))
+			var/obj/item/paper = locate(params["ref"]) in src
+			if(is_type_in_typecache(paper, clipboard_paperwork))
 				remove_paper(paper, usr)
 				. = TRUE
 		// Look at (or edit) the paper
 		if("edit_paper")
-			var/obj/item/paper/paper = locate(params["ref"]) in src
-			if(istype(paper))
+			var/obj/item/paper = locate(params["ref"]) in src
+			if(is_type_in_typecache(paper, clipboard_paperwork))
 				paper.ui_interact(usr)
 				update_icon()
 				. = TRUE
 		// Move paper to the top
 		if("move_top_paper")
-			var/obj/item/paper/paper = locate(params["ref"]) in src
-			if(istype(paper))
-				top_paper = paper
+			var/obj/item/paper = locate(params["ref"]) in src
+			if(is_type_in_typecache(paper, clipboard_paperwork))
+				set_top_paper(paper)
 				to_chat(usr, span_notice("You move [paper] to the top."))
-				update_icon()
 				. = TRUE
 		// Rename the paper (it's a verb)
 		if("rename_paper")
-			var/obj/item/paper/paper = locate(params["ref"]) in src
-			if(istype(paper))
+			var/obj/item/item = locate(params["ref"]) in src
+			if(istype(item, /obj/item/paper_bundle))
+				var/obj/item/paper_bundle/bundle = item
+				bundle.rename_bundle(usr)
+				. = TRUE
+			else if(istype(item, /obj/item/paper))
+				var/obj/item/paper/paper = item
 				paper.rename()
 				update_icon()
 				. = TRUE

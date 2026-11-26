@@ -500,6 +500,8 @@
 
 #include "../../../modular_bandastation/objects/code/tests/lighter_lighting.dm"
 
+#include "../../../modular_bandastation/paperwork/code/paper_bundle_tests.dm"
+
 #include "../../../modular_bandastation/telephones/_defines.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_tests.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_speech_tests.dm"
