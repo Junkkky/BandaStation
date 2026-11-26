@@ -20,18 +20,12 @@
 			/obj/item/clothing/head/mod = list(
 				UNSEALED_CLOTHING = SNUG_FIT|THICKMATERIAL,
 				SEALED_CLOTHING = STOPSPRESSUREDAMAGE|HEADINTERNALS,
-				UNSEALED_INVISIBILITY = HIDEFACIALHAIR|HIDEEARS|HIDEHAIR|HIDESNOUT,
+				// the open helmet is a frame round the head: hair and face show through
+				UNSEALED_INVISIBILITY = HIDEEARS,
 				SEALED_INVISIBILITY = HIDEMASK|HIDEEYES|HIDEFACE,
 				SEALED_COVER = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF,
 				UNSEALED_MESSAGE = HELMET_UNSEAL_MESSAGE,
 				SEALED_MESSAGE = HELMET_SEAL_MESSAGE,
-			),
-			/obj/item/clothing/suit/mod = list(
-				UNSEALED_CLOTHING = THICKMATERIAL,
-				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
-				SEALED_INVISIBILITY = HIDEJUMPSUIT,
-				UNSEALED_MESSAGE = CHESTPLATE_UNSEAL_MESSAGE,
-				SEALED_MESSAGE = CHESTPLATE_SEAL_MESSAGE,
 			),
 			/obj/item/clothing/gloves/mod = list(
 				UNSEALED_CLOTHING = THICKMATERIAL,
@@ -46,6 +40,14 @@
 				CAN_OVERSLOT = TRUE,
 				UNSEALED_MESSAGE = BOOT_UNSEAL_MESSAGE,
 				SEALED_MESSAGE = BOOT_SEAL_MESSAGE,
+			),
+			// the chestplate seals last: it hides the jumpsuit, which the gauntlets and boots must already cover
+			/obj/item/clothing/suit/mod = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				SEALED_INVISIBILITY = HIDEJUMPSUIT,
+				UNSEALED_MESSAGE = CHESTPLATE_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = CHESTPLATE_SEAL_MESSAGE,
 			),
 		),
 	)
@@ -73,6 +75,8 @@
 
 /datum/mod_theme/expedition/pilot/New()
 	variants = list("expedition_pilot" = variants["expedition"])
+	// its helmet is a solid shell even open
+	variants["expedition_pilot"][/obj/item/clothing/head/mod][UNSEALED_INVISIBILITY] = HIDEFACIALHAIR|HIDEEARS|HIDEHAIR|HIDESNOUT
 	return ..()
 
 /// The leader's heavy suit, the A-Unit hardsuit of SierraBay.
@@ -87,6 +91,8 @@
 
 /datum/mod_theme/expedition/heavy/New()
 	variants = list("expedition_heavy" = variants["expedition"])
+	// its helmet is a solid shell even open
+	variants["expedition_heavy"][/obj/item/clothing/head/mod][UNSEALED_INVISIBILITY] = HIDEFACIALHAIR|HIDEEARS|HIDEHAIR|HIDESNOUT
 	return ..()
 
 /datum/armor/mod_theme_expedition_pilot
@@ -138,11 +144,15 @@
 /datum/mod_theme/expedition/engineer
 	name = "expedition engineer"
 	desc = "Полевой МОД инженера экспедиционного корпуса: защита полевого скафандра и место под инженерные модули."
-	extended_desc = "Скафандр полевого инженера экспедиционного корпуса. Защищает не хуже полевого и держит сварку, сканер труб и защиту от радиации."
+	extended_desc = "Скафандр полевого инженера экспедиционного корпуса. Защищает не хуже полевого, изолирует от тока и держит сварку, сканер труб и защиту от радиации."
 	default_skin = "expedition_engineer"
+	// insulated like the station engineers' suit
+	siemens_coefficient = 0
 
 /datum/mod_theme/expedition/engineer/New()
 	variants = list("expedition_engineer" = variants["expedition"])
+	// its helmet is a solid shell even open
+	variants["expedition_engineer"][/obj/item/clothing/head/mod][UNSEALED_INVISIBILITY] = HIDEFACIALHAIR|HIDEEARS|HIDEHAIR|HIDESNOUT
 	return ..()
 
 /obj/item/mod/control/pre_equipped/expedition

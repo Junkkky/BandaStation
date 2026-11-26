@@ -59,8 +59,8 @@
 
 | Костюм | Шлем | Остальное |
 | --- | --- | --- |
-| Полевой (`expedition`) | войдсьют эксплорера Sierra: [obj_head_solgov.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/torch/icons/obj/obj_head_solgov.dmi), [onmob_head_solgov.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/torch/icons/mob/onmob_head_solgov.dmi), без изменений; визор — вырезанное стекло этого шлема | `tsf_standart` форка (`modular_bandastation/objects/icons/*/clothing/modsuit/mod_clothing.dmi`): синее → фиолетовое, огни → жёлтые, корпус рюкзака → тёмно-серый |
-| Пилот (`expedition_pilot`) | войдсьют пилота Sierra: [obj_head.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/obj/clothing/obj_head.dmi), [onmob_head.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/onmob_head.dmi), перекрашен, стекло не тронуто | `magnate` TG (`icons/*/clothing/modsuit/mod_clothing.dmi`) |
+| Полевой (`expedition`) | войдсьют эксплорера Sierra: [obj_head_solgov.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/torch/icons/obj/obj_head_solgov.dmi), [onmob_head_solgov.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/torch/icons/mob/onmob_head_solgov.dmi), без изменений; визор — вырезанное стекло этого шлема, раскрытый шлем — он же без стекла | `tsf_standart` форка (`modular_bandastation/objects/icons/*/clothing/modsuit/mod_clothing.dmi`): синее → фиолетовое, огни → жёлтые, корпус рюкзака → тёмно-серый |
+| Пилот (`expedition_pilot`) | шлем PH-4 «Spitfire» из BandaMarines (CM-SS13, CC BY-SA 3.0): [obj TWE.dmi](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi), [onmob TWE.dmi](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi), состояние `pilot_helm`; перекрашен: визор — в стекло полевого шлема, полоса — в фиолетовый, корпус — в тёмную гамму мода; в раскрытом шлеме визор убран | `magnate` TG (`icons/*/clothing/modsuit/mod_clothing.dmi`) |
 | Медик (`expedition_medic`) | `rescue` TG, насыщеннее синий | `rescue` TG: белое → тёмно-серое, яркие блики → фиолетовые |
 | Инженер (`expedition_engineer`) | `prototype` TG | `prototype` TG: тёмные сине-серые пластины → фиолетовые |
 | Тяжёлый «A-Unit» (`expedition_heavy`) | `safeguard` TG, перекрашен в палитру A-Unit (серые — по светлоте, красное — в фиолетовый, огни — в жёлтый) | риг `command_exp_rig` Sierra без изменений: [uniques.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/maps/sierra/icons/obj/uniques.dmi), [onmob_rig_back.dmi](https://github.com/SierraBay/SierraBay12/blob/c5ad038ddf56f54c7e7f3bfc11883cd28e6e2037/icons/mob/onmob/onmob_rig_back.dmi) и torch `obj_/onmob_` `suit`, `hands`, `feet` |
@@ -99,3 +99,35 @@
 `signs.dmi`, `expedition` — рамка таблички TG `icons/obj/signs.dmi`, `xenobio2`,
 с оригинальной пиксельной эмблемой компаса со звездой и надписью EXP, Primera, 2026-11-14.
 Лицензия графики CC BY-SA 3.0.
+
+## Полевая форма корпуса
+
+`uniforms.dmi` и `uniforms_worn.dmi`, состояния `corps_*`: спрайты BandaMarines (CM-SS13, CC BY-SA 3.0), перекрашенные в палитру полевого МОДа корпуса (графит и фиолетовый; у медика синие вставки):
+
+| Роль | Источник |
+| --- | --- |
+| Исследователь (`corps_explorer`) | `kutjevo_drysuit`: [onmob](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi), [obj](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/uniforms/misc_ert_colony.dmi) |
+| Глава (`corps_leader`, `_d`) | `crewchief_flightsuit`: [onmob](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi), [obj](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi) |
+| Пилот (`corps_pilot`, `_d`) | `pilot_flightsuit_alt` и `_dj`: [onmob](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi), [obj](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi) |
+| Медик (`corps_medic`, `_d`) | `marine_medic_field`: [onmob](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi), [obj](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi) |
+| Инженер (`corps_engineer`, `_d`) | `engineer_jumpsuit`: [onmob](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi), [obj](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi) |
+
+Мод пилота: самые яркие фиолетовые детали затемнены до тонов полевого МОДа.
+
+## Куртки корпуса
+
+`suits.dmi` и `suits_worn.dmi`, состояния `corps_jacket*`, перекрашены в палитру полевого МОДа корпуса (графит; фиолетовые акценты, у медика синие):
+
+| Куртка | Источник |
+| --- | --- |
+| Полевая (`corps_jacket`) | Voidcrew-LRP (Shiptest, CC BY-SA 3.0), `militaryjacket`: [onmob](https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/icons/mob/clothing/suit.dmi), [obj](https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/icons/obj/clothing/suits.dmi) |
+| Пилот (`corps_jacket_pilot`) | TG, `bomberjacket` (`icons/*/clothing/suits/jacket.dmi`), целиком в тёмные тона |
+| Глава (`corps_jacket_leader`) | Voidcrew-LRP, `officerjacket` |
+| Медик (`corps_jacket_medic`, `_t`) | Voidcrew-LRP, `labcoat_paramedic` |
+| Инженер (`corps_jacket_engineer`, `_t`) | Voidcrew-LRP, `jacket_hazard` |
+
+## Наушники пилота
+
+`gear.dmi` и `gear_worn.dmi`, состояние `pilot_headphones`: TG, `com_headset_alt` (`icons/obj/clothing/headsets.dmi`, `icons/mob/clothing/ears.dmi`), перекрашен в палитру полевого МОДа корпуса: голубые вставки — фиолетовые, корпус — графит.
+
+МОДы пилота и медика дополнительно переведены в графит полевого МОДа: у пилота средний графит с фиолетовым, у медика тёмный графит с синими медицинскими элементами.
