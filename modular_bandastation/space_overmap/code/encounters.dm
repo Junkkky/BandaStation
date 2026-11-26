@@ -29,7 +29,7 @@
 /datum/stationtrauma_overmap_sector/space/proc/build_encounters()
 	zones += new /datum/stationtrauma_overmap_zone("Корона звезды", "corona", 0, 0, ST_STAR_CORONA_RADIUS)
 	zones += new /datum/stationtrauma_overmap_zone("Астероидный пояс / обломки", "asteroids", belt_x, belt_y, 360)
-	for(var/index in 1 to rand(2, 3))
+	for(var/index in 1 to rand(3, 5))
 		var/list/point = random_position(500, 1900, 450)
 		// A central full-speed crossing must outlast the warning instead of making every storm harmless.
 		var/datum/stationtrauma_overmap_zone/stream = new("Метеорный поток", "meteors", point[1], point[2], rand(260, 340))
@@ -73,9 +73,10 @@
 					SEND_SOUND(crew, sound('sound/machines/warning-buzzer.ogg'))
 		if(world.time >= zone_timers[zone])
 			var/is_stream = zone.kind == "meteors"
-			launch_debris(is_stream, is_stream ? zone.direction : course)
-			// Multi-minute journeys need occasional repairable impacts, not a sustained bombardment.
-			var/interval = is_stream ? rand(90, 150) : rand(90, 150) / clamp(1 + speed / 5, 1, 3)
+			// a hull crawling through the belt rarely meets a rock; at full speed (5 units/s) every pass throws one
+			if(is_stream || prob(clamp(20 + speed * 16, 20, 100)))
+				launch_debris(is_stream || prob(10), is_stream ? zone.direction : course)
+			var/interval = is_stream ? rand(35, 70) : rand(60, 110) / clamp(1 + speed / 5, 1, 3)
 			zone_timers[zone] = world.time + interval SECONDS
 		encounter_status = "[zone.name]: опасность столкновения с обломками"
 	encounter_x = pos_x
@@ -173,6 +174,8 @@
 	else if(isobj(plate))
 		var/obj/barrier = plate
 		barrier.take_damage(40, BURN, FIRE)
+	if(plate)
+		stationtrauma_ship_jolt(get_turf(plate), "ОБШИВКА ПЛАВИТСЯ ОТ ЖАРА ЗВЕЗДЫ!", heat > 0.6, FALSE, SFX_HULL_CREAKING)
 
 /** Release a deleted meteor from the encounter-owned set. */
 /datum/stationtrauma_overmap/space/proc/forget_meteor(datum/source)
@@ -191,7 +194,7 @@
 	var/dy = cos(rotation)
 	var/reach = max(vessel.width, vessel.height) / 2 + 10
 	// Aim across the narrow side of the hull and a little beyond, so most fragments strike it but some pass by.
-	var/spread = round(min(vessel.width, vessel.height) / 2) + 4
+	var/spread = round(min(vessel.width, vessel.height) / 3)
 	var/offset = rand(-spread, spread)
 	var/turf/start = locate(cx + round(dx * reach - dy * offset), cy + round(dy * reach + dx * offset), vessel.z)
 	var/turf/goal = locate(cx - round(dx * reach + dy * offset), cy - round(dy * reach - dx * offset), vessel.z)
@@ -209,7 +212,8 @@
 /obj/effect/meteor/stationtrauma
 	name = "обломок астероида"
 	hits = 1
-	hitpwr = EXPLODE_HEAVY
+	// tears straight through the plating: a breach to patch
+	hitpwr = EXPLODE_DEVASTATE
 	// Long enough to cross the widest hull from its launch point; it dies on the first hit anyway.
 	lifetime = 5 SECONDS
 	dropamt = 1
@@ -250,3 +254,29 @@
 		var/along = (dx || dy) ? clamp(((zone.pos_x - ax) * dx + (zone.pos_y - ay) * dy) / (dx ** 2 + dy ** 2), 0, 1) : 0
 		if(sqrt((ax + dx * along - zone.pos_x) ** 2 + (ay + dy * along - zone.pos_y) ** 2) < reach)
 			return FALSE
+
+// The fragment bursts on the space tile before the plating it rams, outside the hull: the jolt goes to the hull it struck.
+/obj/effect/meteor/stationtrauma/Bump(atom/struck)
+	stationtrauma_ship_jolt(get_turf(struck), "МЕТЕОРИТ ПРОБИЛ ОБШИВКУ!", TRUE)
+	return ..()
+
+/obj/effect/meteor/sand/stationtrauma/Bump(atom/struck)
+	stationtrauma_ship_jolt(get_turf(struck), "УДАР ОБЛОМКА ПО КОРПУСУ!", FALSE)
+	return ..()
+
+/**
+ * A hit on a hull at [impact], felt at once all over the ship: the deck shakes to [impact_sound], the crew reads [message],
+ * and with [knockdown] everyone standing and unbuckled goes off their feet. A [heavy] hit shakes harder and floors longer.
+ */
+/proc/stationtrauma_ship_jolt(turf/impact, message, heavy, knockdown = TRUE, impact_sound = 'sound/effects/meteorimpact.ogg')
+	var/obj/docking_port/mobile/ship = impact && SSshuttle.get_containing_shuttle(impact)
+	if(!ship)
+		return
+	for(var/mob/living/crew in GLOB.player_list)
+		if(!ship.is_in_shuttle_bounds(crew))
+			continue
+		shake_camera(crew, heavy ? 2 SECONDS : 1 SECONDS, heavy ? 4 : 2)
+		crew.playsound_local(get_turf(crew), impact_sound, heavy ? 100 : 75, TRUE, pressure_affected = FALSE)
+		to_chat(crew, span_userdanger(message))
+		if(knockdown && !crew.buckled && crew.body_position == STANDING_UP)
+			crew.Knockdown(heavy ? 2 SECONDS : 1 SECONDS)
