@@ -353,6 +353,7 @@ export function Chart({
             transform={`translate(${point(data.star.x, data.star.y).x} ${point(data.star.x, data.star.y).y})`}
             className="SpaceNavigation__map-feature"
           >
+            {data.star.name && <title>{data.star.name}</title>}
             <circle
               r={data.star.radius * 1.8}
               fill="transparent"
@@ -404,7 +405,9 @@ export function Chart({
         )}
         {data.routes.map((site, siteIndex) => {
           const p = point(site.x, site.y);
-          const selected = focusedContact === null && site.id === data.selected;
+          const selected =
+            focusedContact === null &&
+            site.id === (data.inspected || data.selected);
           return (
             <g
               key={site.id}

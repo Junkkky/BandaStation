@@ -166,8 +166,9 @@
 	TEST_ASSERT_EQUAL(remembered_position[1], 12, "A hosted destination must use its last observed easting")
 	TEST_ASSERT_EQUAL(remembered_position[2], 16, "A hosted destination must use its last observed northing")
 	TEST_ASSERT_EQUAL(navigation.distance_to(site), 20, "Distance must not disclose unobserved live carrier movement")
+	var/course_before = navigation.ordered_course
 	TEST_ASSERT(navigation.select_site(site.docking_target.id), "A remembered live contact must remain selectable")
-	TEST_ASSERT_EQUAL(navigation.ordered_course, delta_to_angle(12, 16), "Selection must aim at the recorded contact instead of the live carrier position")
+	TEST_ASSERT_EQUAL(navigation.ordered_course, course_before, "Selecting a destination must not turn the helm; only the autopilot or the pilot does")
 	var/obj/machinery/computer/stationtrauma_space_navigation/helm = allocate(/obj/machinery/computer/stationtrauma_space_navigation, get_turf(ship))
 	helm.vessel = ship
 	var/list/helm_data = helm.ui_data(null)

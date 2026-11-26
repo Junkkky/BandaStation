@@ -3,6 +3,7 @@
 /** Scorched world of an old war: unbreathable air, radioactive craters and the ruins of its towns. */
 /datum/stationtrauma_overmap_site/space/planet/dead
 	name = "Мёртвая экзопланета"
+	orbit_look = "Тусклый серый мир без облаков и признаков жизни."
 	generator_type = /datum/map_generator/expedition_barren/dead
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/dead
 	biome = "Выжженные равнины, ржавые свалки и радиоактивные воронки"

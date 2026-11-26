@@ -4,6 +4,7 @@
 /** Temperate breathable surface profile populated with jungle flora and wildlife. */
 /datum/stationtrauma_overmap_site/space/planet/lush
 	name = "Экзопланета с джунглями"
+	orbit_look = "Сплошная яркая зелень джунглей под густыми влажными облаками."
 	generator_type = /datum/map_generator/expedition_barren/lush
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/lush
 	biome = "Густые джунгли, топкие низины и озёра"

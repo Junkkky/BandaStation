@@ -72,4 +72,5 @@
 /datum/stationtrauma_overmap/space/on_collision(datum/stationtrauma_overmap_terrain/obstacle, impact_speed)
 	var/list/nearest = obstacle.nearest(pos_x, pos_y)
 	// A full-speed impact (5 sector units/s) reaches the severe, repairable hull tear tier.
-	stationtrauma_hull_hit(vessel, course, nearest[1] - pos_x, nearest[2] - pos_y, SHIP_HIT_IMPACT, impact_speed * 12)
+	var/atom/struck = stationtrauma_hull_hit(vessel, course, nearest[1] - pos_x, nearest[2] - pos_y, SHIP_HIT_IMPACT, impact_speed * 12)
+	stationtrauma_ship_jolt(get_turf(struck) || get_turf(vessel), "СТОЛКНОВЕНИЕ С АСТЕРОИДОМ!", impact_speed >= 1)

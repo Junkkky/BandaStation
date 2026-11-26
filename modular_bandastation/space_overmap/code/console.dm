@@ -9,6 +9,8 @@
 	circuit = /obj/item/circuitboard/computer/stationtrauma_space_navigation
 	/// Physical hull controlled by this navigation instance or console.
 	var/obj/docking_port/mobile/stationtrauma_space/vessel
+	/// Site looked up on the chart while the autopilot flies elsewhere; the autopilot takes it as its destination when engaged again
+	var/inspected_site
 
 /** Circuit board kept when the helm console is dismantled or wrecked. */
 /obj/item/circuitboard/computer/stationtrauma_space_navigation
@@ -189,6 +191,8 @@
 				"ascent_orbit" = liftoff ? (liftoff + ST_PLANET_ASCENT_ORBIT - map.approach_started) / (1 SECONDS) : null,
 			)
 	// A planet is unknown ground until this ship's probes have covered it; its pads appear once it is mapped.
+	data["planet"] = null
+	data["planet_look"] = null
 	var/datum/stationtrauma_overmap_site/space/planet/planet = target
 	if(istype(planet))
 		var/datum/stationtrauma_planet_survey/survey = map.planet_survey(planet)
@@ -199,10 +203,17 @@
 			"failed" = !!planet.failed,
 			"pads" = map.landing_pad_data(planet),
 		)
-		// as much as this ship's probes have read
+	// the scanner reads out the site looked up, else the destination; fields are sent even empty, as one left out would keep the last site's
+	var/datum/stationtrauma_overmap_site/space/inspected = inspected_site && map.autopilot ? map.sites[inspected_site] : null
+	if(inspected && !map.knows_site(inspected))
+		inspected = null
+	data["inspected"] = inspected?.docking_target?.id || inspected?.id
+	var/datum/stationtrauma_overmap_site/space/planet/read_planet = inspected || target
+	if(istype(read_planet))
+		var/datum/stationtrauma_planet_survey/survey = map.planet_survey(read_planet)
 		var/list/facts = survey?.facts()
-		if(length(facts))
-			data["planet"] = facts
+		data["planet"] = length(facts) ? facts : null
+		data["planet_look"] = read_planet.orbit_look
 	data["jump_progress"] = map.jump_progress()
 	return data
 
@@ -267,6 +278,13 @@
 			var/datum/stationtrauma_overmap_site/space/site = map.sites[value]
 			if(!istype(site, /datum/stationtrauma_overmap_site/space/docking_target) && map.station_clearance_required(site))
 				return FALSE
+			// looking a site up must not throw the autopilot off its course: the next autopilot order takes it as the destination
+			if(map.autopilot && value != map.selected_destination)
+				if(!map.knows_site(site))
+					return FALSE
+				inspected_site = value
+				return TRUE
+			inspected_site = null
 			return map.select_site(value)
 		if("turn", "throttle")
 			var/number = value
@@ -284,6 +302,11 @@
 		if("autopilot")
 			if(map.preparing || map.ship_docking || map.planning || map.throttle <= 0 || map.docked?.id == map.selected_destination || map.docked?.docking_target?.id == map.selected_destination || map.docked?.pad_parent?.id == map.selected_destination)
 				return FALSE
+			if(inspected_site)
+				var/next = inspected_site
+				inspected_site = null
+				if(!map.select_site(next))
+					return FALSE
 			INVOKE_ASYNC(map, TYPE_PROC_REF(/datum/stationtrauma_overmap, engage_autopilot))
 		if("dock")
 			if(!isnull(value) && (!istext(value) || value != map.selected_destination))

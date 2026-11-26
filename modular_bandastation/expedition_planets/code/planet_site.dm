@@ -26,6 +26,8 @@
 	var/generator_type = /datum/map_generator/expedition_barren
 	/// Native-size orbital artwork for this environment profile.
 	var/parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet
+	/// What anyone sees of the planet from orbit, before any survey
+	var/orbit_look = "Серый безжизненный шар в оспинах кратеров."
 	/// Crew-facing summary of the surface environment.
 	var/biome = "Безжизненные равнины, базальтовые поля и рудные горы"
 	/// Crew-facing gas and pressure summary, rolled when charted.

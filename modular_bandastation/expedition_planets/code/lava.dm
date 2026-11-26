@@ -6,6 +6,7 @@
 /** Hot oxygen-free volcanic surface profile with basalt plains, ash scrub and lava lakes. */
 /datum/stationtrauma_overmap_site/space/planet/lava
 	name = "Вулканическая экзопланета"
+	orbit_look = "Чёрная корка в багровых трещинах лавы, затянутая дымом."
 	generator_type = /datum/map_generator/expedition_barren/lava
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/lava
 	biome = "Базальтовые поля, пепельные заросли, лавовые озёра и скальные лабиринты"

@@ -163,6 +163,10 @@ export type NavigationData = Position & {
     | { id: number; kind: 'ship' | 'shield'; contact: number | null }
     | (Position & { id: number; kind: 'terrain' })
   )[];
+  /** What the selected planet shows to the eye from orbit, before any survey */
+  planet_look?: string | null;
+  /** Site looked up on the chart while the autopilot flies to the selected one */
+  inspected?: string | null;
   /** What the survey has read of the selected planet; a field is missing until enough of the planet is covered */
   planet?: {
     biome?: string;
@@ -219,6 +223,7 @@ export type ChartData = Pick<
   | 'preparing'
   | 'relocating'
   | 'routes'
+  | 'inspected'
   | 'path'
   | 'zones'
   | 'terrain'
