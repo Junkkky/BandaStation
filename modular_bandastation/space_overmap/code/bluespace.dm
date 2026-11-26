@@ -7,6 +7,8 @@
 	var/jump_phase = NONE
 	/// Owned stoppable timers for intermediate hyperspace effects.
 	var/list/jump_effect_timers = list()
+	/// Sound channel the bluespace ambience plays on aboard, from the drive's start until the jump ends; null otherwise
+	var/bluespace_ambience_channel
 
 /** Only charted links between resident sectors can be used; a physical dock must first be released. */
 /datum/stationtrauma_overmap/space/proc/can_jump(id)
@@ -41,6 +43,7 @@
 	preparing = TRUE
 	jump_target = id
 	set_jump_phase(HYPERSPACE_WARMUP, id, control_revision)
+	start_bluespace_ambience()
 	jump_effect_timers += addtimer(CALLBACK(src, PROC_REF(set_jump_phase), HYPERSPACE_LAUNCH, id, control_revision), ST_SPACE_JUMP_WARMUP, TIMER_STOPPABLE)
 	jump_effect_timers += addtimer(CALLBACK(src, PROC_REF(set_jump_phase), HYPERSPACE_END, id, control_revision), ST_SPACE_JUMP_TIME - HYPERSPACE_END_TIME, TIMER_STOPPABLE)
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(finish_jump), id, control_revision), ST_SPACE_JUMP_TIME, TIMER_STOPPABLE)
@@ -63,8 +66,29 @@
 	sync_carrier()
 	return TRUE
 
+/** The bluespace ambience starts with the drive, for everyone aboard, and loops until the jump ends */
+/datum/stationtrauma_overmap/space/proc/start_bluespace_ambience()
+	if(bluespace_ambience_channel)
+		return
+	bluespace_ambience_channel = SSsounds.reserve_sound_channel_for_datum(src)
+	var/sound/ambience = sound('modular_bandastation/space_overmap/sound/bluespace_ambience.ogg', repeat = TRUE, channel = bluespace_ambience_channel, volume = 40)
+	for(var/mob/crew as anything in SSmobs.clients_by_zlevel[vessel.z])
+		if(vessel.is_in_shuttle_bounds(crew))
+			SEND_SOUND(crew, ambience)
+
+/datum/stationtrauma_overmap/space/proc/stop_bluespace_ambience()
+	if(!bluespace_ambience_channel)
+		return
+	// whoever has walked off the hull meanwhile still hears it, so the silence goes to everyone
+	var/sound/silence = sound(null, channel = bluespace_ambience_channel)
+	for(var/mob/listener as anything in GLOB.player_list)
+		SEND_SOUND(listener, silence)
+	SSsounds.free_sound_channel(bluespace_ambience_channel)
+	bluespace_ambience_channel = null
+
 /** Cancel owned jump timers and restore the current hull visual state. */
 /datum/stationtrauma_overmap/space/proc/cancel_jump()
+	stop_bluespace_ambience()
 	if(jump_timer)
 		deltimer(jump_timer)
 		jump_timer = null
