@@ -32,6 +32,7 @@
 	name = JOB_EXPEDITION_PILOT
 	jobtype = /datum/job/explorer/pilot
 	uniform = /obj/item/clothing/under/expedition/corps/pilot
+	ear_right = /obj/item/radio/headset/headset_cargo/explorer/pilot
 	id_trim = /datum/id_trim/job/explorer/pilot
 	suit = /obj/item/clothing/suit/jacket/expedition/pilot
 
