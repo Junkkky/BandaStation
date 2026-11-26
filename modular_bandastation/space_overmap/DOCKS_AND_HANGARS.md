@@ -63,7 +63,7 @@
 | Площадка | Контроллер и геометрия исходной карты |
 | --- | --- |
 | Грузовой S №2, `cyberiad_cargo_s_dock_2` | [Cyberiad Overmap](../../_maps/map_files/CyberiadOvermap/CyberiadOvermap.dmm). Контроллер `(60,116,1)`, `WEST`, `row_offset = 10`. Угол `(70,106,1)`. |
-| Станционный M, `cyberiad` | [Cyberiad Overmap](../../_maps/map_files/CyberiadOvermap/CyberiadOvermap.dmm). Контроллер `(49,121,2)`, `WEST`. Угол `(49,99,2)`. Его `site_id` совпадает с `space_overmap.station_id` в профиле карты. |
+| Станционный M, `cyberiad` | [Cyberiad Overmap](../../_maps/map_files/CyberiadOvermap/CyberiadOvermap.dmm). Контроллер `(47,121,2)`, `WEST`. Угол `(47,99,2)`. Его `site_id` совпадает с `space_overmap.station_id` в профиле карты. |
 | M на носителе, `trurl_m1` | [«Трурль»](../../_maps/map_files/overmap_ships/trurl.dmm). Контроллер `(87,110,1)`, `SOUTH`. Угол `(109,110,1)`. |
 
 При загрузке шаблона координаты и Z могут сместиться. Для стартового гостя задайте на его mobile-порту `starting_dock`, равный `site_id` контроллера. На носителе принадлежность причала определяет область под контроллером. [Причалы носителей](CARRIERS.md)

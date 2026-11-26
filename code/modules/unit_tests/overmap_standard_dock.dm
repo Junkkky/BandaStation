@@ -1023,7 +1023,7 @@
 	TEST_ASSERT(istype(berth), "Cyberiad's station ID must resolve to a standard controller-owned berth")
 	var/obj/machinery/computer/stationtrauma_dock_controller/medium/controller = berth.controller_ref?.resolve()
 	TEST_ASSERT(istype(controller) && controller.owned_slot == berth, "The mapped controller must own the only berth")
-	TEST_ASSERT_EQUAL(berth.x, 49, "The M berth must keep its existing X coordinate")
+	TEST_ASSERT_EQUAL(berth.x, 47, "The M berth must start west of the arrivals balcony")
 	TEST_ASSERT_EQUAL(berth.y, 99, "The M berth must keep its existing Y coordinate")
 	TEST_ASSERT_NOTNULL(SSshuttle.getDock("emergency_home"), "The native evacuation port must remain present")
 	var/datum/stationtrauma_overmap_site/space/cargo_site = home.sites["cyberiad_cargo_s_dock_2"]
