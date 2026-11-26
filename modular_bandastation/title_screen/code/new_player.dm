@@ -62,8 +62,7 @@
 			SStitle.title_output(client, FALSE, "toggleReady")
 			return
 
-		var/list/prefs_jobs = client.prefs.job_preferences
-		if(!length(prefs_jobs))
+		if(!length(client.prefs.job_preferences) && !client.prefs.has_away_job_preferences())
 			to_chat(usr, span_boldwarning("Ошибка настроек персонажа. Выберите предпочитаемую должность."))
 			return
 

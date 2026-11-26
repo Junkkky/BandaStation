@@ -203,7 +203,7 @@
 	mob_occupant.ghostize()
 
 	erase_crew_manifest_record(mob_occupant)
-	SSjob.free_job_position(mob_occupant.mind?.assigned_role.title)
+	SSjob.free_job_position(mob_occupant.mind?.assigned_role.title, mob_occupant.mind)
 	QDEL_NULL(mob_occupant)
 
 	open_machine(density_to_set = TRUE)

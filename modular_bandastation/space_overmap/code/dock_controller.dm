@@ -560,7 +560,9 @@
 			return "Стена и коридор причала должны находиться на одном носителе."
 		if(column <= dock_width)
 			if(!stationtrauma_standard_dock_clear_space(tile, host))
-				return "Площадка или полоса трапа перекрыта на ([tile.x], [tile.y])."
+				if(column == dock_width)
+					return "Полоса трапа перекрыта на ([tile.x], [tile.y])."
+				return "Площадка для корпуса перекрыта на ([tile.x], [tile.y])."
 		else if(column == dock_width + 1)
 			var/obj/machinery/door/airlock/stationtrauma_docking/wall/wall = locate() in tile
 			if(!isfloorturf(tile))
@@ -569,8 +571,10 @@
 				return "Восстановите секцию стены на ([tile.x], [tile.y]) монтажным комплектом."
 			if(!wall.anchored || wall.dir != wall_direction || !wall.density || wall.operating || wall.gangway)
 				return "На ([tile.x], [tile.y]) нужна закрытая секция стены, направленная к площадке."
-			if(!wall.hasPower() || tile.is_blocked_turf(exclude_mobs = TRUE, ignore_atoms = list(wall)))
-				return "Секция стены на ([tile.x], [tile.y]) обесточена или перекрыта."
+			if(!wall.hasPower())
+				return "Секция стены на ([tile.x], [tile.y]) обесточена."
+			if(tile.is_blocked_turf(exclude_mobs = TRUE, ignore_atoms = list(wall)))
+				return "Проём секции стены на ([tile.x], [tile.y]) перекрыт."
 		else if(!isfloorturf(tile) || tile.is_blocked_turf(exclude_mobs = TRUE))
 			return "Коридор за стыковочной стеной перекрыт на ([tile.x], [tile.y])."
 	return null
@@ -623,11 +627,17 @@
 		return FALSE
 	return controller.proposed_anchor() == get_turf(src)
 
-/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/prepare_berth(obj/docking_port/mobile/stationtrauma_space/ship)
+/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/prepare_berth(obj/docking_port/mobile/stationtrauma_space/ship, list/diagnostic)
 	if(!accepts(ship) || active_berth)
+		if(diagnostic)
+			diagnostic["reason"] = "причал недоступен или занят"
 		return null
-	if(!configured && stationtrauma_standard_dock_problem(get_turf(src), dir, width, height, src))
-		return null
+	if(!configured)
+		var/problem = stationtrauma_standard_dock_problem(get_turf(src), dir, width, height, src)
+		if(problem)
+			if(diagnostic)
+				diagnostic["reason"] = problem
+			return null
 	return ..()
 
 /obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/clear_berth()

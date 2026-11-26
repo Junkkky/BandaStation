@@ -19,15 +19,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white/smooth_large,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun)
-"an" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 9
-	},
-/obj/structure/chair/sofa{
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun)
 "ao" = (
 /obj/structure/hoop{
 	dir = 1
@@ -1706,6 +1697,16 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
+"iG" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 2
+	},
+/obj/item/bedsheet/medical{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun)
 "iH" = (
 /obj/effect/turf_decal/trimline/dark/filled/line{
 	dir = 1
@@ -2013,6 +2014,16 @@
 	},
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/exterior)
+"jQ" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
+	},
+/obj/item/ammo_casing/spent,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/dark_red,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
 "jS" = (
 /obj/effect/turf_decal/trimline/dark/filled/line{
 	dir = 1
@@ -2139,17 +2150,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/warehouse)
-"kq" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 8
-	},
-/obj/machinery/airalarm/directional/west,
-/obj/structure/chair/sofa{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/blue/line,
-/turf/open/floor/iron/white,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun)
 "kv" = (
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
@@ -2401,16 +2401,6 @@
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun)
-"lC" = (
-/obj/structure/chair/sofa{
-	dir = 1
-	},
-/obj/item/ammo_casing/spent,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/siding/dark_red,
-/turf/open/floor/carpet/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
 "lD" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/blood/old,
@@ -2906,16 +2896,6 @@
 /obj/effect/mapping_helpers/airlock/welded,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
-"oc" = (
-/obj/structure/chair/sofa{
-	dir = 8
-	},
-/obj/machinery/light/directional/east,
-/obj/effect/turf_decal/siding/dark_red{
-	dir = 6
-	},
-/turf/open/floor/carpet/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
 "od" = (
 /obj/effect/turf_decal/trimline/dark/filled/line,
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
@@ -2959,6 +2939,15 @@
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun)
+"ok" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/obj/structure/chair/sofa/corp/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun)
 "om" = (
 /obj/machinery/light/dim/directional/west,
@@ -5345,6 +5334,16 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun)
+"zT" = (
+/obj/structure/chair/sofa/corp{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
 "zV" = (
 /obj/effect/turf_decal/trimline/dark_red/arrow_cw{
 	dir = 1
@@ -5634,16 +5633,6 @@
 /obj/structure/cable,
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/exterior)
-"Bk" = (
-/obj/structure/chair/sofa{
-	dir = 2
-	},
-/obj/item/bedsheet/medical{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/turf/open/floor/iron/white,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun)
 "Bm" = (
 /obj/effect/turf_decal/syndicateemblem/bottom/left{
 	dir = 8
@@ -5668,6 +5657,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/warehouse)
+"Bp" = (
+/obj/structure/chair/sofa/corp{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/dark_red,
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
 "Bq" = (
 /obj/effect/decal/cleanable/blood/footprints{
 	dir = 4
@@ -7829,15 +7826,6 @@
 	},
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/exterior)
-"Lh" = (
-/obj/structure/chair/sofa{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/dark_red{
-	dir = 5
-	},
-/turf/open/floor/carpet/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
 "Lj" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
@@ -8424,14 +8412,6 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/template_noop,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/exterior)
-"NJ" = (
-/obj/structure/chair/sofa{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/siding/dark_red,
-/turf/open/floor/carpet/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
 "NL" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/structure/curtain/cloth,
@@ -8667,6 +8647,17 @@
 /obj/effect/decal/cleanable/garbage,
 /turf/open/floor/plating/rust,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/exterior)
+"OR" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/obj/machinery/airalarm/directional/west,
+/obj/structure/chair/sofa/corp/right{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/line,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun)
 "OT" = (
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/trimline/dark/filled/line{
@@ -8871,16 +8862,6 @@
 /obj/effect/turf_decal/sand,
 /turf/open/floor/concrete/pavement,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/exterior)
-"PP" = (
-/obj/structure/chair/sofa{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/dark_red{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood/gibs/old,
-/turf/open/floor/carpet/red,
-/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
 "PR" = (
 /obj/structure/cable,
 /obj/structure/barricade/sandbags,
@@ -9212,6 +9193,15 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/cybersun)
+"Rz" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 5
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
 "RA" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer2{
@@ -10124,6 +10114,16 @@
 	},
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/TURRETS)
+"Wf" = (
+/obj/structure/chair/sofa/corp/corner{
+	dir = 8
+	},
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 6
+	},
+/turf/open/floor/carpet/red,
+/area/ruin/space/has_grav/expedition_content/exp_celadon_waste_icwbase/ruin/wasteplanet/wasteplanet_icwbase/hab)
 "Wh" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/basic/trooper/pirate/ranged,
@@ -12639,8 +12639,8 @@ yP
 Lx
 zd
 gN
-an
-kq
+ok
+OR
 dU
 Sb
 gN
@@ -12700,7 +12700,7 @@ Si
 Db
 nC
 gN
-Bk
+iG
 zS
 Fh
 Jd
@@ -13881,7 +13881,7 @@ Lt
 QP
 bt
 JQ
-lC
+jQ
 xs
 Pl
 yU
@@ -13942,7 +13942,7 @@ Lt
 QP
 UU
 vj
-NJ
+Bp
 Xq
 QD
 Wx
@@ -14001,9 +14001,9 @@ QP
 TZ
 Lt
 QP
-Lh
-PP
-oc
+Rz
+zT
+Wf
 FG
 My
 Qk

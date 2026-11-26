@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type KeyboardEvent, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Button, Floating, Section, Stack, Tabs } from 'tgui-core/components';
 import { exhaustiveCheck } from 'tgui-core/exhaustive';
@@ -6,6 +6,7 @@ import { exhaustiveCheck } from 'tgui-core/exhaustive';
 import { PageButton } from '../components/PageButton';
 import type { PreferencesMenuData } from '../types';
 import { AntagsPage } from './AntagsPage';
+import { AwayMissionsPage } from './AwayMissionsPage';
 import { BackgroundPage } from './BackgroundPage'; // BANDASTATION ADDITION - Sierra background
 import { JobsPage, PremiumJobsPage } from './JobsPage';
 import { LoadoutPage } from './loadout';
@@ -24,7 +25,13 @@ enum Page {
   Voice,
   Background, // BANDASTATION ADDITION - Sierra background
   PremiumJobs,
+  AwayMissions,
 }
+
+const jobPages = [
+  [Page.Jobs, 'На станции', 'building'],
+  [Page.AwayMissions, 'Вне станции', 'rocket'],
+] as const;
 
 type ProfileProps = {
   activeSlot: number;
@@ -69,7 +76,56 @@ export function CharacterPreferenceWindow(props) {
       break;
 
     case Page.Jobs:
-      pageContents = <JobsPage />;
+    case Page.AwayMissions:
+      if (!data.away_missions?.length) {
+        pageContents = <JobsPage />;
+        break;
+      }
+
+      pageContents = (
+        <Stack fill vertical>
+          <Stack.Item>
+            <nav aria-label="Разделы должностей">
+              <Tabs className="PreferencesMenu__JobTabs">
+                {jobPages.map(([page, title, icon]) => {
+                  const selected = currentPage === page;
+                  const openPage = () => setCurrentPage(page);
+                  const accessibility = {
+                    role: 'button',
+                    tabIndex: 0,
+                    'aria-label': title,
+                    'aria-pressed': selected,
+                    onKeyDown: (event: KeyboardEvent<HTMLDivElement>) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        openPage();
+                      }
+                    },
+                  };
+                  return (
+                    <Tabs.Tab
+                      key={page}
+                      selected={selected}
+                      icon={icon}
+                      onClick={openPage}
+                      {...accessibility}
+                    >
+                      {title}
+                    </Tabs.Tab>
+                  );
+                })}
+              </Tabs>
+            </nav>
+          </Stack.Item>
+          <Stack.Item grow>
+            {currentPage === Page.AwayMissions ? (
+              <AwayMissionsPage />
+            ) : (
+              <JobsPage />
+            )}
+          </Stack.Item>
+        </Stack>
+      );
       break;
 
     case Page.PremiumJobs:
@@ -174,6 +230,7 @@ export function CharacterPreferenceWindow(props) {
               icon="user-astronaut"
               currentPage={currentPage}
               page={Page.Jobs}
+              otherActivePages={[Page.AwayMissions]}
               setPage={setCurrentPage}
             >
               Должности

@@ -61,6 +61,8 @@
 	. = ..()
 	if(!port)
 		return FALSE
+	if(connected_ship == port)
+		return
 	connected_ship = port
 	connected_ship.engine_list += src
 	if(mapload)

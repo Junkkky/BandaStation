@@ -6,6 +6,7 @@
 /** Hot oxygen-free volcanic surface profile with basalt plains, ash scrub and lava lakes. */
 /datum/stationtrauma_overmap_site/space/planet/lava
 	name = "Вулканическая экзопланета"
+	orbit_look = "Чёрная корка в багровых трещинах лавы, затянутая дымом."
 	generator_type = /datum/map_generator/expedition_barren/lava
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/lava
 	biome = "Базальтовые поля, пепельные заросли, лавовые озёра и скальные лабиринты"
@@ -61,21 +62,15 @@
 		/obj/item/stack/ore/iron = 100,
 	)
 
-/datum/stationtrauma_overmap_site/space/planet/lava/load_ruins(list/placements, turf/origin, area/surface, datum/stationtrauma_work_budget/budget)
+/datum/stationtrauma_overmap_site/space/planet/lava/load_ruin(datum/map_template/ruin/expedition/template, turf/bottom, area/surface, datum/map_generator/expedition_barren/builder)
 	. = ..()
-	if(!.)
+	if(!. || !istype(template, /datum/map_template/ruin/expedition/sierra_excavation_site))
 		return
-	for(var/list/placement as anything in placements)
-		var/datum/map_template/ruin/expedition/sierra_excavation_site/excavation = placement[1]
-		if(!istype(excavation))
-			continue
-		var/turf/corner = locate(origin.x + placement[2] - 1, origin.y + placement[3] - 1, origin.z)
-		for(var/turf/tile as anything in excavation.get_affected_turfs(corner))
-			var/obj/structure/stationtrauma_research_source/mineral/expedition_fossil/fossil = locate() in tile
-			if(fossil)
-				fossil.AddComponent(/datum/component/gps, "Старые раскопки")
-				return
-		break
+	for(var/turf/tile as anything in template.get_affected_turfs(bottom))
+		var/obj/structure/stationtrauma_research_source/mineral/expedition_fossil/fossil = locate() in tile
+		if(fossil)
+			fossil.AddComponent(/datum/component/gps, "Старые раскопки")
+			return
 
 /** Basalt ground carrying the volcanic profile atmosphere. */
 /turf/open/misc/asteroid/basalt/expedition_volcanic

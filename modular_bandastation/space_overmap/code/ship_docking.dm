@@ -1,5 +1,5 @@
 /datum/stationtrauma_overmap/space
-	/// Shared voluntary docking link; null outside a reserved or connected pair.
+	/// Shared docking link. A hostile approach uses a separate reservation until capture.
 	var/datum/stationtrauma_ship_docking/ship_docking
 	/// Weak sender reference for an incoming voluntary docking request.
 	var/datum/weakref/docking_request
@@ -13,8 +13,8 @@
 	COOLDOWN_DECLARE(ship_docking_request_cooldown)
 
 /** Whether this free hull may reserve or accept a voluntary ship connection. */
-/datum/stationtrauma_overmap/space/proc/available_for_ship_docking()
-	return !QDELETED(src) && is_operational() && !vessel.orbital_only && sector?.ships[vessel.shuttle_id] == src && !preparing && !planning && !relocating && !arrival_pending && !docked && !ship_docking && !connection.active && vessel.z == flight_berth.z
+/datum/stationtrauma_overmap/space/proc/available_for_ship_docking(datum/stationtrauma_boarding_attempt/allowed_boarding)
+	return !QDELETED(src) && is_operational() && !vessel.orbital_only && sector?.ships[vessel.shuttle_id] == src && !preparing && (allowed_boarding || !planning) && !relocating && !arrival_pending && !docked && !ship_docking && boarding_attempt == allowed_boarding && !connection.active && vessel.z == flight_berth.z
 
 /** Check two available hulls for common sector, proximity and low relative speed. */
 /datum/stationtrauma_overmap/space/proc/can_join_ship(datum/stationtrauma_overmap/space/other)
@@ -148,20 +148,24 @@
 	return list(1, 0)
 
 /**
- * Create a berth on `host`'s level holding one outer hatch of this hull directly against one of the host's, or return null.
+ * Find a berth one gangway tile from the host. Return both hatch turfs and the outward bearing in matched_hatches.
  *
  * The hull may rotate; every moving hull tile must land on the host's open exterior vacuum away from the level border.
- * Both hulls are held by the pair while `budget` yields between candidate placements; relocation rechecks the berth.
+ * Placement can yield between candidates. The caller revalidates the approach and relocation rechecks the berth.
  */
-/datum/stationtrauma_overmap/space/proc/flush_berth(datum/stationtrauma_overmap/space/host, datum/stationtrauma_work_budget/budget)
+/datum/stationtrauma_overmap/space/proc/flush_berth(datum/stationtrauma_overmap/space/host, list/matched_hatches)
 	if(QDELETED(host?.exterior))
 		return null
 	var/list/hull = vessel.return_ordered_turfs(vessel.x, vessel.y, vessel.z, vessel.dir)
-	var/list/guest_hatches = vessel.outer_hatches()
-	var/list/host_hatches = host.vessel.outer_hatches()
+	var/datum/stationtrauma_work_budget/budget = new
+	var/list/guest_hatches = vessel.ship_docking_hatches()
+	var/list/host_hatches = host.vessel.ship_docking_hatches()
 	for(var/turf/host_hatch as anything in host_hatches)
 		var/host_out = host_hatches[host_hatch]
-		var/turf/meeting = get_step(host_hatch, host_out)
+		var/turf/collar_tile = get_step(host_hatch, host_out)
+		if(!isspaceturf(collar_tile) || get_area(collar_tile) != host.exterior || collar_tile.is_blocked_turf())
+			continue
+		var/turf/meeting = get_step(collar_tile, host_out)
 		var/turf/beyond = get_step(meeting, host_out)
 		if(!beyond)
 			continue
@@ -190,7 +194,7 @@
 					if(!vessel.shuttle_areas[get_area(hull[index])])
 						continue
 					var/turf/tile = landing[index]
-					if(!isspaceturf(tile) || get_area(tile) != host.exterior)
+					if(tile == collar_tile || !isspaceturf(tile) || get_area(tile) != host.exterior)
 						clear = FALSE
 						break
 				if(!clear)
@@ -203,21 +207,43 @@
 				berth.dheight = vessel.dheight
 				berth.setDir(facing)
 				if(vessel.check_dock(berth, TRUE))
+					matched_hatches += list(guest_hatch, host_hatch, host_out)
 					return berth
 				qdel(berth, force = TRUE)
 	return null
 
-/** A reserved pair of hulls joined hatch against hatch on the second hull's level, or through one shared seam between their levels. */
+/** Prefer a fitted docking hatch, then a conventional door with an interior floor behind it. */
+/obj/docking_port/mobile/stationtrauma_space/proc/ship_docking_hatches()
+	var/list/fitted = list()
+	var/list/ordinary = list()
+	var/list/hatches = outer_hatches()
+	for(var/turf/tile as anything in hatches)
+		var/obj/machinery/door/airlock/hatch = locate() in tile
+		var/outward = hatches[tile]
+		var/turf/inside = get_step(tile, REVERSE_DIR(outward))
+		if(!isfloorturf(tile) || !isfloorturf(inside) || !hatch?.density || hatch.operating || inside.is_blocked_turf(exclude_mobs = TRUE))
+			continue
+		var/obj/machinery/door/airlock/stationtrauma_docking/ship/port = hatch
+		if(istype(port))
+			if(port.dir == outward && !port.gangway && !port.ship_collar)
+				fitted[tile] = outward
+		else
+			ordinary[tile] = outward
+	return fitted + ordinary
+
+/** Two real hulls coupled on the second vessel’s flight level. */
 /datum/stationtrauma_ship_docking
 	/// First reserved navigation instance; cleared when the pair is destroyed.
 	var/datum/stationtrauma_overmap/space/first
 	/// Second reserved navigation instance; cleared when the pair is destroyed.
 	var/datum/stationtrauma_overmap/space/second
-	/// Physical seam used for traversal between hull and destination; its gates show the far side.
-	var/datum/stationtrauma_map_connection/connection
-	/// Owned temporary berth: the first hull's flush berth on the second's level, or the seam anchor beside the second hull.
+	/// The sealed passage between the two independent hatches.
+	var/datum/stationtrauma_dock_gangway/ship_to_ship/collar
+	var/maneuver_name = "Стыковка"
+	var/arrival_alarm
+	/// Temporary native berth for the first hull on the second hull’s level.
 	var/obj/docking_port/stationary/anchor
-	/// Whether the first hull physically moved beside the second, hatch against hatch, instead of using a remote seam.
+	/// Set once native relocation has committed.
 	var/flush = FALSE
 	/// Physical position captured before yielding connection preparation.
 	var/turf/first_origin
@@ -233,7 +259,6 @@
 /datum/stationtrauma_ship_docking/New(datum/stationtrauma_overmap/space/a, datum/stationtrauma_overmap/space/b)
 	first = a
 	second = b
-	connection = a.connection
 	a.ship_docking = b.ship_docking = src
 	a.stop("Стыковочный манёвр")
 	b.stop("Стыковочный манёвр")
@@ -250,8 +275,7 @@
 	return ..()
 
 /datum/stationtrauma_ship_docking/Destroy()
-	if(!QDELETED(connection))
-		connection.disconnect()
+	QDEL_NULL(collar)
 	for(var/datum/stationtrauma_overmap/space/map as anything in list(first, second))
 		if(!QDELETED(map) && map.ship_docking == src)
 			if(closing && map.approach_departing)
@@ -268,10 +292,9 @@
 		anchor = null
 	first = second = null
 	first_origin = second_origin = null
-	connection = null
 	return ..()
 
-/** Revalidate both reservations, native locations and pilot orders before publishing the prepared seam. */
+/** Revalidate both reservations, native locations and pilot orders before committing the physical rendezvous. */
 /datum/stationtrauma_ship_docking/proc/current()
 	return !closing && !QDELETED(first) && !QDELETED(second) && first.is_operational() && second.is_operational() \
 		&& first.ship_docking == src && second.ship_docking == src && first.sector == second.sector \
@@ -287,61 +310,85 @@
 			return FALSE
 	return TRUE
 
-/**
- * Join the reserved hulls after the mooring manoeuvre, rechecking both.
- *
- * The first hull moves beside the second, outer hatch against outer hatch, when such a pairing fits in open space;
- * otherwise a remote seam is built cooperatively.
- */
+/** Bring consenting hulls alongside and deploy the same pressure collar used for boarding. */
 /datum/stationtrauma_ship_docking/proc/connect()
 	first.status = second.status = "Стыковочный манёвр: сближение шлюзов"
 	if(!hold(CALLBACK(src, PROC_REF(current))))
 		if(!QDELETED(src))
 			qdel(src)
 		return FALSE
-	var/ready = FALSE
-	var/datum/stationtrauma_work_budget/budget = new
-	if(current())
-		anchor = first.flush_berth(second, budget)
-		if(QDELETED(src))
-			if(anchor)
-				qdel(anchor, force = TRUE)
-			return FALSE
-		if(anchor && current())
-			flush = first.relocate(anchor)
-			if(QDELETED(src))
-				return FALSE
-			if(flush && !QDELETED(anchor) && first.vessel.get_docked() == anchor)
-				ready = TRUE
-				// A committed native arrival retains the pair even if an engine stop changed the helm order.
-				first_origin = get_turf(first.vessel)
-				first_revision = first.control_revision
-				second_revision = second.control_revision
-			else
-				qdel(anchor, force = TRUE)
-				anchor = null
-	if(!flush && current())
-		var/list/bounds = second.vessel.return_coords()
-		var/horizontal = !!(connection.direction & (EAST|WEST))
-		var/positive = connection.direction == NORTH || connection.direction == EAST
-		var/low = horizontal ? min(bounds[1], bounds[3]) : min(bounds[2], bounds[4])
-		var/high = horizontal ? max(bounds[1], bounds[3]) : max(bounds[2], bounds[4])
-		var/edge = positive ? low - 1 : high + 1
-		var/turf/edge_tile = locate(horizontal ? edge : second.vessel.x, horizontal ? second.vessel.y : edge, second.vessel.z)
-		if(isspaceturf(edge_tile))
-			anchor = new /obj/docking_port/stationary/stationtrauma_space_site(edge_tile)
-			try
-				ready = connection.connect(anchor, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(current)))
-			catch(var/exception/failure)
-				stack_trace("Ship docking connection failed: [failure]")
+	var/list/matched = list()
+	var/obj/docking_port/stationary/berth = first.flush_berth(second, matched)
 	if(QDELETED(src))
+		if(berth)
+			qdel(berth, force = TRUE)
 		return FALSE
-	if(!ready || !current())
+	anchor = berth
+	if(!anchor || !current())
+		first.navigation_notice("Стыковка прервана: не удалось совместить внешние шлюзы.")
+		second.navigation_notice("Стыковка прервана: не удалось совместить внешние шлюзы.")
 		qdel(src)
 		return FALSE
-	first.preparing = second.preparing = FALSE
-	first.status = second.status = flush ? "Корабли состыкованы шлюзами" : "Корабли состыкованы; внешний переход через шлюзы"
+	var/obj/machinery/door/airlock/guest = locate() in matched[1]
+	var/obj/machinery/door/airlock/host = locate() in matched[2]
+	if(!join_hatches(guest, host, matched[3]))
+		return FALSE
 	first.play_maneuver_audio(second.vessel)
+	return TRUE
+
+/datum/stationtrauma_ship_docking/proc/can_join_hatches(obj/machinery/door/airlock/guest, obj/machinery/door/airlock/host, outward)
+	if(!current() || !guest?.density || !host?.density || guest.operating || host.operating || !first.vessel.shuttle_areas[get_area(guest)] || !second.vessel.shuttle_areas[get_area(host)])
+		return FALSE
+	var/turf/gap = get_step(host, outward)
+	var/turf/meeting = get_step(gap, outward)
+	var/list/offset = first.vessel.rotated_offset(get_turf(guest), anchor.dir)
+	return isspaceturf(gap) && get_area(gap) == second.exterior && !gap.is_blocked_turf() && meeting?.z == anchor.z \
+		&& anchor.x + offset[1] == meeting.x && anchor.y + offset[2] == meeting.y
+
+/datum/stationtrauma_ship_docking/proc/join_hatches(obj/machinery/door/airlock/guest, obj/machinery/door/airlock/host, outward)
+	flush = first.relocate(anchor, CALLBACK(src, PROC_REF(can_join_hatches), guest, host, outward))
+	if(QDELETED(src))
+		return
+	if(!flush)
+		first.navigation_notice("[maneuver_name]: место у шлюза занято.")
+		second.navigation_notice("[maneuver_name]: место у шлюза занято.")
+		qdel(src)
+		return
+	collar = new
+	if(!collar.fit(guest, host, outward))
+		QDEL_NULL(collar)
+		// A late obstruction must never leave a relocated ship under two independent helms.
+		if(first.relocate(first.flight_berth))
+			if(!QDELETED(src))
+				first.navigation_notice("[maneuver_name]: трап перекрыт, корабль вернулся на свою стоянку.")
+				second.navigation_notice("[maneuver_name]: трап перекрыт.")
+				qdel(src)
+			return
+		if(QDELETED(src))
+			return
+	first.preparing = second.preparing = FALSE
+	for(var/datum/stationtrauma_overmap/space/ship as anything in list(first, second))
+		if(!collar)
+			ship.status = "Трап перекрыт. Корабли удерживаются рядом. Освободите стоянку и отдайте захваты."
+			ship.navigation_notice(ship.status)
+			continue
+		var/obj/machinery/door/airlock/door = ship == first ? guest : host
+		var/area/room = get_area(door)
+		var/bearing = get_dir(door, collar.floors[1])
+		var/side
+		switch(WRAP(dir2angle(bearing) - dir2angle(ship.vessel.preferred_direction), 0, 360))
+			if(0)
+				side = "нос"
+			if(90)
+				side = "правый борт"
+			if(180)
+				side = "корма"
+			if(270)
+				side = "левый борт"
+		ship.status = "[maneuver_name]: трап закреплён — [side], [room.name], шлюз «[door.name]»."
+		ship.navigation_notice(ship.status, ship == second ? arrival_alarm : null)
+		if(collar.opening_problem)
+			ship.navigation_notice("Давление в переходе небезопасно: [collar.opening_problem].")
 	return TRUE
 
 /**
@@ -351,7 +398,7 @@
  * * instant - Skip casting off, for admin repositioning
  */
 /datum/stationtrauma_ship_docking/proc/release(datum/stationtrauma_overmap/space/departing, instant = FALSE)
-	if(closing || !(departing in list(first, second)) || QDELETED(first) || QDELETED(second) || !(flush || connection.active) || first.preparing || second.preparing || !departing.is_operational() || !departing.vessel.engines_running || departing.engine_fraction() <= 0)
+	if(closing || !(departing in list(first, second)) || QDELETED(first) || QDELETED(second) || !flush || collar?.busy || first.preparing || second.preparing || !departing.is_operational() || !departing.vessel.engines_running || departing.engine_fraction() <= 0)
 		return FALSE
 	closing = TRUE
 	first.preparing = second.preparing = TRUE
@@ -368,25 +415,30 @@
 		first.preparing = second.preparing = FALSE
 		first.status = second.status = "Расстыковка прервана"
 		return FALSE
-	if(flush)
-		// The first hull returns to its own level before either pilot may fly away.
-		if(!first.relocate(first.flight_berth, CALLBACK(src, PROC_REF(commit_release), departing, revision, instant)))
-			if(QDELETED(src))
-				return FALSE
-			closing = FALSE
-			departing.end_approach()
-			first.preparing = second.preparing = FALSE
-			departing.status = "Расстыковка не выполнена: стоянка корабля перекрыта"
-			return FALSE
-	else
-		if(!commit_release(departing, revision, instant))
-			closing = FALSE
-			departing.end_approach()
-			first.preparing = second.preparing = FALSE
-			return FALSE
-		connection.disconnect_cooperatively(new /datum/stationtrauma_work_budget)
+	var/problem = collar?.seal_for_release()
 	if(QDELETED(src))
 		return FALSE
+	if(problem || !first.relocate(first.flight_berth, CALLBACK(src, PROC_REF(commit_release), departing, revision, instant)))
+		if(QDELETED(src))
+			return FALSE
+		if(!problem)
+			if(!releasable(departing, revision))
+				problem = "утрачена тяга или отменён приказ"
+			else if(collar && !collar.clear_for_release())
+				problem = "переход или шлюз занят"
+			else
+				problem = "стоянка корабля перекрыта"
+		closing = FALSE
+		if(collar)
+			collar.busy = FALSE
+		departing.end_approach()
+		first.preparing = second.preparing = FALSE
+		first.status = second.status = "Расстыковка прервана: [problem]."
+		departing.navigation_notice(departing.status)
+		return FALSE
+	if(QDELETED(src))
+		return FALSE
+	QDEL_NULL(collar)
 	var/ready = releasable(departing, revision)
 	if(ready && !instant)
 		ready = departing.departure_flight(revision)
@@ -397,7 +449,7 @@
 
 /** Play the release after preflight revalidation and immediately before the hull moves. */
 /datum/stationtrauma_ship_docking/proc/commit_release(datum/stationtrauma_overmap/space/departing, revision, instant)
-	if(QDELETED(src) || !closing || !releasable(departing, revision))
+	if(QDELETED(src) || !closing || !releasable(departing, revision) || (collar && !collar.clear_for_release()))
 		return FALSE
 	departing.status = "Расстыковка: отдача захватов"
 	if(!instant)

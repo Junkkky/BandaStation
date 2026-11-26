@@ -155,8 +155,8 @@ SUBSYSTEM_DEF(mapping)
 		if(LAZYLEN(FailedZs))
 			CRASH("Ice wilds failed to load!")
 
-	// Pick a random away mission.
-	if(CONFIG_GET(flag/roundstart_away))
+	// Pick a random away mission. An overmap station has no gateway: its crews fly to their destinations instead.
+	if(CONFIG_GET(flag/roundstart_away) && !current_map.space_overmap)
 		createRandomZlevel(prob(CONFIG_GET(number/config_gateway_chance)))
 
 	else if (SSmapping.current_map.load_all_away_missions) // we're likely in a local testing environment, so punch it.

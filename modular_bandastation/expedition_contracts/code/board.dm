@@ -46,7 +46,9 @@ GLOBAL_LIST_EMPTY(expedition_journal_programs)
 		if(!sector.ready || istype(sector, /datum/stationtrauma_overmap_sector/space/home))
 			continue
 		for(var/site_id in sector.sites)
-			. += sector.sites[site_id]
+			// a jump point is a waypoint, never anyone's destination
+			if(!istype(sector.sites[site_id], /datum/stationtrauma_overmap_site/space/jump_point))
+				. += sector.sites[site_id]
 
 /// Offers one new order to the corps. Returns it, or null if no customer has work anywhere.
 /datum/expedition_contract_board/proc/offer()

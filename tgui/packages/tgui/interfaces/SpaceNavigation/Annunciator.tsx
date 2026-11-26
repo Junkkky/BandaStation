@@ -71,10 +71,14 @@ export function Annunciator({ data }: { data: NavigationData }) {
       lit: !!data.jumping,
     },
     {
-      label: 'ЗАПРОС',
-      title: 'Входящий запрос стыковки',
-      tone: 'warn',
-      lit: !!data.docking_request,
+      label: data.boarding ? 'АБОРДАЖ' : 'ЗАПРОС',
+      title: data.boarding?.incoming
+        ? 'Входящая принудительная стыковка'
+        : data.boarding
+          ? 'Начата принудительная стыковка'
+          : 'Входящий запрос стыковки',
+      tone: data.boarding?.incoming ? 'bad' : 'warn',
+      lit: !!(data.boarding || data.docking_request),
     },
     {
       label: 'ОТСЕК',

@@ -60,8 +60,10 @@
 	/// Experience type granted by playing in this job.
 	var/exp_granted_type = ""
 
-	///How much money does this crew member make in a single paycheck? Note that passive paychecks are capped to PAYCHECK_CREW in regular gameplay after roundstart.
+	/// Base pay for one payday. Ordinary passive paychecks are capped to PAYCHECK_CREW.
 	var/paycheck = PAYCHECK_CREW
+	/// Nanotrasen pays this job a fixed rate directly, independent of station budgets and personal pay modifiers.
+	var/externally_funded_paycheck = FALSE
 	///Which department does this paycheck pay from?
 	var/paycheck_department = ACCOUNT_CIV
 
@@ -489,7 +491,7 @@
 
 
 /// Returns an atom where the mob should spawn in.
-/datum/job/proc/get_roundstart_spawn_point()
+/datum/job/proc/get_roundstart_spawn_point(mob/dead/new_player/player)
 	if(random_spawns_possible)
 		if(HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS))
 			return get_latejoin_spawn_point()

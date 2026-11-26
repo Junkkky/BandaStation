@@ -95,25 +95,29 @@ export function StationGlyph() {
   );
 }
 
+const navigationZoomLevels = [0.5, 1, 2, 4] as const;
+
 export function ZoomKnob({
   zoom,
   onChange,
   disabled = false,
+  levels = navigationZoomLevels,
 }: {
   zoom: number;
   onChange: (value: number) => void;
   disabled?: boolean;
+  levels?: readonly [number, number, number, number];
 }) {
-  const levels = [0.5, 1, 2, 4];
   const value = levels.indexOf(zoom);
   return (
     <div className="SpaceNavigation__zoom-hardware">
       <span className="SpaceNavigation__zoom-label">МАСШТАБ</span>
       <div className="SpaceNavigation__zoom-knob">
-        <span className="zoom-mark zoom-mark-0">0.5</span>
-        <span className="zoom-mark zoom-mark-1">1</span>
-        <span className="zoom-mark zoom-mark-2">2</span>
-        <span className="zoom-mark zoom-mark-3">4</span>
+        {levels.map((level, index) => (
+          <span className={`zoom-mark zoom-mark-${index}`} key={level}>
+            {level}
+          </span>
+        ))}
         <div
           className="SpaceNavigation__rotary"
           style={{ transform: `rotate(${-120 + value * 80}deg)` }}
@@ -308,6 +312,30 @@ export function RuinGlyph() {
         fill="none"
         opacity=".4"
       />
+    </g>
+  );
+}
+
+/** A bluespace jump point: a blue eddy of energy round a dark heart */
+export function JumpPointGlyph() {
+  const id = useId().replaceAll(':', '');
+  return (
+    <g className="SpaceNavigation__jump-point" pointerEvents="none">
+      <defs>
+        <radialGradient id={`eddy-${id}`} r="50%">
+          <stop offset="0" stopColor="#04060f" />
+          <stop offset=".35" stopColor="#1d3a9e" />
+          <stop offset=".7" stopColor="#3f73e0" stopOpacity=".75" />
+          <stop offset="1" stopColor="#8fb6ff" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <circle r={14} fill={`url(#eddy-${id})`} />
+      <g className="arms">
+        <path d="M0-3C5-7 12-4 12 3" />
+        <path d="M3 0C7 5 4 12-3 12" />
+        <path d="M0 3C-5 7-12 4-12-3" />
+        <path d="M-3 0C-7-5-4-12 3-12" />
+      </g>
     </g>
   );
 }

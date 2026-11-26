@@ -11,7 +11,11 @@
 	return ispath(terrain, /turf/open) && !ispath(terrain, /turf/open/lava) \
 		&& !ispath(terrain, /turf/open/water) && !ispath(terrain, /turf/open/chasm) && !ispath(terrain, /turf/open/openspace)
 
-/datum/map_generator/expedition_barren/proc/plan_surface(hull_width, hull_height, second_pad)
+/**
+ * Plans the terrain and the landing pads: the first on the largest stretch of dry land, [extra_pads] more on ground
+ * connected to it, spread out where the ground allows so a survey offers a real choice of where to land.
+ */
+/datum/map_generator/expedition_barren/proc/plan_surface(hull_width, hull_height, extra_pads)
 	if(hull_width + 6 > width || hull_height + 6 > width)
 		return FALSE
 	surface_terrain = new /list(width * width)
@@ -58,14 +62,15 @@
 		primary = list(x, y, x + hull_width - 1, y + hull_height - 1)
 	add_landing_clearing(primary)
 	var/list/connected = refresh_surface_routes()
-	if(second_pad)
-		var/list/secondary = find_pad(connected, hull_width, hull_height, primary, round(width / 4))
-		if(!secondary)
-			secondary = find_pad(connected, hull_width, hull_height, primary)
-		if(secondary)
-			add_landing_clearing(secondary)
-			refresh_surface_routes()
-			protect_surface_route(pad_centre(secondary))
+	for(var/count in 1 to extra_pads)
+		var/list/extra = find_pad(connected, hull_width, hull_height, landing_pads, round(width / 4))
+		if(!extra)
+			extra = find_pad(connected, hull_width, hull_height, landing_pads)
+		if(!extra)
+			break
+		add_landing_clearing(extra)
+		connected = refresh_surface_routes()
+		protect_surface_route(pad_centre(extra))
 	return TRUE
 
 /** Flood a natural dry component. The recorded predecessor always leads back to its entry cell. */
@@ -95,8 +100,8 @@
 	surface_routes = new /list(width * width)
 	return flood_surface(pad_centre(landing_pads[1]), surface_routes)
 
-/** Look for sufficient unbroken ground connected to the other landing. */
-/datum/map_generator/expedition_barren/proc/find_pad(list/land, hull_width, hull_height, list/other, minimum_gap = 0)
+/** Look for sufficient unbroken ground connected to the other landings, clear of each of [others] by [minimum_gap]. */
+/datum/map_generator/expedition_barren/proc/find_pad(list/land, hull_width, hull_height, list/others, minimum_gap = 0)
 	for(var/attempt in 1 to 140)
 		budget?.yield()
 		var/cell = pick(land)
@@ -106,9 +111,13 @@
 		var/top = y + hull_height - 1
 		if(x < 4 || y < 4 || right > width - 3 || top > width - 3)
 			continue
-		if(other && (x <= other[3] + 4 && right >= other[1] - 4 && y <= other[4] + 4 && top >= other[2] - 4))
-			continue
-		if(other && max(abs(x - other[1]), abs(y - other[2])) < minimum_gap)
+		var/crowded = FALSE
+		for(var/list/other as anything in others)
+			if((x <= other[3] + 4 && right >= other[1] - 4 && y <= other[4] + 4 && top >= other[2] - 4) \
+				|| max(abs(x - other[1]), abs(y - other[2])) < minimum_gap)
+				crowded = TRUE
+				break
+		if(crowded)
 			continue
 		var/clear = TRUE
 		for(var/ty in y - 1 to top + 1)

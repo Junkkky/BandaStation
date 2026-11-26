@@ -27,12 +27,12 @@
 	for(var/id in current?.jump_routes)
 		var/datum/stationtrauma_overmap_sector/space/target = SSstationtrauma_space_voyage.sectors[id]
 		if(!QDELETED(target) && target.ready)
-			routes += list(list("id" = id, "name" = target.name, "available" = can_jump(id)))
+			routes += list(list("id" = id, "name" = target.name, "available" = jump_ready(id)))
 	return routes
 
 /** Reserve a valid inter-sector jump and start its stoppable hyperspace effect sequence. */
 /datum/stationtrauma_overmap/space/proc/request_jump(id)
-	if(!can_jump(id))
+	if(!jump_ready(id))
 		return FALSE
 	command_course(ordered_course)
 	braking = FALSE
@@ -41,7 +41,8 @@
 	preparing = TRUE
 	jump_target = id
 	set_jump_phase(HYPERSPACE_WARMUP, id, control_revision)
-	jump_effect_timers += addtimer(CALLBACK(src, PROC_REF(set_jump_phase), HYPERSPACE_LAUNCH, id, control_revision), 4 SECONDS, TIMER_STOPPABLE)
+	start_bluespace_ambience()
+	jump_effect_timers += addtimer(CALLBACK(src, PROC_REF(set_jump_phase), HYPERSPACE_LAUNCH, id, control_revision), ST_SPACE_JUMP_WARMUP, TIMER_STOPPABLE)
 	jump_effect_timers += addtimer(CALLBACK(src, PROC_REF(set_jump_phase), HYPERSPACE_END, id, control_revision), ST_SPACE_JUMP_TIME - HYPERSPACE_END_TIME, TIMER_STOPPABLE)
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(finish_jump), id, control_revision), ST_SPACE_JUMP_TIME, TIMER_STOPPABLE)
 	return TRUE
@@ -53,7 +54,7 @@
 	jump_phase = phase
 	vessel.remove_ripples()
 	if(phase != HYPERSPACE_LAUNCH)
-		vessel.create_ripples(flight_berth, phase == HYPERSPACE_WARMUP ? 4 SECONDS : HYPERSPACE_END_TIME)
+		vessel.create_ripples(flight_berth, phase == HYPERSPACE_WARMUP ? ST_SPACE_JUMP_WARMUP : HYPERSPACE_END_TIME)
 	vessel.hyperspace_sound(phase, vessel.shuttle_areas)
 	if(phase != HYPERSPACE_WARMUP)
 		for(var/mob/crew as anything in SSmobs.clients_by_zlevel[vessel.z])
@@ -62,6 +63,24 @@
 	update_parallax()
 	sync_carrier()
 	return TRUE
+
+/**
+ * The bluespace ambience plays once, to its end, for everyone aboard from the drive's start. It goes out as admin music does:
+ * streamed as it is, in stereo, with no position aboard and none of the station's acoustics.
+ */
+/datum/stationtrauma_overmap/space/proc/start_bluespace_ambience()
+	var/sound/ambience = new
+	ambience.file = 'modular_bandastation/space_overmap/sound/bluespace_ambience.ogg'
+	ambience.status = SOUND_STREAM
+	ambience.repeat = FALSE
+	for(var/mob/crew as anything in SSmobs.clients_by_zlevel[vessel.z])
+		if(!vessel.is_in_shuttle_bounds(crew))
+			continue
+		var/preference = crew.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_ambience_volume)
+		if(!preference)
+			continue
+		ambience.volume = 40 * preference / 100
+		SEND_SOUND(crew, ambience)
 
 /** Cancel owned jump timers and restore the current hull visual state. */
 /datum/stationtrauma_overmap/space/proc/cancel_jump()
@@ -93,6 +112,7 @@
 		return FALSE
 	cancel_jump()
 	var/datum/stationtrauma_overmap_sector/space/target = SSstationtrauma_space_voyage.sectors[id]
+	var/list/arrival = target.arrival_point(sector)
 	clear_encounters()
 	if(!transfer_carrier_sector(target))
 		stop("Блюспейс-прыжок не выполнен")
@@ -103,8 +123,8 @@
 	prepared_site = null
 	ship_observations.Cut()
 	last_ping = null
-	pos_x = encounter_x = target.entry_x
-	pos_y = encounter_y = target.entry_y
+	pos_x = encounter_x = arrival ? arrival[1] : target.entry_x
+	pos_y = encounter_y = arrival ? arrival[2] : target.entry_y
 	trip_distance = travelled = 0
 	stop("Блюспейс-переход завершён: [target.name]")
 	sync_carrier()
@@ -196,3 +216,8 @@
 /obj/machinery/stationtrauma_bluespace_drive/proc/spend_charge()
 	charges = max(0, charges - 1)
 	update_appearance(UPDATE_ICON_STATE)
+
+/// How far the current jump has got, 0-1, or null outside one
+/datum/stationtrauma_overmap/space/proc/jump_progress()
+	var/left = jump_timer ? timeleft(jump_timer) : null
+	return isnull(left) ? null : clamp(1 - left / ST_SPACE_JUMP_TIME, 0, 1)

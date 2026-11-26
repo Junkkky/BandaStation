@@ -17,7 +17,8 @@ ADMIN_VERB(stationtrauma_overmap_jump, R_DEBUG, "Overmap - Переместит�
 	var/list/destinations = list()
 	for(var/id in navigation.sites)
 		var/datum/stationtrauma_overmap_site/space/listed_site = navigation.sites[id]
-		if((listed_site.berth || listed_site.awaits_map()) && !listed_site.failed)
+		// jump points have no berth but are flown to all the same
+		if((listed_site.berth || listed_site.awaits_map() || istype(listed_site, /datum/stationtrauma_overmap_site/space/jump_point)) && !listed_site.failed)
 			destinations["[listed_site.name] ([id])"] = id
 	sector = null
 	navigation = null
@@ -44,7 +45,7 @@ ADMIN_VERB(stationtrauma_overmap_jump, R_DEBUG, "Overmap - Переместит�
 
 /** A non-yielding debug effect; the admin verb revalidates permissions after its dialogs and departure. */
 /datum/stationtrauma_overmap/space/proc/debug_reposition(datum/stationtrauma_overmap_site/space/site)
-	if(!is_operational() || preparing || relocating || planning || arrival_pending || docked || ship_docking || QDELETED(site) || sites[site.id] != site || (!site.berth && !site.awaits_map()) || site.failed)
+	if(!is_operational() || preparing || relocating || planning || arrival_pending || docked || ship_docking || QDELETED(site) || sites[site.id] != site || (!site.berth && !site.awaits_map() && !istype(site, /datum/stationtrauma_overmap_site/space/jump_point)) || site.failed)
 		return FALSE
 	stop("Движение остановлено")
 	clear_encounters()

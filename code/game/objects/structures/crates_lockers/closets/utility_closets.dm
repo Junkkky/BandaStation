@@ -73,7 +73,10 @@
 
 /obj/structure/closet/firecloset/PopulateContents()
 	..()
+	populate_fire_supplies()
 
+/// The standard firefighting kit for both floor and wall lockers.
+/obj/structure/closet/proc/populate_fire_supplies()
 	new /obj/item/clothing/suit/utility/fire/firefighter(src)
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/tank/internals/oxygen/red(src)

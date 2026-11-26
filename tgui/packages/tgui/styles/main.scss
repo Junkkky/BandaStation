@@ -50,6 +50,9 @@
 @include meta.load-css('./interfaces/SlotMachine.scss');
 @include meta.load-css('./interfaces/SpacepodStatus.scss'); // BANDASTATION ADDITION: spacepod telemetry
 @include meta.load-css('./interfaces/SpaceNavigation.scss');
+@include meta.load-css('./interfaces/ShipWeapons.scss');
+@include meta.load-css('./interfaces/ShipCombatPower.scss');
+@include meta.load-css('./interfaces/ShipDropPods.scss');
 @include meta.load-css('./interfaces/SpriteAuditor.scss');
 @include meta.load-css('./interfaces/Techweb.scss');
 @include meta.load-css('./interfaces/TicketManager.scss'); // BANDASTATION

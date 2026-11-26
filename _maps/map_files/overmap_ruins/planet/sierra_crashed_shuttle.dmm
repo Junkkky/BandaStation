@@ -31,18 +31,6 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_shuttle/crashed_shuttle/graysontug)
-"eK" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	initialize_directions = 3
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
-	initialize_directions = 3
-	},
-/obj/structure/closet/firecloset{
-	pixel_x = -32
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_shuttle/crashed_shuttle/graysontug)
 "eS" = (
 /obj/effect/spawner/random/engineering/toolbox,
 /turf/template_noop,
@@ -97,7 +85,7 @@
 "kp" = (
 /obj/item/paper{
 	name = "полевой журнал: Обломки грузового челнока";
-	 default_raw_text = "Объект: Обломки грузового челнока. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
+	default_raw_text = "Объект: Обломки грузового челнока. Отмечены следы длительного отсутствия обслуживания. Сохранность груза и оборудования не подтверждена. Перед вскрытием отсеков проверить атмосферу; найденные материалы и носители сохранить вместе с местом обнаружения."
 	},
 /obj/machinery/portable_atmospherics/canister/air{
 	dir = 1
@@ -125,6 +113,16 @@
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_shuttle/crashed_shuttle/graysontug)
+"lT" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	initialize_directions = 3
+	},
+/obj/structure/closet/wall/fire/directional/west,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_shuttle/crashed_shuttle/graysontug)
 "md" = (
@@ -474,6 +472,20 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_shuttle/crashed_shuttle/graysontug)
+"PF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
+	initialize_directions = 3
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
+	initialize_directions = 3
+	},
+/obj/structure/closet/wall/emergency/directional/west,
+/obj/structure/chair/comfy/blue{
+	dir = 4
+	},
+/obj/item/storage/briefcase,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_shuttle/crashed_shuttle/graysontug)
 "PP" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/railing{
@@ -484,22 +496,6 @@
 	initialize_directions = 6
 	},
 /obj/effect/spawner/random/engineering/tool,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_shuttle/crashed_shuttle/graysontug)
-"Rc" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/hidden{
-	initialize_directions = 3
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer4{
-	initialize_directions = 3
-	},
-/obj/structure/closet/emcloset{
-	pixel_x = -32
-	},
-/obj/structure/chair/comfy/blue{
-	dir = 4
-	},
-/obj/item/storage/briefcase,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_shuttle/crashed_shuttle/graysontug)
 "TU" = (
@@ -724,8 +720,8 @@ ZO
 EX
 AA
 XK
-eK
-Rc
+lT
+PF
 Nh
 eT
 vj

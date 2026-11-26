@@ -87,32 +87,49 @@
 		&& min(ship.width, ship.height) <= width && max(ship.width, ship.height) <= height \
 		&& (dir in GLOB.cardinals) && (ship.dir in GLOB.cardinals)
 
-/** Fit a landing on the pad, or fit the most gangways in the first viable orientation. */
-/obj/docking_port/stationary/stationtrauma_space_station/standard/proc/prepare_berth(obj/docking_port/mobile/stationtrauma_space/ship)
+/** Fit the landing or gangways, optionally recording the reason no berth is available. */
+/obj/docking_port/stationary/stationtrauma_space_station/standard/proc/prepare_berth(obj/docking_port/mobile/stationtrauma_space/ship, list/diagnostic)
 	if(active_berth || !accepts(ship))
+		if(diagnostic)
+			diagnostic["reason"] = "причал недоступен или занят"
 		return null
 	ship.initialize_docking_layers()
 	host?.vessel.initialize_docking_layers()
 	var/list/slot = return_turfs()
 	if(length(slot) != width * height)
+		if(diagnostic)
+			diagnostic["reason"] = "разметка причала выходит за пределы площадки"
 		return null
 	if(hangar || open_space)
-		return fit_hangar_berth(ship, slot)
+		var/obj/docking_port/stationary/stationtrauma_space_site/standard/berth = fit_hangar_berth(ship, slot)
+		if(!berth && diagnostic)
+			diagnostic["reason"] = "площадка перекрыта или не вмещает корабль"
+		return berth
 	var/list/rotation = stationtrauma_port_rotation(dir)
 	var/wall_direction = turn(dir, 90)
 	var/toward_wall = REVERSE_DIR(wall_direction)
 	var/wall_column = width + 1
 	var/list/source = ship.return_ordered_turfs(ship.x, ship.y, ship.z, ship.dir)
 	var/list/hatches = list()
+	var/hatch_failure
 	for(var/turf/tile as anything in source)
 		if(!ship.shuttle_areas[get_area(tile)])
 			continue
 		for(var/obj/machinery/door/airlock/stationtrauma_docking/ship/hatch in tile)
-			if(hatch_available(ship, hatch))
+			var/problem = hatch_problem(ship, hatch)
+			if(problem)
+				hatch_failure ||= problem
+			else
 				hatches += hatch
 	if(!length(hatches))
+		if(diagnostic)
+			diagnostic["reason"] = hatch_failure || "на корабле нет стыковочного шлюза"
 		return null
 	var/list/slot_bounds = return_coords()
+	var/fits_bounds = FALSE
+	var/hull_clear = FALSE
+	var/wall_failure
+	var/path_failure
 	for(var/facing in list(ship.dir, REVERSE_DIR(ship.dir), turn(ship.dir, 90), turn(ship.dir, -90)))
 		var/list/offsets = list()
 		for(var/obj/machinery/door/airlock/stationtrauma_docking/ship/hatch as anything in hatches)
@@ -126,9 +143,11 @@
 		for(var/turf/anchor as anything in slot)
 			if(!contains_projection(slot_bounds, ship.return_coords(anchor.x, anchor.y, facing)))
 				continue
+			fits_bounds = TRUE
 			var/list/hull = project_hull(ship, anchor, facing)
 			if(!length(hull))
 				continue
+			hull_clear = TRUE
 			var/list/routes_by_wall = list()
 			var/total_length = 0
 			for(var/obj/machinery/door/airlock/stationtrauma_docking/ship/hatch as anything in offsets)
@@ -137,10 +156,15 @@
 				var/row = (projected_hatch.y - y) * rotation[1] - (projected_hatch.x - x) * rotation[2]
 				var/turf/wall_tile = locate(x + wall_column * rotation[1] - row * rotation[2], y + wall_column * rotation[2] + row * rotation[1], z)
 				var/obj/machinery/door/airlock/stationtrauma_docking/wall/wall = locate() in wall_tile
-				if(!wall_available(wall, wall_direction) || routes_by_wall[wall])
+				var/problem = wall_problem(wall, wall_tile, wall_direction)
+				if(problem)
+					wall_failure ||= problem
+					continue
+				if(routes_by_wall[wall])
 					continue
 				var/list/path = gangway_path(wall, projected_hatch, hull)
 				if(!length(path))
+					path_failure ||= "полоса трапа перекрыта перед секцией ([wall.x], [wall.y])"
 					continue
 				routes_by_wall[wall] = list(hatch, path)
 				total_length += length(path)
@@ -160,6 +184,14 @@
 				route.path = entry[2]
 				berth.routes += route
 			return berth
+	// Report the check reached furthest by a valid candidate, even when other rows fail earlier.
+	if(diagnostic)
+		if(!fits_bounds)
+			diagnostic["reason"] = "корпус не помещается на площадке при развороте шлюзом к стене"
+		else if(!hull_clear)
+			diagnostic["reason"] = "площадка причала перекрыта на пути корпуса"
+		else
+			diagnostic["reason"] = path_failure || wall_failure
 	return null
 
 /** Preserve the incoming heading when possible and land as close to the center of the pad as the hull permits. */
@@ -263,22 +295,49 @@
 			return FALSE
 	return TRUE
 
-/** Check the addressable section and the first station tile behind it. */
-/obj/docking_port/stationary/stationtrauma_space_station/standard/proc/wall_available(obj/machinery/door/airlock/stationtrauma_docking/wall/wall, facing)
-	if(QDELETED(wall) || wall.dir != facing || !wall.density || wall.operating || wall.gangway || !isfloorturf(get_turf(wall)))
-		return FALSE
+/** Describe the first unusable part of the selected dock row. */
+/obj/docking_port/stationary/stationtrauma_space_station/standard/proc/wall_problem(obj/machinery/door/airlock/stationtrauma_docking/wall/wall, turf/tile, facing)
+	if(!tile)
+		return "стыковочная стена выходит за пределы площадки"
+	if(!isfloorturf(tile))
+		return "повреждён пол под секцией стыковочной стены ([tile.x], [tile.y])"
+	if(QDELETED(wall))
+		return "нет секции стыковочной стены на ([tile.x], [tile.y])"
+	if(wall.dir != facing)
+		return "секция стыковочной стены развёрнута неверно ([tile.x], [tile.y])"
+	if(wall.gangway)
+		return "секция стыковочной стены уже соединена с трапом ([tile.x], [tile.y])"
+	if(!wall.density || wall.operating)
+		return "секция стыковочной стены должна быть закрыта ([tile.x], [tile.y])"
 	var/turf/inside = get_step(wall, REVERSE_DIR(facing))
-	return isfloorturf(inside) && !inside.is_blocked_turf(exclude_mobs = TRUE)
+	if(!isfloorturf(inside) || inside.is_blocked_turf(exclude_mobs = TRUE))
+		return "коридор за секцией стыковочной стены перекрыт ([tile.x], [tile.y])"
+	return null
 
-/** A dedicated hatch needs ship floor behind it and an unobstructed exterior. */
-/obj/docking_port/stationary/stationtrauma_space_station/standard/proc/hatch_available(obj/docking_port/mobile/stationtrauma_space/ship, obj/machinery/door/airlock/stationtrauma_docking/ship/hatch)
-	if(QDELETED(hatch) || !(hatch.dir in GLOB.cardinals) || !hatch.density || hatch.operating || hatch.gangway \
-		|| !isfloorturf(get_turf(hatch)) || !ship.is_in_shuttle_bounds(hatch) || !ship.has_docking_layer(get_turf(hatch)))
-		return FALSE
+/** Describe why a ship hatch cannot be used before arrival. */
+/obj/docking_port/stationary/stationtrauma_space_station/standard/proc/hatch_problem(obj/docking_port/mobile/stationtrauma_space/ship, obj/machinery/door/airlock/stationtrauma_docking/ship/hatch)
+	if(QDELETED(hatch))
+		return "корабельный стыковочный шлюз недоступен"
+	var/turf/tile = get_turf(hatch)
+	if(!isfloorturf(tile) || !ship.is_in_shuttle_bounds(hatch) || !ship.has_docking_layer(tile))
+		return "стыковочный шлюз должен стоять на полу в составе корпуса"
+	if(hatch.gangway)
+		return "корабельный стыковочный шлюз уже соединён с трапом"
+	if(!hatch.density || hatch.operating)
+		return "корабельный стыковочный шлюз должен быть закрыт"
+	if(!(hatch.dir in GLOB.cardinals))
+		return "корабельный стыковочный шлюз направлен неверно"
 	var/turf/inside = get_step(hatch, REVERSE_DIR(hatch.dir))
 	var/turf/outside = get_step(hatch, hatch.dir)
-	return isfloorturf(inside) && !inside.is_blocked_turf(exclude_mobs = TRUE) && ship.shuttle_areas[get_area(inside)] \
-		&& !ship.shuttle_areas[get_area(outside)] && stationtrauma_standard_dock_clear_space(outside, ship.overmap?.carrier_host())
+	if(!isfloorturf(inside) || !ship.shuttle_areas[get_area(inside)])
+		return "стыковочный шлюз должен смотреть наружу, а за ним нужен пол корабля"
+	if(inside.is_blocked_turf(exclude_mobs = TRUE))
+		return "проход из корабля к стыковочному шлюзу перекрыт"
+	if(ship.shuttle_areas[get_area(outside)])
+		return "стыковочный шлюз должен выходить за пределы корпуса"
+	if(!stationtrauma_standard_dock_clear_space(outside, ship.overmap?.carrier_host()))
+		return "снаружи корабельного стыковочного шлюза есть препятствие"
+	return null
 
 /** Walk from the wall to the projected hatch, excluding both endpoint turfs. */
 /obj/docking_port/stationary/stationtrauma_space_station/standard/proc/gangway_path(obj/machinery/door/airlock/stationtrauma_docking/wall/wall, turf/projected_hatch, list/hull)
@@ -312,6 +371,8 @@
 	var/obj/docking_port/mobile/stationtrauma_space/ship
 	/// Helm order captured before any part of the approach can yield.
 	var/order_revision
+	/// Failure from the latest native docking validation, read before this reservation is cleared.
+	var/preflight_problem
 	/// Routes chosen for this orientation and anchor.
 	var/list/datum/stationtrauma_dock_route/routes = list()
 	/// Physical corridors owned by this berth after arrival.
@@ -327,46 +388,56 @@
 		ship = null
 	return ..()
 
-/** Recheck every reserved route before native movement commits. */
-/obj/docking_port/stationary/stationtrauma_space_site/standard/proc/route_clear(obj/docking_port/mobile/stationtrauma_space/arriving)
-	if(arriving != ship || QDELETED(slot) || slot.active_berth != src || !slot.accepts(arriving) || (!slot.hangar && !slot.open_space && !length(routes)) \
-		|| width != arriving.width || height != arriving.height || dwidth != arriving.dwidth || dheight != arriving.dheight \
+/** Return the first failing condition of the reserved route before native movement commits. */
+/obj/docking_port/stationary/stationtrauma_space_site/standard/proc/route_problem(obj/docking_port/mobile/stationtrauma_space/arriving)
+	if(arriving != ship || QDELETED(slot) || slot.active_berth != src || !slot.accepts(arriving) || (!slot.hangar && !slot.open_space && !length(routes)))
+		return "причал или разрешённый маршрут стали недоступны"
+	if(width != arriving.width || height != arriving.height || dwidth != arriving.dwidth || dheight != arriving.dheight \
 		|| z != slot.z || !slot.contains_projection(slot.return_coords(), return_coords()))
-		return FALSE
+		return "габариты корпуса или положение причала изменились"
 	var/datum/stationtrauma_overmap/space/navigation = arriving.overmap
 	var/datum/stationtrauma_overmap_site/space/site = navigation?.selected_docking_site()
 	if(QDELETED(site) || site.berth != slot || site.docking_owner != navigation || navigation.control_revision != order_revision || !arriving.permits_docking(site))
-		return FALSE
+		return "условия захода на причал изменились"
 	var/list/hull = slot.project_hull(arriving, get_turf(src), dir)
 	if(!length(hull))
-		return FALSE
+		return "площадка причала перекрыта на пути корпуса"
 	if(slot.hangar || slot.open_space)
-		return TRUE
+		return null
 	var/wall_direction = turn(slot.dir, 90)
 	var/ship_rotation = dir2angle(arriving.dir) - dir2angle(dir)
 	for(var/datum/stationtrauma_dock_route/route as anything in routes)
-		if(!slot.hatch_available(arriving, route.hatch) || !arriving.shuttle_areas[get_area(route.hatch)] \
-			|| !slot.wall_available(route.wall, wall_direction) || turn(route.hatch.dir, ship_rotation) != REVERSE_DIR(wall_direction))
-			return FALSE
+		var/problem = slot.hatch_problem(arriving, route.hatch)
+		if(problem)
+			return problem
+		if(!arriving.shuttle_areas[get_area(route.hatch)] || turn(route.hatch.dir, ship_rotation) != REVERSE_DIR(wall_direction))
+			return "корабельный шлюз изменил положение или направление"
+		var/turf/wall_tile = get_step(route.path[1], REVERSE_DIR(wall_direction))
+		problem = slot.wall_problem(route.wall, wall_tile, wall_direction)
+		if(problem)
+			return problem
 		var/list/offset = arriving.rotated_offset(get_turf(route.hatch), dir)
 		var/turf/projected_hatch = locate(x + offset[1], y + offset[2], z)
+		if(get_turf(route.wall) != wall_tile || get_step(route.path[length(route.path)], wall_direction) != projected_hatch)
+			return "корабельный шлюз или секция стены изменили положение"
 		var/list/current_path = slot.gangway_path(route.wall, projected_hatch, hull)
 		if(!length(current_path) || length(current_path) != length(route.path))
-			return FALSE
+			return "полоса трапа перекрыта перед секцией ([wall_tile.x], [wall_tile.y])"
 		for(var/index in 1 to length(current_path))
 			if(route.path[index] != current_path[index])
-				return FALSE
-	return TRUE
+				return "полоса трапа изменилась во время захода"
+	return null
 
-/** Install the still-valid corridors after the native move puts the ship in position. */
-/obj/docking_port/stationary/stationtrauma_space_site/standard/proc/deploy_gangways()
+/** Install the still-valid corridors. Record the first failure if any route could not deploy. */
+/obj/docking_port/stationary/stationtrauma_space_site/standard/proc/deploy_gangways(list/diagnostic)
 	if(length(gangways) || QDELETED(slot) || slot.active_berth != src || QDELETED(ship) || get_docked() != ship)
+		diagnostic["reason"] = "швартовочное место недоступно"
 		return FALSE
 	for(var/datum/stationtrauma_dock_route/route as anything in routes)
-		if(QDELETED(route.hatch) || QDELETED(route.wall) || get_turf(route.hatch) != get_step(route.path[length(route.path)], route.wall.dir))
-			continue
 		var/datum/stationtrauma_dock_gangway/gangway = new
-		if(!gangway.deploy(route.hatch, route.wall, route.path, route.wall.dir))
+		var/problem = gangway.deploy(route.hatch, route.wall, route.path, route.wall?.dir)
+		if(problem)
+			diagnostic["reason"] ||= problem
 			qdel(gangway)
 			continue
 		gangways += gangway

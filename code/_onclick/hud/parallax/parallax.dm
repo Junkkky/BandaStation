@@ -235,6 +235,8 @@
 
 /atom/movable/screen/parallax_home/Destroy()
 	REMOVE_TRAIT(owner, TRAIT_PARALLAX_DISPLAYED(submap), TRAIT_GENERIC)
+	QDEL_LIST(bluespace_layers)
+	bluespace_animation_area = null
 	clear_layers()
 	set_perspective(null)
 	current_turf = null

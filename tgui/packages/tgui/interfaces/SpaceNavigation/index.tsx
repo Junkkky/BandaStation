@@ -11,6 +11,7 @@ import { ZoomKnob } from './DisplayArt';
 import { Docking } from './Docking';
 import { AnalogDial, FuelGauges } from './Fuel';
 import { Scanner } from './Scanner';
+import { SegmentedProgress } from './SegmentedProgress';
 import { distanceLabel, type NavigationData, speedLabel } from './types';
 import { useHelm } from './useHelm';
 
@@ -42,6 +43,16 @@ function Navigation({ data }: { data: NavigationData }) {
   const contact = data.ship_contacts.find(
     (record) => record.id === focusedContact,
   );
+  const boarding = data.boarding;
+  const siteBoarding =
+    focusedContact === null && data.can_board_site != null && !moored;
+  const releaseEta = data.boarding_release_eta;
+  const releasing = releaseEta != null;
+  const boardingStatus = releasing
+    ? `Размыкание захватов · ${Math.ceil(releaseEta)} с`
+    : boarding
+      ? `${boarding.incoming ? 'Входящий абордаж' : 'Подготовка абордажа'} · ${Math.ceil(boarding.eta)} с`
+      : '';
   const stationDocking =
     focusedContact === null && data.station_docking?.required
       ? data.station_docking
@@ -75,6 +86,18 @@ function Navigation({ data }: { data: NavigationData }) {
       : 'Запросить стыковку с выбранным объектом';
     if (pending) {
       clearanceStatus = dockTooltip;
+    }
+  }
+  // A planet is landed on only once surveyed, and on the pad chosen on the chart.
+  if (focusedContact === null && data.landing && data.survey) {
+    if (data.survey.failed) {
+      dockTooltip = 'Поверхность не поддаётся съёмке';
+    } else if (!data.survey.mapped) {
+      dockTooltip = data.survey.covered
+        ? 'Идёт картографирование местности'
+        : 'Требуется сканирование местности';
+    } else if (!data.survey.pads?.some((pad) => pad.chosen)) {
+      dockTooltip = 'Выберите площадку на карте (масштаб 4×)';
     }
   }
   if (clearanceStatus && typeof stationDocking?.expiresIn === 'number') {
@@ -176,7 +199,8 @@ function Navigation({ data }: { data: NavigationData }) {
                           : site.name
                       }
                       selected={
-                        focusedContact === null && site.id === data.selected
+                        focusedContact === null &&
+                        site.id === (data.inspected || data.selected)
                       }
                       disabled={
                         site.failed || data.preparing || data.relocating
@@ -253,7 +277,17 @@ function Navigation({ data }: { data: NavigationData }) {
                 setPanel('scanner');
               }}
               onSite={selectSite}
+              onPad={(number) => act('landing_pad', { value: number })}
             />
+          )}
+          {typeof data.jump_progress === 'number' && (
+            <div className="SpaceNavigation__jump">
+              <SegmentedProgress
+                title="БЛЮСПЕЙС-ПЕРЕХОД"
+                caption={data.status}
+                value={data.jump_progress}
+              />
+            </div>
           )}
           <div className="SpaceNavigation__legend">
             <span title="При сохранении текущей тяги и команды курса">
@@ -598,6 +632,7 @@ function Navigation({ data }: { data: NavigationData }) {
                 tooltip={data.landed ? 'Взлёт' : 'Отстыковка'}
                 disabled={
                   !moored ||
+                  !!data.boarding_connected ||
                   !data.engines_running ||
                   data.preparing ||
                   data.relocating ||
@@ -661,9 +696,77 @@ function Navigation({ data }: { data: NavigationData }) {
         </aside>
       </div>
       <div className="SpaceNavigation__status-bank">
-        <footer role="status" title={clearanceStatus || data.status}>
+        <footer
+          role="status"
+          title={boardingStatus || clearanceStatus || data.status}
+          data-boarding={!!boarding}
+        >
           <span className="SpaceNavigation__status-dot" />
-          {clearanceStatus || data.status}
+          <span>{boardingStatus || clearanceStatus || data.status}</span>
+          {(contact || siteBoarding || boarding || data.boarding_connected) && (
+            <div className="SpaceNavigation__boarding">
+              {boarding?.incoming ? (
+                <div className="SpaceNavigation__boarding-warning" role="alert">
+                  Разгон выше 1 км/с сорвёт захват
+                </div>
+              ) : (
+                <Button
+                  icon={
+                    data.boarding_connected
+                      ? 'link-slash'
+                      : 'triangle-exclamation'
+                  }
+                  disabled={
+                    data.boarding_connected
+                      ? !(releasing
+                          ? data.can_cancel_release
+                          : data.boarding_release_ready)
+                      : !boarding &&
+                        !(siteBoarding
+                          ? data.can_board_site
+                          : contact &&
+                            data.boardable_contacts?.includes(contact.id))
+                  }
+                  tooltip={
+                    data.boarding_connected
+                      ? releasing
+                        ? 'Отменить подготовку можно с мостика, который её начал'
+                        : 'Для размыкания удерживайте тягу 90 секунд'
+                      : boarding
+                        ? undefined
+                        : siteBoarding
+                          ? 'Подойдите к свободному причалу со скоростью до 1 км/с. Активный запрос на стыковку нужно отменить.'
+                          : 'Подойдите на дистанцию стыковки. Скорость обоих бортов должна быть не выше 1 км/с'
+                  }
+                  onClick={() => {
+                    if (data.boarding_connected) {
+                      act(
+                        releasing
+                          ? 'cancel_boarding_release'
+                          : 'release_boarding',
+                      );
+                    } else if (boarding) {
+                      act('cancel_boarding');
+                    } else if (contact) {
+                      act('board_ship', { value: contact.id });
+                    } else if (siteBoarding) {
+                      act('board_site', { value: data.selected });
+                    }
+                  }}
+                >
+                  {data.boarding_connected
+                    ? releasing
+                      ? data.can_cancel_release
+                        ? 'Отменить отстыковку'
+                        : 'Идёт расстыковка'
+                      : 'Разомкнуть захват'
+                    : boarding
+                      ? 'Отменить абордаж'
+                      : 'Принудительная стыковка'}
+                </Button>
+              )}
+            </div>
+          )}
         </footer>
         <div
           className="SpaceNavigation__mode-screen"

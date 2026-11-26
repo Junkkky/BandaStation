@@ -9,23 +9,31 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 	var/client/requester = user?.client
 	var/datum/mind/request_mind = user?.mind
 	var/editing_slot = requester?.prefs?.default_slot
-	if(!user?.check_latejoin_request(requester, request_mind, editing_slot))
+	if(!user?.check_latejoin_request(requester, request_mind, editing_slot, skip_arrivals_checks = TRUE))
 		return
-	var/list/jobs = list()
+	var/list/choices = list()
 	for(var/datum/job/job as anything in SSjob.joinable_occupations)
 		var/availability = user.IsJobUnavailable(job.title, latejoin = TRUE)
 		if(!user?.is_latejoin_request_current(requester, request_mind, editing_slot))
 			return
 		if(availability == JOB_AVAILABLE)
-			jobs += job.title
-	if(!length(jobs))
+			choices[job.title] = list(job.title, null)
+	for(var/list/destination as anything in get_away_destinations(user, requester, request_mind, editing_slot))
+		var/list/jobs = destination["jobs"]
+		for(var/title in jobs)
+			var/list/job_data = jobs[title]
+			if(!job_data["unavailable_reason"])
+				choices["[destination["name"]] — [title] ([job_data["used_slots"]]/[job_data["open_slots"]])"] = list(title, destination["id"])
+	if(!user?.is_latejoin_request_current(requester, request_mind, editing_slot))
+		return
+	if(!length(choices))
 		to_chat(user, span_warning("В данный момент для вас нет доступных профессий."))
 		return
 
-	var/input_contents = input(user, "Pick a job to join as:", "Latejoin Job Selection") as null|anything in jobs
-
-	if(input_contents && user?.is_latejoin_request_current(requester, request_mind, editing_slot))
-		user.AttemptLateSpawn(input_contents)
+	var/choice = input(user, "Выберите должность и место прибытия.", "Позднее присоединение") as null|anything in choices
+	var/list/selection = choices[choice]
+	if(selection && user?.is_latejoin_request_current(requester, request_mind, editing_slot))
+		user.AttemptLateSpawn(selection[1], selection[2])
 
 /datum/latejoin_menu/ui_close(mob/dead/new_player/user)
 	. = ..()
@@ -95,30 +103,96 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			if(job_availability == JOB_UNAVAILABLE_SLOTFULL && (job_datum.job_flags & JOB_HIDE_WHEN_EMPTY))
 				continue
 
-			var/datum/job_character_selection/selection = requester.prefs.select_job_character(job_datum, latejoin = TRUE)
-			var/character_profile = selection.error ? "Недоступный профиль" : "Профиль [selection.slot]"
-			if(selection.randomized)
-				character_profile += ", случайные имя и внешность"
-			var/list/job_data = list(
-				"prioritized" = (job_datum in SSjob.prioritized_jobs),
-				"used_slots" = job_datum.current_positions,
-				"open_slots" = job_datum.total_positions < 0 ? "∞" : job_datum.total_positions,
-				"jobIcon" = job_datum.tgui_icon,
-				"character_profile" = character_profile,
-				"public_title" = selection.error ? null : requester.prefs.get_donor_job_title(job_datum, selection.slot),
-			)
-			qdel(selection)
+			if(job_availability == JOB_AVAILABLE)
+				if(job_datum.total_positions < 0)
+					department_data["open_slots"] = "∞"
+				else if(department_data["open_slots"] != "∞")
+					department_data["open_slots"] += max(0, job_datum.total_positions - job_datum.current_positions)
+			department_jobs[job_datum.title] = get_job_row(requester, job_datum, job_availability)
 
-			if(job_availability != JOB_AVAILABLE)
-				job_data["unavailable_reason"] = get_job_unavailable_error_message(job_availability, job_datum.title)
-			else if(job_datum.total_positions < 0)
-				department_data["open_slots"] = "∞"
-			else if(department_data["open_slots"] != "∞")
-				department_data["open_slots"] += max(0, job_datum.total_positions - job_datum.current_positions)
+	data["away_destinations"] = get_away_destinations(owner, requester, request_mind, editing_slot)
+	return owner?.is_latejoin_request_current(requester, request_mind, editing_slot) ? data : list()
 
-			department_jobs[job_datum.title] = job_data
+/// Build the common row data once per job, before applying hull-specific capacity.
+/datum/latejoin_menu/proc/get_job_row(client/requester, datum/job/job, availability)
+	var/datum/job_character_selection/selection = requester.prefs.select_job_character(job, latejoin = TRUE)
+	var/character_profile = selection.error ? "Недоступный профиль" : "Профиль [selection.slot]"
+	if(selection.randomized)
+		character_profile += ", случайные имя и внешность"
+	var/list/job_data = list(
+		"prioritized" = (job in SSjob.prioritized_jobs),
+		"used_slots" = job.current_positions,
+		"open_slots" = job.total_positions < 0 ? "∞" : job.total_positions,
+		"jobIcon" = job.tgui_icon,
+		"character_profile" = character_profile,
+		"public_title" = selection.error ? null : requester.prefs.get_donor_job_title(job, selection.slot),
+		"unavailable_reason" = availability == JOB_AVAILABLE ? null : get_job_unavailable_error_message(availability, job.title),
+	)
+	qdel(selection)
+	return job_data
 
-	return data
+/// Offer named hulls and, where a new hull is needed, the option to launch it on boarding.
+/datum/latejoin_menu/proc/get_away_destinations(mob/dead/new_player/owner, client/requester, datum/mind/request_mind, editing_slot)
+	var/list/destinations = list()
+	if(!SSmapping.current_map?.space_overmap || !SSstationtrauma_space_voyage.initialized)
+		return destinations
+	for(var/datum/roundstart_away_mission/mission as anything in roundstart_away_missions())
+		if(!mission.get_instance_limit())
+			continue
+		var/list/role_rows = list()
+		var/list/role_details = list()
+		for(var/job_type in mission.crew_jobs)
+			var/datum/job/away_mission/job = SSjob.get_job_type(job_type)
+			if(!job)
+				continue
+			var/availability = owner.IsJobUnavailable(job.title, latejoin = TRUE)
+			if(!owner?.is_latejoin_request_current(requester, request_mind, editing_slot))
+				return list()
+			role_rows[job] = get_job_row(requester, job, availability)
+			role_details[job.title] = list("description" = job.description, "command" = job_type == mission.commander_job)
+		var/limit = mission.get_instance_limit()
+		if(!limit || !length(role_rows))
+			continue
+		var/list/details = list("color" = /datum/job_department/away_missions::ui_color, "jobs" = role_details)
+		var/list/vessels = mission.get_loaded_ships()
+		var/list/boardable_roles = list()
+		for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in vessels)
+			destinations += list(get_away_destination(mission, vessel, role_rows, details, boardable_roles))
+		if(length(vessels) < limit && length(boardable_roles) < length(role_rows))
+			destinations += list(get_away_destination(mission, null, role_rows, details, boardable_roles))
+	return destinations
+
+/// Use the same hull roster and cryopod access checks that authorize boarding.
+/datum/latejoin_menu/proc/get_away_destination(datum/roundstart_away_mission/mission, obj/docking_port/mobile/stationtrauma_space/vessel, list/role_rows, list/details, list/boardable_roles)
+	var/list/jobs = list()
+	var/vacancies = 0
+	var/arrival_ready = !vessel || mission.find_latejoin_spawn(vessel)
+	for(var/datum/job/away_mission/job as anything in role_rows)
+		var/list/base_row = role_rows[job]
+		var/list/job_data = base_row.Copy()
+		var/capacity = initial(job.total_positions)
+		var/occupied = vessel ? vessel.count_away_crew(job) : 0
+		job_data["open_slots"] = capacity
+		job_data["used_slots"] = occupied
+		if(vessel)
+			if(occupied >= capacity)
+				job_data["unavailable_reason"] = "На этом корабле все места этой роли заняты."
+			else if(!arrival_ready)
+				job_data["unavailable_reason"] = "Точка прибытия у криокапсулы сейчас недоступна."
+			else
+				boardable_roles |= job
+		else if(job in boardable_roles)
+			job_data["unavailable_reason"] = "Для этой роли есть место на действующем корабле."
+		if(!job_data["unavailable_reason"])
+			vacancies += max(0, capacity - occupied)
+		jobs[job.title] = job_data
+	return list(
+		"id" = vessel ? REF(vessel) : REF(mission),
+		"name" = vessel ? vessel.name : "Новый корпус — [mission.name]",
+		"jobs" = jobs,
+		"open_slots" = vacancies,
+		"details" = details,
+	)
 
 /datum/latejoin_menu/ui_static_data(mob/user)
 	var/static/list/premium_job_icons = list()
@@ -170,13 +244,16 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			var/client/requester = owner.client
 			var/datum/mind/request_mind = owner.mind
 			var/editing_slot = requester.prefs.default_slot
-			if(params["edit_slot"] != editing_slot || !owner.check_latejoin_request(requester, request_mind, editing_slot))
-				return TRUE
 			var/job_title = params["job"]
+			var/away_target = params["away_target"]
+			if(!isnull(away_target) && (!istext(away_target) || job_title == "Random"))
+				return TRUE
+			if(params["edit_slot"] != editing_slot || !owner.check_latejoin_request(requester, request_mind, editing_slot, skip_arrivals_checks = job_title != "Random"))
+				return TRUE
 			if(job_title == "Random")
 				job_title = get_random_job(owner)
 			if(istext(job_title) && owner?.is_latejoin_request_current(requester, request_mind, editing_slot))
-				owner.AttemptLateSpawn(job_title)
+				owner.AttemptLateSpawn(job_title, away_target)
 			return TRUE
 		if("viewpoll")
 			var/datum/poll_question/poll = locate(params["viewpoll"]) in GLOB.polls

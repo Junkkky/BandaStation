@@ -185,22 +185,26 @@
 			surface_layout[cell] = TRUE
 
 
+/// Plans the reserved ruins on the surface being decorated and retains their IDs. A ruin that fails to load fails the surface.
+/datum/stationtrauma_overmap_site/space/planet/proc/plan_ruins(list/placements, area/surface)
+	for(var/list/placement as anything in placements)
+		var/datum/map_template/ruin/expedition/template = placement[1]
+		var/x = placement[2]
+		var/y = placement[3]
+		generator.plan_work(x, y, x + template.width - 1, y + template.height - 1, CALLBACK(src, PROC_REF(load_ruin), template, generator.level_turf(x, y), surface, generator), critical = TRUE)
+		ruin_ids += template.id
+
 /**
- * Load reserved ruins and retain their IDs, yielding to `budget` between templates.
+ * Loads a planned ruin with its south-west corner at [bottom]; returns whether it loaded. [builder] is the planet's
+ * generator, which the surface's builder holds by the time most ruins load.
  *
  * Placeholder ground and rock inside a ruin take the planet's own types, as they do in surface features.
  */
-/datum/stationtrauma_overmap_site/space/planet/proc/load_ruins(list/placements, turf/origin, area/surface, datum/stationtrauma_work_budget/budget)
-	for(var/list/placement as anything in placements)
-		var/datum/map_template/ruin/expedition/template = placement[1]
-		var/turf/bottom = locate(origin.x + placement[2] - 1, origin.y + placement[3] - 1, origin.z)
-		var/turf/center = locate(bottom.x + round(template.width / 2), bottom.y + round(template.height / 2), origin.z)
-		if(!template.load(bottom))
-			return FALSE
-		var/list/covered = template.get_affected_turfs(bottom)
-		generator.adapt_template_turfs(covered, surface)
-		stationtrauma_fuel_cache(covered, ST_FUEL_CACHE_PLANET_CHANCE)
-		new /obj/effect/landmark/ruin(center, template)
-		ruin_ids += template.id
-		budget?.yield()
+/datum/stationtrauma_overmap_site/space/planet/proc/load_ruin(datum/map_template/ruin/expedition/template, turf/bottom, area/surface, datum/map_generator/expedition_barren/builder)
+	if(!template.load(bottom))
+		return FALSE
+	var/list/covered = template.get_affected_turfs(bottom)
+	builder.adapt_template_turfs(covered, surface)
+	stationtrauma_fuel_cache(covered, ST_FUEL_CACHE_PLANET_CHANCE)
+	new /obj/effect/landmark/ruin(locate(bottom.x + round(template.width / 2), bottom.y + round(template.height / 2), bottom.z), template)
 	return TRUE

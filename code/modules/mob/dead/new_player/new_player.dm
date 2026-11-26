@@ -146,7 +146,9 @@
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
 	var/datum/job/job = istext(rank) ? SSjob.get_job(rank) : null
 	var/client/requester = client
-	if(!job || !requester || !(job.job_flags & JOB_NEW_PLAYER_JOINABLE))
+	if(!job || !requester)
+		return JOB_UNAVAILABLE_GENERIC
+	if(!(job.job_flags & JOB_NEW_PLAYER_JOINABLE) && !(latejoin && istype(job, /datum/job/away_mission)))
 		return JOB_UNAVAILABLE_GENERIC
 	if(!has_latejoin_job_capacity(job))
 		return JOB_UNAVAILABLE_SLOTFULL
@@ -182,7 +184,7 @@
 		&& !QDELETED(request_mind) && mind == request_mind && requester.prefs?.default_slot == editing_slot
 
 /// Shared admission checks before reserving a slot or handing the body over.
-/mob/dead/new_player/proc/get_latejoin_block_message()
+/mob/dead/new_player/proc/get_latejoin_block_message(skip_arrivals_checks = FALSE)
 	if(!SSticker?.IsRoundInProgress())
 		return "Раунд ещё не начался или уже закончился."
 	if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
@@ -200,14 +202,14 @@
 					occupants++
 			if(occupants >= popcap)
 				return "Сервер заполнен. Дождитесь своей очереди."
-	if(SSshuttle.arrivals?.damaged && CONFIG_GET(flag/arrivals_shuttle_require_safe_latejoin))
+	if(!skip_arrivals_checks && SSshuttle.arrivals?.damaged && CONFIG_GET(flag/arrivals_shuttle_require_safe_latejoin))
 		return "В данный момент шаттл прибытия сломан. Вы не сможете присоединиться."
 	return null
 
-/mob/dead/new_player/proc/check_latejoin_request(client/requester, datum/mind/request_mind, editing_slot)
+/mob/dead/new_player/proc/check_latejoin_request(client/requester, datum/mind/request_mind, editing_slot, skip_arrivals_checks = FALSE)
 	if(!is_latejoin_request_current(requester, request_mind, editing_slot) || spawning || new_character || !is_unassigned_job(request_mind.assigned_role))
 		return FALSE
-	var/message = get_latejoin_block_message()
+	var/message = get_latejoin_block_message(skip_arrivals_checks)
 	if(!message)
 		return TRUE
 	to_chat(src, span_warning(message))
@@ -217,6 +219,7 @@
 /mob/dead/new_player/proc/release_latejoin_assignment(datum/job/job, datum/mind/request_mind, previous_mind_activity)
 	job.current_positions = max(0, job.current_positions - 1)
 	if(!QDELETED(request_mind) && request_mind.assigned_role == job)
+		request_mind.release_away_mission_seat()
 		request_mind.set_assigned_role(SSjob.get_job_type(/datum/job/unassigned))
 		request_mind.late_joiner = FALSE
 		request_mind.active = previous_mind_activity
@@ -228,12 +231,13 @@
 		QDEL_NULL(mind)
 		qdel(src)
 
-/mob/dead/new_player/proc/AttemptLateSpawn(rank)
+/mob/dead/new_player/proc/AttemptLateSpawn(rank, away_target)
 	var/client/requester = client
 	var/datum/mind/request_mind = mind
 	var/editing_slot = requester?.prefs?.default_slot
 	var/datum/job/job = istext(rank) ? SSjob.get_job(rank) : null
-	if(!job || !check_latejoin_request(requester, request_mind, editing_slot))
+	var/is_away_job = istype(job, /datum/job/away_mission)
+	if(!job || (!isnull(away_target) && (!is_away_job || !istext(away_target))) || !check_latejoin_request(requester, request_mind, editing_slot, skip_arrivals_checks = is_away_job))
 		return FALSE
 	var/datum/job_character_selection/selection = requester.prefs.select_job_character(job, latejoin = TRUE)
 	var/selected_slot = selection?.slot
@@ -257,10 +261,10 @@
 		if(is_latejoin_request_current(requester, request_mind, editing_slot))
 			to_chat(src, span_warning(get_job_unavailable_error_message(error, rank)))
 		return FALSE
-	if(!check_latejoin_request(requester, request_mind, editing_slot))
+	if(!check_latejoin_request(requester, request_mind, editing_slot, skip_arrivals_checks = is_away_job))
 		return FALSE
 
-	if(SSshuttle.arrivals && CONFIG_GET(flag/arrivals_shuttle_require_undocked))
+	if(!is_away_job && SSshuttle.arrivals && CONFIG_GET(flag/arrivals_shuttle_require_undocked))
 		SSshuttle.arrivals.RequireUndocked(src)
 		if(!check_latejoin_request(requester, request_mind, editing_slot))
 			return FALSE
@@ -268,7 +272,7 @@
 	var/previous_mind_activity = request_mind.active
 	if(!SSjob.assign_role(src, job, latejoin = TRUE, expected_slot = selected_slot))
 		if(is_latejoin_request_current(requester, request_mind, editing_slot))
-			to_chat(src, span_warning(get_latejoin_block_message() || "Эта должность больше недоступна. Выберите профессию повторно."))
+			to_chat(src, span_warning(get_latejoin_block_message(skip_arrivals_checks = is_away_job) || "Эта должность больше недоступна. Выберите профессию повторно."))
 		return FALSE
 	if(!is_latejoin_request_current(requester, request_mind, editing_slot))
 		release_latejoin_assignment(job, request_mind, previous_mind_activity)
@@ -277,12 +281,19 @@
 		return FALSE
 
 	request_mind.late_joiner = TRUE
-	var/atom/destination = job.get_latejoin_spawn_point()
+	var/atom/destination
+	if(is_away_job)
+		spawning = TRUE // Keep the vacancy reserved across map loading and logout.
+		var/datum/job/away_mission/away_job = job
+		destination = prepare_away_latejoin_spawn(away_job, requester, request_mind, editing_slot, away_target)
+	else
+		destination = job.get_latejoin_spawn_point()
 	var/mob/living/character = destination ? create_character(destination) : null
 	if(QDELETED(character))
 		release_latejoin_assignment(job, request_mind, previous_mind_activity)
 		if(client && client == requester)
-			to_chat(src, span_warning(get_latejoin_block_message() || "Не удалось создать персонажа. Выберите профессию повторно."))
+			var/spawn_failure = is_away_job && !destination ? "Корабль или точка у криокапсулы сейчас недоступны. Попробуйте присоединиться снова." : "Не удалось создать персонажа. Выберите профессию повторно."
+			to_chat(src, span_warning(get_latejoin_block_message(skip_arrivals_checks = is_away_job) || spawn_failure))
 		return FALSE
 
 	SSticker.queued_players -= src
@@ -320,11 +331,12 @@
 		humanc = character //Let's retypecast the var to be human,
 
 	if(humanc) //These procs all expect humans
-		if(SSshuttle.arrivals)
-			SSshuttle.arrivals.QueueAnnounce(humanc, rank)
-		else
-			announce_arrival(humanc, rank)
-		AddEmploymentContract(humanc)
+		if(!is_away_job)
+			if(SSshuttle.arrivals)
+				SSshuttle.arrivals.QueueAnnounce(humanc, rank)
+			else
+				announce_arrival(humanc, rank)
+			AddEmploymentContract(humanc)
 
 		humanc.increment_scar_slot()
 		humanc.load_persistent_scars()
@@ -334,7 +346,7 @@
 
 	GLOB.joined_player_list += character.ckey
 
-	if(CONFIG_GET(flag/allow_latejoin_antagonists) && !EMERGENCY_PAST_POINT_OF_NO_RETURN && humanc) //Borgs aren't allowed to be antags. Will need to be tweaked if we get true latejoin ais.
+	if(!is_away_job && CONFIG_GET(flag/allow_latejoin_antagonists) && !EMERGENCY_PAST_POINT_OF_NO_RETURN && humanc) //Borgs aren't allowed to be antags. Will need to be tweaked if we get true latejoin ais.
 		SSdynamic.on_latejoin(humanc)
 
 	if(humanc)
@@ -348,7 +360,7 @@
 		GLOB.manifest.inject(humanc, initial_join = TRUE)
 		SEND_SIGNAL(humanc, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)
 	var/area/station/arrivals = GLOB.areas_by_type[/area/station/hallway/secondary/entry]
-	if(humanc && arrivals && !arrivals.power_environ) //arrivals depowered
+	if(!is_away_job && humanc && arrivals && !arrivals.power_environ) //arrivals depowered
 		humanc.put_in_hands(new /obj/item/crowbar/large/emergency(get_turf(humanc))) //if hands full then just drops on the floor
 	log_manifest(character.mind.key, character.mind, character, latejoin = TRUE)
 
@@ -403,10 +415,15 @@
 	if(!QDELETED(spawning_mob) && ishuman(spawning_mob))
 		var/mob/living/carbon/human/body = spawning_mob
 		invalid_body = (isnum(job.required_character_age) && body.age < job.required_character_age) || !job.is_character_species_allowed(body.dna?.species?.type)
+	if(!invalid_body && request_mind?.late_joiner && istype(job, /datum/job/away_mission))
+		var/datum/job/away_mission/away_job = job
+		var/datum/roundstart_away_mission/mission = away_job.get_away_mission()
+		var/obj/docking_port/mobile/stationtrauma_space/vessel = request_mind.away_mission_ship?.resolve()
+		invalid_body = !mission?.get_instance_limit() || !vessel?.is_in_shuttle_bounds(spawning_mob) || !vessel.shuttle_areas[get_area(spawning_mob)]
 
 	// AI initialization can already hand the client to the body.
 	var/client/player_client = src.client || spawning_mob?.client
-	if(invalid_body || player_client != requester || (!isAI(spawning_mob) && (mind != request_mind || preferences.default_slot != spawned_slot || (request_mind.late_joiner && get_latejoin_block_message()))))
+	if(invalid_body || player_client != requester || (!isAI(spawning_mob) && (mind != request_mind || preferences.default_slot != spawned_slot || (request_mind.late_joiner && get_latejoin_block_message(skip_arrivals_checks = istype(job, /datum/job/away_mission))))))
 		if(!reuses_body && !QDELETED(spawning_mob))
 			qdel(spawning_mob)
 		if(client && client == requester && editing_slot != spawned_slot && preferences.default_slot == spawned_slot)
@@ -469,6 +486,8 @@
 		if(job && job.can_access_donor_job(client))
 			has_available_preferences = TRUE
 			break
+	if(!has_available_preferences && client.prefs.has_away_job_preferences())
+		return warn // The actual assignment can seat this volunteer; the station dry run cannot.
 	if(!has_available_preferences)
 		if(warn)
 			to_chat(src, span_danger("You have no jobs enabled, along with return to lobby if job is unavailable. \

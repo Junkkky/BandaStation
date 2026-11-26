@@ -932,6 +932,55 @@
 	TEST_ASSERT_NOTNULL(locate(/obj/structure/closet/crate/mail) in parcel, "Delivery separated the gift crate from its parcel.")
 	TEST_ASSERT_NULL(locate(/obj/structure/closet/crate) in get_turf(output_pad), "Delivery also issued an unwrapped crate beside the parcel.")
 
+/// The commander's issued account funds both calibres at the security terminal.
+/datum/unit_test/trade_hub/patrol_resupply/Run()
+	var/obj/machinery/trade_hub_core/security/supplier = allocate(/obj/machinery/trade_hub_core/security)
+	supplier.hub_id = "patrol_[REF(src)]"
+	output_pad.hub_id = supplier.hub_id
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(supplier)
+	var/mob/living/carbon/human/commander = allocate(/mob/living/carbon/human/consistent, get_turf(input_pad))
+	var/datum/job/job = SSjob.get_job_type(/datum/job/away_mission/nt_patrol_commander)
+	commander.mind_initialize()
+	commander.mind.set_assigned_role(job)
+	var/previous_target = SSeconomy.station_target
+	commander.on_job_equipping(job)
+	SSeconomy.station_target = previous_target
+	var/obj/item/card/id/card = commander.wear_id
+	var/datum/bank_account/account = card?.registered_account
+	TEST_ASSERT_EQUAL(account?.account_job, job, "The issued patrol ID must be linked to the commander's payroll.")
+	allocated += account
+	TEST_ASSERT_EQUAL(account.account_balance, 5000, "The commander must receive the procurement funds on joining.")
+	var/cargo_balance = cargo_account.account_balance
+	var/datum/bank_account/civilian = SSeconomy.get_dep_account(ACCOUNT_CIV)
+	var/civilian_balance = civilian.account_balance
+	account.payday(1, skippable = TRUE)
+	SSeconomy.station_target = previous_target
+	TEST_ASSERT_EQUAL(account.account_balance, 6000, "The next payroll must deliver the full patrol allowance.")
+	TEST_ASSERT_EQUAL(civilian.account_balance, civilian_balance, "Station civilians must not fund patrol procurement.")
+
+	var/datum/tgui/ui = create_session(commander, terminal)
+	var/list/ammunition = list(
+		/datum/supply_pack/security/armory/ship_ammunition/light = /obj/item/stack/stationtrauma_autocannon_shell,
+		/datum/supply_pack/security/armory/ship_ammunition/heavy = /obj/item/stack/stationtrauma_autocannon_shell/heavy,
+	)
+	for(var/pack_type, shell_type in ammunition)
+		TEST_ASSERT_NULL(SSshuttle.supply_packs[pack_type], "Local ammunition should not appear in station cargo.")
+		var/datum/supply_pack/pack = SSshuttle.trade_hub_supply_packs[pack_type]
+		TEST_ASSERT_NOTNULL(pack, "Missing trade hub pack [pack_type].")
+		TEST_ASSERT(account.adjust_money(-pack.get_cost()), "The commander's account cannot cover [pack.name].")
+		var/obj/item/holochip/tender = allocate(/obj/item/holochip, get_turf(commander), pack.get_cost())
+		TEST_ASSERT(commander.put_in_active_hand(tender), "Could not hold the withdrawn credits.")
+		terminal.ui_act("buy", list("id" = "[pack.id]", "payment" = "cash"), ui)
+		TEST_ASSERT(terminal.ui_data(commander)["receipt"]["success"], "The patrol commander could not buy [pack.name].")
+		TEST_ASSERT_EQUAL(supplier.stock[pack_type], supplier.default_stock - 1, "The purchase must consume one local crate.")
+		var/obj/structure/closet/crate/secure/weapon/delivery = locate() in get_turf(output_pad)
+		TEST_ASSERT(delivery?.allowed(commander), "Patrol credentials must open the delivered ammunition crate.")
+		var/obj/item/stack/stationtrauma_autocannon_shell/shells = locate(shell_type) in delivery
+		TEST_ASSERT_EQUAL(shells?.merge_type, shell_type, "The delivered ammunition must fit the corresponding gun.")
+		TEST_ASSERT_EQUAL(shells.amount, shells.max_amount, "Each delivery must contain a full cassette.")
+		qdel(delivery)
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, cargo_balance, "Personal purchases must not draw on cargo's budget.")
+
 /** A visitor pays with banknotes, receives change and cannot charge cargo or order restricted goods. */
 /datum/unit_test/trade_hub/cash_purchase/Run()
 	var/obj/machinery/computer/trade_hub/terminal = create_terminal(core)

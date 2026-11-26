@@ -1,7 +1,7 @@
 /datum/outfit/job/explorer
 	name = JOB_EXPLORER
 	jobtype = /datum/job/explorer
-	uniform = /obj/item/clothing/under/expedition
+	uniform = /obj/item/clothing/under/expedition/corps
 	gloves = /obj/item/clothing/gloves/color/black/expedition
 	shoes = /obj/item/clothing/shoes/jackboots/expedition
 	id_trim = /datum/id_trim/job/explorer
@@ -22,7 +22,7 @@
 /datum/outfit/job/explorer/leader
 	name = JOB_EXPEDITION_LEADER
 	jobtype = /datum/job/explorer/leader
-	uniform = /obj/item/clothing/under/expedition/leader
+	uniform = /obj/item/clothing/under/expedition/corps/leader
 	id = /obj/item/card/id/advanced/silver
 	id_trim = /datum/id_trim/job/explorer/leader
 	ear_right = /obj/item/radio/headset/headset_cargo/explorer/leader
@@ -31,15 +31,16 @@
 /datum/outfit/job/explorer/pilot
 	name = JOB_EXPEDITION_PILOT
 	jobtype = /datum/job/explorer/pilot
-	uniform = /obj/item/clothing/under/expedition/pilot
+	uniform = /obj/item/clothing/under/expedition/corps/pilot
+	ear_right = /obj/item/radio/headset/headset_cargo/explorer/pilot
 	id_trim = /datum/id_trim/job/explorer/pilot
-	head = /obj/item/clothing/head/helmet/expedition_pilot
-	suit = /obj/item/clothing/suit/toggle/expedition
+	suit = /obj/item/clothing/suit/jacket/expedition/pilot
 
 /datum/outfit/job/explorer/medic
 	name = JOB_EXPEDITION_MEDIC
 	jobtype = /datum/job/explorer/medic
 	id_trim = /datum/id_trim/job/explorer/medic
+	uniform = /obj/item/clothing/under/expedition/corps/medic
 	gloves = /obj/item/clothing/gloves/latex/nitrile
 	glasses = /obj/item/clothing/glasses/hud/health
 	belt = /obj/item/storage/belt/medical/paramedic
@@ -56,7 +57,7 @@
 /datum/outfit/job/explorer/engineer
 	name = JOB_EXPEDITION_ENGINEER
 	jobtype = /datum/job/explorer/engineer
-	uniform = /obj/item/clothing/under/expedition/engineer
+	uniform = /obj/item/clothing/under/expedition/corps/engineer
 	id_trim = /datum/id_trim/job/explorer/engineer
 	gloves = /obj/item/clothing/gloves/color/yellow
 	head = /obj/item/clothing/head/utility/hardhat/welding/up

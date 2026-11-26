@@ -113,8 +113,6 @@
 	var/list/autopilot_path
 	/// Direction changes alone notify native parallax listeners.
 	var/parallax_direction = NONE
-	/// Parallax loop speed multiplier last applied to the hull areas.
-	var/parallax_rush = 1
 	/// world.time of the last active emission, or null before emission.
 	var/last_ping
 	/// Earliest world.time for refreshing passive contacts.
@@ -249,8 +247,7 @@
 	selected_destination = id
 	trip_distance = distance_to(site)
 	travelled = 0
-	var/list/position = site_position(site)
-	ordered_course = delta_to_angle(position[1] - pos_x, position[2] - pos_y)
+	// picking a destination never turns the hull: the autopilot or the pilot does
 	return TRUE
 
 /** Recheck after any yielded preparation; a stop invalidates pending arrival. */

@@ -156,21 +156,30 @@
 	ground.scale.mark(before_touchdown(5.2 SECONDS), DESCENT_GROUND_START)
 	ground.scale.mark(before_touchdown(0.3 SECONDS), 1, LANDING_CURVE_OUT)
 	// handed over as soon as it is made, clear and still, so that whatever a client has to fetch for it has
-	// come long before it is needed; seen once the sky has covered everything
-	addtimer(CALLBACK(src, PROC_REF(reveal), ground), max(0, before_touchdown(5.4 SECONDS) - world.time), TIMER_DELETE_ME)
+	// come long before it is needed; seen once the sky has covered everything. Its own alpha track, not a
+	// server timer: clients play the sky by their own clock, ahead of world.time under time dilation, and a
+	// late timer left them looking at open space between the cloud and the ground
+	var/hidden_until = before_touchdown(5.4 SECONDS)
+	ground.alpha.mark(hidden_until, 0)
+	ground.alpha.mark(hidden_until, 255)
+	ground.held_back = FALSE
+	show(ground)
 	// and the same ground close up, once it is near enough to tell the difference
 	chain_ground(ground, close)
 	close.held_back = FALSE
 	show(close)
 
 	// past the reach of those pictures there is only cloud: the ground is seen through an opening in it
-	var/datum/landing_track/veil_alpha = veil_fade(ground.scale)
+	var/datum/landing_track/veil_alpha = new
+	veil_alpha.mark(hidden_until, 0)
+	var/datum/landing_track/veil_open = veil_fade(ground.scale)
+	for(var/i in 1 to length(veil_open.times))
+		veil_alpha.mark(veil_open.times[i], veil_open.values[i], veil_open.curves[i])
 	for(var/for_light in list(FALSE, TRUE))
 		var/datum/landing_view_piece/veil = add_picture()
 		veil.parts = cloud_veil(for_light)
 		veil.scale = ground.scale
 		veil.alpha = veil_alpha
-		veil.give_at = before_touchdown(5.4 SECONDS)
 		show(veil)
 	// and the light on it: the white of the cloud gives way to the ground as it is lit, dark if it is dark
 	light.scale = ground.scale
@@ -179,7 +188,11 @@
 	cloud_light.mark(before_touchdown(4.6 SECONDS), 255)
 	cloud_light.mark(before_touchdown(3.8 SECONDS), 0, LANDING_CURVE_OUT)
 	add_daylight(cloud_light)
-	addtimer(CALLBACK(src, PROC_REF(reveal), light), max(0, before_touchdown(5 SECONDS) - world.time), TIMER_DELETE_ME)
+	var/light_from = before_touchdown(5 SECONDS)
+	light.alpha.mark(light_from, 0)
+	light.alpha.mark(light_from, 255)
+	light.held_back = FALSE
+	show(light)
 
 	// the same shadow the people on the ground see spreading over the berth (see /datum/landing_animation)
 	shadow = add_picture()

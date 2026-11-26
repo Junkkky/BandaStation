@@ -1,0 +1,136 @@
+.ShipDropPods {
+  --gun-bank: 280px;
+
+  &.SpaceNavigation {
+    .Button {
+      min-height: 26px;
+      padding: 2px 7px;
+      border: 1px solid #547267;
+      border-radius: 2px;
+      background: #152925;
+      color: var(--nav-phosphor);
+    }
+
+    .Button--selected {
+      background: #bed3b0;
+      color: #20362a;
+    }
+
+    .Button:hover:not(.Button--disabled) {
+      filter: brightness(1.2);
+    }
+
+    .ShipDropPods__fire:not(.Button--disabled) {
+      border-color: #d6ac64;
+      background: #d6ac64;
+      color: #271b0a;
+      font-weight: 700;
+    }
+  }
+
+  &__panel {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  &__plot-footer {
+    align-items: center;
+  }
+
+  &__controls {
+    flex: 1;
+    min-height: 0;
+    padding: 10px;
+    overflow-y: auto;
+    scrollbar-color: var(--nav-border) var(--nav-screen);
+  }
+
+  &__target {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: var(--nav-ink);
+
+    > span {
+      flex-shrink: 0;
+      color: var(--nav-muted);
+    }
+  }
+
+  &__sections {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: 2px;
+
+    .Button {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  &__rack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-top: 14px;
+
+    .Button__content > span {
+      display: grid;
+      line-height: 1.55;
+    }
+  }
+
+  &__fabrication {
+    display: grid;
+    gap: 6px;
+    margin-top: 8px;
+    color: var(--nav-muted);
+
+    small:empty {
+      display: none;
+    }
+
+    .Button {
+      justify-content: center;
+    }
+  }
+
+  &__flights {
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: grid;
+      gap: 3px;
+      padding: 8px 0;
+      border-top: 1px solid var(--nav-border);
+      color: var(--nav-muted);
+    }
+
+    strong {
+      color: var(--nav-ink);
+    }
+  }
+
+  &__result {
+    color: var(--nav-phosphor);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__panel &__launch {
+    display: grid;
+    gap: 7px;
+    padding: 10px;
+    border-top: 1px solid var(--nav-border);
+    color: var(--nav-muted);
+
+    .Button {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}

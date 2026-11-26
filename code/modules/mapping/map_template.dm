@@ -132,6 +132,16 @@
 
 	return level
 
+/// Detach the existing footprint and border from air processing before a yielding bulk turf replacement.
+/datum/map_template/proc/clear_atmos_for_load(turf/origin)
+	var/list/to_rebuild = SSair.adjacent_rebuild
+	for(var/turf/border_turf as anything in CORNER_BLOCK_OFFSET(origin, width + 2, height + 2, -1, -1))
+		SSair.remove_from_active(border_turf)
+		to_rebuild -= border_turf
+		for(var/turf/sub_turf as anything in border_turf.atmos_adjacent_turfs)
+			sub_turf.atmos_adjacent_turfs?.Remove(border_turf)
+		border_turf.atmos_adjacent_turfs?.Cut()
+
 /datum/map_template/proc/load(turf/T, centered = FALSE)
 	if(centered)
 		T = locate(T.x - round(width/2) , T.y - round(height/2) , T.z)
@@ -142,15 +152,7 @@
 	if((T.y+height) - 1 > world.maxy)
 		return
 
-	// Cache for sonic speed
-	var/list/to_rebuild = SSair.adjacent_rebuild
-	// iterate over turfs in the border and clear them from active atmos processing
-	for(var/turf/border_turf as anything in CORNER_BLOCK_OFFSET(T, width + 2, height + 2, -1, -1))
-		SSair.remove_from_active(border_turf)
-		to_rebuild -= border_turf
-		for(var/turf/sub_turf as anything in border_turf.atmos_adjacent_turfs)
-			sub_turf.atmos_adjacent_turfs?.Remove(border_turf)
-		border_turf.atmos_adjacent_turfs?.Cut()
+	clear_atmos_for_load(T)
 
 	// Accept cached maps, but don't save them automatically - we don't want
 	// ruins clogging up memory for the whole round.

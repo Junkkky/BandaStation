@@ -1,4 +1,4 @@
-import { type CSSProperties, useEffect } from 'react';
+import { type CSSProperties, useEffect, useState } from 'react';
 import { Color } from 'tgui-core/color';
 import {
   Box,
@@ -48,7 +48,14 @@ type DepartmentDetails = {
   jobs: Record<string, JobDetails>;
 };
 
+type AwayDestination = Department & {
+  id: string;
+  name: string;
+  details: DepartmentDetails;
+};
+
 type Data = {
+  away_destinations?: AwayDestination[];
   departments_static: Record<string, DepartmentDetails>;
   departments: Record<string, Department>;
   alert_state: string;
@@ -148,10 +155,11 @@ type DepartmentEntryProps = {
   name: string;
   department: Department;
   details: DepartmentDetails;
+  awayTarget?: string;
 };
 
 function DepartmentEntry(props: DepartmentEntryProps) {
-  const { name, department, details } = props;
+  const { name, department, details, awayTarget } = props;
   const { act, data } = useBackend<Data>();
   const { color } = details;
   const disabled = !!data.disable_jobs_for_non_observers;
@@ -192,7 +200,11 @@ function DepartmentEntry(props: DepartmentEntryProps) {
                 color={color}
                 disabled={disabled}
                 onClick={() =>
-                  act('select_job', { job: name, edit_slot: data.edit_slot })
+                  act('select_job', {
+                    job: name,
+                    edit_slot: data.edit_slot,
+                    away_target: awayTarget,
+                  })
                 }
               />
             </Stack.Item>
@@ -203,8 +215,58 @@ function DepartmentEntry(props: DepartmentEntryProps) {
   );
 }
 
+function AwayJobs(props: { destinations: AwayDestination[] }) {
+  const { destinations } = props;
+  const [selectedId, setSelectedId] = useState<string>();
+  const destination = selectedId
+    ? destinations.find(({ id }) => id === selectedId)
+    : destinations.length === 1
+      ? destinations[0]
+      : undefined;
+
+  return (
+    <Stack vertical>
+      <Stack.Item>
+        <div role="group" aria-label="Корабли вне станции">
+          <Stack wrap>
+            {destinations.map(({ id, name }) => (
+              <Stack.Item key={id} minWidth={0}>
+                <Button
+                  selected={id === destination?.id}
+                  aria-pressed={id === destination?.id}
+                  onClick={() => setSelectedId(id)}
+                  style={{ whiteSpace: 'normal', overflowWrap: 'anywhere' }}
+                >
+                  {name}
+                </Button>
+              </Stack.Item>
+            ))}
+          </Stack>
+        </div>
+      </Stack.Item>
+      <Stack.Item>
+        {destination ? (
+          <Box maxWidth="36rem">
+            <DepartmentEntry
+              name={destination.name}
+              department={destination}
+              details={destination.details}
+              awayTarget={destination.id}
+            />
+          </Box>
+        ) : (
+          <Box color="label" py={1}>
+            Выберите корабль, чтобы посмотреть роли и свободные места.
+          </Box>
+        )}
+      </Stack.Item>
+    </Stack>
+  );
+}
+
 export function JobSelection(props) {
   const { act, data } = useBackend<Data>();
+  const [showAway, setShowAway] = useState(false);
   const ready = !!data?.departments_static && !!data.departments;
   useEffect(() => {
     if (ready) {
@@ -217,6 +279,9 @@ export function JobSelection(props) {
   }
 
   const { departments, edit_slot, shuttle_status, round_duration } = data;
+  const destinations = data.away_destinations ?? [];
+  const hasAwayJobs = destinations.length > 0;
+  const awaySelected = hasAwayJobs && showAway;
   const disabled = !!data.disable_jobs_for_non_observers;
 
   return (
@@ -233,43 +298,75 @@ export function JobSelection(props) {
                 <Stack.Item color="label">
                   Время с начала смены: {round_duration}
                 </Stack.Item>
-                <Stack.Item>
-                  <Button
-                    disabled={disabled}
-                    aria-disabled={disabled}
-                    fontWeight="normal"
-                    onClick={() =>
-                      act('select_job', { job: 'Random', edit_slot })
-                    }
-                    tooltip={
-                      disabled
-                        ? JOIN_DISABLED_REASON
-                        : 'Случайно выбрать профессию. Вы можете повторно выбирать случайную профессию или отказаться от этого.'
-                    }
-                  >
-                    Случайная профессия!
-                  </Button>
-                </Stack.Item>
+                {!awaySelected && (
+                  <Stack.Item>
+                    <Button
+                      disabled={disabled}
+                      aria-disabled={disabled}
+                      fontWeight="normal"
+                      onClick={() =>
+                        act('select_job', { job: 'Random', edit_slot })
+                      }
+                      tooltip={
+                        disabled
+                          ? JOIN_DISABLED_REASON
+                          : 'Случайно выбрать профессию. Вы можете повторно выбирать случайную профессию или отказаться от этого.'
+                      }
+                    >
+                      Случайная профессия!
+                    </Button>
+                  </Stack.Item>
+                )}
               </Stack>
             </>
           }
         >
-          <Box style={{ columns: '20em' }}>
-            {Object.entries(departments).map(([name, department]) => {
-              const details = data.departments_static[name];
-              return (
-                details &&
-                Object.keys(department.jobs).length > 0 && (
-                  <DepartmentEntry
-                    key={name}
-                    name={DEPARTMENTS_RU[name] || name}
-                    department={department}
-                    details={details}
-                  />
-                )
-              );
-            })}
-          </Box>
+          {hasAwayJobs && (
+            <Box mb={1}>
+              <div role="group" aria-label="Место прибытия">
+                <Stack wrap>
+                  <Stack.Item>
+                    <Button
+                      selected={!awaySelected}
+                      aria-pressed={!awaySelected}
+                      onClick={() => setShowAway(false)}
+                    >
+                      На станции
+                    </Button>
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button
+                      selected={awaySelected}
+                      aria-pressed={awaySelected}
+                      onClick={() => setShowAway(true)}
+                    >
+                      Вне станции
+                    </Button>
+                  </Stack.Item>
+                </Stack>
+              </div>
+            </Box>
+          )}
+          {awaySelected ? (
+            <AwayJobs destinations={destinations} />
+          ) : (
+            <Box style={{ columns: '20em' }}>
+              {Object.entries(departments).map(([name, department]) => {
+                const details = data.departments_static[name];
+                return (
+                  details &&
+                  Object.keys(department.jobs).length > 0 && (
+                    <DepartmentEntry
+                      key={name}
+                      name={DEPARTMENTS_RU[name] || name}
+                      department={department}
+                      details={details}
+                    />
+                  )
+                );
+              })}
+            </Box>
+          )}
         </Section>
       </Window.Content>
     </Window>

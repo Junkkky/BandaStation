@@ -364,10 +364,36 @@
 	station_objects += blocker
 	TEST_ASSERT(navigation.select_site(site.id), "The dock remains selectable before the pilot attempts docking")
 	TEST_ASSERT(!navigation.dock(instant = TRUE), "An obstructed gap must prevent docking even when the hull footprint is clear")
+	TEST_ASSERT(findtext(navigation.status, "полоса трапа перекрыта"), "The helm must identify the blocked gangway: [navigation.status]")
 	TEST_ASSERT_EQUAL(get_turf(ship), departure, "The ship must remain at its departure point when the bridge is blocked")
 	TEST_ASSERT_EQUAL(get_turf(blocker), gap, "A failed approach must leave the obstruction intact")
 	TEST_ASSERT(isspaceturf(gap), "The failed approach must leave the gap as vacuum")
 	TEST_ASSERT_NULL(site.docking_owner, "The aborted approach must release the site's reservation")
+
+/// A ready ship must get a dock-side reason when its only aligned wall section is missing or reversed.
+/datum/unit_test/overmap_standard_dock/damaged_wall/Run()
+	TEST_ASSERT_NOTNULL(site, "The real dock fixture must finish setup")
+	var/turf/wall_tile = locate(bay.x + 8, bay.y + 3, bay.z)
+	var/obj/machinery/door/airlock/stationtrauma_docking/wall/wall = locate() in wall_tile
+	TEST_ASSERT_NOTNULL(wall, "The aligned wall should be present before damage")
+	TEST_ASSERT(navigation.select_site(site.id), "The registered berth should remain selectable")
+
+	wall.setDir(EAST)
+	TEST_ASSERT(!navigation.dock(instant = TRUE), "A reversed wall cannot connect")
+	TEST_ASSERT(findtext(navigation.status, "секция стыковочной стены развёрнута"), "The helm must identify the reversed wall section: [navigation.status]")
+
+	wall.setDir(WEST)
+	var/obj/structure/girder/corridor_blocker = allocate(/obj/structure/girder, get_step(wall, EAST))
+	station_objects += corridor_blocker
+	TEST_ASSERT(!navigation.dock(instant = TRUE), "A blocked dock corridor cannot connect")
+	TEST_ASSERT(findtext(navigation.status, "коридор за секцией стыковочной стены перекрыт"), "The helm must identify the blocked dock corridor: [navigation.status]")
+	qdel(corridor_blocker)
+
+	qdel(wall)
+	TEST_ASSERT(!navigation.dock(instant = TRUE), "A missing wall cannot connect")
+	TEST_ASSERT(findtext(navigation.status, "нет секции стыковочной стены"), "The helm must identify the missing wall section: [navigation.status]")
+	TEST_ASSERT_NULL(bay.active_berth, "A failed approach must release the physical berth")
+	TEST_ASSERT_NULL(site.docking_owner, "A failed approach must release the overmap site")
 
 /// A passage blocked during the yielding native preflight must still stop the hull before movement.
 /datum/unit_test/overmap_standard_dock/late_blocked_passage
@@ -383,6 +409,7 @@
 	var/arrived = navigation.dock(instant = TRUE)
 	TEST_ASSERT_NOTNULL(late_blocker, "The real native preflight must run before the passage is blocked")
 	TEST_ASSERT(!arrived, "The final check must reject the newly obstructed passage")
+	TEST_ASSERT(findtext(navigation.status, "полоса трапа перекрыта"), "Native preflight must report the changed passage: [navigation.status]")
 	TEST_ASSERT_EQUAL(get_turf(ship), departure, "Rejection during preflight must leave the hull at departure")
 	TEST_ASSERT_EQUAL(get_turf(late_blocker), gap, "The last-minute obstruction must remain in place")
 	TEST_ASSERT(isspaceturf(gap), "The obstructed gap must remain vacuum")
@@ -543,6 +570,50 @@
 	TEST_ASSERT_EQUAL(get_turf(ship), get_turf(bay), "The ship must physically arrive at the requested berth")
 	TEST_ASSERT_NULL(home.station_docking_requests[ship.shuttle_id], "Successful docking must consume the clearance")
 	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "Physical occupancy must keep the berth reserved")
+
+/// A hostile approach to a fixed chart contact must claim exactly one real berth and use its native gangway.
+/datum/unit_test/overmap_standard_dock/fixed_site_boarding/Run()
+	var/datum/stationtrauma_overmap_sector/space/home = allocate(/datum/stationtrauma_overmap_sector/space)
+	navigation.sites -= site.id
+	TEST_ASSERT(home.register(ship.shuttle_id, navigation), "Register the hull with the installation's sector")
+	home.sites[site.id] = site
+	home.register_docking_berth(site, "traffic:unit_test", "Test installation")
+	var/target_id = site.docking_target.id
+	TEST_ASSERT(navigation.select_site(target_id), "Select the public installation on the helm chart")
+	var/obj/machinery/computer/stationtrauma_space_navigation/helm = allocate(/obj/machinery/computer/stationtrauma_space_navigation, get_turf(ship))
+	helm.vessel = ship
+	var/turf/origin = get_turf(ship)
+	var/obj/machinery/power/shuttle_engine/engine = allocate(/obj/machinery/power/shuttle_engine, locate(ship.x + 3, ship.y + 8, ship.z))
+	engine.anchored = TRUE
+	engine.engine_state = initial(engine.engine_state)
+	engine.connect_to_shuttle(TRUE, ship)
+	TEST_ASSERT(navigation.set_engines_running(TRUE), "Start the boarding ship's engine before it takes the berth")
+	TEST_ASSERT(!helm.navigation_command("board_site", site.id), "A private berth ID must never authorize boarding")
+	navigation.pos_x = site.pos_x + 2000
+	TEST_ASSERT(!helm.navigation_command("board_site", target_id), "Boarding cannot bring a distant ship to the installation")
+	navigation.pos_x = site.pos_x
+	TEST_ASSERT(helm.navigation_command("board_site", target_id), "Start a boarding countdown on the selected installation")
+	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "Traffic must see the claimed berth during the countdown")
+	TEST_ASSERT(!helm.navigation_command("request_station_dock", target_id), "An active capture cannot acquire a second clearance")
+	TEST_ASSERT(!helm.navigation_command("dock", target_id), "Ordinary docking cannot skip the hostile countdown")
+	TEST_ASSERT(helm.navigation_command("cancel_boarding"), "The pilot can cancel before the native approach")
+	TEST_ASSERT_NULL(site.docking_owner, "Cancellation must release the traffic reservation")
+	TEST_ASSERT_EQUAL(get_turf(ship), origin, "Cancellation must leave the hull at its original berth")
+
+	TEST_ASSERT(helm.navigation_command("board_site", target_id), "Retry after releasing the reservation")
+	var/deadline = navigation.boarding_attempt.end_time + 15 SECONDS
+	UNTIL(!navigation.boarding_attempt || world.time >= deadline)
+	TEST_ASSERT_EQUAL(navigation.docked, site, "The capture must moor at the physical berth without dispatch clearance: [navigation.status]")
+	TEST_ASSERT_EQUAL(ship.get_docked(), bay.active_berth, "The native hull must arrive at the technical berth")
+	TEST_ASSERT_EQUAL(length(bay.active_berth?.gangways), 1, "A real gangway must connect the two maps")
+	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "The occupied berth remains reserved until the hull leaves")
+	// Docking starts the gangway's airlock cycle asynchronously; retraction needs that same interlock.
+	var/datum/stationtrauma_dock_gangway/gangway = bay.active_berth.gangways[1]
+	UNTIL(!gangway.busy || world.time >= deadline)
+	TEST_ASSERT(!gangway.busy, "The arrival airlock cycle must finish before the bridge can retract")
+	TEST_ASSERT(navigation.depart(), "Release the captured berth via the pilot's timed departure: [navigation.status]")
+	TEST_ASSERT_EQUAL(get_turf(ship), origin, "Undocking must restore the original physical hull position")
+	TEST_ASSERT_NULL(site.docking_owner, "Regular traffic can use the berth after departure")
 
 /// A public dock answers after a delay and preserves one reservation at a time.
 /datum/unit_test/overmap_standard_dock/automatic_clearance
@@ -897,7 +968,7 @@
 	TEST_ASSERT_EQUAL(ship.get_docked(), bay.active_berth, "Native movement must finish at the technical M berth")
 	TEST_ASSERT_EQUAL(ship.width, hull_width, "The native berth must keep the small hull's width")
 	TEST_ASSERT_EQUAL(hatch.gangway?.wall, wall, "The small hull must deploy a gangway to the M wall")
-/// The prepared station M dock must be available when the live sector has finished loading.
+/// Confirm Cyberiad starts with a standard station berth and its cargo ship docked.
 /datum/unit_test/overmap_controller_roundstart
 	test_flags = UNIT_TEST_MAP_TEST
 
@@ -905,22 +976,22 @@
 	if(SSmapping.current_map.space_overmap?["station_id"] != "cyberiad")
 		return
 	var/datum/stationtrauma_overmap_sector/space/home = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
-	TEST_ASSERT(home?.ready, "Cyberiad Overmap must start with a ready home sector")
+	TEST_ASSERT(home?.ready && SSstationtrauma_space_voyage.initialized, "Cyberiad Overmap must finish initializing its fleet")
 	var/datum/stationtrauma_overmap_site/space/station_site = home.sites["cyberiad"]
-	var/obj/docking_port/stationary/stationtrauma_space_station/service_berth = station_site?.berth
-	TEST_ASSERT(istype(service_berth), "The station controller must publish the native service berth before guests are placed")
-	var/obj/docking_port/stationary/evacuation = SSshuttle.getDock("emergency_home")
-	TEST_ASSERT_NOTNULL(evacuation, "The native evacuation port must remain present")
-	TEST_ASSERT_EQUAL(get_turf(service_berth), get_turf(evacuation), "The service and evacuation berths must still share the same anchor")
-	TEST_ASSERT(service_berth.width == 21 && service_berth.height == 32 && service_berth.dir == NORTH && service_berth.dwidth == 0 && service_berth.dheight == 16, "The service berth must preserve the original native docking geometry")
-	var/datum/stationtrauma_overmap_site/space/site = home.sites["cyberiad_m_dock"]
-	TEST_ASSERT_NOTNULL(site, "Cyberiad's prepared M dock must be available immediately after startup")
-	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/berth = site.berth
-	TEST_ASSERT(istype(berth), "The destination must be a controller-owned native berth")
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/berth = station_site?.berth
+	TEST_ASSERT(istype(berth), "Cyberiad's station ID must resolve to a standard controller-owned berth")
 	var/obj/machinery/computer/stationtrauma_dock_controller/medium/controller = berth.controller_ref?.resolve()
 	TEST_ASSERT(istype(controller) && controller.owned_slot == berth, "The mapped controller must own the only berth")
 	TEST_ASSERT_EQUAL(berth.x, 49, "The M berth must keep its existing X coordinate")
 	TEST_ASSERT_EQUAL(berth.y, 99, "The M berth must keep its existing Y coordinate")
+	TEST_ASSERT_NOTNULL(SSshuttle.getDock("emergency_home"), "The native evacuation port must remain present")
+	var/datum/stationtrauma_overmap_site/space/cargo_site = home.sites["cyberiad_cargo_s_dock_2"]
+	var/obj/docking_port/stationary/stationtrauma_space_station/standard/runtime/cargo_slot = cargo_site?.berth
+	TEST_ASSERT(istype(cargo_slot) && cargo_slot.active_berth, "Cargo S #2 must have a native berth for the starting ship")
+	var/datum/stationtrauma_overmap/space/cargo = home.ships["overmap_cargo_s"]
+	TEST_ASSERT_EQUAL(cargo?.docked, cargo_site, "The cargo ship must start docked at Cargo S #2")
+	TEST_ASSERT_EQUAL(cargo.vessel.get_docked(), cargo_slot.active_berth, "The cargo ship must be physically at Cargo S #2")
+	TEST_ASSERT_EQUAL(length(cargo_slot.active_berth.gangways), 1, "The cargo ship must have a gangway to the station")
 	var/datum/stationtrauma_overmap_site/space/industrial = home.sites["trade_industrial_m"]
 	TEST_ASSERT_NOTNULL(industrial, "The converted trade controller must publish the previous berth ID")
 	TEST_ASSERT(industrial.docking_target?.automatic, "The trade outpost must still handle docking requests automatically")

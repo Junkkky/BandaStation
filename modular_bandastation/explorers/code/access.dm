@@ -17,6 +17,8 @@
 	job = /datum/job/explorer
 
 /datum/id_trim/job/explorer/leader
+	trim_state = "trim_expedition_leader"
+	sechud_icon_state = SECHUD_EXPEDITION_LEADER
 	assignment = JOB_EXPEDITION_LEADER_RU
 	department_color = COLOR_COMMAND_BLUE
 	department_state = "departmenthead"
@@ -39,6 +41,8 @@
 	job = /datum/job/explorer/leader
 
 /datum/id_trim/job/explorer/pilot
+	trim_state = "trim_expedition_pilot"
+	sechud_icon_state = SECHUD_EXPEDITION_PILOT
 	assignment = JOB_EXPEDITION_PILOT_RU
 	minimal_access = list(
 		ACCESS_EXPLORER,
@@ -52,6 +56,8 @@
 	job = /datum/job/explorer/pilot
 
 /datum/id_trim/job/explorer/medic
+	trim_state = "trim_expedition_medic"
+	sechud_icon_state = SECHUD_EXPEDITION_MEDIC
 	assignment = JOB_EXPEDITION_MEDIC_RU
 	subdepartment_color = COLOR_MEDICAL_BLUE
 	minimal_access = list(
@@ -66,6 +72,8 @@
 	job = /datum/job/explorer/medic
 
 /datum/id_trim/job/explorer/engineer
+	trim_state = "trim_expedition_engineer"
+	sechud_icon_state = SECHUD_EXPEDITION_ENGINEER
 	assignment = JOB_EXPEDITION_ENGINEER_RU
 	subdepartment_color = COLOR_ENGINEERING_ORANGE
 	minimal_access = list(

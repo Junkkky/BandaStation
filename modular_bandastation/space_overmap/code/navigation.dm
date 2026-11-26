@@ -25,6 +25,8 @@
 	return ..()
 
 /datum/stationtrauma_overmap/space/Destroy()
+	QDEL_LIST_ASSOC_VAL(planet_surveys)
+	chosen_pads = null
 	QDEL_NULL(planet_flight)
 	QDEL_NULL(planet_ascent)
 	QDEL_NULL(planet_hover)
@@ -38,6 +40,7 @@
 			qdel(docked)
 	docking_request = null
 	approach_site = null
+	QDEL_NULL(boarding_attempt)
 	QDEL_NULL(ship_docking)
 	QDEL_NULL(interior_audio)
 	QDEL_NULL(engine_sound)
@@ -100,7 +103,7 @@
 /** Passive ship observations within sensor range, refreshed every two seconds. */
 /datum/stationtrauma_overmap/space/proc/listen()
 	next_listen = world.time + 2 SECONDS
-	observe_ships(sensor_range, passive = TRUE)
+	observe_ships(sensor_range, passive = TRUE, tracked_reach = fire_control_sensor_range())
 
 /** Nominal drive load distinguishes powered manoeuvres from unpowered drift. */
 /datum/stationtrauma_overmap/space/detection_signature()
@@ -116,10 +119,10 @@
 	return !QDELETED(vessel)
 
 /** Available fraction of the native engine registry's nominal power. */
-/datum/stationtrauma_overmap/space/proc/engine_fraction()
+/datum/stationtrauma_overmap/space/proc/engine_fraction(regulated = TRUE)
 	var/power = 0
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in vessel.engine_list)
-		power += engine.engine_power * engine_output(engine)
+		power += engine.engine_power * engine_output(engine, regulated)
 	return clamp(power / max(1, vessel.initial_engine_power), 0, 1)
 
 /** Engine power actually delivered per hull tile: the heavier the hull, the weaker the same engines. */
@@ -137,13 +140,14 @@
 	return ST_NAV_TURN_RATE * clamp(sqrt(ST_SPACE_REFERENCE_MASS / max(1, vessel.hull_mass)), 0.5, 2)
 
 /** Share of one intact engine's nominal power; gas-fed nozzles depend on their delivered feed. */
-/datum/stationtrauma_overmap/space/proc/engine_output(obj/machinery/power/shuttle_engine/engine)
+/datum/stationtrauma_overmap/space/proc/engine_output(obj/machinery/power/shuttle_engine/engine, regulated = TRUE)
 	if(QDELETED(engine) || !engine.crew_enabled || !engine.anchored || engine.engine_state != initial(engine.engine_state) || (engine.machine_stat & BROKEN) || engine.get_integrity() <= 0)
 		return 0
+	var/limit = regulated ? vessel.combat_engine_limit(available = !vessel.engines_running) : 1
 	if(!engine.requires_combustion)
-		return 1
+		return limit
 	var/obj/machinery/atmospherics/components/unary/ship_engine_heater/feed = engine.combustion_feed?.resolve()
-	return feed?.propulsion_fraction() || 0
+	return (feed?.propulsion_fraction() || 0) * limit
 
 /datum/stationtrauma_overmap/space/propulsion_available()
 	return !preparing && !ship_docking && vessel.engines_running && engine_fraction() > 0
@@ -475,9 +479,20 @@
 /datum/stationtrauma_overmap/space/proc/selected_docking_site()
 	var/datum/stationtrauma_overmap_site/space/site = sites[selected_destination]
 	if(istype(site, /datum/stationtrauma_overmap_site/space/docking_target))
+		var/datum/stationtrauma_boarding_attempt/station/capture = boarding_attempt
+		if(istype(capture) && capture.committing && capture.reserved_berth?.docking_target == site)
+			return capture.reserved_berth
 		return assigned_station_berth(site)
 	if(site?.docking_owner == src)
 		return site
+	// A surveyed planet takes the pad the pilot chose on its chart, and only that one.
+	var/datum/stationtrauma_overmap_site/space/planet/planet = site
+	if(istype(planet))
+		for(var/datum/stationtrauma_overmap_site/space/pad as anything in planet.pads)
+			if(pad.docking_owner == src)
+				return pad
+		var/datum/stationtrauma_overmap_site/space/chosen = planet_pad_site(planet, LAZYACCESS(chosen_pads, planet.id))
+		return chosen && pad_available(chosen) ? chosen : null
 	var/datum/stationtrauma_overmap_site/space/pad = free_pad(site)
 	if(pad)
 		return pad
@@ -499,10 +514,7 @@
 	for(var/datum/stationtrauma_overmap_site/space/pad as anything in site.pads)
 		if(pad.docking_owner || pad.failed)
 			continue
-		if(pad.awaits_map())
-			return pad
-		var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = pad.berth
-		if(istype(slot) ? (!slot.active_berth && slot.accepts(vessel)) : (pad.berth && !pad.berth.get_docked()))
+		if(pad.awaits_map() || pad_available(pad))
 			return pad
 	return null
 
@@ -512,6 +524,10 @@
 	if(!selected || (site != selected && site?.docking_target != selected && site?.pad_parent != selected) || !carrier_arrival_ready(site) || carrier_busy())
 		return FALSE
 	if(site?.landing && (!vessel.engines_running || engine_fraction() <= 0))
+		return FALSE
+	// A planet is landed on only once this ship has surveyed and mapped it.
+	var/datum/stationtrauma_overmap_site/space/planet/planet = site?.pad_parent || site
+	if(istype(planet) && !surveyed(planet))
 		return FALSE
 	if(site?.host && sqrt((site.pos_x - pos_x) ** 2 + (site.pos_y - pos_y) ** 2) > ST_SPACE_DOCK_RANGE)
 		return FALSE
@@ -555,6 +571,7 @@
 	var/revision = control_revision
 	preparing = TRUE
 	var/datum/stationtrauma_work_budget/budget = new
+	var/list/diagnostic = list()
 	var/ready = FALSE
 	var/physical_docking = site.landing || site.physical_docking
 	var/obj/docking_port/stationary/target_berth = site.berth
@@ -564,7 +581,7 @@
 	var/obj/docking_port/stationary/stationtrauma_space_site/standard/standard_berth
 	try
 		if(slot)
-			standard_berth = slot.prepare_berth(vessel)
+			standard_berth = slot.prepare_berth(vessel, diagnostic)
 			target_berth = standard_berth
 		var/approached = (!slot || target_berth) && ((site.physical_docking && instant) || approach(site, revision))
 		if(!slot && !QDELETED(site))
@@ -575,15 +592,20 @@
 				if(slot.active_berth?.ship == vessel)
 					standard_berth = slot.active_berth
 				else if(approached)
-					standard_berth = slot.prepare_berth(vessel)
+					standard_berth = slot.prepare_berth(vessel, diagnostic)
 				target_berth = standard_berth
+		if(!approached && standard_berth && !QDELETED(slot) && !slot.accepts(vessel))
+			diagnostic["reason"] = "причал стал недоступен во время сближения"
 		if(approached && target_berth)
 			connection.direction = !physical_docking && site.ruin_id ? REVERSE_DIR(target_berth.dir) : WEST
 			if(physical_docking)
 				ready = relocate(target_berth, before_takeoff)
+				if(!ready)
+					diagnostic["reason"] = standard_berth?.preflight_problem || "перемещение к месту стыковки не выполнено"
 			else
 				ready = connection.connect(target_berth, budget, FALSE, 1, 1) && connection.activate(budget, CALLBACK(src, PROC_REF(can_dock), site, revision))
 	catch(var/exception/failure)
+		diagnostic["reason"] = "ошибка при выполнении манёвра"
 		stack_trace("Space prototype docking failed: [failure]")
 	if(QDELETED(src))
 		return FALSE
@@ -608,8 +630,13 @@
 				status = "Посадка в ангар отменена: площадка занята или перекрыта"
 			else if(site.landing && slot && !standard_berth)
 				status = "Посадка отменена: площадка перекрыта"
+			else if(site.landing)
+				status = "Посадка прервана"
+			else if(slot)
+				var/reason = diagnostic["reason"] || "сближение прервано"
+				status = "Стыковка [slot.dock_class] отменена: [reason]"
 			else
-				status = site.landing ? "Посадка прервана" : slot ? "Стыковка [slot.dock_class] отменена: нет свободного пути для трапа" : "Стыковка не выполнена: переход перекрыт"
+				status = "Стыковка не выполнена: переход перекрыт"
 		return FALSE
 	docked = site
 	if(site.host)
@@ -623,14 +650,20 @@
 	pos_x = site.pos_x
 	pos_y = site.pos_y
 	status = (site.landing || hangar) ? "Посадка: [site.name]" : "Стыковка: [site.name]"
+	// the station hears which berth a hull has come to; ships set at their berths before the round are not news
+	if(slot && is_station_level(slot.z) && SSticker.HasRoundStarted())
+		minor_announce("Причал «[site.name]» — прибытие: [public_ship_label()].", "Диспетчерская станции")
 	if(hangar)
 		if(!QDELETED(slot))
 			slot.show_hangar_glow(src)
 	else
 		if(standard_berth)
-			var/deployed = standard_berth.deploy_gangways()
+			var/deployed = standard_berth.deploy_gangways(diagnostic)
 			if(deployed < length(standard_berth.routes))
-				status = deployed ? "Корабль пришвартован, часть проходов перекрыта" : "Корабль пришвартован, проходы перекрыты"
+				status = deployed ? "Корабль пришвартован, часть трапов не развёрнута" : "Корабль пришвартован, трапы не развёрнуты"
+				var/reason = diagnostic["reason"]
+				if(reason)
+					status += " — [reason]"
 		play_maneuver_audio(target_berth)
 	refresh_engine_audio()
 	update_parallax()
@@ -658,25 +691,23 @@
 	// Spooling up does not move the hull; departure flight starts only after the physical release.
 	var/moving = speed > ST_NAV_STOPPED_SPEED || (approach_started && !approach_departing) || (helm_engaged && (approach_departing || throttle > 0)) || jump_phase >= HYPERSPACE_LAUNCH
 	var/direction = !moored && moving ? vessel.preferred_direction : NONE
-	// Bluespace flight streaks the stars past the hull.
-	var/rush = jump_phase == HYPERSPACE_LAUNCH ? ST_SPACE_JUMP_PARALLAX_RUSH : 1
-	// Keep real drift and star scrolling independent while the planet supplies the motion.
+	// Keep real drift independent of the camera effect shown during landings and jumps.
 	parallax_direction = direction
-	var/visual_direction = (planet_hover || planet_flight || planet_ascent) ? NONE : direction
-	var/motion_changed = visual_direction != published_parallax_direction || rush != parallax_rush
-	if(!motion_changed && background == space_background && planet == space_planet)
+	var/visual_direction = (jump_phase || planet_hover || planet_flight || planet_ascent) ? NONE : direction
+	var/bluespace_stage = min(jump_phase, HYPERSPACE_LAUNCH)
+	var/bluespace_heading = bluespace_stage ? vessel.preferred_direction : NONE
+	var/motion_changed = visual_direction != published_parallax_direction
+	if(!motion_changed && background == space_background && planet == space_planet && bluespace_stage == published_bluespace_stage \
+		&& bluespace_heading == published_bluespace_heading)
 		return
 	space_background = background
 	space_planet = planet
 	published_parallax_direction = visual_direction
-	parallax_rush = rush
+	published_bluespace_stage = bluespace_stage
+	published_bluespace_heading = bluespace_heading
 	for(var/area/ship_area as anything in vessel.shuttle_areas)
-		ship_area.set_space_parallax_background(background, planet)
+		ship_area.set_space_parallax_background(background, planet, bluespace_stage, bluespace_heading)
 		if(motion_changed)
-			ship_area.parallax_rush = rush
-			// Viewers restart their loop only on a direction change, so a new speed in the same direction passes through a stop.
-			if(ship_area.parallax_movedir == visual_direction)
-				ship_area.set_parallax_movedir(NONE)
 			ship_area.set_parallax_movedir(visual_direction)
-	exterior?.set_space_parallax_background(background, planet)
+	exterior?.set_space_parallax_background(background, planet, bluespace_stage, bluespace_heading)
 	exterior?.set_parallax_movedir(NONE)

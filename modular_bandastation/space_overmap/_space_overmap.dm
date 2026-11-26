@@ -6,10 +6,20 @@
 #define ST_FUEL_CACHE_SPACE_CHANCE 35
 /// Percent chance that a planet ruin holds a fuel cache; planets already offer ore and supply crates.
 #define ST_FUEL_CACHE_PLANET_CHANCE 25
+/// Volume of the ship consoles' key presses.
+#define ST_CONSOLE_BUTTON_VOLUME 15
+/// Landing pads of a planet besides its own berth, each a choice on the survey and a berth for another hull.
+#define ST_PLANET_EXTRA_PADS 2
 /// Flight of a called ship to its station berth.
 #define ST_SHUTTLE_DELIVERY_TIME (5 MINUTES)
-/// Parallax loop speed multiplier through bluespace flight.
-#define ST_SPACE_JUMP_PARALLAX_RUSH 8
+/// Time between drive activation and entering bluespace.
+#define ST_SPACE_JUMP_WARMUP (4 SECONDS)
+/// Time to finish covering realspace after launch.
+#define ST_SPACE_JUMP_REVEAL (1.6 SECONDS)
+/// Time the tunnel takes to recede over the destination.
+#define ST_SPACE_JUMP_FADE (2.8 SECONDS)
+/// Opacity reached just before the drive commits.
+#define ST_SPACE_JUMP_WARMUP_ALPHA 104
 /// Reach of the star's corona from the system centre, in virtual sector units; the nearest rolled objects lie past 500.
 #define ST_STAR_CORONA_RADIUS 350
 /// Interval between corona effects on a hull inside it.

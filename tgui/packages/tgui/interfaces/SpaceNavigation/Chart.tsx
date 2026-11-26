@@ -3,6 +3,7 @@ import { Button } from 'tgui-core/components';
 
 import { useApproachClock } from './Descent';
 import {
+  JumpPointGlyph,
   PlanetGlyph,
   ShipGlyph,
   StationGlyph,
@@ -10,8 +11,10 @@ import {
   ZoneArt,
 } from './DisplayArt';
 import {
+  type ChartData,
   distanceLabel,
-  type NavigationData,
+  type FiringSector,
+  type LandingPad,
   type Position,
   VECTOR_SECONDS,
 } from './types';
@@ -46,20 +49,43 @@ function ScanWave(props: {
   );
 }
 
+const aimKeys: Partial<Record<string, Position>> = {
+  ArrowUp: { x: 0, y: 10 },
+  ArrowRight: { x: 10, y: 0 },
+  ArrowDown: { x: 0, y: -10 },
+  ArrowLeft: { x: -10, y: 0 },
+};
+
+export type MuzzleFlash = { id: string; heading: number };
+
 type Props = {
-  data: NavigationData;
+  data: ChartData;
   zoom: number;
+  firingSector?: FiringSector;
+  muzzleFlashes?: MuzzleFlash[];
+  aimPoint?: Position | null;
+  aimValid?: boolean;
+  onAim?: (position: Position) => void;
   hoveredTarget: string | null;
   focusedContact: number | null;
   onContact: (id: number) => void;
-  onSite: (id: string) => void;
+  onSite?: (id: string) => void;
+  selectableSites?: string[];
+  onPad?: (number: number) => void;
 };
 
 export function Chart({
+  aimPoint,
+  aimValid,
   data,
+  firingSector,
+  muzzleFlashes,
   focusedContact,
+  onAim,
   onContact,
   onSite,
+  selectableSites,
+  onPad,
   zoom,
   hoveredTarget,
 }: Props) {
@@ -75,6 +101,7 @@ export function Chart({
     y: height / 2 - (y - centre.y) * scale,
   });
   const own = point(data.x, data.y);
+  const aim = aimPoint && point(aimPoint.x, aimPoint.y);
   const disabled = !!(data.preparing || data.relocating);
 
   useEffect(() => {
@@ -117,6 +144,10 @@ export function Chart({
   )
     rows.push(y);
   const bodies = data.celestial_bodies || [];
+  const radius = (firingSector?.range ?? 0) * scale;
+  const radians = ((firingSector?.arc ?? 0) * Math.PI) / 180;
+  const edgeX = radius * Math.sin(radians);
+  const edgeY = -radius * Math.cos(radians);
 
   return (
     <div className="SpaceNavigation__chart-stage">
@@ -136,7 +167,58 @@ export function Chart({
         height={height}
         viewBox={`0 0 ${width} ${height}`}
         className="SpaceNavigation__chart"
-        aria-label="Карта контактов. Выбор левой кнопкой, перемещение правой."
+        aria-label={
+          onAim
+            ? 'Карта наведения. ЛКМ выбирает точку, стрелки двигают прицел, ПКМ перемещает карту.'
+            : 'Карта контактов. Выбор левой кнопкой, перемещение правой.'
+        }
+        tabIndex={onAim ? 0 : undefined}
+        onClick={
+          onAim &&
+          ((event) => {
+            const chart = event.currentTarget;
+            const matrix = chart.getScreenCTM();
+            if (!matrix) return;
+            const cursor = chart.createSVGPoint();
+            cursor.x = event.clientX;
+            cursor.y = event.clientY;
+            const chartPoint = cursor.matrixTransform(matrix.inverse());
+            if (
+              !(
+                chartPoint.x >= 0 &&
+                chartPoint.x <= width &&
+                chartPoint.y >= 0 &&
+                chartPoint.y <= height
+              )
+            )
+              return;
+            onAim({
+              x: centre.x + (chartPoint.x - width / 2) / scale,
+              y: centre.y - (chartPoint.y - height / 2) / scale,
+            });
+          })
+        }
+        onKeyDown={
+          onAim &&
+          ((event) => {
+            const step = aimKeys[event.key];
+            if (
+              !step ||
+              !firingSector ||
+              event.target !== event.currentTarget
+            ) {
+              return;
+            }
+            event.preventDefault();
+            const angle = (firingSector.heading * Math.PI) / 180;
+            const distance = (firingSector.range + firingSector.min_range) / 2;
+            const origin = aimPoint || {
+              x: data.x + Math.sin(angle) * distance,
+              y: data.y + Math.cos(angle) * distance,
+            };
+            onAim({ x: origin.x + step.x, y: origin.y + step.y });
+          })
+        }
         onContextMenu={(event) => event.preventDefault()}
         onMouseDown={(event) => {
           if (event.button !== 2) return;
@@ -277,6 +359,7 @@ export function Chart({
             transform={`translate(${point(data.star.x, data.star.y).x} ${point(data.star.x, data.star.y).y})`}
             className="SpaceNavigation__map-feature"
           >
+            {data.star.name && <title>{data.star.name}</title>}
             <circle
               r={data.star.radius * 1.8}
               fill="transparent"
@@ -313,23 +396,48 @@ export function Chart({
               .join(' ')}
           />
         )}
+        {firingSector && (
+          <path
+            aria-label="Сектор обстрела выбранного орудия"
+            d={`M0 0 L${-edgeX} ${edgeY} A${radius} ${radius} 0 0 1 ${edgeX} ${edgeY} Z`}
+            fill="#e9a14a"
+            fillOpacity={0.18}
+            stroke="#e9a14a"
+            strokeOpacity={0.85}
+            strokeDasharray="4 3"
+            transform={`translate(${own.x} ${own.y}) rotate(${firingSector.heading})`}
+            pointerEvents="none"
+          />
+        )}
         {data.routes.map((site, siteIndex) => {
           const p = point(site.x, site.y);
-          const selected = focusedContact === null && site.id === data.selected;
+          const selectSite =
+            !selectableSites || selectableSites.includes(site.id)
+              ? onSite
+              : undefined;
+          const selected =
+            focusedContact === null &&
+            site.id === (data.inspected || data.selected);
           return (
             <g
               key={site.id}
               transform={`translate(${p.x} ${p.y})`}
               className={`SpaceNavigation__marker ${selected ? 'is-selected' : ''} ${hoveredTarget === `site:${site.id}` ? 'is-hovered' : ''}`}
-              role="button"
-              tabIndex={0}
+              role={selectSite ? 'button' : undefined}
+              tabIndex={selectSite ? 0 : undefined}
               aria-label={site.name}
-              aria-disabled={disabled || !!site.failed}
-              onClick={() => !disabled && !site.failed && onSite(site.id)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' && !disabled && !site.failed)
-                  onSite(site.id);
-              }}
+              aria-disabled={selectSite ? disabled || !!site.failed : undefined}
+              onClick={
+                selectSite &&
+                (() => !disabled && !site.failed && selectSite(site.id))
+              }
+              onKeyDown={
+                selectSite &&
+                ((event) => {
+                  if (event.key === 'Enter' && !disabled && !site.failed)
+                    selectSite(site.id);
+                })
+              }
               stroke={selected ? '#edc587' : site.sos ? '#e0533f' : '#7b9c86'}
             >
               <title>{site.name}</title>
@@ -360,6 +468,14 @@ export function Chart({
                   />
                 ) : site.kind === 'station' ? (
                   <StationGlyph />
+                ) : site.kind === 'jump' ? (
+                  <>
+                    <circle
+                      className="SpaceNavigation__jump-range"
+                      r={(data.jump_point_range || 0) * scale}
+                    />
+                    <JumpPointGlyph />
+                  </>
                 ) : (
                   <g>
                     <path d="M0-8L8 0L0 8L-8 0Z" fill="#10221d" />
@@ -399,6 +515,30 @@ export function Chart({
             </g>
           );
         })}
+        {onPad &&
+          zoom >= PAD_ZOOM &&
+          data.survey?.pads &&
+          data.routes
+            .filter(
+              (site) =>
+                site.kind === 'planet' &&
+                site.id === data.selected &&
+                focusedContact === null,
+            )
+            .map((site) => (
+              <LandingPads
+                key={site.id}
+                at={point(site.x, site.y)}
+                pads={data.survey?.pads || []}
+                kind={
+                  bodies.find(
+                    (body) => Math.hypot(body.x - site.x, body.y - site.y) < 1,
+                  )?.kind || 'barren'
+                }
+                disabled={disabled}
+                onPad={onPad}
+              />
+            ))}
         {data.ship_contacts.map((contact) => {
           const p = point(contact.x, contact.y);
           return (
@@ -407,11 +547,16 @@ export function Chart({
               className={`SpaceNavigation__marker ${contact.id === focusedContact ? 'is-selected' : ''} ${hoveredTarget === `contact:${contact.id}` ? 'is-hovered' : ''}`}
               role="button"
               tabIndex={0}
-              aria-label={`Контакт ${contact.id}`}
+              aria-label={`Контакт ${contact.id} · ${contact.identity?.callsign || 'Неопознанное судно'}`}
+              aria-pressed={contact.id === focusedContact}
               onClick={() => onContact(contact.id)}
-              onKeyDown={(event) =>
-                event.key === 'Enter' && onContact(contact.id)
-              }
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  onContact(contact.id);
+                  onAim?.({ x: contact.x, y: contact.y });
+                }
+              }}
             >
               <title>{`К${contact.id} · ${contact.identity?.callsign || 'Неопознанное судно'} · ${Math.floor(contact.age)} с`}</title>
               <circle cx={p.x} cy={p.y} r={13} fill="transparent" />
@@ -503,10 +648,128 @@ export function Chart({
           >
             <title>Дальность стыковки и посадки</title>
           </circle>
+          {!!data.shield_up && (
+            <circle
+              r={18}
+              fill="none"
+              stroke="#8bcfdc"
+              strokeWidth={1}
+              opacity={0.8}
+            >
+              <title>Щит поднят</title>
+            </circle>
+          )}
           <g transform={`rotate(${data.course})`}>
             <ShipGlyph />
           </g>
+          {muzzleFlashes?.map((flash) => (
+            <g key={flash.id} transform={`rotate(${flash.heading})`}>
+              <path
+                className="ShipWeapons__muzzle-flash"
+                d="M0 -15 L-5 -22 L-2 -21 L0 -34 L2 -21 L5 -23 Z"
+                fill="#fff3ae"
+                stroke="#ff9344"
+                strokeWidth={1.5}
+              >
+                <title>Выстрел автопушки</title>
+              </path>
+            </g>
+          ))}
         </g>
+        {aim && (
+          <g
+            aria-label="Точка прицеливания"
+            pointerEvents="none"
+            fill="none"
+            stroke={aimValid ? '#d5edb1' : '#eb9b79'}
+          >
+            <line
+              x1={own.x}
+              y1={own.y}
+              x2={aim.x}
+              y2={aim.y}
+              strokeDasharray="4 4"
+              opacity={0.8}
+            />
+            <g transform={`translate(${aim.x} ${aim.y})`}>
+              <circle r={7} fill="#0b1514" />
+              <path d="M-11 0h8m6 0h8M0-11v8m0 6v8" />
+            </g>
+          </g>
+        )}
+        {data.impact_waves?.map((impact) => {
+          const location =
+            impact.kind === 'terrain'
+              ? impact
+              : impact.contact === null
+                ? data
+                : data.ship_contacts.find(
+                    (contact) => contact.id === impact.contact,
+                  );
+          if (!location) return null;
+          const center = point(location.x, location.y);
+          return (
+            <circle
+              key={impact.id}
+              className="SpaceNavigation__impact-wave"
+              cx={center.x}
+              cy={center.y}
+              r={22}
+              stroke={impact.kind === 'shield' ? '#87deef' : '#fb776b'}
+              strokeWidth={1.6}
+              fill="none"
+              vectorEffect="non-scaling-stroke"
+              pointerEvents="none"
+              aria-hidden="true"
+            />
+          );
+        })}
+        {data.drop_pods?.map((pod) => {
+          const p = point(pod.x, pod.y);
+          return (
+            <g
+              key={pod.id}
+              transform={`translate(${p.x} ${p.y})`}
+              pointerEvents="none"
+            >
+              <title>Дроп-под</title>
+              <path
+                d="M0 -5 L4 0 L0 5 L-4 0 Z"
+                fill="#a1e6ee"
+                stroke="#246171"
+              />
+              <path d="M-7 0 H-4 M4 0 H7" stroke="#a1e6ee" />
+            </g>
+          );
+        })}
+        {data.kinetic_shots?.map((shot) => {
+          const p = point(shot.x, shot.y);
+          return (
+            <g
+              key={shot.id}
+              opacity={shot.finished ? 0.45 : 1}
+              pointerEvents="none"
+            >
+              <title>Кинетический снаряд</title>
+              {!shot.finished && shot.heading !== undefined && (
+                <path
+                  d="M0 0 V12"
+                  transform={`translate(${p.x} ${p.y}) rotate(${shot.heading})`}
+                  stroke="#ff9f59"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                />
+              )}
+              <circle
+                cx={p.x}
+                cy={p.y}
+                r={3.5}
+                fill="#fff1ba"
+                stroke="#ad6237"
+              />
+            </g>
+          );
+        })}
         <g fill="#718870" stroke="#718870">
           <text x={12} y={54} stroke="none">
             N ↑
@@ -557,5 +820,65 @@ function Velocity({
       strokeWidth={2}
       markerEnd="url(#velocity-arrow)"
     />
+  );
+}
+
+/** Chart zoom at which a surveyed planet shows its landing pads */
+const PAD_ZOOM = 4;
+/** Radius of the planet drawn with its pads */
+const PAD_PLANET_RADIUS = 80;
+
+/**
+ * A surveyed planet drawn large with its landing pads, each where it lies on the survey schematic: the generated
+ * square of the surface is inscribed in the disc.
+ */
+function LandingPads({
+  at,
+  pads,
+  kind,
+  disabled,
+  onPad,
+}: {
+  at: Position;
+  pads: LandingPad[];
+  kind: string;
+  disabled: boolean;
+  onPad: (number: number) => void;
+}) {
+  const half = PAD_PLANET_RADIUS / Math.SQRT2;
+  return (
+    <g transform={`translate(${at.x} ${at.y})`}>
+      <g style={{ color: '#e7c689' }}>
+        <circle r={PAD_PLANET_RADIUS + 4} fill="#090f10" />
+        <PlanetGlyph radius={PAD_PLANET_RADIUS} kind={kind} />
+      </g>
+      {pads.map((pad) => {
+        const x = (pad.x - 0.5) * 2 * half;
+        const y = (0.5 - pad.y) * 2 * half;
+        const usable = !disabled && !!pad.free;
+        return (
+          <g
+            key={pad.number}
+            transform={`translate(${x} ${y})`}
+            className={`SpaceNavigation__pad ${pad.chosen ? 'is-chosen' : ''} ${usable ? '' : 'is-taken'}`}
+            role="button"
+            tabIndex={usable ? 0 : -1}
+            aria-label={`Площадка ${pad.number}: ${pad.label}`}
+            aria-disabled={!usable}
+            onClick={() => usable && onPad(pad.number)}
+            onKeyDown={(event) =>
+              event.key === 'Enter' && usable && onPad(pad.number)
+            }
+          >
+            <title>{`Площадка ${pad.number}: ${pad.label}${pad.free ? '' : ' · занята'}`}</title>
+            <circle r={9} fill="transparent" stroke="none" />
+            <rect x={-5} y={-5} width={10} height={10} />
+            <text x={9} y={4}>
+              {pad.number}
+            </text>
+          </g>
+        );
+      })}
+    </g>
   );
 }

@@ -66,11 +66,8 @@
 	if(world.time >= next_zoom)
 		next_zoom = world.time + ST_PLANET_ZOOM_STEP
 		navigation.update_planet_hover()
-		var/progress = (elapsed + ST_PLANET_ZOOM_STEP) / orbit_duration
-		// Nearly linear during the normal approach. Beyond the estimate, taper smoothly toward the atmosphere.
-		var/extra = max(0, progress - 1)
-		var/scale = 0.6 + 2.4 * min(1, progress) + 0.75 * extra / (extra + 0.3125)
-		navigation.planet_hover?.approach_scale(scale, ST_PLANET_ZOOM_STEP)
+		// the zoom settles by the earliest the descent can start
+		navigation.planet_hover?.plan_approach(navigation.approach_started, ST_PLANET_APPROACH_MIN)
 	if(!descent && !site.loading_map && !planet.loading_map && !site.awaits_map())
 		var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
 		if(istype(slot))

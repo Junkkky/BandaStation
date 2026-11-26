@@ -44,19 +44,19 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
-"bU" = (
-/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
-	initialize_directions = 3
-	},
-/obj/structure/closet/firecloset{
-	pixel_x = -27
-	},
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
 "cn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/power/port_gen/pacman/super,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"dH" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/general/visible{
+	dir = 8;
+	initialize_directions = 7
+	},
+/obj/structure/closet/wall/fire/directional/west,
+/obj/item/screwdriver,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
 "eL" = (
@@ -562,17 +562,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
-"CG" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/general/visible{
-	dir = 8;
-	initialize_directions = 7
-	},
-/obj/structure/closet/firecloset{
-	pixel_x = -27
-	},
-/obj/item/screwdriver,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
 "Dv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/general/visible{
 	dir = 8;
@@ -906,6 +895,13 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
+"WE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/general/visible{
+	initialize_directions = 3
+	},
+/obj/structure/closet/wall/fire/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/expedition_content/exp_sierra_crashed_pod/crashed_pod)
 "XR" = (
 /obj/machinery/sleeper{
 	dir = 8
@@ -1033,11 +1029,11 @@ Mb
 tJ
 mV
 EZ
-CG
+dH
 Et
 Uz
 pm
-bU
+WE
 Uc
 qo
 eL

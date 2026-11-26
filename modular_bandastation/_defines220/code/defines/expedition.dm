@@ -2,3 +2,5 @@
 #define TRAIT_EXPEDITION_ORDER_ITEM "expedition_order_item"
 /// Source of traits set by expedition orders.
 #define EXPEDITION_ORDER_TRAIT "expedition_order"
+/// Side of the square chunks an expedition surface is built in, in turfs.
+#define EXPEDITION_CHUNK_SIZE 16

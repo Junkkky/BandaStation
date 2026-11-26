@@ -23,6 +23,45 @@
 	icon_state = "tanutility"
 	worn_icon_state = "tanutility_s"
 
+/// The corps' own field uniforms, one cut per role; the older utility suits stay in the ExpeDrobe
+/obj/item/clothing/under/expedition/corps
+	name = "полевой комбинезон экспедиционного корпуса"
+	desc = "Герметичный полевой комбинезон исследователя экспедиционного корпуса с фиолетовыми вставками."
+	icon_state = "corps_explorer"
+	worn_icon_state = "corps_explorer"
+
+/obj/item/clothing/under/expedition/corps/leader
+	name = "лётный комбинезон главы экспедиционного корпуса"
+	desc = "Лётный комбинезон главы экспедиционного корпуса. Верх можно опустить."
+	icon_state = "corps_leader"
+	worn_icon_state = "corps_leader"
+	can_adjust = TRUE
+	alt_covers_chest = TRUE
+
+/obj/item/clothing/under/expedition/corps/pilot
+	name = "лётный комбинезон пилота экспедиционного корпуса"
+	desc = "Лётный комбинезон пилота экспедиционного корпуса. Куртку можно снять до пояса."
+	icon_state = "corps_pilot"
+	worn_icon_state = "corps_pilot"
+	can_adjust = TRUE
+	alt_covers_chest = TRUE
+
+/obj/item/clothing/under/expedition/corps/medic
+	name = "полевая форма медика экспедиционного корпуса"
+	desc = "Полевая форма медика экспедиционного корпуса с синими вставками. Верх можно опустить."
+	icon_state = "corps_medic"
+	worn_icon_state = "corps_medic"
+	can_adjust = TRUE
+	alt_covers_chest = TRUE
+
+/obj/item/clothing/under/expedition/corps/engineer
+	name = "рабочий комбинезон инженера экспедиционного корпуса"
+	desc = "Рабочий комбинезон полевого инженера экспедиционного корпуса. Верх можно опустить."
+	icon_state = "corps_engineer"
+	worn_icon_state = "corps_engineer"
+	can_adjust = TRUE
+	alt_covers_chest = TRUE
+
 /obj/item/clothing/shoes/jackboots/expedition
 	name = "служебные ботинки экспедиционного корпуса"
 	desc = "Начищенные служебные ботинки из синтетической кожи."
@@ -51,18 +90,48 @@
 	worn_icon_state = "pilotnt"
 	inhand_icon_state = "helmet"
 
-/obj/item/clothing/suit/toggle/expedition
-	name = "куртка экспедиционного корпуса"
-	desc = "Удобная куртка с парой карманов для личных вещей."
+/// The corps' field jacket, with a pair of pockets for small things
+/obj/item/clothing/suit/jacket/expedition
+	name = "полевая куртка экспедиционного корпуса"
+	desc = "Плотная полевая куртка корпуса с фиолетовыми нашивками на плечах и парой карманов."
 	icon = 'modular_bandastation/explorers/icons/suits.dmi'
 	worn_icon = 'modular_bandastation/explorers/icons/suits_worn.dmi'
-	icon_state = "trackjacket"
+	icon_state = "corps_jacket"
+	inhand_icon_state = "syndicate-black"
+	body_parts_covered = CHEST|ARMS
+
+/obj/item/clothing/suit/jacket/expedition/Initialize(mapload)
+	. = ..()
+	create_storage(max_slots = 2, max_specific_storage = WEIGHT_CLASS_SMALL, max_total_storage = WEIGHT_CLASS_SMALL * 2)
+
+/obj/item/clothing/suit/jacket/expedition/pilot
+	name = "лётный бомбер экспедиционного корпуса"
+	desc = "Тёмный лётный бомбер пилота корпуса с меховым воротником."
+	icon_state = "corps_jacket_pilot"
+
+/obj/item/clothing/suit/jacket/expedition/leader
+	name = "офицерская куртка главы экспедиционного корпуса"
+	desc = "Чёрная офицерская куртка главы корпуса с фиолетовыми знаками различия."
+	icon_state = "corps_jacket_leader"
+
+/// Corps coats that open with alt-click
+/obj/item/clothing/suit/toggle/expedition
+	name = "куртка полевого медика"
+	desc = "Тёмная куртка полевого медика корпуса с синим крестом. Расстёгивается."
+	icon = 'modular_bandastation/explorers/icons/suits.dmi'
+	worn_icon = 'modular_bandastation/explorers/icons/suits_worn.dmi'
+	icon_state = "corps_jacket_medic"
 	inhand_icon_state = "syndicate-black"
 	body_parts_covered = CHEST|ARMS
 
 /obj/item/clothing/suit/toggle/expedition/Initialize(mapload)
 	. = ..()
 	create_storage(max_slots = 2, max_specific_storage = WEIGHT_CLASS_SMALL, max_total_storage = WEIGHT_CLASS_SMALL * 2)
+
+/obj/item/clothing/suit/toggle/expedition/engineer
+	name = "сигнальная куртка полевого инженера"
+	desc = "Рабочая куртка полевого инженера корпуса со светоотражающими полосами. Расстёгивается."
+	icon_state = "corps_jacket_engineer"
 
 /obj/item/clothing/accessory/expedition_webbing
 	name = "разгрузка экспедиционного корпуса"

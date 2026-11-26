@@ -16,6 +16,14 @@
 #define HOVER_LEAVE (2 SECONDS)
 /// How often the view checks that the ship and its hull are still where it thinks they are
 #define HOVER_CHECK (2 SECONDS)
+/// Size the planet eases to on an orbital approach, where the descent takes over from it
+#define HOVER_APPROACH_SIZE 2.4
+/// Least time the approach zoom takes, for a ship whose approach is already well under way
+#define HOVER_APPROACH_LEAST (3 SECONDS)
+/// After its zoom the planet keeps closing in this much more over this long, while the descent waits for its ground:
+/// too slowly for the handover to show, however far the clients' clocks run ahead, and never quite still
+#define HOVER_APPROACH_CREEP 1.2
+#define HOVER_APPROACH_CREEP_TIME (60 SECONDS)
 
 /// The view of the planet this ship is flying over, if it is over one
 /datum/landing_view/hover
@@ -34,6 +42,8 @@
 	/// Where the hull's port stood when this was made: a hull that has moved needs a new view
 	var/turf/port_turf
 	var/next_check = 0
+	/// TRUE once the orbital approach has been planned (see plan_approach())
+	var/approach_planned = FALSE
 
 /**
  * * hull_turfs - the hull's turfs in transit
@@ -71,8 +81,8 @@
 	port_turf = null
 	return ..()
 
-/// Moves the planet from one size and opacity to another over [time]
-/datum/landing_view/hover/proc/play(from_size, to_size, from_opacity, to_opacity, time, curve = LANDING_CURVE_LINEAR)
+/// Moves the planet from one size and opacity to another over [time], then on to [creep_size] over [creep_time]
+/datum/landing_view/hover/proc/play(from_size, to_size, from_opacity, to_opacity, time, curve = LANDING_CURVE_LINEAR, creep_size, creep_time = 0)
 	var/now = world.time
 	size.times = list()
 	size.values = list()
@@ -84,6 +94,8 @@
 	air.alpha.mark(now, from_opacity * 0.92)
 	if(time)
 		size.mark(now + time, to_size, curve)
+		if(creep_time)
+			size.mark(now + time + creep_time, creep_size)
 		// solid all the way but for an instant at its smallest: a planet that fades lets the stars show through it
 		if(to_opacity > from_opacity)
 			opacity.mark(now + 0.2 SECONDS, to_opacity)
@@ -101,11 +113,20 @@
 	show(shade)
 	show(air)
 
-/// Continue from the actual displayed size so a new step never resets the approach.
-/datum/landing_view/hover/proc/approach_scale(target_size, duration)
-	var/current_size = size.at(world.time)
-	if(current_size < target_size)
-		play(current_size, target_size, opacity.at(world.time), 255, duration)
+/**
+ * The planet grows under a ship on its orbital approach, easing to HOVER_APPROACH_SIZE by [started] + [duration],
+ * then closing in only very slowly while the descent waits for its ground: the descent takes over from a planet barely
+ * growing, so the handover cannot jerk even though clients play the zoom by their own clock, ahead of world.time under
+ * time dilation, and the ship never seems to hang still. Planned once, for the same reason.
+ */
+/datum/landing_view/hover/proc/plan_approach(started, duration)
+	if(approach_planned || leaving || ended)
+		return
+	approach_planned = TRUE
+	var/now = world.time
+	var/current = size.at(now)
+	var/reached = max(current, HOVER_APPROACH_SIZE)
+	play(current, reached, opacity.at(now), 255, max(HOVER_APPROACH_LEAST, started + duration - now), LANDING_CURVE_OUT, reached * HOVER_APPROACH_CREEP, HOVER_APPROACH_CREEP_TIME)
 
 /datum/landing_view/hover/proc/settle_after_approach()
 	if(size.at(size.end_time()) > LANDING_HOVER_SIZE)

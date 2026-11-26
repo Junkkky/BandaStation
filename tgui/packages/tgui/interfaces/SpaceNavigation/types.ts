@@ -52,6 +52,16 @@ export type Compartment = {
   /** Hull tiles open to space. */
   breaches: number;
 };
+/** A landing pad of a surveyed planet; x and y are its share of the surface square from the south-west */
+export type LandingPad = {
+  number: number;
+  x: number;
+  y: number;
+  label: string;
+  free: BooleanLike;
+  chosen: BooleanLike;
+};
+
 export type NavigationData = Position & {
   board?: {
     jumps: { id: string; name: string; available: BooleanLike }[];
@@ -63,6 +73,10 @@ export type NavigationData = Position & {
   sector: string;
   sector_name: string;
   jumping: BooleanLike;
+  /** Share of the current bluespace jump flown, 0-1, or null outside one */
+  jump_progress: number | null;
+  /** How close the hull has to be to a jump point to start a jump */
+  jump_point_range?: number;
   star: Position & { name: string | null; radius: number };
   celestial_bodies: CelestialBody[];
   vx: number;
@@ -111,6 +125,13 @@ export type NavigationData = Position & {
   };
   can_request_ship_dock: BooleanLike;
   dockable_contacts: number[];
+  boardable_contacts?: number[];
+  can_board_site?: BooleanLike | null;
+  boarding?: { incoming: BooleanLike; eta: number } | null;
+  boarding_connected?: BooleanLike;
+  boarding_release_ready?: BooleanLike;
+  boarding_release_eta?: number | null;
+  can_cancel_release?: BooleanLike;
   landing: BooleanLike;
   distance: number;
   eta: number | null;
@@ -132,12 +153,38 @@ export type NavigationData = Position & {
   })[];
   terrain: (Position & { end_x: number; end_y: number })[];
   ship_contacts: Contact[];
+  kinetic_shots?: (Position & {
+    id: number;
+    heading?: number;
+    finished: BooleanLike;
+  })[];
+  shield_up?: BooleanLike;
+  drop_pods?: (Position & { id: number })[];
+  impact_waves?: (
+    | { id: number; kind: 'ship' | 'shield'; contact: number | null }
+    | (Position & { id: number; kind: 'terrain' })
+  )[];
+  /** What the selected planet shows to the eye from orbit, before any survey */
+  planet_look?: string | null;
+  /** Site looked up on the chart while the autopilot flies to the selected one */
+  inspected?: string | null;
+  /** What the survey has read of the selected planet; a field is missing until enough of the planet is covered */
   planet?: {
-    biome: string;
-    atmosphere: string;
-    temperature: number;
-    breathable: BooleanLike;
-    modifiers: string[];
+    biome?: string;
+    atmosphere?: string;
+    temperature?: number;
+    breathable?: BooleanLike;
+    modifiers?: string[];
+    caves?: string;
+    ore?: string;
+  };
+  /** This ship's survey of the selected planet */
+  survey?: {
+    covered: BooleanLike;
+    mapping: number;
+    mapped: BooleanLike;
+    failed: BooleanLike;
+    pads: LandingPad[] | null;
   };
   approach: {
     elapsed: number;
@@ -160,6 +207,46 @@ export type NavigationData = Position & {
   compartments: Compartment[];
   /** Hull silhouette rows, north first: space outside, `#` wall, `!` breach, otherwise the compartment code. */
   hull: string[];
+};
+
+/** Data rendered by the shared chart, without helm or docking controls. */
+export type ChartData = Pick<
+  NavigationData,
+  | 'x'
+  | 'y'
+  | 'sector'
+  | 'sector_name'
+  | 'vessel_name'
+  | 'au_scale'
+  | 'course'
+  | 'star'
+  | 'celestial_bodies'
+  | 'preparing'
+  | 'relocating'
+  | 'routes'
+  | 'inspected'
+  | 'path'
+  | 'zones'
+  | 'terrain'
+  | 'ship_contacts'
+  | 'kinetic_shots'
+  | 'drop_pods'
+  | 'impact_waves'
+  | 'shield_up'
+  | 'trajectory'
+  | 'sensor_range'
+  | 'dock_range'
+  | 'jump_point_range'
+  | 'survey'
+  | 'interference'
+  | 'scan_age'
+> & { selected?: NavigationData['selected'] };
+
+export type FiringSector = {
+  heading: number;
+  arc: number;
+  range: number;
+  min_range: number;
 };
 
 export function compartmentDamaged(room: Compartment) {

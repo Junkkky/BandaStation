@@ -128,3 +128,42 @@
 		if(QDELETED(src))
 			return FALSE
 	return ..()
+
+/**
+ * A fulton balloon reaches only a beacon in the same system, and never rises off a planet: there is no sky to carry it
+ * from a planet's surface or caves to a beacon in orbit or beyond.
+ */
+/obj/item/extraction_pack/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	var/atom/movable/beacon = beacon_ref?.resolve()
+	if(beacon && ismovable(interacting_with) && isturf(interacting_with.loc) && SSmapping.current_map?.space_overmap 		&& (stationtrauma_planet_air(interacting_with.z) || !stationtrauma_comms_in_range(interacting_with, beacon)))
+		balloon_alert(user, "маяк вне досягаемости!")
+		return ITEM_INTERACT_BLOCKING
+	return ..()
+
+/// A ship calling the station's holopads: the command and expedition channels are told who calls
+/datum/holocall/New(mob/living/call_source, obj/machinery/holopad/calling_pad, list/callees, elevated_access = FALSE)
+	. = ..()
+	if(QDELETED(src) || QDELETED(calling_pad))
+		return
+	var/obj/docking_port/mobile/stationtrauma_space/ship = SSshuttle.get_containing_shuttle(calling_pad)
+	if(!istype(ship))
+		return
+	var/obj/machinery/holopad/station_pad
+	for(var/obj/machinery/holopad/dialed as anything in dialed_holopads)
+		if(is_station_level(dialed.z))
+			station_pad = dialed
+	if(!station_pad)
+		return
+	aas_config_announce(/datum/aas_config_entry/stationtrauma_ship_holocall, list(
+		"SHIP" = ship.overmap?.public_ship_label() || "неизвестное судно",
+		"LOCATION" = get_area_name(station_pad, TRUE),
+	), station_pad, list(RADIO_CHANNEL_COMMAND, RADIO_CHANNEL_EXPEDITION))
+
+/datum/aas_config_entry/stationtrauma_ship_holocall
+	name = "Command Alert: Ship Holocall"
+	announcement_lines_map = list(
+		"Message" = "Входящий голосовой вызов: %SHIP, голопад: %LOCATION.")
+	vars_and_tooltips_map = list(
+		"SHIP" = "will be replaced with the calling ship: its transponder callsign, or an unknown vessel.",
+		"LOCATION" = "with the area of the dialed holopad.",
+	)

@@ -4,6 +4,7 @@
 /** Cold oxygen-bearing surface profile with snow, frozen lakes and ice core samples. */
 /datum/stationtrauma_overmap_site/space/planet/frozen
 	name = "Снежная экзопланета"
+	orbit_look = "Белый шар вечной мерзлоты: снег и лёд от полюса до полюса."
 	generator_type = /datum/map_generator/expedition_barren/frozen
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/frozen
 	biome = "Хвойные леса, снежные поляны, редкие скалы и ледяные озёра"

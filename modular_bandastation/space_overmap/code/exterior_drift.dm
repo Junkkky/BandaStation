@@ -57,10 +57,13 @@
 
 /** The loss this hull is having now, or an idle open-space level claimed for a new one, or a new level. */
 /datum/stationtrauma_overmap/space/proc/lost_space()
+	return stationtrauma_open_space(sector, pos_x, pos_y, src)
+
+/** Reuse the rescue pipeline for a crew lost at a captured chart position. */
+/proc/stationtrauma_open_space(datum/stationtrauma_overmap_sector/space/here, x, y, datum/stationtrauma_overmap/space/navigation)
 	var/datum/stationtrauma_lost_space/idle
 	for(var/datum/stationtrauma_lost_space/loss as anything in GLOB.stationtrauma_lost_spaces)
-		var/datum/stationtrauma_overmap_sector/space/here = sector
-		if(loss.navigation_ref?.resolve() == src && loss.sector_id == here?.id && world.time - loss.last_loss < ST_LOST_SHARED_TIME && (loss.pos_x - pos_x) ** 2 + (loss.pos_y - pos_y) ** 2 <= ST_LOST_WRECK_RANGE ** 2)
+		if((navigation ? loss.navigation_ref?.resolve() == navigation : !loss.navigation_ref) && loss.sector_id == here.id && world.time - loss.last_loss < ST_LOST_SHARED_TIME && (loss.pos_x - x) ** 2 + (loss.pos_y - y) ** 2 <= ST_LOST_WRECK_RANGE ** 2)
 			loss.last_loss = world.time
 			return loss
 		if(!idle && !loss.busy())
@@ -71,9 +74,9 @@
 		idle.last_loss = world.time
 		GLOB.stationtrauma_lost_spaces += idle
 		idle.level = SSmapping.add_new_zlevel("Открытый космос", ZTRAITS_AWAY)
-		if(QDELETED(src))
+		if(QDELETED(here) || (navigation && QDELETED(navigation)))
 			return null
-	idle.claim(src)
+	idle.claim(here, x, y, navigation)
 	return idle
 
 /// Open-space levels of losses overboard; a z-level cannot be removed, so idle ones are claimed again.
@@ -116,19 +119,18 @@ GLOBAL_LIST_EMPTY(stationtrauma_lost_spaces)
 	return FALSE
 
 /** Take the level for a new loss of `navigation` at its current chart position. */
-/datum/stationtrauma_lost_space/proc/claim(datum/stationtrauma_overmap/space/navigation)
+/datum/stationtrauma_lost_space/proc/claim(datum/stationtrauma_overmap_sector/space/sector, x, y, datum/stationtrauma_overmap/space/navigation)
 	revision++
-	navigation_ref = WEAKREF(navigation)
-	var/datum/stationtrauma_overmap_sector/space/sector = navigation.sector
-	sector_id = sector?.id
-	pos_x = navigation.pos_x
-	pos_y = navigation.pos_y
+	navigation_ref = navigation ? WEAKREF(navigation) : null
+	sector_id = sector.id
+	pos_x = x
+	pos_y = y
 	last_loss = world.time
 	drop_signal()
 	wreck = null
 	var/closest = ST_LOST_WRECK_RANGE
-	for(var/id in navigation.sites)
-		var/datum/stationtrauma_overmap_site/space/site = navigation.sites[id]
+	for(var/id in sector.sites)
+		var/datum/stationtrauma_overmap_site/space/site = sector.sites[id]
 		if(!istype(site) || istype(site, /datum/stationtrauma_overmap_site/space/planet) || istype(site, /datum/stationtrauma_overmap_site/space/distress) || site.landing || site.physical_docking || site.failed)
 			continue
 		if(QDELETED(site.berth) && !site.awaits_map())

@@ -230,6 +230,9 @@
 	root.overmap?.planet_flight?.before_move(target)
 	captured = TRUE
 	for(var/turf/source as anything in cells)
+		// Disconnect while all equipment is still on its source tile, after the last movement veto.
+		for(var/obj/structure/cable/cable in source)
+			cable.cut_cable_from_powernet(FALSE)
 		var/datum/stationtrauma_docking_layer_cell/cell = cells[source]
 		if(cell.bottom_ship)
 			cell.old_surface = cell.surfaces[cell.bottom_ship]

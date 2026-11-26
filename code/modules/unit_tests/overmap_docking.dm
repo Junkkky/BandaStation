@@ -549,6 +549,38 @@
 	observer_window.process_status()
 	TEST_ASSERT_EQUAL(observer_window.status, UI_CLOSE, "An observer on a different deck should not keep a helm window open")
 
+/// The jump effect follows the native drive phases without using the fast star field.
+/datum/unit_test/overmap_docking/bluespace_parallax/Run()
+	ship.preferred_direction = EAST
+	navigation.speed = 1
+	navigation.update_parallax()
+	TEST_ASSERT_EQUAL(hull_area.parallax_movedir, ship.preferred_direction, "Ordinary movement must scroll the stars")
+	var/destination = "unit_test_jump"
+	var/revision = navigation.control_revision
+	navigation.jump_target = destination
+	TEST_ASSERT(navigation.set_jump_phase(HYPERSPACE_WARMUP, destination, revision), "The drive must start warming up")
+	TEST_ASSERT_EQUAL(hull_area.parallax_movedir, NONE, "The tunnel must not inherit the star scroll")
+	TEST_ASSERT_EQUAL(exterior.space_bluespace_stage, HYPERSPACE_WARMUP, "An outside viewer must share the jump phase")
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_heading, EAST, "Streaks must follow the direction of travel")
+	hull_area.space_bluespace_at -= hull_area.space_bluespace_duration / 2
+	var/mid_warmup = hull_area.space_bluespace_opacity()
+	TEST_ASSERT(mid_warmup > 0 && mid_warmup < hull_area.space_bluespace_target, "The tunnel must fade in gradually during warmup")
+	TEST_ASSERT(navigation.set_jump_phase(HYPERSPACE_LAUNCH, destination, revision), "The warmed drive must enter bluespace")
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_from, mid_warmup, "Launch must blend continuously from the current opacity")
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_target, 255, "Flight must cover the normal stars")
+	hull_area.space_bluespace_at -= hull_area.space_bluespace_duration
+	var/launch_at = hull_area.space_bluespace_at
+	TEST_ASSERT(navigation.set_jump_phase(HYPERSPACE_END, destination, revision), "The drive must begin its final effects")
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_at, launch_at, "The exit audio must not restart the tunnel")
+	navigation.cancel_jump()
+	TEST_ASSERT_EQUAL(exterior.space_bluespace_heading, EAST, "Fading streaks must retain their last heading")
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_opacity(), 255, "Leaving bluespace must start with the fully visible tunnel")
+	hull_area.space_bluespace_at -= hull_area.space_bluespace_duration / 2
+	var/mid_fade = hull_area.space_bluespace_opacity()
+	TEST_ASSERT(mid_fade > 0 && mid_fade < 255, "The tunnel must fade over the restored star field")
+	hull_area.space_bluespace_at -= hull_area.space_bluespace_duration
+	TEST_ASSERT_EQUAL(hull_area.space_bluespace_opacity(), 0, "The tunnel must disappear after the fade")
+
 /// Exercise one landing and launch at a cardinally rotated berth through native movement.
 /datum/unit_test/overmap_docking/planet_flight_picture/Run()
 	var/datum/landing_view_piece/sample = allocate(/datum/landing_view_piece)
@@ -573,8 +605,14 @@
 	site.landing = TRUE
 	var/datum/stationtrauma_overmap_site/space/planet/lava/planet = allocate(/datum/stationtrauma_overmap_site/space/planet/lava)
 	site.pad_parent = planet
+	planet.id = "unit_test_planet"
 	TEST_ASSERT(navigation.set_engines_running(TRUE), "The fixture needs main propulsion to land")
 	navigation.pos_x = site.pos_x + 150
+	TEST_ASSERT(!navigation.can_dock(site, navigation.control_revision), "A planet must not be landed on before this ship has surveyed it")
+	var/datum/stationtrauma_planet_survey/survey = new(navigation, planet)
+	LAZYSET(navigation.planet_surveys, planet.id, survey)
+	// covered and mapped long enough ago; never zero, which reads as not covered
+	survey.covered_at = (world.time - 3 MINUTES) || -1
 	TEST_ASSERT(navigation.can_dock(site, navigation.control_revision), "A landing must be available on the helm ring")
 	navigation.pos_x++
 	TEST_ASSERT(!navigation.can_dock(site, navigation.control_revision), "A landing past the helm ring must be out of range")
@@ -590,12 +628,17 @@
 	var/datum/stationtrauma_planet_flight/flight = navigation.planet_flight
 	TEST_ASSERT_NOTNULL(navigation.planet_hover, "The disk must already be visible when the map is still loading")
 	TEST_ASSERT(!flight.descent && !navigation.entry_heat(), "Atmospheric entry must wait for the terrain")
-	var/initial_scale = navigation.planet_hover.size.at(navigation.planet_hover.size.end_time())
-	TEST_ASSERT(initial_scale < 0.7, "First generation must keep the opening zoom small")
+	// the orbital zoom is planned once: it grows, then barely creeps on while the descent waits to take over
+	var/datum/landing_track/zoom = navigation.planet_hover.size
+	var/opening_scale = zoom.at(world.time)
+	TEST_ASSERT(zoom.at(world.time + 14 SECONDS) > opening_scale, "The planet must grow on the orbital approach")
+	var/settled = zoom.at(world.time + 20 SECONDS)
+	var/later = zoom.at(world.time + 50 SECONDS)
+	TEST_ASSERT(later > settled, "The ship must not hang still while the descent waits for its ground")
+	TEST_ASSERT((later - settled) / 30 < 0.02, "The planet must close in too slowly for the descent's handover to jerk")
 	navigation.approach_started -= 2 MINUTES
 	flight.next_zoom = 0
 	TEST_ASSERT(!flight.update(), "Passing the estimated load time cannot start atmosphere against an unbuilt planet")
-	TEST_ASSERT(navigation.planet_hover.size.at(navigation.planet_hover.size.end_time()) > initial_scale, "The orbit must continue to zoom during a late generation")
 	site.berth = clearing
 	site.loading_map = FALSE
 	flight.update()
@@ -626,7 +669,9 @@
 	navigation.begin_approach(site, 2 MINUTES)
 	descent = navigation.planet_flight?.descent
 	TEST_ASSERT_NOTNULL(descent, "A second approach needs its own scene")
-	deadline = world.time + 8 SECONDS
+	// The ground pictures are built in a tenth of each tick beside the game: about 25 seconds on a test runner, not a contract.
+	var/picture_wait = 60 SECONDS
+	deadline = world.time + picture_wait
 	UNTIL(!descent.inside_view.ground_jobs || world.time >= deadline)
 	TEST_ASSERT(!descent.inside_view.ground_jobs, "Atmospheric entry must have its complete view ready")
 	navigation.approach_started -= 14 SECONDS
@@ -649,7 +694,7 @@
 	TEST_ASSERT_NOTNULL(ascent, "Ascent must prepare the real terrain beside the hull")
 	var/turf/covered = ascent.berth_turfs[1]
 	TEST_ASSERT(isfloorturf(covered) && ship.docking_surfaces[covered], "The rotated berth must conceal real ground beneath the hull")
-	deadline = world.time + 8 SECONDS
+	deadline = world.time + picture_wait
 	UNTIL(!ascent.ground_jobs || world.time >= deadline)
 	TEST_ASSERT(!ascent.ground_jobs, "The full launch picture must be ready while the hull is still on the ground")
 	TEST_ASSERT(navigation.relocate(navigation.flight_berth), "The real hull must be able to depart the photographed berth")
@@ -672,3 +717,80 @@
 	UNTIL(QDELETED(ascent) || world.time >= deadline)
 	TEST_ASSERT(QDELETED(ascent), "Ascent must release its flight pictures after the animation")
 	TEST_ASSERT(isnull(navigation.planet_ascent), "The completed animation must clear its navigation reference")
+
+/// Probes fly the server's ballistics and cover both faces; the planet is mapped only once built, and a landing waits for the pilot's pad.
+/datum/unit_test/overmap_docking/planet_survey/Run()
+	// thrown from the launcher at the bottom of the orbit at the middle of the face
+	var/list/centre = stationtrauma_survey_flight(0, 0, 0.5)
+	var/list/impact = centre[3]
+	TEST_ASSERT_NOTNULL(impact, "A probe aimed at the middle of the face must strike the planet")
+	TEST_ASSERT(impact[3] > 0, "A probe thrown at the front face must strike the front face")
+	TEST_ASSERT(abs(impact[1] ** 2 + impact[2] ** 2 + impact[3] ** 2 - 1) < 0.001, "A probe must strike the planet's surface")
+	TEST_ASSERT(impact[3] > 0.99, "A probe thrown at half power must strike where it was aimed")
+	var/list/path = centre[1]
+	var/list/midway = path[round(length(path) / 2)]
+	TEST_ASSERT(midway[1] > 0.1, "A probe's flight must bend along the orbit, to the right of a straight throw")
+	var/list/weak = stationtrauma_survey_flight(0, 0, 0)
+	var/list/strong = stationtrauma_survey_flight(0, 0, 1)
+	var/list/weak_impact = weak[3]
+	var/list/strong_impact = strong[3]
+	TEST_ASSERT(weak_impact && strong_impact && strong_impact[2] - weak_impact[2] > 0.1, "A weaker throw must fall short of the aim and a stronger one carry past it")
+	var/list/wide = stationtrauma_survey_flight(2.4, 2.4, 1)
+	TEST_ASSERT_NULL(wide[3], "A full-power probe thrown wide of the planet must miss")
+
+	var/datum/stationtrauma_overmap_site/space/planet/lava/planet = allocate(/datum/stationtrauma_overmap_site/space/planet/lava)
+	planet.id = "unit_test_survey"
+	planet.pos_x = navigation.pos_x
+	planet.pos_y = navigation.pos_y
+	navigation.sites[planet.id] = planet
+	TEST_ASSERT_EQUAL(navigation.survey_target(), planet, "A stopped ship beside a charted planet must be able to survey it")
+	var/datum/stationtrauma_planet_survey/survey = new(navigation, planet)
+	LAZYSET(navigation.planet_surveys, planet.id, survey)
+	TEST_ASSERT(survey.launch(0, 0, 0.5, FALSE), "The launcher must fire")
+	TEST_ASSERT(!survey.launch(0, 0, 0.5, FALSE), "The launcher must reload between probes")
+	// one probe on each axis and each octant reads the whole sphere
+	for(var/x in -1 to 1)
+		for(var/y in -1 to 1)
+			for(var/z in -1 to 1)
+				if(x || y || z)
+					var/norm = sqrt(x * x + y * y + z * z)
+					survey.land("unit_test", list(x / norm, y / norm, z / norm))
+	TEST_ASSERT(survey.coverage >= 0.9, "Probes all round must cover the planet")
+	TEST_ASSERT(survey.covered_at && survey.efficient, "Covering both faces within the probe budget must start an efficient mapping")
+	TEST_ASSERT(!survey.mapped(), "Mapping must take its time")
+	survey.covered_at = (world.time - 3 MINUTES) || -1
+	planet.loading_map = TRUE
+	TEST_ASSERT(!survey.mapped(), "Mapping cannot finish before the planet is built")
+	planet.loading_map = FALSE
+	TEST_ASSERT(survey.mapped(), "Mapping must finish once its time has passed on a built planet")
+
+	// a ship has only so many probes for a planet
+	var/datum/stationtrauma_planet_survey/spent = new(navigation, planet)
+	for(var/shot in 1 to 14)
+		spent.next_launch = 0
+		spent.flights.Cut()
+		TEST_ASSERT(spent.launch(0, 0, 0.5, FALSE), "Probe [shot] of fourteen must launch")
+	spent.next_launch = 0
+	spent.flights.Cut()
+	TEST_ASSERT(!spent.launch(0, 0, 0.5, FALSE), "A fifteenth probe must not launch")
+	// what a partial survey tells, and when it may be mapped
+	spent.coverage = 0.4
+	var/list/partial = spent.facts()
+	TEST_ASSERT(partial["atmosphere"] && !partial["ore"], "Two fifths of the planet must show its air but not its ore")
+	TEST_ASSERT(!spent.begin_mapping(), "Two fifths of the planet must be too little to map")
+	spent.coverage = 0.5
+	TEST_ASSERT(spent.begin_mapping(), "Half the planet must be enough to map")
+	qdel(spent)
+
+	planet.berth = bay
+	planet.survey_map = list("pads" = list(list(0.1, 0.1, 0.2, 0.2, FALSE, TRUE)))
+	navigation.selected_destination = planet.id
+	TEST_ASSERT_NULL(navigation.selected_docking_site(), "A surveyed planet must wait for the pilot to choose a pad")
+	TEST_ASSERT(!navigation.choose_landing_pad(2), "A pad the planet does not have cannot be chosen")
+	TEST_ASSERT(navigation.choose_landing_pad(1), "The pilot must be able to choose a free pad")
+	TEST_ASSERT_EQUAL(navigation.selected_docking_site(), planet, "The chosen pad must be the landing site")
+	var/list/pads = navigation.landing_pad_data(planet)
+	TEST_ASSERT(length(pads) == 1 && pads[1]["chosen"], "The helm must show the chosen pad")
+	TEST_ASSERT_EQUAL(pads[1]["label"], "у входа в пещеры", "A pad beside a cave entrance must say so")
+	planet.berth = null
+	navigation.selected_destination = site.id

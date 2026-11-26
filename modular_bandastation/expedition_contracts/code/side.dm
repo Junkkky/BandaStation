@@ -114,10 +114,10 @@ GLOBAL_LIST_INIT(expedition_side_own_types, list(
 			return site
 	return null
 
-/// Whether `site`'s map exists: a planet builds its surface and a space ruin loads on the first approach.
+/// Whether `site`'s map exists: a planet builds its surface and ruins after the first approach, a space ruin loads on it.
 /proc/expedition_site_loaded(datum/stationtrauma_overmap_site/space/site)
 	var/datum/stationtrauma_overmap_site/space/planet/planet = site
-	if(istype(planet) && planet.generator)
+	if(istype(planet) && (planet.generator || planet.surface_chunks?.ruins_pending))
 		return FALSE
 	return !site.map_loader && !site.failed && !isnull(site.berth)
 

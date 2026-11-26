@@ -156,7 +156,9 @@
 /datum/landing_view/proc/chain_detail(list/pieces, datum/landing_track/size, datum/landing_track/opacity, list/switches)
 	var/start = min(size.times[1], opacity.times[1])
 	var/finish = max(size.end_time(), opacity.end_time())
-	for(var/moment = start, moment < finish + 2, moment += 2)
+	// a fifth of a second for a descent or a climb; a planned orbital approach spans minutes and stays at a hundred keys
+	var/step = max(2, (finish - start) / 100)
+	for(var/moment = start, moment < finish + step, moment += step)
 		var/when = min(moment, finish)
 		var/now_size = size.at(when)
 		var/now_opacity = opacity.at(when)
