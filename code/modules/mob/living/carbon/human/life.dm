@@ -157,6 +157,12 @@
 	thermal_protection = round(thermal_protection)
 	return thermal_protection
 
+/// Thermal protection against direct flames, which some effects bypass.
+/mob/living/carbon/human/proc/get_fire_protection()
+	if(HAS_TRAIT(src, TRAIT_IGNORE_FIRE_PROTECTION))
+		return 0
+	return get_thermal_protection()
+
 //END FIRE CODE
 
 //This proc returns a number made up of the flags for body parts which you are protected on. (such as HEAD, CHEST, GROIN, etc. See setup.dm for the full list)

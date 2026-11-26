@@ -11,9 +11,11 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 	if(!has_crematable_body())
 		return TRUE
 	var/turf/open/lava/lava = loc
-	var/still_overheated = cremation_exposure && coretemperature > get_body_temp_heat_damage_limit()
+	var/resists_heat = HAS_TRAIT(src, TRAIT_RESISTHEAT)
+	var/fire_reaches_body = on_fire && !resists_heat && get_fire_protection() < FIRE_SUIT_MAX_TEMP_PROTECT
+	var/still_overheated = (cremation_exposure || deferred_husk_damage) && !resists_heat && coretemperature > get_body_temp_heat_damage_limit()
 	// After rescue, health updates can still see the old burns or residual heat from the fire.
-	if(on_fire || still_overheated || (istype(lava) && lava.is_burning_occupant(src)) || total_burn <= deferred_husk_damage)
+	if(fire_reaches_body || still_overheated || (istype(lava) && lava.is_burning_occupant(src)) || total_burn <= deferred_husk_damage)
 		deferred_husk_damage = total_burn
 		return FALSE
 	return TRUE

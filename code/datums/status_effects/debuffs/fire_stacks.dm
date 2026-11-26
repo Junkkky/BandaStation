@@ -207,21 +207,19 @@
  * Used to deal damage to humans and count their protection.
  *
  * Arguments:
- * - seconds_between_ticks
- * - no_protection: When set to TRUE, fire will ignore any possible fire protection
+ * - seconds_per_tick
  *
  */
 
-/datum/status_effect/fire_handler/fire_stacks/proc/harm_human(seconds_per_tick, no_protection = FALSE)
+/datum/status_effect/fire_handler/fire_stacks/proc/harm_human(seconds_per_tick)
 	var/mob/living/carbon/human/victim = owner
-	var/thermal_protection = victim.get_thermal_protection()
+	var/thermal_protection = victim.get_fire_protection()
 
-	if(!no_protection)
-		if(thermal_protection >= FIRE_IMMUNITY_MAX_TEMP_PROTECT)
-			return
-		if(thermal_protection >= FIRE_SUIT_MAX_TEMP_PROTECT)
-			victim.adjust_bodytemperature(5.5 * seconds_per_tick)
-			return
+	if(thermal_protection >= FIRE_IMMUNITY_MAX_TEMP_PROTECT)
+		return
+	if(thermal_protection >= FIRE_SUIT_MAX_TEMP_PROTECT)
+		victim.adjust_bodytemperature(5.5 * seconds_per_tick)
+		return
 
 	var/amount_to_heat = (BODYTEMP_HEATING_MAX + (stacks * 12)) * 0.5 * seconds_per_tick
 	if(owner.bodytemperature > BODYTEMP_FIRE_TEMP_SOFTCAP)
