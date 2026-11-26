@@ -34,6 +34,7 @@ type Launcher = {
   iron: number;
   operational: BooleanLike;
   can_assemble: BooleanLike;
+  assembly_seconds: number;
   has_pod: BooleanLike;
   open: BooleanLike;
   loaded: BooleanLike;
@@ -108,7 +109,9 @@ function DropControl({ data }: { data: Data }) {
       : !launcher.operational
         ? 'Установка недоступна'
         : !launcher.has_pod
-          ? 'Соберите капсулу на установке'
+          ? launcher.assembly_seconds
+            ? 'Дождитесь окончания сборки'
+            : 'Соберите капсулу на установке'
           : launcher.open
             ? 'Закройте люк капсулы'
             : !launcher.loaded
@@ -215,7 +218,9 @@ function DropControl({ data }: { data: Data }) {
                 <small>
                   {launcher.iron < data.iron_cost
                     ? 'Загрузите листы железа в установку'
-                    : launcher.operational && !launcher.can_assemble
+                    : launcher.operational &&
+                        !launcher.can_assemble &&
+                        !launcher.assembly_seconds
                       ? 'Освободите площадку'
                       : null}
                 </small>
@@ -276,6 +281,9 @@ function DropControl({ data }: { data: Data }) {
 function launcherStatus(launcher: Launcher, ironCost: number) {
   if (!launcher.operational) {
     return 'Недоступна';
+  }
+  if (launcher.assembly_seconds) {
+    return `Сборка · ${launcher.assembly_seconds} с`;
   }
   if (!launcher.has_pod) {
     return `Железо ${launcher.iron}/${ironCost}`;

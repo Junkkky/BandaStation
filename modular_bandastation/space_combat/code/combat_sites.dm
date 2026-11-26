@@ -53,21 +53,11 @@
 		return
 	var/half_x = (bounds[MAP_MAXX] - bounds[MAP_MINX]) / 2
 	var/half_y = (bounds[MAP_MAXY] - bounds[MAP_MINY]) / 2
-	var/offset = (offset_x * direction_y - offset_y * direction_x) / target.radius
-	var/lateral = offset * (abs(direction_y) * half_x + abs(direction_x) * half_y)
-	var/x = bounds[MAP_MINX] + half_x + direction_y * lateral
-	var/y = bounds[MAP_MINY] + half_y - direction_x * lateral
-	var/back = INFINITY
-	if(direction_x)
-		var/edge_x = direction_x > 0 ? max(TRANSITIONEDGE + 2, bounds[MAP_MINX] - 2) : min(world.maxx - TRANSITIONEDGE - 1, bounds[MAP_MAXX] + 2)
-		back = (x - edge_x) / direction_x
-	if(direction_y)
-		var/edge_y = direction_y > 0 ? max(TRANSITIONEDGE + 2, bounds[MAP_MINY] - 2) : min(world.maxy - TRANSITIONEDGE - 1, bounds[MAP_MAXY] + 2)
-		back = min(back, (y - edge_y) / direction_y)
-	var/turf/entry = locate(round(x - direction_x * back, 1), round(y - direction_y * back, 1), bounds[MAP_MINZ])
+	var/flight_angle = delta_to_angle(direction_x, direction_y)
+	var/turf/entry = deck_entry(bounds, flight_angle, offset_x, offset_y, target.radius)
 	if(!entry || entry.is_transition_turf())
 		return
 	var/obj/projectile/bullet/stationtrauma_kinetic/round = new projectile_type(entry)
 	round.target_site_ref = WEAKREF(target)
 	round.target_sector_ref = sector_ref
-	fire_incoming(round, delta_to_angle(direction_x, direction_y), 1, ceil(2 * sqrt(half_x ** 2 + half_y ** 2)) + 6)
+	fire_incoming(round, flight_angle, 1, ceil(2 * sqrt(half_x ** 2 + half_y ** 2)) + 6, offset_x, offset_y)

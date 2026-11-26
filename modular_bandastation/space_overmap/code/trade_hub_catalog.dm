@@ -684,15 +684,22 @@
 	name = "Кассета лёгкой автопушки (30 снарядов)"
 	desc = "Полная кассета кинетических снарядов для лёгкой корабельной автопушки."
 	crate_name = "ящик с боеприпасами для лёгкой автопушки"
-	cost = CARGO_CRATE_VALUE * 6
+	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(/obj/item/stack/stationtrauma_autocannon_shell/full)
 
 /datum/supply_pack/security/armory/ship_ammunition/heavy
 	name = "Кассета тяжёлой автопушки (8 снарядов)"
 	desc = "Полная кассета кинетических снарядов для тяжёлой корабельной автопушки."
 	crate_name = "ящик с боеприпасами для тяжёлой автопушки"
-	cost = CARGO_CRATE_VALUE * 8
+	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/stack/stationtrauma_autocannon_shell/heavy/full)
+
+/datum/supply_pack/security/armory/ship_ammunition/plasma
+	name = "Кассета плазменной пушки (4 картриджа)"
+	desc = "Четыре сменных картриджа для тяжёлой корабельной плазменной пушки."
+	crate_name = "ящик с плазменными картриджами"
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/stack/stationtrauma_autocannon_shell/plasma/full)
 
 /** Security hub supplies security equipment and armory requisitions. */
 /obj/machinery/trade_hub_core/security

@@ -105,9 +105,10 @@ type TradeRequest = Data['requests'][number];
 export function TradeHub() {
   const { act, data } = useBackend<Data>();
   const { requests = [], contracts = [], reward_market } = data;
-  const [payment, setPayment] = useState<'cash' | 'cargo'>(
+  const [selectedPayment, setPayment] = useState<'cash' | 'cargo'>(
     data.cargo_access ? 'cargo' : 'cash',
   );
+  const payment = data.cargo_access ? selectedPayment : 'cash';
   const cash = payment === 'cash';
   const balance = cash ? data.cash_balance : data.balance;
   const offers = (data.offers || []).filter(

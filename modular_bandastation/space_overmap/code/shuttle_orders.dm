@@ -64,6 +64,8 @@
 	var/price = shuttle_price(offer_id, offer)
 	if(price != expected_price)
 		return "Цена изменилась. Проверьте стоимость перед заказом."
+	if(price && user?.uses_patrol_budget())
+		return "Патруль не уполномочен заказывать корабли за счёт карго."
 	var/problem = site.shuttle_order_dock_problem()
 	if(problem)
 		return problem

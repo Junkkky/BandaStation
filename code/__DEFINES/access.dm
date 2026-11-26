@@ -30,6 +30,8 @@
 #define ACCESS_CHANGE_IDS "change_ids"
 /// Access the PDA shopping app checks for to see if you can only request or place orders immediately
 #define ACCESS_BUDGET "department_budget"
+/// Credentials issued to the NT patrol. Their procurement is funded independently of the station.
+#define ACCESS_NT_PATROL "nt_patrol"
 /// Access used for the Captain's personal quarters in mapping, as well as what allows one to order emergency shuttles.
 #define ACCESS_CAPTAIN "captain"
 /// Access used for the Head of Personnel's personal quarters in mapping, as well as the security console and other HoP-related things.

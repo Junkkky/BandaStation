@@ -86,6 +86,16 @@
 			],
 			"source": null,
 			"changes": "Original 32x32 heavy kinetic shell and amber-striped eight-round cassette in three fill states."
+		},
+		{
+			"path": "modular_bandastation/space_combat/icons/ship_energy_weapons.dmi",
+			"sha256": "160c3fe5cc97d073a541ffe584127b3651b208e45a7c62ddb23b89ad3329637e",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"StationTrauma / BandaStation contributors"
+			],
+			"source": null,
+			"changes": "Original 32x32 pixel artwork for the directional laser, two-tile plasma cannon, loader and charge cassettes, with red and violet projectile sprites."
 		}
 	]
 }

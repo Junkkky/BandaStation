@@ -43,8 +43,8 @@
 		UNTIL(home.next_kinetic_impact > previous_impact || world.time >= timeout)
 		TEST_ASSERT(home.next_kinetic_impact > previous_impact, "The incoming round must collide on [site.name]'s physical map.")
 		var/list/impact = home.kinetic_impacts[length(home.kinetic_impacts)]
-		TEST_ASSERT_EQUAL(impact["x"], site.pos_x, "The native collision must identify the targeted installation.")
-		TEST_ASSERT_EQUAL(impact["y"], site.pos_y, "The native collision must identify the targeted installation.")
+		TEST_ASSERT(abs(impact["x"] - (site.pos_x - site.radius * shot.direction_x)) < 0.05, "The impact must keep the entry X on the installation's hitbox.")
+		TEST_ASSERT(abs(impact["y"] - (site.pos_y - site.radius * shot.direction_y)) < 0.05, "The impact must keep the entry Y on the installation's hitbox.")
 
 		var/obj/structure/closet/stationtrauma_drop_pod/pod = allocate(/obj/structure/closet/stationtrauma_drop_pod)
 		var/obj/item/cargo = allocate(/obj/item, pod)

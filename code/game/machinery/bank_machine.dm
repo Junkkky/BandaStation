@@ -113,6 +113,9 @@
 
 	switch(action)
 		if("siphon")
+			if(ui.user.uses_patrol_budget())
+				say("Снятие отклонено. Патруль снабжается со счёта командира эсминца.")
+				return TRUE
 			if(is_station_level(src.z) || is_centcom_level(src.z))
 				say("Siphon of station credits has begun!")
 				start_siphon(ui.user)

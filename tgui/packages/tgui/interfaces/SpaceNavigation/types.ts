@@ -157,11 +157,18 @@ export type NavigationData = Position & {
     id: number;
     heading?: number;
     finished: BooleanLike;
+    color?: string | null;
   })[];
   shield_up?: BooleanLike;
   drop_pods?: (Position & { id: number })[];
   impact_waves?: (
-    | { id: number; kind: 'ship' | 'shield'; contact: number | null }
+    | {
+        id: number;
+        kind: 'ship' | 'shield';
+        contact: number | null;
+        offset_x?: number;
+        offset_y?: number;
+      }
     | (Position & { id: number; kind: 'terrain' })
   )[];
   /** What the selected planet shows to the eye from orbit, before any survey */

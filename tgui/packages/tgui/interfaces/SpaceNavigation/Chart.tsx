@@ -56,12 +56,17 @@ const aimKeys: Partial<Record<string, Position>> = {
   ArrowLeft: { x: -10, y: 0 },
 };
 
-export type MuzzleFlash = { id: string; heading: number };
+export type MuzzleFlash = {
+  id: string;
+  heading: number;
+  color?: string | null;
+};
 
 type Props = {
   data: ChartData;
   zoom: number;
   firingSector?: FiringSector;
+  firingSectors?: FiringSector[];
   muzzleFlashes?: MuzzleFlash[];
   aimPoint?: Position | null;
   aimValid?: boolean;
@@ -79,6 +84,7 @@ export function Chart({
   aimValid,
   data,
   firingSector,
+  firingSectors = firingSector ? [firingSector] : [],
   muzzleFlashes,
   focusedContact,
   onAim,
@@ -144,10 +150,12 @@ export function Chart({
   )
     rows.push(y);
   const bodies = data.celestial_bodies || [];
-  const radius = (firingSector?.range ?? 0) * scale;
-  const radians = ((firingSector?.arc ?? 0) * Math.PI) / 180;
-  const edgeX = radius * Math.sin(radians);
-  const edgeY = -radius * Math.cos(radians);
+  const firstSector = firingSectors[0];
+  const distinctSectors = new Map<string, FiringSector>();
+  for (const sector of firingSectors) {
+    const key = [sector.heading, sector.arc, sector.min_range, sector.range];
+    distinctSectors.set(key.join('/'), sector);
+  }
 
   return (
     <div className="SpaceNavigation__chart-stage">
@@ -202,16 +210,12 @@ export function Chart({
           onAim &&
           ((event) => {
             const step = aimKeys[event.key];
-            if (
-              !step ||
-              !firingSector ||
-              event.target !== event.currentTarget
-            ) {
+            if (!step || !firstSector || event.target !== event.currentTarget) {
               return;
             }
             event.preventDefault();
-            const angle = (firingSector.heading * Math.PI) / 180;
-            const distance = (firingSector.range + firingSector.min_range) / 2;
+            const angle = (firstSector.heading * Math.PI) / 180;
+            const distance = (firstSector.range + firstSector.min_range) / 2;
             const origin = aimPoint || {
               x: data.x + Math.sin(angle) * distance,
               y: data.y + Math.cos(angle) * distance,
@@ -396,19 +400,35 @@ export function Chart({
               .join(' ')}
           />
         )}
-        {firingSector && (
-          <path
-            aria-label="Сектор обстрела выбранного орудия"
-            d={`M0 0 L${-edgeX} ${edgeY} A${radius} ${radius} 0 0 1 ${edgeX} ${edgeY} Z`}
-            fill="#e9a14a"
-            fillOpacity={0.18}
-            stroke="#e9a14a"
-            strokeOpacity={0.85}
-            strokeDasharray="4 3"
-            transform={`translate(${own.x} ${own.y}) rotate(${firingSector.heading})`}
-            pointerEvents="none"
-          />
-        )}
+        {Array.from(distinctSectors, ([key, sector]) => {
+          const outer = sector.range * scale;
+          const inner = sector.min_range * scale;
+          const angle = (sector.arc * Math.PI) / 180;
+          const x = Math.sin(angle);
+          const y = -Math.cos(angle);
+          const largeArc = sector.arc > 90 ? 1 : 0;
+          const outline = [
+            `M${-outer * x} ${outer * y}`,
+            `A${outer} ${outer} 0 ${largeArc} 1 ${outer * x} ${outer * y}`,
+            `L${inner * x} ${inner * y}`,
+            `A${inner} ${inner} 0 ${largeArc} 0 ${-inner * x} ${inner * y} Z`,
+          ].join(' ');
+          return (
+            <path
+              key={key}
+              role="img"
+              aria-label={`Сектор обстрела, курс ${Math.round(sector.heading)}° ± ${sector.arc}°, дальность от ${distanceLabel(sector.min_range, data.au_scale)} до ${distanceLabel(sector.range, data.au_scale)}`}
+              d={outline}
+              fill="#e9a14a"
+              fillOpacity={0.18}
+              stroke="#e9a14a"
+              strokeOpacity={0.85}
+              strokeDasharray="4 3"
+              transform={`translate(${own.x} ${own.y}) rotate(${sector.heading})`}
+              pointerEvents="none"
+            />
+          );
+        })}
         {data.routes.map((site, siteIndex) => {
           const p = point(site.x, site.y);
           const selectSite =
@@ -549,7 +569,13 @@ export function Chart({
               tabIndex={0}
               aria-label={`Контакт ${contact.id} · ${contact.identity?.callsign || 'Неопознанное судно'}`}
               aria-pressed={contact.id === focusedContact}
-              onClick={() => onContact(contact.id)}
+              onClick={(event) => {
+                onContact(contact.id);
+                if (onAim) {
+                  event.stopPropagation();
+                  onAim({ x: contact.x, y: contact.y });
+                }
+              }}
               onKeyDown={(event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                   event.preventDefault();
@@ -667,11 +693,11 @@ export function Chart({
               <path
                 className="ShipWeapons__muzzle-flash"
                 d="M0 -15 L-5 -22 L-2 -21 L0 -34 L2 -21 L5 -23 Z"
-                fill="#fff3ae"
-                stroke="#ff9344"
+                fill={flash.color ?? '#fff3ae'}
+                stroke={flash.color ?? '#ff9344'}
                 strokeWidth={1.5}
               >
-                <title>Выстрел автопушки</title>
+                <title>Выстрел орудия</title>
               </path>
             </g>
           ))}
@@ -707,7 +733,13 @@ export function Chart({
                     (contact) => contact.id === impact.contact,
                   );
           if (!location) return null;
-          const center = point(location.x, location.y);
+          const center =
+            impact.kind === 'terrain'
+              ? point(location.x, location.y)
+              : point(
+                  location.x + (impact.offset_x ?? 0),
+                  location.y + (impact.offset_y ?? 0),
+                );
           return (
             <circle
               key={impact.id}
@@ -750,12 +782,12 @@ export function Chart({
               opacity={shot.finished ? 0.45 : 1}
               pointerEvents="none"
             >
-              <title>Кинетический снаряд</title>
+              <title>Трасса выстрела</title>
               {!shot.finished && shot.heading !== undefined && (
                 <path
                   d="M0 0 V12"
                   transform={`translate(${p.x} ${p.y}) rotate(${shot.heading})`}
-                  stroke="#ff9f59"
+                  stroke={shot.color ?? '#ff9f59'}
                   strokeWidth={2}
                   strokeLinecap="round"
                 />
@@ -764,8 +796,8 @@ export function Chart({
                 cx={p.x}
                 cy={p.y}
                 r={3.5}
-                fill="#fff1ba"
-                stroke="#ad6237"
+                fill={shot.color ?? '#fff1ba'}
+                stroke={shot.color ?? '#ad6237'}
               />
             </g>
           );

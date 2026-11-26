@@ -16,6 +16,8 @@
 	var/datum/weakref/vessel_ref
 	/// The capsule assembled at this station, which becomes independent on launch.
 	var/datum/weakref/pod_ref
+	/// Stoppable assembly owned by this rack. Iron remains in the feed until the capsule is ready.
+	var/assembly_timer
 
 /obj/docking_port/mobile/stationtrauma_space
 	/// Reusable drop-pod launchers connected to the hull.
@@ -30,6 +32,8 @@
 	var/obj/docking_port/mobile/stationtrauma_space/vessel = vessel_ref?.resolve()
 	if(vessel)
 		LAZYREMOVE(vessel.drop_launchers, src)
+		if(vessel != port)
+			cancel_assembly()
 	vessel_ref = null
 	if(istype(port, /obj/docking_port/mobile/stationtrauma_space) && port.shuttle_areas[get_area(src)] && port.is_in_shuttle_bounds(src))
 		vessel = port
@@ -44,6 +48,26 @@
 /obj/machinery/stationtrauma_drop_launcher/examine(mob/user)
 	. = ..()
 	. += span_notice("Установка №[launcher_number]. Листы железа: [iron]/[ST_DROP_POD_IRON_COST].")
+	if(assembly_timer)
+		. += span_notice("Идёт сборка капсулы. Осталось [assembly_seconds_left()] сек.")
+
+/obj/machinery/stationtrauma_drop_launcher/on_set_is_operational(old_value)
+	. = ..()
+	if(!is_operational)
+		cancel_assembly()
+
+/obj/machinery/stationtrauma_drop_launcher/on_set_panel_open(old_value)
+	. = ..()
+	if(panel_open)
+		cancel_assembly()
+
+/obj/machinery/stationtrauma_drop_launcher/proc/cancel_assembly()
+	if(assembly_timer)
+		deltimer(assembly_timer)
+		assembly_timer = null
+
+/obj/machinery/stationtrauma_drop_launcher/proc/assembly_seconds_left()
+	return assembly_timer ? max(1, ceil(timeleft(assembly_timer) / (1 SECONDS))) : 0
 
 /obj/machinery/stationtrauma_drop_launcher/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/stack/sheet/iron))
@@ -65,7 +89,7 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/stationtrauma_drop_launcher/proc/is_mounted(obj/docking_port/mobile/stationtrauma_space/vessel)
-	return anchored && vessel_ref?.resolve() == vessel && vessel.shuttle_areas[get_area(src)] && vessel.is_in_shuttle_bounds(src)
+	return !QDELETED(vessel) && anchored && vessel_ref?.resolve() == vessel && vessel.shuttle_areas[get_area(src)] && vessel.is_in_shuttle_bounds(src)
 
 /obj/machinery/stationtrauma_drop_launcher/proc/can_operate()
 	return anchored && is_operational && !panel_open
@@ -77,12 +101,21 @@
 
 /obj/machinery/stationtrauma_drop_launcher/proc/can_assemble()
 	var/turf/pad = get_turf(src)
-	return can_operate() && iron >= ST_DROP_POD_IRON_COST && !mounted_pod() && isfloorturf(pad) && !pad.is_blocked_turf() \
+	return !assembly_timer && can_operate() && iron >= ST_DROP_POD_IRON_COST && !mounted_pod() && isfloorturf(pad) && !pad.is_blocked_turf() \
 		&& !(locate(/obj/structure/closet) in pad)
 
 /obj/machinery/stationtrauma_drop_launcher/proc/assemble_pod()
-	if(!can_assemble())
+	if(!is_mounted(vessel_ref?.resolve()) || !can_assemble())
 		return FALSE
+	assembly_timer = addtimer(CALLBACK(src, PROC_REF(finish_assembly), vessel_ref), ST_DROP_POD_ASSEMBLY_TIME, TIMER_STOPPABLE | TIMER_DELETE_ME)
+	return TRUE
+
+/obj/machinery/stationtrauma_drop_launcher/proc/finish_assembly(datum/weakref/original_vessel)
+	if(!assembly_timer)
+		return
+	assembly_timer = null
+	if(!is_mounted(original_vessel?.resolve()) || !can_assemble())
+		return
 	iron -= ST_DROP_POD_IRON_COST
 	var/obj/structure/closet/stationtrauma_drop_pod/pod = new(get_turf(src))
 	pod.name = "дроп-под №[launcher_number]"
@@ -91,4 +124,3 @@
 	pod.internal_air.volume = ST_DROP_POD_CABIN_VOLUME
 	pod.process_internal_air(0)
 	playsound(src, 'sound/machines/closet/closet_close.ogg', 45, TRUE)
-	return TRUE

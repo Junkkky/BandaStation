@@ -514,6 +514,13 @@
 			return mission
 	return null
 
+/// Both the patrol crew and anyone presenting their credentials are limited to ship funds.
+/mob/proc/uses_patrol_budget()
+	var/datum/job/away_mission/job = mind?.assigned_role
+	if(istype(job) && istype(job.get_away_mission(), /datum/roundstart_away_mission/nt_patrol))
+		return TRUE
+	return ACCESS_NT_PATROL in get_access()
+
 /datum/job/away_mission/special_check_latejoin(client/latejoin)
 	var/datum/roundstart_away_mission/mission = get_away_mission()
 	return ..() && SSmapping.current_map?.space_overmap && SSstationtrauma_space_voyage.initialized && mission?.get_instance_limit()
@@ -539,7 +546,8 @@
 	memory_flags = MEMORY_FLAG_NOMOOD | MEMORY_FLAG_NOLOCATION | MEMORY_FLAG_NOPERSISTENCE | MEMORY_SKIP_UNCONSCIOUS | MEMORY_NO_STORY
 
 /datum/memory/key/nt_patrol_orders/get_names()
-	var/orders = "Патрулируйте сектор. Выполняйте приказы Центрального командования и согласовывайте с ним действия эсминца."
+	var/orders = "Патрулируйте сектор. Выполняйте приказы Центрального командования и согласовывайте с ним действия эсминца. \
+		Припасы оплачивает эсминец. На торговом узле выберите личные наличные и возьмите в активную руку голочип или купюры."
 	var/datum/job/job = memorizer_mind.assigned_role
 	if(istype(job, /datum/job/away_mission/nt_patrol_commander))
 		orders += " Вы распоряжаетесь бюджетом на содержание эсминца. Нанотрейзен перечисляет на счёт вашей ID-карты \
@@ -610,7 +618,9 @@
 
 /datum/id_trim/nt_patrol/New()
 	. = ..()
-	access |= list(ACCESS_CENT_GENERAL, ACCESS_CENT_SPECOPS, ACCESS_CENT_LIVING) | (SSid_access.get_region_access_list(list(REGION_ALL_STATION)) - ACCESS_CHANGE_IDS)
+	var/list/station_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
+	station_access.RemoveAll(ACCESS_CHANGE_IDS, ACCESS_BUDGET)
+	access |= list(ACCESS_NT_PATROL, ACCESS_CENT_GENERAL, ACCESS_CENT_SPECOPS, ACCESS_CENT_LIVING) | station_access
 
 /// The commander and patrol officers share access to the special equipment locker.
 /datum/id_trim/nt_patrol/armory

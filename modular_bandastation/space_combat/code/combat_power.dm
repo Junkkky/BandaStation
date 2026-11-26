@@ -165,7 +165,7 @@
 	for(var/obj/machinery/stationtrauma_autocannon/gun as anything in ship?.ship_autocannons)
 		if(gun.is_mounted(ship))
 			gun_charge += gun.capacitor_charge
-			gun_capacity += ST_AUTOCANNON_CAPACITY
+			gun_capacity += gun.capacitor_capacity
 	var/online = bus.can_route(ship)
 	return list(
 		"vessel" = ship?.name,

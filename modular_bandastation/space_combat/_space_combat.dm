@@ -15,6 +15,8 @@
 #define ST_AUTOCANNON_LOCAL_SPEED 3
 /// Half angle of the mount, measured from its axis.
 #define ST_AUTOCANNON_ARC 45
+/// Maximum deviation in degrees per round, biased towards the selected bearing.
+#define ST_AUTOCANNON_SPREAD 1.5
 /// Time to cycle the feed after the last round of a burst.
 #define ST_AUTOCANNON_RELOAD (3 SECONDS)
 /// Energy taken from the gun area for each shell.
@@ -41,6 +43,8 @@
 #define ST_DROP_POD_REPORT_TIME (30 SECONDS)
 /// Iron sheets held by a launch rack for one capsule.
 #define ST_DROP_POD_IRON_COST 10
+/// Time for one loaded rack to assemble a launchable capsule.
+#define ST_DROP_POD_ASSEMBLY_TIME (10 SECONDS)
 /// Gas volume of a fitted cabin, in litres.
 #define ST_DROP_POD_CABIN_VOLUME 500
 /// Time an opened, spent capsule remains on the landing tile.

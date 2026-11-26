@@ -747,6 +747,8 @@
 /obj/machinery/computer/communications/proc/can_buy_shuttles(mob/user)
 	if (!SSmapping.current_map.allow_custom_shuttles)
 		return FALSE
+	if (user?.uses_patrol_budget() || (ACCESS_NT_PATROL in authorize_access))
+		return FALSE
 	if (HAS_SILICON_ACCESS(user))
 		return FALSE
 

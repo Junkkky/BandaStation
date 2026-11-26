@@ -15,13 +15,21 @@ import {
 } from './SpaceNavigation/types';
 
 const zoomLevels = [1, 2, 4, 8] as const;
+const buttonRole = { role: 'button' };
+const presets = [
+  { id: 'all', label: 'Вся батарея' },
+  { id: 'kinetic', label: 'Кинетика' },
+  { id: 'energy', label: 'Энергия' },
+] as const;
+type Preset = (typeof presets)[number]['id'];
 
 const statusLabels = {
   ready: 'Готово',
-  firing: 'Очередь',
+  firing: 'Ведёт огонь',
   charging: 'Накопитель заряжается',
   reload: 'Перезарядка',
-  empty: 'Нет снарядов',
+  empty: 'Нет боеприпасов',
+  low_power: 'Не хватает питания на выстрел',
   fault: 'Неисправно',
   moored: 'Вне свободного полёта',
   obstructed: 'Дуло перекрыто',
@@ -29,9 +37,14 @@ const statusLabels = {
 
 type Weapon = FiringSector & {
   id: string;
+  family: Exclude<Preset, 'all'>;
   name: string;
+  ammo_name: string | null;
   shells: number;
   capacity: number;
+  energy_per_shot: number;
+  capacitor_charge: number | null;
+  capacitor_capacity: number;
   loader?: { shells: number; capacity: number; online: BooleanLike } | null;
   status: keyof typeof statusLabels;
   reload: number;
@@ -42,7 +55,6 @@ type Data = ChartData & {
   weapons: Weapon[];
   muzzle_flashes?: MuzzleFlash[];
   can_control: BooleanLike;
-  power_ready: BooleanLike;
   scan_ready: BooleanLike;
 };
 
@@ -67,16 +79,25 @@ export function ShipWeapons() {
 
 function FireControl({ data }: { data: Data }) {
   const { act } = useBackend();
-  const [mountId, selectMount] = useState<string | null>(null);
+  const [selection, setSelection] = useState<Preset | string[]>('all');
   const [focusedContact, setFocusedContact] = useState<number | null>(null);
   const [aimPoint, setAimPoint] = useState<Position | null>(null);
   const [hoveredTarget, setHoveredTarget] = useState<string | null>(null);
   const [zoom, setZoom] = useState(4);
-  const mount =
-    data.weapons.find((weapon) => weapon.id === mountId) ?? data.weapons[0];
-  const aimProblem =
-    aimPoint && mount ? pointProblem(data, mount, aimPoint) : '';
-  const blocker = firingBlocker(data, mount, aimPoint, aimProblem);
+  const mounts = data.weapons.map((weapon) => ({
+    weapon,
+    selected: Array.isArray(selection)
+      ? selection.includes(weapon.id)
+      : selection === 'all' || selection === weapon.family,
+    problem: aimPoint ? pointProblem(data, weapon, aimPoint) : '',
+  }));
+  const selected = mounts.filter((mount) => mount.selected);
+  const selectedIds = selected.map(({ weapon }) => weapon.id);
+  const inSector = selected.filter((mount) => !mount.problem);
+  const readyCount = aimPoint
+    ? inSector.filter(({ weapon }) => weapon.status === 'ready').length
+    : 0;
+  const canFire = !!data.can_control && readyCount > 0;
   const pointLabel = aimPoint
     ? `X ${Math.round(aimPoint.x)} · Y ${Math.round(aimPoint.y)}`
     : 'Не выбрана';
@@ -109,23 +130,27 @@ function FireControl({ data }: { data: Data }) {
             zoom={zoom}
             focusedContact={focusedContact}
             hoveredTarget={hoveredTarget}
-            firingSector={mount}
+            firingSectors={selected.map(({ weapon }) => weapon)}
             muzzleFlashes={data.muzzle_flashes}
             aimPoint={aimPoint}
-            aimValid={!!mount && !aimProblem}
-            onAim={mount ? setAimPoint : undefined}
+            aimValid={!!inSector.length}
+            onAim={data.weapons.length ? setAimPoint : undefined}
             onContact={setFocusedContact}
           />
           <div className="SpaceNavigation__legend ShipWeapons__legend">
-            {mount && (
+            {!!selected.length && (
               <span>
                 <i className="ShipWeapons__sector-swatch" aria-hidden="true" />
-                Сектор огня · {distanceLabel(mount.range, data.au_scale)}
+                Секторы · до{' '}
+                {distanceLabel(
+                  Math.max(...selected.map(({ weapon }) => weapon.range)),
+                  data.au_scale,
+                )}
               </span>
             )}
             <span>
               <i className="ShipWeapons__shot-swatch" aria-hidden="true" />
-              Снаряд
+              Трасса выстрела
             </span>
           </div>
         </section>
@@ -142,57 +167,45 @@ function FireControl({ data }: { data: Data }) {
               className="SpaceNavigation__screen-label"
               id="gunnery-mounts-label"
             >
-              ОРУДИЯ
+              ОРУДИЙНАЯ БАТАРЕЯ
+              <span>
+                Выбрано {selected.length} из {mounts.length}
+              </span>
             </div>
-            <div className="SpaceNavigation__routes">
-              {data.weapons.map((weapon) => (
-                <div className="ShipWeapons__mount" key={weapon.id}>
-                  <Button
-                    selected={weapon.id === mount?.id}
-                    aria-pressed={weapon.id === mount?.id}
-                    onClick={() => selectMount(weapon.id)}
-                    tooltip={weapon.name}
-                  >
-                    <span>{weapon.name}</span>
-                  </Button>
-                  <div className="ShipWeapons__mount-reading">
-                    <span data-state={weapon.status}>
-                      {statusLabels[weapon.status]}
-                    </span>
-                    <span className="ShipWeapons__ammo">
-                      Снаряды{' '}
-                      <b>
-                        {weapon.shells}/{weapon.capacity}
-                      </b>
-                    </span>
-                  </div>
-                  {weapon.loader && (
-                    <div className="ShipWeapons__mount-reading">
-                      <span data-state={weapon.loader.online ? 'ready' : 'off'}>
-                        {weapon.loader.online
-                          ? 'Лоток на борту'
-                          : 'Подача отключена'}
-                      </span>
-                      <span className="ShipWeapons__ammo">
-                        <b>
-                          {weapon.loader.shells}/{weapon.loader.capacity}
-                        </b>
-                      </span>
-                    </div>
-                  )}
-                  <div className="ShipWeapons__reload">
-                    {weapon.status === 'reload' && (
-                      <>
-                        <progress
-                          max={weapon.reload_duration}
-                          value={weapon.reload_duration - weapon.reload}
-                          aria-label={`Перезарядка · ${weapon.name}`}
-                        />
-                        <span>{weapon.reload.toFixed(1)} с</span>
-                      </>
-                    )}
-                  </div>
-                </div>
+            <div className="SpaceNavigation__tabs ShipWeapons__presets">
+              {presets.map(({ id, label }) => (
+                <Button
+                  key={id}
+                  {...buttonRole}
+                  selected={selection === id}
+                  aria-pressed={selection === id}
+                  disabled={
+                    !mounts.some(
+                      ({ weapon }) => id === 'all' || weapon.family === id,
+                    )
+                  }
+                  onClick={() => setSelection(id)}
+                >
+                  {label}
+                </Button>
+              ))}
+            </div>
+            <div className="ShipWeapons__mount-list">
+              {mounts.map(({ weapon, selected, problem }) => (
+                <WeaponRow
+                  key={weapon.id}
+                  weapon={weapon}
+                  selected={selected}
+                  problem={problem}
+                  onSolo={() => setSelection([weapon.id])}
+                  onToggle={() =>
+                    setSelection(
+                      selected
+                        ? selectedIds.filter((id) => id !== weapon.id)
+                        : [...selectedIds, weapon.id],
+                    )
+                  }
+                />
               ))}
               {!data.weapons.length && (
                 <p className="SpaceNavigation__help">
@@ -203,7 +216,7 @@ function FireControl({ data }: { data: Data }) {
           </section>
 
           <section
-            className="SpaceNavigation__contacts"
+            className="SpaceNavigation__contacts ShipWeapons__contacts"
             aria-labelledby="gunnery-contacts-label"
           >
             <div
@@ -218,16 +231,19 @@ function FireControl({ data }: { data: Data }) {
                 return (
                   <Button
                     key={record.id}
+                    {...buttonRole}
                     selected={record.id === focusedContact}
                     aria-pressed={record.id === focusedContact}
-                    tooltip={label}
-                    onClick={() => setFocusedContact(record.id)}
+                    onClick={() => {
+                      setFocusedContact(record.id);
+                      setAimPoint({ x: record.x, y: record.y });
+                    }}
                     onMouseEnter={() =>
                       setHoveredTarget(`contact:${record.id}`)
                     }
                     onMouseLeave={() => setHoveredTarget(null)}
                   >
-                    <span>{label}</span>
+                    <span title={label}>{label}</span>
                     <span>{contactDistance(data, record)}</span>
                   </Button>
                 );
@@ -259,17 +275,17 @@ function FireControl({ data }: { data: Data }) {
           <p
             className="ShipWeapons__fire-status"
             id="gunnery-fire-status"
-            data-ready={!blocker}
+            data-ready={canFire}
             role="status"
           >
-            {blocker || 'Наведение готово'}
+            {firingStatus(data, selected.length, aimPoint, readyCount)}
           </p>
         </div>
         <Button
           className="SpaceNavigation__scan"
           selected={data.scan_age !== null && data.scan_age < 1.5}
           disabled={!data.scan_ready}
-          tooltip="Сканировать сектор"
+          {...buttonRole}
           aria-label="Сканировать сектор"
           onClick={() => act('scan')}
         >
@@ -282,20 +298,26 @@ function FireControl({ data }: { data: Data }) {
         </Button>
         <Button
           className="ShipWeapons__fire-key"
-          disabled={!!blocker}
-          aria-label="Огонь"
+          disabled={!canFire}
+          {...buttonRole}
+          aria-label={`Дать залп · ${readyCount}`}
+          aria-disabled={!canFire}
           aria-describedby="gunnery-fire-status"
-          onClick={() => {
-            if (mount && aimPoint) {
-              act('fire', { weapon: mount.id, x: aimPoint.x, y: aimPoint.y });
+          onClick={(event) => {
+            if (canFire && aimPoint && !event.repeat) {
+              act('fire', {
+                weapons: selectedIds,
+                x: aimPoint.x,
+                y: aimPoint.y,
+              });
             }
           }}
         >
           <Icon name="crosshairs" />
-          <span className="SpaceNavigation__key-label">ОГОНЬ</span>
+          <span className="SpaceNavigation__key-label">ЗАЛП ×{readyCount}</span>
           <span
             aria-hidden="true"
-            className={`SpaceNavigation__lamp ${!blocker ? 'ready' : ''}`}
+            className={`SpaceNavigation__lamp ${canFire ? 'ready' : ''}`}
           />
         </Button>
       </div>
@@ -303,29 +325,96 @@ function FireControl({ data }: { data: Data }) {
   );
 }
 
-function firingBlocker(
+function WeaponRow({
+  weapon,
+  selected,
+  problem,
+  onToggle,
+  onSolo,
+}: {
+  weapon: Weapon;
+  selected: boolean;
+  problem: string;
+  onToggle: () => void;
+  onSolo: () => void;
+}) {
+  const { status, loader } = weapon;
+  return (
+    <div className="ShipWeapons__mount">
+      <Button
+        className="ShipWeapons__toggle"
+        {...buttonRole}
+        aria-pressed={selected}
+        selected={selected}
+        onClick={onToggle}
+      >
+        <strong className="ShipWeapons__mount-name">
+          <Icon name={selected ? 'square-check' : 'square-o'} />
+          {weapon.name}
+        </strong>
+        <span className="ShipWeapons__mount-reading">
+          <span data-ready={status === 'ready' && !problem}>
+            {(status === 'ready' && problem) || statusLabels[status]}
+            {status === 'reload' && ` · ${weapon.reload.toFixed(1)} с`}
+          </span>
+          {weapon.ammo_name && (
+            <span title={weapon.ammo_name}>
+              БК {weapon.shells}/{weapon.capacity}
+            </span>
+          )}
+          {weapon.capacitor_charge !== null && (
+            <span title="Заряд накопителя">
+              <Icon name="bolt" />{' '}
+              {Math.floor(weapon.capacitor_charge / 100) / 10}/
+              {weapon.capacitor_capacity / 1000} кДж
+            </span>
+          )}
+        </span>
+        <small className="ShipWeapons__specs">
+          {loader && (
+            <span>
+              {loader.online ? 'Лоток' : 'Лоток откл.'} {loader.shells}/
+              {loader.capacity}
+            </span>
+          )}
+          <span>{weapon.energy_per_shot / 1000} кДж/выстр.</span>
+          <span>Цикл {weapon.reload_duration} с</span>
+        </small>
+      </Button>
+      <Button
+        className="ShipWeapons__solo"
+        {...buttonRole}
+        aria-label={`Выбрать только это орудие · ${weapon.name}`}
+        onClick={onSolo}
+      >
+        Только
+      </Button>
+    </div>
+  );
+}
+
+function firingStatus(
   data: Data,
-  mount: Weapon | undefined,
+  selectedCount: number,
   aimPoint: Position | null,
-  aimProblem: string,
+  readyCount: number,
 ) {
   if (!data.can_control) return 'Управление недоступно';
-  if (!mount) return 'Корабельные орудия отсутствуют';
-  if (!aimPoint) return 'Укажите точку на карте в секторе орудия';
-  if (mount.status !== 'ready') return statusLabels[mount.status];
-  if (!data.power_ready) return 'Не хватает питания на выстрел';
-  return aimProblem;
+  if (!data.weapons.length) return 'Корабельные орудия отсутствуют';
+  if (!selectedCount) return 'Выберите орудия для залпа';
+  if (!aimPoint) return 'Укажите точку на карте или выберите контакт';
+  return `Готовность к залпу · ${readyCount} из ${selectedCount}`;
 }
 
 function pointProblem(origin: Position, sector: FiringSector, aim: Position) {
   const dx = aim.x - origin.x;
   const dy = aim.y - origin.y;
   const distance = Math.hypot(dx, dy);
-  if (distance > sector.range) return 'Точка за пределом дальности';
-  if (distance <= sector.min_range) return 'Точка слишком близко к корпусу';
+  if (distance > sector.range) return 'Вне дальности';
+  if (distance <= sector.min_range) return 'Слишком близко';
   const bearing = (Math.atan2(dx, dy) * 180) / Math.PI;
   const offAxis = Math.abs(((bearing - sector.heading + 540) % 360) - 180);
-  if (offAxis > sector.arc) return 'Точка вне сектора обстрела';
+  if (offAxis > sector.arc) return 'Вне сектора';
   return '';
 }
 

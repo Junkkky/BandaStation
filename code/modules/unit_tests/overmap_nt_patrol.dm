@@ -24,6 +24,8 @@
 	var/list/original_jobs = list()
 	/// Generator audio is unrelated to the map and seat contract.
 	var/original_sound_processing
+	/// Physical projectiles captured at fire time, keyed by their mount.
+	var/list/fired_rounds = list()
 
 /datum/unit_test/overmap_nt_patrol/Run()
 	try
@@ -145,38 +147,8 @@
 	TEST_ASSERT_EQUAL(length(ship.owned_z_levels), 1, "The patrol destroyer must use exactly one deck")
 	TEST_ASSERT_EQUAL(ship.width, 17, "Native hull width including machinery")
 	TEST_ASSERT_EQUAL(ship.height, 24, "Native hull length including engines and the exterior gun mount")
-	TEST_ASSERT_EQUAL(length(ship.ship_autocannons), 2, "Both bow mounts must register with the native hull")
-	var/obj/machinery/stationtrauma_autocannon/heavy/heavy = locate() in ship.ship_autocannons
-	TEST_ASSERT_NOTNULL(heavy, "The second mount is a heavy autocannon")
-	var/list/light_mounts = ship.ship_autocannons - heavy
-	var/obj/machinery/stationtrauma_autocannon/gun = light_mounts[1]
-	var/obj/structure/stationtrauma_autocannon_barrel/barrel = locate() in get_step(heavy, heavy.dir)
-	TEST_ASSERT(barrel && heavy.firing_muzzle() == get_step(barrel, heavy.dir), "The projectile clears both physical tiles of the heavy mount")
-	var/obj/machinery/stationtrauma_autocannon_loader/compact/tray = heavy.interior_loader()
-	TEST_ASSERT(istype(get_area(gun), /area/shuttle/stationtrauma_space/nt_patrol/exterior), "The gun must be on the exterior bow")
-	TEST_ASSERT_NOTNULL(gun.firing_muzzle(), "The gun's outward muzzle must be clear")
-	var/turf/bow_window = get_step(gun, SOUTH)
-	TEST_ASSERT(locate(/obj/structure/window/reinforced/plasma/plastitanium) in bow_window, "The bow window must remain intact")
-	var/obj/machinery/stationtrauma_autocannon_loader/loader = locate() in get_step(bow_window, SOUTH)
-	TEST_ASSERT_EQUAL(gun.interior_loader(), loader, "The gun links through the bow to its interior loading tray")
-	TEST_ASSERT_NOTNULL(loader, "The bridge contains a loading tray")
-	TEST_ASSERT(istype(tray) && tray.mounted_gun() == heavy && tray.reserve_capacity < loader.reserve_capacity, "The heavy mount has its own small interior feed")
-	var/obj/machinery/computer/stationtrauma_weapon_console/controls = locate() in get_area(loader)
-	TEST_ASSERT_EQUAL(controls?.current_vessel(), ship, "The bridge controls must link to their own hull")
-	if(original_overmap && ship.overmap?.sector)
-		var/mob/living/carbon/human/consistent/gunner = allocate(/mob/living/carbon/human/consistent, get_turf(controls))
-		for(var/obj/machinery/stationtrauma_autocannon/mount as anything in ship.ship_autocannons)
-			mount.shells = 1
-			mount.capacitor_charge += mount.charge_demand(ship)
-			mount.projectile_type = /obj/projectile/bullet/stationtrauma_kinetic/site_test
-			var/heading = mount.firing_heading(ship.overmap)
-			TEST_ASSERT(mount.fire_round(controls, gunner, ship.overmap, ship.overmap.pos_x + 150 * sin(heading), ship.overmap.pos_y + 150 * cos(heading)), "The mounted [mount.name] must fire a native round.")
-			TEST_ASSERT(locate(/obj/effect/projectile/muzzle/bullet) in mount.firing_muzzle(), "A real shot must create its flash at the muzzle of [mount.name].")
-			TEST_ASSERT(abs(closer_angle_difference(mount.last_shot_heading, heading)) < 0.1, "The plot flash must match the bearing of [mount.name].")
-			mount.projectile_type = initial(mount.projectile_type)
-		var/list/plot = controls.ui_data(gunner)
-		TEST_ASSERT_EQUAL(length(plot["muzzle_flashes"]), 2, "Fire control must publish one flash for each gun that fired.")
 	TEST_ASSERT(ship.combat_power_managed && ship.combat_power_ref?.resolve(), "The patrol hull must have a linked combat distributor")
+	check_weapons(ship)
 	TEST_ASSERT_NOTNULL(ship.combat_shield_ref?.resolve(), "The patrol hull must have a linked shield generator")
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = allocate(/obj/docking_port/stationary/stationtrauma_space_station/standard_m)
 	TEST_ASSERT(slot.accepts(ship), "The real hull must fit a standard M slot")
@@ -330,6 +302,28 @@
 		TEST_ASSERT(!second_ship.has_away_vacancy(commander), "The second commander reservation must belong to the second hull")
 		SSjob.free_job_position(commander.title, medic_player.mind)
 		TEST_ASSERT(second_ship.has_away_vacancy(commander), "Freeing the commander must release the position on the correct hull")
+	check_pod_assembly(ship)
+
+/datum/unit_test/overmap_nt_patrol/proc/check_pod_assembly(obj/docking_port/mobile/stationtrauma_space/ship)
+	TEST_ASSERT_EQUAL(length(ship.drop_launchers), 2, "The patrol deck must carry two independent launchers")
+	var/obj/machinery/stationtrauma_drop_launcher/rack = ship.drop_launchers[1]
+	rack.iron = 10
+	TEST_ASSERT(rack.assemble_pod() && !rack.assemble_pod(), "A rack must accept exactly one assembly order at a time")
+	TEST_ASSERT(!rack.mounted_pod() && rack.assembly_seconds_left() == 10, "The capsule must begin with ten seconds of assembly remaining")
+	rack.set_panel_open(TRUE)
+	TEST_ASSERT(!rack.assembly_timer && rack.iron == 10, "Opening the service panel must cancel assembly and retain the iron")
+	rack.set_panel_open(FALSE)
+	var/obj/machinery/stationtrauma_drop_launcher/blocked = ship.drop_launchers[2]
+	blocked.iron = 10
+	var/start = world.time
+	TEST_ASSERT(rack.assemble_pod() && blocked.assemble_pod(), "Each rack must be able to assemble its own capsule")
+	var/obj/structure/closet/obstruction = allocate(/obj/structure/closet, get_turf(blocked))
+	UNTIL((!rack.assembly_timer && !blocked.assembly_timer) || world.time >= start + 15 SECONDS)
+	var/obj/structure/closet/stationtrauma_drop_pod/pod = rack.mounted_pod()
+	TEST_ASSERT(world.time >= start + 10 SECONDS && pod && !rack.iron, "The clear rack must finish and spend the iron after ten seconds")
+	TEST_ASSERT(!blocked.assembly_timer && !blocked.mounted_pod() && blocked.iron == 10, "An obstructed pad must retain its iron without producing a capsule")
+	qdel(obstruction)
+	qdel(pod)
 
 /// Create a ready lobby player with the normal character preferences and a local ban cache.
 /datum/unit_test/overmap_nt_patrol/proc/make_volunteer()
@@ -344,6 +338,149 @@
 	player.key = mock.key
 	player.ready = PLAYER_READY_TO_PLAY
 	return player
+
+/// Limit outgoing test rounds to the empty space directly ahead of the bow.
+/datum/unit_test/overmap_nt_patrol/proc/capture_round(mob/source, obj/projectile/bullet/stationtrauma_kinetic/round, obj/machinery/stationtrauma_autocannon/mount)
+	SIGNAL_HANDLER
+	round.range = 2
+	fired_rounds[mount] = round
+
+/// Fire the actual mapped mounts and exercise their separate resource requirements.
+/datum/unit_test/overmap_nt_patrol/proc/check_weapons(obj/docking_port/mobile/stationtrauma_space/ship)
+	TEST_ASSERT_EQUAL(length(ship.ship_autocannons), 4, "All four bow mounts must register with the native hull")
+	var/list/mounts = list()
+	for(var/obj/machinery/stationtrauma_autocannon/mount as anything in ship.ship_autocannons)
+		mounts[mount.type] = mount
+		TEST_ASSERT(istype(get_area(mount), /area/shuttle/stationtrauma_space/nt_patrol/exterior) && mount.firing_muzzle(), "[mount] needs a clear muzzle on the exterior bow")
+	var/obj/machinery/stationtrauma_autocannon/gun = mounts[/obj/machinery/stationtrauma_autocannon]
+	var/obj/machinery/stationtrauma_autocannon/heavy/heavy = mounts[/obj/machinery/stationtrauma_autocannon/heavy]
+	var/obj/machinery/stationtrauma_autocannon/laser/laser = mounts[/obj/machinery/stationtrauma_autocannon/laser]
+	var/obj/machinery/stationtrauma_autocannon/heavy/plasma/plasma = mounts[/obj/machinery/stationtrauma_autocannon/heavy/plasma]
+	TEST_ASSERT(gun && heavy && laser && plasma, "The patrol needs light and heavy kinetics, a laser and a plasma cannon")
+	var/obj/machinery/computer/stationtrauma_weapon_console/unmetered = allocate(__IMPLIED_TYPE__, get_turf(laser))
+	TEST_ASSERT(gun.grid_power_ready(unmetered) && !laser.grid_power_ready(unmetered) && !plasma.grid_power_ready(unmetered), "An unmetered shuttle area must not provide free energy weapon shots")
+	qdel(unmetered)
+	var/obj/structure/stationtrauma_autocannon_barrel/barrel = locate() in get_step(heavy, heavy.dir)
+	TEST_ASSERT(barrel && heavy.firing_muzzle() == get_step(barrel, heavy.dir), "The heavy kinetic round must clear the forward barrel")
+	var/obj/structure/stationtrauma_autocannon_barrel/plasma/focus = locate() in get_step(plasma, plasma.dir)
+	TEST_ASSERT(focus && plasma.firing_muzzle() == get_step(focus, plasma.dir), "The plasma bolt must clear its matching focusing section")
+	var/turf/bow_window = get_step(gun, SOUTH)
+	TEST_ASSERT(locate(/obj/structure/window/reinforced/plasma/plastitanium) in bow_window, "The bow window must remain intact")
+	var/obj/machinery/stationtrauma_autocannon_loader/loader = locate() in get_step(bow_window, SOUTH)
+	TEST_ASSERT(loader && gun.interior_loader() == loader, "The light gun must link through the bow to the bridge tray")
+	var/obj/machinery/stationtrauma_autocannon_loader/compact/tray = heavy.interior_loader()
+	TEST_ASSERT(istype(tray) && tray.mounted_gun() == heavy && tray.reserve_capacity < loader.reserve_capacity, "The heavy mount has its own small interior feed")
+	var/obj/machinery/stationtrauma_autocannon_loader/plasma/plasma_tray = plasma.interior_loader()
+	TEST_ASSERT(istype(plasma_tray) && plasma_tray.mounted_gun() == plasma, "The bridge plasma tray must feed the plasma breech")
+	var/original_dir = plasma.dir
+	var/original_shells = plasma.shells
+	var/original_reserve = plasma_tray.reserve_shells
+	for(var/side in list(-90, 90))
+		plasma.setDir(turn(original_dir, side))
+		TEST_ASSERT(plasma.interior_loader() == plasma_tray && plasma_tray.mounted_gun() == plasma, "A side-facing plasma feed must link both ways across the hull tile")
+		plasma.shells = 0
+		plasma_tray.reserve_shells = 1
+		plasma_tray.feed_gun()
+		TEST_ASSERT(plasma.shells == 1 && !plasma_tray.reserve_shells, "A side-facing plasma tray must feed a cartridge into the breech")
+	plasma.setDir(turn(original_dir, 180))
+	TEST_ASSERT_NULL(plasma_tray.mounted_gun(), "The muzzle must not accept ammunition from the front")
+	plasma.setDir(original_dir)
+	plasma.shells = original_shells
+	plasma_tray.reserve_shells = original_reserve
+	TEST_ASSERT(!laser.ammo_type && !laser.shells && !laser.interior_loader(), "The single-tile laser must operate without a loader or ammunition")
+	var/obj/machinery/computer/stationtrauma_weapon_console/controls = locate() in get_area(loader)
+	TEST_ASSERT_EQUAL(controls?.current_vessel(), ship, "The bridge controls must link to their own hull")
+	if(!original_overmap || !ship.overmap?.sector)
+		return
+	var/datum/stationtrauma_overmap/space/map = ship.overmap
+	var/mob/living/carbon/human/gunner = allocate(/mob/living/carbon/human/consistent, get_turf(controls))
+	RegisterSignal(gunner, COMSIG_PROJECTILE_FIRER_BEFORE_FIRE, PROC_REF(capture_round))
+	for(var/obj/machinery/stationtrauma_autocannon/mount as anything in ship.ship_autocannons)
+		var/heading = mount.firing_heading(map)
+		var/aim_x = map.pos_x + 150 * sin(heading)
+		var/aim_y = map.pos_y + 150 * cos(heading)
+		var/stock = mount.shells
+		if(mount == laser || mount == plasma)
+			mount.capacitor_charge = mount.energy_per_shot - 1
+			TEST_ASSERT_EQUAL(mount.readiness(map), "charging", "[mount] must report insufficient charge")
+			TEST_ASSERT(!mount.fire_round(controls, gunner, map, aim_x, aim_y) && mount.shells == stock, "An undercharged [mount] must preserve its ammunition")
+		mount.capacitor_charge += mount.charge_demand(ship)
+		var/charge = mount.capacitor_charge
+		if(mount == plasma)
+			plasma.shells = 0
+			TEST_ASSERT_EQUAL(plasma.readiness(map), "empty", "The charged plasma breech must still require a cartridge")
+			TEST_ASSERT(!plasma.fire_round(controls, gunner, map, aim_x, aim_y) && plasma.capacitor_charge == charge, "An empty plasma breech must preserve its charge")
+			plasma_tray.reserve_shells = 1
+			plasma_tray.feed_gun()
+			TEST_ASSERT(plasma.shells == 1 && !plasma_tray.reserve_shells, "The mapped plasma tray must transfer one cartridge into the breech")
+			stock = plasma.shells
+		TEST_ASSERT_EQUAL(mount.readiness(map), "ready", "[mount] must be ready for fire control")
+		TEST_ASSERT(mount.fire_round(controls, gunner, map, aim_x, aim_y), "The mounted [mount] must fire its native projectile")
+		TEST_ASSERT_EQUAL(mount.shells, stock - (mount != laser), "Only cartridge- or shell-fed mounts may consume ammunition")
+		TEST_ASSERT_EQUAL(mount.capacitor_charge, charge - mount.energy_per_shot, "[mount] must draw exactly one shot from its capacitor")
+		var/obj/effect/projectile/muzzle/flash = locate(mount.muzzle_flash_type) in mount.firing_muzzle()
+		TEST_ASSERT(flash && flash.light_color == mount.muzzle_flash_color, "A real shot must produce the matching flash and light at the muzzle of [mount]")
+		var/obj/projectile/bullet/stationtrauma_kinetic/fired = fired_rounds[mount]
+		var/datum/stationtrauma_kinetic_shot/shot = fired?.outgoing_shot
+		TEST_ASSERT(shot && abs(closer_angle_difference(mount.last_shot_heading, delta_to_angle(shot.direction_x, shot.direction_y))) < 0.05, "The plot flash must match the actual sector trajectory of [mount]")
+		TEST_ASSERT(abs(closer_angle_difference(mount.last_shot_heading, heading)) <= 1.51, "Each round must stay within the gun's small aiming spread")
+	var/list/plot = controls.ui_data(gunner)
+	TEST_ASSERT_EQUAL(length(plot["muzzle_flashes"]), 4, "Fire control must publish one flash for each gun that fired")
+	var/obj/projectile/bullet/stationtrauma_kinetic/energy/laser/laser_round = fired_rounds[laser]
+	var/obj/projectile/bullet/stationtrauma_kinetic/heavy/heavy_round = fired_rounds[heavy]
+	var/obj/projectile/bullet/stationtrauma_kinetic/energy/plasma/plasma_round = fired_rounds[plasma]
+	TEST_ASSERT(istype(laser_round) && istype(heavy_round) && istype(plasma_round), "The mounted guns must launch their own projectile profiles")
+	TEST_ASSERT(plasma_round.damage > heavy_round.damage && plasma_round.shield_impact > heavy_round.shield_impact, "A plasma hit must deal more damage to a target and its shield than a heavy kinetic round")
+	var/turf/target = get_step(run_loc_floor_bottom_left, NORTHEAST).ChangeTurf(/turf/closed/wall)
+	target.bullet_act(heavy_round)
+	var/kinetic_cracked_wall = target.density && target.GetComponent(/datum/component/torn_wall)
+	target = target.ChangeTurf(/turf/open/indestructible)
+	target = target.ChangeTurf(/turf/closed/wall)
+	target.bullet_act(plasma_round)
+	var/plasma_breached_wall = !target.density
+	target.ChangeTurf(/turf/open/indestructible)
+	TEST_ASSERT(kinetic_cracked_wall && plasma_breached_wall, "A full plasma hit must breach fresh hull plating that one heavy kinetic hit only cracks")
+	QDEL_LIST_ASSOC_VAL(fired_rounds)
+	check_salvo(controls, gunner, map, mounts)
+	UnregisterSignal(gunner, COMSIG_PROJECTILE_FIRER_BEFORE_FIRE)
+
+/// Submit a battery selection through the mapped console and observe the physical rounds at each muzzle.
+/datum/unit_test/overmap_nt_patrol/proc/check_salvo(obj/machinery/computer/stationtrauma_weapon_console/controls, mob/living/carbon/human/gunner, datum/stationtrauma_overmap/space/map, list/mounts)
+	var/obj/machinery/stationtrauma_autocannon/gun = mounts[/obj/machinery/stationtrauma_autocannon]
+	var/obj/machinery/stationtrauma_autocannon/heavy/heavy = mounts[/obj/machinery/stationtrauma_autocannon/heavy]
+	var/obj/machinery/stationtrauma_autocannon/laser/laser = mounts[/obj/machinery/stationtrauma_autocannon/laser]
+	var/obj/machinery/stationtrauma_autocannon/heavy/plasma/plasma = mounts[/obj/machinery/stationtrauma_autocannon/heavy/plasma]
+	// A single shell in the light gun ends its burst before it yields. All submissions share one tick.
+	gun.shells = 1
+	gun.capacitor_charge = gun.capacitor_capacity
+	heavy.shells = 0
+	heavy.capacitor_charge = heavy.capacitor_capacity
+	laser.capacitor_charge = laser.capacitor_capacity
+	plasma.shells = plasma.feed_capacity
+	plasma.capacitor_charge = plasma.capacitor_capacity
+	ADD_TRAIT(gunner, TRAIT_PRESERVE_UI_WITHOUT_CLIENT, TRAIT_SOURCE_UNIT_TESTS)
+	var/datum/tgui/ui = allocate(/datum/tgui, gunner, controls, "ShipWeapons")
+	ui.process_status()
+	TEST_ASSERT_EQUAL(ui.status, UI_INTERACTIVE, "The operator on the bridge must have an interactive fire-control window")
+	var/heading = laser.firing_heading(map) + 15
+	var/aim_x = map.pos_x + 150 * sin(heading)
+	var/aim_y = map.pos_y + 150 * cos(heading)
+	var/list/selection = list(REF(heavy), REF(laser), REF(controls), REF(plasma), REF(laser))
+	var/list/salvo = list("weapons" = selection, "x" = aim_x, "y" = aim_y)
+	gunner.forceMove(get_step(get_step(controls, SOUTH), SOUTH))
+	TEST_ASSERT(!controls.ui_act("fire", salvo, ui, ui.state), "An operator who stepped away must lose control even with an open window")
+	gunner.forceMove(get_turf(controls))
+	var/list/aft = list("weapons" = selection, "x" = 2 * map.pos_x - aim_x, "y" = 2 * map.pos_y - aim_y)
+	TEST_ASSERT(!controls.ui_act("fire", aft, ui, ui.state), "The forward battery must reject a target astern")
+	TEST_ASSERT_EQUAL(length(fired_rounds), 0, "A rejected salvo must leave all muzzles silent")
+	TEST_ASSERT(controls.ui_act("fire", salvo, ui, ui.state), "A duplicate, an unrelated reference and an empty gun must not block the ready mounts")
+	TEST_ASSERT(fired_rounds[laser] && fired_rounds[plasma] && length(fired_rounds) == 2, "Only the two ready selected mounts must launch projectiles")
+	TEST_ASSERT(abs(closer_angle_difference(laser.last_shot_heading, heading)) <= 1.51 && abs(closer_angle_difference(plasma.last_shot_heading, heading)) <= 1.51, "Both projectiles must stay within the spread of the submitted bearing")
+	TEST_ASSERT(!controls.ui_act("fire", salvo, ui, ui.state), "A repeated salvo during reload must be rejected")
+	TEST_ASSERT_EQUAL(laser.capacitor_charge, laser.capacitor_capacity - laser.energy_per_shot, "A duplicate selection or click must not consume a second laser shot")
+	TEST_ASSERT_EQUAL(plasma.shells, plasma.feed_capacity - 1, "A repeated salvo must not consume a second plasma cartridge")
+	TEST_ASSERT(controls.ui_act("fire", list("weapon" = REF(gun), "x" = aim_x, "y" = aim_y), ui, ui.state), "The single-weapon command must still operate the unselected light gun")
+	TEST_ASSERT(fired_rounds[gun] && !gun.shells, "The light gun must fire its shell on the single-weapon command")
 
 /// Verify the mapped power source and propellant route using only the fuel on board.
 /datum/unit_test/overmap_nt_patrol/proc/check_reactor(obj/docking_port/mobile/stationtrauma_space/ship, obj/machinery/power/smes/ship/storage, datum/pipeline/supply, datum/pipeline/waste)
@@ -435,6 +572,8 @@
 	TEST_ASSERT_EQUAL(rechargers, 1, "The armory must provide a recharger")
 	TEST_ASSERT(ammo_crate?.locked && ammo_crate.check_access_list(list(ACCESS_CENT_SPECOPS)) && !ammo_crate.check_access_list(list()), "Patrol crew must be able to unlock the ammunition reserve")
 	for(var/obj/machinery/stationtrauma_autocannon/gun as anything in ship.ship_autocannons)
+		if(!gun.ammo_type)
+			continue
 		var/rounds = 0
 		for(var/obj/item/stack/stationtrauma_autocannon_shell/ammo in ammo_crate)
 			if(ammo.merge_type == gun.ammo_type)
@@ -447,6 +586,7 @@
 
 /// Map cleanup yields, so perform it before the no-sleep datum teardown.
 /datum/unit_test/overmap_nt_patrol/proc/discard_test_hull()
+	QDEL_LIST_ASSOC_VAL(fired_rounds)
 	second_template?.discard_loaded_ship()
 	if(!template)
 		return

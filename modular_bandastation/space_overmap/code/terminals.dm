@@ -36,7 +36,7 @@
 	var/datum/stationtrauma_overmap_sector/space/sector = SSstationtrauma_space_voyage.sectors["epsilon_eridani"]
 	if(!can_operate(user, allow_observer = TRUE) || !sector?.ready)
 		return list("available" = FALSE)
-	var/datum/bank_account/department/account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	var/datum/bank_account/department/account = user.uses_patrol_budget() ? null : SSeconomy.get_dep_account(ACCOUNT_CAR)
 	var/list/catalog = sector.shuttle_offers()
 	var/list/offers = list()
 	for(var/offer_id in catalog)

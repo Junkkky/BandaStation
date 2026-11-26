@@ -334,6 +334,9 @@
 		if(!tender || tender.get_item_credit_value() < price)
 			return trade_result(result, FALSE, "В активной руке недостаточно наличных.")
 	else
+		reason = trade_hub_cargo_payment_reason(user, terminal)
+		if(reason)
+			return trade_result(result, FALSE, reason)
 		account = SSeconomy.get_dep_account(ACCOUNT_CAR)
 		if(!account || !account.has_money(price))
 			return trade_result(result, FALSE, "В бюджете карго недостаточно средств.")
@@ -362,7 +365,7 @@
 	if(success && (cash || terminal))
 		success = !QDELETED(terminal) && terminal.get_core() == src && !terminal.panel_open && terminal.can_interact(user)
 		if(success)
-			success = cash ? !terminal.cash_operator_reason(user) : terminal.allowed(user)
+			success = cash ? !terminal.cash_operator_reason(user) : !trade_hub_cargo_payment_reason(user, terminal)
 	if(success && cash)
 		cash_charged = trade_hub_charge_cash(tender, price, user, counter)
 		success = cash_charged
@@ -582,6 +585,14 @@
 		return "Для расчёта наличными подойдите к терминалу."
 	return null
 
+/// Station cargo credentials authorize department purchases except when presented by an independently funded patrol.
+/proc/trade_hub_cargo_payment_reason(mob/user, obj/machinery/computer/trade_hub/terminal)
+	if(user?.uses_patrol_budget())
+		return "Патруль снабжается за счёт эсминца. Выберите личные наличные."
+	if(terminal && !terminal.allowed(user))
+		return "Нужен доступ карго. Проверьте ID-карту."
+	return null
+
 /** Return the common machinery and selected payment method's denial at the point of action. */
 /obj/machinery/computer/trade_hub/proc/get_trade_reason(mob/user, obj/machinery/trade_hub_core/core, cash = FALSE)
 	if(!core)
@@ -593,8 +604,10 @@
 		reason = cash_operator_reason(user)
 		if(reason)
 			return reason
-	else if(!allowed(user))
-		return "Нужен доступ карго. Проверьте ID-карту."
+	else
+		reason = trade_hub_cargo_payment_reason(user, src)
+		if(reason)
+			return reason
 	return core.get_trade_reason()
 
 /** A handled denial also triggers an immediate TGUI update. */
@@ -622,7 +635,7 @@
 /obj/machinery/computer/trade_hub/ui_data(mob/user)
 	var/obj/machinery/trade_hub_core/core = get_core()
 	var/catalogue_ready = core?.ensure_catalog()
-	var/cargo_access = allowed(user)
+	var/cargo_access = !trade_hub_cargo_payment_reason(user, src)
 	var/terminal_reason = get_trade_reason(user, core)
 	var/cash_reason = get_trade_reason(user, core, cash = TRUE)
 	var/obj/item/tender = trade_hub_cash_in_hand(user)

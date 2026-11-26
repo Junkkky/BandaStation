@@ -68,6 +68,7 @@
 			"iron" = launcher.iron,
 			"operational" = launcher.can_operate(),
 			"can_assemble" = launcher.can_assemble(),
+			"assembly_seconds" = launcher.assembly_seconds_left(),
 			"has_pod" = !!pod,
 			"open" = pod?.opened,
 			"passengers" = passengers,

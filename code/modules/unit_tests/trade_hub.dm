@@ -932,7 +932,7 @@
 	TEST_ASSERT_NOTNULL(locate(/obj/structure/closet/crate/mail) in parcel, "Delivery separated the gift crate from its parcel.")
 	TEST_ASSERT_NULL(locate(/obj/structure/closet/crate) in get_turf(output_pad), "Delivery also issued an unwrapped crate beside the parcel.")
 
-/// The commander's issued account funds both calibres at the security terminal.
+/// The commander's issued account funds compatible ammunition at the security terminal.
 /datum/unit_test/trade_hub/patrol_resupply/Run()
 	var/obj/machinery/trade_hub_core/security/supplier = allocate(/obj/machinery/trade_hub_core/security)
 	supplier.hub_id = "patrol_[REF(src)]"
@@ -950,6 +950,7 @@
 	TEST_ASSERT_EQUAL(account?.account_job, job, "The issued patrol ID must be linked to the commander's payroll.")
 	allocated += account
 	TEST_ASSERT_EQUAL(account.account_balance, 5000, "The commander must receive the procurement funds on joining.")
+	cargo_account.account_balance = max(cargo_account.account_balance, 10000)
 	var/cargo_balance = cargo_account.account_balance
 	var/datum/bank_account/civilian = SSeconomy.get_dep_account(ACCOUNT_CIV)
 	var/civilian_balance = civilian.account_balance
@@ -959,9 +960,20 @@
 	TEST_ASSERT_EQUAL(civilian.account_balance, civilian_balance, "Station civilians must not fund patrol procurement.")
 
 	var/datum/tgui/ui = create_session(commander, terminal)
+	var/list/terminal_data = terminal.ui_data(commander)
+	TEST_ASSERT(!terminal_data["cargo_access"] && !terminal_data["balance"], "Patrol field access must not expose the station budget.")
+	var/pack_id = /datum/supply_pack/security/armory/ship_ammunition/light
+	var/original_stock = supplier.stock[pack_id]
+	for(var/list/params as anything in list(list("id" = "[pack_id]", "payment" = "cargo"), list("id" = "[pack_id]")))
+		terminal.ui_act("buy", params, ui)
+		TEST_ASSERT(!terminal.ui_data(commander)["receipt"]["success"], "The commander's order was accepted against the cargo account.")
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, cargo_balance, "A denied patrol order debited cargo.")
+	TEST_ASSERT_EQUAL(supplier.stock[pack_id], original_stock, "A denied patrol order consumed local stock.")
+	TEST_ASSERT_NULL(locate(/obj/structure/closet/crate) in get_turf(output_pad), "A denied patrol order issued a crate.")
 	var/list/ammunition = list(
 		/datum/supply_pack/security/armory/ship_ammunition/light = /obj/item/stack/stationtrauma_autocannon_shell,
 		/datum/supply_pack/security/armory/ship_ammunition/heavy = /obj/item/stack/stationtrauma_autocannon_shell/heavy,
+		/datum/supply_pack/security/armory/ship_ammunition/plasma = /obj/item/stack/stationtrauma_autocannon_shell/plasma,
 	)
 	for(var/pack_type, shell_type in ammunition)
 		TEST_ASSERT_NULL(SSshuttle.supply_packs[pack_type], "Local ammunition should not appear in station cargo.")
@@ -980,6 +992,36 @@
 		TEST_ASSERT_EQUAL(shells.amount, shells.max_amount, "Each delivery must contain a full cassette.")
 		qdel(delivery)
 	TEST_ASSERT_EQUAL(cargo_account.account_balance, cargo_balance, "Personal purchases must not draw on cargo's budget.")
+
+/// A patrol assignment and each issued ID independently restrict spending, even at a shared console.
+/datum/unit_test/trade_hub/patrol_budget/Run()
+	var/mob/living/carbon/human/operator = allocate(/mob/living/carbon/human/consistent, get_turf(input_pad))
+	operator.mind_initialize()
+	var/obj/machinery/computer/trade_hub/terminal = create_terminal(core)
+	var/obj/item/card/id/advanced/card = allocate(/obj/item/card/id/advanced/nt_patrol)
+	var/datum/roundstart_away_mission/nt_patrol/mission = allocate(/datum/roundstart_away_mission/nt_patrol)
+	for(var/job_type in mission.crew_jobs)
+		var/datum/job/job = SSjob.get_job_type(job_type)
+		operator.mind.set_assigned_role(job)
+		TEST_ASSERT(operator.uses_patrol_budget(), "[job.title] could access station funds without ID.")
+		operator.mind.set_assigned_role(SSjob.get_job_type(/datum/job/cargo_technician))
+		var/datum/outfit/job/outfit = job.outfit
+		SSid_access.apply_trim_to_card(card, initial(outfit.id_trim))
+		TEST_ASSERT(operator.put_in_active_hand(card), "Could not present the patrol credentials.")
+		TEST_ASSERT((ACCESS_CARGO in card.access) && (ACCESS_CENT_SPECOPS in card.access) && !(ACCESS_BUDGET in card.access), "[job.title] must retain operational access without budget authority.")
+		TEST_ASSERT(!terminal.ui_data(operator)["cargo_access"], "The ID issued to [job.title] authorized a cargo charge when lent to station staff.")
+		TEST_ASSERT(operator.dropItemToGround(card), "Could not return the patrol ID.")
+
+	var/obj/item/card/id/advanced/station_id = allocate(/obj/item/card/id/advanced)
+	SSid_access.apply_trim_to_card(station_id, /datum/id_trim/job/cargo_technician)
+	TEST_ASSERT(operator.put_in_active_hand(station_id), "Could not present the station cargo ID.")
+	TEST_ASSERT(terminal.ui_data(operator)["cargo_access"], "A station cargo technician could not select the cargo budget.")
+	var/datum/supply_pack/pack = SSshuttle.supply_packs[/datum/supply_pack/engineering/tools]
+	cargo_account.account_balance = pack.get_cost() * 2
+	var/datum/tgui/ui = create_session(operator, terminal)
+	terminal.ui_act("buy", list("id" = "[pack.id]", "payment" = "cargo"), ui)
+	TEST_ASSERT(terminal.ui_data(operator)["receipt"]["success"], "A station cargo technician could not place a funded order.")
+	TEST_ASSERT_EQUAL(cargo_account.account_balance, pack.get_cost(), "The station order should debit cargo by the quoted price.")
 
 /** A visitor pays with banknotes, receives change and cannot charge cargo or order restricted goods. */
 /datum/unit_test/trade_hub/cash_purchase/Run()

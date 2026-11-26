@@ -1,4 +1,4 @@
-/** A fixed, bridge-operated kinetic autocannon. */
+/** A fixed, bridge-operated ship weapon. */
 /obj/machinery/stationtrauma_autocannon
 	name = "кинетическая автопушка"
 	desc = "Носовая установка на три выстрела в очереди. Управляется с оружейной консоли. Внутренний загрузочный лоток подаёт кинетические снаряды между очередями."
@@ -19,11 +19,18 @@
 	var/burst_size = 3
 	var/reload_time = ST_AUTOCANNON_RELOAD
 	var/firing_sound = 'sound/items/weapons/gun/l6/shot.ogg'
+	var/muzzle_flash_type = /obj/effect/projectile/muzzle/bullet
+	var/muzzle_flash_color = LIGHT_COLOR_ORANGE
 	/// Most recent confirmed shot, retained briefly on the fire-control plot.
 	var/last_shot_time
 	var/last_shot_heading
 	/// Charge delivered by an installed combat distributor.
 	var/capacitor_charge = 0
+	/// Energy drawn per projectile and maximum charge the ship's distributor can deliver.
+	var/energy_per_shot = ST_AUTOCANNON_SHOT_ENERGY
+	var/capacitor_capacity = ST_AUTOCANNON_CAPACITY
+	/// Energy weapons need a metered circuit even on hulls without a distributor.
+	var/requires_powered_grid = FALSE
 	/// Hull registration is updated by the native shuttle loader.
 	var/datum/weakref/vessel_ref
 	/// A burst owns the feed until its last round or an interruption.
@@ -89,7 +96,9 @@
 
 /obj/machinery/stationtrauma_autocannon/examine(mob/user)
 	. = ..()
-	. += span_notice("В подаче [shells]/[feed_capacity] снарядов.")
+	if(ammo_type)
+		. += span_notice("Боезапас в подаче: [shells]/[feed_capacity].")
+	. += span_notice("Расход на выстрел: [display_energy(energy_per_shot)].")
 
 /obj/machinery/stationtrauma_autocannon/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/stack/stationtrauma_autocannon_shell))
@@ -120,10 +129,13 @@
 
 /** Match the shuttered feed through the intervening hull tile even if the native shuttle rotates. */
 /obj/machinery/stationtrauma_autocannon/proc/interior_loader()
-	var/turf/inlet = get_step(get_step(src, REVERSE_DIR(dir)), REVERSE_DIR(dir))
-	var/obj/machinery/stationtrauma_autocannon_loader/loader = locate() in inlet
-	if(!QDELETED(loader) && loader.mounted_gun() == src)
-		return loader
+	if(!ammo_type)
+		return null
+	for(var/inlet_dir in list(REVERSE_DIR(dir), turn(dir, 90), turn(dir, -90)))
+		var/turf/inlet = get_step(get_step(src, inlet_dir), inlet_dir)
+		var/obj/machinery/stationtrauma_autocannon_loader/loader = locate() in inlet
+		if(!QDELETED(loader) && loader.mounted_gun() == src)
+			return loader
 
 /obj/machinery/stationtrauma_autocannon/proc/firing_muzzle()
 	return clear_muzzle_ahead(src)
@@ -138,7 +150,12 @@
 /obj/machinery/stationtrauma_autocannon/proc/charge_demand(obj/docking_port/mobile/stationtrauma_space/ship)
 	if(!hardware_ready(ship))
 		return 0
-	return max(0, ST_AUTOCANNON_CAPACITY - capacitor_charge)
+	return max(0, capacitor_capacity - capacitor_charge)
+
+/// Unmanaged hulls draw from the console's APC when they fire.
+/obj/machinery/stationtrauma_autocannon/proc/grid_power_ready(obj/machinery/computer/stationtrauma_weapon_console/console)
+	var/area/room = get_area(console)
+	return room && (!requires_powered_grid || room.requires_power) && console.available_energy() >= energy_per_shot
 
 /** Hardware readiness, independent of the selected aim point. */
 /obj/machinery/stationtrauma_autocannon/proc/readiness(datum/stationtrauma_overmap/space/map)
@@ -148,9 +165,9 @@
 		return "firing"
 	if(!COOLDOWN_FINISHED(src, burst_cooldown))
 		return "reload"
-	if(!shells)
+	if(ammo_type && !shells)
 		return "empty"
-	if(map.vessel.combat_power_managed && capacitor_charge < ST_AUTOCANNON_SHOT_ENERGY)
+	if(map.vessel.combat_power_managed && capacitor_charge < energy_per_shot)
 		return "charging"
 	if(!map.kinetic_flight_ready())
 		return "moored"
@@ -190,7 +207,7 @@
 			balloon_alert(user, rounds_fired ? "очередь прервана" : "выстрел недоступен")
 			break
 		rounds_fired++
-		if(index < burst_size && shells)
+		if(index < burst_size && (!ammo_type || shells))
 			sleep(0.3 SECONDS)
 		else
 			break
@@ -198,24 +215,28 @@
 	if(rounds_fired)
 		COOLDOWN_START(src, burst_cooldown, reload_time)
 
-/** Commit one physical shell and draw its power from the control station's supply. */
+/** Fire one projectile after checking its aim, muzzle and required resources. */
 /obj/machinery/stationtrauma_autocannon/proc/fire_round(obj/machinery/computer/stationtrauma_weapon_console/console, mob/user, datum/stationtrauma_overmap/space/map, aim_x, aim_y)
 	map.advance()
 	if(!map.kinetic_flight_ready() || panel_open || (machine_stat & (NOPOWER|BROKEN|MAINT)))
 		return FALSE
 	var/turf/muzzle = firing_muzzle()
-	if(!muzzle || !shells)
+	if(!muzzle || (ammo_type && !shells))
 		return FALSE
 	var/angle = aim_at(map, aim_x, aim_y)
 	if(isnull(angle))
 		return FALSE
+	var/axis = firing_heading(map)
+	var/deviation = closer_angle_difference(axis, angle) + (rand() - rand()) * ST_AUTOCANNON_SPREAD
+	angle = WRAP(axis + clamp(deviation, -ST_AUTOCANNON_ARC, ST_AUTOCANNON_ARC), 0, 360)
 	if(map.vessel.combat_power_managed)
-		if(capacitor_charge < ST_AUTOCANNON_SHOT_ENERGY)
+		if(capacitor_charge < energy_per_shot)
 			return FALSE
-		capacitor_charge -= ST_AUTOCANNON_SHOT_ENERGY
-	else if(console.use_energy(ST_AUTOCANNON_SHOT_ENERGY, force = FALSE) < ST_AUTOCANNON_SHOT_ENERGY)
+		capacitor_charge -= energy_per_shot
+	else if(!grid_power_ready(console) || console.use_energy(energy_per_shot, force = FALSE) < energy_per_shot)
 		return FALSE
-	shells--
+	if(ammo_type)
+		shells--
 	var/datum/stationtrauma_kinetic_shot/shot = new
 	shot.projectile_type = projectile_type
 	shot.sector_ref = WEAKREF(map.sector)
@@ -240,9 +261,9 @@
 	if(get_dist(user, sound_origin) > SOUND_RANGE)
 		user.playsound_local(get_turf(console), firing_sound, 60, TRUE, pressure_affected = FALSE)
 	var/local_angle = WRAP(angle - map.course + dir2angle(map.vessel.preferred_direction), 0, 360)
-	var/obj/effect/projectile/muzzle/bullet/flash = new(muzzle)
+	var/obj/effect/projectile/muzzle/flash = new muzzle_flash_type(muzzle)
 	flash.turn_to(local_angle)
-	flash.set_light(2, 3, LIGHT_COLOR_ORANGE)
+	flash.set_light(2, 3, muzzle_flash_color)
 	QDEL_IN(flash, PROJECTILE_TRACER_DURATION)
 	round.fire(local_angle)
 	last_shot_time = world.time
@@ -275,7 +296,7 @@
 /obj/machinery/stationtrauma_autocannon_loader/proc/mounted_gun()
 	var/turf/outlet = get_step(get_step(src, dir), dir)
 	var/obj/machinery/stationtrauma_autocannon/gun = locate() in outlet
-	if(QDELETED(gun) || gun.dir != dir || gun.ammo_type != ammo_type || !anchored)
+	if(QDELETED(gun) || gun.ammo_type != ammo_type || !anchored || !(gun.dir in list(dir, turn(dir, 90), turn(dir, -90))))
 		return null
 	var/obj/docking_port/mobile/stationtrauma_space/ship = gun.vessel_ref?.resolve()
 	var/area/shuttle/stationtrauma_space/compartment = get_area(src)
@@ -356,11 +377,13 @@
 	reload_time = 6 SECONDS
 	feed_capacity = 4
 	shells = 4
+	/// Matched forward section of this two-tile assembly.
+	var/barrel_type = /obj/structure/stationtrauma_autocannon_barrel
 
 /obj/machinery/stationtrauma_autocannon/heavy/firing_muzzle()
-	var/obj/structure/stationtrauma_autocannon_barrel/barrel = locate() in get_step(src, dir)
+	var/obj/structure/stationtrauma_autocannon_barrel/barrel = locate(barrel_type) in get_step(src, dir)
 	var/obj/docking_port/mobile/stationtrauma_space/ship = vessel_ref?.resolve()
-	if(!QDELETED(barrel) && barrel.anchored && barrel.dir == dir && ship?.shuttle_areas[get_area(barrel)] && ship.is_in_shuttle_bounds(barrel))
+	if(!QDELETED(barrel) && barrel.type == barrel_type && barrel.anchored && barrel.dir == dir && ship?.shuttle_areas[get_area(barrel)] && ship.is_in_shuttle_bounds(barrel))
 		return clear_muzzle_ahead(barrel)
 	return null
 

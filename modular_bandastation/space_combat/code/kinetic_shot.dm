@@ -1,4 +1,4 @@
-/** Sector-side travel for a single kinetic projectile. */
+/** Sector-side travel for a single ship weapon projectile. */
 /datum/stationtrauma_kinetic_shot
 	/// Round profile retained even if the firing mount is destroyed in flight.
 	var/obj/projectile/bullet/stationtrauma_kinetic/projectile_type = /obj/projectile/bullet/stationtrauma_kinetic
@@ -64,6 +64,8 @@
 		"shielded" = shielded,
 		"x" = x,
 		"y" = y,
+		"offset_x" = ship ? x - ship.pos_x : 0,
+		"offset_y" = ship ? y - ship.pos_y : 0,
 	))
 
 /** A vessel remains exposed during approach preparation and jump warmup. */
@@ -110,10 +112,11 @@
 			qdel(src)
 			return PROCESS_KILL
 		return
-	var/seconds = min((world.time - last_update) / (1 SECONDS), remaining / ST_AUTOCANNON_SPEED)
+	var/speed = initial(projectile_type.sector_speed)
+	var/seconds = min((world.time - last_update) / (1 SECONDS), remaining / speed)
 	if(seconds <= 0)
 		return
-	var/distance = ST_AUTOCANNON_SPEED * seconds
+	var/distance = speed * seconds
 	var/dx = direction_x * distance
 	var/dy = direction_y * distance
 	var/fraction
@@ -164,7 +167,7 @@
 		var/impact = initial(projectile_type.shield_impact)
 		var/absorbed = shield?.absorb(impact) || 0
 		if(absorbed)
-			sector.record_kinetic_impact(target, target.pos_x, target.pos_y, shielded = TRUE)
+			sector.record_kinetic_impact(target, target.pos_x + offset_x, target.pos_y + offset_y, shielded = TRUE)
 		var/strength = 1 - absorbed / impact
 		if(strength > 0)
 			project_into_hull(target, offset_x, offset_y, strength)
@@ -187,24 +190,41 @@
 	var/obj/docking_port/mobile/stationtrauma_space/hull = target.vessel
 	var/rotation = target.course - dir2angle(hull.preferred_direction)
 	var/flight_angle = delta_to_angle(direction_x, direction_y) - rotation
-	var/list/bounds = hull.return_coords()
-	var/center_x = (bounds[1] + bounds[3]) / 2
-	var/center_y = (bounds[2] + bounds[4]) / 2
-	var/local_x = offset_x * cos(rotation) - offset_y * sin(rotation)
-	var/local_y = offset_x * sin(rotation) + offset_y * cos(rotation)
-	var/turf/entry = locate(
-		round(center_x + local_x - sin(flight_angle) * 4),
-		round(center_y + local_y - cos(flight_angle) * 4),
-		hull.z,
+	var/list/corners = hull.return_coords()
+	var/list/bounds = list(
+		min(corners[1], corners[3]), min(corners[2], corners[4]), hull.z,
+		max(corners[1], corners[3]), max(corners[2], corners[4]), hull.z,
 	)
+	var/turf/entry = deck_entry(bounds, flight_angle, offset_x, offset_y, target.radius)
 	if(!isspaceturf(entry) || entry.is_transition_turf() || hull.shuttle_areas[get_area(entry)])
 		return
 	var/obj/projectile/bullet/stationtrauma_kinetic/round = new projectile_type(entry)
 	round.target_hull_ref = WEAKREF(hull)
-	fire_incoming(round, flight_angle, strength, ceil(target.radius * 2 + 8))
+	fire_incoming(round, flight_angle, strength, ceil(target.radius * 2 + 8), offset_x, offset_y)
+
+/// Map the signed distance from the centre line of the sector hitbox to the same fraction of the deck's projected width.
+/datum/stationtrauma_kinetic_shot/proc/deck_entry(list/bounds, flight_angle, offset_x, offset_y, radius)
+	var/half_x = (bounds[MAP_MAXX] - bounds[MAP_MINX]) / 2
+	var/half_y = (bounds[MAP_MAXY] - bounds[MAP_MINY]) / 2
+	var/local_dx = sin(flight_angle)
+	var/local_dy = cos(flight_angle)
+	var/fraction = clamp((offset_x * direction_y - offset_y * direction_x) / radius, -1, 1)
+	var/lateral = fraction * (abs(local_dy) * half_x + abs(local_dx) * half_y)
+	var/x = bounds[MAP_MINX] + half_x + local_dy * lateral
+	var/y = bounds[MAP_MINY] + half_y - local_dx * lateral
+	var/back = INFINITY
+	if(local_dx)
+		var/edge_x = local_dx > 0 ? max(TRANSITIONEDGE + 2, bounds[MAP_MINX] - 2) : min(world.maxx - TRANSITIONEDGE - 1, bounds[MAP_MAXX] + 2)
+		back = (x - edge_x) / local_dx
+	if(local_dy)
+		var/edge_y = local_dy > 0 ? max(TRANSITIONEDGE + 2, bounds[MAP_MINY] - 2) : min(world.maxy - TRANSITIONEDGE - 1, bounds[MAP_MAXY] + 2)
+		back = min(back, (y - edge_y) / local_dy)
+	return locate(round(x - local_dx * back, 1), round(y - local_dy * back, 1), bounds[MAP_MINZ])
 
 /// Both native maps receive the same projectile, damage profile and firing attribution.
-/datum/stationtrauma_kinetic_shot/proc/fire_incoming(obj/projectile/bullet/stationtrauma_kinetic/round, flight_angle, strength, distance)
+/datum/stationtrauma_kinetic_shot/proc/fire_incoming(obj/projectile/bullet/stationtrauma_kinetic/round, flight_angle, strength, distance, offset_x = 0, offset_y = 0)
+	round.contact_offset_x = offset_x
+	round.contact_offset_y = offset_y
 	round.impact_strength *= strength
 	round.damage *= strength
 	round.range = round.maximum_range = distance
@@ -223,6 +243,7 @@
 			"id" = shot.number,
 			"x" = shot.pos_x, "y" = shot.pos_y,
 			"heading" = delta_to_angle(shot.direction_x, shot.direction_y),
+			"color" = initial(shot.projectile_type.plot_color),
 			"finished" = !isnull(shot.finished_at),
 		))
 
@@ -238,7 +259,7 @@
 		var/datum/weakref/ship_ref = impact["ship"]
 		var/datum/stationtrauma_overmap/space/target = ship_ref?.resolve()
 		if(target == src)
-			. += list(list("id" = impact["id"], "kind" = kind, "contact" = null))
+			. += list(list("id" = impact["id"], "kind" = kind, "contact" = null, "offset_x" = impact["offset_x"], "offset_y" = impact["offset_y"]))
 			continue
 		if((impact["x"] - pos_x) ** 2 + (impact["y"] - pos_y) ** 2 > (sensor_range / 2) ** 2)
 			continue
@@ -249,7 +270,7 @@
 			continue
 		var/list/observation = ship_observations[target.vessel.shuttle_id]
 		if(observation && world.time - observation["seen"] < ST_NAV_SHIP_MEMORY)
-			. += list(list("id" = impact["id"], "kind" = kind, "contact" = observation["id"]))
+			. += list(list("id" = impact["id"], "kind" = kind, "contact" = observation["id"], "offset_x" = impact["offset_x"], "offset_y" = impact["offset_y"]))
 
 /** A physical segment of a naval round. */
 /obj/projectile/bullet/stationtrauma_kinetic
@@ -266,12 +287,19 @@
 	/// Fixed installation and sector notified on the first physical hit.
 	var/datum/weakref/target_site_ref
 	var/datum/weakref/target_sector_ref
+	/// Sector contact relative to the target centre, reported upon physical impact.
+	var/contact_offset_x = 0
+	var/contact_offset_y = 0
 	/// One pulse for the first physical contact of this incoming round.
 	var/recorded_impact = FALSE
 	/// Amount of field charge needed to intercept a complete shell.
 	var/shield_impact = ST_SHIP_SHIELD_KINETIC_IMPACT
 	/// Wall damage after passing through a depleted shield.
 	var/impact_strength = 1
+	/// Sector units per second, including after transfer from the physical map.
+	var/sector_speed = ST_AUTOCANNON_SPEED
+	/// Optional track color on the fire-control plot.
+	var/plot_color
 
 /obj/projectile/bullet/stationtrauma_kinetic/heavy
 	name = "тяжёлый кинетический снаряд"
@@ -312,14 +340,18 @@
 		var/datum/stationtrauma_overmap_sector/space/here = target_sector_ref?.resolve()
 		if(site && here?.sites[site.id] == site)
 			recorded_impact = TRUE
-			here.record_kinetic_impact(null, site.pos_x, site.pos_y)
+			here.record_kinetic_impact(null, site.pos_x + contact_offset_x, site.pos_y + contact_offset_y)
 	if(target_hull_ref && !recorded_impact)
 		var/obj/docking_port/mobile/stationtrauma_space/hull = target_hull_ref.resolve()
 		var/datum/stationtrauma_overmap/space/ship = hull?.overmap
 		if(!QDELETED(ship?.sector))
 			recorded_impact = TRUE
 			var/datum/stationtrauma_overmap_sector/space/here = ship.sector
-			here.record_kinetic_impact(ship, ship.pos_x, ship.pos_y)
+			here.record_kinetic_impact(ship, ship.pos_x + contact_offset_x, ship.pos_y + contact_offset_y)
 	if(blocked < 100 && iswallturf(target) && !isindestructiblewall(target))
-		target.AddComponent(/datum/component/torn_wall, null, impact_strength)
+		damage_wall(target)
 	return ..()
+
+/// Apply the portion of the hull hit that made it through the target's shield.
+/obj/projectile/bullet/stationtrauma_kinetic/proc/damage_wall(turf/closed/wall/wall)
+	wall.AddComponent(/datum/component/torn_wall, null, impact_strength)

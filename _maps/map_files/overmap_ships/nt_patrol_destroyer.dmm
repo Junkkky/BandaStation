@@ -603,6 +603,7 @@
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "wV" = (
+/obj/machinery/stationtrauma_autocannon_loader/plasma,
 /obj/effect/turf_decal/tile/dark_blue/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
@@ -1291,6 +1292,24 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Pa" = (
+/obj/machinery/stationtrauma_autocannon/heavy/plasma{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
+"Pc" = (
+/obj/structure/stationtrauma_autocannon_barrel/plasma{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
+"Pd" = (
+/obj/machinery/stationtrauma_autocannon/laser{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
 "ac" = (
 /obj/structure/rack/gunrack,
 /obj/effect/turf_decal/stripes/red/line{
@@ -1313,6 +1332,7 @@
 /obj/item/stack/stationtrauma_autocannon_shell/heavy{
 	amount = 8
 	},
+/obj/item/stack/stationtrauma_autocannon_shell/plasma/full,
 /obj/item/ammo_box/magazine/recharge,
 /obj/item/ammo_box/magazine/recharge,
 /obj/item/ammo_box/magazine/cm5,
@@ -1452,8 +1472,8 @@ JQ
 ss
 "}
 (6,1,1) = {"
-aa
-aa
+Pc
+Pa
 tm
 wV
 yT
@@ -1662,7 +1682,7 @@ ss
 (14,1,1) = {"
 aa
 aa
-aa
+Pd
 tm
 Ix
 ai
