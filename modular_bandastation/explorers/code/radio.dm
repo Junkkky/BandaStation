@@ -17,3 +17,15 @@
 	name = "гарнитура главы экспедиционного корпуса"
 	keyslot = /obj/item/encryptionkey/expedition/leader
 	command = TRUE
+
+/// The pilot's full-size headphones: they cover both ears and keep out the roar of the engines and the flashbangs alike
+/obj/item/radio/headset/headset_cargo/explorer/pilot
+	name = "лётные наушники пилота экспедиционного корпуса"
+	desc = "Большие закрытые наушники пилота корпуса с коротковолновым режимом. Защищают слух от вспышек и рёва двигателей."
+	icon_state = "com_headset_alt"
+	worn_icon_state = "com_headset_alt"
+
+/obj/item/radio/headset/headset_cargo/explorer/pilot/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/wearertargeting/earprotection)
+	AddComponent(/datum/component/occupies_slots, ITEM_SLOT_EARS)
