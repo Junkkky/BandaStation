@@ -77,6 +77,8 @@ export function Scanner({ data, focusedContact }: Props) {
       ['ПЕЛ', bearing(data, site.x, site.y)],
     );
     const planet = data.planet;
+    if (site.kind === 'planet' && data.planet_look)
+      rows.push(['ВИД', data.planet_look]);
     if (site.kind === 'planet' && planet) {
       if (planet.atmosphere) rows.push(['АТМ', planet.atmosphere]);
       if (planet.temperature !== undefined)
