@@ -44,7 +44,7 @@
 	SSsound_loops.can_fire = previous_sound_loops_can_fire
 	sound_loops_paused = FALSE
 	TEST_ASSERT_EQUAL(length(ship.owned_z_levels), 1, "Argos must own exactly its loaded deck")
-	TEST_ASSERT_EQUAL(ship.width, 12, "Native hull bounds must include the entire twelve-tile-wide map")
+	TEST_ASSERT_EQUAL(ship.width, 14, "Native hull bounds must include the entire fourteen-tile-wide map")
 	TEST_ASSERT_EQUAL(ship.height, 22, "Native hull bounds must include the added engineering compartment")
 	sector = allocate(/datum/stationtrauma_overmap_sector/space)
 	sector.id = "unit_test_argos"
@@ -94,7 +94,7 @@
 	TEST_ASSERT_EQUAL(length(helms), 1, "The actual bridge needs one navigation console")
 	var/obj/machinery/computer/stationtrauma_space_navigation/helm = helms[1]
 	TEST_ASSERT_EQUAL(helm.vessel, ship, "Sector attachment must bind the mapped helm to Argos")
-	var/turf/seat_tile = locate(template.loaded_min_x + 2, template.loaded_min_y + 19, ship.z)
+	var/turf/seat_tile = locate(template.loaded_min_x + 3, template.loaded_min_y + 19, ship.z)
 	var/obj/structure/chair/pilot_seat = locate() in seat_tile
 	TEST_ASSERT_NOTNULL(pilot_seat, "The bridge needs its mapped pilot seat")
 	var/mob/living/carbon/human/consistent/pilot = allocate(/mob/living/carbon/human/consistent, get_step(seat_tile, SOUTH))
@@ -108,10 +108,7 @@
 	for(var/obj/machinery/power/shuttle_engine/engine as anything in ship.engine_list)
 		TEST_ASSERT(istype(engine, /obj/machinery/power/shuttle_engine/propulsion/argos), "Every mapped nozzle must use the Argos bluespace drive")
 		TEST_ASSERT_EQUAL(engine.connected_ship, ship, "Each actual propulsion engine must register with Argos")
-	TEST_ASSERT(navigation.set_engines_running(TRUE), "The mapped Argos engines must respond to the real engine controls")
 	TEST_ASSERT(ship.hull_mass > 0, "Thrust must be measured against the loaded hull mass")
-	TEST_ASSERT_EQUAL(navigation.thrust_ratio(), 16 / ship.hull_mass, "Eight Argos nozzles must deliver sixteen units of thrust to the loaded hull")
-	navigation.set_engines_running(FALSE)
 	TEST_ASSERT_NOTNULL(navigation.jump_drive(), "The mapped charged drive must bind to the loaded hull and have power")
 	TEST_ASSERT_EQUAL(length(transponders), 1, "The actual bridge needs one transponder")
 	var/obj/machinery/computer/stationtrauma_transponder/transponder = transponders[1]
@@ -217,7 +214,16 @@
 	dock_site.pos_y = navigation.pos_y
 	sector.sites[dock_site.id] = dock_site
 	var/turf/flight_anchor = get_turf(ship)
+	var/obj/machinery/stationtrauma_combat_power/distributor = ship.combat_power_ref?.resolve()
+	TEST_ASSERT_NOTNULL(distributor, "Argos must bind its mapped power distributor")
+	TEST_ASSERT(distributor.set_allocation(0, 100, 0, distributor.allocation_revision), "The distributor must accept full engine allocation")
+	var/deadline = world.time + 3 * SSmachines.wait
+	UNTIL(distributor.available_watts > 0 || world.time >= deadline)
+	TEST_ASSERT(distributor.available_watts > 0, "The real ship grid must supply power to the distributor")
 	TEST_ASSERT(navigation.set_engines_running(TRUE), "The mapped Argos engines must start before its real departure")
+	deadline = world.time + 3 * SSmachines.wait
+	UNTIL(distributor.engine_limit >= 1 || world.time >= deadline)
+	TEST_ASSERT_EQUAL(navigation.thrust_ratio(), 16 / ship.hull_mass, "Eight powered Argos nozzles must deliver sixteen units of thrust to the loaded hull")
 	TEST_ASSERT(navigation.select_site(dock_site.id), "Argos must select the physical M berth")
 	TEST_ASSERT(navigation.dock(instant = TRUE, station_authorized = TRUE), "The actual Argos hull must physically dock at an M berth: [navigation.status]")
 	var/obj/docking_port/stationary/stationtrauma_space_site/standard/arrival = ship.get_docked()
@@ -225,9 +231,13 @@
 	var/datum/stationtrauma_dock_gangway/gangway = arrival.gangways[1]
 	var/turf/bridge = locate(slot_x + 19, slot_y + 4, ship.z)
 	TEST_ASSERT(istype(bridge, /turf/open/floor/plating/stationtrauma_dock_gangway), "The actual mapped hatch must deploy its passage floor")
-	var/deadline = world.time + 5 SECONDS
+	deadline = world.time + 5 SECONDS
 	UNTIL(!gangway.busy || world.time >= deadline)
 	TEST_ASSERT(!gangway.busy, "The real Argos gangway must finish its arrival operation")
+	// Relocation rebuilds the onboard cable networks before the next power cycles can supply the engines again.
+	deadline = world.time + 3 * SSmachines.wait
+	UNTIL((smes.powernet?.avail > 0 && navigation.propulsion_available()) || world.time >= deadline)
+	TEST_ASSERT(smes.powernet?.avail > 0 && navigation.propulsion_available(), "Argos must regain propulsion on the rebuilt onboard grid after docking")
 	TEST_ASSERT(gangway.open_passage(), "The real Argos gangway must open using its mapped atmosphere and the station fixture atmosphere")
 	TEST_ASSERT(!gangway.ship.density && !gangway.wall.density, "Both actual Argos passage endpoints must be physically open")
 	station_area.requires_power = TRUE
