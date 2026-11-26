@@ -255,6 +255,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	var/duedate
 
 #define PRINTER_COOLDOWN (6 SECONDS)
+#define MAX_LIBRARY_PRINT_RUN 5
 #define NEWSCASTER_COOLDOWN (10 SECONDS)
 #define LIBRARY_NEWSFEED "Nanotrasen Book Club"
 //The different states the computer can be in, only send the info we need yeah?
@@ -323,6 +324,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 
 /obj/machinery/computer/libraryconsole/bookmanagement/ui_static_data(mob/user)
 	var/list/data = list()
+	data["max_print_run"] = MAX_LIBRARY_PRINT_RUN
 	data["inventory"] = list()
 	var/inventory_len = length(inventory)
 	if(inventory_len)
@@ -488,13 +490,13 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 			return TRUE
 		if("set_cache_title")
 			var/obj/machinery/libraryscanner/scan = get_scanner()
-			if(scan?.cache && params["title"])
-				scan.cache.set_title(params["title"])
+			if(scan?.cache && !scan.cache.set_title(params["title"], from_editor = TRUE))
+				balloon_alert(ui.user, "недопустимое название!")
 			return TRUE
 		if("set_cache_author")
 			var/obj/machinery/libraryscanner/scan = get_scanner()
-			if(scan?.cache && params["author"])
-				scan.cache.set_author(params["author"])
+			if(scan?.cache && !scan.cache.set_author(params["author"], from_editor = TRUE))
+				balloon_alert(ui.user, "недопустимое имя!")
 			return TRUE
 		if("upload")
 			if(!prevent_db_spam())
@@ -504,7 +506,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 			if(!(upload_category in SSlibrary.upload_categories)) //Nice try
 				upload_category = DEFAULT_UPLOAD_CATAGORY
 
-			INVOKE_ASYNC(src, PROC_REF(upload_from_scanner), upload_category)
+			INVOKE_ASYNC(src, PROC_REF(upload_from_scanner), upload_category, ui.user.ckey, key_name(ui.user))
 			return TRUE
 		if("news_post")
 			// We grey out the button UI-side, but let's just be safe to guard against spammy spammers.
@@ -525,9 +527,20 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 			say("Upload complete. Your uploaded title is now available on station newscasters.")
 			COOLDOWN_START(src, newscaster_cooldown, NEWSCASTER_COOLDOWN)
 			return TRUE
-		if("print_book")
+		if("print_book", "print_scan")
+			var/copies = isnull(params["copies"]) ? 1 : params["copies"]
+			if(!isnum(copies) || copies != round(copies) || copies < 1 || copies > MAX_LIBRARY_PRINT_RUN)
+				return FALSE
+			if(action == "print_scan")
+				var/obj/machinery/libraryscanner/scan = get_scanner()
+				if(!scan?.cache?.has_content())
+					say("В памяти сканера нет книги для печати.")
+					return TRUE
+				// The scanner can be cleared or reused while the printer warms up.
+				attempt_print(CALLBACK(src, PROC_REF(print_edition), scan.cache.return_copy(), copies), copies)
+				return TRUE
 			var/id = params["book_id"]
-			attempt_print(CALLBACK(src, PROC_REF(print_book), id))
+			attempt_print(CALLBACK(src, PROC_REF(print_book), id, copies, key_name(ui.user)), copies)
 			return TRUE
 		if("print_bible")
 			attempt_print(CALLBACK(src, PROC_REF(print_bible)))
@@ -592,7 +605,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	can_spawn_lore = FALSE
 	to_chat(user, span_warning("You click off the page in a rush, and the machine hums back to normal, the tab gone..."))
 
-/obj/machinery/computer/libraryconsole/bookmanagement/proc/upload_from_scanner(upload_category)
+/obj/machinery/computer/libraryconsole/bookmanagement/proc/upload_from_scanner(upload_category, uploader_ckey, uploader_name)
 	var/obj/machinery/libraryscanner/scan = get_scanner()
 	if(!scan)
 		say("No nearby scanner detected.")
@@ -600,29 +613,28 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	if(!scan.cache)
 		say("No cached book found. Aborting upload.")
 		return
+	var/datum/book_info/book = scan.cache.return_copy()
 	if (!SSdbcore.Connect())
 		say("Connection to Archive has been severed. Aborting.")
 		return
-	var/datum/book_info/book = scan.cache
 	if(!book.title)
 		say("No title detected. Aborting")
 		return
 	if(!book.author)
 		say("No author detected. Aborting")
 		return
-	if(!book.content)
+	if(!book.has_content())
 		say("No content detected. Aborting")
 		return
-	var/msg = "has uploaded the book titled [book.title], [length(book.content)] signs"
 	var/datum/db_query/query_library_upload = SSdbcore.NewQuery({"
-		INSERT INTO [format_table_name("library")] (author, title, content, category, ckey, datetime, round_id_created)
-		VALUES (:author, :title, :content, :category, :ckey, Now(), :round_id)
-	"}, list("title" = book.title, "author" = book.author, "content" = book.content, "category" = upload_category, "ckey" = usr.ckey, "round_id" = GLOB.round_id))
+		INSERT INTO [format_table_name("library")] (author, title, content, pages, category, ckey, datetime, round_id_created)
+		VALUES (:author, :title, :content, :pages, :category, :ckey, Now(), :round_id)
+	"}, list("title" = book.title, "author" = book.author, "content" = book.content || "", "pages" = book.serialize_pages(), "category" = upload_category, "ckey" = uploader_ckey, "round_id" = GLOB.round_id))
 	if(!query_library_upload.Execute())
 		qdel(query_library_upload)
 		say("Database error encountered uploading to Archive")
 		return
-	usr.log_message(msg, LOG_GAME)
+	log_game("[uploader_name] uploaded the book titled [book.title], [length(book.content)] signs.")
 	qdel(query_library_upload)
 	library_updated()
 	say("Upload Complete. Uploaded title will be available for printing in a moment")
@@ -630,11 +642,11 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 
 /// Call this proc to attempt a print. It will return false if the print failed, true otherwise, longside some ux
 /// Accepts a callback to call when the print "finishes"
-/obj/machinery/computer/libraryconsole/bookmanagement/proc/attempt_print(datum/callback/call_after)
+/obj/machinery/computer/libraryconsole/bookmanagement/proc/attempt_print(datum/callback/call_after, copies = 1)
 	if(!COOLDOWN_FINISHED(src, printer_cooldown))
 		say("Printer currently unavailable, please wait a moment.")
 		return FALSE
-	COOLDOWN_START(src, printer_cooldown, PRINTER_COOLDOWN)
+	COOLDOWN_START(src, printer_cooldown, PRINTER_COOLDOWN * copies)
 	playsound(src, 'sound/machines/printer.ogg', 50)
 	addtimer(call_after, 4.1 SECONDS)
 	return TRUE
@@ -654,14 +666,14 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 		return
 	new /obj/item/poster(loc, new poster_type)
 
-/obj/machinery/computer/libraryconsole/bookmanagement/proc/print_book(id)
+/obj/machinery/computer/libraryconsole/bookmanagement/proc/print_book(id, copies = 1, printed_by)
 	if (!SSdbcore.Connect())
 		say("Connection to Archive has been severed. Aborting.")
 		can_connect = FALSE
 		return
 
 	var/datum/db_query/query_library_print = SSdbcore.NewQuery(
-		"SELECT * FROM [format_table_name("library")] WHERE id=:id AND isnull(deleted)",
+		"SELECT title, author, content, pages FROM [format_table_name("library")] WHERE id=:id AND isnull(deleted)",
 		list("id" = id)
 	)
 	if(!query_library_print.Execute())
@@ -669,23 +681,26 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 		say("PRINTER ERROR! Failed to print document (0x0000000F)")
 		return
 
-	while(query_library_print.NextRow())
-		var/author = query_library_print.item[2]
-		var/title = query_library_print.item[3]
-		var/content = query_library_print.item[4]
-		if(!QDELETED(src))
-			var/obj/item/book/printed_book = new(get_turf(src))
-			printed_book.name = "Book: [title]"
-			printed_book.book_data = new()
-			var/datum/book_info/fill = printed_book.book_data
-			fill.set_title(title, trusted = TRUE)
-			fill.set_author(author, trusted = TRUE)
-			fill.set_content(content, trusted = TRUE)
-			printed_book.gen_random_icon_state()
-			visible_message(span_notice("[src]'s printer hums as it produces a completely bound book. How did it do that?"))
-			log_paper("[key_name(usr)] has printed \"[title]\" (id: [id]) by [author] from a book management console.")
-		break
+	if(!QDELETED(src) && query_library_print.NextRow())
+		var/datum/book_info/edition = new(query_library_print.item[1], query_library_print.item[2], query_library_print.item[3])
+		if(edition.load_pages(query_library_print.item[4]))
+			print_edition(edition, copies)
+			log_paper("[printed_by] printed [copies] copies of \"[edition.title]\" (id: [id]) by [edition.author].")
+		else
+			say("Архив не смог восстановить страницы этой книги.")
 	qdel(query_library_print)
+
+/// Each physical copy can subsequently be annotated without changing its edition or its siblings.
+/obj/machinery/computer/libraryconsole/bookmanagement/proc/print_edition(datum/book_info/edition, copies)
+	var/turf/output = get_turf(src)
+	if(!output || !is_operational)
+		return
+	for(var/index in 1 to copies)
+		var/obj/item/book/printed_book = new(output)
+		edition.copy_into(printed_book.book_data)
+		printed_book.name = "Книга: [edition.title || "Без названия"]"
+		printed_book.apply_binding_icon()
+	visible_message(span_notice("[src] заканчивает печать. Экземпляров в тираже: [copies]."))
 
 /*
  * Library Scanner
@@ -721,7 +736,8 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	if(!istype(tool, /obj/item/book))
 		return NONE
 
-	user.transferItemToLoc(tool, src)
+	if(!user.transferItemToLoc(tool, src))
+		return ITEM_INTERACT_BLOCKING
 	if(held_book)
 		user.put_in_hands(held_book)
 	held_book = tool
@@ -757,6 +773,9 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 		return
 	switch(action)
 		if("scan")
+			if(!held_book || held_book.unique || held_book.carved)
+				say("Эту книгу нельзя отсканировать.")
+				return TRUE
 			if(cache?.compare(held_book.book_data))
 				say("This book is already in my internal cache")
 				return
@@ -850,7 +869,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	bound_book.book_data.set_content_using_paper(draw_from)
 	bound_book.book_data.set_author(scanned_name, trusted = FALSE)
 	bound_book.name = "Print Job #" + "[rand(100, 999)]"
-	bound_book.gen_random_icon_state()
+	bound_book.apply_binding_icon()
 	scanned_name = null
 
 	qdel(draw_from)
@@ -862,6 +881,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 #undef LIBRARY_PRINT
 #undef LIBRARY_TOP_SNEAKY
 #undef LIBRARY_UPLOAD
+#undef MAX_LIBRARY_PRINT_RUN
 #undef MAX_LIBRARY
 #undef MIN_LIBRARY
 #undef NEWSCASTER_COOLDOWN

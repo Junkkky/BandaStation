@@ -36,6 +36,8 @@
 	var/w_class_on = WEIGHT_CLASS_BULKY
 	var/saber_color = "green"
 	var/two_hand_force = 40
+	/// Chance for the wielder to spin after a melee attack with the active blade.
+	var/attack_spin_chance = 50
 	var/hacked = FALSE
 	var/list/possible_colors = list("red", "blue", "green", "purple")
 	// BANDASTATION EDIT START
@@ -149,7 +151,7 @@
 		return
 	if(LAZYACCESS(attack_modifiers, REPLACE_MELEE_HIT_EFFECTS) && attack_modifiers[DAMAGE_DONE] > 0)
 		return
-	if(!LAZYACCESS(attack_modifiers, MELEE_EFFECT_ORIGIN) && prob(50))
+	if(!LAZYACCESS(attack_modifiers, MELEE_EFFECT_ORIGIN) && prob(attack_spin_chance))
 		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 
 /obj/item/dualsaber/proc/jedi_spin(mob/living/user)

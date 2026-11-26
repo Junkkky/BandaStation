@@ -1,4 +1,5 @@
 #define AIRALARM_WARNING_COOLDOWN (10 SECONDS)
+#define AIRALARM_MAX_THRESHOLD 100000
 
 /obj/machinery/airalarm
 	name = "air alarm"
@@ -482,26 +483,26 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 			select_mode(user, text2path(params["mode"]))
 			investigate_log("was turned to [selected_mode.name] mode by [key_name(user)]", INVESTIGATE_ATMOS)
 
-		if ("set_threshold")
-			var/threshold = text2path(params["threshold"]) || params["threshold"]
+		if ("set_threshold", "reset_threshold")
+			var/threshold = params["threshold"]
+			if(!istext(threshold))
+				return
+			threshold = text2path(threshold) || threshold
 			var/datum/tlv/tlv = tlv_collection[threshold]
 			if(isnull(tlv))
 				return
 			var/threshold_type = params["threshold_type"]
-			var/value = params["value"]
-			tlv.set_value(threshold_type, value)
-			investigate_log("threshold value for [threshold]:[threshold_type] was set to [value] by [key_name(user)]", INVESTIGATE_ATMOS)
-
-			check_enviroment()
-
-		if("reset_threshold")
-			var/threshold = text2path(params["threshold"]) || params["threshold"]
-			var/datum/tlv/tlv = tlv_collection[threshold]
-			if(isnull(tlv))
+			if(!(threshold_type in list(TLV_VAR_WARNING_MIN, TLV_VAR_WARNING_MAX, TLV_VAR_HAZARD_MIN, TLV_VAR_HAZARD_MAX, TLV_VAR_ALL)))
 				return
-			var/threshold_type = params["threshold_type"]
-			tlv.reset_value(threshold_type)
-			investigate_log("threshold value for [threshold]:[threshold_type] was reset by [key_name(user)]", INVESTIGATE_ATMOS)
+			if(action == "set_threshold")
+				var/value = params["value"]
+				if(!IS_FINITE(value) || (value != TLV_VALUE_IGNORE && !ISINRANGE(value, 0, AIRALARM_MAX_THRESHOLD)))
+					return
+				tlv.set_value(threshold_type, value)
+				investigate_log("threshold value for [threshold]:[threshold_type] was set to [value] by [html_encode(key_name(user))]", INVESTIGATE_ATMOS)
+			else
+				tlv.reset_value(threshold_type)
+				investigate_log("threshold value for [threshold]:[threshold_type] was reset by [html_encode(key_name(user))]", INVESTIGATE_ATMOS)
 
 			check_enviroment()
 
@@ -778,3 +779,4 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/airalarm, 27)
 // BANDASTATION ADDITION: End
 
 #undef AIRALARM_WARNING_COOLDOWN
+#undef AIRALARM_MAX_THRESHOLD

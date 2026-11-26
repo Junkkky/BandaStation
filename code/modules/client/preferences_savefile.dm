@@ -511,6 +511,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		return
 
 	savefile.remove_entry("character[default_slot]")
+	LAZYREMOVE(tattoo_slot_owners, "[default_slot]")
 	for(var/job_title in job_assigned_profiles?.Copy())
 		if(job_assigned_profiles[job_title] == default_slot)
 			job_assigned_profiles -= job_title

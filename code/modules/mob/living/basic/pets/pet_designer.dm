@@ -145,13 +145,13 @@ GLOBAL_LIST_INIT(pet_options, list(
 					selected_path = pet_type
 					break
 
-			var/trick_name = params["selected_trick_name"]
-			if(trick_name && sanitize_name(trick_name))
-				pet_trick_name = trick_name
+			var/trick_name = sanitize_text(params["selected_trick_name"])
+			if(trick_name)
+				pet_trick_name = sanitize_name(trick_name) || pet_trick_name
 
-			var/pet_name =  params["selected_pet_name"]
-			if(pet_name && sanitize_name(pet_name))
-				custom_name = pet_name
+			var/pet_name = sanitize_text(params["selected_pet_name"])
+			if(pet_name)
+				custom_name = sanitize_name(pet_name) || custom_name
 
 			switch(params["selected_gender"])
 				if("male")

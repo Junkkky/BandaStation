@@ -63,5 +63,11 @@ ADMIN_VERB(investigate_show, R_ADMIN|R_DEBUG, "Investigate", "Browse various det
 		return
 
 	var/datum/browser/browser = new(user, "investigate[selected]", "Investigation of [selected]", 800, 300)
-	browser.set_content(file2text(F))
+	browser.set_content(sanitize_investigation_log(file2text(F)))
 	browser.open()
+
+/// Investigation files mix game formatting with player text, including records written before this round's code.
+/proc/sanitize_investigation_log(contents)
+	var/static/allowed_tags = json_encode(list("br", "b", "strong", "i", "em", "u", "span", "font"))
+	var/static/allowed_attributes = json_encode(list("class", "color"))
+	return rustg_sanitize_html(contents, allowed_attributes, allowed_tags)

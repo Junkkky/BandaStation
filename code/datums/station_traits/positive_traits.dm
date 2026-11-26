@@ -312,6 +312,7 @@
 		/datum/job/spacepod_pilot = /obj/item/organ/cyberimp/arm/toolkit/flash,
 		/datum/job/shaft_miner = /obj/item/organ/monster_core/rush_gland,
 		/datum/job/station_engineer = /obj/item/organ/cyberimp/arm/toolkit/toolset,
+		/datum/job/tattoo_artist = /obj/item/organ/cyberimp/brain/anti_drop,
 		/datum/job/warden = /obj/item/organ/cyberimp/eyes/hud/security,
 		// BANDASTATION ADD - START
 		/datum/job/nanotrasen_representative = /obj/item/organ/cyberimp/arm/toolkit/paperwork,

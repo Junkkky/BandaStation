@@ -1,5 +1,6 @@
-import { afterEach, describe, expect, it } from 'bun:test';
+import { afterEach, describe, expect, it, mock, spyOn } from 'bun:test';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import * as actions from '../events/act';
 import { gameDataAtom, store } from '../events/store';
 
 import { ExaminePanel } from './ExaminePanel';
@@ -22,6 +23,84 @@ function renderExamine(
 }
 
 afterEach(cleanup);
+afterEach(() => mock.restore());
+
+it('browses visible tattoos and removes hidden designs from the open tab', () => {
+  const front = {
+    id: 'front',
+    zone: 'Левая рука',
+    side: 'вид спереди',
+    image: 'data:image/png;base64,AA==',
+  };
+  const back = {
+    ...front,
+    id: 'back',
+    side: 'вид сзади',
+    image: 'data:image/png;base64,AQ==',
+  };
+  const data = {
+    assigned_map: 'test',
+    flavor_text: 'Описание персонажа',
+    tattoos: [front, back],
+  };
+  store.set(gameDataAtom, data);
+  const view = render(<ExaminePanel />);
+  fireEvent.click(screen.getByText('Татуировки'));
+  expect(screen.queryByText('Сохранить для этого персонажа')).toBeNull();
+  expect(screen.queryByText('Убрать из сохранённых')).toBeNull();
+  expect(screen.getByRole('img').getAttribute('src')).toBe(front.image);
+  fireEvent.click(screen.getByRole('button', { name: /вид сзади/ }));
+  expect(screen.getByRole('img').getAttribute('src')).toBe(back.image);
+  store.set(gameDataAtom, { ...data, tattoos: [front] });
+  view.rerender(<ExaminePanel />);
+  expect(screen.getByRole('img').getAttribute('src')).toBe(front.image);
+  store.set(gameDataAtom, { ...data, tattoos: [] });
+  view.rerender(<ExaminePanel />);
+  expect(screen.queryByRole('img')).toBeNull();
+  expect(screen.getByText('Видимых татуировок нет.')).toBeDefined();
+  fireEvent.click(screen.getByText('Описание'));
+  expect(screen.getByText('Описание персонажа')).toBeDefined();
+});
+
+it('lets the owner save and forget the selected tattoo while keeping it visible', () => {
+  const act = spyOn(actions, 'sendAct');
+  const front = {
+    id: 'front',
+    zone: 'Рука',
+    side: 'вид спереди',
+    image: 'data:image/png;base64,AA==',
+    saved: 1,
+  };
+  const back = { ...front, id: 'back', side: 'вид сзади', saved: 0 };
+  store.set(gameDataAtom, { tattoos: [front, back] });
+  const view = render(<ExaminePanel />);
+  fireEvent.click(screen.getByText('Татуировки'));
+  fireEvent.click(screen.getByRole('button', { name: /вид сзади/ }));
+  fireEvent.click(
+    screen.getByRole('button', { name: 'Сохранить для этого персонажа' }),
+  );
+  expect(act).toHaveBeenCalledWith('set_tattoo_saved', {
+    id: 'back',
+    save: true,
+  });
+
+  store.set(gameDataAtom, { tattoos: [front, { ...back, saved: 1 }] });
+  view.rerender(<ExaminePanel />);
+  fireEvent.click(
+    screen.getByRole('button', { name: 'Убрать из сохранённых' }),
+  );
+  expect(act).toHaveBeenCalledWith('set_tattoo_saved', {
+    id: 'back',
+    save: false,
+  });
+
+  store.set(gameDataAtom, { tattoos: [front, back] });
+  view.rerender(<ExaminePanel />);
+  expect(screen.getByRole('img').getAttribute('alt')).toContain('вид сзади');
+  expect(
+    screen.getByRole('button', { name: 'Сохранить для этого персонажа' }),
+  ).toBeDefined();
+});
 
 describe('ExaminePanel portrait', () => {
   it('shows the portrait and restores the sprite preview if it fails to load', () => {

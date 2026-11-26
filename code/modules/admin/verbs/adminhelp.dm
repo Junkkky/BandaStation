@@ -1131,7 +1131,7 @@ GAME_VERB(/client, view_latest_ticket, "View Latest Ticket", "Admin")
 				)
 				var/state_word = state_to_state_word[help_ticket.state]
 
-				msglist[i] = TICKET_OPEN_LINK(possible_ticket_id, "[word] ([state_word] | [help_ticket.initiator])")
+				msglist[i] = TICKET_OPEN_LINK(possible_ticket_id, "[word] ([state_word] | [html_encode(help_ticket.initiator)])")
 				modified = TRUE
 
 	if(modified)

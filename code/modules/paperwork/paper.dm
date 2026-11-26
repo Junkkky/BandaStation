@@ -333,6 +333,9 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 	return new_plane
 
 /obj/item/paper/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(istype(tool, /obj/item/paper) || istype(tool, /obj/item/photo))
+		return clip_to_paper(user, tool)
+
 	// Enable picking paper up by clicking on it with a clipboard, paper bin, or folder
 	if(istype(tool, /obj/item/clipboard) || istype(tool, /obj/item/paper_bin) || istype(tool, /obj/item/folder))
 		tool.item_interaction(user, src)
@@ -370,6 +373,35 @@ GAME_VERB_SRC(/obj/item/paper, rename, usr, "Rename paper", null)
 
 	ui_interact(user)
 	return NONE
+
+/// Clip a held sheet or photo to this sheet without copying either item.
+/obj/item/paper/proc/clip_to_paper(mob/living/user, obj/item/tool)
+	var/hand_index = user.get_held_index_of_item(src)
+	if((!hand_index && !isturf(loc)) || !user.is_holding(tool) || tool == src)
+		return ITEM_INTERACT_BLOCKING
+	if(!can_clip_paper_bundle_page(src, user) || !can_clip_paper_bundle_page(tool, user))
+		return ITEM_INTERACT_BLOCKING
+
+	var/atom/original_loc = loc
+	var/obj/item/paper_bundle/bundle = new(drop_location())
+	if(hand_index ? !user.transferItemToLoc(src, bundle) : !forceMove(bundle))
+		qdel(bundle)
+		return ITEM_INTERACT_BLOCKING
+	if(!user.transferItemToLoc(tool, bundle))
+		if(!hand_index || !user.put_in_hand(src, hand_index))
+			forceMove(hand_index ? user.drop_location() : original_loc)
+		qdel(bundle)
+		return ITEM_INTERACT_BLOCKING
+
+	if(name != initial(name))
+		bundle.name = name
+	else if(tool.name != initial(tool.name))
+		bundle.name = tool.name
+	if(hand_index)
+		user.put_in_hand(bundle, hand_index)
+	bundle.add_fingerprint(user)
+	to_chat(user, span_notice("Вы скрепляете листы."))
+	return ITEM_INTERACT_SUCCESS
 
 /// Secondary right click interaction to quickly stamp things
 /obj/item/paper/item_interaction_secondary(mob/living/user, obj/item/tool, list/modifiers)

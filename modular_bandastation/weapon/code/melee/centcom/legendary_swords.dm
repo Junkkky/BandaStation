@@ -126,6 +126,13 @@
 
 /obj/item/dualsaber/legendary_saber/sister
 	name = "Light Sister"
+	attack_spin_chance = 0
+	bond_time_multiplier = 2
+	legendary_abilities = list(
+		/datum/action/cooldown/legendary_sword/sister_dome,
+		/datum/action/cooldown/legendary_sword/sister_sting,
+		/datum/action/cooldown/legendary_sword/sister_dawn,
+	)
 	desc = "\"Светлая Сестра\" - один из легендарных энергетических мечей Галактики. \
 	Согласно легенде, этот элегантный меч был создан для одного из лидеров Синдиката прошлого, что по иронии судьбы была им же и убита."
 	icon_state = "norm_dualsaber0"
@@ -137,6 +144,17 @@
 	wieldsound = 'modular_bandastation/weapon/sound/melee/norm_saberon.ogg'
 	unwieldsound = 'modular_bandastation/weapon/sound/melee/norm_saberoff.ogg'
 	hit_wield = 'modular_bandastation/weapon/sound/melee/norm_saberhit.ogg'
+
+/// The Normandy gauntlet closes lower around the hilt than a bare hand.
+/obj/item/dualsaber/legendary_saber/sister/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file, bodyshape = NONE)
+	var/mob/living/carbon/human/wielder = loc
+	if(isinhands && HAS_TRAIT(src, TRAIT_WIELDED) && istype(wielder))
+		var/obj/item/clothing/gloves/combat/normandy/gauntlets = wielder.gloves
+		// Unequipping clears IN_INVENTORY before it clears the wearer's glove slot.
+		if(istype(gauntlets) && (gauntlets.item_flags & IN_INVENTORY))
+			standing.icon = 'modular_bandastation/weapon/icons/melee/sister_gauntlet.dmi'
+			standing.icon_state = icon_file == lefthand_file ? "blade_left" : "blade_right"
+	return ..()
 
 /obj/item/dualsaber/legendary_saber/flee_catcher
 	name = "Flee Catcher"

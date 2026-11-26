@@ -5,6 +5,8 @@
 #define RADIO_EXTENSION "department specific"
 #define RADIO_KEY "department specific key"
 #define LANGUAGE_EXTENSION "language specific"
+/// Server-supplied literal dialogue. Revalidate the source after any speech filter prompt.
+#define LITERAL_SPEECH_CHECK "literal speech check"
 /// Ordered language/text fragments of one utterance.
 #define LANGUAGE_MESSAGE_SEGMENTS "language message segments"
 /// One-based fragment currently passing through speech modifiers.

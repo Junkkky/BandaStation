@@ -8325,6 +8325,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/aft)
 "cax" = (
+/obj/machinery/chem_heater/withbuffer,
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/engine,
 /area/station/science/lower)
@@ -10806,6 +10807,7 @@
 /turf/open/floor/iron/white,
 /area/station/maintenance/department/medical/ghetto/central)
 "cEJ" = (
+/obj/machinery/chem_master,
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/engine,
 /area/station/science/lower)
@@ -12950,7 +12952,9 @@
 /turf/open/floor/iron,
 /area/station/maintenance/ghetto/central)
 "dcS" = (
-/obj/machinery/power/turbine/core_rotor,
+/obj/machinery/power/turbine/core_rotor{
+	mapping_id = "main_turbine"
+	},
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
@@ -21182,6 +21186,10 @@
 	dir = 8
 	},
 /area/station/service/chapel)
+"fgH" = (
+/obj/machinery/chem_dispenser,
+/turf/open/floor/engine,
+/area/station/science/lower)
 "fgR" = (
 /obj/effect/turf_decal/trimline/tram/line,
 /obj/structure/cable,
@@ -38149,6 +38157,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/upper)
 "jgF" = (
+/obj/machinery/chem_mass_spec,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -49563,6 +49572,43 @@
 /obj/effect/spawner/random/trash/soap,
 /turf/open/floor/iron,
 /area/station/maintenance/ghetto/fore/starboard)
+"lSu" = (
+/obj/structure/closet/secure_closet{
+	name = "research chemical closet";
+	icon_state = "science";
+	base_icon_state = "science";
+	req_access = list("research")
+	},
+/obj/item/storage/box/beakers,
+/obj/item/reagent_containers/cup/beaker/large,
+/obj/item/reagent_containers/cup/beaker/large,
+/obj/item/storage/box/syringes,
+/obj/item/storage/box/pillbottles,
+/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/dropper,
+/obj/item/ph_booklet,
+/obj/item/clothing/glasses/science,
+/obj/item/reagent_containers/cup/bottle,
+/obj/item/reagent_containers/cup/bottle,
+/obj/item/reagent_containers/cup/bottle{
+	desc = "A small bottle of phenol.";
+	list_reagents = list(/datum/reagent/phenol = 30)
+	},
+/obj/item/reagent_containers/cup/bottle/ammonia,
+/obj/item/reagent_containers/cup/bottle{
+	desc = "A small bottle of oil.";
+	list_reagents = list(/datum/reagent/fuel/oil = 30)
+	},
+/obj/item/reagent_containers/cup/bottle{
+	desc = "A small bottle of acetone.";
+	list_reagents = list(/datum/reagent/acetone = 30)
+	},
+/obj/item/reagent_containers/cup/bottle/sacid,
+/obj/item/reagent_containers/cup/bottle/diethylamine,
+/obj/item/reagent_containers/cup/bottle/acidic_buffer,
+/obj/item/reagent_containers/cup/bottle/basic_buffer,
+/turf/open/floor/engine,
+/area/station/science/lower)
 "lSv" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -51973,6 +52019,13 @@
 	},
 /turf/open/floor/mineral/plastitanium/pod,
 /area/station/engineering/spacepods/hangar)
+"myk" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/west{
+	areastring = "/area/station/science/ordnance/burnchamber"
+	},
+/turf/open/floor/iron,
+/area/station/science/ordnance)
 "mym" = (
 /obj/structure/rack,
 /obj/machinery/light/directional/west,
@@ -53826,7 +53879,9 @@
 /turf/open/floor/iron,
 /area/station/maintenance/port/aft)
 "mTJ" = (
-/obj/machinery/rnd/production/circuit_imprinter/department/science,
+/obj/machinery/rnd/production/circuit_imprinter{
+	payment_department = "SCI"
+	},
 /obj/machinery/button/door/directional/north{
 	id = "rnd";
 	name = "Shutters Control Button";
@@ -56508,6 +56563,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/ghetto/port/aft)
 "nCb" = (
+/obj/machinery/chem_dispenser,
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/engine,
 /area/station/science/lower)
@@ -64175,6 +64231,7 @@
 /turf/open/floor/iron,
 /area/station/command/teleporter)
 "puC" = (
+/obj/structure/cable,
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/iron,
 /area/station/science/ordnance)
@@ -69692,7 +69749,9 @@
 /turf/open/floor/wood,
 /area/station/command/meeting_room)
 "qPc" = (
-/obj/machinery/rnd/production/protolathe/department/science,
+/obj/machinery/rnd/production/protolathe{
+	payment_department = "SCI"
+	},
 /obj/effect/turf_decal/tile/purple/anticorner{
 	dir = 8
 	},
@@ -76303,6 +76362,13 @@
 /obj/item/kirbyplants/random/dead,
 /turf/open/floor/plating,
 /area/station/maintenance/ghetto/starboard)
+"sse" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/effect/landmark/start/scientist,
+/turf/open/floor/engine,
+/area/station/science/lower)
 "ssh" = (
 /obj/effect/turf_decal/tile/red/half{
 	dir = 1
@@ -77108,6 +77174,7 @@
 /turf/open/floor/iron,
 /area/station/cargo/storage/ghetto/depot)
 "sDi" = (
+/obj/machinery/chem_heater/withbuffer,
 /obj/machinery/newscaster/directional/south,
 /turf/open/floor/engine,
 /area/station/science/lower)
@@ -80689,6 +80756,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/ghetto/aft)
 "twP" = (
+/obj/structure/chair/office,
 /obj/effect/landmark/start/scientist,
 /turf/open/floor/engine,
 /area/station/science/lower)
@@ -92530,6 +92598,10 @@
 "wwy" = (
 /turf/closed/wall/r_wall,
 /area/station/engineering/storage/tech)
+"wwC" = (
+/obj/machinery/chem_master,
+/turf/open/floor/engine,
+/area/station/science/lower)
 "wwK" = (
 /obj/effect/turf_decal/siding/dark{
 	dir = 1;
@@ -150605,7 +150677,7 @@ nFU
 qiQ
 tsN
 pqo
-iUJ
+myk
 puC
 jEb
 hvQ
@@ -215382,8 +215454,8 @@ fki
 fki
 fki
 jqC
-qed
-twP
+fgH
+sse
 jNa
 twP
 nCb
@@ -215643,7 +215715,7 @@ cEJ
 qed
 ufy
 qed
-qed
+wwC
 qhM
 kJd
 cXu
@@ -215897,9 +215969,9 @@ rMZ
 fki
 jqC
 jqC
-qed
+lSu
 bOi
-qed
+lSu
 jqC
 jqC
 bTH

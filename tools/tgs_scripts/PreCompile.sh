@@ -80,26 +80,18 @@ git checkout "$RUST_UTILS_VERSION"
 env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --ignore-rust-version --release --target=i686-unknown-linux-gnu
 mv target/i686-unknown-linux-gnu/release/librust_utils.so "$1/librust_utils.so"
 cd ..
-#
 cd "$original_dir"
-# update dreamluau
-if [ ! -d "dreamluau" ]; then
-	echo "Cloning dreamluau..."
-	git clone https://github.com/tgstation/dreamluau
-	cd dreamluau
-	~/.cargo/bin/rustup target add i686-unknown-linux-gnu
-else
-	echo "Fetching dreamlaua..."
-	cd dreamluau
-	git fetch
-	~/.cargo/bin/rustup target add i686-unknown-linux-gnu
-fi
 
-echo "Deploying Dreamlaua..."
-git checkout "$DREAMLUAU_VERSION"
-env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --ignore-rust-version --release --target=i686-unknown-linux-gnu
-cp -f target/i686-unknown-linux-gnu/release/libdreamluau.so "$1/libdreamluau.so"
-cd ..
+# Use the same pinned DreamLuau release binary as the integration tests.
+echo "Deploying DreamLuau $DREAMLUAU_VERSION..."
+dreamluau_tmp=$(mktemp "$1/.libdreamluau.so.XXXXXX")
+if ! { curl -fLsS --retry 3 -o "$dreamluau_tmp" \
+		"https://github.com/$DREAMLUAU_REPO/releases/download/$DREAMLUAU_VERSION/libdreamluau.so" \
+		&& chmod 755 "$dreamluau_tmp" \
+		&& mv -f -- "$dreamluau_tmp" "$1/libdreamluau.so"; }; then
+	rm -f -- "$dreamluau_tmp"
+	exit 1
+fi
 
 # compile tgui
 echo "Compiling tgui..."

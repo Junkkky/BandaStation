@@ -22,18 +22,35 @@
 	var/random_category = BOOK_CATEGORY_RANDOM
 	/// If this book has already been 'generated' yet.
 	var/random_loaded = FALSE
+	/// Prevent opening a temporary blank editor while the first archive query is pending.
+	var/random_loading = FALSE
 
 /obj/item/book/random/Initialize(mapload)
 	. = ..()
-	gen_random_icon_state()
+	apply_binding_icon()
 
 /obj/item/book/random/attack_self()
-	if(!random_loaded)
-		// Adult books are excluded unless explicitly set
-		var/loaded_category = random_category == BOOK_CATEGORY_RANDOM ? pick(BOOK_CATEGORY_FICTION, BOOK_CATEGORY_NONFICTION, BOOK_CATEGORY_RELIGION, BOOK_CATEGORY_REFERENCE) : random_category
-		create_random_books(amount = 1, location = loc, fail_loud = TRUE,  category = loaded_category, existing_book = src)
-		random_loaded = TRUE
+	if(!ensure_random_loaded())
+		return
 	return ..()
+
+/obj/item/book/random/ui_interact(mob/living/user, datum/tgui/ui)
+	if(!ensure_random_loaded())
+		return
+	return ..()
+
+/// Reading and editing must both start with the edition this item represents.
+/obj/item/book/random/proc/ensure_random_loaded()
+	if(random_loaded)
+		return TRUE
+	if(random_loading)
+		return FALSE
+	random_loading = TRUE
+	var/loaded_category = random_category == BOOK_CATEGORY_RANDOM ? pick(BOOK_CATEGORY_FICTION, BOOK_CATEGORY_NONFICTION, BOOK_CATEGORY_RELIGION, BOOK_CATEGORY_REFERENCE) : random_category
+	create_random_books(amount = 1, location = loc, fail_loud = TRUE, category = loaded_category, existing_book = src)
+	random_loaded = TRUE
+	random_loading = FALSE
+	return !QDELETED(src)
 
 /obj/structure/bookcase/random
 	load_random_books = TRUE
@@ -69,7 +86,7 @@
 	if(category == BOOK_CATEGORY_RANDOM)
 		category = null
 	var/datum/db_query/query_get_random_books = SSdbcore.NewQuery({"
-		SELECT title, author, content
+		SELECT title, author, content, pages
 		FROM [format_table_name("library")]
 		WHERE isnull(deleted) AND (:category IS NULL OR category = :category)
 		ORDER BY rand() LIMIT :limit
@@ -84,9 +101,10 @@
 			data.set_title(book_deets[1], trusted = TRUE)
 			data.set_author(book_deets[2], trusted = TRUE)
 			data.set_content(book_deets[3], trusted = TRUE)
+			data.load_pages(book_deets[4])
 			to_randomize.name = "Book: [to_randomize.book_data.title]"
-			if(!existing_book)
-				to_randomize.gen_random_icon_state()
+			if(!existing_book || data.binding_color)
+				to_randomize.apply_binding_icon()
 	qdel(query_get_random_books)
 
 /obj/structure/bookcase/random/fiction
