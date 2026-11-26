@@ -109,3 +109,8 @@
 			return null
 		identity = answer
 	return identity
+
+/// How the station names this hull in its announcements: by the transponder's callsign, or as an unknown vessel while it is silent
+/datum/stationtrauma_overmap/space/proc/public_ship_label()
+	var/list/identity = transponder_identity()
+	return identity ? "корабль «[identity["callsign"]]»" : "неизвестное судно"
