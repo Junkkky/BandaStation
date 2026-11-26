@@ -256,10 +256,10 @@
 	var/obj/item/clothing/suit/toggle/expedition/jacket = allocate(/obj/item/clothing/suit/toggle/expedition)
 	TEST_ASSERT(crew.equip_to_slot_if_possible(jacket, ITEM_SLOT_OCLOTHING), "The field jacket could not be equipped.")
 	SEND_SIGNAL(jacket, COMSIG_CLICK_ALT, crew)
-	TEST_ASSERT_EQUAL(jacket.icon_state, "trackjacket_t", "The jacket did not use the imported open state through native alt-click.")
+	TEST_ASSERT_EQUAL(jacket.icon_state, "corps_jacket_medic_t", "The jacket did not use the imported open state through native alt-click.")
 	TEST_ASSERT(jacket.icon_state in icon_states(jacket.worn_icon), "The opened jacket has no worn sprite.")
 	SEND_SIGNAL(jacket, COMSIG_CLICK_ALT, crew)
-	TEST_ASSERT_EQUAL(jacket.icon_state, "trackjacket", "The jacket could not be closed again.")
+	TEST_ASSERT_EQUAL(jacket.icon_state, "corps_jacket_medic", "The jacket could not be closed again.")
 
 /// A stocked machete must fit both native sheath forms and render in either hand.
 /datum/unit_test/explorers_machete
