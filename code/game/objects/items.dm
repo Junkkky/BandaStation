@@ -1535,13 +1535,13 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED_AS_OUTFIT, outfit_wearer, visuals_only, item_slot)
 
-/obj/item/proc/do_pickup_animation(atom/target, turf/source)
+/obj/item/proc/do_pickup_animation(atom/target, turf/source, icon_state_override)
 	if(!source)
 		if(!istype(loc, /turf))
 			return
 		source = loc
 	SEND_SIGNAL(src, COMSIG_ITEM_BEFORE_PICKUP_ANIMATION)
-	var/image/pickup_animation = image(icon = src)
+	var/image/pickup_animation = isnull(icon_state_override) ? image(icon = src) : image(icon = icon, icon_state = icon_state_override)
 	SET_PLANE(pickup_animation, GAME_PLANE, source)
 	pickup_animation.transform.Scale(0.75)
 	pickup_animation.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA

@@ -571,6 +571,50 @@
 	TEST_ASSERT_NULL(home.station_docking_requests[ship.shuttle_id], "Successful docking must consume the clearance")
 	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "Physical occupancy must keep the berth reserved")
 
+/// A hostile approach to a fixed chart contact must claim exactly one real berth and use its native gangway.
+/datum/unit_test/overmap_standard_dock/fixed_site_boarding/Run()
+	var/datum/stationtrauma_overmap_sector/space/home = allocate(/datum/stationtrauma_overmap_sector/space)
+	navigation.sites -= site.id
+	TEST_ASSERT(home.register(ship.shuttle_id, navigation), "Register the hull with the installation's sector")
+	home.sites[site.id] = site
+	home.register_docking_berth(site, "traffic:unit_test", "Test installation")
+	var/target_id = site.docking_target.id
+	TEST_ASSERT(navigation.select_site(target_id), "Select the public installation on the helm chart")
+	var/obj/machinery/computer/stationtrauma_space_navigation/helm = allocate(/obj/machinery/computer/stationtrauma_space_navigation, get_turf(ship))
+	helm.vessel = ship
+	var/turf/origin = get_turf(ship)
+	var/obj/machinery/power/shuttle_engine/engine = allocate(/obj/machinery/power/shuttle_engine, locate(ship.x + 3, ship.y + 8, ship.z))
+	engine.anchored = TRUE
+	engine.engine_state = initial(engine.engine_state)
+	engine.connect_to_shuttle(TRUE, ship)
+	TEST_ASSERT(navigation.set_engines_running(TRUE), "Start the boarding ship's engine before it takes the berth")
+	TEST_ASSERT(!helm.navigation_command("board_site", site.id), "A private berth ID must never authorize boarding")
+	navigation.pos_x = site.pos_x + 2000
+	TEST_ASSERT(!helm.navigation_command("board_site", target_id), "Boarding cannot bring a distant ship to the installation")
+	navigation.pos_x = site.pos_x
+	TEST_ASSERT(helm.navigation_command("board_site", target_id), "Start a boarding countdown on the selected installation")
+	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "Traffic must see the claimed berth during the countdown")
+	TEST_ASSERT(!helm.navigation_command("request_station_dock", target_id), "An active capture cannot acquire a second clearance")
+	TEST_ASSERT(!helm.navigation_command("dock", target_id), "Ordinary docking cannot skip the hostile countdown")
+	TEST_ASSERT(helm.navigation_command("cancel_boarding"), "The pilot can cancel before the native approach")
+	TEST_ASSERT_NULL(site.docking_owner, "Cancellation must release the traffic reservation")
+	TEST_ASSERT_EQUAL(get_turf(ship), origin, "Cancellation must leave the hull at its original berth")
+
+	TEST_ASSERT(helm.navigation_command("board_site", target_id), "Retry after releasing the reservation")
+	var/deadline = navigation.boarding_attempt.end_time + 15 SECONDS
+	UNTIL(!navigation.boarding_attempt || world.time >= deadline)
+	TEST_ASSERT_EQUAL(navigation.docked, site, "The capture must moor at the physical berth without dispatch clearance: [navigation.status]")
+	TEST_ASSERT_EQUAL(ship.get_docked(), bay.active_berth, "The native hull must arrive at the technical berth")
+	TEST_ASSERT_EQUAL(length(bay.active_berth?.gangways), 1, "A real gangway must connect the two maps")
+	TEST_ASSERT_EQUAL(site.docking_owner, navigation, "The occupied berth remains reserved until the hull leaves")
+	// Docking starts the gangway's airlock cycle asynchronously; retraction needs that same interlock.
+	var/datum/stationtrauma_dock_gangway/gangway = bay.active_berth.gangways[1]
+	UNTIL(!gangway.busy || world.time >= deadline)
+	TEST_ASSERT(!gangway.busy, "The arrival airlock cycle must finish before the bridge can retract")
+	TEST_ASSERT(navigation.depart(), "Release the captured berth via the pilot's timed departure: [navigation.status]")
+	TEST_ASSERT_EQUAL(get_turf(ship), origin, "Undocking must restore the original physical hull position")
+	TEST_ASSERT_NULL(site.docking_owner, "Regular traffic can use the berth after departure")
+
 /// A public dock answers after a delay and preserves one reservation at a time.
 /datum/unit_test/overmap_standard_dock/automatic_clearance
 	/// Second pilot's mobile port, kept apart from the main fixture's hull.

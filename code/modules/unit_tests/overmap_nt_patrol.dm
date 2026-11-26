@@ -1,4 +1,4 @@
-/// Verify the actual patrol hull and the all-or-nothing transition from lobby seats to mapped spawns.
+/// Verify the actual patrol hull and the transition from lobby preferences to mapped spawns.
 /datum/unit_test/overmap_nt_patrol
 	/// Original registry, isolated from test names.
 	var/list/original_ship_names
@@ -47,6 +47,23 @@
 	SSsound_loops.can_fire = FALSE
 	var/datum/roundstart_away_mission/nt_patrol/mission = locate() in roundstart_away_missions()
 	TEST_ASSERT_NOTNULL(mission, "The patrol destroyer must be available from the mission pool")
+	SSmapping.current_map.space_overmap = original_overmap || list("station_id" = "unit_test")
+	SSjob.away_mission_limits = list(/datum/roundstart_away_mission/nt_patrol = 1)
+	SSjob.update_away_job_capacity()
+	SSjob.unassigned = list()
+	for(var/job_type in mission.crew_jobs)
+		var/datum/job/away_mission/job = SSjob.get_job_type(job_type)
+		original_jobs[job] = list(job.current_positions, job.roundstart_spawns)
+		job.current_positions = 0
+		job.roundstart_spawns = null
+	var/datum/job/away_mission/medic = SSjob.get_job_type(/datum/job/away_mission/nt_patrol_medic)
+	var/mob/dead/new_player/solo = make_volunteer()
+	var/datum/preference_middleware/away_missions/away_preferences = locate() in solo.mock_client.prefs.middleware
+	TEST_ASSERT(away_preferences.set_away_job_preference(list("job" = medic.title, "level" = JP_HIGH), solo), "The character menu must accept a single High patrol role")
+	SSjob.unassigned += solo
+	solo.ready = PLAYER_NOT_READY
+	TEST_ASSERT_NULL(mission.find_crew(list()), "A patrol preference alone must not launch a ship until its volunteer is ready")
+	solo.ready = PLAYER_READY_TO_PLAY
 	var/obj/docking_port/mobile/stationtrauma_space/ship
 	var/obj/docking_port/mobile/stationtrauma_space/second_ship
 	if(original_overmap && SSstationtrauma_space_voyage.initialized && length(SSstationtrauma_space_voyage.sectors))
@@ -58,12 +75,13 @@
 		var/staging_level = SSstationtrauma_space_voyage.dispatch_staging_level
 		TEST_ASSERT(staging_level && !length(loaded_templates), "A cancelled claim must return its cleaned deck and retain no template")
 		var/datum/callback/arrival_check = CALLBACK(mission, TYPE_PROC_REF(/datum/roundstart_away_mission, find_latejoin_spawn))
-		ship = SSstationtrauma_space_voyage.load_ship_template(mission.map_path, arrival_check, loaded_templates)
+		SSjob.assign_roundstart_away_missions(TRUE, loaded_templates)
+		ship = solo.mind.away_mission_ship?.resolve()
 		if(length(loaded_templates))
 			template = loaded_templates[1]
 			allocated += template
-		TEST_ASSERT_NOTNULL(ship, "The accepted arrival check must load the actual hull from the mission template")
-		TEST_ASSERT_EQUAL(length(loaded_templates), 1, "First arrival needs exactly one newly loaded hull")
+		TEST_ASSERT_NOTNULL(ship, "Roundstart must load and reserve the real patrol hull for a lone ready volunteer")
+		TEST_ASSERT_EQUAL(length(loaded_templates), 1, "A solo roundstart needs exactly one newly loaded hull")
 		TEST_ASSERT_EQUAL(ship.z, staging_level, "The next claim must reuse the rejected load's deck")
 		TEST_ASSERT_EQUAL(SSstationtrauma_space_voyage.load_ship_template(mission.map_path, arrival_check, loaded_templates), ship, "A second arrival must reuse the same loaded hull")
 		TEST_ASSERT_EQUAL(length(loaded_templates), 1, "Rejoining must not allocate another ship template")
@@ -105,6 +123,13 @@
 		sector.id = "unit_test_nt_patrol"
 		sector.ready = TRUE
 		TEST_ASSERT(sector.attach(ship), "The native overmap must accept the patrol destroyer")
+		var/list/solo_candidates = mission.find_crew(list())
+		TEST_ASSERT(length(solo_candidates) && mission.seat_crew(solo_candidates, TRUE, null, ship), "A single ready medic must be discovered and seated aboard the patrol hull")
+	TEST_ASSERT_EQUAL(solo.mind.assigned_role, medic, "The solo volunteer must receive the selected High role before station fallback")
+	TEST_ASSERT(!(solo in SSjob.unassigned), "The station must no longer be able to assign this volunteer as an assistant")
+	var/list/crew_spawns = mission.find_crew_spawns(ship)
+	TEST_ASSERT(medic.get_roundstart_spawn_point(solo) in crew_spawns[medic.type], "The solo medic must spawn on a medic landmark aboard the assigned hull")
+	SSjob.free_job_position(medic.title, solo.mind)
 	exterior = ship.overmap.exterior
 	STOP_PROCESSING(SSfastprocess, ship.overmap)
 	var/turf/arrival = mission.find_latejoin_spawn(ship)
@@ -138,6 +163,19 @@
 	TEST_ASSERT(istype(tray) && tray.mounted_gun() == heavy && tray.reserve_capacity < loader.reserve_capacity, "The heavy mount has its own small interior feed")
 	var/obj/machinery/computer/stationtrauma_weapon_console/controls = locate() in get_area(loader)
 	TEST_ASSERT_EQUAL(controls?.current_vessel(), ship, "The bridge controls must link to their own hull")
+	if(original_overmap && ship.overmap?.sector)
+		var/mob/living/carbon/human/consistent/gunner = allocate(/mob/living/carbon/human/consistent, get_turf(controls))
+		for(var/obj/machinery/stationtrauma_autocannon/mount as anything in ship.ship_autocannons)
+			mount.shells = 1
+			mount.capacitor_charge += mount.charge_demand(ship)
+			mount.projectile_type = /obj/projectile/bullet/stationtrauma_kinetic/site_test
+			var/heading = mount.firing_heading(ship.overmap)
+			TEST_ASSERT(mount.fire_round(controls, gunner, ship.overmap, ship.overmap.pos_x + 150 * sin(heading), ship.overmap.pos_y + 150 * cos(heading)), "The mounted [mount.name] must fire a native round.")
+			TEST_ASSERT(locate(/obj/effect/projectile/muzzle/bullet) in mount.firing_muzzle(), "A real shot must create its flash at the muzzle of [mount.name].")
+			TEST_ASSERT(abs(closer_angle_difference(mount.last_shot_heading, heading)) < 0.1, "The plot flash must match the bearing of [mount.name].")
+			mount.projectile_type = initial(mount.projectile_type)
+		var/list/plot = controls.ui_data(gunner)
+		TEST_ASSERT_EQUAL(length(plot["muzzle_flashes"]), 2, "Fire control must publish one flash for each gun that fired.")
 	TEST_ASSERT(ship.combat_power_managed && ship.combat_power_ref?.resolve(), "The patrol hull must have a linked combat distributor")
 	TEST_ASSERT_NOTNULL(ship.combat_shield_ref?.resolve(), "The patrol hull must have a linked shield generator")
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = allocate(/obj/docking_port/stationary/stationtrauma_space_station/standard_m)
@@ -203,35 +241,24 @@
 	check_reactor(ship, storage, supply, waste)
 	check_armory(ship)
 
-	SSmapping.current_map.space_overmap = list("station_id" = "unit_test")
-	SSjob.unassigned = list()
 	var/list/candidates = list()
-	for(var/job_type in mission.minimum_crew)
+	for(var/job_type in mission.crew_jobs)
 		var/datum/job/away_mission/job = SSjob.get_job_type(job_type)
-		original_jobs[job] = list(job.current_positions, job.roundstart_spawns)
-		job.current_positions = 0
 		candidates[job] = list()
 		var/volunteers = job.spawn_positions
 		if(istype(job, /datum/job/away_mission/nt_patrol_officer))
 			volunteers++ // The extra patrol volunteer must remain in the station queue.
 		for(var/index in 1 to volunteers)
-			var/mob/dead/new_player/player = allocate(/mob/dead/new_player)
-			player.mind = allocate(/datum/mind)
-			player.mind.set_assigned_role(SSjob.get_job_type(/datum/job/unassigned))
-			var/datum/client_interface/mock = allocate(/datum/client_interface)
-			var/datum/preferences/preferences = allocate(/datum/preferences, mock)
-			player.mock_client = mock
-			mock.prefs = preferences
-			preferences.current_window = PREFERENCE_TAB_CHARACTER_PREFERENCES
-			TEST_ASSERT(preferences.update_preference(GLOB.preference_entries_by_key["away_mission_role"], job.title), "The actual preference handler must accept the crew role")
-			player.ready = PLAYER_READY_TO_PLAY
+			var/mob/dead/new_player/player = make_volunteer()
+			TEST_ASSERT(player.mock_client.prefs.update_preference(GLOB.preference_entries_by_key["away_mission_role"], job.title), "The actual preference handler must accept the crew role")
 			candidates[job] += player
 			SSjob.unassigned += player
 
-	var/datum/job/away_mission/medic = SSjob.get_job_type(/datum/job/away_mission/nt_patrol_medic)
 	var/mob/dead/new_player/medic_player = candidates[medic][1]
 	medic_player.ready = PLAYER_NOT_READY
-	TEST_ASSERT(!mission.seat_crew(candidates, TRUE, null, ship), "A crew that loses its only medic during loading must fall back")
+	var/list/withdrawn_candidates = list()
+	withdrawn_candidates[medic] = list(medic_player)
+	TEST_ASSERT(!mission.seat_crew(withdrawn_candidates, TRUE, null, ship), "A hull that loses its last volunteer during loading must be rejected")
 	TEST_ASSERT_EQUAL(length(SSjob.unassigned), 11, "The rejected hull must release every reserved station candidate")
 	for(var/mob/dead/new_player/player as anything in SSjob.unassigned)
 		TEST_ASSERT(is_unassigned_job(player.mind.assigned_role), "A failed launch must roll back each job assignment")
@@ -246,7 +273,7 @@
 	TEST_ASSERT(commander_preferences.update_preference(away_preference, list(commander.title = JP_MEDIUM, medic.title = JP_HIGH)), "Players must be able to rank several jobs")
 	candidates[commander] += medic_player
 	candidates[medic] += commander_player
-	var/list/preferred_crew = mission.match_required_crew(mission.rank_crew_candidates(candidates))
+	var/list/preferred_crew = mission.match_full_crew(mission.rank_crew_candidates(candidates))
 	TEST_ASSERT_EQUAL(preferred_crew?[commander_player], medic, "A higher priority must be considered before a lower one for an earlier-listed job")
 
 	TEST_ASSERT(commander_preferences.update_preference(away_preference, list(commander.title = JP_HIGH, medic.title = JP_MEDIUM)), "The volunteer can reprioritize another job")
@@ -303,6 +330,20 @@
 		TEST_ASSERT(!second_ship.has_away_vacancy(commander), "The second commander reservation must belong to the second hull")
 		SSjob.free_job_position(commander.title, medic_player.mind)
 		TEST_ASSERT(second_ship.has_away_vacancy(commander), "Freeing the commander must release the position on the correct hull")
+
+/// Create a ready lobby player with the normal character preferences and a local ban cache.
+/datum/unit_test/overmap_nt_patrol/proc/make_volunteer()
+	var/mob/dead/new_player/player = allocate(/mob/dead/new_player)
+	player.mind = allocate(/datum/mind)
+	player.mind.set_assigned_role(SSjob.get_job_type(/datum/job/unassigned))
+	var/datum/client_interface/mock = allocate(/datum/client_interface)
+	mock.prefs = allocate(/datum/preferences, mock)
+	mock.prefs.current_window = PREFERENCE_TAB_CHARACTER_PREFERENCES
+	mock.ban_cache = list()
+	player.mock_client = mock
+	player.key = mock.key
+	player.ready = PLAYER_READY_TO_PLAY
+	return player
 
 /// Verify the mapped power source and propellant route using only the fuel on board.
 /datum/unit_test/overmap_nt_patrol/proc/check_reactor(obj/docking_port/mobile/stationtrauma_space/ship, obj/machinery/power/smes/ship/storage, datum/pipeline/supply, datum/pipeline/waste)
@@ -371,28 +412,34 @@
 /datum/unit_test/overmap_nt_patrol/proc/check_armory(obj/docking_port/mobile/stationtrauma_space/ship)
 	var/obj/machinery/door/airlock/highsecurity/armory_hatch
 	var/obj/structure/closet/secure_closet/gear_locker
-	var/disablers = 0
-	var/energy_guns = 0
+	var/obj/structure/closet/crate/secure/weapon/ammo_crate
+	var/obj/item/gun/energy/disabler/smg/disabler
+	var/obj/item/gun/ballistic/automatic/laser/laser_rifle
 	var/rechargers = 0
 	for(var/turf/tile as anything in ship.return_turfs())
 		if(!istype(get_area(tile), /area/shuttle/stationtrauma_space/nt_patrol/armory))
 			continue
 		armory_hatch ||= locate(/obj/machinery/door/airlock/highsecurity) in tile
 		gear_locker ||= locate(/obj/structure/closet/secure_closet) in tile
-		for(var/obj/item/gun/energy/weapon in tile)
-			if(istype(weapon, /obj/item/gun/energy/disabler))
-				disablers++
-			else if(istype(weapon, /obj/item/gun/energy/e_gun))
-				energy_guns++
+		ammo_crate ||= locate(/obj/structure/closet/crate/secure/weapon) in tile
+		if(locate(/obj/structure/rack/gunrack) in tile)
+			disabler ||= locate(/obj/item/gun/energy/disabler/smg) in tile
+			laser_rifle ||= locate(/obj/item/gun/ballistic/automatic/laser) in tile
 		if(locate(/obj/machinery/recharger) in tile)
 			rechargers++
 	var/datum/id_trim/nt_patrol/armory/trim = allocate(/datum/id_trim/nt_patrol/armory)
 	TEST_ASSERT(armory_hatch?.check_access_list(trim.access), "The patrol officer's ID must open the armory")
 	TEST_ASSERT(gear_locker?.locked && gear_locker.check_access_list(trim.access) && !gear_locker.check_access_list(list()), "The patrol armory ID must unlock the equipment locker")
 	TEST_ASSERT((locate(/obj/item/shield/riot) in gear_locker) && (locate(/obj/item/clothing/suit/armor/riot) in gear_locker), "The patrol shield and armor must load inside the locker")
-	TEST_ASSERT_EQUAL(disablers, 3, "The three armory racks must each stock one disabler")
-	TEST_ASSERT_EQUAL(energy_guns, 3, "The armory must stock three energy guns")
+	TEST_ASSERT(disabler && laser_rifle && disabler.loc != laser_rifle.loc, "The Amber and Red weapons must load onto separate racks")
 	TEST_ASSERT_EQUAL(rechargers, 1, "The armory must provide a recharger")
+	TEST_ASSERT(ammo_crate?.locked && ammo_crate.check_access_list(list(ACCESS_CENT_SPECOPS)) && !ammo_crate.check_access_list(list()), "Patrol crew must be able to unlock the ammunition reserve")
+	for(var/obj/machinery/stationtrauma_autocannon/gun as anything in ship.ship_autocannons)
+		var/rounds = 0
+		for(var/obj/item/stack/stationtrauma_autocannon_shell/ammo in ammo_crate)
+			if(ammo.merge_type == gun.ammo_type)
+				rounds += ammo.get_amount()
+		TEST_ASSERT_EQUAL(rounds, 2 * gun.feed_capacity, "The armory crate must hold two full reloads for [gun]")
 
 /// Simulate the claim becoming invalid during the native loader's yielding work.
 /datum/unit_test/overmap_nt_patrol/proc/reject_patrol_arrival()
@@ -413,6 +460,9 @@
 		QDEL_NULL(exterior)
 
 /datum/unit_test/overmap_nt_patrol/Destroy()
+	for(var/mob/dead/new_player/player in allocated)
+		player.key = null
+		player.mock_client = null
 	template = null
 	if(original_ports)
 		SSshuttle.assoc_mobile = original_ports

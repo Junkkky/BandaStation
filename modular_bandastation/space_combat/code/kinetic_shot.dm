@@ -125,9 +125,23 @@
 			fraction = contact
 
 	var/datum/stationtrauma_overmap/space/firing_ship = source_ref?.resolve()
+	var/datum/stationtrauma_overmap_site/space/docking_target/fixed_target
+	var/datum/stationtrauma_overmap_site/space/fixed_berth
 	var/datum/stationtrauma_overmap/space/target
 	var/offset_x
 	var/offset_y
+	for(var/datum/stationtrauma_overmap_site/space/docking_target/site as anything in sector.fixed_combat_sites)
+		var/contact = stationtrauma_circle_hit(pos_x, pos_y, dx, dy, site.pos_x, site.pos_y, site.radius)
+		if(isnull(contact) || (!isnull(fraction) && contact >= fraction))
+			continue
+		var/datum/stationtrauma_overmap_site/space/berth = site.combat_berth(sector)
+		if(!berth)
+			continue
+		fixed_target = site
+		fixed_berth = berth
+		fraction = contact
+		offset_x = pos_x + dx * fraction - site.pos_x
+		offset_y = pos_y + dy * fraction - site.pos_y
 	for(var/id in sector.ships)
 		var/datum/stationtrauma_overmap/space/candidate = sector.ships[id]
 		if(QDELETED(candidate) || candidate == firing_ship || !candidate.kinetic_exposed())
@@ -154,10 +168,12 @@
 		var/strength = 1 - absorbed / impact
 		if(strength > 0)
 			project_into_hull(target, offset_x, offset_y, strength)
+	else if(fixed_target)
+		project_into_site(fixed_target, fixed_berth, offset_x, offset_y)
 	if(!isnull(fraction) || distance >= remaining)
 		pos_x += dx * (isnull(fraction) ? 1 : fraction)
 		pos_y += dy * (isnull(fraction) ? 1 : fraction)
-		if(!target && !isnull(fraction))
+		if(!target && !fixed_target && !isnull(fraction))
 			sector.record_kinetic_impact(null, pos_x, pos_y)
 		finished_at = world.time
 		return
@@ -185,9 +201,13 @@
 		return
 	var/obj/projectile/bullet/stationtrauma_kinetic/round = new projectile_type(entry)
 	round.target_hull_ref = WEAKREF(hull)
+	fire_incoming(round, flight_angle, strength, ceil(target.radius * 2 + 8))
+
+/// Both native maps receive the same projectile, damage profile and firing attribution.
+/datum/stationtrauma_kinetic_shot/proc/fire_incoming(obj/projectile/bullet/stationtrauma_kinetic/round, flight_angle, strength, distance)
 	round.impact_strength *= strength
 	round.damage *= strength
-	round.range = round.maximum_range = ceil(target.radius * 2 + 8)
+	round.range = round.maximum_range = distance
 	round.firer = gunner_ref?.resolve()
 	round.fired_from = weapon_ref?.resolve()
 	round.fire(WRAP(flight_angle, 0, 360))
@@ -243,6 +263,9 @@
 	var/datum/stationtrauma_kinetic_shot/outgoing_shot
 	/// Limits incoming damage to the hull selected by the sector collision.
 	var/datum/weakref/target_hull_ref
+	/// Fixed installation and sector notified on the first physical hit.
+	var/datum/weakref/target_site_ref
+	var/datum/weakref/target_sector_ref
 	/// One pulse for the first physical contact of this incoming round.
 	var/recorded_impact = FALSE
 	/// Amount of field charge needed to intercept a complete shell.
@@ -263,7 +286,7 @@
 
 /obj/projectile/bullet/stationtrauma_kinetic/Destroy()
 	QDEL_NULL(outgoing_shot)
-	target_hull_ref = null
+	target_hull_ref = target_site_ref = target_sector_ref = null
 	return ..()
 
 /obj/projectile/bullet/stationtrauma_kinetic/Move(atom/newloc, direction, glide_size_override = 0, update_dir = TRUE)
@@ -284,6 +307,12 @@
 	return ..()
 
 /obj/projectile/bullet/stationtrauma_kinetic/on_hit(atom/target, blocked = 0, pierce_hit)
+	if(target_site_ref && !recorded_impact)
+		var/datum/stationtrauma_overmap_site/space/docking_target/site = target_site_ref.resolve()
+		var/datum/stationtrauma_overmap_sector/space/here = target_sector_ref?.resolve()
+		if(site && here?.sites[site.id] == site)
+			recorded_impact = TRUE
+			here.record_kinetic_impact(null, site.pos_x, site.pos_y)
 	if(target_hull_ref && !recorded_impact)
 		var/obj/docking_port/mobile/stationtrauma_space/hull = target_hull_ref.resolve()
 		var/datum/stationtrauma_overmap/space/ship = hull?.overmap

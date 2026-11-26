@@ -736,12 +736,13 @@ SUBSYSTEM_DEF(job)
 		SSblackbox.record_feedback("nested tally", "job_preferences", young, list("[job.title]", "young"))
 		SSblackbox.record_feedback("nested tally", "job_preferences", newbie, list("[job.title]", "newbie"))
 
-/datum/controller/subsystem/job/proc/popcap_reached()
+/// Would the roundstart population reach its limit after this many additional assignments?
+/datum/controller/subsystem/job/proc/popcap_reached(additional_assignments = 0)
 	var/hpc = CONFIG_GET(number/hard_popcap)
 	var/epc = CONFIG_GET(number/extreme_popcap)
 	if(hpc || epc)
 		var/relevent_cap = max(hpc, epc)
-		if((initial_players_to_assign - unassigned.len) >= relevent_cap)
+		if((initial_players_to_assign - unassigned.len + additional_assignments) >= relevent_cap)
 			return 1
 	return 0
 

@@ -1,6 +1,6 @@
 /obj/machinery/computer/stationtrauma_drop_pod_console
 	name = "консоль запуска дроп-подов"
-	desc = "Управляет сборкой капсул в отсеке ВКД и выбирает корабль и секцию высадки."
+	desc = "Управляет сборкой капсул в отсеке ВКД и высадкой на корабли, станции и торговые узлы."
 	icon = 'modular_bandastation/space_combat/icons/patrol_consoles.dmi'
 	icon_state = MAP_SWITCH("computer", "descent_map")
 	icon_screen = "descent"
@@ -46,6 +46,12 @@
 	var/list/data = map.navigation_chart_data()
 	data["launch_ready"] = map.kinetic_flight_ready()
 	data["launch_range"] = ST_DROP_POD_RANGE
+	var/list/drop_sites = list()
+	var/datum/stationtrauma_overmap_sector/space/sector = map.sector
+	for(var/datum/stationtrauma_overmap_site/space/docking_target/site as anything in sector?.fixed_combat_sites)
+		if(map.knows_site(site) && site.combat_berth(sector))
+			drop_sites += site.id
+	data["drop_sites"] = drop_sites
 	data["scan_ready"] = map.kinetic_flight_ready() && world.time >= map.next_scan
 	data["iron_cost"] = ST_DROP_POD_IRON_COST
 	var/list/launchers = list()
@@ -104,7 +110,7 @@
 				return FALSE
 			var/section = params["section"]
 			var/contact = params["contact"]
-			if(!map.kinetic_flight_ready() || !(section in list("bow", "midship", "stern")) || !isnum(contact))
+			if(!map.kinetic_flight_ready())
 				return FALSE
 			var/obj/structure/closet/stationtrauma_drop_pod/pod = launcher.mounted_pod()
 			if(QDELETED(pod) || pod.opened || !length(pod.contents))
@@ -119,26 +125,42 @@
 /obj/machinery/computer/stationtrauma_drop_pod_console/proc/launch_pod(datum/stationtrauma_overmap/space/source, obj/structure/closet/stationtrauma_drop_pod/pod, contact, section, mob/user)
 	var/datum/stationtrauma_overmap_sector/space/here = source.sector
 	var/datum/stationtrauma_overmap/space/target
-	var/list/identity
-	for(var/id in source.ship_observations)
-		var/list/record = source.ship_observations[id]
-		if(record["id"] == contact && source.ship_sensor_observation(id))
-			target = here.ships[id]
-			identity = record["identity"]
-			break
-	if(QDELETED(target) || target == source || !target.kinetic_exposed() \
-		|| (target.pos_x - source.pos_x) ** 2 + (target.pos_y - source.pos_y) ** 2 > ST_DROP_POD_RANGE ** 2)
+	var/datum/stationtrauma_overmap_site/space/docking_target/site
+	var/contact_label
+	var/target_x
+	var/target_y
+	if(istext(contact))
+		site = here.sites[contact]
+		if(!istype(site) || section != "site" || !source.knows_site(site) || !site.combat_berth(here))
+			return FALSE
+		contact_label = site.name
+		target_x = site.pos_x
+		target_y = site.pos_y
+	else
+		if(!ISINTEGER(contact) || !(section in list("bow", "midship", "stern")))
+			return FALSE
+		for(var/id in source.ship_observations)
+			var/list/record = source.ship_observations[id]
+			if(record["id"] == contact && source.ship_sensor_observation(id))
+				target = here.ships[id]
+				contact_label = record["identity"]?["callsign"] || "Контакт [contact]"
+				break
+		if(QDELETED(target) || target == source || !target.kinetic_exposed())
+			return FALSE
+		target_x = target.pos_x
+		target_y = target.pos_y
+	if((target_x - source.pos_x) ** 2 + (target_y - source.pos_y) ** 2 > ST_DROP_POD_RANGE ** 2)
 		return FALSE
 	var/area/holding = GLOB.areas_by_type[/area/centcom/central_command_areas/supplypod/supplypod_temp_holding]
 	var/turf/open/transit = locate(/turf/open) in holding
 	if(!transit)
 		return FALSE
-	var/contact_label = identity?["callsign"] || "Контакт [contact]"
 	playsound(get_turf(pod), 'sound/effects/bang.ogg', 55, TRUE)
 	pod.launched = TRUE
 	pod.resistance_flags |= INDESTRUCTIBLE
-	pod.flight = new(pod, source, target, contact_label, section)
+	pod.flight = new(pod, source, target, contact_label, section, site)
 	pod.forceMove(transit)
+	pod.refresh_passenger_views()
 	user.log_message("launched a drop pod at [contact_label] ([section])", LOG_GAME)
 	for(var/mob/living/passenger in pod)
 		to_chat(passenger, span_notice("Дроп-под в полёте. Люк заблокирован до посадки."))

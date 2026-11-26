@@ -62,6 +62,8 @@
 #define ORDER_DANGEROUS (1 << 8)
 /// This is set when something is created by an admin to make sure its contents is also marked as such
 #define ORDER_ADMIN_SPAWNED (1 << 9)
+/// Sold locally by trade hubs and excluded from the station cargo registry.
+#define ORDER_TRADE_HUB_ONLY (1 << 10)
 
 ///Discount categories for coupons. This one is for anything that isn't discountable.
 #define SUPPLY_PACK_NOT_DISCOUNTABLE null

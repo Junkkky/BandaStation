@@ -339,6 +339,7 @@
 #include "trade_hub.dm"
 #include "../../../modular_bandastation/explorers/code/tests.dm"
 #include "../../../modular_bandastation/space_combat/code/kinetic_tests.dm"
+#include "../../../modular_bandastation/space_combat/code/combat_site_tests.dm"
 #include "oxyloss_suffocation.dm"
 #include "paintings.dm"
 #include "pills.dm"

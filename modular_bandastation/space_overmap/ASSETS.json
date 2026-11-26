@@ -1615,6 +1615,14 @@
 			},
 			"changes": "Copied byte-for-byte from the Voidcrew planet landing and takeoff port.",
 			"byte_identical": true
+		},
+		{
+			"path": "modular_bandastation/space_overmap/sound/bluespace_ambience.ogg",
+			"sha256": "0dcb1450a3bfcc860612034e523daaceac140506cae46cac24d175e286c1373a",
+			"license": "CC-BY-SA-3.0",
+			"authors": ["dj-34"],
+			"source": null,
+			"changes": "Ambient track provided to the project as In Bluespace.wav (24-bit stereo 44.1 kHz, 85.7 s); encoded to stereo OGG Vorbis without other changes."
 		}
 	]
 }

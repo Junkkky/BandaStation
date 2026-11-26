@@ -148,6 +148,7 @@
 		"can_request_ship_dock" = map.available_for_ship_docking(),
 		"dockable_contacts" = map.dockable_ship_contacts(),
 		"boardable_contacts" = map.boardable_contacts(),
+		"can_board_site" = istype(target, /datum/stationtrauma_overmap_site/space/docking_target) && !target.host ? !!map.station_boarding_berth(target) : null,
 		"boarding" = map.boarding_attempt?.display_data(map),
 		"boarding_connected" = !!capture,
 		"boarding_release_ready" = capture?.can_start_release(map),
@@ -233,8 +234,10 @@
 	switch(action)
 		if("board_ship")
 			return map.request_boarding(value)
+		if("board_site")
+			return map.request_station_boarding(value)
 		if("cancel_boarding")
-			if(map.boarding_attempt?.attacker != map)
+			if(map.boarding_attempt?.attacker != map || map.preparing)
 				return FALSE
 			qdel(map.boarding_attempt)
 			return TRUE

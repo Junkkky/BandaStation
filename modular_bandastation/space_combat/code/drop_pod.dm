@@ -41,6 +41,39 @@
 /obj/structure/closet/stationtrauma_drop_pod/can_close(mob/living/user)
 	return !spent && ..()
 
+/obj/structure/closet/stationtrauma_drop_pod/get_remote_view_fullscreens(mob/user)
+	if(flight && user.loc == src && isliving(user) && user.stat != DEAD)
+		var/braking = world.time >= flight.arrives_at - ST_DROP_POD_BRAKING_TIME
+		return user.overlay_fullscreen("remote_view", /atom/movable/screen/fullscreen/stationtrauma_drop_pod, braking ? 2 : 1)
+	if(istype(user.screens["remote_view"], /atom/movable/screen/fullscreen/stationtrauma_drop_pod))
+		user.clear_fullscreen("remote_view", FALSE)
+	return ..()
+
+/// Refresh occupants already looking through the capsule when its flight phase changes.
+/obj/structure/closet/stationtrauma_drop_pod/proc/refresh_passenger_views()
+	for(var/mob/living/passenger in src)
+		if(passenger.client?.eye == src)
+			passenger.update_fullscreen()
+		else if(istype(passenger.screens["remote_view"], /atom/movable/screen/fullscreen/stationtrauma_drop_pod))
+			passenger.clear_fullscreen("remote_view", FALSE)
+
+/obj/structure/closet/stationtrauma_drop_pod/Exited(atom/movable/gone, direction)
+	. = ..()
+	var/mob/living/passenger = gone
+	if(istype(passenger) && istype(passenger.screens["remote_view"], /atom/movable/screen/fullscreen/stationtrauma_drop_pod))
+		passenger.clear_fullscreen("remote_view", FALSE)
+
+/// The 320px cabin is centred on the map. Crop the outer hull to fill widescreen without stretching the glass.
+/atom/movable/screen/fullscreen/stationtrauma_drop_pod
+	icon = 'modular_bandastation/space_combat/icons/drop_pod_view.dmi'
+	icon_state = "flight"
+	screen_loc = "CENTER-4:-16,CENTER-4:-16"
+
+/atom/movable/screen/fullscreen/stationtrauma_drop_pod/update_for_view(client_view)
+	var/list/tiles = getviewsize(client_view)
+	var/scale = max(tiles[1], tiles[2]) * world.icon_size / 320
+	transform = matrix().Scale(scale)
+
 /obj/structure/closet/stationtrauma_drop_pod/Destroy()
 	if(flight)
 		flight.finish("lost")
@@ -50,6 +83,7 @@
 	flight = null
 	resistance_flags &= ~INDESTRUCTIBLE
 	forceMove(tile)
+	refresh_passenger_views()
 	pixel_z = 24
 	animate(src, pixel_z = 0, time = 4)
 	var/obj/effect/supplypod_smoke/dust = new(tile)
@@ -70,6 +104,8 @@
 	var/obj/structure/closet/stationtrauma_drop_pod/pod
 	var/datum/weakref/source_ref
 	var/datum/weakref/target_ref
+	/// Fixed chart destination, which can lose its berth during flight.
+	var/datum/weakref/site_ref
 	var/datum/stationtrauma_overmap_sector/space/sector
 	var/number
 	var/capsule_name
@@ -83,18 +119,21 @@
 	var/arrives_at
 	var/result = "flying"
 
-/datum/stationtrauma_drop_flight/New(obj/structure/closet/stationtrauma_drop_pod/capsule, datum/stationtrauma_overmap/space/source, datum/stationtrauma_overmap/space/target, target_label, landing_section)
+/datum/stationtrauma_drop_flight/New(obj/structure/closet/stationtrauma_drop_pod/capsule, datum/stationtrauma_overmap/space/source, datum/stationtrauma_overmap/space/target, target_label, landing_section, datum/stationtrauma_overmap_site/space/docking_target/site)
 	pod = capsule
 	source_ref = WEAKREF(source.vessel)
-	target_ref = WEAKREF(target)
+	if(site)
+		site_ref = WEAKREF(site)
+	else
+		target_ref = WEAKREF(target)
 	sector = source.sector
 	section = landing_section
 	capsule_name = capsule.name
 	contact_name = target_label
 	start_x = source.pos_x
 	start_y = source.pos_y
-	end_x = target.pos_x
-	end_y = target.pos_y
+	end_x = site ? site.pos_x : target.pos_x
+	end_y = site ? site.pos_y : target.pos_y
 	started_at = world.time
 	var/distance = sqrt((end_x - start_x) ** 2 + (end_y - start_y) ** 2)
 	var/duration = max(ST_DROP_POD_MIN_FLIGHT, ST_DROP_POD_PREPARE + CEILING(distance / ST_DROP_POD_SPEED * (1 SECONDS), 1))
@@ -102,7 +141,9 @@
 	number = ++sector.next_drop_pod
 	LAZYADD(sector.active_drop_pods, src)
 	LAZYADD(source.vessel.drop_pod_reports, src)
-	START_PROCESSING(SSfastprocess, src)
+	if(target_ref)
+		START_PROCESSING(SSfastprocess, src)
+	addtimer(CALLBACK(capsule, TYPE_PROC_REF(/obj/structure/closet/stationtrauma_drop_pod, refresh_passenger_views)), duration - ST_DROP_POD_BRAKING_TIME)
 	addtimer(CALLBACK(src, PROC_REF(arrive)), duration)
 
 /datum/stationtrauma_drop_flight/Destroy()
@@ -125,6 +166,19 @@
 
 /datum/stationtrauma_drop_flight/proc/arrive()
 	if(QDELETED(pod) || result != "flying")
+		return
+	if(site_ref)
+		var/datum/stationtrauma_overmap_site/space/docking_target/site = site_ref.resolve()
+		var/datum/stationtrauma_overmap_site/space/berth = site?.combat_berth(sector)
+		var/turf/landing = berth?.random_drop_turf()
+		// Finding a clear tile may yield on a crowded deck.
+		if(QDELETED(pod) || result != "flying")
+			return
+		if(landing && site?.combat_berth(sector) == berth && relay_drop_turf(landing))
+			pod.touchdown(landing)
+			finish("landed")
+			return
+		await_rescue()
 		return
 	var/datum/stationtrauma_overmap/space/target = guided_target()
 	if(target)

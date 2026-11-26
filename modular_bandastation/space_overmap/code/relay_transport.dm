@@ -77,7 +77,7 @@
 		if("beacon")
 			destination = beacon?.active_turf(relay)
 		if("random")
-			destination = random_turf(site)
+			destination = site.random_drop_turf()
 	return target_site(relay, site_id) == site && !site.loading_map && relay_drop_turf(destination) && turf_at_site(site, destination) ? destination : null
 
 /// Synchronous admission for a physically suitable tile of the selected destination.
@@ -103,8 +103,8 @@
 	return tile.z == site.berth.z && tile_area == relay_mapped_area(site)
 
 /// Find random open ground inside the station's registered areas or inside a finite destination.
-/obj/machinery/relay_transport/proc/random_turf(datum/stationtrauma_overmap_site/space/site)
-	if(site.physical_docking && is_station_level(site.berth.z))
+/datum/stationtrauma_overmap_site/space/proc/random_drop_turf()
+	if(physical_docking && is_station_level(berth.z))
 		var/list/station_levels = shuffle(SSmapping.levels_by_trait(ZTRAIT_STATION))
 		for(var/area_type in shuffle(GLOB.the_station_areas))
 			var/area/station/area = GLOB.areas_by_type[area_type]
@@ -115,12 +115,12 @@
 				if(tile)
 					return tile
 		return null
-	var/list/bounds = relay_drop_bounds(site)
+	var/list/bounds = relay_drop_bounds(src)
 	if(bounds)
 		var/surface = bounds[MAP_MAXZ]
 		return pick_relay_drop_turf(block(bounds[MAP_MINX], bounds[MAP_MINY], surface, bounds[MAP_MAXX], bounds[MAP_MAXY], surface))
-	var/area/mapped_site = relay_mapped_area(site)
-	return mapped_site ? pick_relay_drop_turf(mapped_site.get_turfs_by_zlevel(site.berth.z)) : null
+	var/area/mapped_site = relay_mapped_area(src)
+	return mapped_site ? pick_relay_drop_turf(mapped_site.get_turfs_by_zlevel(berth.z)) : null
 
 /// Registered map footprint of a generated planet or a placed ruin.
 /proc/relay_drop_bounds(datum/stationtrauma_overmap_site/space/site)

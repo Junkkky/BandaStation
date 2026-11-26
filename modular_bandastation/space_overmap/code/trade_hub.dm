@@ -103,7 +103,7 @@
 		return TRUE
 	if(!SSshuttle.initialized)
 		return FALSE
-	for(var/pack_id, pack_data in SSshuttle.supply_packs)
+	for(var/pack_id, pack_data in SSshuttle.trade_hub_supply_packs)
 		var/datum/supply_pack/pack = pack_data
 		if(!supports_pack(pack))
 			continue
@@ -313,7 +313,7 @@
 	if(!istext(pack_id))
 		return trade_result(result, FALSE, "Товар не найден.")
 	var/pack_type = text2path(pack_id) || pack_id
-	var/datum/supply_pack/pack = SSshuttle.supply_packs[pack_type]
+	var/datum/supply_pack/pack = SSshuttle.trade_hub_supply_packs[pack_type]
 	if(!(pack_type in stock) || stock[pack_type] <= 0 || !can_trade_pack(pack, cash ? trade_hub_cash_access(user) : null))
 		return trade_result(result, FALSE, "Этот товар отсутствует в запасах узла.")
 	reason = get_output_reason()
@@ -654,7 +654,7 @@
 	data["reward_market"] = core.reward_market_data(get_turf(input))
 	var/list/personal_access = trade_hub_cash_access(user)
 	for(var/pack_type in core.stock)
-		var/datum/supply_pack/pack = SSshuttle.supply_packs[pack_type]
+		var/datum/supply_pack/pack = SSshuttle.trade_hub_supply_packs[pack_type]
 		var/cash_allowed = core.can_trade_pack(pack, personal_access)
 		if(!cash_allowed && !(cargo_access && core.can_trade_pack(pack)))
 			continue

@@ -677,6 +677,23 @@
 		/datum/trade_hub_request/expedition_t_ray_scanners,
 	)
 
+/datum/supply_pack/security/armory/ship_ammunition
+	order_flags = ORDER_TRADE_HUB_ONLY
+
+/datum/supply_pack/security/armory/ship_ammunition/light
+	name = "Кассета лёгкой автопушки (30 снарядов)"
+	desc = "Полная кассета кинетических снарядов для лёгкой корабельной автопушки."
+	crate_name = "ящик с боеприпасами для лёгкой автопушки"
+	cost = CARGO_CRATE_VALUE * 6
+	contains = list(/obj/item/stack/stationtrauma_autocannon_shell/full)
+
+/datum/supply_pack/security/armory/ship_ammunition/heavy
+	name = "Кассета тяжёлой автопушки (8 снарядов)"
+	desc = "Полная кассета кинетических снарядов для тяжёлой корабельной автопушки."
+	crate_name = "ящик с боеприпасами для тяжёлой автопушки"
+	cost = CARGO_CRATE_VALUE * 8
+	contains = list(/obj/item/stack/stationtrauma_autocannon_shell/heavy/full)
+
 /** Security hub supplies security equipment and armory requisitions. */
 /obj/machinery/trade_hub_core/security
 	name = "Охранный торговый узел"

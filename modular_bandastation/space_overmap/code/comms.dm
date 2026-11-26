@@ -155,15 +155,15 @@
 	if(!station_pad)
 		return
 	aas_config_announce(/datum/aas_config_entry/stationtrauma_ship_holocall, list(
-		"SHIP" = ship.name,
+		"SHIP" = ship.overmap?.public_ship_label() || "неизвестное судно",
 		"LOCATION" = get_area_name(station_pad, TRUE),
 	), station_pad, list(RADIO_CHANNEL_COMMAND, RADIO_CHANNEL_EXPEDITION))
 
 /datum/aas_config_entry/stationtrauma_ship_holocall
 	name = "Command Alert: Ship Holocall"
 	announcement_lines_map = list(
-		"Message" = "Входящий голосовой вызов с корабля «%SHIP» на голопад: %LOCATION.")
+		"Message" = "Входящий голосовой вызов: %SHIP, голопад: %LOCATION.")
 	vars_and_tooltips_map = list(
-		"SHIP" = "will be replaced with the calling ship's name.",
+		"SHIP" = "will be replaced with the calling ship: its transponder callsign, or an unknown vessel.",
 		"LOCATION" = "with the area of the dialed holopad.",
 	)

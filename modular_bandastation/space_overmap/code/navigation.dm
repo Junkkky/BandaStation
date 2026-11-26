@@ -479,6 +479,9 @@
 /datum/stationtrauma_overmap/space/proc/selected_docking_site()
 	var/datum/stationtrauma_overmap_site/space/site = sites[selected_destination]
 	if(istype(site, /datum/stationtrauma_overmap_site/space/docking_target))
+		var/datum/stationtrauma_boarding_attempt/station/capture = boarding_attempt
+		if(istype(capture) && capture.committing && capture.reserved_berth?.docking_target == site)
+			return capture.reserved_berth
 		return assigned_station_berth(site)
 	if(site?.docking_owner == src)
 		return site
@@ -649,7 +652,7 @@
 	status = (site.landing || hangar) ? "Посадка: [site.name]" : "Стыковка: [site.name]"
 	// the station hears which berth a hull has come to; ships set at their berths before the round are not news
 	if(slot && is_station_level(slot.z) && SSticker.HasRoundStarted())
-		minor_announce("«[vessel.name]» прибыл к причалу «[site.name]».", "Диспетчерская станции")
+		minor_announce("Причал «[site.name]» — прибытие: [public_ship_label()].", "Диспетчерская станции")
 	if(hangar)
 		if(!QDELETED(slot))
 			slot.show_hangar_glow(src)

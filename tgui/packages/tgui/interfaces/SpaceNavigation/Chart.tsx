@@ -56,10 +56,13 @@ const aimKeys: Partial<Record<string, Position>> = {
   ArrowLeft: { x: -10, y: 0 },
 };
 
+export type MuzzleFlash = { id: string; heading: number };
+
 type Props = {
   data: ChartData;
   zoom: number;
   firingSector?: FiringSector;
+  muzzleFlashes?: MuzzleFlash[];
   aimPoint?: Position | null;
   aimValid?: boolean;
   onAim?: (position: Position) => void;
@@ -67,6 +70,7 @@ type Props = {
   focusedContact: number | null;
   onContact: (id: number) => void;
   onSite?: (id: string) => void;
+  selectableSites?: string[];
   onPad?: (number: number) => void;
 };
 
@@ -75,10 +79,12 @@ export function Chart({
   aimValid,
   data,
   firingSector,
+  muzzleFlashes,
   focusedContact,
   onAim,
   onContact,
   onSite,
+  selectableSites,
   onPad,
   zoom,
   hoveredTarget,
@@ -405,6 +411,10 @@ export function Chart({
         )}
         {data.routes.map((site, siteIndex) => {
           const p = point(site.x, site.y);
+          const selectSite =
+            !selectableSites || selectableSites.includes(site.id)
+              ? onSite
+              : undefined;
           const selected =
             focusedContact === null &&
             site.id === (data.inspected || data.selected);
@@ -413,18 +423,19 @@ export function Chart({
               key={site.id}
               transform={`translate(${p.x} ${p.y})`}
               className={`SpaceNavigation__marker ${selected ? 'is-selected' : ''} ${hoveredTarget === `site:${site.id}` ? 'is-hovered' : ''}`}
-              role={onSite ? 'button' : undefined}
-              tabIndex={onSite ? 0 : undefined}
+              role={selectSite ? 'button' : undefined}
+              tabIndex={selectSite ? 0 : undefined}
               aria-label={site.name}
-              aria-disabled={onSite ? disabled || !!site.failed : undefined}
+              aria-disabled={selectSite ? disabled || !!site.failed : undefined}
               onClick={
-                onSite && (() => !disabled && !site.failed && onSite(site.id))
+                selectSite &&
+                (() => !disabled && !site.failed && selectSite(site.id))
               }
               onKeyDown={
-                onSite &&
+                selectSite &&
                 ((event) => {
                   if (event.key === 'Enter' && !disabled && !site.failed)
-                    onSite(site.id);
+                    selectSite(site.id);
                 })
               }
               stroke={selected ? '#edc587' : site.sos ? '#e0533f' : '#7b9c86'}
@@ -651,6 +662,19 @@ export function Chart({
           <g transform={`rotate(${data.course})`}>
             <ShipGlyph />
           </g>
+          {muzzleFlashes?.map((flash) => (
+            <g key={flash.id} transform={`rotate(${flash.heading})`}>
+              <path
+                className="ShipWeapons__muzzle-flash"
+                d="M0 -15 L-5 -22 L-2 -21 L0 -34 L2 -21 L5 -23 Z"
+                fill="#fff3ae"
+                stroke="#ff9344"
+                strokeWidth={1.5}
+              >
+                <title>Выстрел автопушки</title>
+              </path>
+            </g>
+          ))}
         </g>
         {aim && (
           <g

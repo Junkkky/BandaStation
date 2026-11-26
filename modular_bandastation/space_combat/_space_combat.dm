@@ -36,6 +36,8 @@
 #define ST_DROP_POD_SPEED 25
 #define ST_DROP_POD_PREPARE (4 SECONDS)
 #define ST_DROP_POD_MIN_FLIGHT (5 SECONDS)
+/// Terminal braking indication before the scheduled touchdown.
+#define ST_DROP_POD_BRAKING_TIME (2 SECONDS)
 #define ST_DROP_POD_REPORT_TIME (30 SECONDS)
 /// Iron sheets held by a launch rack for one capsule.
 #define ST_DROP_POD_IRON_COST 10

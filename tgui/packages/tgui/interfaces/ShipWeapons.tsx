@@ -4,7 +4,7 @@ import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { Chart } from './SpaceNavigation/Chart';
+import { Chart, type MuzzleFlash } from './SpaceNavigation/Chart';
 import { ZoomKnob } from './SpaceNavigation/DisplayArt';
 import {
   type ChartData,
@@ -40,6 +40,7 @@ type Weapon = FiringSector & {
 
 type Data = ChartData & {
   weapons: Weapon[];
+  muzzle_flashes?: MuzzleFlash[];
   can_control: BooleanLike;
   power_ready: BooleanLike;
   scan_ready: BooleanLike;
@@ -109,6 +110,7 @@ function FireControl({ data }: { data: Data }) {
             focusedContact={focusedContact}
             hoveredTarget={hoveredTarget}
             firingSector={mount}
+            muzzleFlashes={data.muzzle_flashes}
             aimPoint={aimPoint}
             aimValid={!!mount && !aimProblem}
             onAim={mount ? setAimPoint : undefined}
