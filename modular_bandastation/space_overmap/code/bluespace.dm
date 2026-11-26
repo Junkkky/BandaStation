@@ -64,12 +64,23 @@
 	sync_carrier()
 	return TRUE
 
-/** The bluespace ambience plays once, to its end, for everyone aboard from the drive's start */
+/**
+ * The bluespace ambience plays once, to its end, for everyone aboard from the drive's start. It goes out as admin music does:
+ * streamed as it is, in stereo, with no position aboard and none of the station's acoustics.
+ */
 /datum/stationtrauma_overmap/space/proc/start_bluespace_ambience()
-	var/sound/ambience = sound('modular_bandastation/space_overmap/sound/bluespace_ambience.ogg', volume = 40)
+	var/sound/ambience = new
+	ambience.file = 'modular_bandastation/space_overmap/sound/bluespace_ambience.ogg'
+	ambience.status = SOUND_STREAM
+	ambience.repeat = FALSE
 	for(var/mob/crew as anything in SSmobs.clients_by_zlevel[vessel.z])
-		if(vessel.is_in_shuttle_bounds(crew))
-			SEND_SOUND(crew, ambience)
+		if(!vessel.is_in_shuttle_bounds(crew))
+			continue
+		var/preference = crew.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_ambience_volume)
+		if(!preference)
+			continue
+		ambience.volume = 40 * preference / 100
+		SEND_SOUND(crew, ambience)
 
 /** Cancel owned jump timers and restore the current hull visual state. */
 /datum/stationtrauma_overmap/space/proc/cancel_jump()
