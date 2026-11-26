@@ -89,7 +89,7 @@
 	qdel(session)
 	TEST_ASSERT(QDELETED(motor), "The motor kept playing after the procedure ended.")
 	var/icon/finished = getFlatIcon(customer, defdir = SOUTH, no_anim = TRUE)
-	TEST_ASSERT_EQUAL(lowertext(finished.GetPixel(22, 18)), "#dc962d", "The blood bead obscured the completed tattoo after the session closed.")
+	TEST_ASSERT_EQUAL(LOWER_TEXT(finished.GetPixel(22, 18)), "#dc962d", "The blood bead obscured the completed tattoo after the session closed.")
 	film.attack(customer, artist)
 	TEST_ASSERT(care.covered_with_film && !care.fresh, "The fresh tattoo could not be dressed.")
 
