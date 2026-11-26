@@ -138,7 +138,7 @@
 	name = "учебный тату-манекен"
 	real_name = "учебный тату-манекен"
 	desc = "Шарнирная модель с учебной кожей и резервуаром красной жидкости. Выберите участок, протрите салфеткой и примените тату-машинку."
-	anchored = TRUE
+	move_resist = INFINITY
 	visual_only_organs = TRUE
 
 /mob/living/carbon/human/tattoo_mannequin/Initialize(mapload, datum/species/species)
