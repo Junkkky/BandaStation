@@ -395,6 +395,47 @@
 	TEST_ASSERT_NULL(bay.active_berth, "A failed approach must release the physical berth")
 	TEST_ASSERT_NULL(site.docking_owner, "A failed approach must release the overmap site")
 
+/// Record the balloon request without requiring a connected DreamSeeker client.
+/obj/machinery/door/airlock/stationtrauma_docking/ship/unit_test_feedback
+	/// Most recent personal alert.
+	var/personal_problem
+	/// Recipient of the personal alert.
+	var/mob/problem_viewer
+	/// Most recent alert for nearby viewers.
+	var/local_problem
+
+/obj/machinery/door/airlock/stationtrauma_docking/ship/unit_test_feedback/balloon_alert(mob/viewer, text)
+	problem_viewer = viewer
+	personal_problem = text
+
+/obj/machinery/door/airlock/stationtrauma_docking/ship/unit_test_feedback/balloon_alert_to_viewers(message, self_message, vision_distance, list/ignored_mobs)
+	local_problem = message
+
+/// Show the failure above the actual hatch for a manual attempt and for a failed arrival opening.
+/datum/unit_test/overmap_standard_dock/hatch_feedback/Run()
+	var/turf/hatch_tile = get_turf(hatch)
+	qdel(hatch)
+	var/obj/machinery/door/airlock/stationtrauma_docking/ship/unit_test_feedback/test_hatch = allocate(/obj/machinery/door/airlock/stationtrauma_docking/ship/unit_test_feedback, hatch_tile)
+	hatch = test_hatch
+	test_hatch.setDir(hatch_direction)
+	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human, get_step(test_hatch, WEST))
+	TEST_ASSERT(test_hatch.try_to_activate_door(user), "The manual interaction must attempt to open the hatch")
+	TEST_ASSERT_EQUAL(test_hatch.problem_viewer, user, "The manual failure alert must go to the player using the hatch")
+	TEST_ASSERT(findtext(test_hatch.personal_problem, "трап не подключён"), "The manual alert must explain the missing connection")
+	TEST_ASSERT_NULL(test_hatch.local_problem, "Manual feedback must not alert nearby viewers")
+
+	var/turf/wall_tile = locate(bay.x + 8, bay.y + hatch_y, bay.z)
+	var/obj/machinery/door/airlock/stationtrauma_docking/wall/wall = locate() in wall_tile
+	TEST_ASSERT_NOTNULL(wall, "The aligned wall should have a door")
+	var/area/dock_area = get_area(wall)
+	dock_area.requires_power = TRUE
+	dock_area.power_environ = FALSE
+	dock_area.power_change()
+	TEST_ASSERT(!wall.hasPower(), "The wall must lose power before arrival")
+	TEST_ASSERT(navigation.select_site(site.id) && navigation.dock(instant = TRUE), "The physical docking must succeed while the unpowered door remains shut")
+	TEST_ASSERT(test_hatch.density && wall.density, "The unpowered passage must stay closed")
+	TEST_ASSERT(findtext(test_hatch.local_problem, "секция стыковочной стены обесточена"), "People near the hatch must see the automatic opening failure")
+
 /// A passage blocked during the yielding native preflight must still stop the hull before movement.
 /datum/unit_test/overmap_standard_dock/late_blocked_passage
 	/// The obstruction built during native preflight, if that step was reached.

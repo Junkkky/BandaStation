@@ -18,6 +18,8 @@
 	WHEN_MAP(icon_state = "/obj/machinery/door/airlock/stationtrauma_docking")
 	/// The passage using this endpoint, while physically moored.
 	var/datum/stationtrauma_dock_gangway/gangway
+	/// Throttle repeated feedback when someone keeps bumping the hatch.
+	COOLDOWN_DECLARE(docking_alert_cooldown)
 
 /** The outward direction points from the hull toward a compatible dock. */
 /obj/machinery/door/airlock/stationtrauma_docking/ship
@@ -96,9 +98,25 @@
 		return ..()
 	if(gangway?.opening_endpoint == src)
 		return ..()
-	if(opener && forced == DEFAULT_DOOR_CHECKS && !QDELETED(gangway))
-		return gangway.open_passage(opener = opener)
+	if(!opener || forced != DEFAULT_DOOR_CHECKS)
+		return FALSE
+	var/datum/stationtrauma_dock_gangway/passage = gangway
+	if(QDELETED(passage))
+		show_open_failure(opener, "стыковочный трап не подключён")
+		return FALSE
+	if(passage.open_passage(opener = opener))
+		return TRUE
+	if(!QDELETED(passage) && gangway == passage)
+		var/problem = passage.busy ? "трап занят другой операцией" : passage.opening_problem
+		show_open_failure(opener, problem)
 	return FALSE
+
+/** Show the reason to the player still next to the hatch after their attempt. */
+/obj/machinery/door/airlock/stationtrauma_docking/proc/show_open_failure(mob/living/opener, problem)
+	if(!problem || QDELETED(src) || QDELETED(opener) || !opener.Adjacent(src) || !COOLDOWN_FINISHED(src, docking_alert_cooldown))
+		return
+	COOLDOWN_START(src, docking_alert_cooldown, 2 SECONDS)
+	balloon_alert(opener, problem)
 
 /obj/machinery/door/airlock/stationtrauma_docking/close(forced = DEFAULT_DOOR_CHECKS, force_crush = FALSE)
 	if(force_crush && gangway)
@@ -341,6 +359,15 @@
 	for(var/obj/structure/window/reinforced/stationtrauma_dock_side/seal as anything in seals)
 		RegisterSignals(seal, watched_signals, PROC_REF(on_breach))
 	return TRUE
+
+/** Report failures of automatic opening only to people near the connected endpoints. */
+/datum/stationtrauma_dock_gangway/proc/open_on_arrival()
+	if(open_passage() || QDELETED(src) || busy || !opening_problem)
+		return
+	if(!QDELETED(ship) && ship.gangway == src)
+		ship.balloon_alert_to_viewers(opening_problem)
+	if(!QDELETED(wall) && wall.gangway == src)
+		wall.balloon_alert_to_viewers(opening_problem)
 
 /**
  * Equalize the corridor and open the interlocked doors.

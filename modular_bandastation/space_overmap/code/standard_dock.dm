@@ -438,9 +438,11 @@
 		var/problem = gangway.deploy(route.hatch, route.wall, route.path, route.wall?.dir)
 		if(problem)
 			diagnostic["reason"] ||= problem
+			if(!QDELETED(route.hatch))
+				route.hatch.balloon_alert_to_viewers(problem)
 			qdel(gangway)
 			continue
 		gangways += gangway
 	for(var/datum/stationtrauma_dock_gangway/gangway as anything in gangways)
-		INVOKE_ASYNC(gangway, TYPE_PROC_REF(/datum/stationtrauma_dock_gangway, open_passage))
+		INVOKE_ASYNC(gangway, TYPE_PROC_REF(/datum/stationtrauma_dock_gangway, open_on_arrival))
 	return length(gangways)
