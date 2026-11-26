@@ -404,7 +404,9 @@ export function Chart({
         )}
         {data.routes.map((site, siteIndex) => {
           const p = point(site.x, site.y);
-          const selected = focusedContact === null && site.id === data.selected;
+          const selected =
+            focusedContact === null &&
+            site.id === (data.inspected || data.selected);
           return (
             <g
               key={site.id}
