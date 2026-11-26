@@ -230,7 +230,25 @@
 	var/datum/stationtrauma_overmap_sector/space/home = sector
 	var/datum/stationtrauma_station_docking_request/request = new(home, src, target)
 	home.station_docking_requests[vessel.shuttle_id] = request
+	announce_docking_request()
 	return TRUE
+
+/// Command hears of a new docking request: in large print on its channel, and read aloud by the station's traffic consoles to a soft ping
+/datum/stationtrauma_overmap/space/proc/announce_docking_request()
+	aas_config_announce(/datum/aas_config_entry/stationtrauma_docking_request, list("SHIP" = public_ship_label()), null, list(RADIO_CHANNEL_COMMAND), command_span = TRUE)
+	for(var/obj/machinery/computer/stationtrauma_station_traffic/console as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/computer/stationtrauma_station_traffic))
+		if(!is_station_level(console.z) || !console.is_operational)
+			continue
+		playsound(console, 'sound/machines/ping.ogg', 40, FALSE)
+		console.say("Запрос на стыковку: [public_ship_label()].")
+
+/datum/aas_config_entry/stationtrauma_docking_request
+	name = "Command Alert: Docking Request"
+	announcement_lines_map = list(
+		"Message" = "Запрос на стыковку: %SHIP. Решение — в центре управления полётами.")
+	vars_and_tooltips_map = list(
+		"SHIP" = "will be replaced with the requesting ship: its transponder callsign, or an unknown vessel.",
+	)
 
 /datum/stationtrauma_overmap/space/proc/cancel_station_docking()
 	var/datum/stationtrauma_station_docking_request/request = get_station_docking_request()
