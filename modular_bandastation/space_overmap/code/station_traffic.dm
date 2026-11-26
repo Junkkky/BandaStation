@@ -35,6 +35,8 @@
 		var/obj/docking_port/stationary/stationtrauma_space_station/port = site.berth
 		target.automatic = port.auto_approve_docking
 		sites[target_id] = target
+		if(!target.host)
+			fixed_combat_sites += target
 	target.berths |= site
 	site.docking_target = target
 
@@ -50,6 +52,7 @@
 		return
 	clear_station_docking_site(target)
 	sites -= target.id
+	fixed_combat_sites -= target
 	qdel(target)
 
 /// A physical berth is assignable only while it belongs to this sector's registry.
@@ -139,14 +142,21 @@
 /// Shared by manual and automatic assignment, and by the dispatcher when listing eligible berths.
 /datum/stationtrauma_station_docking_request/proc/can_assign(datum/stationtrauma_overmap_site/space/site)
 	// Carrier movement is checked independently of reservations for its other berths.
-	if(assigned_berth || !sector.is_station_berth(site) || site.docking_target != target || site.failed \
-		|| site.docking_owner || site.shuttle_order || site.berth.get_docked() || stationtrauma_berth_unavailable(site.berth) \
-		|| !requester.can_request_station_docking(target) || !requester.carrier_arrival_ready(site) || !requester.vessel.permits_docking(site))
+	if(assigned_berth || !requester.can_request_station_docking(target) || !requester.carrier_arrival_ready(site) \
+		|| !requester.station_berth_available(site, target))
+		return FALSE
+	return istype(site.berth, /obj/docking_port/stationary/stationtrauma_space_station/standard) || requester.vessel.check_dock(site.berth, TRUE)
+
+/// Check a berth's live admission and reservations without searching its physical footprint on a console update.
+/datum/stationtrauma_overmap/space/proc/station_berth_available(datum/stationtrauma_overmap_site/space/site, datum/stationtrauma_overmap_site/space/docking_target/target, datum/stationtrauma_overmap/space/reservation_owner)
+	var/datum/stationtrauma_overmap_sector/space/home = sector
+	if(!istype(home) || !home.is_station_berth(site) || site.docking_target != target || site.failed || site.docking_owner != reservation_owner \
+		|| site.shuttle_order || site.berth.get_docked() || stationtrauma_berth_unavailable(site.berth) || !vessel.permits_docking(site))
 		return FALSE
 	var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
 	if(istype(slot))
-		return !slot.active_berth && slot.accepts(requester.vessel)
-	return requester.vessel.check_dock(site.berth, TRUE)
+		return !slot.active_berth && slot.accepts(vessel)
+	return vessel.canDock(site.berth) == SHUTTLE_CAN_DOCK
 
 /datum/stationtrauma_station_docking_request/proc/restart_timeout()
 	deltimer(timeout_timer)
@@ -203,7 +213,8 @@
 /datum/stationtrauma_overmap/space/proc/can_request_station_docking(datum/stationtrauma_overmap_site/space/docking_target/target)
 	var/datum/stationtrauma_overmap_sector/space/home = sector
 	if(!istype(target) || !istype(home) || !knows_site(target) || target.failed || QDELETED(vessel) || vessel.overmap != src \
-		|| home.ships[vessel.shuttle_id] != src || target.id != selected_destination || docked || preparing || relocating || ship_docking || jump_target)
+		|| home.ships[vessel.shuttle_id] != src || target.id != selected_destination || docked || preparing || relocating || ship_docking || jump_target \
+		|| istype(boarding_attempt, /datum/stationtrauma_boarding_attempt/station))
 		return FALSE
 	if(target.host && (target.host in carrier_tree()))
 		return FALSE

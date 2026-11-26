@@ -144,6 +144,10 @@
     background: #ffbb82;
   }
 
+  &__muzzle-flash {
+    animation: ship-weapon-muzzle 300ms ease-out forwards;
+  }
+
   &__command {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 56px 104px;
@@ -242,5 +246,21 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-template-rows: minmax(0, 1fr);
     }
+  }
+}
+
+@keyframes ship-weapon-muzzle {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ShipWeapons__muzzle-flash {
+    animation: none;
   }
 }

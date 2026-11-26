@@ -479,6 +479,9 @@
 /datum/stationtrauma_overmap/space/proc/selected_docking_site()
 	var/datum/stationtrauma_overmap_site/space/site = sites[selected_destination]
 	if(istype(site, /datum/stationtrauma_overmap_site/space/docking_target))
+		var/datum/stationtrauma_boarding_attempt/station/capture = boarding_attempt
+		if(istype(capture) && capture.committing && capture.reserved_berth?.docking_target == site)
+			return capture.reserved_berth
 		return assigned_station_berth(site)
 	if(site?.docking_owner == src)
 		return site

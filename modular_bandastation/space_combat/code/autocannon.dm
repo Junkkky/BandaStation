@@ -19,6 +19,9 @@
 	var/burst_size = 3
 	var/reload_time = ST_AUTOCANNON_RELOAD
 	var/firing_sound = 'sound/items/weapons/gun/l6/shot.ogg'
+	/// Most recent confirmed shot, retained briefly on the fire-control plot.
+	var/last_shot_time
+	var/last_shot_heading
 	/// Charge delivered by an installed combat distributor.
 	var/capacitor_charge = 0
 	/// Hull registration is updated by the native shuttle loader.
@@ -236,13 +239,21 @@
 	playsound(sound_origin, firing_sound, 75, TRUE, pressure_affected = FALSE)
 	if(get_dist(user, sound_origin) > SOUND_RANGE)
 		user.playsound_local(get_turf(console), firing_sound, 60, TRUE, pressure_affected = FALSE)
-	round.fire(WRAP(angle - map.course + dir2angle(map.vessel.preferred_direction), 0, 360))
+	var/local_angle = WRAP(angle - map.course + dir2angle(map.vessel.preferred_direction), 0, 360)
+	var/obj/effect/projectile/muzzle/bullet/flash = new(muzzle)
+	flash.turn_to(local_angle)
+	flash.set_light(2, 3, LIGHT_COLOR_ORANGE)
+	QDEL_IN(flash, PROJECTILE_TRACER_DURATION)
+	round.fire(local_angle)
+	last_shot_time = world.time
+	last_shot_heading = angle
+	SStgui.update_uis(console)
 	return TRUE
 
-/** Inside the hull, a one-stack magazine feeds the gun across a sealed panel. */
+/** Inside the hull, the loading tray feeds the gun across a sealed panel. */
 /obj/machinery/stationtrauma_autocannon_loader
 	name = "загрузочный лоток автопушки"
-	desc = "Закрытая подача к наружной автопушке. Загрузите пачку кинетических снарядов прямо в лоток."
+	desc = "Закрытая подача к наружной автопушке. Снаряды из кассеты заряжают по одному."
 	icon = 'modular_bandastation/space_combat/icons/patrol_machines.dmi'
 	icon_state = "loader"
 	dir = NORTH
@@ -252,6 +263,8 @@
 	/// Rounds still inside the ship, independent of the gun's local feed.
 	var/reserve_shells = 0
 	var/reserve_capacity = 30
+	/// Time spent transferring one shell from the held stack.
+	var/shell_load_time = 1 SECONDS
 	/// Prevent cross-feeding when a loader or gun has been replaced.
 	var/ammo_type = /obj/item/stack/stationtrauma_autocannon_shell
 
@@ -286,23 +299,33 @@
 /obj/machinery/stationtrauma_autocannon_loader/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/stack/stationtrauma_autocannon_shell))
 		return ..()
-	if(!Adjacent(user) || !operating() || !can_interact(user))
-		return ITEM_INTERACT_BLOCKING
 	var/obj/item/stack/stationtrauma_autocannon_shell/ammo = tool
 	if(ammo.merge_type != ammo_type)
 		balloon_alert(user, "неподходящие снаряды")
 		return ITEM_INTERACT_BLOCKING
-	var/count = min(reserve_capacity - reserve_shells, ammo.get_amount())
-	if(count <= 0)
+	if(reserve_shells >= reserve_capacity)
 		balloon_alert(user, "лоток полон")
 		return ITEM_INTERACT_BLOCKING
-	if(!ammo.use(count))
-		return ITEM_INTERACT_BLOCKING
-	reserve_shells += count
-	feed_gun()
-	update_appearance(UPDATE_ICON_STATE)
-	balloon_alert(user, "в лотке [reserve_shells]/[reserve_capacity]")
-	return ITEM_INTERACT_SUCCESS
+	var/loaded = FALSE
+	while(can_load_shell(user, ammo))
+		if(!do_after(user, shell_load_time, src, cog_icon = ammo.icon, cog_iconstate = "shell") || !can_load_shell(user, ammo))
+			break
+		ammo.do_pickup_animation(src, get_turf(user), icon_state_override = "shell")
+		if(!ammo.use(1))
+			break
+		reserve_shells++
+		loaded = TRUE
+		feed_gun()
+		update_appearance(UPDATE_ICON_STATE)
+		playsound(src, 'sound/items/weapons/gun/shotgun/insert_shell.ogg', 50, TRUE)
+	if(loaded && !QDELETED(src) && !QDELETED(user))
+		balloon_alert(user, "в лотке [reserve_shells]/[reserve_capacity]")
+	return loaded ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
+
+/// The stack, operator and free slot must still be available after each timed action.
+/obj/machinery/stationtrauma_autocannon_loader/proc/can_load_shell(mob/living/user, obj/item/stack/stationtrauma_autocannon_shell/ammo)
+	return !QDELETED(src) && !QDELETED(ammo) && !QDELETED(user) && user.get_active_held_item() == ammo \
+		&& ammo.merge_type == ammo_type && reserve_shells < reserve_capacity && operating() && Adjacent(user) && can_interact(user)
 
 /obj/machinery/stationtrauma_autocannon_loader/process(seconds_per_tick)
 	if(reserve_shells)
@@ -355,3 +378,4 @@
 	icon = 'modular_bandastation/space_combat/icons/patrol_heavy_gun.dmi'
 	ammo_type = /obj/item/stack/stationtrauma_autocannon_shell/heavy
 	reserve_capacity = 8
+	shell_load_time = 2 SECONDS

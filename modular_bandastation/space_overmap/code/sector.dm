@@ -46,6 +46,7 @@
 	var/list/away_sites = list()
 
 /datum/stationtrauma_overmap_sector/space/Destroy()
+	fixed_combat_sites.Cut()
 	for(var/ship_id in station_docking_requests.Copy())
 		qdel(station_docking_requests[ship_id])
 	. = ..()

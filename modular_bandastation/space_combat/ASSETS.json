@@ -38,6 +38,16 @@
 			"changes": "Original pixel artwork for a two-seat capsule cabin and its separate hatch."
 		},
 		{
+			"path": "modular_bandastation/space_combat/icons/drop_pod_view.dmi",
+			"sha256": "78c6b66f643dfc07bfe0e92f1cd6dd427e5ba72b7f53849b3dfd651ed3e383f5",
+			"license": "CC-BY-SA-3.0",
+			"authors": [
+				"StationTrauma / BandaStation contributors"
+			],
+			"source": null,
+			"changes": "Original pixel-art pressure window, instruments, star field and braking jets. Two native 16-frame passenger-view loops."
+		},
+		{
 			"path": "modular_bandastation/space_combat/icons/patrol_ammunition.dmi",
 			"sha256": "106b31afe05e0ef9b0d5ee4707681be6f3a3ae6839558c6845cd6b4290c85277",
 			"license": "CC-BY-SA-3.0",

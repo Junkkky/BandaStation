@@ -2,10 +2,10 @@
 /datum/roundstart_away_mission
 	/// Name used in preferences and roundstart logs.
 	var/name
-	/// Trusted template loaded for a complete roundstart crew or an approved latejoin request.
+	/// Trusted template loaded for a roundstart volunteer or an approved latejoin request.
 	var/map_path
-	/// Map of job type to the minimum number of players in that job.
-	var/list/minimum_crew
+	/// Jobs offered on each hull. A full crew has at least one volunteer for each role.
+	var/list/crew_jobs
 	/// Role in command of the crew.
 	var/commander_job
 	/// Key memory issued to the crew and shown in chat when they take their posts.
@@ -19,11 +19,11 @@
 	commander_job = /datum/job/away_mission/nt_patrol_commander
 	briefing_type = /datum/memory/key/nt_patrol_orders
 	ship_names = list("Брут", "Степь", "Рубеж", "Форпост", "Гранит", "Сапсан", "Дозорный", "Меридиан")
-	minimum_crew = list(
-		/datum/job/away_mission/nt_patrol_commander = 1,
-		/datum/job/away_mission/nt_patrol_engineer = 1,
-		/datum/job/away_mission/nt_patrol_medic = 1,
-		/datum/job/away_mission/nt_patrol_officer = 1,
+	crew_jobs = list(
+		/datum/job/away_mission/nt_patrol_commander,
+		/datum/job/away_mission/nt_patrol_engineer,
+		/datum/job/away_mission/nt_patrol_medic,
+		/datum/job/away_mission/nt_patrol_officer,
 	)
 
 /// Server-owned mission definitions shared by preferences and the roundstart draw.
@@ -86,6 +86,8 @@
 		antagonist_minds |= ruleset.selected_minds
 	var/list/optional_assignments = list()
 	for(var/datum/roundstart_away_mission/mission as anything in mission_pool)
+		if(!allow_all && popcap_reached())
+			break
 		var/list/candidates = mission.find_crew(antagonist_minds)
 		if(!candidates)
 			continue
@@ -106,7 +108,7 @@
 		missions_remaining--
 		if(!missions_remaining)
 			break
-	// Do not fill optional positions on one ship while another still needs its minimum crew.
+	// Offer other hulls a crew before assigning the remaining volunteers to extra seats.
 	for(var/obj/docking_port/mobile/stationtrauma_space/vessel as anything in optional_assignments)
 		var/datum/callback/fill_seats = optional_assignments[vessel]
 		fill_seats.Invoke()
@@ -114,22 +116,22 @@
 /// Find eligible volunteers before allocating a level. The assignment is checked again after loading.
 /datum/roundstart_away_mission/proc/find_crew(list/antagonist_minds)
 	var/list/candidates = list()
-	for(var/job_type in minimum_crew)
+	for(var/job_type in crew_jobs)
 		var/datum/job/away_mission/job = SSjob.get_job_type(job_type)
-		if(!job || job.spawn_positions < minimum_crew[job_type])
-			return null
+		if(!job || job.spawn_positions < 1 || job.current_positions >= job.total_positions)
+			continue
 		var/list/volunteers = list()
 		for(var/mob/dead/new_player/player as anything in SSjob.unassigned)
-			if(QDELETED(player) || !player.is_ready_to_play() || !player.mind || (player.mind in antagonist_minds) || !player.client?.prefs.get_away_job_priority(job))
+			if(QDELETED(player) || !player.is_ready_to_play() || !player.mind || (player.mind in antagonist_minds))
+				continue
+			var/client/player_client = GET_CLIENT(player)
+			if(!player_client?.prefs.get_away_job_priority(job))
 				continue
 			if(SSjob.check_job_eligibility(player, job, "AWAY") == JOB_AVAILABLE)
 				volunteers += player
-		if(length(volunteers) < minimum_crew[job_type])
-			return null
-		candidates[job] = volunteers
-	if(!match_required_crew(rank_crew_candidates(candidates)))
-		return null
-	return candidates
+		if(length(volunteers))
+			candidates[job] = volunteers
+	return length(candidates) ? candidates : null
 
 /// Recheck the live lobby and order ties randomly before matching or assigning any seats.
 /datum/roundstart_away_mission/proc/rank_crew_candidates(list/candidates)
@@ -154,13 +156,11 @@
 		ranked[job] = levels
 	return ranked
 
-/// Find a distinct volunteer for every essential seat before committing any assignments.
-/datum/roundstart_away_mission/proc/match_required_crew(list/candidates)
-	var/list/jobs_by_seat = list()
-	for(var/datum/job/away_mission/job as anything in candidates)
-		for(var/index in 1 to minimum_crew[job.type])
-			jobs_by_seat += job
-	var/list/players_by_seat = new(length(jobs_by_seat))
+/// Find a distinct volunteer for every role when the lobby can staff a full crew.
+/datum/roundstart_away_mission/proc/match_full_crew(list/candidates)
+	if(length(candidates) != length(crew_jobs))
+		return null
+	var/list/players_by_seat = new(length(candidates))
 	var/list/seats_by_player = list()
 	var/list/volunteers_by_job = list()
 	// Give higher priorities first claim across all jobs, then add lower-ranked options.
@@ -172,17 +172,17 @@
 				volunteers = list()
 				volunteers_by_job[job] = volunteers
 			volunteers += levels[priority]
-		for(var/seat in 1 to length(jobs_by_seat))
+		for(var/seat in 1 to length(candidates))
 			if(!players_by_seat[seat])
-				match_crew_seat(seat, jobs_by_seat, volunteers_by_job, players_by_seat, seats_by_player, list())
-		if(length(seats_by_player) == length(jobs_by_seat))
+				match_crew_seat(seat, candidates, volunteers_by_job, players_by_seat, seats_by_player, list())
+		if(length(seats_by_player) == length(candidates))
 			break
-	if(length(seats_by_player) != length(jobs_by_seat))
+	if(length(seats_by_player) != length(candidates))
 		return null
-	var/list/required_crew = list()
-	for(var/seat in 1 to length(jobs_by_seat))
-		required_crew[players_by_seat[seat]] = jobs_by_seat[seat]
-	return required_crew
+	var/list/full_crew = list()
+	for(var/seat in 1 to length(candidates))
+		full_crew[players_by_seat[seat]] = candidates[seat]
+	return full_crew
 
 /// Try a free volunteer first. If none is free, move an already matched volunteer only when their seat can be backfilled.
 /datum/roundstart_away_mission/proc/match_crew_seat(seat, list/jobs_by_seat, list/candidates, list/players_by_seat, list/seats_by_player, list/visited)
@@ -208,7 +208,7 @@
 	var/list/spawns = list()
 	var/list/occupied = list()
 	for(var/obj/effect/landmark/away_mission/marker in GLOB.landmarks_list)
-		if(!(marker.job_type in minimum_crew) || !vessel.is_in_shuttle_bounds(marker) || !vessel.shuttle_areas[get_area(marker)])
+		if(!(marker.job_type in crew_jobs) || !vessel.is_in_shuttle_bounds(marker) || !vessel.shuttle_areas[get_area(marker)])
 			continue
 		var/turf/tile = get_turf(marker)
 		if(!isfloorturf(tile) || occupied[tile] || tile.is_blocked_turf(exclude_mobs = TRUE))
@@ -219,14 +219,9 @@
 		spawns[marker.job_type] |= tile
 	return spawns
 
-/// Reserve all essential seats together. Returning false discards a newly loaded template.
+/// Seat a full crew when possible, or launch with the highest-ranked available volunteer.
 /datum/roundstart_away_mission/proc/seat_crew(list/candidates, allow_all, list/optional_assignments, obj/docking_port/mobile/stationtrauma_space/vessel)
-	var/list/ranked = rank_crew_candidates(candidates)
-	var/list/required_crew = match_required_crew(ranked)
-	if(!required_crew)
-		return FALSE
 	var/list/spawns = find_crew_spawns(vessel)
-	var/list/assigned = list()
 	for(var/datum/job/away_mission/job as anything in candidates)
 		var/list/job_spawns = spawns[job.type]
 		if(length(job_spawns) < job.spawn_positions)
@@ -235,19 +230,15 @@
 		job_spawns.Cut(job.spawn_positions + 1)
 		shuffle_inplace(job_spawns)
 
-	for(var/mob/dead/new_player/required_player as anything in required_crew)
-		var/datum/job/away_mission/job = required_crew[required_player]
-		assign_seats(job, list(required_player), spawns[job.type], assigned, allow_all, vessel)
-		if(!(required_player in assigned))
-			for(var/mob/dead/new_player/player as anything in assigned)
-				var/datum/job/away_mission/assigned_job = player.mind.assigned_role
-				assigned_job.current_positions--
-				assigned_job.roundstart_spawns -= player
-				player.mind.release_away_mission_seat()
-				QDEL_NULL(player.assigned_job_character)
-				player.mind.set_assigned_role(SSjob.get_job_type(/datum/job/unassigned))
-				SSjob.unassigned += player
-			return FALSE
+	var/has_crew = FALSE
+	if(allow_all || !SSjob.popcap_reached(length(crew_jobs) - 1))
+		var/list/full_crew = match_full_crew(rank_crew_candidates(candidates))
+		for(var/mob/dead/new_player/player as anything in full_crew)
+			var/datum/job/away_mission/job = full_crew[player]
+			if(assign_seat(job, player, spawns[job.type], allow_all, vessel))
+				has_crew = TRUE
+	if(!has_crew && !fill_optional_seats(candidates, spawns, allow_all, vessel, first_only = TRUE))
+		return FALSE
 
 	if(isnull(optional_assignments))
 		fill_optional_seats(candidates, spawns, allow_all, vessel)
@@ -255,33 +246,31 @@
 		optional_assignments[vessel] = CALLBACK(src, PROC_REF(fill_optional_seats), candidates, spawns, allow_all, vessel)
 	return TRUE
 
-/// Fill any remaining positions after the other hulls have reserved their essential crew.
-/datum/roundstart_away_mission/proc/fill_optional_seats(list/candidates, list/spawns, allow_all, obj/docking_port/mobile/stationtrauma_space/vessel)
+/// Fill vacancies in preference order, optionally stopping once the hull has its first volunteer.
+/datum/roundstart_away_mission/proc/fill_optional_seats(list/candidates, list/spawns, allow_all, obj/docking_port/mobile/stationtrauma_space/vessel, first_only = FALSE)
 	if(QDELETED(vessel))
 		return
 	var/list/ranked = rank_crew_candidates(candidates)
-	var/list/assigned = list()
 	for(var/priority in JP_HIGH to JP_LOW step -1)
 		for(var/datum/job/away_mission/job as anything in ranked)
 			var/list/levels = ranked[job]
-			assign_seats(job, levels[priority], spawns[job.type], assigned, allow_all, vessel)
+			for(var/mob/dead/new_player/player as anything in levels[priority])
+				if(assign_seat(job, player, spawns[job.type], allow_all, vessel) && first_only)
+					return TRUE
 
 /// The ban check already ran in find_crew. Recheck readiness and the live profile without yielding here.
-/datum/roundstart_away_mission/proc/assign_seats(datum/job/away_mission/job, list/volunteers, list/spawns, list/assigned, allow_all, obj/docking_port/mobile/stationtrauma_space/vessel)
-	for(var/mob/dead/new_player/player as anything in volunteers)
-		if(!length(spawns) || (!allow_all && SSjob.popcap_reached()))
-			break
-		if(QDELETED(player) || player.ready != PLAYER_READY_TO_PLAY || !is_unassigned_job(player.mind?.assigned_role) || !(player in SSjob.unassigned))
-			continue
-		var/client/player_client = GET_CLIENT(player)
-		var/datum/preferences/preferences = player_client?.prefs
-		if(!preferences?.get_away_job_priority(job))
-			continue
-		if(SSjob.assign_role(player, job, do_eligibility_checks = FALSE))
-			assigned += player
-			LAZYSET(job.roundstart_spawns, player, spawns[length(spawns)])
-			spawns.len--
-			vessel.record_away_crew(player.mind)
+/datum/roundstart_away_mission/proc/assign_seat(datum/job/away_mission/job, mob/dead/new_player/player, list/spawns, allow_all, obj/docking_port/mobile/stationtrauma_space/vessel)
+	if(!length(spawns) || job.current_positions >= job.total_positions || !vessel.has_away_vacancy(job) || (!allow_all && SSjob.popcap_reached()))
+		return FALSE
+	if(QDELETED(player) || !player.is_ready_to_play() || !is_unassigned_job(player.mind?.assigned_role) || !(player in SSjob.unassigned))
+		return FALSE
+	var/client/player_client = GET_CLIENT(player)
+	if(!player_client?.prefs.get_away_job_priority(job) || !SSjob.assign_role(player, job, do_eligibility_checks = FALSE))
+		return FALSE
+	LAZYSET(job.roundstart_spawns, player, spawns[length(spawns)])
+	spawns.len--
+	vessel.record_away_crew(player.mind)
+	return TRUE
 
 /obj/docking_port/mobile/stationtrauma_space
 	/// Formation slot used by this instance of an away mission template.
@@ -397,7 +386,7 @@
 	for(var/datum/roundstart_away_mission/mission as anything in roundstart_away_missions())
 		if(available_only && !mission.get_instance_limit())
 			continue
-		for(var/job_type in mission.minimum_crew)
+		for(var/job_type in mission.crew_jobs)
 			var/datum/job/away_mission/job = get_job_type(job_type)
 			if(job)
 				department.department_jobs |= job
@@ -495,11 +484,11 @@
 	var/list/missions = list()
 	for(var/datum/roundstart_away_mission/mission as anything in roundstart_away_missions())
 		var/list/roles = list()
-		for(var/job_type in mission.minimum_crew)
+		for(var/job_type in mission.crew_jobs)
 			var/datum/job/away_mission/job = SSjob.get_job_type(job_type)
 			if(job && job.spawn_positions > 0)
 				roles += list(list("title" = job.title, "description" = job.description, "slots" = job.spawn_positions))
-		if(length(roles) == length(mission.minimum_crew))
+		if(length(roles))
 			missions += list(list("name" = mission.name, "color" = /datum/job_department/away_missions::ui_color, "roles" = roles))
 	return list("away_missions" = missions)
 
@@ -521,7 +510,7 @@
 /// Find the mission that owns this crew job.
 /datum/job/away_mission/proc/get_away_mission()
 	for(var/datum/roundstart_away_mission/mission as anything in roundstart_away_missions())
-		if(type in mission.minimum_crew)
+		if(type in mission.crew_jobs)
 			return mission
 	return null
 

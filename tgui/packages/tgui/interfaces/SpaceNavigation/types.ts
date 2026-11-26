@@ -126,6 +126,7 @@ export type NavigationData = Position & {
   can_request_ship_dock: BooleanLike;
   dockable_contacts: number[];
   boardable_contacts?: number[];
+  can_board_site?: BooleanLike | null;
   boarding?: { incoming: BooleanLike; eta: number } | null;
   boarding_connected?: BooleanLike;
   boarding_release_ready?: BooleanLike;

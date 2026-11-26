@@ -141,7 +141,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			continue
 		var/list/role_rows = list()
 		var/list/role_details = list()
-		for(var/job_type in mission.minimum_crew)
+		for(var/job_type in mission.crew_jobs)
 			var/datum/job/away_mission/job = SSjob.get_job_type(job_type)
 			if(!job)
 				continue

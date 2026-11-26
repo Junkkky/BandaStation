@@ -60,8 +60,11 @@
 	data["power_ready"] = vessel.combat_power_managed || available_energy() >= ST_AUTOCANNON_SHOT_ENERGY
 	data["scan_ready"] = can_control && !map.preparing && !map.relocating && !map.jump_target && world.time >= map.next_scan
 	var/list/weapons = list()
+	var/list/muzzle_flashes = list()
 	for(var/obj/machinery/stationtrauma_autocannon/gun as anything in vessel.ship_autocannons)
 		var/obj/machinery/stationtrauma_autocannon_loader/loader = gun.interior_loader()
+		if(!isnull(gun.last_shot_time) && world.time - gun.last_shot_time <= 1 SECONDS)
+			muzzle_flashes += list(list("id" = "[REF(gun)]-[gun.last_shot_time]", "heading" = gun.last_shot_heading))
 		weapons += list(list(
 			"id" = REF(gun),
 			"name" = gun.name,
@@ -81,6 +84,7 @@
 			"min_range" = map.kinetic_launch_offset(),
 		))
 	data["weapons"] = weapons
+	data["muzzle_flashes"] = muzzle_flashes
 	return data
 
 /obj/machinery/computer/stationtrauma_weapon_console/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

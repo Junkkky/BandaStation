@@ -44,6 +44,8 @@ function Navigation({ data }: { data: NavigationData }) {
     (record) => record.id === focusedContact,
   );
   const boarding = data.boarding;
+  const siteBoarding =
+    focusedContact === null && data.can_board_site != null && !moored;
   const releaseEta = data.boarding_release_eta;
   const releasing = releaseEta != null;
   const boardingStatus = releasing
@@ -701,7 +703,7 @@ function Navigation({ data }: { data: NavigationData }) {
         >
           <span className="SpaceNavigation__status-dot" />
           <span>{boardingStatus || clearanceStatus || data.status}</span>
-          {(contact || boarding || data.boarding_connected) && (
+          {(contact || siteBoarding || boarding || data.boarding_connected) && (
             <div className="SpaceNavigation__boarding">
               {boarding?.incoming ? (
                 <div className="SpaceNavigation__boarding-warning" role="alert">
@@ -720,8 +722,10 @@ function Navigation({ data }: { data: NavigationData }) {
                           ? data.can_cancel_release
                           : data.boarding_release_ready)
                       : !boarding &&
-                        (!contact ||
-                          !data.boardable_contacts?.includes(contact.id))
+                        !(siteBoarding
+                          ? data.can_board_site
+                          : contact &&
+                            data.boardable_contacts?.includes(contact.id))
                   }
                   tooltip={
                     data.boarding_connected
@@ -730,7 +734,9 @@ function Navigation({ data }: { data: NavigationData }) {
                         : 'Для размыкания удерживайте тягу 90 секунд'
                       : boarding
                         ? undefined
-                        : 'Подойдите на дистанцию стыковки. Скорость обоих бортов должна быть не выше 1 км/с'
+                        : siteBoarding
+                          ? 'Подойдите к свободному причалу со скоростью до 1 км/с. Активный запрос на стыковку нужно отменить.'
+                          : 'Подойдите на дистанцию стыковки. Скорость обоих бортов должна быть не выше 1 км/с'
                   }
                   onClick={() => {
                     if (data.boarding_connected) {
@@ -743,6 +749,8 @@ function Navigation({ data }: { data: NavigationData }) {
                       act('cancel_boarding');
                     } else if (contact) {
                       act('board_ship', { value: contact.id });
+                    } else if (siteBoarding) {
+                      act('board_site', { value: data.selected });
                     }
                   }}
                 >

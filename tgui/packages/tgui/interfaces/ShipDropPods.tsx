@@ -19,6 +19,7 @@ const sections = {
 const results = {
   flying: 'Полёт',
   inside: 'Внутри корпуса',
+  landed: 'На объекте',
   rim: 'На кромке корпуса',
   rescue: 'Аварийный маяк активен',
   returned: 'Возвращена',
@@ -43,7 +44,7 @@ type Flight = {
   id: string;
   name: string;
   target: string;
-  section: HullSection;
+  section: HullSection | 'site';
   result: keyof typeof results;
   eta: number;
 };
@@ -51,6 +52,7 @@ type Flight = {
 type Data = ChartData & {
   launch_ready: BooleanLike;
   launch_range: number;
+  drop_sites: string[];
   scan_ready: BooleanLike;
   iron_cost: number;
   launchers: Launcher[];
@@ -78,7 +80,7 @@ export function ShipDropPods() {
 
 function DropControl({ data }: { data: Data }) {
   const { act } = useBackend();
-  const [contactId, selectContact] = useState<number | null>(null);
+  const [targetId, selectTarget] = useState<number | string | null>(null);
   const [launcherId, selectLauncher] = useState<string | null>(null);
   const [section, selectSection] = useState<HullSection | null>(null);
   const [zoom, setZoom] = useState(4);
@@ -86,13 +88,19 @@ function DropControl({ data }: { data: Data }) {
   const launchers = [...data.launchers].sort((a, b) => a.number - b.number);
   const launcher =
     launchers.find((entry) => entry.id === launcherId) ?? launchers[0];
-  const contact = data.ship_contacts.find((entry) => entry.id === contactId);
-  const distance = contact
-    ? Math.hypot(data.x - contact.x, data.y - contact.y)
+  const ship = data.ship_contacts.find((entry) => entry.id === targetId);
+  const site = data.routes.find(
+    (entry) => entry.id === targetId && data.drop_sites?.includes(entry.id),
+  );
+  const target = site ?? ship;
+  const landingSection = site ? 'site' : section;
+  const distance = target
+    ? Math.hypot(data.x - target.x, data.y - target.y)
     : null;
   const contactName =
-    contact?.identity?.callsign ||
-    (contact ? `Контакт ${contact.id}` : 'Цель не выбрана');
+    site?.name ||
+    ship?.identity?.callsign ||
+    (ship ? `Контакт ${ship.id}` : 'Цель не выбрана');
   const blocker = !data.launch_ready
     ? 'Пуск доступен в свободном полёте'
     : !launcher
@@ -105,11 +113,11 @@ function DropControl({ data }: { data: Data }) {
             ? 'Закройте люк капсулы'
             : !launcher.loaded
               ? 'Загрузите капсулу'
-              : !contact
-                ? 'Выберите корабль на карте'
+              : !target
+                ? 'Выберите корабль или станцию на карте'
                 : distance !== null && distance > data.launch_range
                   ? 'Цель вне дальности пуска'
-                  : !section
+                  : !landingSection
                     ? 'Выберите секцию корпуса'
                     : '';
 
@@ -126,11 +134,13 @@ function DropControl({ data }: { data: Data }) {
         <section className="SpaceNavigation__plot" aria-label="Карта сектора">
           <div className="SpaceNavigation__screen-label">КАРТА СЕКТОРА</div>
           <Chart
-            data={data}
+            data={{ ...data, selected: site?.id }}
             zoom={zoom}
-            focusedContact={contactId}
+            focusedContact={ship?.id ?? null}
             hoveredTarget={null}
-            onContact={selectContact}
+            onContact={selectTarget}
+            selectableSites={data.drop_sites ?? []}
+            onSite={selectTarget}
           />
           <div className="SpaceNavigation__legend ShipDropPods__plot-footer">
             <span>
@@ -158,24 +168,28 @@ function DropControl({ data }: { data: Data }) {
                 <span>{distanceLabel(distance, data.au_scale)}</span>
               )}
             </div>
-            <div
-              className="ShipDropPods__sections"
-              role="group"
-              aria-label="Секция корпуса"
-            >
-              {(Object.keys(sections) as HullSection[]).map((value) => (
-                <Button
-                  key={value}
-                  selected={section === value}
-                  aria-pressed={section === value}
-                  onClick={() => selectSection(value)}
-                >
-                  {sections[value]}
-                </Button>
-              ))}
-            </div>
+            {!site && (
+              <div
+                className="ShipDropPods__sections"
+                role="group"
+                aria-label="Секция корпуса"
+              >
+                {(Object.keys(sections) as HullSection[]).map((value) => (
+                  <Button
+                    key={value}
+                    selected={section === value}
+                    aria-pressed={section === value}
+                    onClick={() => selectSection(value)}
+                  >
+                    {sections[value]}
+                  </Button>
+                ))}
+              </div>
+            )}
             <p className="SpaceNavigation__help">
-              Щит при подлёте направит капсулу на кромку выбранной секции.
+              {site
+                ? 'Капсула сядет на свободную площадку объекта.'
+                : 'Щит при подлёте направит капсулу на кромку выбранной секции.'}
             </p>
             {!!launchers.length && (
               <div
@@ -220,7 +234,9 @@ function DropControl({ data }: { data: Data }) {
                   <li key={flight.id}>
                     <strong>{flight.name}</strong>
                     <span>
-                      {flight.target} · {sections[flight.section]}
+                      {flight.target}
+                      {flight.section !== 'site' &&
+                        ` · ${sections[flight.section]}`}
                     </span>
                     <span className="ShipDropPods__result">
                       {results[flight.result]}
@@ -239,11 +255,11 @@ function DropControl({ data }: { data: Data }) {
               icon="rocket"
               disabled={!!blocker}
               onClick={() => {
-                if (!blocker && launcher && contact && section) {
+                if (!blocker && launcher && target && landingSection) {
                   act('launch', {
                     launcher: launcher.id,
-                    contact: contact.id,
-                    section,
+                    contact: target.id,
+                    section: landingSection,
                   });
                 }
               }}

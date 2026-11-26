@@ -57,6 +57,37 @@
 	attempt.begin()
 	return TRUE
 
+/** Choose a compatible berth at the selected fixed installation, or revalidate the exact berth already claimed. */
+/datum/stationtrauma_overmap/space/proc/station_boarding_berth(datum/stationtrauma_overmap_site/space/docking_target/target, datum/stationtrauma_boarding_attempt/station/attempt)
+	if(!istype(target) || target.host || target.failed || !knows_site(target) || selected_destination != target.id || !available_for_ship_docking(attempt) \
+		|| jump_target || approach_started || speed > ST_BOARDING_SPEED || distance_to(target) > ST_SPACE_DOCK_RANGE || get_station_docking_request() || carrier_busy())
+		return null
+	if(attempt)
+		var/datum/stationtrauma_overmap_site/space/held = attempt.reserved_berth
+		return station_berth_available(held, target, src) && distance_to(held) <= ST_SPACE_DOCK_RANGE ? held : null
+	var/datum/stationtrauma_overmap_site/space/fallback
+	for(var/datum/stationtrauma_overmap_site/space/site as anything in target.berths)
+		if(!station_berth_available(site, target) || distance_to(site) > ST_SPACE_DOCK_RANGE)
+			continue
+		var/obj/docking_port/stationary/stationtrauma_space_station/standard/slot = site.berth
+		if(istype(slot) && slot.accepted_ship_class == vessel.ship_class)
+			return site
+		fallback ||= site
+	return fallback
+
+/** Address a discovered chart object, never a player-supplied physical port. */
+/datum/stationtrauma_overmap/space/proc/request_station_boarding(target_id)
+	if(!istext(target_id) || target_id != selected_destination)
+		return FALSE
+	advance()
+	var/datum/stationtrauma_overmap_site/space/site = station_boarding_berth(sites[target_id])
+	if(!site)
+		return FALSE
+	var/datum/stationtrauma_boarding_attempt/station/attempt = new(src)
+	attempt.reserved_berth = site
+	attempt.begin()
+	return TRUE
+
 /** Reserve both helms against competing capture attempts while both ships still fly independently. */
 /datum/stationtrauma_boarding_attempt
 	var/datum/stationtrauma_overmap/space/attacker
@@ -83,24 +114,30 @@
 	return ..()
 
 /datum/stationtrauma_boarding_attempt/proc/begin()
-	attacker.boarding_attempt = defender.boarding_attempt = src
+	attacker.boarding_attempt = src
 	end_time = world.time + ST_BOARDING_TIME
+	commit_timer = addtimer(CALLBACK(src, PROC_REF(complete)), ST_BOARDING_TIME, TIMER_STOPPABLE)
+	if(!defender)
+		return
+	defender.boarding_attempt = src
 	defender.record_ship_observation(attacker.vessel.shuttle_id, attacker, "signal")
 	defender.navigation_notice("ВНИМАНИЕ. Начата принудительная стыковка. До захвата [ST_BOARDING_TIME / (1 SECONDS)] с. Разгон выше [ST_BOARDING_SPEED] км/с сорвёт абордаж.", 'sound/effects/siren.ogg')
 	attacker.navigation_notice("Начат абордаж. Удерживайте оба борта в зоне захвата.")
-	commit_timer = addtimer(CALLBACK(src, PROC_REF(complete)), ST_BOARDING_TIME, TIMER_STOPPABLE)
 
 /datum/stationtrauma_boarding_attempt/proc/display_data(datum/stationtrauma_overmap/space/observer)
 	return list("incoming" = observer == defender, "eta" = max(0, end_time - world.time) / (1 SECONDS))
 
 /** Called after motion updates, so a brief excess speed still breaks the reservation. */
 /datum/stationtrauma_boarding_attempt/proc/check_approach()
-	var/problem = QDELETED(attacker) ? "корабль ушёл" : attacker.boarding_problem(defender, src)
+	var/problem = QDELETED(attacker) ? "корабль ушёл" : approach_problem()
 	if(!problem)
 		return TRUE
 	end_notice = "Абордаж сорван: [problem]."
 	qdel(src)
 	return FALSE
+
+/datum/stationtrauma_boarding_attempt/proc/approach_problem()
+	return attacker.boarding_problem(defender, src)
 
 /** Compute the placement while the pilots are still free, then revalidate before taking either helm. */
 /datum/stationtrauma_boarding_attempt/proc/complete()
@@ -126,6 +163,46 @@
 	end_notice = null
 	qdel(src)
 	link.join_hatches(guest, host, matched[3])
+
+/** A fixed installation can be boarded at a free mapped berth without a dispatcher's approval. */
+/datum/stationtrauma_boarding_attempt/station
+	/// Held through the countdown and native preflight; the docked ship takes ownership on arrival.
+	var/datum/stationtrauma_overmap_site/space/reserved_berth
+	/// Native docking performs the final footprint, order and ownership checks during this phase.
+	var/committing = FALSE
+
+/datum/stationtrauma_boarding_attempt/station/begin()
+	reserved_berth.docking_owner = attacker
+	..()
+	attacker.navigation_notice("Начат абордаж объекта «[reserved_berth.docking_target.name]». Удерживайте дистанцию и скорость до [ST_BOARDING_SPEED] км/с.")
+
+/datum/stationtrauma_boarding_attempt/station/Destroy()
+	if(!QDELETED(reserved_berth) && reserved_berth.docking_owner == attacker && attacker?.docked != reserved_berth)
+		reserved_berth.docking_owner = null
+	reserved_berth = null
+	return ..()
+
+/datum/stationtrauma_boarding_attempt/station/approach_problem()
+	if(!committing && !attacker.station_boarding_berth(reserved_berth?.docking_target, src))
+		return "цель или причал недоступны, превышена скорость или дистанция захвата"
+	return null
+
+/datum/stationtrauma_boarding_attempt/station/complete()
+	commit_timer = null
+	attacker.advance()
+	if(QDELETED(src) || !check_approach())
+		return
+	committing = TRUE
+	attacker.stop("Абордаж: захват причала")
+	var/arrived = attacker.dock(instant = TRUE, station_authorized = TRUE)
+	if(QDELETED(src))
+		return
+	if(arrived)
+		end_notice = null
+		attacker.navigation_notice("Абордаж завершён. Корабль пришвартован к причалу «[reserved_berth.name]».")
+	else if(!QDELETED(attacker))
+		end_notice = "Абордаж сорван. [attacker.status]"
+	qdel(src)
 
 /** Both hulls share one physical level and one inertial velocity after capture. */
 /datum/stationtrauma_ship_docking/boarding

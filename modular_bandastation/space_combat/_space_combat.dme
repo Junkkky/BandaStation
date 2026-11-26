@@ -2,6 +2,7 @@
 #include "code/hull_hit.dm"
 #include "code/compartments.dm"
 #include "code/admin_hull_hit.dm"
+#include "code/combat_sites.dm"
 #include "code/kinetic_shot.dm"
 #include "code/autocannon.dm"
 #include "code/weapon_console.dm"
