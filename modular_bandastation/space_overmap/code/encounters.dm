@@ -6,6 +6,8 @@
 	var/list/zone_timers = list()
 	/// Crew-local set of detected encounter regions.
 	var/list/charted_zones = list()
+	/// Starlight alpha the hull's compartments are lit with in the corona; 0 outside it
+	var/solar_glow = 0
 	/// Owned in-flight meteors cancelled before physical relocation.
 	var/list/live_meteors = list()
 	/// Easting used as the start of the next swept encounter check.
@@ -53,6 +55,8 @@
 		var/inside = zone.crosses(encounter_x, encounter_y, pos_x, pos_y)
 		if(!inside)
 			zone_timers -= zone
+			if(zone.kind == "corona")
+				set_solar_glow(0)
 			continue
 		encounter_status = zone.name
 		if(zone.kind == "nebula")
@@ -123,6 +127,7 @@
 	for(var/datum/stationtrauma_overmap_terrain/asteroid/rock in contacts)
 		rock.hide(src)
 	zone_timers.Cut()
+	set_solar_glow(0)
 	encounter_x = pos_x
 	encounter_y = pos_y
 	sensor_range = 600
@@ -137,6 +142,8 @@
 	var/dx = corona.pos_x - pos_x
 	var/dy = corona.pos_y - pos_y
 	var/heat = clamp(1 - sqrt(dx ** 2 + dy ** 2) / corona.radius, 0, 1)
+	// the light floods in long before the heat bites: blinding at a third of the way in
+	set_solar_glow(min(255, round(255 * heat * 3, 15)))
 	interference = max(interference, heat)
 	sensor_range = min(sensor_range, round(600 * (1 - 0.6 * heat)))
 	encounter_status = "[corona.name]: перегрев корпуса"
@@ -147,14 +154,14 @@
 	if(world.time < zone_timers[corona] || heat <= 0)
 		return
 	zone_timers[corona] = world.time + ST_STAR_HEAT_INTERVAL
-	var/limit = T20C + 250 * heat
+	var/limit = T20C + 400 * heat
 	for(var/turf/open/tile in vessel.return_turfs())
 		if(isspaceturf(tile) || !vessel.shuttle_areas[get_area(tile)])
 			continue
 		var/datum/gas_mixture/air = tile.air
 		if(!air || air.temperature >= limit)
 			continue
-		air.temperature = min(limit, air.temperature + 6 * heat)
+		air.temperature = min(limit, air.temperature + 20 * heat)
 		tile.air_update_turf(FALSE, FALSE)
 	if(!prob(50 * heat))
 		return
@@ -212,3 +219,34 @@
 	name = "мелкий космический обломок"
 	hits = 1
 	lifetime = 5 SECONDS
+
+/// Floods the hull's compartments with starlight of [alpha], or gives them back their own light at 0
+/datum/stationtrauma_overmap/space/proc/set_solar_glow(alpha)
+	if(alpha == solar_glow || QDELETED(vessel))
+		return
+	solar_glow = alpha
+	for(var/area/ship_area as anything in vessel.shuttle_areas)
+		if(alpha)
+			ship_area.set_base_lighting("#fff2cf", alpha)
+		else
+			ship_area.set_base_lighting(initial(ship_area.base_lighting_color), initial(ship_area.base_lighting_alpha))
+
+/// Courses keep out of the star's corona; a hull already inside may still head outwards
+/datum/stationtrauma_overmap/space/path_clear(ax, ay, bx, by)
+	. = ..()
+	if(!.)
+		return
+	for(var/datum/stationtrauma_overmap_zone/zone as anything in zones)
+		if(zone.kind != "corona")
+			continue
+		var/reach = zone.radius + radius
+		var/start = sqrt((ax - zone.pos_x) ** 2 + (ay - zone.pos_y) ** 2)
+		var/finish = sqrt((bx - zone.pos_x) ** 2 + (by - zone.pos_y) ** 2)
+		if(start < reach && finish > start)
+			continue
+		// nearest point of the leg to the star
+		var/dx = bx - ax
+		var/dy = by - ay
+		var/along = (dx || dy) ? clamp(((zone.pos_x - ax) * dx + (zone.pos_y - ay) * dy) / (dx ** 2 + dy ** 2), 0, 1) : 0
+		if(sqrt((ax + dx * along - zone.pos_x) ** 2 + (ay + dy * along - zone.pos_y) ** 2) < reach)
+			return FALSE
