@@ -189,6 +189,8 @@
 				"ascent_orbit" = liftoff ? (liftoff + ST_PLANET_ASCENT_ORBIT - map.approach_started) / (1 SECONDS) : null,
 			)
 	// A planet is unknown ground until this ship's probes have covered it; its pads appear once it is mapped.
+	data["planet"] = null
+	data["planet_look"] = null
 	var/datum/stationtrauma_overmap_site/space/planet/planet = target
 	if(istype(planet))
 		var/datum/stationtrauma_planet_survey/survey = map.planet_survey(planet)
@@ -201,8 +203,9 @@
 		)
 		// as much as this ship's probes have read
 		var/list/facts = survey?.facts()
-		if(length(facts))
-			data["planet"] = facts
+		// sent even empty: a value left out would keep showing the last planet's survey
+		data["planet"] = length(facts) ? facts : null
+		data["planet_look"] = planet.orbit_look
 	data["jump_progress"] = map.jump_progress()
 	return data
 

@@ -247,8 +247,10 @@
 	selected_destination = id
 	trip_distance = distance_to(site)
 	travelled = 0
-	var/list/position = site_position(site)
-	ordered_course = delta_to_angle(position[1] - pos_x, position[2] - pos_y)
+	// a hull under way keeps its heading: picking a destination, or only looking one up, aims the helm only while stopped
+	if(!helm_engaged || speed <= ST_NAV_STOPPED_SPEED)
+		var/list/position = site_position(site)
+		ordered_course = delta_to_angle(position[1] - pos_x, position[2] - pos_y)
 	return TRUE
 
 /** Recheck after any yielded preparation; a stop invalidates pending arrival. */

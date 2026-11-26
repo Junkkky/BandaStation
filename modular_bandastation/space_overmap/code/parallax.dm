@@ -376,3 +376,11 @@
 		if(zone.kind == "asteroids" && (pos_x - zone.pos_x) ** 2 + (pos_y - zone.pos_y) ** 2 <= zone.radius ** 2)
 			return /atom/movable/screen/parallax_layer/random/asteroids
 	return /atom/movable/screen/parallax_layer/layer_3
+
+/// Looking out at the planet beyond the hull: what it shows to the eye, before any survey
+/turf/open/space/examine(mob/user)
+	. = ..()
+	var/obj/docking_port/mobile/stationtrauma_space/ship = SSshuttle.get_containing_shuttle(user)
+	var/datum/stationtrauma_overmap_site/space/planet/planet = istype(ship) ? ship.overmap?.parallax_site() : null
+	if(istype(planet))
+		. += span_notice("За бортом висит [planet.name]. [planet.orbit_look]")

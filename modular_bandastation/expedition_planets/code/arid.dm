@@ -5,6 +5,7 @@
 /** Hot oxygen-free surface profile with saline mineral research sources. */
 /datum/stationtrauma_overmap_site/space/planet/arid
 	name = "Пустынная экзопланета"
+	orbit_look = "Рыжий шар пустынь и выветренных скал под редкими облаками."
 	generator_type = /datum/map_generator/expedition_barren/arid
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/arid
 	biome = "Песчаные равнины, сухие русла и каменистые пустоши"

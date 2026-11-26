@@ -1,6 +1,7 @@
 /** A cool temperate woodland, distinct from the jungle profile. */
 /datum/stationtrauma_overmap_site/space/planet/forest
 	name = "Лесная экзопланета"
+	orbit_look = "Тёмно-зелёные леса, синие жилы рек и озёр под облаками."
 	generator_type = /datum/map_generator/expedition_barren/forest
 	parallax_layer = /atom/movable/screen/parallax_layer/expedition_planet/lush
 	biome = "Хвойные леса, тёмная почва, ручьи и лесные озёра"
