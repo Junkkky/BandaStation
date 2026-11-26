@@ -7,7 +7,7 @@
 	var/jump_phase = NONE
 	/// Owned stoppable timers for intermediate hyperspace effects.
 	var/list/jump_effect_timers = list()
-	/// Sound channel the bluespace ambience plays on aboard, from the drive's start until the jump ends; null otherwise
+	/// Sound channel the bluespace ambience plays on aboard, from the drive's start until it or the jump ends; null otherwise
 	var/bluespace_ambience_channel
 
 /** Only charted links between resident sectors can be used; a physical dock must first be released. */
@@ -66,12 +66,12 @@
 	sync_carrier()
 	return TRUE
 
-/** The bluespace ambience starts with the drive, for everyone aboard, and loops until the jump ends */
+/** The bluespace ambience plays once for everyone aboard, from the drive's start; a jump that ends first cuts it short */
 /datum/stationtrauma_overmap/space/proc/start_bluespace_ambience()
 	if(bluespace_ambience_channel)
 		return
 	bluespace_ambience_channel = SSsounds.reserve_sound_channel_for_datum(src)
-	var/sound/ambience = sound('modular_bandastation/space_overmap/sound/bluespace_ambience.ogg', repeat = TRUE, channel = bluespace_ambience_channel, volume = 40)
+	var/sound/ambience = sound('modular_bandastation/space_overmap/sound/bluespace_ambience.ogg', repeat = FALSE, channel = bluespace_ambience_channel, volume = 40)
 	for(var/mob/crew as anything in SSmobs.clients_by_zlevel[vessel.z])
 		if(vessel.is_in_shuttle_bounds(crew))
 			SEND_SOUND(crew, ambience)
