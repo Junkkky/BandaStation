@@ -52,6 +52,8 @@
 
 	///Whether the bodypart (and the owner) is husked.
 	var/is_husked = NONE
+	/// Retains the appearance of a cremated limb when it is severed.
+	var/cremation_stage = NONE
 	///Whether the bodypart (and the owner) is invisible through invisibleman trait.
 	var/is_invisible = FALSE
 	///The ID of a species used to generate the icon. Needs to match the icon_state portion in the limbs file!
@@ -1211,13 +1213,16 @@
 			// wash also adds the blood dna again
 			wash(CLEAN_TYPE_BLOOD)
 			bodypart_flags &= ~BODYPART_VIRGIN
+		if(owner)
+			cremation_stage = NONE
 		if(!(bodypart_flags & BODYPART_UNHUSKABLE) && owner && HAS_TRAIT(owner, TRAIT_HUSK))
 			dmg_overlay_type = "" //no damage overlay shown when husked
 			is_husked = HAS_TRAIT_FROM_ONLY(owner, TRAIT_HUSK, /datum/status_effect/zombie::id) ? HUSKED_ZOMBIE : HUSKED_BURN
+			cremation_stage = owner.cremation_stage
 		else if(owner && HAS_TRAIT(owner, TRAIT_INVISIBLE_MAN))
 			dmg_overlay_type = "" //no damage overlay shown when invisible since the wounds themselves are invisible.
 			is_invisible = TRUE
-		else
+		else if(cremation_stage < CREMATION_CHARRED)
 			dmg_overlay_type = initial(dmg_overlay_type)
 			is_husked = NONE
 			is_invisible = FALSE
@@ -1358,7 +1363,14 @@
 	// Normal non-husk handling
 	// This is the MEAT of limb icon code
 	var/used_icon = (should_draw_greyscale && icon_greyscale) || icon_static
-	var/used_state = "[limb_id]_[body_zone][is_dimorphic ? "_[limb_gender]" : ""]"
+	var/sprite_id = limb_id
+	var/draw_bone = cremation_stage >= CREMATION_SKELETON
+	if(cremation_stage == CREMATION_CHARRED)
+		draw_bone = body_zone == BODY_ZONE_CHEST || istype(src, /obj/item/bodypart/arm)
+	if(draw_bone)
+		used_icon = 'icons/mob/human/bodyparts.dmi'
+		sprite_id = SPECIES_SKELETON
+	var/used_state = "[sprite_id]_[body_zone][!draw_bone && is_dimorphic ? "_[limb_gender]" : ""]"
 
 	var/image/limb = image(used_icon, used_state, -BODYPARTS_LAYER, dir = image_dir)
 	var/image/aux = null
@@ -1368,7 +1380,7 @@
 	.[limb] = LIMB_OVERLAY_TEXTURED|LIMB_OVERLAY_CORE
 
 	if(aux_zone) //Hand shit
-		aux = image(limb.icon, "[limb_id]_[aux_zone]", -aux_layer, dir = image_dir)
+		aux = image(limb.icon, "[sprite_id]_[aux_zone]", -aux_layer, dir = image_dir)
 		.[aux] = LIMB_OVERLAY_TEXTURED|LIMB_OVERLAY_CORE
 
 	if(dropped && dmg_overlay_type)
@@ -1409,7 +1421,9 @@
 				aux_em = image(aux_em, dir = SOUTH)
 			.[aux_em] = LIMB_OVERLAY_META
 
-	if(is_husked)
+	if(draw_bone)
+		draw_color = cremation_stage == CREMATION_CHARRED ? COLOR_GRAY : null
+	else if(is_husked)
 		for(var/image/husk_image as anything in huskify_image(limb))
 			.[husk_image] = LIMB_OVERLAY_TEXTURED|LIMB_OVERLAY_CORE
 		if(aux)
@@ -1448,7 +1462,7 @@
 	// Draw external organs like horns and frills
 	// Height is applied again in here so we can specify where the overlay is set (ie offset_location)
 	for(var/datum/bodypart_overlay/overlay as anything in bodypart_overlays)
-		if(!overlay.can_draw_on_bodypart(src, owner))
+		if(draw_bone || !overlay.can_draw_on_bodypart(src, owner))
 			continue
 
 		for (var/actual_overlay, actual_overlay_flags in overlay.get_all_overlays(src))
@@ -1461,7 +1475,7 @@
 
 	// Then texture everything at once, including bodypart overlays
 	for(var/datum/bodypart_texture/texture as anything in bodypart_textures)
-		if(!texture.can_texture_bodypart(src))
+		if(draw_bone || !texture.can_texture_bodypart(src))
 			continue
 		for(var/generated_overlay, generated_overlay_flags in .)
 			if(!(generated_overlay_flags & LIMB_OVERLAY_TEXTURED))
