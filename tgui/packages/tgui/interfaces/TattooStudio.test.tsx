@@ -6,8 +6,9 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
+import { useAtomValue } from 'jotai';
 import * as actions from '../events/act';
-import { gameDataAtom, store } from '../events/store';
+import { backendStateAtom, gameDataAtom, store } from '../events/store';
 import { TattooStudio } from './TattooStudio';
 
 const originalImage = globalThis.Image;
@@ -66,6 +67,7 @@ it('reviews the exact tattoo before removal and only lets the customer or manneq
 });
 
 function mockLimb(mask = new Uint8ClampedArray(32 * 32 * 4).fill(255)) {
+  const fillRect = mock();
   globalThis.Image = class extends originalImage {
     set src(_url: string) {
       this.width = this.height = 32;
@@ -75,12 +77,156 @@ function mockLimb(mask = new Uint8ClampedArray(32 * 32 * 4).fill(255)) {
   spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue({
     clearRect() {},
     drawImage() {},
-    fillRect() {},
+    fillRect,
     save() {},
     restore() {},
     getImageData: () => ({ data: mask }),
   } as unknown as CanvasRenderingContext2D);
+  return fillRect;
 }
+
+const artistDraft = {
+  role: 'artist',
+  phase: 'draft',
+  revision: 1,
+  palette: ['#262638'],
+  body: 'body.png',
+  mask: 'mask.png',
+};
+const centerDot = '1'.padStart(2081, '0').padEnd(4096, '0');
+
+it('updates the watching customer from server strokes through review without reopening', async () => {
+  const ink = mockLimb();
+  const act = spyOn(actions, 'sendAct');
+  // RoutedComponent subscribes to the backend atom and renders the active interface.
+  function CustomerWindow() {
+    useAtomValue(backendStateAtom, { store });
+    return <TattooStudio />;
+  }
+  const customer = { ...artistDraft, role: 'client' };
+  store.set(gameDataAtom, customer);
+  render(<CustomerWindow />);
+  await screen.findByLabelText('Эскиз на выбранном участке кожи');
+  expect(ink).not.toHaveBeenCalled();
+  fireEvent.click(screen.getByText('Обновить эскиз'));
+  expect(act).toHaveBeenLastCalledWith('sync');
+  await reactAct(async () =>
+    store.set(gameDataAtom, { ...customer, draft: centerDot, revision: 2 }),
+  );
+  expect(ink).toHaveBeenCalledWith(32, 32, 1, 1);
+  await reactAct(async () =>
+    store.set(gameDataAtom, {
+      ...customer,
+      draft: centerDot,
+      revision: 3,
+      phase: 'review',
+    }),
+  );
+  expect(screen.queryByText('Мастер рисует эскиз.')).toBeNull();
+  fireEvent.click(screen.getByText('Одобрить нанесение'));
+  expect(act).toHaveBeenLastCalledWith('approve', { revision: 3, save: false });
+});
+
+it('uploads a large edit in URL-safe batches and keeps newer strokes until every batch is acknowledged', async () => {
+  mockLimb();
+  spyOn(HTMLMediaElement.prototype, 'play').mockResolvedValue(undefined);
+  const act = spyOn(actions, 'sendAct');
+  const original = '1'.repeat(810).padEnd(4096, '0');
+  store.set(gameDataAtom, { ...artistDraft, draft: original });
+  const view = render(<TattooStudio />);
+  const canvas = await screen.findByLabelText(
+    'Эскиз на выбранном участке кожи',
+  );
+  fireEvent.click(screen.getByText('Очистить'));
+  fireEvent.click(screen.getByText('Очистить?'));
+  fireEvent.keyDown(canvas, { key: ' ' });
+  store.set(gameDataAtom, {
+    ...artistDraft,
+    draft: original,
+    stencilError: 'Ошибка имени',
+  });
+  view.rerender(<TattooStudio />);
+  for (const [batch, count] of [400, 400, 11].entries()) {
+    const [action, args] = act.mock.calls[batch]!;
+    expect(action).toBe('draw_patch');
+    expect(args?.revision).toBe(batch + 1);
+    const patch = String(args?.patch);
+    expect(patch).toHaveLength(count * 3);
+    expect(encodeURIComponent(patch)).toBe(patch);
+    expect(encodeURIComponent(JSON.stringify(args)).length).toBeLessThan(1800);
+    if (batch === 0) expect(patch.slice(0, 6)).toBe('000010');
+    if (batch === 2) expect(patch.slice(-3)).toBe('WW1');
+    fireEvent.click(screen.getByText('Показать на согласование'));
+    expect(act).toHaveBeenCalledTimes(batch + 1);
+    const changed = (batch + 1) * 400;
+    const remote =
+      batch === 2 ? centerDot : '0'.repeat(changed) + original.slice(changed);
+    store.set(gameDataAtom, {
+      ...artistDraft,
+      draft: remote,
+      revision: batch + 2,
+    });
+    view.rerender(<TattooStudio />);
+  }
+  fireEvent.click(screen.getByText('Показать на согласование'));
+  expect(act).toHaveBeenLastCalledWith('review');
+});
+
+it('retries a missing acknowledgement a bounded number of times and allows manual recovery', async () => {
+  mockLimb();
+  spyOn(HTMLMediaElement.prototype, 'play').mockResolvedValue(undefined);
+  const act = spyOn(actions, 'sendAct');
+  store.set(gameDataAtom, artistDraft);
+  const view = render(<TattooStudio />);
+  const canvas = await screen.findByLabelText(
+    'Эскиз на выбранном участке кожи',
+  );
+  const timers = spyOn(window, 'setTimeout');
+  fireEvent.keyDown(canvas, { key: ' ' });
+  for (let i = 0; i < 3; i++) {
+    expect(act).toHaveBeenLastCalledWith('draw_patch', {
+      patch: 'WW1',
+      revision: 1,
+    });
+    const index = timers.mock.calls.findLastIndex(
+      ([, delay]) => delay === 2000,
+    );
+    const timer = timers.mock.results[index];
+    expect(timer.type).toBe('return');
+    window.clearTimeout(timer.value as ReturnType<typeof window.setTimeout>);
+    const callback = timers.mock.calls[index][0];
+    reactAct(() => callback());
+  }
+  expect(timers.mock.calls.filter(([, delay]) => delay === 2000)).toHaveLength(
+    3,
+  );
+  expect(act).toHaveBeenCalledTimes(3);
+  fireEvent.click(screen.getByText('Повторить отправку'));
+  expect(act).toHaveBeenCalledTimes(4);
+  store.set(gameDataAtom, {
+    ...artistDraft,
+    drawRejected: 1,
+    drawRejectedRevision: 1,
+  });
+  view.rerender(<TattooStudio />);
+  expect(screen.getByText(/Сервер отклонил изменения/)).toBeDefined();
+  fireEvent.click(screen.getByText('Повторить отправку'));
+  expect(act).toHaveBeenLastCalledWith('draw_patch', {
+    patch: 'WW1',
+    revision: 1,
+  });
+  store.set(gameDataAtom, {
+    ...artistDraft,
+    draft: centerDot,
+    revision: 2,
+    drawRejected: 1,
+    drawRejectedRevision: 1,
+  });
+  view.rerender(<TattooStudio />);
+  expect(screen.queryByText('Повторить отправку')).toBeNull();
+  fireEvent.click(screen.getByText('Показать на согласование'));
+  expect(act).toHaveBeenLastCalledWith('review');
+});
 
 it('saves an acknowledged sketch, applies the stencil to a blank canvas and edits it', async () => {
   mockLimb();
@@ -109,8 +255,11 @@ it('saves an acknowledged sketch, applies the stencil to a blank canvas and edit
   expect(act).not.toHaveBeenCalled();
 
   fireEvent.keyDown(canvas, { key: ' ' });
-  const pixels = act.mock.calls[0]?.[1]?.pixels;
-  expect(typeof pixels).toBe('string');
+  expect(act).toHaveBeenLastCalledWith('draw_patch', {
+    patch: 'WW1',
+    revision: 1,
+  });
+  const pixels = centerDot;
   fireEvent.click(screen.getByText('Сохранить эскиз'));
   expect(act).toHaveBeenCalledTimes(1);
   store.set(gameDataAtom, { ...draft, draft: pixels, revision: 2 });
@@ -137,10 +286,10 @@ it('saves an acknowledged sketch, applies the stencil to a blank canvas and edit
   view.rerender(<TattooStudio />);
   fireEvent.keyDown(canvas, { key: 'ArrowRight' });
   fireEvent.keyDown(canvas, { key: ' ' });
-  const edited = act.mock.calls.at(-1);
-  expect(edited?.[0]).toBe('draw');
-  expect(edited?.[1]?.revision).toBe(4);
-  expect(edited?.[1]?.pixels).not.toBe(pixels);
+  expect(act).toHaveBeenLastCalledWith('draw_patch', {
+    patch: 'WX1',
+    revision: 4,
+  });
 });
 
 it('confirms deletion of the selected personal stencil and hides the library from the customer', async () => {
@@ -250,13 +399,13 @@ it('plays a local motor while a stroke lays down fresh ink and stops on idle or 
   pointer('pointermove', 7);
   expect(play).toHaveBeenCalledTimes(1);
   await waitFor(() => expect(pause).toHaveBeenCalledTimes(1));
+  expect(act.mock.calls[0]?.[0]).toBe('draw_patch');
   pointer('pointermove', 7);
   expect(play).toHaveBeenCalledTimes(1);
   pointer('pointermove', 8);
   expect(play).toHaveBeenCalledTimes(2);
   pointer('pointerup', 8);
   expect(pause).toHaveBeenCalledTimes(2);
-  expect(act.mock.calls[0]?.[0]).toBe('draw');
   fireEvent.click(screen.getByText('Ластик'));
   pointer('pointerdown', 8);
   pointer('pointercancel', 8);

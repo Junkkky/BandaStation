@@ -43,6 +43,7 @@ type StudioData = SessionData & {
   draft: string;
   palette: string[];
   drawRejected?: number;
+  drawRejectedRevision?: number | null;
   occupied?: Dir[];
   stencils?: Stencil[] | null;
   stencilLimit?: number;
@@ -58,6 +59,24 @@ type RemovalData = SessionData & {
 const SIZE = 32;
 const DETAIL = SIZE * 2;
 const EMPTY = '0'.repeat(DETAIL * DETAIL);
+const PIXEL_DIGITS =
+  '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_';
+const PATCH_PIXELS = 400;
+const ACK_TIMEOUT = 2000;
+
+function nextDraftPatch(from: string, to: string, revision: number) {
+  if (from === to) return null;
+  const expected = from.split('');
+  let patch = '';
+  for (let i = 0; i < from.length && patch.length < PATCH_PIXELS * 3; i++) {
+    if (from[i] === to[i]) continue;
+    patch += PIXEL_DIGITS[Math.floor(i / 64)] + PIXEL_DIGITS[i % 64] + to[i];
+    expected[i] = to[i];
+  }
+  return { patch, revision, pixels: expected.join('') };
+}
+
+type DrawPatch = NonNullable<ReturnType<typeof nextDraftPatch>>;
 const pigments: Record<string, string> = {
   '#262638': 'Графит',
   '#aa264b': 'Кармин',
@@ -343,8 +362,15 @@ function Studio() {
   const occupied = data.occupied || [];
   const editable = choosing && !occupied.includes(data.direction);
   const remote = data.draft || EMPTY;
-  const rejectedCount = useRef(data.drawRejected);
-  const [rejected, setRejected] = useState(false);
+  const server = useRef({
+    pixels: remote,
+    revision: data.revision,
+    rejected: data.drawRejected,
+  });
+  const [sync, setSync] = useState<'idle' | 'sending' | 'timeout' | 'rejected'>(
+    'idle',
+  );
+  const [painting, setPainting] = useState(false);
   const [cursor, setCursor] = useState<Point | null>(null);
   const [surface, setSurface] = useState<Surface | null>(null);
   const [failed, setFailed] = useState(false);
@@ -352,7 +378,9 @@ function Studio() {
   const [pixels, setPixels] = useState(remote);
   const current = useRef(remote);
   const committed = useRef(remote);
-  const flight = useRef<{ pixels: string; revision: number } | null>(null);
+  const flight = useRef<DrawPatch | null>(null);
+  const sendTimer = useRef<number | undefined>(undefined);
+  const strokeTimer = useRef<number | undefined>(undefined);
   const history = useRef<string[]>([]);
   const stroke = useRef<{ id: number; before: string; point: Point } | null>(
     null,
@@ -401,27 +429,105 @@ function Studio() {
     };
   }, [data.body, data.mask]);
 
-  // Keep unsent strokes local while the previous full snapshot is in flight.
+  const sendPatch = useCallback(
+    (packet: DrawPatch) => {
+      window.clearTimeout(sendTimer.current);
+      flight.current = packet;
+      setSync('sending');
+      let attempts = 0;
+      function send() {
+        if (flight.current !== packet) return;
+        if (attempts === 3) {
+          setSync('timeout');
+          return;
+        }
+        attempts++;
+        act('draw_patch', { patch: packet.patch, revision: packet.revision });
+        sendTimer.current = window.setTimeout(send, ACK_TIMEOUT);
+      }
+      send();
+    },
+    [act],
+  );
+
+  const flush = useCallback(() => {
+    if (flight.current) return;
+    const next = nextDraftPatch(
+      server.current.pixels,
+      committed.current,
+      server.current.revision,
+    );
+    if (next) sendPatch(next);
+    else setSync('idle');
+  }, [sendPatch]);
+
+  useEffect(
+    () => () => {
+      window.clearTimeout(sendTimer.current);
+      window.clearTimeout(strokeTimer.current);
+    },
+    [],
+  );
+
+  // A status-only update must not rewind the brush or clear unsent edits.
   useEffect(() => {
+    const previous = server.current;
+    if (
+      previous.pixels === remote &&
+      previous.revision === data.revision &&
+      previous.rejected === data.drawRejected
+    )
+      return;
+    server.current = {
+      pixels: remote,
+      revision: data.revision,
+      rejected: data.drawRejected,
+    };
     const sent = flight.current;
-    const denied = rejectedCount.current !== data.drawRejected;
-    rejectedCount.current = data.drawRejected;
-    if (sent && data.revision === sent.revision && !denied) return;
-    flight.current = null;
-    if (sent && sent.pixels === remote && !denied) {
-      if (committed.current !== remote) {
-        flight.current = { pixels: committed.current, revision: data.revision };
-        act('draw', flight.current);
+    if (sent) {
+      if (sent.revision !== data.revision && sent.pixels === remote) {
+        window.clearTimeout(sendTimer.current);
+        flight.current = null;
+        flush();
+      } else if (
+        sent.revision !== data.revision ||
+        (previous.rejected !== data.drawRejected &&
+          (data.drawRejectedRevision == null ||
+            data.drawRejectedRevision === sent.revision))
+      ) {
+        window.clearTimeout(sendTimer.current);
+        setSync('rejected');
       }
       return;
     }
-    if (denied && sent) setRejected(true);
+    if (previous.pixels === remote) return;
+    if (editable && current.current !== previous.pixels) {
+      // A local stroke may have started while a server-side stencil was being applied.
+      const combined = remote.split('');
+      for (let i = 0; i < remote.length; i++) {
+        if (current.current[i] !== previous.pixels[i])
+          combined[i] = current.current[i];
+      }
+      current.current = committed.current = combined.join('');
+      setPixels(current.current);
+      flush();
+      return;
+    }
     current.current = committed.current = remote;
     history.current = [];
     stroke.current = null;
+    setPainting(false);
     stopMotor();
     setPixels(remote);
-  }, [remote, data.revision, data.drawRejected, act, stopMotor]);
+  }, [
+    remote,
+    data.revision,
+    data.drawRejected,
+    data.drawRejectedRevision,
+    editable,
+    flush,
+    stopMotor,
+  ]);
 
   useEffect(() => {
     if (surface && editor.current && preview.current) {
@@ -447,13 +553,11 @@ function Studio() {
   }, [surface, pixels, data.palette, cursor]);
 
   function commit(next: string) {
-    setRejected(false);
+    window.clearTimeout(strokeTimer.current);
+    strokeTimer.current = undefined;
     current.current = committed.current = next;
     setPixels(next);
-    if (!flight.current && next !== remote) {
-      flight.current = { pixels: next, revision: data.revision };
-      act('draw', flight.current);
-    }
+    flush();
   }
 
   function remember(before: string) {
@@ -495,6 +599,13 @@ function Studio() {
     if (next === current.current) return;
     current.current = next;
     setPixels(next);
+    if (strokeTimer.current === undefined) {
+      strokeTimer.current = window.setTimeout(() => {
+        strokeTimer.current = undefined;
+        committed.current = current.current;
+        flush();
+      }, 150);
+    }
     if (color && motor.current) {
       if (motorIdle.current === undefined) {
         motor.current.play().catch(() => {});
@@ -508,6 +619,7 @@ function Studio() {
     if (!stroke.current) return;
     const { before } = stroke.current;
     stroke.current = null;
+    setPainting(false);
     if (before !== current.current) {
       remember(before);
       commit(current.current);
@@ -521,7 +633,7 @@ function Studio() {
   }
 
   const hasInk = pixels !== EMPTY;
-  const busy = flight.current?.revision === data.revision || pixels !== remote;
+  const busy = sync !== 'idle' || painting || pixels !== remote;
   const scale = surface
     ? Math.min(12, Math.floor(252 / Math.max(surface.width, surface.height)))
     : 1;
@@ -626,6 +738,7 @@ function Studio() {
                     )
                       return;
                     event.currentTarget.setPointerCapture(event.pointerId);
+                    setPainting(true);
                     setCursor(null);
                     const point = position(event);
                     stroke.current = {
@@ -714,9 +827,26 @@ function Studio() {
         </Section>
       )}
       <Section>
-        {artist && rejected && (
-          <Box color="bad" mb={1}>
-            Сервер отклонил изменения. Восстановлен последний принятый эскиз.
+        {artist && (sync === 'timeout' || sync === 'rejected') && (
+          <Box mb={1}>
+            <Box color="bad" mb={0.5}>
+              {sync === 'timeout'
+                ? 'Нет подтверждения от сервера.'
+                : 'Сервер отклонил изменения.'}{' '}
+              Ваш эскиз остался на холсте.
+            </Box>
+            <Button
+              onClick={() => {
+                if (sync === 'timeout' && flight.current) {
+                  sendPatch(flight.current);
+                } else {
+                  flight.current = null;
+                  flush();
+                }
+              }}
+            >
+              Повторить отправку
+            </Button>
           </Box>
         )}
         {data.phase === 'draft' &&
@@ -731,6 +861,9 @@ function Studio() {
           ) : (
             <Box inline mr={1}>
               Мастер рисует эскиз.
+              <Button ml={1} onClick={() => act('sync')}>
+                Обновить эскиз
+              </Button>
             </Box>
           ))}
         {data.phase === 'review' && (
