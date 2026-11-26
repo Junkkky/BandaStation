@@ -3590,7 +3590,7 @@
 "aSC" = (
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	name = "Eva Chamber";
-	req_one_access = list("gateway","mining","cargo","medical");
+	req_one_access = list("explorer");
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -15381,7 +15381,7 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	name = "Eva Chamber";
-	req_one_access = list("gateway","mining","cargo","medical");
+	req_one_access = list("explorer");
 	dir = 8
 	},
 /turf/open/floor/iron/dark/smooth_large,
@@ -21054,7 +21054,7 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	name = "Eva Chamber";
-	req_one_access = list("gateway","mining","cargo","medical");
+	req_one_access = list("explorer");
 	dir = 8
 	},
 /turf/open/floor/iron/dark/smooth_large,
@@ -46620,6 +46620,20 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/expedition/common)
+"lcI" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/leader,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/airlock/research/expedition,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/preopen{
+	id = "expedition_lockdown";
+	name = "Expedition Lockdown Blast Doors"
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/expedition/common)
 "lcK" = (
 /obj/machinery/papershredder,
 /obj/machinery/firealarm/directional/west,
@@ -51489,7 +51503,7 @@
 "mlh" = (
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	name = "Eva Chamber";
-	req_one_access = list("gateway","mining","cargo","medical");
+	req_one_access = list("explorer");
 	dir = 8
 	},
 /obj/effect/landmark/start/explorer/pilot,
@@ -59177,7 +59191,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/expedition/common)
@@ -74068,7 +74082,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/mapping_helpers/airlock/access/all/expedition/general,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/expedition/common)
@@ -74603,7 +74617,7 @@
 	},
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	name = "Eva Chamber";
-	req_one_access = list("gateway","mining","cargo","medical");
+	req_one_access = list("explorer");
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
@@ -83737,7 +83751,8 @@
 	pixel_x = 1;
 	id = "expedition_lockdown";
 	name = "Expedition Lockdown";
-	pixel_y = -25
+	pixel_y = -25;
+	req_access = list("expedition_leader")
 	},
 /obj/effect/turf_decal/trimline/purple/line{
 	dir = 10
@@ -180147,7 +180162,7 @@ vEu
 ixA
 ouA
 bIX
-lcH
+lcI
 rVl
 bpp
 dIB
