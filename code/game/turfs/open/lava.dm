@@ -270,6 +270,10 @@
 			if(LAVA_BE_BURNING)
 				if(!do_burn(burn_target, seconds_per_tick))
 					continue
+				// Entry and impact also call burn_stuff; only processing represents time spent in lava.
+				if(!to_burn && ishuman(burn_target) && lava_temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
+					var/mob/living/carbon/human/body = burn_target
+					body.advance_cremation(seconds_per_tick)
 		. = TRUE
 
 /// Wrapper for can_burn_stuff that checks if something can be burnt and caches the result
@@ -315,6 +319,10 @@
 			return LAVA_BE_PROCESSING
 
 	return LAVA_BE_BURNING
+
+/// Direct lava contact handles cremation in place of the fire it ignites.
+/turf/open/lava/proc/is_burning_occupant(mob/living/occupant)
+	return lava_temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST && !is_safe() && can_burn_stuff(occupant) == LAVA_BE_BURNING
 
 #undef LAVA_BE_IGNORING
 #undef LAVA_BE_PROCESSING

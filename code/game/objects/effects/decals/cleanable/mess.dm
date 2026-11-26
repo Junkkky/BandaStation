@@ -25,6 +25,13 @@
 /obj/effect/decal/cleanable/ash/NeverShouldHaveComeHere(turf/here_turf)
 	return !istype(here_turf, /obj/structure/bodycontainer/crematorium) && ..()
 
+/// Cremated remains float on the lava surface without keeping the lava processing.
+/obj/effect/decal/cleanable/ash/floating
+	movement_type = FLOATING
+
+/obj/effect/decal/cleanable/ash/floating/NeverShouldHaveComeHere(turf/here_turf)
+	return !islava(here_turf) && ..()
+
 /obj/effect/decal/cleanable/ash/large
 	name = "large pile of ashes"
 	icon_state = "big_ash"

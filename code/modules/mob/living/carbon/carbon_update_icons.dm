@@ -479,6 +479,8 @@
 	. += limb_id
 	. += husk_type
 	. += is_husked == HUSKED_ZOMBIE ? "zombie_husk" : "burn_husk"
+	if(cremation_stage >= CREMATION_CHARRED)
+		. += "cremation[cremation_stage]"
 	. += body_zone
 	if(is_invisible)
 		. += "invisible"
