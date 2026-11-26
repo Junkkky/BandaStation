@@ -944,9 +944,9 @@
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
 "OK" = (
-/obj/effect/landmark/away_mission/nt_patrol_officer,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/nt_patrol/passage)
+/obj/effect/landmark/away_mission/nt_patrol_pilot,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "OL" = (
 /obj/structure/closet/secure_closet{
 	name = "Патрульное снаряжение";
@@ -1527,7 +1527,7 @@ aa
 aa
 tm
 RY
-ai
+OK
 aS
 bh
 wL
@@ -1539,7 +1539,7 @@ TL
 tn
 vd
 UP
-OK
+vF
 mR
 tA
 MW

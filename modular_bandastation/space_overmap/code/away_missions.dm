@@ -21,6 +21,7 @@
 	ship_names = list("Брут", "Степь", "Рубеж", "Форпост", "Гранит", "Сапсан", "Дозорный", "Меридиан")
 	crew_jobs = list(
 		/datum/job/away_mission/nt_patrol_commander,
+		/datum/job/away_mission/nt_patrol_pilot,
 		/datum/job/away_mission/nt_patrol_engineer,
 		/datum/job/away_mission/nt_patrol_medic,
 		/datum/job/away_mission/nt_patrol_officer,
@@ -557,10 +558,17 @@
 
 /datum/job/away_mission/nt_patrol_commander
 	title = "Командир патруля НТ"
-	description = "Ведёт корабль, координирует экипаж и закупает припасы на довольствие от Нанотрейзен."
+	description = "Координирует экипаж и закупает припасы на довольствие от Нанотрейзен."
 	paycheck = 1000
 	externally_funded_paycheck = TRUE
 	outfit = /datum/outfit/job/nt_patrol/commander
+
+/// Patrol crew member responsible for navigation and docking.
+/datum/job/away_mission/nt_patrol_pilot
+	title = "Пилот патруля НТ"
+	description = "Управляет эсминцем, прокладывает курс и выполняет стыковку."
+	supervisors = "командиром патруля НТ"
+	outfit = /datum/outfit/job/nt_patrol/pilot
 
 /datum/job/away_mission/nt_patrol_engineer
 	title = "Бортинженер патруля НТ"
@@ -578,8 +586,8 @@
 	title = "Патрульный НТ"
 	description = "Охраняет экипаж и сопровождает досмотровую группу."
 	supervisors = "командиром патруля НТ"
-	spawn_positions = 7
-	total_positions = 7
+	spawn_positions = 6
+	total_positions = 6
 	outfit = /datum/outfit/job/nt_patrol
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 
@@ -593,6 +601,10 @@
 
 /obj/effect/landmark/away_mission/nt_patrol_commander
 	job_type = /datum/job/away_mission/nt_patrol_commander
+
+/// Pilot's starting position next to the helm.
+/obj/effect/landmark/away_mission/nt_patrol_pilot
+	job_type = /datum/job/away_mission/nt_patrol_pilot
 
 /obj/effect/landmark/away_mission/nt_patrol_engineer
 	job_type = /datum/job/away_mission/nt_patrol_engineer
@@ -636,6 +648,11 @@
 	subdepartment_color = COLOR_CENTCOM_BLUE
 	sechud_icon_state = SECHUD_EMERGENCY_RESPONSE_TEAM_COMMANDER
 
+/// Patrol credentials identifying the ship's pilot.
+/datum/id_trim/nt_patrol/pilot
+	assignment = /datum/job/away_mission/nt_patrol_pilot::title
+	sechud_icon_state = SECHUD_CENTCOM
+
 /datum/id_trim/nt_patrol/engineer
 	assignment = /datum/job/away_mission/nt_patrol_engineer::title
 	trim_state = "trim_stationengineer"
@@ -671,6 +688,7 @@
 	r_pocket = /obj/item/flashlight/seclite
 	backpack = /obj/item/storage/backpack/ert/security
 	box = /obj/item/storage/box/survival/centcom
+	implants = list(/obj/item/implant/mindshield)
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded/hos = 1,
 		/obj/item/storage/box/handcuffs = 1,
@@ -689,6 +707,15 @@
 		/obj/item/melee/baton/security/loaded/hos = 1,
 		/obj/item/clothing/head/beret/ert/red = 1,
 	)
+
+/// Patrol pilot's flight gear.
+/datum/outfit/job/nt_patrol/pilot
+	name = "Пилот патруля НТ"
+	jobtype = /datum/job/away_mission/nt_patrol_pilot
+	id_trim = /datum/id_trim/nt_patrol/pilot
+	suit_store = null
+	belt = null
+	backpack_contents = null
 
 /datum/outfit/job/nt_patrol/engineer
 	name = "Бортинженер патруля НТ"

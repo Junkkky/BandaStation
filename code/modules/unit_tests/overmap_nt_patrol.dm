@@ -49,6 +49,8 @@
 	SSsound_loops.can_fire = FALSE
 	var/datum/roundstart_away_mission/nt_patrol/mission = locate() in roundstart_away_missions()
 	TEST_ASSERT_NOTNULL(mission, "The patrol destroyer must be available from the mission pool")
+	var/datum/job/away_mission/pilot = SSjob.get_job("Пилот патруля НТ")
+	TEST_ASSERT(pilot && pilot.get_away_mission() == mission, "The patrol roster must offer a pilot")
 	SSmapping.current_map.space_overmap = original_overmap || list("station_id" = "unit_test")
 	SSjob.away_mission_limits = list(/datum/roundstart_away_mission/nt_patrol = 1)
 	SSjob.update_away_job_capacity()
@@ -269,7 +271,7 @@
 
 	var/list/optional_assignments = list()
 	TEST_ASSERT(mission.seat_crew(candidates, TRUE, optional_assignments, ship), "The full crew must be found even when the first commander candidate is the only medic")
-	TEST_ASSERT_EQUAL(length(SSjob.unassigned), 7, "Reserve only essential positions until other hulls have picked their crews")
+	TEST_ASSERT_EQUAL(length(SSjob.unassigned), 6, "Reserve one volunteer per role until other hulls have picked their crews")
 	var/datum/callback/fill_seats = optional_assignments[ship]
 	fill_seats.Invoke()
 	TEST_ASSERT_EQUAL(commander_player.assigned_job_character?.slot, profile_slot, "Roundstart must reserve the assigned character instead of the editing slot")
@@ -281,6 +283,13 @@
 		for(var/mob/dead/new_player/player as anything in job.roundstart_spawns?.Copy())
 			var/turf/tile = job.get_roundstart_spawn_point(player)
 			TEST_ASSERT(tile && ship.is_in_shuttle_bounds(tile) && !(tile in destinations), "Every admitted player needs a distinct spawn inside the real hull")
+			if(job == pilot)
+				TEST_ASSERT(locate(/obj/machinery/computer/stationtrauma_space_navigation) in range(1, tile), "The pilot must spawn next to the actual navigation console")
+				var/mob/living/carbon/human/pilot_character = allocate(/mob/living/carbon/human/consistent, tile)
+				pilot_character.backpack = DBACKPACK
+				pilot_character.dress_up_as_job(pilot)
+				TEST_ASSERT(HAS_TRAIT(pilot_character, TRAIT_MINDSHIELD), "The pilot must receive the crew's Mindshield during outfitting")
+				qdel(pilot_character)
 			destinations += tile
 	TEST_ASSERT_EQUAL(length(destinations), 10, "The complete roster must consume ten distinct role landmarks")
 	TEST_ASSERT(!ship.has_away_vacancy(commander), "A filled commander position must be closed on its own hull")
