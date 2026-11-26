@@ -33,7 +33,7 @@
 	jobtype = /datum/job/explorer/pilot
 	uniform = /obj/item/clothing/under/expedition/corps/pilot
 	id_trim = /datum/id_trim/job/explorer/pilot
-	suit = /obj/item/clothing/suit/toggle/expedition
+	suit = /obj/item/clothing/suit/jacket/expedition/pilot
 
 /datum/outfit/job/explorer/medic
 	name = JOB_EXPEDITION_MEDIC

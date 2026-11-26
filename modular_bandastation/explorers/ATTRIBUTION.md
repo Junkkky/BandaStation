@@ -113,3 +113,15 @@
 | Инженер (`corps_engineer`, `_d`) | `engineer_jumpsuit`: [onmob](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi), [obj](https://github.com/ss220club/BandaMarines/blob/4e71a52a15e1c2ab56b11b05c26e0f0a87bb4122/icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi) |
 
 Мод пилота: самые яркие фиолетовые детали затемнены до тонов полевого МОДа.
+
+## Куртки корпуса
+
+`suits.dmi` и `suits_worn.dmi`, состояния `corps_jacket*`, перекрашены в палитру полевого МОДа корпуса (графит; фиолетовые акценты, у медика синие):
+
+| Куртка | Источник |
+| --- | --- |
+| Полевая (`corps_jacket`) | Voidcrew-LRP (Shiptest, CC BY-SA 3.0), `militaryjacket`: [onmob](https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/icons/mob/clothing/suit.dmi), [obj](https://github.com/Void-Crew/Voidcrew-LRP/blob/66c552922bf2a28963c2a8f5d89993623a141a1f/icons/obj/clothing/suits.dmi) |
+| Пилот (`corps_jacket_pilot`) | TG, `bomberjacket` (`icons/*/clothing/suits/jacket.dmi`), целиком в тёмные тона |
+| Глава (`corps_jacket_leader`) | Voidcrew-LRP, `officerjacket` |
+| Медик (`corps_jacket_medic`, `_t`) | Voidcrew-LRP, `labcoat_paramedic` |
+| Инженер (`corps_jacket_engineer`, `_t`) | Voidcrew-LRP, `jacket_hazard` |

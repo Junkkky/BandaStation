@@ -90,18 +90,48 @@
 	worn_icon_state = "pilotnt"
 	inhand_icon_state = "helmet"
 
-/obj/item/clothing/suit/toggle/expedition
-	name = "куртка экспедиционного корпуса"
-	desc = "Удобная куртка с парой карманов для личных вещей."
+/// The corps' field jacket, with a pair of pockets for small things
+/obj/item/clothing/suit/jacket/expedition
+	name = "полевая куртка экспедиционного корпуса"
+	desc = "Плотная полевая куртка корпуса с фиолетовыми нашивками на плечах и парой карманов."
 	icon = 'modular_bandastation/explorers/icons/suits.dmi'
 	worn_icon = 'modular_bandastation/explorers/icons/suits_worn.dmi'
-	icon_state = "trackjacket"
+	icon_state = "corps_jacket"
+	inhand_icon_state = "syndicate-black"
+	body_parts_covered = CHEST|ARMS
+
+/obj/item/clothing/suit/jacket/expedition/Initialize(mapload)
+	. = ..()
+	create_storage(max_slots = 2, max_specific_storage = WEIGHT_CLASS_SMALL, max_total_storage = WEIGHT_CLASS_SMALL * 2)
+
+/obj/item/clothing/suit/jacket/expedition/pilot
+	name = "лётный бомбер экспедиционного корпуса"
+	desc = "Тёмный лётный бомбер пилота корпуса с меховым воротником."
+	icon_state = "corps_jacket_pilot"
+
+/obj/item/clothing/suit/jacket/expedition/leader
+	name = "офицерская куртка главы экспедиционного корпуса"
+	desc = "Чёрная офицерская куртка главы корпуса с фиолетовыми знаками различия."
+	icon_state = "corps_jacket_leader"
+
+/// Corps coats that open with alt-click
+/obj/item/clothing/suit/toggle/expedition
+	name = "куртка полевого медика"
+	desc = "Тёмная куртка полевого медика корпуса с синим крестом. Расстёгивается."
+	icon = 'modular_bandastation/explorers/icons/suits.dmi'
+	worn_icon = 'modular_bandastation/explorers/icons/suits_worn.dmi'
+	icon_state = "corps_jacket_medic"
 	inhand_icon_state = "syndicate-black"
 	body_parts_covered = CHEST|ARMS
 
 /obj/item/clothing/suit/toggle/expedition/Initialize(mapload)
 	. = ..()
 	create_storage(max_slots = 2, max_specific_storage = WEIGHT_CLASS_SMALL, max_total_storage = WEIGHT_CLASS_SMALL * 2)
+
+/obj/item/clothing/suit/toggle/expedition/engineer
+	name = "сигнальная куртка полевого инженера"
+	desc = "Рабочая куртка полевого инженера корпуса со светоотражающими полосами. Расстёгивается."
+	icon_state = "corps_jacket_engineer"
 
 /obj/item/clothing/accessory/expedition_webbing
 	name = "разгрузка экспедиционного корпуса"
