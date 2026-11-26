@@ -477,6 +477,11 @@
 
 #include "../../../modular_bandastation/bug_reports/tests/bug_reports_test.dm" // BANDASTATION ADDITION - In-game bug reports
 #include "../../../modular_bandastation/examine_panel/tests/portrait_preferences.dm"
+#include "../../../modular_bandastation/tattoo_artist/code/design_tests.dm"
+#include "../../../modular_bandastation/tattoo_artist/code/persistence_tests.dm"
+#include "../../../modular_bandastation/tattoo_artist/code/removal_tests.dm"
+#include "../../../modular_bandastation/tattoo_artist/code/session_tests.dm"
+#include "../../../modular_bandastation/tattoo_artist/code/stencil_tests.dm"
 
 // AI EDIT START - Separate ear slots
 // BANDASTATION ADDITION START - Separate ear slots

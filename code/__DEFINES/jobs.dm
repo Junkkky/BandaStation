@@ -102,6 +102,7 @@
 #define JOB_CLOWN "Clown"
 #define JOB_MIME "Mime"
 #define JOB_CURATOR "Curator"
+#define JOB_TATTOO_ARTIST "Tattoo Artist"
 #define JOB_CHAPLAIN "Chaplain"
 #define JOB_PSYCHOLOGIST "Psychologist"
 #define JOB_PUN_PUN "Pun Pun"
@@ -202,6 +203,7 @@
 #define JOB_DISPLAY_ORDER_CHAPLAIN 10
 #define JOB_DISPLAY_ORDER_PSYCHOLOGIST 11
 #define JOB_DISPLAY_ORDER_PUN_PUN 12
+#define JOB_DISPLAY_ORDER_TATTOO_ARTIST 13
 // Silicon
 #define JOB_DISPLAY_ORDER_AI 1
 #define JOB_DISPLAY_ORDER_HUMAN_AI 2
