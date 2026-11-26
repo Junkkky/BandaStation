@@ -47,19 +47,10 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/cargo_s)
-"cK" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/stationtrauma_space/cargo_s)
-"eh" = (
-/obj/effect/turf_decal/loading_area,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 2
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark/textured,
+"cH" = (
+/obj/effect/turf_decal/stripes/full,
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/cargo_s)
 "gF" = (
 /obj/structure/cable,
@@ -73,6 +64,12 @@
 /obj/effect/turf_decal/loading_area,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/cargo_s)
+"ic" = (
+/obj/machinery/computer/stationtrauma_space_navigation{
+	use_power = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
 "lB" = (
 /obj/docking_port/mobile/stationtrauma_space{
 	area_type = /area/shuttle/stationtrauma_space/cargo_s;
@@ -92,9 +89,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/cargo_s)
-"mu" = (
+"mT" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/structure/cable,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
+"om" = (
 /obj/machinery/computer/stationtrauma_transponder{
-	dir = 2;
 	circuit = /obj/item/circuitboard/computer/stationtrauma_transponder/nt/cargo_s
 	},
 /turf/open/floor/iron/dark,
@@ -118,6 +122,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/cargo_s)
+"qK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/cargo_s)
 "rY" = (
 /obj/machinery/door/airlock/shuttle/glass{
 	dir = 1;
@@ -125,19 +134,6 @@
 	name = "Рубка"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/supply/general,
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/cargo_s)
-"tp" = (
-/obj/machinery/door/airlock/external{
-	dir = 2;
-	air_tight = 1;
-	closeOtherId = "overmap_cargo_s_eva";
-	name = "Внутренний шлюз"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
-/obj/effect/turf_decal/stripes/full{
-	dir = 2
-	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/cargo_s)
 "uH" = (
@@ -162,18 +158,16 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/cargo_s)
+"Ad" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/stationtrauma_space/cargo_s)
 "Ap" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
-	},
-/turf/open/floor/iron,
-/area/shuttle/stationtrauma_space/cargo_s)
-"AH" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 2
 	},
 /turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/cargo_s)
@@ -185,6 +179,10 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/cargo_s)
+"Cs" = (
+/obj/machinery/computer/stationtrauma_bluespace,
+/turf/open/floor/iron/dark,
+/area/shuttle/stationtrauma_space/cargo_s/bridge)
 "Ea" = (
 /obj/machinery/door/airlock/stationtrauma_docking/ship{
 	dir = 4
@@ -198,48 +196,12 @@
 /obj/machinery/holopad/ship,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/cargo_s/bridge)
-"Fu" = (
-/obj/machinery/power/shuttle_engine/propulsion{
-	dir = 2
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/stationtrauma_space/cargo_s/exterior)
-"Fw" = (
-/obj/machinery/door/airlock/external{
-	dir = 2;
-	air_tight = 1;
-	closeOtherId = "overmap_cargo_s_eva";
-	name = "Наружный шлюз"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
-/obj/effect/turf_decal/stripes/full{
-	dir = 2
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/cargo_s)
-"Gx" = (
-/obj/machinery/computer/stationtrauma_space_navigation{
-	dir = 2;
-	use_power = 1
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/cargo_s/bridge)
 "Ho" = (
 /obj/machinery/atmospherics/components/tank/air/layer4{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/cargo_s)
-"JC" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 2
-	},
-/obj/structure/cable,
-/obj/structure/chair/comfy/shuttle{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/cargo_s/bridge)
 "JW" = (
 /turf/open/space/basic,
 /area/space)
@@ -263,42 +225,54 @@
 "Lx" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/stationtrauma_space/cargo_s/bridge)
-"Nz" = (
-/obj/effect/turf_decal/stripes/full{
-	dir = 2
+"Pt" = (
+/obj/machinery/door/airlock/external{
+	air_tight = 1;
+	closeOtherId = "overmap_cargo_s_eva";
+	name = "Внутренний шлюз"
 	},
-/obj/structure/extinguisher_cabinet/directional/east,
-/turf/open/floor/iron,
+/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/turf_decal/stripes/full,
+/turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/cargo_s)
-"PU" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 2
-	},
+"PM" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/structure/cable,
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/cargo_s/bridge)
+"RQ" = (
+/obj/effect/turf_decal/loading_area,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured,
+/area/shuttle/stationtrauma_space/cargo_s)
+"RX" = (
+/obj/machinery/power/shuttle_engine/propulsion,
+/turf/open/floor/plating/airless,
+/area/shuttle/stationtrauma_space/cargo_s/exterior)
 "Tv" = (
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/cargo_s)
-"TS" = (
-/obj/machinery/computer/stationtrauma_bluespace{
-	dir = 2
+"TQ" = (
+/obj/machinery/door/airlock/external{
+	air_tight = 1;
+	closeOtherId = "overmap_cargo_s_eva";
+	name = "Наружный шлюз"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/turf_decal/stripes/full,
 /turf/open/floor/iron/dark,
-/area/shuttle/stationtrauma_space/cargo_s/bridge)
+/area/shuttle/stationtrauma_space/cargo_s)
 "UO" = (
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/cargo_s)
-"WO" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 2
-	},
-/obj/structure/cable,
-/turf/closed/wall/mineral/titanium/nodiagonal,
+"XV" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
 /area/shuttle/stationtrauma_space/cargo_s)
 
 (1,1,1) = {"
@@ -361,7 +335,7 @@ JW
 (4,1,1) = {"
 JW
 qd
-TS
+Cs
 EZ
 rY
 Bn
@@ -374,22 +348,22 @@ Bn
 UO
 pH
 yI
-Fu
+RX
 JW
 "}
 (5,1,1) = {"
 JW
 qd
-Gx
-JC
-WO
-eh
-eh
-eh
-eh
+ic
+PM
+qK
+RQ
+RQ
+RQ
+RQ
 lB
-eh
-eh
+RQ
+RQ
 qH
 Ho
 yI
@@ -399,20 +373,20 @@ JW
 (6,1,1) = {"
 JW
 qd
-mu
-PU
-cK
-AH
-AH
-AH
-AH
+om
+mT
+Ad
+XV
+XV
+XV
+XV
 KB
-AH
-AH
+XV
+XV
 Km
 yI
 yI
-Fu
+RX
 JW
 "}
 (7,1,1) = {"
@@ -427,10 +401,10 @@ gM
 gM
 Ap
 BX
-Nz
-tp
+cH
+Pt
 Tv
-Fw
+TQ
 JW
 JW
 "}
