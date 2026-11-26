@@ -22,8 +22,10 @@
 /obj/item/radio/headset/headset_cargo/explorer/pilot
 	name = "лётные наушники пилота экспедиционного корпуса"
 	desc = "Большие закрытые наушники пилота корпуса с коротковолновым режимом. Защищают слух от вспышек и рёва двигателей."
-	icon_state = "com_headset_alt"
-	worn_icon_state = "com_headset_alt"
+	icon = 'modular_bandastation/explorers/icons/gear.dmi'
+	worn_icon = 'modular_bandastation/explorers/icons/gear_worn.dmi'
+	icon_state = "pilot_headphones"
+	worn_icon_state = "pilot_headphones"
 
 /obj/item/radio/headset/headset_cargo/explorer/pilot/Initialize(mapload)
 	. = ..()
