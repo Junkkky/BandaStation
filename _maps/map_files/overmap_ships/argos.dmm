@@ -112,9 +112,8 @@
 	req_access = list("cent_general")
 	},
 /obj/structure/sign/poster/official/nanotrasen_logo/directional/east,
-/obj/machinery/door/window/brigdoor/left/directional/east{
-	req_access = list("cent_general");
-	dir = 2
+/obj/machinery/door/window/brigdoor/left/directional/south{
+	req_access = list("cent_general")
 	},
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/shuttle/stationtrauma_space/argos/eva)
@@ -156,9 +155,8 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/life_support)
 "ao" = (
-/obj/machinery/door/window/brigdoor/left/directional/east{
-	req_access = list("cent_general");
-	dir = 2
+/obj/machinery/door/window/brigdoor/left/directional/south{
+	req_access = list("cent_general")
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/life_support)
@@ -169,9 +167,8 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
-/obj/machinery/door/window/brigdoor/left/directional/east{
-	req_access = list("cent_general");
-	dir = 8
+/obj/machinery/door/window/brigdoor/left/directional/west{
+	req_access = list("cent_general")
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/engineering/life_support)
@@ -196,9 +193,8 @@
 /area/shuttle/stationtrauma_space/argos/engineering/power)
 "au" = (
 /obj/effect/turf_decal/stripes/red/line,
-/obj/machinery/door/window/brigdoor/left/directional/east{
-	req_access = list("cent_general");
-	dir = 2
+/obj/machinery/door/window/brigdoor/left/directional/south{
+	req_access = list("cent_general")
 	},
 /obj/structure/closet/crate/secure/weapon{
 	name = "Боезапас корабельных орудий";
@@ -1129,9 +1125,7 @@
 /obj/machinery/computer/stationtrauma_planet_survey{
 	dir = 8
 	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 4
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/argos/bridge)
 "da" = (
