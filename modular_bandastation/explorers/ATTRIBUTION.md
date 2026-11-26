@@ -125,3 +125,7 @@
 | Глава (`corps_jacket_leader`) | Voidcrew-LRP, `officerjacket` |
 | Медик (`corps_jacket_medic`, `_t`) | Voidcrew-LRP, `labcoat_paramedic` |
 | Инженер (`corps_jacket_engineer`, `_t`) | Voidcrew-LRP, `jacket_hazard` |
+
+## Наушники пилота
+
+`gear.dmi` и `gear_worn.dmi`, состояние `pilot_headphones`: TG, `com_headset_alt` (`icons/obj/clothing/headsets.dmi`, `icons/mob/clothing/ears.dmi`), перекрашен в палитру полевого МОДа корпуса: голубые вставки — фиолетовые, корпус — графит.
