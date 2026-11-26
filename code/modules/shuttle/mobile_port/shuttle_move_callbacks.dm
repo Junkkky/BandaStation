@@ -382,17 +382,21 @@ All ShuttleMove procs go here
 	if(. & MOVE_AREA)
 		. |= MOVE_CONTENTS
 
-/obj/structure/cable/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
-	. = ..()
-	// An overmap move can still be vetoed on available thrust. Its committed takeoff disconnects the grid.
-	var/obj/docking_port/mobile/stationtrauma_space/ship = moving_dock
-	if(!istype(ship) || !ship.overmap?.docking_relocation)
-		cut_cable_from_powernet(FALSE)
+/obj/structure/cable/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
+	// Disconnect only on committed takeoff, and discard links to the source turfs before the move can yield.
+	cut_cable_from_powernet(FALSE)
+	disconnect_cable()
+	linked_dirs = NONE
+	return ..()
 
 /obj/structure/cable/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
 	connect_cable(TRUE)
-	propagate_if_no_network()
+	// A neighbour's callback may have already assigned this cable to a partial network.
+	for(var/direction in GLOB.cardinals)
+		if(linked_dirs & direction)
+			mergeConnectedNetworks(direction)
+	mergeConnectedNetworksOnTurf()
 
 /obj/machinery/power/shuttle_engine/hypotheticalShuttleMove(move_mode)
 	. = ..()

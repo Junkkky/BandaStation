@@ -247,3 +247,46 @@
 		nozzle.on_construction()
 		installation += nozzle
 		rebuild_nozzle()
+
+/// A half-turn must keep the tritium feed and the tank's other port on their original pipelines.
+/datum/unit_test/overmap_standard_dock/nozzles/fusion_tank_rotation/Run()
+	var/obj/machinery/atmospherics/components/tank/tritium/tank = allocate(/obj/machinery/atmospherics/components/tank/tritium, get_step(inlet, NORTH))
+	tank.set_portdir_relative(NORTH, TRUE)
+	tank.set_portdir_relative(SOUTH, TRUE)
+	tank.set_init_directions()
+	var/obj/machinery/atmospherics/pipe/smart/auxiliary = allocate(/obj/machinery/atmospherics/pipe/smart, get_step(tank, NORTH))
+	installation += list(tank, auxiliary)
+	for(var/obj/machinery/atmospherics/part as anything in list(reactor, inlet, outlet, tank, auxiliary))
+		part.atmos_init()
+		SSair.add_to_rebuild_queue(part)
+	var/deadline = world.time + 5 SECONDS
+	UNTIL((inlet.parent && auxiliary.parent && !inlet.parent.building && !auxiliary.parent.building && reactor.parents[2] && !reactor.parents[2].building) || world.time >= deadline)
+	var/datum/pipeline/fuel = inlet.parent
+	var/datum/pipeline/other = auxiliary.parent
+	TEST_ASSERT(fuel && other && fuel != other && reactor.parents[1] == fuel, "The starting reactor feed and auxiliary line must be separate")
+	TEST_ASSERT(tank.return_pipenet(inlet) == fuel && tank.return_pipenet(auxiliary) == other, "Both tank ports must be connected before docking")
+	var/datum/gas_mixture/fuel_port_air = tank.airs[tank.nodes.Find(inlet)]
+	var/datum/gas_mixture/auxiliary_port_air = tank.airs[tank.nodes.Find(auxiliary)]
+
+	var/obj/docking_port/stationary/stationtrauma_space_flight/origin = navigation.flight_berth
+	var/turf/berth_tile = locate(37, 37, bay.z)
+	prepare_vacuum(locate(berth_tile.x - hull_width, berth_tile.y - hull_length, berth_tile.z), berth_tile, navigation.exterior)
+	var/obj/docking_port/stationary/stationtrauma_space_flight/rotated_berth = allocate(/obj/docking_port/stationary/stationtrauma_space_flight, berth_tile)
+	rotated_berth.width = origin.width
+	rotated_berth.height = origin.height
+	rotated_berth.dwidth = origin.dwidth
+	rotated_berth.dheight = origin.dheight
+	rotated_berth.setDir(SOUTH)
+	navigation.flight_berth = rotated_berth
+	var/moved = navigation.relocate(rotated_berth)
+	navigation.flight_berth = origin
+	qdel(rotated_berth, force = TRUE)
+	TEST_ASSERT(moved && ship.dir == SOUTH, "The hull must dock after turning 180 degrees")
+
+	TEST_ASSERT(inlet.parent == fuel && auxiliary.parent == other, "Docking must preserve the two distinct gas networks")
+	TEST_ASSERT(tank.return_pipenet(inlet) == fuel && tank.return_pipenet(auxiliary) == other, "Each tank port must keep its own pipeline")
+	TEST_ASSERT(tank.airs[tank.nodes.Find(inlet)] == fuel_port_air && tank.airs[tank.nodes.Find(auxiliary)] == auxiliary_port_air, "Each tank port must keep its own gas buffer")
+	fuel.reconcile_air()
+	reactor.active = TRUE
+	reactor.process(1)
+	TEST_ASSERT(reactor.fuel_flow > 0, "Tritium from the moved tank must still feed the reactor")

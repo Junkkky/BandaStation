@@ -97,6 +97,12 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 	set_init_directions(rotated_directions)
 	var/list/supposed_node_connect = get_node_connects()
 	var/list/nodes_copy = nodes.Copy()
+	var/obj/machinery/atmospherics/components/component = src
+	var/list/parents_copy
+	var/list/airs_copy
+	if(istype(component))
+		parents_copy = component.parents.Copy()
+		airs_copy = component.airs.Copy()
 
 	for(var/i in 1 to device_type)
 		var/node_dir = real_node_connect[i]
@@ -105,6 +111,10 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 
 		var/new_pos = supposed_node_connect.Find(node_dir)
 		nodes[new_pos] = nodes_copy[i]
+		// The pipeline and gas buffer belong to the same physical port as its node.
+		if(parents_copy)
+			component.parents[new_pos] = parents_copy[i]
+			component.airs[new_pos] = airs_copy[i]
 
 /** Cable cuts rotate with the hull before the native late-move network rebuild. */
 /obj/structure/cable/shuttleRotate(rotation, params)
