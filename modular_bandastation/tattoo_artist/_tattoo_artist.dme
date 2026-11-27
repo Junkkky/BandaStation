@@ -3,6 +3,7 @@
 #include "code/job.dm"
 #include "code/supplies.dm"
 #include "code/design.dm"
+#include "code/projection.dm"
 #include "code/persistence.dm"
 #include "code/machine.dm"
 #include "code/session.dm"

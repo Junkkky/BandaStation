@@ -114,6 +114,10 @@
 	var/obj/item/clothing/under/uniform = allocate(/obj/item/clothing/under/color/grey)
 	TEST_ASSERT(other.equip_to_slot_if_possible(uniform, ITEM_SLOT_ICLOTHING) && !new_arm.tattoo_is_exposed(), "The round-start uniform did not cover the new arm.")
 	var/slot_side = "[arm.body_zone]:[design.side]"
+	first_slot = preferences.savefile.get_entry("character1")
+	var/list/saved_tattoos = first_slot["drawn_tattoos"]
+	var/list/saved_design = saved_tattoos[slot_side]
+	TEST_ASSERT(length(saved_tattoos) == 1 && saved_design?["all_views"] == TRUE, "Saving a new tattoo must write its four views as one drawing.")
 	for(var/invalid_field in list("skin", "bitmap", "palette"))
 		first_slot = preferences.savefile.get_entry("character1")
 		var/list/records = first_slot["drawn_tattoos"]
@@ -128,7 +132,22 @@
 	var/datum/bodypart_overlay/drawn_tattoo/restored = locate() in new_arm.bodypart_overlays
 	TEST_ASSERT_NOTNULL(restored, "No overlay was attached to the restored limb.")
 	TEST_ASSERT_EQUAL(restored.design.render_key, design.render_key, "The bitmap, side or palette changed between rounds.")
+	for(var/direction in GLOB.cardinals)
+		TEST_ASSERT(new_arm.has_drawn_tattoo(direction, restored.design), "The restored drawing lost its [dir2text(direction)] view.")
 	TEST_ASSERT(!new_arm.generic_bleedstacks && !new_arm.GetComponent(/datum/component/tattoo_care), "An old tattoo spawned as a fresh puncture.")
+	// Old files have no all_views key. The same bitmap still belongs only to its original side.
+	first_slot = preferences.savefile.get_entry("character1")
+	saved_tattoos = first_slot["drawn_tattoos"]
+	saved_design = saved_tattoos[slot_side]
+	saved_design -= "all_views"
+	var/mob/living/carbon/human/legacy = allocate(/mob/living/carbon/human/consistent)
+	TEST_ASSERT_EQUAL(legacy.restore_saved_tattoos(preferences, 1), 1, "An older file lost its single-sided tattoo.")
+	var/obj/item/bodypart/legacy_arm = legacy.get_bodypart(BODY_ZONE_L_ARM)
+	var/datum/bodypart_overlay/drawn_tattoo/legacy_tattoo = locate() in legacy_arm.bodypart_overlays
+	TEST_ASSERT(legacy_tattoo && legacy_tattoo.design.render_key != design.render_key, "Single-sided and four-view drawings share a render key.")
+	for(var/direction in GLOB.cardinals)
+		TEST_ASSERT_EQUAL(legacy_arm.has_drawn_tattoo(direction), direction == SOUTH, "The legacy drawing changed sides after loading.")
+	TEST_ASSERT(preferences.savefile.load(), "The current-format record could not be reloaded.")
 	TEST_ASSERT(wearer.set_visible_tattoo_saved(wearer, REF(tattoo), FALSE), "The wearer could not forget their drawing.")
 	TEST_ASSERT(arm.has_drawn_tattoo(SOUTH), "Forgetting a saved drawing erased the current body's ink.")
 	TEST_ASSERT(preferences.savefile.load(), "The updated preferences file could not be read.")

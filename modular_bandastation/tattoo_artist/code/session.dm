@@ -15,7 +15,7 @@
 	var/draw_rejected_revision
 	var/last_patch
 	var/last_patch_revision
-	var/list/palette = list()
+	var/list/palette
 	var/bitmap
 	var/static/empty_bitmap
 	var/body_png
@@ -35,8 +35,7 @@
 	src.customer = customer
 	src.limb = limb
 	practice = is_tattoo_practice_target(customer)
-	for(var/pigment in machine.ink_doses)
-		palette += pigment
+	palette = machine.tattoo_palette(customer)
 	invalid_ink = regex(@"[^" + copytext("0123456789abcdef", 1, length(palette) + 2) + "]")
 	if(isnull(empty_bitmap))
 		empty_bitmap = repeat_string(4096, "0")
@@ -86,7 +85,7 @@
 
 /// Build a same-size binary mask once per view, in the editor's top-left row order.
 /datum/tattoo_session/proc/set_view(new_side)
-	if(!(new_side in GLOB.cardinals) || bitmap != empty_bitmap || limb.has_drawn_tattoo(new_side))
+	if(!(new_side in GLOB.cardinals) || bitmap != empty_bitmap || limb.has_drawn_tattoo())
 		return FALSE
 	var/icon/mask = limb.tattoo_skin_icon(new_side)
 	if(!mask)
@@ -209,10 +208,7 @@
 /datum/tattoo_session/ui_data(mob/user)
 	var/can_save = !practice && user == customer && !isnull(customer.get_tattoo_preferences())
 	var/can_edit_stencils = user == artist && phase == "draft"
-	var/list/occupied = list()
-	for(var/direction in GLOB.cardinals)
-		if(limb.has_drawn_tattoo(direction))
-			occupied += direction
+	var/list/occupied = limb.has_drawn_tattoo() ? GLOB.cardinals.Copy() : list()
 	return list(
 		"role" = user == artist ? "artist" : "client",
 		"practice" = practice,
@@ -230,6 +226,7 @@
 		"drawRejected" = draw_rejected,
 		"drawRejectedRevision" = draw_rejected_revision,
 		"occupied" = occupied,
+		"tattooViews" = reviewed?.view_previews,
 		"stencils" = can_edit_stencils ? get_stencil_library() : null,
 		"stencilLimit" = stencil_limit,
 		"stencilError" = can_edit_stencils ? stencil_error : null,
@@ -293,13 +290,17 @@
 		if("review")
 			if(user != artist || phase != "draft" || bitmap == empty_bitmap)
 				return FALSE
-			if(limb.has_drawn_tattoo(side))
+			if(limb.has_drawn_tattoo())
 				machine.balloon_alert(user, "здесь уже есть татуировка")
 				return FALSE
 			var/datum/tattoo_design/design = new
-			if(!design.prepare(limb, side, bitmap, palette))
+			if(!design.prepare(limb, side, bitmap, palette, all_views = TRUE))
 				qdel(design)
 				machine.balloon_alert(user, "эскиз не подходит участку")
+				return FALSE
+			if(!design.ink_is_exposed(limb))
+				qdel(design)
+				machine.balloon_alert(user, "откройте кожу со всех сторон")
 				return FALSE
 			reviewed = design
 			phase = "review"
@@ -312,7 +313,7 @@
 			revision++
 		if("approve")
 			var/mob/approver = practice ? artist : customer
-			if(user != approver || phase != "review" || !reviewed || params["revision"] != revision || machine.tattoo_supply_error(customer, limb))
+			if(user != approver || phase != "review" || !reviewed || params["revision"] != revision || machine.tattoo_supply_error(customer))
 				return FALSE
 			if(!practice && user == customer && customer.get_tattoo_preferences())
 				save_for_character = ("save" in params) ? params["save"] == TRUE : customer.tattoo_save_by_default()
@@ -336,15 +337,17 @@
 	finish_application()
 	qdel(src)
 
-/// Starting an approved procedure consumes the cartridge and the preparation even if the customer walks away.
+/// The first approved needle contact reserves the supplies for this customer even if the design is interrupted.
 /datum/tattoo_session/proc/start_application()
 	if(phase != "applying" || !reviewed || motor_sound || limb.owner != customer)
 		return FALSE
-	if(machine.tattoo_supply_error(customer, limb) || !reviewed.ink_is_exposed(limb) || limb.has_drawn_tattoo(side))
+	if(machine.tattoo_supply_error(customer) || !reviewed.ink_is_exposed(limb) || limb.has_drawn_tattoo())
 		return FALSE
-	var/datum/component/tattoo_care/care = limb.LoadComponent(/datum/component/tattoo_care)
-	care.prepared = FALSE
-	machine.needle_loaded = FALSE
+	if(machine.supply_customer?.resolve() != customer)
+		machine.supply_customer = WEAKREF(customer)
+		machine.used_inks.Cut()
+	customer.tattoo_prepared = FALSE
+	limb.LoadComponent(/datum/component/tattoo_care)
 	motor_sound = new(machine, 'modular_bandastation/tattoo_artist/sound/tattoo_machine.ogg', _range = 4, _volume = 38, _repeating = TRUE)
 	if(limb.can_bleed() && customer.get_blood_volume() > 0 && !HAS_TRAIT(customer, TRAIT_GODMODE))
 		limb.adjustBleedStacks(2)
@@ -381,9 +384,10 @@
 	var/datum/tattoo_design/applied_design = reviewed
 	reviewed = null // The limb now owns it.
 	for(var/i in 1 to length(palette))
-		if(!findtextEx(bitmap, copytext("123456789abcdef", i, i + 1)))
-			continue
 		var/pigment = palette[i]
+		if((pigment in machine.used_inks) || !findtextEx(bitmap, copytext("123456789abcdef", i, i + 1)))
+			continue
+		machine.used_inks += pigment
 		if(--machine.ink_doses[pigment] <= 0)
 			machine.ink_doses -= pigment
 	care.fresh = TRUE

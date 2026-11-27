@@ -73,7 +73,9 @@
 
 /obj/item/bodypart/proc/has_drawn_tattoo(side, datum/tattoo_design/exact_design)
 	for(var/datum/bodypart_overlay/drawn_tattoo/tattoo in bodypart_overlays)
-		if(tattoo.design.side == side && (!exact_design || tattoo.design == exact_design))
+		if(exact_design && tattoo.design != exact_design)
+			continue
+		if(isnull(side) || tattoo.design.side == side || (tattoo.design.all_views && (side in GLOB.cardinals)))
 			return TRUE
 	return FALSE
 
@@ -112,17 +114,19 @@
 /obj/item/bodypart/proc/apply_drawn_tattoo(datum/tattoo_design/design, restoring = FALSE)
 	if(!istype(design) || !design.world_icon || design.target_ref?.resolve() != src || design.skin_key != tattoo_skin_key())
 		return FALSE
-	if(has_drawn_tattoo(design.side) || (!restoring && !design.ink_is_exposed(src)))
+	if(has_drawn_tattoo(design.all_views ? null : design.side) || (!restoring && !design.ink_is_exposed(src)))
 		return FALSE
 	var/datum/bodypart_overlay/drawn_tattoo/overlay = new
 	overlay.design = design
 	add_bodypart_overlay(overlay, update = !restoring)
+	design.view_previews = null
 	return TRUE
 
 /// Editor input is indexed ink on a 64x64 canvas, in row-major order from the top left.
 /// Zero is transparent. Each group of four detail samples represents one world pixel.
 /datum/tattoo_design
 	var/side
+	var/all_views = FALSE
 	var/bitmap
 	var/list/palette
 	var/icon/detail_icon
@@ -134,20 +138,27 @@
 	var/examine_image_url
 	/// 1-based linear world pixel positions occupied by ink.
 	var/list/ink_locations
+	/// Projected world pixel positions keyed by direction, for partial gloves and shoes.
+	var/list/ink_by_direction
+	/// Cropped views sent to the artist and client while they review this design.
+	var/list/view_previews
 
 /datum/tattoo_design/proc/ink_is_exposed(obj/item/bodypart/limb)
 	if(!limb.tattoo_is_exposed())
 		return FALSE
-	var/icon/cover = limb.tattoo_extremity_cover(side)
-	if(cover)
-		for(var/location in ink_locations)
+	for(var/direction in (all_views ? GLOB.cardinals : list(side)))
+		var/icon/cover = limb.tattoo_extremity_cover(direction)
+		if(!cover)
+			continue
+		var/list/locations = all_views ? ink_by_direction["[direction]"] : ink_locations
+		for(var/location in locations)
 			var/x = (location - 1) % 32 + 1
 			var/y = FLOOR((location - 1) / 32, 1) + 1
 			if(cover.GetPixel(x, y))
 				return FALSE
 	return TRUE
 
-/datum/tattoo_design/proc/prepare(obj/item/bodypart/limb, new_side, new_bitmap, list/new_palette, ignore_clothing = FALSE)
+/datum/tattoo_design/proc/prepare(obj/item/bodypart/limb, new_side, new_bitmap, list/new_palette, ignore_clothing = FALSE, all_views = FALSE)
 	if(world_icon || !istype(limb) || !(new_side in GLOB.cardinals))
 		return FALSE
 	if(!istext(new_bitmap) || length(new_bitmap) != 4096 || !islist(new_palette) || !ISINRANGE(length(new_palette), 1, 15))
@@ -158,6 +169,14 @@
 	var/icon/skin = limb.tattoo_skin_icon(new_side, ignore_clothing)
 	if(!skin)
 		return FALSE
+	var/list/projection_skins
+	if(all_views)
+		projection_skins = list()
+		for(var/direction in GLOB.cardinals)
+			var/icon/projection_skin = limb.tattoo_skin_icon(direction, ignore_clothing = TRUE)
+			if(!projection_skin)
+				return FALSE
+			projection_skins["[direction]"] = projection_skin
 	var/icon/blank = icon('icons/blanks/32x32.dmi', "nothing", SOUTH)
 	var/icon/world_frame = icon(blank)
 	var/icon/detail = icon(blank)
@@ -208,8 +227,7 @@
 		return FALSE
 
 	world_icon = icon(blank)
-	for(var/direction in GLOB.cardinals)
-		world_icon.Insert(direction == new_side ? world_frame : blank, icon_state = "", dir = direction)
+	src.all_views = all_views
 	detail_icon = detail
 	side = new_side
 	bitmap = new_bitmap
@@ -217,18 +235,18 @@
 	ink_locations = painted_pixels
 	target_ref = WEAKREF(limb)
 	skin_key = limb.tattoo_skin_key()
-	render_key = md5("[side]:[bitmap]:[jointext(palette, ",")]")
-
-	if(limb.draw_color)
-		skin.Blend(limb.draw_color, ICON_MULTIPLY)
-	skin.Scale(64, 64)
-	skin.Blend(detail, ICON_OVERLAY)
-	skin.Crop(max(1, left - 2), max(1, bottom - 2), min(64, right + 2), min(64, top + 2))
-	skin.Scale(skin.Width() * 4, skin.Height() * 4)
-	examine_image_url = "data:image/png;base64,[icon2base64(skin)]"
+	render_key = md5("[skin_key]:[side]:[all_views]:[bitmap]:[jointext(palette, ",")]")
+	examine_image_url = tattoo_view_image(skin, detail, limb.draw_color, left, bottom, right, top)
+	if(all_views)
+		build_tattoo_views(projection_skins, limb.draw_color, world_frame, blank, make_previews = !ignore_clothing)
+	else
+		for(var/direction in GLOB.cardinals)
+			world_icon.Insert(direction == new_side ? world_frame : blank, icon_state = "", dir = direction)
 	return TRUE
 
 /datum/tattoo_design/proc/side_label()
+	if(all_views)
+		return "все ракурсы"
 	switch(side)
 		if(SOUTH)
 			return "вид спереди"
@@ -248,9 +266,17 @@
 	var/obj/item/bodypart/marked_limb
 	var/mob/living/carbon/observed_owner
 	var/icon/hand_art
+	var/icon/leg_art
+	var/icon/lower_leg_art
 
 /datum/bodypart_overlay/drawn_tattoo/get_image(obj/item/bodypart/limb, layer_index, layer_real)
-	return mutable_appearance(layer_index == "hand" ? hand_art : design.world_icon, "", layer = layer_real)
+	var/icon/art = leg_art || design.world_icon
+	switch(layer_index)
+		if("hand")
+			art = hand_art
+		if("lower_leg")
+			art = lower_leg_art
+	return mutable_appearance(art, "", layer = layer_real)
 
 /datum/bodypart_overlay/drawn_tattoo/icon_render_key(obj/item/bodypart/limb)
 	return list("tattoo_[design.render_key]")
@@ -269,10 +295,12 @@
 		set_layer("hand", limb.aux_layer - 0.01)
 	if(limb.body_part & LEGS)
 		// In profile one entire leg is behind the body, as in the native leg renderer.
-		var/state = limb.body_zone == BODY_ZONE_R_LEG ? "right_leg_lower" : "left_leg_lower"
-		var/icon/lower_mask = icon('icons/mob/leg_masks.dmi', state, design.side)
-		if(lower_mask.GetPixel(1, 1))
-			set_layer("", (BODYPARTS_LAYER + BODYPARTS_LOW_LAYER) / 2)
+		var/state = limb.body_zone == BODY_ZONE_R_LEG ? "right_leg" : "left_leg"
+		leg_art = icon(design.world_icon)
+		leg_art.Blend(icon('icons/mob/leg_masks.dmi', state), ICON_MULTIPLY)
+		lower_leg_art = icon(design.world_icon)
+		lower_leg_art.Blend(icon('icons/mob/leg_masks.dmi', "[state]_lower"), ICON_MULTIPLY)
+		set_layer("lower_leg", (BODYPARTS_LAYER + BODYPARTS_LOW_LAYER) / 2)
 	RegisterSignal(limb, COMSIG_BODYPART_ATTACHED, PROC_REF(on_attached))
 	RegisterSignal(limb, COMSIG_BODYPART_REMOVED, PROC_REF(on_removed))
 	RegisterSignal(limb, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))

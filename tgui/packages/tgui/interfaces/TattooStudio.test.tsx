@@ -9,6 +9,7 @@ import {
 import { useAtomValue } from 'jotai';
 import * as actions from '../events/act';
 import { backendStateAtom, gameDataAtom, store } from '../events/store';
+import { Dir } from './common/SpriteEditor/Types/types';
 import { TattooStudio } from './TattooStudio';
 
 const originalImage = globalThis.Image;
@@ -94,6 +95,58 @@ const artistDraft = {
   mask: 'mask.png',
 };
 const centerDot = '1'.padStart(2081, '0').padEnd(4096, '0');
+
+it('chooses an angle for drawing and shows all four views for approval', async () => {
+  mockLimb();
+  const act = spyOn(actions, 'sendAct');
+  const draft = { ...artistDraft, direction: Dir.SOUTH };
+  const tattooViews = [
+    { direction: Dir.EAST, image: 'east.png' },
+    { direction: Dir.NORTH, image: 'north.png' },
+    { direction: Dir.WEST, image: 'west.png' },
+    { direction: Dir.SOUTH, image: 'south.png' },
+  ];
+  store.set(gameDataAtom, { ...draft, tattooViews });
+  const view = render(<TattooStudio />);
+  await screen.findByLabelText('Эскиз на выбранном участке кожи');
+  expect(screen.queryAllByRole('img')).toHaveLength(0);
+  fireEvent.click(screen.getByText('Лицом вправо'));
+  expect(act).toHaveBeenLastCalledWith('direction', { direction: Dir.EAST });
+
+  const inked = { ...draft, draft: centerDot, revision: 2 };
+  store.set(gameDataAtom, inked);
+  view.rerender(<TattooStudio />);
+  fireEvent.click(screen.getByText('Лицом влево'));
+  expect(act).toHaveBeenCalledTimes(1);
+
+  for (const [phase, role] of [
+    ['review', 'artist'],
+    ['review', 'client'],
+    ['applying', 'client'],
+  ]) {
+    store.set(gameDataAtom, { ...inked, phase, role, tattooViews });
+    await reactAct(async () => view.rerender(<TattooStudio />));
+    expect(
+      screen
+        .getAllByRole('img')
+        .map((image) => [image.getAttribute('alt'), image.getAttribute('src')]),
+    ).toEqual([
+      ['Татуировка · Спереди', 'south.png'],
+      ['Татуировка · Со спины', 'north.png'],
+      ['Татуировка · Лицом вправо', 'east.png'],
+      ['Татуировка · Лицом влево', 'west.png'],
+    ]);
+    if (phase === 'review' && role === 'client') {
+      fireEvent.click(screen.getByText('Одобрить нанесение'));
+      expect(act).toHaveBeenLastCalledWith('approve', {
+        revision: 2,
+        save: false,
+      });
+    } else {
+      expect(screen.queryByText('Одобрить нанесение')).toBeNull();
+    }
+  }
+});
 
 it('updates the watching customer from server strokes through review without reopening', async () => {
   const ink = mockLimb();

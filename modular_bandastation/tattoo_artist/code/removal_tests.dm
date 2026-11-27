@@ -31,13 +31,17 @@
 	var/obj/item/tattoo_machine/machine = allocate(/obj/item/tattoo_machine)
 	artist.put_in_hands(machine)
 	var/datum/tattoo_session/editor = allocate(/datum/tattoo_session, machine, artist, customer, arm)
+	var/list/legacy_designs = list()
 	for(var/side in list(SOUTH, NORTH))
 		TEST_ASSERT(editor.set_view(side), "The arm has no tattooable surface on the chosen side.")
 		var/index = findtextEx(editor.mask_bits, "1")
 		var/stroke = splicetext(editor.bitmap, index, index + 1, "1")
 		var/datum/tattoo_design/design = allocate(/datum/tattoo_design)
-		TEST_ASSERT(design.prepare(arm, side, stroke, list("#c62b87")) && arm.apply_drawn_tattoo(design), "A fixture drawing did not reach the arm.")
-		TEST_ASSERT(customer.set_tattoo_persistent(arm, design, TRUE), "A fixture drawing did not reach the character file.")
+		TEST_ASSERT(design.prepare(arm, side, stroke, list("#c62b87")), "The single-sided fixture drawing did not prepare.")
+		legacy_designs += design
+	for(var/datum/tattoo_design/design as anything in legacy_designs)
+		TEST_ASSERT(arm.apply_drawn_tattoo(design) && customer.set_tattoo_persistent(arm, design, TRUE), "A single-sided fixture drawing did not reach the arm and character file.")
+	TEST_ASSERT(!editor.set_view(EAST), "The editor offered a new four-view drawing on a limb with single-sided tattoos.")
 	qdel(editor)
 	var/datum/bodypart_overlay/drawn_tattoo/front
 	var/datum/bodypart_overlay/drawn_tattoo/back
