@@ -46,7 +46,7 @@ repo](https://github.com/tgstation/rust-g).
 Importing book illustrations from URLs uses Python 3 with Pillow in the server process's
 PATH (`python3` on Linux, `python.exe` on Windows) and DreamDaemon's Trusted mode.
 A Windows source checkout can also use the project's portable Python from
-`tools/bootstrap/.cache/`. Include `code/modules/library/book_image.py` in manual deployments.
+`tools/bootstrap/.cache/`. The compiled resource bundle includes the image processor.
 
 Finally, to start the server, run Dream Daemon and enter the path to your
 compiled tgstation.dmb file. Make sure to set the port to the one you
