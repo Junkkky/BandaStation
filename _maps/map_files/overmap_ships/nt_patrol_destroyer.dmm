@@ -2,6 +2,36 @@
 "aa" = (
 /turf/open/space/basic,
 /area/space)
+"ac" = (
+/obj/structure/rack/gunrack,
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
+	},
+/obj/effect/spawner/armory_spawn/red_armory,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
+"ad" = (
+/obj/structure/closet/crate/secure/weapon{
+	name = "Боезапас патрульного эсминца";
+	req_access = list("cent_specops")
+	},
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
+	},
+/obj/item/stack/stationtrauma_autocannon_shell{
+	amount = 18
+	},
+/obj/item/stack/stationtrauma_autocannon_shell/heavy{
+	amount = 8
+	},
+/obj/item/stack/stationtrauma_autocannon_shell/plasma/full,
+/obj/item/ammo_box/magazine/recharge,
+/obj/item/ammo_box/magazine/recharge,
+/obj/item/ammo_box/magazine/cm5,
+/obj/item/ammo_box/magazine/wt550m9,
+/obj/item/storage/box/beanbag,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/armory)
 "ai" = (
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
@@ -113,13 +143,8 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "dn" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 2
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "dQ" = (
 /obj/machinery/airalarm/directional/south{
 	req_access = list()
@@ -131,7 +156,6 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "fl" = (
-/obj/machinery/suit_storage_unit/spaceruin,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 2
 	},
@@ -238,12 +262,8 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "iU" = (
-/obj/structure/closet/wall/security/directional/east,
-/obj/item/storage/box/handcuffs,
-/obj/item/holosign_creator/security,
-/obj/effect/turf_decal/tile/red/opposingcorners,
-/turf/open/floor/iron/dark/small,
-/area/shuttle/stationtrauma_space/nt_patrol/armory)
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "jC" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -319,9 +339,7 @@
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "ni" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 2
-	},
+/obj/machinery/stationtrauma_combat_power,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "nK" = (
@@ -388,6 +406,11 @@
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "qv" = (
 /obj/machinery/light/directional/east,
+/obj/machinery/atmospherics/components/tank/air/layer2{
+	dir = 8;
+	starting_pressure_percent = 0;
+	name = "waste gas tank"
+	},
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "qD" = (
@@ -495,6 +518,13 @@
 /obj/structure/bed/medical/anchored,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
+"sH" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/blue/full,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "sV" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/south{
@@ -517,6 +547,9 @@
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "tA" = (
 /obj/structure/sign/warning/radiation/directional/south,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "tJ" = (
@@ -549,7 +582,13 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "vE" = (
-/obj/machinery/light/cold/directional/north,
+/obj/structure/closet/wall/security/directional/east{
+	dir = 1;
+	pixel_y = 34;
+	pixel_x = 0
+	},
+/obj/item/storage/box/handcuffs,
+/obj/item/holosign_creator/security,
 /obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark/small,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
@@ -575,11 +614,8 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/medbay)
 "wJ" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 2
-	},
-/turf/open/floor/iron/dark/textured,
-/area/shuttle/stationtrauma_space/nt_patrol/eva)
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "wL" = (
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
@@ -613,9 +649,6 @@
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/eva)
 "xR" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 2
-	},
 /obj/effect/landmark/away_mission/nt_patrol_engineer,
 /obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
 	dir = 4
@@ -666,6 +699,9 @@
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
+"zp" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space/nt_patrol/barracks)
 "zz" = (
 /obj/effect/turf_decal/stripes/box,
 /turf/open/floor/iron/dark/textured,
@@ -805,7 +841,6 @@
 	dir = 8;
 	target_pressure = 506.625
 	},
-/obj/machinery/stationtrauma_combat_power,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "EO" = (
@@ -839,6 +874,28 @@
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/eva)
+"Hv" = (
+/obj/machinery/stationtrauma_autocannon/heavy{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
+"Hw" = (
+/obj/structure/stationtrauma_autocannon_barrel{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
+"Hx" = (
+/obj/machinery/stationtrauma_autocannon_loader/compact,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Hz" = (
+/obj/item/stack/stationtrauma_autocannon_shell/heavy{
+	amount = 8
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "HE" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 2
@@ -891,6 +948,21 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
+"Lm" = (
+/obj/machinery/stationtrauma_autocannon_loader,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
+"Ln" = (
+/obj/item/stack/stationtrauma_autocannon_shell{
+	amount = 30
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "Lw" = (
 /obj/machinery/door/airlock/highsecurity{
 	dir = 4;
@@ -961,14 +1033,35 @@
 /obj/item/clothing/suit/armor/vest/marine/security,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
+"Pa" = (
+/obj/machinery/stationtrauma_autocannon/heavy/plasma{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
 "Pb" = (
-/obj/structure/rack/gunrack,
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
 	},
-/obj/effect/spawner/armory_spawn/ember_armory,
+/obj/structure/table/reinforced,
+/obj/item/mod/control/pre_equipped/responsory,
+/obj/item/mod/control/pre_equipped/responsory{
+	pixel_y = 6
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/armory)
+"Pc" = (
+/obj/structure/stationtrauma_autocannon_barrel/plasma{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
+"Pd" = (
+/obj/machinery/stationtrauma_autocannon/laser{
+	dir = 1
+	},
+/turf/open/floor/engine/airless,
+/area/shuttle/stationtrauma_space/nt_patrol/exterior)
 "Qo" = (
 /obj/structure/cable/layer1,
 /obj/machinery/atmospherics/components/tank/nitrogen/nt_patrol_coolant{
@@ -977,23 +1070,16 @@
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "QL" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
+"QN" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/computer/stationtrauma_fusion_monitor{
-	dir = 2
-	},
-/turf/open/floor/iron/dark/textured,
-/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "QR" = (
-/obj/machinery/atmospherics/components/tank/air/layer2{
-	dir = 8;
-	starting_pressure_percent = 0;
-	name = "waste gas tank"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/recharge_station,
 /turf/open/floor/iron/dark/textured,
-/area/shuttle/stationtrauma_space/nt_patrol/engineering)
+/area/shuttle/stationtrauma_space/nt_patrol/eva)
 "Rr" = (
 /obj/effect/landmark/away_mission/nt_patrol_officer,
 /obj/structure/cable,
@@ -1051,6 +1137,10 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/stationtrauma_space/nt_patrol/passage)
 "TO" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "Uc" = (
@@ -1209,9 +1299,12 @@
 /turf/open/floor/iron/dark/textured,
 /area/shuttle/stationtrauma_space/nt_patrol/engineering)
 "Zq" = (
-/obj/machinery/suit_storage_unit/spaceruin,
-/turf/open/floor/iron/dark/textured,
-/area/shuttle/stationtrauma_space/nt_patrol/eva)
+/obj/machinery/computer/stationtrauma_fusion_monitor{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/stationtrauma_space/nt_patrol/bridge)
 "Zw" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1255,91 +1348,6 @@
 /obj/effect/turf_decal/tile/brown/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/stationtrauma_space/nt_patrol/bridge)
-"Lm" = (
-/obj/machinery/stationtrauma_autocannon_loader,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 2
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/bridge)
-"Ln" = (
-/obj/item/stack/stationtrauma_autocannon_shell{
-	amount = 30
-	},
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/bridge)
-"Hv" = (
-/obj/machinery/stationtrauma_autocannon/heavy{
-	dir = 1
-	},
-/turf/open/floor/engine/airless,
-/area/shuttle/stationtrauma_space/nt_patrol/exterior)
-"Hw" = (
-/obj/structure/stationtrauma_autocannon_barrel{
-	dir = 1
-	},
-/turf/open/floor/engine/airless,
-/area/shuttle/stationtrauma_space/nt_patrol/exterior)
-"Hx" = (
-/obj/machinery/stationtrauma_autocannon_loader/compact,
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/bridge)
-"Hz" = (
-/obj/item/stack/stationtrauma_autocannon_shell/heavy{
-	amount = 8
-	},
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/bridge)
-"Pa" = (
-/obj/machinery/stationtrauma_autocannon/heavy/plasma{
-	dir = 1
-	},
-/turf/open/floor/engine/airless,
-/area/shuttle/stationtrauma_space/nt_patrol/exterior)
-"Pc" = (
-/obj/structure/stationtrauma_autocannon_barrel/plasma{
-	dir = 1
-	},
-/turf/open/floor/engine/airless,
-/area/shuttle/stationtrauma_space/nt_patrol/exterior)
-"Pd" = (
-/obj/machinery/stationtrauma_autocannon/laser{
-	dir = 1
-	},
-/turf/open/floor/engine/airless,
-/area/shuttle/stationtrauma_space/nt_patrol/exterior)
-"ac" = (
-/obj/structure/rack/gunrack,
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 1
-	},
-/obj/effect/spawner/armory_spawn/red_armory,
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/armory)
-"ad" = (
-/obj/structure/closet/crate/secure/weapon{
-	name = "Боезапас патрульного эсминца";
-	req_access = list("cent_specops")
-	},
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 1
-	},
-/obj/item/stack/stationtrauma_autocannon_shell{
-	amount = 18
-	},
-/obj/item/stack/stationtrauma_autocannon_shell/heavy{
-	amount = 8
-	},
-/obj/item/stack/stationtrauma_autocannon_shell/plasma/full,
-/obj/item/ammo_box/magazine/recharge,
-/obj/item/ammo_box/magazine/recharge,
-/obj/item/ammo_box/magazine/cm5,
-/obj/item/ammo_box/magazine/wt550m9,
-/obj/item/storage/box/beanbag,
-/turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/stationtrauma_space/nt_patrol/armory)
 
 (1,1,1) = {"
 aa
@@ -1349,7 +1357,7 @@ aa
 aa
 aa
 aa
-kg
+dn
 Xs
 Xs
 kg
@@ -1362,20 +1370,20 @@ mR
 Mb
 sa
 Mb
-Mb
-aa
+QL
+QL
 aa
 aa
 "}
 (2,1,1) = {"
 aa
 aa
-aa
-aa
+Pd
+dn
 kg
 Xs
-kg
-kg
+dn
+dn
 Tq
 Uc
 kg
@@ -1388,8 +1396,8 @@ mR
 mP
 zz
 mV
-Mb
-Mb
+QR
+QL
 aa
 aa
 "}
@@ -1415,8 +1423,8 @@ Mb
 XR
 Hq
 Mb
-tJ
-tJ
+wJ
+wJ
 aa
 "}
 (4,1,1) = {"
@@ -1437,7 +1445,7 @@ Zg
 AX
 ax
 mR
-Zq
+mV
 mV
 Xh
 Yx
@@ -1489,7 +1497,7 @@ Zg
 IC
 an
 mR
-wJ
+mV
 re
 Xi
 lZ
@@ -1580,7 +1588,7 @@ aa
 tm
 bm
 Ln
-aS
+sH
 ai
 ai
 mR
@@ -1606,7 +1614,7 @@ aa
 tm
 qo
 ZZ
-ai
+QN
 ai
 lk
 mR
@@ -1620,7 +1628,7 @@ gm
 mR
 tJ
 wS
-QL
+MW
 tL
 ko
 mZ
@@ -1632,7 +1640,7 @@ aa
 aa
 tm
 Zk
-ai
+Zq
 ai
 aR
 BI
@@ -1682,7 +1690,7 @@ ss
 (14,1,1) = {"
 aa
 aa
-Pd
+aa
 tm
 Ix
 ai
@@ -1724,36 +1732,36 @@ vE
 ac
 mR
 ni
-QR
+ci
 TO
 Et
-tJ
-tJ
+wJ
+wJ
 aa
 "}
 (16,1,1) = {"
 aa
 aa
-aa
-aa
+Pd
+dn
 yT
 yT
-yT
-BI
+iU
+zp
 IK
 bO
 BI
 rq
 GK
 OE
-iU
 ad
+ac
 mR
 hu
 Zm
 qv
 Uz
-tJ
+wJ
 aa
 aa
 "}
@@ -1765,7 +1773,7 @@ aa
 aa
 aa
 aa
-BI
+zp
 SF
 SF
 BI
@@ -1778,8 +1786,8 @@ mR
 tJ
 tJ
 tJ
-tJ
-tJ
+wJ
+wJ
 aa
 aa
 "}
