@@ -121,10 +121,14 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		return
 
 	var/original_message = message
-	message = get_message_mods(message, message_mods)
-	saymode = SSradio.get_available_say_mode(src, message_mods[RADIO_KEY])
-	if(!forced && (isnull(saymode) || saymode.allows_custom_say_emotes))
-		message = check_for_custom_say_emote(message, message_mods)
+	var/datum/callback/literal_speech_check = message_mods[LITERAL_SPEECH_CHECK]
+	if(literal_speech_check)
+		message_mods -= LITERAL_SPEECH_CHECK
+	else
+		message = get_message_mods(message, message_mods)
+		saymode = SSradio.get_available_say_mode(src, message_mods[RADIO_KEY])
+		if(!forced && (isnull(saymode) || saymode.allows_custom_say_emotes))
+			message = check_for_custom_say_emote(message, message_mods)
 
 	if(!message)
 		return
@@ -138,7 +142,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		return
 
 	// dead is the only state you can never emote
-	if(stat != DEAD && check_emote(original_message, forced))
+	if(!literal_speech_check && stat != DEAD && check_emote(original_message, forced))
 		return
 
 	// Checks if the saymode or channel extension can be used even if not totally conscious.
@@ -169,6 +173,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	if(!try_speak(original_message, ignore_spam, forced, filterproof))
 		return
+	if(literal_speech_check && !literal_speech_check.Invoke())
+		return
 
 	language ||= message_mods[LANGUAGE_EXTENSION] || get_selected_language()
 
@@ -197,7 +203,9 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	last_say_args_ref = REF(args)
 #endif
 
-	var/list/segments = message_mods[LANGUAGE_MESSAGE_SEGMENTS] || parse_language_segments(message, language)
+	var/list/segments = message_mods[LANGUAGE_MESSAGE_SEGMENTS]
+	if(!segments && !literal_speech_check)
+		segments = parse_language_segments(message, language)
 	if(!isnull(segments) && !length(segments))
 		return
 	if(segments)

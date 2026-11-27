@@ -84,7 +84,7 @@
 #define COMSIG_ATOM_CREATEDBY_PROCESSING "atom_createdby_processing"
 ///when an atom is processed (mob/living/user, obj/item/process_item, list/atom/results)
 #define COMSIG_ATOM_PROCESSED "atom_processed"
-///called when teleporting into a possibly protected turf: (channel, turf/origin, turf/destination)
+/// Called on a teleport destination: (channel, turf/origin, turf/destination, atom/movable/traveller)
 #define COMSIG_ATOM_INTERCEPT_TELEPORTING "intercept_teleporting"
 	#define COMPONENT_INTERCEPT_TELEPORT (1<<0)
 ///called when an atom is added to the hearers on get_hearers_in_view(): (list/processing_list, list/hearers)

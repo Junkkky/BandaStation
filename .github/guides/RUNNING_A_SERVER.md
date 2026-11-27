@@ -43,9 +43,15 @@ Windows DLL is included in this repository, but Linux users will need to build
 and install it themselves. Directions can be found at the [rust-g
 repo](https://github.com/tgstation/rust-g).
 
+Importing book illustrations from URLs uses Python 3 with Pillow in the server process's
+PATH (`python3` on Linux, `python.exe` on Windows) and DreamDaemon's Trusted mode.
+A Windows source checkout can also use the project's portable Python from
+`tools/bootstrap/.cache/`. The compiled resource bundle includes the image processor.
+
 Finally, to start the server, run Dream Daemon and enter the path to your
 compiled tgstation.dmb file. Make sure to set the port to the one you
-specified in the config.txt, and set the Security box to 'Safe'. Then press GO
+specified in the config.txt. Select 'Trusted' to enable book illustration imports
+from URLs, or 'Safe' for a standard launch without URL imports. Then press GO
 and the server should start up and be ready to join. It is also recommended that
 you set up the SQL backend (see below).
 

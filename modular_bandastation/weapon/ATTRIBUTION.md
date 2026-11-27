@@ -34,6 +34,12 @@ The supplied recordings listed below are by **konu_shi**. Permission to use thes
 | `malice_recall_hit.ogg` | The existing `mid_saberhit.ogg`, `kylohit3.mp3` and `kylobounce2.mp3` |
 | `malice_recall_catch.ogg` | `kyloblock1.mp3` and `kylohup1.mp3` |
 
+## Light Sister
+
+The three action icons and the `sister_*` sprites in `icons/melee/` adapt Light Sister's Normandy blade (`norm_dualsabernormandy1`) and its in-hand sprites. The gauntlet grip, blade glint, dome, embedded blade and Dawn aura were drawn for these abilities. The artwork follows the repository's CC BY-SA 3.0 asset license.
+
+The dome and Silver Sting sound effects use the original Normandy ignition, power-down and impact recordings (`norm_saberon.ogg`, `norm_saberoff.ogg` and `norm_saberhit.ogg`). **mnvrse** is the author of the additional recording mixed into `sister_dome_open.ogg` and the three recordings used for `sister_dawn.ogg` (`saberon_savage.mp3`, `saberoff_savage.mp3` and `saberbodyhit3.mp3`).
+
 # Legacy display revolvers
 
 The `anaconda` and `rsh12` sprites in `icons/ranged/ballistic.dmi`, and the added revolver states in `icons/ranged/inhands/ballistic/{lefthand,righthand}.dmi`, were imported from [BandaStation #2756](https://github.com/ss220club/BandaStation/pull/2756), commit `f1089abd748be433a1ebc8cb826673c86f4a29e9` by Ingakem. The source PR is the asset provenance; these resources follow BandaStation's CC BY-SA 3.0 asset license.

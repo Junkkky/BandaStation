@@ -78,3 +78,9 @@
 ///speed malus given by the fish organ set when dry
 /datum/movespeed_modifier/fish_waterless
 	multiplicative_slowdown = 0.36
+
+/// Slowdown while the mob's facing direction is locked.
+/datum/movespeed_modifier/status_effect/direction_lock
+	multiplicative_slowdown = 2
+	blacklisted_movetypes = FLOATING
+	flags = IGNORE_NOSLOW

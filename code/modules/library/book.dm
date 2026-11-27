@@ -1,3 +1,6 @@
+#define MAX_BOOK_ILLUSTRATION_SIDE 144
+#define BOOK_COVER_TARGET "cover"
+
 /obj/item/book
 	name = "book"
 	desc = "Crack it open, inhale the musk of its pages, and learn something new."
@@ -31,6 +34,15 @@
 	var/starting_content
 	/// The packet of information that describes this book
 	var/datum/book_info/book_data
+	/// A preview belongs to the reader who requested it and expires when their book window closes.
+	var/list/illustration_previews
+	/// The reader and page belong to the physical copy until the last phrase finishes.
+	var/mob/living/aloud_reader
+	var/aloud_page
+	var/aloud_revision
+	var/list/aloud_phrases
+	var/aloud_timer
+	COOLDOWN_DECLARE(page_sound_cooldown)
 
 /obj/item/book/Initialize(mapload)
 	. = ..()
@@ -44,6 +56,8 @@
 	. = ..()
 	if(carved)
 		. += span_notice("[src] has been hollowed out.")
+	else if(!unique)
+		. += span_notice("Ручкой можно редактировать страницы. Возьмите фотографию или законченный холст, чтобы вклеить иллюстрацию в выбранный разворот.")
 
 /obj/item/book/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(isnull(held_item))
@@ -57,9 +71,13 @@
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(IS_WRITING_UTENSIL(held_item))
-		context[SCREENTIP_CONTEXT_LMB] = "Vandalize"
+		context[SCREENTIP_CONTEXT_LMB] = "Редактировать"
 		if(is_carving_tool(held_item))
 			context[SCREENTIP_CONTEXT_RMB] = "Carve out"
+		return CONTEXTUAL_SCREENTIP_SET
+
+	if(!unique && (istype(held_item, /obj/item/photo) || istype(held_item, /obj/item/canvas)))
+		context[SCREENTIP_CONTEXT_LMB] = "Иллюстрировать"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(is_carving_tool(held_item))
@@ -73,15 +91,48 @@
 
 /obj/item/book/ui_static_data(mob/user)
 	var/list/data = list()
-	data["author"] = book_data.get_author()
-	data["title"] = book_data.get_title()
-	data["content"] = book_data.get_content()
+	data["author"] = book_data.get_author(unique ? "N/A" : "Автор неизвестен")
+	data["title"] = book_data.get_title(unique ? "N/A" : "Без названия")
+	if(unique)
+		data["content"] = book_data.get_content()
+		return data
+	data["pages"] = book_data.get_pages()
+	data["hasBookCover"] = TRUE
+	data["coverImage"] = book_data.cover_image
+	data["bindingColor"] = book_data.binding_color
+	data["revision"] = book_data.revision
+	data["maxPages"] = MAX_LIBRARY_BOOK_PAGES
+	data["maxTextLength"] = MAX_LIBRARY_PAGE_LENGTH
+	data["maxCaptionLength"] = MAX_LIBRARY_CAPTION_LENGTH
+	data["canImportIllustration"] = TRUE
+	data["illustrationPreview"] = LAZYACCESS(illustration_previews, REF(user))
 	return data
+
+/obj/item/book/ui_close(mob/user)
+	. = ..()
+	LAZYREMOVE(illustration_previews, REF(user))
+	if(aloud_reader == user)
+		stop_reading_aloud()
+
+/obj/item/book/ui_state(mob/user)
+	if(unique)
+		return ..()
+	return GLOB.book_state
+
+/obj/item/book/ui_data(mob/user)
+	. = ..()
+	if(unique || carved || !isliving(user))
+		return
+	.["canEdit"] = !isnull(held_writing_tool(user))
+	.["canIllustrate"] = !isnull(held_illustration(user))
+	.["canReadAloud"] = can_read_aloud(user)
+	.["readingPage"] = aloud_reader == user ? aloud_page : 0
+	.["readAloudVoiceEnabled"] = SStts220.is_enabled
 
 /obj/item/book/ui_interact(mob/living/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "MarkdownViewer", name)
+		ui = new(user, src, unique ? "MarkdownViewer" : "IllustratedBook", name)
 		ui.open()
 
 /// Proc that handles sending the book information to the user, as well as some housekeeping stuff.
@@ -101,7 +152,7 @@
 		balloon_alert(user, "book is carved out!")
 		return FALSE
 
-	if(!length(book_data.get_content()))
+	if(unique && !length(book_data.get_content()))
 		balloon_alert(user, "book is blank!")
 		return FALSE
 
@@ -136,21 +187,48 @@
 		return TRUE
 	return FALSE
 
-/// Checks for whether we can vandalize this book, to ensure we still can after each input.
-/// Uses to_chat over balloon alerts to give more detailed information as to why.
-/obj/item/book/proc/can_vandalize(mob/living/user, obj/item/tool)
-	if(!user.can_perform_action(src) || !user.can_write(tool, TRUE))
-		return FALSE
-	if(user.is_blind())
-		to_chat(user, span_warning("As you are trying to write on the book, you suddenly feel very stupid!"))
+/// Checks the physical book and actor again at the moment a change is applied.
+/obj/item/book/proc/can_change_book(mob/living/user)
+	if(!istype(user) || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH) || !user.can_read(src) || user.is_blind())
 		return FALSE
 	if(unique)
-		to_chat(user, span_warning("These pages don't seem to take the ink well! Looks like you can't modify it."))
+		balloon_alert(user, "эту книгу нельзя править!")
 		return FALSE
 	if(carved)
-		to_chat(user, span_warning("The book has been carved out! There is nothing to be vandalized."))
+		balloon_alert(user, "страницы вырезаны!")
 		return FALSE
 	return TRUE
+
+/// A reader may hold their book in either hand or leave it on the desk.
+/obj/item/book/proc/held_writing_tool(mob/user)
+	for(var/obj/item/tool as anything in user.get_held_items())
+		if(IS_WRITING_UTENSIL(tool))
+			return tool
+	return null
+
+/// Only physical photographs and finished paintings supply page images.
+/obj/item/book/proc/held_illustration(mob/user)
+	// When both hands contain artwork, using one on a book selects that hand's image.
+	var/list/sources = list(user.get_active_held_item()) | user.get_held_items()
+	for(var/obj/item/source as anything in sources)
+		if(istype(source, /obj/item/photo))
+			var/obj/item/photo/photo = source
+			if(photo.picture?.picture_image)
+				return photo.picture.picture_image
+		if(istype(source, /obj/item/canvas))
+			var/obj/item/canvas/painting = source
+			if(painting.finalized && painting.generated_icon)
+				return painting.generated_icon
+	return null
+
+/// Captures one still frame so the page stays independent of the original photograph or painting.
+/obj/item/book/proc/illustration_png(icon/source)
+	var/icon/copy = icon(source, dir = SOUTH, frame = 1)
+	var/long_side = max(copy.Width(), copy.Height())
+	if(long_side > MAX_BOOK_ILLUSTRATION_SIDE)
+		var/scale = MAX_BOOK_ILLUSTRATION_SIDE / long_side
+		copy.Scale(max(1, round(copy.Width() * scale)), max(1, round(copy.Height() * scale)))
+	return icon2base64(copy)
 
 /obj/item/book/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	// Items can both be carving tools and writing utensils.
@@ -160,6 +238,10 @@
 	// but items with both have primary write secondary carve.
 	if(IS_WRITING_UTENSIL(tool))
 		return writing_utensil_act(user, tool)
+	if(!unique && (istype(tool, /obj/item/photo) || istype(tool, /obj/item/canvas)))
+		if(can_change_book(user))
+			ui_interact(user)
+		return ITEM_INTERACT_SUCCESS
 	if(is_carving_tool(tool))
 		return carving_act(user, tool)
 	return NONE
@@ -171,66 +253,143 @@
 		return writing_utensil_act(user, tool)
 	return NONE
 
-/// Called when user clicks on the book with a writing utensil. Attempts to vandalize the book.
+/// Opens the spread editor when a reader uses a pen on a manuscript.
 /obj/item/book/proc/writing_utensil_act(mob/living/user, obj/item/tool)
-	if(!can_vandalize(user, tool))
+	if(!can_change_book(user) || !user.can_write(tool))
 		return ITEM_INTERACT_BLOCKING
-
-	var/choice = tgui_input_list(usr, "What would you like to change?", "Book Alteration", list("Title", "Contents", "Author", "Cancel"))
-	if(isnull(choice))
-		return ITEM_INTERACT_BLOCKING
-	if(!can_vandalize(user, tool))
-		return ITEM_INTERACT_BLOCKING
-
-	switch(choice)
-		if("Title")
-			return vandalize_title(user, tool)
-		if("Contents")
-			return vandalize_contents(user, tool)
-		if("Author")
-			return vandalize_author(user, tool)
-
-	return NONE
-
-/obj/item/book/proc/vandalize_title(mob/living/user, obj/item/tool)
-	var/newtitle = reject_bad_text(tgui_input_text(user, "Write a new title", "Book Title", max_length = 30))
-	if(!newtitle)
-		balloon_alert(user, "invalid input!")
-		return ITEM_INTERACT_BLOCKING
-	if(length_char(newtitle) > 30)
-		balloon_alert(user, "too long!")
-		return ITEM_INTERACT_BLOCKING
-	if(!can_vandalize(user, tool))
-		return ITEM_INTERACT_BLOCKING
-
-	name = newtitle
-	book_data.set_title(html_decode(newtitle)) //Don't want to double encode here
-	playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
+	ui_interact(user)
 	return ITEM_INTERACT_SUCCESS
 
-/obj/item/book/proc/vandalize_contents(mob/living/user, obj/item/tool)
-	var/content = tgui_input_text(user, "Write your book's contents (HTML NOT allowed)", "Book Contents", max_length = MAX_PAPER_LENGTH, multiline = TRUE)
-	if(!content)
-		balloon_alert(user, "invalid input!")
-		return ITEM_INTERACT_BLOCKING
-	if(!can_vandalize(user, tool))
-		return ITEM_INTERACT_BLOCKING
+/// Bind a private snapshot to its numbered page or the cover so it can only be saved there.
+/obj/item/book/proc/preview_illustration(mob/living/user, datum/tgui/ui, target, url, request_id)
+	if(!istext(request_id) || !length(request_id) || length(request_id) > 64)
+		return
+	var/reader = REF(user)
+	var/list/preview = list("requestId" = request_id, "page" = target, "revision" = book_data.revision)
+	LAZYSET(illustration_previews, reader, preview)
+	if(!is_valid_portrait_image_url(url))
+		preview["error"] = "Нужна прямая HTTPS-ссылка на PNG или JPEG с Gyazo, Lensdump, Imgbox, Catbox или File Garden."
+	else
+		var/list/result = import_illustration(url, user)
+		if(QDELETED(src) || QDELETED(user) || QDELETED(ui) || LAZYACCESS(illustration_previews, reader) != preview)
+			return
+		if(book_data.revision != preview["revision"] || !can_change_book(user) || !held_writing_tool(user))
+			preview["error"] = "Книга или условия редактирования изменились. Проверьте книгу и ручку."
+		else if(result?["image"])
+			preview["image"] = result["image"]
+		else
+			preview["error"] = result?["error"] || "Не удалось загрузить иллюстрацию."
+	update_static_data(user, ui)
 
-	book_data.set_content(html_decode(content))
-	playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
-	return ITEM_INTERACT_SUCCESS
+/obj/item/book/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(. || unique || carved || !isliving(ui.user))
+		return
+	var/mob/living/user = ui.user
+	if(action == "stop_reading")
+		if(aloud_reader == user)
+			stop_reading_aloud()
+			return TRUE
+		return
+	if(action == "read_aloud")
+		return start_reading_aloud(user, params["page"], params["revision"])
+	if(action == "play_flip_sound")
+		if(COOLDOWN_FINISHED(src, page_sound_cooldown))
+			COOLDOWN_START(src, page_sound_cooldown, 0.4 SECONDS)
+			playsound(src, SFX_PAGE_TURN, 30, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		return
+	if(!can_change_book(user))
+		return
+	var/revision = params["revision"]
+	if(!isnum(revision) || revision != book_data.revision)
+		balloon_alert(user, "книгу уже изменили!")
+		return
+	var/page_index = params["page"]
+	var/changed = FALSE
+	if(action == "attach_image" || (action == "preview_illustration" && page_index != BOOK_COVER_TARGET))
+		var/number_of_pages = isnull(book_data.pages) ? length(book_data.get_pages()) : length(book_data.pages)
+		if(!isnum(page_index) || !ISINTEGER(page_index) || !ISINRANGE(page_index, 1, number_of_pages))
+			return
+	if(action == "attach_image" || action == "attach_cover")
+		var/icon/illustration = held_illustration(user)
+		if(!illustration)
+			balloon_alert(user, "нужен снимок или готовый холст!")
+			return
+		var/png = illustration_png(illustration)
+		if(png)
+			changed = action == "attach_cover" ? book_data.set_cover_image(png) : book_data.set_page_image(page_index, png)
+	else
+		var/obj/item/pen = held_writing_tool(user)
+		if(!pen)
+			balloon_alert(user, "нужна ручка!")
+			return
+		if(!user.can_write(pen))
+			return
+		switch(action)
+			if("preview_illustration")
+				preview_illustration(user, ui, page_index, params["url"], params["requestId"])
+				return
+			if("save_page", "save_cover")
+				var/saving_cover = action == "save_cover"
+				var/image
+				if("illustrationRequestId" in params)
+					var/list/preview = LAZYACCESS(illustration_previews, REF(user))
+					var/target = saving_cover ? BOOK_COVER_TARGET : page_index
+					if(!preview?["image"] || preview["requestId"] != params["illustrationRequestId"] || preview["page"] != target || preview["revision"] != revision)
+						balloon_alert(user, "загрузите предпросмотр заново!")
+						return
+					image = preview["image"]
+				if(saving_cover)
+					var/new_binding = book_data.binding_color
+					if("bindingColor" in params)
+						new_binding = params["bindingColor"]
+						if(!istext(new_binding))
+							return
+					else if(!image)
+						return
+					changed = book_data.set_cover_image(image || book_data.cover_image, new_binding)
+					if(changed && new_binding)
+						apply_binding_icon()
+				else
+					changed = book_data.set_page_text(page_index, params["text"], params["caption"], image)
+			if("insert_page")
+				changed = book_data.add_page(page_index)
+			if("delete_page")
+				changed = book_data.remove_page(page_index)
+			if("remove_image")
+				changed = book_data.set_page_image(page_index, null)
+			if("remove_cover")
+				changed = book_data.set_cover_image(null)
+			if("edit_title", "edit_author")
+				var/editing_title = action == "edit_title"
+				var/current_value = html_decode(editing_title ? book_data.title : book_data.author)
+				var/value = tgui_input_text(user, editing_title ? "Название книги" : "Имя автора", "Редактирование книги", default = current_value, max_length = editing_title ? 30 : MAX_NAME_LEN, encode = FALSE)
+				if(!length(value) || !can_change_book(user) || QDELETED(pen) || !user.is_holding(pen) || !user.can_write(pen))
+					return
+				if(revision != book_data.revision)
+					balloon_alert(user, "книгу уже изменили!")
+					return
+				if(editing_title)
+					if(!book_data.set_title(value, from_editor = TRUE))
+						balloon_alert(user, "недопустимое название!")
+						return
+					name = book_data.title
+				else
+					if(!book_data.set_author(value, from_editor = TRUE))
+						balloon_alert(user, "недопустимое имя!")
+						return
+				changed = TRUE
+			else
+				return
 
-/obj/item/book/proc/vandalize_author(mob/living/user, obj/item/tool)
-	var/author = tgui_input_text(user, "Write the author's name", "Author Name", max_length = MAX_NAME_LEN)
-	if(!author)
-		balloon_alert(user, "invalid input!")
-		return ITEM_INTERACT_BLOCKING
-	if(!can_vandalize(user, tool))
-		return ITEM_INTERACT_BLOCKING
-
-	book_data.set_author(html_decode(author)) //Setting this encodes, don't want to double up
-	playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
-	return ITEM_INTERACT_SUCCESS
+	if(!changed)
+		balloon_alert(user, "изменение не поместилось!")
+		return
+	// Every pending preview was made against the preceding revision.
+	illustration_previews = null
+	playsound(src, SFX_WRITING_PEN, 30, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+	update_static_data_for_all_viewers()
+	return TRUE
 
 /// Called when user clicks on the book with a carving utensil. Attempts to carve the book.
 /obj/item/book/proc/carving_act(mob/living/user, obj/item/tool)
@@ -251,11 +410,15 @@
 /// Handles setting everything a carved book needs.
 /obj/item/book/proc/carve_out()
 	carved = TRUE
+	SStgui.close_uis(src)
 	create_storage(storage_type = carved_storage_type)
 
-/// Generates a random icon state for the book
-/obj/item/book/proc/gen_random_icon_state()
-	icon_state = "book[rand(1, maximum_book_state)]"
+/// Uses the edition's chosen binding, or a random stock cover for uncustomized books.
+/obj/item/book/proc/apply_binding_icon()
+	icon_state = GLOB.book_binding_icons[book_data.binding_color] || "book[rand(1, maximum_book_state)]"
+
+#undef MAX_BOOK_ILLUSTRATION_SIDE
+#undef BOOK_COVER_TARGET
 
 /// Base type for a book that opens a bespoke TUGI
 /// Does not inherit from /obj/item/book because the only similarities between the two are the concept of "being a book"

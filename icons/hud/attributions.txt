@@ -1,0 +1,7 @@
+direction_lock in icons/hud/screen_alert.dmi:
+	Original sprite by dearmochi from ParadiseSS13/Paradise (PR #23445, commit aaafb6be770cddcb3cc4576d67f214372f4f4268):
+	https://github.com/ParadiseSS13/Paradise/pull/23445
+	Source file: icons/mob/screen_alert.dmi (state "direction_lock").
+	License: Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0):
+	https://creativecommons.org/licenses/by-sa/3.0/
+	Changes: extracted foreground pixels onto a transparent background so the sprite works as an overlay_state with USER_HUD_STYLE_INHERIT; frames (2) and frame delays (3,3) are preserved.

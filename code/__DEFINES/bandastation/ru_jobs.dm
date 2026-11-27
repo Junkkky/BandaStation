@@ -64,6 +64,7 @@
 #define JOB_CLOWN_RU "Клоун"
 #define JOB_MIME_RU "Мим"
 #define JOB_CURATOR_RU "Куратор"
+#define JOB_TATTOO_ARTIST_RU "Тату-мастер"
 #define JOB_CHAPLAIN_RU "Священник"
 #define JOB_PSYCHOLOGIST_RU "Психолог"
 
@@ -149,6 +150,7 @@ GLOBAL_LIST_INIT(job_titles_ru, list(
 	JOB_CLOWN = JOB_CLOWN_RU,
 	JOB_MIME = JOB_MIME_RU,
 	JOB_CURATOR = JOB_CURATOR_RU,
+	JOB_TATTOO_ARTIST = JOB_TATTOO_ARTIST_RU,
 	JOB_CHAPLAIN = JOB_CHAPLAIN_RU,
 	JOB_PSYCHOLOGIST = JOB_PSYCHOLOGIST_RU,
 ))

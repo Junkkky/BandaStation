@@ -74,6 +74,9 @@
 	var/list/icon_render_keys = list()
 	var/static/list/limb_icon_cache = list()
 
+	/// Current stage of cremation, used when examining and rendering this body.
+	var/cremation_stage = NONE
+
 	/// Used to temporarily increase severity of / apply a new damage overlay (the red ring around the ui / screen).
 	/// This number will translate to equivalent brute or burn damage taken. Handled in [mob/living/proc/update_damage_hud].
 	/// (For example, setting damageoverlaytemp = 20 will add 20 "damage" to the overlay the next time it updates.)

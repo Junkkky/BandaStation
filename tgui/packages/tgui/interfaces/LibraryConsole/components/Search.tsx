@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Button,
   Dropdown,
   Input,
+  NumberInput,
   Section,
   Stack,
   Table,
@@ -118,7 +120,8 @@ function SearchTabs(props) {
 
 function SearchResults(props) {
   const { act, data } = useBackend<LibraryConsoleData>();
-  const { pages } = data;
+  const { max_print_run, pages } = data;
+  const [copies, setCopies] = useState(1);
 
   const sorted = pages
     .map((record, i) => ({
@@ -129,7 +132,21 @@ function SearchResults(props) {
     .sort((a, b) => a.key - b.key);
 
   return (
-    <Section fill scrollable>
+    <Section
+      fill
+      scrollable
+      title="Архив библиотеки"
+      buttons={
+        <NumberInput
+          value={copies}
+          minValue={1}
+          maxValue={max_print_run}
+          step={1}
+          unit="экз."
+          onChange={setCopies}
+        />
+      }
+    >
       <Table>
         <Table.Row className="candystripe">
           <Table.Cell fontSize={1.5}>#</Table.Cell>
@@ -144,9 +161,11 @@ function SearchResults(props) {
                 onClick={() =>
                   act('print_book', {
                     book_id: record.id,
+                    copies,
                   })
                 }
                 icon="print"
+                tooltip={`Напечатать тираж · ${copies} экз.`}
               >
                 {record.id}
               </Button>

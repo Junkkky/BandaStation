@@ -7,6 +7,8 @@
 	var/datum/weakref/bonded_mind
 	/// Total meditation time earned this round, including interrupted sessions.
 	var/bond_meditation_time = 0
+	/// Scales the duration of meditation stages and the rest between them.
+	var/bond_time_multiplier = 1
 	/// Whether a meditation session is currently running.
 	var/meditating = FALSE
 	/// Time of incoming damage during the active meditation.
@@ -34,6 +36,7 @@
 
 /// Converts earned time to bond percent with a different pace for each stage.
 /obj/item/dualsaber/legendary_saber/proc/get_legendary_bond(elapsed = bond_meditation_time)
+	elapsed /= bond_time_multiplier
 	if(elapsed < BOND_FIRST_STAGE)
 		return FLOOR(25 * elapsed / BOND_FIRST_STAGE, 1)
 	if(elapsed < BOND_SECOND_STAGE)
@@ -58,7 +61,7 @@
 		return CLICK_ACTION_BLOCKING
 	if(meditating)
 		return CLICK_ACTION_BLOCKING
-	if(bond_meditation_time >= BOND_FULL_STAGE)
+	if(get_legendary_bond() >= 100)
 		to_chat(user, span_notice("Узы с клинком уже достигли 100%."))
 		return CLICK_ACTION_BLOCKING
 	if(!COOLDOWN_FINISHED(src, bond_rest))
@@ -73,19 +76,20 @@
 
 /// Saves partial time and enforces a rest between completed stages.
 /obj/item/dualsaber/legendary_saber/proc/meditate(mob/living/user)
-	if(meditating || !COOLDOWN_FINISHED(src, bond_rest) || bond_meditation_time >= BOND_FULL_STAGE || !can_meditate(user, user?.loc, loc) || !user.mind)
+	var/starting_bond = get_legendary_bond()
+	if(meditating || !COOLDOWN_FINISHED(src, bond_rest) || starting_bond >= 100 || !can_meditate(user, user?.loc, loc) || !user.mind)
 		return
 	bonded_mind ||= WEAKREF(user.mind)
 	meditating = TRUE
 	meditation_damage_time = null
 	var/stage_end = BOND_FULL_STAGE
-	if(bond_meditation_time < BOND_FIRST_STAGE)
+	if(starting_bond < 25)
 		stage_end = BOND_FIRST_STAGE
-	else if(bond_meditation_time < BOND_SECOND_STAGE)
+	else if(starting_bond < 50)
 		stage_end = BOND_SECOND_STAGE
 	var/start_time = world.time
-	var/remaining_time = stage_end - bond_meditation_time
-	var/datum/progressbar/bond_bar = new(user, 100, src, get_legendary_bond())
+	var/remaining_time = stage_end * bond_time_multiplier - bond_meditation_time
+	var/datum/progressbar/bond_bar = new(user, 100, src, starting_bond)
 	var/datum/callback/validate = CALLBACK(src, PROC_REF(update_meditation), user, user.loc, loc, bond_bar, start_time, user.health)
 	RegisterSignal(user, COMSIG_MOB_AFTER_APPLY_DAMAGE, PROC_REF(on_meditation_damage))
 	to_chat(user, span_notice("Вы сосредотачиваетесь на клинке."))
@@ -107,7 +111,7 @@
 	meditation_damage_time = null
 	meditating = FALSE
 	if(completed)
-		COOLDOWN_START(src, bond_rest, 30 SECONDS)
+		COOLDOWN_START(src, bond_rest, 30 SECONDS * bond_time_multiplier)
 		if(type == /obj/item/dualsaber/legendary_saber && !recall && user?.mind && bonded_mind.resolve() == user.mind)
 			recall = new(user.mind, src)
 			recall.Grant(user)

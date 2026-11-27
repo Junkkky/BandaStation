@@ -18,13 +18,18 @@
 
 /datum/unit_test/donor_job_access/Run()
 	var/datum/job/barber = allocate(/datum/job/donor/barber)
+	var/datum/job/tattoo_artist = allocate(/datum/job/tattoo_artist)
 	var/datum/job/veteran = allocate(/datum/job/veteran_advisor)
 	var/datum/client_interface/player_client = allocate(/datum/client_interface)
 	TEST_ASSERT(!barber.can_access_donor_job(player_client), "A non-donor can select Barber.")
+	TEST_ASSERT(!tattoo_artist.can_access_donor_job(player_client), "A non-donor can select Tattoo Artist.")
 	TEST_ASSERT(!veteran.can_access_donor_job(player_client), "A non-donor can select Veteran without the trait.")
 
+	player_client.donator_level = DONATOR_TIER_1
+	TEST_ASSERT(tattoo_artist.can_access_donor_job(player_client), "Tier 1 did not unlock Tattoo Artist.")
 	player_client.donator_level = DONATOR_TIER_2
 	TEST_ASSERT(barber.can_access_donor_job(player_client), "A higher tier did not unlock Barber.")
+	TEST_ASSERT(tattoo_artist.can_access_donor_job(player_client), "A higher tier did not unlock Tattoo Artist.")
 	TEST_ASSERT(!veteran.can_access_donor_job(player_client), "A lower tier unlocked Veteran without the trait.")
 	player_client.donator_level = DONATOR_TIER_3
 	TEST_ASSERT(veteran.can_access_donor_job(player_client), "The required tier did not unlock Veteran.")

@@ -29,6 +29,7 @@
 #define ALERT_RADIOACTIVE_AREA "radioactive_area"
 #define ALERT_UNPOSSESS_OBJECT "unpossess_object"
 #define ALERT_BLOODWORM_INFO "bloodworm_info"
+#define ALERT_DIRECTION_LOCK "direction_lock"
 
 //antag related
 #define ALERT_HYPNOSIS "hypnosis"

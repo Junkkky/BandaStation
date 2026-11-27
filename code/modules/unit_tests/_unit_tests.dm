@@ -258,6 +258,7 @@
 #include "icons_missing.dm"
 #include "id_access.dm"
 #include "id_card.dm"
+#include "illustrated_books.dm"
 #include "interaction_door.dm"
 #include "interaction_silicon.dm"
 #include "interaction_structures.dm"
@@ -498,6 +499,11 @@
 
 #include "../../../modular_bandastation/bug_reports/tests/bug_reports_test.dm" // BANDASTATION ADDITION - In-game bug reports
 #include "../../../modular_bandastation/examine_panel/tests/portrait_preferences.dm"
+#include "../../../modular_bandastation/tattoo_artist/code/design_tests.dm"
+#include "../../../modular_bandastation/tattoo_artist/code/persistence_tests.dm"
+#include "../../../modular_bandastation/tattoo_artist/code/removal_tests.dm"
+#include "../../../modular_bandastation/tattoo_artist/code/session_tests.dm"
+#include "../../../modular_bandastation/tattoo_artist/code/stencil_tests.dm"
 
 // AI EDIT START - Separate ear slots
 // BANDASTATION ADDITION START - Separate ear slots
@@ -513,12 +519,15 @@
 #include "../../../modular_bandastation/weapon/code/ranged/weapon_choice_tests.dm" // BANDASTATION ADDITION - HoS and Blueshield sidearms
 #include "../../../modular_bandastation/weapon/code/ranged/weapon_choice_ui_tests.dm"
 #include "../../../modular_bandastation/weapon/code/melee/centcom/legendary_malice_tests.dm"
+#include "../../../modular_bandastation/weapon/code/melee/centcom/legendary_sister_tests.dm"
 
 #include "../../../modular_bandastation/underclothing/code/tests.dm" // BANDASTATION ADDITION - Removable underclothing
 
 #include "../../../modular_bandastation/uplink_items/code/tests/syndicate_items.dm"
 
 #include "../../../modular_bandastation/objects/code/tests/lighter_lighting.dm"
+
+#include "../../../modular_bandastation/paperwork/code/paper_bundle_tests.dm"
 
 #include "../../../modular_bandastation/telephones/_defines.dm"
 #include "../../../modular_bandastation/telephones/code/telephone_tests.dm"

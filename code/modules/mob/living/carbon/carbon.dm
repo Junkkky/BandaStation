@@ -435,10 +435,7 @@
 	update_stat()
 	update_stamina()
 
-	/// The amount of burn damage needed to be done for this mob to be husked
-	var/husk_threshold = get_bodypart(BODY_ZONE_CHEST).max_damage * -1
-
-	if(((maxHealth - total_burn) < husk_threshold) && stat == DEAD )
+	if(stat == DEAD && !HAS_TRAIT_FROM(src, TRAIT_HUSK, BURN) && should_husk_from_burn_damage(total_burn))
 		become_husk(BURN)
 	med_hud_set_health()
 	if(stat == SOFT_CRIT)
@@ -446,6 +443,10 @@
 	else
 		remove_movespeed_modifier(/datum/movespeed_modifier/carbon_softcrit)
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
+
+/// Whether the corpse's total burn damage warrants the automatic burn husk.
+/mob/living/carbon/proc/should_husk_from_burn_damage(total_burn)
+	return total_burn > maxHealth + get_bodypart(BODY_ZONE_CHEST).max_damage
 
 /**
  * Calculates how visually impaired the mob is by their equipment and other factors

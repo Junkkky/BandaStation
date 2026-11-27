@@ -19,6 +19,8 @@
 	var/pain_chance = 15
 	/// Coefficient of multiplication for the damage the item does while embedded (this*item.w_class)
 	var/pain_mult = 2
+	/// Blood lost per second from the affected limb while a harmful object is embedded.
+	var/embedded_bleed_rate = 0.25
 	/// Coefficient of multiplication for the damage the item does when it first embeds (this*item.w_class)
 	var/impact_pain_mult = 4
 	/// Coefficient of multiplication for the damage the item does when it falls out or is removed without a surgery (this*item.w_class)
@@ -81,6 +83,7 @@
 	brother.fall_chance = fall_chance
 	brother.pain_chance = pain_chance
 	brother.pain_mult = pain_mult
+	brother.embedded_bleed_rate = embedded_bleed_rate
 	brother.impact_pain_mult = impact_pain_mult
 	brother.remove_pain_mult = remove_pain_mult
 	brother.rip_time = rip_time

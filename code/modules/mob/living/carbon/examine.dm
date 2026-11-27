@@ -274,7 +274,11 @@
 				. += span_notice("<b><i>[t_He] выглядит абсолютно ужасно; вы можете осмотреть подробнее, чтобы разглядеть шрамы...</i></b>")
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
-		if(HAS_TRAIT_FROM(src, TRAIT_HUSK, /datum/status_effect/zombie::id))
+		if(cremation_stage >= CREMATION_SKELETON)
+			. += span_warning("От тела остался обгоревший скелет.")
+		else if(cremation_stage == CREMATION_CHARRED)
+			. += span_warning("Сквозь остатки обугленной плоти проступают кости.")
+		else if(HAS_TRAIT_FROM(src, TRAIT_HUSK, /datum/status_effect/zombie::id))
 			. += span_warning("[t_His] skin has rotted into a sickly green color.") // future todo: lizards don't have skin, they have scales
 		else
 			. += span_warning("Это тело превратилось в гротескную шелуху.")
