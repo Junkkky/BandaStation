@@ -9,7 +9,7 @@
 
 /obj/item/tattoo_needle
 	name = "sterile tattoo cartridge"
-	desc = "Одноразовый игольный картридж в запечатанном блистере. Вставьте его в тату-машинку перед сеансом."
+	desc = "Одноразовый игольный картридж в запечатанном блистере. Вставьте его в тату-машинку перед сеансом. Одного картриджа хватает на весь сеанс с одним клиентом. Смените картридж перед следующим сеансом."
 	icon = 'modular_bandastation/tattoo_artist/icons/studio.dmi'
 	icon_state = "needle"
 	lefthand_file = 'modular_bandastation/tattoo_artist/icons/studio_l.dmi'
@@ -18,7 +18,7 @@
 
 /obj/item/tattoo_wipe
 	name = "tattoo prep swab"
-	desc = "Стерильная салфетка в бирюзовом пакетике для обработки выбранного участка перед нанесением татуировки."
+	desc = "Стерильная салфетка в бирюзовом пакетике. Используйте её на клиенте перед первым нанесением. Одной салфетки хватает для подготовки всего тела."
 	icon = 'modular_bandastation/tattoo_artist/icons/studio.dmi'
 	icon_state = "wipe"
 	lefthand_file = 'modular_bandastation/tattoo_artist/icons/studio_l.dmi'
@@ -27,7 +27,7 @@
 
 /obj/item/tattoo_dressing
 	name = "tattoo aftercare film"
-	desc = "Прозрачная защитная плёнка на бумажной подложке. Наложите её на свежую татуировку после сеанса."
+	desc = "Прозрачная защитная плёнка на бумажной подложке. После сеанса приложите её к открытой свежей татуировке клиента. Одной упаковки хватит, чтобы закрыть все такие татуировки."
 	icon = 'modular_bandastation/tattoo_artist/icons/studio.dmi'
 	icon_state = "dressing"
 	lefthand_file = 'modular_bandastation/tattoo_artist/icons/studio_l.dmi'
@@ -36,7 +36,7 @@
 
 /obj/item/tattoo_ink
 	name = "graphite tattoo ink"
-	desc = "Герметичный флакон на четыре дозы. Поднесите его к машинке, чтобы заправить пигмент."
+	desc = "Герметичный флакон на четыре порции. Одной порции пигмента хватает на полный сеанс с одним клиентом. Поднесите флакон к машинке, чтобы заправить её."
 	icon = 'modular_bandastation/tattoo_artist/icons/studio.dmi'
 	icon_state = "ink_graphite"
 	lefthand_file = 'modular_bandastation/tattoo_artist/icons/studio_l.dmi'

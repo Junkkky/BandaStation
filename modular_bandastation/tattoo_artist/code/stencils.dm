@@ -29,7 +29,7 @@
 
 /// The editor mask can be older than a newly worn glove or shoe.
 /datum/tattoo_session/proc/stencil_fits(pixels)
-	if(!side || !mask_bits || pixels == empty_bitmap || limb.has_drawn_tattoo(side) || !valid_draft(pixels))
+	if(!side || !mask_bits || pixels == empty_bitmap || limb.has_drawn_tattoo() || !valid_draft(pixels))
 		return FALSE
 	var/datum/tattoo_design/check = new
 	var/fits = check.prepare(limb, side, pixels, palette)
@@ -49,8 +49,7 @@
 	var/list/loaded = list()
 	for(var/i in 1 to length(palette))
 		var/ink = palette[i]
-		if(machine.ink_doses[ink] > 0)
-			loaded[LOWER_TEXT(ink)] = copytext(digits, i + 1, i + 2)
+		loaded[LOWER_TEXT(ink)] = copytext(digits, i + 1, i + 2)
 	var/list/remap = list("0" = "0")
 	for(var/i in 1 to length(inks))
 		var/color = inks[i]

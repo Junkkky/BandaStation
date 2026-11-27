@@ -66,7 +66,8 @@
 	if(!islist(records))
 		return FALSE
 	var/list/record = records["[limb.body_zone]:[design.side]"]
-	return islist(record) && record["skin"] == design.skin_key && record["bitmap"] == design.bitmap && compare_list(record["palette"], design.palette)
+	return islist(record) && record["skin"] == design.skin_key && record["bitmap"] == design.bitmap \
+		&& (record["all_views"] == TRUE) == design.all_views && compare_list(record["palette"], design.palette)
 
 /datum/preferences/proc/set_saved_tattoo(slot, obj/item/bodypart/limb, datum/tattoo_design/design, save)
 	var/list/profile = get_tattoo_slot(slot)
@@ -83,7 +84,12 @@
 		if(!islist(records))
 			records = list()
 			profile["drawn_tattoos"] = records
-		records[location] = list("skin" = design.skin_key, "bitmap" = design.bitmap, "palette" = design.palette.Copy())
+		records[location] = list(
+			"skin" = design.skin_key,
+			"bitmap" = design.bitmap,
+			"palette" = design.palette.Copy(),
+			"all_views" = design.all_views,
+		)
 	else
 		records -= location
 		if(!length(records))
@@ -103,15 +109,17 @@
 		var/skin = limb?.tattoo_skin_key()
 		if(!skin)
 			continue
-		for(var/side in GLOB.cardinals)
-			var/list/record = records["[zone]:[side]"]
-			if(!islist(record) || record["skin"] != skin || limb.has_drawn_tattoo(side))
-				continue
-			var/datum/tattoo_design/design = new
-			if(design.prepare(limb, side, record["bitmap"], record["palette"], ignore_clothing = TRUE) && limb.apply_drawn_tattoo(design, restoring = TRUE))
-				restored++
-			else
-				qdel(design)
+		// Whole-limb drawings take precedence if a previous limb replacement left legacy records.
+		for(var/all_views in list(TRUE, FALSE))
+			for(var/side in GLOB.cardinals)
+				var/list/record = records["[zone]:[side]"]
+				if(!islist(record) || record["skin"] != skin || (record["all_views"] == TRUE) != all_views || limb.has_drawn_tattoo(side))
+					continue
+				var/datum/tattoo_design/design = new
+				if(design.prepare(limb, side, record["bitmap"], record["palette"], ignore_clothing = TRUE, all_views = all_views) && limb.apply_drawn_tattoo(design, restoring = TRUE))
+					restored++
+				else
+					qdel(design)
 	if(restored)
 		update_body_parts()
 	return restored
