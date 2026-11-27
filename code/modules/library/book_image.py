@@ -10,7 +10,12 @@ import threading
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from PIL import Image, ImageOps
+try:
+    from PIL import Image, ImageOps
+except ImportError:
+    if __name__ == "__main__":
+        sys.exit(5)
+    raise
 
 
 MAX_SOURCE_BYTES = 8 * 1024 * 1024
