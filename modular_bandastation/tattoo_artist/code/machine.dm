@@ -83,7 +83,7 @@
 		QDEL_NULL(session)
 	if(session)
 		if(user == session.artist && target == session.customer)
-			session.ui_interact(user)
+			session.open_participant_windows()
 		else
 			balloon_alert(user, "машинка занята")
 		return TRUE
@@ -122,9 +122,7 @@
 			balloon_alert(user, "нет свободного ракурса")
 			QDEL_NULL(session)
 			return TRUE
-	session.ui_interact(user)
-	if(session && !session.practice)
-		session.ui_interact(target)
+	session.open_participant_windows(invite_customer = TRUE)
 	return TRUE
 
 /// Per-limb preparation and aftercare are created only when supplies are actually used.

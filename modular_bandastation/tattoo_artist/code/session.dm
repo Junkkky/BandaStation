@@ -12,6 +12,9 @@
 	var/side
 	var/revision = 0
 	var/draw_rejected = 0
+	var/draw_rejected_revision
+	var/last_patch
+	var/last_patch_revision
 	var/list/palette = list()
 	var/bitmap
 	var/static/empty_bitmap
@@ -119,8 +122,37 @@
 			return FALSE
 	return TRUE
 
+/// Three ASCII characters per cell: two base-64 digits for its zero-based index and one ink digit.
+/datum/tattoo_session/proc/apply_draft_patch(patch)
+	var/static/regex/non_ascii_digit = regex(@"[^0-9A-Za-z_-]")
+	if(!istext(patch) || !ISINRANGE(length(patch), 3, 1200) || length(patch) % 3 || length(mask_bits) != 4096 || non_ascii_digit.Find(patch))
+		return FALSE
+	var/coordinates = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_"
+	var/inks = "0123456789abcdef"
+	var/list/pixels = splittext(bitmap, "")
+	for(var/i in 1 to length(patch) step 3)
+		var/high = findtextEx(coordinates, copytext(patch, i, i + 1)) - 1
+		var/low = findtextEx(coordinates, copytext(patch, i + 1, i + 2)) - 1
+		var/ink = copytext(patch, i + 2, i + 3)
+		var/color_index = findtextEx(inks, ink) - 1
+		if(high < 0 || low < 0 || !ISINRANGE(color_index, 0, length(palette)))
+			return FALSE
+		var/index = high * 64 + low + 1
+		if(copytext(mask_bits, index, index + 1) != "1")
+			return FALSE
+		pixels[index] = ink
+	bitmap = jointext(pixels, "")
+	return TRUE
+
 /datum/tattoo_session/ui_host(mob/user)
 	return machine
+
+/// Updates during the initial window handshake are skipped by tgui.send_update().
+/datum/tgui/tattoo_studio/on_message(type, list/payload, list/href_list)
+	var/first_ack = !initialized && (type == "ready" || type == "ping/reply")
+	. = ..()
+	if(first_ack && initialized && !closing)
+		SStgui.try_update_ui(user, src_object, src)
 
 /datum/asset/simple/tattoo_studio_audio
 	assets = list("tattoo_machine.ogg" = 'modular_bandastation/tattoo_artist/sound/tattoo_machine.ogg')
@@ -138,14 +170,39 @@
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "TattooStudio", "Тату-сеанс")
+		ui = new /datum/tgui/tattoo_studio(user, src, "TattooStudio", "Тату-сеанс")
 		ui.set_autoupdate(FALSE)
 		if(!ui.open())
 			qdel(ui)
-			qdel(src)
+			if(user == artist || phase == "applying")
+				qdel(src)
+			else
+				to_chat(customer, span_warning("Не удалось открыть окно тату-сеанса. Закройте одно из окон интерфейса и нажмите ссылку в чате."))
+
+/datum/tattoo_session/proc/open_participant_windows(invite_customer = FALSE)
+	ui_interact(artist)
+	if(QDELETED(src) || practice)
+		return
+	if(invite_customer)
+		notify_customer()
+	ui_interact(customer)
+
+/datum/tattoo_session/proc/notify_customer()
+	var/message = phase == "review" ? "[artist] ждёт вашего решения по тату-сеансу." : "[artist] начал тату-сеанс. Вы можете наблюдать за работой."
+	to_chat(customer, span_notice("[message] <a href='byond://?src=[REF(src)];open_tattoo_session=1'>Открыть тату-сеанс</a>"))
+
+/datum/tattoo_session/Topic(href, list/href_list)
+	. = ..()
+	if(href_list["open_tattoo_session"] && usr == customer && !practice && (phase == "draft" || phase == "review") && can_continue())
+		ui_interact(customer)
+		var/datum/tgui/ui = SStgui.get_open_ui(customer, src)
+		if(ui?.window && customer.client)
+			winset(customer, ui.window.id, "focus=true")
 
 /datum/tattoo_session/ui_close(mob/user)
 	. = ..()
+	if(!QDELETED(src) && user == customer && !practice && (phase == "draft" || phase == "review") && can_continue())
+		return
 	if(!QDELETED(src))
 		qdel(src)
 
@@ -171,6 +228,7 @@
 		"palette" = palette,
 		"revision" = revision,
 		"drawRejected" = draw_rejected,
+		"drawRejectedRevision" = draw_rejected_revision,
 		"occupied" = occupied,
 		"stencils" = can_edit_stencils ? get_stencil_library() : null,
 		"stencilLimit" = stencil_limit,
@@ -183,13 +241,20 @@
 		return
 	if(!can_continue())
 		return FALSE
-	return handle_action(ui.user, action, params)
+	var/old_phase = phase
+	. = handle_action(ui.user, action, params)
+	if(. && !QDELETED(src) && !practice && old_phase != "review" && phase == "review")
+		notify_customer()
+		if(!SStgui.get_open_ui(customer, src))
+			ui_interact(customer)
 
 /// Role and phase checks are shared by both windows.
 /datum/tattoo_session/proc/handle_action(mob/user, action, list/params)
 	if(user != artist && user != customer)
 		return FALSE
 	switch(action)
+		if("sync")
+			return phase == "draft" || phase == "review"
 		if("cancel")
 			qdel(src)
 			return FALSE
@@ -199,16 +264,28 @@
 					stencil_error = null
 				else
 					machine.balloon_alert(user, "ракурс недоступен")
-		if("draw")
+		if("draw", "draw_patch")
 			if(user != artist || phase != "draft")
 				return FALSE
-			var/pixels = params["pixels"]
-			if(params["revision"] == revision && valid_draft(pixels))
-				bitmap = pixels
+			var/base_revision = params["revision"]
+			if(action == "draw_patch" && !isnull(last_patch) && base_revision == last_patch_revision && revision == last_patch_revision + 1 && params["patch"] == last_patch)
+				return TRUE
+			var/accepted = FALSE
+			if(isnum(base_revision) && base_revision == revision)
+				if(action == "draw_patch")
+					accepted = apply_draft_patch(params["patch"])
+					if(accepted)
+						last_patch = params["patch"]
+						last_patch_revision = base_revision
+				else if(valid_draft(params["pixels"]))
+					bitmap = params["pixels"]
+					accepted = TRUE
+			if(accepted)
 				revision++
 				stencil_error = null
 			else
 				draw_rejected++
+				draw_rejected_revision = isnum(base_revision) ? base_revision : null
 		if("save_stencil", "apply_stencil", "delete_stencil")
 			if(user != artist || phase != "draft")
 				return FALSE

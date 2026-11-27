@@ -1,3 +1,21 @@
+/// Capture the game data at the transport boundary; a headless mob has no browser client.
+/datum/tgui/tattoo_studio/test_peer
+	var/list/received
+
+/datum/tgui/tattoo_studio/test_peer/send_update(custom_data, force)
+	if(initialized && !closing && (force || status >= UI_UPDATE))
+		received = src_object.ui_data(user)
+
+/datum/unit_test/tattoo_studio_session/proc/register_peer(mob/user, datum/tattoo_session/session, ready)
+	var/datum/tgui/tattoo_studio/test_peer/ui = allocate(/datum/tgui/tattoo_studio/test_peer, user, session, "TattooStudio")
+	ui.window = allocate(/datum/tgui_window/spacepod_unit_test)
+	ui.window.acquire_lock(ui)
+	ui.opened_at = world.time
+	ui.initialized = ready
+	ui.set_autoupdate(FALSE)
+	SStgui.on_open(ui)
+	return ui
+
 /// Exercise the two roles and the supply transaction without requiring two connected clients.
 /datum/unit_test/tattoo_studio_session/Run()
 	var/mob/living/carbon/human/artist = allocate(/mob/living/carbon/human/consistent)
@@ -36,15 +54,50 @@
 	TEST_ASSERT_EQUAL(session.bitmap, art, "The real editor's packed stroke was rejected.")
 	session.handle_action(artist, "draw", list("pixels" = blank, "revision" = session.revision - 1))
 	TEST_ASSERT_EQUAL(session.bitmap, art, "An older edit replaced the drawing.")
-	session.handle_action(artist, "review", list())
+	// Sg and Sh encode neighboring detail cells (43,36) and (44,36). 00 is outside this arm.
+	var/base_revision = session.revision
+	TEST_ASSERT(!session.handle_action(customer, "draw_patch", list("patch" = "Sg0", "revision" = base_revision)) && session.bitmap == art, "The customer could patch the artist's draft.")
+	for(var/invalid_patch in list("Sg0!h1", "Sg0001"))
+		var/rejections = session.draw_rejected
+		session.handle_action(artist, "draw_patch", list("patch" = invalid_patch, "revision" = base_revision))
+		TEST_ASSERT(session.draw_rejected == rejections + 1 && session.bitmap == art && session.revision == base_revision, "An invalid patch was accepted in part.")
+	session.handle_action(artist, "draw_patch", list("patch" = "Sg0", "revision" = base_revision - 1))
+	TEST_ASSERT(session.bitmap == art && session.revision == base_revision, "A stale patch erased a newer stroke.")
+	artist.mock_client = allocate(/datum/client_interface)
+	customer.mock_client = allocate(/datum/client_interface)
+	artist.put_in_hands(machine)
+	var/datum/tgui/tattoo_studio/test_peer/artist_ui = register_peer(artist, session, TRUE)
+	var/datum/tgui/tattoo_studio/test_peer/customer_ui = register_peer(customer, session, FALSE)
+	artist_ui.on_act_message("review", list(), artist_ui.state)
 	TEST_ASSERT_EQUAL(session.phase, "review", "The artist could not submit a sketch.")
 	var/original_revision = session.revision
+	TEST_ASSERT(isnull(customer_ui.received) && artist_ui.received?["phase"] == "review", "Only the initialized peer should receive the initial review update.")
+	customer_ui.window.on_message("ready", list(), list())
+	TEST_ASSERT(customer_ui.received?["role"] == "client" && customer_ui.received["phase"] == "review" && customer_ui.received["draft"] == art, "A late-opening customer missed the pending approval.")
+	customer_ui.received = null
+	customer_ui.on_act_message("sync", list(), customer_ui.state)
+	TEST_ASSERT(customer_ui.received?["revision"] == original_revision && session.revision == original_revision, "Resynchronizing did not return the pending revision unchanged.")
+	customer_ui.close(can_be_suspended = FALSE)
+	TEST_ASSERT(!QDELETED(session) && !QDELETED(artist_ui), "Closing the customer's review discarded the artist's session.")
+	customer_ui = register_peer(customer, session, FALSE)
+	customer_ui.window.on_message("ping/reply", list(), list())
+	TEST_ASSERT(customer_ui.received?["phase"] == "review" && customer_ui.received["revision"] == original_revision, "Returning to the session did not recover the pending approval.")
 	session.handle_action(artist, "approve", list("revision" = original_revision, "save" = TRUE))
 	TEST_ASSERT_EQUAL(session.phase, "review", "The artist approved for the customer.")
 	TEST_ASSERT(!session.finish_application(), "A draft was committed before customer approval.")
-	session.handle_action(customer, "revise", list("revision" = original_revision))
+	customer_ui.on_act_message("revise", list("revision" = original_revision), customer_ui.state)
 	TEST_ASSERT_EQUAL(session.phase, "draft", "The client could not return the sketch to the artist.")
-	session.handle_action(artist, "review", list())
+	base_revision = session.revision
+	artist_ui.on_act_message("draw_patch", list("patch" = "Sg0Sh0", "revision" = base_revision), artist_ui.state)
+	TEST_ASSERT(customer_ui.received?["draft"] == blank && customer_ui.received["revision"] == base_revision + 1, "The customer did not see both erased pixels as one edit.")
+	var/list/repaint = list("patch" = "Sg4Shf", "revision" = session.revision)
+	artist_ui.on_act_message("draw_patch", repaint, artist_ui.state)
+	TEST_ASSERT(customer_ui.received?["draft"] == art && artist_ui.received?["draft"] == art, "The two studio windows did not receive the same restored colors.")
+	var/rejections_before_retry = session.draw_rejected
+	artist_ui.on_act_message("draw_patch", repaint, artist_ui.state)
+	TEST_ASSERT(session.revision == repaint["revision"] + 1 && session.draw_rejected == rejections_before_retry, "Retrying an acknowledged stroke changed or rejected the same revision.")
+	artist_ui.on_act_message("review", list(), artist_ui.state)
+	TEST_ASSERT(customer_ui.received?["phase"] == "review" && customer_ui.received["revision"] == session.revision, "The connected customer did not receive the revised approval.")
 	session.handle_action(customer, "approve", list("revision" = original_revision))
 	TEST_ASSERT_EQUAL(session.phase, "review", "An outdated approval accepted a newer review.")
 	TEST_ASSERT(!session.start_application() && !session.blood_bead && !arm.generic_bleedstacks, "The needle touched the client before an approved procedure.")
@@ -87,6 +140,7 @@
 	TEST_ASSERT_EQUAL(machine.ink_doses["#262638"], 4, "An unused pigment was consumed.")
 	TEST_ASSERT(!session.finish_application(), "Repeated completion consumed more supplies.")
 	qdel(session)
+	artist.dropItemToGround(machine)
 	TEST_ASSERT(QDELETED(motor), "The motor kept playing after the procedure ended.")
 	var/icon/finished = getFlatIcon(customer, defdir = SOUTH, no_anim = TRUE)
 	TEST_ASSERT_EQUAL(LOWER_TEXT(finished.GetPixel(22, 18)), "#dc962d", "The blood bead obscured the completed tattoo after the session closed.")
