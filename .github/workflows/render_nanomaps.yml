@@ -1,50 +1,86 @@
-# GitHub action to autorender nanomaps outside the game
-# This kills off the awful verb we have that takes a full 50 seconds and hangs the whole server
-# The file names and locations are VERY important here
-# DO NOT EDIT THIS UNLESS YOU KNOW WHAT YOU ARE DOING
-# -aa
-name: "Render Nanomaps"
+name: Render Nanomaps
+
 on:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: nanomap-render
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
 jobs:
   generate_maps:
-    name: "Generate NanoMaps"
+    name: Generate NanoMaps
+    if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
+    env:
+      CAN_OPEN_PR: ${{ secrets.NANOMAP_APP_CLIENT_ID != '' && secrets.NANOMAP_APP_PRIVATE_KEY != '' }}
     steps:
-      - id: create_token
-        uses: actions/create-github-app-token@v1
+      - uses: actions/checkout@v6
         with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.PRIVATE_KEY }}
+          persist-credentials: false
 
-      - run: echo "GH_TOKEN=${{ steps.create_token.outputs.token }}" >> "$GITHUB_ENV"
+      - name: Generate maps
+        run: ./tools/nanomap_renderer/nanomap-renderer-invoker.sh
 
-      - name: "Update Branch"
-        uses: actions/checkout@v4
+      - name: Upload rendered maps
+        uses: actions/upload-artifact@v7
         with:
-          token: ${{ steps.create_token.outputs.token }}
+          name: nanomaps
+          path: data/nanomaps/*_nanomap_z*.png
+          if-no-files-found: error
 
-      - name: Branch
+      - name: Stage updated maps
+        id: changes
         run: |
-          git branch -f nanomap-render
-          git checkout nanomap-render
-          git reset --hard origin/master
-
-      - name: "Generate Maps"
-        run: "./tools/nanomap_renderer/nanomap-renderer-invoker.sh"
-
-      - name: "Commit Maps and open PR"
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "NanoMap Generation"
-          git pull origin master
-          git commit -m "NanoMap Auto-Update (`date`)" -a || true
-          git push -f -u origin nanomap-render
-          result=$(gh pr create -t "Automatic NanoMap Update" -b "This pull request updates the server NanoMaps. Please review the diff images before merging." -l "NanoMaps" -H "nanomap-render" -B "master") || true
-          if echo "$result" | grep -q "No commits between master and nanomap-render"; then
-            echo "No NanoMaps update required, skipping."
-            exit 78
+          git add -- 'icons/_nanomaps/*_nanomap_z*.png'
+          if ! git diff --cached --quiet; then
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Report missing app configuration
+        if: steps.changes.outputs.changed == 'true' && env.CAN_OPEN_PR != 'true'
+        run: |
+          echo 'Download the nanomaps artifact to review the rendered maps. Set NANOMAP_APP_CLIENT_ID and NANOMAP_APP_PRIVATE_KEY to enable automatic pull requests.' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Create pull request token
+        if: steps.changes.outputs.changed == 'true' && env.CAN_OPEN_PR == 'true'
+        id: app
+        uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3
+        with:
+          client-id: ${{ secrets.NANOMAP_APP_CLIENT_ID }}
+          private-key: ${{ secrets.NANOMAP_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+
+      - name: Open or update a pull request
+        if: steps.app.outcome == 'success'
+        env:
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          gh auth setup-git
+          git config user.name 'NanoMap Generation'
+          git config user.email 'action@github.com'
+          git commit -m 'Automatic NanoMap update'
+
+          branch=nanomap-render
+          old_ref=$(git ls-remote origin "refs/heads/$branch")
+          old_sha=${old_ref%%$'\t'*}
+          git push --force-with-lease="refs/heads/$branch:$old_sha" origin "HEAD:refs/heads/$branch"
+
+          open_pr=$(gh pr list --head "$branch" --base "$BASE_BRANCH" --state open --json url --jq '.[0].url // ""')
+          if [[ -z "$open_pr" ]]; then
+            open_pr=$(gh pr create --head "$branch" --base "$BASE_BRANCH" \
+              --title 'Automatic NanoMap Update' \
+              --body 'This pull request updates the server NanoMaps. Please review the rendered images before merging.')
+          fi
+          echo "$open_pr" >> "$GITHUB_STEP_SUMMARY"
