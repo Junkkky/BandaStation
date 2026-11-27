@@ -31,6 +31,10 @@
 		MiddleClickOn(A, params)
 		return
 	if(LAZYACCESS(modifiers, ALT_CLICK)) // alt and alt-gr (rightalt)
+		if(LAZYACCESS(modifiers, CTRL_CLICK))
+			if(!LAZYACCESS(modifiers, RIGHT_CLICK))
+				ctrl_alt_click_on(A)
+			return
 		if(LAZYACCESS(modifiers, RIGHT_CLICK))
 			AltClickSecondaryOn(A)
 		else

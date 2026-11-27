@@ -106,3 +106,42 @@
 /atom/proc/click_ctrl_shift(mob/user)
 	SHOULD_CALL_PARENT(FALSE)
 	return NONE
+
+/**
+ * Control+Alt left click
+ *
+ * Toggles direction lock or target-facing mode for living mobs.
+ */
+/mob/proc/ctrl_alt_click_on(atom/target)
+	return
+
+/mob/living/ctrl_alt_click_on(atom/target)
+	var/datum/status_effect/direction_lock/existing_lock = has_status_effect(/datum/status_effect/direction_lock)
+	if(existing_lock)
+		existing_lock.cancel_lock("фиксация взгляда снята")
+		return
+
+	if(!target || target == src || !can_use_direction_lock())
+		return
+
+	if(isliving(target))
+		var/mob/living/living_target = target
+		var/datum/status_effect/direction_lock/applied = apply_status_effect(/datum/status_effect/direction_lock, NONE, living_target)
+		if(applied)
+			balloon_alert(src, "слежение: [living_target.name]")
+		return
+
+	if(target in get_all_contents())
+		return
+
+	var/turf/target_turf = get_turf(target)
+	if(!target_turf || target_turf.z != z)
+		return
+
+	var/cardinal_dir = get_cardinal_dir_to(target)
+	if(!(cardinal_dir in GLOB.cardinals))
+		return
+
+	var/datum/status_effect/direction_lock/applied = apply_status_effect(/datum/status_effect/direction_lock, cardinal_dir)
+	if(applied)
+		balloon_alert(src, "взгляд: [dir_to_ru_name(cardinal_dir)]")
