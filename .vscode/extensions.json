@@ -12,6 +12,7 @@
 		"earshinov.filter-lines",
 		"tombi-toml.tombi",
 		"ss13.ss13buildflags",
-		"BehaviorTreeG.behaviortreeg"
+		"BehaviorTreeG.behaviortreeg",
+		"sohpea.auxtools"
 	]
 }
